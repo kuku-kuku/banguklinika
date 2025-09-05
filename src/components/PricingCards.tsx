@@ -49,8 +49,11 @@ function GroupCard({ group, isOpen, onToggle }: { group: PriceGroup; isOpen: boo
   const summary = range ? (range.max > range.min ? `€${range.min}–€${range.max}` : `nuo €${range.min}`) : '—'
 
   return (
-    // svarbu: ne 'layout' su aukščio animacija visoms kortelėms – paliekam tik pozicijos animaciją
-    <motion.div layout="position" className="card overflow-hidden self-start" id={id}>
+    <motion.div
+      layout="position"
+      className="card overflow-hidden self-start scroll-mt-28 md:scroll-mt-32"
+      id={id}
+    >
       <button
         onClick={onToggle}
         className={clsx(
@@ -105,11 +108,10 @@ function GroupCard({ group, isOpen, onToggle }: { group: PriceGroup; isOpen: boo
 }
 
 export default function PricingCards() {
-  // vienu metu atvira TIK viena korta
   const [openId, setOpenId] = useState<string | null>(null)
   const location = useLocation()
 
-  // atidaryk konkrečią kortą tik jei ateinam su #hash
+  // atidaryk konkrečią kortą jei ateinam su #hash ir nuscrollink
   useEffect(() => {
     if (!location.hash) return
     const id = slugify(decodeURIComponent(location.hash.slice(1)))
@@ -120,21 +122,46 @@ export default function PricingCards() {
     }
   }, [location.hash])
 
+  // Stagger animacijai
+  const containerVariants = {
+    hidden: { opacity: 0, y: 8 },
+    visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.06 } },
+  }
+  const itemVariants = {
+    hidden: { opacity: 0, y: 8 },
+    visible: { opacity: 1, y: 0 },
+  }
+
   return (
-    // 2 stulpeliai (mobiliajame 1, nuo md — 2)
-    <div className="grid gap-6 md:grid-cols-2 items-start">
+    <motion.div
+      className="grid gap-6 md:grid-cols-2 items-start"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       {PRICING.map((g) => {
         const id = slugify(g.title)
         const isOpen = openId === id
         return (
-          <GroupCard
-            key={g.title}
-            group={g}
-            isOpen={isOpen}
-            onToggle={() => setOpenId(isOpen ? null : id)}
-          />
+          <motion.div key={g.title} variants={itemVariants} layout="position">
+            <GroupCard
+              group={g}
+              isOpen={isOpen}
+              onToggle={() => {
+                const willOpen = !isOpen
+                setOpenId(willOpen ? id : null)
+                if (willOpen) {
+                  // mažas delay, kad DOM suspėtų pažymėti atidarymą ir scroll-margin suveiktų
+                  setTimeout(() => {
+                    const el = document.getElementById(id)
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }, 40)
+                }
+              }}
+            />
+          </motion.div>
         )
       })}
-    </div>
+    </motion.div>
   )
 }

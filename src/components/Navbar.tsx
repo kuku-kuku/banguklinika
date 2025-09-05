@@ -6,20 +6,28 @@ type NavItem =
   | { to: string; label: string; dropdown?: undefined }
   | { to: string; label: string; dropdown: DropItem[] }
 
+/* Atnaujintas sąrašas: „Apie mus“ ir „Ypatingi pasiūlymai“ */
 const nav: NavItem[] = [
   { to: '/', label: 'Pradžia' },
+  { to: '/apie', label: 'Apie mus' },
   {
     to: '/paslaugos',
     label: 'Paslaugos',
     dropdown: [
-      { to: '/paslaugos#plombavimas', label: 'Plombavimas' },
-      { to: '/paslaugos#implantai', label: 'Implantacija' },
-      { to: '/paslaugos#protezavimas', label: 'CEREC protezavimas' },
-      { to: '/paslaugos#estetika', label: 'Estetika' },
-      { to: '/paslaugos#higiena', label: 'Burnos higiena' },
+      { to: '/paslaugos#skubi-pagalba', label: 'Skubi pagalba' },
+      { to: '/paslaugos#dantu-protezavimas', label: 'Dantų protezavimas' },
+      { to: '/paslaugos#kompensuojamas-dantu-protezavimas', label: 'Kompensuojamas dantų protezavimas' },
+      { to: '/paslaugos#dantu-gydymas', label: 'Dantų gydymas' },
+      { to: '/paslaugos#implantai', label: 'Implantai' },
+      { to: '/paslaugos#dantu-tiesinimas', label: 'Dantų tiesinimas' },
+      { to: '/paslaugos#burnos-higiena', label: 'Burnos higiena' },
+      { to: '/paslaugos#burnos-chirurgija', label: 'Burnos chirurgija' },
+      { to: '/paslaugos#dantu-balinimas', label: 'Dantų balinimas' },
+      { to: '/paslaugos#estetinis-plombavimas', label: 'Estetinis plombavimas' },
     ],
   },
   { to: '/kainos', label: 'Kainos' },
+  { to: '/ypatingi-pasiulymai', label: 'Ypatingi pasiūlymai' }, // ⬅️ naujas punktas
   { to: '/kontaktai', label: 'Kontaktai' },
 ]
 
@@ -29,16 +37,17 @@ export default function Navbar() {
   const closeTimer = useRef<number | null>(null)
   const location = useLocation()
 
+  // Close with small delay (prevents flicker)
   const scheduleClose = () => {
     if (closeTimer.current) window.clearTimeout(closeTimer.current)
-    closeTimer.current = window.setTimeout(() => setOpenIndex(null), 120)
+    closeTimer.current = window.setTimeout(() => setOpenIndex(null), 140)
   }
   const cancelClose = () => {
     if (closeTimer.current) window.clearTimeout(closeTimer.current)
     closeTimer.current = null
   }
 
-  // Uždaryk, kai pasikeičia path ar hash
+  // Close menus when route/hash changes
   useEffect(() => {
     setOpenIndex(null)
     setOpenMobile(false)
@@ -53,17 +62,27 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-gray-100">
       <div className="container-narrow flex h-16 items-center justify-between">
+        {/* Kairėje – logotipas (h-9, kad neišpūstų navbar aukščio) */}
         <Link
           to="/"
           className="flex items-center gap-3"
           onClick={() => { setOpenMobile(false); setOpenIndex(null) }}
+          aria-label="Bangų klinika — pradžia"
         >
-          <div className="w-9 h-9 rounded-xl bg-primary-600 text-white grid place-items-center font-bold">B</div>
-          <span className="font-semibold">Bangų klinika</span>
+          <img
+            src="/logo.png"
+            alt="Bangų klinika"
+            className="h-9 w-auto object-contain select-none"
+            draggable={false}
+          />
         </Link>
 
-        {/* Desktop */}
-        <nav className="hidden md:flex items-center gap-6">
+        {/* Desktop NAV */}
+        <nav
+          className="hidden md:flex items-center gap-6 relative"
+          onMouseLeave={scheduleClose}
+          onMouseEnter={cancelClose}
+        >
           {nav.map((n, idx) => {
             const hasDrop = 'dropdown' in n && Array.isArray(n.dropdown)
             const menuId = hasDrop ? `nav-menu-${idx}` : undefined
@@ -72,15 +91,16 @@ export default function Navbar() {
               <div
                 key={n.to}
                 className="relative"
-                onMouseEnter={() => setOpenIndex(hasDrop ? idx : null)}
-                onMouseLeave={scheduleClose}
+                onMouseEnter={() => {
+                  cancelClose()
+                  setOpenIndex(hasDrop ? idx : null)
+                }}
               >
                 <NavLink
                   to={n.to}
                   className={({ isActive }) =>
                     `text-sm ${isActive ? 'text-primary-700 font-semibold' : 'text-gray-700 hover:text-primary-700'}`
                   }
-                  onMouseEnter={() => !hasDrop && setOpenIndex(null)}
                   onClick={() => setOpenIndex(null)}
                   aria-haspopup={hasDrop ? true : undefined}
                   aria-expanded={hasDrop ? openIndex === idx : undefined}
@@ -90,40 +110,53 @@ export default function Navbar() {
                 </NavLink>
 
                 {hasDrop && (
-                  <div
-                    id={menuId}
-                    role="menu"
-                    className={`absolute left-1/2 -translate-x-1/2 top-full z-50 pt-3 transition ${
-                      openIndex === idx ? 'opacity-100 visible' : 'opacity-0 invisible'
-                    }`}
-                    onMouseEnter={() => cancelClose()}
-                    onMouseLeave={scheduleClose}
-                  >
-                    <div className="w-64 rounded-2xl border border-gray-100 bg-white shadow-soft p-2">
-                      {n.dropdown!.map((d) => (
-                        <NavLink
-                          key={d.to}
-                          to={d.to}
-                          className="block px-3 py-2 rounded-xl text-sm hover:bg-primary-50"
-                          onClick={() => setOpenIndex(null)}
-                        >
-                          {d.label}
-                        </NavLink>
-                      ))}
+                  <>
+                    {/* Hover bridge (mažiau flicker) */}
+                    <div
+                      aria-hidden
+                      className="absolute left-0 right-0 top-full h-2"
+                      onMouseEnter={cancelClose}
+                    />
+                    <div
+                      id={menuId}
+                      role="menu"
+                      className={`absolute left-1/2 -translate-x-1/2 top-[calc(100%+8px)] z-50 pt-0 transition ${
+                        openIndex === idx ? 'opacity-100 visible' : 'opacity-0 invisible'
+                      }`}
+                      onMouseEnter={cancelClose}
+                    >
+                      <div className="w-64 rounded-2xl border border-gray-100 bg-white shadow-soft p-2 max-h-[70vh] overflow-auto">
+                        {n.dropdown!.map((d) => (
+                          <NavLink
+                            key={d.to}
+                            to={d.to}
+                            className="block px-3 py-2 rounded-xl text-sm hover:bg-primary-50"
+                            onClick={() => setOpenIndex(null)}
+                          >
+                            {d.label}
+                          </NavLink>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  </>
                 )}
               </div>
             )
           })}
         </nav>
 
-        {/* Mobile */}
-        <button className="md:hidden btn-ghost" onClick={() => setOpenMobile(v => !v)} aria-expanded={openMobile}>
+        {/* Mobile toggle */}
+        <button
+          className="md:hidden btn-ghost"
+          onClick={() => setOpenMobile(v => !v)}
+          aria-expanded={openMobile}
+          aria-label="Meniu"
+        >
           Meniu
         </button>
       </div>
 
+      {/* Mobile dropdown */}
       <div className={`md:hidden border-t border-gray-100 bg-white transition ${openMobile ? 'block' : 'hidden'}`}>
         <div className="container-narrow py-2 grid gap-2">
           {nav.map((n) => (
@@ -135,6 +168,7 @@ export default function Navbar() {
               >
                 {n.label}
               </NavLink>
+
               {'dropdown' in n && n.dropdown && (
                 <div className="ml-2 my-2 grid">
                   {n.dropdown.map((d) => (
