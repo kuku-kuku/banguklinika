@@ -35,22 +35,35 @@ export default function Hero() {
             Greita registracija, švelnus požiūris, aiškios kainos.
           </motion.p>
 
-          {/* CTA buttons — vienodo stiliaus */}
+          {/* CTA buttons — mobile: 2 columns in one row; desktop: inline-flex */}
           <motion.div
-            className="flex flex-wrap gap-3"
+            className="
+              grid grid-cols-2 gap-2 items-stretch
+              md:inline-flex md:flex-wrap md:gap-3
+            "
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: .2, duration: .5 }}
           >
             <a
               href={`tel:${CLINIC.phone}`}
-              className="inline-block bg-[#10394F] hover:bg-[#0d2d3c] text-white font-semibold py-3 px-6 rounded-xl transition"
+              className="
+                inline-flex w-full justify-center items-center
+                bg-[#10394F] hover:bg-[#0d2d3c] text-white
+                font-semibold py-2.5 px-4 md:py-3 md:px-6
+                rounded-xl transition text-sm md:text-base
+              "
             >
               Registracija telefonu
             </a>
             <Link
               to="/kainos"
-              className="inline-block bg-[#10394F] hover:bg-[#0d2d3c] text-white font-semibold py-3 px-6 rounded-xl transition"
+              className="
+                inline-flex w-full justify-center items-center
+                bg-[#10394F] hover:bg-[#0d2d3c] text-white
+                font-semibold py-2.5 px-4 md:py-3 md:px-6
+                rounded-xl transition text-sm md:text-base
+              "
             >
               Peržiūrėti kainas
             </Link>
@@ -75,12 +88,11 @@ export default function Hero() {
 /* ---------------------- Carousel ---------------------- */
 
 function HeroCarousel() {
-  const images = ['/hero.jpg', '/hero1.jpg', '/hero2.jpg', '/hero3.jpg'] // įkelk į /public/
+  const images = ['/hero.jpg', '/hero1.jpg', '/hero2.jpg', '/hero3.jpg']
   const [index, setIndex] = useState(0)
-  const [auto, setAuto] = useState(true) // auto-suka iki vartotojas sureaguoja
+  const [auto, setAuto] = useState(true)
   const timerRef = useRef<number | null>(null)
 
-  // auto-advance kas 5s, kol auto=true
   useEffect(() => {
     if (!auto) return
     if (timerRef.current) window.clearTimeout(timerRef.current)
@@ -91,7 +103,7 @@ function HeroCarousel() {
   }, [index, auto, images.length])
 
   const go = (dir: 1 | -1) => {
-    setAuto(false) // vartotojas perėmė kontrolę → stop auto
+    setAuto(false)
     setIndex(i => (i + dir + images.length) % images.length)
   }
   const goTo = (i: number) => {
@@ -99,7 +111,6 @@ function HeroCarousel() {
     setIndex(i)
   }
 
-  // touch swipe
   const touchX = useRef<number | null>(null)
   const onTouchStart = (e: React.TouchEvent) => { touchX.current = e.touches[0].clientX }
   const onTouchEnd = (e: React.TouchEvent) => {
@@ -124,10 +135,9 @@ function HeroCarousel() {
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
-        {/* Crossfade slides */}
         <AnimatePresence initial={false} mode="wait">
           <motion.img
-            key={images[index]}
+            key={index}
             src={images[index]}
             alt="Bangų klinika"
             className="absolute inset-0 w-full h-full object-cover"
@@ -146,46 +156,26 @@ function HeroCarousel() {
         <button
           aria-label="Ankstesnė nuotrauka"
           onClick={() => go(-1)}
-          className="
-            absolute left-3 top-1/2 -translate-y-1/2
-            inline-flex items-center justify-center
-            h-10 w-10 rounded-full
-            bg-white/20 hover:bg-white/30
-            backdrop-blur
-            ring-1 ring-white/40
-            text-white text-xl
-            transition
-          "
+          className="absolute left-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur ring-1 ring-white/40 text-white text-xl transition"
         >
           ‹
         </button>
         <button
           aria-label="Kita nuotrauka"
           onClick={() => go(1)}
-          className="
-            absolute right-3 top-1/2 -translate-y-1/2
-            inline-flex items-center justify-center
-            h-10 w-10 rounded-full
-            bg-white/20 hover:bg-white/30
-            backdrop-blur
-            ring-1 ring-white/40
-            text-white text-xl
-            transition
-          "
+          className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur ring-1 ring-white/40 text-white text-xl transition"
         >
           ›
         </button>
 
-        {/* dots — per vidurį */}
+        {/* dots — centered */}
         <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2">
           {images.map((_, i) => (
             <button
               key={i}
               aria-label={`Rodyti ${i + 1} nuotrauką`}
               onClick={() => goTo(i)}
-              className={`h-2.5 rounded-full transition-all ${
-                i === index ? 'w-6 bg-white' : 'w-2.5 bg-white/60 hover:bg-white/80'
-              }`}
+              className={`h-2.5 rounded-full transition-all ${i === index ? 'w-6 bg-white' : 'w-2.5 bg-white/60 hover:bg-white/80'}`}
             />
           ))}
         </div>

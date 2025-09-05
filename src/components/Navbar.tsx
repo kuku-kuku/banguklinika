@@ -1,12 +1,13 @@
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 type DropItem = { to: string; label: string }
 type NavItem =
   | { to: string; label: string; dropdown?: undefined }
   | { to: string; label: string; dropdown: DropItem[] }
 
-/* Atnaujintas sąrašas: „Apie mus“ ir „Ypatingi pasiūlymai“ */
+/* Meniu punktai (su „Apie mus“ ir „Ypatingi pasiūlymai“) */
 const nav: NavItem[] = [
   { to: '/', label: 'Pradžia' },
   { to: '/apie', label: 'Apie mus' },
@@ -27,17 +28,17 @@ const nav: NavItem[] = [
     ],
   },
   { to: '/kainos', label: 'Kainos' },
-  { to: '/ypatingi-pasiulymai', label: 'Ypatingi pasiūlymai' }, // ⬅️ naujas punktas
+  { to: '/ypatingi-pasiulymai', label: 'Ypatingi pasiūlymai' },
   { to: '/kontaktai', label: 'Kontaktai' },
 ]
 
 export default function Navbar() {
   const [openMobile, setOpenMobile] = useState(false)
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [openIndex, setOpenIndex] = useState<number | null>(null) // desktop dropdown
   const closeTimer = useRef<number | null>(null)
   const location = useLocation()
 
-  // Close with small delay (prevents flicker)
+  // Desktop dropdown flicker guard
   const scheduleClose = () => {
     if (closeTimer.current) window.clearTimeout(closeTimer.current)
     closeTimer.current = window.setTimeout(() => setOpenIndex(null), 140)
@@ -47,7 +48,7 @@ export default function Navbar() {
     closeTimer.current = null
   }
 
-  // Close menus when route/hash changes
+  // Uždaryti meniu keičiant route/hash
   useEffect(() => {
     setOpenIndex(null)
     setOpenMobile(false)
@@ -58,6 +59,21 @@ export default function Navbar() {
       if (closeTimer.current) window.clearTimeout(closeTimer.current)
     }
   }, [])
+
+  // Optional: fiksuojam body scroll'ą kai atidarytas mobile meniu
+  useEffect(() => {
+    const el = document.documentElement
+    if (openMobile) el.classList.add('overflow-hidden')
+    else el.classList.remove('overflow-hidden')
+    return () => el.classList.remove('overflow-hidden')
+  }, [openMobile])
+
+  // Animacijos variantai mobiliajam meniu
+  const mobileVariants = {
+    hidden: { opacity: 0, height: 0 },
+    visible: { opacity: 1, height: 'auto' },
+    exit: { opacity: 0, height: 0 },
+  }
 
   return (
     <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-gray-100">
@@ -111,12 +127,8 @@ export default function Navbar() {
 
                 {hasDrop && (
                   <>
-                    {/* Hover bridge (mažiau flicker) */}
-                    <div
-                      aria-hidden
-                      className="absolute left-0 right-0 top-full h-2"
-                      onMouseEnter={cancelClose}
-                    />
+                    {/* „tiltas“ tarp trigger ir dropdown – mažina flicker */}
+                    <div aria-hidden className="absolute left-0 right-0 top-full h-2" onMouseEnter={cancelClose} />
                     <div
                       id={menuId}
                       role="menu"
@@ -156,37 +168,33 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile dropdown */}
-      <div className={`md:hidden border-t border-gray-100 bg-white transition ${openMobile ? 'block' : 'hidden'}`}>
-        <div className="container-narrow py-2 grid gap-2">
-          {nav.map((n) => (
-            <div key={n.to}>
-              <NavLink
-                to={n.to}
-                className="px-2 py-2 rounded-lg hover:bg-primary-50 block"
-                onClick={() => { setOpenMobile(false); setOpenIndex(null) }}
-              >
-                {n.label}
-              </NavLink>
-
-              {'dropdown' in n && n.dropdown && (
-                <div className="ml-2 my-2 grid">
-                  {n.dropdown.map((d) => (
-                    <NavLink
-                      key={d.to}
-                      to={d.to}
-                      className="px-3 py-2 rounded-lg hover:bg-primary-50 text-sm"
-                      onClick={() => { setOpenMobile(false); setOpenIndex(null) }}
-                    >
-                      {d.label}
-                    </NavLink>
-                  ))}
-                </div>
-              )}
+      {/* Mobile dropdown — tik viršutiniai punktai, be „Paslaugų“ vidinių */}
+      <AnimatePresence initial={false}>
+        {openMobile && (
+          <motion.div
+            key="mobile-menu"
+            variants={mobileVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="md:hidden border-t border-gray-100 bg-white overflow-hidden"
+          >
+            <div className="container-narrow py-2 grid gap-2">
+              {nav.map((n) => (
+                <NavLink
+                  key={n.to}
+                  to={n.to}
+                  className="px-2 py-2 rounded-lg hover:bg-primary-50 block text-sm"
+                  onClick={() => { setOpenMobile(false); setOpenIndex(null) }}
+                >
+                  {n.label}
+                </NavLink>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
