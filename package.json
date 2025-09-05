@@ -13,12 +13,13 @@
     "node": "20.x"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.3.31",
+    "lucide-react": "^0.542.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.26.2",
     "react-helmet-async": "^2.0.5",
-    "clsx": "^2.1.1",
-    "framer-motion": "^11.3.31"
+    "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
     "@types/node": "^20.14.9",

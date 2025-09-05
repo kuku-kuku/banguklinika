@@ -6,16 +6,21 @@ import Services from './pages/Services'
 import Pricing from './pages/Pricing'
 import Contact from './pages/Contact'
 import About from './pages/About'
+import ScrollToTop from './components/ScrollToTop'
+import SpecialOffers from './pages/SpecialOffers' 
 
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
+      <ScrollToTop /> {/* ⬅️ kad veiktų visur */}
       <Navbar />
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/apie" element={<About />} />
           <Route path="/paslaugos" element={<Services />} />
           <Route path="/kainos" element={<Pricing />} />
+          <Route path="/ypatingi-pasiulymai" element={<SpecialOffers />} />
           <Route path="/kontaktai" element={<Contact />} />
           <Route path="/apie" element={<About />} />
         </Routes>
