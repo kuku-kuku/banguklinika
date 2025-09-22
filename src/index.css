@@ -2,14 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ====== CSS variables ====== */
 :root { --radius: 16px; }
 
+/* ====== Base (typography, links) ====== */
+@layer base {
+  html, body { @apply h-full; }
+
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+    font-feature-settings: "liga" 1, "kern" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1 { @apply text-3xl md:text-4xl font-semibold tracking-tight text-gray-900; }
+  h2 { @apply text-2xl md:text-3xl font-semibold tracking-tight text-gray-900; }
+  h3 { @apply text-xl md:text-2xl font-semibold text-gray-900; }
+
+  a { @apply text-primary-700 hover:text-primary-800; }
+  strong { @apply font-semibold; }
+
+  /* Focus ring visiems interaktyviems */
+  :is(a, button, input, select, textarea, [role="button"], [role="menuitem"]) {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+    border-radius: 12px;
+  }
+}
+
+/* ====== Components / Utilities ====== */
 .container-narrow { @apply max-w-6xl mx-auto px-4; }
+
 .btn { @apply inline-flex items-center justify-center rounded-xl font-medium transition px-4 py-2; }
 .btn-primary { @apply btn bg-primary-600 text-white hover:bg-primary-700 shadow-soft; }
 .btn-ghost { @apply btn bg-white text-primary-700 hover:bg-primary-50 border border-primary-100; }
 .btn-outline { @apply btn border border-gray-300 hover:bg-gray-50; }
+
 .chip { @apply inline-flex items-center gap-2 text-xs font-medium px-3 py-1 rounded-full bg-primary-50 text-primary-800; }
+
 .card { @apply rounded-2xl shadow-soft border border-gray-100 bg-white; }
 .section { @apply py-12 md:py-20; }
-body { @apply bg-gray-50 text-gray-900; }
+
+/* Hero subtekstas / smulkus paaiškinimas */
+.lead { @apply text-gray-600; }
+
+/* Sąrašai (naudinga DUK ar „Kodėl rinktis“) */
+.list-check > li {
+  @apply pl-6 relative;
+}
+.list-check > li::before {
+  content: "✓";
+  @apply absolute left-0 top-0 text-primary-600;
+}
+
+/* ====== Footer (tamsiai mėlyna) ====== */
+.footer-dark { @apply bg-darkblue-600 text-white; }
+.footer-dark h3, .footer-dark h4 { @apply text-white; }
+.footer-link { @apply text-white/90 hover:text-white; }
+.footer-meta { @apply text-white/70 text-sm; }
+.footer-pin { @apply inline-flex items-center gap-2 text-white/90; }
+
+/* „Pins“ (ikonos+tekstas) prie kontaktų / darbo laiko */
+.pin {
+  @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 text-primary-800 border border-primary-100;
+}
+.pin-dark {
+  @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white border border-white/20;
+}
+
+/* Dropdown meniu (naudinga navbar ir kitur) */
+.menu-surface { @apply rounded-2xl border border-gray-100 bg-white shadow-soft; }
+
+/* Kortelių akcentas viršuje (plona turkio juosta) – optional */
+.card-accent { @apply relative; }
+.card-accent::before {
+  content: "";
+  @apply absolute left-0 right-0 top-0 h-1 rounded-t-2xl bg-primary-500;
+}
+
+/* Formos (sutvarkyti input’ų išvaizdą) */
+.input {
+  @apply w-full rounded-xl border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-400
+         focus:border-primary-400 focus:ring-2 focus:ring-primary-200;
+}
+.textarea {
+  @apply input min-h-[120px];
+}
+
+/* Smulkūs utility */
+.badge { @apply inline-flex items-center gap-1 px-2.5 py-0.5 text-xs rounded-full bg-primary-100 text-primary-800; }
+.kicker { @apply uppercase tracking-wide text-[12px] font-semibold text-primary-700; }

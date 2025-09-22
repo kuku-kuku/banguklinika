@@ -1,4 +1,3 @@
-// src/pages/Services.tsx
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import SEO from '../components/SEO'
@@ -24,17 +23,15 @@ function isInteractive(el: HTMLElement | null) {
   if (!el) return false
   return Boolean(el.closest('a,button,input,select,textarea,label,[role="button"]'))
 }
-
 function isMobile() {
   return typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
 }
-
 function getHeaderOffset(): number {
   const sticky = document.querySelector('header.sticky') as HTMLElement | null
   return sticky ? sticky.getBoundingClientRect().height : 76
 }
 
-// ---- smooth scroll helpers ----
+/* ===== Smooth scroll helperiai ===== */
 let _rafId: number | null = null
 function easeInOutCubic(t: number) {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
@@ -67,7 +64,7 @@ function ensureHeadingVisible(id: string) {
   if (Math.abs(need) > 4) smoothScrollTo(window.scrollY + need, 300)
 }
 
-// globali „scroll anchoring“ kontrolė tik per perjungimo etapą
+/* Perjungimo metu išjungiam overflow anchoring, kad nespurdėtų ekranas */
 function lockAnchoring(lock: boolean) {
   const root = document.documentElement
   if (!root) return
@@ -75,6 +72,7 @@ function lockAnchoring(lock: boolean) {
   else root.style.removeProperty('overflow-anchor')
 }
 
+/* ===== Akordeono elementas ===== */
 function AccordionItem({
   id, title, children, openId, setOpenId, requestSwitch,
 }: {
@@ -89,11 +87,8 @@ function AccordionItem({
 
   const handleToggle = () => {
     const willOpen = !open
-    if (willOpen) {
-      requestSwitch(id)
-    } else {
-      setOpenId(null)
-    }
+    if (willOpen) requestSwitch(id)
+    else setOpenId(null)
   }
 
   const handleContentClick = (e: React.MouseEvent) => {
@@ -106,10 +101,15 @@ function AccordionItem({
   return (
     <div
       id={id}
-      className="
-        rounded-2xl border border-slate-100 bg-white/90 shadow-sm
-        scroll-mt-28 md:scroll-mt-32
-      "
+      className={[
+        'rounded-2xl border shadow-sm transition-colors',
+        open
+          // ATIDARYTA: balta su aiškiu rėmeliu/ringu
+          ? 'bg-white border-primary-400 ring-1 ring-primary-300'
+          // UŽDARYTA: TURKIO fonas visada, ne tik hover
+          : 'bg-primary-50 border-primary-300 hover:bg-primary-100',
+        'scroll-mt-28 md:scroll-mt-32'
+      ].join(' ')}
     >
       <button
         onClick={handleToggle}
@@ -117,7 +117,7 @@ function AccordionItem({
         aria-expanded={open}
         aria-controls={`${id}-panel`}
       >
-        <h3 className="text-base sm:text-lg font-semibold text-[#10394F] text-left">{title}</h3>
+        <h3 className="text-base sm:text-lg font-semibold text-darkblue-600 text-left">{title}</h3>
         <Chevron open={open} />
       </button>
 
@@ -132,7 +132,7 @@ function AccordionItem({
             transition={{ duration: 0.35, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div className="px-5 pb-5 pt-0 text-slate-700 leading-relaxed" onClick={handleContentClick}>
+            <div className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed" onClick={handleContentClick}>
               {children}
             </div>
           </motion.div>
@@ -142,6 +142,7 @@ function AccordionItem({
   )
 }
 
+/* ===== Puslapis ===== */
 export default function Services() {
   const sections: Svc[] = useMemo(() => [
     {
@@ -167,8 +168,8 @@ export default function Services() {
           </p>
 
           <div className="space-y-2">
-            <h4 className="font-semibold text-slate-900">Pažangus 3D CEREC estetinis restauravimas</h4>
-            <p className="italic text-slate-600">CEREC 3D – revoliucija dantų protezavime</p>
+            <h4 className="font-semibold text-gray-900">Pažangus 3D CEREC estetinis restauravimas</h4>
+            <p className="italic text-gray-600">CEREC 3D – revoliucija dantų protezavime</p>
             <ul className="list-disc pl-5 space-y-1">
               <li>Skaitmeninis antspaudas pasižymi precizišku tikslumu.</li>
               <li>Danties restauracija idealiai pritaikoma kiekvienam pacientui individualiai.</li>
@@ -179,7 +180,7 @@ export default function Services() {
           </div>
 
           <div className="space-y-2">
-            <h4 className="font-semibold text-slate-900">Cirkonio oksido keramika</h4>
+            <h4 className="font-semibold text-gray-900">Cirkonio oksido keramika</h4>
             <p>Kodėl verta rinktis?</p>
             <ul className="list-disc pl-5 space-y-1">
               <li>Cirkonio keramika – itin tvirta keraminė medžiaga iš suspaustų kristalų.</li>
@@ -195,7 +196,7 @@ export default function Services() {
           </div>
 
           <div className="space-y-2">
-            <h4 className="font-semibold text-slate-900">Bemetalė keramika – E-MAX (Ivoclar Vivadent)</h4>
+            <h4 className="font-semibold text-gray-900">Bemetalė keramika – E-MAX (Ivoclar Vivadent)</h4>
             <p>
               Matomiems, ypač priekiniams dantims protezuoti rekomenduojame bemetalę keramiką (porcelianą) –
               ji praleidžia šviesą ir yra estetiškai labai patraukli.
@@ -211,7 +212,7 @@ export default function Services() {
           </div>
 
           <div className="space-y-2">
-            <h4 className="font-semibold text-slate-900">Protezavimas ant implantų</h4>
+            <h4 className="font-semibold text-gray-900">Protezavimas ant implantų</h4>
             <p>
               Tai pažangiausias dantų protezavimo metodas: dirbtinės šaknys (implantai) įtvirtinamos prarastų dantų vietoje,
               o ant jų tvirtinami mūsų laboratorijoje pagaminti, nuo natūralių dantų nesiskiriantys protezai.
@@ -237,7 +238,7 @@ export default function Services() {
             <li>Asmenys, pripažinti nedarbingais arba iš dalies darbingais;</li>
             <li>Asmenys po burnos, veido ir žandikaulių onkologinių ligų gydymo.</li>
           </ul>
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-gray-600">
             Detalesnė ir nuolat atnaujinama informacija skelbiama TLK interneto svetainėje.
           </p>
         </div>
@@ -278,14 +279,14 @@ export default function Services() {
             implantus – Straumann® ir Medentika®. Implantacija – pažangiausias būdas atstatyti tiek vieną, tiek ir kelis prarastus dantis.
           </p>
 
-          <h4 className="font-semibold text-slate-900">Kas yra danties implantas?</h4>
+          <h4 className="font-semibold text-gray-900">Kas yra danties implantas?</h4>
           <p>
             Danties implantas – tai danties šaknies pakaitalas. Jis gaminamas iš tvirtos, lengvos ir su kaulu suderinamos
             medžiagos (titano, cirkonio ar jų lydinio) ir primena nedidelį varžtelį. Atstatant dantį, implantas įsukamas į
             žandikaulį, o prie jo tvirtinama dirbtinė karūnėlė.
           </p>
 
-          <h4 className="font-semibold text-slate-900">Kodėl prarastą dantį būtina kuo skubiau atstatyti?</h4>
+          <h4 className="font-semibold text-gray-900">Kodėl prarastą dantį būtina kuo skubiau atstatyti?</h4>
           <ul className="list-disc pl-5 space-y-1">
             <li>Vengsite gretimų dantų slinkimo į atsiradusį tarpą, nesikeis sąkandis;</li>
             <li>Išsaugosite patogų kramtymą ir gerą higieną – mažiau galvos skausmų dėl sąkandžio;</li>
@@ -305,14 +306,14 @@ export default function Services() {
             Tai patogus, higieniškas ir diskretiškas būdas formuoti taisyklingą sąkandį ir gražią šypseną.
           </p>
 
-          <h4 className="font-semibold text-slate-900">Kodėl verta rinktis skaidrias ORDOLINE kapas?</h4>
+          <h4 className="font-semibold text-gray-900">Kodėl verta rinktis skaidrias ORDOLINE kapas?</h4>
           <ul className="list-disc pl-5 space-y-1">
             <li>Nematomos, praktiškos, itin lengvos ir higieniškos;</li>
             <li>Lengvai išimamos – patogu valgyti ir valytis dantis;</li>
             <li>Trumpesnė gydymo trukmė, geriau prognozuojami rezultatai.</li>
           </ul>
 
-          <h4 className="font-semibold text-slate-900">Kaip tai veikia?</h4>
+          <h4 className="font-semibold text-gray-900">Kaip tai veikia?</h4>
           <ul className="list-disc pl-5 space-y-1">
             <li>Sudarytas skaitmeninis gydymo planas – matysite progresą ir galutinį rezultatą.</li>
             <li>Pagal atspaudus pagaminamas individualus kapų skaičius; kapas keičiate kas ~2 savaites.</li>
@@ -335,7 +336,7 @@ export default function Services() {
             Rekomenduojame kas 6 mėn., esant prastesnei būklei – kas 3 mėn. Turint implantus – būtina reguliari higiena.
           </p>
 
-          <h4 className="font-semibold text-slate-900">Kodėl verta?</h4>
+          <h4 className="font-semibold text-gray-900">Kodėl verta?</h4>
           <ul className="list-disc pl-5 space-y-1">
             <li>Pašalinamos net plika akimi nematomos apnašos, nuvalomi akmenys;</li>
             <li>Poliruojami dantų, plombų ir protezų paviršiai – dantys atrodo baltesni;</li>
@@ -344,7 +345,7 @@ export default function Services() {
             <li>Suteikiame individualius higienos patarimus.</li>
           </ul>
 
-          <h4 className="font-semibold text-slate-900">Procedūros etapai</h4>
+          <h4 className="font-semibold text-gray-900">Procedūros etapai</h4>
           <ul className="list-disc pl-5 space-y-1">
             <li>Akmenų pašalinimas ultragarsiniu skaleriu;</li>
             <li>Apnašų šalinimas su soda, AIR FLOW aparatu;</li>
@@ -360,7 +361,7 @@ export default function Services() {
     },
     {
       id: 'dantu-balinimas',
-      title: 'Naujiena! Dantų balinimas BEYOND® sistema',
+      title: 'Dantų balinimas BEYOND® sistema',
       content: (
         <div className="space-y-3">
           <p>
@@ -369,7 +370,7 @@ export default function Services() {
             išskiria mažesnę temperatūrą, todėl patogiau ir mažesnė jautrumo rizika. Rezultatas matomas iš karto.
           </p>
 
-          <h4 className="font-semibold text-slate-900">Kodėl verta rinktis BEYOND®?</h4>
+          <h4 className="font-semibold text-gray-900">Kodėl verta rinktis BEYOND®?</h4>
           <ul className="list-disc pl-5 space-y-1">
             <li>BEYOND® – pasaulinis dantų estetikos lyderis;</li>
             <li>Stulbinantys rezultatai po vienos procedūros;</li>
@@ -379,11 +380,11 @@ export default function Services() {
             <li>Rezultatai dažniausiai išlieka iki 2 metų.</li>
           </ul>
 
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-gray-600">
             Po procedūros pirmas 24 val. venkite kavos, tabako, dažančių gėrimų ir maisto, taip pat spalvotų dantų pastų ar skalavimo skysčių.
           </p>
 
-          <h4 className="font-semibold text-slate-900">Balinimas kapomis (namuose)</h4>
+          <h4 className="font-semibold text-gray-900">Balinimas kapomis (namuose)</h4>
           <p>
             Atliekame ir efektyvų dantų balinimą kapomis. Individualiai pagamintų kapų pagalba, naudojant balinimo gelius,
             dantys balinami namuose palaipsniui. Prieš balinimą rekomenduojame atlikti profesionalią burnos higieną.
@@ -416,18 +417,15 @@ export default function Services() {
   const { hash, pathname } = useLocation()
   const [openId, setOpenId] = useState<string | null>(null)
 
-  // Centralizuotas perjungimas tarp sekcijų (tvarkinga seka, be šuolių į footerį)
   const tCloseRef = useRef<number | null>(null)
   const tOpenRef = useRef<number | null>(null)
   const requestSwitch = (targetId: string) => {
-    // jei jau atidaryta ta pati – tiesiog scroll + open
     if (!openId) {
       lockAnchoring(true)
       smoothScrollTo(targetYForHeading(targetId))
       tOpenRef.current && window.clearTimeout(tOpenRef.current)
       tOpenRef.current = window.setTimeout(() => {
         setOpenId(targetId)
-        // po atidarymo — tik nedidelis koregavimas, jei reiktų
         window.setTimeout(() => {
           ensureHeadingVisible(targetId)
           lockAnchoring(false)
@@ -437,12 +435,10 @@ export default function Services() {
     }
 
     if (openId === targetId) {
-      // jau atidaryta: tiesiog pakoreguojam scroll
       smoothScrollTo(targetYForHeading(targetId))
       return
     }
 
-    // perjungimas: uždarom seną, tada scroll, tada atidarom naują
     lockAnchoring(true)
     setOpenId(null)
     tCloseRef.current && window.clearTimeout(tCloseRef.current)
@@ -472,7 +468,7 @@ export default function Services() {
     if (pathname === '/paslaugos' && !hash) setOpenId(null)
   }, [pathname, hash])
 
-  // Hash navigacija: solidi dviejų žingsnių seka
+  // Hash navigacija (pvz., /paslaugos#implantai atidarys atitinkamą sekciją)
   useEffect(() => {
     const target = (hash || '').replace('#', '')
     if (!target) return
@@ -482,10 +478,7 @@ export default function Services() {
   }, [hash])
 
   // Įvažiavimo animacijos
-  const listVariants = {
-    hidden: { opacity: 0, y: 8 },
-    visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.06 } },
-  }
+  const listVariants = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.06 } } }
   const itemVariants = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } }
 
   return (
@@ -498,8 +491,8 @@ export default function Services() {
       <AnimatedSection>
         <div className="container-narrow py-10 md:py-12">
           <header className="mb-6">
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#10394F]">Paslaugos</h1>
-            <p className="mt-2 text-slate-600">
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-600">Paslaugos</h1>
+            <p className="mt-2 text-gray-600">
               Išsirinkite dominančią paslaugą – atsidarys išsamus aprašas. Visos sekcijos pagal nutylėjimą uždarytos,
               kad būtų patogu naršyti.
             </p>

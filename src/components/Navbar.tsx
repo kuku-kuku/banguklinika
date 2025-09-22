@@ -7,7 +7,7 @@ type NavItem =
   | { to: string; label: string; dropdown?: undefined }
   | { to: string; label: string; dropdown: DropItem[] }
 
-/* Meniu punktai (su „Apie mus“ ir „Ypatingi pasiūlymai“) */
+/** Meniu punktai */
 const nav: NavItem[] = [
   { to: '/', label: 'Pradžia' },
   { to: '/apie', label: 'Apie mus' },
@@ -34,11 +34,10 @@ const nav: NavItem[] = [
 
 export default function Navbar() {
   const [openMobile, setOpenMobile] = useState(false)
-  const [openIndex, setOpenIndex] = useState<number | null>(null) // desktop dropdown
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
   const closeTimer = useRef<number | null>(null)
   const location = useLocation()
 
-  // Desktop dropdown flicker guard
   const scheduleClose = () => {
     if (closeTimer.current) window.clearTimeout(closeTimer.current)
     closeTimer.current = window.setTimeout(() => setOpenIndex(null), 140)
@@ -48,7 +47,7 @@ export default function Navbar() {
     closeTimer.current = null
   }
 
-  // Uždaryti meniu keičiant route/hash
+  // Close on route/hash change
   useEffect(() => {
     setOpenIndex(null)
     setOpenMobile(false)
@@ -60,7 +59,7 @@ export default function Navbar() {
     }
   }, [])
 
-  // Optional: fiksuojam body scroll'ą kai atidarytas mobile meniu
+  // Lock scroll on mobile menu open
   useEffect(() => {
     const el = document.documentElement
     if (openMobile) el.classList.add('overflow-hidden')
@@ -68,7 +67,6 @@ export default function Navbar() {
     return () => el.classList.remove('overflow-hidden')
   }, [openMobile])
 
-  // Animacijos variantai mobiliajam meniu
   const mobileVariants = {
     hidden: { opacity: 0, height: 0 },
     visible: { opacity: 1, height: 'auto' },
@@ -77,8 +75,8 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-gray-100">
-      <div className="container-narrow flex h-16 items-center justify-between">
-        {/* Kairėje – logotipas (h-9, kad neišpūstų navbar aukščio) */}
+      <div className="container-narrow flex min-h-[72px] items-center justify-between">
+        {/* Logo (padidintas) */}
         <Link
           to="/"
           className="flex items-center gap-3"
@@ -86,16 +84,16 @@ export default function Navbar() {
           aria-label="Bangų klinika — pradžia"
         >
           <img
-            src="/logo.png"
+            src="/bangu.png"
             alt="Bangų klinika"
-            className="h-9 w-auto object-contain select-none"
+            className="h-10 md:h-11 w-auto object-contain select-none"
             draggable={false}
           />
         </Link>
 
         {/* Desktop NAV */}
         <nav
-          className="hidden md:flex items-center gap-6 relative"
+          className="hidden md:flex items-center gap-7 relative"
           onMouseLeave={scheduleClose}
           onMouseEnter={cancelClose}
         >
@@ -106,7 +104,7 @@ export default function Navbar() {
             return (
               <div
                 key={n.to}
-                className="relative"
+                className="relative group"
                 onMouseEnter={() => {
                   cancelClose()
                   setOpenIndex(hasDrop ? idx : null)
@@ -115,24 +113,38 @@ export default function Navbar() {
                 <NavLink
                   to={n.to}
                   className={({ isActive }) =>
-                    `text-sm ${isActive ? 'text-primary-700 font-semibold' : 'text-gray-700 hover:text-primary-700'}`
+                    [
+                      'relative text-[15px] md:text-[16px] font-medium transition-colors',
+                      isActive ? 'text-primary-700' : 'text-gray-800 hover:text-primary-700',
+                      'py-2'
+                    ].join(' ')
                   }
                   onClick={() => setOpenIndex(null)}
                   aria-haspopup={hasDrop ? true : undefined}
                   aria-expanded={hasDrop ? openIndex === idx : undefined}
                   aria-controls={menuId}
                 >
-                  {n.label}
+                  {/* underline indicator on hover/active */}
+                  <span className="relative">
+                    {n.label}
+                    <span
+                      aria-hidden
+                      className={[
+                        'absolute left-0 -bottom-1 h-[2px] w-full rounded-full transition-all',
+                        (openIndex === idx) ? 'bg-primary-600' : '',
+                      ].join(' ')}
+                    />
+                  </span>
                 </NavLink>
 
                 {hasDrop && (
                   <>
-                    {/* „tiltas“ tarp trigger ir dropdown – mažina flicker */}
+                    {/* bridge to prevent flicker */}
                     <div aria-hidden className="absolute left-0 right-0 top-full h-2" onMouseEnter={cancelClose} />
                     <div
                       id={menuId}
                       role="menu"
-                      className={`absolute left-1/2 -translate-x-1/2 top-[calc(100%+8px)] z-50 pt-0 transition ${
+                      className={`absolute left-1/2 -translate-x-1/2 top-[calc(100%+10px)] z-50 transition ${
                         openIndex === idx ? 'opacity-100 visible' : 'opacity-0 invisible'
                       }`}
                       onMouseEnter={cancelClose}
@@ -142,7 +154,7 @@ export default function Navbar() {
                           <NavLink
                             key={d.to}
                             to={d.to}
-                            className="block px-3 py-2 rounded-xl text-sm hover:bg-primary-50"
+                            className="block px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700"
                             onClick={() => setOpenIndex(null)}
                           >
                             {d.label}
@@ -159,7 +171,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden btn-ghost"
+          className="md:hidden btn-ghost text-[15px] font-medium"
           onClick={() => setOpenMobile(v => !v)}
           aria-expanded={openMobile}
           aria-label="Meniu"
@@ -168,7 +180,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile dropdown — tik viršutiniai punktai, be „Paslaugų“ vidinių */}
+      {/* Mobile dropdown */}
       <AnimatePresence initial={false}>
         {openMobile && (
           <motion.div
@@ -180,12 +192,12 @@ export default function Navbar() {
             transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="md:hidden border-t border-gray-100 bg-white overflow-hidden"
           >
-            <div className="container-narrow py-2 grid gap-2">
+            <div className="container-narrow py-2 grid gap-1.5">
               {nav.map((n) => (
                 <NavLink
                   key={n.to}
                   to={n.to}
-                  className="px-2 py-2 rounded-lg hover:bg-primary-50 block text-sm"
+                  className="px-2 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 block text-[15px] font-medium"
                   onClick={() => { setOpenMobile(false); setOpenIndex(null) }}
                 >
                   {n.label}

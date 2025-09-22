@@ -28,13 +28,13 @@ const services: string[] = [
   'Vaikų dantų gydymas.',
   'Dantų traukimas, dantų šaknų šalinimas.',
   'Kaulo priauginimo, sinuso dugno pakėlimo operacijos.',
-  'NAUJIENA! Dantų protezavimas bemetale E-MAX IVOCLAR ir cirkonio keramika.',
-  'NAUJIENA! Dantų tiesinimas skaidriomis ORDOLINE kapomis.',
+  'Dantų protezavimas bemetale E-MAX IVOCLAR ir cirkonio keramika.',
+  'Dantų tiesinimas skaidriomis ORDOLINE kapomis.',
 ]
 
 type Member = { name: string; role: string; license?: string }
 const team: Member[] = [
-  { name: 'Vitalija Noreikienė', role: 'Gydytoja odontologė', license: 'OPL-03758' },
+  { name: 'Martyna Pociutė', role: 'Gydytoja odontologė' },
   { name: 'Donatas Kubilius', role: 'Veido ir žandikaulių chirurgas', license: 'MPL-18980' },
   { name: 'Eglė Daknienė', role: 'Dantų technikė', license: 'BPL-04671' },
   { name: 'Rūta Garšvienė', role: 'Burnos higienistė', license: 'BPL-07858' },

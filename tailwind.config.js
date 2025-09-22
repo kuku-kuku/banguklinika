@@ -4,7 +4,25 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: { 50:"#eff8ff",100:"#dff1ff",200:"#b9e2ff",300:"#86cdff",400:"#4cb1ff",500:"#1894f8",600:"#0d76d6",700:"#0a5db0",800:"#0b4d90",900:"#0c4077" }
+        // Turkio spalva (akcentams, kortelėms)
+        primary: {
+          50:  "#ecfeff",
+          100: "#cffafe",
+          200: "#a5f3fc",
+          300: "#67e8f9",
+          400: "#22d3ee",
+          500: "#06b6d4",  // pagrindinė turkio
+          600: "#0891b2",
+          700: "#0e7490",
+          800: "#155e75",
+          900: "#164e63"
+        },
+        // Tamsiai mėlyna (footer, antraštėms)
+        darkblue: {
+          500: "#10394F",
+          600: "#0C2D3E",
+          700: "#08212F"
+        }
       },
       boxShadow: {
         soft: "0 10px 30px -12px rgba(12,64,119,.15)"

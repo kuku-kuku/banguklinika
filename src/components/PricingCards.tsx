@@ -51,28 +51,42 @@ function GroupCard({ group, isOpen, onToggle }: { group: PriceGroup; isOpen: boo
   return (
     <motion.div
       layout="position"
-      className="card overflow-hidden self-start scroll-mt-28 md:scroll-mt-32"
       id={id}
+      className={clsx(
+        // kortelės bazė
+        'rounded-2xl border shadow-sm overflow-hidden self-start transition-colors scroll-mt-28 md:scroll-mt-32',
+        // būsena: uždaryta / atidaryta
+        isOpen
+          ? 'bg-primary-100 border-primary-400 ring-1 ring-primary-500'
+          : 'bg-primary-50 border-primary-300 hover:bg-primary-100'
+      )}
     >
       <button
         onClick={onToggle}
-        className={clsx(
-          'w-full flex items-center justify-between gap-4 px-4 py-4',
-          'bg-gray-50 border-b border-gray-100 min-h-[92px] text-left'
-        )}
         aria-expanded={isOpen}
         aria-controls={`${id}-content`}
+        className={clsx(
+          'w-full flex items-center justify-between gap-4 px-4 py-4 text-left min-h-[92px] transition-colors',
+          // jokio atskiro fono — paveldi iš kortelės
+          // tik apatinis skirtukas, šiek tiek ryškesnis atidarius
+          isOpen ? 'border-b border-primary-300' : 'border-b border-primary-200'
+        )}
       >
         <div className="flex items-center gap-3">
-          <span className="w-9 h-9 rounded-xl bg-primary-50 text-primary-700 grid place-items-center">
+          <span
+            className={clsx(
+              'w-9 h-9 rounded-xl grid place-items-center transition-colors',
+              isOpen ? 'bg-primary-200 text-primary-800' : 'bg-primary-100 text-primary-700'
+            )}
+          >
             <Icon title={group.title} />
           </span>
           <div className="min-w-0">
-            <div className="font-semibold truncate">{group.title}</div>
-            <div className="text-xs text-gray-500">{summary} • {group.items.length} poz.</div>
+            <div className="font-semibold truncate text-darkblue-600">{group.title}</div>
+            <div className="text-xs text-gray-600">{summary} • {group.items.length} poz.</div>
           </div>
         </div>
-        <span className={clsx('text-sm text-gray-500 transition', isOpen && 'rotate-180')}>▾</span>
+        <span className={clsx('text-sm text-gray-600 transition-transform', isOpen && 'rotate-180')}>▾</span>
       </button>
 
       <AnimatePresence initial={false}>
@@ -87,12 +101,12 @@ function GroupCard({ group, isOpen, onToggle }: { group: PriceGroup; isOpen: boo
           >
             <div className="px-2 py-2">
               <table className="w-full text-sm">
-                <tbody className="divide-y divide-gray-100">
+                <tbody className={clsx('divide-y', isOpen ? 'divide-primary-200' : 'divide-primary-100')}>
                   {group.items.map((p, i) => (
                     <tr key={i}>
                       <td className="p-3 align-top">
                         {p.name}
-                        {p.note && <span className="block text-xs text-gray-500">{p.note}</span>}
+                        {p.note && <span className="block text-xs text-gray-600">{p.note}</span>}
                       </td>
                       <td className="p-3 w-40 font-medium text-right whitespace-nowrap">{fmt(p.from, p.to)}</td>
                     </tr>
@@ -151,7 +165,6 @@ export default function PricingCards() {
                 const willOpen = !isOpen
                 setOpenId(willOpen ? id : null)
                 if (willOpen) {
-                  // mažas delay, kad DOM suspėtų pažymėti atidarymą ir scroll-margin suveiktų
                   setTimeout(() => {
                     const el = document.getElementById(id)
                     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
