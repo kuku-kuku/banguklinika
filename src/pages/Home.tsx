@@ -23,21 +23,16 @@ function StarIcon({ filled = true, className = "w-4 h-4" }: { filled?: boolean; 
 /** One review card */
 function ReviewCard({ name, text, stars }: { name: string; text: string; stars: number }) {
   return (
-    <div
-      className="
-        group relative overflow-hidden rounded-2xl border border-slate-100
-        bg-white/90 shadow-sm hover:shadow-md transition
-      "
-    >
-      <div className="pointer-events-none absolute -top-10 -right-10 w-40 h-40 rounded-full bg-sky-100/40 blur-2xl" />
+    <div className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-soft hover:shadow-md transition">
+      <div className="pointer-events-none absolute -top-10 -right-10 w-40 h-40 rounded-full bg-primary-100/40 blur-2xl" />
       <div className="relative p-5">
         <div className="flex items-center gap-1 text-yellow-400 mb-2">
           {Array.from({ length: 5 }).map((_, i) => (
             <StarIcon key={i} filled={i < stars} className="w-5 h-5" />
           ))}
         </div>
-        <p className="text-slate-700 italic mb-3 leading-relaxed">“{text}”</p>
-        <p className="text-sm font-semibold text-[#10394F]">– {name}</p>
+        <p className="text-gray-700 italic mb-3 leading-relaxed">“{text}”</p>
+        <p className="text-sm font-semibold text-darkblue-600">– {name}</p>
       </div>
     </div>
   );
@@ -109,10 +104,10 @@ function GoogleReviews() {
     <AnimatedSection>
       <div className="container-narrow">
         <div className="flex items-end justify-between gap-4 mb-6">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#10394F] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold text-darkblue-600 tracking-tight">
             Klientų atsiliepimai
           </h2>
-          <span className="hidden sm:inline text-xs sm:text-sm text-slate-500">
+          <span className="hidden sm:inline text-xs sm:text-sm text-gray-500">
             Šie atsiliepimai publikuoti „Google“
           </span>
         </div>
@@ -147,7 +142,7 @@ function GoogleReviews() {
             {slides.map((_, i) => (
               <button
                 key={i}
-                className={`h-2.5 rounded-full transition-all ${i === index ? 'w-6 bg-[#10394F]' : 'w-2.5 bg-slate-300 hover:bg-slate-400'}`}
+                className={`h-2.5 rounded-full transition-all ${i === index ? 'w-6 bg-darkblue-600' : 'w-2.5 bg-gray-300 hover:bg-gray-400'}`}
                 onClick={() => setIndex(i)}
                 aria-label={`Peršokti į ${i + 1}-ą skaidrę`}
               />
@@ -182,10 +177,7 @@ export default function Home() {
       {/* POPULIARIAUSIOS PASLAUGOS */}
       <AnimatedSection>
         <div className="container-narrow">
-          <h2
-            className="text-2xl sm:text-3xl font-bold mb-6 text-[#10394F] tracking-tight"
-            style={{ wordBreak: 'keep-all' }}
-          >
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-darkblue-600 tracking-tight" style={{ wordBreak: 'keep-all' }}>
             Populiariausios paslaugos
           </h2>
 
@@ -197,34 +189,33 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      {/* KODĖL MES */}
+      {/* KODĖL VERTA RINKTIS BANGŲ KLINIKĄ */}
       <AnimatedSection>
         <div className="container-narrow">
-          {/* Antraštė + trumpas aprašymas virš trijų ypatybių */}
+          {/* Antraštė + aprašymas */}
           <div className="max-w-3xl mb-6">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#10394F] tracking-tight">
-              Kodėl rinktis mus
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-darkblue-600">
+              Kodėl verta rinktis <span className="text-primary-700">Bangų kliniką?</span>
             </h2>
-            <p className="mt-2 text-slate-600">
-              Viską atliekame vienoje vietoje – nuo diagnostikos iki estetikos. Aiškiai paaiškiname planą,
-              laikomės terminų ir siekiame maksimalaus komforto kiekvieno vizito metu.
+            <p className="mt-2 text-gray-700">
+              Klinikoje yra laboratorija, kurioje nuolat dirba bei konsultuoja 20 metų patirtį turinti dantų technikė.
             </p>
           </div>
 
-          {/* 3 ypatybės */}
+          {/* 3 ypatybės – TURKIO KORTOS */}
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { t: 'Moderni įranga', d: 'CEREC skenavimas ir mikroskopinė endodontija – greitesni, tikslesni vizitai.' },
+              { t: 'Moderni įranga', d: 'CEREC skenavimas – greitesni ir tikslesni vizitai.' },
               { t: 'Patyrusi komanda', d: 'Individualūs gydymo planai ir pagarbus bendravimas be streso.' },
               { t: 'Aiškios kainos', d: 'Viešas kainoraštis ir skaidrūs sprendimai – be paslėptų mokesčių.' },
             ].map((f, i) => (
               <div
                 key={i}
-                className="group p-6 rounded-2xl border border-slate-100 bg-white/70 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition relative overflow-hidden"
+                className="rounded-2xl border shadow-sm p-6 transition relative
+                           bg-primary-50 border-primary-300 hover:bg-primary-100 hover:ring-1 hover:ring-primary-400"
               >
-                <div className="pointer-events-none absolute -top-10 -left-10 w-36 h-36 bg-sky-100/40 blur-2xl rounded-full" />
-                <h3 className="relative font-semibold text-lg text-[#10394F]">{f.t}</h3>
-                <p className="relative text-sm text-slate-600 mt-2">{f.d}</p>
+                <h3 className="font-semibold text-lg text-darkblue-600">{f.t}</h3>
+                <p className="text-sm text-gray-700 mt-2">{f.d}</p>
               </div>
             ))}
           </div>
@@ -234,54 +225,50 @@ export default function Home() {
       {/* GOOGLE REVIEWS (carousel) */}
       <GoogleReviews />
 
-      {/* CTA */}
+      {/* CTA – PIRMINĖ KONSULTACIJA (TURKIO BLOKAS) */}
       <AnimatedSection>
         <div className="container-narrow">
-          <div className="relative overflow-hidden rounded-2xl">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#4FC3F7] via-[#1E88E5] to-[#10394F] opacity-90" />
-            <div className="relative z-10 text-white text-center px-6 py-12 sm:py-16">
+          <div className="relative overflow-hidden rounded-2xl border bg-primary-100 border-primary-400 ring-1 ring-primary-500">
+            <div className="relative z-10 text-darkblue-700 text-center px-6 py-12 sm:py-16">
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
                 Pirminė konsultacija <span className="whitespace-nowrap">nemokama</span>
               </h2>
-              <p className="mt-3 sm:mt-4 text-base sm:text-lg max-w-2xl mx-auto text-white/90">
+              <p className="mt-3 sm:mt-4 text-base sm:text-lg max-w-2xl mx-auto text-darkblue-700/90">
                 Užsiregistruokite pirminiam įvertinimui ir gaukite{' '}
                 <span className="font-semibold">10–15% nuolaidą</span> testiniam gydymui pereinant į pilną gydymo planą.
               </p>
               <div className="mt-6">
                 <a
                   href="/kontaktai"
-                  className="inline-block bg-white text-[#10394F] font-semibold py-3 px-7 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
+                  className="inline-block bg-white text-darkblue-600 font-semibold py-3 px-7 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
                 >
-                  Registruokitės dabar
+                  Registracija internetu
                 </a>
               </div>
-              <p className="mt-2 text-xs text-white/80">
+              <p className="mt-2 text-xs text-darkblue-700/80">
                 * Nuolaidos taikomos pagal klinikos taisykles. Daugiau informacijos – registracijos metu.
               </p>
             </div>
             {/* soft bubbles */}
-            <div className="pointer-events-none absolute -top-10 -left-16 w-72 h-72 bg-white/15 rounded-full blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-16 -right-12 w-80 h-80 bg-white/10 rounded-full blur-3xl" />
+            <div className="pointer-events-none absolute -top-10 -left-16 w-72 h-72 bg-white/30 rounded-full blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-16 -right-12 w-80 h-80 bg-white/20 rounded-full blur-3xl" />
           </div>
         </div>
       </AnimatedSection>
 
-      {/* FAQ + Quick contact */}
+      {/* FAQ + Quick contact – ABU TURKIO */}
       <AnimatedSection>
         <div className="container-narrow grid md:grid-cols-2 gap-8 items-start">
-          <div className="p-6 rounded-2xl border border-slate-100 bg-white/90 shadow-sm">
-            <h3 className="text-lg font-semibold mb-4 text-[#10394F]">Dažniausi klausimai</h3>
+          <div className="rounded-2xl border border-primary-300 bg-primary-50 p-6 hover:bg-primary-100 transition">
+            <h3 className="text-lg font-semibold mb-4 text-darkblue-600">Dažniausi klausimai</h3>
             <FAQ />
           </div>
 
-          <div className="p-6 rounded-2xl border border-sky-100 bg-[#F7FBFF]">
-            <h3 className="text-lg font-semibold text-[#10394F]">Turite klausimų?</h3>
-            <p className="text-slate-600 mt-2">Parašykite mums – atsakysime per 1 darbo dieną.</p>
+          <div className="p-6 rounded-2xl border border-primary-300 bg-primary-50 hover:bg-primary-100 transition">
+            <h3 className="text-lg font-semibold text-darkblue-600">Turite klausimų?</h3>
+            <p className="text-gray-700 mt-2">Parašykite mums – atsakysime per 1 darbo dieną.</p>
             <div className="mt-4">
-              <a
-                href="/kontaktai"
-                className="inline-block bg-[#4FC3F7] hover:bg-[#29B6F6] text-[#0E2A3A] font-semibold py-2.5 px-5 rounded-xl transition"
-              >
+              <a href="/kontaktai" className="btn-primary rounded-xl">
                 Susisiekti
               </a>
             </div>

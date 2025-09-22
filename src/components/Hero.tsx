@@ -57,7 +57,7 @@ export default function Hero() {
               Registracija telefonu
             </a>
             <Link
-              to="/kainos"
+              to="/kontaktai"
               className="
                 inline-flex w-full justify-center items-center
                 bg-[#10394F] hover:bg-[#0d2d3c] text-white
@@ -65,7 +65,7 @@ export default function Hero() {
                 rounded-xl transition text-sm md:text-base
               "
             >
-              Peržiūrėti kainas
+              Registracija internetu
             </Link>
           </motion.div>
 
