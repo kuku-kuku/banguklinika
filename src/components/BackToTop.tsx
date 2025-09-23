@@ -12,12 +12,23 @@ function getScrollY(): number {
   )
 }
 
+function isIOS() {
+  if (typeof navigator === 'undefined') return false
+  return /iP(ad|hone|od)/.test(navigator.userAgent) ||
+         (navigator.platform === 'MacIntel' && (navigator as any).maxTouchPoints > 1)
+}
+
+function isMobileUA() {
+  if (typeof navigator === 'undefined') return false
+  return /Mobi|Android|iP(hone|od|ad)/i.test(navigator.userAgent)
+}
+
 export default function BackToTop() {
   const [visible, setVisible] = useState(false)
   const [mounted, setMounted] = useState(false)
   const prefersReduced = useReducedMotion()
   const ticking = useRef(false)
-  const THRESHOLD = 300 // pakeisk į 50 testui, jei reikia
+  const THRESHOLD = 300
 
   const update = () => {
     setVisible(getScrollY() > THRESHOLD)
@@ -35,17 +46,14 @@ export default function BackToTop() {
 
   useEffect(() => {
     update()
-    // langas
     window.addEventListener('scroll', onScrollLike, { passive: true })
     window.addEventListener('wheel', onScrollLike, { passive: true })
     window.addEventListener('touchmove', onScrollLike, { passive: true })
     window.addEventListener('resize', onScrollLike)
     window.addEventListener('orientationchange', onScrollLike)
-    // gyvavimo įvykiai
     const onShowOrVis = () => requestAnimationFrame(update)
     window.addEventListener('pageshow', onShowOrVis)
     document.addEventListener('visibilitychange', onShowOrVis)
-    // jei scrollina ne langas
     document.addEventListener('scroll', onScrollLike, { passive: true, capture: true })
 
     return () => {
@@ -62,39 +70,62 @@ export default function BackToTop() {
   }, [])
 
   const scrollToTop = () => {
-    const smoothSupported = 'scrollBehavior' in document.documentElement.style
-    const behavior: ScrollBehavior = prefersReduced ? 'auto' : 'smooth'
+    // Blur any focused input, kad naršyklė nebandytų „grąžinti“ scroll pozicijos
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur()
+    }
 
-    // 1) langas
+    const root = (document.scrollingElement || document.documentElement) as HTMLElement
+    const mobile = isMobileUA()
+    const ios = isIOS()
+
+    // Laikinai išjungiam bet kokį globalų smooth (jei nustatytas CSS’e)
+    const htmlStyle = document.documentElement.style
+    const prevScrollBehavior = htmlStyle.scrollBehavior
+    htmlStyle.scrollBehavior = 'auto'
+
+    // iOS – be smooth (stabiliau), kituose – smooth jei ne reduced motion
+    const useSmooth = !prefersReduced && !ios
+
     try {
-      smoothSupported ? window.scrollTo({ top: 0, left: 0, behavior }) : window.scrollTo(0, 0)
+      useSmooth
+        ? window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+        : window.scrollTo(0, 0)
     } catch {
       window.scrollTo(0, 0)
     }
 
-    // 2) root scroller (Chrome/Safari iOS)
-    const root = (document.scrollingElement || document.documentElement) as HTMLElement
     try {
-      smoothSupported ? (root as any).scrollTo({ top: 0, left: 0, behavior }) : (root.scrollTop = 0)
+      useSmooth
+        ? (root as any).scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+        : (root.scrollTop = 0)
     } catch {
       root.scrollTop = 0
     }
-    // 3) body (senesni atvejai)
+
+    // body fallback
     document.body.scrollTop = 0
 
-    // 4) vidiniai scroll konteineriai (overflow-y: auto|scroll)
-    const candidates = Array.from(document.querySelectorAll<HTMLElement>('*')).filter((el) => {
-      const s = getComputedStyle(el)
-      const oy = s.overflowY
-      return (oy === 'auto' || oy === 'scroll') && el.scrollHeight > el.clientHeight
-    })
-    for (const el of candidates) {
-      try {
-        smoothSupported ? el.scrollTo({ top: 0, left: 0, behavior }) : (el.scrollTop = 0)
-      } catch {
-        el.scrollTop = 0
+    // ⚠️ NESKAITYTI visų kandidatų mobiliuose – tai sukelia „baltą ekraną“ (paint starvation)
+    if (!mobile) {
+      const candidates = Array.from(document.querySelectorAll<HTMLElement>('*')).filter((el) => {
+        const s = getComputedStyle(el)
+        const oy = s.overflowY
+        return (oy === 'auto' || oy === 'scroll') && el.scrollHeight > el.clientHeight
+      })
+      for (const el of candidates) {
+        try {
+          useSmooth ? el.scrollTo({ top: 0, left: 0, behavior: 'smooth' }) : (el.scrollTop = 0)
+        } catch {
+          el.scrollTop = 0
+        }
       }
     }
+
+    // Grąžinam scroll-behavior po vieno frame’o
+    requestAnimationFrame(() => {
+      htmlStyle.scrollBehavior = prevScrollBehavior || ''
+    })
   }
 
   if (!mounted) return null
