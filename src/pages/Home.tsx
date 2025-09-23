@@ -20,11 +20,11 @@ function StarIcon({ filled = true, className = "w-4 h-4" }: { filled?: boolean; 
   );
 }
 
-/** One review card */
+/** One review card — white bg stays subtle (not colored box) */
 function ReviewCard({ name, text, stars }: { name: string; text: string; stars: number }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-soft hover:shadow-md transition">
-      <div className="pointer-events-none absolute -top-10 -right-10 w-40 h-40 rounded-full bg-primary-100/40 blur-2xl" />
+    <div className="group relative overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-soft hover:shadow-md transition">
+      <div className="pointer-events-none absolute -top-10 -right-10 w-40 h-40 rounded-full bg-brand-50 blur-2xl" />
       <div className="relative p-5">
         <div className="flex items-center gap-1 text-yellow-400 mb-2">
           {Array.from({ length: 5 }).map((_, i) => (
@@ -38,7 +38,7 @@ function ReviewCard({ name, text, stars }: { name: string; text: string; stars: 
   );
 }
 
-/** Google Reviews carousel (3 per slide on desktop, 1 per slide on mobile) */
+/** Google Reviews carousel (IO pauzė + 3/1 per slide) */
 function GoogleReviews() {
   const allReviews = useMemo(() => ([
     { name: 'Milda',  text: 'Labai malonus aptarnavimas, gydytoja viską aiškiai paaiškino.', stars: 5 },
@@ -75,6 +75,7 @@ function GoogleReviews() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const timerRef = useRef<number | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   // Auto-advance (5s)
   useEffect(() => {
@@ -86,6 +87,16 @@ function GoogleReviews() {
     }
     return () => { if (timerRef.current) window.clearTimeout(timerRef.current); };
   }, [index, paused, slides.length]);
+
+  // Pause when not visible
+  useEffect(() => {
+    if (!containerRef.current || typeof IntersectionObserver === 'undefined') return;
+    const io = new IntersectionObserver(([entry]) => {
+      setPaused(!entry.isIntersecting);
+    }, { threshold: 0.25 });
+    io.observe(containerRef.current);
+    return () => io.disconnect();
+  }, []);
 
   // Touch swipe
   const touchX = useRef<number | null>(null);
@@ -102,7 +113,7 @@ function GoogleReviews() {
 
   return (
     <AnimatedSection>
-      <div className="container-narrow">
+      <div className="container-narrow no-x-scroll pan-y">
         <div className="flex items-end justify-between gap-4 mb-6">
           <h2 className="text-2xl sm:text-3xl font-bold text-darkblue-600 tracking-tight">
             Klientų atsiliepimai
@@ -113,6 +124,7 @@ function GoogleReviews() {
         </div>
 
         <div
+          ref={containerRef}
           className="relative select-none"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
@@ -123,11 +135,11 @@ function GoogleReviews() {
           <div className="overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${index * 100}%)` }}
+              style={{ transform: `translateX(-${index * 100}%)`, willChange: 'transform' }}
             >
               {slides.map((group, gi) => (
                 <div key={gi} className="shrink-0 w-full">
-                  <div className={`grid gap-6 ${perSlide === 1 ? 'grid-cols-1' : 'grid-cols-3'}`}>
+                  <div className={perSlide === 1 ? 'grid gap-6 grid-cols-1' : 'grid gap-6 grid-cols-3'}>
                     {group.map((r, ri) => (
                       <ReviewCard key={`${gi}-${ri}`} {...r} />
                     ))}
@@ -154,11 +166,11 @@ function GoogleReviews() {
   );
 }
 
-/** Tiny keyframes (kept for possible reuse) */
+/** Tiny keyframes (reserved) */
 const globalStyles = `
 @keyframes fadeInUp { 
-  0% { opacity: 0; transform: translateY(8px) } 
-  100% { opacity: 1; transform: translateY(0) }
+  0% { opacity: 0, transform: translateY(8px) } 
+  100% { opacity: 1, transform: translateY(0) }
 }
 `;
 
@@ -172,16 +184,18 @@ export default function Home() {
       />
 
       {/* HERO */}
-      <Hero />
+      <div className="no-x-scroll pan-y">
+        <Hero />
+      </div>
 
       {/* POPULIARIAUSIOS PASLAUGOS */}
       <AnimatedSection>
-        <div className="container-narrow">
+        <div className="container-narrow no-x-scroll pan-y">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-darkblue-600 tracking-tight" style={{ wordBreak: 'keep-all' }}>
             Populiariausios paslaugos
           </h2>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-1fr">
             {SERVICES.map((s, i) => (
               <ServiceCard key={s.id} s={s} i={i} />
             ))}
@@ -189,20 +203,20 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      {/* KODĖL VERTA RINKTIS BANGŲ KLINIKĄ */}
+      {/* KODĖL VERTA RINKTIS BANGŲ KLINIKĄ — colored boxes with brand TURQUOISE */}
       <AnimatedSection>
-        <div className="container-narrow">
+        <div className="container-narrow no-x-scroll pan-y">
           {/* Antraštė + aprašymas */}
           <div className="max-w-3xl mb-6">
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-darkblue-600">
-              Kodėl verta rinktis <span className="text-primary-700">Bangų kliniką?</span>
+              Kodėl verta rinktis <span className="text-brand">Bangų kliniką?</span>
             </h2>
             <p className="mt-2 text-gray-700">
               Klinikoje yra laboratorija, kurioje nuolat dirba bei konsultuoja 20 metų patirtį turinti dantų technikė.
             </p>
           </div>
 
-          {/* 3 ypatybės – TURKIO KORTOS */}
+          {/* 3 ypatybės – bg-brand-50 + border-brand */}
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { t: 'Moderni įranga', d: 'CEREC skenavimas – greitesni ir tikslesni vizitai.' },
@@ -211,8 +225,7 @@ export default function Home() {
             ].map((f, i) => (
               <div
                 key={i}
-                className="rounded-2xl border shadow-sm p-6 transition relative
-                           bg-primary-50 border-primary-300 hover:bg-primary-100 hover:ring-1 hover:ring-primary-400"
+                className="rounded-2xl p-6 transition relative bg-brand-50 border border-brand shadow-soft hover:shadow-md"
               >
                 <h3 className="font-semibold text-lg text-darkblue-600">{f.t}</h3>
                 <p className="text-sm text-gray-700 mt-2">{f.d}</p>
@@ -223,12 +236,14 @@ export default function Home() {
       </AnimatedSection>
 
       {/* GOOGLE REVIEWS (carousel) */}
-      <GoogleReviews />
+      <div className="no-x-scroll pan-y">
+        <GoogleReviews />
+      </div>
 
-      {/* CTA – PIRMINĖ KONSULTACIJA (TURKIO BLOKAS) */}
+      {/* CTA – PIRMINĖ KONSULTACIJA — bg-brand-100 + border-brand */}
       <AnimatedSection>
-        <div className="container-narrow">
-          <div className="relative overflow-hidden rounded-2xl border bg-primary-100 border-primary-400 ring-1 ring-primary-500">
+        <div className="container-narrow no-x-scroll pan-y">
+          <div className="relative overflow-hidden rounded-2xl bg-brand-100 border border-brand shadow-soft">
             <div className="relative z-10 text-darkblue-700 text-center px-6 py-12 sm:py-16">
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
                 Pirminė konsultacija <span className="whitespace-nowrap">nemokama</span>
@@ -256,15 +271,15 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      {/* FAQ + Quick contact – ABU TURKIO */}
+      {/* FAQ + Quick contact — bg-brand-50 + border-brand */}
       <AnimatedSection>
-        <div className="container-narrow grid md:grid-cols-2 gap-8 items-start">
-          <div className="rounded-2xl border border-primary-300 bg-primary-50 p-6 hover:bg-primary-100 transition">
+        <div className="container-narrow grid md:grid-cols-2 gap-8 items-start no-x-scroll pan-y">
+          <div className="rounded-2xl bg-brand-50 p-6 transition border border-brand shadow-soft hover:shadow-md">
             <h3 className="text-lg font-semibold mb-4 text-darkblue-600">Dažniausi klausimai</h3>
             <FAQ />
           </div>
 
-          <div className="p-6 rounded-2xl border border-primary-300 bg-primary-50 hover:bg-primary-100 transition">
+          <div className="p-6 rounded-2xl bg-brand-50 transition border border-brand shadow-soft hover:shadow-md">
             <h3 className="text-lg font-semibold text-darkblue-600">Turite klausimų?</h3>
             <p className="text-gray-700 mt-2">Parašykite mums – atsakysime per 1 darbo dieną.</p>
             <div className="mt-4">

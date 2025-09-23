@@ -5,10 +5,11 @@ import React, { useEffect, useRef, useState } from 'react'
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      {/* soft background */}
+    <section className="relative overflow-hidden pan-y">
+      {/* Soft background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-white via-[#F7FBFF] to-white" />
+        {/* Burbulai clip'inami dėl overflow-hidden */}
         <div className="absolute -top-16 -left-24 w-96 h-96 bg-sky-100/40 blur-3xl rounded-full" />
         <div className="absolute -bottom-20 -right-16 w-[28rem] h-[28rem] bg-primary-100/40 blur-3xl rounded-full" />
       </div>
@@ -35,35 +36,22 @@ export default function Hero() {
             Greita registracija, švelnus požiūris, aiškios kainos.
           </motion.p>
 
-          {/* CTA buttons — mobile: 2 columns in one row; desktop: inline-flex */}
+          {/* CTA buttons */}
           <motion.div
-            className="
-              grid grid-cols-2 gap-2 items-stretch
-              md:inline-flex md:flex-wrap md:gap-3
-            "
+            className="grid grid-cols-2 gap-2 items-stretch md:inline-flex md:flex-wrap md:gap-3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: .2, duration: .5 }}
           >
             <a
               href={`tel:${CLINIC.phone}`}
-              className="
-                inline-flex w-full justify-center items-center
-                bg-[#10394F] hover:bg-[#0d2d3c] text-white
-                font-semibold py-2.5 px-4 md:py-3 md:px-6
-                rounded-xl transition text-sm md:text-base
-              "
+              className="inline-flex w-full justify-center items-center bg-[#10394F] hover:bg-[#0d2d3c] text-white font-semibold py-2.5 px-4 md:py-3 md:px-6 rounded-xl transition text-sm md:text-base"
             >
               Registracija telefonu
             </a>
             <Link
               to="/kontaktai"
-              className="
-                inline-flex w-full justify-center items-center
-                bg-[#10394F] hover:bg-[#0d2d3c] text-white
-                font-semibold py-2.5 px-4 md:py-3 md:px-6
-                rounded-xl transition text-sm md:text-base
-              "
+              className="inline-flex w-full justify-center items-center bg-[#10394F] hover:bg-[#0d2d3c] text-white font-semibold py-2.5 px-4 md:py-3 md:px-6 rounded-xl transition text-sm md:text-base"
             >
               Registracija internetu
             </Link>
@@ -93,6 +81,7 @@ function HeroCarousel() {
   const [auto, setAuto] = useState(true)
   const timerRef = useRef<number | null>(null)
 
+  // Auto rotacija
   useEffect(() => {
     if (!auto) return
     if (timerRef.current) window.clearTimeout(timerRef.current)
@@ -102,15 +91,7 @@ function HeroCarousel() {
     return () => { if (timerRef.current) window.clearTimeout(timerRef.current) }
   }, [index, auto, images.length])
 
-  const go = (dir: 1 | -1) => {
-    setAuto(false)
-    setIndex(i => (i + dir + images.length) % images.length)
-  }
-  const goTo = (i: number) => {
-    setAuto(false)
-    setIndex(i)
-  }
-
+  // Touch swipe
   const touchX = useRef<number | null>(null)
   const onTouchStart = (e: React.TouchEvent) => { touchX.current = e.touches[0].clientX }
   const onTouchEnd = (e: React.TouchEvent) => {
@@ -118,10 +99,13 @@ function HeroCarousel() {
     const dx = e.changedTouches[0].clientX - touchX.current
     if (Math.abs(dx) > 40) {
       setAuto(false)
-      if (dx < 0) go(1); else go(-1)
+      setIndex(i => (i + (dx < 0 ? 1 : -1) + images.length) % images.length)
     }
     touchX.current = null
   }
+
+  const go = (dir: 1 | -1) => { setAuto(false); setIndex(i => (i + dir + images.length) % images.length) }
+  const goTo = (i: number) => { setAuto(false); setIndex(i) }
 
   return (
     <motion.div
@@ -134,17 +118,20 @@ function HeroCarousel() {
         className="relative aspect-[4/3] rounded-2xl overflow-hidden ring-1 ring-slate-200 shadow-sm bg-white"
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
+        style={{ willChange: 'transform' }}
       >
         <AnimatePresence initial={false} mode="wait">
           <motion.img
             key={index}
             src={images[index]}
             alt="Bangų klinika"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover select-none"
             initial={{ opacity: 0, scale: 1.02 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0.0, scale: 0.995 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
+            decoding="async"
+            loading="eager"
             onError={(e) => {
               (e.currentTarget.parentElement as HTMLElement).style.background =
                 'linear-gradient(135deg,#CFE9FF 0%,#8BD3F7 45%,#4FC3F7 100%)'
@@ -152,23 +139,23 @@ function HeroCarousel() {
           />
         </AnimatePresence>
 
-        {/* Transparent side controls */}
+        {/* Controls — be blur mobilėje */}
         <button
           aria-label="Ankstesnė nuotrauka"
           onClick={() => go(-1)}
-          className="absolute left-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur ring-1 ring-white/40 text-white text-xl transition"
+          className="absolute left-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/70 hover:bg-white ring-1 ring-white/60 text-darkblue-700 text-xl transition"
         >
           ‹
         </button>
         <button
           aria-label="Kita nuotrauka"
           onClick={() => go(1)}
-          className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur ring-1 ring-white/40 text-white text-xl transition"
+          className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/70 hover:bg-white ring-1 ring-white/60 text-darkblue-700 text-xl transition"
         >
           ›
         </button>
 
-        {/* dots — centered */}
+        {/* dots */}
         <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2">
           {images.map((_, i) => (
             <button
