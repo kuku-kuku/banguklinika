@@ -4,7 +4,7 @@ import { PRICING, type PriceGroup, type PriceItem } from '../data/pricing'
 import { motion, AnimatePresence } from 'framer-motion'
 import clsx from 'clsx'
 
-const ANIM_DURATION = 0.35
+const ANIM_DURATION = 0.3
 
 function slugify(t: string) {
   return t
@@ -60,17 +60,17 @@ function scrollToElement(id: string, offset = 16) {
       return
     }
 
-    const duration = 500
+    const duration = 400
     const start = performance.now()
 
-    const easeInOutCubic = (t: number) => {
-      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+    const easeOutQuart = (t: number) => {
+      return 1 - Math.pow(1 - t, 4)
     }
 
     const step = (now: number) => {
       const elapsed = now - start
       const progress = Math.min(elapsed / duration, 1)
-      const eased = easeInOutCubic(progress)
+      const eased = easeOutQuart(progress)
       
       window.scrollTo(0, startY + diff * eased)
       
@@ -115,7 +115,7 @@ function GroupCard({
       layout="position"
       id={id}
       className={clsx(
-        'rounded-2xl border shadow-soft overflow-hidden self-start transition-all duration-300 scroll-mt-28 md:scroll-mt-32',
+        'rounded-2xl border shadow-soft overflow-hidden self-start transition-all duration-200 scroll-mt-28 md:scroll-mt-32',
         isOpen
           ? 'bg-brand-50 border-brand ring-2 ring-white shadow-lg'
           : 'bg-brand-50 border-brand hover:bg-brand-100 hover:shadow-md'
@@ -126,14 +126,14 @@ function GroupCard({
         aria-expanded={isOpen}
         aria-controls={`${id}-content`}
         className={clsx(
-          'w-full flex items-center justify-between gap-4 px-4 py-4 text-left min-h-[92px] transition-colors',
+          'w-full flex items-center justify-between gap-4 px-4 py-4 text-left min-h-[92px] transition-colors duration-200',
           isOpen ? 'border-b border-brand/40' : 'border-b border-brand/30'
         )}
       >
         <div className="flex items-center gap-3">
           <span
             className={clsx(
-              'w-9 h-9 rounded-xl grid place-items-center transition-all duration-300',
+              'w-9 h-9 rounded-xl grid place-items-center transition-all duration-200',
               isOpen ? 'bg-brand-100 text-brand scale-105' : 'bg-brand-50 text-brand'
             )}
           >
@@ -145,7 +145,7 @@ function GroupCard({
           </div>
         </div>
         <span className={clsx(
-          'text-sm text-gray-600 transition-transform duration-300',
+          'text-sm text-gray-600 transition-transform duration-200',
           isOpen && 'rotate-180'
         )}>
           ▾
@@ -161,17 +161,18 @@ function GroupCard({
             exit={{ height: 0, opacity: 0 }}
             transition={{ 
               duration: ANIM_DURATION,
-              ease: [0.4, 0, 0.2, 1],
-              opacity: { duration: ANIM_DURATION * 0.6 }
+              ease: [0.25, 0.1, 0.25, 1],
+              opacity: { duration: ANIM_DURATION * 0.7 }
             }}
             className="overflow-hidden"
+            style={{ willChange: 'height, opacity' }}
           >
             <div className="px-2 py-2">
               <div className="rounded-xl bg-white border border-brand/30 overflow-hidden">
                 <table className="w-full text-sm">
                   <tbody className="divide-y divide-slate-100">
                     {group.items.map((p, i) => (
-                      <tr key={i} className="hover:bg-slate-50/50 transition-colors">
+                      <tr key={i} className="hover:bg-slate-50/50 transition-colors duration-150">
                         <td className="p-3 align-top">
                           <span className="text-slate-900">{p.name}</span>
                           {p.note && <span className="block text-xs text-gray-600 mt-0.5">{p.note}</span>}
@@ -215,8 +216,8 @@ export default function PricingCards() {
 
     setOpenId(id)
     
-    // Wait a bit for the animation to start
-    await new Promise(resolve => setTimeout(resolve, 50))
+    // Wait for the animation to start rendering
+    await new Promise(resolve => setTimeout(resolve, 30))
     
     // Scroll to the element
     await scrollToElement(id, isMobile() ? 8 : 16)
@@ -237,7 +238,7 @@ export default function PricingCards() {
       }
       
       setOpenId(id)
-      await new Promise(resolve => setTimeout(resolve, 100))
+      await new Promise(resolve => setTimeout(resolve, 80))
       scrollToElement(id, isMobile() ? 8 : 16)
     }
 
@@ -250,20 +251,20 @@ export default function PricingCards() {
     visible: { 
       opacity: 1, 
       transition: { 
-        staggerChildren: 0.05,
-        delayChildren: 0.1 
+        staggerChildren: 0.04,
+        delayChildren: 0.08 
       } 
     },
   }
   
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 16 },
     visible: { 
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.4,
-        ease: [0.4, 0, 0.2, 1]
+        duration: 0.35,
+        ease: [0.25, 0.1, 0.25, 1]
       }
     },
   }

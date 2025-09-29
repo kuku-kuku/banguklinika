@@ -37,7 +37,7 @@ const team: Member[] = [
   { name: 'Martyna Pociutė', role: 'Gydytoja odontologė' },
   { name: 'Donatas Kubilius', role: 'Veido ir žandikaulių chirurgas', license: 'MPL-18980' },
   { name: 'Eglė Daknienė', role: 'Dantų technikė', license: 'BPL-04671' },
-  { name: 'Rūta Garšvienė', role: 'Burnos higienistė, gydymo tęstinumo kapoms koordinatorė', license: 'BPL-07858' },
+  { name: 'Rūta Garšvienė', role: 'Burnos higienistė, gydymo tiesinimo kapomis koordinatorė', license: 'BPL-07858' },
   { name: 'Goda Daknytė', role: 'Administratorė' },
 ]
 
