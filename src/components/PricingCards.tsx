@@ -6,6 +6,7 @@ import clsx from 'clsx'
 
 const ANIM_DURATION = 0.3
 
+/* ========= Utils ========= */
 function slugify(t: string) {
   return t
     .toLowerCase()
@@ -42,49 +43,15 @@ function getHeaderOffset(): number {
   return sticky ? sticky.getBoundingClientRect().height : 76
 }
 
-function scrollToElement(id: string, offset = 16) {
-  return new Promise<void>((resolve) => {
-    const el = document.getElementById(id)
-    if (!el) {
-      resolve()
-      return
-    }
-
-    const rect = el.getBoundingClientRect()
-    const targetY = window.scrollY + rect.top - getHeaderOffset() - offset
-    const startY = window.scrollY
-    const diff = targetY - startY
-    
-    if (Math.abs(diff) < 2) {
-      resolve()
-      return
-    }
-
-    const duration = 400
-    const start = performance.now()
-
-    const easeOutQuart = (t: number) => {
-      return 1 - Math.pow(1 - t, 4)
-    }
-
-    const step = (now: number) => {
-      const elapsed = now - start
-      const progress = Math.min(elapsed / duration, 1)
-      const eased = easeOutQuart(progress)
-      
-      window.scrollTo(0, startY + diff * eased)
-      
-      if (progress < 1) {
-        requestAnimationFrame(step)
-      } else {
-        resolve()
-      }
-    }
-    
-    requestAnimationFrame(step)
-  })
+function instantScrollToElement(id: string, offset = 16) {
+  const el = document.getElementById(id)
+  if (!el) return
+  const rect = el.getBoundingClientRect()
+  const targetY = window.scrollY + rect.top - getHeaderOffset() - offset
+  window.scrollTo(0, targetY)
 }
 
+/* ========= UI ========= */
 function Icon({ title }: { title: string }) {
   const t = title.toLowerCase()
   if (t.includes('higien')) return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M4 10a8 8 0 0 1 16 0v7a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-7Z" fill="currentColor" opacity=".15"/><path d="M12 3a8 8 0 0 1 8 8v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-6a8 8 0 0 1 8-8Zm0 0v6" stroke="currentColor" strokeWidth="1.6" fill="none"/></svg>)
@@ -97,11 +64,11 @@ function Icon({ title }: { title: string }) {
   return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M12 3c4 0 7 3 7 7v7a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-7c0-4 3-7 7-7z" stroke="currentColor" strokeWidth="1.6" fill="none"/></svg>)
 }
 
-function GroupCard({ 
-  group, 
-  isOpen, 
-  onToggle 
-}: { 
+function GroupCard({
+  group,
+  isOpen,
+  onToggle,
+}: {
   group: PriceGroup
   isOpen: boolean
   onToggle: () => void
@@ -111,13 +78,12 @@ function GroupCard({
   const summary = range ? (range.max > range.min ? `€${range.min}–€${range.max}` : `nuo €${range.min}`) : '—'
 
   return (
-    <motion.div
-      layout="position"
+    <div
       id={id}
       className={clsx(
-        'rounded-2xl border shadow-soft overflow-hidden self-start transition-all duration-200 scroll-mt-28 md:scroll-mt-32',
+        'rounded-2xl border shadow-soft overflow-hidden self-start transition-all duration-300 scroll-mt-28 md:scroll-mt-32',
         isOpen
-          ? 'bg-brand-50 border-brand ring-2 ring-white shadow-lg'
+          ? 'bg-brand-50 border-brand ring-2 ring-brand/30 shadow-lg'
           : 'bg-brand-50 border-brand hover:bg-brand-100 hover:shadow-md'
       )}
     >
@@ -125,18 +91,10 @@ function GroupCard({
         onClick={onToggle}
         aria-expanded={isOpen}
         aria-controls={`${id}-content`}
-        className={clsx(
-          'w-full flex items-center justify-between gap-4 px-4 py-4 text-left min-h-[92px] transition-colors duration-200',
-          isOpen ? 'border-b border-brand/40' : 'border-b border-brand/30'
-        )}
+        className="w-full flex items-center justify-between gap-4 px-4 py-4 text-left min-h-[92px] transition-colors duration-150"
       >
         <div className="flex items-center gap-3">
-          <span
-            className={clsx(
-              'w-9 h-9 rounded-xl grid place-items-center transition-all duration-200',
-              isOpen ? 'bg-brand-100 text-brand scale-105' : 'bg-brand-50 text-brand'
-            )}
-          >
+          <span className={clsx('w-9 h-9 rounded-xl grid place-items-center transition-colors', isOpen ? 'bg-brand-100 text-brand' : 'bg-brand-50 text-brand')}>
             <Icon title={group.title} />
           </span>
           <div className="min-w-0">
@@ -144,35 +102,28 @@ function GroupCard({
             <div className="text-xs text-gray-600">{summary} • {group.items.length} poz.</div>
           </div>
         </div>
-        <span className={clsx(
-          'text-sm text-gray-600 transition-transform duration-200',
-          isOpen && 'rotate-180'
-        )}>
-          ▾
-        </span>
+        <span className={clsx('text-sm text-gray-600 transition-transform duration-300', isOpen && 'rotate-180')}>▾</span>
       </button>
 
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
             id={`${id}-content`}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ 
+            initial={{ height: 0 }}
+            animate={{ height: 'auto' }}
+            exit={{ height: 0 }}
+            transition={{
               duration: ANIM_DURATION,
-              ease: [0.25, 0.1, 0.25, 1],
-              opacity: { duration: ANIM_DURATION * 0.7 }
+              ease: [0.4, 0, 0.2, 1]
             }}
             className="overflow-hidden"
-            style={{ willChange: 'height, opacity' }}
           >
             <div className="px-2 py-2">
               <div className="rounded-xl bg-white border border-brand/30 overflow-hidden">
                 <table className="w-full text-sm">
                   <tbody className="divide-y divide-slate-100">
                     {group.items.map((p, i) => (
-                      <tr key={i} className="hover:bg-slate-50/50 transition-colors duration-150">
+                      <tr key={i} className="hover:bg-slate-50/50 transition-colors duration-100">
                         <td className="p-3 align-top">
                           <span className="text-slate-900">{p.name}</span>
                           {p.note && <span className="block text-xs text-gray-600 mt-0.5">{p.note}</span>}
@@ -189,84 +140,84 @@ function GroupCard({
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   )
 }
 
+/* ========= Page ========= */
 export default function PricingCards() {
   const [openId, setOpenId] = useState<string | null>(null)
-  const location = useLocation()
-  const isAnimatingRef = useRef(false)
+  const { hash } = useLocation()
+  const animatingRef = useRef(false)
+
+  const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
   const handleToggle = async (id: string, willOpen: boolean) => {
-    if (isAnimatingRef.current) return
-    isAnimatingRef.current = true
+    if (animatingRef.current) return
+    animatingRef.current = true
 
-    if (!willOpen) {
-      setOpenId(null)
-      isAnimatingRef.current = false
-      return
+    try {
+      if (!willOpen) {
+        setOpenId(null)
+        await wait(ANIM_DURATION * 1000 + 60)
+        return
+      }
+
+      // Close old card first if exists
+      if (openId && openId !== id) {
+        setOpenId(null)
+        await wait(ANIM_DURATION * 1000 + 100)
+      }
+
+      // Simple scroll to new card after closing is done
+      instantScrollToElement(id, isMobile() ? 12 : 16)
+
+      // Open new card
+      setOpenId(id)
+      await wait(ANIM_DURATION * 1000 + 100)
+    } finally {
+      animatingRef.current = false
     }
-
-    // If there's an open card that's not the current one
-    if (openId && openId !== id) {
-      setOpenId(null)
-      await new Promise(resolve => setTimeout(resolve, ANIM_DURATION * 1000))
-    }
-
-    setOpenId(id)
-    
-    // Wait for the animation to start rendering
-    await new Promise(resolve => setTimeout(resolve, 30))
-    
-    // Scroll to the element
-    await scrollToElement(id, isMobile() ? 8 : 16)
-    
-    isAnimatingRef.current = false
   }
 
   useEffect(() => {
-    if (!location.hash) return
-    
-    const id = slugify(decodeURIComponent(location.hash.slice(1)))
-    if (!PRICING.some(g => slugify(g.title) === id)) return
+    if (!hash) return
+    const id = slugify(decodeURIComponent(hash.slice(1)))
+    if (!PRICING.some((g) => slugify(g.title) === id)) return
 
-    const openFromHash = async () => {
-      if (openId && openId !== id) {
-        setOpenId(null)
-        await new Promise(resolve => setTimeout(resolve, ANIM_DURATION * 1000))
+    let cancelled = false
+    const run = async () => {
+      if (animatingRef.current) return
+      animatingRef.current = true
+
+      try {
+        // Close old if exists
+        if (openId && openId !== id) {
+          setOpenId(null)
+          await wait(ANIM_DURATION * 1000 + 100)
+          if (cancelled) return
+        }
+
+        // Scroll and open
+        instantScrollToElement(id, isMobile() ? 12 : 16)
+        setOpenId(id)
+      } finally {
+        animatingRef.current = false
       }
-      
-      setOpenId(id)
-      await new Promise(resolve => setTimeout(resolve, 80))
-      scrollToElement(id, isMobile() ? 8 : 16)
     }
 
-    openFromHash()
+    run()
+    return () => { cancelled = true }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.hash])
+  }, [hash])
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1, 
-      transition: { 
-        staggerChildren: 0.04,
-        delayChildren: 0.08 
-      } 
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.04, delayChildren: 0.05 } },
   }
-  
   const itemVariants = {
     hidden: { opacity: 0, y: 16 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.35,
-        ease: [0.25, 0.1, 0.25, 1]
-      }
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] } },
   }
 
   return (
@@ -280,7 +231,7 @@ export default function PricingCards() {
         const id = slugify(g.title)
         const isOpen = openId === id
         return (
-          <motion.div key={g.title} variants={itemVariants} layout="position">
+          <motion.div key={g.title} variants={itemVariants}>
             <GroupCard
               group={g}
               isOpen={isOpen}
