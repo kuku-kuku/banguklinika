@@ -10,6 +10,15 @@ import AnimatedSection from '../components/AnimatedSection'
 import { SERVICES } from '../data/services'
 import { CLINIC } from '../data/clinic'
 
+/** --- Populiariausių paslaugų sąrašas ir jų tiksliniai ID „/paslaugos“ puslapyje --- */
+const POPULAR_ORDER: Array<{ title: string; id: string }> = [
+  { title: 'Dantų gydymas ir plombavimas', id: 'dantu-gydymas' },
+  { title: 'Dantų implantacija',            id: 'implantai' },
+  { title: 'Skaitmeninis protezavimas (CEREC) estetinė odontologija', id: 'dantu-protezavimas' },
+  { title: 'Estetinė odontologija',         id: 'estetinis-plombavimas' },
+  { title: 'Profesionali burnos higiena',   id: 'burnos-higiena' },
+]
+
 /** Simple local star icon (no extra deps) */
 function StarIcon({ filled = true, className = "w-4 h-4" }: { filled?: boolean; className?: string }) {
   return (
@@ -382,10 +391,14 @@ export default function Home() {
             Populiariausios paslaugos
           </h2>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-1fr">
-            {SERVICES.map((s, i) => (
-              <ServiceCard key={s.id} s={s} i={i} />
-            ))}
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-1fr">
+            {/** Sukomplektuojam būtent 5 populiariausias iš SERVICES pagal nurodytą tvarką ir priverstinį hash */}
+            {POPULAR_ORDER.map((p, i) => {
+              const found = SERVICES.find(s => s.title === p.title || s.id === p.id);
+              const s = found ?? { id: p.id, title: p.title } as any;
+              const href = `/paslaugos#${p.id}`;
+              return <ServiceCard key={s.id || p.id} s={{ ...s, href }} i={i} />;
+            })}
           </div>
         </div>
       </AnimatedSection>
