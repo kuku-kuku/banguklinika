@@ -64,6 +64,8 @@
 .footer-meta { @apply text-white/70 text-sm; }
 .footer-pin { @apply inline-flex items-center gap-2 text-white/90; }
 
+.overflow-anchor-none { overflow-anchor: none; }
+
 .pin { @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 text-primary-800 border border-primary-100; }
 .pin-dark { @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white border border-white/20; }
 

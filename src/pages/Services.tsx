@@ -37,33 +37,60 @@ function easeInOutCubic(t: number) {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
 }
 
-function smoothScrollTo(targetY: number, duration = 500) {
+function smoothScrollTo(targetY: number, duration = 450) {
   const startY = window.scrollY
   const diff = targetY - startY
   if (Math.abs(diff) < 2) return Promise.resolve()
-  
+
   return new Promise<void>((resolve) => {
     const start = performance.now()
     const step = (now: number) => {
       const p = Math.min(1, (now - start) / duration)
       const y = startY + diff * easeInOutCubic(p)
       window.scrollTo(0, y)
-      if (p < 1) {
-        requestAnimationFrame(step)
-      } else {
-        resolve()
-      }
+      if (p < 1) requestAnimationFrame(step)
+      else resolve()
     }
     requestAnimationFrame(step)
   })
 }
 
-function scrollToElement(id: string, offset = 16) {
+function instantScrollToElement(id: string, offset = 16) {
   const el = document.getElementById(id)
   if (!el) return
   const rect = el.getBoundingClientRect()
   const targetY = window.scrollY + rect.top - getHeaderOffset() - offset
-  return smoothScrollTo(targetY, 500)
+  window.scrollTo(0, targetY)
+}
+
+async function smoothAlignToElement(id: string, offset = 16, ms = 300) {
+  const el = document.getElementById(id)
+  if (!el) return
+  const rect = el.getBoundingClientRect()
+  const targetY = window.scrollY + rect.top - getHeaderOffset() - offset
+  await smoothScrollTo(targetY, ms)
+}
+
+/** Laiko sekcijos viršų toje pačioje vietoje animacijos metu (kompensuoja aukščio pokyčius). */
+function keepAnchorDuring(el: HTMLElement, ms: number) {
+  let raf = 0
+  const start = performance.now()
+  const startTop = el.getBoundingClientRect().top
+
+  const tick = (now: number) => {
+    if (!document.body.contains(el)) return
+    const top = el.getBoundingClientRect().top
+    const delta = top - startTop
+    if (Math.abs(delta) > 0.5) {
+      window.scrollTo(0, window.scrollY + delta)
+    }
+    if (now - start < ms) {
+      raf = requestAnimationFrame(tick)
+    }
+  }
+
+  raf = requestAnimationFrame(tick)
+  return () => cancelAnimationFrame(raf)
 }
 
 function AccordionItem({
@@ -77,20 +104,14 @@ function AccordionItem({
   onToggle: (id: string, willOpen: boolean) => void
 }) {
   const open = openId === id
-  const contentRef = useRef<HTMLDivElement>(null)
 
-  const handleToggle = () => {
-    const willOpen = !open
-    onToggle(id, willOpen)
-  }
+  const handleToggle = () => onToggle(id, !open)
 
   const handleContentClick = (e: React.MouseEvent) => {
     if (!open) return
     const target = e.target as HTMLElement
     if (isInteractive(target)) return
-    if (isMobile()) {
-      setOpenId(null)
-    }
+    if (isMobile()) setOpenId(null)
   }
 
   return (
@@ -119,12 +140,11 @@ function AccordionItem({
           <motion.div
             id={`${id}-panel`}
             key={`${id}-panel`}
-            ref={contentRef}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ 
-              duration: ANIM_DURATION, 
+            transition={{
+              duration: ANIM_DURATION,
               ease: [0.4, 0, 0.2, 1],
               opacity: { duration: ANIM_DURATION * 0.6 }
             }}
@@ -429,38 +449,62 @@ export default function Services() {
   const [openId, setOpenId] = useState<string | null>(null)
   const isAnimatingRef = useRef(false)
 
+  const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
+
+  const setScrollControls = (on: boolean) => {
+    const root = document.documentElement
+    if (!root) return
+    if (on) {
+      root.style.setProperty('overflow-anchor', 'none')
+      root.style.setProperty('scroll-behavior', 'auto')
+    } else {
+      root.style.removeProperty('overflow-anchor')
+      root.style.removeProperty('scroll-behavior')
+    }
+  }
+
   const handleToggle = async (id: string, willOpen: boolean) => {
     if (isAnimatingRef.current) return
     isAnimatingRef.current = true
+    setScrollControls(true)
 
-    if (!willOpen) {
-      // Closing
-      setOpenId(null)
+    try {
+      const el = document.getElementById(id) as HTMLElement | null
+
+      if (!willOpen) {
+        setOpenId(null)
+        await wait(ANIM_DURATION * 1000 + 60)
+        return
+      }
+
+      if (el) instantScrollToElement(id, isMobile() ? 24 : 16)
+
+      const totalMs =
+        ANIM_DURATION * 1000 +
+        (isMobile() ? 220 : 120) +
+        (openId && openId !== id ? ANIM_DURATION * 1000 + 80 : 0)
+
+      const stopKeep = el ? keepAnchorDuring(el, totalMs) : () => {}
+
+      if (openId && openId !== id) {
+        setOpenId(null)
+        await wait(ANIM_DURATION * 1000 + 80)
+      }
+
+      setOpenId(id)
+      await wait(ANIM_DURATION * 1000 + (isMobile() ? 220 : 120))
+
+      stopKeep()
+
+      await smoothAlignToElement(id, isMobile() ? 24 : 16, 250)
+    } finally {
+      setScrollControls(false)
       isAnimatingRef.current = false
-      return
     }
-
-    if (openId && openId !== id) {
-      // Close current, then open new
-      setOpenId(null)
-      await new Promise(resolve => setTimeout(resolve, ANIM_DURATION * 1000))
-    }
-
-    setOpenId(id)
-    
-    // Wait for animation to start
-    await new Promise(resolve => setTimeout(resolve, 50))
-    
-    // Scroll to element
-    await scrollToElement(id)
-    
-    isAnimatingRef.current = false
   }
 
   useEffect(() => {
-    if (pathname === '/paslaugos' && !hash) {
-      setOpenId(null)
-    }
+    if (pathname === '/paslaugos' && !hash) setOpenId(null)
   }, [pathname, hash])
 
   useEffect(() => {
@@ -468,41 +512,56 @@ export default function Services() {
     if (!target) return
     if (!sections.some(s => s.id === target)) return
 
-    const openSection = async () => {
-      if (openId && openId !== target) {
-        setOpenId(null)
-        await new Promise(resolve => setTimeout(resolve, ANIM_DURATION * 1000))
+    let cancelled = false
+    const run = async () => {
+      if (isAnimatingRef.current) return
+      isAnimatingRef.current = true
+      setScrollControls(true)
+
+      try {
+        const el = document.getElementById(target) as HTMLElement | null
+        if (el) instantScrollToElement(target, isMobile() ? 24 : 16)
+        const stopKeep = el ? keepAnchorDuring(
+          el,
+          ANIM_DURATION * 1000 + (isMobile() ? 240 : 140) + (openId && openId !== target ? ANIM_DURATION * 1000 + 80 : 0)
+        ) : () => {}
+
+        if (openId && openId !== target) {
+          setOpenId(null)
+          await wait(ANIM_DURATION * 1000 + 80)
+          if (cancelled) { stopKeep(); return }
+        }
+
+        setOpenId(target)
+        await wait(ANIM_DURATION * 1000 + (isMobile() ? 240 : 140))
+        if (cancelled) { stopKeep(); return }
+
+        stopKeep()
+        await smoothAlignToElement(target, isMobile() ? 24 : 16, 250)
+      } finally {
+        setScrollControls(false)
+        isAnimatingRef.current = false
       }
-      
-      setOpenId(target)
-      await new Promise(resolve => setTimeout(resolve, 100))
-      scrollToElement(target)
     }
 
-    openSection()
+    run()
+    return () => { cancelled = true }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hash, sections])
 
-  const listVariants = { 
-    hidden: { opacity: 0 }, 
-    visible: { 
-      opacity: 1, 
-      transition: { 
-        staggerChildren: 0.05,
-        delayChildren: 0.1 
-      } 
-    } 
+  const listVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.05, delayChildren: 0.1 }
+    }
   }
-  const itemVariants = { 
-    hidden: { opacity: 0, y: 20 }, 
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: [0.4, 0, 0.2, 1]
-      }
-    } 
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1, y: 0,
+      transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] }
+    }
   }
 
   return (
@@ -522,12 +581,7 @@ export default function Services() {
             </p>
           </header>
 
-          <motion.div 
-            variants={listVariants} 
-            initial="hidden" 
-            animate="visible" 
-            className="grid gap-4"
-          >
+          <motion.div variants={listVariants} initial="hidden" animate="visible" className="grid gap-4">
             {sections.map((s) => (
               <motion.div key={s.id} variants={itemVariants}>
                 <AccordionItem
