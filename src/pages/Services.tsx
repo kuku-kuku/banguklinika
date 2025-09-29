@@ -6,12 +6,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 type Svc = { id: string; title: string; content: React.ReactNode }
 
-const ANIM_MS = 350
+const ANIM_DURATION = 0.4
 
 function Chevron({ open }: { open: boolean }) {
   return (
     <svg
-      className={`w-5 h-5 transition-transform ${open ? 'rotate-180' : 'rotate-0'}`}
+      className={`w-5 h-5 transition-transform duration-300 ${open ? 'rotate-180' : 'rotate-0'}`}
       viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden
     >
       <path d="M6 9l6 6 6-6" />
@@ -23,123 +23,90 @@ function isInteractive(el: HTMLElement | null) {
   if (!el) return false
   return Boolean(el.closest('a,button,input,select,textarea,label,[role="button"]'))
 }
+
 function isMobile() {
   return typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
 }
+
 function getHeaderOffset(): number {
   const sticky = document.querySelector('header.sticky') as HTMLElement | null
   return sticky ? sticky.getBoundingClientRect().height : 76
 }
 
-/* ===== Scroll helperiai ===== */
-let _rafId: number | null = null
 function easeInOutCubic(t: number) {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
 }
-function smoothScrollTo(targetY: number, duration = 420) {
-  if (_rafId) cancelAnimationFrame(_rafId)
+
+function smoothScrollTo(targetY: number, duration = 500) {
   const startY = window.scrollY
   const diff = targetY - startY
-  if (Math.abs(diff) < 2) return
-  const start = performance.now()
-  const step = (now: number) => {
-    const p = Math.min(1, (now - start) / duration)
-    const y = startY + diff * easeInOutCubic(p)
-    window.scrollTo(0, y)
-    if (p < 1) _rafId = requestAnimationFrame(step)
-  }
-  _rafId = requestAnimationFrame(step)
-}
-function targetYForHeading(id: string) {
-  const el = document.getElementById(id)
-  if (!el) return window.scrollY
-  const rect = el.getBoundingClientRect()
-  return window.scrollY + rect.top - getHeaderOffset() - 8
-}
-
-/* Perjungimo metu – OFF overflow anchoring, kad nespurdėtų ekranas */
-function lockAnchoring(lock: boolean) {
-  const root = document.documentElement
-  if (!root) return
-  if (lock) root.style.setProperty('overflow-anchor', 'none')
-  else root.style.removeProperty('overflow-anchor')
-}
-
-/* ===== Mobilus „pin to heading“ (rAF kilpa, perskaičiuoja tikslą kiekvieną frame) ===== */
-let _pinRaf: number | null = null
-let _pinUntil = 0
-function stopPin() {
-  if (_pinRaf) cancelAnimationFrame(_pinRaf)
-  _pinRaf = null
-  _pinUntil = 0
-}
-function pinHeading(id: string, ms = ANIM_MS + 260) {
-  stopPin()
-  lockAnchoring(true)
-  _pinUntil = performance.now() + ms
-
-  const tick = () => {
-    const y = targetYForHeading(id)
-    // Instant reposition – be smooth, kad neliptų į footerį
-    window.scrollTo(0, y)
-    if (performance.now() < _pinUntil) {
-      _pinRaf = requestAnimationFrame(tick)
-    } else {
-      stopPin()
-      // final „snap“ + mažas saugiklis prieš iOS/Chrome toolbar pokyčius
-      const y1 = targetYForHeading(id)
-      window.scrollTo(0, y1)
-      setTimeout(() => {
-        const y2 = targetYForHeading(id)
-        if (Math.abs(window.scrollY - y2) > 2) window.scrollTo(0, y2)
-        lockAnchoring(false)
-      }, 100)
+  if (Math.abs(diff) < 2) return Promise.resolve()
+  
+  return new Promise<void>((resolve) => {
+    const start = performance.now()
+    const step = (now: number) => {
+      const p = Math.min(1, (now - start) / duration)
+      const y = startY + diff * easeInOutCubic(p)
+      window.scrollTo(0, y)
+      if (p < 1) {
+        requestAnimationFrame(step)
+      } else {
+        resolve()
+      }
     }
-  }
-  _pinRaf = requestAnimationFrame(tick)
+    requestAnimationFrame(step)
+  })
 }
 
-/* ===== Akordeonas ===== */
+function scrollToElement(id: string, offset = 16) {
+  const el = document.getElementById(id)
+  if (!el) return
+  const rect = el.getBoundingClientRect()
+  const targetY = window.scrollY + rect.top - getHeaderOffset() - offset
+  return smoothScrollTo(targetY, 500)
+}
+
 function AccordionItem({
-  id, title, children, openId, setOpenId, requestSwitch,
+  id, title, children, openId, setOpenId, onToggle,
 }: {
   id: string
   title: string
   children: React.ReactNode
   openId: string | null
   setOpenId: (v: string | null) => void
-  requestSwitch: (targetId: string) => void
+  onToggle: (id: string, willOpen: boolean) => void
 }) {
   const open = openId === id
-  const reduceMotion = isMobile() // mobilėje – be aukščio animacijos, kad nelūžtų layout
+  const contentRef = useRef<HTMLDivElement>(null)
 
   const handleToggle = () => {
     const willOpen = !open
-    if (willOpen) requestSwitch(id)
-    else setOpenId(null)
+    onToggle(id, willOpen)
   }
 
   const handleContentClick = (e: React.MouseEvent) => {
-    if (!open || !isMobile()) return
+    if (!open) return
     const target = e.target as HTMLElement
     if (isInteractive(target)) return
-    setOpenId(null)
+    if (isMobile()) {
+      setOpenId(null)
+    }
   }
 
   return (
     <div
       id={id}
       className={[
-        'rounded-2xl border shadow-sm transition-colors',
+        'rounded-2xl border shadow-sm transition-all duration-300',
         open
-          ? 'bg-white border-primary-400 ring-1 ring-primary-300'
-          : 'bg-primary-50 border-primary-300 hover:bg-primary-100',
+          ? 'bg-white border-primary-400 ring-2 ring-primary-300 shadow-md'
+          : 'bg-primary-50 border-primary-300 hover:bg-primary-100 hover:shadow',
         'scroll-mt-28 md:scroll-mt-32'
       ].join(' ')}
     >
       <button
         onClick={handleToggle}
-        className="w-full flex items-center justify-between gap-4 px-5 py-4"
+        className="w-full flex items-center justify-between gap-4 px-5 py-4 transition-colors"
         aria-expanded={open}
         aria-controls={`${id}-panel`}
       >
@@ -152,12 +119,16 @@ function AccordionItem({
           <motion.div
             id={`${id}-panel`}
             key={`${id}-panel`}
+            ref={contentRef}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.35, ease: 'easeInOut' }}
+            transition={{ 
+              duration: ANIM_DURATION, 
+              ease: [0.4, 0, 0.2, 1],
+              opacity: { duration: ANIM_DURATION * 0.6 }
+            }}
             className="overflow-hidden"
-            style={{ contain: 'layout', willChange: 'height' }}
           >
             <div className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed" onClick={handleContentClick}>
               {children}
@@ -169,7 +140,6 @@ function AccordionItem({
   )
 }
 
-/* ===== Puslapis ===== */
 export default function Services() {
   const sections: Svc[] = useMemo(() => [
     {
@@ -178,7 +148,7 @@ export default function Services() {
       content: (
         <div className="space-y-3">
           <p>
-            „Bangų Odontologijos Klinika“ suteiks skubią pagalbą, jei skauda dantį, iškrito plomba, nuskilo dantis ar
+            „Bangų Odontologijos Klinika" suteiks skubią pagalbą, jei skauda dantį, iškrito plomba, nuskilo dantis ar
             skubiai prireikė kitų odontologo paslaugų. Nereikės laukti eilėje – priimsime jus kaip įmanoma greičiau.
           </p>
         </div>
@@ -384,7 +354,21 @@ export default function Services() {
     {
       id: 'burnos-chirurgija',
       title: 'Burnos chirurgija',
-      content: <p>Informacija ruošiama, sugrįžkite artimiausiu metu!</p>,
+      content: (
+        <div className="space-y-3">
+          <p>
+            Burnos chirurgija – tai dantenų ir žandikaulių ligų gydymas, dantų traukimas, implantų įstatymas,
+            kaulo priauginimas ir kitos procedūros.
+          </p>
+          <p>
+            Mūsų klinikoje atliekamos įvairios burnos chirurgijos procedūros, įskaitant išminties dantų šalinimą,
+            cistos pašalinimą, kaulo augmentaciją prieš implantaciją bei kitas būtinas operacijas.
+          </p>
+          <p className="text-sm text-gray-600">
+            Dėl išsamesnės informacijos ir konsultacijos kreipkitės į kliniką.
+          </p>
+        </div>
+      ),
     },
     {
       id: 'dantu-balinimas',
@@ -443,86 +427,83 @@ export default function Services() {
 
   const { hash, pathname } = useLocation()
   const [openId, setOpenId] = useState<string | null>(null)
+  const isAnimatingRef = useRef(false)
 
-  // laikmačiai (PC animacijoms)
-  const tCloseRef = useRef<number | null>(null)
-  const tOpenRef = useRef<number | null>(null)
+  const handleToggle = async (id: string, willOpen: boolean) => {
+    if (isAnimatingRef.current) return
+    isAnimatingRef.current = true
 
-  const requestSwitch = (targetId: string) => {
-    const mobile = isMobile()
-
-    // --- PC LOGIKA (nekeičiam) ---
-    if (!mobile) {
-      if (!openId) {
-        lockAnchoring(true)
-        smoothScrollTo(targetYForHeading(targetId))
-        tOpenRef.current && window.clearTimeout(tOpenRef.current)
-        tOpenRef.current = window.setTimeout(() => {
-          setOpenId(targetId)
-          window.setTimeout(() => {
-            smoothScrollTo(targetYForHeading(targetId), 260)
-            lockAnchoring(false)
-          }, ANIM_MS + 40)
-        }, 40)
-        return
-      }
-      if (openId === targetId) {
-        smoothScrollTo(targetYForHeading(targetId))
-        return
-      }
-      lockAnchoring(true)
+    if (!willOpen) {
+      // Closing
       setOpenId(null)
-      tCloseRef.current && window.clearTimeout(tCloseRef.current)
-      tOpenRef.current && window.clearTimeout(tOpenRef.current)
-      tCloseRef.current = window.setTimeout(() => {
-        smoothScrollTo(targetYForHeading(targetId))
-        tOpenRef.current = window.setTimeout(() => {
-          setOpenId(targetId)
-          window.setTimeout(() => {
-            smoothScrollTo(targetYForHeading(targetId), 260)
-            lockAnchoring(false)
-          }, ANIM_MS + 40)
-        }, 80)
-      }, ANIM_MS + 20)
+      isAnimatingRef.current = false
       return
     }
 
-    // --- MOBILE: vienu ėjimu atidarom ir „prisukam“ prie viršaus
-    setOpenId(targetId)
-    pinHeading(targetId, ANIM_MS + 320)
+    if (openId && openId !== id) {
+      // Close current, then open new
+      setOpenId(null)
+      await new Promise(resolve => setTimeout(resolve, ANIM_DURATION * 1000))
+    }
+
+    setOpenId(id)
+    
+    // Wait for animation to start
+    await new Promise(resolve => setTimeout(resolve, 50))
+    
+    // Scroll to element
+    await scrollToElement(id)
+    
+    isAnimatingRef.current = false
   }
 
   useEffect(() => {
-    return () => {
-      if (_rafId) cancelAnimationFrame(_rafId)
-      if (tCloseRef.current) window.clearTimeout(tCloseRef.current)
-      if (tOpenRef.current) window.clearTimeout(tOpenRef.current)
-      stopPin()
+    if (pathname === '/paslaugos' && !hash) {
+      setOpenId(null)
     }
-  }, [])
-
-  // Į /paslaugos be hash — viskas uždaryta
-  useEffect(() => {
-    if (pathname === '/paslaugos' && !hash) setOpenId(null)
   }, [pathname, hash])
 
-  // Hash navigacija (pvz., /paslaugos#implantai) – veiks iš navbar dropdown
   useEffect(() => {
     const target = (hash || '').replace('#', '')
     if (!target) return
     if (!sections.some(s => s.id === target)) return
-    if (isMobile()) {
-      setOpenId(target)
-      pinHeading(target, ANIM_MS + 320)
-    } else {
-      requestSwitch(target)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hash])
 
-  // Įvažiavimo animacijos
-  const listVariants = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.06 } } }
-  const itemVariants = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } }
+    const openSection = async () => {
+      if (openId && openId !== target) {
+        setOpenId(null)
+        await new Promise(resolve => setTimeout(resolve, ANIM_DURATION * 1000))
+      }
+      
+      setOpenId(target)
+      await new Promise(resolve => setTimeout(resolve, 100))
+      scrollToElement(target)
+    }
+
+    openSection()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hash, sections])
+
+  const listVariants = { 
+    hidden: { opacity: 0 }, 
+    visible: { 
+      opacity: 1, 
+      transition: { 
+        staggerChildren: 0.05,
+        delayChildren: 0.1 
+      } 
+    } 
+  }
+  const itemVariants = { 
+    hidden: { opacity: 0, y: 20 }, 
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.4,
+        ease: [0.4, 0, 0.2, 1]
+      }
+    } 
+  }
 
   return (
     <>
@@ -533,15 +514,20 @@ export default function Services() {
 
       <AnimatedSection>
         <div className="container-narrow py-10 md:py-12">
-          <header className="mb-6">
+          <header className="mb-8">
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-600">Paslaugos</h1>
-            <p className="mt-2 text-gray-600">
+            <p className="mt-3 text-gray-600 max-w-2xl">
               Išsirinkite dominančią paslaugą – atsidarys išsamus aprašas. Visos sekcijos pagal nutylėjimą uždarytos,
               kad būtų patogu naršyti.
             </p>
           </header>
 
-          <motion.div variants={listVariants} initial="hidden" animate="visible" className="grid gap-4">
+          <motion.div 
+            variants={listVariants} 
+            initial="hidden" 
+            animate="visible" 
+            className="grid gap-4"
+          >
             {sections.map((s) => (
               <motion.div key={s.id} variants={itemVariants}>
                 <AccordionItem
@@ -549,7 +535,7 @@ export default function Services() {
                   title={s.title}
                   openId={openId}
                   setOpenId={setOpenId}
-                  requestSwitch={requestSwitch}
+                  onToggle={handleToggle}
                 >
                   {s.content}
                 </AccordionItem>
