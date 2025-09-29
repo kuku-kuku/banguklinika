@@ -31,7 +31,7 @@ function getHeaderOffset(): number {
   return sticky ? sticky.getBoundingClientRect().height : 76
 }
 
-/* ===== Smooth scroll helperiai ===== */
+/* ===== Scroll helperiai ===== */
 let _rafId: number | null = null
 function easeInOutCubic(t: number) {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
@@ -56,15 +56,8 @@ function targetYForHeading(id: string) {
   const rect = el.getBoundingClientRect()
   return window.scrollY + rect.top - getHeaderOffset() - 8
 }
-function ensureHeadingVisible(id: string) {
-  const el = document.getElementById(id)
-  if (!el) return
-  const rect = el.getBoundingClientRect()
-  const need = rect.top - (getHeaderOffset() + 8)
-  if (Math.abs(need) > 4) smoothScrollTo(window.scrollY + need, 300)
-}
 
-/* Perjungimo metu išjungiam overflow anchoring, kad nespurdėtų ekranas */
+/* Perjungimo metu – OFF overflow anchoring, kad nespurdėtų ekranas */
 function lockAnchoring(lock: boolean) {
   const root = document.documentElement
   if (!root) return
@@ -72,7 +65,41 @@ function lockAnchoring(lock: boolean) {
   else root.style.removeProperty('overflow-anchor')
 }
 
-/* ===== Akordeono elementas ===== */
+/* ===== Mobilus „pin to heading“ (rAF kilpa, perskaičiuoja tikslą kiekvieną frame) ===== */
+let _pinRaf: number | null = null
+let _pinUntil = 0
+function stopPin() {
+  if (_pinRaf) cancelAnimationFrame(_pinRaf)
+  _pinRaf = null
+  _pinUntil = 0
+}
+function pinHeading(id: string, ms = ANIM_MS + 260) {
+  stopPin()
+  lockAnchoring(true)
+  _pinUntil = performance.now() + ms
+
+  const tick = () => {
+    const y = targetYForHeading(id)
+    // Instant reposition – be smooth, kad neliptų į footerį
+    window.scrollTo(0, y)
+    if (performance.now() < _pinUntil) {
+      _pinRaf = requestAnimationFrame(tick)
+    } else {
+      stopPin()
+      // final „snap“ + mažas saugiklis prieš iOS/Chrome toolbar pokyčius
+      const y1 = targetYForHeading(id)
+      window.scrollTo(0, y1)
+      setTimeout(() => {
+        const y2 = targetYForHeading(id)
+        if (Math.abs(window.scrollY - y2) > 2) window.scrollTo(0, y2)
+        lockAnchoring(false)
+      }, 100)
+    }
+  }
+  _pinRaf = requestAnimationFrame(tick)
+}
+
+/* ===== Akordeonas ===== */
 function AccordionItem({
   id, title, children, openId, setOpenId, requestSwitch,
 }: {
@@ -84,6 +111,7 @@ function AccordionItem({
   requestSwitch: (targetId: string) => void
 }) {
   const open = openId === id
+  const reduceMotion = isMobile() // mobilėje – be aukščio animacijos, kad nelūžtų layout
 
   const handleToggle = () => {
     const willOpen = !open
@@ -104,9 +132,7 @@ function AccordionItem({
       className={[
         'rounded-2xl border shadow-sm transition-colors',
         open
-          // ATIDARYTA: balta su aiškiu rėmeliu/ringu
           ? 'bg-white border-primary-400 ring-1 ring-primary-300'
-          // UŽDARYTA: TURKIO fonas visada, ne tik hover
           : 'bg-primary-50 border-primary-300 hover:bg-primary-100',
         'scroll-mt-28 md:scroll-mt-32'
       ].join(' ')}
@@ -129,8 +155,9 @@ function AccordionItem({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: 'easeInOut' }}
+            transition={{ duration: reduceMotion ? 0 : 0.35, ease: 'easeInOut' }}
             className="overflow-hidden"
+            style={{ contain: 'layout', willChange: 'height' }}
           >
             <div className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed" onClick={handleContentClick}>
               {children}
@@ -417,49 +444,60 @@ export default function Services() {
   const { hash, pathname } = useLocation()
   const [openId, setOpenId] = useState<string | null>(null)
 
+  // laikmačiai (PC animacijoms)
   const tCloseRef = useRef<number | null>(null)
   const tOpenRef = useRef<number | null>(null)
+
   const requestSwitch = (targetId: string) => {
-    if (!openId) {
+    const mobile = isMobile()
+
+    // --- PC LOGIKA (nekeičiam) ---
+    if (!mobile) {
+      if (!openId) {
+        lockAnchoring(true)
+        smoothScrollTo(targetYForHeading(targetId))
+        tOpenRef.current && window.clearTimeout(tOpenRef.current)
+        tOpenRef.current = window.setTimeout(() => {
+          setOpenId(targetId)
+          window.setTimeout(() => {
+            smoothScrollTo(targetYForHeading(targetId), 260)
+            lockAnchoring(false)
+          }, ANIM_MS + 40)
+        }, 40)
+        return
+      }
+      if (openId === targetId) {
+        smoothScrollTo(targetYForHeading(targetId))
+        return
+      }
       lockAnchoring(true)
-      smoothScrollTo(targetYForHeading(targetId))
+      setOpenId(null)
+      tCloseRef.current && window.clearTimeout(tCloseRef.current)
       tOpenRef.current && window.clearTimeout(tOpenRef.current)
-      tOpenRef.current = window.setTimeout(() => {
-        setOpenId(targetId)
-        window.setTimeout(() => {
-          ensureHeadingVisible(targetId)
-          lockAnchoring(false)
-        }, ANIM_MS + 40)
-      }, 40)
+      tCloseRef.current = window.setTimeout(() => {
+        smoothScrollTo(targetYForHeading(targetId))
+        tOpenRef.current = window.setTimeout(() => {
+          setOpenId(targetId)
+          window.setTimeout(() => {
+            smoothScrollTo(targetYForHeading(targetId), 260)
+            lockAnchoring(false)
+          }, ANIM_MS + 40)
+        }, 80)
+      }, ANIM_MS + 20)
       return
     }
 
-    if (openId === targetId) {
-      smoothScrollTo(targetYForHeading(targetId))
-      return
-    }
-
-    lockAnchoring(true)
-    setOpenId(null)
-    tCloseRef.current && window.clearTimeout(tCloseRef.current)
-    tOpenRef.current && window.clearTimeout(tOpenRef.current)
-
-    tCloseRef.current = window.setTimeout(() => {
-      smoothScrollTo(targetYForHeading(targetId))
-      tOpenRef.current = window.setTimeout(() => {
-        setOpenId(targetId)
-        window.setTimeout(() => {
-          ensureHeadingVisible(targetId)
-          lockAnchoring(false)
-        }, ANIM_MS + 40)
-      }, 80)
-    }, ANIM_MS + 20)
+    // --- MOBILE: vienu ėjimu atidarom ir „prisukam“ prie viršaus
+    setOpenId(targetId)
+    pinHeading(targetId, ANIM_MS + 320)
   }
 
   useEffect(() => {
     return () => {
+      if (_rafId) cancelAnimationFrame(_rafId)
       if (tCloseRef.current) window.clearTimeout(tCloseRef.current)
       if (tOpenRef.current) window.clearTimeout(tOpenRef.current)
+      stopPin()
     }
   }, [])
 
@@ -468,12 +506,17 @@ export default function Services() {
     if (pathname === '/paslaugos' && !hash) setOpenId(null)
   }, [pathname, hash])
 
-  // Hash navigacija (pvz., /paslaugos#implantai atidarys atitinkamą sekciją)
+  // Hash navigacija (pvz., /paslaugos#implantai) – veiks iš navbar dropdown
   useEffect(() => {
     const target = (hash || '').replace('#', '')
     if (!target) return
     if (!sections.some(s => s.id === target)) return
-    requestSwitch(target)
+    if (isMobile()) {
+      setOpenId(target)
+      pinHeading(target, ANIM_MS + 320)
+    } else {
+      requestSwitch(target)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hash])
 

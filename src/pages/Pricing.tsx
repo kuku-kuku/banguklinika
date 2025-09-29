@@ -15,7 +15,7 @@ export default function Pricing() {
         transition={{ duration: 0.45, ease: 'easeOut' }}
       >
         <motion.h1
-          className="text-3xl font-bold mb-3"
+          className="text-3xl font-bold mb-3 text-darkblue-700"
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.05 }}
@@ -32,7 +32,7 @@ export default function Pricing() {
           Žemiau rasite pagrindines kategorijas — spustelkite kortelę, kad peržiūrėtumėte konkrečias paslaugas ir kainas.
         </motion.p>
 
-        {/* Kortelės pačios įeina „stagger“ principu viduje PricingCards */}
+        {/* Kortelės (stagger animacija viduje) */}
         <PricingCards />
 
         <motion.p

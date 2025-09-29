@@ -53,12 +53,10 @@ function GroupCard({ group, isOpen, onToggle }: { group: PriceGroup; isOpen: boo
       layout="position"
       id={id}
       className={clsx(
-        // kortelės bazė
-        'rounded-2xl border shadow-sm overflow-hidden self-start transition-colors scroll-mt-28 md:scroll-mt-32',
-        // būsena: uždaryta / atidaryta
+        'rounded-2xl border shadow-soft overflow-hidden self-start transition-colors scroll-mt-28 md:scroll-mt-32',
         isOpen
-          ? 'bg-primary-100 border-primary-400 ring-1 ring-primary-500'
-          : 'bg-primary-50 border-primary-300 hover:bg-primary-100'
+          ? 'bg-brand-50 border-brand ring-2 ring-white'     // atidaryta: „turkio su baltu kraštu“
+          : 'bg-brand-50 border-brand hover:bg-brand-100'    // uždaryta: turkio kortelė
       )}
     >
       <button
@@ -67,22 +65,21 @@ function GroupCard({ group, isOpen, onToggle }: { group: PriceGroup; isOpen: boo
         aria-controls={`${id}-content`}
         className={clsx(
           'w-full flex items-center justify-between gap-4 px-4 py-4 text-left min-h-[92px] transition-colors',
-          // jokio atskiro fono — paveldi iš kortelės
-          // tik apatinis skirtukas, šiek tiek ryškesnis atidarius
-          isOpen ? 'border-b border-primary-300' : 'border-b border-primary-200'
+          isOpen ? 'border-b border-brand/40' : 'border-b border-brand/30'
         )}
       >
         <div className="flex items-center gap-3">
           <span
             className={clsx(
               'w-9 h-9 rounded-xl grid place-items-center transition-colors',
-              isOpen ? 'bg-primary-200 text-primary-800' : 'bg-primary-100 text-primary-700'
+              isOpen ? 'bg-brand-100 text-brand' : 'bg-brand-50 text-brand'
             )}
           >
             <Icon title={group.title} />
           </span>
           <div className="min-w-0">
-            <div className="font-semibold truncate text-darkblue-600">{group.title}</div>
+            {/* Kategorijos pavadinimas — TURKIO */}
+            <div className="font-bold truncate text-slate-900">{group.title}</div>
             <div className="text-xs text-gray-600">{summary} • {group.items.length} poz.</div>
           </div>
         </div>
@@ -99,20 +96,25 @@ function GroupCard({ group, isOpen, onToggle }: { group: PriceGroup; isOpen: boo
             transition={{ type: 'spring', stiffness: 260, damping: 28 }}
             className="overflow-hidden"
           >
+            {/* Baltas kainų sąrašas */}
             <div className="px-2 py-2">
-              <table className="w-full text-sm">
-                <tbody className={clsx('divide-y', isOpen ? 'divide-primary-200' : 'divide-primary-100')}>
-                  {group.items.map((p, i) => (
-                    <tr key={i}>
-                      <td className="p-3 align-top">
-                        {p.name}
-                        {p.note && <span className="block text-xs text-gray-600">{p.note}</span>}
-                      </td>
-                      <td className="p-3 w-40 font-medium text-right whitespace-nowrap">{fmt(p.from, p.to)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <div className="rounded-xl bg-white border border-brand/30 overflow-hidden">
+                <table className="w-full text-sm">
+                  <tbody className="divide-y divide-slate-100">
+                    {group.items.map((p, i) => (
+                      <tr key={i}>
+                        <td className="p-3 align-top">
+                          <span className="text-slate-900">{p.name}</span>
+                          {p.note && <span className="block text-xs text-gray-600 mt-0.5">{p.note}</span>}
+                        </td>
+                        <td className="p-3 w-40 font-semibold text-right whitespace-nowrap text-darkblue-700">
+                          {fmt(p.from, p.to)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </motion.div>
         )}
@@ -125,7 +127,6 @@ export default function PricingCards() {
   const [openId, setOpenId] = useState<string | null>(null)
   const location = useLocation()
 
-  // atidaryk konkrečią kortą jei ateinam su #hash ir nuscrollink
   useEffect(() => {
     if (!location.hash) return
     const id = slugify(decodeURIComponent(location.hash.slice(1)))
@@ -136,7 +137,6 @@ export default function PricingCards() {
     }
   }, [location.hash])
 
-  // Stagger animacijai
   const containerVariants = {
     hidden: { opacity: 0, y: 8 },
     visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.06 } },
