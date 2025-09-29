@@ -71,7 +71,7 @@ async function smoothAlignToElement(id: string, offset = 16, ms = 300) {
   await smoothScrollTo(targetY, ms)
 }
 
-/** Laiko sekcijos viršų toje pačioje vietoje animacijos metu (kompensuoja aukščio pokyčius). */
+/** Keeps section top in same place during animation (compensates for height changes). */
 function keepAnchorDuring(el: HTMLElement, ms: number) {
   let raf = 0
   const start = performance.now()
@@ -106,13 +106,6 @@ function AccordionItem({
   const open = openId === id
 
   const handleToggle = () => onToggle(id, !open)
-
-  const handleContentClick = (e: React.MouseEvent) => {
-    if (!open) return
-    const target = e.target as HTMLElement
-    if (isInteractive(target)) return
-    if (isMobile()) setOpenId(null)
-  }
 
   return (
     <div
@@ -150,7 +143,7 @@ function AccordionItem({
             }}
             className="overflow-hidden"
           >
-            <div className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed" onClick={handleContentClick}>
+            <div className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed">
               {children}
             </div>
           </motion.div>
