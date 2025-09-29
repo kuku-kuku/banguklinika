@@ -27,18 +27,15 @@ export default function Footer() {
           <Link
             to="/"
             aria-label="Bangų klinika — pradžia"
-            className="inline-flex items-center"
+            className="inline-flex items-center gap-3"
           >
-            {/* VARIANTAS A: paveikslėlis (invertuoja į baltą) */}
+            {/* Naudojam sugeneruotą logotipą su baltu tekstu */}
             <img
-              src="/logo.png"
+              src="/logo1.png"
               alt="Bangų klinika"
-              className="h-8 sm:h-10 w-auto object-contain select-none invert"
+              className="h-12 sm:h-20 w-auto object-contain select-none"
               draggable={false}
             />
-
-            {/* VARIANTAS B: Tekstinis baltas logotipas */}
-            {/* <TextLogo className="ml-2" /> */}
           </Link>
 
           <p className="text-xs text-white/80 max-w-xs">
@@ -56,7 +53,7 @@ export default function Footer() {
 
         {/* Navigation */}
         <div>
-          <h4 className="text-sm font-semibold mb-3">Navigacija</h4>
+          <h4 className="text-sm font-semibold mb-3 text-white">Navigacija</h4>
           <ul className="space-y-2">
             <li><Link to="/paslaugos" className="footer-link">Paslaugos</Link></li>
             <li><Link to="/kainos" className="footer-link">Kainos</Link></li>
@@ -67,7 +64,7 @@ export default function Footer() {
 
         {/* Contacts */}
         <div>
-          <h4 className="text-sm font-semibold mb-3">Kontaktai</h4>
+          <h4 className="text-sm font-semibold mb-3 text-white">Kontaktai</h4>
           <ul className="space-y-2">
             <li className="footer-pin">
               <MapPin size={14} />
@@ -90,7 +87,7 @@ export default function Footer() {
 
         {/* Hours */}
         <div>
-          <h4 className="text-sm font-semibold mb-3">Darbo laikas</h4>
+          <h4 className="text-sm font-semibold mb-3 text-white">Darbo laikas</h4>
           <ul className="space-y-1">
             {CLINIC.hours.map(h => (
               <li key={h.day} className="inline-flex items-center gap-2 text-white/90">
