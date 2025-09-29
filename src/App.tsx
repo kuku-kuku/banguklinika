@@ -1,3 +1,4 @@
+// src/App.tsx
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -10,15 +11,25 @@ import SpecialOffers from './pages/SpecialOffers'
 
 import ScrollToTop from './components/ScrollToTop'
 import BackToTop from './components/BackToTop'
+import HeroWave from './components/HeroWave'
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Scroll valdymas (refresh + route change → į viršų) */}
+    <div className="min-h-screen flex flex-col bg-white">
       <ScrollToTop />
-
       <Navbar />
-      <main className="flex-1">
+
+      {/* Banga – fone, po navbaru */}
+      <div
+        className="fixed top-[var(--nav-h)] left-0 right-0 z-0 pointer-events-none"
+        aria-hidden
+        style={{ willChange: 'transform' }}
+      >
+        <HeroWave className="h-[180px] md:h-[200px] lg:h-[220px]" />
+      </div>
+
+      {/* Visas turinys eina virš bangos */}
+      <main className="flex-1 relative z-10 overflow-visible">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/apie" element={<About />} />
@@ -28,9 +39,8 @@ export default function App() {
           <Route path="/kontaktai" element={<Contact />} />
         </Routes>
       </main>
-      <Footer />
 
-      {/* „Grįžti į viršų“ mygtukas */}
+      <Footer />
       <BackToTop />
     </div>
   )

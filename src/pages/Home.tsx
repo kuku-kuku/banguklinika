@@ -1,10 +1,14 @@
+// src/pages/Home.tsx
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+
 import SEO from '../components/SEO'
-import Hero from '../components/Hero'
 import ServiceCard from '../components/ServiceCard'
 import FAQ from '../components/FAQ'
 import AnimatedSection from '../components/AnimatedSection'
 import { SERVICES } from '../data/services'
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { CLINIC } from '../data/clinic'
 
 /** Simple local star icon (no extra deps) */
 function StarIcon({ filled = true, className = "w-4 h-4" }: { filled?: boolean; className?: string }) {
@@ -169,12 +173,41 @@ function GoogleReviews() {
 /** Tiny keyframes (reserved) */
 const globalStyles = `
 @keyframes fadeInUp { 
-  0% { opacity: 0, transform: translateY(8px) } 
-  100% { opacity: 1, transform: translateY(0) }
+  0% { opacity: 0, transform: translateY(8px); } 
+  100% { opacity: 1, transform: translateY(0); }
 }
 `;
 
 export default function Home() {
+  /* ====== HeroCarousel state (inlined) ====== */
+  const images = ['/hero.jpg', '/hero1.jpg', '/hero2.jpg', '/hero3.jpg']
+  const [index, setIndex] = useState(0)
+  const [auto, setAuto] = useState(true)
+  const timerRef = useRef<number | null>(null)
+  const touchX = useRef<number | null>(null)
+
+  useEffect(() => {
+    if (!auto) return
+    if (timerRef.current) window.clearTimeout(timerRef.current)
+    timerRef.current = window.setTimeout(() => {
+      setIndex(i => (i + 1) % images.length)
+    }, 5000)
+    return () => { if (timerRef.current) window.clearTimeout(timerRef.current) }
+  }, [index, auto, images.length])
+
+  const onTouchStart = (e: React.TouchEvent) => { touchX.current = e.touches[0].clientX }
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchX.current == null) return
+    const dx = e.changedTouches[0].clientX - touchX.current
+    if (Math.abs(dx) > 40) {
+      setAuto(false)
+      setIndex(i => (i + (dx < 0 ? 1 : -1) + images.length) % images.length)
+    }
+    touchX.current = null
+  }
+  const go = (dir: 1 | -1) => { setAuto(false); setIndex(i => (i + dir + images.length) % images.length) }
+  const goTo = (i: number) => { setAuto(false); setIndex(i) }
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: globalStyles }} />
@@ -183,40 +216,147 @@ export default function Home() {
         description="Gydymas, implantai, CEREC protezavimas, burnos higiena ir estetika. Nemokama pirminė konsultacija."
       />
 
-      {/* HERO */}
-      <div className="no-x-scroll pan-y">
-        <Hero />
-      </div>
-
-      {/* POPULIARIAUSIOS PASLAUGOS */}
-      <AnimatedSection>
-        <div className="container-narrow no-x-scroll pan-y">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-darkblue-600 tracking-tight" style={{ wordBreak: 'keep-all' }}>
-            Populiariausios paslaugos
-          </h2>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-1fr">
-            {SERVICES.map((s, i) => (
-              <ServiceCard key={s.id} s={s} i={i} />
-            ))}
+      {/* ===================== HERO (inlined, be gradientų) ===================== */}
+      <div className="relative overflow-visible">
+        <section className="relative overflow-visible pan-y">
+          {/* Fonas: tik burbulai (be gradiento), kad banga matytųsi fone */}
+          <div className="pointer-events-none absolute inset-0 -z-10">
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute -top-16 -left-24 w-96 h-96 bg-sky-100/40 blur-3xl rounded-full" />
+              <div className="absolute -bottom-20 -right-16 w-[28rem] h-[28rem] bg-primary-100/40 blur-3xl rounded-full" />
+            </div>
           </div>
-        </div>
-      </AnimatedSection>
 
-      {/* KODĖL VERTA RINKTIS BANGŲ KLINIKĄ — colored boxes with brand TURQUOISE */}
+          <div className="relative z-20 container-narrow grid md:grid-cols-2 gap-10 items-center py-12 md:py-20">
+            {/* Left */}
+            <div className="space-y-6">
+              <motion.h1
+                className="text-4xl md:text-5xl font-bold leading-tight tracking-tight text-slate-900"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: .6 }}
+              >
+                Šypsena, kuria norisi rodyti
+              </motion.h1>
+
+              <motion.p
+                className="text-gray-600 text-lg max-w-xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: .1, duration: .6 }}
+              >
+                Gydymas, implantacija, CEREC protezavimas, higiena ir estetika – vienoje klinikoje.
+                Greita registracija, švelnus požiūris, aiškios kainos.
+              </motion.p>
+
+              {/* CTA buttons */}
+              <motion.div
+                className="grid grid-cols-2 gap-2 items-stretch md:inline-flex md:flex-wrap md:gap-3"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: .2, duration: .5 }}
+              >
+                <a
+                  href={`tel:${CLINIC.phone}`}
+                  className="btn-primary w-full justify-center rounded-xl text-sm md:text-base"
+                >
+                  Registracija telefonu
+                </a>
+                <Link
+                  to="/kontaktai"
+                  className="btn-primary w-full justify-center rounded-xl text-sm md:text-base"
+                >
+                  Registracija internetu
+                </Link>
+              </motion.div>
+
+              {/* quick features */}
+              <ul className="text-sm text-gray-600 grid grid-cols-2 gap-y-2 mt-4">
+                <li>• Straumann® / Medentika® implantai</li>
+                <li>• CEREC – vainikėliai per 1 vizitą</li>
+                <li>• Estetinis plombavimas</li>
+                <li>• Profesionali higiena (AIRFLOW®)</li>
+              </ul>
+            </div>
+
+            {/* Right — HERO CAROUSEL (inlined) */}
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, scale: .98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: .6 }}
+            >
+              <div
+                className="relative aspect-[4/3] rounded-2xl overflow-hidden ring-1 ring-slate-200 shadow-sm bg-white"
+                onTouchStart={onTouchStart}
+                onTouchEnd={onTouchEnd}
+                style={{ willChange: 'transform' }}
+              >
+                <AnimatePresence initial={false} mode="wait">
+                  <motion.img
+                    key={index}
+                    src={images[index]}
+                    alt="Bangų klinika"
+                    className="absolute inset-0 w-full h-full object-cover select-none"
+                    initial={{ opacity: 0, scale: 1.02 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0.0, scale: 0.995 }}
+                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                    decoding="async"
+                    loading="eager"
+                    onError={(e) => {
+                      (e.currentTarget.parentElement as HTMLElement).style.background =
+                        'linear-gradient(135deg,#CFE9FF 0%,#8BD3F7 45%,#4FC3F7 100%)'
+                    }}
+                  />
+                </AnimatePresence>
+
+                {/* Controls */}
+                <button
+                  aria-label="Ankstesnė nuotrauka"
+                  onClick={() => go(-1)}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/70 hover:bg-white ring-1 ring-white/60 text-darkblue-700 text-xl transition"
+                >
+                  ‹
+                </button>
+                <button
+                  aria-label="Kita nuotrauka"
+                  onClick={() => go(1)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/70 hover:bg-white ring-1 ring-white/60 text-darkblue-700 text-xl transition"
+                >
+                  ›
+                </button>
+
+                {/* dots */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                  {images.map((_, i) => (
+                    <button
+                      key={i}
+                      aria-label={`Rodyti ${i + 1} nuotrauką`}
+                      onClick={() => goTo(i)}
+                      className={`h-2.5 rounded-full transition-all ${i === index ? 'w-6 bg-white' : 'w-2.5 bg-white/60 hover:bg-white/80'}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </div>
+      {/* ===================== /HERO ===================== */}
+
+      {/* KODĖL VERTA RINKTIS BANGŲ KLINIKĄ */}
       <AnimatedSection>
         <div className="container-narrow no-x-scroll pan-y">
-          {/* Antraštė + aprašymas */}
           <div className="max-w-3xl mb-6">
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-darkblue-600">
               Kodėl verta rinktis <span className="text-brand">Bangų kliniką?</span>
             </h2>
             <p className="mt-2 text-gray-700">
-              Klinikoje yra laboratorija, kurioje nuolat dirba bei konsultuoja 20 metų patirtį turinti dantų technikė.
+              Moderni įranga, patyrusi komanda ir aiškus gydymo planas – kad kiekvienas vizitas būtų sklandus ir prognozuojamas.
             </p>
           </div>
 
-          {/* 3 ypatybės – bg-brand-50 + border-brand */}
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { t: 'Moderni įranga', d: 'CEREC skenavimas – greitesni ir tikslesni vizitai.' },
@@ -235,12 +375,27 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      {/* GOOGLE REVIEWS (carousel) */}
+      {/* POPULIARIAUSIOS PASLAUGOS */}
+      <AnimatedSection>
+        <div className="container-narrow no-x-scroll pan-y">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-darkblue-600 tracking-tight" style={{ wordBreak: 'keep-all' }}>
+            Populiariausios paslaugos
+          </h2>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-1fr">
+            {SERVICES.map((s, i) => (
+              <ServiceCard key={s.id} s={s} i={i} />
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* GOOGLE REVIEWS */}
       <div className="no-x-scroll pan-y">
         <GoogleReviews />
       </div>
 
-      {/* CTA – PIRMINĖ KONSULTACIJA — bg-brand-100 + border-brand */}
+      {/* CTA – PIRMINĖ KONSULTACIJA */}
       <AnimatedSection>
         <div className="container-narrow no-x-scroll pan-y">
           <div className="relative overflow-hidden rounded-2xl bg-brand-100 border border-brand shadow-soft">
@@ -250,13 +405,10 @@ export default function Home() {
               </h2>
               <p className="mt-3 sm:mt-4 text-base sm:text-lg max-w-2xl mx-auto text-darkblue-700/90">
                 Užsiregistruokite pirminiam įvertinimui ir gaukite{' '}
-                <span className="font-semibold">10–15% nuolaidą</span> testiniam gydymui pereinant į pilną gydymo planą.
+                <span className="font-semibold">10–15% nuolaidą</span> tęstiniam gydymui pereinant į pilną planą.
               </p>
               <div className="mt-6">
-                <a
-                  href="/kontaktai"
-                  className="inline-block bg-white text-darkblue-600 font-semibold py-3 px-7 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
-                >
+                <a href="/kontaktai" className="btn-primary rounded-full px-7 py-3 font-semibold">
                   Registracija internetu
                 </a>
               </div>
@@ -271,7 +423,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      {/* FAQ + Quick contact — bg-brand-50 + border-brand */}
+      {/* FAQ + Quick contact */}
       <AnimatedSection>
         <div className="container-narrow grid md:grid-cols-2 gap-8 items-start no-x-scroll pan-y">
           <div className="rounded-2xl bg-brand-50 p-6 transition border border-brand shadow-soft hover:shadow-md">

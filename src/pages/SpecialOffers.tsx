@@ -19,7 +19,7 @@ export default function SpecialOffers() {
     <AnimatedSection>
       <SEO
         title="Ypatingi pasiūlymai – Bangų klinika"
-        description="Pilna burnos higiena + BEYOND® dantų balinimas – 249 Eur. Registruokitės telefonu arba internetu."
+        description="Akcijos ir nuolaidos: pilna burnos higiena + BEYOND® balinimas už 249 € ir bendra nuolaida tęstiniam gydymui po pirminės apžiūros."
       />
 
       <motion.div
@@ -29,27 +29,42 @@ export default function SpecialOffers() {
         animate="visible"
       >
         <motion.header className="mb-6" variants={item}>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#10394F]">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700">
             Ypatingi pasiūlymai
           </h1>
         </motion.header>
 
+        {/* Bendra akcija tęstiniam gydymui */}
+        <motion.section
+          variants={item}
+          className="mb-6 rounded-2xl border border-brand bg-brand-50/60 p-5 shadow-soft"
+        >
+          <h2 className="text-lg sm:text-xl font-semibold text-darkblue-700">
+            Bendra akcija tęstiniam gydymui
+          </h2>
+          <p className="mt-2 text-slate-700">
+            Po nemokamos pirminės apžiūros taikomos{' '}
+            <span className="font-medium">nuolaidos tęstiniam gydymui</span>, pereinant į pilną gydymo planą.
+            Konkrečias nuolaidas ir sąlygas sužinosite registracijos metu.
+          </p>
+        </motion.section>
+
         {/* Spotlight pasiūlymas */}
         <motion.section
           variants={item}
-          className="relative overflow-hidden rounded-2xl ring-1 ring-slate-200 bg-white shadow-sm"
+          className="relative overflow-hidden rounded-2xl ring-1 ring-brand bg-white shadow-sm"
         >
           {/* Dekoratyvūs švytėjimai */}
-          <div className="pointer-events-none absolute -top-16 -left-20 w-72 h-72 rounded-full bg-sky-100/50 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-20 -right-16 w-80 h-80 rounded-full bg-sky-200/30 blur-3xl" />
+          <div className="pointer-events-none absolute -top-16 -left-20 w-72 h-72 rounded-full bg-brand-100/60 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-20 -right-16 w-80 h-80 rounded-full bg-brand-100/40 blur-3xl" />
 
           <div className="relative grid gap-6 p-6 sm:p-8 md:grid-cols-2">
             <div className="space-y-3">
-              <p className="text-sm uppercase tracking-wide text-[#1E88E5] font-semibold">
+              <p className="text-sm uppercase tracking-wide text-brand font-semibold">
                 Specialus pasiūlymas tobulai šypsenai
               </p>
 
-              <h2 className="text-2xl sm:text-3xl font-bold leading-snug text-[#10394F]">
+              <h2 className="text-2xl sm:text-3xl font-bold leading-snug text-darkblue-700">
                 Pilna burnos higiena + BEYOND® dantų balinimas
               </h2>
 
@@ -70,7 +85,7 @@ export default function SpecialOffers() {
               <div className="md:text-right">
                 <div className="text-sm text-slate-500">Dabar tik</div>
                 <div className="flex items-baseline gap-3 md:justify-end">
-                  <span className="text-3xl sm:text-4xl font-extrabold text-[#10394F]">249&nbsp;Eur</span>
+                  <span className="text-3xl sm:text-4xl font-extrabold text-darkblue-700">249&nbsp;Eur</span>
                   <span className="text-slate-400 line-through">280&nbsp;Eur</span>
                 </div>
               </div>
@@ -78,14 +93,14 @@ export default function SpecialOffers() {
               <div className="flex flex-wrap gap-3 md:justify-end">
                 <a
                   href={`tel:${CLINIC.phone}`}
-                  className="inline-block rounded-full px-6 py-3 font-semibold bg-[#10394F] text-white hover:opacity-95 transition shadow-sm"
+                  className="btn-primary rounded-full px-6 py-3 font-semibold"
                   aria-label="Skambinti dėl pasiūlymo"
                 >
                   Skambinti: {CLINIC.phone}
                 </a>
                 <Link
                   to="/kontaktai"
-                  className="inline-block rounded-full px-6 py-3 font-semibold bg-[#10394F] text-white/90 hover:text-white hover:opacity-95 transition shadow-sm"
+                  className="btn-primary rounded-full px-6 py-3 font-semibold"
                 >
                   Rašyti mums
                 </Link>
@@ -96,7 +111,7 @@ export default function SpecialOffers() {
 
         {/* Maža pastaba apačioje */}
         <motion.p className="text-xs text-slate-500 mt-4" variants={item}>
-          * Pasiūlymas galioja kol nurodyta svetainėje. Daugiau informacijos – registracijos metu.
+          * Pasiūlymai galioja kol nurodyta svetainėje. Daugiau informacijos – registracijos metu.
         </motion.p>
       </motion.div>
     </AnimatedSection>

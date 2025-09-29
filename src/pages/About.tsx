@@ -37,7 +37,7 @@ const team: Member[] = [
   { name: 'Martyna Pociutė', role: 'Gydytoja odontologė' },
   { name: 'Donatas Kubilius', role: 'Veido ir žandikaulių chirurgas', license: 'MPL-18980' },
   { name: 'Eglė Daknienė', role: 'Dantų technikė', license: 'BPL-04671' },
-  { name: 'Rūta Garšvienė', role: 'Burnos higienistė', license: 'BPL-07858' },
+  { name: 'Rūta Garšvienė', role: 'Burnos higienistė, gydymo tęstinumo kapoms koordinatorė', license: 'BPL-07858' },
   { name: 'Goda Daknytė', role: 'Administratorė' },
 ]
 
@@ -65,7 +65,7 @@ export default function About() {
       >
         {/* Hero tekstas */}
         <motion.header className="mb-6" variants={item}>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#10394F]">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700">
             Moderni Odontologijos Klinika Klaipėdoje
           </h1>
         </motion.header>
@@ -85,7 +85,7 @@ export default function About() {
 
         {/* Paslaugos (dviejų stulpelių sąrašas) */}
         <motion.section className="mb-10" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-[#10394F] mb-4">
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Odontologijos klinikoje teikiamos paslaugos
           </h2>
           <div className="grid sm:grid-cols-2 gap-2">
@@ -95,7 +95,7 @@ export default function About() {
                 variants={item}
                 className="flex items-start gap-2 text-slate-700"
               >
-                <span className="text-primary-700 mt-1">
+                <span className="text-brand mt-1">
                   <CheckIcon />
                 </span>
                 <span className="text-sm leading-relaxed">{s}</span>
@@ -104,10 +104,13 @@ export default function About() {
           </div>
         </motion.section>
 
-        {/* Laboratorija */}
-        <motion.section className="mb-10 rounded-2xl border border-slate-100 bg-white/90 shadow-sm p-5 relative overflow-hidden" variants={item}>
-          <div className="pointer-events-none absolute -top-10 -right-10 w-48 h-48 rounded-full bg-sky-100/40 blur-3xl" />
-          <h2 className="text-xl sm:text-2xl font-semibold text-[#10394F] mb-3">Dantų technikos laboratorija</h2>
+        {/* Laboratorija — turkio rėmelis */}
+        <motion.section
+          className="mb-10 rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-5 relative overflow-hidden"
+          variants={item}
+        >
+          <div className="pointer-events-none absolute -top-10 -right-10 w-48 h-48 rounded-full bg-brand-50 blur-3xl" />
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-3">Dantų technikos laboratorija</h2>
           <div className="text-slate-700 space-y-3">
             <p>
               Bangų Odontologijos Klinikoje veikia profesionali dantų technikos laboratorija, kurioje paruošiami odontologijai,
@@ -125,15 +128,17 @@ export default function About() {
           </div>
         </motion.section>
 
-        {/* Komanda */}
+        {/* Komanda — turkio rėmeliai */}
         <motion.section className="mb-8" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-[#10394F] mb-4">Bangų Odontologijos Klinikos kolektyvas</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+            Bangų Odontologijos Klinikos kolektyvas
+          </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {team.map((m, i) => (
+            {team.map((m) => (
               <motion.div
                 key={m.name}
                 variants={item}
-                className="rounded-2xl border border-slate-100 bg-white/90 shadow-sm p-4"
+                className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-4"
               >
                 <div className="font-semibold text-slate-900">{m.name}</div>
                 <div className="text-sm text-slate-600">{m.role}</div>
@@ -145,12 +150,9 @@ export default function About() {
           </div>
         </motion.section>
 
-        {/* CTA į kainoraštį */}
+        {/* CTA į kainoraštį — suvienodintas mygtukas */}
         <motion.div className="mt-6" variants={item}>
-          <Link
-            to="/kainos"
-            className="inline-block rounded-full px-6 py-3 font-semibold bg-[#10394F] text-white hover:opacity-95 transition shadow-sm"
-          >
+          <Link to="/kainos" className="btn-primary rounded-full px-6 py-3 font-semibold">
             Bangų klinikoje teikiamų paslaugų kainoraštis
           </Link>
         </motion.div>
