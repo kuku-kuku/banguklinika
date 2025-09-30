@@ -50,14 +50,6 @@ function smoothScrollTo(targetY: number, duration = 450) {
   })
 }
 
-function instantScrollToElement(id: string, offset = 16) {
-  const el = document.getElementById(id)
-  if (!el) return
-  const rect = el.getBoundingClientRect()
-  const targetY = window.scrollY + rect.top - getHeaderOffset() - offset
-  window.scrollTo(0, targetY)
-}
-
 async function smoothAlignToElement(id: string, offset = 16, ms = 300) {
   const el = document.getElementById(id)
   if (!el) return
@@ -67,16 +59,16 @@ async function smoothAlignToElement(id: string, offset = 16, ms = 300) {
 }
 
 function AccordionItem({
-  id, title, children, openId, setOpenId, onToggle,
+  id, title, children, openIds, toggleOpen, onToggle,
 }: {
   id: string
   title: string
   children: React.ReactNode
-  openId: string | null
-  setOpenId: (v: string | null) => void
+  openIds: Set<string>
+  toggleOpen: (id: string) => void
   onToggle: (id: string, willOpen: boolean) => void
 }) {
-  const open = openId === id
+  const open = openIds.has(id)
 
   const handleToggle = () => onToggle(id, !open)
 
@@ -412,62 +404,69 @@ export default function Services() {
   ], [])
 
   const { hash, pathname } = useLocation()
-  const [openId, setOpenId] = useState<string | null>(null)
+  const [openIds, setOpenIds] = useState<Set<string>>(new Set())
   const isAnimatingRef = useRef(false)
 
   const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
-  const setScrollControls = (on: boolean) => {
-    const root = document.documentElement
-    if (!root) return
-    if (on) {
-      root.style.setProperty('overflow-anchor', 'none')
-      root.style.setProperty('scroll-behavior', 'auto')
-    } else {
-      root.style.removeProperty('overflow-anchor')
-      root.style.removeProperty('scroll-behavior')
-    }
+  const mobile = isMobile()
+
+  const toggleOpen = (id: string) => {
+    setOpenIds(prev => {
+      const next = new Set(prev)
+      if (next.has(id)) {
+        next.delete(id)
+      } else {
+        next.add(id)
+      }
+      return next
+    })
   }
 
   const handleToggle = async (id: string, willOpen: boolean) => {
     if (isAnimatingRef.current) return
     isAnimatingRef.current = true
-    setScrollControls(true)
 
     try {
-      const el = document.getElementById(id) as HTMLElement | null
-
       if (!willOpen) {
-        setOpenId(null)
-        await wait(ANIM_DURATION * 1000 + 60)
+        // Closing - simple toggle
+        toggleOpen(id)
+        await wait(ANIM_DURATION * 1000 + 50)
         return
       }
 
-      // Close previous if different
-      if (openId && openId !== id) {
-        setOpenId(null)
-        await wait(ANIM_DURATION * 1000 + 50)
+      // Opening behavior differs by device
+      if (mobile) {
+        // MOBILE: Just open, don't close others, scroll to top of card
+        toggleOpen(id)
+        await wait(50) // Small delay for render
+        await smoothAlignToElement(id, 24, 350)
+      } else {
+        // DESKTOP: Close others first, then open
+        const wasAnyOpen = openIds.size > 0 && !openIds.has(id)
+        
+        if (wasAnyOpen) {
+          // Close all others
+          setOpenIds(new Set())
+          await wait(ANIM_DURATION * 1000 + 50)
+        }
+        
+        // Open this one
+        toggleOpen(id)
+        await wait(ANIM_DURATION * 1000 + 100)
+        
+        // Final alignment
+        await smoothAlignToElement(id, 16, 200)
       }
-
-      // Scroll to position before opening
-      if (el) instantScrollToElement(id, isMobile() ? 24 : 16)
-
-      // Open the accordion
-      setOpenId(id)
-      
-      // Wait for animation to complete
-      await wait(ANIM_DURATION * 1000 + 100)
-
-      // Final alignment after content is fully rendered
-      await smoothAlignToElement(id, isMobile() ? 24 : 16, 200)
     } finally {
-      setScrollControls(false)
       isAnimatingRef.current = false
     }
   }
 
   useEffect(() => {
-    if (pathname === '/paslaugos' && !hash) setOpenId(null)
+    if (pathname === '/paslaugos' && !hash) {
+      setOpenIds(new Set())
+    }
   }, [pathname, hash])
 
   useEffect(() => {
@@ -479,26 +478,33 @@ export default function Services() {
     const run = async () => {
       if (isAnimatingRef.current) return
       isAnimatingRef.current = true
-      setScrollControls(true)
 
       try {
-        // Close previous if different
-        if (openId && openId !== target) {
-          setOpenId(null)
-          await wait(ANIM_DURATION * 1000 + 50)
+        const mobile = isMobile()
+
+        if (mobile) {
+          // MOBILE: Open without closing others
+          setOpenIds(prev => new Set(prev).add(target))
+          await wait(50)
           if (cancelled) return
+          await smoothAlignToElement(target, 24, 350)
+        } else {
+          // DESKTOP: Close others first
+          const wasAnyOpen = openIds.size > 0 && !openIds.has(target)
+          
+          if (wasAnyOpen) {
+            setOpenIds(new Set())
+            await wait(ANIM_DURATION * 1000 + 50)
+            if (cancelled) return
+          }
+          
+          setOpenIds(new Set([target]))
+          await wait(ANIM_DURATION * 1000 + 100)
+          if (cancelled) return
+          
+          await smoothAlignToElement(target, 16, 200)
         }
-
-        const el = document.getElementById(target) as HTMLElement | null
-        if (el) instantScrollToElement(target, isMobile() ? 24 : 16)
-
-        setOpenId(target)
-        await wait(ANIM_DURATION * 1000 + 100)
-        if (cancelled) return
-
-        await smoothAlignToElement(target, isMobile() ? 24 : 16, 200)
       } finally {
-        setScrollControls(false)
         isAnimatingRef.current = false
       }
     }
@@ -546,8 +552,8 @@ export default function Services() {
                 <AccordionItem
                   id={s.id}
                   title={s.title}
-                  openId={openId}
-                  setOpenId={setOpenId}
+                  openIds={openIds}
+                  toggleOpen={toggleOpen}
                   onToggle={handleToggle}
                 >
                   {s.content}
