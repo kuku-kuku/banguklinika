@@ -6,7 +6,10 @@ import { motion } from 'framer-motion'
 
 type Svc = { id: string; title: string; content: React.ReactNode }
 
-const ANIM_DURATION = 0.3
+/** Animacijos nustatymai – švelnesni ir šiek tiek lėtesni (glotnesni mobiliam) */
+const ANIM_DURATION = 0.45
+const OPEN_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1] // easeOutExpo-ish
+const CLOSE_EASE: [number, number, number, number] = [0.4, 0, 0.2, 1]   // material-ish
 
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -19,8 +22,20 @@ function Chevron({ open }: { open: boolean }) {
   )
 }
 
-function isMobile() {
-  return typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+/** Naudojam state vietoje tiesioginio window.matchMedia, kad išvengtume layout „snap“ */
+function useIsMobile() {
+  const [mobile, setMobile] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false
+  )
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const mql = window.matchMedia('(max-width: 767px)')
+    const handler = () => setMobile(mql.matches)
+    handler()
+    mql.addEventListener?.('change', handler)
+    return () => mql.removeEventListener?.('change', handler)
+  }, [])
+  return mobile
 }
 
 function getHeaderOffset(): number {
@@ -50,7 +65,7 @@ function smoothScrollTo(targetY: number, duration = 450) {
   })
 }
 
-async function smoothAlignToElement(id: string, offset = 16, ms = 300) {
+async function smoothAlignToElement(id: string, offset = 16, ms = 360) {
   const el = document.getElementById(id)
   if (!el) return
   const rect = el.getBoundingClientRect()
@@ -73,10 +88,14 @@ function AccordionItem({
   const handleToggle = () => onToggle(id, !open)
 
   return (
-    <div
+    <motion.div
       id={id}
+      layout
+      transition={{ layout: { duration: ANIM_DURATION * 0.9, ease: OPEN_EASE } }}
       className={[
-        'rounded-2xl border shadow-sm transition-all duration-300',
+        // GPU + contain sumažina repaint/relayout kainą
+        'rounded-2xl border shadow-sm transition-colors will-change-transform transform-gpu',
+        'contain-paint',
         open
           ? 'bg-white border-primary-400 ring-2 ring-primary-300 shadow-md'
           : 'bg-primary-50 border-primary-300 hover:bg-primary-100 hover:shadow',
@@ -93,21 +112,23 @@ function AccordionItem({
         <Chevron open={open} />
       </button>
 
-      <div
+      {/* Švarus height: 'auto' animavimas su Framer Motion */}
+      <motion.div
         id={`${id}-panel`}
-        className="grid transition-all duration-300 ease-out"
-        style={{
-          gridTemplateRows: open ? '1fr' : '0fr',
-          opacity: open ? 1 : 0,
+        initial={false}
+        animate={{ height: open ? 'auto' : 0, opacity: open ? 1 : 0 }}
+        transition={{
+          duration: ANIM_DURATION,
+          ease: open ? OPEN_EASE : CLOSE_EASE,
+          opacity: { duration: ANIM_DURATION * 0.7 }
         }}
+        style={{ overflow: 'hidden', willChange: 'height, opacity' }}
       >
-        <div className="overflow-hidden">
-          <div className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed">
-            {children}
-          </div>
+        <div className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed">
+          {children}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -399,10 +420,8 @@ export default function Services() {
   const { hash, pathname } = useLocation()
   const [openIds, setOpenIds] = useState<Set<string>>(new Set())
   const isAnimatingRef = useRef(false)
-
   const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
-
-  const mobile = isMobile()
+  const mobile = useIsMobile()
 
   const toggleOpen = (id: string) => {
     setOpenIds(prev => {
@@ -422,34 +441,26 @@ export default function Services() {
 
     try {
       if (!willOpen) {
-        // Closing - simple toggle
         toggleOpen(id)
         await wait(ANIM_DURATION * 1000 + 50)
         return
       }
 
-      // Opening behavior differs by device
       if (mobile) {
-        // MOBILE: Just open, don't close others, scroll to top of card
+        // MOBILE: atidarom, duodam „frame“ layout’ui, tada scrollinam – išvengiame šuolio
         toggleOpen(id)
-        await wait(20) // Minimal delay
-        await smoothAlignToElement(id, 24, 280)
+        await wait(32)
+        await smoothAlignToElement(id, 24, 320)
       } else {
-        // DESKTOP: Close others first, then open
+        // DESKTOP: uždarom kitus, tada atidarom šitą ir sulygiuojam
         const wasAnyOpen = openIds.size > 0 && !openIds.has(id)
-        
         if (wasAnyOpen) {
-          // Close all others
           setOpenIds(new Set())
           await wait(ANIM_DURATION * 1000 + 50)
         }
-        
-        // Open this one
         toggleOpen(id)
-        await wait(ANIM_DURATION * 1000 + 100)
-        
-        // Final alignment
-        await smoothAlignToElement(id, 16, 200)
+        await wait(ANIM_DURATION * 1000 + 80)
+        await smoothAlignToElement(id, 16, 260)
       }
     } finally {
       isAnimatingRef.current = false
@@ -471,31 +482,21 @@ export default function Services() {
     const run = async () => {
       if (isAnimatingRef.current) return
       isAnimatingRef.current = true
-
       try {
-        const mobile = isMobile()
-
         if (mobile) {
-          // MOBILE: Open without closing others
           setOpenIds(prev => new Set(prev).add(target))
-          await wait(20)
-          if (cancelled) return
-          await smoothAlignToElement(target, 24, 280)
+          await wait(32)
+          if (!cancelled) await smoothAlignToElement(target, 24, 320)
         } else {
-          // DESKTOP: Close others first
           const wasAnyOpen = openIds.size > 0 && !openIds.has(target)
-          
           if (wasAnyOpen) {
             setOpenIds(new Set())
             await wait(ANIM_DURATION * 1000 + 50)
             if (cancelled) return
           }
-          
           setOpenIds(new Set([target]))
-          await wait(ANIM_DURATION * 1000 + 100)
-          if (cancelled) return
-          
-          await smoothAlignToElement(target, 16, 200)
+          await wait(ANIM_DURATION * 1000 + 80)
+          if (!cancelled) await smoothAlignToElement(target, 16, 260)
         }
       } finally {
         isAnimatingRef.current = false
@@ -505,7 +506,7 @@ export default function Services() {
     run()
     return () => { cancelled = true }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hash, sections])
+  }, [hash, sections, mobile])
 
   const listVariants = {
     hidden: { opacity: 0 },
@@ -539,9 +540,14 @@ export default function Services() {
             </p>
           </header>
 
-          <motion.div variants={listVariants} initial="hidden" animate="visible" className="grid gap-4">
+          <motion.div
+            variants={listVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid gap-4"
+          >
             {sections.map((s) => (
-              <motion.div key={s.id} variants={itemVariants}>
+              <motion.div key={s.id} variants={itemVariants} layout>
                 <AccordionItem
                   id={s.id}
                   title={s.title}
