@@ -1,13 +1,12 @@
 import { useMemo, useState, useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import { PRICING, type PriceGroup, type PriceItem } from '../data/pricing'
-import { motion, useAnimationControls } from 'framer-motion'
 import clsx from 'clsx'
 
-/* ========= Anim / timings ========= */
-const BASE_DURATION = 0.26 // bazinė; reali adaptuojama pagal px
-const OPEN_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
-const CLOSE_EASE: [number, number, number, number] = [0.4, 0, 0.2, 1]
+/* ========= Timings / Easing ========= */
+const OPEN_MS = 320
+const CLOSE_MS = 260
+const EASE = 'cubic-bezier(0.22, 1, 0.36, 1)' // springy, bet glotnus
 
 /* ========= Utils ========= */
 function slugify(t: string) {
@@ -86,27 +85,15 @@ async function smoothAlignToElement(id: string, offset = 16, ms = 320) {
   await smoothScrollTo(targetY, ms)
 }
 
-/** Trukmė pagal px: 0.26s ~0–200px, iki ~0.52s ties 900px */
-function durationFor(px: number) {
-  const capped = Math.max(0, Math.min(px, 900))
-  const extra = (capped / 900) * 0.26
-  return +(BASE_DURATION + extra).toFixed(3)
-}
-
-/* ========= Icons ========= */
+/* ========= Icons (sutrumpinta) ========= */
 function Icon({ title }: { title: string }) {
   const t = title.toLowerCase()
-  if (t.includes('higien')) return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M4 10a8 8 0 0 1 16 0v7a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-7Z" fill="currentColor" opacity=".15"/><path d="M12 3a8 8 0 0 1 8 8v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-6a8 8 0 0 1 8-8Zm0 0v6" stroke="currentColor" strokeWidth="1.6" fill="none"/></svg>)
+  if (t.includes('higien')) return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M4 10a8 8 0 0 1 16 0v7a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-7Z" fill="currentColor" opacity=".15"/><path d="M12 3v6m0-6a8 8 0 0 1 8 8v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-6a8 8 0 0 1 8-8Z" stroke="currentColor" strokeWidth="1.6" fill="none"/></svg>)
   if (t.includes('balin')) return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M12 2l2.35 4.76L20 8l-4 3.9.94 5.5L12 15.8 7.06 17.4 8 11.9 4 8l5.65-1.24L12 2z" fill="currentColor" opacity=".25"/><path d="M12 4.6l1.6 3.2 3.53.77-2.6 2.47.6 3.5L12 12.9l-3.13 1.64.6-3.5L6.87 8.6l3.53-.77L12 4.6z" fill="currentColor"/></svg>)
-  if (t.includes('endodont')) return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M7 3h10v10a5 5 0 0 1-5 5 5 5 0 0 1-5-5V3z" fill="currentColor" opacity=".15"/><path d="M8 3h8v9a4 4 0 0 1-8 0V3Zm4 2v10" stroke="currentColor" strokeWidth="1.6" fill="none"/></svg>)
-  if (t.includes('chirurg')) return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M3 17l8-8 3 3-8 8H3z" fill="currentColor"/><path d="M14 9l2-2a2 2 0 0 1 3 3l-2 2" stroke="currentColor" strokeWidth="1.6" fill="none"/></svg>)
-  if (t.includes('protez')) return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M6 6h12l-1 10a5 5 0 0 1-5 4 5 5 0 0 1-5-4L6 6z" fill="currentColor" opacity=".15"/><path d="M6 6h12l-1 9a5 5 0 0 1-5 4 5 5 0 0 1-5-4L6 6z" stroke="currentColor" strokeWidth="1.6" fill="none"/></svg>)
-  if (t.includes('implant')) return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M8 4h8v4H8z" fill="currentColor"/><path d="M10 8v8m4-8v8M8 20h8" stroke="currentColor" strokeWidth="1.6" fill="none"/></svg>)
-  if (t.includes('tiesin')) return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M4 12c2 3 4 4 8 4s6-1 8-4" stroke="currentColor" strokeWidth="1.6" fill="none"/><circle cx="8" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="16" cy="12" r="1" fill="currentColor"/></svg>)
   return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M12 3c4 0 7 3 7 7v7a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-7c0-4 3-7 7-7z" stroke="currentColor" strokeWidth="1.6" fill="none"/></svg>)
 }
 
-/* ========= One group card (accordion) ========= */
+/* ========= Accordion item su grid animacija ========= */
 function GroupCard({
   group,
   open,
@@ -120,55 +107,23 @@ function GroupCard({
   const range = useMemo(() => groupRange(group.items), [group.items])
   const summary = range ? (range.max > range.min ? `€${range.min}–€${range.max}` : `nuo €${range.min}`) : '—'
 
-  // Height animation with measured px
-  const controls = useAnimationControls()
-  const contentInnerRef = useRef<HTMLDivElement | null>(null)
-  const [height, setHeight] = useState(0)
-  const [measured, setMeasured] = useState(0)
-
-  useEffect(() => {
-    const el = contentInnerRef.current
-    if (!el) return
-    const ro = new ResizeObserver(() => {
-      const h = el.scrollHeight
-      setMeasured(h)
-      if (open) setHeight(h)
-    })
-    ro.observe(el)
-    setMeasured(el.scrollHeight)
-    return () => ro.disconnect()
-  }, [open])
-
-  useEffect(() => {
-    const target = open ? measured : 0
-    const dur = durationFor(measured)
-    controls.start({
-      height: target,
-      transition: open
-        ? { duration: dur, ease: OPEN_EASE }
-        : { duration: Math.max(0.18, dur * 0.75), ease: CLOSE_EASE }
-    })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, measured])
-
   return (
-    <motion.div
+    <div
       id={id}
-      layout="position" /* FLIP padeda reflow'ui atrodyti minkščiau */
       className={clsx(
-        'w-full rounded-2xl border shadow-soft overflow-hidden transition-colors transform-gpu will-change-transform',
+        'w-full rounded-2xl border shadow-soft overflow-hidden transition-colors',
         open
           ? 'bg-brand-50 border-brand ring-2 ring-brand/30 shadow-lg'
           : 'bg-brand-50 border-brand hover:bg-brand-100 hover:shadow-md',
-        'scroll-mt-28 md:scroll-mt-32'
+        'scroll-mt-28 md:scroll-mt-32',
       )}
-      style={{ contain: 'paint' }}
+      style={{ contain: 'layout paint', transform: 'translateZ(0)' }}
     >
       <button
         onClick={() => onToggle(!open)}
         aria-expanded={open}
-        aria-controls={`${id}-content`}
-        className="w-full flex items-center justify-between gap-4 px-4 py-4 text-left min-h-[92px] transition-colors duration-150"
+        aria-controls={`${id}-panel`}
+        className="w-full flex items-center justify-between gap-4 px-4 py-4 text-left min-h-[92px] transition-colors"
       >
         <div className="flex items-center gap-3 min-w-0">
           <span className={clsx('w-9 h-9 rounded-xl grid place-items-center transition-colors', open ? 'bg-brand-100 text-brand' : 'bg-brand-50 text-brand')}>
@@ -179,51 +134,53 @@ function GroupCard({
             <div className="text-xs text-gray-600">{summary} • {group.items.length} poz.</div>
           </div>
         </div>
-        <span className={clsx('text-sm text-gray-600 transition-transform duration-300', open && 'rotate-180')}>▾</span>
+        <span className={clsx('text-sm text-gray-600 transition-transform', open && 'rotate-180')} style={{ transitionDuration: `${OPEN_MS}ms` }}>▾</span>
       </button>
 
-      <motion.div
-        id={`${id}-content`}
-        animate={controls}
-        initial={false}
+      {/* GRID trick: 0fr -> 1fr + opacity */}
+      <div
+        id={`${id}-panel`}
+        className="grid will-change-[grid-template-rows,opacity]"
         style={{
-          height,
-          overflow: 'hidden',
-          willChange: 'height',
-          contentVisibility: open ? ('visible' as any) : ('auto' as any),
-          containIntrinsicSize: open ? undefined : '0 420px',
+          gridTemplateRows: open ? '1fr' : '0fr',
+          opacity: open ? 1 : 0,
+          transition: `grid-template-rows ${open ? OPEN_MS : CLOSE_MS}ms ${EASE}, opacity ${open ? OPEN_MS : CLOSE_MS}ms ${EASE}`,
+          transform: 'translateZ(0)',
         }}
       >
-        {/* vidinis „cushion“ – vizualiai švelnina, layout nekeičia */}
-        <motion.div
-          ref={contentInnerRef}
-          initial={false}
-          animate={open ? { opacity: 1, scaleY: 1, y: 0 } : { opacity: 0.98, scaleY: 0.995, y: -1 }}
-          transition={{ duration: 0.18 }}
-          style={{ transformOrigin: 'top left' }}
-          className="px-2 py-2"
-        >
-          <div className="rounded-xl bg-white border border-brand/30 overflow-hidden">
-            <table className="w-full text-sm">
-              <tbody className="divide-y divide-slate-100">
-                {group.items.map((p, i) => (
-                  <tr key={i} className="hover:bg-slate-50/50 transition-colors duration-100">
-                    <td className="p-3 align-top">
-                      <span className="text-slate-900">{p.name}</span>
-                      {p.note && <span className="block text-xs text-gray-600 mt-0.5">{p.note}</span>}
-                    </td>
-                    {/* mobile siauresnis, md+ identiškas PC */}
-                    <td className="p-3 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-darkblue-700">
-                      {fmt(p.from, p.to)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <div className="min-h-0 overflow-hidden">
+          {/* vidinis „cushion“ tik vizualui */}
+          <div
+            className="px-2 py-2"
+            style={{
+              transition: `transform 160ms ${EASE}, opacity 160ms ${EASE}`,
+              transformOrigin: 'top left',
+              transform: open ? 'scaleY(1) translateZ(0)' : 'scaleY(0.995) translateY(-1px) translateZ(0)',
+              opacity: open ? 1 : 0.98,
+              willChange: 'transform,opacity',
+            }}
+          >
+            <div className="rounded-xl bg-white border border-brand/30 overflow-hidden">
+              <table className="w-full text-sm">
+                <tbody className="divide-y divide-slate-100">
+                  {group.items.map((p, i) => (
+                    <tr key={i} className="hover:bg-slate-50/50 transition-colors">
+                      <td className="p-3 align-top">
+                        <span className="text-slate-900">{p.name}</span>
+                        {p.note && <span className="block text-xs text-gray-600 mt-0.5">{p.note}</span>}
+                      </td>
+                      <td className="p-3 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-darkblue-700">
+                        {fmt(p.from, p.to)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </motion.div>
-      </motion.div>
-    </motion.div>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -231,7 +188,7 @@ function GroupCard({
 export default function PricingCards() {
   const { hash } = useLocation()
   const mobile = useIsMobile()
-  // MOBILE: leidžiam kelias atidarytas → Set; DESKTOP: viena atidaryta
+  // MOBILE: gali būti kelios atidarytos; DESKTOP: viena
   const [openIds, setOpenIds] = useState<Set<string>>(new Set())
   const animatingRef = useRef(false)
   const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
@@ -242,23 +199,24 @@ export default function PricingCards() {
     try {
       if (!willOpen) {
         setOpenIds(prev => { const next = new Set(prev); next.delete(id); return next })
-        await wait(220)
+        await wait(CLOSE_MS + 40)
         return
       }
 
       if (mobile) {
         setOpenIds(prev => new Set(prev).add(id))
-        await wait(40) // laukti 1 frame, kad aukštis būtų perskaičiuotas
-        await smoothAlignToElement(id, 20, 320)
+        await wait(32) // leisti layout’ui persiskaičiuoti
+        await smoothAlignToElement(id, 20, OPEN_MS)
       } else {
-        setOpenIds(new Set()) // desktop: close others
-        await wait(260)
+        // desktop uždarom kitus, kad nebūtų didelių šuolių
+        setOpenIds(new Set())
+        await wait(CLOSE_MS + 40)
         setOpenIds(new Set([id]))
-        await wait(280)
-        await smoothAlignToElement(id, 16, 260)
+        await wait(40)
+        await smoothAlignToElement(id, 16, OPEN_MS - 40)
       }
     } finally {
-      animatingRef.current = false
+        animatingRef.current = false
     }
   }
 
@@ -275,14 +233,14 @@ export default function PricingCards() {
       try {
         if (mobile) {
           setOpenIds(prev => new Set(prev).add(id))
-          await wait(40)
-          if (!cancelled) await smoothAlignToElement(id, 20, 320)
+          await wait(32)
+          if (!cancelled) await smoothAlignToElement(id, 20, OPEN_MS)
         } else {
           setOpenIds(new Set())
-          await wait(260)
+          await wait(CLOSE_MS + 40)
           setOpenIds(new Set([id]))
-          await wait(280)
-          if (!cancelled) await smoothAlignToElement(id, 16, 260)
+          await wait(40)
+          if (!cancelled) await smoothAlignToElement(id, 16, OPEN_MS - 40)
         }
       } finally {
         animatingRef.current = false
@@ -293,38 +251,24 @@ export default function PricingCards() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hash, mobile])
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.04, delayChildren: 0.05 } },
-  }
-  const itemVariants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] } },
-  }
-
   return (
-    // Centruotas, pilnai responsyvus wrapperis (desktop ne suspaustas)
+    // Centruotas, responsyvus
     <div className="w-full mx-auto max-w-[1400px] px-4 sm:px-6">
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
         {PRICING.map((g) => {
           const id = slugify(g.title)
           const isOpen = openIds.has(id)
           return (
-            <motion.div key={g.title} variants={itemVariants} layout="position" className="w-full">
+            <div key={g.title} className="w-full will-change-transform">
               <GroupCard
                 group={g as PriceGroup}
                 open={isOpen}
                 onToggle={(willOpen) => handleToggle(id, willOpen)}
               />
-            </motion.div>
+            </div>
           )
         })}
-      </motion.div>
+      </div>
     </div>
   )
 }
