@@ -69,23 +69,6 @@ function AccordionItem({
   onToggle: (id: string, willOpen: boolean) => void
 }) {
   const open = openIds.has(id)
-  const contentRef = useRef<HTMLDivElement>(null)
-  const [height, setHeight] = useState<number | undefined>(undefined)
-
-  useEffect(() => {
-    if (open && contentRef.current) {
-      const resizeObserver = new ResizeObserver(() => {
-        if (contentRef.current) {
-          setHeight(contentRef.current.scrollHeight)
-        }
-      })
-      resizeObserver.observe(contentRef.current)
-      setHeight(contentRef.current.scrollHeight)
-      return () => resizeObserver.disconnect()
-    } else {
-      setHeight(0)
-    }
-  }, [open])
 
   const handleToggle = () => onToggle(id, !open)
 
@@ -112,15 +95,16 @@ function AccordionItem({
 
       <div
         id={`${id}-panel`}
-        className="overflow-hidden"
+        className="grid transition-all duration-300 ease-out"
         style={{
-          height: height !== undefined ? `${height}px` : undefined,
-          transition: 'height 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.2s ease-out',
+          gridTemplateRows: open ? '1fr' : '0fr',
           opacity: open ? 1 : 0,
         }}
       >
-        <div ref={contentRef} className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed">
-          {children}
+        <div className="overflow-hidden">
+          <div className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed">
+            {children}
+          </div>
         </div>
       </div>
     </div>
