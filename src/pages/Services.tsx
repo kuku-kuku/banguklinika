@@ -19,11 +19,6 @@ function Chevron({ open }: { open: boolean }) {
   )
 }
 
-function isInteractive(el: HTMLElement | null) {
-  if (!el) return false
-  return Boolean(el.closest('a,button,input,select,textarea,label,[role="button"]'))
-}
-
 function isMobile() {
   return typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
 }
@@ -71,49 +66,6 @@ async function smoothAlignToElement(id: string, offset = 16, ms = 300) {
   await smoothScrollTo(targetY, ms)
 }
 
-/** Optimized anchor keeper - uses transform instead of scroll adjustments on mobile */
-function keepAnchorDuring(el: HTMLElement, ms: number) {
-  let raf = 0
-  const start = performance.now()
-  const startTop = el.getBoundingClientRect().top
-  const mobile = isMobile()
-  
-  // On mobile, reduce frequency and use looser threshold
-  const checkInterval = mobile ? 2 : 1
-  let frameCount = 0
-
-  const tick = (now: number) => {
-    if (!document.body.contains(el)) return
-    
-    frameCount++
-    
-    // Skip frames on mobile for better performance
-    if (mobile && frameCount % checkInterval !== 0) {
-      if (now - start < ms) {
-        raf = requestAnimationFrame(tick)
-      }
-      return
-    }
-    
-    const top = el.getBoundingClientRect().top
-    const delta = top - startTop
-    
-    // Use larger threshold on mobile to reduce adjustments
-    const threshold = mobile ? 2 : 0.5
-    
-    if (Math.abs(delta) > threshold) {
-      window.scrollTo(0, window.scrollY + delta)
-    }
-    
-    if (now - start < ms) {
-      raf = requestAnimationFrame(tick)
-    }
-  }
-
-  raf = requestAnimationFrame(tick)
-  return () => cancelAnimationFrame(raf)
-}
-
 function AccordionItem({
   id, title, children, openId, setOpenId, onToggle,
 }: {
@@ -138,7 +90,6 @@ function AccordionItem({
           : 'bg-primary-50 border-primary-300 hover:bg-primary-100 hover:shadow',
         'scroll-mt-28 md:scroll-mt-32'
       ].join(' ')}
-      style={open ? { willChange: 'auto' } : undefined}
     >
       <button
         onClick={handleToggle}
@@ -164,7 +115,6 @@ function AccordionItem({
               opacity: { duration: ANIM_DURATION * 0.6 }
             }}
             className="overflow-hidden"
-            style={{ willChange: 'height, opacity' }}
           >
             <div className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed">
               {children}
@@ -493,26 +443,23 @@ export default function Services() {
         return
       }
 
-      if (el) instantScrollToElement(id, isMobile() ? 24 : 16)
-
-      const totalMs =
-        ANIM_DURATION * 1000 +
-        (isMobile() ? 220 : 120) +
-        (openId && openId !== id ? ANIM_DURATION * 1000 + 80 : 0)
-
-      const stopKeep = el ? keepAnchorDuring(el, totalMs) : () => {}
-
+      // Close previous if different
       if (openId && openId !== id) {
         setOpenId(null)
-        await wait(ANIM_DURATION * 1000 + 80)
+        await wait(ANIM_DURATION * 1000 + 50)
       }
 
+      // Scroll to position before opening
+      if (el) instantScrollToElement(id, isMobile() ? 24 : 16)
+
+      // Open the accordion
       setOpenId(id)
-      await wait(ANIM_DURATION * 1000 + (isMobile() ? 220 : 120))
+      
+      // Wait for animation to complete
+      await wait(ANIM_DURATION * 1000 + 100)
 
-      stopKeep()
-
-      await smoothAlignToElement(id, isMobile() ? 24 : 16, 250)
+      // Final alignment after content is fully rendered
+      await smoothAlignToElement(id, isMobile() ? 24 : 16, 200)
     } finally {
       setScrollControls(false)
       isAnimatingRef.current = false
@@ -535,25 +482,21 @@ export default function Services() {
       setScrollControls(true)
 
       try {
-        const el = document.getElementById(target) as HTMLElement | null
-        if (el) instantScrollToElement(target, isMobile() ? 24 : 16)
-        const stopKeep = el ? keepAnchorDuring(
-          el,
-          ANIM_DURATION * 1000 + (isMobile() ? 240 : 140) + (openId && openId !== target ? ANIM_DURATION * 1000 + 80 : 0)
-        ) : () => {}
-
+        // Close previous if different
         if (openId && openId !== target) {
           setOpenId(null)
-          await wait(ANIM_DURATION * 1000 + 80)
-          if (cancelled) { stopKeep(); return }
+          await wait(ANIM_DURATION * 1000 + 50)
+          if (cancelled) return
         }
 
-        setOpenId(target)
-        await wait(ANIM_DURATION * 1000 + (isMobile() ? 240 : 140))
-        if (cancelled) { stopKeep(); return }
+        const el = document.getElementById(target) as HTMLElement | null
+        if (el) instantScrollToElement(target, isMobile() ? 24 : 16)
 
-        stopKeep()
-        await smoothAlignToElement(target, isMobile() ? 24 : 16, 250)
+        setOpenId(target)
+        await wait(ANIM_DURATION * 1000 + 100)
+        if (cancelled) return
+
+        await smoothAlignToElement(target, isMobile() ? 24 : 16, 200)
       } finally {
         setScrollControls(false)
         isAnimatingRef.current = false
