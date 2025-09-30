@@ -2,11 +2,11 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import SEO from '../components/SEO'
 import AnimatedSection from '../components/AnimatedSection'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 type Svc = { id: string; title: string; content: React.ReactNode }
 
-const ANIM_DURATION = 0.4
+const ANIM_DURATION = 0.3
 
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -69,6 +69,23 @@ function AccordionItem({
   onToggle: (id: string, willOpen: boolean) => void
 }) {
   const open = openIds.has(id)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const [height, setHeight] = useState<number | undefined>(undefined)
+
+  useEffect(() => {
+    if (open && contentRef.current) {
+      const resizeObserver = new ResizeObserver(() => {
+        if (contentRef.current) {
+          setHeight(contentRef.current.scrollHeight)
+        }
+      })
+      resizeObserver.observe(contentRef.current)
+      setHeight(contentRef.current.scrollHeight)
+      return () => resizeObserver.disconnect()
+    } else {
+      setHeight(0)
+    }
+  }, [open])
 
   const handleToggle = () => onToggle(id, !open)
 
@@ -93,27 +110,19 @@ function AccordionItem({
         <Chevron open={open} />
       </button>
 
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            id={`${id}-panel`}
-            key={`${id}-panel`}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{
-              duration: ANIM_DURATION,
-              ease: [0.4, 0, 0.2, 1],
-              opacity: { duration: ANIM_DURATION * 0.6 }
-            }}
-            className="overflow-hidden"
-          >
-            <div className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed">
-              {children}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        id={`${id}-panel`}
+        className="overflow-hidden"
+        style={{
+          height: height !== undefined ? `${height}px` : undefined,
+          transition: 'height 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.2s ease-out',
+          opacity: open ? 1 : 0,
+        }}
+      >
+        <div ref={contentRef} className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed">
+          {children}
+        </div>
+      </div>
     </div>
   )
 }
@@ -439,8 +448,8 @@ export default function Services() {
       if (mobile) {
         // MOBILE: Just open, don't close others, scroll to top of card
         toggleOpen(id)
-        await wait(50) // Small delay for render
-        await smoothAlignToElement(id, 24, 350)
+        await wait(20) // Minimal delay
+        await smoothAlignToElement(id, 24, 280)
       } else {
         // DESKTOP: Close others first, then open
         const wasAnyOpen = openIds.size > 0 && !openIds.has(id)
@@ -485,9 +494,9 @@ export default function Services() {
         if (mobile) {
           // MOBILE: Open without closing others
           setOpenIds(prev => new Set(prev).add(target))
-          await wait(50)
+          await wait(20)
           if (cancelled) return
-          await smoothAlignToElement(target, 24, 350)
+          await smoothAlignToElement(target, 24, 280)
         } else {
           // DESKTOP: Close others first
           const wasAnyOpen = openIds.size > 0 && !openIds.has(target)
