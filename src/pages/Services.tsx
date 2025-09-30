@@ -2,14 +2,12 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import SEO from '../components/SEO'
 import AnimatedSection from '../components/AnimatedSection'
-import { motion } from 'framer-motion'
+import { motion, useAnimationControls } from 'framer-motion'
 
 type Svc = { id: string; title: string; content: React.ReactNode }
 
-/** Animacijos nustatymai – švelnesni ir šiek tiek lėtesni (glotnesni mobiliam) */
-const ANIM_DURATION = 0.45
-const OPEN_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1] // easeOutExpo-ish
-const CLOSE_EASE: [number, number, number, number] = [0.4, 0, 0.2, 1]   // material-ish
+/** Bazinė trukmė; reali trukmė adaptuojama pagal turinio aukštį */
+const BASE_DURATION = 0.28
 
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -22,7 +20,6 @@ function Chevron({ open }: { open: boolean }) {
   )
 }
 
-/** Naudojam state vietoje tiesioginio window.matchMedia, kad išvengtume layout „snap“ */
 function useIsMobile() {
   const [mobile, setMobile] = useState(() =>
     typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false
@@ -51,7 +48,6 @@ function smoothScrollTo(targetY: number, duration = 450) {
   const startY = window.scrollY
   const diff = targetY - startY
   if (Math.abs(diff) < 2) return Promise.resolve()
-
   return new Promise<void>((resolve) => {
     const start = performance.now()
     const step = (now: number) => {
@@ -73,37 +69,74 @@ async function smoothAlignToElement(id: string, offset = 16, ms = 360) {
   await smoothScrollTo(targetY, ms)
 }
 
+/** Apskaičiuojama „teisinga“ trukmė pagal turinio aukštį – kad ilgi blokai būtų vienodai glotnūs */
+function durationFor(px: number) {
+  // 0.28s už ~0–200px, +0.12s iki 800px, cap ties 0.55s
+  const extra = Math.min(0.27, (Math.max(0, Math.min(px, 800)) / 800) * 0.27)
+  return +(BASE_DURATION + extra).toFixed(3)
+}
+
 function AccordionItem({
-  id, title, children, openIds, toggleOpen, onToggle,
+  id, title, children, open, onToggle,
 }: {
   id: string
   title: string
   children: React.ReactNode
-  openIds: Set<string>
-  toggleOpen: (id: string) => void
-  onToggle: (id: string, willOpen: boolean) => void
+  open: boolean
+  onToggle: (willOpen: boolean) => void
 }) {
-  const open = openIds.has(id)
+  const containerRef = useRef<HTMLDivElement | null>(null)
+  const contentRef = useRef<HTMLDivElement | null>(null)
+  const controls = useAnimationControls()
+  const [height, setHeight] = useState(0)
+  const [measured, setMeasured] = useState(0)
 
-  const handleToggle = () => onToggle(id, !open)
+  // Matavimas su ResizeObserver – reaguoja į teksto aukščio pokyčius
+  useEffect(() => {
+    const el = contentRef.current
+    if (!el) return
+    const ro = new ResizeObserver(() => {
+      const h = el.scrollHeight
+      setMeasured(h)
+      if (open) setHeight(h)
+    })
+    ro.observe(el)
+    setMeasured(el.scrollHeight)
+    return () => ro.disconnect()
+  }, [open])
+
+  // Animacijos logika – animuojame realų `height` (ne „auto“)
+  useEffect(() => {
+    const target = open ? measured : 0
+    const d = durationFor(measured)
+    controls.start({
+      height: target,
+      transition: { type: 'spring', damping: 26, stiffness: 280, mass: 0.9, duration: d },
+    })
+    // „polish“: vidų lengvai „įkvėpti“ su scaleY ir opacity
+    if (open) {
+      controls.start('reveal')
+    } else {
+      controls.start('hide')
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, measured])
 
   return (
-    <motion.div
+    <div
       id={id}
-      layout
-      transition={{ layout: { duration: ANIM_DURATION * 0.9, ease: OPEN_EASE } }}
+      ref={containerRef}
       className={[
-        // GPU + contain sumažina repaint/relayout kainą
-        'rounded-2xl border shadow-sm transition-colors will-change-transform transform-gpu',
-        'contain-paint',
+        'rounded-2xl border shadow-sm transition-colors transform-gpu will-change-transform',
         open
           ? 'bg-white border-primary-400 ring-2 ring-primary-300 shadow-md'
           : 'bg-primary-50 border-primary-300 hover:bg-primary-100 hover:shadow',
         'scroll-mt-28 md:scroll-mt-32'
       ].join(' ')}
+      style={{ contain: 'paint' }}
     >
       <button
-        onClick={handleToggle}
+        onClick={() => onToggle(!open)}
         className="w-full flex items-center justify-between gap-4 px-5 py-4 transition-colors"
         aria-expanded={open}
         aria-controls={`${id}-panel`}
@@ -112,23 +145,33 @@ function AccordionItem({
         <Chevron open={open} />
       </button>
 
-      {/* Švarus height: 'auto' animavimas su Framer Motion */}
       <motion.div
         id={`${id}-panel`}
+        animate={controls}
         initial={false}
-        animate={{ height: open ? 'auto' : 0, opacity: open ? 1 : 0 }}
-        transition={{
-          duration: ANIM_DURATION,
-          ease: open ? OPEN_EASE : CLOSE_EASE,
-          opacity: { duration: ANIM_DURATION * 0.7 }
+        style={{
+          height,
+          overflow: 'hidden',
+          willChange: 'height',
+          // Uždarytoms sekcijoms – naršyklei nereikia jų išdėstyti
+          contentVisibility: open ? 'visible' as any : 'auto' as any,
+          containIntrinsicSize: open ? undefined : '0 400px',
         }}
-        style={{ overflow: 'hidden', willChange: 'height, opacity' }}
       >
-        <div className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed">
+        <motion.div
+          ref={contentRef}
+          variants={{
+            reveal: { opacity: 1, scaleY: 1, transition: { duration: 0.18 } },
+            hide:   { opacity: 0.98, scaleY: 0.995, transition: { duration: 0.12 } },
+          }}
+          initial={false}
+          style={{ transformOrigin: 'top left' }}
+          className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed"
+        >
           {children}
-        </div>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   )
 }
 
@@ -423,43 +466,30 @@ export default function Services() {
   const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
   const mobile = useIsMobile()
 
-  const toggleOpen = (id: string) => {
-    setOpenIds(prev => {
-      const next = new Set(prev)
-      if (next.has(id)) {
-        next.delete(id)
-      } else {
-        next.add(id)
-      }
-      return next
-    })
-  }
-
   const handleToggle = async (id: string, willOpen: boolean) => {
     if (isAnimatingRef.current) return
     isAnimatingRef.current = true
-
     try {
       if (!willOpen) {
-        toggleOpen(id)
-        await wait(ANIM_DURATION * 1000 + 50)
+        setOpenIds(prev => {
+          const next = new Set(prev); next.delete(id); return next
+        })
+        await wait(300)
         return
       }
 
       if (mobile) {
-        // MOBILE: atidarom, duodam „frame“ layout’ui, tada scrollinam – išvengiame šuolio
-        toggleOpen(id)
-        await wait(32)
+        setOpenIds(prev => new Set(prev).add(id))
+        await wait(40) // leisti layout’ui suskaičiuoti aukštį
         await smoothAlignToElement(id, 24, 320)
       } else {
-        // DESKTOP: uždarom kitus, tada atidarom šitą ir sulygiuojam
-        const wasAnyOpen = openIds.size > 0 && !openIds.has(id)
-        if (wasAnyOpen) {
+        const hadOthers = openIds.size > 0 && !openIds.has(id)
+        if (hadOthers) {
           setOpenIds(new Set())
-          await wait(ANIM_DURATION * 1000 + 50)
+          await wait(320)
         }
-        toggleOpen(id)
-        await wait(ANIM_DURATION * 1000 + 80)
+        setOpenIds(new Set([id]))
+        await wait(340)
         await smoothAlignToElement(id, 16, 260)
       }
     } finally {
@@ -468,9 +498,7 @@ export default function Services() {
   }
 
   useEffect(() => {
-    if (pathname === '/paslaugos' && !hash) {
-      setOpenIds(new Set())
-    }
+    if (pathname === '/paslaugos' && !hash) setOpenIds(new Set())
   }, [pathname, hash])
 
   useEffect(() => {
@@ -485,24 +513,23 @@ export default function Services() {
       try {
         if (mobile) {
           setOpenIds(prev => new Set(prev).add(target))
-          await wait(32)
+          await wait(40)
           if (!cancelled) await smoothAlignToElement(target, 24, 320)
         } else {
-          const wasAnyOpen = openIds.size > 0 && !openIds.has(target)
-          if (wasAnyOpen) {
+          const hadOthers = openIds.size > 0 && !openIds.has(target)
+          if (hadOthers) {
             setOpenIds(new Set())
-            await wait(ANIM_DURATION * 1000 + 50)
+            await wait(320)
             if (cancelled) return
           }
           setOpenIds(new Set([target]))
-          await wait(ANIM_DURATION * 1000 + 80)
+          await wait(340)
           if (!cancelled) await smoothAlignToElement(target, 16, 260)
         }
       } finally {
         isAnimatingRef.current = false
       }
     }
-
     run()
     return () => { cancelled = true }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -510,17 +537,11 @@ export default function Services() {
 
   const listVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.05, delayChildren: 0.1 }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.1 } }
   }
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1, y: 0,
-      transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] }
-    }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] } }
   }
 
   return (
@@ -540,25 +561,22 @@ export default function Services() {
             </p>
           </header>
 
-          <motion.div
-            variants={listVariants}
-            initial="hidden"
-            animate="visible"
-            className="grid gap-4"
-          >
-            {sections.map((s) => (
-              <motion.div key={s.id} variants={itemVariants} layout>
-                <AccordionItem
-                  id={s.id}
-                  title={s.title}
-                  openIds={openIds}
-                  toggleOpen={toggleOpen}
-                  onToggle={handleToggle}
-                >
-                  {s.content}
-                </AccordionItem>
-              </motion.div>
-            ))}
+          <motion.div variants={listVariants} initial="hidden" animate="visible" className="grid gap-4">
+            {sections.map((s) => {
+              const open = openIds.has(s.id)
+              return (
+                <motion.div key={s.id} variants={itemVariants} layout="position">
+                  <AccordionItem
+                    id={s.id}
+                    title={s.title}
+                    open={open}
+                    onToggle={(willOpen) => handleToggle(s.id, willOpen)}
+                  >
+                    {s.content}
+                  </AccordionItem>
+                </motion.div>
+              )
+            })}
           </motion.div>
         </div>
       </AnimatedSection>
