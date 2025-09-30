@@ -71,19 +71,40 @@ async function smoothAlignToElement(id: string, offset = 16, ms = 300) {
   await smoothScrollTo(targetY, ms)
 }
 
-/** Keeps section top in same place during animation (compensates for height changes). */
+/** Optimized anchor keeper - uses transform instead of scroll adjustments on mobile */
 function keepAnchorDuring(el: HTMLElement, ms: number) {
   let raf = 0
   const start = performance.now()
   const startTop = el.getBoundingClientRect().top
+  const mobile = isMobile()
+  
+  // On mobile, reduce frequency and use looser threshold
+  const checkInterval = mobile ? 2 : 1
+  let frameCount = 0
 
   const tick = (now: number) => {
     if (!document.body.contains(el)) return
+    
+    frameCount++
+    
+    // Skip frames on mobile for better performance
+    if (mobile && frameCount % checkInterval !== 0) {
+      if (now - start < ms) {
+        raf = requestAnimationFrame(tick)
+      }
+      return
+    }
+    
     const top = el.getBoundingClientRect().top
     const delta = top - startTop
-    if (Math.abs(delta) > 0.5) {
+    
+    // Use larger threshold on mobile to reduce adjustments
+    const threshold = mobile ? 2 : 0.5
+    
+    if (Math.abs(delta) > threshold) {
       window.scrollTo(0, window.scrollY + delta)
     }
+    
     if (now - start < ms) {
       raf = requestAnimationFrame(tick)
     }
@@ -117,6 +138,7 @@ function AccordionItem({
           : 'bg-primary-50 border-primary-300 hover:bg-primary-100 hover:shadow',
         'scroll-mt-28 md:scroll-mt-32'
       ].join(' ')}
+      style={open ? { willChange: 'auto' } : undefined}
     >
       <button
         onClick={handleToggle}
@@ -142,6 +164,7 @@ function AccordionItem({
               opacity: { duration: ANIM_DURATION * 0.6 }
             }}
             className="overflow-hidden"
+            style={{ willChange: 'height, opacity' }}
           >
             <div className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed">
               {children}
