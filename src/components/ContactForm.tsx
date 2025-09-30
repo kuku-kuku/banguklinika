@@ -53,7 +53,7 @@ export default function ContactForm() {
       </div>
       <div>
         <label className="text-sm font-medium">Žinutė</label>
-        <textarea required value={message} onChange={e=>setMessage(e.target.value)} rows={3} className="mt-1 w-full rounded-xl border px-3 py-2" placeholder="Trumpai aprašykite poreikį..." />
+        <textarea required value={message} onChange={e=>setMessage(e.target.value)} rows={3} className="mt-1 w-full rounded-xl border px-3 py-2 resize-none" placeholder="Trumpai aprašykite poreikį..." />
       </div>
       <div className="flex items-center gap-3">
         <button className="btn-primary" type="submit" disabled={status==="loading"}>

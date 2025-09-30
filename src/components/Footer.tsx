@@ -21,15 +21,14 @@ export default function Footer() {
   return (
     <footer className="footer-dark">
       {/* Top */}
-      <div className="container-narrow py-12 grid gap-10 md:grid-cols-4 text-sm">
-        {/* Brand */}
-        <div className="space-y-4">
+      <div className="container-narrow px-4 sm:px-6 lg:px-8 py-12 grid gap-10 grid-cols-2 md:grid-cols-12 text-sm">
+        {/* Brand – visame plote mobile, 4/12 desktop */}
+        <div className="space-y-4 col-span-2 md:col-span-4">
           <Link
             to="/"
             aria-label="Bangų klinika — pradžia"
             className="inline-flex items-center gap-3"
           >
-            {/* Naudojam sugeneruotą logotipą su baltu tekstu */}
             <img
               src="/logo1.png"
               alt="Bangų klinika"
@@ -52,7 +51,7 @@ export default function Footer() {
         </div>
 
         {/* Navigation */}
-        <div>
+        <div className="col-span-1 md:col-span-2">
           <h4 className="text-sm font-semibold mb-3 text-white">Navigacija</h4>
           <ul className="space-y-2">
             <li><Link to="/paslaugos" className="footer-link">Paslaugos</Link></li>
@@ -63,7 +62,7 @@ export default function Footer() {
         </div>
 
         {/* Contacts */}
-        <div>
+        <div className="col-span-1 md:col-span-3">
           <h4 className="text-sm font-semibold mb-3 text-white">Kontaktai</h4>
           <ul className="space-y-2">
             <li className="footer-pin">
@@ -86,13 +85,19 @@ export default function Footer() {
         </div>
 
         {/* Hours */}
-        <div>
+        <div className="col-span-1 md:col-span-3">
           <h4 className="text-sm font-semibold mb-3 text-white">Darbo laikas</h4>
           <ul className="space-y-1">
             {CLINIC.hours.map(h => (
-              <li key={h.day} className="inline-flex items-center gap-2 text-white/90">
-                <Clock size={14} className="opacity-80" />
-                <span className="inline-block w-24">{h.day}:</span> <span>{h.time}</span>
+              <li
+                key={h.day}
+                className="flex items-center justify-between text-white/90"
+              >
+                <div className="flex items-center gap-2">
+                  <Clock size={14} className="opacity-80" />
+                  <span>{h.day}</span>
+                </div>
+                <span>{h.time}</span>
               </li>
             ))}
           </ul>
@@ -107,7 +112,7 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="bg-darkblue-700">
-        <div className="container-narrow py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/70">
+        <div className="container-narrow px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/70">
           <p>
             © {new Date().getFullYear()} Bangų klinika. Visos teisės saugomos.
           </p>
