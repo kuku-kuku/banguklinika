@@ -22,8 +22,9 @@ export default function SpecialOffers() {
         description="Akcijos ir nuolaidos: pilna burnos higiena + BEYOND® balinimas už 249 € ir bendra nuolaida tęstiniam gydymui po pirminės apžiūros."
       />
 
+      {/* Svarbu: suformuojam aukštesnį sluoksnį virš bangos */}
       <motion.div
-        className="container-narrow"
+        className="container-narrow relative z-10"
         variants={container}
         initial="hidden"
         animate="visible"
@@ -37,7 +38,7 @@ export default function SpecialOffers() {
         {/* Bendra akcija tęstiniam gydymui */}
         <motion.section
           variants={item}
-          className="mb-6 rounded-2xl border border-brand bg-brand-50/60 p-5 shadow-soft"
+          className="mb-6 relative z-10 rounded-2xl border border-brand bg-brand-50 p-5 shadow-soft"
         >
           <h2 className="text-lg sm:text-xl font-semibold text-darkblue-700">
             Bendra akcija tęstiniam gydymui
@@ -54,9 +55,9 @@ export default function SpecialOffers() {
           variants={item}
           className="relative overflow-hidden rounded-2xl ring-1 ring-brand bg-white shadow-sm"
         >
-          {/* Dekoratyvūs švytėjimai */}
-          <div className="pointer-events-none absolute -top-16 -left-20 w-72 h-72 rounded-full bg-brand-100/60 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-20 -right-16 w-80 h-80 rounded-full bg-brand-100/40 blur-3xl" />
+          {/* Dekoratyvūs švytėjimai – visada fone */}
+          <div className="pointer-events-none absolute -top-16 -left-20 -z-10 w-72 h-72 rounded-full bg-brand-100/60 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-20 -right-16 -z-10 w-80 h-80 rounded-full bg-brand-100/40 blur-3xl" />
 
           <div className="relative grid gap-6 p-6 sm:p-8 md:grid-cols-2">
             <div className="space-y-3">

@@ -83,33 +83,54 @@ export default function About() {
           </p>
         </motion.div>
 
-        {/* Paslaugos (dviejų stulpelių sąrašas) */}
+        {/* Paslaugos (dviejų stulpelių sąrašas – stabilūs tarpai) */}
         <motion.section className="mb-10" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Odontologijos klinikoje teikiamos paslaugos
           </h2>
+
           <div className="grid sm:grid-cols-2 gap-2">
-            {services.map((s, i) => (
-              <motion.div
-                key={i}
-                variants={item}
-                className="flex items-start gap-2 text-slate-700"
-              >
-                <span className="text-brand mt-1">
-                  <CheckIcon />
-                </span>
-                <span className="text-sm leading-relaxed">{s}</span>
-              </motion.div>
-            ))}
+            {/* Kairys stulpelis: lyginiai indeksai */}
+            <div className="space-y-2">
+              {services.filter((_, i) => i % 2 === 0).map((s, i) => (
+                <motion.div
+                  key={`L-${i}-${s}`}
+                  variants={item}
+                  className="flex items-start gap-2 text-slate-700"
+                >
+                  <span className="text-brand mt-1">
+                    <CheckIcon />
+                  </span>
+                  <span className="text-sm leading-relaxed">{s}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Dešinys stulpelis: nelyginiai indeksai */}
+            <div className="space-y-2">
+              {services.filter((_, i) => i % 2 === 1).map((s, i) => (
+                <motion.div
+                  key={`R-${i}-${s}`}
+                  variants={item}
+                  className="flex items-start gap-2 text-slate-700"
+                >
+                  <span className="text-brand mt-1">
+                    <CheckIcon />
+                  </span>
+                  <span className="text-sm leading-relaxed">{s}</span>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.section>
 
-        {/* Laboratorija — turkio rėmelis */}
+        {/* Laboratorija — turkio rėmelis (blur perkeliam į foną) */}
         <motion.section
           className="mb-10 rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-5 relative overflow-hidden"
           variants={item}
         >
-          <div className="pointer-events-none absolute -top-10 -right-10 w-48 h-48 rounded-full bg-brand-50 blur-3xl" />
+          {/* dekoratyvinis blynas nebekerta teksto */}
+          <div className="pointer-events-none absolute -top-10 -right-10 -z-10 w-48 h-48 rounded-full bg-brand-50 blur-3xl" />
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-3">Dantų technikos laboratorija</h2>
           <div className="text-slate-700 space-y-3">
             <p>
