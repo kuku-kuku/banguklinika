@@ -83,10 +83,10 @@ export default function Contact() {
                 <a href={`tel:${CLINIC.phone}`} className="btn btn-primary rounded-xl">
                   <Phone size={18} className="-ml-1 mr-1" /> Skambinti
                 </a>
-                <a href={`mailto:${CLINIC.email}`} className="btn btn-outline rounded-xl">
+                <a href={`mailto:${CLINIC.email}`} className="btn btn-primary rounded-xl">
                   <Mail size={18} className="-ml-1 mr-1" /> El. laiškas
                 </a>
-                <a href={mapsHref} target="_blank" rel="noreferrer" className="btn btn-ghost rounded-xl">
+                <a href={mapsHref} target="_blank" rel="noreferrer" className="btn btn-primary rounded-xl">
                   <Navigation size={18} className="-ml-1 mr-1" /> Maršrutas
                 </a>
               </div>
@@ -98,7 +98,7 @@ export default function Contact() {
                 Jei turite klausimų dėl kainų ar gydymo plano – mielai pakonsultuosime.
               </p>
               <div className="mt-3">
-                <Link to="/kainos" className="btn btn-ghost rounded-xl">
+                <Link to="/kainos" className="btn btn-primary rounded-xl">
                   Peržiūrėti kainas
                 </Link>
               </div>

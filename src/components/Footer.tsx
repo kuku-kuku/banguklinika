@@ -98,7 +98,7 @@ export default function Footer() {
           </ul>
 
           <div className="mt-4">
-            <Link to="/kontaktai" className="btn-primary rounded-xl text-sm">
+            <Link to="/kontaktai" className="btn btn-primary rounded-xl">
               Registracija internetu
             </Link>
           </div>
