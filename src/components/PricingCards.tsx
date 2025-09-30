@@ -193,7 +193,15 @@ function GroupCard({
           containIntrinsicSize: open ? undefined : '0 400px',
         }}
       >
-        <div ref={contentRef} className="px-2 py-2">
+        {/* vidinis „cushion“ tik vizualui (nekeičia layout) */}
+        <motion.div
+          ref={contentRef}
+          initial={false}
+          animate={open ? { opacity: 1, scaleY: 1, y: 0 } : { opacity: 0.98, scaleY: 0.995, y: -1 }}
+          transition={{ duration: 0.18 }}
+          style={{ transformOrigin: 'top left' }}
+          className="px-2 py-2"
+        >
           <div className="rounded-xl bg-white border border-brand/30 overflow-hidden">
             <table className="w-full text-sm">
               <tbody className="divide-y divide-slate-100">
@@ -203,7 +211,8 @@ function GroupCard({
                       <span className="text-slate-900">{p.name}</span>
                       {p.note && <span className="block text-xs text-gray-600 mt-0.5">{p.note}</span>}
                     </td>
-                    <td className="p-3 w-40 font-semibold text-right whitespace-nowrap text-darkblue-700">
+                    {/* mobile siauresnis, md+ identiškas PC */}
+                    <td className="p-3 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-darkblue-700">
                       {fmt(p.from, p.to)}
                     </td>
                   </tr>
@@ -211,7 +220,7 @@ function GroupCard({
               </tbody>
             </table>
           </div>
-        </div>
+        </motion.div>
       </motion.div>
     </div>
   )
@@ -244,8 +253,8 @@ export default function PricingCards() {
         await wait(32) // leisti layout’ui perskaičiuoti aukštį
         await smoothAlignToElement(id, 20, 320)
       } else {
-        // DESKTOP: uždarom kitus, tada atidarom šitą
-        setOpenIds(new Set()) // close all
+        // DESKTOP: uždarom kitus, tada atidarom šitą (PC elgsena išlieka identiška)
+        setOpenIds(new Set())
         await wait(260)
         setOpenIds(new Set([id]))
         await wait(280)
@@ -297,25 +306,28 @@ export default function PricingCards() {
   }
 
   return (
-    <motion.div
-      className="grid gap-6 md:grid-cols-2 items-start"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      {PRICING.map((g) => {
-        const id = slugify(g.title)
-        const isOpen = openIds.has(id)
-        return (
-          <motion.div key={g.title} variants={itemVariants} layout="position">
-            <GroupCard
-              group={g as PriceGroup}
-              open={isOpen}
-              onToggle={(willOpen) => handleToggle(id, willOpen)}
-            />
-          </motion.div>
-        )
-      })}
-    </motion.div>
+    // Mobile turi įtrauką; md+ paliekam 0 – PC nei kiek nesuspaustas
+    <div className="px-4 sm:px-6 md:px-0">
+      <motion.div
+        className="grid gap-6 md:grid-cols-2 items-start"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {PRICING.map((g) => {
+          const id = slugify(g.title)
+          const isOpen = openIds.has(id)
+          return (
+            <motion.div key={g.title} variants={itemVariants} layout="position">
+              <GroupCard
+                group={g as PriceGroup}
+                open={isOpen}
+                onToggle={(willOpen) => handleToggle(id, willOpen)}
+              />
+            </motion.div>
+          )
+        })}
+      </motion.div>
+    </div>
   )
 }
