@@ -122,12 +122,12 @@ function GroupCard({
 
   // Height animation with measured px
   const controls = useAnimationControls()
-  const contentRef = useRef<HTMLDivElement | null>(null)
+  const contentInnerRef = useRef<HTMLDivElement | null>(null)
   const [height, setHeight] = useState(0)
   const [measured, setMeasured] = useState(0)
 
   useEffect(() => {
-    const el = contentRef.current
+    const el = contentInnerRef.current
     if (!el) return
     const ro = new ResizeObserver(() => {
       const h = el.scrollHeight
@@ -152,10 +152,11 @@ function GroupCard({
   }, [open, measured])
 
   return (
-    <div
+    <motion.div
       id={id}
+      layout="position" /* FLIP padeda reflow'ui atrodyti minkščiau */
       className={clsx(
-        'rounded-2xl border shadow-soft overflow-hidden self-start transition-colors transform-gpu will-change-transform',
+        'w-full rounded-2xl border shadow-soft overflow-hidden transition-colors transform-gpu will-change-transform',
         open
           ? 'bg-brand-50 border-brand ring-2 ring-brand/30 shadow-lg'
           : 'bg-brand-50 border-brand hover:bg-brand-100 hover:shadow-md',
@@ -189,13 +190,13 @@ function GroupCard({
           height,
           overflow: 'hidden',
           willChange: 'height',
-          contentVisibility: open ? 'visible' as any : 'auto' as any,
-          containIntrinsicSize: open ? undefined : '0 400px',
+          contentVisibility: open ? ('visible' as any) : ('auto' as any),
+          containIntrinsicSize: open ? undefined : '0 420px',
         }}
       >
-        {/* vidinis „cushion“ tik vizualui (nekeičia layout) */}
+        {/* vidinis „cushion“ – vizualiai švelnina, layout nekeičia */}
         <motion.div
-          ref={contentRef}
+          ref={contentInnerRef}
           initial={false}
           animate={open ? { opacity: 1, scaleY: 1, y: 0 } : { opacity: 0.98, scaleY: 0.995, y: -1 }}
           transition={{ duration: 0.18 }}
@@ -222,7 +223,7 @@ function GroupCard({
           </div>
         </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -240,21 +241,17 @@ export default function PricingCards() {
     animatingRef.current = true
     try {
       if (!willOpen) {
-        setOpenIds(prev => {
-          const next = new Set(prev); next.delete(id); return next
-        })
-        await wait(240)
+        setOpenIds(prev => { const next = new Set(prev); next.delete(id); return next })
+        await wait(220)
         return
       }
 
       if (mobile) {
-        // MOBILE: neatidarom/neuždarinėjam kitų – tik pridėti šitą
         setOpenIds(prev => new Set(prev).add(id))
-        await wait(32) // leisti layout’ui perskaičiuoti aukštį
+        await wait(40) // laukti 1 frame, kad aukštis būtų perskaičiuotas
         await smoothAlignToElement(id, 20, 320)
       } else {
-        // DESKTOP: uždarom kitus, tada atidarom šitą (PC elgsena išlieka identiška)
-        setOpenIds(new Set())
+        setOpenIds(new Set()) // desktop: close others
         await wait(260)
         setOpenIds(new Set([id]))
         await wait(280)
@@ -278,7 +275,7 @@ export default function PricingCards() {
       try {
         if (mobile) {
           setOpenIds(prev => new Set(prev).add(id))
-          await wait(32)
+          await wait(40)
           if (!cancelled) await smoothAlignToElement(id, 20, 320)
         } else {
           setOpenIds(new Set())
@@ -306,10 +303,10 @@ export default function PricingCards() {
   }
 
   return (
-    // Mobile turi įtrauką; md+ paliekam 0 – PC nei kiek nesuspaustas
-    <div className="px-4 sm:px-6 md:px-0">
+    // Centruotas, pilnai responsyvus wrapperis (desktop ne suspaustas)
+    <div className="w-full mx-auto max-w-[1400px] px-4 sm:px-6">
       <motion.div
-        className="grid gap-6 md:grid-cols-2 items-start"
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -318,7 +315,7 @@ export default function PricingCards() {
           const id = slugify(g.title)
           const isOpen = openIds.has(id)
           return (
-            <motion.div key={g.title} variants={itemVariants} layout="position">
+            <motion.div key={g.title} variants={itemVariants} layout="position" className="w-full">
               <GroupCard
                 group={g as PriceGroup}
                 open={isOpen}
