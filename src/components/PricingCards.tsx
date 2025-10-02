@@ -8,12 +8,13 @@ const OPEN_MS = 320
 const CLOSE_MS = 260
 const EASE = 'cubic-bezier(0.22, 1, 0.36, 1)' // springy, bet glotnus
 
-/* ======== Mobile stagger (tik pirmai ir antrai grupei) ======== */
-const ROW_ANIM_MS = 480            // kiek ilgai fade/slide veikia kiekvienai eilei (atidarom)
-const ROW_BASE_DELAY = 120         // pradžios „pauzė“, kad pirma sustyguotų kortelės rėmas
-const PER_ROW_DELAY = 90           // papildomas delsimas tarp eilučių (vorelė)
-const MAX_STAGGER_ROWS = 10        // nekaskaduojam per visą lentelę, kad Safari neprakaituotų
-const ROW_Y_PX = 8                 // kiek „iš apačios“ atplaukia tekstas
+/* ======== Mobile typewriter (tik pirmai ir antrai grupei) ======== */
+const ROW_BASE_DELAY = 220        // pauzė prieš prasidedant pirmai eilutei
+const PER_ROW_DELAY = 160         // tarpas tarp eilučių (vorelė)
+const MAX_STAGGER_ROWS = 10       // nerodome vorelės iki begalybės
+const PER_CHAR_MS = 18            // kiek ms skiriame vienai raidei
+const MIN_DUR_MS = 520            // min animacijos trukmė
+const MAX_DUR_MS = 1400           // max animacijos trukmė
 
 /* ========= Utils ========= */
 function slugify(t: string) {
@@ -105,6 +106,34 @@ async function smoothAlignToElement(id: string, offset = 16, ms = 320) {
   await smoothScrollTo(targetY, ms)
 }
 
+/* ========= Global CSS (typewriter + fade) ========= */
+const typewriterCSS = `
+@keyframes twWidth { from { width: 0ch } to { width: var(--chars,0)ch } }
+@keyframes twFade { from { opacity: 0; transform: translate3d(0,4px,0) } to { opacity: 1; transform: translate3d(0,0,0) } }
+
+/* rašymas raidė po raidės */
+.tw {
+  display:inline-block;
+  white-space:nowrap;
+  overflow:hidden;
+  will-change: width;
+  animation-name: twWidth;
+  animation-duration: var(--twDur, 700ms);
+  animation-timing-function: steps(var(--chars, 20), end);
+  animation-fill-mode: both;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* švelnus atsiradimas kitų elementų (kaina, pastaba) */
+.tw-fade {
+  opacity: 0;
+  animation: twFade var(--twFadeDur, 420ms) var(--twFadeEase, cubic-bezier(0.22, 1, 0.36, 1)) var(--twFadeDelay, 0ms) forwards;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+`
+
 /* ========= Icons (sutrumpinta) ========= */
 function Icon({ title }: { title: string }) {
   const t = title.toLowerCase()
@@ -118,7 +147,7 @@ function GroupCard({
   group,
   open,
   onToggle,
-  /* nauja: tik mobile, tik pirmoms 2 – eilučių „vorelė“ */
+  /* tik mobile, tik pirmoms 2 – eilutės „rašomos“ po vieną */
   staggerRows = false,
 }: {
   group: PriceGroup
@@ -143,6 +172,9 @@ function GroupCard({
       )}
       style={{ contain: 'layout paint', transform: 'translateZ(0)' }}
     >
+      {/* injectinam CSS (saugiai galima dėti ir vieną kartą app lygiu) */}
+      <style dangerouslySetInnerHTML={{ __html: typewriterCSS }} />
+
       <button
         onClick={() => onToggle(!open)}
         aria-expanded={open}
@@ -194,33 +226,79 @@ function GroupCard({
               <table className="w-full text-sm">
                 <tbody className="divide-y divide-slate-100">
                   {group.items.map((p, i) => {
-                    const doStagger = !!(staggerRows && open && !reduceMotion)
+                    const doTW = !!(staggerRows && open && !reduceMotion)
                     const cappedIndex = Math.min(i, MAX_STAGGER_ROWS)
-                    const delay = doStagger ? ROW_BASE_DELAY + cappedIndex * PER_ROW_DELAY : 0
-                    // atidarant — lėta ir su vėlinimu, uždarant — trumpa be vėlinimo (Safari mažiau „kandžiojasi“)
-                    const duration = doStagger ? ROW_ANIM_MS : (open ? OPEN_MS : CLOSE_MS)
-                    const closing = !open
-                    const finalDelay = closing ? 0 : delay
+                    const rowDelay = doTW ? ROW_BASE_DELAY + cappedIndex * PER_ROW_DELAY : 0
+                    const nameLen = (p.name || '').length
+                    const twDur = doTW
+                      ? Math.max(MIN_DUR_MS, Math.min(MAX_DUR_MS, 300 + nameLen * PER_CHAR_MS))
+                      : 0
 
                     return (
-                      <tr
-                        key={i}
-                        className="hover:bg-slate-50/50 transition-colors"
-                        style={{
-                          opacity: open ? 1 : 0,
-                          transform: open ? 'translate3d(0,0,0)' : `translate3d(0, ${ROW_Y_PX}px, 0)`,
-                          transition: `opacity ${duration}ms ${EASE} ${finalDelay}ms, transform ${duration}ms ${EASE} ${finalDelay}ms`,
-                          willChange: 'opacity,transform',
-                          backfaceVisibility: 'hidden',
-                          transformStyle: 'preserve-3d',
-                        }}
-                      >
+                      <tr key={i} className="hover:bg-slate-50/50 transition-colors">
                         <td className="p-3 align-top">
-                          <span className="text-slate-900">{p.name}</span>
-                          {p.note && <span className="block text-xs text-gray-600 mt-0.5">{p.note}</span>}
+                          {doTW ? (
+                            // „Phantom“ technika: nematomas tekstas užfiksuoja galutinį plotį,
+                            // o ant viršaus absoliučiai uždedam rašomą tekstą — nelūžta lentelės layout'as.
+                            <span className="relative inline-block text-slate-900">
+                              <span className="invisible">{p.name}</span>
+                              <span
+                                className="tw absolute inset-0"
+                                style={
+                                  {
+                                    // kiek raidžių
+                                    ['--chars' as any]: nameLen,
+                                    // kiek trunka rašymas
+                                    ['--twDur' as any]: `${twDur}ms`,
+                                    // kada pradėti šiai eilutei
+                                    animationDelay: `${rowDelay}ms`,
+                                  } as React.CSSProperties
+                                }
+                              >
+                                {p.name}
+                              </span>
+                              {/* Pastaba – pasirodo po pavadinimo su fade */}
+                              {p.note && (
+                                <span
+                                  className="block text-xs text-gray-600 mt-0.5 tw-fade"
+                                  style={
+                                    {
+                                      ['--twFadeDur' as any]: '420ms',
+                                      ['--twFadeEase' as any]: EASE,
+                                      ['--twFadeDelay' as any]: `${rowDelay + twDur - 80}ms`,
+                                    } as React.CSSProperties
+                                  }
+                                >
+                                  {p.note}
+                                </span>
+                              )}
+                            </span>
+                          ) : (
+                            <>
+                              <span className="text-slate-900">{p.name}</span>
+                              {p.note && <span className="block text-xs text-gray-600 mt-0.5">{p.note}</span>}
+                            </>
+                          )}
                         </td>
-                        <td className="p-3 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-darkblue-700">
-                          {fmt(p.from, p.to)}
+
+                        <td
+                          className="p-3 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-darkblue-700"
+                          style={
+                            doTW
+                              ? ({
+                                  // kaina pasirodo po pavadinimo rašymo
+                                  ['--twFadeDur' as any]: '380ms',
+                                  ['--twFadeEase' as any]: EASE,
+                                  ['--twFadeDelay' as any]: `${rowDelay + Math.max(180, twDur * 0.7)}ms`,
+                                } as React.CSSProperties)
+                              : undefined
+                          }
+                        >
+                          {doTW ? (
+                            <span className="tw-fade">{fmt(p.from, p.to)}</span>
+                          ) : (
+                            fmt(p.from, p.to)
+                          )}
                         </td>
                       </tr>
                     )
@@ -259,7 +337,7 @@ export default function PricingCards() {
         await wait(32) // leisti layout’ui persiskaičiuoti
         await smoothAlignToElement(id, 20, OPEN_MS)
       } else {
-        // DESKTOP — jokių pakeitimų
+        // DESKTOP — be pokyčių
         setOpenIds(new Set())
         await wait(CLOSE_MS + 40)
         setOpenIds(new Set([id]))
@@ -309,7 +387,7 @@ export default function PricingCards() {
         {PRICING.map((g, idx) => {
           const id = slugify(g.title)
           const isOpen = openIds.has(id)
-          // „vorelė“ tik MOBILE ir tik pirmai-dvejai
+          // Typewriter tik MOBILE ir tik pirmai-dvejai
           const staggerRows = mobile && idx < 2
           return (
             <div key={g.title} className="w-full will-change-transform">
