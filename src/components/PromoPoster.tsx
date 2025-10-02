@@ -23,12 +23,26 @@ function useBodyScrollLock(locked: boolean) {
   useEffect(() => {
     if (!locked) return
     const prevOverflow = document.body.style.overflow
+    const prevPaddingRight = document.body.style.paddingRight
     const prevTouch = (document.body.style as any).webkitOverflowScrolling
+    
+    // Get scrollbar width
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+    
     document.body.style.overflow = 'hidden'
+    document.body.style.paddingRight = `${scrollbarWidth}px`
     ;(document.body.style as any).webkitOverflowScrolling = 'auto'
+    
+    // Prevent iOS Safari bottom bar issues
+    document.documentElement.style.overflow = 'hidden'
+    document.documentElement.style.height = '100%'
+    
     return () => {
       document.body.style.overflow = prevOverflow
+      document.body.style.paddingRight = prevPaddingRight
       ;(document.body.style as any).webkitOverflowScrolling = prevTouch
+      document.documentElement.style.overflow = ''
+      document.documentElement.style.height = ''
     }
   }, [locked])
 }
@@ -52,6 +66,7 @@ export default function PromoPoster({
   const { pathname, search } = useLocation()
   const [open, setOpen] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
+  const [isReady, setIsReady] = useState(false)
   const timerRef = useRef<number | null>(null)
   const KEY = `promoPoster:${id}`
 
@@ -95,7 +110,11 @@ export default function PromoPoster({
   useEffect(() => {
     const img = new Image()
     img.src = imageSrc
-    img.onload = () => setImageLoaded(true)
+    img.onload = () => {
+      setImageLoaded(true)
+      // Small delay to ensure everything is ready before showing
+      setTimeout(() => setIsReady(true), 50)
+    }
   }, [imageSrc])
 
   useEffect(() => {
@@ -122,7 +141,7 @@ export default function PromoPoster({
   const panelMaxW = `min(88vw, ${maxWidthPx}px)`
   const panelMaxH = `min(${modalMaxVh}vh, calc(100dvh - ${navbarOffsetPx + 20}px))`
 
-  // Smooth bounce animation - drops from top, bounces once, settles
+  // Smooth bounce animation - only starts when image is ready
   const bounceVariants = {
     initial: { 
       y: -400, 
@@ -163,105 +182,123 @@ export default function PromoPoster({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: '100%',
+            height: '100vh',
+            minHeight: '100vh',
+            maxHeight: '100vh',
+            overscrollBehavior: 'none'
+          }}
         >
-          {/* Overlay with smooth fade */}
+          {/* Overlay with smooth fade - full screen coverage for iOS */}
           <motion.div 
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm" 
+            className="absolute bg-black/60 backdrop-blur-sm" 
             onClick={close} 
             aria-hidden
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              width: '100%',
+              height: '100vh',
+              minHeight: '100vh',
+              maxHeight: '100vh'
+            }}
           />
 
-          {/* Modal with bounce animation */}
-          <motion.div
-            className="relative z-10 w-full"
-            style={{
-              maxWidth: panelMaxW,
-              maxHeight: panelMaxH,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-            variants={bounceVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div
-              className="relative w-full h-full grid place-items-center"
+          {/* Modal with bounce animation - only animates when ready */}
+          {isReady && (
+            <motion.div
+              className="relative z-10 w-full"
               style={{
-                borderRadius,
-                overflow: 'hidden',
-                filter: 'drop-shadow(0 14px 28px rgba(0,0,0,.35)) drop-shadow(0 4px 10px rgba(0,0,0,.22))',
-                background: 'transparent',
+                maxWidth: panelMaxW,
+                maxHeight: panelMaxH,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
+              variants={bounceVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              onClick={(e) => e.stopPropagation()}
             >
-              {/* Loading state */}
-              {!imageLoaded && (
-                <div className="absolute inset-0 flex items-center justify-center bg-gray-900/20 backdrop-blur-sm" style={{ borderRadius }}>
-                  <div className="w-12 h-12 border-4 border-white/20 border-t-white rounded-full animate-spin" />
-                </div>
-              )}
-
-              {/* Plakatas with fade-in when loaded */}
-              <motion.img
-                src={imageSrc}
-                alt=""
-                className="max-w-full max-h-full object-contain select-none"
-                decoding="async"
-                loading="eager"
-                draggable={false}
-                style={{ 
+              <div
+                className="relative w-full h-full grid place-items-center"
+                style={{
                   borderRadius,
-                  opacity: imageLoaded ? 1 : 0,
-                  transition: 'opacity 0.3s ease-in-out'
+                  overflow: 'hidden',
+                  filter: 'drop-shadow(0 14px 28px rgba(0,0,0,.35)) drop-shadow(0 4px 10px rgba(0,0,0,.22))',
+                  background: 'transparent',
                 }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: imageLoaded ? 1 : 0 }}
-                transition={{ duration: 0.3 }}
-              />
-
-              {/* X button with smooth entrance */}
-              <motion.button
-                aria-label="Uždaryti"
-                onClick={close}
-                className="absolute top-2 right-2 p-2 rounded-full bg-black/20 hover:bg-black/30 active:bg-black/40 transition"
-                style={{ WebkitTapHighlightColor: 'transparent' }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.4, duration: 0.2 }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
               >
-                <svg viewBox="0 0 24 24" className="w-5 h-5 text-white drop-shadow">
-                  <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
-              </motion.button>
+                {/* Plakatas - no separate loading state to prevent flash */}
+                <img
+                  src={imageSrc}
+                  alt=""
+                  className="max-w-full max-h-full object-contain select-none"
+                  decoding="async"
+                  loading="eager"
+                  draggable={false}
+                  style={{ borderRadius }}
+                />
 
-              {/* CTA with slide-in animation */}
-              {secondaryCtaHref && (
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5, duration: 0.3 }}
-                  className="absolute bottom-2 right-3 md:bottom-3 md:right-4"
+                {/* X button with smooth entrance */}
+                <motion.button
+                  aria-label="Uždaryti"
+                  onClick={close}
+                  className="absolute top-2 right-2 p-2 rounded-full bg-black/20 hover:bg-black/30 active:bg-black/40 transition"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.4, duration: 0.2 }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <Link
-                    to={secondaryCtaHref}
-                    onClick={onSecondaryClick}
-                    className="text-white font-medium text-[10px] md:text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,.7)] hover:drop-shadow-[0_3px_6px_rgba(0,0,0,.9)] transition-all"
-                    style={{ WebkitTapHighlightColor: 'transparent', background: 'transparent' }}
+                  <svg viewBox="0 0 24 24" className="w-5 h-5 text-white drop-shadow">
+                    <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                </motion.button>
+
+                {/* CTA with slide-in animation */}
+                {secondaryCtaHref && (
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5, duration: 0.3 }}
+                    className="absolute bottom-2 right-3 md:bottom-3 md:right-4"
                   >
-                    {secondaryCtaText}
-                  </Link>
-                </motion.div>
-              )}
+                    <Link
+                      to={secondaryCtaHref}
+                      onClick={onSecondaryClick}
+                      className="text-white font-medium text-[10px] md:text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,.7)] hover:drop-shadow-[0_3px_6px_rgba(0,0,0,.9)] transition-all"
+                      style={{ WebkitTapHighlightColor: 'transparent', background: 'transparent' }}
+                    >
+                      {secondaryCtaText}
+                    </Link>
+                  </motion.div>
+                )}
+              </div>
+            </motion.div>
+          )}
+
+          {/* Loading indicator shown while image loads */}
+          {!isReady && (
+            <div className="relative z-10 flex items-center justify-center">
+              <div className="w-12 h-12 border-4 border-white/20 border-t-white rounded-full animate-spin" />
             </div>
-          </motion.div>
+          )}
         </motion.div>
       )}
     </AnimatePresence>
