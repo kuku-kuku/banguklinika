@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 export default function Pricing() {
   return (
     <AnimatedSection>
-      <SEO title="Kainos – Bangų klinika" description="Aiškiai suskirstytos odontologijos paslaugų kainos." />
+      <SEO title="Kainos" description="Aiškiai suskirstytos odontologijos paslaugų kainos." />
 
       <motion.div
         className="container-narrow"

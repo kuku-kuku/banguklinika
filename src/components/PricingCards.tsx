@@ -93,19 +93,25 @@ function Icon({ title }: { title: string }) {
   return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M12 3c4 0 7 3 7 7v7a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-7c0-4 3-7 7-7z" stroke="currentColor" strokeWidth="1.6" fill="none"/></svg>)
 }
 
-/* ========= Accordion item su grid animacija ========= */
+/* ========= Accordion item (desktop elgsena nepakeista) ========= */
 function GroupCard({
   group,
   open,
   onToggle,
+  /* nauja: tik mobile, tik pirmoms 2 – eilučių „vorelė“ */
+  staggerRows = false,
 }: {
   group: PriceGroup
   open: boolean
   onToggle: (willOpen: boolean) => void
+  staggerRows?: boolean
 }) {
   const id = slugify(group.title)
   const range = useMemo(() => groupRange(group.items), [group.items])
   const summary = range ? (range.max > range.min ? `€${range.min}–€${range.max}` : `nuo €${range.min}`) : '—'
+
+  const MAX_STAGGER_ROWS = 8
+  const PER_ROW_DELAY = 40 // ms
 
   return (
     <div
@@ -163,17 +169,34 @@ function GroupCard({
             <div className="rounded-xl bg-white border border-brand/30 overflow-hidden">
               <table className="w-full text-sm">
                 <tbody className="divide-y divide-slate-100">
-                  {group.items.map((p, i) => (
-                    <tr key={i} className="hover:bg-slate-50/50 transition-colors">
-                      <td className="p-3 align-top">
-                        <span className="text-slate-900">{p.name}</span>
-                        {p.note && <span className="block text-xs text-gray-600 mt-0.5">{p.note}</span>}
-                      </td>
-                      <td className="p-3 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-darkblue-700">
-                        {fmt(p.from, p.to)}
-                      </td>
-                    </tr>
-                  ))}
+                  {group.items.map((p, i) => {
+                    // „vorelė“ TIK jei staggerRows=true ir atidaryta
+                    const delayEnabled = staggerRows && open
+                    const cappedIndex = Math.min(i, MAX_STAGGER_ROWS)
+                    const delay = delayEnabled ? cappedIndex * PER_ROW_DELAY : 0
+                    const base = `${open ? OPEN_MS : CLOSE_MS}ms ${EASE} ${delay}ms`
+                    return (
+                      <tr
+                        key={i}
+                        className="hover:bg-slate-50/50 transition-colors"
+                        style={{
+                          // desktop elgsena nepakeista, nes staggerRows bus false
+                          opacity: open ? 1 : 0,
+                          transform: open ? 'translateY(0)' : 'translateY(4px)',
+                          transition: `opacity ${base}, transform ${base}`,
+                          willChange: 'opacity,transform',
+                        }}
+                      >
+                        <td className="p-3 align-top">
+                          <span className="text-slate-900">{p.name}</span>
+                          {p.note && <span className="block text-xs text-gray-600 mt-0.5">{p.note}</span>}
+                        </td>
+                        <td className="p-3 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-darkblue-700">
+                          {fmt(p.from, p.to)}
+                        </td>
+                      </tr>
+                    )
+                  })}
                 </tbody>
               </table>
             </div>
@@ -208,7 +231,7 @@ export default function PricingCards() {
         await wait(32) // leisti layout’ui persiskaičiuoti
         await smoothAlignToElement(id, 20, OPEN_MS)
       } else {
-        // desktop uždarom kitus, kad nebūtų didelių šuolių
+        // DESKTOP — jokių pakeitimų
         setOpenIds(new Set())
         await wait(CLOSE_MS + 40)
         setOpenIds(new Set([id]))
@@ -216,7 +239,7 @@ export default function PricingCards() {
         await smoothAlignToElement(id, 16, OPEN_MS - 40)
       }
     } finally {
-        animatingRef.current = false
+      animatingRef.current = false
     }
   }
 
@@ -255,15 +278,18 @@ export default function PricingCards() {
     // Centruotas, responsyvus
     <div className="w-full mx-auto max-w-[1400px] px-4 sm:px-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-        {PRICING.map((g) => {
+        {PRICING.map((g, idx) => {
           const id = slugify(g.title)
           const isOpen = openIds.has(id)
+          // „vorelė“ tik MOBILE ir tik pirmai-dvejai
+          const staggerRows = mobile && idx < 2
           return (
             <div key={g.title} className="w-full will-change-transform">
               <GroupCard
                 group={g as PriceGroup}
                 open={isOpen}
                 onToggle={(willOpen) => handleToggle(id, willOpen)}
+                staggerRows={staggerRows}
               />
             </div>
           )

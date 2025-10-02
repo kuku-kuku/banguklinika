@@ -770,7 +770,7 @@ export default function Services() {
   return (
     <>
       <SEO
-        title="Paslaugos – Bangų klinika"
+        title="Paslaugos"
         description="Skubi pagalba, dantų protezavimas (CEREC, cirkonis, E-MAX), kompensuojamas protezavimas, dantų gydymas, implantai, tiesinimas, higiena, chirurgija, balinimas, estetinis plombavimas."
       />
 

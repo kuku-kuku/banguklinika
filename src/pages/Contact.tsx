@@ -27,7 +27,7 @@ export default function Contact() {
   return (
     <AnimatedSection>
       <SEO
-        title="Kontaktai – Bangų klinika"
+        title="Kontaktai"
         description="Bangų g. 7-3, Klaipėda • +370 671 91399 • info@banguklinika.lt"
       />
 
