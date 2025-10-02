@@ -8,6 +8,13 @@ const OPEN_MS = 320
 const CLOSE_MS = 260
 const EASE = 'cubic-bezier(0.22, 1, 0.36, 1)' // springy, bet glotnus
 
+/* ======== Mobile stagger (tik pirmai ir antrai grupei) ======== */
+const ROW_ANIM_MS = 480            // kiek ilgai fade/slide veikia kiekvienai eilei (atidarom)
+const ROW_BASE_DELAY = 120         // pradžios „pauzė“, kad pirma sustyguotų kortelės rėmas
+const PER_ROW_DELAY = 90           // papildomas delsimas tarp eilučių (vorelė)
+const MAX_STAGGER_ROWS = 10        // nekaskaduojam per visą lentelę, kad Safari neprakaituotų
+const ROW_Y_PX = 8                 // kiek „iš apačios“ atplaukia tekstas
+
 /* ========= Utils ========= */
 function slugify(t: string) {
   return t
@@ -49,6 +56,19 @@ function useIsMobile() {
     return () => mql.removeEventListener?.('change', handler)
   }, [])
   return mobile
+}
+
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false)
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const handler = () => setReduced(!!mq.matches)
+    handler()
+    mq.addEventListener?.('change', handler)
+    return () => mq.removeEventListener?.('change', handler)
+  }, [])
+  return reduced
 }
 
 function getHeaderOffset(): number {
@@ -109,9 +129,7 @@ function GroupCard({
   const id = slugify(group.title)
   const range = useMemo(() => groupRange(group.items), [group.items])
   const summary = range ? (range.max > range.min ? `€${range.min}–€${range.max}` : `nuo €${range.min}`) : '—'
-
-  const MAX_STAGGER_ROWS = 8
-  const PER_ROW_DELAY = 40 // ms
+  const reduceMotion = usePrefersReducedMotion()
 
   return (
     <div
@@ -140,7 +158,12 @@ function GroupCard({
             <div className="text-xs text-gray-600">{summary} • {group.items.length} poz.</div>
           </div>
         </div>
-        <span className={clsx('text-sm text-gray-600 transition-transform', open && 'rotate-180')} style={{ transitionDuration: `${OPEN_MS}ms` }}>▾</span>
+        <span
+          className={clsx('text-sm text-gray-600 transition-transform', open && 'rotate-180')}
+          style={{ transitionDuration: `${OPEN_MS}ms` }}
+        >
+          ▾
+        </span>
       </button>
 
       {/* GRID trick: 0fr -> 1fr + opacity */}
@@ -164,27 +187,32 @@ function GroupCard({
               transform: open ? 'scaleY(1) translateZ(0)' : 'scaleY(0.995) translateY(-1px) translateZ(0)',
               opacity: open ? 1 : 0.98,
               willChange: 'transform,opacity',
+              contain: 'content',
             }}
           >
             <div className="rounded-xl bg-white border border-brand/30 overflow-hidden">
               <table className="w-full text-sm">
                 <tbody className="divide-y divide-slate-100">
                   {group.items.map((p, i) => {
-                    // „vorelė“ TIK jei staggerRows=true ir atidaryta
-                    const delayEnabled = staggerRows && open
+                    const doStagger = !!(staggerRows && open && !reduceMotion)
                     const cappedIndex = Math.min(i, MAX_STAGGER_ROWS)
-                    const delay = delayEnabled ? cappedIndex * PER_ROW_DELAY : 0
-                    const base = `${open ? OPEN_MS : CLOSE_MS}ms ${EASE} ${delay}ms`
+                    const delay = doStagger ? ROW_BASE_DELAY + cappedIndex * PER_ROW_DELAY : 0
+                    // atidarant — lėta ir su vėlinimu, uždarant — trumpa be vėlinimo (Safari mažiau „kandžiojasi“)
+                    const duration = doStagger ? ROW_ANIM_MS : (open ? OPEN_MS : CLOSE_MS)
+                    const closing = !open
+                    const finalDelay = closing ? 0 : delay
+
                     return (
                       <tr
                         key={i}
                         className="hover:bg-slate-50/50 transition-colors"
                         style={{
-                          // desktop elgsena nepakeista, nes staggerRows bus false
                           opacity: open ? 1 : 0,
-                          transform: open ? 'translateY(0)' : 'translateY(4px)',
-                          transition: `opacity ${base}, transform ${base}`,
+                          transform: open ? 'translate3d(0,0,0)' : `translate3d(0, ${ROW_Y_PX}px, 0)`,
+                          transition: `opacity ${duration}ms ${EASE} ${finalDelay}ms, transform ${duration}ms ${EASE} ${finalDelay}ms`,
                           willChange: 'opacity,transform',
+                          backfaceVisibility: 'hidden',
+                          transformStyle: 'preserve-3d',
                         }}
                       >
                         <td className="p-3 align-top">
