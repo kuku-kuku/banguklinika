@@ -8,11 +8,10 @@ const CLOSE_MS = 260
 const EASE = 'cubic-bezier(0.22, 1, 0.36, 1)'
 
 /* ======== Mobile smooth reveal ======== */
-const ROW_BASE_DELAY = 150
-const PER_ROW_DELAY = 100
-const MAX_STAGGER_ROWS = 10
-const TEXT_DURATION = 600
-const PRICE_DELAY = 250
+const ROW_BASE_DELAY = 200
+const PER_ROW_DELAY = 120
+const TEXT_DURATION = 800
+const PRICE_DELAY = 300
 
 /* ========= Utils ========= */
 function slugify(t: string) {
@@ -117,12 +116,10 @@ function GroupCard({
   group,
   open,
   onToggle,
-  staggerRows = false,
 }: {
   group: PriceGroup
   open: boolean
   onToggle: (willOpen: boolean) => void
-  staggerRows?: boolean
 }) {
   const id = slugify(group.title)
   const range = useMemo(() => groupRange(group.items), [group.items])
@@ -190,9 +187,8 @@ function GroupCard({
               <table className="w-full text-sm">
                 <tbody className="divide-y divide-slate-100">
                   {group.items.map((p, i) => {
-                    const doAnimation = !!(staggerRows && open && !reduceMotion)
-                    const cappedIndex = Math.min(i, MAX_STAGGER_ROWS)
-                    const rowDelay = doAnimation ? ROW_BASE_DELAY + cappedIndex * PER_ROW_DELAY : 0
+                    const doAnimation = !!(open && !reduceMotion)
+                    const rowDelay = doAnimation ? ROW_BASE_DELAY + i * PER_ROW_DELAY : 0
 
                     return (
                       <tr key={i} className="hover:bg-slate-50/50 transition-colors">
@@ -201,8 +197,8 @@ function GroupCard({
                             className="text-slate-900 inline-block"
                             style={doAnimation ? {
                               opacity: 0,
-                              transform: 'translateY(12px)',
-                              animation: `fadeInUp ${TEXT_DURATION}ms ${EASE} ${rowDelay}ms forwards`
+                              transform: 'translateY(16px)',
+                              animation: `fadeInUp ${TEXT_DURATION}ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay}ms forwards`
                             } : undefined}
                           >
                             {p.name}
@@ -212,8 +208,8 @@ function GroupCard({
                               className="block text-xs text-gray-600 mt-0.5"
                               style={doAnimation ? {
                                 opacity: 0,
-                                transform: 'translateY(8px)',
-                                animation: `fadeInUp 450ms ${EASE} ${rowDelay + TEXT_DURATION - 150}ms forwards`
+                                transform: 'translateY(12px)',
+                                animation: `fadeInUp 600ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay + TEXT_DURATION - 200}ms forwards`
                               } : undefined}
                             >
                               {p.note}
@@ -225,8 +221,8 @@ function GroupCard({
                           className="p-3 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-darkblue-700"
                           style={doAnimation ? {
                             opacity: 0,
-                            transform: 'translateY(12px) scale(0.95)',
-                            animation: `fadeInScale 500ms ${EASE} ${rowDelay + PRICE_DELAY}ms forwards`
+                            transform: 'translateY(16px) scale(0.94)',
+                            animation: `fadeInScale 700ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay + PRICE_DELAY}ms forwards`
                           } : undefined}
                         >
                           {fmt(p.from, p.to)}
@@ -245,7 +241,7 @@ function GroupCard({
         @keyframes fadeInUp {
           from {
             opacity: 0;
-            transform: translateY(12px);
+            transform: translateY(16px);
           }
           to {
             opacity: 1;
@@ -255,7 +251,7 @@ function GroupCard({
         @keyframes fadeInScale {
           from {
             opacity: 0;
-            transform: translateY(12px) scale(0.95);
+            transform: translateY(16px) scale(0.94);
           }
           to {
             opacity: 1;
@@ -339,17 +335,15 @@ export default function PricingCards() {
   return (
     <div className="w-full mx-auto max-w-[1400px] px-4 sm:px-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-        {PRICING.map((g, idx) => {
+        {PRICING.map((g) => {
           const id = slugify(g.title)
           const isOpen = openIds.has(id)
-          const staggerRows = mobile && idx < 2
           return (
             <div key={g.title} className="w-full will-change-transform">
               <GroupCard
                 group={g as PriceGroup}
                 open={isOpen}
                 onToggle={(willOpen) => handleToggle(id, willOpen)}
-                staggerRows={staggerRows}
               />
             </div>
           )
