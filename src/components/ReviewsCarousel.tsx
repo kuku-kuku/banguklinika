@@ -1,4 +1,3 @@
-// components/ReviewsCarousel.tsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 
@@ -57,8 +56,7 @@ function Avatar({ name, src }: { name?: string; src?: string }) {
     <div
       className="w-10 h-10 rounded-full grid place-items-center text-white text-sm font-semibold shadow"
       style={{
-        background:
-          "radial-gradient(circle at 30% 30%, rgba(0,183,198,0.9), rgba(0,119,204,1))",
+        background: "radial-gradient(circle at 30% 30%, rgba(0,183,198,0.9), rgba(0,119,204,1))",
       }}
       aria-label={name || "Google User"}
       title={name || "Google User"}
@@ -182,7 +180,6 @@ export default function ReviewsCarousel() {
     };
     compute();
 
-    // ✅ teisinga RO iniciacija be optional chaining po new
     const RO = (window as any).ResizeObserver;
     const ro = RO
       ? new RO(() => {
@@ -202,19 +199,20 @@ export default function ReviewsCarousel() {
     };
   }, [reviews, perSlide]);
 
-  // Auto-slinkimas
+  // Auto-slinkimas + „freeze“
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [frozen, setFrozen] = useState(false); // kai true – visiškai nestumdom daugiau
   const timerRef = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (timerRef.current) window.clearTimeout(timerRef.current);
-    if (!paused && slides.length > 1) {
+    if (!paused && !frozen && slides.length > 1) {
       timerRef.current = window.setTimeout(() => setIndex((i) => (i + 1) % slides.length), 5000);
     }
     return () => { if (timerRef.current) window.clearTimeout(timerRef.current); };
-  }, [index, paused, slides.length]);
+  }, [index, paused, frozen, slides.length]);
 
   // Pauzė kai nematoma
   useEffect(() => {
@@ -230,8 +228,16 @@ export default function ReviewsCarousel() {
   const onTouchEnd = (e: React.TouchEvent) => {
     if (touchX.current == null) return;
     const dx = e.changedTouches[0].clientX - touchX.current;
-    if (Math.abs(dx) > 40) setIndex((i) => (i + (dx < 0 ? 1 : -1) + slides.length) % slides.length);
+    if (Math.abs(dx) > 40) {
+      setFrozen(true); // vartotojas aktyviai naršo – užfiksuojam
+      setIndex((i) => (i + (dx < 0 ? 1 : -1) + slides.length) % slides.length);
+    }
     touchX.current = null;
+  };
+
+  const onPointerDown = () => setFrozen(true); // bet koks click/tap – stop
+  const onKeyDown: React.KeyboardEventHandler<HTMLDivElement> = (e) => {
+    if (e.key === "Enter" || e.key === " ") setFrozen(true);
   };
 
   if (loading)
@@ -266,6 +272,11 @@ export default function ReviewsCarousel() {
         onMouseLeave={() => setPaused(false)}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
+        onPointerDown={onPointerDown}
+        onKeyDown={onKeyDown}
+        tabIndex={0}
+        role="group"
+        aria-label="Atsiliepimų karuselė"
       >
         {/* Langas */}
         <div className="relative rounded-2xl bg-white overflow-x-hidden overflow-y-visible">
@@ -315,7 +326,7 @@ export default function ReviewsCarousel() {
               className={`h-2.5 rounded-full transition-all ${
                 i === index ? "w-6 bg-darkblue-600" : "w-2.5 bg-gray-300 hover:bg-gray-400"
               }`}
-              onClick={() => setIndex(i)}
+              onClick={() => { setFrozen(true); setIndex(i); }}
               aria-label={`Peršokti į ${i + 1}-ą skaidrę`}
             />
           ))}

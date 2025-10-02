@@ -1,4 +1,3 @@
-// src/pages/Home.tsx
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -226,11 +225,9 @@ export default function Home() {
         description="Gydymas, implantai, CEREC protezavimas, burnos higiena ir estetika. Nemokama pirminė konsultacija."
       />
 
-      {/* ===================== HERO (be gradientų — banga išliks fone) ===================== */}
+      {/* ===================== HERO ===================== */}
       <div className="relative overflow-visible">
         <section className="relative overflow-visible pan-y">
-          {/* ❌ Pašalintos blur'intos dėmės, kurios keitė bangos spalvą */}
-
           <div className="relative z-20 container-narrow grid md:grid-cols-2 gap-10 items-center py-12 md:py-20">
             {/* Left */}
             <div className="space-y-6">
@@ -266,8 +263,9 @@ export default function Home() {
                 >
                   Registracija telefonu
                 </a>
+                {/* ⬇️ HERO interneto CTA → forma */}
                 <Link
-                  to="/kontaktai"
+                  to="/kontaktai#registracija"
                   className="btn-primary w-full justify-center rounded-xl text-sm md:text-base"
                 >
                   Registracija internetu
@@ -283,7 +281,7 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Right — HERO CAROUSEL (inlined) */}
+            {/* Right — HERO CAROUSEL */}
             <motion.div
               className="relative"
               initial={{ opacity: 0, scale: .98 }}
@@ -309,7 +307,6 @@ export default function Home() {
                     decoding="async"
                     loading="eager"
                     onError={(e) => {
-                      // vientisas, neutralus fallback fonas (be gradientų)
                       (e.currentTarget.parentElement as HTMLElement).style.background = '#ffffff';
                     }}
                   />
@@ -386,8 +383,7 @@ export default function Home() {
             Populiariausios paslaugos
           </h2>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-1fr">
-            {/** Sukomplektuojam būtent 5 populiariausias iš SERVICES pagal nurodytą tvarką ir priverstinį hash */}
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-1fr">
             {POPULAR_ORDER.map((p, i) => {
               const found = SERVICES.find(s => s.title === p.title || s.id === p.id);
               const s = found ?? { id: p.id, title: p.title } as any;
@@ -416,15 +412,15 @@ export default function Home() {
                 <span className="font-semibold">10–15% nuolaidą</span> tęstiniam gydymui pereinant į pilną planą.
               </p>
               <div className="mt-6">
-                <a href="/kontaktai" className="btn-primary rounded-full px-7 py-3 font-semibold">
+                {/* ⬇️ CTA interneto registracija → forma */}
+                <Link to="/kontaktai#registracija" className="btn-primary rounded-full px-7 py-3 font-semibold">
                   Registracija internetu
-                </a>
+                </Link>
               </div>
               <p className="mt-2 text-xs text-darkblue-700/80">
                 * Nuolaidos taikomos pagal klinikos taisykles. Daugiau informacijos – registracijos metu.
               </p>
             </div>
-            {/* soft bubbles (CTA dalyje palieku, nes čia netrukdo bangai) */}
             <div className="pointer-events-none absolute -top-10 -left-16 w-72 h-72 bg-white/30 rounded-full blur-3xl" />
             <div className="pointer-events-none absolute -bottom-16 -right-12 w-80 h-80 bg-white/20 rounded-full blur-3xl" />
           </div>
@@ -443,9 +439,10 @@ export default function Home() {
             <h3 className="text-lg font-semibold text-darkblue-600">Turite klausimų?</h3>
             <p className="text-gray-700 mt-2">Parašykite mums – atsakysime per 1 darbo dieną.</p>
             <div className="mt-4">
-              <a href="/kontaktai" className="btn-primary rounded-xl">
+              {/* ⬇️ „Susisiekti“ → forma po žemėlapiu */}
+              <Link to="/kontaktai#kontaktai" className="btn-primary rounded-xl">
                 Susisiekti
-              </a>
+              </Link>
             </div>
           </div>
         </div>

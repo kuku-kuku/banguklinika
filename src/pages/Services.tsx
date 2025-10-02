@@ -61,6 +61,7 @@ function smoothScrollTo(targetY: number, duration = 450) {
   })
 }
 
+/** Top-align į elementą */
 async function smoothAlignToElement(id: string, offset = 16, ms = 360) {
   const el = document.getElementById(id)
   if (!el) return
@@ -69,11 +70,46 @@ async function smoothAlignToElement(id: string, offset = 16, ms = 360) {
   await smoothScrollTo(targetY, ms)
 }
 
+/** Center-align į elementą (naudojama mobile) */
+async function smoothCenterOnElement(id: string, offset = 12, ms = 420) {
+  const el = document.getElementById(id)
+  if (!el) return
+  const rect = el.getBoundingClientRect()
+  const header = getHeaderOffset()
+  const usableH = window.innerHeight - header
+  const targetY = window.scrollY + rect.top + rect.height / 2 - (usableH / 2) - offset
+  await smoothScrollTo(Math.max(0, targetY), ms)
+}
+
 /** Trukmė pagal px (tik default akordeonui) – kad ilgi blokai būtų vienodai glotnūs */
 function durationFor(px: number) {
   // 0.28s už ~0–200px, +0.27s iki 800px, cap ties ~0.55s
   const extra = Math.min(0.27, (Math.max(0, Math.min(px, 800)) / 800) * 0.27)
   return +(BASE_DURATION + extra).toFixed(3)
+}
+
+/** Palaukia, kol elemento bbox „nurimsta“ (nustoja keistis) per n kadrų iš eilės */
+async function waitForLayoutStabilize(el: HTMLElement, consecutiveFrames = 4, timeoutMs = 1000) {
+  return new Promise<void>((resolve) => {
+    let last: { top: number; height: number } | null = null
+    let stable = 0
+    let start = performance.now()
+    const step = () => {
+      const r = el.getBoundingClientRect()
+      if (last && Math.abs(last.top - r.top) < 1 && Math.abs(last.height - r.height) < 1) {
+        stable++
+      } else {
+        stable = 0
+      }
+      last = { top: r.top, height: r.height }
+      if (stable >= consecutiveFrames || performance.now() - start > timeoutMs) {
+        resolve()
+        return
+      }
+      requestAnimationFrame(step)
+    }
+    requestAnimationFrame(step)
+  })
 }
 
 /* ================== Scroll indikatoriaus helperis ================== */
@@ -167,7 +203,7 @@ function AccordionItemDefault({
           : 'bg-primary-50 border-primary-300 hover:bg-primary-100 hover:shadow',
         'scroll-mt-28 md:scroll-mt-32'
       ].join(' ')}
-      style={{ contain: 'paint' }}
+      style={{ contain: 'paint', overflowAnchor: 'none' as any }}
     >
       <button
         onClick={() => onToggle(!open)}
@@ -225,7 +261,7 @@ function AccordionItemPaper({
           : 'bg-primary-50 border-primary-300 hover:bg-primary-100 hover:shadow',
         'scroll-mt-28 md:scroll-mt-32'
       ].join(' ')}
-      style={{ contain: 'layout paint' }}
+      style={{ contain: 'layout paint', overflowAnchor: 'none' as any }}
     >
       <button
         onClick={() => onToggle(!open)}
@@ -264,7 +300,7 @@ function AccordionItemPaper({
             {children}
           </div>
 
-          {/* matomas scroll indikatorius (rodyklė/juosta) – tik jei tikrai yra ką scrollinti */}
+          {/* matomas scroll indikatorius – tik jei tikrai yra ką scrollinti */}
           <AnimatePresence>
             {scrollable && open && (
               <motion.div
@@ -276,10 +312,7 @@ function AccordionItemPaper({
               >
                 <div
                   className="absolute left-0 right-0 mx-auto w-1.5 rounded-full bg-primary-400"
-                  style={{
-                    top: thumbTop,
-                    height: thumbHeight
-                  }}
+                  style={{ top: thumbTop, height: thumbHeight }}
                 />
               </motion.div>
             )}
@@ -557,45 +590,57 @@ export default function Services() {
   const { hash, pathname } = useLocation()
   const [openIds, setOpenIds] = useState<Set<string>>(new Set())
   const isAnimatingRef = useRef(false)
+  const [listAnchoringOff, setListAnchoringOff] = useState(false) // valdyti overflow-anchor sąrašui
   const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
   const mobile = useIsMobile()
 
+  /** Vieno atidaryto principas + glotnus užsidarymas/atidarymas + STABILIZUOTAS centrinimas (mobile) */
   const handleToggle = async (id: string, willOpen: boolean) => {
     if (isAnimatingRef.current) return
-
     isAnimatingRef.current = true
+    setListAnchoringOff(true) // išjungiam anchoring visam sąrašui animacijos metu
     try {
+      const alreadyOpen = openIds.has(id)
+
+      // Uždarymas
       if (!willOpen) {
-        setOpenIds(prev => {
-          const next = new Set(prev); next.delete(id); return next
-        })
-        await wait(300)
+        if (!alreadyOpen) return
+        setOpenIds(prev => { const n = new Set(prev); n.delete(id); return n })
+        await wait(320)
         return
       }
 
+      // Atidarymas — vieno atidaryto principas
+      const hadOthers = openIds.size > 0 && !openIds.has(id)
+      if (hadOthers) {
+        setOpenIds(new Set())            // uždarom seną(-as)
+        await wait(320)                  // sutampa su grid animacija
+      }
+
+      setOpenIds(new Set([id]))          // atidarom naują
+      await wait(40)                     // leisti layout’ui pajudėti
+
+      // STABILIZACIJA: palaukiam, kol nauja kortelė nustos „kvėpuoti“ (aukštis/pozicija)
+      const el = document.getElementById(id)
+      if (el) await waitForLayoutStabilize(el, 4, 1000)
+
       if (mobile) {
-        setOpenIds(prev => new Set(prev).add(id))
-        await wait(40) // leisti layout’ui suskaičiuoti aukštį
-        await smoothAlignToElement(id, 24, 320)
+        await smoothCenterOnElement(id, 14, 380)
       } else {
-        const hadOthers = openIds.size > 0 && !openIds.has(id)
-        if (hadOthers) {
-          setOpenIds(new Set())
-          await wait(320)
-        }
-        setOpenIds(new Set([id]))
-        await wait(340)
         await smoothAlignToElement(id, 16, 260)
       }
     } finally {
+      setListAnchoringOff(false)
       isAnimatingRef.current = false
     }
   }
 
+  // Reset, jei nuėjome į /paslaugos be hash
   useEffect(() => {
     if (pathname === '/paslaugos' && !hash) setOpenIds(new Set())
   }, [pathname, hash])
 
+  // Hash navigacija – vienas atidarytas + stabilizuotas centrinimas (mobile)
   useEffect(() => {
     const target = (hash || '').replace('#', '')
     if (!target) return
@@ -605,23 +650,28 @@ export default function Services() {
     const run = async () => {
       if (isAnimatingRef.current) return
       isAnimatingRef.current = true
+      setListAnchoringOff(true)
       try {
+        const hadOthers = openIds.size > 0 && !openIds.has(target)
+        if (hadOthers) {
+          setOpenIds(new Set())
+          await wait(320)
+          if (cancelled) return
+        }
+        setOpenIds(new Set([target]))
+        await wait(40)
+
+        const el = document.getElementById(target)
+        if (el) await waitForLayoutStabilize(el, 4, 1000)
+        if (cancelled) return
+
         if (mobile) {
-          setOpenIds(prev => new Set(prev).add(target))
-          await wait(40)
-          if (!cancelled) await smoothAlignToElement(target, 24, 320)
+          await smoothCenterOnElement(target, 14, 380)
         } else {
-          const hadOthers = openIds.size > 0 && !openIds.has(target)
-          if (hadOthers) {
-            setOpenIds(new Set())
-            await wait(320)
-            if (cancelled) return
-          }
-          setOpenIds(new Set([target]))
-          await wait(340)
-          if (!cancelled) await smoothAlignToElement(target, 16, 260)
+          await smoothAlignToElement(target, 16, 260)
         }
       } finally {
+        setListAnchoringOff(false)
         isAnimatingRef.current = false
       }
     }
@@ -640,7 +690,7 @@ export default function Services() {
   }
 
   // Mobilui – visos kortelės „paper scroll“; desktop – default
-  const usePaperScroll = (id: string) => mobile // visoms, įskaitant „estetinis-plombavimas“
+  const usePaperScroll = (id: string) => mobile
 
   return (
     <>
@@ -659,10 +709,16 @@ export default function Services() {
             </p>
           </header>
 
-          <motion.div variants={listVariants} initial="hidden" animate="visible" className="grid gap-4">
+          <motion.div
+            variants={listVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid gap-4"
+            // ⬇️ IŠJUNGIAME SCROLL ANCHORING visam sąrašui animacijos metu, kad nenuneštų į footerį
+            style={listAnchoringOff ? ({ overflowAnchor: 'none' } as React.CSSProperties) : undefined}
+          >
             {sections.map((s) => {
               const open = openIds.has(s.id)
-
               return (
                 <motion.div key={s.id} variants={itemVariants} layout="position">
                   {usePaperScroll(s.id) ? (

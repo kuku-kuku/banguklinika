@@ -1,4 +1,3 @@
-// src/pages/Contact.tsx
 import SEO from '../components/SEO'
 import ContactForm from '../components/ContactForm'
 import Map from '../components/Map'
@@ -6,7 +5,8 @@ import { CLINIC } from '../data/clinic'
 import AnimatedSection from '../components/AnimatedSection'
 import { motion } from 'framer-motion'
 import { MapPin, Phone, Mail, Clock, Navigation } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
 
 export default function Contact() {
   const container = {
@@ -23,6 +23,27 @@ export default function Contact() {
   }
 
   const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CLINIC.address)}`
+  const { hash } = useLocation()
+  const formAnchorRef = useRef<HTMLDivElement | null>(null)
+
+  // Automatinis scroll: #kontaktai (kairysis info blokas) ir #registracija / #contact-form (forma)
+  useEffect(() => {
+    if (!hash) return
+
+    if (hash === '#kontaktai') {
+      const el = document.getElementById('kontaktai')
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      return
+    }
+
+    if (hash === '#registracija' || hash === '#contact-form') {
+      const el =
+        formAnchorRef.current ||
+        document.getElementById('registracija') ||
+        document.getElementById('contact-form')
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [hash])
 
   return (
     <AnimatedSection>
@@ -39,11 +60,16 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        {/* Kontaktai + darbo laikas + forma */}
-        <motion.div className="grid md:grid-cols-2 gap-8 items-start" variants={container}>
-          {/* Kairė: informacija, darbo laikas, greitos nuorodos */}
-          <motion.div className="space-y-6" variants={item}>
-            <div className="card p-6">
+        {/* Kontaktai + forma (lygūs aukščiai) */}
+        <motion.div
+          className="grid md:grid-cols-2 gap-8 items-stretch"
+          variants={container}
+        >
+          {/* KAIRĖ: Kontaktai (info) */}
+          <motion.div className="h-full" variants={item}>
+            {/* Ankeris virš kortelės su scroll-mt — kad sticky header neuždengtų */}
+            <div id="kontaktai" className="scroll-mt-28 md:scroll-mt-32" aria-hidden />
+            <div className="card p-6 h-full flex flex-col">
               <h1 className="text-2xl font-bold text-darkblue-600 mb-4">Kontaktai</h1>
 
               <ul className="space-y-2 text-gray-700 text-sm">
@@ -90,28 +116,41 @@ export default function Contact() {
                   <Navigation size={18} className="-ml-1 mr-1" /> Maršrutas
                 </a>
               </div>
-            </div>
 
-            {/* Alternatyvus CTA blokas (pasirinktinai) */}
-            <div className="p-5 rounded-2xl border border-primary-100 bg-primary-50">
-              <p className="text-sm text-gray-800">
-                Jei turite klausimų dėl kainų ar gydymo plano – mielai pakonsultuosime.
-              </p>
-              <div className="mt-3">
-                <Link to="/kainos" className="btn btn-primary rounded-xl">
-                  Peržiūrėti kainas
-                </Link>
+              {/* Spacer kad „Greitos nuorodos“ neprispaustų apačios ant mažų ekranų */}
+              <div className="mt-auto" />
+            </div>
+          </motion.div>
+
+          {/* DEŠINĖ: Kontaktų forma */}
+          <motion.div className="h-full" variants={item}>
+            {/* Ankeris su scroll-mt — kad sticky header neuždengtų */}
+            <div
+              id="registracija"
+              ref={formAnchorRef}
+              className="scroll-mt-28 md:scroll-mt-32"
+              tabIndex={-1}
+              aria-hidden
+            />
+            <div className="card p-6 h-full flex flex-col">
+              <h2 className="text-lg font-semibold text-darkblue-600 mb-3">Parašykite mums</h2>
+              <div className="flex-1">
+                <ContactForm />
               </div>
             </div>
           </motion.div>
+        </motion.div>
 
-          {/* Dešinė: kontaktų forma */}
-          <motion.div variants={item}>
-            <div className="card p-6">
-              <h2 className="text-lg font-semibold text-darkblue-600 mb-3">Parašykite mums</h2>
-              <ContactForm />
-            </div>
-          </motion.div>
+        {/* Alternatyvus CTA – atskirai PO grid'u, kad netrukdytų lygiems aukščiams */}
+        <motion.div className="p-5 rounded-2xl border border-primary-100 bg-primary-50" variants={item}>
+          <p className="text-sm text-gray-800">
+            Jei turite klausimų dėl kainų ar gydymo plano – mielai pakonsultuosime.
+          </p>
+          <div className="mt-3">
+            <Link to="/kainos" className="btn btn-primary rounded-xl">
+              Peržiūrėti kainas
+            </Link>
+          </div>
         </motion.div>
       </motion.div>
     </AnimatedSection>
