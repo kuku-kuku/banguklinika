@@ -1,10 +1,5 @@
 // api/reviews.js
 
-export const config = {
-  runtime: 'nodejs18.x',
-  regions: ['fra1', 'arn1'], // EU regionai — greičiau LT vartotojams
-};
-
 const TTL = 15 * 60 * 1000; // 15 min in-memory cache
 let cache = { ts: 0, data: null };
 
@@ -20,22 +15,18 @@ export default async function handler(req, res) {
         .json({ error: 'Missing GOOGLE_MAPS_API_KEY or GOOGLE_PLACE_ID' });
     }
 
-    // Edge (CDN) kešas + leidžiam rodyti seną versiją kol fone atsinaujina
-    res.setHeader(
-      'Cache-Control',
-      's-maxage=900, stale-while-revalidate=86400'
-    );
+    // Edge (CDN) kešas + leidžiam rodyti seną kol fone atsinaujins
+    res.setHeader('Cache-Control', 's-maxage=900, stale-while-revalidate=86400');
 
-    // Papildomai — in-memory cache (veikia "šiltame" lambda procese)
+    // Papildomas "warm lambda" cache
     const now = Date.now();
     if (cache.data && now - cache.ts < TTL) {
       return res.status(200).json(cache.data);
     }
 
     const url =
-      `https://places.googleapis.com/v1/places/${encodeURIComponent(
-        PLACE_ID
-      )}` + `?languageCode=${encodeURIComponent(LANGUAGE)}`;
+      `https://places.googleapis.com/v1/places/${encodeURIComponent(PLACE_ID)}` +
+      `?languageCode=${encodeURIComponent(LANGUAGE)}`;
 
     const r = await fetch(url, {
       method: 'GET',
@@ -72,10 +63,8 @@ export default async function handler(req, res) {
           profile_photo_url: rv?.authorAttribution?.photoUri || undefined,
           rating: typeof rv?.rating === 'number' ? rv.rating : 0,
           text: rv?.text?.text || '',
-          relative_time_description:
-            rv?.relativePublishTimeDescription || undefined,
+          relative_time_description: rv?.relativePublishTimeDescription || undefined,
           author_url: rv?.authorAttribution?.uri || undefined,
-          // jei reikės vėliau:
           // time: rv?.publishTime,
           // language: rv?.text?.languageCode,
         }))
@@ -87,9 +76,7 @@ export default async function handler(req, res) {
         typeof place?.userRatingCount === 'number' ? place.userRatingCount : null,
       name: place?.displayName?.text || null,
       address: place?.formattedAddress || null,
-      maps_url: `https://www.google.com/maps/place/?q=place_id:${encodeURIComponent(
-        PLACE_ID
-      )}`,
+      maps_url: `https://www.google.com/maps/place/?q=place_id:${encodeURIComponent(PLACE_ID)}`,
       reviews,
     };
 
