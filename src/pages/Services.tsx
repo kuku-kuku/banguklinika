@@ -76,106 +76,50 @@ function durationFor(px: number) {
   return +(BASE_DURATION + extra).toFixed(3)
 }
 
-/* ================== Modal (CENTRUOTAS) ================== */
+/* ================== Scroll indikatoriaus helperis ================== */
 
-function useBodyScrollLock(locked: boolean) {
-  useEffect(() => {
-    if (!locked) return
-    const prev = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = prev }
-  }, [locked])
-}
-
-function ModalSheet({
-  open, title, onClose, children,
-}: {
-  open: boolean
-  title: string
-  onClose: () => void
-  children: React.ReactNode
-}) {
-  useBodyScrollLock(open)
+function useScrollThumb(containerRef: React.RefObject<HTMLElement>) {
+  const [scrollable, setScrollable] = useState(false)
+  const [thumbTop, setThumbTop] = useState(0)
+  const [thumbHeight, setThumbHeight] = useState(24)
 
   useEffect(() => {
-    if (!open) return
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [open, onClose])
+    const el = containerRef.current
+    if (!el) return
 
-  return (
-    <AnimatePresence>
-      {open && (
-        <motion.div
-          className="fixed inset-0 z-[80] flex items-center justify-center p-4 sm:p-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-          aria-modal
-          role="dialog"
-        >
-          {/* overlay */}
-          <div
-            className="absolute inset-0 bg-black/40"
-            onClick={onClose}
-            aria-hidden
-          />
+    const compute = () => {
+      const { scrollHeight, clientHeight, scrollTop } = el
+      const canScroll = scrollHeight > clientHeight + 2
+      setScrollable(canScroll)
+      if (!canScroll) return
 
-          {/* CENTRUOTAS panelis */}
-          <motion.div
-            id={`${title}-modal`}
-            className="relative z-[81] w-full max-w-[92vw] sm:max-w-[560px] bg-white rounded-2xl shadow-2xl"
-            initial={{ opacity: 0, scale: 0.98, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98, y: 10 }}
-            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-            style={{ contain: 'layout paint', transform: 'translateZ(0)' }}
-          >
-            <div className="px-5 pt-4 pb-3 border-b flex items-center justify-between">
-              <h3 className="font-semibold text-lg text-slate-900">{title}</h3>
-              <button
-                onClick={onClose}
-                className="p-2 -mr-2 rounded-lg hover:bg-slate-100 active:bg-slate-200"
-                aria-label="Uždaryti"
-              >
-                <svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M6 6l12 12M6 18L18 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
-              </button>
-            </div>
-            <div className="px-5 py-4 max-h-[82vh] overflow-y-auto overscroll-contain">
-              {children}
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  )
-}
+      const trackHeight = clientHeight
+      const ratio = clientHeight / scrollHeight
+      const h = Math.max(20, Math.round(trackHeight * ratio))
+      const maxThumbTop = trackHeight - h
+      const top = Math.round((scrollTop / (scrollHeight - clientHeight)) * maxThumbTop)
 
-/* ================== Ripple helper ================== */
+      setThumbHeight(h)
+      setThumbTop(isFinite(top) ? top : 0)
+    }
 
-type Ripple = { id: number; x: number; y: number }
+    compute()
+    const ro = new ResizeObserver(compute)
+    ro.observe(el)
 
-function useRipples() {
-  const [ripples, setRipples] = useState<Ripple[]>([])
-  const add = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    const id = Date.now() + Math.random()
-    setRipples((r) => [...r, { id, x, y }])
-    // auto remove
-    setTimeout(() => {
-      setRipples((r) => r.filter((rr) => rr.id !== id))
-    }, 620)
-  }
-  return { ripples, add }
+    el.addEventListener('scroll', compute, { passive: true })
+    return () => {
+      ro.disconnect()
+      el.removeEventListener('scroll', compute)
+    }
+  }, [containerRef])
+
+  return { scrollable, thumbTop, thumbHeight }
 }
 
 /* ================== Kortelių variantai ================== */
 
-/** Paprastas (default) akordeonas su išmatuotu height */
+/** Paprastas (default) akordeonas su išmatuotu height – naudojamas tik desktop */
 function AccordionItemDefault({
   id, title, children, open, onToggle,
 }: {
@@ -255,7 +199,7 @@ function AccordionItemDefault({
   )
 }
 
-/** „Paper scroll“ akordeonas: kompaktiškesnis fiksuotas vidinis aukštis, turinys scrollinasi viduje */
+/** „Paper scroll“ akordeonas (mobile): fiksuotas vidinis aukštis, turinys scrollinasi viduje, su matomu scroll indikatoriumi */
 function AccordionItemPaper({
   id, title, children, open, onToggle, maxVh = 56,
 }: {
@@ -264,10 +208,12 @@ function AccordionItemPaper({
   children: React.ReactNode
   open: boolean
   onToggle: (willOpen: boolean) => void
-  /** maksimalus vidinio viewporto aukštis (vh) – sumažintas, kad kortelė būtų mažesnė */
+  /** maksimalus vidinio viewporto aukštis (vh) – sumažintas, kad kortelė būtų kompaktiška */
   maxVh?: number
 }) {
-  const clampHeight = `clamp(300px, ${maxVh}vh, 540px)` // kompaktiškesnė
+  const clampHeight = `clamp(280px, ${maxVh}vh, 520px)` // subalansuotas aukštis mobilui
+  const scrollRef = useRef<HTMLDivElement | null>(null)
+  const { scrollable, thumbTop, thumbHeight } = useScrollThumb(scrollRef)
 
   return (
     <div
@@ -301,98 +247,45 @@ function AccordionItemPaper({
           transform: 'translateZ(0)'
         }}
       >
-        <div className="min-h-0 overflow-hidden">
+        <div className="min-h-0 overflow-hidden relative">
+          {/* scrollinamas turinys */}
           <div
-            className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed overflow-y-auto overscroll-contain rounded-xl"
+            ref={scrollRef}
+            className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed overflow-y-auto overscroll-contain rounded-xl pr-3"
             style={{
               maxHeight: clampHeight,
               transition: 'transform 160ms cubic-bezier(0.22,1,0.36,1), opacity 160ms cubic-bezier(0.22,1,0.36,1)',
               transformOrigin: 'top left',
               transform: open ? 'scaleY(1) translateZ(0)' : 'scaleY(0.995) translateY(-1px) translateZ(0)',
               opacity: open ? 1 : 0.98,
+              WebkitOverflowScrolling: 'touch' as any,
             }}
           >
             {children}
           </div>
+
+          {/* matomas scroll indikatorius (rodyklė/juosta) – tik jei tikrai yra ką scrollinti */}
+          <AnimatePresence>
+            {scrollable && open && (
+              <motion.div
+                className="pointer-events-none absolute top-0 right-1 w-1.5 rounded-full bg-slate-200/80"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                style={{ height: `calc(${clampHeight})` }}
+              >
+                <div
+                  className="absolute left-0 right-0 mx-auto w-1.5 rounded-full bg-primary-400"
+                  style={{
+                    top: thumbTop,
+                    height: thumbHeight
+                  }}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
-    </div>
-  )
-}
-
-/** Dešinės pusės „Open“ piktograma su subtilia gyvybe */
-function OpenAffordance() {
-  return (
-    <div className="relative">
-      {/* švelni aura */}
-      <motion.span
-        className="absolute inset-0 rounded-full bg-primary-300/30"
-        style={{ filter: 'blur(2px)' }}
-        initial={{ opacity: 0.0, scale: 0.9 }}
-        animate={{ opacity: 0.18, scale: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      />
-      {/* pats mygtukas */}
-      <motion.span
-        whileTap={{ scale: 0.9 }}
-        className="relative z-10 w-9 h-9 rounded-full bg-primary-100 text-primary-700 grid place-items-center shadow-inner"
-      >
-        <svg viewBox="0 0 24 24" className="w-4.5 h-4.5">
-          <path d="M8 12h8M12 8l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-        </svg>
-      </motion.span>
-    </div>
-  )
-}
-
-/** Modal trigger kortelė – vietoj „Atidaryti“ teksto: piktograma + ripple efektas */
-function ModalTriggerCard({
-  id, title, onOpen,
-}: {
-  id: string
-  title: string
-  onOpen: () => void
-}) {
-  const { ripples, add } = useRipples()
-
-  return (
-    <div
-      id={id}
-      className="rounded-2xl border shadow-sm bg-primary-50 border-primary-300 hover:bg-primary-100 hover:shadow transition-colors scroll-mt-28 md:scroll-mt-32"
-      style={{ contain: 'paint' }}
-    >
-      <motion.button
-        type="button"
-        onMouseDown={add}               // sukuria ripple kuo anksčiau
-        onClick={onOpen}                // atidaro modalą
-        whileTap={{ scale: 0.98 }}      // kortelės „press“
-        className="relative w-full flex items-center justify-between gap-4 px-5 py-4 text-left min-h-[92px]"
-        aria-haspopup="dialog"
-        aria-controls={`${id}-modal`}
-      >
-        {/* ripplės sluoksnis */}
-        <span className="pointer-events-none absolute inset-0 overflow-hidden">
-          {ripples.map(r => (
-            <motion.span
-              key={r.id}
-              className="absolute rounded-full bg-primary-300/40"
-              style={{
-                left: r.x,
-                top: r.y,
-                width: 8,
-                height: 8,
-                transform: 'translate(-50%, -50%)'
-              }}
-              initial={{ scale: 0, opacity: 0.35 }}
-              animate={{ scale: 18, opacity: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            />
-          ))}
-        </span>
-
-        <h3 className="text-base sm:text-lg font-semibold text-darkblue-600">{title}</h3>
-        <OpenAffordance />
-      </motion.button>
     </div>
   )
 }
@@ -663,18 +556,12 @@ export default function Services() {
 
   const { hash, pathname } = useLocation()
   const [openIds, setOpenIds] = useState<Set<string>>(new Set())
-  const [modalId, setModalId] = useState<string | null>(null) // estetinis plombavimas (mobile)
   const isAnimatingRef = useRef(false)
   const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
   const mobile = useIsMobile()
 
   const handleToggle = async (id: string, willOpen: boolean) => {
     if (isAnimatingRef.current) return
-    // modalinė kortelė mobile – perimame elgseną ir neatidarome akordeono
-    if (mobile && id === 'estetinis-plombavimas') {
-      if (willOpen) setModalId(id)
-      return
-    }
 
     isAnimatingRef.current = true
     try {
@@ -705,9 +592,6 @@ export default function Services() {
     }
   }
 
-  // Modal close helper
-  const closeModal = () => setModalId(null)
-
   useEffect(() => {
     if (pathname === '/paslaugos' && !hash) setOpenIds(new Set())
   }, [pathname, hash])
@@ -722,12 +606,6 @@ export default function Services() {
       if (isAnimatingRef.current) return
       isAnimatingRef.current = true
       try {
-        // jei hash rodo į modalinę kortelę ir mobile – atidaryti modalą (centruotą)
-        if (mobile && target === 'estetinis-plombavimas') {
-          setModalId(target)
-          return
-        }
-
         if (mobile) {
           setOpenIds(prev => new Set(prev).add(target))
           await wait(40)
@@ -761,11 +639,8 @@ export default function Services() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] } }
   }
 
-  // Pagal id ir mobile parenkame kortelės variantą
-  const isPaperScroll = (id: string) => mobile && id === 'dantu-balinimas'
-  const isModalVariant = (id: string) => mobile && id === 'estetinis-plombavimas'
-
-  const modalSvc = modalId ? sections.find(s => s.id === modalId) || null : null
+  // Mobilui – visos kortelės „paper scroll“; desktop – default
+  const usePaperScroll = (id: string) => mobile // visoms, įskaitant „estetinis-plombavimas“
 
   return (
     <>
@@ -790,13 +665,7 @@ export default function Services() {
 
               return (
                 <motion.div key={s.id} variants={itemVariants} layout="position">
-                  {isModalVariant(s.id) ? (
-                    <ModalTriggerCard
-                      id={s.id}
-                      title={s.title}
-                      onOpen={() => setModalId(s.id)}
-                    />
-                  ) : isPaperScroll(s.id) ? (
+                  {usePaperScroll(s.id) ? (
                     <AccordionItemPaper
                       id={s.id}
                       title={s.title}
@@ -822,15 +691,6 @@ export default function Services() {
           </motion.div>
         </div>
       </AnimatedSection>
-
-      {/* CENTRUOTAS modalas tik mobile „estetinis-plombavimas“ */}
-      <ModalSheet
-        open={!!modalSvc}
-        title={modalSvc?.title || ''}
-        onClose={closeModal}
-      >
-        {modalSvc?.content}
-      </ModalSheet>
     </>
   )
 }
