@@ -45,7 +45,7 @@ export default function PromoPoster({
   secondaryCtaHref = '/kainos#ypatingi',
   persistence = 'local',
   navbarOffsetPx = 72,
-  modalMaxVh = 68,
+  modalMaxVh = 85,
   maxWidthPx = 640,
   borderRadius = '16px',
 }: Props) {
@@ -248,12 +248,12 @@ export default function PromoPoster({
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.5, duration: 0.3 }}
-                  className="absolute bottom-3 right-4"
+                  className="absolute bottom-2 right-3 md:bottom-3 md:right-4"
                 >
                   <Link
                     to={secondaryCtaHref}
                     onClick={onSecondaryClick}
-                    className="text-white font-medium text-sm md:text-base drop-shadow-[0_2px_4px_rgba(0,0,0,.7)] hover:drop-shadow-[0_3px_6px_rgba(0,0,0,.9)] transition-all"
+                    className="text-white font-medium text-[10px] md:text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,.7)] hover:drop-shadow-[0_3px_6px_rgba(0,0,0,.9)] transition-all"
                     style={{ WebkitTapHighlightColor: 'transparent', background: 'transparent' }}
                   >
                     {secondaryCtaText}
