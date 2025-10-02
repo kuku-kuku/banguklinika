@@ -9,6 +9,7 @@ import AnimatedSection from '../components/AnimatedSection'
 import { SERVICES } from '../data/services'
 import { CLINIC } from '../data/clinic'
 import ReviewsCarousel from '../components/ReviewsCarousel'
+import PromoPoster from '../components/PromoPoster' // ⬅️ plakatas
 
 /** --- Populiariausių paslaugų sąrašas ir jų tiksliniai ID „/paslaugos“ puslapyje --- */
 const POPULAR_ORDER: Array<{ title: string; id: string }> = [
@@ -33,7 +34,6 @@ function StarIcon({ filled = true, className = "w-4 h-4" }: { filled?: boolean; 
   );
 }
 
-/** One review card — white bg stays subtle (not colored box) */
 function ReviewCard({ name, text, stars }: { name: string; text: string; stars: number }) {
   return (
     <div className="group relative overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-soft hover:shadow-md transition">
@@ -65,7 +65,6 @@ function GoogleReviews() {
     { name: 'Saulius',text: 'Implantacija praėjo sklandžiai, rekomenduoju.', stars: 5 },
   ]), []);
 
-  // 1 on <1024px, 3 on >=1024px
   const [perSlide, setPerSlide] = useState<number>(() => (typeof window !== 'undefined' && window.innerWidth >= 1024 ? 3 : 1));
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 1024px)');
@@ -75,7 +74,6 @@ function GoogleReviews() {
     return () => mq.removeEventListener?.('change', handler as (e: MediaQueryListEvent) => void);
   }, []);
 
-  // Chunk reviews into slides
   const slides = useMemo(() => {
     const chunks: typeof allReviews[] = [];
     for (let i = 0; i < allReviews.length; i += perSlide) {
@@ -84,13 +82,11 @@ function GoogleReviews() {
     return chunks;
   }, [allReviews, perSlide]);
 
-  // Carousel state
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const timerRef = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // Auto-advance (5s)
   useEffect(() => {
     if (timerRef.current) window.clearTimeout(timerRef.current);
     if (!paused) {
@@ -101,7 +97,6 @@ function GoogleReviews() {
     return () => { if (timerRef.current) window.clearTimeout(timerRef.current); };
   }, [index, paused, slides.length]);
 
-  // Pause when not visible
   useEffect(() => {
     if (!containerRef.current || typeof IntersectionObserver === 'undefined') return;
     const io = new IntersectionObserver(([entry]) => {
@@ -111,7 +106,6 @@ function GoogleReviews() {
     return () => io.disconnect();
   }, []);
 
-  // Touch swipe
   const touchX = useRef<number | null>(null);
   const onTouchStart = (e: React.TouchEvent) => { touchX.current = e.touches[0].clientX; };
   const onTouchEnd = (e: React.TouchEvent) => {
@@ -144,7 +138,6 @@ function GoogleReviews() {
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
-          {/* Track */}
           <div className="overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-out"
@@ -162,7 +155,6 @@ function GoogleReviews() {
             </div>
           </div>
 
-          {/* Dots */}
           <div className="mt-4 flex items-center justify-center gap-2">
             {slides.map((_, i) => (
               <button
@@ -179,7 +171,6 @@ function GoogleReviews() {
   );
 }
 
-/** Tiny keyframes (reserved) */
 const globalStyles = `
 @keyframes fadeInUp { 
   0% { opacity: 0, transform: translateY(8px); } 
@@ -188,7 +179,6 @@ const globalStyles = `
 `;
 
 export default function Home() {
-  /* ====== HeroCarousel state (inlined) ====== */
   const images = ['/hero.jpg', '/hero1.jpg', '/hero2.jpg', '/hero3.jpg']
   const [index, setIndex] = useState(0)
   const [auto, setAuto] = useState(true)
@@ -225,7 +215,19 @@ export default function Home() {
         description="Gydymas, implantai, CEREC protezavimas, burnos higiena ir estetika. Nemokama pirminė konsultacija."
       />
 
-      {/* ===================== HERO ===================== */}
+      {/* ⬇️ VISAS PLAKATAS virš visko atsidarius puslapiui */}
+      <PromoPoster
+        id="2025-10-a3-poster"
+        routeOnly="/"
+        frequencyDays={14}
+        delayMs={300}
+        imageSrc="/poster.png"
+        secondaryCtaText="Ypatingi pasiūlymai"
+        secondaryCtaHref="/ypatingi-pasiulymai"
+        persistence="none"
+      />
+
+      {/* Likęs pirmo puslapio turinys (bus matomas tik uždarius plakatą) */}
       <div className="relative overflow-visible">
         <section className="relative overflow-visible pan-y">
           <div className="relative z-20 container-narrow grid md:grid-cols-2 gap-10 items-center py-12 md:py-20">
@@ -250,7 +252,6 @@ export default function Home() {
                 Greita registracija, švelnus požiūris, aiškios kainos.
               </motion.p>
 
-              {/* CTA buttons */}
               <motion.div
                 className="grid grid-cols-2 gap-2 items-stretch md:inline-flex md:flex-wrap md:gap-3"
                 initial={{ opacity: 0 }}
@@ -263,7 +264,6 @@ export default function Home() {
                 >
                   Registracija telefonu
                 </a>
-                {/* ⬇️ HERO interneto CTA → forma */}
                 <Link
                   to="/kontaktai#registracija"
                   className="btn-primary w-full justify-center rounded-xl text-sm md:text-base"
@@ -272,7 +272,6 @@ export default function Home() {
                 </Link>
               </motion.div>
 
-              {/* quick features */}
               <ul className="text-sm text-gray-600 grid grid-cols-2 gap-y-2 mt-4">
                 <li>• Straumann® / Medentika® implantai</li>
                 <li>• CEREC – vainikėliai per 1 vizitą</li>
@@ -312,29 +311,27 @@ export default function Home() {
                   />
                 </AnimatePresence>
 
-                {/* Controls */}
                 <button
                   aria-label="Ankstesnė nuotrauka"
-                  onClick={() => go(-1)}
+                  onClick={() => { setAuto(false); setIndex(i => (i - 1 + images.length) % images.length) }}
                   className="absolute left-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/70 hover:bg-white ring-1 ring-white/60 text-darkblue-700 text-xl transition"
                 >
                   ‹
                 </button>
                 <button
                   aria-label="Kita nuotrauka"
-                  onClick={() => go(1)}
+                  onClick={() => { setAuto(false); setIndex(i => (i + 1) % images.length) }}
                   className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/70 hover:bg-white ring-1 ring-white/60 text-darkblue-700 text-xl transition"
                 >
                   ›
                 </button>
 
-                {/* dots */}
                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2">
                   {images.map((_, i) => (
                     <button
                       key={i}
                       aria-label={`Rodyti ${i + 1} nuotrauką`}
-                      onClick={() => goTo(i)}
+                      onClick={() => { setAuto(false); setIndex(i) }}
                       className={`h-2.5 rounded-full transition-all ${i === index ? 'w-6 bg-white' : 'w-2.5 bg-white/60 hover:bg-white/80'}`}
                     />
                   ))}
@@ -344,9 +341,7 @@ export default function Home() {
           </div>
         </section>
       </div>
-      {/* ===================== /HERO ===================== */}
 
-      {/* KODĖL VERTA RINKTIS BANGŲ KLINIKĄ */}
       <AnimatedSection>
         <div className="container-narrow no-x-scroll pan-y">
           <div className="max-w-3xl mb-6">
@@ -376,7 +371,6 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      {/* POPULIARIAUSIOS PASLAUGOS */}
       <AnimatedSection>
         <div className="container-narrow no-x-scroll pan-y">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-darkblue-600 tracking-tight" style={{ wordBreak: 'keep-all' }}>
@@ -394,12 +388,10 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      {/* GOOGLE REVIEWS */}
       <div className="no-x-scroll pan-y">
         <ReviewsCarousel />
       </div>
 
-      {/* CTA – PIRMINĖ KONSULTACIJA */}
       <AnimatedSection>
         <div className="container-narrow no-x-scroll pan-y">
           <div className="relative overflow-hidden rounded-2xl bg-brand-100 border border-brand shadow-soft">
@@ -412,7 +404,6 @@ export default function Home() {
                 <span className="font-semibold">10–15% nuolaidą</span> tęstiniam gydymui pereinant į pilną planą.
               </p>
               <div className="mt-6">
-                {/* ⬇️ CTA interneto registracija → forma */}
                 <Link to="/kontaktai#registracija" className="btn-primary rounded-full px-7 py-3 font-semibold">
                   Registracija internetu
                 </Link>
@@ -427,7 +418,6 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      {/* FAQ + Quick contact */}
       <AnimatedSection>
         <div className="container-narrow grid md:grid-cols-2 gap-8 items-start no-x-scroll pan-y">
           <div className="rounded-2xl bg-brand-50 p-6 transition border border-brand shadow-soft hover:shadow-md">
@@ -439,7 +429,6 @@ export default function Home() {
             <h3 className="text-lg font-semibold text-darkblue-600">Turite klausimų?</h3>
             <p className="text-gray-700 mt-2">Parašykite mums – atsakysime per 1 darbo dieną.</p>
             <div className="mt-4">
-              {/* ⬇️ „Susisiekti“ → forma po žemėlapiu */}
               <Link to="/kontaktai#kontaktai" className="btn-primary rounded-xl">
                 Susisiekti
               </Link>
