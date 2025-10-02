@@ -7,13 +7,12 @@ const OPEN_MS = 320
 const CLOSE_MS = 260
 const EASE = 'cubic-bezier(0.22, 1, 0.36, 1)'
 
-/* ======== Mobile word-by-word animation ======== */
-const ROW_BASE_DELAY = 180        // delay before first row starts
-const PER_ROW_DELAY = 140         // delay between rows
-const MAX_STAGGER_ROWS = 10       
-const WORD_DELAY = 45             // ms between words (smoother than chars)
-const MIN_WORD_DELAY = 35         // minimum for short words
-const FADE_IN_DURATION = 200      // each word fades in
+/* ======== Mobile smooth reveal ======== */
+const ROW_BASE_DELAY = 120
+const PER_ROW_DELAY = 80
+const MAX_STAGGER_ROWS = 10
+const TEXT_DURATION = 400
+const PRICE_DELAY = 200
 
 /* ========= Utils ========= */
 function slugify(t: string) {
@@ -105,66 +104,6 @@ async function smoothAlignToElement(id: string, offset = 16, ms = 320) {
   await smoothScrollTo(targetY, ms)
 }
 
-/* ========= Word-by-word component ========= */
-function WordByWord({ 
-  text, 
-  rowDelay = 0,
-  onComplete
-}: { 
-  text: string
-  rowDelay?: number
-  onComplete?: () => void
-}) {
-  const words = useMemo(() => text.split(/(\s+)/).filter(w => w.length > 0), [text])
-  const [visibleCount, setVisibleCount] = useState(0)
-  const timeoutRef = useRef<NodeJS.Timeout>()
-
-  useEffect(() => {
-    setVisibleCount(0)
-    
-    const timeouts: NodeJS.Timeout[] = []
-    
-    words.forEach((_, index) => {
-      const wordDelay = rowDelay + index * WORD_DELAY
-      const timeout = setTimeout(() => {
-        setVisibleCount(index + 1)
-        if (index === words.length - 1 && onComplete) {
-          setTimeout(onComplete, FADE_IN_DURATION)
-        }
-      }, wordDelay)
-      timeouts.push(timeout)
-    })
-
-    return () => {
-      timeouts.forEach(t => clearTimeout(t))
-    }
-  }, [words, rowDelay, onComplete])
-
-  return (
-    <span className="inline">
-      {words.map((word, i) => {
-        const isVisible = i < visibleCount
-        const isSpace = /^\s+$/.test(word)
-        
-        return (
-          <span
-            key={i}
-            className="inline-block"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(4px)',
-              transition: `opacity ${FADE_IN_DURATION}ms ${EASE}, transform ${FADE_IN_DURATION}ms ${EASE}`,
-              willChange: 'opacity, transform',
-            }}
-          >
-            {isSpace ? '\u00A0' : word}
-          </span>
-        )
-      })}
-    </span>
-  )
-}
-
 /* ========= Icons ========= */
 function Icon({ title }: { title: string }) {
   const t = title.toLowerCase()
@@ -189,14 +128,6 @@ function GroupCard({
   const range = useMemo(() => groupRange(group.items), [group.items])
   const summary = range ? (range.max > range.min ? `€${range.min}–€${range.max}` : `nuo €${range.min}`) : '—'
   const reduceMotion = usePrefersReducedMotion()
-  const [showPrices, setShowPrices] = useState<Set<number>>(new Set())
-
-  // Reset animation state when closing
-  useEffect(() => {
-    if (!open) {
-      setShowPrices(new Set())
-    }
-  }, [open])
 
   return (
     <div
@@ -262,55 +193,43 @@ function GroupCard({
                     const doAnimation = !!(staggerRows && open && !reduceMotion)
                     const cappedIndex = Math.min(i, MAX_STAGGER_ROWS)
                     const rowDelay = doAnimation ? ROW_BASE_DELAY + cappedIndex * PER_ROW_DELAY : 0
-                    const showPrice = showPrices.has(i)
 
                     return (
                       <tr key={i} className="hover:bg-slate-50/50 transition-colors">
                         <td className="p-3 align-top">
-                          {doAnimation ? (
-                            <span className="text-slate-900">
-                              <WordByWord 
-                                text={p.name} 
-                                rowDelay={rowDelay}
-                                onComplete={() => {
-                                  setShowPrices(prev => new Set(prev).add(i))
-                                }}
-                              />
-                              {p.note && showPrice && (
-                                <span 
-                                  className="block text-xs text-gray-600 mt-0.5"
-                                  style={{
-                                    opacity: 0,
-                                    animation: `fadeInUp 300ms ${EASE} forwards`,
-                                  }}
-                                >
-                                  {p.note}
-                                </span>
-                              )}
+                          <span 
+                            className="text-slate-900 inline-block"
+                            style={doAnimation ? {
+                              opacity: 0,
+                              transform: 'translateX(-8px)',
+                              animation: `slideInFade ${TEXT_DURATION}ms ${EASE} ${rowDelay}ms forwards`
+                            } : undefined}
+                          >
+                            {p.name}
+                          </span>
+                          {p.note && (
+                            <span 
+                              className="block text-xs text-gray-600 mt-0.5"
+                              style={doAnimation ? {
+                                opacity: 0,
+                                transform: 'translateX(-8px)',
+                                animation: `slideInFade 350ms ${EASE} ${rowDelay + TEXT_DURATION - 100}ms forwards`
+                              } : undefined}
+                            >
+                              {p.note}
                             </span>
-                          ) : (
-                            <>
-                              <span className="text-slate-900">{p.name}</span>
-                              {p.note && <span className="block text-xs text-gray-600 mt-0.5">{p.note}</span>}
-                            </>
                           )}
                         </td>
 
-                        <td className="p-3 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-darkblue-700">
-                          {doAnimation ? (
-                            <span 
-                              style={{
-                                opacity: showPrice ? 1 : 0,
-                                transform: showPrice ? 'translateY(0)' : 'translateY(4px)',
-                                transition: `opacity 250ms ${EASE}, transform 250ms ${EASE}`,
-                                display: 'inline-block',
-                              }}
-                            >
-                              {fmt(p.from, p.to)}
-                            </span>
-                          ) : (
-                            fmt(p.from, p.to)
-                          )}
+                        <td 
+                          className="p-3 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-darkblue-700"
+                          style={doAnimation ? {
+                            opacity: 0,
+                            transform: 'translateX(8px)',
+                            animation: `slideInFadeRight 350ms ${EASE} ${rowDelay + PRICE_DELAY}ms forwards`
+                          } : undefined}
+                        >
+                          {fmt(p.from, p.to)}
                         </td>
                       </tr>
                     )
@@ -323,14 +242,24 @@ function GroupCard({
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes fadeInUp {
+        @keyframes slideInFade {
           from {
             opacity: 0;
-            transform: translateY(4px);
+            transform: translateX(-8px);
           }
           to {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(0);
+          }
+        }
+        @keyframes slideInFadeRight {
+          from {
+            opacity: 0;
+            transform: translateX(8px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
           }
         }
       `}} />
