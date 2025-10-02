@@ -53,7 +53,7 @@ export default function About() {
   return (
     <AnimatedSection>
       <SEO
-        title="Apie mus – Bangų klinika"
+        title="Apie mus"
         description="Jauki ir moderni odontologijos klinika Klaipėdoje. Visos paslaugos vienoje vietoje: gydymas, protezavimas, implantai, higiena, chirurgija ir kt."
       />
 

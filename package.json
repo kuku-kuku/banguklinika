@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:server": "node server.js",
+    "dev:all": "concurrently -k -n VITE,API \"npm:dev\" \"npm:dev:server\"",
+    "start": "node server.js",
     "build": "node ./node_modules/vite/bin/vite.js build",
     "preview": "node ./node_modules/vite/bin/vite.js preview",
     "typecheck": "tsc --noEmit"
@@ -14,6 +17,10 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
     "framer-motion": "^11.3.31",
     "lucide-react": "^0.542.0",
     "react": "^18.2.0",

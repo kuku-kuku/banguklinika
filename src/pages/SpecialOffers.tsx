@@ -18,7 +18,7 @@ export default function SpecialOffers() {
   return (
     <AnimatedSection>
       <SEO
-        title="Ypatingi pasiūlymai – Bangų klinika"
+        title="Ypatingi pasiūlymai"
         description="Akcijos ir nuolaidos: pilna burnos higiena + BEYOND® balinimas už 249 € ir bendra nuolaida tęstiniam gydymui po pirminės apžiūros."
       />
 

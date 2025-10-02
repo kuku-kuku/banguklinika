@@ -9,6 +9,7 @@ import FAQ from '../components/FAQ'
 import AnimatedSection from '../components/AnimatedSection'
 import { SERVICES } from '../data/services'
 import { CLINIC } from '../data/clinic'
+import ReviewsCarousel from '../components/ReviewsCarousel'
 
 /** --- Populiariausių paslaugų sąrašas ir jų tiksliniai ID „/paslaugos“ puslapyje --- */
 const POPULAR_ORDER: Array<{ title: string; id: string }> = [
@@ -221,20 +222,14 @@ export default function Home() {
     <>
       <style dangerouslySetInnerHTML={{ __html: globalStyles }} />
       <SEO
-        title="Bangų klinika – Odontologija Klaipėdoje"
+        isHome
         description="Gydymas, implantai, CEREC protezavimas, burnos higiena ir estetika. Nemokama pirminė konsultacija."
       />
 
-      {/* ===================== HERO (inlined, be gradientų) ===================== */}
+      {/* ===================== HERO (be gradientų — banga išliks fone) ===================== */}
       <div className="relative overflow-visible">
         <section className="relative overflow-visible pan-y">
-          {/* Fonas: tik burbulai (be gradiento), kad banga matytųsi fone */}
-          <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute inset-0 overflow-hidden">
-              <div className="absolute -top-16 -left-24 w-96 h-96 bg-sky-100/40 blur-3xl rounded-full" />
-              <div className="absolute -bottom-20 -right-16 w-[28rem] h-[28rem] bg-primary-100/40 blur-3xl rounded-full" />
-            </div>
-          </div>
+          {/* ❌ Pašalintos blur'intos dėmės, kurios keitė bangos spalvą */}
 
           <div className="relative z-20 container-narrow grid md:grid-cols-2 gap-10 items-center py-12 md:py-20">
             {/* Left */}
@@ -314,8 +309,8 @@ export default function Home() {
                     decoding="async"
                     loading="eager"
                     onError={(e) => {
-                      (e.currentTarget.parentElement as HTMLElement).style.background =
-                        'linear-gradient(135deg,#CFE9FF 0%,#8BD3F7 45%,#4FC3F7 100%)'
+                      // vientisas, neutralus fallback fonas (be gradientų)
+                      (e.currentTarget.parentElement as HTMLElement).style.background = '#ffffff';
                     }}
                   />
                 </AnimatePresence>
@@ -391,7 +386,7 @@ export default function Home() {
             Populiariausios paslaugos
           </h2>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-1fr">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-1fr">
             {/** Sukomplektuojam būtent 5 populiariausias iš SERVICES pagal nurodytą tvarką ir priverstinį hash */}
             {POPULAR_ORDER.map((p, i) => {
               const found = SERVICES.find(s => s.title === p.title || s.id === p.id);
@@ -405,7 +400,7 @@ export default function Home() {
 
       {/* GOOGLE REVIEWS */}
       <div className="no-x-scroll pan-y">
-        <GoogleReviews />
+        <ReviewsCarousel />
       </div>
 
       {/* CTA – PIRMINĖ KONSULTACIJA */}
@@ -429,7 +424,7 @@ export default function Home() {
                 * Nuolaidos taikomos pagal klinikos taisykles. Daugiau informacijos – registracijos metu.
               </p>
             </div>
-            {/* soft bubbles */}
+            {/* soft bubbles (CTA dalyje palieku, nes čia netrukdo bangai) */}
             <div className="pointer-events-none absolute -top-10 -left-16 w-72 h-72 bg-white/30 rounded-full blur-3xl" />
             <div className="pointer-events-none absolute -bottom-16 -right-12 w-80 h-80 bg-white/20 rounded-full blur-3xl" />
           </div>
