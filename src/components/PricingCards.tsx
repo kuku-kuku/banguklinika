@@ -8,11 +8,11 @@ const CLOSE_MS = 260
 const EASE = 'cubic-bezier(0.22, 1, 0.36, 1)'
 
 /* ======== Mobile smooth reveal ======== */
-const ROW_BASE_DELAY = 120
-const PER_ROW_DELAY = 80
+const ROW_BASE_DELAY = 150
+const PER_ROW_DELAY = 100
 const MAX_STAGGER_ROWS = 10
-const TEXT_DURATION = 400
-const PRICE_DELAY = 200
+const TEXT_DURATION = 600
+const PRICE_DELAY = 250
 
 /* ========= Utils ========= */
 function slugify(t: string) {
@@ -201,8 +201,8 @@ function GroupCard({
                             className="text-slate-900 inline-block"
                             style={doAnimation ? {
                               opacity: 0,
-                              transform: 'translateX(-8px)',
-                              animation: `slideInFade ${TEXT_DURATION}ms ${EASE} ${rowDelay}ms forwards`
+                              transform: 'translateY(12px)',
+                              animation: `fadeInUp ${TEXT_DURATION}ms ${EASE} ${rowDelay}ms forwards`
                             } : undefined}
                           >
                             {p.name}
@@ -212,8 +212,8 @@ function GroupCard({
                               className="block text-xs text-gray-600 mt-0.5"
                               style={doAnimation ? {
                                 opacity: 0,
-                                transform: 'translateX(-8px)',
-                                animation: `slideInFade 350ms ${EASE} ${rowDelay + TEXT_DURATION - 100}ms forwards`
+                                transform: 'translateY(8px)',
+                                animation: `fadeInUp 450ms ${EASE} ${rowDelay + TEXT_DURATION - 150}ms forwards`
                               } : undefined}
                             >
                               {p.note}
@@ -225,8 +225,8 @@ function GroupCard({
                           className="p-3 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-darkblue-700"
                           style={doAnimation ? {
                             opacity: 0,
-                            transform: 'translateX(8px)',
-                            animation: `slideInFadeRight 350ms ${EASE} ${rowDelay + PRICE_DELAY}ms forwards`
+                            transform: 'translateY(12px) scale(0.95)',
+                            animation: `fadeInScale 500ms ${EASE} ${rowDelay + PRICE_DELAY}ms forwards`
                           } : undefined}
                         >
                           {fmt(p.from, p.to)}
@@ -242,24 +242,24 @@ function GroupCard({
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes slideInFade {
+        @keyframes fadeInUp {
           from {
             opacity: 0;
-            transform: translateX(-8px);
+            transform: translateY(12px);
           }
           to {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateY(0);
           }
         }
-        @keyframes slideInFadeRight {
+        @keyframes fadeInScale {
           from {
             opacity: 0;
-            transform: translateX(8px);
+            transform: translateY(12px) scale(0.95);
           }
           to {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateY(0) scale(1);
           }
         }
       `}} />
