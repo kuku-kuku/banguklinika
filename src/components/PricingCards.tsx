@@ -1,20 +1,19 @@
 import { useMemo, useState, useEffect, useRef } from 'react'
-import { useLocation } from 'react-router-dom'
 import { PRICING, type PriceGroup, type PriceItem } from '../data/pricing'
 import clsx from 'clsx'
 
 /* ========= Timings / Easing ========= */
 const OPEN_MS = 320
 const CLOSE_MS = 260
-const EASE = 'cubic-bezier(0.22, 1, 0.36, 1)' // springy, bet glotnus
+const EASE = 'cubic-bezier(0.22, 1, 0.36, 1)'
 
-/* ======== Mobile typewriter (tik pirmai ir antrai grupei) ======== */
-const ROW_BASE_DELAY = 220        // pauzė prieš prasidedant pirmai eilutei
-const PER_ROW_DELAY = 160         // tarpas tarp eilučių (vorelė)
-const MAX_STAGGER_ROWS = 10       // nerodome vorelės iki begalybės
-const PER_CHAR_MS = 18            // kiek ms skiriame vienai raidei
-const MIN_DUR_MS = 520            // min animacijos trukmė
-const MAX_DUR_MS = 1400           // max animacijos trukmė
+/* ======== Mobile word-by-word animation ======== */
+const ROW_BASE_DELAY = 180        // delay before first row starts
+const PER_ROW_DELAY = 140         // delay between rows
+const MAX_STAGGER_ROWS = 10       
+const WORD_DELAY = 45             // ms between words (smoother than chars)
+const MIN_WORD_DELAY = 35         // minimum for short words
+const FADE_IN_DURATION = 200      // each word fades in
 
 /* ========= Utils ========= */
 function slugify(t: string) {
@@ -106,35 +105,67 @@ async function smoothAlignToElement(id: string, offset = 16, ms = 320) {
   await smoothScrollTo(targetY, ms)
 }
 
-/* ========= Global CSS (typewriter + fade) ========= */
-const typewriterCSS = `
-@keyframes twWidth { from { width: 0ch } to { width: var(--chars,0)ch } }
-@keyframes twFade { from { opacity: 0; transform: translate3d(0,4px,0) } to { opacity: 1; transform: translate3d(0,0,0) } }
+/* ========= Word-by-word component ========= */
+function WordByWord({ 
+  text, 
+  rowDelay = 0,
+  onComplete
+}: { 
+  text: string
+  rowDelay?: number
+  onComplete?: () => void
+}) {
+  const words = useMemo(() => text.split(/(\s+)/).filter(w => w.length > 0), [text])
+  const [visibleCount, setVisibleCount] = useState(0)
+  const timeoutRef = useRef<NodeJS.Timeout>()
 
-/* rašymas raidė po raidės */
-.tw {
-  display:inline-block;
-  white-space:nowrap;
-  overflow:hidden;
-  will-change: width;
-  animation-name: twWidth;
-  animation-duration: var(--twDur, 700ms);
-  animation-timing-function: steps(var(--chars, 20), end);
-  animation-fill-mode: both;
-  backface-visibility: hidden;
-  transform: translateZ(0);
+  useEffect(() => {
+    setVisibleCount(0)
+    
+    const timeouts: NodeJS.Timeout[] = []
+    
+    words.forEach((_, index) => {
+      const wordDelay = rowDelay + index * WORD_DELAY
+      const timeout = setTimeout(() => {
+        setVisibleCount(index + 1)
+        if (index === words.length - 1 && onComplete) {
+          setTimeout(onComplete, FADE_IN_DURATION)
+        }
+      }, wordDelay)
+      timeouts.push(timeout)
+    })
+
+    return () => {
+      timeouts.forEach(t => clearTimeout(t))
+    }
+  }, [words, rowDelay, onComplete])
+
+  return (
+    <span className="inline">
+      {words.map((word, i) => {
+        const isVisible = i < visibleCount
+        const isSpace = /^\s+$/.test(word)
+        
+        return (
+          <span
+            key={i}
+            className="inline-block"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(4px)',
+              transition: `opacity ${FADE_IN_DURATION}ms ${EASE}, transform ${FADE_IN_DURATION}ms ${EASE}`,
+              willChange: 'opacity, transform',
+            }}
+          >
+            {isSpace ? '\u00A0' : word}
+          </span>
+        )
+      })}
+    </span>
+  )
 }
 
-/* švelnus atsiradimas kitų elementų (kaina, pastaba) */
-.tw-fade {
-  opacity: 0;
-  animation: twFade var(--twFadeDur, 420ms) var(--twFadeEase, cubic-bezier(0.22, 1, 0.36, 1)) var(--twFadeDelay, 0ms) forwards;
-  will-change: opacity, transform;
-  backface-visibility: hidden;
-}
-`
-
-/* ========= Icons (sutrumpinta) ========= */
+/* ========= Icons ========= */
 function Icon({ title }: { title: string }) {
   const t = title.toLowerCase()
   if (t.includes('higien')) return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M4 10a8 8 0 0 1 16 0v7a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-7Z" fill="currentColor" opacity=".15"/><path d="M12 3v6m0-6a8 8 0 0 1 8 8v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-6a8 8 0 0 1 8-8Z" stroke="currentColor" strokeWidth="1.6" fill="none"/></svg>)
@@ -142,12 +173,11 @@ function Icon({ title }: { title: string }) {
   return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M12 3c4 0 7 3 7 7v7a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-7c0-4 3-7 7-7z" stroke="currentColor" strokeWidth="1.6" fill="none"/></svg>)
 }
 
-/* ========= Accordion item (desktop elgsena nepakeista) ========= */
+/* ========= Accordion item ========= */
 function GroupCard({
   group,
   open,
   onToggle,
-  /* tik mobile, tik pirmoms 2 – eilutės „rašomos“ po vieną */
   staggerRows = false,
 }: {
   group: PriceGroup
@@ -159,6 +189,14 @@ function GroupCard({
   const range = useMemo(() => groupRange(group.items), [group.items])
   const summary = range ? (range.max > range.min ? `€${range.min}–€${range.max}` : `nuo €${range.min}`) : '—'
   const reduceMotion = usePrefersReducedMotion()
+  const [showPrices, setShowPrices] = useState<Set<number>>(new Set())
+
+  // Reset animation state when closing
+  useEffect(() => {
+    if (!open) {
+      setShowPrices(new Set())
+    }
+  }, [open])
 
   return (
     <div
@@ -172,9 +210,6 @@ function GroupCard({
       )}
       style={{ contain: 'layout paint', transform: 'translateZ(0)' }}
     >
-      {/* injectinam CSS (saugiai galima dėti ir vieną kartą app lygiu) */}
-      <style dangerouslySetInnerHTML={{ __html: typewriterCSS }} />
-
       <button
         onClick={() => onToggle(!open)}
         aria-expanded={open}
@@ -198,7 +233,6 @@ function GroupCard({
         </span>
       </button>
 
-      {/* GRID trick: 0fr -> 1fr + opacity */}
       <div
         id={`${id}-panel`}
         className="grid will-change-[grid-template-rows,opacity]"
@@ -210,7 +244,6 @@ function GroupCard({
         }}
       >
         <div className="min-h-0 overflow-hidden">
-          {/* vidinis „cushion“ tik vizualui */}
           <div
             className="px-2 py-2"
             style={{
@@ -226,48 +259,30 @@ function GroupCard({
               <table className="w-full text-sm">
                 <tbody className="divide-y divide-slate-100">
                   {group.items.map((p, i) => {
-                    const doTW = !!(staggerRows && open && !reduceMotion)
+                    const doAnimation = !!(staggerRows && open && !reduceMotion)
                     const cappedIndex = Math.min(i, MAX_STAGGER_ROWS)
-                    const rowDelay = doTW ? ROW_BASE_DELAY + cappedIndex * PER_ROW_DELAY : 0
-                    const nameLen = (p.name || '').length
-                    const twDur = doTW
-                      ? Math.max(MIN_DUR_MS, Math.min(MAX_DUR_MS, 300 + nameLen * PER_CHAR_MS))
-                      : 0
+                    const rowDelay = doAnimation ? ROW_BASE_DELAY + cappedIndex * PER_ROW_DELAY : 0
+                    const showPrice = showPrices.has(i)
 
                     return (
                       <tr key={i} className="hover:bg-slate-50/50 transition-colors">
                         <td className="p-3 align-top">
-                          {doTW ? (
-                            // „Phantom“ technika: nematomas tekstas užfiksuoja galutinį plotį,
-                            // o ant viršaus absoliučiai uždedam rašomą tekstą — nelūžta lentelės layout'as.
-                            <span className="relative inline-block text-slate-900">
-                              <span className="invisible">{p.name}</span>
-                              <span
-                                className="tw absolute inset-0"
-                                style={
-                                  {
-                                    // kiek raidžių
-                                    ['--chars' as any]: nameLen,
-                                    // kiek trunka rašymas
-                                    ['--twDur' as any]: `${twDur}ms`,
-                                    // kada pradėti šiai eilutei
-                                    animationDelay: `${rowDelay}ms`,
-                                  } as React.CSSProperties
-                                }
-                              >
-                                {p.name}
-                              </span>
-                              {/* Pastaba – pasirodo po pavadinimo su fade */}
-                              {p.note && (
-                                <span
-                                  className="block text-xs text-gray-600 mt-0.5 tw-fade"
-                                  style={
-                                    {
-                                      ['--twFadeDur' as any]: '420ms',
-                                      ['--twFadeEase' as any]: EASE,
-                                      ['--twFadeDelay' as any]: `${rowDelay + twDur - 80}ms`,
-                                    } as React.CSSProperties
-                                  }
+                          {doAnimation ? (
+                            <span className="text-slate-900">
+                              <WordByWord 
+                                text={p.name} 
+                                rowDelay={rowDelay}
+                                onComplete={() => {
+                                  setShowPrices(prev => new Set(prev).add(i))
+                                }}
+                              />
+                              {p.note && showPrice && (
+                                <span 
+                                  className="block text-xs text-gray-600 mt-0.5"
+                                  style={{
+                                    opacity: 0,
+                                    animation: `fadeInUp 300ms ${EASE} forwards`,
+                                  }}
                                 >
                                   {p.note}
                                 </span>
@@ -281,21 +296,18 @@ function GroupCard({
                           )}
                         </td>
 
-                        <td
-                          className="p-3 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-darkblue-700"
-                          style={
-                            doTW
-                              ? ({
-                                  // kaina pasirodo po pavadinimo rašymo
-                                  ['--twFadeDur' as any]: '380ms',
-                                  ['--twFadeEase' as any]: EASE,
-                                  ['--twFadeDelay' as any]: `${rowDelay + Math.max(180, twDur * 0.7)}ms`,
-                                } as React.CSSProperties)
-                              : undefined
-                          }
-                        >
-                          {doTW ? (
-                            <span className="tw-fade">{fmt(p.from, p.to)}</span>
+                        <td className="p-3 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-darkblue-700">
+                          {doAnimation ? (
+                            <span 
+                              style={{
+                                opacity: showPrice ? 1 : 0,
+                                transform: showPrice ? 'translateY(0)' : 'translateY(4px)',
+                                transition: `opacity 250ms ${EASE}, transform 250ms ${EASE}`,
+                                display: 'inline-block',
+                              }}
+                            >
+                              {fmt(p.from, p.to)}
+                            </span>
                           ) : (
                             fmt(p.from, p.to)
                           )}
@@ -309,18 +321,36 @@ function GroupCard({
           </div>
         </div>
       </div>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(4px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}} />
     </div>
   )
 }
 
 /* ========= Page ========= */
 export default function PricingCards() {
-  const { hash } = useLocation()
+  const [hash, setHash] = useState('')
   const mobile = useIsMobile()
-  // MOBILE: gali būti kelios atidarytos; DESKTOP: viena
   const [openIds, setOpenIds] = useState<Set<string>>(new Set())
   const animatingRef = useRef(false)
   const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setHash(window.location.hash)
+    }
+  }, [])
 
   const handleToggle = async (id: string, willOpen: boolean) => {
     if (animatingRef.current) return
@@ -334,10 +364,9 @@ export default function PricingCards() {
 
       if (mobile) {
         setOpenIds(prev => new Set(prev).add(id))
-        await wait(32) // leisti layout’ui persiskaičiuoti
+        await wait(32)
         await smoothAlignToElement(id, 20, OPEN_MS)
       } else {
-        // DESKTOP — be pokyčių
         setOpenIds(new Set())
         await wait(CLOSE_MS + 40)
         setOpenIds(new Set([id]))
@@ -349,7 +378,6 @@ export default function PricingCards() {
     }
   }
 
-  // Hash navigacija (#grupes-pavadinimas)
   useEffect(() => {
     if (!hash) return
     const id = slugify(decodeURIComponent(hash.slice(1)))
@@ -377,17 +405,14 @@ export default function PricingCards() {
     }
     run()
     return () => { cancelled = true }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hash, mobile])
 
   return (
-    // Centruotas, responsyvus
     <div className="w-full mx-auto max-w-[1400px] px-4 sm:px-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
         {PRICING.map((g, idx) => {
           const id = slugify(g.title)
           const isOpen = openIds.has(id)
-          // Typewriter tik MOBILE ir tik pirmai-dvejai
           const staggerRows = mobile && idx < 2
           return (
             <div key={g.title} className="w-full will-change-transform">
