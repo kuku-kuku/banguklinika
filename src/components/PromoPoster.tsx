@@ -120,7 +120,7 @@ export default function PromoPoster({
   const onSecondaryClick = () => { close() }
 
   const panelMaxW = `min(88vw, ${maxWidthPx}px)`
-  const panelMaxH = `min(${modalMaxVh}vh, calc(100dvh - ${navbarOffsetPx + 36}px))`
+  const panelMaxH = `min(${modalMaxVh}vh, calc(100dvh - ${navbarOffsetPx + 20}px))`
 
   // Smooth bounce animation - drops from top, bounces once, settles
   const bounceVariants = {
@@ -156,7 +156,7 @@ export default function PromoPoster({
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-6"
+          className="fixed inset-0 z-[10000] flex items-center justify-center p-3 md:p-6"
           role="dialog"
           aria-modal
           initial={{ opacity: 0 }}
