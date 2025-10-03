@@ -22,32 +22,38 @@ type Props = {
 function useBodyScrollLock(locked: boolean) {
   useEffect(() => {
     if (!locked) return
-    const prevOverflow = document.body.style.overflow
-    const prevPaddingRight = document.body.style.paddingRight
+    const prevBodyOverflow = document.body.style.overflow
+    const prevBodyPadRight = document.body.style.paddingRight
+    const prevDocOverflow = document.documentElement.style.overflow
+    const prevDocHeight = document.documentElement.style.height
     const prevTouch = (document.body.style as any).webkitOverflowScrolling
-    
-    // Get scrollbar width
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
-    
+
+    const scrollbarW = window.innerWidth - document.documentElement.clientWidth
     document.body.style.overflow = 'hidden'
-    document.body.style.paddingRight = `${scrollbarWidth}px`
+    document.body.style.paddingRight = `${scrollbarW}px`
     ;(document.body.style as any).webkitOverflowScrolling = 'auto'
-    
-    // Prevent iOS Safari bottom bar issues
     document.documentElement.style.overflow = 'hidden'
     document.documentElement.style.height = '100%'
-    
+
     return () => {
-      document.body.style.overflow = prevOverflow
-      document.body.style.paddingRight = prevPaddingRight
+      document.body.style.overflow = prevBodyOverflow
+      document.body.style.paddingRight = prevBodyPadRight
       ;(document.body.style as any).webkitOverflowScrolling = prevTouch
-      document.documentElement.style.overflow = ''
-      document.documentElement.style.height = ''
+      document.documentElement.style.overflow = prevDocOverflow
+      document.documentElement.style.height = prevDocHeight
     }
   }, [locked])
 }
 
 const msFromDays = (d: number) => d * 24 * 60 * 60 * 1000
+
+// Tikras viewport aukštis px (naudojant visualViewport, jei yra)
+function getViewportHeightPx() {
+  if (typeof window === 'undefined') return 0
+  const vv = (window as any).visualViewport
+  if (vv && typeof vv.height === 'number') return Math.round(vv.height)
+  return Math.round(window.innerHeight)
+}
 
 export default function PromoPoster({
   id,
@@ -59,7 +65,7 @@ export default function PromoPoster({
   secondaryCtaHref = '/kainos#ypatingi',
   persistence = 'local',
   navbarOffsetPx = 72,
-  modalMaxVh = 85,
+  modalMaxVh = 85, // % nuo viewport
   maxWidthPx = 640,
   borderRadius = '16px',
 }: Props) {
@@ -67,16 +73,25 @@ export default function PromoPoster({
   const [open, setOpen] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
   const [isReady, setIsReady] = useState(false)
+  const [vh, setVh] = useState<number>(() => getViewportHeightPx())
   const timerRef = useRef<number | null>(null)
   const KEY = `promoPoster:${id}`
 
-  const store = persistence === 'session'
-    ? window.sessionStorage
-    : persistence === 'local'
-    ? window.localStorage
-    : null
+  // >>> nauja: sekam IMG renderintą dydį px
+  const imgRef = useRef<HTMLImageElement | null>(null)
+  const [imgBox, setImgBox] = useState<{ w: number; h: number }>({ w: 0, h: 0 })
 
-  const resetFlag = typeof window !== 'undefined' && new URLSearchParams(search).get('posterReset') === '1'
+  // Storage pasirinkimas
+  const store =
+    persistence === 'session'
+      ? window.sessionStorage
+      : persistence === 'local'
+      ? window.localStorage
+      : null
+
+  const resetFlag =
+    typeof window !== 'undefined' &&
+    new URLSearchParams(search).get('posterReset') === '1'
 
   const isSnoozed = () => {
     if (!store) return false
@@ -85,7 +100,9 @@ export default function PromoPoster({
       if (!v) return false
       const until = Number(v)
       return Number.isFinite(until) && Date.now() < until
-    } catch { return false }
+    } catch {
+      return false
+    }
   }
 
   const persistSnooze = () => {
@@ -106,17 +123,17 @@ export default function PromoPoster({
 
   useEffect(() => { if (resetFlag) clearSnooze() }, [resetFlag])
 
-  // Preload image for smoother appearance
+  // Preload plakato paveikslėlį
   useEffect(() => {
     const img = new Image()
     img.src = imageSrc
     img.onload = () => {
       setImageLoaded(true)
-      // Small delay to ensure everything is ready before showing
       setTimeout(() => setIsReady(true), 50)
     }
   }, [imageSrc])
 
+  // Atidaryti pagal maršrutą ir „snooze“ būseną
   useEffect(() => {
     if (routeOnly && pathname !== routeOnly) return
     if (!resetFlag && isSnoozed()) return
@@ -125,6 +142,7 @@ export default function PromoPoster({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, routeOnly, resetFlag])
 
+  // ESC uždarymui
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close() }
@@ -133,43 +151,65 @@ export default function PromoPoster({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
+  // Reaguoti į viewport aukščio pokyčius (pvz., OS UI juostos)
+  useEffect(() => {
+    const update = () => setVh(getViewportHeightPx())
+    update()
+    window.addEventListener('resize', update)
+    const vv = (window as any).visualViewport
+    vv?.addEventListener?.('resize', update)
+    return () => {
+      window.removeEventListener('resize', update)
+      vv?.removeEventListener?.('resize', update)
+    }
+  }, [])
+
   useBodyScrollLock(open)
 
   const close = () => { setOpen(false); persistSnooze() }
   const onSecondaryClick = () => { close() }
 
+  // Skaičiuojam REALŲ max aukštį px, kad visada tilptų
+  const modalMaxPxByVh = Math.floor((modalMaxVh / 100) * vh)
+  const panelMaxHpx = Math.max(
+    0,
+    Math.min(modalMaxPxByVh, vh - (navbarOffsetPx + 24)) // šiek tiek „kvėpavimo“ vietos apačioje
+  )
   const panelMaxW = `min(88vw, ${maxWidthPx}px)`
-  const panelMaxH = `min(${modalMaxVh}vh, calc(100dvh - ${navbarOffsetPx + 40}px))`
 
-  // Smooth bounce animation - only starts when image is ready
   const bounceVariants = {
-    initial: { 
-      y: -400, 
-      opacity: 0,
-      scale: 0.9
+    initial: { y: -400, opacity: 0, scale: 0.9 },
+    animate: {
+      y: 0, opacity: 1, scale: 1,
+      transition: { type: 'spring', damping: 12, stiffness: 100, mass: 0.8, duration: 0.8 }
     },
-    animate: { 
-      y: 0, 
-      opacity: 1,
-      scale: 1,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-        mass: 0.8,
-        duration: 0.8
-      }
-    },
-    exit: { 
-      y: -40, 
-      opacity: 0,
-      scale: 0.95,
-      transition: {
-        duration: 0.3,
-        ease: [0.32, 0, 0.67, 0]
-      }
+    exit: { y: -40, opacity: 0, scale: 0.95, transition: { duration: 0.3, ease: [0.32, 0, 0.67, 0] } }
+  } as const
+
+  // >>> Naujiena: inkaras, kuris visada sutampa su tikru IMG renderintu dydžiu
+  useEffect(() => {
+    const el = imgRef.current
+    if (!el) return
+
+    const measure = () => {
+      const rect = el.getBoundingClientRect()
+      // rect.width/height yra px ekrane – tinka overlay pozicionavimui
+      setImgBox({ w: Math.round(rect.width), h: Math.round(rect.height) })
     }
-  }
+
+    measure()
+
+    let ro: ResizeObserver | undefined
+    if (typeof ResizeObserver !== 'undefined') {
+      ro = new ResizeObserver(measure)
+      ro.observe(el)
+    }
+    window.addEventListener('resize', measure)
+    return () => {
+      ro?.disconnect()
+      window.removeEventListener('resize', measure)
+    }
+  }, [isReady, panelMaxHpx, maxWidthPx])
 
   return (
     <AnimatePresence>
@@ -177,57 +217,43 @@ export default function PromoPoster({
         <motion.div
           className="fixed inset-0 z-[10000] flex items-center justify-center p-3 md:p-6"
           role="dialog"
-          aria-modal
+          aria-modal="true"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
           style={{
             position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
+            top: 0, left: 0, right: 0, bottom: 0,
             width: '100%',
-            height: '100vh',
-            minHeight: '100vh',
-            maxHeight: '100vh',
+            height: '100vh', minHeight: '100vh', maxHeight: '100vh',
             overscrollBehavior: 'none',
-            paddingTop: `${navbarOffsetPx}px`
+            paddingTop: `${navbarOffsetPx}px`,
           }}
+          onClick={close}
         >
-          {/* Overlay with smooth fade - full screen coverage */}
-          <motion.div 
-            className="absolute bg-black/60 backdrop-blur-sm" 
-            onClick={close} 
+          {/* Overlay */}
+          <motion.div
+            className="absolute bg-black/60 backdrop-blur-sm"
             aria-hidden
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              width: '100%',
-              height: '100vh',
-              minHeight: '100vh',
-              maxHeight: '100vh'
-            }}
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
           />
 
-          {/* Modal with bounce animation - only animates when ready */}
+          {/* Modal panel */}
           {isReady && (
             <motion.div
               className="relative z-10 w-full"
               style={{
                 maxWidth: panelMaxW,
-                maxHeight: panelMaxH,
+                maxHeight: `${panelMaxHpx}px`,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                pointerEvents: 'auto', // kad neperimtų overlay click
               }}
               variants={bounceVariants}
               initial="initial"
@@ -236,65 +262,88 @@ export default function PromoPoster({
               onClick={(e) => e.stopPropagation()}
             >
               <div
-                className="relative w-full h-full grid place-items-center"
+                className="relative w-full grid place-items-center"
                 style={{
                   borderRadius,
                   overflow: 'hidden',
-                  filter: 'drop-shadow(0 14px 28px rgba(0,0,0,.35)) drop-shadow(0 4px 10px rgba(0,0,0,.22))',
+                  filter:
+                    'drop-shadow(0 14px 28px rgba(0,0,0,.35)) drop-shadow(0 4px 10px rgba(0,0,0,.22))',
                   background: 'transparent',
                 }}
               >
-                {/* Plakatas - no separate loading state to prevent flash */}
+                {/* Plakatas */}
                 <img
+                  ref={imgRef}
                   src={imageSrc}
                   alt=""
-                  className="max-w-full max-h-full object-contain select-none"
                   decoding="async"
                   loading="eager"
                   draggable={false}
-                  style={{ borderRadius }}
+                  className="block select-none"
+                  style={{
+                    borderRadius,
+                    width: 'auto',
+                    height: 'auto',
+                    maxWidth: `min(88vw, ${maxWidthPx}px)`,
+                    maxHeight: `${panelMaxHpx}px`,
+                    objectFit: 'contain',
+                    display: 'block',
+                  }}
                 />
 
-                {/* X button with smooth entrance */}
-                <motion.button
-                  aria-label="Uždaryti"
-                  onClick={close}
-                  className="absolute top-2 right-2 p-2 rounded-full bg-black/20 hover:bg-black/30 active:bg-black/40 transition"
-                  style={{ WebkitTapHighlightColor: 'transparent' }}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.4, duration: 0.2 }}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
+                {/* 🔗 Inkaras: dėžė, kurios dydis = realus IMG dydis, centruota ant jo */}
+                <div
+                  className="absolute pointer-events-none"
+                  style={{
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: imgBox.w || 0,
+                    height: imgBox.h || 0,
+                    borderRadius,
+                  }}
                 >
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 text-white drop-shadow">
-                    <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                </motion.button>
-
-                {/* CTA with slide-in animation */}
-                {secondaryCtaHref && (
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5, duration: 0.3 }}
-                    className="absolute bottom-2 right-3 md:bottom-3 md:right-4"
+                  {/* Close */}
+                  <motion.button
+                    aria-label="Uždaryti"
+                    onClick={close}
+                    className="absolute top-2 right-2 p-2 rounded-full bg-black/20 hover:bg-black/30 active:bg-black/40 transition pointer-events-auto"
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.4, duration: 0.2 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <Link
-                      to={secondaryCtaHref}
-                      onClick={onSecondaryClick}
-                      className="text-white font-medium text-[10px] md:text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,.7)] hover:drop-shadow-[0_3px_6px_rgba(0,0,0,.9)] transition-all"
-                      style={{ WebkitTapHighlightColor: 'transparent', background: 'transparent' }}
+                    <svg viewBox="0 0 24 24" className="w-5 h-5 text-white drop-shadow">
+                      <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                  </motion.button>
+
+                  {/* CTA */}
+                  {secondaryCtaHref && (
+                    <motion.div
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5, duration: 0.3 }}
+                      className="absolute bottom-2 right-3 md:bottom-3 md:right-4 pointer-events-auto"
                     >
-                      {secondaryCtaText}
-                    </Link>
-                  </motion.div>
-                )}
+                      <Link
+                        to={secondaryCtaHref}
+                        onClick={onSecondaryClick}
+                        className="text-white font-medium text-[10px] md:text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,.7)] hover:drop-shadow-[0_3px_6px_rgba(0,0,0,.9)] transition-all"
+                        style={{ WebkitTapHighlightColor: 'transparent', background: 'transparent' }}
+                      >
+                        {secondaryCtaText}
+                      </Link>
+                    </motion.div>
+                  )}
+                </div>
               </div>
             </motion.div>
           )}
 
-          {/* Loading indicator shown while image loads */}
+          {/* Loader kol paveikslas pasiruoš (retai, bet gražiau) */}
           {!isReady && (
             <div className="relative z-10 flex items-center justify-center">
               <div className="w-12 h-12 border-4 border-white/20 border-t-white rounded-full animate-spin" />
