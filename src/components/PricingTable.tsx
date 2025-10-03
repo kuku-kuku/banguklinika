@@ -1,5 +1,38 @@
-// src/components/PricingTable.tsx
 import { PRICING } from '../data/pricing'
+
+const FORCE_EXACT = new Set<string>([
+  // Suaugusiesiems
+  'Konsultacija, profilaktinis patikrinimas, gydymo plano sudarymas',
+  'Nuskausminimas',
+  'Vienkartinės priemonės',
+  'Nuotrauka',
+  'Koferdamo sistemos naudojimas',
+
+  // Vaikams
+  'Konsultacija, profilaktinis patikrinimas',
+
+  // Protezavimas
+  'CEREC vainikėlis (ant implanto)',
+
+  // Implantai
+  'Straumann® implantas',
+  'Medentika® implantas',
+])
+
+function formatPrice(p: { name: string; from?: number; to?: number; exact?: boolean }): string {
+  const { name, from, to, exact } = p
+  const forceExact = FORCE_EXACT.has(name) || exact === true
+
+  if (typeof from === 'number' && typeof to === 'number') {
+    // intervalas – be „nuo“
+    return `€${from}–${to}`
+  }
+  if (typeof from === 'number') {
+    // jeigu forceExact – rodome tik kainą, kitaip „nuo“
+    return forceExact ? `€${from}` : `nuo €${from}`
+  }
+  return '—'
+}
 
 export default function PricingTable() {
   return (
@@ -19,10 +52,10 @@ export default function PricingTable() {
             <tbody>
               {group.items.map((p, i) => (
                 <tr
-                  key={i}
+                  key={`${group.title}-${i}`}
                   className="border-t border-gray-100 hover:bg-primary-50 transition"
                 >
-                  <td className="p-4">
+                  <td className="p-4 align-top">
                     {p.name}
                     {p.note && (
                       <span className="block text-xs text-gray-500">
@@ -31,7 +64,7 @@ export default function PricingTable() {
                     )}
                   </td>
                   <td className="p-4 w-40 font-medium text-right whitespace-nowrap text-primary-700">
-                    {p.from != null ? `nuo €${p.from}` : '—'}
+                    {formatPrice(p)}
                   </td>
                 </tr>
               ))}
