@@ -139,7 +139,7 @@ export default function PromoPoster({
   const onSecondaryClick = () => { close() }
 
   const panelMaxW = `min(88vw, ${maxWidthPx}px)`
-  const panelMaxH = `min(${modalMaxVh}vh, calc(100dvh - ${navbarOffsetPx + 20}px))`
+  const panelMaxH = `min(${modalMaxVh}vh, calc(100dvh - ${navbarOffsetPx + 40}px))`
 
   // Smooth bounce animation - only starts when image is ready
   const bounceVariants = {
@@ -192,10 +192,11 @@ export default function PromoPoster({
             height: '100vh',
             minHeight: '100vh',
             maxHeight: '100vh',
-            overscrollBehavior: 'none'
+            overscrollBehavior: 'none',
+            paddingTop: `${navbarOffsetPx}px`
           }}
         >
-          {/* Overlay with smooth fade - full screen coverage for iOS */}
+          {/* Overlay with smooth fade - full screen coverage */}
           <motion.div 
             className="absolute bg-black/60 backdrop-blur-sm" 
             onClick={close} 

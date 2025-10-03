@@ -76,11 +76,6 @@ export default function About() {
             apsilankymas pas odontologą neturi būti gąsdinantis. Priešingai – jis gali būti malonus. Todėl kiekvieną klientą
             pasitinkame su pozityvia energija ir siekiame, kad pasibaigus vizitui klientas išeitų su plačia, dailia ir sveika šypsena.
           </p>
-          <p>
-            Bangų Odontologijos Klinika – tai visos odontologijos paslaugos vienoje vietoje. Mūsų klinikoje dirba didelį
-            patirties ir praktinių žinių bagažą sukaupę skirtingų sričių specialistai – savo srities profesionalai, todėl
-            pacientams galime suteikti visas dantų gydymo, protezavimo, profilaktinės priežiūros, burnos chirurgijos ir kitas paslaugas.
-          </p>
         </motion.div>
 
         {/* Paslaugos (dviejų stulpelių sąrašas – stabilūs tarpai) */}

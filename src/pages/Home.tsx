@@ -239,7 +239,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: .6 }}
               >
-                Šypsena, kuria norisi rodyti
+                Šypsena, kurią norisi rodyti!
               </motion.h1>
 
               <motion.p

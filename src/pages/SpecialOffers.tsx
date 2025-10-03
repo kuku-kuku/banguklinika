@@ -86,8 +86,8 @@ export default function SpecialOffers() {
               <div className="md:text-right">
                 <div className="text-sm text-slate-500">Dabar tik</div>
                 <div className="flex items-baseline gap-3 md:justify-end">
-                  <span className="text-3xl sm:text-4xl font-extrabold text-darkblue-700">249&nbsp;Eur</span>
-                  <span className="text-slate-400 line-through">280&nbsp;Eur</span>
+                  <span className="text-3xl sm:text-4xl font-extrabold text-darkblue-700">280&nbsp;Eur</span>
+                  <span className="text-slate-400 line-through">330&nbsp;Eur</span>
                 </div>
               </div>
 
@@ -100,7 +100,7 @@ export default function SpecialOffers() {
                   Skambinti: {CLINIC.phone}
                 </a>
                 <Link
-                  to="/kontaktai"
+                  to="/kontaktai#registracija"
                   className="btn-primary rounded-full px-6 py-3 font-semibold"
                 >
                   Rašyti mums

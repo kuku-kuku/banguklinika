@@ -13,6 +13,30 @@ const PER_ROW_DELAY = 120
 const TEXT_DURATION = 800
 const PRICE_DELAY = 300
 
+/* ========= Eilutės, kurioms rodom tik fiksuotą kainą (be „nuo“) ========= */
+const FORCE_EXACT = new Set<string>([
+  // Suaugusiesiems
+  'Konsultacija, profilaktinis patikrinimas, gydymo plano sudarymas',
+  'Nuskausminimas',
+  'Vienkartinės priemonės',
+  'Nuotrauka',
+  'Koferdamo sistemos naudojimas',
+  // Vaikams
+  'Konsultacija, profilaktinis patikrinimas',
+  // Protezavimas
+  'CEREC vainikėlis (ant implanto)',
+  'Alginatinis atspaudas',
+  'Sąkandžio registracija',
+  'Atspaudai (silikonas/skenavimas)',
+  'Seno vainikėlio nuėmimas',
+  // Implantai
+  'Straumann® implantas',
+  'Medentika® implantas',
+  // Higiena
+  'Fluorozinio danties padengimas su ICON',
+
+])
+
 /* ========= Utils ========= */
 function slugify(t: string) {
   return t
@@ -24,12 +48,17 @@ function slugify(t: string) {
     .replace(/\s+/g, '-')
 }
 
-function fmt(from?: number, to?: number) {
+/** NAUJA: kainos formatavimas pagal pavadinimą (be „nuo“ ten, kur reikia) */
+function fmtItem(p: PriceItem) {
+  const { name, from, to } = p
+  const forceExact = FORCE_EXACT.has(name)
+
   if (from == null) return '—'
-  if (to != null) return `€${from}–€${to}`
-  return `nuo €${from}`
+  if (to != null) return `€${from}–${to}` // intervalas – be „nuo“
+  return forceExact ? `€${from}` : `nuo €${from}`
 }
 
+/** (paliekam tavo pagalbininkus kaip buvo) */
 function groupRange(items: PriceItem[]) {
   let min = Infinity, max = 0
   for (const it of items) {
@@ -225,7 +254,7 @@ function GroupCard({
                             animation: `fadeInScale 700ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay + PRICE_DELAY}ms forwards`
                           } : undefined}
                         >
-                          {fmt(p.from, p.to)}
+                          {fmtItem(p)}
                         </td>
                       </tr>
                     )
@@ -239,24 +268,12 @@ function GroupCard({
 
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(16px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(16px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeInScale {
-          from {
-            opacity: 0;
-            transform: translateY(16px) scale(0.94);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
+          from { opacity: 0; transform: translateY(16px) scale(0.94); }
+          to   { opacity: 1; transform: translateY(0) scale(1); }
         }
       `}} />
     </div>
