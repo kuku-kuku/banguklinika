@@ -47,7 +47,6 @@ function useBodyScrollLock(locked: boolean) {
 
 const msFromDays = (d: number) => d * 24 * 60 * 60 * 1000
 
-// Tikras viewport aukštis px (naudojant visualViewport, jei yra)
 function getViewportHeightPx() {
   if (typeof window === 'undefined') return 0
   const vv = (window as any).visualViewport
@@ -65,7 +64,7 @@ export default function PromoPoster({
   secondaryCtaHref = '/kainos#ypatingi',
   persistence = 'local',
   navbarOffsetPx = 72,
-  modalMaxVh = 85, // % nuo viewport
+  modalMaxVh = 85,
   maxWidthPx = 640,
   borderRadius = '16px',
 }: Props) {
@@ -77,11 +76,6 @@ export default function PromoPoster({
   const timerRef = useRef<number | null>(null)
   const KEY = `promoPoster:${id}`
 
-  // >>> nauja: sekam IMG renderintą dydį px
-  const imgRef = useRef<HTMLImageElement | null>(null)
-  const [imgBox, setImgBox] = useState<{ w: number; h: number }>({ w: 0, h: 0 })
-
-  // Storage pasirinkimas
   const store =
     persistence === 'session'
       ? window.sessionStorage
@@ -117,13 +111,18 @@ export default function PromoPoster({
   }
 
   const clearSnooze = () => {
-    try { window.localStorage.removeItem(KEY) } catch {}
-    try { window.sessionStorage.removeItem(KEY) } catch {}
+    try {
+      window.localStorage.removeItem(KEY)
+    } catch {}
+    try {
+      window.sessionStorage.removeItem(KEY)
+    } catch {}
   }
 
-  useEffect(() => { if (resetFlag) clearSnooze() }, [resetFlag])
+  useEffect(() => {
+    if (resetFlag) clearSnooze()
+  }, [resetFlag])
 
-  // Preload plakato paveikslėlį
   useEffect(() => {
     const img = new Image()
     img.src = imageSrc
@@ -133,25 +132,24 @@ export default function PromoPoster({
     }
   }, [imageSrc])
 
-  // Atidaryti pagal maršrutą ir „snooze“ būseną
   useEffect(() => {
     if (routeOnly && pathname !== routeOnly) return
     if (!resetFlag && isSnoozed()) return
     timerRef.current = window.setTimeout(() => setOpen(true), delayMs)
-    return () => { if (timerRef.current) window.clearTimeout(timerRef.current) }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current)
+    }
   }, [pathname, routeOnly, resetFlag])
 
-  // ESC uždarymui
   useEffect(() => {
     if (!open) return
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close() }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') close()
+    }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
-  // Reaguoti į viewport aukščio pokyčius (pvz., OS UI juostos)
   useEffect(() => {
     const update = () => setVh(getViewportHeightPx())
     update()
@@ -166,50 +164,49 @@ export default function PromoPoster({
 
   useBodyScrollLock(open)
 
-  const close = () => { setOpen(false); persistSnooze() }
-  const onSecondaryClick = () => { close() }
+  const close = () => {
+    setOpen(false)
+    persistSnooze()
+  }
+  const onSecondaryClick = () => {
+    close()
+  }
 
-  // Skaičiuojam REALŲ max aukštį px, kad visada tilptų
   const modalMaxPxByVh = Math.floor((modalMaxVh / 100) * vh)
   const panelMaxHpx = Math.max(
     0,
-    Math.min(modalMaxPxByVh, vh - (navbarOffsetPx + 24)) // šiek tiek „kvėpavimo“ vietos apačioje
+    Math.min(modalMaxPxByVh, vh - (navbarOffsetPx + 24))
   )
   const panelMaxW = `min(88vw, ${maxWidthPx}px)`
 
   const bounceVariants = {
-    initial: { y: -400, opacity: 0, scale: 0.9 },
-    animate: {
-      y: 0, opacity: 1, scale: 1,
-      transition: { type: 'spring', damping: 12, stiffness: 100, mass: 0.8, duration: 0.8 }
+    initial: {
+      y: -400,
+      opacity: 0,
+      scale: 0.9,
     },
-    exit: { y: -40, opacity: 0, scale: 0.95, transition: { duration: 0.3, ease: [0.32, 0, 0.67, 0] } }
+    animate: {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: 'spring',
+        damping: 12,
+        stiffness: 100,
+        mass: 0.8,
+        duration: 0.8,
+      },
+    },
+    exit: {
+      y: -40,
+      opacity: 0,
+      scale: 0.95,
+      transition: {
+        duration: 0.3,
+        ease: [0.32, 0, 0.67, 0],
+      },
+    },
   } as const
-
-  // >>> Naujiena: inkaras, kuris visada sutampa su tikru IMG renderintu dydžiu
-  useEffect(() => {
-    const el = imgRef.current
-    if (!el) return
-
-    const measure = () => {
-      const rect = el.getBoundingClientRect()
-      // rect.width/height yra px ekrane – tinka overlay pozicionavimui
-      setImgBox({ w: Math.round(rect.width), h: Math.round(rect.height) })
-    }
-
-    measure()
-
-    let ro: ResizeObserver | undefined
-    if (typeof ResizeObserver !== 'undefined') {
-      ro = new ResizeObserver(measure)
-      ro.observe(el)
-    }
-    window.addEventListener('resize', measure)
-    return () => {
-      ro?.disconnect()
-      window.removeEventListener('resize', measure)
-    }
-  }, [isReady, panelMaxHpx, maxWidthPx])
 
   return (
     <AnimatePresence>
@@ -224,9 +221,14 @@ export default function PromoPoster({
           transition={{ duration: 0.25 }}
           style={{
             position: 'fixed',
-            top: 0, left: 0, right: 0, bottom: 0,
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
             width: '100%',
-            height: '100vh', minHeight: '100vh', maxHeight: '100vh',
+            height: '100vh',
+            minHeight: '100vh',
+            maxHeight: '100vh',
             overscrollBehavior: 'none',
             paddingTop: `${navbarOffsetPx}px`,
           }}
@@ -240,7 +242,12 @@ export default function PromoPoster({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+            }}
           />
 
           {/* Modal panel */}
@@ -253,7 +260,7 @@ export default function PromoPoster({
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                pointerEvents: 'auto', // kad neperimtų overlay click
+                pointerEvents: 'auto',
               }}
               variants={bounceVariants}
               initial="initial"
@@ -261,19 +268,18 @@ export default function PromoPoster({
               exit="exit"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Image wrapper with position relative for buttons */}
               <div
-                className="relative w-full grid place-items-center"
+                className="relative"
                 style={{
                   borderRadius,
-                  overflow: 'hidden',
+                  overflow: 'visible',
                   filter:
                     'drop-shadow(0 14px 28px rgba(0,0,0,.35)) drop-shadow(0 4px 10px rgba(0,0,0,.22))',
-                  background: 'transparent',
                 }}
               >
                 {/* Plakatas */}
                 <img
-                  ref={imgRef}
                   src={imageSrc}
                   alt=""
                   decoding="async"
@@ -291,59 +297,62 @@ export default function PromoPoster({
                   }}
                 />
 
-                {/* 🔗 Inkaras: dėžė, kurios dydis = realus IMG dydis, centruota ant jo */}
-                <div
-                  className="absolute pointer-events-none"
-                  style={{
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: imgBox.w || 0,
-                    height: imgBox.h || 0,
-                    borderRadius,
+                {/* Close button - positioned relative to image */}
+                <motion.button
+                  aria-label="Uždaryti"
+                  onClick={close}
+                  className="absolute p-2 rounded-full bg-black/20 hover:bg-black/30 active:bg-black/40 transition"
+                  style={{ 
+                    WebkitTapHighlightColor: 'transparent',
+                    top: '8px',
+                    right: '8px',
                   }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.4, duration: 0.2 }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {/* Close */}
-                  <motion.button
-                    aria-label="Uždaryti"
-                    onClick={close}
-                    className="absolute top-2 right-2 p-2 rounded-full bg-black/20 hover:bg-black/30 active:bg-black/40 transition pointer-events-auto"
-                    style={{ WebkitTapHighlightColor: 'transparent' }}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.4, duration: 0.2 }}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <svg viewBox="0 0 24 24" className="w-5 h-5 text-white drop-shadow">
-                      <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    </svg>
-                  </motion.button>
+                  <svg viewBox="0 0 24 24" className="w-5 h-5 text-white drop-shadow">
+                    <path
+                      d="M6 6l12 12M6 18L18 6"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </motion.button>
 
-                  {/* CTA */}
-                  {secondaryCtaHref && (
-                    <motion.div
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5, duration: 0.3 }}
-                      className="absolute bottom-2 right-3 md:bottom-3 md:right-4 pointer-events-auto"
+                {/* CTA - positioned relative to image */}
+                {secondaryCtaHref && (
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5, duration: 0.3 }}
+                    className="absolute"
+                    style={{
+                      bottom: '8px',
+                      right: '12px',
+                    }}
+                  >
+                    <Link
+                      to={secondaryCtaHref}
+                      onClick={onSecondaryClick}
+                      className="text-white font-medium text-[10px] md:text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,.7)] hover:drop-shadow-[0_3px_6px_rgba(0,0,0,.9)] transition-all"
+                      style={{
+                        WebkitTapHighlightColor: 'transparent',
+                        background: 'transparent',
+                      }}
                     >
-                      <Link
-                        to={secondaryCtaHref}
-                        onClick={onSecondaryClick}
-                        className="text-white font-medium text-[10px] md:text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,.7)] hover:drop-shadow-[0_3px_6px_rgba(0,0,0,.9)] transition-all"
-                        style={{ WebkitTapHighlightColor: 'transparent', background: 'transparent' }}
-                      >
-                        {secondaryCtaText}
-                      </Link>
-                    </motion.div>
-                  )}
-                </div>
+                      {secondaryCtaText}
+                    </Link>
+                  </motion.div>
+                )}
               </div>
             </motion.div>
           )}
 
-          {/* Loader kol paveikslas pasiruoš (retai, bet gražiau) */}
+          {/* Loader */}
           {!isReady && (
             <div className="relative z-10 flex items-center justify-center">
               <div className="w-12 h-12 border-4 border-white/20 border-t-white rounded-full animate-spin" />
