@@ -248,8 +248,7 @@ export default function Home() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: .1, duration: .6 }}
               >
-                Gydymas, implantacija, CEREC protezavimas, higiena ir estetika – vienoje klinikoje.
-                Greita registracija, švelnus požiūris, aiškios kainos.
+                Ieškote visko vienoje vietoje? Gydymas, implantai, CEREC technologija, estetika ir higiena – be ilgo laukimo, su žmogišku požiūriu ir jokių paslėptų mokesčių.
               </motion.p>
 
               <motion.div
