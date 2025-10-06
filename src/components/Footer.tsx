@@ -161,7 +161,6 @@ export default function Footer() {
           <div
             className="w-full flex justify-center items-center"
             style={{
-              // jei dar neapskaičiuota, turėk mažą atsarginį aukštį, kad nekraipytų layout
               height: hoursBodyHeight ? `${hoursBodyHeight}px` : undefined,
               minHeight: hoursBodyHeight ? undefined : 64,
             }}
@@ -181,7 +180,18 @@ export default function Footer() {
       <div className="bg-darkblue-700">
         <div className="container-narrow px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/70">
           <p>© {new Date().getFullYear()} Bangų klinika. Visos teisės saugomos.</p>
-          <p>Sukurta su meile • Lukas</p>
+          <p className="inline-flex items-center gap-1">
+            Sukurta su meile •{" "}
+            <a
+              href="https://beneta.lt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-white/40 hover:decoration-white transition"
+              aria-label="Beneta – atidaryti naujame lange"
+            >
+              Beneta
+            </a>
+          </p>
         </div>
       </div>
     </footer>
