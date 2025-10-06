@@ -13,7 +13,7 @@ const PER_ROW_DELAY = 120
 const TEXT_DURATION = 800
 const PRICE_DELAY = 300
 
-/* ========= Eilutės, kurioms rodom tik fiksuotą kainą (be „nuo“) ========= */
+/* ========= Eilutės, kurioms rodom tik fiksuotą kainą (be „nuo") ========= */
 const FORCE_EXACT = new Set<string>([
   // Suaugusiesiems
   'Konsultacija, profilaktinis patikrinimas, gydymo plano sudarymas',
@@ -34,7 +34,6 @@ const FORCE_EXACT = new Set<string>([
   'Medentika® implantas',
   // Higiena
   'Fluorozinio danties padengimas su ICON',
-
 ])
 
 /* ========= Utils ========= */
@@ -48,17 +47,16 @@ function slugify(t: string) {
     .replace(/\s+/g, '-')
 }
 
-/** NAUJA: kainos formatavimas pagal pavadinimą (be „nuo“ ten, kur reikia) */
+/** Kainos formatavimas pagal pavadinimą */
 function fmtItem(p: PriceItem) {
   const { name, from, to } = p
   const forceExact = FORCE_EXACT.has(name)
 
   if (from == null) return '—'
-  if (to != null) return `€${from}–${to}` // intervalas – be „nuo“
+  if (to != null) return `€${from}–${to}`
   return forceExact ? `€${from}` : `nuo €${from}`
 }
 
-/** (paliekam tavo pagalbininkus kaip buvo) */
 function groupRange(items: PriceItem[]) {
   let min = Infinity, max = 0
   for (const it of items) {
@@ -132,12 +130,91 @@ async function smoothAlignToElement(id: string, offset = 16, ms = 320) {
   await smoothScrollTo(targetY, ms)
 }
 
-/* ========= Icons ========= */
+/* ========= Enhanced Icons ========= */
 function Icon({ title }: { title: string }) {
   const t = title.toLowerCase()
-  if (t.includes('higien')) return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M4 10a8 8 0 0 1 16 0v7a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-7Z" fill="currentColor" opacity=".15"/><path d="M12 3v6m0-6a8 8 0 0 1 8 8v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-6a8 8 0 0 1 8-8Z" stroke="currentColor" strokeWidth="1.6" fill="none"/></svg>)
-  if (t.includes('balin')) return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M12 2l2.35 4.76L20 8l-4 3.9.94 5.5L12 15.8 7.06 17.4 8 11.9 4 8l5.65-1.24L12 2z" fill="currentColor" opacity=".25"/><path d="M12 4.6l1.6 3.2 3.53.77-2.6 2.47.6 3.5L12 12.9l-3.13 1.64.6-3.5L6.87 8.6l3.53-.77L12 4.6z" fill="currentColor"/></svg>)
-  return (<svg viewBox="0 0 24 24" className="w-5 h-5"><path d="M12 3c4 0 7 3 7 7v7a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-7c0-4 3-7 7-7z" stroke="currentColor" strokeWidth="1.6" fill="none"/></svg>)
+  
+  // Higiena - toothbrush icon
+  if (t.includes('higien')) {
+    return (
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+        <rect x="10" y="2" width="4" height="8" rx="2" fill="currentColor" opacity="0.2"/>
+        <path d="M10 8h4v11a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3V13a5 5 0 0 1 4-4.9V8z" fill="currentColor" opacity="0.15"/>
+        <path d="M10 3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v6M10 9v10a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9m-4 0h4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+        <path d="M10 4.5h1m1.5 0h1.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+      </svg>
+    )
+  }
+  
+  // Balinimas - sparkle/star icon
+  if (t.includes('balin')) {
+    return (
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+        <path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.8 5.6 21.2 8 14l-6-4.8h7.6L12 2z" fill="currentColor" opacity="0.2"/>
+        <path d="M12 3l2 6h6.3l-5.1 3.7 2 6L12 15l-5.2 3.7 2-6L3.7 9H10l2-6z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+        <circle cx="19" cy="5" r="1.5" fill="currentColor"/>
+        <circle cx="5" cy="5" r="1" fill="currentColor"/>
+      </svg>
+    )
+  }
+  
+  // Implantai - implant screw icon
+  if (t.includes('implant')) {
+    return (
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+        <path d="M10 6h4v12h-4z" fill="currentColor" opacity="0.15"/>
+        <rect x="9" y="3" width="6" height="3" rx="1" fill="currentColor" opacity="0.2"/>
+        <path d="M10 6h4m-4 3h4m-4 3h4m-4 3h4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+        <path d="M9 6v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V6" stroke="currentColor" strokeWidth="1.6"/>
+        <path d="M9 3h6a1 1 0 0 1 1 1v2H8V4a1 1 0 0 1 1-1z" stroke="currentColor" strokeWidth="1.6"/>
+        <circle cx="12" cy="20" r="1.5" fill="currentColor"/>
+      </svg>
+    )
+  }
+  
+  // Protezavimas - crown icon
+  if (t.includes('protez')) {
+    return (
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+        <path d="M5 10l2 8h10l2-8-3 2-4-3-4 3-3-2z" fill="currentColor" opacity="0.2"/>
+        <path d="M5 10l7 3 7-3m-14 0l2-5 3 3 4-4 4 4 3-3 2 5m0 0l-2 8H5l-2-8m16 0l-3 2m3-2l-7 3m0 0l-4-3m4 3v0m-4-3l-3-2m3 2v0" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    )
+  }
+  
+  // Gydymas vaikams - child/small tooth icon
+  if (t.includes('vaik')) {
+    return (
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+        <path d="M8 8c0-2.2 1.8-4 4-4s4 1.8 4 4v8a4 4 0 0 1-8 0V8z" fill="currentColor" opacity="0.15"/>
+        <path d="M9 8a3 3 0 0 1 6 0v7a3 3 0 0 1-6 0V8z" stroke="currentColor" strokeWidth="1.6"/>
+        <circle cx="10.5" cy="10" r="1" fill="currentColor"/>
+        <circle cx="13.5" cy="10" r="1" fill="currentColor"/>
+        <path d="M10 13c0 1.1.9 2 2 2s2-.9 2-2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+        <circle cx="17" cy="6" r="1.5" fill="currentColor" opacity="0.4"/>
+      </svg>
+    )
+  }
+  
+  // Gydymas suaugusiesiems - tooth with tools icon
+  if (t.includes('gydym') || t.includes('suaugus')) {
+    return (
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+        <path d="M7 7c0-2.8 2.2-5 5-5s5 2.2 5 5v9a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V7z" fill="currentColor" opacity="0.15"/>
+        <path d="M8 7a4 4 0 0 1 8 0v8a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3V7z" stroke="currentColor" strokeWidth="1.6"/>
+        <path d="M12 7v5m-2-3v3m4-3v3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+        <path d="M10 13.5c0 1.1.9 2 2 2s2-.9 2-2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+      </svg>
+    )
+  }
+  
+  // Default - generic tooth icon
+  return (
+    <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+      <path d="M12 3c4 0 7 3 7 7v7a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-7c0-4 3-7 7-7z" fill="currentColor" opacity="0.15"/>
+      <path d="M12 3c4 0 7 3 7 7v7a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-7c0-4 3-7 7-7z" stroke="currentColor" strokeWidth="1.6"/>
+    </svg>
+  )
 }
 
 /* ========= Accordion item ========= */
