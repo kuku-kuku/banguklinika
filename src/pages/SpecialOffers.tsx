@@ -10,8 +10,19 @@ import { X } from 'lucide-react'
 export default function SpecialOffers() {
   const [showPoster, setShowPoster] = useState(false)
   const [hoverPreview, setHoverPreview] = useState(false) // desktop hover peržiūra
+  const [isDesktop, setIsDesktop] = useState(false)
 
-  // Uždarymas su ESC
+  // Desktop vs Mobile (hover: hover + pointer: fine)
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return
+    const mq = window.matchMedia('(hover: hover) and (pointer: fine)')
+    const apply = () => setIsDesktop(mq.matches)
+    apply()
+    mq.addEventListener?.('change', apply)
+    return () => mq.removeEventListener?.('change', apply)
+  }, [])
+
+  // ESC uždarymas modalui
   useEffect(() => {
     if (!showPoster) return
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setShowPoster(false)
@@ -51,7 +62,7 @@ export default function SpecialOffers() {
           </h1>
         </motion.header>
 
-        {/* 1️⃣ NAUJASIAUSIS — Mineralų terapijos pasiūlymas (viršuje) */}
+        {/* 1️⃣ NAUJAUSIAS — su Word failo tekstu */}
         <motion.section
           variants={item}
           className="relative overflow-hidden rounded-2xl ring-1 ring-brand bg-white shadow-sm mb-10"
@@ -59,49 +70,74 @@ export default function SpecialOffers() {
           <div className="pointer-events-none absolute -top-12 -left-10 -z-10 w-72 h-72 rounded-full bg-brand-100/50 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-14 -right-12 -z-10 w-72 h-72 rounded-full bg-brand-100/40 blur-3xl" />
 
-          <div className="relative grid gap-6 p-6 sm:p-8 md:grid-cols-2">
-            {/* KAIRĖ – tekstas */}
+          {/* svarbu: items-stretch, kad abi kolonos turėtų pilną vienodą aukštį */}
+          <div className="relative grid gap-6 p-6 sm:p-8 md:grid-cols-2 items-stretch">
+            {/* KAIRĖ – Word tekstas */}
             <div className="space-y-3">
               <p className="text-sm uppercase tracking-wide text-brand font-semibold">
                 Naujausias pasiūlymas
               </p>
 
               <h2 className="text-2xl sm:text-3xl font-bold leading-snug text-darkblue-700">
-                Pilna burnos higiena + mineralų terapija
+                Profesionali burnos higiena su mineralų terapija
               </h2>
 
               <p className="text-slate-700">
-                Reguliari burnos higiena palaiko sveikas dantenas ir gaivų burnos kvapą, o
-                <span className="font-medium"> mineralų terapija</span> atstato emalį, mažina jautrumą ir suteikia
-                dantims natūralaus stiprumo bei blizgesio.
+                Ar žinai, kad sveika šypsena prasideda ne tik nuo dantų valymo namuose? Laikas
+                pasirūpinti tuo, ko nematysi veidrodyje – profesionali higiena ir mineralų terapija
+                dantims suteiks gaivą, švarą ir apsaugą nuo nematomų grėsmių!
               </p>
 
               <ul className="text-slate-700 space-y-1">
-                <li>• Procedūra trunka apie 1 valandą.</li>
-                <li>• Tinka profilaktikai ir jautrumo mažinimui.</li>
-                <li>• Puikus pasiruošimas dantų balinimui ar kasmetinei higienai.</li>
+                <li>• Pašaliname apnašas.</li>
+                <li>• Atnaujiname natūralų dantų baltumą.</li>
+                <li>• Sumažiname dantenų uždegimo ir ėduonies riziką.</li>
+                <li>• Įvertiname dantų ir dantenų būklę.</li>
+                <li>• Teikiame individualios priežiūros rekomendacijas.</li>
               </ul>
+
+              <p className="text-slate-700 font-medium">Ir tai dar ne viskas!</p>
+
+              <p className="text-slate-700">
+                Po procedūros atliekame remineralizuojančią mineralų terapiją – tai tarsi SPA Jūsų
+                dantims!
+              </p>
+
+              <p className="text-slate-700 font-medium">
+                Mineralų prisotintos medžiagos padeda:
+              </p>
+              <ul className="text-slate-700 space-y-1">
+                <li>• Sustiprinti dantų emalį</li>
+                <li>• Apsaugoti nuo karieso</li>
+                <li>• Sumažinti dantų jautrumą</li>
+                <li>• Atkurti natūralų dantų stiprumą</li>
+              </ul>
+
+              <p className="text-slate-700">
+                Pasirūpink savo šypsena šiandien – užsiregistruok profesionaliai burnos higienai su
+                mineralų terapija. Tavo dantys nusipelno geriausios priežiūros!
+              </p>
             </div>
 
-            {/* DEŠINĖ – posteris: hover peržiūra (desktop) + modalas (mobile/click) */}
-            <div className="relative flex flex-col justify-between gap-4 md:items-end">
-              {/* Thumbnail (be tarpų, pilnai užpildo bloką) */}
+            {/* DEŠINĖ – posteris: hover (desktop) / modal (mobile) */}
+            <div className="relative flex h-full flex-col md:items-end">
+              {/* nuotraukos wrapperis: flex-1 min-h-0 -> išsitempia iki kainos, bet nekeičia bloko aukščio */}
               <div
-                className="w-full h-60 md:h-72 overflow-hidden rounded-2xl cursor-pointer"
-                onClick={() => setShowPoster(true)}
-                onMouseEnter={() => setHoverPreview(true)}
-                onMouseLeave={() => setHoverPreview(false)}
+                className="flex-1 min-h-0 overflow-hidden rounded-2xl cursor-pointer w-full flex items-center justify-center"
+                onClick={() => { if (!isDesktop) setShowPoster(true) }}         // tik mobile
+                onMouseEnter={() => { if (isDesktop) setHoverPreview(true) }}   // tik desktop
+                onMouseLeave={() => { if (isDesktop) setHoverPreview(false) }}
               >
                 <img
                   src="/poster.png"
                   alt="Burnos higiena ir mineralų terapija"
-                  className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
+                  className="w-full h-full object-contain transition-transform duration-500 hover:scale-105"
                   loading="lazy"
                 />
               </div>
 
               {/* Kainos apačioje */}
-              <div className="md:text-right mt-auto">
+              <div className="md:text-right mt-4">
                 <div className="text-sm text-slate-500">Dabar tik</div>
                 <div className="flex items-baseline gap-3 md:justify-end">
                   <span className="text-3xl sm:text-4xl font-extrabold text-darkblue-700">60&nbsp;Eur</span>
@@ -109,7 +145,7 @@ export default function SpecialOffers() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-3 md:justify-end">
+              <div className="flex flex-wrap gap-3 md:justify-end mt-3">
                 <a href={`tel:${CLINIC.phone}`} className="btn-primary rounded-full px-6 py-3 font-semibold">
                   Skambinti: {CLINIC.phone}
                 </a>
@@ -122,7 +158,7 @@ export default function SpecialOffers() {
 
           {/* Hover peržiūra — tik desktop (md+) */}
           <AnimatePresence>
-            {hoverPreview && (
+            {isDesktop && hoverPreview && (
               <motion.div
                 className="hidden md:flex fixed inset-0 z-[160] pointer-events-none items-center justify-center p-6"
                 initial={{ opacity: 0, scale: 0.98 }}
@@ -139,7 +175,7 @@ export default function SpecialOffers() {
           </AnimatePresence>
         </motion.section>
 
-        {/* 2️⃣ BEYOND pasiūlymas (kainos apačioje prieš mygtukus) */}
+        {/* 2️⃣ BEYOND pasiūlymas */}
         <motion.section
           variants={item}
           className="relative overflow-hidden rounded-2xl ring-1 ring-brand bg-white shadow-sm mb-10"
@@ -205,7 +241,7 @@ export default function SpecialOffers() {
           </p>
         </motion.section>
 
-        {/* Modalas — mobilui ar paspaudimui (kai nėra hover) */}
+        {/* Modalas — tik mobilui */}
         <AnimatePresence>
           {showPoster && (
             <motion.div
@@ -222,7 +258,6 @@ export default function SpecialOffers() {
                 exit={{ scale: 0.97, opacity: 0 }}
                 onClick={(e) => e.stopPropagation()}
               >
-                {/* X mygtukas — prilipęs prie posterio kampo */}
                 <button
                   onClick={() => setShowPoster(false)}
                   className="absolute top-3 right-3 z-10 bg-black/40 backdrop-blur-sm rounded-full p-1.5 hover:bg-black/60 transition"
@@ -235,7 +270,7 @@ export default function SpecialOffers() {
                   src="/poster.png"
                   alt="Burnos higiena ir mineralų terapija"
                   className="w-full h-auto object-contain rounded-2xl shadow-2xl"
-                  style={{ maxHeight: 'calc(100vh - 140px)' }} // nelenda po navbaru, be vidinio scroll
+                  style={{ maxHeight: 'calc(100vh - 140px)' }}
                 />
               </motion.div>
             </motion.div>
