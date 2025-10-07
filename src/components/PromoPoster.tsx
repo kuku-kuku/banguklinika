@@ -123,12 +123,32 @@ export default function PromoPoster({
     if (resetFlag) clearSnooze()
   }, [resetFlag])
 
+  // 💡 Patobulintas įkėlimo mechanizmas su fallback timeout
   useEffect(() => {
+    let didCancel = false
     const img = new Image()
-    img.src = imageSrc
-    img.onload = () => {
+    let fallback: any
+
+    const handleReady = () => {
+      if (didCancel) return
       setImageLoaded(true)
-      setTimeout(() => setIsReady(true), 50)
+      setTimeout(() => setIsReady(true), 60)
+      clearTimeout(fallback)
+    }
+
+    img.onload = handleReady
+    img.onerror = handleReady
+    img.src = imageSrc
+
+    // Jei po 5s niekas neįvyko – priverstinai leidžiam modalą
+    fallback = setTimeout(handleReady, 5000)
+
+    // Jei naršyklė iš cache (instant complete)
+    if (img.complete) handleReady()
+
+    return () => {
+      didCancel = true
+      clearTimeout(fallback)
     }
   }, [imageSrc])
 
@@ -268,7 +288,6 @@ export default function PromoPoster({
               exit="exit"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Image wrapper with position relative for buttons */}
               <div
                 className="relative"
                 style={{
@@ -278,7 +297,6 @@ export default function PromoPoster({
                     'drop-shadow(0 14px 28px rgba(0,0,0,.35)) drop-shadow(0 4px 10px rgba(0,0,0,.22))',
                 }}
               >
-                {/* Plakatas */}
                 <img
                   src={imageSrc}
                   alt=""
@@ -297,12 +315,11 @@ export default function PromoPoster({
                   }}
                 />
 
-                {/* Close button - positioned relative to image */}
                 <motion.button
                   aria-label="Uždaryti"
                   onClick={close}
                   className="absolute p-2 rounded-full bg-black/20 hover:bg-black/30 active:bg-black/40 transition"
-                  style={{ 
+                  style={{
                     WebkitTapHighlightColor: 'transparent',
                     top: '8px',
                     right: '8px',
@@ -323,7 +340,6 @@ export default function PromoPoster({
                   </svg>
                 </motion.button>
 
-                {/* CTA - positioned relative to image */}
                 {secondaryCtaHref && (
                   <motion.div
                     initial={{ opacity: 0, x: 20 }}
