@@ -4,9 +4,51 @@ import AnimatedSection from '../components/AnimatedSection'
 import { motion } from 'framer-motion'
 
 export default function Pricing() {
+  // Structured Data su paslaugomis / kainomis
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Odontologijos paslaugos",
+    "provider": {
+      "@type": "Dentist",
+      "name": "Bangų klinika",
+      "telephone": "+37060000000",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pavyzdžio g. 1",
+        "addressLocality": "Klaipėda",
+        "addressRegion": "KL",
+        "postalCode": "91234",
+        "addressCountry": "LT"
+      }
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Burnos higiena",
+        "price": "50",
+        "priceCurrency": "EUR",
+        "url": "https://banguklinika.lt/kainos#burnos-higiena"
+      },
+      {
+        "@type": "Offer",
+        "name": "Implantai",
+        "price": "600",
+        "priceCurrency": "EUR",
+        "url": "https://banguklinika.lt/kainos#implantai"
+      }
+      // Galima pridėti daugiau pasiūlymų
+    ]
+  }
+
   return (
     <AnimatedSection>
-      <SEO title="Kainos" description="Aiškiai suskirstytos odontologijos paslaugų kainos." />
+      <SEO 
+        title="Kainos" 
+        description="Aiškiai suskirstytos odontologijos paslaugų kainos Klaipėdoje. Burnos higiena, implantai, CEREC protezavimas ir daugiau." 
+        keywords="odontologija, dantų gydymas, burnos higiena, implantai, CEREC, klinika Klaipėda"
+        structuredData={structuredData}
+      />
 
       <motion.div
         className="container-narrow"
@@ -32,7 +74,7 @@ export default function Pricing() {
           Žemiau rasite pagrindines kategorijas — spustelkite kortelę, kad peržiūrėtumėte konkrečias paslaugas ir kainas.
         </motion.p>
 
-        {/* Kortelės (stagger animacija viduje) */}
+        {/* Kortelės */}
         <PricingCards />
 
         <motion.p
