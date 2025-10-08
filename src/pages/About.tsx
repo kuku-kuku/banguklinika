@@ -50,11 +50,44 @@ function CheckIcon() {
 }
 
 export default function About() {
+  // Structured Data Schema.org
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Bangų klinika",
+    "image": "https://banguklinika.lt/hero.jpg",
+    "url": "https://banguklinika.lt/apie",
+    "logo": "https://banguklinika.lt/logo.png",
+    "description": "Jauki ir moderni odontologijos klinika Klaipėdoje. Visos paslaugos vienoje vietoje: gydymas, protezavimas, implantai, higiena, chirurgija ir kt.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jūsų gatvė 12",
+      "addressLocality": "Klaipėda",
+      "postalCode": "91234",
+      "addressCountry": "LT"
+    },
+    "telephone": "+37060000000",
+    "sameAs": [
+      "https://www.facebook.com/banguklinika",
+      "https://www.instagram.com/banguklinika"
+    ],
+    "founder": [
+      {
+        "@type": "Person",
+        "name": "Martyna Pociutė",
+        "jobTitle": "Gydytoja odontologė"
+      }
+    ],
+    "openingHours": "Mo-Fr 08:00-18:00",
+  }
+
   return (
     <AnimatedSection>
       <SEO
         title="Apie mus"
         description="Jauki ir moderni odontologijos klinika Klaipėdoje. Visos paslaugos vienoje vietoje: gydymas, protezavimas, implantai, higiena, chirurgija ir kt."
+        keywords="odontologijos klinika, dantų gydymas Klaipėda, implantai Klaipėda, CEREC protezavimas, burnos higiena, estetinis plombavimas"
+        structuredData={structuredData}
       />
 
       <motion.div
@@ -85,7 +118,6 @@ export default function About() {
           </h2>
 
           <div className="grid sm:grid-cols-2 gap-2">
-            {/* Kairys stulpelis: lyginiai indeksai */}
             <div className="space-y-2">
               {services.filter((_, i) => i % 2 === 0).map((s, i) => (
                 <motion.div
@@ -101,7 +133,6 @@ export default function About() {
               ))}
             </div>
 
-            {/* Dešinys stulpelis: nelyginiai indeksai */}
             <div className="space-y-2">
               {services.filter((_, i) => i % 2 === 1).map((s, i) => (
                 <motion.div
@@ -119,12 +150,11 @@ export default function About() {
           </div>
         </motion.section>
 
-        {/* Laboratorija — turkio rėmelis (blur perkeliam į foną) */}
+        {/* Laboratorija */}
         <motion.section
           className="mb-10 rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-5 relative overflow-hidden"
           variants={item}
         >
-          {/* dekoratyvinis blynas nebekerta teksto */}
           <div className="pointer-events-none absolute -top-10 -right-10 -z-10 w-48 h-48 rounded-full bg-brand-50 blur-3xl" />
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-3">Dantų technikos laboratorija</h2>
           <div className="text-slate-700 space-y-3">
@@ -144,7 +174,7 @@ export default function About() {
           </div>
         </motion.section>
 
-        {/* Komanda — turkio rėmeliai */}
+        {/* Komanda */}
         <motion.section className="mb-8" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Bangų Odontologijos Klinikos kolektyvas
@@ -166,7 +196,7 @@ export default function About() {
           </div>
         </motion.section>
 
-        {/* CTA į kainoraštį — suvienodintas mygtukas */}
+        {/* CTA į kainoraštį */}
         <motion.div className="mt-6" variants={item}>
           <Link to="/kainos" className="btn-primary rounded-full px-6 py-3 font-semibold">
             Bangų klinikoje teikiamų paslaugų kainoraštis

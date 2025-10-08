@@ -1,3 +1,4 @@
+// src/pages/Contact.tsx
 import SEO from '../components/SEO'
 import ContactForm from '../components/ContactForm'
 import Map from '../components/Map'
@@ -26,21 +27,15 @@ export default function Contact() {
   const { hash } = useLocation()
   const formAnchorRef = useRef<HTMLDivElement | null>(null)
 
-  // Automatinis scroll: #kontaktai (kairysis info blokas) ir #registracija / #contact-form (forma)
   useEffect(() => {
     if (!hash) return
-
     if (hash === '#kontaktai') {
       const el = document.getElementById('kontaktai')
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
       return
     }
-
     if (hash === '#registracija' || hash === '#contact-form') {
-      const el =
-        formAnchorRef.current ||
-        document.getElementById('registracija') ||
-        document.getElementById('contact-form')
+      const el = formAnchorRef.current || document.getElementById('registracija') || document.getElementById('contact-form')
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }, [hash])
@@ -49,29 +44,25 @@ export default function Contact() {
     <AnimatedSection>
       <SEO
         title="Kontaktai"
-        description="Bangų g. 7-3, Klaipėda • +370 671 91399 • info@banguklinika.lt"
+        description="Bangų odontologijos klinika Klaipėdoje. Kontaktai, darbo laikas, žemėlapis ir kontaktų forma."
+        keywords="odontologijos klinika, Klaipėda, dantų gydymas, implantai, protezavimas, burnos higiena, kontaktai, darbo laikas"
+        canonical="https://banguklinika.lt/kontaktai"
       />
 
       <motion.div className="container-narrow space-y-10" variants={container} initial="hidden" animate="visible">
-        {/* ŽEMĖLAPIS PIRMAS */}
+        {/* Žemėlapis */}
         <motion.div variants={mapItem} className="flex justify-center" aria-label="Bangų klinikos žemėlapis">
           <div className="w-full max-w-4xl rounded-2xl overflow-hidden ring-1 ring-gray-200 shadow-soft">
             <Map />
           </div>
         </motion.div>
 
-        {/* Kontaktai + forma (lygūs aukščiai) */}
-        <motion.div
-          className="grid md:grid-cols-2 gap-8 items-stretch"
-          variants={container}
-        >
-          {/* KAIRĖ: Kontaktai (info) */}
+        {/* Kontaktai + forma */}
+        <motion.div className="grid md:grid-cols-2 gap-8 items-stretch" variants={container}>
           <motion.div className="h-full" variants={item}>
-            {/* Ankeris virš kortelės su scroll-mt — kad sticky header neuždengtų */}
             <div id="kontaktai" className="scroll-mt-28 md:scroll-mt-32" aria-hidden />
             <div className="card p-6 h-full flex flex-col">
               <h1 className="text-2xl font-bold text-darkblue-600 mb-4">Kontaktai</h1>
-
               <ul className="space-y-2 text-gray-700 text-sm">
                 <li className="flex items-start gap-2">
                   <MapPin size={18} className="text-primary-600 mt-0.5" />
@@ -79,22 +70,18 @@ export default function Contact() {
                 </li>
                 <li className="flex items-start gap-2">
                   <Phone size={18} className="text-primary-600 mt-0.5" />
-                  <a className="hover:text-primary-700" href={`tel:${CLINIC.phone}`}>
-                    {CLINIC.phone}
-                  </a>
+                  <a className="hover:text-primary-700" href={`tel:${CLINIC.phone}`}>{CLINIC.phone}</a>
                 </li>
                 <li className="flex items-start gap-2">
                   <Mail size={18} className="text-primary-600 mt-0.5" />
-                  <a className="hover:text-primary-700" href={`mailto:${CLINIC.email}`}>
-                    {CLINIC.email}
-                  </a>
+                  <a className="hover:text-primary-700" href={`mailto:${CLINIC.email}`}>{CLINIC.email}</a>
                 </li>
               </ul>
 
               <div className="mt-5">
                 <h2 className="text-lg font-semibold text-darkblue-600 mb-2">Darbo laikas</h2>
                 <ul className="space-y-1 text-sm text-gray-700">
-                  {CLINIC.hours.map((h) => (
+                  {CLINIC.hours.map(h => (
                     <li key={h.day} className="flex items-center gap-2">
                       <Clock size={16} className="text-primary-600" />
                       <span className="inline-block w-28">{h.day}:</span>
@@ -104,7 +91,6 @@ export default function Contact() {
                 </ul>
               </div>
 
-              {/* Greitos nuorodos */}
               <div className="mt-5 flex flex-wrap gap-2">
                 <a href={`tel:${CLINIC.phone}`} className="btn btn-primary rounded-xl">
                   <Phone size={18} className="-ml-1 mr-1" /> Skambinti
@@ -117,21 +103,12 @@ export default function Contact() {
                 </a>
               </div>
 
-              {/* Spacer kad „Greitos nuorodos“ neprispaustų apačios ant mažų ekranų */}
               <div className="mt-auto" />
             </div>
           </motion.div>
 
-          {/* DEŠINĖ: Kontaktų forma */}
           <motion.div className="h-full" variants={item}>
-            {/* Ankeris su scroll-mt — kad sticky header neuždengtų */}
-            <div
-              id="registracija"
-              ref={formAnchorRef}
-              className="scroll-mt-28 md:scroll-mt-32"
-              tabIndex={-1}
-              aria-hidden
-            />
+            <div id="registracija" ref={formAnchorRef} className="scroll-mt-28 md:scroll-mt-32" tabIndex={-1} aria-hidden />
             <div className="card p-6 h-full flex flex-col">
               <h2 className="text-lg font-semibold text-darkblue-600 mb-3">Parašykite mums</h2>
               <div className="flex-1">
@@ -141,7 +118,6 @@ export default function Contact() {
           </motion.div>
         </motion.div>
 
-        {/* Alternatyvus CTA – atskirai PO grid'u, kad netrukdytų lygiems aukščiams */}
         <motion.div className="p-5 rounded-2xl border border-primary-100 bg-primary-50" variants={item}>
           <p className="text-sm text-gray-800">
             Jei turite klausimų dėl kainų ar gydymo plano – mielai pakonsultuosime.

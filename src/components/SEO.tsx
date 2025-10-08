@@ -1,9 +1,9 @@
 import { Helmet } from "react-helmet-async";
 
 const SITE_NAME = "Bangų klinika";
-const SITE_URL = "https://banguklinika.lt"; // Replace with your actual domain
+const SITE_URL = "https://banguklinika.lt";
 const DEFAULT_IMAGE = `${SITE_URL}/hero.jpg`;
-const TWITTER_HANDLE = "@banguklinika"; // If you have one
+const TWITTER_HANDLE = "@banguklinika";
 
 type Props = {
   title?: string;
@@ -16,38 +16,80 @@ type Props = {
   structuredData?: object;
 };
 
-export default function SEO({ 
-  title, 
-  description, 
+export default function SEO({
+  title,
+  description,
   isHome = false,
   keywords,
   image = DEFAULT_IMAGE,
   canonical,
   noindex = false,
-  structuredData
+  structuredData,
 }: Props) {
-  // Title logic
-  const finalTitle = isHome ? SITE_NAME : (title ? `${title} | ${SITE_NAME}` : SITE_NAME);
-  
-  // Canonical URL
-  const canonicalUrl = canonical || (typeof window !== 'undefined' ? window.location.href : SITE_URL);
+  const finalTitle = isHome
+    ? SITE_NAME
+    : title
+    ? `${title} | ${SITE_NAME}`
+    : SITE_NAME;
 
-  // Default description if none provided
-  const finalDescription = description || "Odontologijos klinika Klaipėdoje. Dantų gydymas, implantacija, CEREC protezavimas, burnos higiena. Nemokama konsultacija.";
+  const canonicalUrl =
+    canonical || (typeof window !== "undefined" ? window.location.href : SITE_URL);
+
+  const finalDescription =
+    description ||
+    "Odontologijos klinika Klaipėdoje. Dantų gydymas, implantacija, CEREC protezavimas, burnos higiena. Nemokama konsultacija.";
+
+  const structuredDataObj =
+    structuredData ||
+    {
+      "@context": "https://schema.org",
+      "@type": "Dentist",
+      "name": SITE_NAME,
+      "image": image,
+      "url": SITE_URL,
+      "telephone": "+37060000000", // pakeisti savo numeriu
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pavyzdžio g. 1",
+        "addressLocality": "Klaipėda",
+        "addressRegion": "KL",
+        "postalCode": "91234",
+        "addressCountry": "LT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 55.7033,
+        "longitude": 21.1443
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ]
+    };
 
   return (
     <Helmet>
-      {/* Basic Meta Tags */}
+      {/* Basic Meta */}
       <title>{finalTitle}</title>
       <meta name="description" content={finalDescription} />
       {keywords && <meta name="keywords" content={keywords} />}
       <meta name="theme-color" content="#0d76d6" />
       <link rel="canonical" href={canonicalUrl} />
-      
+
       {/* Robots */}
       {noindex && <meta name="robots" content="noindex,nofollow" />}
 
-      {/* Open Graph / Facebook */}
+      {/* Open Graph */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:title" content={finalTitle} />
@@ -64,18 +106,16 @@ export default function SEO({
       <meta name="twitter:image" content={image} />
       {TWITTER_HANDLE && <meta name="twitter:site" content={TWITTER_HANDLE} />}
 
-      {/* Additional SEO */}
+      {/* Additional */}
       <meta name="author" content={SITE_NAME} />
       <meta name="language" content="Lithuanian" />
       <meta name="geo.region" content="LT-KL" />
       <meta name="geo.placename" content="Klaipėda" />
 
       {/* Structured Data */}
-      {structuredData && (
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      )}
+      <script type="application/ld+json">
+        {JSON.stringify(structuredDataObj)}
+      </script>
     </Helmet>
   );
 }
