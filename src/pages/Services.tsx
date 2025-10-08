@@ -83,12 +83,11 @@ async function smoothCenterOnElement(id: string, offset = 12, ms = 420) {
 
 /** Trukmė pagal px (tik default akordeonui) – kad ilgi blokai būtų vienodai glotnūs */
 function durationFor(px: number) {
-  // 0.28s už ~0–200px, +0.27s iki 800px, cap ties ~0.55s
   const extra = Math.min(0.27, (Math.max(0, Math.min(px, 800)) / 800) * 0.27)
   return +(BASE_DURATION + extra).toFixed(3)
 }
 
-/** Palaukia, kol elemento bbox „nurimsta“ (nustoja keistis) per n kadrų iš eilės */
+/** Palaukia, kol elemento bbox „nurimsta" (nustoja keistis) per n kadrų iš eilės */
 async function waitForLayoutStabilize(el: HTMLElement, consecutiveFrames = 4, timeoutMs = 1000) {
   return new Promise<void>((resolve) => {
     let last: { top: number; height: number } | null = null
@@ -190,8 +189,7 @@ function AccordionItemDefault({
       height: target,
       transition: { type: 'spring', damping: 26, stiffness: 280, mass: 0.9, duration: d },
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, measured])
+  }, [open, measured, controls])
 
   return (
     <div
@@ -235,7 +233,7 @@ function AccordionItemDefault({
   )
 }
 
-/** „Paper scroll“ akordeonas (mobile): fiksuotas vidinis aukštis, turinys scrollinasi viduje, su matomu scroll indikatoriumi */
+/** „Paper scroll" akordeonas (mobile): fiksuotas vidinis aukštis, turinys scrollinasi viduje, su matomu scroll indikatoriumi */
 function AccordionItemPaper({
   id, title, children, open, onToggle, maxVh = 56,
 }: {
@@ -244,10 +242,9 @@ function AccordionItemPaper({
   children: React.ReactNode
   open: boolean
   onToggle: (willOpen: boolean) => void
-  /** maksimalus vidinio viewporto aukštis (vh) – sumažintas, kad kortelė būtų kompaktiška */
   maxVh?: number
 }) {
-  const clampHeight = `clamp(280px, ${maxVh}vh, 520px)` // subalansuotas aukštis mobilui
+  const clampHeight = `clamp(280px, ${maxVh}vh, 520px)`
   const scrollRef = useRef<HTMLDivElement | null>(null)
   const { scrollable, thumbTop, thumbHeight } = useScrollThumb(scrollRef)
 
@@ -284,7 +281,6 @@ function AccordionItemPaper({
         }}
       >
         <div className="min-h-0 overflow-hidden relative">
-          {/* scrollinamas turinys */}
           <div
             ref={scrollRef}
             className="px-5 pb-5 pt-0 text-gray-700 leading-relaxed overflow-y-auto overscroll-contain rounded-xl pr-3"
@@ -300,7 +296,6 @@ function AccordionItemPaper({
             {children}
           </div>
 
-          {/* matomas scroll indikatorius – tik jei tikrai yra ką scrollinti */}
           <AnimatePresence>
             {scrollable && open && (
               <motion.div
@@ -590,19 +585,17 @@ export default function Services() {
   const { hash, pathname } = useLocation()
   const [openIds, setOpenIds] = useState<Set<string>>(new Set())
   const isAnimatingRef = useRef(false)
-  const [listAnchoringOff, setListAnchoringOff] = useState(false) // valdyti overflow-anchor sąrašui
+  const [listAnchoringOff, setListAnchoringOff] = useState(false)
   const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
   const mobile = useIsMobile()
 
-  /** Vieno atidaryto principas + glotnus užsidarymas/atidarymas + STABILIZUOTAS centrinimas (mobile) */
   const handleToggle = async (id: string, willOpen: boolean) => {
     if (isAnimatingRef.current) return
     isAnimatingRef.current = true
-    setListAnchoringOff(true) // išjungiam anchoring visam sąrašui animacijos metu
+    setListAnchoringOff(true)
     try {
       const alreadyOpen = openIds.has(id)
 
-      // Uždarymas
       if (!willOpen) {
         if (!alreadyOpen) return
         setOpenIds(prev => { const n = new Set(prev); n.delete(id); return n })
@@ -610,17 +603,15 @@ export default function Services() {
         return
       }
 
-      // Atidarymas — vieno atidaryto principas
       const hadOthers = openIds.size > 0 && !openIds.has(id)
       if (hadOthers) {
-        setOpenIds(new Set())            // uždarom seną(-as)
-        await wait(320)                  // sutampa su grid animacija
+        setOpenIds(new Set())
+        await wait(320)
       }
 
-      setOpenIds(new Set([id]))          // atidarom naują
-      await wait(40)                     // leisti layout’ui pajudėti
+      setOpenIds(new Set([id]))
+      await wait(40)
 
-      // STABILIZACIJA: palaukiam, kol nauja kortelė nustos „kvėpuoti“ (aukštis/pozicija)
       const el = document.getElementById(id)
       if (el) await waitForLayoutStabilize(el, 4, 1000)
 
@@ -635,12 +626,10 @@ export default function Services() {
     }
   }
 
-  // Reset, jei nuėjome į /paslaugos be hash
   useEffect(() => {
     if (pathname === '/paslaugos' && !hash) setOpenIds(new Set())
   }, [pathname, hash])
 
-  // Hash navigacija – vienas atidarytas + stabilizuotas centrinimas (mobile)
   useEffect(() => {
     const target = (hash || '').replace('#', '')
     if (!target) return
@@ -677,8 +666,7 @@ export default function Services() {
     }
     run()
     return () => { cancelled = true }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hash, sections, mobile])
+  }, [hash, sections, mobile, openIds])
 
   const listVariants = {
     hidden: { opacity: 0 },
@@ -689,7 +677,6 @@ export default function Services() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] } }
   }
 
-  // Mobilui – visos kortelės „paper scroll“; desktop – default
   const usePaperScroll = (id: string) => mobile
 
   return (
@@ -714,7 +701,6 @@ export default function Services() {
             initial="hidden"
             animate="visible"
             className="grid gap-4"
-            // ⬇️ IŠJUNGIAME SCROLL ANCHORING visam sąrašui animacijos metu, kad nenuneštų į footerį
             style={listAnchoringOff ? ({ overflowAnchor: 'none' } as React.CSSProperties) : undefined}
           >
             {sections.map((s) => {

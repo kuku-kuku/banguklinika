@@ -9,9 +9,9 @@ import AnimatedSection from '../components/AnimatedSection'
 import { SERVICES } from '../data/services'
 import { CLINIC } from '../data/clinic'
 import ReviewsCarousel from '../components/ReviewsCarousel'
-import PromoPoster from '../components/PromoPoster' // ⬅️ plakatas
+import PromoPoster from '../components/PromoPoster'
 
-/** --- Populiariausių paslaugų sąrašas ir jų tiksliniai ID „/paslaugos“ puslapyje --- */
+/** --- Populiariausių paslaugų sąrašas ir jų tiksliniai ID „/paslaugos" puslapyje --- */
 const POPULAR_ORDER: Array<{ title: string; id: string }> = [
   { title: 'Dantų gydymas ir plombavimas', id: 'dantu-gydymas' },
   { title: 'Dantų implantacija',            id: 'implantai' },
@@ -44,7 +44,7 @@ function ReviewCard({ name, text, stars }: { name: string; text: string; stars: 
             <StarIcon key={i} filled={i < stars} className="w-5 h-5" />
           ))}
         </div>
-        <p className="text-gray-700 italic mb-3 leading-relaxed">“{text}”</p>
+        <p className="text-gray-700 italic mb-3 leading-relaxed">"{text}"</p>
         <p className="text-sm font-semibold text-darkblue-600">– {name}</p>
       </div>
     </div>
@@ -126,7 +126,7 @@ function GoogleReviews() {
             Klientų atsiliepimai
           </h2>
           <span className="hidden sm:inline text-xs sm:text-sm text-gray-500">
-            Šie atsiliepimai publikuoti „Google“
+            Šie atsiliepimai publikuoti „Google"
           </span>
         </div>
 
@@ -204,18 +204,83 @@ export default function Home() {
     }
     touchX.current = null
   }
-  const go = (dir: 1 | -1) => { setAuto(false); setIndex(i => (i + dir + images.length) % images.length) }
-  const goTo = (i: number) => { setAuto(false); setIndex(i) }
+
+  // Structured Data for Google Rich Results
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Bangų klinika",
+    "description": "Odontologijos klinika Klaipėdoje su modernia įranga ir patyrusia komanda",
+    "url": "https://banguklinika.lt",
+    "telephone": CLINIC.phone,
+    "email": CLINIC.email,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": CLINIC.address,
+      "addressLocality": "Klaipėda",
+      "postalCode": "92114",
+      "addressCountry": "LT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 55.7033,
+      "longitude": 21.1443
+    },
+    "priceRange": "€€",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    ],
+    "image": "https://banguklinika.lt/hero.jpg",
+    "logo": "https://banguklinika.lt/logo.png",
+    "medicalSpecialty": "Dentistry",
+    "availableService": [
+      {
+        "@type": "MedicalProcedure",
+        "name": "Dantų gydymas ir plombavimas"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "name": "Dantų implantacija"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "name": "CEREC protezavimas"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "name": "Profesionali burnos higiena"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "name": "Estetinė odontologija"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "9",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  };
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: globalStyles }} />
       <SEO
         isHome
-        description="Gydymas, implantai, CEREC protezavimas, burnos higiena ir estetika. Nemokama pirminė konsultacija."
+        description="Odontologijos klinika Klaipėdoje: dantų gydymas, implantacija (Straumann®/Medentika®), CEREC protezavimas per 1 vizitą, AIRFLOW® higiena, estetinis plombavimas. Nemokama pirminė konsultacija ir nuolaidos."
+        keywords="odontologijos klinika Klaipėda, dantų gydymas Klaipėda, dantų implantai, CEREC Klaipėda, burnos higiena, estetinė odontologija, dantų protezavimas"
+        image="https://banguklinika.lt/hero.jpg"
+        structuredData={structuredData}
       />
 
-      {/* ⬇️ VISAS PLAKATAS virš visko atsidarius puslapiui */}
+      {/* PROMO POSTER */}
       <PromoPoster
         id="2025-10-a3-poster"
         routeOnly="/"
@@ -227,7 +292,7 @@ export default function Home() {
         persistence="none"
       />
 
-      {/* Likęs pirmo puslapio turinys (bus matomas tik uždarius plakatą) */}
+      {/* HERO SECTION */}
       <div className="relative overflow-visible">
         <section className="relative overflow-visible pan-y">
           <div className="relative z-20 container-narrow grid md:grid-cols-2 gap-10 items-center py-12 md:py-20">
@@ -296,7 +361,7 @@ export default function Home() {
                   <motion.img
                     key={index}
                     src={images[index]}
-                    alt="Bangų klinika"
+                    alt={`Bangų klinika - Odontologijos klinika Klaipėdoje ${index + 1}`}
                     className="absolute inset-0 w-full h-full object-cover select-none"
                     initial={{ opacity: 0, scale: 1.02 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -341,6 +406,7 @@ export default function Home() {
         </section>
       </div>
 
+      {/* WHY CHOOSE US */}
       <AnimatedSection>
         <div className="container-narrow no-x-scroll pan-y">
           <div className="max-w-3xl mb-6">
@@ -370,6 +436,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
+      {/* POPULAR SERVICES */}
       <AnimatedSection>
         <div className="container-narrow no-x-scroll pan-y">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-darkblue-600 tracking-tight" style={{ wordBreak: 'keep-all' }}>
@@ -387,10 +454,12 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
+      {/* REVIEWS */}
       <div className="no-x-scroll pan-y">
         <ReviewsCarousel />
       </div>
 
+      {/* FREE CONSULTATION CTA */}
       <AnimatedSection>
         <div className="container-narrow no-x-scroll pan-y">
           <div className="relative overflow-hidden rounded-2xl bg-brand-100 border border-brand shadow-soft">
@@ -417,6 +486,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
+      {/* FAQ & CONTACT */}
       <AnimatedSection>
         <div className="container-narrow grid md:grid-cols-2 gap-8 items-start no-x-scroll pan-y">
           <div className="rounded-2xl bg-brand-50 p-6 transition border border-brand shadow-soft hover:shadow-md">
