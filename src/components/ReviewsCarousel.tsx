@@ -103,7 +103,6 @@ function ReviewCard({
         <p className="text-gray-700 leading-relaxed">
           {text?.trim() ? text : <span className="italic text-gray-500">Be teksto</span>}
         </p>
-        {/* Per-kortelės nuorodos į Google PAŠALINTOS */}
       </div>
     </div>
   );
@@ -116,7 +115,6 @@ export default function ReviewsCarousel() {
   const [count, setCount] = useState<number | null>(null);
   const [mapsUrl, setMapsUrl] = useState<string | undefined>(undefined);
 
-  // 1 kortelė <1024px, 3 kortelės ≥1024px
   const [perSlide, setPerSlide] = useState<number>(() =>
     typeof window !== "undefined" && window.innerWidth >= 1024 ? 3 : 1
   );
@@ -130,9 +128,10 @@ export default function ReviewsCarousel() {
     return () => mq.removeEventListener?.("change", handler as (e: MediaQueryListEvent) => void);
   }, []);
 
-  // Fetch iš proxy
+  // ==== Fetch iš /api/reviews su auto-refresh kas 2 min ====
   useEffect(() => {
-    (async () => {
+    let interval: number;
+    const fetchReviews = async () => {
       try {
         const r = await fetch("/api/reviews");
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -142,30 +141,33 @@ export default function ReviewsCarousel() {
         setCount(j.user_ratings_total ?? null);
         setMapsUrl(j.maps_url);
 
-        const all: Review[] = (j.reviews || []).map((rv: Review) => ({
+        const all: Review[] = (j.reviews || []).map(rv => ({
           ...rv,
           rating: Number(rv.rating ?? 0),
         }));
 
-        // rodome tik 5★; jei nėra – rodome visus
-        const only5 = all.filter((x) => Math.round(x.rating) === 5);
-        setReviews(only5.length > 0 ? only5 : all);
+        // Filtruojame tik 4★ ir 5★
+        const filtered = all.filter(x => Math.round(x.rating) >= 4);
+        setReviews(filtered);
       } catch (e) {
-        console.error(e);
+        console.error("Reviews fetch error:", e);
       } finally {
         setLoading(false);
       }
-    })();
+    };
+
+    fetchReviews();
+    interval = window.setInterval(fetchReviews, 120_000);
+
+    return () => window.clearInterval(interval);
   }, []);
 
-  // skaidės
   const slides = useMemo(() => {
     const arr: Review[][] = [];
     for (let i = 0; i < reviews.length; i += perSlide) arr.push(reviews.slice(i, i + perSlide));
     return arr.length ? arr : [[]];
   }, [reviews, perSlide]);
 
-  // ==== Vienodas aukštis per VISAS skaidres ====
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [maxCardH, setMaxCardH] = useState<number>(0);
 
@@ -175,7 +177,7 @@ export default function ReviewsCarousel() {
 
     let raf = 0;
     const compute = () => {
-      const h = Math.max(...els.map((el) => el.offsetHeight || 0));
+      const h = Math.max(...els.map(el => el.offsetHeight || 0));
       setMaxCardH(h);
     };
     compute();
@@ -187,7 +189,7 @@ export default function ReviewsCarousel() {
           raf = requestAnimationFrame(compute);
         })
       : null;
-    if (ro) els.forEach((el) => ro.observe(el));
+    if (ro) els.forEach(el => ro.observe(el));
 
     const onResize = () => compute();
     window.addEventListener("resize", onResize);
@@ -199,10 +201,9 @@ export default function ReviewsCarousel() {
     };
   }, [reviews, perSlide]);
 
-  // Auto-slinkimas + „freeze“
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [frozen, setFrozen] = useState(false); // kai true – visiškai nestumdom daugiau
+  const [frozen, setFrozen] = useState(false);
   const timerRef = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -211,10 +212,11 @@ export default function ReviewsCarousel() {
     if (!paused && !frozen && slides.length > 1) {
       timerRef.current = window.setTimeout(() => setIndex((i) => (i + 1) % slides.length), 5000);
     }
-    return () => { if (timerRef.current) window.clearTimeout(timerRef.current); };
+    return () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+    };
   }, [index, paused, frozen, slides.length]);
 
-  // Pauzė kai nematoma
   useEffect(() => {
     if (!containerRef.current || typeof IntersectionObserver === "undefined") return;
     const io = new IntersectionObserver(([entry]) => setPaused(!entry.isIntersecting), { threshold: 0.25 });
@@ -222,20 +224,19 @@ export default function ReviewsCarousel() {
     return () => io.disconnect();
   }, []);
 
-  // Touch swipe
   const touchX = useRef<number | null>(null);
   const onTouchStart = (e: React.TouchEvent) => { touchX.current = e.touches[0].clientX; };
   const onTouchEnd = (e: React.TouchEvent) => {
     if (touchX.current == null) return;
     const dx = e.changedTouches[0].clientX - touchX.current;
     if (Math.abs(dx) > 40) {
-      setFrozen(true); // vartotojas aktyviai naršo – užfiksuojam
+      setFrozen(true);
       setIndex((i) => (i + (dx < 0 ? 1 : -1) + slides.length) % slides.length);
     }
     touchX.current = null;
   };
 
-  const onPointerDown = () => setFrozen(true); // bet koks click/tap – stop
+  const onPointerDown = () => setFrozen(true);
   const onKeyDown: React.KeyboardEventHandler<HTMLDivElement> = (e) => {
     if (e.key === "Enter" || e.key === " ") setFrozen(true);
   };
@@ -278,9 +279,7 @@ export default function ReviewsCarousel() {
         role="group"
         aria-label="Atsiliepimų karuselė"
       >
-        {/* Langas */}
         <div className="relative rounded-2xl bg-white overflow-x-hidden overflow-y-visible">
-          {/* Track */}
           <div
             className="
               flex transition-transform duration-500 ease-out
@@ -318,14 +317,11 @@ export default function ReviewsCarousel() {
           </div>
         </div>
 
-        {/* Taškeliai */}
         <div className="mt-4 flex items-center justify-center gap-2">
           {slides.map((_, i) => (
             <button
               key={i}
-              className={`h-2.5 rounded-full transition-all ${
-                i === index ? "w-6 bg-darkblue-600" : "w-2.5 bg-gray-300 hover:bg-gray-400"
-              }`}
+              className={`h-2.5 rounded-full transition-all ${i === index ? "w-6 bg-darkblue-600" : "w-2.5 bg-gray-300 hover:bg-gray-400"}`}
               onClick={() => { setFrozen(true); setIndex(i); }}
               aria-label={`Peršokti į ${i + 1}-ą skaidrę`}
             />
