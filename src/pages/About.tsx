@@ -34,11 +34,11 @@ const services: string[] = [
 
 type Member = { name: string; role: string; license?: string }
 const team: Member[] = [
-  { name: 'Martyna Pociutė', role: 'Gydytoja odontologė' },
+  { name: 'Martyna Pociutė', role: 'Gydytoja odontologė', license: 'OPL-06430' },
   { name: 'Donatas Kubilius', role: 'Veido ir žandikaulių chirurgas', license: 'MPL-18980' },
   { name: 'Eglė Daknienė', role: 'Dantų technikė', license: 'BPL-04671' },
   { name: 'Rūta Garšvienė', role: 'Burnos higienistė, gydymo tiesinimo kapomis koordinatorė', license: 'BPL-07858' },
-  { name: 'Goda Daknytė', role: 'Administratorė' },
+  { name: 'Goda Daknytė', role: 'Klinikos administracijos vadovė' },
 ]
 
 function CheckIcon() {
