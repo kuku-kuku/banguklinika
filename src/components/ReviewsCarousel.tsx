@@ -128,7 +128,6 @@ export default function ReviewsCarousel() {
     return () => mq.removeEventListener?.("change", handler as (e: MediaQueryListEvent) => void);
   }, []);
 
-  // ==== Fetch iš /api/reviews su auto-refresh kas 2 min ====
   useEffect(() => {
     let interval: number;
     const fetchReviews = async () => {
@@ -146,8 +145,7 @@ export default function ReviewsCarousel() {
           rating: Number(rv.rating ?? 0),
         }));
 
-        // Filtruojame tik 4★ ir 5★
-        const filtered = all.filter(x => Math.round(x.rating) >= 4);
+        const filtered = all.filter(x => x.rating >= 4);
         setReviews(filtered);
       } catch (e) {
         console.error("Reviews fetch error:", e);
@@ -161,12 +159,6 @@ export default function ReviewsCarousel() {
 
     return () => window.clearInterval(interval);
   }, []);
-
-  const slides = useMemo(() => {
-    const arr: Review[][] = [];
-    for (let i = 0; i < reviews.length; i += perSlide) arr.push(reviews.slice(i, i + perSlide));
-    return arr.length ? arr : [[]];
-  }, [reviews, perSlide]);
 
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [maxCardH, setMaxCardH] = useState<number>(0);
@@ -204,18 +196,33 @@ export default function ReviewsCarousel() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [frozen, setFrozen] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const timerRef = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (timerRef.current) window.clearTimeout(timerRef.current);
-    if (!paused && !frozen && slides.length > 1) {
-      timerRef.current = window.setTimeout(() => setIndex((i) => (i + 1) % slides.length), 5000);
+    if (!paused && !frozen && reviews.length > 1) {
+      timerRef.current = window.setTimeout(() => {
+        setIsTransitioning(true);
+        setIndex((i) => i + 1);
+      }, 5000);
     }
     return () => {
       if (timerRef.current) window.clearTimeout(timerRef.current);
     };
-  }, [index, paused, frozen, slides.length]);
+  }, [index, paused, frozen, reviews.length]);
+
+  // Reset position when reaching end of first set
+  useEffect(() => {
+    if (index >= reviews.length && isTransitioning) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+        setIndex(0);
+      }, 700);
+      return () => clearTimeout(timer);
+    }
+  }, [index, reviews.length, isTransitioning]);
 
   useEffect(() => {
     if (!containerRef.current || typeof IntersectionObserver === "undefined") return;
@@ -231,7 +238,12 @@ export default function ReviewsCarousel() {
     const dx = e.changedTouches[0].clientX - touchX.current;
     if (Math.abs(dx) > 40) {
       setFrozen(true);
-      setIndex((i) => (i + (dx < 0 ? 1 : -1) + slides.length) % slides.length);
+      setIsTransitioning(true);
+      if (dx < 0) {
+        setIndex((i) => i + 1);
+      } else {
+        setIndex((i) => Math.max(0, i - 1));
+      }
     }
     touchX.current = null;
   };
@@ -254,6 +266,9 @@ export default function ReviewsCarousel() {
         <div className="text-gray-500">Šiuo metu nerodome atsiliepimų.</div>
       </div>
     );
+
+  // Create infinite loop array for seamless carousel
+  const extendedReviews = [...reviews, ...reviews, ...reviews];
 
   return (
     <div className="container-narrow no-x-scroll pan-y">
@@ -279,54 +294,49 @@ export default function ReviewsCarousel() {
         role="group"
         aria-label="Atsiliepimų karuselė"
       >
-        <div className="relative rounded-2xl bg-white overflow-x-hidden overflow-y-visible">
-          <div
-            className="
-              flex transition-transform duration-500 ease-out
-              will-change-transform
-              [backface-visibility:hidden]
-              [transform-style:preserve-3d]
-            "
-            style={{ transform: `translate3d(-${index * 100}%, 0, 0)` }}
+        <div className="overflow-hidden rounded-2xl bg-white" style={maxCardH ? { minHeight: maxCardH } : undefined}>
+          <div 
+            className={`flex ${isTransitioning ? 'transition-transform duration-700 ease-out' : ''}`}
+            style={{ 
+              transform: `translateX(-${(index + reviews.length) * (100 / perSlide)}%)`,
+            }}
           >
-            {slides.map((group, gi) => (
-              <div key={gi} className="shrink-0 w-full">
-                <div className={perSlide === 1 ? "grid gap-6 grid-cols-1 items-stretch" : "grid gap-6 grid-cols-3 items-stretch"}>
-                  {group.map((r, ri) => {
-                    const flatIndex = gi * perSlide + ri;
-                    return (
-                      <div
-                        key={`${gi}-${ri}`}
-                        className="h-full"
-                        ref={(el) => { cardRefs.current[flatIndex] = el; }}
-                      >
-                        <ReviewCard
-                          name={r.author_name}
-                          text={r.text}
-                          stars={r.rating}
-                          avatar={r.profile_photo_url}
-                          when={r.relative_time_description}
-                          style={maxCardH ? { minHeight: maxCardH } : undefined}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
+            {extendedReviews.map((r, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 px-3"
+                style={{ width: `${100 / perSlide}%` }}
+                ref={(el) => { if (i < perSlide) cardRefs.current[i] = el; }}
+              >
+                <ReviewCard
+                  name={r.author_name}
+                  text={r.text}
+                  stars={r.rating}
+                  avatar={r.profile_photo_url}
+                  when={r.relative_time_description}
+                  style={maxCardH ? { height: maxCardH } : undefined}
+                />
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mt-4 flex items-center justify-center gap-2">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              className={`h-2.5 rounded-full transition-all ${i === index ? "w-6 bg-darkblue-600" : "w-2.5 bg-gray-300 hover:bg-gray-400"}`}
-              onClick={() => { setFrozen(true); setIndex(i); }}
-              aria-label={`Peršokti į ${i + 1}-ą skaidrę`}
-            />
-          ))}
-        </div>
+        {reviews.length > 1 && (
+          <div className="mt-4 flex items-center justify-center gap-2">
+            {reviews.map((_, i) => (
+              <button
+                key={i}
+                className={`h-2.5 rounded-full transition-all ${i === (index % reviews.length) ? "w-6 bg-darkblue-600" : "w-2.5 bg-gray-300 hover:bg-gray-400"}`}
+                onClick={() => { 
+                  setFrozen(true);
+                  setIsTransitioning(true);
+                  setIndex(i);
+                }}
+                aria-label={`Peršokti į ${i + 1}-ą atsiliepimą`}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {mapsUrl && (
