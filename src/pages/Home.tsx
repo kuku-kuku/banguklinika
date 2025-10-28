@@ -279,19 +279,6 @@ export default function Home() {
         image="https://banguklinika.lt/hero.jpg"
         structuredData={structuredData}
       />
-
-      {/* PROMO POSTER */}
-      <PromoPoster
-        id="2025-10-a3-poster"
-        routeOnly="/"
-        frequencyDays={14}
-        delayMs={300}
-        imageSrc="/poster.png"
-        secondaryCtaText="Ypatingi pasiūlymai"
-        secondaryCtaHref="/ypatingi-pasiulymai"
-        persistence="none"
-      />
-
       {/* HERO SECTION */}
       <div className="relative overflow-visible">
         <section className="relative overflow-visible pan-y">
