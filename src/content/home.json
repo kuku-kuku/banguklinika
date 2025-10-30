@@ -1,0 +1,47 @@
+{
+  "seo": {
+    "description": "Odontologijos klinika Klaipėdoje: dantų gydymas, implantacija (Straumann®/Medentika®), CEREC protezavimas per 1 vizitą, AIRFLOW® higiena, estetinis plombavimas. Nemokama pirminė konsultacija ir nuolaidos.",
+    "keywords": "odontologijos klinika Klaipėda, dantų gydymas Klaipėda, dantų implantai, CEREC Klaipėda, burnos higiena, estetinė odontologija, dantų protezavimas",
+    "image": "https://banguklinika.lt/hero.jpg"
+  },
+  "hero": {
+    "title": "Šypsena, kurią norisi rodyti!",
+    "subtitle": "Ieškote visko vienoje vietoje? Gydymas, implantai, CEREC technologija, estetika ir higiena – be ilgo laukimo, su žmogišku požiūriu ir jokių paslėptų mokesčių.",
+    "ctaPhone": "Registracija telefonu",
+    "ctaOnline": "Registracija internetu",
+    "bullets": [
+      "Straumann® / Medentika® implantai",
+      "CEREC – vainikėliai per 1 vizitą",
+      "Estetinis plombavimas",
+      "Profesionali higiena (AIRFLOW®)"
+    ],
+    "images": ["/hero.jpg", "/hero1.jpg", "/hero2.jpg", "/hero3.jpg"]
+  },
+  "whyChoose": {
+    "title": "Kodėl verta rinktis Bangų kliniką?",
+    "subtitle": "Moderni įranga, patyrusi komanda ir aiškus gydymo planas – kad kiekvienas vizitas būtų sklandus ir prognozuojamas.",
+    "items": [
+      { "t": "Moderni įranga", "d": "CEREC skenavimas – greitesni ir tikslesni vizitai." },
+      { "t": "Patyrusi komanda", "d": "Individualūs gydymo planai ir pagarbus bendravimas be streso." },
+      { "t": "Aiškios kainos", "d": "Viešas kainoraštis ir skaidrūs sprendimai – be paslėptų mokesčių." }
+    ]
+  },
+  "popularServicesOrder": [
+    { "title": "Dantų gydymas ir plombavimas", "id": "dantu-gydymas" },
+    { "title": "Dantų implantacija", "id": "implantai" },
+    { "title": "Skaitmeninis protezavimas (CEREC) estetinė odontologija", "id": "dantu-protezavimas" },
+    { "title": "Estetinė odontologija", "id": "estetinis-plombavimas" },
+    { "title": "Profesionali burnos higiena", "id": "burnos-higiena" }
+  ],
+  "freeConsult": {
+    "title": "Pirminė konsultacija nemokama",
+    "text": "Užsiregistruokite pirminiam įvertinimui ir gaukite 10–15% nuolaidą tęstiniam gydymui pereinant į pilną planą.",
+    "cta": "Registracija internetu",
+    "note": "* Nuolaidos taikomos pagal klinikos taisykles. Daugiau informacijos – registracijos metu."
+  },
+  "faqTeaser": {
+    "title": "Dažniausi klausimai",
+    "cta": "Susisiekti",
+    "text": "Parašykite mums – atsakysime per 1 darbo dieną."
+  }
+}

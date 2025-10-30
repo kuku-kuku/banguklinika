@@ -1,0 +1,47 @@
+{
+  "seo": {
+    "title": "Ypatingi pasiūlymai",
+    "description": "Akcijos ir nuolaidos: burnos higiena + mineralų terapija už 60 €, BEYOND® balinimo pasiūlymas ir daugiau specialių pasiūlymų jūsų šypsenai."
+  },
+  "offers": [
+    {
+      "label": "Naujausias pasiūlymas",
+      "title": "Profesionali burnos higiena su mineralų terapija",
+      "bulletsTop": [
+        "Pašaliname apnašas.",
+        "Atnaujiname natūralų dantų baltumą.",
+        "Sumažiname dantenų uždegimo ir ėduonies riziką.",
+        "Įvertiname dantų ir dantenų būklę.",
+        "Teikiame individualios priežiūros rekomendacijas."
+      ],
+      "midTitle": "Ir tai dar ne viskas!",
+      "midText": "Po procedūros atliekame remineralizuojančią mineralų terapiją – tai tarsi SPA Jūsų dantims!",
+      "midTitle2": "Mineralų prisotintos medžiagos padeda:",
+      "bulletsBottom": [
+        "Sustiprinti dantų emalį",
+        "Apsaugoti nuo karieso",
+        "Sumažinti dantų jautrumą",
+        "Atkurti natūralų dantų stiprumą"
+      ],
+      "priceNow": 60,
+      "priceWas": 100
+    },
+    {
+      "label": "Specialus pasiūlymas tobulai šypsenai",
+      "title": "Pilna burnos higiena + BEYOND® dantų balinimas",
+      "bulletsTop": [
+        "Burnos higieną rekomenduojame atlikti prieš dantų balinimą.",
+        "Dantų balinimo procedūra – paprasta, neskausminga ir nekelianti diskomforto.",
+        "Su BEYOND® sistema rezultatas matomas iškart – dažniausiai užtenka vienos procedūros.",
+        "Balinimo rezultatai dažniausiai išlieka net iki 2 metų."
+      ],
+      "priceNow": 280,
+      "priceWas": 330
+    }
+  ],
+  "general": {
+    "treatmentDiscountTitle": "Bendra akcija tęstiniam gydymui",
+    "treatmentDiscountText": "Po nemokamos pirminės apžiūros taikomos nuolaidos tęstiniam gydymui, pereinant į pilną gydymo planą. Konkrečias nuolaidas ir sąlygas sužinosite registracijos metu.",
+    "note": "* Pasiūlymai galioja kol nurodyta svetainėje. Daugiau informacijos – registracijos metu."
+  }
+}

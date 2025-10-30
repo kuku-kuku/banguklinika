@@ -1,4 +1,3 @@
-// src/pages/Contact.tsx
 import SEO from '../components/SEO'
 import ContactForm from '../components/ContactForm'
 import Map from '../components/Map'
@@ -8,6 +7,9 @@ import { motion } from 'framer-motion'
 import { MapPin, Phone, Mail, Clock, Navigation } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
+
+// JSON tekstai (SEO ir antraštės)
+import contact from '../content/contact.json'
 
 export default function Contact() {
   const container = {
@@ -43,10 +45,10 @@ export default function Contact() {
   return (
     <AnimatedSection>
       <SEO
-        title="Kontaktai"
-        description="Bangų odontologijos klinika Klaipėdoje. Kontaktai, darbo laikas, žemėlapis ir kontaktų forma."
-        keywords="odontologijos klinika, Klaipėda, dantų gydymas, implantai, protezavimas, burnos higiena, kontaktai, darbo laikas"
-        canonical="https://banguklinika.lt/kontaktai"
+        title={contact.seo?.title ?? 'Kontaktai'}
+        description={contact.seo?.description}
+        keywords={contact.seo?.keywords}
+        canonical={contact.seo?.canonical}
       />
 
       <motion.div className="container-narrow space-y-10" variants={container} initial="hidden" animate="visible">
@@ -62,7 +64,7 @@ export default function Contact() {
           <motion.div className="h-full" variants={item}>
             <div id="kontaktai" className="scroll-mt-28 md:scroll-mt-32" aria-hidden />
             <div className="card p-6 h-full flex flex-col">
-              <h1 className="text-2xl font-bold text-darkblue-600 mb-4">Kontaktai</h1>
+              <h1 className="text-2xl font-bold text-darkblue-600 mb-4">{contact.headings?.contact ?? 'Kontaktai'}</h1>
               <ul className="space-y-2 text-gray-700 text-sm">
                 <li className="flex items-start gap-2">
                   <MapPin size={18} className="text-primary-600 mt-0.5" />
@@ -79,7 +81,7 @@ export default function Contact() {
               </ul>
 
               <div className="mt-5">
-                <h2 className="text-lg font-semibold text-darkblue-600 mb-2">Darbo laikas</h2>
+                <h2 className="text-lg font-semibold text-darkblue-600 mb-2">{contact.headings?.hours ?? 'Darbo laikas'}</h2>
                 <ul className="space-y-1 text-sm text-gray-700">
                   {CLINIC.hours.map(h => (
                     <li key={h.day} className="flex items-center gap-2">
@@ -110,7 +112,7 @@ export default function Contact() {
           <motion.div className="h-full" variants={item}>
             <div id="registracija" ref={formAnchorRef} className="scroll-mt-28 md:scroll-mt-32" tabIndex={-1} aria-hidden />
             <div className="card p-6 h-full flex flex-col">
-              <h2 className="text-lg font-semibold text-darkblue-600 mb-3">Parašykite mums</h2>
+              <h2 className="text-lg font-semibold text-darkblue-600 mb-3">{contact.headings?.writeUs ?? 'Parašykite mums'}</h2>
               <div className="flex-1">
                 <ContactForm />
               </div>
@@ -120,11 +122,11 @@ export default function Contact() {
 
         <motion.div className="p-5 rounded-2xl border border-primary-100 bg-primary-50" variants={item}>
           <p className="text-sm text-gray-800">
-            Jei turite klausimų dėl kainų ar gydymo plano – mielai pakonsultuosime.
+            {contact.headings?.infoNote ?? 'Jei turite klausimų dėl kainų ar gydymo plano – mielai pakonsultuosime.'}
           </p>
           <div className="mt-3">
             <Link to="/kainos" className="btn btn-primary rounded-xl">
-              Peržiūrėti kainas
+              {contact.headings?.pricesCta ?? 'Peržiūrėti kainas'}
             </Link>
           </div>
         </motion.div>

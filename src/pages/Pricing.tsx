@@ -3,50 +3,26 @@ import PricingCards from '../components/PricingCards'
 import AnimatedSection from '../components/AnimatedSection'
 import { motion } from 'framer-motion'
 
+import pricing from '../content/pricing.json'
+
 export default function Pricing() {
-  // Structured Data su paslaugomis / kainomis
+  // (paliekame tavo structuredData, jei norėsi — gali pildyti iš CMS ateityje)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Odontologijos paslaugos",
     "provider": {
       "@type": "Dentist",
-      "name": "Bangų klinika",
-      "telephone": "+37060000000",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Pavyzdžio g. 1",
-        "addressLocality": "Klaipėda",
-        "addressRegion": "KL",
-        "postalCode": "91234",
-        "addressCountry": "LT"
-      }
-    },
-    "offers": [
-      {
-        "@type": "Offer",
-        "name": "Burnos higiena",
-        "price": "50",
-        "priceCurrency": "EUR",
-        "url": "https://banguklinika.lt/kainos#burnos-higiena"
-      },
-      {
-        "@type": "Offer",
-        "name": "Implantai",
-        "price": "600",
-        "priceCurrency": "EUR",
-        "url": "https://banguklinika.lt/kainos#implantai"
-      }
-      // Galima pridėti daugiau pasiūlymų
-    ]
+      "name": "Bangų klinika"
+    }
   }
 
   return (
     <AnimatedSection>
-      <SEO 
-        title="Kainos" 
-        description="Aiškiai suskirstytos odontologijos paslaugų kainos Klaipėdoje. Burnos higiena, implantai, CEREC protezavimas ir daugiau." 
-        keywords="odontologija, dantų gydymas, burnos higiena, implantai, CEREC, klinika Klaipėda"
+      <SEO
+        title={pricing.seo?.title ?? 'Kainos'}
+        description={pricing.seo?.description}
+        keywords={pricing.seo?.keywords}
         structuredData={structuredData}
       />
 
@@ -62,7 +38,7 @@ export default function Pricing() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.05 }}
         >
-          Kainos
+          {pricing.seo?.title ?? 'Kainos'}
         </motion.h1>
 
         <motion.p
@@ -71,10 +47,9 @@ export default function Pricing() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
         >
-          Žemiau rasite pagrindines kategorijas — spustelkite kortelę, kad peržiūrėtumėte konkrečias paslaugas ir kainas.
+          {pricing.intro ?? 'Žemiau rasite pagrindines kategorijas — spustelkite kortelę, kad peržiūrėtumėte konkrečias paslaugas ir kainas.'}
         </motion.p>
 
-        {/* Kortelės */}
         <PricingCards />
 
         <motion.p
@@ -83,7 +58,7 @@ export default function Pricing() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.25 }}
         >
-          * Kainos – orientacinės. Tiksli kaina nustatoma konsultacijos metu.
+          {pricing.footnote ?? '* Kainos – orientacinės. Tiksli kaina nustatoma konsultacijos metu.'}
         </motion.p>
       </motion.div>
     </AnimatedSection>
