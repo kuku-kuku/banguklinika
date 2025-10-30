@@ -1,0 +1,12 @@
+{
+  "address": "Bangų g. 1, Klaipėda",
+  "phone": "+37060000000",
+  "email": "info@banguklinika.lt",
+  "hours": [
+    { "day": "Pirmadienis", "time": "09:00–18:00" },
+    { "day": "Antradienis", "time": "09:00–18:00" },
+    { "day": "Trečiadienis", "time": "09:00–18:00" },
+    { "day": "Ketvirtadienis", "time": "09:00–18:00" },
+    { "day": "Penktadienis", "time": "09:00–18:00" }
+  ]
+}

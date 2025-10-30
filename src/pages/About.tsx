@@ -1,45 +1,17 @@
-// src/pages/About.tsx
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import about from '../content/about.json'
 
 const container = {
   hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1, y: 0,
-    transition: { duration: 0.45, ease: 'easeOut', staggerChildren: 0.06 }
-  }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut', staggerChildren: 0.06 } }
 }
 const item = {
   hidden: { opacity: 0, y: 8 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
 }
-
-const services: string[] = [
-  'Dantų gydymas, konsultacijos dantų priežiūros klausimais.',
-  'Dantų plombavimas.',
-  'Implantai (Straumann®, Medentika®).',
-  'Skaitmeninis dantų protezavimas CEREC sistema, protezavimas ant implantų, dantų karūnėlės, dantų tiltai, vainikėliai, užklotai, laminatės.',
-  'Dantų protezavimas iš karto vietoje.',
-  'Mikroprotezavimas (daliniai vainikėliai – karūnėlės, įklotai, užklotai, laminatės).',
-  'Profesionali burnos higiena.',
-  'Estetinis dantų plombavimas.',
-  'Vaikų dantų gydymas.',
-  'Dantų traukimas, dantų šaknų šalinimas.',
-  'Kaulo priauginimo, sinuso dugno pakėlimo operacijos.',
-  'Dantų protezavimas bemetale E-MAX IVOCLAR ir cirkonio keramika.',
-  'Dantų tiesinimas skaidriomis ORDOLINE kapomis.',
-]
-
-type Member = { name: string; role: string; license?: string }
-const team: Member[] = [
-  { name: 'Martyna Pociutė', role: 'Gydytoja odontologė', license: 'OPL-06430' },
-  { name: 'Donatas Kubilius', role: 'Veido ir žandikaulių chirurgas', license: 'MPL-18980' },
-  { name: 'Eglė Daknienė', role: 'Dantų technikė', license: 'BPL-04671' },
-  { name: 'Rūta Garšvienė', role: 'Burnos higienistė, gydymo tiesinimo kapomis koordinatorė', license: 'BPL-07858' },
-  { name: 'Goda Daknytė', role: 'Klinikos administracijos vadovė' },
-]
 
 function CheckIcon() {
   return (
@@ -50,84 +22,62 @@ function CheckIcon() {
 }
 
 export default function About() {
-  // Structured Data Schema.org
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Dentist",
-    "name": "Bangų klinika",
-    "image": "https://banguklinika.lt/hero.jpg",
-    "url": "https://banguklinika.lt/apie",
-    "logo": "https://banguklinika.lt/logo.png",
-    "description": "Jauki ir moderni odontologijos klinika Klaipėdoje. Visos paslaugos vienoje vietoje: gydymas, protezavimas, implantai, higiena, chirurgija ir kt.",
+    "name": about.schemaOrg?.name ?? "Bangų klinika",
+    "image": about.schemaOrg?.image,
+    "url": about.schemaOrg?.url,
+    "logo": about.schemaOrg?.logo,
+    "description": about.schemaOrg?.description,
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Jūsų gatvė 12",
-      "addressLocality": "Klaipėda",
-      "postalCode": "91234",
-      "addressCountry": "LT"
+      "streetAddress": about.schemaOrg?.address?.streetAddress,
+      "addressLocality": about.schemaOrg?.address?.addressLocality,
+      "postalCode": about.schemaOrg?.address?.postalCode,
+      "addressCountry": about.schemaOrg?.address?.addressCountry
     },
-    "telephone": "+37060000000",
-    "sameAs": [
-      "https://www.facebook.com/banguklinika",
-      "https://www.instagram.com/banguklinika"
-    ],
-    "founder": [
-      {
-        "@type": "Person",
-        "name": "Martyna Pociutė",
-        "jobTitle": "Gydytoja odontologė"
-      }
-    ],
-    "openingHours": "Mo-Fr 08:00-18:00",
+    "telephone": about.schemaOrg?.telephone,
+    "sameAs": about.schemaOrg?.sameAs,
+    "founder": about.schemaOrg?.founder,
+    "openingHours": about.schemaOrg?.openingHours
   }
+
+  const services: string[] = about.services as any
+  const team = about.team as Array<{ name: string; role: string; license?: string }>
 
   return (
     <AnimatedSection>
       <SEO
-        title="Apie mus"
-        description="Jauki ir moderni odontologijos klinika Klaipėdoje. Visos paslaugos vienoje vietoje: gydymas, protezavimas, implantai, higiena, chirurgija ir kt."
-        keywords="odontologijos klinika, dantų gydymas Klaipėda, implantai Klaipėda, CEREC protezavimas, burnos higiena, estetinis plombavimas"
+        title={about.seo?.title ?? 'Apie mus'}
+        description={about.seo?.description}
+        keywords={about.seo?.keywords}
         structuredData={structuredData}
       />
 
-      <motion.div
-        className="container-narrow"
-        variants={container}
-        initial="hidden"
-        animate="visible"
-      >
+      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
         {/* Hero tekstas */}
         <motion.header className="mb-6" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700">
-            Moderni Odontologijos Klinika Klaipėdoje
+            {about.hero?.title ?? 'Moderni Odontologijos Klinika Klaipėdoje'}
           </h1>
         </motion.header>
 
         <motion.div className="prose prose-slate max-w-none mb-8" variants={item}>
-          <p>
-            Bangų Odontologijos Klinika – jauki ir moderni odontologijos klinika Klaipėdoje. Čia vadovaujamės idėja, jog
-            apsilankymas pas odontologą neturi būti gąsdinantis. Priešingai – jis gali būti malonus. Todėl kiekvieną klientą
-            pasitinkame su pozityvia energija ir siekiame, kad pasibaigus vizitui klientas išeitų su plačia, dailia ir sveika šypsena.
-          </p>
+          <p>{about.intro}</p>
         </motion.div>
 
-        {/* Paslaugos (dviejų stulpelių sąrašas – stabilūs tarpai) */}
+        {/* Paslaugos */}
         <motion.section className="mb-10" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-            Odontologijos klinikoje teikiamos paslaugos
+            {about.servicesTitle}
           </h2>
 
           <div className="grid sm:grid-cols-2 gap-2">
             <div className="space-y-2">
               {services.filter((_, i) => i % 2 === 0).map((s, i) => (
-                <motion.div
-                  key={`L-${i}-${s}`}
-                  variants={item}
-                  className="flex items-start gap-2 text-slate-700"
-                >
-                  <span className="text-brand mt-1">
-                    <CheckIcon />
-                  </span>
+                <motion.div key={`L-${i}-${s}`} variants={item} className="flex items-start gap-2 text-slate-700">
+                  <span className="text-brand mt-1"><CheckIcon /></span>
                   <span className="text-sm leading-relaxed">{s}</span>
                 </motion.div>
               ))}
@@ -135,14 +85,8 @@ export default function About() {
 
             <div className="space-y-2">
               {services.filter((_, i) => i % 2 === 1).map((s, i) => (
-                <motion.div
-                  key={`R-${i}-${s}`}
-                  variants={item}
-                  className="flex items-start gap-2 text-slate-700"
-                >
-                  <span className="text-brand mt-1">
-                    <CheckIcon />
-                  </span>
+                <motion.div key={`R-${i}-${s}`} variants={item} className="flex items-start gap-2 text-slate-700">
+                  <span className="text-brand mt-1"><CheckIcon /></span>
                   <span className="text-sm leading-relaxed">{s}</span>
                 </motion.div>
               ))}
@@ -156,52 +100,38 @@ export default function About() {
           variants={item}
         >
           <div className="pointer-events-none absolute -top-10 -right-10 -z-10 w-48 h-48 rounded-full bg-brand-50 blur-3xl" />
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-3">Dantų technikos laboratorija</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-3">{about.lab?.title}</h2>
           <div className="text-slate-700 space-y-3">
-            <p>
-              Bangų Odontologijos Klinikoje veikia profesionali dantų technikos laboratorija, kurioje paruošiami odontologijai,
-              implantologijai, protezavimui reikalingi gaminiai. Bemetalės keramikos dantų vainikėliai, laikini vainikėliai,
-              dantų tiltai, protezai ant implantų, lanko atraminiai protezai, laminatės ir kiti gaminiai ruošiami naudojant
-              aukščiausios kokybės medžiagas ir modernią įrangą.
-            </p>
-            <p>
-              Skaitmeninių technologijų pagalba visi gaminiai itin tiksliai modeliuojami ir pritaikomi kiekvienam pacientui individualiai.
-              Protezavimo tikslumas – būtinas nepriekaištingam estetiniam vaizdui ir visiškam komfortui.
-            </p>
-            <p className="text-sm text-slate-600">
-              Dirbame su pasauliniais gamintojais: E-MAX Ivoclar Vivadent, Straumann®, Medentika® ir kt.
-            </p>
+            <p>{about.lab?.p1}</p>
+            <p>{about.lab?.p2}</p>
+            {about.lab?.note && <p className="text-sm text-slate-600">{about.lab.note}</p>}
           </div>
         </motion.section>
 
         {/* Komanda */}
         <motion.section className="mb-8" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-            Bangų Odontologijos Klinikos kolektyvas
+            {about.teamTitle}
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {team.map((m) => (
-              <motion.div
-                key={m.name}
-                variants={item}
-                className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-4"
-              >
+              <motion.div key={m.name} variants={item} className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-4">
                 <div className="font-semibold text-slate-900">{m.name}</div>
                 <div className="text-sm text-slate-600">{m.role}</div>
-                {m.license && (
-                  <div className="text-xs text-slate-500 mt-1">Licencijos Nr. {m.license}</div>
-                )}
+                {m.license && <div className="text-xs text-slate-500 mt-1">Licencijos Nr. {m.license}</div>}
               </motion.div>
             ))}
           </div>
         </motion.section>
 
         {/* CTA į kainoraštį */}
-        <motion.div className="mt-6" variants={item}>
-          <Link to="/kainos" className="btn-primary rounded-full px-6 py-3 font-semibold">
-            Bangų klinikoje teikiamų paslaugų kainoraštis
-          </Link>
-        </motion.div>
+        {about.cta?.href && (
+          <motion.div className="mt-6" variants={item}>
+            <Link to={about.cta.href} className="btn-primary rounded-full px-6 py-3 font-semibold">
+              {about.cta.text}
+            </Link>
+          </motion.div>
+        )}
       </motion.div>
     </AnimatedSection>
   )

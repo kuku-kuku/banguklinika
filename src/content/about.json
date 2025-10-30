@@ -1,0 +1,52 @@
+{
+  "seo": {
+    "title": "Apie mus",
+    "description": "Jauki ir moderni odontologijos klinika Klaipėdoje. Visos paslaugos vienoje vietoje: gydymas, protezavimas, implantai, higiena, chirurgija ir kt.",
+    "keywords": "odontologijos klinika, dantų gydymas Klaipėda, implantai Klaipėda, CEREC protezavimas, burnos higiena, estetinis plombavimas"
+  },
+  "hero": { "title": "Moderni Odontologijos Klinika Klaipėdoje" },
+  "intro": "Bangų Odontologijos Klinika – jauki ir moderni odontologijos klinika Klaipėdoje. Čia vadovaujamės idėja, jog apsilankymas pas odontologą neturi būti gąsdinantis. Priešingai – jis gali būti malonus. Todėl kiekvieną klientą pasitinkame su pozityvia energija ir siekiame, kad pasibaigus vizitui klientas išeitų su plačia, dailia ir sveika šypsena.",
+  "servicesTitle": "Odontologijos klinikoje teikiamos paslaugos",
+  "services": [
+    "Dantų gydymas, konsultacijos dantų priežiūros klausimais.",
+    "Dantų plombavimas.",
+    "Implantai (Straumann®, Medentika®).",
+    "Skaitmeninis dantų protezavimas CEREC sistema, protezavimas ant implantų, dantų karūnėlės, dantų tiltai, vainikėliai, užklotai, laminatės.",
+    "Dantų protezavimas iš karto vietoje.",
+    "Mikroprotezavimas (daliniai vainikėliai – karūnėlės, įklotai, užklotai, laminatės).",
+    "Profesionali burnos higiena.",
+    "Estetinis dantų plombavimas.",
+    "Vaikų dantų gydymas.",
+    "Dantų traukimas, dantų šaknų šalinimas.",
+    "Kaulo priauginimo, sinuso dugno pakėlimo operacijos.",
+    "Dantų protezavimas bemetale E-MAX IVOCLAR ir cirkonio keramika.",
+    "Dantų tiesinimas skaidriomis ORDOLINE kapomis."
+  ],
+  "lab": {
+    "title": "Dantų technikos laboratorija",
+    "p1": "Bangų Odontologijos Klinikoje veikia profesionali dantų technikos laboratorija, kurioje paruošiami odontologijai, implantologijai, protezavimui reikalingi gaminiai. Bemetalės keramikos dantų vainikėliai, laikini vainikėliai, dantų tiltai, protezai ant implantų, lanko atraminiai protezai, laminatės ir kiti gaminiai ruošiami naudojant aukščiausios kokybės medžiagas ir modernią įrangą.",
+    "p2": "Skaitmeninių technologijų pagalba visi gaminiai itin tiksliai modeliuojami ir pritaikomi kiekvienam pacientui individualiai. Protezavimo tikslumas – būtinas nepriekaištingam estetiniam vaizdui ir visiškam komfortui.",
+    "note": "Dirbame su pasauliniais gamintojais: E-MAX Ivoclar Vivadent, Straumann®, Medentika® ir kt."
+  },
+  "teamTitle": "Bangų Odontologijos Klinikos kolektyvas",
+  "team": [
+    { "name": "Martyna Pociutė", "role": "Gydytoja odontologė", "license": "OPL-06430" },
+    { "name": "Donatas Kubilius", "role": "Veido ir žandikaulių chirurgas", "license": "MPL-18980" },
+    { "name": "Eglė Daknienė", "role": "Dantų technikė", "license": "BPL-04671" },
+    { "name": "Rūta Garšvienė", "role": "Burnos higienistė, gydymo tiesinimo kapomis koordinatorė", "license": "BPL-07858" },
+    { "name": "Goda Daknytė", "role": "Klinikos administracijos vadovė" }
+  ],
+  "cta": { "text": "Bangų klinikoje teikiamų paslaugų kainoraštis", "href": "/kainos" },
+  "schemaOrg": {
+    "name": "Bangų klinika",
+    "image": "https://banguklinika.lt/hero.jpg",
+    "url": "https://banguklinika.lt/apie",
+    "logo": "https://banguklinika.lt/logo.png",
+    "description": "Jauki ir moderni odontologijos klinika Klaipėdoje. Visos paslaugos vienoje vietoje: gydymas, protezavimas, implantai, higiena, chirurgija ir kt.",
+    "address": { "streetAddress": "Jūsų gatvė 12", "addressLocality": "Klaipėda", "postalCode": "91234", "addressCountry": "LT" },
+    "telephone": "+37060000000",
+    "sameAs": ["https://www.facebook.com/banguklinika", "https://www.instagram.com/banguklinika"],
+    "founder": [{ "name": "Martyna Pociutė", "jobTitle": "Gydytoja odontologė" }],
+    "openingHours": "Mo-Fr 08:00-18:00"
+  }
+}
