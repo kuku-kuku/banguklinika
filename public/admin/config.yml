@@ -3,10 +3,9 @@ backend:
   repo: kuku-kuku/banguklinika
   branch: main
   base_url: https://www.banguklinika.lt
-  auth_endpoint: /api/auth
 
-# local_backend:
-#  url: http://localhost:3002/api/v1
+auth_type: implicit  # Nurodome naudoti kliento pusės metodą
+app_id: "Ov23lin7Ub0zYSHDp49p" # <-- ĮKLIJUOKITE ČIA SAVO CLIENT_ID
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
