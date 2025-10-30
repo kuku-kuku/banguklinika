@@ -1,27 +1,19 @@
+// /api/auth.js (Laikina DEBUG versija)
 export default async function handler(req, res) {
   try {
-    const { OAUTH_CLIENT_ID, OAUTH_REDIRECT_URI } = process.env;
-    const scope = process.env.GITHUB_SCOPE || 'repo,user:email';
-    if (!OAUTH_CLIENT_ID || !OAUTH_REDIRECT_URI) {
-      res.statusCode = 500;
-      return res.end('Missing OAUTH env vars');
-    }
+    // Tikriname kintamuosius
+    const data = {
+      OAUTH_CLIENT_ID: process.env.OAUTH_CLIENT_ID ? '...YRA...' : '...TRŪKSTA...',
+      OAUTH_CLIENT_SECRET: process.env.OAUTH_CLIENT_SECRET ? '...YRA...' : '...TRŪKSTA...',
+      OAUTH_REDIRECT_URI: process.env.OAUTH_REDIRECT_URI || '...TRŪKSTA...',
+      GITHUB_SCOPE: process.env.GITHUB_SCOPE || '...TRŪKSTA (naudojamas numatytasis)...'
+    };
 
-    const authorizeUrl = new URL('https://github.com/login/oauth/authorize');
-    const state = Math.random().toString(36).slice(2);
+    // Išvedame juos kaip JSON
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json(data);
 
-    authorizeUrl.searchParams.set('client_id', OAUTH_CLIENT_ID);
-    authorizeUrl.searchParams.set('redirect_uri', OAUTH_REDIRECT_URI);
-    authorizeUrl.searchParams.set('scope', scope);
-    authorizeUrl.searchParams.set('state', state);
-
-    res.setHeader('Set-Cookie', `gh_oauth_state=${state}; Max-Age=300; Path=/; HttpOnly; Secure; SameSite=Lax`);
-    res.statusCode = 302;
-    res.setHeader('Location', authorizeUrl.toString());
-    res.end();
   } catch (e) {
-    console.error(e);
-    res.statusCode = 500;
-    res.end('Auth error');
+    res.status(500).json({ error: e.message });
   }
 }
