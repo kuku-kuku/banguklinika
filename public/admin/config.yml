@@ -1,13 +1,17 @@
 backend:
   name: github
-  repo: kuku-kuku/banguklinika      # ← tavo GitHub repo
+  repo: kuku-kuku/banguklinika
   branch: main
-  base_url: https://banguklinika.lt # ← domenas ant Vercel
-  auth_endpoint: /api/auth          # ← mūsų OAuth funkcija
+  base_url: https://www.banguklinika.lt
+  auth_endpoint: /api/auth
+
+local_backend:
+  url: http://localhost:3002/api/v1
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
-site_url: "https://banguklinika.lt"
+site_url: "https://www.banguklinika.lt"
+
 
 collections:
   - name: "home"
