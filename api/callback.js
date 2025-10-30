@@ -1,4 +1,4 @@
-// /api/callback.js (Galutinis Pataisymas - V4 - Viskas įskaičiuota)
+// /api/callback.js (Galutinė versija V5)
 export default async function handler(req, res) {
   try {
     const url = new URL(req.url, `https://${req.headers.host}`);
@@ -29,28 +29,20 @@ export default async function handler(req, res) {
     const token = data.access_token;
     const origin = new URL(redirectUri).origin; // https://www.banguklinika.lt
 
-    // Paruošiame ABU formatus
-    const payload = { token: token };
-    const originalMsg = { token: token, provider: 'github' };
-    const standardMsg = 'authorization:github:success:' + JSON.stringify(payload);
-
-    // 
+    // Naudojame abu metodus, kuriuos matėme Teste Nr. 4
     const html = `<!doctype html><html><body><script>
       (function(){
         var token = ${JSON.stringify(token)};
         var origin = ${JSON.stringify(origin)};
         
         if (window.opener) {
-          // 1 METODAS: localStorage
+          // METODAS 1: localStorage (kaip buvo jūsų originale)
           try { 
             localStorage.setItem('decap-cms-auth', JSON.stringify({ token: token })); 
-          } catch(e) { /* Tiesiog ignoruojame klaidą */ }
+          } catch(e) { /* Ignoruojame */ }
           
-          // 2 METODAS: Jūsų originalus postMessage
-          window.opener.postMessage(${JSON.stringify(originalMsg)}, origin);
-          
-          // 3 METODAS: Standartinis Decap CMS postMessage
-          window.opener.postMessage(${JSON.stringify(standardMsg)}, origin);
+          // METODAS 2: postMessage (formatas iš Testo Nr. 4)
+          window.opener.postMessage({ token: token, provider: 'github' }, origin);
           
           // UŽDAROME
           window.close();
