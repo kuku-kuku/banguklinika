@@ -1,4 +1,4 @@
-// /api/callback.js (Testas Nr. 4 - Klausymosi testas)
+// /api/callback.js (Galutinis Pataisymas - V4 - Viskas įskaičiuota)
 export default async function handler(req, res) {
   try {
     const url = new URL(req.url, `https://${req.headers.host}`);
@@ -29,39 +29,33 @@ export default async function handler(req, res) {
     const token = data.access_token;
     const origin = new URL(redirectUri).origin; // https://www.banguklinika.lt
 
-    // Paruošiame HTML kodą, kuris bus "popup" lange
+    // Paruošiame ABU formatus
+    const payload = { token: token };
+    const originalMsg = { token: token, provider: 'github' };
+    const standardMsg = 'authorization:github:success:' + JSON.stringify(payload);
+
+    // 
     const html = `<!doctype html><html><body><script>
       (function(){
         var token = ${JSON.stringify(token)};
         var origin = ${JSON.stringify(origin)};
         
-        // Išspausdiname info į patį "popup" langą
-        document.body.innerHTML = '<h1>Testas Nr. 4: Siunčiama...</h1>' +
-          '<p>Adresatas (Origin): <b>' + origin + '</b></p>' +
-          '<p>Raktas (Token): <b>...' + token.slice(-6) + '</b></p>' +
-          '<p style="color:red; font-weight:bold;">ŠIS LANGAS NEUŽSIDARYS.</p>' +
-          '<p>Patikrinkite <b>PAGRINDINIO</b> (/admin/) lango KONSOLĘ (F12).</p>';
-        
         if (window.opener) {
-          // Siunčiame žinutę su mažu vėlavimu, kad išvengtume "race condition"
-          setTimeout(function() {
-            document.body.innerHTML += '<p style="color:green;">SIUNČIAMA ŽINUTĖ...</p>';
-            
-            // Naudojame JŪSŲ originalų formatą
-            window.opener.postMessage({ token: token, provider: 'github' }, origin);
-            
-            // Bandome ir "localStorage" metodą kaip atsarginį
-            try { 
-              localStorage.setItem('decap-cms-auth', JSON.stringify({ token: token })); 
-              document.body.innerHTML += '<p style="color:green;">PABANDYTA ĮRAŠYTI Į localStorage.</p>';
-            } catch(e) {
-              document.body.innerHTML += '<p style="color:orange;">Nepavyko įrašyti į localStorage.</p>';
-            }
-
-            document.body.innerHTML += '<p style="color:green;">IŠSIŲSTA.</p>';
-          }, 500); // 500ms vėlavimas
+          // 1 METODAS: localStorage
+          try { 
+            localStorage.setItem('decap-cms-auth', JSON.stringify({ token: token })); 
+          } catch(e) { /* Tiesiog ignoruojame klaidą */ }
+          
+          // 2 METODAS: Jūsų originalus postMessage
+          window.opener.postMessage(${JSON.stringify(originalMsg)}, origin);
+          
+          // 3 METODAS: Standartinis Decap CMS postMessage
+          window.opener.postMessage(${JSON.stringify(standardMsg)}, origin);
+          
+          // UŽDAROME
+          window.close();
         } else {
-          document.body.innerHTML += '<p style="color:red;">KLAIDA: "window.opener" nerastas.</p>';
+          document.body.innerText = 'Authorized. You can close this window.';
         }
       })();
     </script></body></html>`;
