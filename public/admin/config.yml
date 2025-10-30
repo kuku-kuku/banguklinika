@@ -3,20 +3,17 @@ backend:
   repo: kuku-kuku/banguklinika
   branch: main
   
-  # --- PATAISYMAI ČIA ---
-  # 1. 'base_url' eilutė iš čia PAŠALINTA.
-  
-  # 2. Šios eilutės PERKELTOS ČIA (į 'backend' bloko vidų):
-  auth_type: implicit 
-  app_id: "Ov23lin7Ub0zYSHDp49p"
-  # -----------------------
+  # Atstatyta serverio (API) konfigūracija
+  base_url: https://www.banguklinika.lt 
+  auth_endpoint: /api/auth
 
+# Užkomentuota, kad neklaidintų CMS
 # local_backend:
 #  url: http://localhost:3002/api/v1
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
-site_url: "https://www.banguklinika.lt" # Ši eilutė lieka čia, tai yra gerai.
+site_url: "https://www.banguklinika.lt"
 
 
 collections:
