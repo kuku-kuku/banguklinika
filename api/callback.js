@@ -1,44 +1,72 @@
-export default async function handler(req, res) {
-  const url = new URL(req.url, `http://${req.headers.host}`);
-  const code = url.searchParams.get('code') || '';
+// Vercel serverless (CommonJS)
+module.exports = async (req, res) => {
+  try {
+    const { OAUTH_CLIENT_ID, OAUTH_CLIENT_SECRET, OAUTH_REDIRECT_URI } = process.env;
+    if (!OAUTH_CLIENT_ID || !OAUTH_CLIENT_SECRET || !OAUTH_REDIRECT_URI) {
+      res.statusCode = 500;
+      return res.end('Missing OAuth env vars');
+    }
 
-  const clientId = process.env.OAUTH_CLIENT_ID;
-  const clientSecret = process.env.OAUTH_CLIENT_SECRET;
-  const redirectUri = process.env.OAUTH_REDIRECT_URI;
+    // Ant Vercel naudok https bazę
+    const url = new URL(req.url, `https://${req.headers.host}`);
+    const code = url.searchParams.get('code');
+    const state = url.searchParams.get('state');
 
-  if (!code) {
-    res.statusCode = 400;
-    res.end('Missing code');
-    return;
-  }
+    if (!code) {
+      res.statusCode = 400;
+      return res.end('Missing code');
+    }
 
-  const r = await fetch('https://github.com/login/oauth/access_token', {
-    method: 'POST',
-    headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-    body: JSON.stringify({ client_id: clientId, client_secret: clientSecret, code, redirect_uri: redirectUri }),
-  });
-  const data = await r.json();
+    // (Pasirinktinai) CSRF state validacija — jei auth.js nustatei slapuką
+    const cookieState = (req.headers.cookie || '')
+      .split(';').map(s => s.trim())
+      .find(s => s.startsWith('gh_oauth_state='))?.split('=')[1];
 
-  if (!data.access_token) {
-    res.statusCode = 401;
-    res.end('OAuth failed');
-    return;
-  }
+    if (cookieState && state && state !== cookieState) {
+      res.statusCode = 400;
+      return res.end('Invalid state');
+    }
 
-  const html = `<!doctype html><html><body><script>
-    (function(){
-      function send(){
+    // Exchange code -> access_token
+    const ghResp = await fetch('https://github.com/login/oauth/access_token', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        client_id: OAUTH_CLIENT_ID,
+        client_secret: OAUTH_CLIENT_SECRET,
+        code,
+        redirect_uri: OAUTH_REDIRECT_URI,
+      }),
+    });
+
+    const data = await ghResp.json();
+    if (!ghResp.ok || !data.access_token) {
+      res.statusCode = 500;
+      return res.end('OAuth failed');
+    }
+
+    const token = data.access_token;
+
+    // Grąžinam HTML, kuris perduoda tokeną Decap CMS langui
+    const html = `<!doctype html><html><body><script>
+      (function(){
+        var token=${JSON.stringify(token)};
+        // Decap CMS klausosi postMessage iš popup
         if (window.opener) {
-          window.opener.postMessage({ token: '${data.access_token}', provider: 'github' }, '*');
+          window.opener.postMessage({ token: token, provider: 'github' }, '*');
+          try { localStorage.setItem('decap-cms-auth', JSON.stringify({ token: token })); } catch(e){}
           window.close();
         } else {
           document.body.innerText = 'Token received. You can close this window.';
         }
-      }
-      send(); setTimeout(send, 300);
-    })();
-  </script></body></html>`;
+      })();
+    </script></body></html>`;
 
-  res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.end(html);
-}
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.statusCode = 200;
+    res.end(html);
+  } catch (e) {
+    res.statusCode = 500;
+    res.end('Callback error');
+  }
+};
