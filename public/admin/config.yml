@@ -2,7 +2,7 @@ backend:
   name: github
   repo: kuku-kuku/banguklinika
   branch: main
-  base_url: https://banguklinika.lt
+  base_url: https://www.banguklinika.lt
   auth_endpoint: /api/auth
 
 local_backend:
@@ -10,7 +10,7 @@ local_backend:
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
-site_url: "https://banguklinika.lt"
+site_url: "https://www.banguklinika.lt"
 
 
 collections:
