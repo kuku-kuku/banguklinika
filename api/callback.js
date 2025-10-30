@@ -1,4 +1,4 @@
-// /api/callback.js (Galutinis Pataisymas - V2)
+// /api/callback.js (Galutinis Pataisymas - V3)
 export default async function handler(req, res) {
   try {
     const url = new URL(req.url, `https://${req.headers.host}`);
@@ -17,7 +17,8 @@ export default async function handler(req, res) {
 
     const r = await fetch('https://github.com/login/oauth/access_token', {
       method: 'POST',
-      headers: { Accept: 'application/json', 'Content-Type: 'application/json' },
+      // PATAISYTA EILUTĖ: 'Content-Type' dabar yra kabutėse
+      headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
       body: JSON.stringify({ client_id: clientId, client_secret: clientSecret, code, redirect_uri: redirectUri }),
     });
     const data = await r.json();
@@ -30,19 +31,15 @@ export default async function handler(req, res) {
     // Nustatome tikslų adresą (origin), kuriam siųsime raktą
     const origin = new URL(redirectUri).origin; // https://www.banguklinika.lt
 
-    // [Image of browser window.opener.postMessage diagram]
-    // GRĄŽINAME JŪSŲ ORIGINALŲ postMessage FORMATĄ,
-    // bet vietoje '*' naudojame saugų 'origin'
+    // Naudojame JŪSŲ originalų postMessage formatą
     const html = `<!doctype html><html><body><script>
       (function(){
         var token = ${JSON.stringify(token)};
         var origin = ${JSON.stringify(origin)};
         
         if (window.opener) {
-          // Naudojame JŪSŲ originalų formatą
           window.opener.postMessage({ token: token, provider: 'github' }, origin);
           
-          // Grąžiname localStorage bandymą
           try { 
             localStorage.setItem('decap-cms-auth', JSON.stringify({ token: token })); 
           } catch(e) {
@@ -57,13 +54,12 @@ export default async function handler(req, res) {
     </script></body></html>`;
 
     res.setHeader('Cache-Control', 'no-store');
-    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Content-Type', 'text/html; charset-_UTF-8"');
     res.end(html);
 
   } catch (err) {
     console.error(err);
     res.statusCode = 500;
-    // Naudojame JŪSŲ originalų klaidos formatą
     res.end('Callback error');
   }
 }
