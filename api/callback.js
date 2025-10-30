@@ -1,11 +1,8 @@
-// /api/callback.js (Galutinė versija)
+// /api/callback.js (Galutinis Pataisymas - V2)
 export default async function handler(req, res) {
   try {
     const url = new URL(req.url, `https://${req.headers.host}`);
     const code = url.searchParams.get('code') || '';
-
-    // PASTABA: Laikinai pašaliname 'state' patikrinimą, 
-    // kadangi Testas Nr. 3 veikė be jo. Tai supaprastina procesą.
 
     const clientId = process.env.OAUTH_CLIENT_ID;
     const clientSecret = process.env.OAUTH_CLIENT_SECRET;
@@ -14,14 +11,13 @@ export default async function handler(req, res) {
     if (!clientId || !clientSecret || !redirectUri) {
         throw new Error('Missing OAUTH env vars');
     }
-
     if (!code) {
       throw new Error('Missing code');
     }
 
     const r = await fetch('https://github.com/login/oauth/access_token', {
       method: 'POST',
-      headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+      headers: { Accept: 'application/json', 'Content-Type: 'application/json' },
       body: JSON.stringify({ client_id: clientId, client_secret: clientSecret, code, redirect_uri: redirectUri }),
     });
     const data = await r.json();
@@ -30,21 +26,29 @@ export default async function handler(req, res) {
       throw new Error('OAuth failed (GitHub atsakymas be access_token)');
     }
 
-    // Nustatome tikslų adresą (origin), kuriam siųsime raktą.
-    // Dabar žinome, kad tai https://www.banguklinika.lt
-    const origin = new URL(redirectUri).origin;
     const token = data.access_token;
+    // Nustatome tikslų adresą (origin), kuriam siųsime raktą
+    const origin = new URL(redirectUri).origin; // https://www.banguklinika.lt
 
-    // Tai yra Decap CMS laukiamas formatas
-    const payload = { token: token };
-    const msg = 'authorization:github:success:' + JSON.stringify(payload);
-
-    // 
-    // Siunčiame žinutę (msg) atgal į pagrindinį langą (origin)
+    // [Image of browser window.opener.postMessage diagram]
+    // GRĄŽINAME JŪSŲ ORIGINALŲ postMessage FORMATĄ,
+    // bet vietoje '*' naudojame saugų 'origin'
     const html = `<!doctype html><html><body><script>
       (function(){
+        var token = ${JSON.stringify(token)};
+        var origin = ${JSON.stringify(origin)};
+        
         if (window.opener) {
-          window.opener.postMessage(${JSON.stringify(msg)}, ${JSON.stringify(origin)});
+          // Naudojame JŪSŲ originalų formatą
+          window.opener.postMessage({ token: token, provider: 'github' }, origin);
+          
+          // Grąžiname localStorage bandymą
+          try { 
+            localStorage.setItem('decap-cms-auth', JSON.stringify({ token: token })); 
+          } catch(e) {
+            console.warn('Nepavyko įrašyti į localStorage', e);
+          }
+          
           window.close();
         } else {
           document.body.innerText = 'Authorized. You can close this window.';
@@ -57,15 +61,9 @@ export default async function handler(req, res) {
     res.end(html);
 
   } catch (err) {
-    console.error(err); // Svarbu matyti klaidas Vercel log'uose
+    console.error(err);
     res.statusCode = 500;
-    const msg = 'authorization:github:error:' + JSON.stringify({ message: (err && err.message) || 'Server error' });
-    res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.end(`<!doctype html><html><body><script>
-      (function(){
-        if (window.opener) { window.opener.postMessage(${JSON.stringify(msg)}, '*'); window.close(); }
-        else { document.body.innerText = 'Server error'; }
-      })();
-    </script></body></html>`);
+    // Naudojame JŪSŲ originalų klaidos formatą
+    res.end('Callback error');
   }
 }
