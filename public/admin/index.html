@@ -2,42 +2,25 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bangų klinika – Admin</title>
   <meta name="robots" content="noindex" />
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </head>
 <body>
-  <!-- Debug pranešimų konteineris -->
-  <div id="auth-debug" style="position: fixed; bottom: 10px; right: 10px; background: #333; color: #fff; padding: 10px; border-radius: 4px; font-size: 12px; max-width: 300px; display: none; z-index: 9999;"></div>
-
+  <!-- Decap CMS čia sukurs savo app -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
   <script>
-    // Debug funkcija
-    function debugLog(msg) {
-      const debugEl = document.getElementById('auth-debug');
-      if (debugEl) {
-        debugEl.style.display = 'block';
-        debugEl.innerHTML += '<div>' + new Date().toLocaleTimeString() + ': ' + msg + '</div>';
-        console.log('[Auth Debug]', msg);
-      }
-    }
-
-    // Klausome postMessage pranešimų
+    // Debug pranešimų klausytojas
     window.addEventListener('message', function(event) {
-      debugLog('Gautas pranešimas: ' + JSON.stringify(event.data).substring(0, 100));
-      console.log('PostMessage received:', event);
+      console.log('[PostMessage]', event.origin, event.data);
       
-      // Decap CMS turėtų automatiškai apdoroti, bet užtikriname
       if (typeof event.data === 'string' && event.data.includes('authorization:github:success')) {
-        debugLog('✓ GitHub autorizacija sėkminga!');
-        
-        // Papildomas trigger Decap CMS
-        setTimeout(function() {
-          window.location.reload();
-        }, 500);
+        console.log('✓ GitHub autorizacija sėkminga!');
       }
     }, false);
 
-    debugLog('Admin puslapis užkrautas, klausomasi pranešimų...');
+    console.log('Admin puslapis užkrautas');
   </script>
 </body>
 </html>
