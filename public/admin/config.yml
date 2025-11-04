@@ -2,14 +2,10 @@ backend:
   name: github
   repo: kuku-kuku/banguklinika
   branch: main
-  
-  # Atstatyta serverio (API) konfigūracija
-  base_url: https://www.banguklinika.lt 
-  auth_endpoint: /api/auth
+  base_url: https://www.banguklinika.lt
+  auth_endpoint: api/auth
 
-# Užkomentuota, kad neklaidintų CMS
-# local_backend:
-#  url: http://localhost:3002/api/v1
+# Svarbu: pašalinkite '/' pradžioje iš auth_endpoint!
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
