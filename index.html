@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Bangų Odontologijos Klinika – moderni odontologija Klaipėdos centre." />
+    <meta
+      name="description"
+      content="Bangų Odontologijos Klinika – moderni odontologija Klaipėdos centre."
+    />
 
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -13,14 +16,35 @@
     <meta name="theme-color" content="#0099cc" />
 
     <title>Bangų klinika – Odontologija Klaipėdoje</title>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4FYZ9G2M9"></script>
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-S4FYZ9G2M9"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-S4FYZ9G2M9');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-S4FYZ9G2M9");
+    </script>
+
+    <!-- 🔁 Redirect Netlify invite/confirmation tokens į /admin -->
+    <script>
+      (function () {
+        try {
+          var h = window.location.hash || "";
+          if (/#(invite_token|confirmation_token)=/.test(h)) {
+            // jei laiškas atveda į šaknį su tokenu – permetam į /admin, paliekant hash
+            window.location.replace("/admin/" + h);
+          }
+        } catch (e) {}
+      })();
     </script>
   </head>
+
   <body class="antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
