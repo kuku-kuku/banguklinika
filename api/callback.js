@@ -7,13 +7,12 @@ export default async function handler(req, res) {
       throw new Error('Missing authorization code');
     }
 
-    const { OAUTH_CLIENT_ID, OAUTH_CLIENT_SECRET, OAUTH_REDIRECT_URI } = process.env;
+    const { OAUTH_CLIENT_ID, OAUTH_CLIENT_SECRET } = process.env;
 
     if (!OAUTH_CLIENT_ID || !OAUTH_CLIENT_SECRET) {
       throw new Error('Missing OAuth configuration');
     }
 
-    // Gaunami access_token iš GitHub
     const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
       method: 'POST',
       headers: {
@@ -30,101 +29,112 @@ export default async function handler(req, res) {
     const data = await tokenResponse.json();
 
     if (!data.access_token) {
-      throw new Error('No access token received from GitHub');
+      throw new Error('No access token received');
     }
 
-    // HTML su trijų metodų kombinacija
     const html = `
 <!doctype html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Completing authentication...</title>
+  <title>Authentication Complete</title>
   <style>
     body { 
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: system-ui, sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
       margin: 0;
-      background: #f5f5f5;
+      background: #f0f0f0;
     }
-    .message {
+    .box {
       text-align: center;
       background: white;
-      padding: 2rem;
+      padding: 3rem;
       border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 400px;
     }
-    .spinner {
-      border: 3px solid #f3f3f3;
-      border-top: 3px solid #3498db;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 1rem;
+    .success { color: #22c55e; font-size: 48px; margin-bottom: 1rem; }
+    h2 { margin: 0 0 0.5rem 0; color: #333; }
+    p { color: #666; margin: 0.5rem 0; }
+    .token { 
+      font-family: monospace; 
+      background: #f5f5f5; 
+      padding: 0.5rem; 
+      border-radius: 4px;
+      word-break: break-all;
+      font-size: 12px;
+      margin: 1rem 0;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    #status { 
+      margin-top: 1rem; 
+      padding: 0.5rem;
+      background: #e0f2fe;
+      border-radius: 4px;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <div class="message">
-    <div class="spinner"></div>
-    <h2>Authentication successful!</h2>
-    <p>Redirecting to admin panel...</p>
+  <div class="box">
+    <div class="success">✓</div>
+    <h2>Autentifikacija sėkminga!</h2>
+    <p>Siunčiamas raktas į pagrindinį langą...</p>
+    <div class="token">Token: ...${data.access_token.slice(-8)}</div>
+    <div id="status">Ruošiama...</div>
   </div>
 
   <script>
     (function() {
       const token = "${data.access_token}";
-      const authData = {
-        token: token,
-        provider: "github"
-      };
+      const statusEl = document.getElementById('status');
+      
+      let attempts = 0;
+      const maxAttempts = 10;
 
-      // METODAS 1: PostMessage į opener (jei tai popup)
-      if (window.opener) {
-        console.log('Sending postMessage to opener');
+      function sendMessage() {
+        attempts++;
         
-        // Decap CMS standartinis formatas
-        window.opener.postMessage(
-          'authorization:github:success:' + JSON.stringify(authData),
-          window.location.origin
-        );
-
-        // Alternatyvus formatas
-        window.opener.postMessage(
-          {
-            type: 'authorization:github:success',
-            payload: authData
-          },
-          window.location.origin
-        );
-
-        setTimeout(() => window.close(), 500);
-      } else {
-        console.log('No opener, using localStorage + redirect');
-        
-        // METODAS 2: LocalStorage (jei tai redirect, o ne popup)
-        try {
-          localStorage.setItem('netlify-cms-user', JSON.stringify({
-            token: token,
-            backendName: 'github'
-          }));
-        } catch(e) {
-          console.error('localStorage error:', e);
+        if (!window.opener) {
+          statusEl.textContent = '⚠️ Nerasta pagrindinio lango. Uždarykite ir bandykite iš naujo.';
+          statusEl.style.background = '#fee';
+          return;
         }
 
-        // METODAS 3: Redirect atgal į admin su token hash
-        setTimeout(() => {
-          window.location.href = '/admin/#access_token=' + token;
-        }, 100);
+        statusEl.textContent = 'Siunčiama (' + attempts + '/' + maxAttempts + ')...';
+
+        // Decap CMS formatas (string pranešimas)
+        const message = 'authorization:github:success:' + JSON.stringify({
+          token: token,
+          provider: "github"
+        });
+
+        // Siunčiame į opener
+        window.opener.postMessage(message, window.location.origin);
+        
+        // Taip pat bandome į '*' (bet kuris origin)
+        window.opener.postMessage(message, '*');
+
+        console.log('PostMessage sent:', message);
+
+        if (attempts < maxAttempts) {
+          // Bandome dar kartą po 300ms
+          setTimeout(sendMessage, 300);
+        } else {
+          statusEl.textContent = '✓ Išsiųsta! Langas užsidarys...';
+          statusEl.style.background = '#d1fae5';
+          
+          // Uždarome po 2 sekundžių
+          setTimeout(function() {
+            window.close();
+          }, 2000);
+        }
       }
+
+      // Pradedame siųsti po 100ms
+      setTimeout(sendMessage, 100);
     })();
   </script>
 </body>
@@ -141,9 +151,9 @@ export default async function handler(req, res) {
 <html>
 <head><meta charset="utf-8"><title>Error</title></head>
 <body style="font-family: sans-serif; padding: 2rem; text-align: center;">
-  <h1>❌ Authentication Error</h1>
+  <h1>❌ Klaida</h1>
   <p>${error.message}</p>
-  <p><a href="/admin/" style="color: #0066cc;">← Back to Admin</a></p>
+  <p><a href="/admin/">← Grįžti į Admin</a></p>
 </body>
 </html>`);
   }
