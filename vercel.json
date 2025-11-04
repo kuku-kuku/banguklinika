@@ -16,14 +16,3 @@
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
-```
-
-**Failų struktūra turėtų būti:**
-```
-public/
-  admin/
-    index.html
-    config.yml    ← naujas failas
-api/
-  auth.js
-  callback.js
