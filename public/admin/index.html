@@ -4,14 +4,27 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager</title>
-</head>
-<body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   
+  <!-- SVARBU: Nustatome PRIEŠ užkraunant CMS -->
   <script>
     window.CMS_MANUAL_INIT = true;
+  </script>
+</head>
+<body>
+  <!-- CMS script -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <!-- Konfigūracija ir inicializacija -->
+  <script>
+    // Laukiame, kol CMS pilnai užsikraus
+    function initCMS() {
+      if (!window.CMS) {
+        setTimeout(initCMS, 100);
+        return;
+      }
 
-    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Starting CMS manual init...');
+
       window.CMS.init({
         config: {
           backend: {
@@ -216,29 +229,24 @@
         }
       });
       
-      console.log('CMS initialized with inline config');
-    });
+      console.log('✓ CMS initialized successfully');
+    }
+
+    // Pradedame init po puslapio užkrovimo
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCMS);
+    } else {
+      initCMS();
+    }
 
     // Auth message listener
     window.addEventListener('message', function(event) {
-      console.log('[Auth] Message:', event.data);
+      console.log('[Auth] Message received:', event.data);
       
       if (typeof event.data === 'string' && event.data.includes('authorization:github:success')) {
-        console.log('✓ GitHub auth success!');
+        console.log('✓ GitHub authentication successful!');
       }
     });
   </script>
 </body>
 </html>
-```
-
-**Dabar:**
-1. Ištrinkite `config.js` failą (nereikalingas)
-2. Pushinkite tik šį vieną `index.html` failą
-3. Turėtų veikti!
-
-Failų struktūra:
-```
-public/
-  admin/
-    index.html  ← tik šis vienas failas
