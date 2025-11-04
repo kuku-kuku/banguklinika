@@ -1,26 +1,20 @@
 <!doctype html>
-<html>
+<html lang="lt">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bangų klinika – Admin</title>
-  <meta name="robots" content="noindex" />
+  <title>Content Manager</title>
 </head>
 <body>
-  <!-- Decap CMS čia sukurs savo app -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  
-  <script>
-    // Debug pranešimų klausytojas
-    window.addEventListener('message', function(event) {
-      console.log('[PostMessage]', event.origin, event.data);
-      
-      if (typeof event.data === 'string' && event.data.includes('authorization:github:success')) {
-        console.log('✓ GitHub autorizacija sėkminga!');
-      }
-    }, false);
-
-    console.log('Admin puslapis užkrautas');
-  </script>
+  <script src="config.js"></script>
 </body>
 </html>
+```
+
+### 3. **Failų struktūra turėtų būti**:
+```
+public/
+  admin/
+    index.html
+    config.js     ← naujas failas
