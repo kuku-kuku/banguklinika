@@ -1,7 +1,29 @@
 {
   "buildCommand": "npm install --include=dev && npm run build",
   "outputDirectory": "dist",
+  "headers": [
+    {
+      "source": "/admin/config.yml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/yaml; charset=utf-8"
+        }
+      ]
+    }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
+```
+
+**Failų struktūra turėtų būti:**
+```
+public/
+  admin/
+    index.html
+    config.yml    ← naujas failas
+api/
+  auth.js
+  callback.js

@@ -1,6 +1,4 @@
-// api/config-yaml.js
-export default function handler(req, res) {
-  const yaml = `backend:
+backend:
   name: github
   repo: kuku-kuku/banguklinika
   branch: main
@@ -144,9 +142,4 @@ collections:
           - { label: SEO pavadinimas, name: seo.title, widget: string }
           - { label: SEO aprašymas, name: seo.description, widget: text }
           - { label: Įžanga, name: intro, widget: text, required: false }
-          - { label: Pastaba apačioje, name: footnote, widget: string, required: false }`;
-
-  res.setHeader('Content-Type', 'text/yaml; charset=utf-8');
-  res.setHeader('Cache-Control', 'no-store');
-  res.status(200).send(yaml);
-}
+          - { label: Pastaba apačioje, name: footnote, widget: string, required: false }
