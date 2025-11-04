@@ -108,7 +108,7 @@ export default async function handler(req, res) {
     res.status(500).send(`<!doctype html><html><body style="font-family:sans-serif;padding:24px">
       <h1>❌ Klaida</h1>
       <p>${(err && err.message) || "Unknown error"}</p>
-      <p><a href="/admin/">← Grįžti į Admin</a></p>
+      <p><a href="/admin/">← Grįžti į Adminaaaa</a></p>
     </body></html>`);
   }
 }
