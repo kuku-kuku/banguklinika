@@ -12,7 +12,18 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        { "type": "host", "value": "banguklinika.lt" }
+      ],
+      "destination": "https://www.banguklinika.lt/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/:path*" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
