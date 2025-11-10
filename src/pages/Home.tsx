@@ -92,6 +92,16 @@ export default function Home() {
           "medicalSpecialty": "Dentistry"
         }}
       />
+      <PromoPoster
+        id="home-2025-1"
+        imageSrc="/poster.png"
+        persistence="none"
+        frequencyDays={0}
+        delayMs={300}
+        routeOnly="/"
+        secondaryCtaText="Ypatingi pasiūlymai"
+        secondaryCtaHref="/ypatingi-pasiulymai"
+      />
 
       {/* HERO SECTION */}
       <div className="relative overflow-visible">

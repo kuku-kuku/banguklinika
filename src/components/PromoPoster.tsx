@@ -1,3 +1,4 @@
+// src/components/PromoPoster.tsx
 import React, { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
@@ -21,7 +22,7 @@ type Props = {
 
 function useBodyScrollLock(locked: boolean) {
   useEffect(() => {
-    if (!locked) return
+    if (!locked || typeof window === 'undefined') return
     const prevBodyOverflow = document.body.style.overflow
     const prevBodyPadRight = document.body.style.paddingRight
     const prevDocOverflow = document.documentElement.style.overflow
@@ -76,12 +77,15 @@ export default function PromoPoster({
   const timerRef = useRef<number | null>(null)
   const KEY = `promoPoster:${id}`
 
-  const store =
-    persistence === 'session'
-      ? window.sessionStorage
-      : persistence === 'local'
-      ? window.localStorage
-      : null
+  // safe store resolver (no SSR crash)
+  const getStore = () => {
+    if (typeof window === 'undefined') return null
+    if (persistence === 'session') return window.sessionStorage
+    if (persistence === 'local') return window.localStorage
+    return null
+  }
+
+  const store = getStore()
 
   const resetFlag =
     typeof window !== 'undefined' &&
@@ -105,12 +109,14 @@ export default function PromoPoster({
       if (frequencyDays && frequencyDays > 0) {
         store.setItem(KEY, String(Date.now() + msFromDays(frequencyDays)))
       } else if (persistence === 'session') {
+        // short session fallback (5 minutes) — only when session explicitly requested
         store.setItem(KEY, String(Date.now() + 5 * 60 * 1000))
       }
     } catch {}
   }
 
   const clearSnooze = () => {
+    if (typeof window === 'undefined') return
     try {
       window.localStorage.removeItem(KEY)
     } catch {}
@@ -121,9 +127,9 @@ export default function PromoPoster({
 
   useEffect(() => {
     if (resetFlag) clearSnooze()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resetFlag])
 
-  // 💡 Patobulintas įkėlimo mechanizmas su fallback timeout
   useEffect(() => {
     let didCancel = false
     const img = new Image()
@@ -140,10 +146,9 @@ export default function PromoPoster({
     img.onerror = handleReady
     img.src = imageSrc
 
-    // Jei po 5s niekas neįvyko – priverstinai leidžiam modalą
+    // If nothing in 5s — force ready
     fallback = setTimeout(handleReady, 5000)
 
-    // Jei naršyklė iš cache (instant complete)
     if (img.complete) handleReady()
 
     return () => {
@@ -155,10 +160,12 @@ export default function PromoPoster({
   useEffect(() => {
     if (routeOnly && pathname !== routeOnly) return
     if (!resetFlag && isSnoozed()) return
+    // schedule open
     timerRef.current = window.setTimeout(() => setOpen(true), delayMs)
     return () => {
       if (timerRef.current) window.clearTimeout(timerRef.current)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, routeOnly, resetFlag])
 
   useEffect(() => {
@@ -168,6 +175,7 @@ export default function PromoPoster({
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
   useEffect(() => {
