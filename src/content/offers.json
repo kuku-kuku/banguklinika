@@ -1,30 +1,29 @@
 {
   "seo": {
     "title": "Ypatingi pasiūlymai",
-    "description": "Akcijos ir nuolaidos: burnos higiena + mineralų terapija už 60 €, BEYOND® balinimo pasiūlymas ir daugiau specialių pasiūlymų jūsų šypsenai."
+    "description": "Akcijos ir nuolaidos: pilnas žandikaulio atkūrimas ant 4 implantų, BEYOND® balinimo pasiūlymas ir kiti specialūs sprendimai Jūsų šypsenai."
   },
   "offers": [
     {
-      "label": "Naujausias pasiūlymas",
-      "title": "Profesionali burnos higiena su mineralų terapija",
+      "label": "Naujasis kompleksinis sprendimas",
+      "title": "Pilnas žandikaulio atkūrimas ant 4 implantų",
+      "subtitle": "Pažangus gydymo metodas — visi žandikaulio dantys ant 4 implantų per 1 dieną",
+      "intro": "Tai pažangus gydymo metodas, kai atkuriami visi žandikaulio dantys ant 4 implantų. Mūsų klinikoje tai atliekame vos per 1 dieną.",
       "bulletsTop": [
-        "Pašaliname apnašas.",
-        "Atnaujiname natūralų dantų baltumą.",
-        "Sumažiname dantenų uždegimo ir ėduonies riziką.",
-        "Įvertiname dantų ir dantenų būklę.",
-        "Teikiame individualios priežiūros rekomendacijas."
+        "3D (KPKT) rentgeno nuotrauka",
+        "4 „Straumann“ grupės implantai",
+        "Originalios protezavimo detalės",
+        "Neišimamas protezas"
       ],
-      "midTitle": "Ir tai dar ne viskas!",
-      "midText": "Po procedūros atliekame remineralizuojančią mineralų terapiją – tai tarsi SPA Jūsų dantims!",
-      "midTitle2": "Mineralų prisotintos medžiagos padeda:",
-      "bulletsBottom": [
-        "Sustiprinti dantų emalį",
-        "Apsaugoti nuo karieso",
-        "Sumažinti dantų jautrumą",
-        "Atkurti natūralų dantų stiprumą"
-      ],
-      "priceNow": 60,
-      "priceWas": 100
+      "priceNow": 3800,
+      "priceWas": 4300,
+      "priceCurrency": "EUR",
+      "priceText": "Kaina – 3800 €",
+      "suitableFor": "Rekomenduojamas sprendimas pacientams, netekusiems daugumos dantų, nešiojantiems išimamus protezus arba turintiems blogą likusių dantų prognozę.",
+      "ctaText": "Atvykite nemokamai konsultacijai",
+      "ctaHref": "/kontaktai#registracija",
+      "note": "Atvykite nemokamai konsultacijai ir sužinokite ar šis gydymo būdas tinka Jums!",
+      "poster": true
     },
     {
       "label": "Specialus pasiūlymas tobulai šypsenai",
@@ -36,7 +35,9 @@
         "Balinimo rezultatai dažniausiai išlieka net iki 2 metų."
       ],
       "priceNow": 280,
-      "priceWas": 330
+      "priceWas": 330,
+      "ctaText": "Sužinoti daugiau",
+      "ctaHref": "/kontaktai#registracija"
     }
   ],
   "general": {
