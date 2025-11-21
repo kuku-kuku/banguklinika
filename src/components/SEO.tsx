@@ -4,6 +4,7 @@ const SITE_NAME = "Bangų klinika";
 const SITE_URL = "https://banguklinika.lt";
 const DEFAULT_IMAGE = `${SITE_URL}/hero.jpg`;
 const TWITTER_HANDLE = "@banguklinika";
+const HOME_TITLE = "Odontologijos klinika Klaipėdoje";
 
 type Props = {
   title?: string;
@@ -27,7 +28,7 @@ export default function SEO({
   structuredData,
 }: Props) {
   const finalTitle = isHome
-    ? SITE_NAME
+    ? HOME_TITLE
     : title
     ? `${title} | ${SITE_NAME}`
     : SITE_NAME;
@@ -47,7 +48,7 @@ export default function SEO({
       "name": SITE_NAME,
       "image": image,
       "url": SITE_URL,
-      "telephone": "+37060000000", // pakeisti savo numeriu
+      "telephone": "+37060000000",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Pavyzdžio g. 1",
@@ -79,17 +80,14 @@ export default function SEO({
 
   return (
     <Helmet>
-      {/* Basic Meta */}
       <title>{finalTitle}</title>
       <meta name="description" content={finalDescription} />
       {keywords && <meta name="keywords" content={keywords} />}
       <meta name="theme-color" content="#0d76d6" />
       <link rel="canonical" href={canonicalUrl} />
 
-      {/* Robots */}
       {noindex && <meta name="robots" content="noindex,nofollow" />}
 
-      {/* Open Graph */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:title" content={finalTitle} />
@@ -98,7 +96,6 @@ export default function SEO({
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="lt_LT" />
 
-      {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={canonicalUrl} />
       <meta name="twitter:title" content={finalTitle} />
@@ -106,13 +103,11 @@ export default function SEO({
       <meta name="twitter:image" content={image} />
       {TWITTER_HANDLE && <meta name="twitter:site" content={TWITTER_HANDLE} />}
 
-      {/* Additional */}
       <meta name="author" content={SITE_NAME} />
       <meta name="language" content="Lithuanian" />
       <meta name="geo.region" content="LT-KL" />
       <meta name="geo.placename" content="Klaipėda" />
 
-      {/* Structured Data */}
       <script type="application/ld+json">
         {JSON.stringify(structuredDataObj)}
       </script>
