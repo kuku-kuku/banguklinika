@@ -69,6 +69,7 @@ export default function Home() {
       <style dangerouslySetInnerHTML={{ __html: globalStyles }} />
       <SEO
         isHome
+        title="Odontologijos klinika Klaipėdoje"
         description={home.seo?.description}
         keywords={home.seo?.keywords}
         image={home.seo?.image}
@@ -109,14 +110,14 @@ export default function Home() {
           <div className="relative z-20 container-narrow grid md:grid-cols-2 gap-10 items-center py-12 md:py-20">
             {/* Left */}
             <div className="space-y-6">
-              <motion.h1
+              <motion.h2
                 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight text-slate-900"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: .6 }}
               >
                 {home.hero.title}
-              </motion.h1>
+              </motion.h2>
 
               <motion.p
                 className="text-gray-600 text-lg max-w-xl"
