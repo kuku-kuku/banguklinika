@@ -25,6 +25,27 @@
       "note": "Nemokama pirminė konsultacija ir gydytojo sudarytas gydymo planas. Galimybė mokėti dalimis. Akcija galioja iki 2026-01-31.",
       "poster": true
     },
+
+    {
+      "label": "Pilnas žandikaulio atkūrimas ant 4 implantų",
+      "title": "Atkuriame visus žandikaulio dantis ant 4 implantų – vos per 1 dieną!",
+      "intro": "Tai pažangus gydymo metodas, kai atkuriami visi žandikaulio dantys ant 4 implantų. Mūsų klinikoje tai atliekama vos per 1 dieną.",
+      "bulletsTop": [
+        "3D (KPKT) rentgeno nuotrauka",
+        "4 „Straumann“ grupės implantai",
+        "Originalios protezavimo detalės",
+        "Neišimamas protezas"
+      ],
+      "priceNow": 3800,
+      "priceWas": 4300,
+      "priceCurrency": "EUR",
+      "priceText": "Kaina – 3800 €",
+      "suitableFor": "Rekomenduojamas sprendimas pacientams, netekusiems daugumos dantų, nešiojantiems išimamus protezus arba turintiems blogą likusių dantų prognozę.",
+      "ctaText": "Atvykite nemokamai konsultacijai",
+      "ctaHref": "/kontaktai#registracija",
+      "poster1": true
+    },
+
     {
       "label": "Specialus pasiūlymas tobulai šypsenai",
       "title": "Pilna burnos higiena + BEYOND® dantų balinimas",
