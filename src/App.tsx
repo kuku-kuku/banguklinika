@@ -12,6 +12,7 @@ import SpecialOffers from './pages/SpecialOffers'
 import ScrollToTop from './components/ScrollToTop'
 import BackToTop from './components/BackToTop'
 import HeroWave from './components/HeroWave'
+import CirkonioOffer from './pages/CirkonioOffer'
 
 export default function App() {
   return (
@@ -37,6 +38,11 @@ export default function App() {
           <Route path="/kainos" element={<Pricing />} />
           <Route path="/ypatingi-pasiulymai" element={<SpecialOffers />} />
           <Route path="/kontaktai" element={<Contact />} />
+          <Route path="/ypatingi-pasiulymai" element={<SpecialOffers />} />
+          <Route
+            path="/ypatingi-pasiulymai/cirkonio-keramikos-vainikeliai"
+            element={<CirkonioOffer />}
+          />
         </Routes>
       </main>
 
