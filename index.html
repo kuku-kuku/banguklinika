@@ -24,11 +24,18 @@
     ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
       gtag("config", "G-S4FYZ9G2M9");
+    </script>
+
+    <!-- Google Ads (AW-711099997) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-711099997"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-711099997');
     </script>
 
     <!-- 🔁 Redirect Netlify invite/confirmation tokens į /admin -->
@@ -37,7 +44,6 @@
         try {
           var h = window.location.hash || "";
           if (/#(invite_token|confirmation_token)=/.test(h)) {
-            // jei laiškas atveda į šaknį su tokenu – permetam į /admin, paliekant hash
             window.location.replace("/admin/" + h);
           }
         } catch (e) {}
