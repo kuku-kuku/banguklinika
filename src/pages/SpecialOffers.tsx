@@ -29,7 +29,7 @@ export default function SpecialOffers() {
       <motion.div className="container-narrow relative z-10" variants={container} initial="hidden" animate="visible">
         <motion.header className="mb-6" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700">
-            {offers.seo?.title ?? 'Ypatingi pasiūlymai'}
+            Ypatingi pasiūlymai
           </h1>
         </motion.header>
 

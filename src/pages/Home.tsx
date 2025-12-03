@@ -77,7 +77,7 @@ export default function Home() {
           "@context": "https://schema.org",
           "@type": "Dentist",
           "name": "Bangų klinika",
-          "description": "Odontologijos klinika Klaipėdoje su modernia įranga ir patyrusia komanda",
+          "description": "Bangų klinika Klaipėdoje: visos dantų gydymo paslaugos ☑️ modernūs estetiniai sprendimai ☑️ profesionaliai sudaromi individualūs gydymo planai ☑️ Mums svarbiausia ⏩ Jūsų dantų sveikata!",
           "url": "https://banguklinika.lt",
           "telephone": CLINIC.phone,
           "email": CLINIC.email,

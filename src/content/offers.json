@@ -1,28 +1,28 @@
 {
   "seo": {
-    "title": "Ypatingi pasiūlymai",
-    "description": "Akcijos ir nuolaidos: pilnas žandikaulio atkūrimas ant 4 implantų, BEYOND® balinimo pasiūlymas ir kiti specialūs sprendimai Jūsų šypsenai."
+    "title": "Cirkonio keramikos vainikėliai Klaipėdoje – ypatingi pasiūlymai",
+    "description": "Cirkonio keramikos vainikėliai Klaipėdoje – estetika, ilgaamžiškumas ir patogumas be metalo. Ypatingi pasiūlymai cirkonio vainikėliams, BEYOND® balinimui ir kitiems gydymo sprendimams."
   },
   "offers": [
     {
-      "label": "Naujasis kompleksinis sprendimas",
-      "title": "Pilnas žandikaulio atkūrimas ant 4 implantų",
-      "subtitle": "Pažangus gydymo metodas — visi žandikaulio dantys ant 4 implantų per 1 dieną",
-      "intro": "Tai pažangus gydymo metodas, kai atkuriami visi žandikaulio dantys ant 4 implantų. Mūsų klinikoje tai atliekame vos per 1 dieną.",
+      "label": "Cirkonio keramikos vainikėliai su ypatingu pasiūlymu!",
+      "title": "Cirkonio keramikos vainikėliai – estetika, kokybė ir ilgaamžiškumas!",
+      "subtitle": "Klaipėdoje tik dabar – išskirtinė akcija cirkonio keramikos vainikėliams.",
+      "intro": "Vienas cirkonio keramikos vainikėlis (ant danties) – tik 299 €! Tai estetiškas, tvirtas ir ilgaamžis sprendimas šiuolaikiškai šypsenai.",
       "bulletsTop": [
-        "3D (KPKT) rentgeno nuotrauka",
-        "4 „Straumann“ grupės implantai",
-        "Originalios protezavimo detalės",
-        "Neišimamas protezas"
+        "Itin natūrali išvaizda – atrodo kaip tikri dantys",
+        "Be metalo – nejuoduoja dantenos, tinka alergiškiems pacientams",
+        "Preciziškas gamybos procesas ilgametę patirtį turinčioje laboratorijoje",
+        "Ilgaamžė, tvirta medžiaga – šypsena, kuri išlieka metams"
       ],
-      "priceNow": 3800,
-      "priceWas": 4300,
+      "priceNow": 299,
+      "priceWas": 400,
       "priceCurrency": "EUR",
-      "priceText": "Kaina – 3800 €",
-      "suitableFor": "Rekomenduojamas sprendimas pacientams, netekusiems daugumos dantų, nešiojantiems išimamus protezus arba turintiems blogą likusių dantų prognozę.",
+      "priceText": "Vienas cirkonio keramikos vainikėlis (ant danties) – 299 €.",
+      "suitableFor": "Puikus sprendimas pacientams, kurie nori natūraliai atrodančių, ilgaamžių ir metalų neturinčių dantų restauracijų.",
       "ctaText": "Atvykite nemokamai konsultacijai",
       "ctaHref": "/kontaktai#registracija",
-      "note": "Atvykite nemokamai konsultacijai ir sužinokite ar šis gydymo būdas tinka Jums!",
+      "note": "Nemokama pirminė konsultacija ir gydytojo sudarytas gydymo planas. Galimybė mokėti dalimis. Akcija galioja iki 2026-01-31.",
       "poster": true
     },
     {
