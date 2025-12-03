@@ -13,6 +13,7 @@ import ScrollToTop from './components/ScrollToTop'
 import BackToTop from './components/BackToTop'
 import HeroWave from './components/HeroWave'
 import CirkonioOffer from './pages/CirkonioOffer'
+import AllOn4Implants from './pages/AllOn4Implants'
 
 export default function App() {
   return (
@@ -36,12 +37,19 @@ export default function App() {
           <Route path="/apie" element={<About />} />
           <Route path="/paslaugos" element={<Services />} />
           <Route path="/kainos" element={<Pricing />} />
-          <Route path="/ypatingi-pasiulymai" element={<SpecialOffers />} />
           <Route path="/kontaktai" element={<Contact />} />
+
+          {/* Ypatingi pasiūlymai – bendras sąrašas */}
           <Route path="/ypatingi-pasiulymai" element={<SpecialOffers />} />
+
+          {/* Atskirų pasiūlymų landing page’ai */}
           <Route
             path="/ypatingi-pasiulymai/cirkonio-keramikos-vainikeliai"
             element={<CirkonioOffer />}
+          />
+          <Route
+            path="/ypatingi-pasiulymai/pilnas-zandikaulio-atstatymas"
+            element={<AllOn4Implants />}
           />
         </Routes>
       </main>
