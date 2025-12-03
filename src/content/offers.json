@@ -20,12 +20,11 @@
       "priceCurrency": "EUR",
       "priceText": "Vienas cirkonio keramikos vainikėlis (ant danties) – 299 €.",
       "suitableFor": "Puikus sprendimas pacientams, kurie nori natūraliai atrodančių, ilgaamžių ir metalų neturinčių dantų restauracijų.",
-      "ctaText": "Atvykite nemokamai konsultacijai",
-      "ctaHref": "/kontaktai#registracija",
+      "ctaText": "Sužinoti daugiau apie cirkonio vainikėlius",
+      "ctaHref": "/ypatingi-pasiulymai/cirkonio-keramikos-vainikeliai",
       "note": "Nemokama pirminė konsultacija ir gydytojo sudarytas gydymo planas. Galimybė mokėti dalimis. Akcija galioja iki 2026-01-31.",
       "poster": true
     },
-
     {
       "label": "Pilnas žandikaulio atkūrimas ant 4 implantų",
       "title": "Atkuriame visus žandikaulio dantis ant 4 implantų – vos per 1 dieną!",
@@ -41,11 +40,10 @@
       "priceCurrency": "EUR",
       "priceText": "Kaina – 3800 €",
       "suitableFor": "Rekomenduojamas sprendimas pacientams, netekusiems daugumos dantų, nešiojantiems išimamus protezus arba turintiems blogą likusių dantų prognozę.",
-      "ctaText": "Atvykite nemokamai konsultacijai",
-      "ctaHref": "/kontaktai#registracija",
+      "ctaText": "Sužinoti daugiau apie pilną žandikaulio atstatymą",
+      "ctaHref": "/ypatingi-pasiulymai/pilnas-zandikaulio-atstatymas",
       "poster1": true
     },
-
     {
       "label": "Specialus pasiūlymas tobulai šypsenai",
       "title": "Pilna burnos higiena + BEYOND® dantų balinimas",
