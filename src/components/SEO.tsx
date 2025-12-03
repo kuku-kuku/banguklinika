@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { useEffect } from "react"; // 👈 PRIDĖJOM
 
 const SITE_NAME = "Bangų klinika";
 const SITE_URL = "https://banguklinika.lt";
@@ -78,10 +79,28 @@ export default function SEO({
       ]
     };
 
+  // 👇 NAUJA DALIS – garantuotai perrašom <meta name="description">
+  useEffect(() => {
+    if (!finalDescription) return;
+
+    let meta = document.querySelector('meta[name="description"]');
+
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", "description");
+      document.head.appendChild(meta);
+    }
+
+    meta.setAttribute("content", finalDescription);
+  }, [finalDescription]);
+
   return (
     <Helmet>
       <title>{finalTitle}</title>
-      <meta name="description" content={finalDescription} />
+
+      {/* !!! ČIA PAŠALINAM description META, NES JĄ VALDOM rankiniu būdu per useEffect */}
+      {/* <meta name="description" content={finalDescription} /> */}
+
       {keywords && <meta name="keywords" content={keywords} />}
       <meta name="theme-color" content="#0d76d6" />
       <link rel="canonical" href={canonicalUrl} />
