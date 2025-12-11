@@ -70,14 +70,14 @@ export default function Home() {
       <SEO
         isHome
         title="Odontologijos klinika Klaipėdoje"
-        description={home.seo?.description}
+        description="Bangų klinika Klaipėdoje: visos dantų gydymo paslaugos☑️modernūs estetiniai sprendimai☑️profesionaliai sudaromi individualūs gydymo planai☑️Mums svarbiausia⏩Jūsų dantų sveikata!"
         keywords={home.seo?.keywords}
         image={home.seo?.image}
         structuredData={{
           "@context": "https://schema.org",
           "@type": "Dentist",
           "name": "Bangų klinika",
-          "description": "Bangų klinika Klaipėdoje: visos dantų gydymo paslaugos ☑️ modernūs estetiniai sprendimai ☑️ profesionaliai sudaromi individualūs gydymo planai ☑️ Mums svarbiausia ⏩ Jūsų dantų sveikata!",
+          "description": "Bangų klinika Klaipėdoje: visos dantų gydymo paslaugos☑️modernūs estetiniai sprendimai☑️profesionaliai sudaromi individualūs gydymo planai☑️Mums svarbiausia⏩Jūsų dantų sveikata!",
           "url": "https://banguklinika.lt",
           "telephone": CLINIC.phone,
           "email": CLINIC.email,
@@ -170,10 +170,20 @@ export default function Home() {
                   />
                 </AnimatePresence>
 
-                <button aria-label="Ankstesnė nuotrauka" onClick={() => { setAuto(false); setIndex(i => (i - 1 + images.length) % images.length) }}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/70 hover:bg-white ring-1 ring-white/60 text-darkblue-700 text-xl transition">‹</button>
-                <button aria-label="Kita nuotrauka" onClick={() => { setAuto(false); setIndex(i => (i + 1) % images.length) }}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/70 hover:bg-white ring-1 ring-white/60 text-darkblue-700 text-xl transition">›</button>
+                <button
+                  aria-label="Ankstesnė nuotrauka"
+                  onClick={() => { setAuto(false); setIndex(i => (i - 1 + images.length) % images.length) }}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/70 hover:bg-white ring-1 ring-white/60 text-darkblue-700 text-xl transition"
+                >
+                  ‹
+                </button>
+                <button
+                  aria-label="Kita nuotrauka"
+                  onClick={() => { setAuto(false); setIndex(i => (i + 1) % images.length) }}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/70 hover:bg-white ring-1 ring-white/60 text-darkblue-700 text-xl transition"
+                >
+                  ›
+                </button>
 
                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2">
                   {images.map((_, i) => (
