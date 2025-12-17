@@ -79,7 +79,6 @@ export default function SEO({
       ]
     };
 
-  // 👇 NAUJA DALIS – garantuotai perrašom <meta name="description">
   useEffect(() => {
     if (!finalDescription) return;
 
