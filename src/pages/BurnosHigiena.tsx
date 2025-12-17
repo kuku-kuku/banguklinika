@@ -22,7 +22,7 @@ function CheckIcon() {
   )
 }
 
-function ScalpelIcon() {
+function ToothIcon() {
   return (
     <svg className="w-8 h-8 text-brand mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -30,12 +30,28 @@ function ScalpelIcon() {
   )
 }
 
-export default function BurnosChirurgija() {
+function ShieldIcon() {
+  return (
+    <svg className="w-8 h-8 text-brand mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  )
+}
+
+function ClockIcon() {
+  return (
+    <svg className="w-8 h-8 text-brand mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  )
+}
+
+export default function BurnosHigiena() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "MedicalProcedure",
-    "name": "Profesionali burnos chirurgija",
-    "description": "Burnos chirurgijos paslaugos Klaipėdoje: dantų šalinimas, implantacija, kaulo augmentacija.",
+    "name": "Profesionali burnos higiena",
+    "description": "Burnos higiena su AIRFLOW technologija Klaipėdoje.",
     "provider": {
       "@type": "Dentist",
       "name": "Bangų klinika"
@@ -45,218 +61,267 @@ export default function BurnosChirurgija() {
   return (
     <AnimatedSection>
       <SEO
-        title="Burnos Chirurgija Klaipėdoje | Dantų Rovimas | Bangų klinika"
-        description="Profesionali burnos chirurgija Klaipėdoje. Protinių dantų šalinimas, implantacija, kaulo augmentacija. Saugios ir neskausmingos procedūros."
-        keywords="burnos chirurgija, dantu rovimas, protiniai dantys, cistos, kaulo priauginimas, klaipeda"
+        title="Burnos Higiena (AIRFLOW®) Klaipėdoje | Bangų klinika"
+        description="Profesionali burnos higiena su AIRFLOW® technologija. Pašaliname akmenis, apnašas ir grąžiname dantims natūralų baltumą. Registruokitės vizitui Klaipėdoje."
+        keywords="burnos higiena, airflow, dantų valymas, akmenų šalinimas, klaipėda"
         structuredData={structuredData}
       />
 
       <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
         
-        {/* HERO */}
+        {/* HERO HEADER */}
         <motion.header className="mb-10 text-center sm:text-left" variants={item}>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-4">
-            Profesionali burnos chirurgija Klaipėdoje
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
+            Profesionali burnos higiena Klaipėdoje su AIRFLOW® technologija
           </h1>
-          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
+          
+          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed mb-8">
             <p className="mb-4">
-              Burnos chirurgija – tai odontologinio gydymo sritis, skirta spręsti sudėtingesnes dantų, minkštųjų audinių ir žandikaulio kaulo problemas, kai įprastas terapinis gydymas nebėra pakankamas. Tokios procedūros dažnai reikalingos siekiant pašalinti infekcijos židinius, atkurti burnos funkciją ar paruošti burną tolimesniam gydymui, pavyzdžiui, implantacijai ar protezavimui.
+              Net ir kasdien kruopščiai valant dantis namuose, šepetėlis bei tarpdančių siūlas nepasiekia visų burnos vietų. Ilgainiui susidariusios apnašos ir dantų akmenys gali sukelti kariesą, dantenų uždegimą ar nemalonų burnos kvapą. Būtent todėl profesionali burnos higiena yra viena svarbiausių profilaktinių procedūrų, padedančių išsaugoti sveikus dantis ir dantenas.
             </p>
             <p>
-              Bangų odontologijos klinikoje Klaipėdoje burnos chirurginės procedūros atliekamos laikantis šiuolaikinių medicininių standartų, naudojant modernią diagnostiką ir patikimus nuskausminimo metodus. Patyręs burnos chirurgas kiekvieną klinikinę situaciją vertina individualiai, siekdamas saugaus, prognozuojamo ir ilgalaikio rezultato. Didelis dėmesys skiriamas ne tik pačiai procedūrai, bet ir paciento savijautai, aiškiam gydymo paaiškinimui bei sklandžiam gijimo procesui.
+              Bangų odontologijos klinikoje Klaipėdoje atliekama burnos higiena naudojant modernią AIRFLOW® technologiją. Procedūros metu dantys ne tik kruopščiai išvalomi, bet ir tampa šviesesni, lygesni, gaivesni. Tai saugus ir efektyvus sprendimas tiek profilaktikai, tiek prieš kitas odontologines procedūras.
             </p>
+          </div>
+
+          {/* CTA MYGTUKAS VIRŠUJE */}
+          <div className="text-center sm:text-left">
+            <Link 
+              to="/kontaktai" 
+              className="inline-block bg-brand hover:bg-brand-600 text-white text-lg font-bold py-4 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1"
+            >
+              Registruotis vizitui
+            </Link>
           </div>
         </motion.header>
 
-        {/* KAS YRA BURNOS CHIRURGIJA */}
+        {/* KAS YRA HIGIENA (BURBULAI) */}
         <motion.section className="mb-12" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-            Kas yra burnos chirurgija?
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+            Kas yra profesionali burnos higiena?
           </h2>
-          <div className="bg-brand-50/50 p-6 rounded-2xl border border-brand/20 text-slate-700 leading-relaxed space-y-4">
+          <div className="grid sm:grid-cols-3 gap-6">
+            <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
+              <ToothIcon />
+              <p className="text-sm text-slate-700 leading-relaxed">
+                Profesionali burnos higiena – tai specialisto atliekama procedūra, kurios metu nuo dantų paviršių, tarpdančių ir po dantenomis pašalinamos minkštosios apnašos, dantų akmenys bei pigmentinės dėmės.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
+              <ShieldIcon />
+              <p className="text-sm text-slate-700 leading-relaxed">
+                Ilgainiui apnašos mineralizuojasi ir virsta dantų akmenimis. Tai sudaro palankią terpę bakterijoms, kurios gali sukelti dantenų uždegimą ir periodonto ligas. Higiena yra svarbiausia profilaktikos priemonė.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
+              <ClockIcon />
+              <p className="text-sm text-slate-700 leading-relaxed">
+                Reguliariai atliekama dantų higiena padeda palaikyti sveikas dantenas ir sumažina karieso riziką. Dažniausiai procedūra rekomenduojama kas 6 mėnesius, o esant problemoms – dažniau.
+              </p>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* AIRFLOW TECHNOLOGIJA */}
+        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+            Kas yra AIRFLOW® technologija?
+          </h2>
+          <div className="space-y-4 text-slate-700 leading-relaxed">
             <p>
-              Burnos chirurgija – tai odontologijos sritis, apimanti chirurginį dantų, burnos gleivinės, žandikaulių ir aplinkinių audinių gydymą. Ji taikoma tais atvejais, kai dantų ar burnos problemų neįmanoma išspręsti konservatyviais metodais, o chirurginė intervencija yra būtina siekiant užkirsti kelią ligos progresavimui ar atkurti normalias burnos funkcijas.
+              AIRFLOW® – tai moderni dantų apnašų šalinimo technologija, kurios metu naudojamas oro, vandens ir specialios sodos mišinys. Šis metodas leidžia švelniai, bet itin tiksliai pašalinti minkštąsias apnašas ir pigmentines dėmes net sunkiai pasiekiamose vietose.
             </p>
             <p>
-              Dažniausiai burnos chirurgija apima procedūras, susijusias su nepagydomai pažeistų dantų šalinimu, infekcijų gydymu, protinių dantų problemomis, kaulo audinio korekcijomis ar pasiruošimu dantų implantacijai. Šios intervencijos gali būti tiek paprastos, tiek sudėtingesnės, todėl kiekvienu atveju atliekama išsami diagnostika ir sudaromas individualus gydymo planas.
+              AIRFLOW® technologija ypač tinkama pacientams, turintiems implantus, plombas, vainikėlius ar protezus, nes procedūra yra saugi dantų emaliui ir restauracijoms. Dėl komforto ir efektyvumo ši technologija dažnai pasirenkama tiek reguliariai profilaktikai, tiek kaip pagalbinė priemonė gydant dantenų ligas.
             </p>
-            <p className="font-medium text-darkblue-700">
-              Svarbu pabrėžti, kad šiuolaikinė burnos chirurgija ženkliai skiriasi nuo anksčiau vyravusių stereotipų. Procedūros atliekamos taikant efektyvią vietinę nejautrą ar kitus nuskausminimo metodus, todėl pacientas nejaučia skausmo, o diskomfortas po procedūros paprastai būna minimalus ir laikinas.
+            <p>
+              AIRFLOW® taip pat padeda atkurti natūralų dantų atspalvį ir užtikrina ilgiau išliekantį švaros pojūtį po profesionalios burnos higienos.
             </p>
           </div>
         </motion.section>
 
-        {/* KADA REIKALINGA KONSULTACIJA (Checklist) */}
+        {/* NAUDA (CHECKLIST) */}
         <motion.section className="mb-12" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Kada reikalinga burnos chirurgo konsultacija?
+            Kodėl verta rinktis profesionalią burnos higieną?
           </h2>
-          <p className="text-slate-700 mb-6">
-            Burnos chirurgo konsultacija reikalinga tuomet, kai dantų ar burnos audinių problemų neįmanoma išspręsti taikant įprastus gydymo metodus. Dažnai pacientai delsia kreiptis, nes skausmas būna nestiprus, tačiau burnos ligos gali progresuoti tyliai. Mūsų klinikoje rekomenduojama kreiptis šiais atvejais:
+          <p className="text-slate-700 mb-6 leading-relaxed">
+            Profesionali burnos higiena yra ne tik estetinė, bet ir gydomoji bei profilaktinė procedūra. Reguliarus apnašų ir dantų akmenų šalinimas padeda išvengti daugelio burnos ligų, kurios dažnai vystosi nepastebimai ir ilgainiui sukelia rimtas komplikacijas. Bangų odontologijos klinikoje Klaipėdoje atliekama dantų higiena orientuota į ilgalaikį rezultatą.
           </p>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 gap-3">
             {[
-              "Kai dantis stipriai pažeistas ir neįmanoma išsaugoti terapiniu būdu",
-              "Esant nuolatiniam ar pasikartojančiam dantenų uždegimui, pūliniui",
-              "Kai protiniai dantys dygsta netaisyklingai ar kelia skausmą",
-              "Patyrus dantų ar žandikaulio traumą",
-              "Prieš planuojamą dantų implantaciją ar sudėtingesnį protezavimą",
-              "Nustačius cistas, darinius ar kitus pakitimus kaule"
+              "Pašalinamos nematomos apnašos po dantenomis ir tarpdančiuose",
+              "Nuvalomi dantų akmenys – gingivito priežastis",
+              "Poliruojami dantų paviršiai (dantys tampa lygesni ir baltesni)",
+              "Pagerėja burnos kvapas",
+              "Sumažėja ankstyvo dantų netekimo rizika",
+              "Suteikiami individualūs higienos patarimai"
             ].map((text, i) => (
-              <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-100 shadow-sm">
-                <span className="mt-1"><ScalpelIcon /></span>
-                <span className="text-slate-700 font-medium">{text}</span>
+              <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-100 shadow-sm">
+                <span className="mt-0.5"><CheckIcon /></span>
+                <span className="text-slate-700 text-sm font-medium">{text}</span>
               </div>
             ))}
           </div>
-          <p className="text-slate-600 text-sm mt-4 italic">
-            Laiku atlikta konsultacija leidžia tiksliai nustatyti problemos priežastį ir parinkti optimalų sprendimą.
+          <p className="text-slate-700 mt-4 leading-relaxed">
+            Ši procedūra ypač svarbi pacientams, kurie nori ne tik gražios šypsenos, bet ir ilgalaikės burnos sveikatos. Reguliari profesionali higiena padeda išvengti sudėtingų ir brangių gydymo etapų ateityje.
           </p>
-        </motion.section>
-
-        {/* PROCEDŪRŲ SĄRAŠAS */}
-        <motion.section className="mb-12" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Kokias procedūras atlieka burnos chirurgas?
-          </h2>
-          <div className="space-y-3">
-             {[
-               "Dantų šalinimas – kai dantis nepagydomai pažeistas",
-               "Protinių (retinuotų) dantų šalinimas (kai spaudžia kitus dantis)",
-               "Pūlinių atvėrimas ir infekcijų gydymas",
-               "Šaknies viršūnės rezekcija (kai infekcija išlieka po kanalų gydymo)",
-               "Žandikaulio cistų ir kitų darinių šalinimas",
-               "Paruošiamosios procedūros implantacijai (kaulo korekcijos)",
-               "Sinuso dugno pakėlimas",
-               "Minkštųjų audinių chirurgija"
-             ].map((proc, i) => (
-               <div key={i} className="flex items-center gap-3">
-                 <div className="w-1.5 h-1.5 rounded-full bg-brand shrink-0"></div>
-                 <span className="text-slate-700">{proc}</span>
-               </div>
-             ))}
-          </div>
         </motion.section>
 
         {/* KAINOS */}
         <motion.section className="mb-12" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Paslaugų kainos
+            Burnos higienos paslaugų kainos mūsų klinikoje
           </h2>
-          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden">
+          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+             <p>
+               Profesionalios burnos higienos kaina priklauso nuo individualios paciento burnos būklės, apnašų kiekio ir pasirenkamų papildomų procedūrų.
+             </p>
+          </div>
+
+          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
             <div className="divide-y divide-slate-100">
-              {[
-                { name: "Kaulo augmentacija", price: "150 – 600 €" },
-                { name: "Šaknies šalinimas (jau pašalinto danties)", price: "60 – 80 €" },
-                { name: "Danties šalinimas", price: "80 – 100 €" },
-                { name: "Komplikuotas protinių dantų šalinimas", price: "120 – 150 €" }
-              ].map((service, index) => (
-                <div key={index} className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                  <span className="text-slate-700 font-medium w-2/3">{service.name}</span>
-                  <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">{service.price}</span>
-                </div>
-              ))}
-            </div>
-            <div className="p-4 bg-gray-50 text-sm text-slate-500">
-              Tiksli procedūros apimtis ir galutinė kaina aptariama individualios konsultacijos metu.
-            </div>
-          </div>
-        </motion.section>
-
-        {/* GYDYMO EIGA (STEPS) */}
-        <motion.section className="mb-12" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Kaip atliekamas burnos chirurginis gydymas?
-          </h2>
-          <div className="grid gap-6 md:grid-cols-4">
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-              <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
-              <h3 className="font-bold text-darkblue-700 mb-2">Konsultacija</h3>
-              <p className="text-sm text-slate-600">Klinikinė apžiūra, rentgeno tyrimai, problemos nustatymas ir individualaus plano sudarymas.</p>
-            </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-              <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
-              <h3 className="font-bold text-darkblue-700 mb-2">Pasiruošimas</h3>
-              <p className="text-sm text-slate-600">Supažindinimas su eiga, nuskausminimo parinkimas (dažniausiai vietinė nejautra).</p>
-            </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-              <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
-              <h3 className="font-bold text-darkblue-700 mb-2">Procedūra</h3>
-              <p className="text-sm text-slate-600">Atliekama steriliai, tiksliai ir švelniai, naudojant modernius instrumentus.</p>
-            </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-              <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
-              <h3 className="font-bold text-darkblue-700 mb-2">Priežiūra</h3>
-              <p className="text-sm text-slate-600">Rekomendacijos gijimui, vaistų vartojimas ir, jei reikia, pakartotinis vizitas.</p>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700 font-medium">Pilna profesionali burnos higiena</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">60 – 80 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700 font-medium">Pakartotinė burnos higiena (reguliariai lankantis)</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 50 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700 font-medium">Fluoro lako aplikacija</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 20 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700 font-medium">ICON gydymas (fluorozės dėmėms)</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">60 €</span>
+              </div>
             </div>
           </div>
-        </motion.section>
-
-        {/* SAUGUMAS IR DELSIMAS (INFO TEXT) */}
-        <motion.section className="mb-12 grid md:grid-cols-2 gap-8" variants={item}>
-          <div>
-            <h3 className="text-lg font-bold text-darkblue-700 mb-3">Ar procedūros saugios?</h3>
-            <p className="text-slate-700 text-sm leading-relaxed mb-4">
-              Šiuolaikinė burnos chirurgija yra saugi sritis. Prieš procedūrą įvertinama sveikatos būklė, parenkama tinkamiausia taktika. Vietinė nejautra užtikrina, kad skausmo nejausite.
-            </p>
-            <p className="text-slate-700 text-sm leading-relaxed">
-              Po gydymo galimas laikinas patinimas ar jautrumas, tačiau tai normali reakcija, kuri greitai praeina laikantis rekomendacijų.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold text-red-700/80 mb-3">Kas nutinka atidėliojant?</h3>
-            <p className="text-slate-700 text-sm leading-relaxed mb-4">
-              Delsimas gali turėti neigiamų pasekmių. Neišgydytos infekcijos gali plisti, sukelti pūlinius ar kaulo pažeidimus.
-            </p>
-            <p className="text-slate-700 text-sm leading-relaxed">
-              Atidėliojant gydymą, jis tampa sudėtingesnis ir brangesnis, be to, gali apsunkinti būsimą implantaciją ar protezavimą.
-            </p>
-          </div>
-        </motion.section>
-
-        {/* REKOMENDACIJOS (PRE & POST) */}
-        <motion.section className="mb-12" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Ką svarbu žinoti prieš ir po procedūros?
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-6">
-            <div className="bg-brand-50/30 p-6 rounded-2xl border border-brand/10">
-              <h3 className="font-bold text-darkblue-700 mb-4 flex items-center gap-2">Prieš procedūrą</h3>
-              <ul className="space-y-2 text-slate-700 text-sm list-disc pl-4">
-                <li>Laikytis gydytojo nurodymų dėl mitybos ar vaistų.</li>
-                <li>Informuoti specialistą apie vartojamus vaistus ar lėtines ligas.</li>
-                <li>Vengti rūkymo, nes jis lėtina gijimą.</li>
-              </ul>
-            </div>
-            <div className="bg-brand-50/30 p-6 rounded-2xl border border-brand/10">
-              <h3 className="font-bold text-darkblue-700 mb-4 flex items-center gap-2">Po procedūros</h3>
-              <ul className="space-y-2 text-slate-700 text-sm list-disc pl-4">
-                <li>Kurį laiką vengti intensyvaus fizinio krūvio.</li>
-                <li>Laikytis švelnios burnos higienos, nedirginti operuotos vietos.</li>
-                <li>Rinktis minkštesnį, nekarštą maistą.</li>
-                <li>Stebėti gijimo eigą.</li>
-              </ul>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* KODĖL MES & CTA */}
-        <motion.div className="mt-8 mb-12" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-            Kodėl verta rinktis Bangų odontologijos kliniką?
-          </h2>
-          <p className="text-slate-700 mb-8 leading-relaxed">
-            Renkantis burnos chirurgijos paslaugas itin svarbu pasitikėti specialistu. Mūsų klinikoje dirbantis chirurgas kiekvieną situaciją vertina individualiai, naudodamas modernius diagnostikos metodus. Užtikriname aiškią komunikaciją, skaidrumą ir dėmesį jūsų saugumui.
-          </p>
           
-          <div className="text-center">
-             <p className="text-slate-600 mb-6 font-medium">
-              Kviečiame registruotis burnos chirurgo konsultacijai.
-            </p>
-            <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-4 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
-              Registruotis vizitui
-            </Link>
+          <p className="text-slate-700 leading-relaxed text-sm">
+            Tiksli procedūros apimtis ir galutinė kaina aptariama individualios konsultacijos metu, atsižvelgiant į paciento poreikius ir burnos būklę.
+          </p>
+        </motion.section>
+
+        {/* KADA REIKALINGA (INDIKACIJOS) */}
+        <motion.section className="mb-12" variants={item}>
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+            Kada profesionali burnos higiena yra ypač reikalinga?
+          </h2>
+          <div className="bg-brand-50/30 p-6 rounded-2xl border border-brand/10">
+            <ul className="list-disc pl-5 space-y-2 text-slate-700">
+              <li>Pacientams, kurie pastebi kraujuojančias dantenas, nemalonų kvapą ar jautrumą.</li>
+              <li>Turintiems implantus, tiltus, vainikėlius ar protezus (ilgaamžiškumui užtikrinti).</li>
+              <li>Nešiojantiems ortodontinius aparatus (kai higiena sudėtingesnė).</li>
+              <li>Rūkantiems ar dažnai vartojantiems kavą, arbatą.</li>
+              <li>Prieš atliekant dantų balinimą, plombavimą ar protezavimą.</li>
+              <li>Kaip reguliarią profilaktiką kas 6 mėnesius (arba kas 3 mėnesius esant problemoms).</li>
+            </ul>
           </div>
+        </motion.section>
+
+        {/* EIGA (STEPS) */}
+        <motion.section className="mb-12" variants={item}>
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+            Kaip atliekama burnos higiena su AIRFLOW® technologija?
+          </h2>
+          <div className="space-y-6">
+            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
+              <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
+                <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">1</span>
+                Dantų akmenų šalinimas ultragarsiniu skaleriu
+              </h3>
+              <p className="text-slate-600 leading-relaxed">
+                Procedūra pradedama dantų akmenų šalinimu naudojant ultragarsinį skalerį. Šis prietaisas vibracijų pagalba efektyviai suskaldo ir pašalina kietas apnašas nuo dantų paviršių ir po dantenomis, nepažeisdamas emalio.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
+              <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
+                <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">2</span>
+                Apnašų šalinimas AIRFLOW® metodu
+              </h3>
+              <p className="text-slate-600 leading-relaxed">
+                Toliau atliekamas dantų valymas AIRFLOW® aparatu. Naudojamas oro, vandens ir specialios sodos mišinys leidžia švelniai pašalinti minkštąsias apnašas bei pigmentines dėmes net sunkiai pasiekiamose vietose. Šis etapas ypač vertinamas dėl komforto ir akivaizdaus estetinio rezultato.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
+              <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
+                <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">3</span>
+                Dantų poliravimas specialia pasta
+              </h3>
+              <p className="text-slate-600 leading-relaxed">
+                Procedūra užbaigiama dantų poliravimu specialia pasta. Poliruotas dantų paviršius tampa lygesnis, todėl apnašos kaupiasi lėčiau, o dantys ilgiau išlieka švarūs ir blizgūs.
+              </p>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* PO PROCEDŪROS */}
+        <motion.section className="mb-12" variants={item}>
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+            Ką svarbu žinoti po profesionalios burnos higienos?
+          </h2>
+          <div className="space-y-4 text-slate-700 leading-relaxed">
+             <p>
+               Po profesionalios burnos higienos dauguma pacientų jau iš karto pastebi švaros, gaivumo ir lengvumo pojūtį burnoje. Dantų paviršiai tampa lygesni, vizualiai šviesesni, o burnos kvapas – malonesnis. Kai kuriais atvejais, ypač jei buvo daug dantų akmenų ar jautrios dantenos, trumpam gali pasireikšti nežymus dantenų jautrumas ar kraujavimas – tai normali ir laikina organizmo reakcija.
+             </p>
+             <div className="bg-brand-50/30 p-6 rounded-xl border border-brand/10">
+               <h3 className="font-semibold text-darkblue-700 mb-3">Rekomendacijos rezultatui išlaikyti:</h3>
+               <ul className="list-disc pl-5 space-y-2">
+                 <li>Laikytis individualių higienisto patarimų.</li>
+                 <li>Valyti dantis bent 2 kartus per dieną, naudoti tarpdančių siūlą/šepetėlius.</li>
+                 <li>Pirmąsias valandas vengti dažančių produktų (kavos, vyno, arbatos).</li>
+                 <li>Apsilankyti higienai kas 6 mėnesius (arba dažniau).</li>
+               </ul>
+             </div>
+             <p>
+               Tinkama kasdienė burnos priežiūra ir reguliarūs profilaktiniai vizitai padeda ne tik išlaikyti švarius dantis, bet ir apsaugo nuo dantenų ligų bei sudėtingo gydymo ateityje.
+             </p>
+          </div>
+        </motion.section>
+
+        {/* MITAI (ACCORDION) */}
+        <motion.section className="mb-12" variants={item}>
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+            Dažniausi mitai apie profesionalią burnos higieną
+          </h2>
+          <div className="space-y-4">
+            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+              <h3 className="font-bold text-slate-900 mb-2">Mitas #1: higiena pažeidžia emalį</h3>
+              <p className="text-slate-600 text-sm">Tai klaidingas įsitikinimas. Naudojamos priemonės (AIRFLOW) yra saugios ir nepažeidžia emalio, o dantys išlieka lygūs ir nepažeisti.</p>
+            </div>
+            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+              <h3 className="font-bold text-slate-900 mb-2">Mitas #2: procedūra skausminga</h3>
+              <p className="text-slate-600 text-sm">Dauguma pacientų procedūrą apibūdina kaip komfortišką. Diskomfortas minimalus ir laikinas, priklausomai nuo apnašų kiekio.</p>
+            </div>
+            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+              <h3 className="font-bold text-slate-900 mb-2">Mitas #3: pakanka valyti dantis namuose</h3>
+              <p className="text-slate-600 text-sm">Namuose neįmanoma pasiekti visų vietų (pvz., po dantenomis). Profesionali higiena pašalina apnašas iš sunkiai prieinamų zonų.</p>
+            </div>
+             <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+              <h3 className="font-bold text-slate-900 mb-2">Mitas #4: higiena reikalinga tik tada, kai skauda</h3>
+              <p className="text-slate-600 text-sm">Ligos vystosi be skausmo. Reguliari higiena užkerta kelią problemoms (kraujavimui, kvapui) dar prieš joms pasireiškiant.</p>
+            </div>
+             <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+              <h3 className="font-bold text-slate-900 mb-2">Mitas #5: higiena tik dėl grožio</h3>
+              <p className="text-slate-600 text-sm">Nors dantys tampa šviesesni, pagrindinis tikslas – sveikata: karieso ir dantenų ligų prevencija.</p>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* KODĖL MES IR CTA */}
+        <motion.div className="mt-8 mb-12 text-center" variants={item}>
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+            Kviečiame registruotis profesionaliai burnos higienai Bangų klinikoje
+          </h2>
+          <p className="text-slate-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Jeigu ieškote patikimos ir profesionalios odontologijos klinikos Klaipėdoje, kviečiame apsilankyti Bangų odontologijos klinikoje. Pacientų pasitikėjimą mūsų teikiamomis paslaugomis patvirtina teigiami atsiliepimai, kuriuose dažnai minimas procedūros švelnumas, aiškus situacijos apibendrinimas ir džiuginantis ilgalaikis rezultatas. Čia Jūsų laukia modernios technologijos, patyrę specialistai ir individualus požiūris į kiekvieną pacientą.
+          </p>
+          <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-4 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+            Registruotis vizitui
+          </Link>
         </motion.div>
 
       </motion.div>
