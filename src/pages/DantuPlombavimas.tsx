@@ -68,67 +68,88 @@ export default function DantuPlombavimas() {
       />
 
       <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
-        
+
         {/* HERO */}
-        <motion.header className="mb-10 text-center sm:text-left" variants={item}>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-4">
+        <motion.header className="mb-12 text-center sm:text-left" variants={item}>
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
             Profesionalus danties plombavimas Klaipėdoje
           </h1>
           <p className="text-xl text-brand font-medium mb-6">
             Danties funkcijos ir estetikos atkūrimas
           </p>
-          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
+          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed mb-8">
             <p className="mb-4">
               Dantų plombavimas yra viena dažniausiai atliekamų odontologinių procedūrų, skirta sustabdyti danties pažeidimų progresavimą ir atkurti jo funkciją bei sandarumą. Laiku atliktas danties plombavimas padeda apsaugoti dantį nuo tolimesnio gedimo, sumažinti skausmo riziką ir išvengti sudėtingesnio gydymo ateityje.
             </p>
             <p>
-              Bangų odontologijos klinikoje Klaipėdoje atliekamas danties plombavimas grindžiamas kruopščia diagnostika, moderniomis plombinėmis medžiagomis ir individualiu požiūriu į kiekvieną pacientą. Procedūros metu siekiama ne tik pašalinti pažeistus audinius, bet ir atkurti natūralią danties formą bei kramtymo funkciją.
+              Bangų odontologijos klinikoje Klaipėdoje atliekamas danties plombavimas grindžiamas kruopščia diagnostika, moderniomis plombinėmis medžiagomis ir individualiu požiūriu į kiekvieną pacientą. Procedūros metu siekiama ne tik pašalinti pažeistus audinius, bet ir atkurti natūralią danties formą bei kramtymo funkciją. Prieš gydymą įvertinama danties būklė, todėl parenkamas tinkamiausias plombavimo būdas, užtikrinantis ilgalaikį ir patikimą rezultatą.
             </p>
+          </div>
+
+          {/* CTA MYGTUKAS VIRŠUJE */}
+          <div className="flex justify-center sm:justify-start">
+             <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+              Registruotis vizitui
+            </Link>
           </div>
         </motion.header>
 
-        {/* KAS TAI YRA (BURBULAI) */}
-        <motion.section className="mb-12" variants={item}>
+        {/* KAS TAI YRA */}
+        <motion.section className="mb-14" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6 text-center sm:text-left">
             Kas yra danties plombavimas?
           </h2>
+          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed mb-8">
+            <p className="mb-4">
+              Danties plombavimas – tai odontologinė procedūra, kurios metu pašalinami ėduonies ar kitaip pažeisti danties audiniai, o susidariusi ertmė atkuriama specialia plombine medžiaga. Tokiu būdu dantis tampa sandarus, atgauna savo funkciją ir yra apsaugomas nuo bakterijų patekimo bei tolimesnio gedimo.
+            </p>
+            <p>
+              Plombavimo metu atkuriama ne tik danties struktūra, bet ir jo anatominė forma, leidžianti taisyklingai kramtyti ir išvengti netolygaus apkrovimo. Priklausomai nuo pažeidimo gylio ir vietos, gali būti taikomi skirtingi plombavimo sprendimai – nuo paprasto paviršinio plombavimo iki gilesnių restauracijų.
+            </p>
+          </div>
+
           <div className="grid sm:grid-cols-3 gap-6">
             <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
               <ToothIcon />
               <h3 className="font-semibold text-darkblue-700 mb-2">Funkcijos atkūrimas</h3>
               <p className="text-sm text-slate-700 leading-relaxed">
-                Tai procedūra, kurios metu pašalinami pažeisti audiniai, o ertmė atkuriama specialia medžiaga. Dantis atgauna savo funkciją ir formą.
+                Atkuriama danties kramtymo funkcija ir anatominė forma, leidžianti išvengti sąkandžio problemų.
               </p>
             </div>
             <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
               <ShieldIcon />
-              <h3 className="font-semibold text-darkblue-700 mb-2">Apsauga</h3>
+              <h3 className="font-semibold text-darkblue-700 mb-2">Apsauga ir sandarumas</h3>
               <p className="text-sm text-slate-700 leading-relaxed">
-                Plombavimas padaro dantį sandarų ir apsaugo nuo bakterijų patekimo bei tolimesnio gedimo ar skausmo rizikos.
+                Užkertamas kelias bakterijų plitimui ir danties nervo pažeidimams.
               </p>
             </div>
             <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
               <ClockIcon />
-              <h3 className="font-semibold text-darkblue-700 mb-2">Prevencija</h3>
+              <h3 className="font-semibold text-darkblue-700 mb-2">Ilgaamžiškumas</h3>
               <p className="text-sm text-slate-700 leading-relaxed">
-                Laiku atliktas plombavimas leidžia išvengti sudėtingesnio gydymo, pavyzdžiui, šaknų kanalų gydymo ar danties netekimo.
+                Laiku atliktas plombavimas leidžia išsaugoti natūralų dantį ilgus metus.
               </p>
             </div>
           </div>
         </motion.section>
 
-        {/* KADA REIKALINGA (CHECKLIST) */}
-        <motion.section className="mb-12" variants={item}>
+        {/* KADA REIKALINGA */}
+        <motion.section className="mb-14" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kada reikalingas dantų plombavimas?
           </h2>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed mb-6">
+            <p>
+              Dantų plombavimas reikalingas tuomet, kai danties audiniai yra pažeisti ir būtina sustabdyti tolimesnį gedimo procesą. Dažniausiai plombavimas atliekamas ankstyvose stadijose, kai problemą dar galima išspręsti konservatyviai. Į odontologą rekomenduojama kreiptis, jei pastebimi šie požymiai:
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-1 gap-4">
             {[
-              "Matomi ėduonies pažeidimai ar tamsios dėmės ant paviršiaus",
-              "Danties skausmas ar jautrumas šalčiui, karščiui, saldumui",
-              "Nuskilęs ar įtrūkęs dantis (dėl traumos ar kramtymo)",
-              "Senos, nesandarios plombos",
-              "Maisto strigimas konkrečioje danties vietoje"
+              "Matomi ėduonies pažeidimai ar tamsios dėmės ant danties paviršiaus",
+              "Danties skausmas ar jautrumas šalčiui, karščiui ar saldumui",
+              "Nuskilęs ar įtrūkęs dantis, pažeistas kramtant ar dėl traumos",
+              "Senos, nesandarios plombos, kurios gali leisti bakterijoms patekti į danties vidų",
+              "Maisto strigimas ar nemalonus pojūtis konkrečioje danties vietoje"
             ].map((text, i) => (
               <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-100 shadow-sm">
                 <span className="mt-1"><CheckIcon /></span>
@@ -136,39 +157,49 @@ export default function DantuPlombavimas() {
               </div>
             ))}
           </div>
+          <p className="mt-4 text-slate-700 italic">
+            Laiku atliktas plombavimas padeda apsaugoti dantį nuo tolimesnio irimo, sumažina skausmo riziką ir leidžia išvengti šaknų kanalų gydymo ar danties netekimo ateityje.
+          </p>
         </motion.section>
 
         {/* PLOMBAVIMO TIPAI */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section className="mb-14" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kokie dantų plombavimo tipai taikomi?
           </h2>
-          <div className="space-y-4">
-             {[
-               { title: "Gydomasis (funkcinis) plombavimas", desc: "Skirtas ėduonies pažeistiems dantims atkurti ir apsaugoti." },
-               { title: "Estetinis plombavimas", desc: "Kai atkuriama ne tik funkcija, bet ir danties forma bei spalva (dažniausiai priekiniams dantims)." },
-               { title: "Laikinas plombavimas", desc: "Taikomas tarp gydymo etapų arba stebint danties būklę." },
-               { title: "Gilus plombavimas", desc: "Kai pažeidimas arti nervo, reikalingas ypatingas tikslumas ir apsauga." }
-             ].map((type, i) => (
-               <div key={i} className="bg-brand-50/50 p-4 rounded-xl border border-brand/10">
-                 <h3 className="font-bold text-darkblue-700 mb-1">{type.title}</h3>
-                 <p className="text-sm text-slate-700">{type.desc}</p>
-               </div>
-             ))}
+          <p className="text-slate-700 mb-6">
+            Dantų plombavimas nėra vienodas visiems pacientams – plombavimo tipas parenkamas atsižvelgiant į danties pažeidimo pobūdį, gylį ir vietą. Bangų odontologijos klinikoje kiekvienam pacientui sudaromas individualus gydymo planas.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              { title: "Gydomasis (funkcinis) plombavimas", desc: "Skirtas ėduonies pažeistiems dantims atkurti ir apsaugoti nuo tolimesnio gedimo." },
+              { title: "Estetinis plombavimas", desc: "Kai atkuriama ne tik danties funkcija, bet ir jo forma bei spalva (ypač aktualu priekiniams dantims)." },
+              { title: "Laikinas plombavimas", desc: "Taikomas tarp gydymo etapų arba kai reikia stebėti danties būklę prieš nuolatinį plombavimą." },
+              { title: "Gilus plombavimas", desc: "Kai pažeidimas yra arti danties nervo ir reikalingas ypatingas tikslumas bei papildomos apsauginės medžiagos." }
+            ].map((type, i) => (
+              <div key={i} className="bg-brand-50/50 p-5 rounded-xl border border-brand/10 hover:bg-brand-50 transition">
+                <h3 className="font-bold text-darkblue-700 mb-2">{type.title}</h3>
+                <p className="text-sm text-slate-700 leading-relaxed">{type.desc}</p>
+              </div>
+            ))}
           </div>
         </motion.section>
 
         {/* KAINOS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section className="mb-14" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Danties plombavimo kaina
           </h2>
+          <div className="prose prose-slate max-w-none text-slate-700 mb-6">
+            <p>
+              Danties plombavimo kaina priklauso nuo danties būklės, pažeidimo apimties, naudojamų medžiagų ir procedūros sudėtingumo. Prieš pradedant gydymą Bangų odontologijos klinikoje visuomet atliekama konsultacija ir profilaktinis patikrinimas, kurių metu sudaromas individualus gydymo planas.
+            </p>
+          </div>
+
           <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden">
-            <div className="p-4 bg-brand-50/30 border-b border-brand/10 text-sm text-slate-700">
-              Prieš pradedant gydymą visuomet atliekama konsultacija (20 €), kurios metu sudaromas individualus planas.
-            </div>
             <div className="divide-y divide-slate-100">
               {[
+                { name: "Konsultacija, profilaktinis patikrinimas", price: "20 €" },
                 { name: "Danties plombavimas helio plomba", price: "70 – 90 €" },
                 { name: "Danties plombavimas stiklojonomerine plomba", price: "40 – 60 €" },
                 { name: "Laikina plomba", price: "nuo 40 €" },
@@ -185,69 +216,116 @@ export default function DantuPlombavimas() {
               ))}
             </div>
           </div>
+          <p className="text-sm text-slate-500 mt-4">
+            Tiksli danties plombavimo kaina aptariama individualios konsultacijos metu.
+          </p>
         </motion.section>
 
         {/* EIGA (STEPS) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section className="mb-14" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kaip atliekamas dantų plombavimas?
           </h2>
-          <div className="grid gap-6 md:grid-cols-4">
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-              <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
-              <h3 className="font-bold text-darkblue-700 mb-2">Diagnostika</h3>
-              <p className="text-sm text-slate-600">Apžiūra, rentgeno tyrimas ir gydymo plano sudarymas.</p>
+          <p className="text-slate-700 mb-8">
+            Dantų plombavimas Bangų odontologijos klinikoje atliekamas laikantis aiškios, saugios ir pacientui suprantamos procedūros eigos.
+          </p>
+          <div className="grid gap-6 md:grid-cols-2">
+
+            {/* 01 */}
+            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
+              {/* PAKEITIMAS: buvo "-top-4 -right-4", dabar "top-0 right-4" kad būtų viduje */}
+              <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none group-hover:text-brand/20 transition-colors">
+                01
+              </div>
+              <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Apžiūra ir diagnostika</h3>
+              <p className="text-sm text-slate-600 relative z-10">
+                Odontologas įvertina danties būklę, nustato pažeidimo gylį ir, jei reikia, atlieka rentgeno tyrimą. Tai leidžia tiksliai suplanuoti gydymą.
+              </p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-              <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
-              <h3 className="font-bold text-darkblue-700 mb-2">Valymas</h3>
-              <p className="text-sm text-slate-600">Pašalinami ėduonies pažeisti audiniai, paruošiama ertmė.</p>
+
+            {/* 02 */}
+            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none group-hover:text-brand/20 transition-colors">
+                02
+              </div>
+              <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Audinių paruošimas</h3>
+              <p className="text-sm text-slate-600 relative z-10">
+                Pašalinami ėduonies pažeisti ar susilpnėję danties audiniai, siekiant užtikrinti, kad bakterijos neplistų toliau. Svarbu švariai išvalyti ertmę.
+              </p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-              <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
-              <h3 className="font-bold text-darkblue-700 mb-2">Plombavimas</h3>
-              <p className="text-sm text-slate-600">Ertmė užpildoma medžiaga, atstatoma natūrali danties forma.</p>
+
+            {/* 03 */}
+            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none group-hover:text-brand/20 transition-colors">
+                03
+              </div>
+              <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Plombavimas</h3>
+              <p className="text-sm text-slate-600 relative z-10">
+                Paruošta ertmė atkuriama modernia plombine medžiaga, atstatant natūralią danties formą. Medžiaga sluoksniuojama ir kietinama.
+              </p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-              <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
-              <h3 className="font-bold text-darkblue-700 mb-2">Poliravimas</h3>
-              <p className="text-sm text-slate-600">Plomba koreguojama ir poliruojama, kad būtų lygi ir patogi.</p>
+
+            {/* 04 */}
+            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none group-hover:text-brand/20 transition-colors">
+                04
+              </div>
+              <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Poliravimas</h3>
+              <p className="text-sm text-slate-600 relative z-10">
+                Plomba koreguojama ir poliruojama, kad būtų lygi, patogi sukandus ir natūraliai derėtų su kitais dantimis.
+              </p>
             </div>
+
           </div>
         </motion.section>
 
-        {/* DUK */}
-        <motion.section className="mb-12" variants={item}>
+        {/* INFO BLOKAI (DUK ir PATARIMAI) */}
+        <motion.section className="mb-14" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Dažniausi klausimai
+            Svarbi informacija pacientams
           </h2>
-          <div className="space-y-4">
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-              <h3 className="font-bold text-slate-900 mb-2">Ar dantų plombavimas skausmingas?</h3>
-              <p className="text-slate-600 text-sm">Dažniausiai procedūra atliekama su vietine nejautra, todėl skausmo nejaučiama. Gali būti jaučiamas tik nedidelis spaudimas ar vibracija.</p>
+          <div className="space-y-6">
+            <div className="bg-brand-50/30 p-6 rounded-2xl border border-brand/10">
+              <h3 className="font-bold text-lg text-darkblue-700 mb-3">Ar dantų plombavimas skausmingas?</h3>
+              <p className="text-slate-700 leading-relaxed">
+                Dantų plombavimas dažniausiai atliekamas be skausmo, taikant vietinę nejautrą. Prieš procedūrą odontologas pasirūpina, kad jaustumėtės komfortiškai. Procedūros metu galite jausti tik nežymų spaudimą ar vibraciją. Po plombavimo kai kuriais atvejais gali pasireikšti laikinas jautrumas, kuris greitai praeina.
+              </p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-              <h3 className="font-bold text-slate-900 mb-2">Kiek laiko tarnauja plombos?</h3>
-              <p className="text-slate-600 text-sm">Tarnavimo laikas priklauso nuo plombos dydžio, vietos ir priežiūros. Kokybiškai atliktos plombos tarnauja daugelį metų.</p>
+
+            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <h3 className="font-bold text-lg text-darkblue-700 mb-3">Kiek laiko tarnauja dantų plombos?</h3>
+              <p className="text-slate-700 leading-relaxed">
+                Tarnavimo laikas priklauso nuo plombos dydžio, vietos ir priežiūros. Kokybiškai atliktos plombos tarnauja daugelį metų. Didžiausią įtaką ilgaamžiškumui turi asmeninė burnos higiena ir reguliarūs profilaktiniai patikrinimai, leidžiantys laiku pastebėti ir pakoreguoti senas plombas.
+              </p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-              <h3 className="font-bold text-slate-900 mb-2">Ką daryti po plombavimo?</h3>
-              <p className="text-slate-600 text-sm">Pirmas valandas rekomenduojama nevalgyti (ypač jei buvo nejautra). Gali būti trumpalaikis jautrumas, kuris greitai praeina.</p>
+
+            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <h3 className="font-bold text-lg text-darkblue-700 mb-3">Ką svarbu žinoti po dantų plombavimo?</h3>
+              <p className="text-slate-700 leading-relaxed">
+                Pirmosiomis valandomis po gydymo rekomenduojama vengti kieto maisto ir nekramtyti plombuota puse, ypač jei buvo taikyta nejautra (kad neįsikąstumėte). Jei jaučiate laikiną jautrumą šalčiui ar kramtant – tai normalu ir dažniausiai praeina per kelias dienas. Svarbiausia – kruopšti kasdienė higiena.
+              </p>
             </div>
           </div>
         </motion.section>
 
-        {/* KODĖL MES & CTA */}
+        {/* KODĖL MES & FINAL CTA */}
         <motion.div className="mt-8 mb-12 text-center" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-            Kodėl verta rinktis Bangų kliniką?
+            Kodėl verta rinktis Bangų odontologijos kliniką?
           </h2>
-          <p className="text-slate-700 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Mūsų klinikoje dantų plombavimas atliekamas naudojant modernias medžiagas ir technologijas. Užtikriname skaidrią kainodarą, profesionalumą ir ilgalaikį rezultatą.
+          <p className="text-slate-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Renkantis danties plombavimą svarbu ne tik kaina, bet ir kokybė. Bangų odontologijos klinikoje naudojame modernias medžiagas ir technologijas, užtikriname skaidrią kainodarą ir profesionalumą. Mūsų specialistai kiekvieną atvejį vertina individualiai, siekdami ilgaamžio ir estetiško rezultato.
           </p>
-          <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-4 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
-            Registruotis vizitui
-          </Link>
+
+          <div className="bg-brand-50 rounded-3xl p-8 max-w-2xl mx-auto">
+            <h3 className="font-bold text-xl text-darkblue-700 mb-3">Kviečiame registruotis vizitui</h3>
+            <p className="text-slate-600 mb-6">
+              Jeigu pastebėjote danties pažeidimus, jautrumą ar skausmą, nelaukite. Laiku atliktas gydymas padeda išsaugoti dantis.
+            </p>
+            <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-4 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+              Registruotis vizitui
+            </Link>
+          </div>
         </motion.div>
 
       </motion.div>

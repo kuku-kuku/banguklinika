@@ -60,19 +60,26 @@ export default function DantuBalinimas() {
       />
 
       <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
-        
+
         {/* HERO */}
         <motion.header className="mb-10 text-center sm:text-left" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
             Profesionalus dantų balinimas Klaipėdoje
           </h1>
-          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4">
+          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed mb-8">
             <p>
               Dantų spalva laikui bėgant gali pakisti dėl įvairių priežasčių – mitybos įpročių, rūkymo, amžiaus ar tam tikrų vaistų poveikio. Net ir kruopšti kasdienė burnos priežiūra ne visuomet leidžia atkurti natūralų dantų baltumą, todėl profesionalus dantų balinimas tampa vienu efektyviausių estetinių sprendimų.
             </p>
             <p>
               Bangų odontologijos klinikoje Klaipėdoje atliekamas dantų balinimas padeda saugiai ir greitai pasiekti pastebimą rezultatą. Naudojami modernūs balinimo metodai leidžia dantis pašviesinti keliais atspalviais, išlaikant emalio saugumą ir komfortą procedūros metu. Prieš kiekvieną balinimą įvertinama individuali burnos būklė, todėl parenkamas tinkamiausias sprendimas kiekvienam pacientui.
             </p>
+          </div>
+
+          {/* CTA MYGTUKAS VIRŠUJE */}
+          <div className="flex justify-center sm:justify-start">
+            <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+              Registruotis vizitui
+            </Link>
           </div>
         </motion.header>
 
@@ -98,7 +105,7 @@ export default function DantuBalinimas() {
         <motion.section className="mb-12" variants={item}>
           <div className="flex flex-col md:flex-row gap-8 items-start">
             <div className="flex-1">
-               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
                 Dantų balinimas BEYOND® sistema
               </h2>
               <div className="space-y-4 text-slate-700 leading-relaxed">
@@ -115,9 +122,9 @@ export default function DantuBalinimas() {
             </div>
             {/* Vizualinis elementas - ikona ar vieta nuotraukai */}
             <div className="w-full md:w-1/3 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center">
-               <SparklesIcon />
-               <p className="font-semibold text-darkblue-700 mt-2">Greitas rezultatas</p>
-               <p className="text-sm text-slate-500">Vos per 45 minutes</p>
+              <SparklesIcon />
+              <p className="font-semibold text-darkblue-700 mt-2">Greitas rezultatas</p>
+              <p className="text-sm text-slate-500">Vos per 45 minutes</p>
             </div>
           </div>
         </motion.section>
@@ -130,7 +137,7 @@ export default function DantuBalinimas() {
           <p className="text-slate-700 mb-6 leading-relaxed">
             BEYOND® sistema pasaulyje pripažįstama kaip viena iš lyderiaujančių dantų estetikos srityje. Šis balinimo metodas pasirenkamas dėl patikimumo, prognozuojamo rezultato ir komforto procedūros metu.
           </p>
-          
+
           <div className="grid sm:grid-cols-2 gap-4 mb-6">
             {[
               "BEYOND® – pasaulinis dantų estetikos lyderis",
@@ -146,7 +153,7 @@ export default function DantuBalinimas() {
               </div>
             ))}
           </div>
-          
+
           <p className="text-slate-700 text-sm bg-blue-50 p-4 rounded-xl border border-blue-100">
             <strong>Svarbu:</strong> Po BEYOND® dantų balinimo labai svarbu laikytis specialisto rekomendacijų. Pirmąsias 24 valandas po procedūros rekomenduojama vengti kavos, tabako, dažančių gėrimų ir maisto, taip pat spalvotų dantų pastų ar burnos skalavimo skysčių. Tai padeda išsaugoti pasiektą rezultatą ir užtikrina tolygesnį dantų atspalvį.
           </p>
@@ -164,7 +171,7 @@ export default function DantuBalinimas() {
             <p>
               Balinimas kapomis pradedamas klinikoje, kur pagal individualų paciento dantų atspaudą pagaminamos asmeniškai pritaikytos kapos. Kartu parenkamas tinkamas balinimo gelis ir suteikiamos išsamios naudojimo instrukcijos. Tokiu būdu užtikrinama, kad balinimas būtų saugus, efektyvus ir pritaikytas konkrečiai dantų būklei.
             </p>
-            
+
             <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm my-4">
               <h3 className="font-semibold text-darkblue-700 mb-2">Šis balinimo būdas dažnai pasirenkamas pacientų, kurie:</h3>
               <ul className="list-disc pl-5 space-y-1 text-slate-700">
@@ -186,9 +193,9 @@ export default function DantuBalinimas() {
             Dantų balinimo kaina mūsų klinikoje
           </h2>
           <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-             <p>
-               Dantų balinimo kaina priklauso nuo pasirinkto balinimo metodo, procedūros apimties ir individualių paciento poreikių. Prieš atliekant balinimą visuomet rekomenduojama konsultacija, kurios metu įvertinama dantų būklė ir parenkamas tinkamiausias sprendimas, leidžiantis pasiekti saugų ir ilgalaikį rezultatą.
-             </p>
+            <p>
+              Dantų balinimo kaina priklauso nuo pasirinkto balinimo metodo, procedūros apimties ir individualių paciento poreikių. Prieš atliekant balinimą visuomet rekomenduojama konsultacija, kurios metu įvertinama dantų būklė ir parenkamas tinkamiausias sprendimas, leidžiantis pasiekti saugų ir ilgalaikį rezultatą.
+            </p>
           </div>
 
           <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
@@ -254,9 +261,9 @@ export default function DantuBalinimas() {
           <p className="text-slate-700 mb-6 leading-relaxed">
             Siekiant saugaus ir prognozuojamo rezultato, dantų balinimas Bangų odontologijos klinikoje atliekamas pagal aiškią ir pacientui suprantamą eigą. Prieš pasirenkant konkretų balinimo metodą, visada įvertinama individuali burnos būklė.
           </p>
-          
+
           <div className="grid md:grid-cols-2 gap-6">
-             <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-darkblue-700 mb-2">1. Konsultacija ir įvertinimas</h3>
               <p className="text-sm text-slate-600">Odontologas apžiūri dantis, įvertina emalio būklę, restauracijas ir tinkamumą. Aptariami lūkesčiai.</p>
             </div>
@@ -273,7 +280,7 @@ export default function DantuBalinimas() {
               <p className="text-sm text-slate-600">Suteikiamos instrukcijos, kaip prižiūrėti dantis, kad rezultatas būtų ilgaamžis.</p>
             </div>
           </div>
-          
+
           <p className="text-slate-700 mt-6 leading-relaxed">
             Toks nuoseklus procesas leidžia užtikrinti, kad dantų balinimas Klaipėdoje būtų ne tik efektyvus, bet ir saugus bei pritaikytas kiekvienam pacientui.
           </p>
@@ -285,18 +292,18 @@ export default function DantuBalinimas() {
             Ką svarbu žinoti po dantų balinimo?
           </h2>
           <div className="space-y-4 text-slate-700 leading-relaxed">
-             <p>
-               Po profesionalaus dantų balinimo dantys tampa pastebimai šviesesni, tačiau pirmosiomis dienomis po procedūros emalis gali būti jautresnis išoriniams veiksniams. Tai normali ir laikina reakcija, kuri dažniausiai praeina per trumpą laiką. Siekiant išsaugoti pasiektą balinimo rezultatą ir sumažinti galimą jautrumą, svarbu laikytis odontologo pateiktų rekomendacijų.
-             </p>
-             <p>
-               Pirmąsias 24 valandas po balinimo rekomenduojama vengti dažančių produktų, tokių kaip kava, arbata, raudonas vynas, spalvoti gėrimai ar intensyvaus pigmento turintis maistas. Taip pat patariama nerūkyti ir nenaudoti spalvotų dantų pastų ar burnos skalavimo skysčių, kurie gali turėti įtakos dantų atspalviui.
-             </p>
-             <p>
-               Kasdienė burnos priežiūra po balinimo turėtų būti švelni ir nuosekli. Rekomenduojama valyti dantis minkštu šepetėliu, naudoti jautriems dantims skirtą dantų pastą ir vengti pernelyg didelio spaudimo. Jei odontologas rekomenduoja papildomas priemones, pavyzdžiui, remineralizuojančius gelius, svarbu juos naudoti pagal nurodymus.
-             </p>
-             <p>
-               Laikantis šių rekomendacijų, balinimo rezultatas išlieka ilgiau, o dantų jautrumas – sumažėja. Reguliarūs profilaktiniai vizitai ir tinkama kasdienė priežiūra padeda išlaikyti estetišką šypseną ir ilgalaikį dantų baltumą.
-             </p>
+            <p>
+              Po profesionalaus dantų balinimo dantys tampa pastebimai šviesesni, tačiau pirmosiomis dienomis po procedūros emalis gali būti jautresnis išoriniams veiksniams. Tai normali ir laikina reakcija, kuri dažniausiai praeina per trumpą laiką. Siekiant išsaugoti pasiektą balinimo rezultatą ir sumažinti galimą jautrumą, svarbu laikytis odontologo pateiktų rekomendacijų.
+            </p>
+            <p>
+              Pirmąsias 24 valandas po balinimo rekomenduojama vengti dažančių produktų, tokių kaip kava, arbata, raudonas vynas, spalvoti gėrimai ar intensyvaus pigmento turintis maistas. Taip pat patariama nerūkyti ir nenaudoti spalvotų dantų pastų ar burnos skalavimo skysčių, kurie gali turėti įtakos dantų atspalviui.
+            </p>
+            <p>
+              Kasdienė burnos priežiūra po balinimo turėtų būti švelni ir nuosekli. Rekomenduojama valyti dantis minkštu šepetėliu, naudoti jautriems dantims skirtą dantų pastą ir vengti pernelyg didelio spaudimo. Jei odontologas rekomenduoja papildomas priemones, pavyzdžiui, remineralizuojančius gelius, svarbu juos naudoti pagal nurodymus.
+            </p>
+            <p>
+              Laikantis šių rekomendacijų, balinimo rezultatas išlieka ilgiau, o dantų jautrumas – sumažėja. Reguliarūs profilaktiniai vizitai ir tinkama kasdienė priežiūra padeda išlaikyti estetišką šypseną ir ilgalaikį dantų baltumą.
+            </p>
           </div>
         </motion.section>
 
@@ -306,18 +313,18 @@ export default function DantuBalinimas() {
             Kiek laiko išlieka dantų balinimo rezultatas?
           </h2>
           <div className="space-y-4 text-slate-700 leading-relaxed">
-             <p>
-               Dantų balinimo rezultato išliekamumas priklauso nuo kelių veiksnių, todėl kiekvieno paciento patirtis gali skirtis. Vidutiniškai profesionalaus balinimo rezultatas išlieka nuo vienerių iki dvejų metų, tačiau tinkama priežiūra gali šį laikotarpį pailginti.
-             </p>
-             <p>
-               Didžiausią įtaką balinimo efekto trukmei turi kasdieniai įpročiai. Dažnas kavos, arbatos, raudono vyno vartojimas, rūkymas ar intensyviai dažantis maistas gali greičiau pakeisti dantų atspalvį. Taip pat svarbi reguliari burnos higiena ir profilaktiniai vizitai, padedantys palaikyti švarius dantų paviršius.
-             </p>
-             <p>
-               Ofisinis dantų balinimas BEYOND® sistema dažniausiai suteikia ryškesnį ir greitesnį rezultatą, o balinimas kapomis namuose gali būti naudojamas kaip palaikomoji priemonė, padedanti išlaikyti pasiektą dantų spalvą ilgesnį laiką. Odontologas, įvertinęs individualią situaciją, gali rekomenduoti optimalų balinimo kartojimo intervalą ar papildomas priežiūros priemones.
-             </p>
-             <p>
-               Svarbu suprasti, kad dantų balinimas nėra vienkartinis sprendimas visam gyvenimui – tai procesas, kurio rezultatas priklauso nuo ilgalaikės priežiūros ir paciento įpročių.
-             </p>
+            <p>
+              Dantų balinimo rezultato išliekamumas priklauso nuo kelių veiksnių, todėl kiekvieno paciento patirtis gali skirtis. Vidutiniškai profesionalaus balinimo rezultatas išlieka nuo vienerių iki dvejų metų, tačiau tinkama priežiūra gali šį laikotarpį pailginti.
+            </p>
+            <p>
+              Didžiausią įtaką balinimo efekto trukmei turi kasdieniai įpročiai. Dažnas kavos, arbatos, raudono vyno vartojimas, rūkymas ar intensyviai dažantis maistas gali greičiau pakeisti dantų atspalvį. Taip pat svarbi reguliari burnos higiena ir profilaktiniai vizitai, padedantys palaikyti švarius dantų paviršius.
+            </p>
+            <p>
+              Ofisinis dantų balinimas BEYOND® sistema dažniausiai suteikia ryškesnį ir greitesnį rezultatą, o balinimas kapomis namuose gali būti naudojamas kaip palaikomoji priemonė, padedanti išlaikyti pasiektą dantų spalvą ilgesnį laiką. Odontologas, įvertinęs individualią situaciją, gali rekomenduoti optimalų balinimo kartojimo intervalą ar papildomas priežiūros priemones.
+            </p>
+            <p>
+              Svarbu suprasti, kad dantų balinimas nėra vienkartinis sprendimas visam gyvenimui – tai procesas, kurio rezultatas priklauso nuo ilgalaikės priežiūros ir paciento įpročių.
+            </p>
           </div>
         </motion.section>
 
@@ -327,24 +334,24 @@ export default function DantuBalinimas() {
             Kam dantų balinimas netinka?
           </h2>
           <div className="space-y-4 text-slate-700 leading-relaxed">
-             <p>
-               Nors dantų balinimas yra saugi ir efektyvi estetinė procedūra, ji ne visada tinka kiekvienam pacientui. Prieš atliekant balinimą Bangų odontologijos klinikoje visuomet įvertinama individuali burnos būklė, kad procedūra būtų ne tik veiksminga, bet ir saugi.
-             </p>
-             
-             <div className="bg-red-50 p-6 rounded-2xl border border-red-100">
-                <h3 className="font-semibold text-red-800 mb-2">Dantų balinimas gali būti nerekomenduojamas arba atidedamas, jei:</h3>
-                <ul className="list-disc pl-5 space-y-2 text-red-900/80">
-                  <li>nustatytas aktyvus kariesas ar kitos uždelstos gydyti dantų ligos</li>
-                  <li>yra dantenų uždegimas ar periodonto ligos, kurios pirmiausia turi būti gydomos</li>
-                  <li>dantų emalis yra labai plonas ar pažeistas, todėl padidėja jautrumo rizika</li>
-                  <li>priekinėje srityje yra plombų, vainikėlių ar laminačių, kurių spalva po balinimo nepasikeičia</li>
-                  <li>pacientė yra nėščia arba žindymo laikotarpiu, kai estetinės procedūros dažniausiai atidedamos</li>
-                </ul>
-             </div>
+            <p>
+              Nors dantų balinimas yra saugi ir efektyvi estetinė procedūra, ji ne visada tinka kiekvienam pacientui. Prieš atliekant balinimą Bangų odontologijos klinikoje visuomet įvertinama individuali burnos būklė, kad procedūra būtų ne tik veiksminga, bet ir saugi.
+            </p>
 
-             <p>
-               Tokiais atvejais odontologas pasiūlo alternatyvius sprendimus arba rekomenduoja pirmiausia atlikti gydomąsias procedūras. Atsakingas vertinimas padeda išvengti nepageidaujamų rezultatų ir užtikrina, kad dantų balinimas būtų atliekamas tik tada, kai jis iš tiesų yra tinkamas.
-             </p>
+            <div className="bg-red-50 p-6 rounded-2xl border border-red-100">
+              <h3 className="font-semibold text-red-800 mb-2">Dantų balinimas gali būti nerekomenduojamas arba atidedamas, jei:</h3>
+              <ul className="list-disc pl-5 space-y-2 text-red-900/80">
+                <li>nustatytas aktyvus kariesas ar kitos uždelstos gydyti dantų ligos</li>
+                <li>yra dantenų uždegimas ar periodonto ligos, kurios pirmiausia turi būti gydomos</li>
+                <li>dantų emalis yra labai plonas ar pažeistas, todėl padidėja jautrumo rizika</li>
+                <li>priekinėje srityje yra plombų, vainikėlių ar laminačių, kurių spalva po balinimo nepasikeičia</li>
+                <li>pacientė yra nėščia arba žindymo laikotarpiu, kai estetinės procedūros dažniausiai atidedamos</li>
+              </ul>
+            </div>
+
+            <p>
+              Tokiais atvejais odontologas pasiūlo alternatyvius sprendimus arba rekomenduoja pirmiausia atlikti gydomąsias procedūras. Atsakingas vertinimas padeda išvengti nepageidaujamų rezultatų ir užtikrina, kad dantų balinimas būtų atliekamas tik tada, kai jis iš tiesų yra tinkamas.
+            </p>
           </div>
         </motion.section>
 
@@ -383,15 +390,15 @@ export default function DantuBalinimas() {
             Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
           </h2>
           <div className="space-y-4 text-slate-700 leading-relaxed">
-             <p>
-               Renkantis dantų balinimo paslaugas svarbu ne tik pats rezultatas, bet ir procedūros saugumas, naudojamos technologijos bei specialistų patirtis. Bangų odontologijos klinikoje dantų balinimas atliekamas taikant modernius ir patikimus metodus, užtikrinančius estetišką, tačiau dantų emaliui saugų rezultatą.
-             </p>
-             <p>
-               Klinikoje dirbantys specialistai individualiai įvertina kiekvieno paciento dantų būklę ir lūkesčius, todėl parenkamas tinkamiausias balinimo metodas – ofisinis balinimas BEYOND® sistema arba balinimas kapomis namuose. Didelis dėmesys skiriamas ne tik pačiai procedūrai, bet ir rekomendacijoms po jos, kad pasiektas rezultatas išliktų kuo ilgiau.
-             </p>
-             <p>
-               Bangų odontologijos klinikoje naudojamos pažangios technologijos, aiškiai paaiškinama gydymo eiga ir užtikrinama skaidri kainodara. Toks požiūris leidžia pacientams jaustis ramiai ir užtikrintai, o teigiami dantų balinimo atsiliepimai dažnai pabrėžia profesionalų bendravimą, komfortą procedūros metu ir džiuginantį galutinį rezultatą.
-             </p>
+            <p>
+              Renkantis dantų balinimo paslaugas svarbu ne tik pats rezultatas, bet ir procedūros saugumas, naudojamos technologijos bei specialistų patirtis. Bangų odontologijos klinikoje dantų balinimas atliekamas taikant modernius ir patikimus metodus, užtikrinančius estetišką, tačiau dantų emaliui saugų rezultatą.
+            </p>
+            <p>
+              Klinikoje dirbantys specialistai individualiai įvertina kiekvieno paciento dantų būklę ir lūkesčius, todėl parenkamas tinkamiausias balinimo metodas – ofisinis balinimas BEYOND® sistema arba balinimas kapomis namuose. Didelis dėmesys skiriamas ne tik pačiai procedūrai, bet ir rekomendacijoms po jos, kad pasiektas rezultatas išliktų kuo ilgiau.
+            </p>
+            <p>
+              Bangų odontologijos klinikoje naudojamos pažangios technologijos, aiškiai paaiškinama gydymo eiga ir užtikrinama skaidri kainodara. Toks požiūris leidžia pacientams jaustis ramiai ir užtikrintai, o teigiami dantų balinimo atsiliepimai dažnai pabrėžia profesionalų bendravimą, komfortą procedūros metu ir džiuginantį galutinį rezultatą.
+            </p>
           </div>
         </motion.section>
 
@@ -402,7 +409,7 @@ export default function DantuBalinimas() {
           </h2>
           <p className="text-slate-700 mb-8 max-w-3xl mx-auto leading-relaxed">
             Jeigu ieškote patikimos ir profesionalios odontologijos klinikos, kurioje atliekamas saugus ir efektyvus dantų balinimas Klaipėdoje, kviečiame apsilankyti Bangų odontologijos klinikoje. Mūsų pacientai vertina ne tik matomą estetinį pokytį, bet ir aiškias konsultacijas, dėmesingą požiūrį bei ilgalaikį rezultatą, kurį patvirtina jų atsiliepimai.
-            <br/><br/>
+            <br /><br />
             Bangų odontologijos klinikoje Jūsų laukia modernios balinimo technologijos, patyrę specialistai ir individualūs sprendimai, pritaikyti kiekvienam pacientui. Registruokitės konsultacijai ir ženkite pirmą žingsnį link šviesesnės, pasitikėjimą suteikiančios šypsenos.
           </p>
           <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-4 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">

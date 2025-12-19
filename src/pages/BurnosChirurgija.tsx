@@ -22,14 +22,6 @@ function CheckIcon() {
   )
 }
 
-function ScalpelIcon() {
-  return (
-    <svg className="w-8 h-8 text-brand mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-    </svg>
-  )
-}
-
 export default function BurnosChirurgija() {
   const structuredData = {
     "@context": "https://schema.org",
@@ -58,13 +50,20 @@ export default function BurnosChirurgija() {
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
             Profesionali burnos chirurgija Klaipėdoje
           </h1>
-          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4">
+          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 mb-8">
             <p>
               Burnos chirurgija – tai odontologinio gydymo sritis, skirta spręsti sudėtingesnes dantų, minkštųjų audinių ir žandikaulio kaulo problemas, kai įprastas terapinis gydymas nebėra pakankamas. Tokios procedūros dažnai reikalingos siekiant pašalinti infekcijos židinius, atkurti burnos funkciją ar paruošti burną tolimesniam gydymui, pavyzdžiui, implantacijai ar protezavimui.
             </p>
             <p>
               Bangų odontologijos klinikoje Klaipėdoje burnos chirurginės procedūros atliekamos laikantis šiuolaikinių medicininių standartų, naudojant modernią diagnostiką ir patikimus nuskausminimo metodus. Patyręs burnos chirurgas kiekvieną klinikinę situaciją vertina individualiai, siekdamas saugaus, prognozuojamo ir ilgalaikio rezultato. Didelis dėmesys skiriamas ne tik pačiai procedūrai, bet ir paciento savijautai, aiškiam gydymo paaiškinimui bei sklandžiam gijimo procesui.
             </p>
+          </div>
+
+          {/* CTA MYGTUKAS VIRŠUJE */}
+          <div className="flex justify-center sm:justify-start">
+            <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+              Registruotis vizitui
+            </Link>
           </div>
         </motion.header>
 
@@ -119,7 +118,7 @@ export default function BurnosChirurgija() {
           </p>
         </motion.section>
 
-        {/* KOKIAS PROCEDŪRAS ATLIEKA */}
+        {/* KOKIAS PROCEDŪRAS ATLIEKA (Pakeista: Ikonos nuimtos, palikti tik checkmarkai) */}
         <motion.section className="mb-12" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kokias procedūras atlieka burnos chirurgas?
@@ -142,7 +141,7 @@ export default function BurnosChirurgija() {
                 "Minkštųjų audinių chirurgija, skirta burnos gleivinės pakitimams koreguoti"
               ].map((text, i) => (
                 <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
-                  <span className="mt-1"><ScalpelIcon /></span>
+                  <span className="mt-1"><CheckIcon /></span>
                   <span className="text-slate-700">{text}</span>
                 </div>
               ))}
@@ -166,20 +165,32 @@ export default function BurnosChirurgija() {
           <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
             <div className="divide-y divide-slate-100">
               <div className="p-5 hover:bg-brand-50/30 transition">
-                <span className="block text-slate-900 font-bold mb-1">Kaulo augmentacija</span>
-                <span className="block text-slate-700 text-sm">nuo 150 iki 600 eurų, priklausomai nuo reikalingos kaulo apimties ir taikomos gydymo metodikos.</span>
+                <div className="flex justify-between items-baseline mb-1">
+                    <span className="text-slate-900 font-bold">Kaulo augmentacija</span>
+                    <span className="text-brand font-bold whitespace-nowrap ml-4">150 – 600 €</span>
+                </div>
+                <span className="block text-slate-700 text-sm">Priklausomai nuo reikalingos kaulo apimties ir taikomos gydymo metodikos.</span>
               </div>
               <div className="p-5 hover:bg-brand-50/30 transition">
-                <span className="block text-slate-900 font-bold mb-1">Šaknies šalinimo procedūra</span>
-                <span className="block text-slate-700 text-sm">nuo 60 iki 80 eurų, kai dantis jau yra pašalintas, tačiau likusi šaknis kelia uždegimo ar infekcijos riziką.</span>
+                <div className="flex justify-between items-baseline mb-1">
+                    <span className="text-slate-900 font-bold">Šaknies šalinimo procedūra</span>
+                    <span className="text-brand font-bold whitespace-nowrap ml-4">60 – 80 €</span>
+                </div>
+                <span className="block text-slate-700 text-sm">Kai dantis jau yra pašalintas, tačiau likusi šaknis kelia uždegimo ar infekcijos riziką.</span>
               </div>
               <div className="p-5 hover:bg-brand-50/30 transition">
-                <span className="block text-slate-900 font-bold mb-1">Danties šalinimas</span>
-                <span className="block text-slate-700 text-sm">nuo 80 iki 100 eurų, atsižvelgiant į danties padėtį ir procedūros sudėtingumą.</span>
+                <div className="flex justify-between items-baseline mb-1">
+                    <span className="text-slate-900 font-bold">Danties šalinimas</span>
+                    <span className="text-brand font-bold whitespace-nowrap ml-4">80 – 100 €</span>
+                </div>
+                <span className="block text-slate-700 text-sm">Atsižvelgiant į danties padėtį ir procedūros sudėtingumą.</span>
               </div>
               <div className="p-5 hover:bg-brand-50/30 transition">
-                <span className="block text-slate-900 font-bold mb-1">Komplikuotas protinių dantų šalinimas</span>
-                <span className="block text-slate-700 text-sm">nuo 120 iki 150 eurų (atliekamas kai dantis neišdygęs pilnai, yra netaisyklingoje padėtyje ar sukelia aplinkinių audinių pažeidimus).</span>
+                <div className="flex justify-between items-baseline mb-1">
+                    <span className="text-slate-900 font-bold">Komplikuotas protinių dantų šalinimas</span>
+                    <span className="text-brand font-bold whitespace-nowrap ml-4">120 – 150 €</span>
+                </div>
+                <span className="block text-slate-700 text-sm">Atliekamas kai dantis neišdygęs pilnai, yra netaisyklingoje padėtyje ar sukelia aplinkinių audinių pažeidimus.</span>
               </div>
             </div>
           </div>
@@ -189,7 +200,7 @@ export default function BurnosChirurgija() {
           </p>
         </motion.section>
 
-        {/* KAIP ATLIEKAMA (STEPS) */}
+        {/* KAIP ATLIEKAMA */}
         <motion.section className="mb-12" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kaip atliekamas burnos chirurginis gydymas?

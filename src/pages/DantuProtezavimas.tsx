@@ -85,11 +85,8 @@ export default function DantuProtezavimas() {
           </div>
 
           {/* CTA MYGTUKAS VIRŠUJE */}
-          <div className="text-center sm:text-left">
-            <Link 
-              to="/kontaktai" 
-              className="inline-block bg-brand hover:bg-brand-600 text-white text-lg font-bold py-4 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1"
-            >
+          <div className="flex justify-center sm:justify-start">
+             <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
               Registruotis vizitui
             </Link>
           </div>

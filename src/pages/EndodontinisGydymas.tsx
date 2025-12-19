@@ -55,8 +55,9 @@ export default function EndodontinisGydymas() {
         
         {/* HERO */}
         <motion.header className="mb-10 text-center sm:text-left" variants={item}>
+          {/* H1 PAKEISTAS ČIA */}
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
-            Profesionalus šaknų kanalų gydymas Klaipėdoje
+            Profesionalus šaknų kanalų (endodontinis) gydymas Klaipėdoje
           </h1>
           
           <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed mb-8">
@@ -69,11 +70,8 @@ export default function EndodontinisGydymas() {
           </div>
 
           {/* CTA MYGTUKAS VIRŠUJE */}
-          <div className="text-center sm:text-left">
-            <Link 
-              to="/kontaktai" 
-              className="inline-block bg-brand hover:bg-brand-600 text-white text-lg font-bold py-4 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1"
-            >
+          <div className="flex justify-center sm:justify-start">
+             <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
               Registruotis vizitui
             </Link>
           </div>
@@ -244,7 +242,7 @@ export default function EndodontinisGydymas() {
         {/* SKAUSMAS IR PASEKMĖS */}
         <motion.section className="mb-12 space-y-8" variants={item}>
           <div>
-             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Ar endodontinis gydymas yra skausmingas?
             </h2>
             <div className="text-slate-700 leading-relaxed space-y-4">
@@ -261,7 +259,7 @@ export default function EndodontinisGydymas() {
           </div>
 
           <div>
-             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Kas nutinka, jei šaknų kanalai negydomi?
             </h2>
             <div className="text-slate-700 leading-relaxed space-y-4">
