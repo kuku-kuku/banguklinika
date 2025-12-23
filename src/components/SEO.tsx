@@ -28,11 +28,17 @@ export default function SEO({
   noindex = false,
   structuredData,
 }: Props) {
+  const cleanTitle = (title || "")
+    .replace(new RegExp(`\\s*[|–—-]\\s*${SITE_NAME}\\s*$`, "i"), "")
+    .replace(new RegExp(`\\s*${SITE_NAME}\\s*$`, "i"), "")
+    .trim();
+
   const finalTitle = isHome
     ? HOME_TITLE
-    : title
-    ? `${title} | ${SITE_NAME}`
-    : SITE_NAME;
+    : cleanTitle
+      ? `${cleanTitle} | ${SITE_NAME}`
+      : SITE_NAME;
+
 
   const canonicalUrl =
     canonical || (typeof window !== "undefined" ? window.location.href : SITE_URL);
