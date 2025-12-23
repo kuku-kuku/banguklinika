@@ -61,7 +61,7 @@ export default function BurnosHigiena() {
   return (
     <AnimatedSection>
       <SEO
-        title="Burnos Higiena (AIRFLOW®) Klaipėdoje | Bangų klinika"
+        title="Burnos (dantų) higiena Klaipėdoje | Kaina su akcija | Geriausi atsiliepimai - Bangų klinika"
         description="Profesionali burnos higiena su AIRFLOW® technologija. Pašaliname akmenis, apnašas ir grąžiname dantims natūralų baltumą. Registruokitės vizitui Klaipėdoje."
         keywords="burnos higiena, airflow, dantų valymas, akmenų šalinimas, klaipėda"
         structuredData={structuredData}

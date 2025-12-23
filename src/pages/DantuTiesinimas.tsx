@@ -61,7 +61,7 @@ export default function DantuTiesinimas() {
   return (
     <AnimatedSection>
       <SEO
-        title="Dantų Tiesinimas Klaipėdoje | ORDOLINE Kapos | Bangų klinika"
+        title="Dantų tiesinimas kapomis (Ordoline) Klaipėdoje - Bangų klinika"
         description="Profesionalus dantų tiesinimas skaidriomis ORDOLINE kapomis. Nematomas, patogus ir efektyvus gydymas Klaipėdoje. Registruokitės konsultacijai."
         keywords="dantu tiesinimas, ordoline kapos, skaidrios kapos, ortodontinis gydymas, klaipeda, tiesūs dantys"
         structuredData={structuredData}
@@ -72,7 +72,7 @@ export default function DantuTiesinimas() {
         {/* HERO */}
         <motion.header className="mb-10 text-center sm:text-left" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
-            Profesionalus dantų tiesinimas Klaipėdoje
+            Profesionalus dantų tiesinimas Klaipėdoje ORDOLINE kapomis
           </h1>
           
           <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed mb-8">

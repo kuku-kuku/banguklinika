@@ -61,7 +61,7 @@ export default function DantuProtezavimas() {
   return (
     <AnimatedSection>
       <SEO
-        title="Dantų Protezavimas Klaipėdoje | CEREC ir Cirkonis | Bangų klinika"
+        title="Dantų protezavimas Klaipėdoje - Bangų klinika"
         description="Profesionalus dantų protezavimas Klaipėdoje. 3D CEREC technologija, cirkonio keramika, bemetalė keramika ir protezavimas ant implantų. Prieinamos kainos."
         keywords="dantu protezavimas, cerec, cirkonio keramika, protezai, klaipeda, implantai"
         structuredData={structuredData}
@@ -72,7 +72,7 @@ export default function DantuProtezavimas() {
         {/* HERO */}
         <motion.header className="mb-10 text-center sm:text-left" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
-            Profesionalus ir prieinamas dantų protezavimas Klaipėdoje
+            Profesionalus dantų protezavimas Klaipėdoje
           </h1>
           
           <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed mb-8">
@@ -80,7 +80,7 @@ export default function DantuProtezavimas() {
               Dantų netekimas ar stiprus jų pažeidimas gali turėti įtakos ne tik šypsenos estetikai, bet ir kramtymo funkcijai, kalbai bei bendrai savijautai. Šiuolaikinė odontologija leidžia efektyviai atkurti dantis, tačiau pacientams dažnai svarbus ir kainos aspektas. Būtent todėl Bangų odontologijos klinikoje siekiama suderinti aukštą gydymo kokybę, pažangias technologijas ir racionalią kainodarą.
             </p>
             <p>
-              Bangų odontologijos klinikoje Klaipėdoje atliekamas pigus dantų protezavimas, neatsisakant profesionalumo ar estetikos. Naudojamos modernios skaitmeninės technologijos, tokios kaip 3D CEREC sistema, leidžia optimizuoti gydymo procesą, sumažinti laiko sąnaudas ir pasiūlyti pacientams patrauklius, ilgalaikius sprendimus. Kiekvienam pacientui parenkamas individualus protezavimo planas, atsižvelgiant į poreikius, burnos būklę ir lūkesčius.
+              Bangų odontologijos klinikoje Klaipėdoje atliekamas profesionalus dantų protezavimas, neatsisakant profesionalumo ar estetikos. Naudojamos modernios skaitmeninės technologijos, tokios kaip 3D CEREC sistema, leidžia optimizuoti gydymo procesą, sumažinti laiko sąnaudas ir pasiūlyti pacientams patrauklius, ilgalaikius sprendimus. Kiekvienam pacientui parenkamas individualus protezavimo planas, atsižvelgiant į poreikius, burnos būklę ir lūkesčius.
             </p>
           </div>
 

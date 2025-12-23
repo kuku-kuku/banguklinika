@@ -61,7 +61,7 @@ export default function DantuGydymas() {
   return (
     <AnimatedSection>
       <SEO
-        title="Dantų Gydymas Klaipėdoje | Taisymas ir Kaina | Bangų klinika"
+        title="Dantų gydymas, taisymas (tvarkymas) Klaipėdoje - Bangų klinika"
         description="Profesionalus dantų taisymas ir gydymas Klaipėdoje. Skubi pagalba, ėduonies gydymas, plombavimas. Registruokitės vizitui."
         keywords="dantu gydymas, dantu taisymas, skubi pagalba, eduonis, plombavimas, klaipeda"
         structuredData={structuredData}

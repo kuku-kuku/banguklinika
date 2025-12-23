@@ -45,7 +45,7 @@ export default function EndodontinisGydymas() {
   return (
     <AnimatedSection>
       <SEO
-        title="Endodontinis Gydymas Klaipėdoje | Kanalų Gydymas | Bangų klinika"
+        title="Šaknų kanalų (endodontinis) gydymas Klaipėdoje - Bangų klinika"
         description="Profesionalus šaknų kanalų gydymas. Gydome dantų skausmą, uždegimą ir infekcijas. Išsaugokite savo dantis. Registruokitės vizitui."
         keywords="endodontinis gydymas, saknu kanalu gydymas, dantu skausmas, dantu kanalai, klaipeda, endodontas"
         structuredData={structuredData}

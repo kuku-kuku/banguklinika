@@ -61,7 +61,7 @@ export default function VaikuOdontologija() {
   return (
     <AnimatedSection>
       <SEO
-        title="Vaikų Odontologas Klaipėdoje | Pieninių Dantų Gydymas | Bangų klinika"
+        title="Vaikų odontologija Klaipėdoje - Bangų klinika"
         description="Profesionali vaikų odontologija Klaipėdoje. Pieninių dantų gydymas, profilaktika ir adaptaciniai vizitai be baimės. Registruokite vaiką vizitui."
         keywords="vaiku odontologas, pieniniu dantu gydymas, vaiku dantu prieziura, klaipeda, silantai, be baimes"
         structuredData={structuredData}
