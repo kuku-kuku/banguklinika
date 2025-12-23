@@ -37,7 +37,7 @@ export default function BurnosChirurgija() {
   return (
     <AnimatedSection>
       <SEO
-        title="Burnos Chirurgija Klaipėdoje | Dantų Rovimas | Bangų klinika"
+        title="Burnos chirurgija Klaipėdoje - Bangų klinika"
         description="Profesionali burnos chirurgija Klaipėdoje. Protinių dantų šalinimas, implantacija, kaulo augmentacija. Saugios ir neskausmingos procedūros."
         keywords="burnos chirurgija, dantu rovimas, protiniai dantys, cistos, kaulo priauginimas, klaipeda"
         structuredData={structuredData}

@@ -53,7 +53,7 @@ export default function DantuBalinimas() {
   return (
     <AnimatedSection>
       <SEO
-        title="Dantų Balinimas Klaipėdoje | BEYOND® ir Kapos | Bangų klinika"
+        title="Dantų balinimas Klaipėdoje | Kaina ir atsiliepimai - Bangų klinika"
         description="Profesionalus dantų balinimas Klaipėdoje: BEYOND® ofisinis balinimas ir balinimas kapomis namuose. Saugus, efektyvus ir ilgalaikis rezultatas."
         keywords="dantu balinimas, beyond sistema, balinimo kapos, dantu estetika, klaipeda"
         structuredData={structuredData}
