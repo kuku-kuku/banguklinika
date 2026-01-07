@@ -1,19 +1,22 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import SEO from '../components/SEO'
 import AnimatedSection from '../components/AnimatedSection'
 import { AnimatePresence, motion, useAnimationControls } from 'framer-motion'
 
-type Svc = { id: string; title: string; content: React.ReactNode }
+type Svc = { id: string; title: string; content: React.ReactNode; to?: string }
 
-/** Bazinė trukmė; reali trukmė adaptuojama pagal turinio aukštį (tik "default" akordeonui) */
 const BASE_DURATION = 0.28
 
 function Chevron({ open }: { open: boolean }) {
   return (
     <svg
       className={`w-5 h-5 transition-transform duration-300 ${open ? 'rotate-180' : 'rotate-0'}`}
-      viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden
     >
       <path d="M6 9l6 6 6-6" />
     </svg>
@@ -61,7 +64,6 @@ function smoothScrollTo(targetY: number, duration = 450) {
   })
 }
 
-/** Top-align į elementą */
 async function smoothAlignToElement(id: string, offset = 16, ms = 360) {
   const el = document.getElementById(id)
   if (!el) return
@@ -70,48 +72,37 @@ async function smoothAlignToElement(id: string, offset = 16, ms = 360) {
   await smoothScrollTo(targetY, ms)
 }
 
-/** Center-align į elementą (naudojama mobile) */
 async function smoothCenterOnElement(id: string, offset = 12, ms = 420) {
   const el = document.getElementById(id)
   if (!el) return
   const rect = el.getBoundingClientRect()
   const header = getHeaderOffset()
   const usableH = window.innerHeight - header
-  const targetY = window.scrollY + rect.top + rect.height / 2 - (usableH / 2) - offset
+  const targetY = window.scrollY + rect.top + rect.height / 2 - usableH / 2 - offset
   await smoothScrollTo(Math.max(0, targetY), ms)
 }
 
-/** Trukmė pagal px (tik default akordeonui) – kad ilgi blokai būtų vienodai glotnūs */
 function durationFor(px: number) {
   const extra = Math.min(0.27, (Math.max(0, Math.min(px, 800)) / 800) * 0.27)
   return +(BASE_DURATION + extra).toFixed(3)
 }
 
-/** Palaukia, kol elemento bbox „nurimsta" (nustoja keistis) per n kadrų iš eilės */
 async function waitForLayoutStabilize(el: HTMLElement, consecutiveFrames = 4, timeoutMs = 1000) {
   return new Promise<void>((resolve) => {
     let last: { top: number; height: number } | null = null
     let stable = 0
-    let start = performance.now()
+    const start = performance.now()
     const step = () => {
       const r = el.getBoundingClientRect()
-      if (last && Math.abs(last.top - r.top) < 1 && Math.abs(last.height - r.height) < 1) {
-        stable++
-      } else {
-        stable = 0
-      }
+      if (last && Math.abs(last.top - r.top) < 1 && Math.abs(last.height - r.height) < 1) stable++
+      else stable = 0
       last = { top: r.top, height: r.height }
-      if (stable >= consecutiveFrames || performance.now() - start > timeoutMs) {
-        resolve()
-        return
-      }
+      if (stable >= consecutiveFrames || performance.now() - start > timeoutMs) return resolve()
       requestAnimationFrame(step)
     }
     requestAnimationFrame(step)
   })
 }
-
-/* ================== Scroll indikatoriaus helperis ================== */
 
 function useScrollThumb(containerRef: React.RefObject<HTMLElement>) {
   const [scrollable, setScrollable] = useState(false)
@@ -152,11 +143,12 @@ function useScrollThumb(containerRef: React.RefObject<HTMLElement>) {
   return { scrollable, thumbTop, thumbHeight }
 }
 
-/* ================== Kortelių variantai ================== */
-
-/** Paprastas (default) akordeonas su išmatuotu height – naudojamas tik desktop */
 function AccordionItemDefault({
-  id, title, children, open, onToggle,
+  id,
+  title,
+  children,
+  open,
+  onToggle,
 }: {
   id: string
   title: string
@@ -196,10 +188,8 @@ function AccordionItemDefault({
       id={id}
       className={[
         'rounded-2xl border shadow-sm transition-colors transform-gpu will-change-transform',
-        open
-          ? 'bg-white border-primary-400 ring-2 ring-primary-300 shadow-md'
-          : 'bg-primary-50 border-primary-300 hover:bg-primary-100 hover:shadow',
-        'scroll-mt-28 md:scroll-mt-32'
+        open ? 'bg-white border-primary-400 ring-2 ring-primary-300 shadow-md' : 'bg-primary-50 border-primary-300 hover:bg-primary-100 hover:shadow',
+        'scroll-mt-28 md:scroll-mt-32',
       ].join(' ')}
       style={{ contain: 'paint', overflowAnchor: 'none' as any }}
     >
@@ -233,9 +223,13 @@ function AccordionItemDefault({
   )
 }
 
-/** „Paper scroll" akordeonas (mobile): fiksuotas vidinis aukštis, turinys scrollinasi viduje, su matomu scroll indikatoriumi */
 function AccordionItemPaper({
-  id, title, children, open, onToggle, maxVh = 56,
+  id,
+  title,
+  children,
+  open,
+  onToggle,
+  maxVh = 56,
 }: {
   id: string
   title: string
@@ -253,10 +247,8 @@ function AccordionItemPaper({
       id={id}
       className={[
         'rounded-2xl border shadow-sm transition-colors transform-gpu will-change-transform',
-        open
-          ? 'bg-white border-primary-400 ring-2 ring-primary-300 shadow-md'
-          : 'bg-primary-50 border-primary-300 hover:bg-primary-100 hover:shadow',
-        'scroll-mt-28 md:scroll-mt-32'
+        open ? 'bg-white border-primary-400 ring-2 ring-primary-300 shadow-md' : 'bg-primary-50 border-primary-300 hover:bg-primary-100 hover:shadow',
+        'scroll-mt-28 md:scroll-mt-32',
       ].join(' ')}
       style={{ contain: 'layout paint', overflowAnchor: 'none' as any }}
     >
@@ -277,7 +269,7 @@ function AccordionItemPaper({
           gridTemplateRows: open ? '1fr' : '0fr',
           opacity: open ? 1 : 0,
           transition: `grid-template-rows ${open ? 320 : 260}ms cubic-bezier(0.22,1,0.36,1), opacity ${open ? 320 : 260}ms cubic-bezier(0.22,1,0.36,1)`,
-          transform: 'translateZ(0)'
+          transform: 'translateZ(0)',
         }}
       >
         <div className="min-h-0 overflow-hidden relative">
@@ -305,10 +297,7 @@ function AccordionItemPaper({
                 exit={{ opacity: 0 }}
                 style={{ height: `calc(${clampHeight})` }}
               >
-                <div
-                  className="absolute left-0 right-0 mx-auto w-1.5 rounded-full bg-primary-400"
-                  style={{ top: thumbTop, height: thumbHeight }}
-                />
+                <div className="absolute left-0 right-0 mx-auto w-1.5 rounded-full bg-primary-400" style={{ top: thumbTop, height: thumbHeight }} />
               </motion.div>
             )}
           </AnimatePresence>
@@ -318,269 +307,192 @@ function AccordionItemPaper({
   )
 }
 
-/* ================== Puslapis ================== */
+function ServiceLinkCard({ to, title }: { to: string; title: string }) {
+  return (
+    <Link
+      to={to}
+      className={[
+        'block rounded-2xl border shadow-sm transition-colors transform-gpu will-change-transform',
+        'bg-primary-50 border-primary-300 hover:bg-primary-100 hover:shadow',
+        'focus:outline-none focus:ring-2 focus:ring-primary-300',
+      ].join(' ')}
+    >
+      <div className="w-full flex items-center justify-between gap-4 px-5 py-4">
+        <h3 className="text-base sm:text-lg font-semibold text-darkblue-600 text-left">{title}</h3>
+        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+          <path d="M9 18l6-6-6-6" />
+        </svg>
+      </div>
+    </Link>
+  )
+}
 
 export default function Services() {
-  const sections: Svc[] = useMemo(() => [
-    {
-      id: 'skubi-pagalba',
-      title: 'Skubi pagalba',
-      content: (
-        <div className="space-y-3">
-          <p>
-            „Bangų Odontologijos Klinika" suteiks skubią pagalbą, jei skauda dantį, iškrito plomba, nuskilo dantis ar
-            skubiai prireikė kitų odontologo paslaugų. Nereikės laukti eilėje – priimsime jus kaip įmanoma greičiau.
-          </p>
-        </div>
-      ),
-    },
-    {
-      id: 'dantu-protezavimas',
-      title: 'Dantų protezavimas',
-      content: (
-        <div className="space-y-6">
-          <p>
-            Bangų Odontologijos Klinikos specialistai padės Jums sugrąžinti šypseną! Mūsų klinikoje atliekamas profesionalus,
-            greitas ir neskausmingas dantų protezavimas, naudojant pasaulyje pripažintas naujausias technologijas.
-          </p>
-          <div className="space-y-2">
-            <h4 className="font-semibold text-gray-900">Pažangus 3D CEREC estetinis restauravimas</h4>
-            <p className="italic text-gray-600">CEREC 3D – revoliucija dantų protezavime</p>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Skaitmeninis antspaudas pasižymi precizišku tikslumu.</li>
-              <li>Danties restauracija idealiai pritaikoma kiekvienam pacientui individualiai.</li>
-              <li>Pažangiausia frezavimo technologija užtikrina keramikos gaminių ilgaamžiškumą.</li>
-              <li>Bet kokį danties protezą galima pagaminti vietoje – vos per dvi valandas.</li>
-              <li>Nebereikia gaminti ir nešioti laikinų vainikėlių – protezuojama iškart.</li>
-            </ul>
-          </div>
-          <div className="space-y-2">
-            <h4 className="font-semibold text-gray-900">Cirkonio oksido keramika</h4>
-            <p>Kodėl verta rinktis?</p>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Cirkonio keramika – itin tvirta keraminė medžiaga iš suspaustų kristalų.</li>
-              <li>Tinka tiek priekiniams, tiek šoniniams dantims – pavienių ir kelių dantų atkūrimui.</li>
-              <li>Labai tiksli, lengvai pritaikoma – nėra diskomforto net pirmą dieną po protezavimo.</li>
-              <li>Atspari apnašoms, nekeičia formos ir spalvos bėgant laikui.</li>
-              <li>Lenkia metalo keramiką tarnavimo trukme; ilgainiui nereikia keisti.</li>
-              <li>Skaitmeninė modeliavimo technologija – preciziškas pritaikymas.</li>
-              <li>Estetiškai nuo natūralių dantų praktiškai nesiskiria.</li>
-              <li>Lėčiau perduoda karštį/šaltį – pojūtis artimesnis natūraliems dantims.</li>
-              <li>Neturi juodo metalinio kraštelio ties dantenomis.</li>
-            </ul>
-          </div>
-          <div className="space-y-2">
-            <h4 className="font-semibold text-gray-900">Bemetalė keramika – E-MAX (Ivoclar Vivadent)</h4>
+  const sections: Svc[] = useMemo(
+    () => [
+      {
+        id: 'skubi-pagalba',
+        title: 'Skubi pagalba',
+        content: (
+          <div className="space-y-3">
             <p>
-              Matomiems, ypač priekiniams dantims protezuoti rekomenduojame bemetalę keramiką (porcelianą) –
-              ji praleidžia šviesą ir yra estetiškai labai patraukli.
-            </p>
-            <p>Kodėl verta rinktis?</p>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Išlaiko spalvą ir skaidrumą – nepakeičia atspalvio bėgant laikui.</li>
-              <li>Tobulas estetinis vaizdas, labai blizgi, be matiškumo.</li>
-              <li>Atspari temperatūros pokyčiams, nedirgina dantenų.</li>
-              <li>Labai tiksli, lengvai pritaikoma – puikus rezultatas jau pirmą dieną.</li>
-              <li>Atspari apnašoms.</li>
-            </ul>
-          </div>
-          <div className="space-y-2">
-            <h4 className="font-semibold text-gray-900">Protezavimas ant implantų</h4>
-            <p>
-              Tai pažangiausias dantų protezavimo metodas: dirbtinės šaknys (implantai) įtvirtinamos prarastų dantų vietoje,
-              o ant jų tvirtinami mūsų laboratorijoje pagaminti, nuo natūralių dantų nesiskiriantys protezai.
-              Bangų Odontologijos Klinika dirba su Straumann® ir Medentika® implantais.
+              „Bangų Odontologijos Klinika" suteiks skubią pagalbą, jei skauda dantį, iškrito plomba,
+              nuskilo dantis ar skubiai prireikė kitų odontologo paslaugų.
+              Nereikės laukti eilėje – priimsime jus kaip įmanoma greičiau.
             </p>
           </div>
-        </div>
-      ),
-    },
-    {
-      id: 'kompensuojamas-dantu-protezavimas',
-      title: 'TLK lėšomis kompensuojamas dantų protezavimas',
-      content: (
-        <div className="space-y-3">
-          <p>
-            Bangų odontologijos klinika yra sudariusi sutartį su Teritorinėmis ligonių kasomis (TLK), kurios skiria kompensaciją
-            dantų protezavimo išlaidoms iš Privalomojo sveikatos draudimo fondo (PSDF).
-          </p>
-          <p>Teisę į kompensuojamą protezavimą turi:</p>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Asmenys, kuriems sukako senatvės pensijos amžius;</li>
-            <li>Vaikai iki 18 metų;</li>
-            <li>Asmenys, pripažinti nedarbingais arba iš dalies darbingais;</li>
-            <li>Asmenys po burnos, veido ir žandikaulių onkologinių ligų gydymo.</li>
-          </ul>
-          <p className="text-sm text-gray-600">
-            Detalesnė ir nuolat atnaujinama informacija skelbiama TLK interneto svetainėje.
-          </p>
-        </div>
-      ),
-    },
-    {
-      id: 'dantu-gydymas',
-      title: 'Dantų gydymas',
-      content: (
-        <div className="space-y-3">
-          <p>
-            Mūsų klinikos specialistai operatyviai padės, jei skauda dantį ar reikalingas profilaktinis patikrinimas.
-            Teikiame visas dantų gydymo paslaugas:
-          </p>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Konsultacijos, profilaktinis patikrinimas, gydymo plano sudarymas;</li>
-            <li>Danties plombavimas helio arba stiklojonomerine plomba;</li>
-            <li>Dentalinė rentgenograma;</li>
-            <li>Profesionali burnos higiena;</li>
-            <li>Estetinis dantų plombavimas;</li>
-            <li>Dantų šaknų kanalų gydymas;</li>
-            <li>Vaikų dantų gydymas;</li>
-            <li>Dantų traukimas;</li>
-            <li>Implantacija;</li>
-            <li>Kaulo priauginimo, sinuso dugno pakėlimo operacijos;</li>
-            <li>Dantų protezavimas (metalo keramika, laminatės, cirkonio keramika, bemetalė keramika, išimami protezai).</li>
-          </ul>
-        </div>
-      ),
-    },
-    {
-      id: 'implantai',
-      title: 'Aukščiausios kokybės dantų implantai',
-      content: (
-        <div className="space-y-3">
-          <p>
-            Bangų Odontologijos Klinika savo klientams siūlo tik aukščiausios kokybės ilgaamžius, pasaulyje pripažintus
-            implantus – Straumann® ir Medentika®. Implantacija – pažangiausias būdas atstatyti tiek vieną, tiek ir kelis prarastus dantis.
-          </p>
+        ),
+      },
 
-          <h4 className="font-semibold text-gray-900">Kas yra danties implantas?</h4>
-          <p>
-            Danties implantas – tai danties šaknies pakaitalas. Jis gaminamas iš tvirtos, lengvos ir su kaulu suderinamos
-            medžiagos (titano, cirkonio ar jų lydinio) ir primena nedidelį varžtelį. Atstatant dantį, implantas įsukamas į
-            žandikaulį, o prie jo tvirtinama dirbtinė karūnėlė.
-          </p>
+      {
+        id: 'dantu-protezavimas',
+        title: 'Dantų protezavimas',
+        to: '/paslaugos/dantu-protezavimas',
+        content: (
+          <div className="space-y-3">
+            <p>Dantų protezavimo informacija pateikiama atskirame puslapyje.</p>
+          </div>
+        ),
+      },
 
-          <h4 className="font-semibold text-gray-900">Kodėl prarastą dantį būtina kuo skubiau atstatyti?</h4>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Vengsite gretimų dantų slinkimo į atsiradusį tarpą, nesikeis sąkandis;</li>
-            <li>Išsaugosite patogų kramtymą ir gerą higieną – mažiau galvos skausmų dėl sąkandžio;</li>
-            <li>Bus išsaugomas žandikaulio kaulas ir veido forma;</li>
-            <li>Atkuriamas šypsenos estetiškumas ir pilna funkcija.</li>
-          </ul>
-        </div>
-      ),
-    },
-    {
-      id: 'dantu-tiesinimas',
-      title: 'Dantų tiesinimas kapomis (ORDOLINE)',
-      content: (
-        <div className="space-y-3">
-          <p>
-            Bangų Odontologijos Klinikoje tiesiname dantis pasaulyje pripažintomis skaidriomis ORDOLINE kapomis.
-            Tai patogus, higieniškas ir diskretiškas būdas formuoti taisyklingą sąkandį ir gražią šypseną.
-          </p>
+      {
+        id: 'kompensuojamas-dantu-protezavimas',
+        title: 'TLK lėšomis kompensuojamas dantų protezavimas',
+        content: (
+          <div className="space-y-3">
+            <p>
+              Bangų odontologijos klinika yra sudariusi sutartį su Teritorinėmis ligonių kasomis (TLK),
+              kurios skiria kompensaciją dantų protezavimo išlaidoms iš Privalomojo sveikatos draudimo fondo (PSDF).
+            </p>
 
-          <h4 className="font-semibold text-gray-900">Kodėl verta rinktis skaidrias ORDOLINE kapas?</h4>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Nematomos, praktiškos, itin lengvos ir higieniškos;</li>
-            <li>Lengvai išimamos – patogu valgyti ir valytis dantis;</li>
-            <li>Trumpesnė gydymo trukmė, geriau prognozuojami rezultatai.</li>
-          </ul>
+            <p>Teisę į kompensuojamą protezavimą turi:</p>
 
-          <h4 className="font-semibold text-gray-900">Kaip tai veikia?</h4>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Sudarytas skaitmeninis gydymo planas – matysite progresą ir galutinį rezultatą.</li>
-            <li>Pagal atspaudus pagaminamas individualus kapų skaičius; kapas keičiate kas ~2 savaites.</li>
-            <li>Tinka beveik visais atvejais: sąkandžio korekcija, tarpai, susigrūdimai.</li>
-          </ul>
-        </div>
-      ),
-    },
-    {
-      id: 'burnos-higiena',
-      title: 'Burnos higiena (AIRFLOW®)',
-      content: (
-        <div className="space-y-3">
-          <p>
-            Kad ir kaip uoliai prižiūrėtumėte dantis namuose, šepetėlis ir siūlas nepasiekia visų vietų. Profesionali
-            burnos higiena – veiksminga karieso ir dantenų ligų profilaktika. Dantys tampa baltesni, pagerėja burnos kvapas.
-          </p>
-          <p>
-            Bangų Odontologijos klinikoje atliekame profesionalią burnos higieną su pažangiausia AIR FLOW technologija.
-            Rekomenduojame kas 6 mėn., esant prastesnei būklei – kas 3 mėn. Turint implantus – būtina reguliari higiena.
-          </p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Asmenys, kuriems sukako senatvės pensijos amžius;</li>
+              <li>Vaikai iki 18 metų;</li>
+              <li>Asmenys, pripažinti nedarbingais arba iš dalies darbingais;</li>
+              <li>Asmenys po burnos, veido ir žandikaulių onkologinių ligų gydymo.</li>
+            </ul>
 
-          <h4 className="font-semibold text-gray-900">Kodėl verta?</h4>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Pašalinamos net plika akimi nematomos apnašos, nuvalomi akmenys;</li>
-            <li>Poliruojami dantų, plombų ir protezų paviršiai – dantys atrodo baltesni;</li>
-            <li>Profilaktika nuo gingivito ir periodonto ligų;</li>
-            <li>Pagerėja burnos kvapas; sumažėja ankstyvo netekimo rizika;</li>
-            <li>Suteikiame individualius higienos patarimus.</li>
-          </ul>
+            <p className="text-sm text-gray-600">
+              Detalesnė ir nuolat atnaujinama informacija skelbiama TLK interneto svetainėje.
+            </p>
+          </div>
+        ),
+      },
 
-          <h4 className="font-semibold text-gray-900">Procedūros etapai</h4>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Akmenų pašalinimas ultragarsiniu skaleriu;</li>
-            <li>Apnašų šalinimas su soda, AIR FLOW aparatu;</li>
-            <li>Dantų poliravimas specialia pasta.</li>
-          </ul>
-        </div>
-      ),
-    },
-    {
-      id: 'dantu-balinimas',
-      title: 'Dantų balinimas BEYOND® sistema',
-      content: (
-        <div className="space-y-3">
-          <p>
-            Ofisinis dantų balinimas BEYOND® sistema odontologo kabinete – tai speciali balinimo su šviesos filtravimu
-            procedūra, kuri yra saugi ir užtikrina greitą rezultatą. Naudojama BEYOND® ACCELERATOR halogeninė lempa
-            išskiria mažesnę temperatūrą, todėl patogiau ir mažesnė jautrumo rizika. Rezultatas matomas iš karto.
-          </p>
+      {
+        id: 'dantu-gydymas',
+        title: 'Dantų gydymas',
+        to: '/paslaugos/dantu-taisymas-gydymas',
+        content: (
+          <div className="space-y-3">
+            <p>Dantų gydymo informacija pateikiama atskirame puslapyje.</p>
+          </div>
+        ),
+      },
 
-          <h4 className="font-semibold text-gray-900">Kodėl verta rinktis BEYOND®?</h4>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>BEYOND® – pasaulinis dantų estetikos lyderis;</li>
-            <li>Stulbinantys rezultatai po vienos procedūros;</li>
-            <li>Puikus pasirinkimas ruošiantis ypatingoms progoms;</li>
-            <li>Tinka esant emalio pageltimui, tetraciklino, fluoro ar su amžiumi susijusioms dėmėms;</li>
-            <li>Paprasta, neskausminga, trukmė ~45 min.;</li>
-            <li>Rezultatai dažniausiai išlieka iki 2 metų.</li>
-          </ul>
+      {
+        id: 'dantu-tiesinimas',
+        title: 'Dantų tiesinimas',
+        to: '/paslaugos/dantu-tiesinimas',
+        content: (
+          <div className="space-y-3">
+            <p>Dantų tiesinimo informacija pateikiama atskirame puslapyje.</p>
+          </div>
+        ),
+      },
 
-          <p className="text-sm text-gray-600">
-            Po procedūros pirmas 24 val. venkite kavos, tabako, dažančių gėrimų ir maisto, taip pat spalvotų dantų pastų ar skalavimo skysčių.
-          </p>
+      {
+        id: 'burnos-higiena',
+        title: 'Burnos higiena',
+        to: '/paslaugos/burnos-higiena',
+        content: (
+          <div className="space-y-3">
+            <p>Burnos higienos informacija pateikiama atskirame puslapyje.</p>
+          </div>
+        ),
+      },
 
-          <h4 className="font-semibold text-gray-900">Balinimas kapomis (namuose)</h4>
-          <p>
-            Atliekame ir efektyvų dantų balinimą kapomis. Individualiai pagamintų kapų pagalba, naudojant balinimo gelius,
-            dantys balinami namuose palaipsniui. Prieš balinimą rekomenduojame atlikti profesionalią burnos higieną.
-          </p>
-        </div>
-      ),
-    },
-    {
-      id: 'estetinis-plombavimas',
-      title: 'Estetinis plombavimas',
-      content: (
-        <div className="space-y-3">
-          <p>
-            Estetinis dantų plombavimas – procedūra, kurios metu dantys atkuriami sluoksniais, maksimaliai apsaugant
-            natūralų danties audinį. Atstatomi nudilę, nuskilę, ėduonies ar kitaip pažeisti dantys, koreguojama forma,
-            uždaromi tarpai.
-          </p>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Galima koreguoti formą ir spalvą; koreguoti vieną ar net visus priekinius dantis;</li>
-            <li>Vieno vizito metu galima atkurti 4–6 priekinius dantis – rezultatas tą pačią dieną;</li>
-            <li>Naudojamos modernios restauracinės medžiagos – minimaliai keičiami kietieji audiniai;</li>
-            <li>Vieno danties restauracija trunka apie 1,5 val.;</li>
-            <li>Prieš procedūrą rekomenduojama profesionali burnos higiena.</li>
-          </ul>
-        </div>
-      ),
-    },
-  ], [])
+      {
+        id: 'burnos-chirurgija',
+        title: 'Burnos chirurgija',
+        to: '/paslaugos/burnos-chirurgija',
+        content: (
+          <div className="space-y-3">
+            <p>Burnos chirurgijos informacija pateikiama atskirame puslapyje.</p>
+          </div>
+        ),
+      },
+
+      {
+        id: 'dantu-balinimas',
+        title: 'Dantų balinimas',
+        to: '/paslaugos/dantu-balinimas',
+        content: (
+          <div className="space-y-3">
+            <p>Dantų balinimo informacija pateikiama atskirame puslapyje.</p>
+          </div>
+        ),
+      },
+
+      {
+        id: 'estetinis-plombavimas',
+        title: 'Estetinis plombavimas',
+        to: '/paslaugos/estetinis-plombavimas',
+        content: (
+          <div className="space-y-3">
+            <p>Estetinio plombavimo informacija pateikiama atskirame puslapyje.</p>
+          </div>
+        ),
+      },
+
+      {
+        id: 'dantu-plombavimas',
+        title: 'Dantų plombavimas',
+        to: '/paslaugos/dantu-plombavimas',
+        content: (
+          <div className="space-y-3">
+            <p>Dantų plombavimo informacija pateikiama atskirame puslapyje.</p>
+          </div>
+        ),
+      },
+
+      {
+        id: 'dantu-traukimas',
+        title: 'Dantų traukimas',
+        to: '/paslaugos/dantu-traukimas',
+        content: (
+          <div className="space-y-3">
+            <p>Dantų traukimo informacija pateikiama atskirame puslapyje.</p>
+          </div>
+        ),
+      },
+
+      {
+        id: 'endodontinis-gydymas',
+        title: 'Endodontinis gydymas',
+        to: '/paslaugos/endodontinis-gydymas',
+        content: (
+          <div className="space-y-3">
+            <p>Endodontinio gydymo informacija pateikiama atskirame puslapyje.</p>
+          </div>
+        ),
+      },
+
+      {
+        id: 'vaiku-odontologija',
+        title: 'Vaikų odontologija',
+        to: '/paslaugos/vaiku-odontologija',
+        content: (
+          <div className="space-y-3">
+            <p>Vaikų odontologijos informacija pateikiama atskirame puslapyje.</p>
+          </div>
+        ),
+      },
+    ],
+    []
+  )
 
   const { hash, pathname } = useLocation()
   const [openIds, setOpenIds] = useState<Set<string>>(new Set())
@@ -598,7 +510,11 @@ export default function Services() {
 
       if (!willOpen) {
         if (!alreadyOpen) return
-        setOpenIds(prev => { const n = new Set(prev); n.delete(id); return n })
+        setOpenIds((prev) => {
+          const n = new Set(prev)
+          n.delete(id)
+          return n
+        })
         await wait(320)
         return
       }
@@ -615,11 +531,8 @@ export default function Services() {
       const el = document.getElementById(id)
       if (el) await waitForLayoutStabilize(el, 4, 1000)
 
-      if (mobile) {
-        await smoothCenterOnElement(id, 14, 380)
-      } else {
-        await smoothAlignToElement(id, 16, 260)
-      }
+      if (mobile) await smoothCenterOnElement(id, 14, 380)
+      else await smoothAlignToElement(id, 16, 260)
     } finally {
       setListAnchoringOff(false)
       isAnimatingRef.current = false
@@ -633,7 +546,9 @@ export default function Services() {
   useEffect(() => {
     const target = (hash || '').replace('#', '')
     if (!target) return
-    if (!sections.some(s => s.id === target)) return
+    const item = sections.find((s) => s.id === target)
+    if (!item) return
+    if (item.to) return
 
     let cancelled = false
     const run = async () => {
@@ -647,6 +562,7 @@ export default function Services() {
           await wait(320)
           if (cancelled) return
         }
+
         setOpenIds(new Set([target]))
         await wait(40)
 
@@ -654,11 +570,8 @@ export default function Services() {
         if (el) await waitForLayoutStabilize(el, 4, 1000)
         if (cancelled) return
 
-        if (mobile) {
-          await smoothCenterOnElement(target, 14, 380)
-        } else {
-          await smoothAlignToElement(target, 16, 260)
-        }
+        if (mobile) await smoothCenterOnElement(target, 14, 380)
+        else await smoothAlignToElement(target, 16, 260)
       } finally {
         setListAnchoringOff(false)
         isAnimatingRef.current = false
@@ -666,24 +579,22 @@ export default function Services() {
     }
     run()
     return () => { cancelled = true }
-  }, [hash, sections, mobile, openIds])
+  }, [hash, mobile, openIds, sections])
 
   const listVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.1 } }
+    visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.1 } },
   }
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] } },
   }
-
-  const usePaperScroll = (id: string) => mobile
 
   return (
     <>
       <SEO
         title="Paslaugos"
-        description="Skubi pagalba, dantų protezavimas (CEREC, cirkonis, E-MAX), kompensuojamas protezavimas, dantų gydymas, implantai, tiesinimas, higiena, chirurgija, balinimas, estetinis plombavimas."
+        description="Skubi pagalba, dantų protezavimas, kompensuojamas protezavimas, dantų gydymas, implantai, tiesinimas, higiena, chirurgija, balinimas, plombavimas, traukimas, endodontija, vaikų odontologija."
       />
 
       <AnimatedSection>
@@ -691,8 +602,7 @@ export default function Services() {
           <header className="mb-8">
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-600">Paslaugos</h1>
             <p className="mt-3 text-gray-600 max-w-2xl">
-              Išsirinkite dominančią paslaugą – atsidarys išsamus aprašas. Visos sekcijos pagal nutylėjimą uždarytos,
-              kad būtų patogu naršyti.
+              Išsirinkite dominančią paslaugą – atsidarys išsamus aprašas arba būsite nukreipti į atskirą paslaugos puslapį.
             </p>
           </header>
 
@@ -705,9 +615,18 @@ export default function Services() {
           >
             {sections.map((s) => {
               const open = openIds.has(s.id)
+
+              if (s.to) {
+                return (
+                  <motion.div key={s.id} variants={itemVariants} layout="position">
+                    <ServiceLinkCard to={s.to} title={s.title} />
+                  </motion.div>
+                )
+              }
+
               return (
                 <motion.div key={s.id} variants={itemVariants} layout="position">
-                  {usePaperScroll(s.id) ? (
+                  {mobile ? (
                     <AccordionItemPaper
                       id={s.id}
                       title={s.title}

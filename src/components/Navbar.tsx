@@ -28,7 +28,7 @@ const nav: NavItem[] = [
       { to: '/paslaugos/dantu-plombavimas', label: 'Dantų plombavimas' },
       { to: '/paslaugos/dantu-traukimas', label: 'Dantų traukimas' },
       { to: '/paslaugos/endodontinis-gydymas', label: 'Endodontinis Gydymas' },
-      { to: '/paslaugos/vaiku-odontologija', label: 'Vaikų Odontologija' },      
+      { to: '/paslaugos/vaiku-odontologija', label: 'Vaikų Odontologija' },
     ],
   },
   { to: '/kainos', label: 'Kainos' },
@@ -38,7 +38,8 @@ const nav: NavItem[] = [
 
 export default function Navbar() {
   const [openMobile, setOpenMobile] = useState(false)
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [openIndex, setOpenIndex] = useState<number | null>(null) // desktop dropdown
+  const [mobileOpenIndex, setMobileOpenIndex] = useState<number | null>(null) // mobile accordion
   const closeTimer = useRef<number | null>(null)
   const location = useLocation()
   const navigate = useNavigate()
@@ -56,10 +57,13 @@ export default function Navbar() {
   useEffect(() => {
     setOpenIndex(null)
     setOpenMobile(false)
+    setMobileOpenIndex(null)
   }, [location.pathname, location.hash])
 
   useEffect(() => {
-    return () => { if (closeTimer.current) window.clearTimeout(closeTimer.current) }
+    return () => {
+      if (closeTimer.current) window.clearTimeout(closeTimer.current)
+    }
   }, [])
 
   // Lock scroll on mobile menu open (body/html)
@@ -76,18 +80,45 @@ export default function Navbar() {
     exit: { opacity: 0 },
   }
 
-  /** Vieningas click handler'is: mobilui uždarom meniu ir scrollinam į viršų, jei nėra hash */
+  function scrollToTopInstant() {
+    requestAnimationFrame(() =>
+      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+    )
+  }
+
+  function scrollToHashIfAny(to: string) {
+    const hashIndex = to.indexOf('#')
+    if (hashIndex === -1) return
+
+    const id = to.slice(hashIndex + 1)
+    if (!id) return
+
+    // palaukiam, kad pasikeistų route / užsikrautų content
+    window.setTimeout(() => {
+      const el = document.getElementById(id)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }, 50)
+  }
+
+  /** Vieningas click handler'is */
   function handleNavClick(to: string) {
     setOpenIndex(null)
     setOpenMobile(false)
+    setMobileOpenIndex(null)
 
     const hasHash = to.includes('#')
-    // Jei spaudžiam NavLink, RR pats naviguos – bet mobile norim ir "į viršų", jei nėra hash
-    // Jei čia būtų paprastas <a>, darytumėm preventDefault + navigate(to)
-    if (!hasHash) {
-      // paliekam instant, kad nebūtų jank
-      requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }))
+
+    // Hash atveju geriau aiškiai naviguoti ir tada scrollinti į elementą
+    if (hasHash) {
+      navigate(to)
+      scrollToHashIfAny(to)
+      return
     }
+
+    // be hash – tiesiog į viršų
+    scrollToTopInstant()
   }
 
   return (
@@ -97,7 +128,12 @@ export default function Navbar() {
         <Link
           to="/"
           className="flex items-center gap-3"
-          onClick={() => { setOpenMobile(false); setOpenIndex(null); requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })) }}
+          onClick={() => {
+            setOpenMobile(false)
+            setOpenIndex(null)
+            setMobileOpenIndex(null)
+            scrollToTopInstant()
+          }}
           aria-label="Bangų klinika — pradžia"
         >
           <img
@@ -108,7 +144,6 @@ export default function Navbar() {
             loading="eager"
             decoding="async"
           />
-
         </Link>
 
         {/* Desktop NAV */}
@@ -136,7 +171,7 @@ export default function Navbar() {
                     [
                       'relative text-[15px] md:text-[16px] font-medium transition-colors',
                       isActive ? 'text-primary-700' : 'text-gray-800 hover:text-primary-700',
-                      'py-2'
+                      'py-2',
                     ].join(' ')
                   }
                   onClick={() => handleNavClick(n.to)}
@@ -150,7 +185,7 @@ export default function Navbar() {
                       aria-hidden
                       className={[
                         'absolute left-0 -bottom-1 h-[2px] w-full rounded-full transition-all',
-                        (openIndex === idx) ? 'bg-primary-600' : '',
+                        openIndex === idx ? 'bg-primary-600' : '',
                       ].join(' ')}
                     />
                   </span>
@@ -158,7 +193,11 @@ export default function Navbar() {
 
                 {hasDrop && (
                   <>
-                    <div aria-hidden className="absolute left-0 right-0 top-full h-2" onMouseEnter={cancelClose} />
+                    <div
+                      aria-hidden
+                      className="absolute left-0 right-0 top-full h-2"
+                      onMouseEnter={cancelClose}
+                    />
                     <div
                       id={menuId}
                       role="menu"
@@ -190,7 +229,7 @@ export default function Navbar() {
         {/* Mobile toggle */}
         <button
           className="md:hidden btn-ghost text-[15px] font-medium"
-          onClick={() => setOpenMobile(v => !v)}
+          onClick={() => setOpenMobile((v) => !v)}
           aria-expanded={openMobile}
           aria-label="Meniu"
         >
@@ -198,7 +237,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile overlay menu (fixed, be blur – mažiau jank) */}
+      {/* Mobile overlay menu */}
       <AnimatePresence initial={false}>
         {openMobile && (
           <motion.div
@@ -211,16 +250,81 @@ export default function Navbar() {
             className="md:hidden fixed inset-0 top-[72px] bg-white border-t border-gray-100 overflow-auto will-change-transform"
           >
             <div className="container-narrow py-2 grid gap-1.5">
-              {nav.map((n) => (
-                <NavLink
-                  key={n.to}
-                  to={n.to}
-                  className="px-2 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 block text-[15px] font-medium"
-                  onClick={() => handleNavClick(n.to)}
-                >
-                  {n.label}
-                </NavLink>
-              ))}
+              {nav.map((n, idx) => {
+                const hasDrop = 'dropdown' in n && Array.isArray(n.dropdown)
+
+                // Paprastas linkas
+                if (!hasDrop) {
+                  return (
+                    <NavLink
+                      key={n.to}
+                      to={n.to}
+                      className="px-2 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 block text-[15px] font-medium"
+                      onClick={() => handleNavClick(n.to)}
+                    >
+                      {n.label}
+                    </NavLink>
+                  )
+                }
+
+                // Accordion item (pvz. Paslaugos)
+                const isOpen = mobileOpenIndex === idx
+
+                return (
+                  <div key={n.to} className="rounded-lg border border-gray-100 overflow-hidden">
+                    <div className="flex items-center">
+                      {/* Parent navigacija (į /paslaugos) */}
+                      <NavLink
+                        to={n.to}
+                        className="flex-1 px-2 py-2 block text-[15px] font-medium hover:bg-primary-50 hover:text-primary-700"
+                        onClick={() => handleNavClick(n.to)}
+                      >
+                        {n.label}
+                      </NavLink>
+
+                      {/* Toggle dropdown */}
+                      <button
+                        type="button"
+                        className="px-3 py-2 text-[14px] font-medium text-gray-700 hover:bg-gray-50"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          setMobileOpenIndex((cur) => (cur === idx ? null : idx))
+                        }}
+                        aria-expanded={isOpen}
+                        aria-label={`${n.label} meniu`}
+                      >
+                        {isOpen ? '−' : '+'}
+                      </button>
+                    </div>
+
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.18, ease: 'easeOut' }}
+                          className="bg-white"
+                        >
+                          <div className="px-1 pb-2">
+                            {n.dropdown!.map((d) => (
+                              <NavLink
+                                key={d.to}
+                                to={d.to}
+                                className="block px-3 py-2 rounded-lg text-[14px] text-gray-800 hover:bg-primary-50 hover:text-primary-700"
+                                onClick={() => handleNavClick(d.to)}
+                              >
+                                {d.label}
+                              </NavLink>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                )
+              })}
             </div>
           </motion.div>
         )}

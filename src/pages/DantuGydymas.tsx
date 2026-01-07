@@ -72,7 +72,7 @@ export default function DantuGydymas() {
         {/* HERO */}
         <motion.header className="mb-10 text-center sm:text-left" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
-            Profesionalus dantų taisymas Klaipėdoje
+            Profesionalus dantų gydymas Klaipėdoje
           </h1>
           
           <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed mb-8">
