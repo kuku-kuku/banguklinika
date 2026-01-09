@@ -29,6 +29,7 @@ const nav: NavItem[] = [
       { to: '/paslaugos/dantu-traukimas', label: 'Dantų traukimas' },
       { to: '/paslaugos/endodontinis-gydymas', label: 'Endodontinis Gydymas' },
       { to: '/paslaugos/vaiku-odontologija', label: 'Vaikų Odontologija' },
+      { to: '/paslaugos/dantu-implantacija', label: 'Dantų implantacija' },
     ],
   },
   { to: '/kainos', label: 'Kainos' },

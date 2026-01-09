@@ -490,6 +490,16 @@ export default function Services() {
           </div>
         ),
       },
+      {
+        id: 'dantu-implantacija',
+        title: 'Dantų implantacija',
+        to: '/paslaugos/dantu-implantacija',
+        content: (
+          <div className="space-y-3">
+            <p>Dantų implantacijos informacija pateikiama atskirame puslapyje.</p>
+          </div>
+        ),
+      },
     ],
     []
   )

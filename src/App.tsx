@@ -29,6 +29,7 @@ import BackToTop from './components/BackToTop'
 import HeroWave from './components/HeroWave'
 import CirkonioOffer from './pages/CirkonioOffer'
 import AllOn4Implants from './pages/AllOn4Implants'
+import DantuImplantacija from './pages/DantuImplantacija'
 
 export default function App() {
   return (
@@ -68,6 +69,9 @@ export default function App() {
           <Route path="/paslaugos/dantu-traukimas" element={<DantuTraukimas />} />
           <Route path="/paslaugos/dantu-tiesinimas" element={<DantuTiesinimas />} />
           <Route path="/paslaugos/endodontinis-gydymas" element={<EndodontinisGydymas />} />
+          <Route path="/paslaugos/dantu-implantacija" element={<DantuImplantacija />} />
+
+          
 
           {/* Ypatingi pasiūlymai – bendras sąrašas */}
           <Route path="/ypatingi-pasiulymai" element={<SpecialOffers />} />
