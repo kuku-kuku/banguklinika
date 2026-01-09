@@ -19,7 +19,6 @@ const nav: NavItem[] = [
       { to: '/paslaugos/dantu-protezavimas', label: 'Dantų protezavimas' },
       { to: '/paslaugos#kompensuojamas-dantu-protezavimas', label: 'Kompensuojamas dantų protezavimas' },
       { to: '/paslaugos/dantu-taisymas-gydymas', label: 'Dantų gydymas' },
-      { to: '/paslaugos#implantai', label: 'Implantai' },
       { to: '/paslaugos/dantu-tiesinimas', label: 'Dantų tiesinimas' },
       { to: '/paslaugos/burnos-higiena', label: 'Burnos higiena' },
       { to: '/paslaugos/burnos-chirurgija', label: 'Burnos chirurgija' },
