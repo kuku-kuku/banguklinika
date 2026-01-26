@@ -113,10 +113,75 @@ export default function DantuImplantacija() {
                     <div className="flex justify-center sm:justify-start">
                         <Link
                             to="/kontaktai"
-                            className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1"
+                            className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1 mb-8"
                         >
                             Registruotis vizitui
                         </Link>
+                    </div>
+                    <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
+                        <div className="bg-brand-50/50 p-4 border-b border-brand/10 font-bold text-darkblue-700">
+                            Naudojami dantų implantai ir jų kainos
+                        </div>
+                        <div className="divide-y divide-slate-100">
+                            <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                                <span className="text-slate-700">Straumann® implantas</span>
+                                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">650 €</span>
+                            </div>
+                            <div className="px-4 pb-4 -mt-2 text-slate-600 text-sm leading-relaxed">
+                                Tai vienas lyderiaujančių implantų gamintojų pasaulyje, garsėjantis itin aukštu prigijimo rodikliu,
+                                ilgaamžiškumu ir patikimumu. Šie implantai dažnai pasirenkami sudėtingesniais atvejais ar pacientams,
+                                ieškantiems aukščiausios klasės sprendimo.
+                            </div>
+
+                            <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                                <span className="text-slate-700">Neodent® implantas</span>
+                                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">500 €</span>
+                            </div>
+                            <div className="px-4 pb-4 -mt-2 text-slate-600 text-sm leading-relaxed">
+                                Aukštos kokybės implantai, pasižymintys patikima konstrukcija ir geru kainos bei kokybės santykiu. Neodent
+                                implantai yra plačiai naudojami šiuolaikinėje odontologijoje ir dažnai pasirenkami pacientų, ieškančių
+                                patikimo, ilgaamžio sprendimo už racionalią kainą. Šie implantai užtikrina stabilų prigijimą ir tinka
+                                įvairioms klinikinėms situacijoms – nuo pavienių dantų atkūrimo iki sudėtingesnių implantacijos atvejų.
+                            </div>
+                        </div>
+
+                        <div className="bg-brand-50/50 p-4 border-y border-brand/10 font-bold text-darkblue-700 mt-2">
+                            Papildomos procedūros
+                        </div>
+                        <div className="divide-y divide-slate-100">
+                            <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                                <span className="text-slate-700">Sinuso pakėlimo operacija</span>
+                                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">500–700 €</span>
+                            </div>
+                            <div className="px-4 pb-4 -mt-2 text-slate-600 text-sm leading-relaxed">
+                                Ši procedūra atliekama tuomet, kai viršutiniame žandikaulyje nepakanka kaulo implanto stabilumui. Ji leidžia
+                                sudaryti tinkamas sąlygas implantacijai ir ženkliai padidina ilgalaikės sėkmės tikimybę.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="space-y-4 text-slate-700 leading-relaxed">
+                        <h3 className="font-semibold text-darkblue-700">Nuo ko priklauso galutinė implantacijos kaina?</h3>
+                        <p>
+                            Galutinė dantų implantacijos kaina nėra vienoda visiems pacientams, nes ji priklauso nuo kelių individualių
+                            veiksnių. Kainai įtakos turi reikalingų implantų skaičius, pasirinktas implanto tipas bei žandikaulio kaulo
+                            būklė. Tam tikrais atvejais gali prireikti papildomų procedūrų, kurios sudaro sąlygas saugiai ir stabiliai
+                            implantacijai. Taip pat svarbus ir taikomas gydymo metodas – ar pasirenkama klasikinė implantacija, ar
+                            modernesnis sprendimas, pavyzdžiui, ALL-ON-4 metodas.
+                        </p>
+                        <p>
+                            Dėl šios priežasties prieš pradedant gydymą visuomet atliekama išsami konsultacija ir diagnostika. Ji leidžia
+                            tiksliai įvertinti individualią situaciją, suplanuoti optimalų gydymo sprendimą ir pateikti aiškų, pagrįstą
+                            implantacijos bei galutinės kainos planą.
+                        </p>
+
+                        <h3 className="font-semibold text-darkblue-700">Investicija į ilgalaikį sprendimą</h3>
+                        <p>
+                            Nors dantų implantacija yra didesnė investicija nei laikini sprendimai, ilgalaikėje perspektyvoje ji dažnai
+                            tampa ekonomiškai naudingesnė. Implantai padeda išsaugoti žandikaulio kaulą, užtikrina stabilų kramtymą ir
+                            nereikalauja dažnų keitimų ar korekcijų, kaip kai kurios alternatyvos. Tai investicija ne tik į šypseną, bet
+                            ir į gyvenimo kokybę, komfortą bei pasitikėjimą savimi.
+                        </p>
                     </div>
                 </motion.header>
 
@@ -647,72 +712,6 @@ export default function DantuImplantacija() {
                             reikalingų papildomų procedūrų. Bangų odontologijos klinikoje kainodara yra aiški ir skaidri – kiekvienam
                             pacientui sudaromas individualus gydymo planas, kuriame detaliai paaiškinama, iš ko susideda galutinė
                             implantacijos kaina.
-                        </p>
-                    </div>
-
-                    <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
-                        <div className="bg-brand-50/50 p-4 border-b border-brand/10 font-bold text-darkblue-700">
-                            Naudojami dantų implantai ir jų kainos
-                        </div>
-                        <div className="divide-y divide-slate-100">
-                            <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                                <span className="text-slate-700">Straumann® implantas</span>
-                                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">650 €</span>
-                            </div>
-                            <div className="px-4 pb-4 -mt-2 text-slate-600 text-sm leading-relaxed">
-                                Tai vienas lyderiaujančių implantų gamintojų pasaulyje, garsėjantis itin aukštu prigijimo rodikliu,
-                                ilgaamžiškumu ir patikimumu. Šie implantai dažnai pasirenkami sudėtingesniais atvejais ar pacientams,
-                                ieškantiems aukščiausios klasės sprendimo.
-                            </div>
-
-                            <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                                <span className="text-slate-700">Neodent® implantas</span>
-                                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">500 €</span>
-                            </div>
-                            <div className="px-4 pb-4 -mt-2 text-slate-600 text-sm leading-relaxed">
-                                Aukštos kokybės implantai, pasižymintys patikima konstrukcija ir geru kainos bei kokybės santykiu. Neodent
-                                implantai yra plačiai naudojami šiuolaikinėje odontologijoje ir dažnai pasirenkami pacientų, ieškančių
-                                patikimo, ilgaamžio sprendimo už racionalią kainą. Šie implantai užtikrina stabilų prigijimą ir tinka
-                                įvairioms klinikinėms situacijoms – nuo pavienių dantų atkūrimo iki sudėtingesnių implantacijos atvejų.
-                            </div>
-                        </div>
-
-                        <div className="bg-brand-50/50 p-4 border-y border-brand/10 font-bold text-darkblue-700 mt-2">
-                            Papildomos procedūros
-                        </div>
-                        <div className="divide-y divide-slate-100">
-                            <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                                <span className="text-slate-700">Sinuso pakėlimo operacija</span>
-                                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">500–700 €</span>
-                            </div>
-                            <div className="px-4 pb-4 -mt-2 text-slate-600 text-sm leading-relaxed">
-                                Ši procedūra atliekama tuomet, kai viršutiniame žandikaulyje nepakanka kaulo implanto stabilumui. Ji leidžia
-                                sudaryti tinkamas sąlygas implantacijai ir ženkliai padidina ilgalaikės sėkmės tikimybę.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="space-y-4 text-slate-700 leading-relaxed">
-                        <h3 className="font-semibold text-darkblue-700">Nuo ko priklauso galutinė implantacijos kaina?</h3>
-                        <p>
-                            Galutinė dantų implantacijos kaina nėra vienoda visiems pacientams, nes ji priklauso nuo kelių individualių
-                            veiksnių. Kainai įtakos turi reikalingų implantų skaičius, pasirinktas implanto tipas bei žandikaulio kaulo
-                            būklė. Tam tikrais atvejais gali prireikti papildomų procedūrų, kurios sudaro sąlygas saugiai ir stabiliai
-                            implantacijai. Taip pat svarbus ir taikomas gydymo metodas – ar pasirenkama klasikinė implantacija, ar
-                            modernesnis sprendimas, pavyzdžiui, ALL-ON-4 metodas.
-                        </p>
-                        <p>
-                            Dėl šios priežasties prieš pradedant gydymą visuomet atliekama išsami konsultacija ir diagnostika. Ji leidžia
-                            tiksliai įvertinti individualią situaciją, suplanuoti optimalų gydymo sprendimą ir pateikti aiškų, pagrįstą
-                            implantacijos bei galutinės kainos planą.
-                        </p>
-
-                        <h3 className="font-semibold text-darkblue-700">Investicija į ilgalaikį sprendimą</h3>
-                        <p>
-                            Nors dantų implantacija yra didesnė investicija nei laikini sprendimai, ilgalaikėje perspektyvoje ji dažnai
-                            tampa ekonomiškai naudingesnė. Implantai padeda išsaugoti žandikaulio kaulą, užtikrina stabilų kramtymą ir
-                            nereikalauja dažnų keitimų ar korekcijų, kaip kai kurios alternatyvos. Tai investicija ne tik į šypseną, bet
-                            ir į gyvenimo kokybę, komfortą bei pasitikėjimą savimi.
                         </p>
                     </div>
                 </motion.section>

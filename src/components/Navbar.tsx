@@ -16,6 +16,7 @@ const nav: NavItem[] = [
     label: 'Paslaugos',
     dropdown: [
       { to: '/paslaugos#skubi-pagalba', label: 'Skubi pagalba' },
+      { to: '/paslaugos/dantu-implantacija', label: 'Dantų implantacija' },
       { to: '/paslaugos/dantu-protezavimas', label: 'Dantų protezavimas' },
       { to: '/paslaugos#kompensuojamas-dantu-protezavimas', label: 'Kompensuojamas dantų protezavimas' },
       { to: '/paslaugos/dantu-taisymas-gydymas', label: 'Dantų gydymas' },
@@ -28,7 +29,6 @@ const nav: NavItem[] = [
       { to: '/paslaugos/dantu-traukimas', label: 'Dantų traukimas' },
       { to: '/paslaugos/endodontinis-gydymas', label: 'Endodontinis Gydymas' },
       { to: '/paslaugos/vaiku-odontologija', label: 'Vaikų Odontologija' },
-      { to: '/paslaugos/dantu-implantacija', label: 'Dantų implantacija' },
     ],
   },
   { to: '/kainos', label: 'Kainos' },
