@@ -5,7 +5,7 @@ const SITE_NAME = "Bangų klinika";
 const SITE_URL = "https://banguklinika.lt";
 const DEFAULT_IMAGE = `${SITE_URL}/hero.jpg`;
 const TWITTER_HANDLE = "@banguklinika";
-const HOME_TITLE = "Odontologijos klinika Klaipėdoje";
+const HOME_TITLE = "Odontologijos klinika (odontologai) Klaipėdoje";
 
 type Props = {
   title?: string;
