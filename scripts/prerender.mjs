@@ -43,81 +43,81 @@ const pages = [
   // Paslaugos (1 etapas)
   {
     route: "/paslaugos/burnos-higiena",
-    title: "Burnos higiena | Bangų klinika",
+    title: "Burnos (dantų) higiena Klaipėdoje | Bangų klinika",
     description: "Profesionali burnos higiena Klaipėdoje. Apnašų ir akmenų šalinimas, profilaktika, patarimai.",
   },
   {
     route: "/paslaugos/dantu-plombavimas",
-    title: "Dantų plombavimas | Bangų klinika",
+    title: "Dantų plombavimas Klaipėdoje | Kaina | Bangų klinika",
     description: "Dantų plombavimas Klaipėdoje – kokybiškas gydymas, modernios medžiagos ir ilgalaikis rezultatas.",
   },
   {
     route: "/paslaugos/estetinis-plombavimas",
-    title: "Estetinis dantų plombavimas | Bangų klinika",
+    title: "Estetinis dantų plombavimas Klaipėdoje - Bangų odontologijos klinika | Bangų klinika",
     description: "Estetinis plombavimas – šypsenos atstatymas, formos ir spalvos korekcija natūraliam rezultatui.",
   },
   {
     route: "/paslaugos/burnos-chirurgija",
-    title: "Burnos chirurgija | Bangų klinika",
+    title: "Burnos chirurgija Klaipėdoje | Bangų klinika",
     description: "Burnos chirurgija Klaipėdoje: procedūros, konsultacijos ir saugus gydymas klinikoje.",
   },
   {
     route: "/paslaugos/dantu-balinimas",
-    title: "Dantų balinimas | Bangų klinika",
+    title: "Dantų balinimas Klaipėdoje | Bangų klinika",
     description: "Dantų balinimas Klaipėdoje – profesionalus balinimas klinikoje ir rekomendacijos po procedūros.",
   },
 
   // Paslaugos (2 etapas)
   {
     route: "/paslaugos/dantu-taisymas-gydymas",
-    title: "Dantų gydymas | Bangų klinika",
+    title: "Dantų gydymas, taisymas (tvarkymas) Klaipėdoje | Bangų klinika",
     description: "Dantų taisymas ir gydymas Klaipėdoje – diagnostika, gydymo planas ir komfortiškos procedūros.",
   },
   {
     route: "/paslaugos/vaiku-odontologija",
-    title: "Vaikų odontologija | Bangų klinika",
+    title: "Vaikų odontologija Klaipėdoje | Bangų klinika",
     description: "Vaikų odontologija Klaipėdoje – švelnus bendravimas, profilaktika ir gydymas mažiesiems.",
   },
   {
     route: "/paslaugos/dantu-protezavimas",
-    title: "Dantų protezavimas | Bangų klinika",
+    title: "Dantų protezavimas Klaipėdoje | Bangų klinika",
     description: "Dantų protezavimas: vainikėliai, protezai, individualūs sprendimai šypsenos atstatymui.",
   },
   {
     route: "/paslaugos/dantu-traukimas",
-    title: "Dantų traukimas | Bangų klinika",
+    title: "Dantų traukimas (rovimas) Klaipėdoje | Bangų klinika",
     description: "Saugus dantų šalinimas Klaipėdoje – konsultacija, nuskausminimas ir priežiūra po procedūros.",
   },
   {
     route: "/paslaugos/dantu-tiesinimas",
-    title: "Dantų tiesinimas | Bangų klinika",
+    title: "Dantų tiesinimas kapomis (Ordoline) Klaipėdoje | Bangų klinika",
     description: "Dantų tiesinimas: konsultacija, gydymo planas ir šiuolaikiniai sprendimai taisyklingam sąkandžiui.",
   },
   {
     route: "/paslaugos/endodontinis-gydymas",
-    title: "Endodontinis gydymas | Bangų klinika",
+    title: "Endodontinis (šaknų kanalų) gydymas Klaipėdoje | Bangų klinika",
     description: "Kanalų gydymas (endodontija) Klaipėdoje – tikslus gydymas ir skausmo kontrolė.",
   },
   {
     route: "/paslaugos/dantu-implantacija",
-    title: "Dantų implantacija | Bangų klinika",
+    title: "Dantų implantacija Klaipėdoje | Bangų klinika",
     description: "Dantų implantacija Klaipėdoje – konsultacija, implantai, gydymo eiga ir priežiūra po procedūros.",
   },
 
   // Ypatingi pasiūlymai
   {
     route: "/ypatingi-pasiulymai",
-    title: "Ypatingi pasiūlymai | Bangų klinika",
+    title: "Ypatingi pasiūlymai | Bangų klinika klaipėdoje",
     description: "Aktualūs Bangų klinikos pasiūlymai ir akcijos odontologijos paslaugoms.",
   },
   {
-    route: "/ypatingi-pasiulymai/cirkonio-keramikos-vainikeliai",
-    title: "Cirkonio keramikos vainikėliai | Bangų klinika",
+    route: "/ypatingi-pasiulymai/cirkonio-keramikos-vainikeliai ",
+    title: "Cirkonio keramikos vainikėliai | Bangų klinika Klaipėdoje",
     description: "Cirkonio keramikos vainikėliai – estetika ir tvirtumas. Sužinokite apie pasiūlymą ir sąlygas.",
   },
   {
     route: "/ypatingi-pasiulymai/pilnas-zandikaulio-atstatymas",
-    title: "Pilnas žandikaulio atstatymas (All-on-4) | Bangų klinika",
+    title: "Pilnas žandikaulio atstatymas (All-on-4) | Bangų klinika Klaipėdoje",
     description: "Pilnas žandikaulio atstatymas All-on-4 – sprendimas dantų atkūrimui. Detalės ir konsultacija.",
   },
 ];
