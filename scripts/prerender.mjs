@@ -2,14 +2,15 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import puppeteer from "puppeteer";
+import http from "http";
+import { chromium } from "playwright";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const distDir = path.resolve(__dirname, "..", "dist");
 
-// ✅ VISI tavo route'ai iš App.tsx
+// ✅ VISI route'ai iš App.tsx
 const routes = [
   "/",
   "/apie",
@@ -39,13 +40,13 @@ const routes = [
   "/ypatingi-pasiulymai/pilnas-zandikaulio-atstatymas",
 ];
 
-// Vercel/Static hostinimui patikimiausia: visus puslapius rašom su trailing slash,
+// Vercel/Static hostinimui patikimiausia: trailing slash,
 // kad serveris servintų kaip /route/index.html
-const normalizeRoute = (r) => {
+function normalizeRoute(r) {
   if (!r.startsWith("/")) r = "/" + r;
   if (r !== "/" && !r.endsWith("/")) r = r + "/";
   return r;
-};
+}
 
 function ensureDir(p) {
   fs.mkdirSync(p, { recursive: true });
@@ -72,27 +73,40 @@ function contentTypeFor(ext) {
     ".txt": "text/plain; charset=utf-8",
     ".xml": "application/xml; charset=utf-8",
     ".json": "application/json; charset=utf-8",
+    ".map": "application/json; charset=utf-8",
   };
   return types[ext] || "application/octet-stream";
 }
 
+function safeJoinDist(decodedPath) {
+  // apsauga nuo path traversal
+  const normalized = path
+    .normalize(decodedPath)
+    .replace(/^(\.\.(\/|\\|$))+/, "");
+
+  // užtikrinam, kad neprasideda su "\" ar "C:" ir pan.
+  const stripped = normalized.replace(/^([/\\])+/, "");
+  return path.join(distDir, stripped);
+}
+
 async function startStaticServer(port) {
-  const http = await import("http");
   const server = http.createServer((req, res) => {
     try {
       const urlPath = (req.url || "/").split("?")[0];
       const decoded = decodeURIComponent(urlPath);
 
       // 1) bandome duoti realų failą iš dist (assets, robots, sitemap, etc.)
-      const tryDirect = path.join(distDir, decoded);
+      const tryDirect = safeJoinDist(decoded);
       if (fs.existsSync(tryDirect) && fs.statSync(tryDirect).isFile()) {
         const data = fs.readFileSync(tryDirect);
-        res.writeHead(200, { "Content-Type": contentTypeFor(path.extname(tryDirect).toLowerCase()) });
+        res.writeHead(200, {
+          "Content-Type": contentTypeFor(path.extname(tryDirect).toLowerCase()),
+        });
         return res.end(data);
       }
 
       // 2) jei folderis, bandome folder/index.html
-      const tryIndex = path.join(distDir, decoded, "index.html");
+      const tryIndex = safeJoinDist(path.join(decoded, "index.html"));
       if (fs.existsSync(tryIndex)) {
         const data = fs.readFileSync(tryIndex);
         res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
@@ -116,18 +130,19 @@ async function startStaticServer(port) {
 
 async function run() {
   if (!fs.existsSync(distDir)) {
-    throw new Error(`dist folder nerastas: ${distDir}. Pirma paleisk "npm run build".`);
+    throw new Error(
+      `dist folder nerastas: ${distDir}. Pirma paleisk "npm run build".`
+    );
   }
 
   const port = 4173;
   const baseUrl = `http://127.0.0.1:${port}`;
   const server = await startStaticServer(port);
 
-  const browser = await puppeteer.launch({ headless: "new" });
-  const page = await browser.newPage();
-
-  // kad nebūtų random asset/cache bajerių
-  await page.setCacheEnabled(false);
+  // Playwright: rekomenduojama Vercel'e
+  const browser = await chromium.launch({ headless: true });
+  const context = await browser.newContext();
+  const page = await context.newPage();
 
   const uniqueRoutes = Array.from(new Set(routes.map(normalizeRoute)));
 
@@ -136,11 +151,11 @@ async function run() {
 
     console.log("[prerender] render:", url);
 
-    await page.goto(url, { waitUntil: "networkidle0" });
+    // Playwright "networkidle" (ne "networkidle0")
+    await page.goto(url, { waitUntil: "networkidle" });
 
-    // jei naudoji Helmet, kartais title/meta pasikeičia truputį vėliau
-    // tai duodam mikro pauzę
-    await new Promise((r) => setTimeout(r, 50));
+    // jei Helmet truputį pavėluoja atnaujinti title/meta
+    await page.waitForTimeout(80);
 
     const html = await page.content();
     writeHtml(route, html);
