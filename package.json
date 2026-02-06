@@ -8,7 +8,7 @@
     "dev:server": "node server.js",
     "dev:all": "concurrently -k -n VITE,API \"npm:dev\" \"npm:dev:server\"",
     "start": "node server.js",
-    "build": "node ./node_modules/vite/bin/vite.js build",
+    "build": "node -e \"console.log('PRERENDER BUILD ACTIVE')\" && node ./node_modules/vite/bin/vite.js build && node scripts/prerender.mjs",
     "preview": "node ./node_modules/vite/bin/vite.js preview",
     "typecheck": "tsc --noEmit"
   },
