@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet-async";
-import { useEffect } from "react"; // 👈 PRIDĖJOM
 
 const SITE_NAME = "Bangų klinika";
 const SITE_URL = "https://banguklinika.lt";
@@ -13,7 +12,7 @@ type Props = {
   isHome?: boolean;
   keywords?: string;
   image?: string;
-  canonical?: string;
+  canonical?: string; // rekomenduoju paduoti aiškiai iš page
   noindex?: boolean;
   structuredData?: object;
 };
@@ -39,72 +38,48 @@ export default function SEO({
       ? `${cleanTitle} | ${SITE_NAME}`
       : SITE_NAME;
 
-
-  const canonicalUrl =
-    canonical || (typeof window !== "undefined" ? window.location.href : SITE_URL);
-
   const finalDescription =
     description ||
     "Odontologijos klinika Klaipėdoje. Dantų gydymas, implantacija, CEREC protezavimas, burnos higiena. Nemokama konsultacija.";
 
+  const canonicalUrl = canonical || SITE_URL;
+
   const structuredDataObj =
-    structuredData ||
-    {
+    structuredData || {
       "@context": "https://schema.org",
       "@type": "Dentist",
-      "name": SITE_NAME,
-      "image": image,
-      "url": SITE_URL,
-      "telephone": "+37060000000",
-      "address": {
+      name: SITE_NAME,
+      image: image,
+      url: SITE_URL,
+      telephone: "+37060000000",
+      address: {
         "@type": "PostalAddress",
-        "streetAddress": "Pavyzdžio g. 1",
-        "addressLocality": "Klaipėda",
-        "addressRegion": "KL",
-        "postalCode": "91234",
-        "addressCountry": "LT"
+        streetAddress: "Pavyzdžio g. 1",
+        addressLocality: "Klaipėda",
+        addressRegion: "KL",
+        postalCode: "91234",
+        addressCountry: "LT",
       },
-      "geo": {
+      geo: {
         "@type": "GeoCoordinates",
-        "latitude": 55.7033,
-        "longitude": 21.1443
+        latitude: 55.7033,
+        longitude: 21.1443,
       },
-      "openingHoursSpecification": [
+      openingHoursSpecification: [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday"
-          ],
-          "opens": "08:00",
-          "closes": "18:00"
-        }
-      ]
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "08:00",
+          closes: "18:00",
+        },
+      ],
     };
-
-  useEffect(() => {
-    if (!finalDescription) return;
-
-    let meta = document.querySelector('meta[name="description"]');
-
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.setAttribute("name", "description");
-      document.head.appendChild(meta);
-    }
-
-    meta.setAttribute("content", finalDescription);
-  }, [finalDescription]);
 
   return (
     <Helmet>
+      <html lang="lt" />
       <title>{finalTitle}</title>
-
-      {/* !!! ČIA PAŠALINAM description META, NES JĄ VALDOM rankiniu būdu per useEffect */}
-      {/* <meta name="description" content={finalDescription} /> */}
+      <meta name="description" content={finalDescription} />
 
       {keywords && <meta name="keywords" content={keywords} />}
       <meta name="theme-color" content="#0d76d6" />
@@ -132,9 +107,7 @@ export default function SEO({
       <meta name="geo.region" content="LT-KL" />
       <meta name="geo.placename" content="Klaipėda" />
 
-      <script type="application/ld+json">
-        {JSON.stringify(structuredDataObj)}
-      </script>
+      <script type="application/ld+json">{JSON.stringify(structuredDataObj)}</script>
     </Helmet>
   );
 }
