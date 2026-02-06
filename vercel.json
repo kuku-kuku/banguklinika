@@ -1,50 +1,31 @@
 {
   "buildCommand": "npm install --include=dev && npm run build",
   "outputDirectory": "dist",
+  "trailingSlash": true,
   "headers": [
     {
       "source": "/admin/config.yml",
       "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/yaml; charset=utf-8"
-        }
+        { "key": "Content-Type", "value": "text/yaml; charset=utf-8" }
       ]
     },
     {
       "source": "/lt/:path*",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        }
-      ]
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     },
     {
       "source": "/ru/:path*",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        }
-      ]
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     },
     {
       "source": "/m/:path*",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        }
-      ]
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     }
   ],
   "redirects": [
     {
       "source": "/:path*",
-      "has": [
-        { "type": "host", "value": "banguklinika.lt" }
-      ],
+      "has": [{ "type": "host", "value": "banguklinika.lt" }],
       "destination": "https://www.banguklinika.lt/:path*",
       "permanent": true
     }
@@ -53,10 +34,6 @@
     {
       "source": "/api/:path*",
       "destination": "/api/:path*"
-    },
-    {
-      "source": "/:path*",
-      "destination": "/index.html"
     }
   ]
 }
