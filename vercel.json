@@ -1,13 +1,16 @@
 {
-  "buildCommand": "npm install --include=dev && npm run build",
-  "outputDirectory": "dist",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    }
+  ],
   "trailingSlash": true,
   "headers": [
     {
       "source": "/admin/config.yml",
-      "headers": [
-        { "key": "Content-Type", "value": "text/yaml; charset=utf-8" }
-      ]
+      "headers": [{ "key": "Content-Type", "value": "text/yaml; charset=utf-8" }]
     },
     {
       "source": "/lt/:path*",
@@ -28,12 +31,6 @@
       "has": [{ "type": "host", "value": "banguklinika.lt" }],
       "destination": "https://www.banguklinika.lt/:path*",
       "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
     }
   ]
 }
