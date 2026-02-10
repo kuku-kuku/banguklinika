@@ -10,7 +10,21 @@ export default async function handler(req, res) {
       return res.status(415).json({ error: "Unsupported Media Type: expected JSON" });
     }
 
-    const { name, email, phone, message, hp } = req.body || {};
+    let body = req.body;
+
+    if (!body) {
+      return res.status(200).json({ ok: true }); // tyliai ignoruojam
+    }
+
+    if (typeof body === "string") {
+      try {
+        body = JSON.parse(body);
+      } catch {
+        return res.status(200).json({ ok: true }); // ne JSON → ignoruojam
+      }
+    }
+
+    const { name, email, phone, message, hp } = body;
     if (hp) return res.status(200).json({ ok: true }); // honeypot
     if (!email || !message) {
       return res.status(400).json({ error: "Trūksta laukų: email ir message privalomi" });
