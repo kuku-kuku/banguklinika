@@ -1,28 +1,29 @@
 {
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
-    }
-  ],
   "trailingSlash": true,
   "headers": [
     {
       "source": "/admin/config.yml",
-      "headers": [{ "key": "Content-Type", "value": "text/yaml; charset=utf-8" }]
+      "headers": [
+        { "key": "Content-Type", "value": "text/yaml; charset=utf-8" }
+      ]
     },
     {
       "source": "/lt/:path*",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
     },
     {
       "source": "/ru/:path*",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
     },
     {
       "source": "/m/:path*",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
     }
   ],
   "redirects": [
