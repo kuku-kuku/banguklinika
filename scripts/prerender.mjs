@@ -111,7 +111,7 @@ const pages = [
     description: "Aktualūs Bangų klinikos pasiūlymai ir akcijos odontologijos paslaugoms.",
   },
   {
-    route: "/ypatingi-pasiulymai/cirkonio-keramikos-vainikeliai ",
+    route: "/ypatingi-pasiulymai/cirkonio-keramikos-vainikeliai",
     title: "Cirkonio keramikos vainikėliai | Bangų klinika Klaipėdoje",
     description: "Cirkonio keramikos vainikėliai – estetika ir tvirtumas. Sužinokite apie pasiūlymą ir sąlygas.",
   },
