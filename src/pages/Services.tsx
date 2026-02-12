@@ -331,6 +331,16 @@ export default function Services() {
   const sections: Svc[] = useMemo(
     () => [
       {
+        id: 'dantu-implantacija',
+        title: 'Dantų implantacija',
+        to: '/paslaugos/dantu-implantacija',
+        content: (
+          <div className="space-y-3">
+            <p>Dantų implantacijos informacija pateikiama atskirame puslapyje.</p>
+          </div>
+        ),
+      },
+      {
         id: 'skubi-pagalba',
         title: 'Skubi pagalba',
         content: (
@@ -487,16 +497,6 @@ export default function Services() {
         content: (
           <div className="space-y-3">
             <p>Vaikų odontologijos informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
-      },
-      {
-        id: 'dantu-implantacija',
-        title: 'Dantų implantacija',
-        to: '/paslaugos/dantu-implantacija',
-        content: (
-          <div className="space-y-3">
-            <p>Dantų implantacijos informacija pateikiama atskirame puslapyje.</p>
           </div>
         ),
       },
