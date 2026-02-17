@@ -96,6 +96,67 @@ export default function EndodontinisGydymas() {
               Registruotis vizitui
             </Link>
           </div>
+
+          {/* KAINOS */}
+          <div className="mt-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">Endodontinės (pirminės) pagalbos kainos</h2>
+
+          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+            <p>
+              Pirminės endodontinės pagalbos kaina priklauso nuo konkrečios klinikinės situacijos, danties būklės ir reikalingų
+              paruošiamųjų procedūrų apimties. Kadangi kiekvienas atvejis yra individualus, prieš pradedant gydymą visada atliekama
+              konsultacija ir diagnostika, leidžianti tiksliai įvertinti situaciją ir parinkti tinkamiausią sprendimą.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
+            <div className="divide-y divide-slate-100">
+              <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center mb-1">
+                  <span className="text-slate-900 font-bold">Pirminė endodontinė pagalba</span>
+                  <span className="text-darkblue-700 font-bold">nuo 70 €</span>
+                </div>
+                <span className="block text-slate-600 text-sm">
+                  Dažniausiai taikoma esant ūmiam skausmui ar uždegimui – stabilizavimui ir paruošimui tolimesniam gydymui.
+                </span>
+              </div>
+
+              <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center mb-1">
+                  <span className="text-slate-900 font-bold">Kanalų vaistai</span>
+                  <span className="text-darkblue-700 font-bold">nuo 30 €</span>
+                </div>
+                <span className="block text-slate-600 text-sm">
+                  Vaistiniai preparatai kanalų dezinfekcijai ar uždegimo kontrolei, kai to reikia klinikinėje situacijoje.
+                </span>
+              </div>
+
+              <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center mb-1">
+                  <span className="text-slate-900 font-bold">Vieno danties šaknies kanalo chemomechaninis paruošimas</span>
+                  <span className="text-darkblue-700 font-bold">nuo 35 €</span>
+                </div>
+                <span className="block text-slate-600 text-sm">Kanalų valymas ir dezinfekcija pirminiame etape.</span>
+              </div>
+
+              <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center mb-1">
+                  <span className="text-slate-900 font-bold">Vieno danties šaknies kanalo plombavimas (paruošiamasis)</span>
+                  <span className="text-darkblue-700 font-bold">nuo 35 €</span>
+                </div>
+                <span className="block text-slate-600 text-sm">
+                  Laikinas arba paruošiamasis kanalų plombavimas, kai tai reikalinga danties apsaugai.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-slate-700 leading-relaxed text-sm">
+            Svarbu pabrėžti, kad tai yra paruošiamųjų procedūrų kainos. Galutinė pilno endodontinio gydymo kaina nustatoma gydymo
+            įstaigoje, kurioje atliekamas visas šaknų kanalų gydymas. Skaidri kainodara leidžia pacientams aiškiai suprasti, už ką
+            mokama kiekviename gydymo etape, ir ramiai planuoti tolimesnį gydymą.
+          </p>
+          </div>
         </motion.header>
 
         {/* KAS YRA ENDODONTIJA */}
@@ -221,67 +282,6 @@ export default function EndodontinisGydymas() {
               </div>
             </div>
           </div>
-        </motion.section>
-
-        {/* KAINOS */}
-        <motion.section className="mb-12" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">Endodontinės (pirminės) pagalbos kainos</h2>
-
-          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-            <p>
-              Pirminės endodontinės pagalbos kaina priklauso nuo konkrečios klinikinės situacijos, danties būklės ir reikalingų
-              paruošiamųjų procedūrų apimties. Kadangi kiekvienas atvejis yra individualus, prieš pradedant gydymą visada atliekama
-              konsultacija ir diagnostika, leidžianti tiksliai įvertinti situaciją ir parinkti tinkamiausią sprendimą.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
-            <div className="divide-y divide-slate-100">
-              <div className="p-5 hover:bg-brand-50/30 transition">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-slate-900 font-bold">Pirminė endodontinė pagalba</span>
-                  <span className="text-darkblue-700 font-bold">nuo 70 €</span>
-                </div>
-                <span className="block text-slate-600 text-sm">
-                  Dažniausiai taikoma esant ūmiam skausmui ar uždegimui – stabilizavimui ir paruošimui tolimesniam gydymui.
-                </span>
-              </div>
-
-              <div className="p-5 hover:bg-brand-50/30 transition">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-slate-900 font-bold">Kanalų vaistai</span>
-                  <span className="text-darkblue-700 font-bold">nuo 30 €</span>
-                </div>
-                <span className="block text-slate-600 text-sm">
-                  Vaistiniai preparatai kanalų dezinfekcijai ar uždegimo kontrolei, kai to reikia klinikinėje situacijoje.
-                </span>
-              </div>
-
-              <div className="p-5 hover:bg-brand-50/30 transition">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-slate-900 font-bold">Vieno danties šaknies kanalo chemomechaninis paruošimas</span>
-                  <span className="text-darkblue-700 font-bold">nuo 35 €</span>
-                </div>
-                <span className="block text-slate-600 text-sm">Kanalų valymas ir dezinfekcija pirminiame etape.</span>
-              </div>
-
-              <div className="p-5 hover:bg-brand-50/30 transition">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-slate-900 font-bold">Vieno danties šaknies kanalo plombavimas (paruošiamasis)</span>
-                  <span className="text-darkblue-700 font-bold">nuo 35 €</span>
-                </div>
-                <span className="block text-slate-600 text-sm">
-                  Laikinas arba paruošiamasis kanalų plombavimas, kai tai reikalinga danties apsaugai.
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <p className="text-slate-700 leading-relaxed text-sm">
-            Svarbu pabrėžti, kad tai yra paruošiamųjų procedūrų kainos. Galutinė pilno endodontinio gydymo kaina nustatoma gydymo
-            įstaigoje, kurioje atliekamas visas šaknų kanalų gydymas. Skaidri kainodara leidžia pacientams aiškiai suprasti, už ką
-            mokama kiekviename gydymo etape, ir ramiai planuoti tolimesnį gydymą.
-          </p>
         </motion.section>
 
         {/* EIGA (STEPS) */}

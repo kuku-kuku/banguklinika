@@ -90,6 +90,85 @@ export default function DantuProtezavimas() {
               Registruotis vizitui
             </Link>
           </div>
+
+          {/* KAINOS */}
+          <div className="mt-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+            Dantų protezavimo kainos
+          </h2>
+          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+             <p>
+               Dantų protezavimo kaina priklauso nuo pasirinkto sprendimo, naudojamų medžiagų, protezavimo technologijos ir individualios paciento burnos būklės. Bangų odontologijos klinikoje kiekvienam pacientui sudaromas individualus protezavimo planas.
+             </p>
+          </div>
+
+          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
+            {/* CEREC */}
+            <div className="bg-brand-50/50 p-4 border-b border-brand/10 font-bold text-darkblue-700">
+              CEREC technologija (greitas gaminimas)
+            </div>
+            <div className="divide-y divide-slate-100">
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">CEREC vainikėlis ant natūralaus danties</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 400 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">CEREC vainikėlis ant implanto</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">450 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">CEREC užklotas arba laminatė</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 600 €</span>
+              </div>
+            </div>
+
+            {/* KERAMIKINIAI */}
+            <div className="bg-brand-50/50 p-4 border-y border-brand/10 font-bold text-darkblue-700 mt-2">
+              Keramikiniai vainikėliai
+            </div>
+            <div className="divide-y divide-slate-100">
+               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Metalo keramikos vainikėlis</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 350 €</span>
+              </div>
+               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Bemetalės E-MAX keramikos vainikėlis</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 400 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Cirkonio keramikos vainikėlis</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 400 €</span>
+              </div>
+            </div>
+
+            {/* PAPILDOMI */}
+            <div className="bg-brand-50/50 p-4 border-y border-brand/10 font-bold text-darkblue-700 mt-2">
+              Papildomos procedūros ir atspaudai
+            </div>
+            <div className="divide-y divide-slate-100">
+               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Laminatė</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 600 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Laikinas vainikėlis (kabinetinis)</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 40 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Skaitmeniniai / silikoniniai atspaudai</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">150 €</span>
+              </div>
+               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Dantų plokštelės</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 350 €</span>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-slate-700 leading-relaxed text-sm">
+            Tiksli dantų protezavimo kaina aptariama individualios konsultacijos metu, įvertinus paciento burnos būklę, pasirinktą technologiją ir gydymo apimtį.
+          </p>
+          </div>
         </motion.header>
 
         {/* KAS YRA PROTEZAVIMAS */}
@@ -191,85 +270,6 @@ export default function DantuProtezavimas() {
                </p>
              </div>
           </div>
-        </motion.section>
-
-        {/* KAINOS */}
-        <motion.section className="mb-12" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Dantų protezavimo kainos
-          </h2>
-          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-             <p>
-               Dantų protezavimo kaina priklauso nuo pasirinkto sprendimo, naudojamų medžiagų, protezavimo technologijos ir individualios paciento burnos būklės. Bangų odontologijos klinikoje kiekvienam pacientui sudaromas individualus protezavimo planas.
-             </p>
-          </div>
-
-          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
-            {/* CEREC */}
-            <div className="bg-brand-50/50 p-4 border-b border-brand/10 font-bold text-darkblue-700">
-              CEREC technologija (greitas gaminimas)
-            </div>
-            <div className="divide-y divide-slate-100">
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">CEREC vainikėlis ant natūralaus danties</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 400 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">CEREC vainikėlis ant implanto</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">450 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">CEREC užklotas arba laminatė</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 600 €</span>
-              </div>
-            </div>
-
-            {/* KERAMIKINIAI */}
-            <div className="bg-brand-50/50 p-4 border-y border-brand/10 font-bold text-darkblue-700 mt-2">
-              Keramikiniai vainikėliai
-            </div>
-            <div className="divide-y divide-slate-100">
-               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Metalo keramikos vainikėlis</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 350 €</span>
-              </div>
-               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Bemetalės E-MAX keramikos vainikėlis</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 400 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Cirkonio keramikos vainikėlis</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 400 €</span>
-              </div>
-            </div>
-
-            {/* PAPILDOMI */}
-            <div className="bg-brand-50/50 p-4 border-y border-brand/10 font-bold text-darkblue-700 mt-2">
-              Papildomos procedūros ir atspaudai
-            </div>
-            <div className="divide-y divide-slate-100">
-               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Laminatė</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 600 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Laikinas vainikėlis (kabinetinis)</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 40 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Skaitmeniniai / silikoniniai atspaudai</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">150 €</span>
-              </div>
-               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Dantų plokštelės</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 350 €</span>
-              </div>
-            </div>
-          </div>
-
-          <p className="text-slate-700 leading-relaxed text-sm">
-            Tiksli dantų protezavimo kaina aptariama individualios konsultacijos metu, įvertinus paciento burnos būklę, pasirinktą technologiją ir gydymo apimtį.
-          </p>
         </motion.section>
 
         {/* KAIP VYKSTA PROTEZAVIMAS */}

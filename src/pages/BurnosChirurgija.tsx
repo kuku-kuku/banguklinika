@@ -65,6 +65,53 @@ export default function BurnosChirurgija() {
               Registruotis vizitui
             </Link>
           </div>
+
+          {/* KAINOS */}
+          <div className="mt-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+            Burnos chirurgijos paslaugų kainos mūsų klinikoje
+          </h2>
+          <p className="text-slate-700 mb-6 leading-relaxed">
+            Burnos chirurgijos paslaugų kaina priklauso nuo procedūros pobūdžio, sudėtingumo ir individualios paciento klinikinės situacijos. Prieš kiekvieną chirurginę intervenciją atliekama konsultacija, kurios metu įvertinama burnos būklė ir parenkamas tinkamiausias gydymo sprendimas.
+          </p>
+
+          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
+            <div className="divide-y divide-slate-100">
+              <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-baseline mb-1">
+                    <span className="text-slate-900 font-bold">Kaulo augmentacija</span>
+                    <span className="text-brand font-bold whitespace-nowrap ml-4">150 – 600 €</span>
+                </div>
+                <span className="block text-slate-700 text-sm">Priklausomai nuo reikalingos kaulo apimties ir taikomos gydymo metodikos.</span>
+              </div>
+              <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-baseline mb-1">
+                    <span className="text-slate-900 font-bold">Šaknies šalinimo procedūra</span>
+                    <span className="text-brand font-bold whitespace-nowrap ml-4">60 – 80 €</span>
+                </div>
+                <span className="block text-slate-700 text-sm">Kai dantis jau yra pašalintas, tačiau likusi šaknis kelia uždegimo ar infekcijos riziką.</span>
+              </div>
+              <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-baseline mb-1">
+                    <span className="text-slate-900 font-bold">Danties šalinimas</span>
+                    <span className="text-brand font-bold whitespace-nowrap ml-4">80 – 100 €</span>
+                </div>
+                <span className="block text-slate-700 text-sm">Atsižvelgiant į danties padėtį ir procedūros sudėtingumą.</span>
+              </div>
+              <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-baseline mb-1">
+                    <span className="text-slate-900 font-bold">Komplikuotas protinių dantų šalinimas</span>
+                    <span className="text-brand font-bold whitespace-nowrap ml-4">120 – 150 €</span>
+                </div>
+                <span className="block text-slate-700 text-sm">Atliekamas kai dantis neišdygęs pilnai, yra netaisyklingoje padėtyje ar sukelia aplinkinių audinių pažeidimus.</span>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-slate-700 leading-relaxed">
+            Tiksli procedūros apimtis ir galutinė kaina aptariama individualios konsultacijos metu, atsižvelgiant į paciento burnos būklę, diagnostinius duomenis ir planuojamą gydymo eigą.
+          </p>
+          </div>
         </motion.header>
 
         {/* KAS YRA BURNOS CHIRURGIJA */}
@@ -150,53 +197,6 @@ export default function BurnosChirurgija() {
 
           <p className="text-slate-700 leading-relaxed">
             Visos procedūros atliekamos laikantis griežtų saugumo ir higienos reikalavimų, taikant tinkamus nuskausminimo metodus. Patyręs burnos chirurgas ne tik atlieka pačią procedūrą, bet ir užtikrina, kad pacientas būtų tinkamai informuotas apie gijimo eigą bei tolimesnius gydymo etapus.
-          </p>
-        </motion.section>
-
-        {/* KAINOS */}
-        <motion.section className="mb-12" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Burnos chirurgijos paslaugų kainos mūsų klinikoje
-          </h2>
-          <p className="text-slate-700 mb-6 leading-relaxed">
-            Burnos chirurgijos paslaugų kaina priklauso nuo procedūros pobūdžio, sudėtingumo ir individualios paciento klinikinės situacijos. Prieš kiekvieną chirurginę intervenciją atliekama konsultacija, kurios metu įvertinama burnos būklė ir parenkamas tinkamiausias gydymo sprendimas.
-          </p>
-
-          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
-            <div className="divide-y divide-slate-100">
-              <div className="p-5 hover:bg-brand-50/30 transition">
-                <div className="flex justify-between items-baseline mb-1">
-                    <span className="text-slate-900 font-bold">Kaulo augmentacija</span>
-                    <span className="text-brand font-bold whitespace-nowrap ml-4">150 – 600 €</span>
-                </div>
-                <span className="block text-slate-700 text-sm">Priklausomai nuo reikalingos kaulo apimties ir taikomos gydymo metodikos.</span>
-              </div>
-              <div className="p-5 hover:bg-brand-50/30 transition">
-                <div className="flex justify-between items-baseline mb-1">
-                    <span className="text-slate-900 font-bold">Šaknies šalinimo procedūra</span>
-                    <span className="text-brand font-bold whitespace-nowrap ml-4">60 – 80 €</span>
-                </div>
-                <span className="block text-slate-700 text-sm">Kai dantis jau yra pašalintas, tačiau likusi šaknis kelia uždegimo ar infekcijos riziką.</span>
-              </div>
-              <div className="p-5 hover:bg-brand-50/30 transition">
-                <div className="flex justify-between items-baseline mb-1">
-                    <span className="text-slate-900 font-bold">Danties šalinimas</span>
-                    <span className="text-brand font-bold whitespace-nowrap ml-4">80 – 100 €</span>
-                </div>
-                <span className="block text-slate-700 text-sm">Atsižvelgiant į danties padėtį ir procedūros sudėtingumą.</span>
-              </div>
-              <div className="p-5 hover:bg-brand-50/30 transition">
-                <div className="flex justify-between items-baseline mb-1">
-                    <span className="text-slate-900 font-bold">Komplikuotas protinių dantų šalinimas</span>
-                    <span className="text-brand font-bold whitespace-nowrap ml-4">120 – 150 €</span>
-                </div>
-                <span className="block text-slate-700 text-sm">Atliekamas kai dantis neišdygęs pilnai, yra netaisyklingoje padėtyje ar sukelia aplinkinių audinių pažeidimus.</span>
-              </div>
-            </div>
-          </div>
-
-          <p className="text-slate-700 leading-relaxed">
-            Tiksli procedūros apimtis ir galutinė kaina aptariama individualios konsultacijos metu, atsižvelgiant į paciento burnos būklę, diagnostinius duomenis ir planuojamą gydymo eigą.
           </p>
         </motion.section>
 

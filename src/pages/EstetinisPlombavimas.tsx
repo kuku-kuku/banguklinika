@@ -73,6 +73,43 @@ export default function EstetinisPlombavimas() {
               Registruotis vizitui
             </Link>
           </div>
+
+          {/* KAINOS */}
+          <div className="mt-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+            Estetinio plombavimo kainos mūsų klinikoje
+          </h2>
+          <div className="text-slate-700 leading-relaxed space-y-4 mb-6">
+            <p>
+              Estetinio plombavimo kaina priklauso nuo restauruojamo danties būklės, pažeidimo apimties ir reikalingų estetinių korekcijų. Prieš procedūrą visuomet atliekama konsultacija, kurios metu įvertinama situacija ir parenkamas tinkamiausias gydymo sprendimas, leidžiantis pasiekti optimalų estetinį ir funkcinį rezultatą.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
+            <div className="divide-y divide-slate-100">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-5 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700 font-medium">Estetinis vieno danties plombavimas</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap mt-2 sm:mt-0 ml-0 sm:ml-4">150 – 200 €</span>
+              </div>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-5 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700 font-medium">Estetinės plombos poliravimas (atnaujinimas)</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap mt-2 sm:mt-0 ml-0 sm:ml-4">nuo 29 €</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-slate-700 leading-relaxed space-y-4">
+             <p>
+               Procedūros metu dantis atkuriamas sluoksniavimo metodu, pritaikant formą, spalvą ir paviršiaus tekstūrą prie natūralių dantų.
+             </p>
+             <p>
+               Jeigu reikalingas tik jau esamos restauracijos atnaujinimas, atliekamas estetinės plombos poliravimas. Ši procedūra padeda atkurti blizgesį, pagerinti estetinį vaizdą ir prailginti restauracijos tarnavimo laiką.
+             </p>
+             <p>
+               Tiksli procedūros apimtis ir galutinė kaina aptariama individualios konsultacijos metu, atsižvelgiant į paciento poreikius ir norimą rezultatą. Skaidri kainodara leidžia priimti užtikrintą sprendimą dėl estetinės odontologijos paslaugų Klaipėdoje – mūsų klinikoje.
+             </p>
+          </div>
+          </div>
         </motion.header>
 
         {/* KAS YRA ESTETINIS PLOMBAVIMAS */}
@@ -188,43 +225,6 @@ export default function EstetinisPlombavimas() {
             <p>
               Svarbus privalumas – minimalus dantų šlifavimas arba tam tikrais atvejais visai jokio. Tai leidžia maksimaliai išsaugoti sveikus kietuosius audinius, o pati procedūra yra tausojanti ir saugi. Dėl šių savybių estetinis plombavimas dažnai pasirenkamas kaip alternatyva sudėtingesniam protezavimui ar laminatėms, ypač tada, kai siekiama greito ir estetiškai patrauklaus sprendimo.
             </p>
-          </div>
-        </motion.section>
-
-        {/* KAINOS */}
-        <motion.section className="mb-14" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Estetinio plombavimo kainos mūsų klinikoje
-          </h2>
-          <div className="text-slate-700 leading-relaxed space-y-4 mb-6">
-            <p>
-              Estetinio plombavimo kaina priklauso nuo restauruojamo danties būklės, pažeidimo apimties ir reikalingų estetinių korekcijų. Prieš procedūrą visuomet atliekama konsultacija, kurios metu įvertinama situacija ir parenkamas tinkamiausias gydymo sprendimas, leidžiantis pasiekti optimalų estetinį ir funkcinį rezultatą.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
-            <div className="divide-y divide-slate-100">
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-5 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700 font-medium">Estetinis vieno danties plombavimas</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap mt-2 sm:mt-0 ml-0 sm:ml-4">150 – 200 €</span>
-              </div>
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-5 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700 font-medium">Estetinės plombos poliravimas (atnaujinimas)</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap mt-2 sm:mt-0 ml-0 sm:ml-4">nuo 29 €</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-slate-700 leading-relaxed space-y-4">
-             <p>
-               Procedūros metu dantis atkuriamas sluoksniavimo metodu, pritaikant formą, spalvą ir paviršiaus tekstūrą prie natūralių dantų.
-             </p>
-             <p>
-               Jeigu reikalingas tik jau esamos restauracijos atnaujinimas, atliekamas estetinės plombos poliravimas. Ši procedūra padeda atkurti blizgesį, pagerinti estetinį vaizdą ir prailginti restauracijos tarnavimo laiką.
-             </p>
-             <p>
-               Tiksli procedūros apimtis ir galutinė kaina aptariama individualios konsultacijos metu, atsižvelgiant į paciento poreikius ir norimą rezultatą. Skaidri kainodara leidžia priimti užtikrintą sprendimą dėl estetinės odontologijos paslaugų Klaipėdoje – mūsų klinikoje.
-             </p>
           </div>
         </motion.section>
 

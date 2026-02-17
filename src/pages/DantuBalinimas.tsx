@@ -81,6 +81,54 @@ export default function DantuBalinimas() {
               Registruotis vizitui
             </Link>
           </div>
+
+          {/* KAINOS */}
+          <div className="mt-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+            Dantų balinimo kaina mūsų klinikoje
+          </h2>
+          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+            <p>
+              Dantų balinimo kaina priklauso nuo pasirinkto balinimo metodo, procedūros apimties ir individualių paciento poreikių. Prieš atliekant balinimą visuomet rekomenduojama konsultacija, kurios metu įvertinama dantų būklė ir parenkamas tinkamiausias sprendimas, leidžiantis pasiekti saugų ir ilgalaikį rezultatą.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
+            <div className="divide-y divide-slate-100">
+              <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center mb-1">
+                  <span className="text-slate-900 font-bold">Ofisinis dantų balinimas BEYOND® sistema</span>
+                  <span className="text-darkblue-700 font-bold">nuo 250 €</span>
+                </div>
+                <span className="block text-slate-600 text-sm">Greitas ir efektyvus būdas, rezultatas po vienos procedūros.</span>
+              </div>
+              <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center mb-1">
+                  <span className="text-slate-900 font-bold">Balinimo kapų atspaudai</span>
+                  <span className="text-darkblue-700 font-bold">nuo 30 €</span>
+                </div>
+                <span className="block text-slate-600 text-sm">Pirmas žingsnis renkantis balinimą namuose.</span>
+              </div>
+              <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center mb-1">
+                  <span className="text-slate-900 font-bold">Balinimo kapos su geliu (2 vnt. + gelis)</span>
+                  <span className="text-darkblue-700 font-bold">nuo 200 €</span>
+                </div>
+                <span className="block text-slate-600 text-sm">Leidžia balinti dantis palaipsniui namų sąlygomis.</span>
+              </div>
+              <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center mb-1">
+                  <span className="text-slate-900 font-bold">Danties papuošalo tvirtinimas</span>
+                  <span className="text-darkblue-700 font-bold">nuo 50 €</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-slate-700 leading-relaxed">
+            Tiksli dantų balinimo kaina aptariama individualios konsultacijos metu, atsižvelgiant į pasirinktą metodą, dantų būklę ir norimą rezultatą. Skaidri kainodara leidžia pacientams priimti užtikrintą sprendimą dėl dantų balinimo Klaipėdoje.
+          </p>
+          </div>
         </motion.header>
 
         {/* KAS YRA BALINIMAS */}
@@ -185,54 +233,6 @@ export default function DantuBalinimas() {
               Prieš pradedant balinimą kapomis, rekomenduojama atlikti profesionalią burnos higieną, kad balinimo gelis veiktų tolygiai, o rezultatas būtų estetiškai vienodas.
             </p>
           </div>
-        </motion.section>
-
-        {/* KAINOS */}
-        <motion.section className="mb-12" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Dantų balinimo kaina mūsų klinikoje
-          </h2>
-          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-            <p>
-              Dantų balinimo kaina priklauso nuo pasirinkto balinimo metodo, procedūros apimties ir individualių paciento poreikių. Prieš atliekant balinimą visuomet rekomenduojama konsultacija, kurios metu įvertinama dantų būklė ir parenkamas tinkamiausias sprendimas, leidžiantis pasiekti saugų ir ilgalaikį rezultatą.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
-            <div className="divide-y divide-slate-100">
-              <div className="p-5 hover:bg-brand-50/30 transition">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-slate-900 font-bold">Ofisinis dantų balinimas BEYOND® sistema</span>
-                  <span className="text-darkblue-700 font-bold">nuo 250 €</span>
-                </div>
-                <span className="block text-slate-600 text-sm">Greitas ir efektyvus būdas, rezultatas po vienos procedūros.</span>
-              </div>
-              <div className="p-5 hover:bg-brand-50/30 transition">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-slate-900 font-bold">Balinimo kapų atspaudai</span>
-                  <span className="text-darkblue-700 font-bold">nuo 30 €</span>
-                </div>
-                <span className="block text-slate-600 text-sm">Pirmas žingsnis renkantis balinimą namuose.</span>
-              </div>
-              <div className="p-5 hover:bg-brand-50/30 transition">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-slate-900 font-bold">Balinimo kapos su geliu (2 vnt. + gelis)</span>
-                  <span className="text-darkblue-700 font-bold">nuo 200 €</span>
-                </div>
-                <span className="block text-slate-600 text-sm">Leidžia balinti dantis palaipsniui namų sąlygomis.</span>
-              </div>
-              <div className="p-5 hover:bg-brand-50/30 transition">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-slate-900 font-bold">Danties papuošalo tvirtinimas</span>
-                  <span className="text-darkblue-700 font-bold">nuo 50 €</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <p className="text-slate-700 leading-relaxed">
-            Tiksli dantų balinimo kaina aptariama individualios konsultacijos metu, atsižvelgiant į pasirinktą metodą, dantų būklę ir norimą rezultatą. Skaidri kainodara leidžia pacientams priimti užtikrintą sprendimą dėl dantų balinimo Klaipėdoje.
-          </p>
         </motion.section>
 
         {/* SAUGUMAS */}

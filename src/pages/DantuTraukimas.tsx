@@ -90,6 +90,39 @@ export default function DantuTraukimas() {
               Registruotis vizitui
             </Link>
           </div>
+
+          {/* KAINOS */}
+          <div className="mt-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+            Dantų traukimo kainos
+          </h2>
+          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+             <p>
+               Dantų traukimo kaina priklauso nuo procedūros sudėtingumo, danties padėties, šaknų struktūros ir aplinkinių audinių būklės. Prieš atliekant procedūrą visuomet atliekama apžiūra, kurios metu įvertinama situacija ir parenkamas saugiausias bei tinkamiausias danties šalinimo metodas.
+             </p>
+          </div>
+
+          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
+            <div className="divide-y divide-slate-100">
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Šaknies šalinimas</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">60 – 80 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Paprastas danties šalinimas</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">80 – 100 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Komplikuotas protinių dantų šalinimas</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">120 – 150 €</span>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-slate-700 leading-relaxed text-sm">
+            Tiksli dantų traukimo Klaipėdoje kaina aptariama individualios konsultacijos metu, atsižvelgiant į konkrečią klinikinę situaciją. Skaidri kainodara ir profesionalus požiūris leidžia pacientams jaustis užtikrintai ir priimti informuotą sprendimą.
+          </p>
+          </div>
         </motion.header>
 
         {/* KAS YRA TRAUKIMAS */}
@@ -170,39 +203,6 @@ export default function DantuTraukimas() {
                </p>
              </div>
           </div>
-        </motion.section>
-
-        {/* KAINOS */}
-        <motion.section className="mb-12" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Dantų traukimo kainos
-          </h2>
-          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-             <p>
-               Dantų traukimo kaina priklauso nuo procedūros sudėtingumo, danties padėties, šaknų struktūros ir aplinkinių audinių būklės. Prieš atliekant procedūrą visuomet atliekama apžiūra, kurios metu įvertinama situacija ir parenkamas saugiausias bei tinkamiausias danties šalinimo metodas.
-             </p>
-          </div>
-
-          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
-            <div className="divide-y divide-slate-100">
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Šaknies šalinimas</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">60 – 80 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Paprastas danties šalinimas</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">80 – 100 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Komplikuotas protinių dantų šalinimas</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">120 – 150 €</span>
-              </div>
-            </div>
-          </div>
-
-          <p className="text-slate-700 leading-relaxed text-sm">
-            Tiksli dantų traukimo Klaipėdoje kaina aptariama individualios konsultacijos metu, atsižvelgiant į konkrečią klinikinę situaciją. Skaidri kainodara ir profesionalus požiūris leidžia pacientams jaustis užtikrintai ir priimti informuotą sprendimą.
-          </p>
         </motion.section>
 
         {/* DELSIMAS */}

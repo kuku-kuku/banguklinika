@@ -90,6 +90,43 @@ export default function BurnosHigiena() {
               Registruotis vizitui
             </Link>
           </div>
+
+          {/* KAINOS */}
+          <div className="mt-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+            Burnos higienos paslaugų kainos mūsų klinikoje
+          </h2>
+          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+             <p>
+               Profesionalios burnos higienos kaina priklauso nuo individualios paciento burnos būklės, apnašų kiekio ir pasirenkamų papildomų procedūrų.
+             </p>
+          </div>
+
+          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
+            <div className="divide-y divide-slate-100">
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700 font-medium">Pilna profesionali burnos higiena</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">60 – 80 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700 font-medium">Pakartotinė burnos higiena (reguliariai lankantis)</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 50 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700 font-medium">Fluoro lako aplikacija</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 20 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700 font-medium">ICON gydymas (fluorozės dėmėms)</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">60 €</span>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-slate-700 leading-relaxed text-sm">
+            Tiksli procedūros apimtis ir galutinė kaina aptariama individualios konsultacijos metu, atsižvelgiant į paciento poreikius ir burnos būklę.
+          </p>
+          </div>
         </motion.header>
 
         {/* KAS YRA HIGIENA (BURBULAI) */}
@@ -162,43 +199,6 @@ export default function BurnosHigiena() {
           </div>
           <p className="text-slate-700 mt-4 leading-relaxed">
             Ši procedūra ypač svarbi pacientams, kurie nori ne tik gražios šypsenos, bet ir ilgalaikės burnos sveikatos. Reguliari profesionali higiena padeda išvengti sudėtingų ir brangių gydymo etapų ateityje.
-          </p>
-        </motion.section>
-
-        {/* KAINOS */}
-        <motion.section className="mb-12" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Burnos higienos paslaugų kainos mūsų klinikoje
-          </h2>
-          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-             <p>
-               Profesionalios burnos higienos kaina priklauso nuo individualios paciento burnos būklės, apnašų kiekio ir pasirenkamų papildomų procedūrų.
-             </p>
-          </div>
-
-          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
-            <div className="divide-y divide-slate-100">
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700 font-medium">Pilna profesionali burnos higiena</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">60 – 80 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700 font-medium">Pakartotinė burnos higiena (reguliariai lankantis)</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 50 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700 font-medium">Fluoro lako aplikacija</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 20 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700 font-medium">ICON gydymas (fluorozės dėmėms)</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">60 €</span>
-              </div>
-            </div>
-          </div>
-          
-          <p className="text-slate-700 leading-relaxed text-sm">
-            Tiksli procedūros apimtis ir galutinė kaina aptariama individualios konsultacijos metu, atsižvelgiant į paciento poreikius ir burnos būklę.
           </p>
         </motion.section>
 

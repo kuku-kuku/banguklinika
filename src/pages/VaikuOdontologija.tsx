@@ -90,6 +90,47 @@ export default function VaikuOdontologija() {
               Registruotis vizitui
             </Link>
           </div>
+
+          {/* KAINOS */}
+          <div className="mt-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+            Vaikų odontologijos kainos
+          </h2>
+          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+            <p>
+              Vaikų dantų gydymo kaina priklauso nuo vaiko amžiaus, dantų būklės, pasirinkto gydymo metodo ir procedūros sudėtingumo. Bangų odontologijos klinikoje prieš pradedant bet kokį gydymą pirmiausia atliekama apžiūra.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
+            <div className="divide-y divide-slate-100">
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Pirminė konsultacija ir profilaktika</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">20 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Pieninių dantų tvarkymas (gydymas)</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 50 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Stiklojonomerinė / kompomerinė plomba</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 30 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Komplikuoto ėduonies gydymas</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 60 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Adaptacinis vizitas (iki 30 min.)</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 30 €</span>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-slate-700 leading-relaxed text-sm">
+            Galutinė vaikų dantų gydymo kaina aptariama individualiai, atsižvelgiant į konkrečią situaciją ir vaiko poreikius. Skaidrus kainų pateikimas leidžia tėvams jaustis ramiai planuojant vaiko odontologinę priežiūrą.
+          </p>
+          </div>
         </motion.header>
 
         {/* KAS YRA VAIKŲ ODONTOLOGIJA */}
@@ -192,47 +233,6 @@ export default function VaikuOdontologija() {
           </div>
           <p className="text-slate-700 mt-4 leading-relaxed">
             Platus paslaugų spektras leidžia užtikrinti, kad vaiko dantų priežiūra būtų nuosekli ir atliekama vienoje vietoje, o vaikų odontologas galėtų stebėti paciento dantų būklę ilgalaikėje perspektyvoje.
-          </p>
-        </motion.section>
-
-        {/* KAINOS */}
-        <motion.section className="mb-12" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Vaikų odontologijos kainos
-          </h2>
-          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-            <p>
-              Vaikų dantų gydymo kaina priklauso nuo vaiko amžiaus, dantų būklės, pasirinkto gydymo metodo ir procedūros sudėtingumo. Bangų odontologijos klinikoje prieš pradedant bet kokį gydymą pirmiausia atliekama apžiūra.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
-            <div className="divide-y divide-slate-100">
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Pirminė konsultacija ir profilaktika</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">20 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Pieninių dantų tvarkymas (gydymas)</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 50 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Stiklojonomerinė / kompomerinė plomba</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 30 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Komplikuoto ėduonies gydymas</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 60 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Adaptacinis vizitas (iki 30 min.)</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 30 €</span>
-              </div>
-            </div>
-          </div>
-          
-          <p className="text-slate-700 leading-relaxed text-sm">
-            Galutinė vaikų dantų gydymo kaina aptariama individualiai, atsižvelgiant į konkrečią situaciją ir vaiko poreikius. Skaidrus kainų pateikimas leidžia tėvams jaustis ramiai planuojant vaiko odontologinę priežiūrą.
           </p>
         </motion.section>
 

@@ -90,6 +90,43 @@ export default function DantuTiesinimas() {
               Registruotis vizitui
             </Link>
           </div>
+
+          {/* KAINOS */}
+          <div className="mt-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+            Dantų tiesinimo kapomis kainos
+          </h2>
+          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+             <p>
+               Dantų tiesinimo kapomis kaina priklauso nuo individualios dantų padėties, sąkandžio sudėtingumo ir numatomos gydymo trukmės. Kiekvienam pacientui sudaromas asmeninis gydymo planas, todėl galutinė kaina nustatoma tik po konsultacijos ir diagnostikos.
+             </p>
+          </div>
+
+          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
+            <div className="divide-y divide-slate-100">
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Konsultacija dėl dantų tiesinimo</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 50 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Dantų tiesinimas ORDOLINE kapų sistema</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">1800 – 4000 €</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-4 text-slate-700 leading-relaxed text-sm">
+            <p>
+              Prieš pradedant gydymą atliekama konsultacija dėl dantų tiesinimo. Konsultacijos metu įvertinama dantų ir sąkandžio būklė, aptariami galimi gydymo sprendimai ir pacientui pateikiama išsami informacija apie gydymo eigą bei prognozuojamus rezultatus.
+            </p>
+            <p>
+              Kainos intervalas priklauso nuo reikalingo kapų skaičiaus, gydymo trukmės ir korekcijų sudėtingumo. Į gydymo kainą įeina individualus skaitmeninis planavimas, kapų gamyba, gydymo stebėsena ir kontroliniai vizitai.
+            </p>
+            <p>
+              Skaidri kainodara leidžia pacientams aiškiai suprasti, kokia gydymo apimtis planuojama ir už ką mokama. Konsultacijos metu gydytojas atsako į visus klausimus ir padeda pasirinkti sprendimą, kuris geriausiai atitinka paciento poreikius ir lūkesčius.
+            </p>
+          </div>
+          </div>
         </motion.header>
 
         {/* KAS YRA DANTŲ TIESINIMAS */}
@@ -158,43 +195,6 @@ export default function DantuTiesinimas() {
                  Daugeliu atvejų dantų tiesinimas kapomis trunka trumpiau nei tradiciniais metodais. Nuoseklus kapų keitimas ir tiksliai suplanuotas gydymo planas leidžia efektyviai pasiekti norimą rezultatą per optimalų laiką.
                </p>
              </div>
-          </div>
-        </motion.section>
-
-        {/* KAINOS */}
-        <motion.section className="mb-12" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Dantų tiesinimo kapomis kainos
-          </h2>
-          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-             <p>
-               Dantų tiesinimo kapomis kaina priklauso nuo individualios dantų padėties, sąkandžio sudėtingumo ir numatomos gydymo trukmės. Kiekvienam pacientui sudaromas asmeninis gydymo planas, todėl galutinė kaina nustatoma tik po konsultacijos ir diagnostikos.
-             </p>
-          </div>
-
-          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
-            <div className="divide-y divide-slate-100">
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Konsultacija dėl dantų tiesinimo</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 50 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Dantų tiesinimas ORDOLINE kapų sistema</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">1800 – 4000 €</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-4 text-slate-700 leading-relaxed text-sm">
-            <p>
-              Prieš pradedant gydymą atliekama konsultacija dėl dantų tiesinimo. Konsultacijos metu įvertinama dantų ir sąkandžio būklė, aptariami galimi gydymo sprendimai ir pacientui pateikiama išsami informacija apie gydymo eigą bei prognozuojamus rezultatus.
-            </p>
-            <p>
-              Kainos intervalas priklauso nuo reikalingo kapų skaičiaus, gydymo trukmės ir korekcijų sudėtingumo. Į gydymo kainą įeina individualus skaitmeninis planavimas, kapų gamyba, gydymo stebėsena ir kontroliniai vizitai.
-            </p>
-            <p>
-              Skaidri kainodara leidžia pacientams aiškiai suprasti, kokia gydymo apimtis planuojama ir už ką mokama. Konsultacijos metu gydytojas atsako į visus klausimus ir padeda pasirinkti sprendimą, kuris geriausiai atitinka paciento poreikius ir lūkesčius.
-            </p>
           </div>
         </motion.section>
 

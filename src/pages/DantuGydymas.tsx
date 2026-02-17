@@ -90,6 +90,74 @@ export default function DantuGydymas() {
               Registruotis vizitui
             </Link>
           </div>
+
+          {/* KAINOS */}
+          <div className="mt-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+            Dantų gydymo kainos
+          </h2>
+          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+            <p>
+              Dantų gydymo kaina priklauso nuo paciento amžiaus, dantų būklės, taikomo gydymo metodo ir procedūros sudėtingumo. Bangų odontologijos klinikoje prieš pradedant gydymą visuomet atliekama konsultacija ir profilaktinis patikrinimas, kurių metu sudaromas individualus gydymo planas ir aptariama preliminari gydymo apimtis bei kaina. Toks požiūris leidžia užtikrinti skaidrumą ir parinkti tinkamiausią sprendimą kiekvienam pacientui.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
+            {/* Suaugusiems */}
+            <div className="bg-brand-50/50 p-4 border-b border-brand/10 font-bold text-darkblue-700">
+              Suaugusiųjų gydymas
+            </div>
+            <div className="divide-y divide-slate-100">
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Konsultacija ir plano sudarymas</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">20 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Plombavimas helio plomba</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">70 – 90 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Plombavimas stiklojonomerine plomba</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">40 – 60 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Laikina plomba</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 40 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Nuskausminimas / Rentgeno nuotrauka</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">po 10 €</span>
+              </div>
+            </div>
+
+            {/* Vaikams */}
+            <div className="bg-brand-50/50 p-4 border-y border-brand/10 font-bold text-darkblue-700 mt-2">
+              Vaikų gydymas
+            </div>
+            <div className="divide-y divide-slate-100">
+               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Konsultacija vaikams</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">20 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Pieninių dantų gydymas</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 50 €</span>
+              </div>
+               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Stiklojonomerinė / kompomerinė plomba</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 30 €</span>
+              </div>
+              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <span className="text-slate-700">Vizitas, kai vaikas nesileidžia gydomas (iki 30 min.)</span>
+                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 30 €</span>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-slate-700 leading-relaxed text-sm">
+            Tiksli dantų gydymo kaina visada nustatoma individualios konsultacijos metu, įvertinus konkrečią situaciją ir gydymo poreikius. Aiški ir skaidri kainodara leidžia pacientams ir tėvams jaustis užtikrintai planuojant dantų gydymą.
+          </p>
+          </div>
         </motion.header>
 
         {/* KAS YRA DANTŲ GYDYMAS */}
@@ -172,74 +240,6 @@ export default function DantuGydymas() {
           </div>
           <p className="text-slate-700 mt-4 leading-relaxed">
             Platus paslaugų spektras leidžia užtikrinti, kad dantų tvarkymas būtų atliekamas nuosekliai, saugiai ir orientuotai į ilgalaikį rezultatą, nesiunčiant paciento iš vienos klinikos į kitą.
-          </p>
-        </motion.section>
-
-        {/* KAINOS */}
-        <motion.section className="mb-12" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Dantų gydymo kainos
-          </h2>
-          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-            <p>
-              Dantų gydymo kaina priklauso nuo paciento amžiaus, dantų būklės, taikomo gydymo metodo ir procedūros sudėtingumo. Bangų odontologijos klinikoje prieš pradedant gydymą visuomet atliekama konsultacija ir profilaktinis patikrinimas, kurių metu sudaromas individualus gydymo planas ir aptariama preliminari gydymo apimtis bei kaina. Toks požiūris leidžia užtikrinti skaidrumą ir parinkti tinkamiausią sprendimą kiekvienam pacientui.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
-            {/* Suaugusiems */}
-            <div className="bg-brand-50/50 p-4 border-b border-brand/10 font-bold text-darkblue-700">
-              Suaugusiųjų gydymas
-            </div>
-            <div className="divide-y divide-slate-100">
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Konsultacija ir plano sudarymas</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">20 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Plombavimas helio plomba</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">70 – 90 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Plombavimas stiklojonomerine plomba</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">40 – 60 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Laikina plomba</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 40 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Nuskausminimas / Rentgeno nuotrauka</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">po 10 €</span>
-              </div>
-            </div>
-
-            {/* Vaikams */}
-            <div className="bg-brand-50/50 p-4 border-y border-brand/10 font-bold text-darkblue-700 mt-2">
-              Vaikų gydymas
-            </div>
-            <div className="divide-y divide-slate-100">
-               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Konsultacija vaikams</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">20 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Pieninių dantų gydymas</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 50 €</span>
-              </div>
-               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Stiklojonomerinė / kompomerinė plomba</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 30 €</span>
-              </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Vizitas, kai vaikas nesileidžia gydomas (iki 30 min.)</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 30 €</span>
-              </div>
-            </div>
-          </div>
-          
-          <p className="text-slate-700 leading-relaxed text-sm">
-            Tiksli dantų gydymo kaina visada nustatoma individualios konsultacijos metu, įvertinus konkrečią situaciją ir gydymo poreikius. Aiški ir skaidri kainodara leidžia pacientams ir tėvams jaustis užtikrintai planuojant dantų gydymą.
           </p>
         </motion.section>
 

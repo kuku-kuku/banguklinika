@@ -92,6 +92,42 @@ export default function DantuPlombavimas() {
               Registruotis vizitui
             </Link>
           </div>
+
+          {/* KAINOS */}
+          <div className="mt-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+            Danties plombavimo kaina
+          </h2>
+          <div className="prose prose-slate max-w-none text-slate-700 mb-6">
+            <p>
+              Danties plombavimo kaina priklauso nuo danties būklės, pažeidimo apimties, naudojamų medžiagų ir procedūros sudėtingumo. Prieš pradedant gydymą Bangų odontologijos klinikoje visuomet atliekama konsultacija ir profilaktinis patikrinimas, kurių metu sudaromas individualus gydymo planas.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden">
+            <div className="divide-y divide-slate-100">
+              {[
+                { name: "Konsultacija, profilaktinis patikrinimas", price: "20 €" },
+                { name: "Danties plombavimas helio plomba", price: "70 – 90 €" },
+                { name: "Danties plombavimas stiklojonomerine plomba", price: "40 – 60 €" },
+                { name: "Laikina plomba", price: "nuo 40 €" },
+                { name: "Gydomasis pamušalas (kalcio/stiklojonomerinis)", price: "nuo 15 €" },
+                { name: "Nuskausminimas", price: "10 €" },
+                { name: "Vienkartinės priemonės", price: "15 €" },
+                { name: "Rentgeno nuotrauka", price: "10 €" },
+                { name: "Koferdamo sistemos naudojimas", price: "10 €" }
+              ].map((service, index) => (
+                <div key={index} className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                  <span className="text-slate-700 font-medium">{service.name}</span>
+                  <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">{service.price}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <p className="text-sm text-slate-500 mt-4">
+            Tiksli danties plombavimo kaina aptariama individualios konsultacijos metu.
+          </p>
+          </div>
         </motion.header>
 
         {/* KAS TAI YRA */}
@@ -183,42 +219,6 @@ export default function DantuPlombavimas() {
               </div>
             ))}
           </div>
-        </motion.section>
-
-        {/* KAINOS */}
-        <motion.section className="mb-14" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Danties plombavimo kaina
-          </h2>
-          <div className="prose prose-slate max-w-none text-slate-700 mb-6">
-            <p>
-              Danties plombavimo kaina priklauso nuo danties būklės, pažeidimo apimties, naudojamų medžiagų ir procedūros sudėtingumo. Prieš pradedant gydymą Bangų odontologijos klinikoje visuomet atliekama konsultacija ir profilaktinis patikrinimas, kurių metu sudaromas individualus gydymo planas.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden">
-            <div className="divide-y divide-slate-100">
-              {[
-                { name: "Konsultacija, profilaktinis patikrinimas", price: "20 €" },
-                { name: "Danties plombavimas helio plomba", price: "70 – 90 €" },
-                { name: "Danties plombavimas stiklojonomerine plomba", price: "40 – 60 €" },
-                { name: "Laikina plomba", price: "nuo 40 €" },
-                { name: "Gydomasis pamušalas (kalcio/stiklojonomerinis)", price: "nuo 15 €" },
-                { name: "Nuskausminimas", price: "10 €" },
-                { name: "Vienkartinės priemonės", price: "15 €" },
-                { name: "Rentgeno nuotrauka", price: "10 €" },
-                { name: "Koferdamo sistemos naudojimas", price: "10 €" }
-              ].map((service, index) => (
-                <div key={index} className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                  <span className="text-slate-700 font-medium">{service.name}</span>
-                  <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">{service.price}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <p className="text-sm text-slate-500 mt-4">
-            Tiksli danties plombavimo kaina aptariama individualios konsultacijos metu.
-          </p>
         </motion.section>
 
         {/* EIGA (STEPS) */}
