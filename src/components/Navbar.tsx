@@ -1,6 +1,7 @@
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { ROUTE_MAP_LT_TO_LV, ROUTE_MAP_LV_TO_LT, navLv } from '../i18n/lv'
 
 type DropItem = { to: string; label: string }
 type NavItem =
@@ -80,6 +81,38 @@ export default function Navbar() {
     exit: { opacity: 0 },
   }
 
+  // ── Pick nav items based on current language ────────────────────────
+  const isLv = location.pathname.startsWith('/lv')
+  const activeNav = isLv ? (navLv as NavItem[]) : nav
+
+  // ── Language switcher ───────────────────────────────────────────────
+  const [langOpen, setLangOpen] = useState(false)
+  const langRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handler(e: MouseEvent) {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
+
+  useEffect(() => { setLangOpen(false) }, [location.pathname])
+
+  /** Map current path to the equivalent path in the other language */
+  function getAltPath(): string {
+    const path = location.pathname
+    if (isLv) {
+      // LV → LT
+      return ROUTE_MAP_LV_TO_LT[path] ?? '/'
+    } else {
+      // LT → LV
+      return ROUTE_MAP_LT_TO_LV[path] ?? '/lv'
+    }
+  }
+
   function scrollToTopInstant() {
     requestAnimationFrame(() =>
       window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
@@ -152,7 +185,7 @@ export default function Navbar() {
           onMouseLeave={scheduleClose}
           onMouseEnter={cancelClose}
         >
-          {nav.map((n, idx) => {
+          {activeNav.map((n, idx) => {
             const hasDrop = 'dropdown' in n && Array.isArray(n.dropdown)
             const menuId = hasDrop ? `nav-menu-${idx}` : undefined
 
@@ -167,6 +200,7 @@ export default function Navbar() {
               >
                 <NavLink
                   to={n.to}
+                  end={n.to === '/' || n.to === '/lv'}
                   className={({ isActive }) =>
                     [
                       'relative text-[15px] md:text-[16px] font-medium transition-colors',
@@ -226,6 +260,52 @@ export default function Navbar() {
           })}
         </nav>
 
+        {/* Language switcher — desktop */}
+        <div ref={langRef} className="hidden md:block relative">
+          <button
+            type="button"
+            onClick={() => setLangOpen(v => !v)}
+            aria-expanded={langOpen}
+            aria-label="Change language"
+            className="flex items-center gap-1.5 text-[14px] font-semibold text-gray-700 hover:text-primary-700 transition-colors py-1.5 px-2.5 rounded-lg hover:bg-gray-50 border border-gray-200"
+          >
+            {isLv ? 'LV' : 'LT'}
+            <svg
+              className={`w-3.5 h-3.5 transition-transform duration-200 ${langOpen ? 'rotate-180' : ''}`}
+              viewBox="0 0 20 20" fill="currentColor" aria-hidden
+            >
+              <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+            </svg>
+          </button>
+
+          <AnimatePresence>
+            {langOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.15 }}
+                className="absolute right-0 top-[calc(100%+6px)] z-50 w-32 rounded-xl border border-gray-100 bg-white shadow-soft p-1"
+              >
+                <Link
+                  to={isLv ? getAltPath() : location.pathname}
+                  onClick={() => { setLangOpen(false); if (!isLv) return; scrollToTopInstant() }}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${!isLv ? 'font-semibold text-primary-700 bg-primary-50' : 'text-gray-700 hover:bg-primary-50 hover:text-primary-700'}`}
+                >
+                  Lietuvių
+                </Link>
+                <Link
+                  to={isLv ? location.pathname : getAltPath()}
+                  onClick={() => { setLangOpen(false); if (isLv) return; scrollToTopInstant() }}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${isLv ? 'font-semibold text-primary-700 bg-primary-50' : 'text-gray-700 hover:bg-primary-50 hover:text-primary-700'}`}
+                >
+                  Latviešu
+                </Link>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
         {/* Mobile toggle */}
         <button
           className="md:hidden btn-ghost text-[15px] font-medium"
@@ -250,7 +330,7 @@ export default function Navbar() {
             className="md:hidden fixed inset-0 top-[72px] bg-white border-t border-gray-100 overflow-auto will-change-transform"
           >
             <div className="container-narrow py-2 grid gap-1.5">
-              {nav.map((n, idx) => {
+              {activeNav.map((n, idx) => {
                 const hasDrop = 'dropdown' in n && Array.isArray(n.dropdown)
 
                 // Paprastas linkas
@@ -259,7 +339,13 @@ export default function Navbar() {
                     <NavLink
                       key={n.to}
                       to={n.to}
-                      className="px-2 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 block text-[15px] font-medium"
+                      end={n.to === '/' || n.to === '/lv'}
+                      className={({ isActive }) =>
+                        [
+                          'px-2 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 block text-[15px] font-medium',
+                          isActive ? 'text-primary-700 bg-primary-50' : '',
+                        ].join(' ')
+                      }
                       onClick={() => handleNavClick(n.to)}
                     >
                       {n.label}
@@ -276,7 +362,13 @@ export default function Navbar() {
                       {/* Parent navigacija (į /paslaugos) */}
                       <NavLink
                         to={n.to}
-                        className="flex-1 px-2 py-2 block text-[15px] font-medium hover:bg-primary-50 hover:text-primary-700"
+                        end
+                        className={({ isActive }) =>
+                          [
+                            'flex-1 px-2 py-2 block text-[15px] font-medium hover:bg-primary-50 hover:text-primary-700',
+                            isActive ? 'text-primary-700' : '',
+                          ].join(' ')
+                        }
                         onClick={() => handleNavClick(n.to)}
                       >
                         {n.label}
@@ -325,6 +417,26 @@ export default function Navbar() {
                   </div>
                 )
               })}
+              {/* Language switcher — mobile */}
+              <div className="mt-2 pt-2 border-t border-gray-100">
+                <p className="px-2 pb-1 text-[12px] font-semibold uppercase tracking-wide text-gray-400">Kalba / Valoda</p>
+                <Link
+                  to={isLv ? getAltPath() : location.pathname}
+                  onClick={() => { setOpenMobile(false); setMobileOpenIndex(null); if (!isLv) return; scrollToTopInstant() }}
+                  className={`flex items-center justify-between px-3 py-2 rounded-lg text-[15px] font-medium transition-colors ${!isLv ? 'text-primary-700 bg-primary-50 font-semibold' : 'text-gray-700 hover:bg-primary-50 hover:text-primary-700'}`}
+                >
+                  Lietuvių
+                  {!isLv && <span className="text-xs text-primary-500">✓</span>}
+                </Link>
+                <Link
+                  to={isLv ? location.pathname : getAltPath()}
+                  onClick={() => { setOpenMobile(false); setMobileOpenIndex(null); if (isLv) return; scrollToTopInstant() }}
+                  className={`flex items-center justify-between px-3 py-2 rounded-lg text-[15px] font-medium transition-colors ${isLv ? 'text-primary-700 bg-primary-50 font-semibold' : 'text-gray-700 hover:bg-primary-50 hover:text-primary-700'}`}
+                >
+                  Latviešu
+                  {isLv && <span className="text-xs text-primary-500">✓</span>}
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}

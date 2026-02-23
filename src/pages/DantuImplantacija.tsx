@@ -72,11 +72,17 @@ export default function DantuImplantacija() {
                 description="Dantų implantacija Klaipėdoje – pažangiausias prarastų dantų atkūrimo sprendimas. Ilgaamžiai Straumann® ir Neodent® implantai, ALL-ON-4 metodas, skaidri kainodara."
                 keywords="dantu implantacija, implantai klaipeda, straumann, neodent, all-on-4, dantu atkurimas, bangų klinika"
                 structuredData={structuredData}
+                lang="lt"
+                alternates={[
+                  { lang: 'lt',        url: 'https://banguklinika.lt/paslaugos/dantu-implantacija' },
+                  { lang: 'lv',        url: 'https://banguklinika.lt/lv/pakalpojumi/zobu-implantacija' },
+                  { lang: 'x-default', url: 'https://banguklinika.lt/paslaugos/dantu-implantacija' },
+                ]}
             />
 
             <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
                 {/* HERO */}
-                <motion.header className="mb-10 text-center sm:text-left" variants={item}>
+                <motion.header className="mb-10 text-left" variants={item}>
                     <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
                         Dantų implantacija
                     </h1>
@@ -110,7 +116,7 @@ export default function DantuImplantacija() {
                     </div>
 
                     {/* CTA MYGTUKAS VIRŠUJE */}
-                    <div className="flex justify-center sm:justify-start">
+                    <div className="flex justify-start">
                         <Link
                             to="/kontaktai"
                             className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1 mb-8"
@@ -996,7 +1002,7 @@ export default function DantuImplantacija() {
 
 
                 {/* CTA */}
-                <motion.div className="mt-8 mb-12 text-center" variants={item}>
+                <motion.div className="mt-8 mb-12 text-left" variants={item}>
                     <div className="bg-white rounded-2xl border border-slate-100 shadow-soft overflow-hidden">
                         {/* viršus */}
                         <div className="p-6 sm:p-10 bg-brand-50/40 border-b border-brand/10">
@@ -1004,7 +1010,7 @@ export default function DantuImplantacija() {
                                 Kviečiame registruotis dantų implantacijos konsultacijai Bangų klinikoje
                             </h2>
 
-                            <p className="text-slate-700 max-w-3xl mx-auto leading-relaxed">
+                            <p className="text-slate-700 max-w-3xl leading-relaxed">
                                 Jeigu svarstote apie dantų atkūrimą implantais ir norite sužinoti, koks sprendimas būtų tinkamiausias Jūsų
                                 situacijoje, kviečiame registruotis konsultacijai Bangų odontologijos klinikoje. Vizito metu patyrę implantologai
                                 įvertins burnos būklę, atsakys į rūpimus klausimus ir padės suprasti visą gydymo eigą.

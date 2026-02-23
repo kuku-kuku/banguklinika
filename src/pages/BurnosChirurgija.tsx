@@ -46,7 +46,7 @@ export default function BurnosChirurgija() {
       <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
         
         {/* HERO / ĮŽANGA */}
-        <motion.header className="mb-10 text-center sm:text-left" variants={item}>
+        <motion.header className="mb-10 text-left" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
             Profesionali burnos chirurgija Klaipėdoje
           </h1>
@@ -60,7 +60,7 @@ export default function BurnosChirurgija() {
           </div>
 
           {/* CTA MYGTUKAS VIRŠUJE */}
-          <div className="flex justify-center sm:justify-start">
+          <div className="flex justify-start">
             <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
               Registruotis vizitui
             </Link>
@@ -328,11 +328,11 @@ export default function BurnosChirurgija() {
         </motion.section>
 
         {/* CTA */}
-        <motion.div className="mt-8 mb-12 text-center" variants={item}>
+        <motion.div className="mt-8 mb-12 text-left" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kviečiame registruotis burnos chirurgo konsultacijai Bangų klinikoje
           </h2>
-          <p className="text-slate-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-slate-700 mb-8 max-w-3xl leading-relaxed">
             Jeigu ieškote patikimos odontologijos klinikos Klaipėdoje, kurioje burnos chirurgijos paslaugos teikiamos atsakingai, saugiai ir profesionaliai, kviečiame kreiptis į Bangų odontologijos kliniką. Mūsų pacientai vertina ne tik gydymo kokybę, bet ir aiškią komunikaciją, dėmesingą požiūrį bei kruopščiai suplanuotą gydymo eigą.
             <br/><br/>
             Bangų odontologijos klinikoje burnos chirurgines procedūras atlieka kvalifikuoti burnos chirurgai, dirbantys su šiuolaikinėmis technologijomis ir taikantys individualius sprendimus pagal kiekvieno paciento situaciją. Čia didelis dėmesys skiriamas tiek procedūros tikslumui, tiek paciento savijautai prieš gydymą, jo metu ir po jo, siekiant patikimo bei ilgalaikio rezultato.

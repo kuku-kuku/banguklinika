@@ -1,5 +1,5 @@
 // src/App.tsx
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Outlet } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -30,6 +30,36 @@ import HeroWave from './components/HeroWave'
 import CirkonioOffer from './pages/CirkonioOffer'
 import AllOn4Implants from './pages/AllOn4Implants'
 import DantuImplantacija from './pages/DantuImplantacija'
+
+// Latvian pages
+import HomeLv from './pages/lv/HomeLv'
+import DantuImplantacijaLv from './pages/lv/DantuImplantacijaLv'
+import ParMusLv from './pages/lv/ParMusLv'
+import KontaktiLv from './pages/lv/KontaktiLv'
+import CenasLv from './pages/lv/CenasLv'
+import PakalpojumiLv from './pages/lv/PakalpojumiLv'
+import ZobuProtezesanaLv from './pages/lv/ZobuProtezesanaLv'
+import ZobuArstniecibaLv from './pages/lv/ZobuArstniecibaLv'
+import ZobuIzlinesanaLv from './pages/lv/ZobuIzlinesanaLv'
+import MutesHigiennaLv from './pages/lv/MutesHigiennaLv'
+import MutesHirurgijaLv from './pages/lv/MutesHirurgijaLv'
+import ZobuBalinesanaLv from './pages/lv/ZobuBalinesanaLv'
+import EstetikaPlombanaLv from './pages/lv/EstetikaPlombanaLv'
+import ZobuPlombanaLv from './pages/lv/ZobuPlombanaLv'
+import ZobuEkstrakcijaLv from './pages/lv/ZobuEkstrakcijaLv'
+import EndodontijaLv from './pages/lv/EndodontijaLv'
+import BernuOdontologijaLv from './pages/lv/BernuOdontologijaLv'
+import IpasiPiedavajumiLv from './pages/lv/IpasiPiedavajumiLv'
+import { LangProvider } from './context/LanguageContext'
+
+/** Thin wrapper that provides lang="lv" context to all /lv/* pages */
+function LvLayout() {
+  return (
+    <LangProvider lang="lv">
+      <Outlet />
+    </LangProvider>
+  )
+}
 
 export default function App() {
   return (
@@ -72,6 +102,29 @@ export default function App() {
           <Route path="/paslaugos/dantu-implantacija" element={<DantuImplantacija />} />
 
           
+
+          {/* ===== LATVIAN PAGES /lv/* ===== */}
+          <Route path="/lv" element={<LvLayout />}>
+            <Route index element={<HomeLv />} />
+            <Route path="par-mums" element={<ParMusLv />} />
+            <Route path="kontakti" element={<KontaktiLv />} />
+            <Route path="cenas" element={<CenasLv />} />
+            <Route path="pakalpojumi" element={<PakalpojumiLv />} />
+            {/* Pakalpojumi (service pages) */}
+            <Route path="pakalpojumi/zobu-implantacija"  element={<DantuImplantacijaLv />} />
+            <Route path="pakalpojumi/zobu-protezesana"   element={<ZobuProtezesanaLv />} />
+            <Route path="pakalpojumi/zobu-arstnieciba"   element={<ZobuArstniecibaLv />} />
+            <Route path="pakalpojumi/zobu-izlinesana"    element={<ZobuIzlinesanaLv />} />
+            <Route path="pakalpojumi/mutes-higiena"      element={<MutesHigiennaLv />} />
+            <Route path="pakalpojumi/mutes-hirurgija"    element={<MutesHirurgijaLv />} />
+            <Route path="pakalpojumi/zobu-balinesana"    element={<ZobuBalinesanaLv />} />
+            <Route path="pakalpojumi/estetiska-plombana" element={<EstetikaPlombanaLv />} />
+            <Route path="pakalpojumi/zobu-plombana"      element={<ZobuPlombanaLv />} />
+            <Route path="pakalpojumi/zobu-ekstrakcija"   element={<ZobuEkstrakcijaLv />} />
+            <Route path="pakalpojumi/endodontija"        element={<EndodontijaLv />} />
+            <Route path="pakalpojumi/bernu-odontologija" element={<BernuOdontologijaLv />} />
+            <Route path="ipasi-piedavajumi" element={<IpasiPiedavajumiLv />} />
+          </Route>
 
           {/* Ypatingi pasiūlymai – bendras sąrašas */}
           <Route path="/ypatingi-pasiulymai" element={<SpecialOffers />} />

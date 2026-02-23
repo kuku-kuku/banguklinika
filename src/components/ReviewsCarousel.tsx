@@ -282,7 +282,7 @@ export default function ReviewsCarousel() {
 
   if (loading) {
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-12 py-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {[1, 2, 3].map((i) => (
             <div key={i} className="h-44 rounded-2xl animate-pulse" style={{ background: "rgba(0,183,198,0.07)" }} />
@@ -298,7 +298,7 @@ export default function ReviewsCarousel() {
 
   return (
     <div className="py-12 md:py-16" style={{ background: "transparent" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold text-darkblue-600 tracking-tight">

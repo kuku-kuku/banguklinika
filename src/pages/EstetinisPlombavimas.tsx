@@ -54,7 +54,7 @@ export default function EstetinisPlombavimas() {
       <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
         
         {/* HERO / ĮŽANGA */}
-        <motion.header className="mb-12 text-center sm:text-left" variants={item}>
+        <motion.header className="mb-12 text-left" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
             Profesionalus estetinis dantų plombavimas Klaipėdoje
           </h1>
@@ -68,7 +68,7 @@ export default function EstetinisPlombavimas() {
           </div>
           
           {/* CTA MYGTUKAS VIRŠUJE */}
-          <div className="flex justify-center sm:justify-start">
+          <div className="flex justify-start">
              <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
               Registruotis vizitui
             </Link>
@@ -306,11 +306,11 @@ export default function EstetinisPlombavimas() {
         </motion.section>
 
         {/* CTA */}
-        <motion.div className="mt-8 mb-12 text-center" variants={item}>
+        <motion.div className="mt-8 mb-12 text-left" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kviečiame registruotis estetiniam plombavimui Bangų klinikoje
           </h2>
-          <p className="text-slate-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-slate-700 mb-8 max-w-3xl leading-relaxed">
             Jeigu ieškote patikimos odontologijos klinikos, kurioje atliekamas saugus ir estetiškai aukštos kokybės dantų estetinis plombavimas, kviečiame apsilankyti Bangų odontologijos klinikoje. Čia Jūsų laukia ne tik individualus požiūris, modernios technologijos ir patyrę specialistai, siekiantys natūralaus bei ilgalaikio rezultato, bet ir geriausias estetinis plombavimas Klaipėdoje.
             <br/><br/>
             Registruokitės konsultacijai ir ženkite pirmą žingsnį link harmoningos, tvarkingos ir pasitikėjimą suteikiančios šypsenos.

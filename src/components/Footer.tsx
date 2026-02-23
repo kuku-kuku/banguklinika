@@ -23,7 +23,7 @@ function findFormEl(): HTMLElement | null {
   )
 }
 
-/** Patikimas scroll: bando kelis kartus, kol forma atsiranda DOM’e */
+/** Patikimas scroll: bando kelis kartus, kol forma atsiranda DOM'e */
 function robustScrollToForm() {
   const hit = () => {
     const el = findFormEl()
@@ -45,6 +45,7 @@ function robustScrollToForm() {
 export default function Footer() {
   const location = useLocation()
   const { pathname } = location
+  const isLv = pathname.startsWith('/lv')
 
   // ----- Nauja: pamatuojame darbo laiko UL aukštį (tikrų 3 eilučių), kad mygtukas būtų identiško dydžio
   const hoursListRef = useRef<HTMLUListElement | null>(null)
@@ -73,22 +74,27 @@ export default function Footer() {
     }
   }, [])
 
-  // Sureaguojame, jei atėjome su hash’u į kontaktus (fallback)
+  // Sureaguojame, jei atėjome su hash'u į kontaktus (fallback)
   useEffect(() => {
+    const contactPath = isLv ? '/lv/kontakti' : '/kontaktai'
     if (
-      location.pathname === '/kontaktai' &&
+      location.pathname === contactPath &&
       (location.hash === '#registracija' || location.hash === '#contact-form')
     ) {
       robustScrollToForm()
     }
-  }, [location.pathname, location.hash])
+  }, [location.pathname, location.hash, isLv])
 
   const handleRegistrationClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
-    if (pathname === '/kontaktai') {
+    const contactPath = isLv ? '/lv/kontakti' : '/kontaktai'
+    if (pathname === contactPath) {
       e.preventDefault()
       robustScrollToForm()
     }
   }
+
+  const contactHref = isLv ? '/lv/kontakti#registracija' : '/kontaktai#registracija'
+  const logoHref = isLv ? '/lv' : '/'
 
   return (
     <footer className="footer-dark">
@@ -96,11 +102,13 @@ export default function Footer() {
       <div className="container-narrow px-4 sm:px-6 lg:px-8 py-12 grid gap-10 grid-cols-2 md:grid-cols-12 text-sm">
         {/* Brand */}
         <div className="space-y-4 col-span-2 md:col-span-4">
-          <Link to="/" aria-label="Bangų klinika — pradžia" className="inline-flex items-center gap-3">
+          <Link to={logoHref} aria-label="Bangų klinika" className="inline-flex items-center gap-3">
             <img src="/logo1.png" alt="Bangų klinika" className="h-12 sm:h-20 w-auto object-contain select-none" draggable={false} />
           </Link>
 
-          <p className="text-xs text-white/80 max-w-xs">Moderni odontologija Klaipėdos centre.</p>
+          <p className="text-xs text-white/80 max-w-xs">
+            {isLv ? 'Moderna zobārstniecība Klaipēdas centrā.' : 'Moderni odontologija Klaipėdos centre.'}
+          </p>
           <div className="flex flex-wrap gap-2 pt-1 text-xs">
             <span className="pin-dark"><MapPin size={14} /> {CLINIC.address}</span>
             <span className="pin-dark"><Clock size={14} /> {CLINIC.hours?.[0]?.time || 'I–V 9:00–18:00'}</span>
@@ -109,18 +117,33 @@ export default function Footer() {
 
         {/* Navigation */}
         <div className="col-span-1 md:col-span-2">
-          <h4 className="text-sm font-semibold mb-3 text-white">Navigacija</h4>
+          <h4 className="text-sm font-semibold mb-3 text-white">
+            {isLv ? 'Navigācija' : 'Navigacija'}
+          </h4>
           <ul className="space-y-2">
-            <li><Link to="/paslaugos" className="footer-link">Paslaugos</Link></li>
-            <li><Link to="/kainos" className="footer-link">Kainos</Link></li>
-            <li><Link to="/kontaktai" className="footer-link">Kontaktai</Link></li>
-            <li><Link to="/apie" className="footer-link">Apie</Link></li>
+            {isLv ? (
+              <>
+                <li><Link to="/lv/pakalpojumi" className="footer-link">Pakalpojumi</Link></li>
+                <li><Link to="/lv/cenas" className="footer-link">Cenas</Link></li>
+                <li><Link to="/lv/kontakti" className="footer-link">Kontakti</Link></li>
+                <li><Link to="/lv/par-mums" className="footer-link">Par mums</Link></li>
+              </>
+            ) : (
+              <>
+                <li><Link to="/paslaugos" className="footer-link">Paslaugos</Link></li>
+                <li><Link to="/kainos" className="footer-link">Kainos</Link></li>
+                <li><Link to="/kontaktai" className="footer-link">Kontaktai</Link></li>
+                <li><Link to="/apie" className="footer-link">Apie</Link></li>
+              </>
+            )}
           </ul>
         </div>
 
         {/* Contacts */}
         <div className="col-span-1 md:col-span-3">
-          <h4 className="text-sm font-semibold mb-3 text-white">Kontaktai</h4>
+          <h4 className="text-sm font-semibold mb-3 text-white">
+            {isLv ? 'Kontakti' : 'Kontaktai'}
+          </h4>
           <ul className="space-y-2">
             <li className="footer-pin"><MapPin size={14} /><span>{CLINIC.address}</span></li>
             <li><a href={`tel:${CLINIC.phone}`} className="footer-link inline-flex items-center gap-2"><Phone size={14} /><span>{CLINIC.phone}</span></a></li>
@@ -130,7 +153,9 @@ export default function Footer() {
 
         {/* Hours + Desktop CTA */}
         <div className="col-span-1 md:col-span-3">
-          <h4 className="text-sm font-semibold mb-3 text-white">Darbo laikas</h4>
+          <h4 className="text-sm font-semibold mb-3 text-white">
+            {isLv ? 'Darba laiks' : 'Darbo laikas'}
+          </h4>
           {/* ⬇️ šiam UL uždedame ref — matuosime tik UL aukštį, be antraštės */}
           <ul className="space-y-1" ref={hoursListRef}>
             {CLINIC.hours.map(h => (
@@ -147,16 +172,16 @@ export default function Footer() {
           {/* Desktop: mygtukas dešinėje, nukreipia į formą */}
           <div className="mt-4 hidden md:flex justify-end">
             <Link
-              to="/kontaktai#registracija"
+              to={contactHref}
               onClick={handleRegistrationClick}
               className="btn btn-primary rounded-xl"
             >
-              Registracija internetu
+              {isLv ? 'Reģistrācija tiešsaistē' : 'Registracija internetu'}
             </Link>
           </div>
         </div>
 
-        {/* MOBILE: „burbulas“ to paties aukščio kaip UL (3 eilutės) ir centruotas H/V */}
+        {/* MOBILE: „burbulas" to paties aukščio kaip UL (3 eilutės) ir centruotas H/V */}
         <div className="col-span-1 md:hidden">
           <div
             className="w-full flex justify-center items-center"
@@ -166,11 +191,11 @@ export default function Footer() {
             }}
           >
             <Link
-              to="/kontaktai#registracija"
+              to={contactHref}
               onClick={handleRegistrationClick}
               className="btn btn-primary rounded-full text-sm leading-tight px-4 py-2 w-10/12 max-w-[220px] text-center"
             >
-              Registracija internetu
+              {isLv ? 'Reģistrācija tiešsaistē' : 'Registracija internetu'}
             </Link>
           </div>
         </div>
@@ -179,15 +204,19 @@ export default function Footer() {
       {/* Bottom */}
       <div className="bg-darkblue-700">
         <div className="container-narrow px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/70">
-          <p>© {new Date().getFullYear()} Bangų klinika. Visos teisės saugomos.</p>
+          <p>
+            {isLv
+              ? `© ${new Date().getFullYear()} Bangų klinika. Visas tiesības aizsargātas.`
+              : `© ${new Date().getFullYear()} Bangų klinika. Visos teisės saugomos.`}
+          </p>
           <p className="inline-flex items-center gap-1">
-            Sukurta su meile •{" "}
+            {isLv ? 'Izveidots ar mīlestību' : 'Sukurta su meile'} •{" "}
             <a
               href="https://beneta.lt"
               target="_blank"
               rel="noopener noreferrer"
               className="underline decoration-white/40 hover:decoration-white transition"
-              aria-label="Beneta – atidaryti naujame lange"
+              aria-label="Beneta"
             >
               Beneta
             </a>

@@ -70,7 +70,7 @@ export default function VaikuOdontologija() {
       <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
         
         {/* HERO */}
-        <motion.header className="mb-10 text-center sm:text-left" variants={item}>
+        <motion.header className="mb-10 text-left" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
             Profesionali vaikų odontologija Klaipėdoje
           </h1>
@@ -85,7 +85,7 @@ export default function VaikuOdontologija() {
           </div>
 
           {/* CTA MYGTUKAS VIRŠUJE */}
-          <div className="flex justify-center sm:justify-start">
+          <div className="flex justify-start">
             <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
               Registruotis vizitui
             </Link>
@@ -301,11 +301,11 @@ export default function VaikuOdontologija() {
         </motion.section>
 
         {/* PABAIGOS CTA */}
-        <motion.div className="mt-8 mb-12 text-center" variants={item}>
+        <motion.div className="mt-8 mb-12 text-left" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kviečiame registruotis vaikų odontologo konsultacijai Bangų klinikoje
           </h2>
-          <p className="text-slate-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-slate-700 mb-8 max-w-3xl leading-relaxed">
             Jeigu norite pasirūpinti savo vaiko dantų sveikata nuo pat pirmųjų dantukų arba pastebėjote požymių, kad reikalingas gydymas, kviečiame registruotis vizitui Bangų odontologijos klinikoje. Ankstyva priežiūra padeda išvengti sudėtingesnių problemų ir leidžia vaikui priprasti prie odontologo be streso.
           </p>
           <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-4 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">

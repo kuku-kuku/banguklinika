@@ -1,8 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import SEO from '../components/SEO'
-import AnimatedSection from '../components/AnimatedSection'
+import SEO from '../../components/SEO'
+import AnimatedSection from '../../components/AnimatedSection'
 import { AnimatePresence, motion, useAnimationControls } from 'framer-motion'
+import { SITE_URL } from '../../i18n/lv'
 
 type Svc = { id: string; title: string; content: React.ReactNode; to?: string }
 
@@ -112,27 +113,22 @@ function useScrollThumb(containerRef: React.RefObject<HTMLElement>) {
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
-
     const compute = () => {
       const { scrollHeight, clientHeight, scrollTop } = el
       const canScroll = scrollHeight > clientHeight + 2
       setScrollable(canScroll)
       if (!canScroll) return
-
       const trackHeight = clientHeight
       const ratio = clientHeight / scrollHeight
       const h = Math.max(20, Math.round(trackHeight * ratio))
       const maxThumbTop = trackHeight - h
       const top = Math.round((scrollTop / (scrollHeight - clientHeight)) * maxThumbTop)
-
       setThumbHeight(h)
       setThumbTop(isFinite(top) ? top : 0)
     }
-
     compute()
     const ro = new ResizeObserver(compute)
     ro.observe(el)
-
     el.addEventListener('scroll', compute, { passive: true })
     return () => {
       ro.disconnect()
@@ -144,17 +140,9 @@ function useScrollThumb(containerRef: React.RefObject<HTMLElement>) {
 }
 
 function AccordionItemDefault({
-  id,
-  title,
-  children,
-  open,
-  onToggle,
+  id, title, children, open, onToggle,
 }: {
-  id: string
-  title: string
-  children: React.ReactNode
-  open: boolean
-  onToggle: (willOpen: boolean) => void
+  id: string; title: string; children: React.ReactNode; open: boolean; onToggle: (willOpen: boolean) => void
 }) {
   const contentRef = useRef<HTMLDivElement | null>(null)
   const controls = useAnimationControls()
@@ -188,12 +176,12 @@ function AccordionItemDefault({
       id={id}
       className={[
         'group rounded-2xl border transition-all duration-300 transform-gpu will-change-transform',
-        open 
-          ? 'bg-white border-primary-200 shadow-md ring-4 ring-primary-50' 
+        open
+          ? 'bg-white border-primary-200 shadow-md ring-4 ring-primary-50'
           : 'bg-slate-50 border-transparent shadow-sm hover:bg-white hover:border-slate-200 hover:shadow-md hover:-translate-y-0.5',
         'scroll-mt-28 md:scroll-mt-32',
       ].join(' ')}
-      style={{ contain: 'paint', overflowAnchor: 'none' as any }}
+      style={{ contain: 'paint', overflowAnchor: 'none' as React.CSSProperties['overflowAnchor'] }}
     >
       <button
         onClick={() => onToggle(!open)}
@@ -201,12 +189,9 @@ function AccordionItemDefault({
         aria-expanded={open}
         aria-controls={`${id}-panel`}
       >
-        <h3 className={`text-base sm:text-lg font-semibold transition-colors duration-300 text-left ${open ? 'text-primary-600' : 'text-slate-800 group-hover:text-primary-600'}`}>
-          {title}
-        </h3>
+        <h3 className={`text-base sm:text-lg font-semibold transition-colors duration-300 text-left ${open ? 'text-primary-600' : 'text-slate-800 group-hover:text-primary-600'}`}>{title}</h3>
         <Chevron open={open} />
       </button>
-
       <motion.div
         id={`${id}-panel`}
         animate={controls}
@@ -215,7 +200,7 @@ function AccordionItemDefault({
           height,
           overflow: 'hidden',
           willChange: 'height',
-          contentVisibility: open ? ('visible' as any) : ('auto' as any),
+          contentVisibility: open ? ('visible' as React.CSSProperties['contentVisibility']) : ('auto' as React.CSSProperties['contentVisibility']),
           containIntrinsicSize: open ? undefined : '0 400px',
         }}
       >
@@ -228,19 +213,9 @@ function AccordionItemDefault({
 }
 
 function AccordionItemPaper({
-  id,
-  title,
-  children,
-  open,
-  onToggle,
-  maxVh = 56,
+  id, title, children, open, onToggle, maxVh = 56,
 }: {
-  id: string
-  title: string
-  children: React.ReactNode
-  open: boolean
-  onToggle: (willOpen: boolean) => void
-  maxVh?: number
+  id: string; title: string; children: React.ReactNode; open: boolean; onToggle: (willOpen: boolean) => void; maxVh?: number
 }) {
   const clampHeight = `clamp(280px, ${maxVh}vh, 520px)`
   const scrollRef = useRef<HTMLDivElement | null>(null)
@@ -251,12 +226,12 @@ function AccordionItemPaper({
       id={id}
       className={[
         'group rounded-2xl border transition-all duration-300 transform-gpu will-change-transform',
-        open 
-          ? 'bg-white border-primary-200 shadow-md ring-4 ring-primary-50' 
+        open
+          ? 'bg-white border-primary-200 shadow-md ring-4 ring-primary-50'
           : 'bg-slate-50 border-transparent shadow-sm hover:bg-white hover:border-slate-200 hover:shadow-md hover:-translate-y-0.5',
         'scroll-mt-28 md:scroll-mt-32',
       ].join(' ')}
-      style={{ contain: 'layout paint', overflowAnchor: 'none' as any }}
+      style={{ contain: 'layout paint', overflowAnchor: 'none' as React.CSSProperties['overflowAnchor'] }}
     >
       <button
         onClick={() => onToggle(!open)}
@@ -264,12 +239,9 @@ function AccordionItemPaper({
         aria-expanded={open}
         aria-controls={`${id}-panel`}
       >
-        <h3 className={`text-base sm:text-lg font-semibold transition-colors duration-300 text-left ${open ? 'text-primary-600' : 'text-slate-800 group-hover:text-primary-600'}`}>
-          {title}
-        </h3>
+        <h3 className={`text-base sm:text-lg font-semibold transition-colors duration-300 text-left ${open ? 'text-primary-600' : 'text-slate-800 group-hover:text-primary-600'}`}>{title}</h3>
         <Chevron open={open} />
       </button>
-
       <div
         id={`${id}-panel`}
         className="grid will-change-[grid-template-rows,opacity]"
@@ -290,22 +262,21 @@ function AccordionItemPaper({
               transformOrigin: 'top left',
               transform: open ? 'scaleY(1) translateZ(0)' : 'scaleY(0.995) translateY(-1px) translateZ(0)',
               opacity: open ? 1 : 0.98,
-              WebkitOverflowScrolling: 'touch' as any,
+              WebkitOverflowScrolling: 'touch',
             }}
           >
             {children}
           </div>
-
           <AnimatePresence>
             {scrollable && open && (
               <motion.div
-                className="pointer-events-none absolute top-0 right-1 w-1.5 rounded-full bg-slate-100"
+                className="pointer-events-none absolute top-0 right-1 w-1.5 rounded-full bg-slate-200/80"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 style={{ height: `calc(${clampHeight})` }}
               >
-                <div className="absolute left-0 right-0 mx-auto w-1.5 rounded-full bg-primary-300" style={{ top: thumbTop, height: thumbHeight }} />
+                <div className="absolute left-0 right-0 mx-auto w-1.5 rounded-full bg-primary-400" style={{ top: thumbTop, height: thumbHeight }} />
               </motion.div>
             )}
           </AnimatePresence>
@@ -326,11 +297,9 @@ function ServiceLinkCard({ to, title }: { to: string; title: string }) {
       ].join(' ')}
     >
       <div className="w-full flex items-center justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5">
-        <h3 className="text-base sm:text-lg font-semibold text-slate-800 transition-colors duration-300 group-hover:text-primary-600 text-left">
-          {title}
-        </h3>
-        <svg 
-          className="w-5 h-5 text-gray-400 transition-all duration-300 group-hover:text-primary-500 group-hover:translate-x-1" 
+        <h3 className="text-base sm:text-lg font-semibold text-slate-800 transition-colors duration-300 group-hover:text-primary-600 text-left">{title}</h3>
+        <svg
+          className="w-5 h-5 text-gray-400 transition-all duration-300 group-hover:text-primary-500 group-hover:translate-x-1"
           viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden
         >
           <path d="M9 18l6-6-6-6" />
@@ -340,178 +309,115 @@ function ServiceLinkCard({ to, title }: { to: string; title: string }) {
   )
 }
 
-export default function Services() {
+export default function PakalpojumiLv() {
   const sections: Svc[] = useMemo(
     () => [
       {
-        id: 'dantu-implantacija',
-        title: 'Dantų implantacija',
-        to: '/paslaugos/dantu-implantacija',
-        content: (
-          <div className="space-y-3">
-            <p>Dantų implantacijos informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
+        id: 'zobu-implantacija',
+        title: 'Zobu implantācija',
+        to: '/lv/pakalpojumi/zobu-implantacija',
+        content: <div />,
       },
       {
-        id: 'skubi-pagalba',
-        title: 'Skubi pagalba',
+        id: 'skubi-palidziba',
+        title: 'Neatliekamā palīdzība',
         content: (
           <div className="space-y-3">
             <p>
-              „Bangų Odontologijos Klinika" suteiks skubią pagalbą, jei skauda dantį, iškrito plomba,
-              nuskilo dantis ar skubiai prireikė kitų odontologo paslaugų.
-              Nereikės laukti eilėje – priimsime jus kaip įmanoma greičiau.
+              Bangų zobārstniecības klīnika sniegs neatliekamo palīdzību, ja sāp zobs, izkritusi plomba,
+              atšķēlusies zoba daļa vai steidzami nepieciešami citi zobārsta pakalpojumi.
+              Nav jāgaida rindā — pieņemsim jūs pēc iespējas ātrāk.
             </p>
           </div>
         ),
       },
-
       {
-        id: 'dantu-protezavimas',
-        title: 'Dantų protezavimas',
-        to: '/paslaugos/dantu-protezavimas',
-        content: (
-          <div className="space-y-3">
-            <p>Dantų protezavimo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
+        id: 'zobu-protezesana',
+        title: 'Zobu protezēšana',
+        to: '/lv/pakalpojumi/zobu-protezesana',
+        content: <div />,
       },
-
       {
-        id: 'kompensuojamas-dantu-protezavimas',
-        title: 'TLK lėšomis kompensuojamas dantų protezavimas',
+        id: 'kompenseta-protezesana',
+        title: 'Kompensētā zobu protezēšana',
         content: (
           <div className="space-y-3">
             <p>
-              Bangų odontologijos klinika yra sudariusi sutartį su Teritorinėmis ligonių kasomis (TLK),
-              kurios skiria kompensaciją dantų protezavimo išlaidoms iš Privalomojo sveikatos draudimo fondo (PSDF).
+              Bangų zobārstniecības klīnika ir noslēgusi līgumu ar Teritoriālajām slimokasēm,
+              kas piešķir kompensāciju zobu protezēšanas izdevumiem no Obligātā veselības apdrošināšanas fonda.
             </p>
-
-            <p>Teisę į kompensuojamą protezavimą turi:</p>
-
+            <p>Tiesības uz kompensēto protezēšanu ir:</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li>Asmenys, kuriems sukako senatvės pensijos amžius;</li>
-              <li>Vaikai iki 18 metų;</li>
-              <li>Asmenys, pripažinti nedarbingais arba iš dalies darbingais;</li>
-              <li>Asmenys po burnos, veido ir žandikaulių onkologinių ligų gydymo.</li>
+              <li>Personām, kuras sasniegušas vecuma pensijas vecumu;</li>
+              <li>Bērniem līdz 18 gadu vecumam;</li>
+              <li>Personām, kurām atzīta invaliditāte vai daļēja darbspēja;</li>
+              <li>Personām pēc mutes, sejas un žokļa onkoloģisko slimību ārstniecības.</li>
             </ul>
-
-            <p className="text-sm text-slate-500 mt-4">
-              Detalesnė ir nuolat atnaujinama informacija skelbiama TLK interneto svetainėje.
+            <p className="text-sm text-gray-600">
+              Detalizētāka un pastāvīgi atjaunināta informācija pieejama Teritoriālo slimokasu tīmekļa vietnē.
             </p>
           </div>
         ),
       },
-
       {
-        id: 'dantu-gydymas',
-        title: 'Dantų gydymas',
-        to: '/paslaugos/dantu-taisymas-gydymas',
-        content: (
-          <div className="space-y-3">
-            <p>Dantų gydymo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
+        id: 'zobu-arstnieciba',
+        title: 'Zobu ārstniecība',
+        to: '/lv/pakalpojumi/zobu-arstnieciba',
+        content: <div />,
       },
-
       {
-        id: 'dantu-tiesinimas',
-        title: 'Dantų tiesinimas',
-        to: '/paslaugos/dantu-tiesinimas',
-        content: (
-          <div className="space-y-3">
-            <p>Dantų tiesinimo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
+        id: 'zobu-izlinesana',
+        title: 'Zobu izlīdzināšana',
+        to: '/lv/pakalpojumi/zobu-izlinesana',
+        content: <div />,
       },
-
       {
-        id: 'burnos-higiena',
-        title: 'Burnos higiena',
-        to: '/paslaugos/burnos-higiena',
-        content: (
-          <div className="space-y-3">
-            <p>Burnos higienos informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
+        id: 'mutes-higiena',
+        title: 'Mutes higiēna',
+        to: '/lv/pakalpojumi/mutes-higiena',
+        content: <div />,
       },
-
       {
-        id: 'burnos-chirurgija',
-        title: 'Burnos chirurgija',
-        to: '/paslaugos/burnos-chirurgija',
-        content: (
-          <div className="space-y-3">
-            <p>Burnos chirurgijos informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
+        id: 'mutes-hirurgija',
+        title: 'Mutes ķirurģija',
+        to: '/lv/pakalpojumi/mutes-hirurgija',
+        content: <div />,
       },
-
       {
-        id: 'dantu-balinimas',
-        title: 'Dantų balinimas',
-        to: '/paslaugos/dantu-balinimas',
-        content: (
-          <div className="space-y-3">
-            <p>Dantų balinimo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
+        id: 'zobu-balinesana',
+        title: 'Zobu balināšana',
+        to: '/lv/pakalpojumi/zobu-balinesana',
+        content: <div />,
       },
-
       {
-        id: 'estetinis-plombavimas',
-        title: 'Estetinis plombavimas',
-        to: '/paslaugos/estetinis-plombavimas',
-        content: (
-          <div className="space-y-3">
-            <p>Estetinio plombavimo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
+        id: 'estetiska-plombana',
+        title: 'Estētiskā plombēšana',
+        to: '/lv/pakalpojumi/estetiska-plombana',
+        content: <div />,
       },
-
       {
-        id: 'dantu-plombavimas',
-        title: 'Dantų plombavimas',
-        to: '/paslaugos/dantu-plombavimas',
-        content: (
-          <div className="space-y-3">
-            <p>Dantų plombavimo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
+        id: 'zobu-plombana',
+        title: 'Zobu plombēšana',
+        to: '/lv/pakalpojumi/zobu-plombana',
+        content: <div />,
       },
-
       {
-        id: 'dantu-traukimas',
-        title: 'Dantų traukimas',
-        to: '/paslaugos/dantu-traukimas',
-        content: (
-          <div className="space-y-3">
-            <p>Dantų traukimo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
+        id: 'zobu-ekstrakcija',
+        title: 'Zobu ekstrakcija',
+        to: '/lv/pakalpojumi/zobu-ekstrakcija',
+        content: <div />,
       },
-
       {
-        id: 'endodontinis-gydymas',
-        title: 'Endodontinis gydymas',
-        to: '/paslaugos/endodontinis-gydymas',
-        content: (
-          <div className="space-y-3">
-            <p>Endodontinio gydymo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
+        id: 'endodontija',
+        title: 'Endodontija',
+        to: '/lv/pakalpojumi/endodontija',
+        content: <div />,
       },
-
       {
-        id: 'vaiku-odontologija',
-        title: 'Vaikų odontologija',
-        to: '/paslaugos/vaiku-odontologija',
-        content: (
-          <div className="space-y-3">
-            <p>Vaikų odontologijos informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
+        id: 'bernu-odontologija',
+        title: 'Bērnu zobārstniecība',
+        to: '/lv/pakalpojumi/bernu-odontologija',
+        content: <div />,
       },
     ],
     []
@@ -530,30 +436,21 @@ export default function Services() {
     setListAnchoringOff(true)
     try {
       const alreadyOpen = openIds.has(id)
-
       if (!willOpen) {
         if (!alreadyOpen) return
-        setOpenIds((prev) => {
-          const n = new Set(prev)
-          n.delete(id)
-          return n
-        })
+        setOpenIds((prev) => { const n = new Set(prev); n.delete(id); return n })
         await wait(320)
         return
       }
-
       const hadOthers = openIds.size > 0 && !openIds.has(id)
       if (hadOthers) {
         setOpenIds(new Set())
         await wait(320)
       }
-
       setOpenIds(new Set([id]))
       await wait(40)
-
       const el = document.getElementById(id)
       if (el) await waitForLayoutStabilize(el, 4, 1000)
-
       if (mobile) await smoothCenterOnElement(id, 14, 380)
       else await smoothAlignToElement(id, 16, 260)
     } finally {
@@ -563,7 +460,7 @@ export default function Services() {
   }
 
   useEffect(() => {
-    if (pathname === '/paslaugos' && !hash) setOpenIds(new Set())
+    if (pathname === '/lv/pakalpojumi' && !hash) setOpenIds(new Set())
   }, [pathname, hash])
 
   useEffect(() => {
@@ -572,7 +469,6 @@ export default function Services() {
     const item = sections.find((s) => s.id === target)
     if (!item) return
     if (item.to) return
-
     let cancelled = false
     const run = async () => {
       if (isAnimatingRef.current) return
@@ -585,14 +481,11 @@ export default function Services() {
           await wait(320)
           if (cancelled) return
         }
-
         setOpenIds(new Set([target]))
         await wait(40)
-
         const el = document.getElementById(target)
         if (el) await waitForLayoutStabilize(el, 4, 1000)
         if (cancelled) return
-
         if (mobile) await smoothCenterOnElement(target, 14, 380)
         else await smoothAlignToElement(target, 16, 260)
       } finally {
@@ -616,16 +509,24 @@ export default function Services() {
   return (
     <>
       <SEO
-        title="Paslaugos"
-        description="Skubi pagalba, dantų protezavimas, kompensuojamas protezavimas, dantų gydymas, implantai, tiesinimas, higiena, chirurgija, balinimas, plombavimas, traukimas, endodontija, vaikų odontologija."
+        lang="lv"
+        title="Pakalpojumi — Bangų zobārstniecības klīnika Klaipēdā"
+        description="Visi zobārstniecības pakalpojumi Bangų klīnikā Klaipēdā: implantācija, protezēšana, higiēna, balināšana un daudz kas cits."
+        keywords="zobārstniecības pakalpojumi, zobu ārstniecība, implanti, Bangų klīnika"
+        canonical={`${SITE_URL}/lv/pakalpojumi`}
+        alternates={[
+          { lang: 'lt', url: `${SITE_URL}/paslaugos` },
+          { lang: 'lv', url: `${SITE_URL}/lv/pakalpojumi` },
+          { lang: 'x-default', url: `${SITE_URL}/paslaugos` },
+        ]}
       />
 
       <AnimatedSection>
         <div className="container-narrow py-12 md:py-16">
           <header className="mb-10 text-center sm:text-left">
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-800">Paslaugos</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-800">Pakalpojumi</h1>
             <p className="mt-3 text-slate-500 max-w-2xl text-lg mx-auto sm:mx-0">
-              Išsirinkite dominančią paslaugą – atsidarys išsamus aprašas arba būsite nukreipti į atskirą paslaugos puslapį.
+              Izvēlieties jūs interesējošo pakalpojumu — atvērsies detalizēts apraksts vai tiksiet novirzīts uz atsevišķu pakalpojuma lapu.
             </p>
           </header>
 

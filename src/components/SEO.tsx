@@ -6,15 +6,26 @@ const DEFAULT_IMAGE = `${SITE_URL}/hero.jpg`;
 const TWITTER_HANDLE = "@banguklinika";
 const HOME_TITLE = "Odontologijos klinika (odontologai) Klaipėdoje";
 
+const LANG_META: Record<string, { language: string; ogLocale: string }> = {
+  lt: { language: "Lithuanian", ogLocale: "lt_LT" },
+  lv: { language: "Latvian",    ogLocale: "lv_LV" },
+};
+
+type Alternate = { lang: string; url: string };
+
 type Props = {
   title?: string;
   description?: string;
   isHome?: boolean;
   keywords?: string;
   image?: string;
-  canonical?: string; // rekomenduoju paduoti aiškiai iš page
+  canonical?: string;
   noindex?: boolean;
   structuredData?: object;
+  /** HTML lang attribute — defaults to 'lt' */
+  lang?: 'lt' | 'lv';
+  /** hreflang alternate links (include x-default) */
+  alternates?: Alternate[];
 };
 
 export default function SEO({
@@ -26,6 +37,8 @@ export default function SEO({
   canonical,
   noindex = false,
   structuredData,
+  lang = 'lt',
+  alternates,
 }: Props) {
   const cleanTitle = (title || "")
     .replace(new RegExp(`\\s*[|–—-]\\s*${SITE_NAME}\\s*$`, "i"), "")
@@ -43,6 +56,7 @@ export default function SEO({
     "Odontologijos klinika Klaipėdoje. Dantų gydymas, implantacija, CEREC protezavimas, burnos higiena. Nemokama konsultacija.";
 
   const canonicalUrl = canonical || SITE_URL;
+  const { language, ogLocale } = LANG_META[lang] ?? LANG_META['lt'];
 
   const structuredDataObj =
     structuredData || {
@@ -77,13 +91,18 @@ export default function SEO({
 
   return (
     <Helmet>
-      <html lang="lt" />
+      <html lang={lang} />
       <title>{finalTitle}</title>
       <meta name="description" content={finalDescription} />
 
       {keywords && <meta name="keywords" content={keywords} />}
       <meta name="theme-color" content="#0d76d6" />
       <link rel="canonical" href={canonicalUrl} />
+
+      {/* hreflang alternate links for multilingual SEO */}
+      {alternates?.map((a) => (
+        <link key={a.lang} rel="alternate" hrefLang={a.lang} href={a.url} />
+      ))}
 
       {noindex && <meta name="robots" content="noindex,nofollow" />}
 
@@ -93,7 +112,7 @@ export default function SEO({
       <meta property="og:description" content={finalDescription} />
       <meta property="og:image" content={image} />
       <meta property="og:site_name" content={SITE_NAME} />
-      <meta property="og:locale" content="lt_LT" />
+      <meta property="og:locale" content={ogLocale} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={canonicalUrl} />
@@ -103,7 +122,7 @@ export default function SEO({
       {TWITTER_HANDLE && <meta name="twitter:site" content={TWITTER_HANDLE} />}
 
       <meta name="author" content={SITE_NAME} />
-      <meta name="language" content="Lithuanian" />
+      <meta name="language" content={language} />
       <meta name="geo.region" content="LT-KL" />
       <meta name="geo.placename" content="Klaipėda" />
 

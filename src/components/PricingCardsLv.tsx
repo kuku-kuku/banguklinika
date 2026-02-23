@@ -1,40 +1,129 @@
 import { useMemo, useState, useEffect, useRef } from 'react'
-import { PRICING, type PriceGroup, type PriceItem } from '../data/pricing'
 import clsx from 'clsx'
+
+/* ========= Types ========= */
+type PriceItem = { name: string; from?: number; to?: number; note?: string; exact?: boolean }
+type PriceGroup = { title: string; items: PriceItem[] }
 
 /* ========= Timings / Easing ========= */
 const OPEN_MS = 320
 const CLOSE_MS = 260
 const EASE = 'cubic-bezier(0.22, 1, 0.36, 1)'
-
-/* ======== Mobile smooth reveal ======== */
 const ROW_BASE_DELAY = 200
 const PER_ROW_DELAY = 120
 const TEXT_DURATION = 800
 const PRICE_DELAY = 300
 
-/* ========= Eilutės, kurioms rodom tik fiksuotą kainą (be „nuo") ========= */
-const FORCE_EXACT = new Set<string>([
-  // Suaugusiesiems
-  'Konsultacija, profilaktinis patikrinimas, gydymo plano sudarymas',
-  'Nuskausminimas',
-  'Vienkartinės priemonės',
-  'Nuotrauka',
-  'Koferdamo sistemos naudojimas',
-  // Vaikams
-  'Konsultacija, profilaktinis patikrinimas',
-  // Protezavimas
-  'CEREC vainikėlis (ant implanto)',
-  'Alginatinis atspaudas',
-  'Sąkandžio registracija',
-  'Atspaudai (silikonas/skenavimas)',
-  'Seno vainikėlio nuėmimas',
-  // Implantai
-  'Straumann® implantas',
-  'Medentika® implantas',
-  // Higiena
-  'Fluorozinio danties padengimas su ICON',
-])
+/* ========= Latvian pricing data ========= */
+const PRICING_LV: PriceGroup[] = [
+  {
+    title: "Zobu ārstniecība (pieaugušajiem)",
+    items: [
+      { name: "Konsultācija, profilaktiskā apskate, ārstniecības plāna sastādīšana", from: 20, exact: true },
+      { name: "Zoba plombēšana ar gaismas plombu", from: 70, to: 90 },
+      { name: "Zoba plombēšana ar stikla jonomēra plombu", from: 40, to: 60 },
+      { name: "Ārstnieciskais ieliktnis (kalcija vai stikla jonomēra)", from: 15 },
+      { name: "Pagaidu plomba", from: 40 },
+      { name: "Anestēzija", from: 10, exact: true },
+      { name: "Vienreizlietojamie materiāli", from: 15, exact: true },
+      { name: "Rentgena uzņēmums", from: 10, exact: true },
+      { name: "Koferdama sistēmas izmantošana", from: 10, exact: true },
+    ],
+  },
+  {
+    title: "Zobu ārstniecība (bērniem)",
+    items: [
+      { name: "Konsultācija, profilaktiskā apskate", from: 20, exact: true },
+      { name: "Piena zobu ārstniecība", from: 50 },
+      { name: "Stikla jonomēra plomba", from: 30 },
+      { name: "Kompomēra plomba", from: 30 },
+      { name: "Komplicēta kariesa ārstniecība", from: 60 },
+      { name: "Apmeklējums līdz 30 min., ja bērns nepakļaujas ārstniecībai", from: 30 },
+    ],
+  },
+  {
+    title: "Endodontija",
+    items: [
+      { name: "Primārā endodontiskā palīdzība", from: 70 },
+      { name: "Kanāla medikamenti", from: 30 },
+      { name: "Viena zoba saknes kanāla ķīmiski mehāniskā apstrāde", from: 35 },
+      { name: "Viena zoba saknes kanāla plombēšana", from: 35 },
+    ],
+  },
+  {
+    title: "Mutes higiēna",
+    items: [
+      { name: "Pilna profesionālā mutes higiēna", from: 60, to: 80 },
+      { name: "Atkārtota mutes higiēna", from: 50 },
+      { name: "Fluora laka aplikācija", from: 20 },
+      { name: "Fluorozēta zoba pārklāšana ar ICON", from: 60, exact: true },
+    ],
+  },
+  {
+    title: "Zobu balināšana",
+    items: [
+      { name: "Kabineta zobu balināšana BEYOND® sistēmā", from: 250, note: "BEYOND® sistēma" },
+      { name: "Balināšanas kapu nospiedumi", from: 30 },
+      { name: "Balināšanas kapes (2 kapes + balināšanas želeja)", from: 200, note: "2 kapes + želejas" },
+      { name: "Zoba rotājums", from: 50 },
+    ],
+  },
+  {
+    title: "Mutes ķirurģija",
+    items: [
+      { name: "Kaula augmentācija", from: 150, to: 600 },
+      { name: "Saknes ekstrakcija", from: 60, to: 80 },
+      { name: "Zoba ekstrakcija", from: 80, to: 100 },
+      { name: "Komplicēta trešo apakšžokļa molāru ekstrakcija", from: 120, to: 150 },
+    ],
+  },
+  {
+    title: "Zobu protezēšana",
+    items: [
+      { name: "CEREC vainags (uz zoba)", from: 400 },
+      { name: "CEREC vainags (uz implanta)", from: 450, exact: true },
+      { name: "CEREC uzklājs, laminēts vainags", from: 600 },
+      { name: "Metālkeramikas vainags", from: 350 },
+      { name: "Bezmetāla E-max keramikas vainags (uz zoba)", from: 400 },
+      { name: "Bezmetāla E-max keramikas vainags (uz implanta)", from: 450 },
+      { name: "Cirkonija keramikas vainags (uz zoba)", from: 400 },
+      { name: "Cirkonija keramikas vainags (uz implanta)", from: 450 },
+      { name: "Laminēts vainags", from: 600 },
+      { name: "Pagaidu vainags (kabinetā)", from: 40 },
+      { name: "Pagaidu vainags (laboratorijā)", from: 70 },
+      { name: "Stikla šķiedras tapīte", from: 120 },
+      { name: "Metāliskā KKĪ", from: 70, to: 100 },
+      { name: "Nospiedumi (silikons/skenēšana)", from: 150, exact: true },
+      { name: "Balsti uz implantiem (Medentika®, Straumann®)", from: 200, note: "Medentika®, Straumann®" },
+      { name: "Zobu plāksnes", from: 350 },
+      { name: "Veca vainaga noņemšana", from: 50, exact: true },
+      { name: "Alginātiskais nospiedums", from: 15, exact: true },
+      { name: "Sakoduma reģistrācija", from: 10, exact: true },
+    ],
+  },
+  {
+    title: "Implanti",
+    items: [
+      { name: "Straumann® implants", from: 650, note: "Straumann®", exact: true },
+      { name: "Medentika® implants", from: 550, note: "Medentika®", exact: true },
+      { name: "Sinusa pacelšanas operācija", from: 500, to: 700, exact: true },
+    ],
+  },
+  {
+    title: "Zobu izlīdzināšana (pieaugušajiem)",
+    items: [
+      { name: "Konsultācija par zobu izlīdzināšanu", from: 50 },
+      { name: "Zobu izlīdzināšana ar ORDOLINE kapu sistēmu", from: 1800, to: 4000, note: "ORDOLINE sistēma" },
+    ],
+  },
+  {
+    title: "Estētiskā zobu plombēšana",
+    items: [
+      { name: "Estētiskā viena zoba plombēšana", from: 150, to: 200 },
+      { name: "Estētiskās plombas pulēšana (1 zobam)", from: 29 },
+    ],
+  },
+]
 
 /* ========= Utils ========= */
 function slugify(t: string) {
@@ -48,12 +137,10 @@ function slugify(t: string) {
 }
 
 function fmtItem(p: PriceItem) {
-  const { name, from, to } = p
-  const forceExact = FORCE_EXACT.has(name)
-
+  const { from, to } = p
   if (from == null) return '—'
   if (to != null) return `€${from}–${to}`
-  return forceExact ? `€${from}` : `nuo €${from}`
+  return p.exact ? `€${from}` : `no €${from}`
 }
 
 function groupRange(items: PriceItem[]) {
@@ -141,7 +228,7 @@ function GroupCard({
 }) {
   const id = slugify(group.title)
   const range = useMemo(() => groupRange(group.items), [group.items])
-  const summary = range ? (range.max > range.min ? `€${range.min}–€${range.max}` : `nuo €${range.min}`) : '—'
+  const summary = range ? (range.max > range.min ? `€${range.min}–€${range.max}` : `no €${range.min}`) : '—'
   const reduceMotion = usePrefersReducedMotion()
 
   return (
@@ -173,10 +260,10 @@ function GroupCard({
             {summary} <span className="opacity-60 font-normal ml-1">• {group.items.length} poz.</span>
           </div>
         </div>
-        
+
         <span
           className={clsx(
-            'w-8 h-8 flex items-center justify-center transition-all text-slate-400 group-hover:text-primary-500 shrink-0 rounded-full', 
+            'w-8 h-8 flex items-center justify-center transition-all text-slate-400 group-hover:text-primary-500 shrink-0 rounded-full',
             open ? 'rotate-180 text-primary-500 bg-primary-50' : 'group-hover:bg-slate-100'
           )}
           style={{ transitionDuration: `${OPEN_MS}ms` }}
@@ -217,11 +304,10 @@ function GroupCard({
                   {group.items.map((p, i) => {
                     const doAnimation = !!(open && !reduceMotion)
                     const rowDelay = doAnimation ? ROW_BASE_DELAY + i * PER_ROW_DELAY : 0
-
                     return (
                       <tr key={i} className="hover:bg-slate-50/80 transition-colors border-b border-slate-50 last:border-0">
                         <td className="p-4 align-top">
-                          <span 
+                          <span
                             className="text-slate-800 font-medium inline-block"
                             style={doAnimation ? {
                               opacity: 0,
@@ -232,7 +318,7 @@ function GroupCard({
                             {p.name}
                           </span>
                           {p.note && (
-                            <span 
+                            <span
                               className="block text-xs text-slate-500 mt-1"
                               style={doAnimation ? {
                                 opacity: 0,
@@ -244,8 +330,7 @@ function GroupCard({
                             </span>
                           )}
                         </td>
-
-                        <td 
+                        <td
                           className="p-4 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-primary-600"
                           style={doAnimation ? {
                             opacity: 0,
@@ -280,7 +365,7 @@ function GroupCard({
 }
 
 /* ========= Page ========= */
-export default function PricingCards() {
+export default function PricingCardsLv() {
   const [hash, setHash] = useState('')
   const mobile = useIsMobile()
   const [openIds, setOpenIds] = useState<Set<string>>(new Set())
@@ -302,7 +387,6 @@ export default function PricingCards() {
         await wait(CLOSE_MS + 40)
         return
       }
-
       if (mobile) {
         setOpenIds(prev => new Set(prev).add(id))
         await wait(32)
@@ -322,8 +406,7 @@ export default function PricingCards() {
   useEffect(() => {
     if (!hash) return
     const id = slugify(decodeURIComponent(hash.slice(1)))
-    if (!PRICING.some((g) => slugify(g.title) === id)) return
-
+    if (!PRICING_LV.some((g) => slugify(g.title) === id)) return
     let cancelled = false
     const run = async () => {
       if (animatingRef.current) return
@@ -351,13 +434,13 @@ export default function PricingCards() {
   return (
     <div className="w-full mx-auto max-w-5xl px-0 sm:px-2">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-start">
-        {PRICING.map((g) => {
+        {PRICING_LV.map((g) => {
           const id = slugify(g.title)
           const isOpen = openIds.has(id)
           return (
             <div key={g.title} className="w-full will-change-transform">
               <GroupCard
-                group={g as PriceGroup}
+                group={g}
                 open={isOpen}
                 onToggle={(willOpen) => handleToggle(id, willOpen)}
               />
