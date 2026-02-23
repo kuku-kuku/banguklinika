@@ -122,14 +122,14 @@ export default function Home() {
         }}
         lang="lt"
         alternates={[
-          { lang: 'lt',        url: 'https://banguklinika.lt/' },
-          { lang: 'lv',        url: 'https://banguklinika.lt/lv' },
+          { lang: 'lt', url: 'https://banguklinika.lt/' },
+          { lang: 'lv', url: 'https://banguklinika.lt/lv' },
           { lang: 'x-default', url: 'https://banguklinika.lt/' },
         ]}
       />
       <PromoPoster
         id="home-2025-1"
-        imageSrc="/poster.png"
+        imageSrc="/poster.webp"
         persistence="none"
         frequencyDays={0}
         delayMs={300}
@@ -190,18 +190,19 @@ export default function Home() {
                 onTouchStart={onTouchStart}
                 onTouchEnd={onTouchEnd}
               >
-                <AnimatePresence initial={false} mode="wait">
+                {images.map((imgSrc, i) => (
                   <motion.img
-                    key={index}
-                    src={images[index]}
-                    alt={`Bangų klinika`}
+                    key={imgSrc}
+                    src={imgSrc}
+                    alt="Bangų klinika"
                     className="absolute inset-0 w-full h-full object-cover select-none"
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
+                    animate={{ opacity: i === index ? 1 : 0 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    decoding="async" // Leidžia naršyklei apdoroti nuotrauką nestabdant ekrano
+                    loading={i === 0 ? "eager" : "lazy"} // Pirmą krauna iškart, kitas - fone
                   />
-                </AnimatePresence>
+                ))}
 
                 <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-6 pointer-events-none">
                   <button onClick={() => { setAuto(false); setIndex(i => (i - 1 + images.length) % images.length) }} className="pointer-events-auto w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm shadow-lg flex items-center justify-center text-2xl hover:bg-brand hover:text-white transition-all">‹</button>
