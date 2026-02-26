@@ -1,7 +1,178 @@
+import { useState, useEffect, useCallback, useRef } from "react"
 import { Link } from "react-router-dom"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import AnimatedSection from "../components/AnimatedSection"
 import SEO from "../components/SEO"
+
+// Turinio sekcijų sąrašas (TOC)
+const tocSections = [
+    { id: "implantai-kainos", label: "Implantai ir kainos" },
+    { id: "kas-yra-implantacija", label: "Kas yra implantacija?" },
+    { id: "is-ko-sudaryta", label: "Iš ko sudarytas sprendimas?" },
+    { id: "kuo-skiriasi", label: "Skirtumai nuo kitų metodų" },
+    { id: "ar-visiems-tinka", label: "Ar visiems tinka?" },
+    { id: "kodel-svarbu-greiciau", label: "Kodėl svarbu atstatyti greičiau?" },
+    { id: "kam-reikalinga", label: "Kam reikalinga implantacija?" },
+    { id: "all-on-4", label: "ALL-ON-4 metodas" },
+    { id: "all-on-4-privalumai", label: "ALL-ON-4 privalumai" },
+    { id: "ar-saugu", label: "Ar saugu? Ar skausminga?" },
+    { id: "kiek-tarnauja", label: "Kiek tarnauja implantai?" },
+    { id: "po-implantacijos", label: "Po implantacijos" },
+    { id: "kodel-mes", label: "Kodėl Bangų klinika?" },
+]
+
+function TableOfContents() {
+    const [activeId, setActiveId] = useState<string>("")
+    const [isOpen, setIsOpen] = useState(false)
+    const tocRef = useRef<HTMLDivElement>(null)
+
+    // Stebėti aktyvią sekciją pagal scroll poziciją
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const visible = entries.filter((e) => e.isIntersecting)
+                if (visible.length > 0) {
+                    setActiveId(visible[0].target.id)
+                }
+            },
+            { rootMargin: "-5% 0px -40% 0px", threshold: 0 }
+        )
+
+        tocSections.forEach(({ id }) => {
+            const el = document.getElementById(id)
+            if (el) observer.observe(el)
+        })
+
+        return () => observer.disconnect()
+    }, [])
+
+    // Uždaryti mobilų TOC paspaudus už jo ribų
+    useEffect(() => {
+        function handleClickOutside(e: MouseEvent) {
+            if (tocRef.current && !tocRef.current.contains(e.target as Node)) {
+                setIsOpen(false)
+            }
+        }
+        if (isOpen) document.addEventListener("mousedown", handleClickOutside)
+        return () => document.removeEventListener("mousedown", handleClickOutside)
+    }, [isOpen])
+
+    const scrollTo = useCallback((id: string) => {
+        const el = document.getElementById(id)
+        if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" })
+            setIsOpen(false)
+        }
+    }, [])
+
+    const activeLabel = tocSections.find((s) => s.id === activeId)?.label || "Turinys"
+
+    return (
+        <>
+            {/* Mobilusis TOC – sticky mygtukas viršuje */}
+            <div ref={tocRef} className="xl:hidden sticky top-[72px] z-50 mb-6">
+                <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="w-full flex items-center justify-between gap-2 bg-white border border-slate-200/80 rounded-2xl px-5 py-3.5 shadow-lg shadow-slate-200/50 text-left transition hover:border-brand/30"
+                    aria-expanded={isOpen}
+                    aria-controls="mobile-toc-list"
+                >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                        <span className="w-7 h-7 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
+                            <svg className="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
+                            </svg>
+                        </span>
+                        <div className="min-w-0">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-0.5">Turinys</span>
+                            <span className="text-sm font-semibold text-darkblue-700 truncate block">{activeLabel}</span>
+                        </div>
+                    </div>
+                    <svg
+                        className={`w-4 h-4 shrink-0 text-slate-400 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+
+                <AnimatePresence>
+                    {isOpen && (
+                        <motion.nav
+                            id="mobile-toc-list"
+                            initial={{ opacity: 0, y: -8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -8 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute top-full left-0 right-0 mt-2 bg-white border border-slate-200/80 rounded-2xl shadow-xl shadow-slate-200/50 p-3 max-h-[60vh] overflow-y-auto"
+                            aria-label="Turinio navigacija"
+                        >
+                            {tocSections.map(({ id, label }, index) => (
+                                <button
+                                    key={id}
+                                    onClick={() => scrollTo(id)}
+                                    className={`w-full text-left px-3 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2.5 font-medium ${
+                                        activeId === id
+                                            ? "bg-brand/10 text-brand"
+                                            : "text-slate-600 hover:bg-slate-50 hover:text-darkblue-700"
+                                    }`}
+                                >
+                                    <span className={`shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
+                                        activeId === id
+                                            ? "bg-brand text-white"
+                                            : "bg-slate-100 text-slate-400"
+                                    }`}>
+                                        {index + 1}
+                                    </span>
+                                    {label}
+                                </button>
+                            ))}
+                        </motion.nav>
+                    )}
+                </AnimatePresence>
+            </div>
+
+            {/* Desktop TOC – sticky šoninė juosta */}
+            <nav
+                className="hidden xl:block sticky top-20 self-start w-56 shrink-0"
+                aria-label="Turinio navigacija"
+            >
+                <div className="bg-white rounded-2xl border border-slate-200/80 shadow-lg shadow-slate-200/50 p-5">
+                    <div className="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
+                        <svg className="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
+                        </svg>
+                        <p className="text-sm font-bold text-darkblue-700">Turinys</p>
+                    </div>
+                    <div className="space-y-0.5 max-h-[calc(100vh-12rem)] overflow-y-auto pr-1 scrollbar-thin">
+                        {tocSections.map(({ id, label }, index) => (
+                            <button
+                                key={id}
+                                onClick={() => scrollTo(id)}
+                                className={`group w-full text-left px-3 py-2 rounded-xl text-[13px] leading-snug transition-colors flex items-start gap-2.5 font-medium ${
+                                    activeId === id
+                                        ? "bg-brand/10 text-brand shadow-sm"
+                                        : "text-slate-500 hover:bg-slate-50 hover:text-darkblue-700"
+                                }`}
+                            >
+                                <span className={`shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 transition-all ${
+                                    activeId === id
+                                        ? "bg-brand text-white"
+                                        : "bg-slate-100 text-slate-400 group-hover:bg-slate-200 group-hover:text-slate-500"
+                                }`}>
+                                    {index + 1}
+                                </span>
+                                <span className="flex-1">{label}</span>
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </nav>
+        </>
+    )
+}
 
 // Animacijų nustatymai
 const container = {
@@ -80,8 +251,10 @@ export default function DantuImplantacija() {
                 ]}
             />
 
-            <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
-                {/* HERO */}
+            <motion.div className="max-w-[1440px] mx-auto px-4 xl:flex xl:gap-8 xl:items-start" variants={container} initial="hidden" animate="visible">
+                <TableOfContents />
+                <div className="min-w-0 flex-1">
+                    {/* HERO */}
                 <motion.header className="mb-10 text-left" variants={item}>
                     <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
                         Dantų implantacija
@@ -124,7 +297,7 @@ export default function DantuImplantacija() {
                             Registruotis vizitui
                         </Link>
                     </div>
-                    <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
+                    <div id="implantai-kainos" className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6 scroll-mt-24">
                         <div className="bg-brand-50/50 p-4 border-b border-brand/10 font-bold text-darkblue-700">
                             Naudojami dantų implantai ir jų kainos
                         </div>
@@ -192,7 +365,7 @@ export default function DantuImplantacija() {
                 </motion.header>
 
                 {/* KAS YRA IMPLANTACIJA */}
-                <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+                <motion.section id="kas-yra-implantacija" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-24" variants={item}>
                     <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas yra dantų implantacija?</h2>
                     <div className="space-y-4 text-slate-700 leading-relaxed">
                         <p>
@@ -216,7 +389,7 @@ export default function DantuImplantacija() {
                 </motion.section>
 
                 {/* IŠ KO SUDARYTA (CHECKLIST / KORTELĖS) */}
-                <motion.section className="mb-12" variants={item}>
+                <motion.section id="is-ko-sudaryta" className="mb-12 scroll-mt-24" variants={item}>
                     <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
                         Iš ko sudarytas dantų implantacijos sprendimas?
                     </h2>
@@ -247,7 +420,7 @@ export default function DantuImplantacija() {
                 </motion.section>
 
                 {/* KUO SKIRIASI NUO KITŲ METODŲ */}
-                <motion.section className="mb-12" variants={item}>
+                <motion.section id="kuo-skiriasi" className="mb-12 scroll-mt-24" variants={item}>
                     <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
                         Kuo implantacija skiriasi nuo kitų dantų atkūrimo metodų?
                     </h2>
@@ -267,7 +440,7 @@ export default function DantuImplantacija() {
                 </motion.section>
 
                 {/* AR VISIEMS TINKA (CHECKLIST) */}
-                <motion.section className="mb-12" variants={item}>
+                <motion.section id="ar-visiems-tinka" className="mb-12 scroll-mt-24" variants={item}>
                     <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
                         Ar implantacija – visiems tinkamas sprendimas?
                     </h2>
@@ -305,7 +478,7 @@ export default function DantuImplantacija() {
                 </motion.section>
 
                 {/* KODĖL SVARBU ATSTATYTI GREIČIAU */}
-                <motion.section className="mb-12" variants={item}>
+                <motion.section id="kodel-svarbu-greiciau" className="mb-12 scroll-mt-24" variants={item}>
                     <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
                         Kodėl prarastą dantį svarbu atstatyti kuo greičiau?
                     </h2>
@@ -380,7 +553,7 @@ export default function DantuImplantacija() {
                 </motion.section>
 
                 {/* KAM REIKALINGA (CHECKLIST + KAM TINKAMIAUSIA) */}
-                <motion.section className="mb-12" variants={item}>
+                <motion.section id="kam-reikalinga" className="mb-12 scroll-mt-24" variants={item}>
                     <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">Kam reikalinga dantų implantacija?</h2>
 
                     <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
@@ -511,7 +684,7 @@ export default function DantuImplantacija() {
                 </motion.section>
 
                 {/* ALL-ON-4 (HIGHLIGHT) */}
-                <motion.section className="mb-12" variants={item}>
+                <motion.section id="all-on-4" className="mb-12 scroll-mt-24" variants={item}>
                     <div className="flex flex-col md:flex-row gap-8 items-start">
                         <div className="flex-1">
                             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
@@ -638,7 +811,7 @@ export default function DantuImplantacija() {
                 </motion.section>
 
                 {/* ALL-ON-4 PRANAŠUMAI (Lyginimas) */}
-                <motion.section className="mb-12" variants={item}>
+                <motion.section id="all-on-4-privalumai" className="mb-12 scroll-mt-24" variants={item}>
                     <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
                         ALL-ON-4 privalumai, lyginant su kitais dantų atkūrimo sprendimais
                     </h2>
@@ -709,7 +882,7 @@ export default function DantuImplantacija() {
                 </motion.section>
 
                 {/* KAINOS */}
-                <motion.section className="mb-12" variants={item}>
+                <motion.section id="implantacijos-kainos" className="mb-12 scroll-mt-24" variants={item}>
                     <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">Dantų implantacijos kainos</h2>
 
                     <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
@@ -723,7 +896,7 @@ export default function DantuImplantacija() {
                 </motion.section>
 
                 {/* SAUGU / SKAUSMAS */}
-                <motion.section className="mb-12" variants={item}>
+                <motion.section id="ar-saugu" className="mb-12 scroll-mt-24" variants={item}>
                     <div className="flex flex-col md:flex-row gap-8 items-start">
                         <div className="flex-1">
                             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
@@ -820,7 +993,7 @@ export default function DantuImplantacija() {
                 </motion.section>
 
                 {/* KIEK TARNAUJA */}
-                <motion.section className="mb-12" variants={item}>
+                <motion.section id="kiek-tarnauja" className="mb-12 scroll-mt-24" variants={item}>
                     <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">Kiek laiko tarnauja dantų implantai?</h2>
 
                     <div className="space-y-4 text-slate-700 leading-relaxed">
@@ -873,7 +1046,7 @@ export default function DantuImplantacija() {
                 </motion.section>
 
                 {/* PO IMPLANTACIJOS */}
-                <motion.section className="mb-12 space-y-8" variants={item}>
+                <motion.section id="po-implantacijos" className="mb-12 space-y-8 scroll-mt-24" variants={item}>
                     <div>
                         <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Ką svarbu žinoti po dantų implantacijos?</h2>
                         <p className="text-slate-700 leading-relaxed">
@@ -949,7 +1122,7 @@ export default function DantuImplantacija() {
                 </motion.section>
 
                 {/* KODĖL MES */}
-                <motion.section className="mb-12" variants={item}>
+                <motion.section id="kodel-mes" className="mb-12 scroll-mt-24" variants={item}>
                     <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
                         Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
                     </h2>
@@ -1064,6 +1237,7 @@ export default function DantuImplantacija() {
                         </div>
                     </div>
                 </motion.div>
+                    </div>{/* end content wrapper */}
             </motion.div>
         </AnimatedSection>
     )
