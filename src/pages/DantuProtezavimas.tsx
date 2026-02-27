@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import { TableOfContents } from '../components/TableOfContents'
 
 // Animacijų nustatymai
 const container = {
@@ -46,6 +47,18 @@ function ShieldCheckIcon() {
   )
 }
 
+const tocSections = [
+  { id: "kainos", label: "Kainos" },
+  { id: "kas-yra", label: "Kas yra protezavimas?" },
+  { id: "kada-reikalingas", label: "Kada reikalingas?" },
+  { id: "cerec", label: "3D CEREC technologija" },
+  { id: "medziagos", label: "Protezų medžiagos" },
+  { id: "procesas", label: "Kaip vyksta protezavimas?" },
+  { id: "tarnaves", label: "Kiek laiko tarnauja?" },
+  { id: "po-protezavimo", label: "Po protezavimo" },
+  { id: "mitai", label: "Mitai apie protezavimą" },
+]
+
 export default function DantuProtezavimas() {
   const structuredData = {
     "@context": "https://schema.org",
@@ -67,8 +80,10 @@ export default function DantuProtezavimas() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
-        
+      <motion.div className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} />
+        <div className="min-w-0 flex-1">
+
         {/* HERO */}
         <motion.header className="mb-10 text-left" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
@@ -92,7 +107,7 @@ export default function DantuProtezavimas() {
           </div>
 
           {/* KAINOS */}
-          <div className="mt-8">
+          <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Dantų protezavimo kainos
           </h2>
@@ -172,7 +187,7 @@ export default function DantuProtezavimas() {
         </motion.header>
 
         {/* KAS YRA PROTEZAVIMAS */}
-        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+        <motion.section id="kas-yra" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas yra dantų protezavimas?
           </h2>
@@ -187,7 +202,7 @@ export default function DantuProtezavimas() {
         </motion.section>
 
         {/* KADA REIKALINGA (CHECKLIST) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kada-reikalingas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kada reikalingas dantų protezavimas?
           </h2>
@@ -219,7 +234,7 @@ export default function DantuProtezavimas() {
         </motion.section>
 
         {/* 3D CEREC */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="cerec" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <div className="flex flex-col md:flex-row gap-8 items-start">
              <div className="flex-1">
                 <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
@@ -246,7 +261,7 @@ export default function DantuProtezavimas() {
         </motion.section>
 
         {/* MEDŽIAGOS (CIRKONIS / E-MAX / IMPLANTAI) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="medziagos" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Iš kokių medžiagų gaminami dantų protezai?
           </h2>
@@ -273,7 +288,7 @@ export default function DantuProtezavimas() {
         </motion.section>
 
         {/* KAIP VYKSTA PROTEZAVIMAS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="procesas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kaip vyksta dantų protezavimas klinikoje?
           </h2>
@@ -303,7 +318,7 @@ export default function DantuProtezavimas() {
 
         {/* TARNAVIMO LAIKAS IR PRIEŽIŪRA */}
         <motion.section className="mb-12 space-y-8" variants={item}>
-          <div>
+          <div id="tarnaves" className="scroll-mt-36 2xl:scroll-mt-24">
              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Kiek laiko tarnauja dantų protezai?
             </h2>
@@ -311,7 +326,7 @@ export default function DantuProtezavimas() {
               Dantų protezų tarnavimo laikas priklauso nuo medžiagų ir priežiūros. Cirkonio ir E-MAX keramika yra itin ilgaamžė. Reguliari higiena ir profilaktiniai vizitai leidžia protezams tarnauti daugelį metų.
             </p>
           </div>
-          <div>
+          <div id="po-protezavimo" className="scroll-mt-36 2xl:scroll-mt-24">
              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Ką svarbu žinoti po dantų protezavimo?
             </h2>
@@ -327,7 +342,7 @@ export default function DantuProtezavimas() {
         </motion.section>
 
         {/* MITAI (ACCORDION STYLE) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="mitai" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Dažniausi mitai apie dantų protezavimą
           </h2>
@@ -360,6 +375,7 @@ export default function DantuProtezavimas() {
           </Link>
         </motion.div>
 
+        </div>
       </motion.div>
     </AnimatedSection>
   )

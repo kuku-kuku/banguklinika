@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import { TableOfContents } from '../components/TableOfContents'
 
 // Animacijų nustatymai
 const container = {
@@ -38,6 +39,20 @@ function SparklesIcon() {
   )
 }
 
+const tocSections = [
+  { id: "kainos", label: "Kainos" },
+  { id: "kas-yra", label: "Kas yra balinimas?" },
+  { id: "beyond", label: "BEYOND® sistema" },
+  { id: "beyond-privalumai", label: "BEYOND® privalumai" },
+  { id: "namie", label: "Balinimas namuose" },
+  { id: "ar-saugu", label: "Ar saugus balinimas?" },
+  { id: "procesas", label: "Kaip vyksta procedūra?" },
+  { id: "po-balinimo", label: "Po balinimo" },
+  { id: "rezultatas", label: "Rezultato trukmė" },
+  { id: "kam-netinka", label: "Kam netinka?" },
+  { id: "mitai", label: "Mitai" },
+]
+
 export default function DantuBalinimas() {
   const structuredData = {
     "@context": "https://schema.org",
@@ -59,7 +74,9 @@ export default function DantuBalinimas() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} />
+        <div className="min-w-0 flex-1">
 
         {/* HERO */}
         <motion.header className="mb-10 text-left" variants={item}>
@@ -83,7 +100,7 @@ export default function DantuBalinimas() {
           </div>
 
           {/* KAINOS */}
-          <div className="mt-8">
+          <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Dantų balinimo kaina mūsų klinikoje
           </h2>
@@ -132,7 +149,7 @@ export default function DantuBalinimas() {
         </motion.header>
 
         {/* KAS YRA BALINIMAS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kas-yra" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas yra dantų balinimas?
           </h2>
@@ -150,7 +167,7 @@ export default function DantuBalinimas() {
         </motion.section>
 
         {/* BEYOND SISTEMA */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="beyond" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <div className="flex flex-col md:flex-row gap-8 items-start">
             <div className="flex-1">
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
@@ -178,7 +195,7 @@ export default function DantuBalinimas() {
         </motion.section>
 
         {/* KODĖL RINKTIS BEYOND */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="beyond-privalumai" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kodėl verta rinktis BEYOND® dantų balinimą?
           </h2>
@@ -208,7 +225,7 @@ export default function DantuBalinimas() {
         </motion.section>
 
         {/* BALINIMAS KAPOMIS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="namie" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Dantų balinimas kapomis namuose
           </h2>
@@ -236,7 +253,7 @@ export default function DantuBalinimas() {
         </motion.section>
 
         {/* SAUGUMAS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="ar-saugu" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Ar dantų balinimas yra saugus?
           </h2>
@@ -254,7 +271,7 @@ export default function DantuBalinimas() {
         </motion.section>
 
         {/* EIGA (STEPS) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="procesas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kaip vyksta dantų balinimo procedūra klinikoje?
           </h2>
@@ -287,7 +304,7 @@ export default function DantuBalinimas() {
         </motion.section>
 
         {/* PO BALINIMO */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="po-balinimo" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Ką svarbu žinoti po dantų balinimo?
           </h2>
@@ -308,7 +325,7 @@ export default function DantuBalinimas() {
         </motion.section>
 
         {/* REZULTATO TRUKMĖ */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="rezultatas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kiek laiko išlieka dantų balinimo rezultatas?
           </h2>
@@ -329,7 +346,7 @@ export default function DantuBalinimas() {
         </motion.section>
 
         {/* KAM NETINKA */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kam-netinka" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kam dantų balinimas netinka?
           </h2>
@@ -356,7 +373,7 @@ export default function DantuBalinimas() {
         </motion.section>
 
         {/* MITAI (ACCORDION STYLE) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="mitai" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Dažniausi mitai apie dantų balinimą
           </h2>
@@ -417,6 +434,7 @@ export default function DantuBalinimas() {
           </Link>
         </motion.div>
 
+        </div>
       </motion.div>
     </AnimatedSection>
   )

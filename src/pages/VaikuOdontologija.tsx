@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import { TableOfContents } from '../components/TableOfContents'
 
 // Animacijų nustatymai
 const container = {
@@ -46,6 +47,18 @@ function CheckIcon() {
   )
 }
 
+const tocSections = [
+  { id: "kainos", label: "Kainos" },
+  { id: "kas-yra", label: "Kas yra vaikų odontologija?" },
+  { id: "pieniniai", label: "Pieninių dantų priežiūra" },
+  { id: "kada-kreiptis", label: "Kada kreiptis?" },
+  { id: "paslaugos", label: "Teikiamos paslaugos" },
+  { id: "procesas", label: "Kaip vyksta gydymas?" },
+  { id: "paruosimas", label: "Kaip paruošti vaiką?" },
+  { id: "ar-skausminga", label: "Ar skausminga?" },
+  { id: "kodel-mes", label: "Kodėl Bangų klinika?" },
+]
+
 export default function VaikuOdontologija() {
   const structuredData = {
     "@context": "https://schema.org",
@@ -67,8 +80,10 @@ export default function VaikuOdontologija() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
-        
+      <motion.div className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} />
+        <div className="min-w-0 flex-1">
+
         {/* HERO */}
         <motion.header className="mb-10 text-left" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
@@ -92,7 +107,7 @@ export default function VaikuOdontologija() {
           </div>
 
           {/* KAINOS */}
-          <div className="mt-8">
+          <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Vaikų odontologijos kainos
           </h2>
@@ -134,7 +149,7 @@ export default function VaikuOdontologija() {
         </motion.header>
 
         {/* KAS YRA VAIKŲ ODONTOLOGIJA */}
-        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+        <motion.section id="kas-yra" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas yra vaikų odontologija?
           </h2>
@@ -152,7 +167,7 @@ export default function VaikuOdontologija() {
         </motion.section>
 
         {/* KODĖL SVARBU PRIŽIŪRĖTI (BURBULAI) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="pieniniai" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kodėl svarbu prižiūrėti pieninius dantis?
           </h2>
@@ -182,7 +197,7 @@ export default function VaikuOdontologija() {
         </motion.section>
 
         {/* KADA KREIPTIS (CHECKLIST) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kada-kreiptis" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kada vaikui reikalingas apsilankymas pas odontologą?
           </h2>
@@ -210,7 +225,7 @@ export default function VaikuOdontologija() {
         </motion.section>
 
         {/* PASLAUGOS SĄRAŠAS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="paslaugos" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kokias vaikų odontologijos paslaugas teikiame?
           </h2>
@@ -237,7 +252,7 @@ export default function VaikuOdontologija() {
         </motion.section>
 
         {/* KAIP VYKSTA GYDYMAS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="procesas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kaip vyksta vaikų dantų gydymas klinikoje?
           </h2>
@@ -264,7 +279,7 @@ export default function VaikuOdontologija() {
         </motion.section>
 
         {/* PATARIMAI TĖVAMS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="paruosimas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kaip paruošti vaiką vizitui?
           </h2>
@@ -281,7 +296,7 @@ export default function VaikuOdontologija() {
 
         {/* SKAUSMAS IR KODĖL MES */}
         <motion.section className="mb-12 space-y-8" variants={item}>
-          <div>
+          <div id="ar-skausminga" className="scroll-mt-36 2xl:scroll-mt-24">
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Ar vaikų dantų gydymas yra skausmingas?
             </h2>
@@ -290,7 +305,7 @@ export default function VaikuOdontologija() {
             </p>
           </div>
           
-          <div>
+          <div id="kodel-mes" className="scroll-mt-36 2xl:scroll-mt-24">
              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
             </h2>
@@ -313,6 +328,7 @@ export default function VaikuOdontologija() {
           </Link>
         </motion.div>
 
+        </div>
       </motion.div>
     </AnimatedSection>
   )

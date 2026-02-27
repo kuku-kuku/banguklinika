@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import { TableOfContents } from '../components/TableOfContents'
 
 // Animacijų nustatymai
 const container = {
@@ -46,6 +47,16 @@ function ClipboardListIcon() {
   )
 }
 
+const tocSections = [
+  { id: "kainos", label: "Kainos" },
+  { id: "kas-yra", label: "Kas yra dantų gydymas?" },
+  { id: "kada-reikalingas", label: "Kada reikalingas?" },
+  { id: "paslaugos", label: "Teikiamos paslaugos" },
+  { id: "procesas", label: "Kaip vyksta gydymas?" },
+  { id: "profilaktika", label: "Profilaktiniai patikrinimai" },
+  { id: "kodel-mes", label: "Kodėl Bangų klinika?" },
+]
+
 export default function DantuGydymas() {
   const structuredData = {
     "@context": "https://schema.org",
@@ -67,7 +78,9 @@ export default function DantuGydymas() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} />
+        <div className="min-w-0 flex-1">
         
         {/* HERO */}
         <motion.header className="mb-10 text-left" variants={item}>
@@ -92,7 +105,7 @@ export default function DantuGydymas() {
           </div>
 
           {/* KAINOS */}
-          <div className="mt-8">
+          <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Dantų gydymo kainos
           </h2>
@@ -161,7 +174,7 @@ export default function DantuGydymas() {
         </motion.header>
 
         {/* KAS YRA DANTŲ GYDYMAS */}
-        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+        <motion.section id="kas-yra" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas yra dantų gydymas?
           </h2>
@@ -176,7 +189,7 @@ export default function DantuGydymas() {
         </motion.section>
 
         {/* KADA REIKALINGAS (CHECKLIST) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kada-reikalingas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kada reikalingas dantų gydymas?
           </h2>
@@ -209,7 +222,7 @@ export default function DantuGydymas() {
         </motion.section>
 
         {/* KOKIAS PASLAUGAS TEIKIAME */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="paslaugos" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kokias dantų gydymo paslaugas teikiame?
           </h2>
@@ -244,7 +257,7 @@ export default function DantuGydymas() {
         </motion.section>
 
         {/* KAIP VYKSTA GYDYMAS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="procesas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kaip vyksta dantų gydymas mūsų klinikoje?
           </h2>
@@ -268,7 +281,7 @@ export default function DantuGydymas() {
         </motion.section>
 
         {/* PROFILAKTIKA (BURBULAI) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="profilaktika" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kodėl svarbūs profilaktiniai patikrinimai?
           </h2>
@@ -298,7 +311,7 @@ export default function DantuGydymas() {
         </motion.section>
 
         {/* KODĖL MES */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kodel-mes" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
           </h2>
@@ -328,6 +341,7 @@ export default function DantuGydymas() {
           </Link>
         </motion.div>
 
+        </div>
       </motion.div>
     </AnimatedSection>
   )

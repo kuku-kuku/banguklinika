@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import { TableOfContents } from '../components/TableOfContents'
 
 // Animacijų nustatymai
 const container = {
@@ -30,6 +31,18 @@ function StarIcon() {
   )
 }
 
+const tocSections = [
+  { id: "kainos", label: "Kainos" },
+  { id: "kas-yra", label: "Kas yra estetinis plombavimas?" },
+  { id: "problemos", label: "Kokias problemas sprendžia?" },
+  { id: "procesas", label: "Kaip atliekamas?" },
+  { id: "privalumai", label: "Privalumai" },
+  { id: "rezultato-trukme", label: "Rezultato trukmė" },
+  { id: "po-plombavimo", label: "Po plombavimo" },
+  { id: "ar-saugu", label: "Ar saugus?" },
+  { id: "kodel-mes", label: "Kodėl Bangų klinika?" },
+]
+
 export default function EstetinisPlombavimas() {
   const structuredData = {
     "@context": "https://schema.org",
@@ -51,8 +64,10 @@ export default function EstetinisPlombavimas() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
-        
+      <motion.div className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} />
+        <div className="min-w-0 flex-1">
+
         {/* HERO / ĮŽANGA */}
         <motion.header className="mb-12 text-left" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
@@ -75,7 +90,7 @@ export default function EstetinisPlombavimas() {
           </div>
 
           {/* KAINOS */}
-          <div className="mt-8">
+          <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Estetinio plombavimo kainos mūsų klinikoje
           </h2>
@@ -113,7 +128,7 @@ export default function EstetinisPlombavimas() {
         </motion.header>
 
         {/* KAS YRA ESTETINIS PLOMBAVIMAS */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="kas-yra" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas yra estetinis plombavimas?
           </h2>
@@ -131,7 +146,7 @@ export default function EstetinisPlombavimas() {
         </motion.section>
 
         {/* KOKIAS PROBLEMAS GALIMA IŠSPRĘSTI */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="problemos" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kokias problemas galima išspręsti estetiniu plombavimu?
           </h2>
@@ -163,7 +178,7 @@ export default function EstetinisPlombavimas() {
         </motion.section>
 
         {/* KAIP ATLIEKAMAS ESTETINIS PLOMBAVIMAS (STEPS) */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="procesas" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kaip atliekamas estetinis plombavimas?
           </h2>
@@ -208,7 +223,7 @@ export default function EstetinisPlombavimas() {
         </motion.section>
 
         {/* PRIVALUMAI */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="privalumai" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kokie estetinio plombavimo privalumai?
           </h2>
@@ -229,7 +244,7 @@ export default function EstetinisPlombavimas() {
         </motion.section>
 
         {/* KIEK LAIKO IŠLIEKA */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="rezultato-trukme" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kiek laiko išlieka estetinio plombavimo rezultatas?
           </h2>
@@ -247,7 +262,7 @@ export default function EstetinisPlombavimas() {
         </motion.section>
 
         {/* KĄ SVARBU ŽINOTI PO */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="po-plombavimo" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Ką svarbu žinoti po estetinio plombavimo?
           </h2>
@@ -270,7 +285,7 @@ export default function EstetinisPlombavimas() {
         </motion.section>
 
         {/* AR SAUGU */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="ar-saugu" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Ar estetinis plombavimas yra saugus?
           </h2>
@@ -288,7 +303,7 @@ export default function EstetinisPlombavimas() {
         </motion.section>
 
         {/* KODĖL MES */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="kodel-mes" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
           </h2>
@@ -320,6 +335,7 @@ export default function EstetinisPlombavimas() {
           </Link>
         </motion.div>
 
+        </div>
       </motion.div>
     </AnimatedSection>
   )

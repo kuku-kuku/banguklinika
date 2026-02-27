@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import { TableOfContents } from '../components/TableOfContents'
 
 // Animacijų nustatymai
 const container = {
@@ -46,6 +47,15 @@ function ClockIcon() {
   )
 }
 
+const tocSections = [
+  { id: "kainos", label: "Kainos" },
+  { id: "kas-yra", label: "Kas yra plombavimas?" },
+  { id: "kada-reikalingas", label: "Kada reikalingas?" },
+  { id: "tipai", label: "Plombavimo tipai" },
+  { id: "procesas", label: "Kaip atliekamas?" },
+  { id: "svarbi-informacija", label: "Svarbi informacija" },
+]
+
 export default function DantuPlombavimas() {
   const structuredData = {
     "@context": "https://schema.org",
@@ -67,7 +77,9 @@ export default function DantuPlombavimas() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} />
+        <div className="min-w-0 flex-1">
 
         {/* HERO */}
         <motion.header className="mb-12 text-left" variants={item}>
@@ -94,7 +106,7 @@ export default function DantuPlombavimas() {
           </div>
 
           {/* KAINOS */}
-          <div className="mt-8">
+          <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Danties plombavimo kaina
           </h2>
@@ -131,7 +143,7 @@ export default function DantuPlombavimas() {
         </motion.header>
 
         {/* KAS TAI YRA */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="kas-yra" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6 text-center sm:text-left">
             Kas yra danties plombavimas?
           </h2>
@@ -170,7 +182,7 @@ export default function DantuPlombavimas() {
         </motion.section>
 
         {/* KADA REIKALINGA */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="kada-reikalingas" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kada reikalingas dantų plombavimas?
           </h2>
@@ -199,7 +211,7 @@ export default function DantuPlombavimas() {
         </motion.section>
 
         {/* PLOMBAVIMO TIPAI */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="tipai" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kokie dantų plombavimo tipai taikomi?
           </h2>
@@ -222,7 +234,7 @@ export default function DantuPlombavimas() {
         </motion.section>
 
         {/* EIGA (STEPS) */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="procesas" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kaip atliekamas dantų plombavimas?
           </h2>
@@ -280,7 +292,7 @@ export default function DantuPlombavimas() {
         </motion.section>
 
         {/* INFO BLOKAI (DUK ir PATARIMAI) */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="svarbi-informacija" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Svarbi informacija pacientams
           </h2>
@@ -328,6 +340,7 @@ export default function DantuPlombavimas() {
           </div>
         </motion.div>
 
+        </div>
       </motion.div>
     </AnimatedSection>
   )

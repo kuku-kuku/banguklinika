@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import { TableOfContents } from '../components/TableOfContents'
 
 // Animacijų nustatymai
 const container = {
@@ -21,6 +22,18 @@ function CheckIcon() {
     </svg>
   )
 }
+
+const tocSections = [
+  { id: "kainos", label: "Kainos" },
+  { id: "kas-yra", label: "Kas yra burnos chirurgija?" },
+  { id: "kada-reikalinga", label: "Kada reikalinga konsultacija?" },
+  { id: "procedūros", label: "Kokias procedūras atlieka?" },
+  { id: "kaip-atliekamas", label: "Kaip atliekamas gydymas?" },
+  { id: "ar-saugu", label: "Ar saugios procedūros?" },
+  { id: "kodel-atideti", label: "Kodėl nereikia atidėti?" },
+  { id: "pries-po", label: "Prieš ir po procedūros" },
+  { id: "kodel-mes", label: "Kodėl Bangų klinika?" },
+]
 
 export default function BurnosChirurgija() {
   const structuredData = {
@@ -43,8 +56,10 @@ export default function BurnosChirurgija() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
-        
+      <motion.div className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} />
+        <div className="min-w-0 flex-1">
+
         {/* HERO / ĮŽANGA */}
         <motion.header className="mb-10 text-left" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
@@ -67,7 +82,7 @@ export default function BurnosChirurgija() {
           </div>
 
           {/* KAINOS */}
-          <div className="mt-8">
+          <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Burnos chirurgijos paslaugų kainos mūsų klinikoje
           </h2>
@@ -115,7 +130,7 @@ export default function BurnosChirurgija() {
         </motion.header>
 
         {/* KAS YRA BURNOS CHIRURGIJA */}
-        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+        <motion.section id="kas-yra" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas yra burnos chirurgija?
           </h2>
@@ -133,7 +148,7 @@ export default function BurnosChirurgija() {
         </motion.section>
 
         {/* KADA REIKALINGA KONSULTACIJA */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kada-reikalinga" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kada reikalinga burnos chirurgo konsultacija?
           </h2>
@@ -166,7 +181,7 @@ export default function BurnosChirurgija() {
         </motion.section>
 
         {/* KOKIAS PROCEDŪRAS ATLIEKA (Pakeista: Ikonos nuimtos, palikti tik checkmarkai) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="procedūros" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kokias procedūras atlieka burnos chirurgas?
           </h2>
@@ -201,7 +216,7 @@ export default function BurnosChirurgija() {
         </motion.section>
 
         {/* KAIP ATLIEKAMA */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kaip-atliekamas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kaip atliekamas burnos chirurginis gydymas?
           </h2>
@@ -234,7 +249,7 @@ export default function BurnosChirurgija() {
         </motion.section>
 
         {/* SAUGUMAS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="ar-saugu" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Ar burnos chirurginės procedūros yra saugios?
           </h2>
@@ -255,7 +270,7 @@ export default function BurnosChirurgija() {
         </motion.section>
 
         {/* DELSIMAS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kodel-atideti" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas nutinka, jei reikalingas burnos chirurginis gydymas atidedamas?
           </h2>
@@ -273,7 +288,7 @@ export default function BurnosChirurgija() {
         </motion.section>
 
         {/* PRIEŠ IR PO */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="pries-po" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Ką svarbu žinoti prieš ir po burnos chirurginės procedūros?
           </h2>
@@ -307,7 +322,7 @@ export default function BurnosChirurgija() {
         </motion.section>
 
         {/* KODĖL MES */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kodel-mes" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
           </h2>
@@ -342,6 +357,7 @@ export default function BurnosChirurgija() {
           </Link>
         </motion.div>
 
+        </div>
       </motion.div>
     </AnimatedSection>
   )

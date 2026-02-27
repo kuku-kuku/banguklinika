@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import { TableOfContents } from '../components/TableOfContents'
 
 // Animacijų nustatymai
 const container = {
@@ -46,6 +47,17 @@ function ShieldCheckIcon() {
   )
 }
 
+const tocSections = [
+  { id: "kainos", label: "Kainos" },
+  { id: "kas-yra", label: "Kas yra dantų traukimas?" },
+  { id: "kada-reikalingas", label: "Kada reikalingas?" },
+  { id: "rusys", label: "Traukimo rūšys" },
+  { id: "kodel-laiku", label: "Kodėl svarbu laiku?" },
+  { id: "procesas", label: "Kaip atliekamas?" },
+  { id: "ar-skausminga", label: "Ar skausminga?" },
+  { id: "po-traukimo", label: "Po traukimo" },
+]
+
 export default function DantuTraukimas() {
   const structuredData = {
     "@context": "https://schema.org",
@@ -67,8 +79,10 @@ export default function DantuTraukimas() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
-        
+      <motion.div className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} />
+        <div className="min-w-0 flex-1">
+
         {/* HERO */}
         <motion.header className="mb-10text-left" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
@@ -92,7 +106,7 @@ export default function DantuTraukimas() {
           </div>
 
           {/* KAINOS */}
-          <div className="mt-8">
+          <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Dantų traukimo kainos
           </h2>
@@ -126,7 +140,7 @@ export default function DantuTraukimas() {
         </motion.header>
 
         {/* KAS YRA TRAUKIMAS */}
-        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+        <motion.section id="kas-yra" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas yra dantų traukimas?
           </h2>
@@ -141,7 +155,7 @@ export default function DantuTraukimas() {
         </motion.section>
 
         {/* KADA REIKALINGA (CHECKLIST) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kada-reikalingas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kada reikalingas dantų traukimas?
           </h2>
@@ -173,7 +187,7 @@ export default function DantuTraukimas() {
         </motion.section>
 
         {/* TRAUKIMO RŪŠYS (BURBULAI) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="rusys" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kokios yra dantų traukimo rūšys?
           </h2>
@@ -206,7 +220,7 @@ export default function DantuTraukimas() {
         </motion.section>
 
         {/* DELSIMAS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kodel-laiku" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas vyksta, jei dantis nepašalinamas laiku?
           </h2>
@@ -227,7 +241,7 @@ export default function DantuTraukimas() {
         </motion.section>
 
         {/* KAIP ATLIEKAMA (STEPS) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="procesas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kaip atliekamas dantų traukimas?
           </h2>
@@ -261,7 +275,7 @@ export default function DantuTraukimas() {
 
         {/* SKAUSMAS IR PRIEŽIŪRA */}
         <motion.section className="mb-12 space-y-8" variants={item}>
-          <div>
+          <div id="ar-skausminga" className="scroll-mt-36 2xl:scroll-mt-24">
              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Ar dantų traukimas yra skausmingas?
             </h2>
@@ -284,7 +298,7 @@ export default function DantuTraukimas() {
             </p>
           </div>
 
-          <div>
+          <div id="po-traukimo" className="scroll-mt-36 2xl:scroll-mt-24">
              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Ką svarbu žinoti po dantų traukimo?
             </h2>
@@ -317,6 +331,7 @@ export default function DantuTraukimas() {
           </Link>
         </motion.div>
 
+        </div>
       </motion.div>
     </AnimatedSection>
   )

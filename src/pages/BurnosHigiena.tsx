@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import { TableOfContents } from '../components/TableOfContents'
 
 // Animacijų nustatymai
 const container = {
@@ -46,6 +47,17 @@ function ClockIcon() {
   )
 }
 
+const tocSections = [
+  { id: "kainos", label: "Kainos" },
+  { id: "kas-yra", label: "Kas yra burnos higiena?" },
+  { id: "airflow", label: "AIRFLOW® technologija" },
+  { id: "kodel-verta", label: "Kodėl verta rinktis?" },
+  { id: "kada-reikalinga", label: "Kada ypač reikalinga?" },
+  { id: "procesas", label: "Kaip atliekama?" },
+  { id: "po-higienos", label: "Po higienos" },
+  { id: "mitai", label: "Mitai" },
+]
+
 export default function BurnosHigiena() {
   const structuredData = {
     "@context": "https://schema.org",
@@ -67,7 +79,9 @@ export default function BurnosHigiena() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} />
+        <div className="min-w-0 flex-1">
         
         {/* HERO HEADER */}
         <motion.header className="mb-10 text-left" variants={item}>
@@ -92,7 +106,7 @@ export default function BurnosHigiena() {
           </div>
 
           {/* KAINOS */}
-          <div className="mt-8">
+          <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Burnos higienos paslaugų kainos mūsų klinikoje
           </h2>
@@ -130,7 +144,7 @@ export default function BurnosHigiena() {
         </motion.header>
 
         {/* KAS YRA HIGIENA (BURBULAI) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kas-yra" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kas yra profesionali burnos higiena?
           </h2>
@@ -157,7 +171,7 @@ export default function BurnosHigiena() {
         </motion.section>
 
         {/* AIRFLOW TECHNOLOGIJA */}
-        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+        <motion.section id="airflow" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas yra AIRFLOW® technologija?
           </h2>
@@ -175,7 +189,7 @@ export default function BurnosHigiena() {
         </motion.section>
 
         {/* NAUDA (CHECKLIST) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kodel-verta" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kodėl verta rinktis profesionalią burnos higieną?
           </h2>
@@ -203,7 +217,7 @@ export default function BurnosHigiena() {
         </motion.section>
 
         {/* KADA REIKALINGA (INDIKACIJOS) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kada-reikalinga" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kada profesionali burnos higiena yra ypač reikalinga?
           </h2>
@@ -220,7 +234,7 @@ export default function BurnosHigiena() {
         </motion.section>
 
         {/* EIGA (STEPS) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="procesas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kaip atliekama burnos higiena su AIRFLOW® technologija?
           </h2>
@@ -256,7 +270,7 @@ export default function BurnosHigiena() {
         </motion.section>
 
         {/* PO PROCEDŪROS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="po-higienos" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Ką svarbu žinoti po profesionalios burnos higienos?
           </h2>
@@ -280,7 +294,7 @@ export default function BurnosHigiena() {
         </motion.section>
 
         {/* MITAI (ACCORDION) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="mitai" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Dažniausi mitai apie profesionalią burnos higieną
           </h2>
@@ -321,6 +335,7 @@ export default function BurnosHigiena() {
           </Link>
         </motion.div>
 
+        </div>
       </motion.div>
     </AnimatedSection>
   )

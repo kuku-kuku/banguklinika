@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import { TableOfContents } from '../components/TableOfContents'
 
 // Animacijų nustatymai
 const container = {
@@ -46,6 +47,19 @@ function CheckIcon() {
   )
 }
 
+const tocSections = [
+  { id: "kainos", label: "Kainos" },
+  { id: "kas-yra", label: "Kas yra dantų tiesinimas?" },
+  { id: "ordoline", label: "ORDOLINE kapos" },
+  { id: "procesas", label: "Kaip vyksta tiesinimas?" },
+  { id: "kam-tinka", label: "Kam tinka?" },
+  { id: "trukme", label: "Trukmė" },
+  { id: "kasdienybe", label: "Kasdienė priežiūra" },
+  { id: "rezultatai", label: "Rezultatai" },
+  { id: "mitai", label: "Mitai" },
+  { id: "kodel-mes", label: "Kodėl Bangų klinika?" },
+]
+
 export default function DantuTiesinimas() {
   const structuredData = {
     "@context": "https://schema.org",
@@ -67,7 +81,9 @@ export default function DantuTiesinimas() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} />
+        <div className="min-w-0 flex-1">
         
         {/* HERO */}
         <motion.header className="mb-10 text-left" variants={item}>
@@ -92,7 +108,7 @@ export default function DantuTiesinimas() {
           </div>
 
           {/* KAINOS */}
-          <div className="mt-8">
+          <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Dantų tiesinimo kapomis kainos
           </h2>
@@ -130,7 +146,7 @@ export default function DantuTiesinimas() {
         </motion.header>
 
         {/* KAS YRA DANTŲ TIESINIMAS */}
-        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+        <motion.section id="kas-yra" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas yra dantų tiesinimas?
           </h2>
@@ -148,7 +164,7 @@ export default function DantuTiesinimas() {
         </motion.section>
 
         {/* ORDOLINE KAPOS (BURBULAI) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="ordoline" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kodėl verta rinktis skaidrias ORDOLINE kapas?
           </h2>
@@ -199,7 +215,7 @@ export default function DantuTiesinimas() {
         </motion.section>
 
         {/* KAIP VYKSTA (STEPS) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="procesas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kaip vyksta dantų tiesinimas ORDOLINE kapomis?
           </h2>
@@ -261,7 +277,7 @@ export default function DantuTiesinimas() {
         </motion.section>
 
         {/* KAM TINKA (CHECKLIST) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kam-tinka" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kam tinka dantų tiesinimas kapomis?
           </h2>
@@ -294,7 +310,7 @@ export default function DantuTiesinimas() {
 
         {/* TRUKMĖ IR SKAUSMAS */}
         <motion.section className="mb-12 space-y-8" variants={item}>
-          <div>
+          <div id="trukme" className="scroll-mt-36 2xl:scroll-mt-24">
              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Kiek laiko trunka dantų tiesinimas kapomis?
             </h2>
@@ -331,7 +347,7 @@ export default function DantuTiesinimas() {
 
         {/* NEŠIOJIMAS IR REZULTATAI */}
         <motion.section className="mb-12 space-y-8" variants={item}>
-          <div>
+          <div id="kasdienybe" className="scroll-mt-36 2xl:scroll-mt-24">
              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Ką svarbu žinoti nešiojant skaidrias kapas kasdienybėje?
             </h2>
@@ -351,7 +367,7 @@ export default function DantuTiesinimas() {
             </div>
           </div>
 
-          <div>
+          <div id="rezultatai" className="scroll-mt-36 2xl:scroll-mt-24">
              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Dantų tiesinimo kapomis rezultatai ir jų išlaikymas
             </h2>
@@ -373,7 +389,7 @@ export default function DantuTiesinimas() {
         </motion.section>
 
         {/* MITAI (ACCORDION STYLE) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="mitai" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Dažniausi mitai apie dantų tiesinimą kapomis
           </h2>
@@ -406,7 +422,7 @@ export default function DantuTiesinimas() {
         </motion.section>
 
         {/* KODĖL MES */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kodel-mes" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
           </h2>
@@ -438,6 +454,7 @@ export default function DantuTiesinimas() {
           </Link>
         </motion.div>
 
+        </div>
       </motion.div>
     </AnimatedSection>
   )

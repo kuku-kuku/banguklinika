@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import { TableOfContents } from '../components/TableOfContents'
 
 // Animacijų nustatymai
 const container = {
@@ -35,6 +36,18 @@ function MicroscopeIcon() {
   )
 }
 
+const tocSections = [
+  { id: "kainos", label: "Kainos" },
+  { id: "kas-yra", label: "Kas yra endodontinis gydymas?" },
+  { id: "kada-reikalingas", label: "Kada reikalingas?" },
+  { id: "paslauga", label: "Paslauga klinikoje" },
+  { id: "procesas", label: "Kaip atliekama?" },
+  { id: "ar-skausminga", label: "Ar skausminga?" },
+  { id: "kodel-atideti", label: "Kodėl nevilkinti?" },
+  { id: "kada-negali", label: "Kada gydymas nebepadeda?" },
+  { id: "kodel-mes", label: "Kodėl Bangų klinika?" },
+]
+
 export default function EndodontinisGydymas() {
   const structuredData = {
     '@context': 'https://schema.org',
@@ -57,7 +70,9 @@ export default function EndodontinisGydymas() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} />
+        <div className="min-w-0 flex-1">
         {/* HERO */}
         <motion.header className="mb-10 text-left" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
@@ -98,7 +113,7 @@ export default function EndodontinisGydymas() {
           </div>
 
           {/* KAINOS */}
-          <div className="mt-8">
+          <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">Endodontinės (pirminės) pagalbos kainos</h2>
 
           <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
@@ -160,7 +175,7 @@ export default function EndodontinisGydymas() {
         </motion.header>
 
         {/* KAS YRA ENDODONTIJA */}
-        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+        <motion.section id="kas-yra" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas yra endodontinis (šaknų kanalų) gydymas?
           </h2>
@@ -194,7 +209,7 @@ export default function EndodontinisGydymas() {
         </motion.section>
 
         {/* KADA REIKALINGAS (CHECKLIST) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kada-reikalingas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kada reikalingas endodontinis gydymas?
           </h2>
@@ -246,7 +261,7 @@ export default function EndodontinisGydymas() {
         </motion.section>
 
         {/* KOKIA DALIS ATLIEKAMA (kortelė + ikona) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="paslauga" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <div className="flex flex-col md:flex-row gap-8 items-start">
             <div className="flex-1">
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
@@ -285,7 +300,7 @@ export default function EndodontinisGydymas() {
         </motion.section>
 
         {/* EIGA (STEPS) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="procesas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kaip atliekama pirminė endodontinė pagalba Bangų odontologijos klinikoje?
           </h2>
@@ -369,7 +384,7 @@ export default function EndodontinisGydymas() {
 
         {/* SKAUSMAS IR PASEKMĖS */}
         <motion.section className="mb-12 space-y-8" variants={item}>
-          <div>
+          <div id="ar-skausminga" className="scroll-mt-36 2xl:scroll-mt-24">
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Ar pirminė endodontinė pagalba yra skausminga?
             </h2>
@@ -400,7 +415,7 @@ export default function EndodontinisGydymas() {
             </div>
           </div>
 
-          <div>
+          <div id="kodel-atideti" className="scroll-mt-36 2xl:scroll-mt-24">
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Kas nutinka, jei šaknų kanalų gydymas atidedamas?
             </h2>
@@ -434,7 +449,7 @@ export default function EndodontinisGydymas() {
         </motion.section>
 
         {/* KADA NEPADEDA */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kada-negali" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kada endodontinis gydymas gali nebepadėti?
           </h2>
@@ -469,7 +484,7 @@ export default function EndodontinisGydymas() {
         </motion.section>
 
         {/* KODĖL MES */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kodel-mes" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kodėl verta kreiptis į Bangų odontologijos kliniką dėl pirminės endodontinės pagalbos?
           </h2>
@@ -532,6 +547,7 @@ export default function EndodontinisGydymas() {
             Registruotis vizitui
           </Link>
         </motion.div>
+        </div>
       </motion.div>
     </AnimatedSection>
   )
