@@ -3,27 +3,19 @@
   "headers": [
     {
       "source": "/admin/config.yml",
-      "headers": [
-        { "key": "Content-Type", "value": "text/yaml; charset=utf-8" }
-      ]
+      "headers": [{ "key": "Content-Type", "value": "text/yaml; charset=utf-8" }]
     },
     {
       "source": "/lt/:path*",
-      "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
-      ]
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     },
     {
       "source": "/ru/:path*",
-      "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
-      ]
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     },
     {
       "source": "/m/:path*",
-      "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
-      ]
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     }
   ],
   "redirects": [
@@ -94,6 +86,17 @@
     },
 
     {
+      "source": "/lt/paslaugos/dantu-gydymas",
+      "destination": "/paslaugos/dantu-taisymas-gydymas",
+      "permanent": true
+    },
+    {
+      "source": "/lt/paslaugos/dantu-gydymas/",
+      "destination": "/paslaugos/dantu-taisymas-gydymas",
+      "permanent": true
+    },
+
+    {
       "source": "/lt/kainos",
       "destination": "/kainos",
       "permanent": true
@@ -144,6 +147,17 @@
     },
     {
       "source": "/lt/implantai-/",
+      "destination": "/paslaugos/dantu-implantacija",
+      "permanent": true
+    },
+
+    {
+      "source": "/lt/implantai",
+      "destination": "/paslaugos/dantu-implantacija",
+      "permanent": true
+    },
+    {
+      "source": "/lt/implantai/",
       "destination": "/paslaugos/dantu-implantacija",
       "permanent": true
     },
@@ -201,6 +215,12 @@
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "banguklinika.lt" }],
+      "destination": "https://www.banguklinika.lt/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.banguklinika.lt" }],
       "destination": "https://www.banguklinika.lt/:path*",
       "permanent": true
     }
