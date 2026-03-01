@@ -28,17 +28,6 @@
   ],
   "redirects": [
     {
-      "source": "/__redirect_test",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/__redirect_test/",
-      "destination": "/",
-      "permanent": true
-    },
-
-    {
       "source": "/lt/paslaugos/odontologas-klaipeda-skubi-pagalba",
       "destination": "/paslaugos/dantu-taisymas-gydymas",
       "permanent": true
@@ -94,6 +83,17 @@
     },
 
     {
+      "source": "/lt/paslaugos/dantu-gydymas",
+      "destination": "/paslaugos/dantu-taisymas-gydymas",
+      "permanent": true
+    },
+    {
+      "source": "/lt/paslaugos/dantu-gydymas/",
+      "destination": "/paslaugos/dantu-taisymas-gydymas",
+      "permanent": true
+    },
+
+    {
       "source": "/lt/kainos",
       "destination": "/kainos",
       "permanent": true
@@ -144,6 +144,17 @@
     },
     {
       "source": "/lt/implantai-/",
+      "destination": "/paslaugos/dantu-implantacija",
+      "permanent": true
+    },
+
+    {
+      "source": "/lt/implantai",
+      "destination": "/paslaugos/dantu-implantacija",
+      "permanent": true
+    },
+    {
+      "source": "/lt/implantai/",
       "destination": "/paslaugos/dantu-implantacija",
       "permanent": true
     },
