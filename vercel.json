@@ -28,6 +28,87 @@
   ],
   "redirects": [
     {
+      "source": "/lt/paslaugos/odontologas-klaipeda-skubi-pagalba",
+      "destination": "/paslaugos/dantu-taisymas-gydymas",
+      "permanent": true
+    },
+    {
+      "source": "/lt/odontologijos-klinika-klaipedoje",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/lt/paslaugos/dantu-tiesinimas",
+      "destination": "/paslaugos/dantu-tiesinimas",
+      "permanent": true
+    },
+    {
+      "source": "/lt/kuo-skiriasi-metalo-keramika-ir-cirkonio-keramika",
+      "destination": "/ypatingi-pasiulymai/cirkonio-keramikos-vainikeliai",
+      "permanent": true
+    },
+    {
+      "source": "/lt/paslaugos/dantu-gydymas-",
+      "destination": "/paslaugos/dantu-taisymas-gydymas",
+      "permanent": true
+    },
+    {
+      "source": "/lt/kainos",
+      "destination": "/kainos",
+      "permanent": true
+    },
+    {
+      "source": "/lt/kontaktai",
+      "destination": "/kontaktai",
+      "permanent": true
+    },
+    {
+      "source": "/lt/burnos-higiena",
+      "destination": "/paslaugos/burnos-higiena",
+      "permanent": true
+    },
+    {
+      "source": "/lt/kainininkas",
+      "destination": "/kainos",
+      "permanent": true
+    },
+    {
+      "source": "/lt/implantai-",
+      "destination": "/paslaugos/dantu-implantacija",
+      "permanent": true
+    },
+    {
+      "source": "/lt/apie-mus",
+      "destination": "/apie",
+      "permanent": true
+    },
+    {
+      "source": "/lt",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/lt/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/lt/duk",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/m",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/m/",
+      "destination": "/",
+      "permanent": true
+    },
+
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "banguklinika.lt" }],
       "destination": "https://www.banguklinika.lt/:path*",
