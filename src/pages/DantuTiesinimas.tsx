@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
 import { TableOfContents } from '../components/TableOfContents'
+import { useRef } from 'react'
 
 // Animacijų nustatymai
 const container = {
@@ -71,7 +72,7 @@ export default function DantuTiesinimas() {
       "name": "Bangų klinika"
     }
   }
-
+  const pageRef = useRef(null)
   return (
     <AnimatedSection>
       <SEO
@@ -81,8 +82,8 @@ export default function DantuTiesinimas() {
         structuredData={structuredData}
       />
 
-      <motion.div className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
-        <TableOfContents sections={tocSections} />
+      <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} rootRef={pageRef} />
         <div className="min-w-0 flex-1">
         
         {/* HERO */}
@@ -146,7 +147,7 @@ export default function DantuTiesinimas() {
         </motion.header>
 
         {/* KAS YRA DANTŲ TIESINIMAS */}
-        <motion.section id="kas-yra" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="kas-yra" className="mb-12 bg-white p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas yra dantų tiesinimas?
           </h2>
@@ -351,7 +352,7 @@ export default function DantuTiesinimas() {
              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Ką svarbu žinoti nešiojant skaidrias kapas kasdienybėje?
             </h2>
-            <div className="bg-brand-50/30 p-6 rounded-xl border border-brand/10 text-slate-700 leading-relaxed space-y-4">
+            <div className="bg-white p-6 rounded-xl border border-brand/10 text-slate-700 leading-relaxed space-y-4">
               <p>
                 Norint pasiekti suplanuotą dantų tiesinimo rezultatą, labai svarbu laikytis gydytojo pateiktų rekomendacijų ir kapų nešiojimo režimo. Skaidrios kapos yra sukurtos taip, kad būtų patogios kasdienėje veikloje, tačiau gydymo sėkmė tiesiogiai priklauso nuo paciento įsitraukimo.
               </p>

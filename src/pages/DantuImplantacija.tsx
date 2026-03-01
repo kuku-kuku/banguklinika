@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import AnimatedSection from "../components/AnimatedSection"
 import SEO from "../components/SEO"
 import { TableOfContents } from "../components/TableOfContents"
+import { useRef } from "react"
 
 // Turinio sekcijų sąrašas (TOC)
 const tocSections = [
@@ -83,7 +84,7 @@ export default function DantuImplantacija() {
             name: "Bangų klinika",
         },
     }
-
+    const pageRef = useRef(null)
     return (
         <AnimatedSection>
             <SEO
@@ -99,7 +100,7 @@ export default function DantuImplantacija() {
                 ]}
             />
 
-            <motion.div className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+            <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
                 <TableOfContents sections={tocSections} />
                 <div className="min-w-0 flex-1">
                     {/* HERO */}
@@ -213,7 +214,7 @@ export default function DantuImplantacija() {
                 </motion.header>
 
                 {/* KAS YRA IMPLANTACIJA */}
-                <motion.section id="kas-yra-implantacija" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+                <motion.section id="kas-yra-implantacija" className="mb-12 bg-white p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
                     <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas yra dantų implantacija?</h2>
                     <div className="space-y-4 text-slate-700 leading-relaxed">
                         <p>
@@ -512,7 +513,7 @@ export default function DantuImplantacija() {
                         </div>
                     </div>
 
-                    <div className="mt-8 bg-brand-50/30 p-6 rounded-2xl border border-brand/10">
+                    <div className="mt-8 bg-white p-6 rounded-2xl border border-brand/10">
                         <h3 className="text-lg font-semibold text-darkblue-700 mb-3">Individualus įvertinimas – būtinas žingsnis</h3>
                         <p className="text-slate-700 leading-relaxed mb-4">
                             Nors dantų implantacija tinka daugeliui pacientų, kiekvienu atveju būtina išsami konsultacija. Jos metu
@@ -975,7 +976,7 @@ export default function DantuImplantacija() {
                         Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
                     </h2>
 
-                    <div className="bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10">
+                    <div className="bg-white p-6 sm:p-8 rounded-2xl border border-brand/10">
                         <p className="text-slate-700 leading-relaxed mb-6">
                             Renkantis, kur atlikti dantų atkūrimą implantais, svarbu ne tik procedūros kaina ar greitis, bet ir tai, kas stovės
                             už galutinio rezultato. Bangų odontologijos klinikoje Klaipėdoje dantų implantacija atliekama remiantis šiuolaikiniais
