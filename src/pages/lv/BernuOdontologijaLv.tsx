@@ -4,6 +4,19 @@ import AnimatedSection from '../../components/AnimatedSection'
 import SEO from '../../components/SEO'
 import { CLINIC } from '../../data/clinic'
 import { SITE_URL } from '../../i18n/lv'
+import { useRef } from 'react'
+import { TableOfContents } from '../../components/TableOfContents'
+
+const tocSections = [
+  { id: "cenas", label: "Cenas" },
+  { id: "kas-ir", label: "Kas ir bērnu zobārstniecība?" },
+  { id: "kapec-piena-zobi", label: "Kāpēc kopīt piena zobus?" },
+  { id: "kad-vizite", label: "Kad vizīte pie zobārsta?" },
+  { id: "pakalpojumi", label: "Mūsu pakalpojumi" },
+  { id: "ka-notiek", label: "Ārstēšanas gaita" },
+  { id: "sagatavet", label: "Kā sagatavot bērnu?" },
+  { id: "kapec-mes", label: "Kāpēc Bangų klīnika?" },
+]
 
 const container = {
   hidden: { opacity: 0, y: 10 },
@@ -47,6 +60,7 @@ function CheckIcon() {
 }
 
 export default function BernuOdontologijaLv() {
+  const pageRef = useRef(null)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "MedicalProcedure",
@@ -71,7 +85,9 @@ export default function BernuOdontologijaLv() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} />
+        <div className="min-w-0 flex-1">
 
         {/* HERO */}
         <motion.header className="mb-10 text-left" variants={item}>
@@ -95,7 +111,7 @@ export default function BernuOdontologijaLv() {
           </div>
 
           {/* CENAS */}
-          <div className="mt-8">
+          <div id="cenas" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
               Bērnu zobārstniecības cenas
             </h2>
@@ -137,7 +153,7 @@ export default function BernuOdontologijaLv() {
         </motion.header>
 
         {/* KAS IR BĒRNU ZOBĀRSTNIECĪBA */}
-        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+        <motion.section id="kas-ir" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas ir bērnu zobārstniecība?
           </h2>
@@ -155,7 +171,7 @@ export default function BernuOdontologijaLv() {
         </motion.section>
 
         {/* KĀPĒC SVARĪGI KOPĪT (KARTES) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kapec-piena-zobi" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kāpēc svarīgi kopīt piena zobus?
           </h2>
@@ -185,7 +201,7 @@ export default function BernuOdontologijaLv() {
         </motion.section>
 
         {/* KAD VĒRSTIES (KONTROLSARAKSTS) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kad-vizite" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kad bērnam nepieciešama vizīte pie zobārsta?
           </h2>
@@ -213,7 +229,7 @@ export default function BernuOdontologijaLv() {
         </motion.section>
 
         {/* PAKALPOJUMI */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="pakalpojumi" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kādus bērnu zobārstniecības pakalpojumus sniedzam?
           </h2>
@@ -240,7 +256,7 @@ export default function BernuOdontologijaLv() {
         </motion.section>
 
         {/* KĀ NOTIEK (SOĻI) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="ka-notiek" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kā notiek bērnu zobu ārstniecība klīnikā?
           </h2>
@@ -267,7 +283,7 @@ export default function BernuOdontologijaLv() {
         </motion.section>
 
         {/* PADOMI VECĀKIEM */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="sagatavet" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kā sagatavot bērnu vizītei?
           </h2>
@@ -283,7 +299,7 @@ export default function BernuOdontologijaLv() {
         </motion.section>
 
         {/* SĀPES UN KĀPĒC MĒS */}
-        <motion.section className="mb-12 space-y-8" variants={item}>
+        <motion.section id="kapec-mes" className="mb-12 space-y-8 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <div>
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Vai bērnu zobu ārstniecība ir sāpīga?
@@ -321,6 +337,7 @@ export default function BernuOdontologijaLv() {
           </div>
         </motion.div>
 
+        </div>
       </motion.div>
     </AnimatedSection>
   )

@@ -1,7 +1,9 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../../components/AnimatedSection'
 import SEO from '../../components/SEO'
+import { TableOfContents } from '../../components/TableOfContents'
 import { SITE_URL } from '../../i18n/lv'
 
 // Animāciju iestatījumi
@@ -39,7 +41,23 @@ function SparklesIcon() {
   )
 }
 
+const tocSections = [
+  { id: "cenas", label: "Cenas" },
+  { id: "kas-ir", label: "Kas ir zobu balināšana?" },
+  { id: "beyond", label: "BEYOND® balināšana" },
+  { id: "kapec-beyond", label: "Kāpēc BEYOND®?" },
+  { id: "kapsas", label: "Balināšana ar kapsām" },
+  { id: "drosiba", label: "Vai droša?" },
+  { id: "ka-notiek", label: "Procedūras gaita" },
+  { id: "pec-balina", label: "Pēc balināšanas" },
+  { id: "ilgums", label: "Rezultāta ilgums" },
+  { id: "kamseder", label: "Kontraindikācijas" },
+  { id: "miti", label: "Biežākie mīti" },
+  { id: "kapec-mes", label: "Kāpēc Bangų klīnika?" },
+]
+
 export default function ZobuBalinesanaLv() {
+  const pageRef = useRef(null)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "MedicalProcedure",
@@ -67,7 +85,9 @@ export default function ZobuBalinesanaLv() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+          <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} />
+          <div className="min-w-0 flex-1">
 
         {/* HERO */}
         <motion.header className="mb-10 text-left" variants={item}>
@@ -91,7 +111,7 @@ export default function ZobuBalinesanaLv() {
           </div>
 
           {/* CENAS */}
-          <div className="mt-8">
+          <div id="cenas" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Zobu balināšanas cena mūsu klīnikā
           </h2>
@@ -140,7 +160,7 @@ export default function ZobuBalinesanaLv() {
         </motion.header>
 
         {/* KAS IR BALINĀŠANA */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kas-ir" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas ir zobu balināšana?
           </h2>
@@ -158,7 +178,7 @@ export default function ZobuBalinesanaLv() {
         </motion.section>
 
         {/* BEYOND SISTĒMA */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="beyond" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <div className="flex flex-col md:flex-row gap-8 items-start">
             <div className="flex-1">
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
@@ -185,7 +205,7 @@ export default function ZobuBalinesanaLv() {
         </motion.section>
 
         {/* KĀPĒC IZVĒLĒTIES BEYOND */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kapec-beyond" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kāpēc vērts izvēlēties BEYOND® zobu balināšanu?
           </h2>
@@ -215,7 +235,7 @@ export default function ZobuBalinesanaLv() {
         </motion.section>
 
         {/* BALINĀŠANA AR KAPSĀM */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kapsas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Zobu balināšana ar kapsām mājās
           </h2>
@@ -243,7 +263,7 @@ export default function ZobuBalinesanaLv() {
         </motion.section>
 
         {/* DROŠUMS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="drosiba" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Vai zobu balināšana ir droša?
           </h2>
@@ -261,7 +281,7 @@ export default function ZobuBalinesanaLv() {
         </motion.section>
 
         {/* GAITA (SOĻI) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="ka-notiek" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kā notiek zobu balināšanas procedūra klīnikā?
           </h2>
@@ -294,7 +314,7 @@ export default function ZobuBalinesanaLv() {
         </motion.section>
 
         {/* PĒC BALINĀŠANAS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="pec-balina" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Ko svarīgi zināt pēc zobu balināšanas?
           </h2>
@@ -315,7 +335,7 @@ export default function ZobuBalinesanaLv() {
         </motion.section>
 
         {/* REZULTĀTA ILGUMS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="ilgums" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Cik ilgi saglabājas zobu balināšanas rezultāts?
           </h2>
@@ -336,7 +356,7 @@ export default function ZobuBalinesanaLv() {
         </motion.section>
 
         {/* KAM NEDER */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kamseder" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kam zobu balināšana neder?
           </h2>
@@ -363,7 +383,7 @@ export default function ZobuBalinesanaLv() {
         </motion.section>
 
         {/* MĪTI */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="miti" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Biežākie mīti par zobu balināšanu
           </h2>
@@ -392,7 +412,7 @@ export default function ZobuBalinesanaLv() {
         </motion.section>
 
         {/* KĀPĒC MĒS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kapec-mes" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kāpēc vērts izvēlēties Bangų zobārstniecības klīniku Klaipēdā?
           </h2>
@@ -423,7 +443,7 @@ export default function ZobuBalinesanaLv() {
             Pierakstīties vizītam
           </Link>
         </motion.div>
-
+          </div>
       </motion.div>
     </AnimatedSection>
   )

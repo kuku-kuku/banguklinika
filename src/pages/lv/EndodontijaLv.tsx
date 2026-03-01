@@ -4,6 +4,19 @@ import AnimatedSection from '../../components/AnimatedSection'
 import SEO from '../../components/SEO'
 import { CLINIC } from '../../data/clinic'
 import { SITE_URL } from '../../i18n/lv'
+import { useRef } from 'react'
+import { TableOfContents } from '../../components/TableOfContents'
+
+const tocSections = [
+  { id: "cenas", label: "Cenas" },
+  { id: "kas-ir", label: "Kas ir kanālu ārstniecība?" },
+  { id: "kad-nepieciesama", label: "Kad nepieciešama?" },
+  { id: "ka-notiek-klinika", label: "Ko veicam klīnikā?" },
+  { id: "ka-notiek", label: "Procedūras gaita" },
+  { id: "sapes", label: "Sāpes un atlikšanas risks" },
+  { id: "kad-nepalid", label: "Kad ārstniecība nepalīdz?" },
+  { id: "kapec-mes", label: "Kāpēc Bangų klīnika?" },
+]
 
 const container = {
   hidden: { opacity: 0, y: 10 },
@@ -23,6 +36,7 @@ function CheckIcon() {
 }
 
 export default function EndodontijaLv() {
+  const pageRef = useRef(null)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "MedicalProcedure",
@@ -47,7 +61,9 @@ export default function EndodontijaLv() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} />
+        <div className="min-w-0 flex-1">
 
         {/* HERO */}
         <motion.header className="mb-10 text-left" variants={item}>
@@ -74,7 +90,7 @@ export default function EndodontijaLv() {
           </div>
 
           {/* CENAS */}
-          <div className="mt-8">
+          <div id="cenas" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
               Pirmējās endodontiskās palīdzības cenas
             </h2>
@@ -124,7 +140,7 @@ export default function EndodontijaLv() {
         </motion.header>
 
         {/* KAS IR ENDODONTIJA */}
-        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+        <motion.section id="kas-ir" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas ir endodontiskā (kanālu) ārstniecība?
           </h2>
@@ -142,7 +158,7 @@ export default function EndodontijaLv() {
         </motion.section>
 
         {/* KAD NEPIECIEŠAMA */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kad-nepieciesama" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kad nepieciešama endodontiskā ārstniecība?
           </h2>
@@ -181,7 +197,7 @@ export default function EndodontijaLv() {
         </motion.section>
 
         {/* KĀDA DAĻA TIEK VEIKTA */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="ka-notiek-klinika" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kāda endodontiskās ārstniecības daļa tiek veikta Bangų zobārstniecības klīnikā?
           </h2>
@@ -202,7 +218,7 @@ export default function EndodontijaLv() {
         </motion.section>
 
         {/* GAITA (SOĻI) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="ka-notiek" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kā tiek veikta pirmējā endodontiskā palīdzība Bangų klīnikā?
           </h2>
@@ -230,7 +246,7 @@ export default function EndodontijaLv() {
         </motion.section>
 
         {/* SĀPES UN KAVĒŠANĀS */}
-        <motion.section className="mb-12 space-y-8" variants={item}>
+        <motion.section id="sapes" className="mb-12 space-y-8 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <div>
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Vai pirmējā endodontiskā palīdzība ir sāpīga?
@@ -267,7 +283,7 @@ export default function EndodontijaLv() {
         </motion.section>
 
         {/* KAD NEPALĪDZ */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kad-nepalid" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kad endodontiskā ārstniecība var vairs nepalīdzēt?
           </h2>
@@ -289,7 +305,7 @@ export default function EndodontijaLv() {
         </motion.section>
 
         {/* KĀPĒC MĒS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kapec-mes" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kāpēc vērts vērsties Bangų zobārstniecības klīnikā pēc pirmējās endodontiskās palīdzības?
           </h2>
@@ -326,6 +342,7 @@ export default function EndodontijaLv() {
           </div>
         </motion.div>
 
+        </div>
       </motion.div>
     </AnimatedSection>
   )

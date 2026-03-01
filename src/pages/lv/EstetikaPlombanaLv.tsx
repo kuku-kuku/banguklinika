@@ -1,7 +1,9 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../../components/AnimatedSection'
 import SEO from '../../components/SEO'
+import { TableOfContents } from '../../components/TableOfContents'
 import { SITE_URL } from '../../i18n/lv'
 
 // Animāciju iestatījumi
@@ -31,7 +33,20 @@ function StarIcon() {
   )
 }
 
+const tocSections = [
+  { id: "cenas", label: "Cenas" },
+  { id: "kas-ir", label: "Kas ir estētiskā plombēšana?" },
+  { id: "problemas", label: "Kādas problēmas risina?" },
+  { id: "ka-notiek", label: "Procedūras gaita" },
+  { id: "priekstatas", label: "Priekšrocības" },
+  { id: "ilgums", label: "Rezultāta ilgums" },
+  { id: "pec-proceduras", label: "Pēc procedūras" },
+  { id: "drosiba", label: "Vai droša?" },
+  { id: "kapec-mes", label: "Kāpēc Bangų klīnika?" },
+]
+
 export default function EstetikaPlombanaLv() {
+  const pageRef = useRef(null)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "MedicalProcedure",
@@ -59,7 +74,9 @@ export default function EstetikaPlombanaLv() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+          <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} />
+          <div className="min-w-0 flex-1">
 
         {/* HERO / IEVADS */}
         <motion.header className="mb-12 text-left" variants={item}>
@@ -83,7 +100,7 @@ export default function EstetikaPlombanaLv() {
           </div>
 
           {/* CENAS */}
-          <div className="mt-8">
+          <div id="cenas" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Estētiskās plombēšanas cenas mūsu klīnikā
           </h2>
@@ -121,7 +138,7 @@ export default function EstetikaPlombanaLv() {
         </motion.header>
 
         {/* KAS IR ESTĒTISKĀ PLOMBĒŠANA */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="kas-ir" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas ir estētiskā plombēšana?
           </h2>
@@ -139,7 +156,7 @@ export default function EstetikaPlombanaLv() {
         </motion.section>
 
         {/* KĀDAS PROBLĒMAS VAR ATRISINĀT */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="problemas" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kādas problēmas var atrisināt ar estētisko plombēšanu?
           </h2>
@@ -171,7 +188,7 @@ export default function EstetikaPlombanaLv() {
         </motion.section>
 
         {/* KĀ TIEK VEIKTA ESTĒTISKĀ PLOMBĒŠANA (SOĻI) */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="ka-notiek" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kā tiek veikta estētiskā plombēšana?
           </h2>
@@ -216,7 +233,7 @@ export default function EstetikaPlombanaLv() {
         </motion.section>
 
         {/* PRIEKŠROCĪBAS */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="priekstatas" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kādas ir estētiskās plombēšanas priekšrocības?
           </h2>
@@ -237,7 +254,7 @@ export default function EstetikaPlombanaLv() {
         </motion.section>
 
         {/* CIK ILGI SAGLABĀJAS */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="ilgums" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Cik ilgi saglabājas estētiskās plombēšanas rezultāts?
           </h2>
@@ -255,7 +272,7 @@ export default function EstetikaPlombanaLv() {
         </motion.section>
 
         {/* KO SVARĪGI ZINĀT PĒC */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="pec-proceduras" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Ko svarīgi zināt pēc estētiskās plombēšanas?
           </h2>
@@ -278,7 +295,7 @@ export default function EstetikaPlombanaLv() {
         </motion.section>
 
         {/* VAI TAS IR DROŠI */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="drosiba" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Vai estētiskā plombēšana ir droša?
           </h2>
@@ -296,7 +313,7 @@ export default function EstetikaPlombanaLv() {
         </motion.section>
 
         {/* KĀPĒC MĒS */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="kapec-mes" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kāpēc vērts izvēlēties Bangų zobārstniecības klīniku Klaipēdā?
           </h2>
@@ -327,7 +344,7 @@ export default function EstetikaPlombanaLv() {
             Pierakstīties vizītam
           </Link>
         </motion.div>
-
+          </div>
       </motion.div>
     </AnimatedSection>
   )

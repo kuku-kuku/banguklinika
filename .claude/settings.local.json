@@ -3,7 +3,13 @@
     "allow": [
       "Bash(npx tsc:*)",
       "Bash(dir:*)",
-      "Bash(npm run build)"
+      "Bash(npm run build)",
+      "Bash(python3 -c \":*)",
+      "Bash(where python)",
+      "Bash(where python3)",
+      "Bash(python -c \"print\\(''hello''\\)\")",
+      "Bash(python -c \":*)",
+      "Bash(python \"C:/Projektai/banguklinika/banguklinika-clean/transform_arst.py\")"
     ]
   }
 }

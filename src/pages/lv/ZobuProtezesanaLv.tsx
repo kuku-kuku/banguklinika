@@ -1,7 +1,9 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../../components/AnimatedSection'
 import SEO from '../../components/SEO'
+import { TableOfContents } from '../../components/TableOfContents'
 import { SITE_URL } from '../../i18n/lv'
 
 // Animāciju iestatījumi
@@ -30,7 +32,19 @@ function ChipIcon() {
   )
 }
 
+const tocSections = [
+  { id: "cenas", label: "Cenas" },
+  { id: "kas-ir", label: "Kas ir protezēšana?" },
+  { id: "kad-nepieciesama", label: "Kad nepieciešama?" },
+  { id: "cerec", label: "CEREC tehnoloģija" },
+  { id: "materiali", label: "Materiāli" },
+  { id: "ka-notiek", label: "Protezēšanas gaita" },
+  { id: "ilgums", label: "Kalpošanas ilgums" },
+  { id: "miti", label: "Biežākie mīti" },
+]
+
 export default function ZobuProtezesanaLv() {
+  const pageRef = useRef(null)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "MedicalProcedure",
@@ -58,7 +72,9 @@ export default function ZobuProtezesanaLv() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+          <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} />
+          <div className="min-w-0 flex-1">
 
         {/* HERO */}
         <motion.header className="mb-10 text-left" variants={item}>
@@ -81,7 +97,7 @@ export default function ZobuProtezesanaLv() {
             </Link>
           </div>
 
-          <div className="mt-8">
+          <div id="cenas" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Zobu protezēšanas cenas
           </h2>
@@ -157,7 +173,7 @@ export default function ZobuProtezesanaLv() {
           </div>
         </motion.header>
 
-        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+        <motion.section id="kas-ir" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas ir zobu protezēšana?
           </h2>
@@ -171,7 +187,7 @@ export default function ZobuProtezesanaLv() {
           </div>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kad-nepieciesama" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kad nepieciešama zobu protezēšana?
           </h2>
@@ -202,7 +218,7 @@ export default function ZobuProtezesanaLv() {
           </p>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="cerec" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <div className="flex flex-col md:flex-row gap-8 items-start">
              <div className="flex-1">
                 <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
@@ -228,7 +244,7 @@ export default function ZobuProtezesanaLv() {
           </div>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="materiali" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             No kādiem materiāliem tiek izgatavoti zobu protēzi?
           </h2>
@@ -254,7 +270,7 @@ export default function ZobuProtezesanaLv() {
           </div>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="ka-notiek" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kā notiek zobu protezēšana klīnikā?
           </h2>
@@ -282,7 +298,7 @@ export default function ZobuProtezesanaLv() {
           </div>
         </motion.section>
 
-        <motion.section className="mb-12 space-y-8" variants={item}>
+        <motion.section id="ilgums" className="mb-12 space-y-8 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <div>
              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Cik ilgi kalpo zobu protēzes?
@@ -306,7 +322,7 @@ export default function ZobuProtezesanaLv() {
           </div>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="miti" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Biežākie mīti par zobu protezēšanu
           </h2>
@@ -337,7 +353,7 @@ export default function ZobuProtezesanaLv() {
             Pierakstīties vizītam
           </Link>
         </motion.div>
-
+          </div>
       </motion.div>
     </AnimatedSection>
   )

@@ -1,7 +1,9 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../../components/AnimatedSection'
 import SEO from '../../components/SEO'
+import { TableOfContents } from '../../components/TableOfContents'
 import { SITE_URL } from '../../i18n/lv'
 
 const container = {
@@ -45,7 +47,19 @@ function ClockIcon() {
   )
 }
 
+const tocSections = [
+  { id: "cenas", label: "Cenas" },
+  { id: "kas-ir", label: "Kas ir mutes higiēna?" },
+  { id: "airflow", label: "AIRFLOW® tehnoloģija" },
+  { id: "kapec-vertigi", label: "Kāpēc vērts?" },
+  { id: "kad-nepieciesama", label: "Kad īpaši nepieciešama?" },
+  { id: "ka-notiek", label: "Procedūras gaita" },
+  { id: "pec-proceduras", label: "Pēc procedūras" },
+  { id: "miti", label: "Biežākie mīti" },
+]
+
 export default function MutesHigiennaLv() {
+  const pageRef = useRef(null)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "MedicalProcedure",
@@ -73,7 +87,9 @@ export default function MutesHigiennaLv() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+          <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} />
+          <div className="min-w-0 flex-1">
 
         <motion.header className="mb-10 text-left" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
@@ -95,7 +111,7 @@ export default function MutesHigiennaLv() {
             </Link>
           </div>
 
-          <div className="mt-8">
+          <div id="cenas" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Mutes higiēnas pakalpojumu cenas mūsu klīnikā
           </h2>
@@ -132,7 +148,7 @@ export default function MutesHigiennaLv() {
           </div>
         </motion.header>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kas-ir" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kas ir profesionāla mutes higiēna?
           </h2>
@@ -158,7 +174,7 @@ export default function MutesHigiennaLv() {
           </div>
         </motion.section>
 
-        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+        <motion.section id="airflow" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas ir AIRFLOW® tehnoloģija?
           </h2>
@@ -175,7 +191,7 @@ export default function MutesHigiennaLv() {
           </div>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kapec-vertigi" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kāpēc vērts izvēlēties profesionālu mutes higiēnu?
           </h2>
@@ -202,7 +218,7 @@ export default function MutesHigiennaLv() {
           </p>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kad-nepieciesama" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kad profesionāla mutes higiēna ir īpaši nepieciešama?
           </h2>
@@ -218,7 +234,7 @@ export default function MutesHigiennaLv() {
           </div>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="ka-notiek" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kā tiek veikta mutes higiēna ar AIRFLOW® tehnoloģiju?
           </h2>
@@ -253,7 +269,7 @@ export default function MutesHigiennaLv() {
           </div>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="pec-proceduras" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Ko ir svarīgi zināt pēc profesionālās mutes higiēnas?
           </h2>
@@ -276,7 +292,7 @@ export default function MutesHigiennaLv() {
           </div>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="miti" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Biežākie mīti par profesionālo mutes higiēnu
           </h2>
@@ -315,7 +331,7 @@ export default function MutesHigiennaLv() {
             Pierakstīties vizītam
           </Link>
         </motion.div>
-
+          </div>
       </motion.div>
     </AnimatedSection>
   )

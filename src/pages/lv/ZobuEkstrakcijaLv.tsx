@@ -4,6 +4,19 @@ import AnimatedSection from '../../components/AnimatedSection'
 import SEO from '../../components/SEO'
 import { CLINIC } from '../../data/clinic'
 import { SITE_URL } from '../../i18n/lv'
+import { useRef } from 'react'
+import { TableOfContents } from '../../components/TableOfContents'
+
+const tocSections = [
+  { id: "cenas", label: "Cenas" },
+  { id: "kas-ir", label: "Kas ir ekstrakcija?" },
+  { id: "kad-nepieciesama", label: "Kad nepieciešama?" },
+  { id: "veidi", label: "Ekstrakcijas veidi" },
+  { id: "kavesanas-risks", label: "Atlikšanas risks" },
+  { id: "ka-notiek", label: "Procedūras gaita" },
+  { id: "sapes-aprupe", label: "Sāpes un aprūpe" },
+  { id: "kapec-mes", label: "Kāpēc Bangų klīnika?" },
+]
 
 const container = {
   hidden: { opacity: 0, y: 10 },
@@ -47,6 +60,7 @@ function ShieldCheckIcon() {
 }
 
 export default function ZobuEkstrakcijaLv() {
+  const pageRef = useRef(null)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "MedicalProcedure",
@@ -74,7 +88,9 @@ export default function ZobuEkstrakcijaLv() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} />
+        <div className="min-w-0 flex-1">
 
         {/* HERO */}
         <motion.header className="mb-10 text-left" variants={item}>
@@ -99,7 +115,7 @@ export default function ZobuEkstrakcijaLv() {
           </div>
 
           {/* CENAS */}
-          <div className="mt-8">
+          <div id="cenas" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
               Zobu ekstrakcijas cenas
             </h2>
@@ -133,7 +149,7 @@ export default function ZobuEkstrakcijaLv() {
         </motion.header>
 
         {/* KAS IR ZOBU EKSTRAKCIJA */}
-        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+        <motion.section id="kas-ir" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas ir zobu ekstrakcija?
           </h2>
@@ -148,7 +164,7 @@ export default function ZobuEkstrakcijaLv() {
         </motion.section>
 
         {/* KAD NEPIECIEŠAMA (KONTROLSARAKSTS) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kad-nepieciesama" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kad nepieciešama zobu ekstrakcija?
           </h2>
@@ -180,7 +196,7 @@ export default function ZobuEkstrakcijaLv() {
         </motion.section>
 
         {/* EKSTRAKCIJAS VEIDI (KARTES) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="veidi" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kādi ir zobu ekstrakcijas veidi?
           </h2>
@@ -213,7 +229,7 @@ export default function ZobuEkstrakcijaLv() {
         </motion.section>
 
         {/* KAVĒŠANĀS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kavesanas-risks" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas notiek, ja zobs netiek savlaicīgi izvilkts?
           </h2>
@@ -234,7 +250,7 @@ export default function ZobuEkstrakcijaLv() {
         </motion.section>
 
         {/* KĀ TIEK VEIKTA (SOĻI) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="ka-notiek" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kā tiek veikta zobu ekstrakcija?
           </h2>
@@ -267,7 +283,7 @@ export default function ZobuEkstrakcijaLv() {
         </motion.section>
 
         {/* SĀPES UN APRŪPE */}
-        <motion.section className="mb-12 space-y-8" variants={item}>
+        <motion.section id="sapes-aprupe" className="mb-12 space-y-8 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <div>
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Vai zobu ekstrakcija ir sāpīga?
@@ -310,7 +326,7 @@ export default function ZobuEkstrakcijaLv() {
         </motion.section>
 
         {/* BEIGU CTA */}
-        <motion.div className="mt-8 mb-12 text-left" variants={item}>
+        <motion.div id="kapec-mes" className="mt-8 mb-12 text-left scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Aicinām pierakstīties zobu ekstrakcijā Bangų klīnikā
           </h2>
@@ -329,6 +345,7 @@ export default function ZobuEkstrakcijaLv() {
           </div>
         </motion.div>
 
+        </div>
       </motion.div>
     </AnimatedSection>
   )

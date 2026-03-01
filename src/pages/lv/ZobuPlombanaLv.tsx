@@ -1,8 +1,20 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../../components/AnimatedSection'
 import SEO from '../../components/SEO'
 import { SITE_URL } from '../../i18n/lv'
+import { TableOfContents } from '../../components/TableOfContents'
+
+const tocSections = [
+  { id: "cenas", label: "Cenas" },
+  { id: "kas-ir", label: "Kas ir zobu plombēšana?" },
+  { id: "kad-nepieciesama", label: "Kad nepieciešama?" },
+  { id: "veidi", label: "Plombēšanas veidi" },
+  { id: "ka-notiek", label: "Procedūras gaita" },
+  { id: "info", label: "Informācija pacientiem" },
+  { id: "kapec-mes", label: "Kāpēc Bangų klīnika?" },
+]
 
 // Animāciju iestatījumi
 const container = {
@@ -48,6 +60,7 @@ function ClockIcon() {
 }
 
 export default function ZobuPlombanaLv() {
+  const pageRef = useRef(null)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "MedicalProcedure",
@@ -75,7 +88,9 @@ export default function ZobuPlombanaLv() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+        <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} />
+        <div className="min-w-0 flex-1">
 
         {/* HERO */}
         <motion.header className="mb-12 text-left" variants={item}>
@@ -102,7 +117,7 @@ export default function ZobuPlombanaLv() {
           </div>
 
           {/* CENAS */}
-          <div className="mt-8">
+          <div id="cenas" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Zobu plombēšanas cena
           </h2>
@@ -139,7 +154,7 @@ export default function ZobuPlombanaLv() {
         </motion.header>
 
         {/* KAS TAS IR */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="kas-ir" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6 text-center sm:text-left">
             Kas ir zobu plombēšana?
           </h2>
@@ -178,7 +193,7 @@ export default function ZobuPlombanaLv() {
         </motion.section>
 
         {/* KAD NEPIECIEŠAMA */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="kad-nepieciesama" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kad nepieciešama zobu plombēšana?
           </h2>
@@ -207,7 +222,7 @@ export default function ZobuPlombanaLv() {
         </motion.section>
 
         {/* PLOMBĒŠANAS VEIDI */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="veidi" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kādi zobu plombēšanas veidi tiek piemēroti?
           </h2>
@@ -230,7 +245,7 @@ export default function ZobuPlombanaLv() {
         </motion.section>
 
         {/* GAITA (SOĻI) */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="ka-notiek" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kā tiek veikta zobu plombēšana?
           </h2>
@@ -287,7 +302,7 @@ export default function ZobuPlombanaLv() {
         </motion.section>
 
         {/* INFO BLOKI */}
-        <motion.section className="mb-14" variants={item}>
+        <motion.section id="info" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Svarīga informācija pacientiem
           </h2>
@@ -316,7 +331,7 @@ export default function ZobuPlombanaLv() {
         </motion.section>
 
         {/* KĀPĒC MĒS UN CTA */}
-        <motion.div className="mt-8 mb-12 text-left" variants={item}>
+        <motion.div id="kapec-mes" className="mt-8 mb-12 text-left scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kāpēc vērts izvēlēties Bangų zobārstniecības klīniku?
           </h2>
@@ -335,6 +350,7 @@ export default function ZobuPlombanaLv() {
           </div>
         </motion.div>
 
+        </div>
       </motion.div>
     </AnimatedSection>
   )

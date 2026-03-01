@@ -1,7 +1,9 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../../components/AnimatedSection'
 import SEO from '../../components/SEO'
+import { TableOfContents } from '../../components/TableOfContents'
 import { SITE_URL } from '../../i18n/lv'
 
 const container = {
@@ -21,7 +23,20 @@ function CheckIcon() {
   )
 }
 
+const tocSections = [
+  { id: "cenas", label: "Cenas" },
+  { id: "kas-ir", label: "Kas ir mutes ķirurģija?" },
+  { id: "kad-nepieciesama", label: "Kad nepieciešama?" },
+  { id: "proceduras", label: "Veicamās procedūras" },
+  { id: "ka-notiek", label: "Ārstēšanas gaita" },
+  { id: "drosiba", label: "Vai drošas procedūras?" },
+  { id: "atlikta", label: "Ārstēšanas atlikšanas risks" },
+  { id: "pirms-pec", label: "Pirms un pēc procedūras" },
+  { id: "kapec-mes", label: "Kāpēc Bangų klīnika?" },
+]
+
 export default function MutesHirurgijaLv() {
+  const pageRef = useRef(null)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "MedicalProcedure",
@@ -49,7 +64,9 @@ export default function MutesHirurgijaLv() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+          <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} />
+          <div className="min-w-0 flex-1">
 
         <motion.header className="mb-10 text-left" variants={item}>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
@@ -70,7 +87,7 @@ export default function MutesHirurgijaLv() {
             </Link>
           </div>
 
-          <div className="mt-8">
+          <div id="cenas" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Mutes ķirurģijas pakalpojumu cenas mūsu klīnikā
           </h2>
@@ -117,7 +134,7 @@ export default function MutesHirurgijaLv() {
           </div>
         </motion.header>
 
-        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+        <motion.section id="kas-ir" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas ir mutes ķirurģija?
           </h2>
@@ -134,7 +151,7 @@ export default function MutesHirurgijaLv() {
           </div>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kad-nepieciesama" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kad nepieciešama mutes ķirurga konsultācija?
           </h2>
@@ -166,7 +183,7 @@ export default function MutesHirurgijaLv() {
           </p>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="proceduras" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kādas procedūras veic mutes ķirurgs?
           </h2>
@@ -200,7 +217,7 @@ export default function MutesHirurgijaLv() {
           </p>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="ka-notiek" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kā tiek veikta mutes ķirurģiskā ārstēšana?
           </h2>
@@ -232,7 +249,7 @@ export default function MutesHirurgijaLv() {
           </div>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="drosiba" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Vai mutes ķirurģiskās procedūras ir drošas?
           </h2>
@@ -252,7 +269,7 @@ export default function MutesHirurgijaLv() {
           </div>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="atlikta" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas notiek, ja nepieciešamā mutes ķirurģiskā ārstēšana tiek atlikta?
           </h2>
@@ -269,7 +286,7 @@ export default function MutesHirurgijaLv() {
           </div>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="pirms-pec" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Ko ir svarīgi zināt pirms un pēc mutes ķirurģiskās procedūras?
           </h2>
@@ -302,7 +319,7 @@ export default function MutesHirurgijaLv() {
           </p>
         </motion.section>
 
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kapec-mes" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kāpēc vērts izvēlēties Bangų zobārstniecības klīniku Klaipēdā?
           </h2>
@@ -335,7 +352,7 @@ export default function MutesHirurgijaLv() {
             Pierakstīties vizītam
           </Link>
         </motion.div>
-
+          </div>
       </motion.div>
     </AnimatedSection>
   )

@@ -1,7 +1,9 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../../components/AnimatedSection'
 import SEO from '../../components/SEO'
+import { TableOfContents } from '../../components/TableOfContents'
 import { CLINIC } from '../../data/clinic'
 import { SITE_URL } from '../../i18n/lv'
 
@@ -46,7 +48,20 @@ function CheckIcon() {
   )
 }
 
+const tocSections = [
+  { id: "cenas", label: "Cenas" },
+  { id: "kas-ir", label: "Kas ir zobu izlīdzināšana?" },
+  { id: "ordoline", label: "Kāpēc ORDOLINE kapteini?" },
+  { id: "ka-notiek", label: "Ārstēšanas gaita" },
+  { id: "piemerotiba", label: "Kam piemērota?" },
+  { id: "ilgums", label: "Ilgums un sāpes" },
+  { id: "nesasana", label: "Nēsāšana un rezultāti" },
+  { id: "miti", label: "Biežākie mīti" },
+  { id: "kapec-mes", label: "Kāpēc Bangų klīnika?" },
+]
+
 export default function ZobuIzlinesanaLv() {
+  const pageRef = useRef(null)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "MedicalProcedure",
@@ -74,7 +89,9 @@ export default function ZobuIzlinesanaLv() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
+      <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
+          <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} />
+          <div className="min-w-0 flex-1">
 
         {/* HERO */}
         <motion.header className="mb-10 text-left" variants={item}>
@@ -99,7 +116,7 @@ export default function ZobuIzlinesanaLv() {
           </div>
 
           {/* CENAS */}
-          <div className="mt-8">
+          <div id="cenas" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
               Zobu izlīdzināšanas ar kapteiniem cenas
             </h2>
@@ -137,7 +154,7 @@ export default function ZobuIzlinesanaLv() {
         </motion.header>
 
         {/* KAS IR ZOBU IZLĪDZINĀŠANA */}
-        <motion.section className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10" variants={item}>
+        <motion.section id="kas-ir" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas ir zobu izlīdzināšana?
           </h2>
@@ -155,7 +172,7 @@ export default function ZobuIzlinesanaLv() {
         </motion.section>
 
         {/* ORDOLINE KAPTEINI (KARTES) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="ordoline" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kāpēc izvēlēties caurspīdīgos ORDOLINE kapteinus?
           </h2>
@@ -206,7 +223,7 @@ export default function ZobuIzlinesanaLv() {
         </motion.section>
 
         {/* KĀ NOTIEK (SOĻI) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="ka-notiek" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kā notiek zobu izlīdzināšana ar ORDOLINE kapteiniem?
           </h2>
@@ -268,7 +285,7 @@ export default function ZobuIzlinesanaLv() {
         </motion.section>
 
         {/* KAM PIEMĒROTA (KONTROLSARAKSTS) */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="piemerotiba" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kam piemērota zobu izlīdzināšana ar kapteiniem?
           </h2>
@@ -300,7 +317,7 @@ export default function ZobuIzlinesanaLv() {
         </motion.section>
 
         {/* ILGUMS UN SĀPES */}
-        <motion.section className="mb-12 space-y-8" variants={item}>
+        <motion.section id="ilgums" className="mb-12 space-y-8 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <div>
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Cik ilgi ilgst zobu izlīdzināšana ar kapteiniem?
@@ -337,7 +354,7 @@ export default function ZobuIzlinesanaLv() {
         </motion.section>
 
         {/* NĒSĀŠANA UN REZULTĀTI */}
-        <motion.section className="mb-12 space-y-8" variants={item}>
+        <motion.section id="nesasana" className="mb-12 space-y-8 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <div>
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Ko svarīgi zināt, nēsājot caurspīdīgos kapteinus ikdienā?
@@ -380,7 +397,7 @@ export default function ZobuIzlinesanaLv() {
         </motion.section>
 
         {/* MĪTI */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="miti" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Biežāk sastopamie mīti par zobu izlīdzināšanu ar kapteiniem
           </h2>
@@ -413,7 +430,7 @@ export default function ZobuIzlinesanaLv() {
         </motion.section>
 
         {/* KĀPĒC MĒS */}
-        <motion.section className="mb-12" variants={item}>
+        <motion.section id="kapec-mes" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kāpēc vērts izvēlēties Bangų zobārstniecības klīniku Klaipēdā?
           </h2>
@@ -449,7 +466,7 @@ export default function ZobuIzlinesanaLv() {
             </a>
           </div>
         </motion.div>
-
+          </div>
       </motion.div>
     </AnimatedSection>
   )
