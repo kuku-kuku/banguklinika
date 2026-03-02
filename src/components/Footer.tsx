@@ -1,6 +1,6 @@
 import { CLINIC } from '../data/clinic'
 import { Link, useLocation } from 'react-router-dom'
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, ChevronDown } from 'lucide-react' // Pridėtas ChevronDown
 import React, { useEffect, useRef, useState } from 'react'
 
 function getHeaderOffset(): number {
@@ -100,14 +100,12 @@ const SERVICE_GROUPS_LV: ServiceGroup[] = [
 ]
 const TZ = 'Europe/Vilnius'
 
-// I=1 ... VII=7
 const schedule = [
   { dow: 1, open: '09:00', close: '18:00' },
   { dow: 2, open: '09:00', close: '18:00' },
   { dow: 3, open: '09:00', close: '18:00' },
   { dow: 4, open: '09:00', close: '18:00' },
   { dow: 5, open: '09:00', close: '16:00' },
-  // 6 ir 7 – nedirba
 ]
 
 function getNowVilnius() {
@@ -167,7 +165,6 @@ function getClinicStatus(isLv: boolean) {
     return next
   }
 
-  // Šiandien nedarbo diena
   if (!today) {
     const next = getNextWorkingDay()
     return `${closedNowText} ${formatNextOpenText(isLv, next.dow, next.open)}`
@@ -176,20 +173,18 @@ function getClinicStatus(isLv: boolean) {
   const open = toMinutes(today.open)
   const close = toMinutes(today.close)
 
-  // Dirba dabar
   if (nowMinutes >= open && nowMinutes < close) {
     return openUntilText(today.close)
   }
 
-  // Dar neatidarė (šiandien)
   if (nowMinutes < open) {
     return opensAtTodayText(today.open)
   }
 
-  // Jau užsidarė (ieškom sekančios darbo dienos)
   const next = getNextWorkingDay()
   return `${closedNowText} ${formatNextOpenText(isLv, next.dow, next.open)}`
 }
+
 export default function Footer() {
   const location = useLocation()
   const { pathname } = location
@@ -197,6 +192,9 @@ export default function Footer() {
 
   const hoursListRef = useRef<HTMLUListElement | null>(null)
   const [hoursBodyHeight, setHoursBodyHeight] = useState<number>(0)
+  
+  // Pridėta state mobilaus dropdown'o valdymui
+  const [openGroup, setOpenGroup] = useState<string | null>(null)
 
   useEffect(() => {
     const el = hoursListRef.current
@@ -234,7 +232,6 @@ export default function Footer() {
 
   return (
     <footer className="footer-dark">
-      {/* Main content */}
       <div className="container-narrow px-4 sm:px-6 lg:px-8 py-12 grid gap-10 md:gap-8 grid-cols-1 md:grid-cols-12 text-sm">
 
         {/* Brand + Contact */}
@@ -250,21 +247,22 @@ export default function Footer() {
           <p className="text-xs text-white/80 leading-relaxed">
             {isLv ? 'Moderna zobārstniecība Klaipēdas centrā.' : 'Moderni odontologija Klaipėdos centre.'}
           </p>
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-4 space-y-2">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-4 space-y-3">
             <div className="flex items-start gap-2 text-xs text-white/85">
               <MapPin size={14} className="mt-[2px] opacity-80 shrink-0" />
               <span className="leading-relaxed">{CLINIC.address}</span>
             </div>
-            <a href={`tel:${CLINIC.phone}`} className="footer-link inline-flex items-center gap-2 text-xs">
-              <Phone size={14} className="opacity-80" />
+            {/* Pakeista inline-flex į flex, kad telefonas ir el. paštas kristų į naujas eilutes */}
+            <a href={`tel:${CLINIC.phone}`} className="footer-link flex items-center gap-2 text-xs">
+              <Phone size={14} className="opacity-80 shrink-0" />
               <span>{CLINIC.phone}</span>
             </a>
-            <a href={`mailto:${CLINIC.email}`} className="footer-link inline-flex items-center gap-2 text-xs">
-              <Mail size={14} className="opacity-80" />
-              <span>{CLINIC.email}</span>
+            <a href={`mailto:${CLINIC.email}`} className="footer-link flex items-center gap-2 text-xs">
+              <Mail size={14} className="opacity-80 shrink-0" />
+              <span className="break-all">{CLINIC.email}</span>
             </a>
             <div className="flex items-center gap-2 text-xs text-white/75 pt-1">
-              <Clock size={14} className="opacity-70" />
+              <Clock size={14} className="opacity-70 shrink-0" />
               <span>{getClinicStatus(isLv)}</span>
             </div>
           </div>
@@ -298,7 +296,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Services – 3 categories */}
+        {/* Services */}
         <div className="md:col-span-5">
           <div className="flex items-center justify-between gap-3 mb-4">
             <h4 className="text-sm font-semibold text-white">
@@ -326,24 +324,42 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Mobile: categories stacked, services in 2-col grid */}
-          <div className="md:hidden space-y-5">
-            {serviceGroups.map((group) => (
-              <div key={group.heading}>
-                <p className="text-[10px] font-semibold text-white/40 uppercase tracking-widest mb-2">
-                  {group.heading}
-                </p>
-                <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5">
-                  {group.items.map((s) => (
-                    <li key={s.to}>
-                      <Link to={s.to} className="footer-link text-xs leading-snug">
-                        {s.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          {/* Mobile: kategorijų akordeonas */}
+          <div className="md:hidden space-y-2.5">
+            {serviceGroups.map((group) => {
+              const isOpen = openGroup === group.heading
+              return (
+                <div key={group.heading} className="border border-white/10 rounded-lg overflow-hidden bg-white/5">
+                  <button
+                    onClick={() => setOpenGroup(isOpen ? null : group.heading)}
+                    className="w-full flex items-center justify-between p-3 text-left focus:outline-none"
+                  >
+                    <span className="text-[11px] font-semibold text-white/70 uppercase tracking-widest">
+                      {group.heading}
+                    </span>
+                    <ChevronDown
+                      size={14}
+                      className={`text-white/50 transition-transform duration-200 ${
+                        isOpen ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="px-3 pb-3">
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4">
+                        {group.items.map((s) => (
+                          <li key={s.to}>
+                            <Link to={s.to} className="footer-link text-xs leading-snug">
+                              {s.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
           </div>
         </div>
 
@@ -364,7 +380,6 @@ export default function Footer() {
             ))}
           </ul>
 
-          {/* Desktop CTA */}
           <div className="mt-5 hidden md:block">
             <Link
               to={contactHref}
@@ -375,7 +390,6 @@ export default function Footer() {
             </Link>
           </div>
 
-          {/* Mobile CTA */}
           <div className="mt-4 md:hidden">
             <div
               className="w-full flex justify-center items-center"
@@ -396,7 +410,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="bg-darkblue-700">
         <div className="container-narrow px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/70">
           <p>
