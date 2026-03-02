@@ -13,29 +13,6 @@ const PER_ROW_DELAY = 120
 const TEXT_DURATION = 800
 const PRICE_DELAY = 300
 
-/* ========= Eilutės, kurioms rodom tik fiksuotą kainą (be „nuo") ========= */
-const FORCE_EXACT = new Set<string>([
-  // Suaugusiesiems
-  'Konsultacija, profilaktinis patikrinimas, gydymo plano sudarymas',
-  'Nuskausminimas',
-  'Vienkartinės priemonės',
-  'Nuotrauka',
-  'Koferdamo sistemos naudojimas',
-  // Vaikams
-  'Konsultacija, profilaktinis patikrinimas',
-  // Protezavimas
-  'CEREC vainikėlis (ant implanto)',
-  'Alginatinis atspaudas',
-  'Sąkandžio registracija',
-  'Atspaudai (silikonas/skenavimas)',
-  'Seno vainikėlio nuėmimas',
-  // Implantai
-  'Straumann® implantas',
-  'Medentika® implantas',
-  // Higiena
-  'Fluorozinio danties padengimas su ICON',
-])
-
 /* ========= Utils ========= */
 function slugify(t: string) {
   return t
@@ -48,19 +25,21 @@ function slugify(t: string) {
 }
 
 function fmtItem(p: PriceItem) {
-  const { name, from, to } = p
-  const forceExact = FORCE_EXACT.has(name)
+  const { from, to, exact } = p
 
   if (from == null) return '—'
   if (to != null) return `€${from}–${to}`
-  return forceExact ? `€${from}` : `nuo €${from}`
+
+  // Jei exact=true (arba taip nurodyta kainyne) – nerodom „nuo“
+  return exact ? `€${from}` : `nuo €${from}`
 }
 
 function groupRange(items: PriceItem[]) {
-  let min = Infinity, max = 0
+  let min = Infinity,
+    max = 0
   for (const it of items) {
     if (typeof it.from === 'number') min = Math.min(min, it.from)
-    const upper = typeof it.to === 'number' ? it.to : (typeof it.from === 'number' ? it.from : 0)
+    const upper = typeof it.to === 'number' ? it.to : typeof it.from === 'number' ? it.from : 0
     max = Math.max(max, upper)
   }
   if (!isFinite(min)) return null
@@ -129,6 +108,18 @@ async function smoothAlignToElement(id: string, offset = 16, ms = 320) {
   await smoothScrollTo(targetY, ms)
 }
 
+/* ========= Two-column targets (desktop) ========= */
+const TWO_COL_GROUP_SLUGS = new Set([
+  'dantu-gydymas-saugusiuju',
+  'burnos-chirurgijos-kainorastis',
+  'dantu-protezavimas-ant-dantu',
+])
+
+function splitInTwo(items: PriceItem[]) {
+  const mid = Math.ceil(items.length / 2)
+  return [items.slice(0, mid), items.slice(mid)] as const
+}
+
 /* ========= Accordion item ========= */
 function GroupCard({
   group,
@@ -144,6 +135,71 @@ function GroupCard({
   const summary = range ? (range.max > range.min ? `€${range.min}–€${range.max}` : `nuo €${range.min}`) : '—'
   const reduceMotion = usePrefersReducedMotion()
 
+  const useTwoCols = TWO_COL_GROUP_SLUGS.has(id)
+
+  const renderRows = (items: PriceItem[], baseIndexOffset = 0) => {
+    return items.map((p, i) => {
+      const globalIndex = baseIndexOffset + i
+      const doAnimation = !!(open && !reduceMotion)
+      const rowDelay = doAnimation ? ROW_BASE_DELAY + globalIndex * PER_ROW_DELAY : 0
+
+      return (
+        <tr key={`${p.name}-${globalIndex}`} className="hover:bg-slate-50/80 transition-colors border-b border-slate-50 last:border-0">
+          <td className="p-4 align-top">
+            <span
+              className="text-slate-800 font-medium inline-block"
+              style={
+                doAnimation
+                  ? {
+                      opacity: 0,
+                      transform: 'translateY(16px)',
+                      animation: `fadeInUp ${TEXT_DURATION}ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay}ms forwards`,
+                    }
+                  : undefined
+              }
+            >
+              {p.name}
+            </span>
+
+            {p.note && (
+              <span
+                className="block text-xs text-slate-500 mt-1"
+                style={
+                  doAnimation
+                    ? {
+                        opacity: 0,
+                        transform: 'translateY(12px)',
+                        animation: `fadeInUp 600ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay + TEXT_DURATION - 200}ms forwards`,
+                      }
+                    : undefined
+                }
+              >
+                {p.note}
+              </span>
+            )}
+          </td>
+
+          <td
+            className="p-4 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-primary-600"
+            style={
+              doAnimation
+                ? {
+                    opacity: 0,
+                    transform: 'translateY(16px) scale(0.94)',
+                    animation: `fadeInScale 700ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay + PRICE_DELAY}ms forwards`,
+                  }
+                : undefined
+            }
+          >
+            {fmtItem(p)}
+          </td>
+        </tr>
+      )
+    })
+  }
+
+  const [left, right] = useMemo(() => splitInTwo(group.items), [group.items])
+
   return (
     <div
       id={id}
@@ -152,7 +208,7 @@ function GroupCard({
         open
           ? 'bg-white border-primary-200 shadow-md ring-4 ring-primary-50'
           : 'bg-slate-50 border-transparent shadow-sm hover:bg-white hover:border-slate-200 hover:shadow-md hover:-translate-y-0.5',
-        'scroll-mt-28 md:scroll-mt-32',
+        'scroll-mt-28 md:scroll-mt-32'
       )}
       style={{ contain: 'layout paint', transform: 'translateZ(0)' }}
     >
@@ -163,20 +219,23 @@ function GroupCard({
         className="w-full flex items-center justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5 text-left min-h-[92px] transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-50"
       >
         <div className="flex flex-col items-start min-w-0">
-          <div className={clsx(
-            'font-semibold text-lg truncate transition-colors duration-300',
-            open ? 'text-primary-600' : 'text-slate-800 group-hover:text-primary-600'
-          )}>
+          <div
+            className={clsx(
+              'font-semibold text-[17px] sm:text-lg leading-snug transition-colors duration-300',
+              'whitespace-normal break-words',
+              open ? 'text-primary-600' : 'text-slate-800 group-hover:text-primary-600'
+            )}
+          >
             {group.title}
           </div>
           <div className="text-sm text-slate-500 font-medium mt-1">
             {summary} <span className="opacity-60 font-normal ml-1">• {group.items.length} poz.</span>
           </div>
         </div>
-        
+
         <span
           className={clsx(
-            'w-8 h-8 flex items-center justify-center transition-all text-slate-400 group-hover:text-primary-500 shrink-0 rounded-full', 
+            'w-8 h-8 flex items-center justify-center transition-all text-slate-400 group-hover:text-primary-500 shrink-0 rounded-full',
             open ? 'rotate-180 text-primary-500 bg-primary-50' : 'group-hover:bg-slate-100'
           )}
           style={{ transitionDuration: `${OPEN_MS}ms` }}
@@ -195,7 +254,9 @@ function GroupCard({
         style={{
           gridTemplateRows: open ? '1fr' : '0fr',
           opacity: open ? 1 : 0,
-          transition: `grid-template-rows ${open ? OPEN_MS : CLOSE_MS}ms ${EASE}, opacity ${open ? OPEN_MS : CLOSE_MS}ms ${EASE}`,
+          transition: `grid-template-rows ${open ? OPEN_MS : CLOSE_MS}ms ${EASE}, opacity ${
+            open ? OPEN_MS : CLOSE_MS
+          }ms ${EASE}`,
           transform: 'translateZ(0)',
         }}
       >
@@ -212,60 +273,28 @@ function GroupCard({
             }}
           >
             <div className="rounded-xl bg-white border border-slate-100 shadow-sm overflow-hidden">
-              <table className="w-full text-sm">
-                <tbody>
-                  {group.items.map((p, i) => {
-                    const doAnimation = !!(open && !reduceMotion)
-                    const rowDelay = doAnimation ? ROW_BASE_DELAY + i * PER_ROW_DELAY : 0
-
-                    return (
-                      <tr key={i} className="hover:bg-slate-50/80 transition-colors border-b border-slate-50 last:border-0">
-                        <td className="p-4 align-top">
-                          <span 
-                            className="text-slate-800 font-medium inline-block"
-                            style={doAnimation ? {
-                              opacity: 0,
-                              transform: 'translateY(16px)',
-                              animation: `fadeInUp ${TEXT_DURATION}ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay}ms forwards`
-                            } : undefined}
-                          >
-                            {p.name}
-                          </span>
-                          {p.note && (
-                            <span 
-                              className="block text-xs text-slate-500 mt-1"
-                              style={doAnimation ? {
-                                opacity: 0,
-                                transform: 'translateY(12px)',
-                                animation: `fadeInUp 600ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay + TEXT_DURATION - 200}ms forwards`
-                              } : undefined}
-                            >
-                              {p.note}
-                            </span>
-                          )}
-                        </td>
-
-                        <td 
-                          className="p-4 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-primary-600"
-                          style={doAnimation ? {
-                            opacity: 0,
-                            transform: 'translateY(16px) scale(0.94)',
-                            animation: `fadeInScale 700ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay + PRICE_DELAY}ms forwards`
-                          } : undefined}
-                        >
-                          {fmtItem(p)}
-                        </td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
+              {!useTwoCols ? (
+                <table className="w-full text-sm">
+                  <tbody>{renderRows(group.items, 0)}</tbody>
+                </table>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 md:divide-x md:divide-slate-100">
+                  <table className="w-full text-sm">
+                    <tbody>{renderRows(left, 0)}</tbody>
+                  </table>
+                  <table className="w-full text-sm">
+                    <tbody>{renderRows(right, left.length)}</tbody>
+                  </table>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(16px); }
           to   { opacity: 1; transform: translateY(0); }
@@ -274,7 +303,9 @@ function GroupCard({
           from { opacity: 0; transform: translateY(16px) scale(0.94); }
           to   { opacity: 1; transform: translateY(0) scale(1); }
         }
-      `}} />
+      `,
+        }}
+      />
     </div>
   )
 }
@@ -288,9 +319,7 @@ export default function PricingCards() {
   const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setHash(window.location.hash)
-    }
+    if (typeof window !== 'undefined') setHash(window.location.hash)
   }, [])
 
   const handleToggle = async (id: string, willOpen: boolean) => {
@@ -298,13 +327,17 @@ export default function PricingCards() {
     animatingRef.current = true
     try {
       if (!willOpen) {
-        setOpenIds(prev => { const next = new Set(prev); next.delete(id); return next })
+        setOpenIds((prev) => {
+          const next = new Set(prev)
+          next.delete(id)
+          return next
+        })
         await wait(CLOSE_MS + 40)
         return
       }
 
       if (mobile) {
-        setOpenIds(prev => new Set(prev).add(id))
+        setOpenIds((prev) => new Set(prev).add(id))
         await wait(32)
         await smoothAlignToElement(id, 20, OPEN_MS)
       } else {
@@ -330,7 +363,7 @@ export default function PricingCards() {
       animatingRef.current = true
       try {
         if (mobile) {
-          setOpenIds(prev => new Set(prev).add(id))
+          setOpenIds((prev) => new Set(prev).add(id))
           await wait(32)
           if (!cancelled) await smoothAlignToElement(id, 20, OPEN_MS)
         } else {
@@ -345,22 +378,21 @@ export default function PricingCards() {
       }
     }
     run()
-    return () => { cancelled = true }
+    return () => {
+      cancelled = true
+    }
   }, [hash, mobile])
 
   return (
     <div className="w-full mx-auto max-w-5xl px-0 sm:px-2">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-start">
+      {/* VIENA kortelė eilėje visur (simetriška) */}
+      <div className="grid grid-cols-1 gap-4 sm:gap-5 items-start">
         {PRICING.map((g) => {
           const id = slugify(g.title)
           const isOpen = openIds.has(id)
           return (
             <div key={g.title} className="w-full will-change-transform">
-              <GroupCard
-                group={g as PriceGroup}
-                open={isOpen}
-                onToggle={(willOpen) => handleToggle(id, willOpen)}
-              />
+              <GroupCard group={g as PriceGroup} open={isOpen} onToggle={(willOpen) => handleToggle(id, willOpen)} />
             </div>
           )
         })}
