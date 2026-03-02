@@ -146,9 +146,9 @@ export default function App() {
       <BackToTop />
 
       <MobileStickyBar
-        phone="+37060000000"
+        phone="+37067191399"
         bookingHref="/kontaktai#registracija"
-        helpHref="/kontaktai"
+        helpHref="https://www.banguklinika.lt/paslaugos#skubi-pagalba"
       />
     </div>
   )
