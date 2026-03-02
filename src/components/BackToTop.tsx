@@ -150,7 +150,7 @@ export default function BackToTop() {
             bg-white border border-slate-200 shadow-lg hover:shadow-xl
             text-[#10394F]
           "
-          style={{ bottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
+          style={{ bottom: 'max(calc(90px + env(safe-area-inset-bottom, 0px)), 100px)' }}
         >
           <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
             <path d="M12 6l-6 7h4v5h4v-5h4z" fill="currentColor" />

@@ -27,6 +27,7 @@ import EndodontinisGydymas from './pages/EndodontinisGydymas'
 import ScrollToTop from './components/ScrollToTop'
 import BackToTop from './components/BackToTop'
 import HeroWave from './components/HeroWave'
+import MobileStickyBar from './components/MobileStickyBar'
 import CirkonioOffer from './pages/CirkonioOffer'
 import AllOn4Implants from './pages/AllOn4Implants'
 import DantuImplantacija from './pages/DantuImplantacija'
@@ -101,7 +102,7 @@ export default function App() {
           <Route path="/paslaugos/endodontinis-gydymas" element={<EndodontinisGydymas />} />
           <Route path="/paslaugos/dantu-implantacija" element={<DantuImplantacija />} />
 
-          
+
 
           {/* ===== LATVIAN PAGES /lv/* ===== */}
           <Route path="/lv" element={<LvLayout />}>
@@ -111,17 +112,17 @@ export default function App() {
             <Route path="cenas" element={<CenasLv />} />
             <Route path="pakalpojumi" element={<PakalpojumiLv />} />
             {/* Pakalpojumi (service pages) */}
-            <Route path="pakalpojumi/zobu-implantacija"  element={<DantuImplantacijaLv />} />
-            <Route path="pakalpojumi/zobu-protezesana"   element={<ZobuProtezesanaLv />} />
-            <Route path="pakalpojumi/zobu-arstnieciba"   element={<ZobuArstniecibaLv />} />
-            <Route path="pakalpojumi/zobu-izlinesana"    element={<ZobuIzlinesanaLv />} />
-            <Route path="pakalpojumi/mutes-higiena"      element={<MutesHigiennaLv />} />
-            <Route path="pakalpojumi/mutes-hirurgija"    element={<MutesHirurgijaLv />} />
-            <Route path="pakalpojumi/zobu-balinesana"    element={<ZobuBalinesanaLv />} />
+            <Route path="pakalpojumi/zobu-implantacija" element={<DantuImplantacijaLv />} />
+            <Route path="pakalpojumi/zobu-protezesana" element={<ZobuProtezesanaLv />} />
+            <Route path="pakalpojumi/zobu-arstnieciba" element={<ZobuArstniecibaLv />} />
+            <Route path="pakalpojumi/zobu-izlinesana" element={<ZobuIzlinesanaLv />} />
+            <Route path="pakalpojumi/mutes-higiena" element={<MutesHigiennaLv />} />
+            <Route path="pakalpojumi/mutes-hirurgija" element={<MutesHirurgijaLv />} />
+            <Route path="pakalpojumi/zobu-balinesana" element={<ZobuBalinesanaLv />} />
             <Route path="pakalpojumi/estetiska-plombana" element={<EstetikaPlombanaLv />} />
-            <Route path="pakalpojumi/zobu-plombana"      element={<ZobuPlombanaLv />} />
-            <Route path="pakalpojumi/zobu-ekstrakcija"   element={<ZobuEkstrakcijaLv />} />
-            <Route path="pakalpojumi/endodontija"        element={<EndodontijaLv />} />
+            <Route path="pakalpojumi/zobu-plombana" element={<ZobuPlombanaLv />} />
+            <Route path="pakalpojumi/zobu-ekstrakcija" element={<ZobuEkstrakcijaLv />} />
+            <Route path="pakalpojumi/endodontija" element={<EndodontijaLv />} />
             <Route path="pakalpojumi/bernu-odontologija" element={<BernuOdontologijaLv />} />
             <Route path="ipasi-piedavajumi" element={<IpasiPiedavajumiLv />} />
           </Route>
@@ -143,6 +144,12 @@ export default function App() {
 
       <Footer />
       <BackToTop />
+
+      <MobileStickyBar
+        phone="+37060000000"
+        bookingHref="/kontaktai#registracija"
+        helpHref="/kontaktai"
+      />
     </div>
   )
 }

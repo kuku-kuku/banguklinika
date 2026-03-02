@@ -139,3 +139,10 @@
 .wave-unclip, .wave-unclip * {
   overflow-x: visible !important;
 }
+/* ===== MOBILE STICKY BAR SPACE (nekeičia bangos) ===== */
+@media (max-width: 767px) {
+  body {
+    /* vieta sticky juostai + iOS safe-area */
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+}
