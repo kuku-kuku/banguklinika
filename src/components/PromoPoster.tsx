@@ -77,7 +77,6 @@ export default function PromoPoster({
   const timerRef = useRef<number | null>(null)
   const KEY = `promoPoster:${id}`
 
-  // safe store resolver (no SSR crash)
   const getStore = () => {
     if (typeof window === 'undefined') return null
     if (persistence === 'session') return window.sessionStorage
@@ -109,7 +108,6 @@ export default function PromoPoster({
       if (frequencyDays && frequencyDays > 0) {
         store.setItem(KEY, String(Date.now() + msFromDays(frequencyDays)))
       } else if (persistence === 'session') {
-        // short session fallback (5 minutes) — only when session explicitly requested
         store.setItem(KEY, String(Date.now() + 5 * 60 * 1000))
       }
     } catch {}
@@ -146,7 +144,6 @@ export default function PromoPoster({
     img.onerror = handleReady
     img.src = imageSrc
 
-    // If nothing in 5s — force ready
     fallback = setTimeout(handleReady, 5000)
 
     if (img.complete) handleReady()
@@ -160,7 +157,6 @@ export default function PromoPoster({
   useEffect(() => {
     if (routeOnly && pathname !== routeOnly) return
     if (!resetFlag && isSnoozed()) return
-    // schedule open
     timerRef.current = window.setTimeout(() => setOpen(true), delayMs)
     return () => {
       if (timerRef.current) window.clearTimeout(timerRef.current)
@@ -200,11 +196,13 @@ export default function PromoPoster({
     close()
   }
 
+  // Max panel height based on *real* viewport px (visualViewport), not 100vh
   const modalMaxPxByVh = Math.floor((modalMaxVh / 100) * vh)
   const panelMaxHpx = Math.max(
     0,
     Math.min(modalMaxPxByVh, vh - (navbarOffsetPx + 24))
   )
+
   const panelMaxW = `min(88vw, ${maxWidthPx}px)`
 
   const bounceVariants = {
@@ -240,7 +238,7 @@ export default function PromoPoster({
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[10000] flex items-center justify-center p-3 md:p-6"
+          className="fixed inset-0 z-[10000] flex justify-center items-start md:items-center p-3 md:p-6"
           role="dialog"
           aria-modal="true"
           initial={{ opacity: 0 }}
@@ -249,15 +247,14 @@ export default function PromoPoster({
           transition={{ duration: 0.25 }}
           style={{
             position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
+            inset: 0,
             width: '100%',
-            height: '100vh',
-            minHeight: '100vh',
-            maxHeight: '100vh',
+            // 👇 svarbiausias fix: realus viewport px, vienodai Chrome/Safari
+            height: `${vh}px`,
+            minHeight: `${vh}px`,
+            maxHeight: `${vh}px`,
             overscrollBehavior: 'none',
+            boxSizing: 'border-box',
             paddingTop: `${navbarOffsetPx}px`,
           }}
           onClick={close}
@@ -281,7 +278,7 @@ export default function PromoPoster({
           {/* Modal panel */}
           {isReady && (
             <motion.div
-              className="relative z-10 w-full -mt-[105px] md:mt-0"
+              className="relative z-10 w-full md:mt-0"
               style={{
                 maxWidth: panelMaxW,
                 maxHeight: `${panelMaxHpx}px`,
