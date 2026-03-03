@@ -280,6 +280,7 @@ export default function PromoPoster({
             <motion.div
               className="relative z-10 w-full md:mt-0"
               style={{
+                marginTop: '16px',
                 maxWidth: panelMaxW,
                 maxHeight: `${panelMaxHpx}px`,
                 display: 'flex',
