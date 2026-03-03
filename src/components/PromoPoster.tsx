@@ -281,7 +281,7 @@ export default function PromoPoster({
           {/* Modal panel */}
           {isReady && (
             <motion.div
-              className="relative z-10 w-full"
+              className="relative z-10 w-full -translate-y-[40px] md:translate-y-0"
               style={{
                 maxWidth: panelMaxW,
                 maxHeight: `${panelMaxHpx}px`,
