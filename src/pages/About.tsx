@@ -104,7 +104,7 @@ export default function About() {
   if (!team.some((m) => m.name.toLowerCase().includes('odeta'))) {
     team.push({
       name: 'Odeta Venckutė',
-      role: 'Gyd. odontologė',
+      role: 'Gydytoja odontologė',
       license: 'OPL-05163',
     })
   }
