@@ -1,16 +1,29 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
 import about from '../content/about.json'
 
+const TEAM_WITH_PHOTO = new Set(['donatas', 'jonas', 'odeta', 'ruta'])
+
+const normalizeFirstName = (name: string) =>
+  name
+    .split(' ')[0]
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+
+const getPhotoPath = (name: string) => `/team/${normalizeFirstName(name)}.jpg`
+const hasPhoto = (name: string) => TEAM_WITH_PHOTO.has(normalizeFirstName(name))
+
 const container = {
   hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut', staggerChildren: 0.06 } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut', staggerChildren: 0.06 } },
 }
 const item = {
   hidden: { opacity: 0, y: 8 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
 }
 
 function CheckIcon() {
@@ -21,30 +34,84 @@ function CheckIcon() {
   )
 }
 
+function TeamPhoto({ name }: { name: string }) {
+  const [missing, setMissing] = useState(false)
+  const src = getPhotoPath(name)
+  const photoOk = hasPhoto(name) && !missing
+
+  return (
+    <div
+      className={[
+        'relative w-full aspect-[4/5] rounded-3xl overflow-hidden bg-white shadow-soft',
+        'ring-2',
+        photoOk ? 'ring-brand/50' : 'ring-slate-200',
+      ].join(' ')}
+    >
+      {!missing ? (
+        <img
+          src={src}
+          alt={name}
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
+          onError={() => setMissing(true)}
+        />
+      ) : (
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-32 h-32 rounded-3xl bg-white/90 backdrop-blur border border-slate-200 shadow-soft flex items-center justify-center">
+              <img
+                src="/logo.png"
+                alt="Bangų klinika"
+                className="max-w-[78%] max-h-[78%] object-contain opacity-95"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 via-black/0 to-black/0" />
+    </div>
+  )
+}
+
 export default function About() {
   const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Dentist",
-    "name": about.schemaOrg?.name ?? "Bangų klinika",
-    "image": about.schemaOrg?.image,
-    "url": about.schemaOrg?.url,
-    "logo": about.schemaOrg?.logo,
-    "description": about.schemaOrg?.description,
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": about.schemaOrg?.address?.streetAddress,
-      "addressLocality": about.schemaOrg?.address?.addressLocality,
-      "postalCode": about.schemaOrg?.address?.postalCode,
-      "addressCountry": about.schemaOrg?.address?.addressCountry
+    '@context': 'https://schema.org',
+    '@type': 'Dentist',
+    name: about.schemaOrg?.name ?? 'Bangų klinika',
+    image: about.schemaOrg?.image,
+    url: about.schemaOrg?.url,
+    logo: about.schemaOrg?.logo,
+    description: about.schemaOrg?.description,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: about.schemaOrg?.address?.streetAddress,
+      addressLocality: about.schemaOrg?.address?.addressLocality,
+      postalCode: about.schemaOrg?.address?.postalCode,
+      addressCountry: about.schemaOrg?.address?.addressCountry,
     },
-    "telephone": about.schemaOrg?.telephone,
-    "sameAs": about.schemaOrg?.sameAs,
-    "founder": about.schemaOrg?.founder,
-    "openingHours": about.schemaOrg?.openingHours
+    telephone: about.schemaOrg?.telephone,
+    sameAs: about.schemaOrg?.sameAs,
+    founder: about.schemaOrg?.founder,
+    openingHours: about.schemaOrg?.openingHours,
   }
 
   const services: string[] = about.services as any
-  const team = about.team as Array<{ name: string; role: string; license?: string }>
+
+  let team = [...(about.team as Array<{ name: string; role: string; license?: string }>)]
+
+  if (!team.some((m) => m.name.toLowerCase().includes('odeta'))) {
+    team.push({
+      name: 'Odeta Venckutė',
+      role: 'Gyd. odontologė',
+      license: 'OPL-05163',
+    })
+  }
+
+  team = team
+    .slice()
+    .sort((a, b) => Number(hasPhoto(b.name)) - Number(hasPhoto(a.name)) || a.name.localeCompare(b.name))
 
   return (
     <AnimatedSection>
@@ -55,82 +122,81 @@ export default function About() {
         structuredData={structuredData}
       />
 
-      <motion.div className="container-narrow" variants={container} initial="hidden" animate="visible">
-        {/* Hero tekstas */}
-        <motion.header className="mb-6" variants={item}>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700">
+      <motion.div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12" variants={container} initial="hidden" animate="visible">
+        <motion.header className="mb-8" variants={item}>
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-darkblue-700">
             {about.hero?.title ?? 'Moderni Odontologijos Klinika Klaipėdoje'}
           </h1>
         </motion.header>
 
-        <motion.div className="prose prose-slate max-w-none mb-8" variants={item}>
-          <p>{about.intro}</p>
+        <motion.div className="prose prose-slate max-w-none mb-12" variants={item}>
+          <p className="text-xl text-slate-600 leading-relaxed">{about.intro}</p>
         </motion.div>
 
-        {/* Paslaugos */}
-        <motion.section className="mb-10" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-            {about.servicesTitle}
-          </h2>
-
-          <div className="grid sm:grid-cols-2 gap-2">
-            <div className="space-y-2">
+        <motion.section className="mb-20" variants={item}>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-darkblue-700 mb-8">{about.servicesTitle}</h2>
+          <div className="grid sm:grid-cols-2 gap-x-12 gap-y-4">
+            <div className="space-y-4 text-lg text-slate-700">
               {services.filter((_, i) => i % 2 === 0).map((s, i) => (
-                <motion.div key={`L-${i}-${s}`} variants={item} className="flex items-start gap-2 text-slate-700">
-                  <span className="text-brand mt-1"><CheckIcon /></span>
-                  <span className="text-sm leading-relaxed">{s}</span>
-                </motion.div>
+                <div key={i} className="flex items-start gap-3">
+                  <span className="text-brand mt-1.5">
+                    <CheckIcon />
+                  </span>
+                  <span>{s}</span>
+                </div>
               ))}
             </div>
-
-            <div className="space-y-2">
+            <div className="space-y-4 text-lg text-slate-700">
               {services.filter((_, i) => i % 2 === 1).map((s, i) => (
-                <motion.div key={`R-${i}-${s}`} variants={item} className="flex items-start gap-2 text-slate-700">
-                  <span className="text-brand mt-1"><CheckIcon /></span>
-                  <span className="text-sm leading-relaxed">{s}</span>
-                </motion.div>
+                <div key={i} className="flex items-start gap-3">
+                  <span className="text-brand mt-1.5">
+                    <CheckIcon />
+                  </span>
+                  <span>{s}</span>
+                </div>
               ))}
             </div>
           </div>
         </motion.section>
 
-        {/* Laboratorija */}
-        <motion.section
-          className="mb-10 rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-5 relative overflow-hidden"
-          variants={item}
-        >
-          <div className="pointer-events-none absolute -top-10 -right-10 -z-10 w-48 h-48 rounded-full bg-brand-50 blur-3xl" />
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-3">{about.lab?.title}</h2>
-          <div className="text-slate-700 space-y-3">
+        <motion.section className="mb-20 rounded-3xl border border-brand bg-white shadow-soft p-8" variants={item}>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-darkblue-700 mb-4">{about.lab?.title}</h2>
+          <div className="text-slate-700 text-lg space-y-4">
             <p>{about.lab?.p1}</p>
-            <p>{about.lab?.p2}</p>
-            {about.lab?.note && <p className="text-sm text-slate-600">{about.lab.note}</p>}
+            <p className="font-medium text-darkblue-600">{about.lab?.p2}</p>
           </div>
         </motion.section>
 
-        {/* Komanda */}
-        <motion.section className="mb-8" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+        <motion.section className="mb-16" variants={item}>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-darkblue-700 mb-10 text-center sm:text-left">
             {about.teamTitle}
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {team.map((m) => (
-              <motion.div key={m.name} variants={item} className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-4">
-                <div className="font-semibold text-slate-900">{m.name}</div>
-                <div className="text-sm text-slate-600">{m.role}</div>
-                {m.license && <div className="text-xs text-slate-500 mt-1">Licencijos Nr. {m.license}</div>}
+              <motion.div key={m.name} variants={item} className="w-full">
+                <TeamPhoto name={m.name} />
+
+                <div className="pt-5 px-1">
+                  <h3 className="font-bold text-slate-900 text-2xl leading-tight mb-1">{m.name}</h3>
+                  <p className="text-lg text-brand font-semibold mb-4">{m.role}</p>
+                  {m.license && (
+                    <div className="text-sm text-slate-500 pt-4 border-t border-slate-100 font-medium tracking-wide">
+                      Licencijos Nr. {m.license}
+                    </div>
+                  )}
+                </div>
               </motion.div>
             ))}
           </div>
         </motion.section>
 
-        {/* CTA į kainoraštį */}
         {about.cta?.href && (
-          <motion.div className="mt-6" variants={item}>
-            <Link to={about.cta.href} className="btn-primary rounded-full px-6 py-3 font-semibold">
+          <div className="mt-12 mb-20 text-center">
+            <Link to={about.cta.href} className="btn-primary rounded-full px-12 py-5 font-bold text-xl inline-block shadow-lg">
               {about.cta.text}
             </Link>
-          </motion.div>
+          </div>
         )}
       </motion.div>
     </AnimatedSection>
