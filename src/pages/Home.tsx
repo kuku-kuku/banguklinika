@@ -140,6 +140,7 @@ export default function Home() {
           { lang: 'x-default', url: 'https://banguklinika.lt/' },
         ]}
       />
+      {/* TEMPORARILY DISABLED: Zirconium offer poster
       <PromoPoster
         id="home-2025-1"
         imageSrc="/poster.webp"
@@ -149,7 +150,7 @@ export default function Home() {
         routeOnly="/"
         secondaryCtaText="Ypatingi pasiūlymai"
         secondaryCtaHref="/ypatingi-pasiulymai"
-      />
+      /> */}
 
       {/* HERO SECTION */}
       <div className="relative z-10 overflow-visible">

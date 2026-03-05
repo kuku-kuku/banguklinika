@@ -28,10 +28,11 @@ export default function SpecialOffers() {
         </motion.header>
 
         {(offers.offers as any[]).map((o, idx) => {
-          // 👇 Nauja logika plakatui
+          // TEMPORARILY DISABLED: Skip zirconium offer (first item)
+          if (idx === 0) return null
+          
           const showPoster = o?.poster === true || o?.poster1 === true
           const posterSrc = o?.poster1 ? '/poster1.png' : '/poster.png'
-
           const gridColsClass = showPoster ? 'md:grid-cols-2' : 'md:grid-cols-1'
 
           return (
@@ -44,31 +45,25 @@ export default function SpecialOffers() {
               <div className="pointer-events-none absolute -bottom-14 -right-12 -z-10 w-72 h-72 rounded-full bg-brand-100/40 blur-3xl" />
 
               <div className={`relative grid gap-6 p-6 sm:p-8 ${gridColsClass} items-stretch`}>
-                {/* LEFT */}
                 <div className="flex flex-col justify-between">
                   <div className="space-y-3">
                     {o.label && <p className="text-sm uppercase tracking-wide text-brand font-semibold">{o.label}</p>}
                     <h2 className="text-2xl sm:text-3xl font-bold leading-snug text-darkblue-700">{o.title}</h2>
-
                     {o.subtitle && <p className="text-slate-700">{o.subtitle}</p>}
                     {o.intro && <p className="text-slate-700">{o.intro}</p>}
-
                     {Array.isArray(o.bulletsTop) && (
                       <ul className="text-slate-700 space-y-1 mt-2">
                         {o.bulletsTop.map((t: string, i: number) => <li key={i}>• {t}</li>)}
                       </ul>
                     )}
-
                     {o.midTitle && <p className="text-slate-700 font-medium mt-2">{o.midTitle}</p>}
                     {o.midText && <p className="text-slate-700">{o.midText}</p>}
                     {o.midTitle2 && <p className="text-slate-700 font-medium">{o.midTitle2}</p>}
-
                     {Array.isArray(o.bulletsBottom) && (
                       <ul className="text-slate-700 space-y-1">
                         {o.bulletsBottom.map((t: string, i: number) => <li key={i}>• {t}</li>)}
                       </ul>
                     )}
-
                     {o.suitableFor && <p className="text-slate-700 mt-3">{o.suitableFor}</p>}
                     {o.note && <p className="text-slate-500 text-sm mt-2">{o.note}</p>}
                   </div>
@@ -106,7 +101,6 @@ export default function SpecialOffers() {
                   </div>
                 </div>
 
-                {/* RIGHT: plakatas */}
                 {showPoster && (
                   <div className="flex items-center justify-center md:pl-4">
                     <div
