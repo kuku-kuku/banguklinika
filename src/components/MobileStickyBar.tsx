@@ -13,7 +13,7 @@ export default function MobileStickyBar({
   phone = '+37067191399',
   email = 'info@banguklinika.lt',
   bookingHref = '/kontaktai#registracija',
-  helpHref = 'https://www.banguklinika.lt/paslaugos#skubi-pagalba',
+  helpHref = '/paslaugos/skubi-pagalba',
 }: Props) {
   const { pathname } = useLocation()
 

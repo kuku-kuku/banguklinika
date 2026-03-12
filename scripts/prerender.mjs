@@ -103,6 +103,11 @@ const pages = [
     title: "Dantų implantacija Klaipėdoje | Bangų klinika",
     description: "Dantų implantacija Klaipėdoje – konsultacija, implantai, gydymo eiga ir priežiūra po procedūros.",
   },
+  {
+    route: "/paslaugos/skubi-pagalba",
+    title: "Skubi odontologinė pagalba Klaipėdoje | Bangų klinika",
+    description: "Skubi odontologinė pagalba Klaipėdoje – greitas sprendimas staigiam dantų skausmui, infekcijai ar traumai.",
+  },
 
   // Ypatingi pasiūlymai
   {
