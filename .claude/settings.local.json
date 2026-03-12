@@ -9,7 +9,8 @@
       "Bash(where python3)",
       "Bash(python -c \"print\\(''hello''\\)\")",
       "Bash(python -c \":*)",
-      "Bash(python \"C:/Projektai/banguklinika/banguklinika-clean/transform_arst.py\")"
+      "Bash(python \"C:/Projektai/banguklinika/banguklinika-clean/transform_arst.py\")",
+      "Bash(git checkout:*)"
     ]
   }
 }

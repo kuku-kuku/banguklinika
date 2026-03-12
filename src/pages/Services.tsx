@@ -356,6 +356,7 @@ export default function Services() {
       {
         id: 'skubi-pagalba',
         title: 'Skubi pagalba',
+        to: '/paslaugos/skubi-pagalba',
         content: (
           <div className="space-y-3">
             <p>

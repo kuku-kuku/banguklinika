@@ -31,6 +31,7 @@ import MobileStickyBar from './components/MobileStickyBar'
 import CirkonioOffer from './pages/CirkonioOffer'
 import AllOn4Implants from './pages/AllOn4Implants'
 import DantuImplantacija from './pages/DantuImplantacija'
+import SkubiPagalba from './pages/SkubiPagalba'
 
 // Latvian pages
 import HomeLv from './pages/lv/HomeLv'
@@ -101,6 +102,7 @@ export default function App() {
           <Route path="/paslaugos/dantu-tiesinimas" element={<DantuTiesinimas />} />
           <Route path="/paslaugos/endodontinis-gydymas" element={<EndodontinisGydymas />} />
           <Route path="/paslaugos/dantu-implantacija" element={<DantuImplantacija />} />
+          <Route path="/paslaugos/skubi-pagalba" element={<SkubiPagalba />} />
 
 
 
@@ -148,7 +150,7 @@ export default function App() {
       <MobileStickyBar
         phone="+37067191399"
         bookingHref="/kontaktai#registracija"
-        helpHref="https://www.banguklinika.lt/paslaugos#skubi-pagalba"
+        helpHref="/paslaugos/skubi-pagalba"
       />
     </div>
   )
