@@ -79,7 +79,7 @@ export default function DantuPlombavimas() {
       />
 
       <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
-        <TableOfContents sections={tocSections} rootRef={pageRef} />
+        <TableOfContents sections={tocSections} rootRef={pageRef} cta={{ label: "Registruotis vizitui", to: "/kontaktai" }} />
         <div className="min-w-0 flex-1">
 
           {/* HERO */}
@@ -101,7 +101,7 @@ export default function DantuPlombavimas() {
 
             {/* CTA MYGTUKAS VIRŠUJE */}
             <div className="flex justify-start">
-              <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+              <Link to="/kontaktai" className="btn-primary btn-glow rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
                 Registruotis vizitui
               </Link>
             </div>
@@ -338,7 +338,7 @@ export default function DantuPlombavimas() {
               <p className="text-slate-600 mb-6">
                 Jeigu pastebėjote danties pažeidimus, jautrumą ar skausmą, nelaukite. Laiku atliktas gydymas padeda išsaugoti dantis.
               </p>
-              <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-4 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+              <Link to="/kontaktai" className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
                 Registruotis vizitui
               </Link>
             </div>

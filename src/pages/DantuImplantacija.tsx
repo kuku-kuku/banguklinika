@@ -101,7 +101,7 @@ export default function DantuImplantacija() {
             />
 
             <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
-                <TableOfContents sections={tocSections} />
+                <TableOfContents sections={tocSections} cta={{ label: "Registruotis vizitui", to: "/kontaktai" }} />
                 <div className="min-w-0 flex-1">
                     {/* HERO */}
                 <motion.header className="mb-10 text-left" variants={item}>
@@ -141,7 +141,7 @@ export default function DantuImplantacija() {
                     <div className="flex justify-start">
                         <Link
                             to="/kontaktai"
-                            className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1 mb-8"
+                            className="btn-primary btn-glow rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 mb-8"
                         >
                             Registruotis vizitui
                         </Link>
@@ -1078,7 +1078,7 @@ export default function DantuImplantacija() {
                             <div className="mt-8 text-center">
                                 <Link
                                     to="/kontaktai"
-                                    className="btn-primary rounded-full px-8 py-4 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1"
+                                    className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1"
                                 >
                                     Registruotis vizitui
                                 </Link>

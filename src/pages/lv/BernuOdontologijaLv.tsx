@@ -86,7 +86,7 @@ export default function BernuOdontologijaLv() {
       />
 
       <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
-        <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} />
+        <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} cta={{ label: "Pierakstīties vizītei", to: "/kontaktai" }} />
         <div className="min-w-0 flex-1">
 
         {/* HERO */}
@@ -105,7 +105,7 @@ export default function BernuOdontologijaLv() {
           </div>
 
           <div className="flex justify-start">
-            <Link to="/lv/kontakti" className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+            <Link to="/lv/kontakti" className="btn-primary btn-glow rounded-full px-8 py-3 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
               Pierakstīties vizītei
             </Link>
           </div>
@@ -328,7 +328,7 @@ export default function BernuOdontologijaLv() {
             Ja vēlaties rūpēties par sava bērna zobu veselību jau no pirmajiem zobiem vai pamanījāt pazīmes, ka nepieciešama ārstniecība, aicinām pierakstīties vizītei Bangų zobārstniecības klīnikā. Agrīna kopšana palīdz izvairīties no sarežģītākām problēmām un ļauj bērnam pierast pie zobārsta bez stresa.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-start">
-            <Link to="/lv/kontakti" className="btn-primary rounded-full px-8 py-4 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+            <Link to="/lv/kontakti" className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
               Pierakstīties vizītei
             </Link>
             <a href={`tel:${CLINIC.phone}`} className="btn-ghost rounded-full px-8 py-4 font-semibold text-lg inline-block border border-brand text-brand hover:bg-brand-50 transition">

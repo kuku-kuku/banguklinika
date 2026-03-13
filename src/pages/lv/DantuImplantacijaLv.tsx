@@ -93,7 +93,7 @@ export default function DantuImplantacijaLv() {
         initial="hidden"
         animate="visible"
       >
-        <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} />
+        <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} cta={{ label: "Pierakstīties vizītei", to: "/kontaktai" }} />
 
         <div className="min-w-0 flex-1">
           {/* HERO */}
@@ -137,7 +137,7 @@ export default function DantuImplantacijaLv() {
             <div className="flex justify-start">
               <Link
                 to="/lv/kontakti"
-                className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1 mb-8"
+                className="btn-primary btn-glow rounded-full px-8 py-3 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1 mb-8"
               >
                 Pierakstīties vizītei
               </Link>
@@ -970,7 +970,7 @@ export default function DantuImplantacijaLv() {
                 <div className="mt-8 text-center">
                   <Link
                     to="/lv/kontakti"
-                    className="btn-primary rounded-full px-8 py-4 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1"
+                    className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1"
                   >
                     Pierakstīties vizītei
                   </Link>

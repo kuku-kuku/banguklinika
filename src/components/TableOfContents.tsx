@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
 
 export interface TocSection {
@@ -18,6 +19,8 @@ interface TableOfContentsProps {
    * <motion.div ref={pageRef}> <TableOfContents rootRef={pageRef} ... />
    */
   rootRef?: React.RefObject<HTMLElement>
+  /** CTA mygtukas po TOC sąrašo (tiek mobile, tiek desktop) */
+  cta?: { label: string; to: string }
 }
 
 function escapeId(id: string) {
@@ -29,7 +32,7 @@ function escapeId(id: string) {
     : id.replace(/([ #;?%&,.+*~\\':"!^$[\]()=>|\/@])/g, "\\$1")
 }
 
-export function TableOfContents({ sections, title = "Turinys", rootRef }: TableOfContentsProps) {
+export function TableOfContents({ sections, title = "Turinys", rootRef, cta }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("")
   const [isOpen, setIsOpen] = useState(false)
   const tocRef = useRef<HTMLDivElement>(null)
@@ -114,36 +117,49 @@ export function TableOfContents({ sections, title = "Turinys", rootRef }: TableO
 
   return (
     <>
-      {/* Mobile TOC – sticky button at top (hidden on 2xl+) */}
+      {/* Mobile TOC – sticky bar at top (hidden on 2xl+) */}
       <div ref={tocRef} className="2xl:hidden sticky top-[72px] z-50 mb-6">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex items-center justify-between gap-2 bg-white border border-slate-200/80 rounded-2xl px-5 py-3.5 shadow-lg shadow-slate-200/50 text-left transition hover:border-brand/30"
-          aria-expanded={isOpen}
-          aria-controls="mobile-toc-list"
-        >
-          <div className="flex items-center gap-2.5 min-w-0">
-            <span className="w-7 h-7 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
-              <svg className="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
-              </svg>
-            </span>
-            <div className="min-w-0">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-0.5">
-                {title}
-              </span>
-              <span className="text-sm font-semibold text-darkblue-700 truncate block">{activeLabel}</span>
-            </div>
-          </div>
-          <svg
-            className={`w-4 h-4 shrink-0 text-slate-400 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <div className="flex items-stretch gap-2">
+          {/* TOC toggle — takes all remaining space */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="flex-1 min-w-0 flex items-center justify-between gap-2 bg-white border border-slate-200/80 rounded-2xl px-4 py-3 shadow-lg shadow-slate-200/50 text-left transition hover:border-brand/30"
+            aria-expanded={isOpen}
+            aria-controls="mobile-toc-list"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
+            <div className="flex items-center gap-2.5 min-w-0">
+              <span className="w-7 h-7 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
+                <svg className="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
+                </svg>
+              </span>
+              <div className="min-w-0">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-0.5">
+                  {title}
+                </span>
+                <span className="text-sm font-semibold text-darkblue-700 truncate block">{activeLabel}</span>
+              </div>
+            </div>
+            <svg
+              className={`w-4 h-4 shrink-0 text-slate-400 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          {/* Registracija CTA – always visible on the right */}
+          {cta && (
+            <Link
+              to={cta.to}
+              className="btn-glow shrink-0 flex items-center justify-center bg-primary-600 hover:bg-primary-700 text-white font-bold text-sm rounded-2xl px-4 shadow-lg transition-colors whitespace-nowrap"
+            >
+              Registracija
+            </Link>
+          )}
+        </div>
 
         <AnimatePresence>
           {isOpen && (
@@ -189,7 +205,7 @@ export function TableOfContents({ sections, title = "Turinys", rootRef }: TableO
             <p className="text-sm font-bold text-darkblue-700">{title}</p>
           </div>
 
-          <div className="space-y-0.5 max-h-[calc(100vh-12rem)] overflow-y-auto pr-1 scrollbar-thin">
+          <div className="space-y-0.5 max-h-[calc(100vh-16rem)] overflow-y-auto pr-1 scrollbar-thin">
             {sections.map(({ id, label }, index) => (
               <button
                 key={id}
@@ -211,6 +227,19 @@ export function TableOfContents({ sections, title = "Turinys", rootRef }: TableO
               </button>
             ))}
           </div>
+          {cta && (
+            <div className="mt-4 pt-4 border-t border-slate-100">
+              <Link
+                to={cta.to}
+                className="btn-glow w-full flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-bold text-sm rounded-xl px-4 py-3 transition-colors"
+              >
+                <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                {cta.label}
+              </Link>
+            </div>
+          )}
         </div>
       </nav>
     </>

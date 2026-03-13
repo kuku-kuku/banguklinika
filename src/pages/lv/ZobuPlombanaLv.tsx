@@ -89,7 +89,7 @@ export default function ZobuPlombanaLv() {
       />
 
       <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
-        <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} />
+        <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} cta={{ label: "Pierakstīties vizītei", to: "/kontaktai" }} />
         <div className="min-w-0 flex-1">
 
         {/* HERO */}
@@ -111,7 +111,7 @@ export default function ZobuPlombanaLv() {
 
           {/* CTA POGA AUGŠĀ */}
           <div className="flex justify-start">
-            <Link to="/lv/kontakti" className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+            <Link to="/lv/kontakti" className="btn-primary btn-glow rounded-full px-8 py-3 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
               Pierakstīties vizītam
             </Link>
           </div>
@@ -344,7 +344,7 @@ export default function ZobuPlombanaLv() {
             <p className="text-slate-600 mb-6">
               Ja pamanījāt zoba bojājumus, jutīgumu vai sāpes, negaidiet. Savlaicīgi veikta ārstēšana palīdz saglabāt zobus.
             </p>
-            <Link to="/lv/kontakti" className="btn-primary rounded-full px-8 py-4 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+            <Link to="/lv/kontakti" className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
               Pierakstīties vizītam
             </Link>
           </div>

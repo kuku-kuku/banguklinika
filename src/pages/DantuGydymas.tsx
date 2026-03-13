@@ -86,7 +86,7 @@ export default function DantuGydymas() {
         initial="hidden"
         animate="visible"
       >
-        <TableOfContents sections={tocSections} rootRef={pageRef} />
+        <TableOfContents sections={tocSections} rootRef={pageRef} cta={{ label: "Registruotis vizitui", to: "/kontaktai" }} />
         <div className="min-w-0 flex-1">
 
           {/* HERO */}
@@ -106,7 +106,7 @@ export default function DantuGydymas() {
 
             {/* CTA MYGTUKAS VIRŠUJE */}
             <div className="flex justify-start">
-              <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+              <Link to="/kontaktai" className="btn-primary btn-glow rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
                 Registruotis vizitui
               </Link>
             </div>
@@ -343,7 +343,7 @@ export default function DantuGydymas() {
             <p className="text-slate-700 mb-8 max-w-3xl leading-relaxed">
               Jeigu jaučiate danties skausmą, pastebėjote diskomfortą ar tiesiog norite atlikti profilaktinį patikrinimą, kviečiame registruotis konsultacijai Bangų odontologijos klinikoje. Laiku pradėtas dantų gydymas padeda išvengti sudėtingesnių procedūrų ir išsaugoti natūralius dantis.
             </p>
-            <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-4 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+            <Link to="/kontaktai" className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
               Registruotis vizitui
             </Link>
           </motion.div>

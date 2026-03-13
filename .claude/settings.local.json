@@ -10,7 +10,9 @@
       "Bash(python -c \"print\\(''hello''\\)\")",
       "Bash(python -c \":*)",
       "Bash(python \"C:/Projektai/banguklinika/banguklinika-clean/transform_arst.py\")",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(grep -rln \"btn-primary.*Registruotis\\\\|Registruotis.*btn-primary\" src/pages/*.tsx src/pages/lv/*.tsx)",
+      "Bash(grep -rln \"TableOfContents\" src/pages/*.tsx src/pages/lv/*.tsx)"
     ]
   }
 }

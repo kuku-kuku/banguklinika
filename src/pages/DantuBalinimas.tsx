@@ -82,7 +82,7 @@ export default function DantuBalinimas() {
         initial="hidden"
         animate="visible"
       >
-        <TableOfContents sections={tocSections} rootRef={pageRef} />
+        <TableOfContents sections={tocSections} rootRef={pageRef} cta={{ label: "Registruotis vizitui", to: "/kontaktai" }} />
         <div className="min-w-0 flex-1">
 
           {/* HERO */}
@@ -101,7 +101,7 @@ export default function DantuBalinimas() {
 
             {/* CTA MYGTUKAS VIRŠUJE */}
             <div className="flexjustify-start">
-              <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+              <Link to="/kontaktai" className="btn-primary btn-glow rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
                 Registruotis vizitui
               </Link>
             </div>
@@ -436,7 +436,7 @@ export default function DantuBalinimas() {
               <br /><br />
               Bangų odontologijos klinikoje Jūsų laukia modernios balinimo technologijos, patyrę specialistai ir individualūs sprendimai, pritaikyti kiekvienam pacientui. Registruokitės konsultacijai ir ženkite pirmą žingsnį link šviesesnės, pasitikėjimą suteikiančios šypsenos.
             </p>
-            <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-4 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+            <Link to="/kontaktai" className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
               Registruotis vizitui
             </Link>
           </motion.div>

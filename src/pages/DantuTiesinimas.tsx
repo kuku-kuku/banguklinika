@@ -83,7 +83,7 @@ export default function DantuTiesinimas() {
       />
 
       <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
-        <TableOfContents sections={tocSections} rootRef={pageRef} />
+        <TableOfContents sections={tocSections} rootRef={pageRef} cta={{ label: "Registruotis vizitui", to: "/kontaktai" }} />
         <div className="min-w-0 flex-1">
         
         {/* HERO */}
@@ -103,7 +103,7 @@ export default function DantuTiesinimas() {
 
           {/* CTA MYGTUKAS VIRŠUJE */}
           <div className="flex justify-start">
-             <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+             <Link to="/kontaktai" className="btn-primary btn-glow rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
               Registruotis vizitui
             </Link>
           </div>
@@ -450,7 +450,7 @@ export default function DantuTiesinimas() {
             <br/><br/>
             Bangų odontologijos klinikoje siekiame, kad dantų tiesinimas būtų aiškus, patogus ir pritaikytas prie paciento gyvenimo būdo. Čia Jūsų laukia modernios technologijos, dėmesingas požiūris ir nuosekli priežiūra kiekviename gydymo etape. Registruokitės konsultacijai ir ženkite pirmą žingsnį link taisyklingos, pasitikėjimą suteikiančios šypsenos.
           </p>
-          <Link to="/kontaktai" className="btn-primary rounded-full px-8 py-4 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1">
+          <Link to="/kontaktai" className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
             Registruotis vizitui
           </Link>
         </motion.div>

@@ -64,7 +64,7 @@ export default function SkubiPagalba() {
         initial="hidden"
         animate="visible"
       >
-        <TableOfContents sections={tocSections} rootRef={pageRef} />
+        <TableOfContents sections={tocSections} rootRef={pageRef} cta={{ label: "Registruotis vizitui", to: "/kontaktai" }} />
 
         <div className="min-w-0 flex-1">
           {/* HERO */}
@@ -97,7 +97,7 @@ export default function SkubiPagalba() {
             <div className="flex justify-start mt-6">
               <Link
                 to="/kontaktai"
-                className="btn-primary rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1"
+                className="btn-primary btn-glow rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg hover:shadow-xl transition transform hover:-translate-y-1"
               >
                 Registruotis vizitui
               </Link>
@@ -440,7 +440,7 @@ export default function SkubiPagalba() {
 
             <Link
               to="/kontaktai"
-              className="btn-primary rounded-full px-8 py-4 font-semibold text-lg inline-block shadow-lg shadow-brand/20 hover:shadow-xl transition transform hover:-translate-y-1"
+              className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1"
             >
               Registruotis vizitui
             </Link>

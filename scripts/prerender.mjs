@@ -109,6 +109,98 @@ const pages = [
     description: "Skubi odontologinė pagalba Klaipėdoje – greitas sprendimas staigiam dantų skausmui, infekcijai ar traumai.",
   },
 
+  // ===== LATVIAN PAGES /lv/* =====
+  {
+    route: "/lv",
+    title: "Zobārstniecības klīnika Klaipēdā | Bangų klinika",
+    description: "Bangų zobārstniecības klīnika – moderna zobārstniecība Klaipēdas centrā. Pierakstieties uz konsultāciju.",
+  },
+  {
+    route: "/lv/par-mums",
+    title: "Par mums | Bangų klinika",
+    description: "Uzziniet vairāk par Bangų zobārstniecības klīniku Klaipēdā, mūsu komandu un vērtībām.",
+  },
+  {
+    route: "/lv/kontakti",
+    title: "Kontakti | Bangų klinika",
+    description: "Sazinieties ar Bangų zobārstniecības klīniku Klaipēdā. Reģistrācija, darba laiks un adrese.",
+  },
+  {
+    route: "/lv/cenas",
+    title: "Cenas | Bangų klinika",
+    description: "Zobārstniecības pakalpojumu cenas un informācija pacientiem.",
+  },
+  {
+    route: "/lv/pakalpojumi",
+    title: "Zobārstniecības pakalpojumi | Bangų klinika",
+    description: "Visi zobārstniecības pakalpojumi: higiēna, plombēšana, balināšana, ķirurģija, implantācija un citi.",
+  },
+  {
+    route: "/lv/pakalpojumi/zobu-implantacija",
+    title: "Zobu implantācija Klaipēdā | Bangų klinika",
+    description: "Zobu implantācija Klaipēdā – konsultācija, implanti, ārstēšanas gaita un aprūpe pēc procedūras.",
+  },
+  {
+    route: "/lv/pakalpojumi/zobu-protezesana",
+    title: "Zobu protezēšana Klaipēdā | Bangų klinika",
+    description: "Zobu protezēšana: kroņi, protēzes, individuāli risinājumi smaida atjaunošanai.",
+  },
+  {
+    route: "/lv/pakalpojumi/zobu-arstnieciba",
+    title: "Zobu ārstniecība Klaipēdā | Bangų klinika",
+    description: "Zobu ārstniecība un labošana Klaipēdā – diagnostika, ārstēšanas plāns un komfortablas procedūras.",
+  },
+  {
+    route: "/lv/pakalpojumi/zobu-izlinesana",
+    title: "Zobu izlīdzināšana (Ordoline) Klaipēdā | Bangų klinika",
+    description: "Zobu izlīdzināšana: konsultācija, ārstēšanas plāns un mūsdienīgi risinājumi pareizam kodumam.",
+  },
+  {
+    route: "/lv/pakalpojumi/mutes-higiena",
+    title: "Mutes higiēna Klaipēdā | Bangų klinika",
+    description: "Profesionāla mutes higiēna Klaipēdā. Aplikumu un akmens noņemšana, profilakse, padomi.",
+  },
+  {
+    route: "/lv/pakalpojumi/mutes-hirurgija",
+    title: "Mutes ķirurģija Klaipēdā | Bangų klinika",
+    description: "Mutes ķirurģija Klaipēdā: procedūras, konsultācijas un droša ārstēšana klīnikā.",
+  },
+  {
+    route: "/lv/pakalpojumi/zobu-balinesana",
+    title: "Zobu balināšana Klaipēdā | Bangų klinika",
+    description: "Zobu balināšana Klaipēdā – profesionāla balināšana klīnikā un ieteikumi pēc procedūras.",
+  },
+  {
+    route: "/lv/pakalpojumi/estetiska-plombana",
+    title: "Estētiskā plombēšana Klaipēdā | Bangų klinika",
+    description: "Estētiskā plombēšana – smaida atjaunošana, formas un krāsas korekcija dabīgam rezultātam.",
+  },
+  {
+    route: "/lv/pakalpojumi/zobu-plombana",
+    title: "Zobu plombēšana Klaipēdā | Bangų klinika",
+    description: "Zobu plombēšana Klaipēdā – kvalitatīva ārstēšana, moderni materiāli un ilgstošs rezultāts.",
+  },
+  {
+    route: "/lv/pakalpojumi/zobu-ekstrakcija",
+    title: "Zobu ekstrakcija (izraušana) Klaipēdā | Bangų klinika",
+    description: "Droša zobu ekstrakcija Klaipēdā – konsultācija, anestēzija un aprūpe pēc procedūras.",
+  },
+  {
+    route: "/lv/pakalpojumi/endodontija",
+    title: "Endodontija (sakņu kanālu ārstēšana) Klaipēdā | Bangų klinika",
+    description: "Kanālu ārstēšana (endodontija) Klaipēdā – precīza ārstēšana un sāpju kontrole.",
+  },
+  {
+    route: "/lv/pakalpojumi/bernu-odontologija",
+    title: "Bērnu zobārstniecība Klaipēdā | Bangų klinika",
+    description: "Bērnu zobārstniecība Klaipēdā – maiga pieeja, profilakse un ārstēšana mazajiem pacientiem.",
+  },
+  {
+    route: "/lv/ipasi-piedavajumi",
+    title: "Īpašie piedāvājumi | Bangų klinika Klaipēdā",
+    description: "Aktuālie Bangų klīnikas piedāvājumi un akcijas zobārstniecības pakalpojumiem.",
+  },
+
   // Ypatingi pasiūlymai
   {
     route: "/ypatingi-pasiulymai",
