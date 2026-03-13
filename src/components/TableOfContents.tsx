@@ -150,15 +150,6 @@ export function TableOfContents({ sections, title = "Turinys", rootRef, cta }: T
             </svg>
           </button>
 
-          {/* Registracija CTA – always visible on the right */}
-          {cta && (
-            <Link
-              to={cta.to}
-              className="btn-glow shrink-0 flex items-center justify-center bg-primary-600 hover:bg-primary-700 text-white font-bold text-sm rounded-2xl px-4 shadow-lg transition-colors whitespace-nowrap"
-            >
-              Registracija
-            </Link>
-          )}
         </div>
 
         <AnimatePresence>
