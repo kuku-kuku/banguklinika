@@ -201,6 +201,13 @@ const pages = [
     description: "Aktuālie Bangų klīnikas piedāvājumi un akcijas zobārstniecības pakalpojumiem.",
   },
 
+  // Draugai
+  {
+    route: "/draugai",
+    title: "Draugai | Bangų klinika",
+    description: "Mūsų partneriai ir draugai – įmonės ir projektai, su kuriais džiaugiamės bendradarbiauti.",
+  },
+
   // Ypatingi pasiūlymai
   {
     route: "/ypatingi-pasiulymai",
