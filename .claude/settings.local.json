@@ -12,7 +12,9 @@
       "Bash(python \"C:/Projektai/banguklinika/banguklinika-clean/transform_arst.py\")",
       "Bash(git checkout:*)",
       "Bash(grep -rln \"btn-primary.*Registruotis\\\\|Registruotis.*btn-primary\" src/pages/*.tsx src/pages/lv/*.tsx)",
-      "Bash(grep -rln \"TableOfContents\" src/pages/*.tsx src/pages/lv/*.tsx)"
+      "Bash(grep -rln \"TableOfContents\" src/pages/*.tsx src/pages/lv/*.tsx)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "WebFetch(domain:www.banguklinika.lt)"
     ]
   }
 }
