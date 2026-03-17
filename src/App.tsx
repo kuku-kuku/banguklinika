@@ -53,6 +53,7 @@ import EndodontijaLv from './pages/lv/EndodontijaLv'
 import BernuOdontologijaLv from './pages/lv/BernuOdontologijaLv'
 import IpasiPiedavajumiLv from './pages/lv/IpasiPiedavajumiLv'
 import { LangProvider } from './context/LanguageContext'
+import Draugai from './pages/Draugai'
 
 /** Thin wrapper that provides lang="lv" context to all /lv/* pages */
 function LvLayout() {
@@ -103,6 +104,7 @@ export default function App() {
           <Route path="/paslaugos/endodontinis-gydymas" element={<EndodontinisGydymas />} />
           <Route path="/paslaugos/dantu-implantacija" element={<DantuImplantacija />} />
           <Route path="/paslaugos/skubi-pagalba" element={<SkubiPagalba />} />
+          <Route path="/draugai" element={<Draugai />} />
 
 
 
