@@ -82,7 +82,7 @@ export default function DantuProtezavimas() {
 
       <motion.div
         ref={pageRef}
-        className="max-w-screen-2xl mx-auto px-4 2xl:flex 2xl:gap-8 2xl:items-start"
+        className="max-w-screen-2xl mx-auto px-4 xl:px-8 2xl:px-4 2xl:flex 2xl:gap-8 2xl:items-start"
         variants={container}
         initial="hidden"
         animate="visible"
@@ -157,8 +157,12 @@ export default function DantuProtezavimas() {
                     <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 400 €</span>
                   </div>
                   <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                    <span className="text-slate-700">Cirkonio keramikos vainikėlis</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 400 €</span>
+                    <span className="text-slate-700">Cirkonio keramikos vainikėlis (ant implanto)</span>
+                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">450 €</span>
+                  </div>
+                  <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                    <span className="text-slate-700">Cirkonio keramikos vainikėlis (ant danties) </span>
+                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">400 €</span>
                   </div>
                 </div>
 

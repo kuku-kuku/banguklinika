@@ -155,7 +155,7 @@ export default function Home() {
       {/* HERO SECTION */}
       <div className="relative z-10 overflow-visible">
         <section className="relative overflow-visible pan-y">
-          <div className="max-w-[1600px] mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center py-12 md:py-20 lg:py-28">
+          <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center py-12 md:py-20 lg:py-28">
             <div className="space-y-8 z-10">
               <motion.h1
                 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.08] tracking-tight text-slate-900 max-w-3xl"
@@ -295,7 +295,7 @@ export default function Home() {
       {/* WHY CHOOSE US */}
       <div className="relative z-10">
         <AnimatedSection>
-          <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+          <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12">
             <div className="max-w-4xl mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">
                 Kodėl verta rinktis <span className="text-brand">Bangų kliniką?</span>
@@ -329,7 +329,7 @@ export default function Home() {
       {/* POPULAR SERVICES */}
       <div className="relative z-10">
         <AnimatedSection>
-          <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+          <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12">
             <div className="max-w-4xl mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">
                 Populiariausios <span className="text-brand">paslaugos</span>
@@ -375,7 +375,7 @@ export default function Home() {
 
       {/* NEMOKAMA KONSULTACIJA */}
       <section className="relative z-10 py-20 bg-transparent">
-        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+        <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12">
           <div className="relative overflow-hidden rounded-[3rem] bg-white border border-slate-100 shadow-2xl min-h-[500px] md:min-h-[600px] flex items-center">
             <div className="absolute inset-0 z-0">
               <img
@@ -414,7 +414,7 @@ export default function Home() {
 
       {/* FAQ SECTION */}
       <section className="relative z-10 py-20">
-        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+        <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-12">
             <h2 className="text-2xl lg:text-4xl font-extrabold text-slate-900 mb-6">
               Dažniausiai užduodami <span className="text-brand">klausimai</span>
