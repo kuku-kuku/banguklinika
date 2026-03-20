@@ -15,7 +15,10 @@
       "Bash(grep -rln \"TableOfContents\" src/pages/*.tsx src/pages/lv/*.tsx)",
       "mcp__Claude_in_Chrome__tabs_context_mcp",
       "WebFetch(domain:www.banguklinika.lt)",
-      "Bash(xargs sed:*)"
+      "Bash(xargs sed:*)",
+      "Bash(while read:*)",
+      "Bash(do sed:*)",
+      "Bash(done)"
     ]
   }
 }

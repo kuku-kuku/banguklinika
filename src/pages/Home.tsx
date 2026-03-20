@@ -252,7 +252,7 @@ export default function Home() {
 
             <motion.div className="relative" initial={{ opacity: 0, scale: .98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .6 }}>
               <div
-                className="relative aspect-square md:aspect-[16/10] lg:aspect-[4/5] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-white"
+                className="relative aspect-square md:aspect-[16/10] lg:aspect-[4/3] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-white"
                 onTouchStart={onTouchStart}
                 onTouchEnd={onTouchEnd}
               >
@@ -305,17 +305,17 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+            <div className="grid md:grid-cols-3 gap-10 lg:gap-16">
               {(home.whyChoose.items as any[]).map((f, i) => (
-                <div key={i} className="group rounded-[2rem] overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                <div key={i} className="group rounded-[1.5rem] overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                  <div className="relative aspect-[3/2] overflow-hidden">
                     <img src={WHY_CHOOSE_IMAGES[i] || '/hero.jpg'} alt={f.t} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                   </div>
-                  <div className="p-8 lg:p-10">
-                    <h3 className="font-bold text-xl lg:text-2xl text-slate-900 mb-4 group-hover:text-brand transition-colors duration-300">
+                  <div className="p-5 lg:p-6">
+                    <h3 className="font-bold text-base lg:text-lg text-slate-900 mb-2 group-hover:text-brand transition-colors duration-300">
                       {f.t}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed text-sm lg:text-base">{f.d}</p>
+                    <p className="text-gray-600 leading-relaxed text-sm">{f.d}</p>
                   </div>
                 </div>
               ))}
@@ -336,24 +336,24 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
               {POPULAR_SERVICES.map((s) => (
                 <Link
                   to={`/paslaugos/${s.id}`}
                   key={s.id}
-                  className="group rounded-[2rem] overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 flex flex-col"
+                  className="group rounded-[1.5rem] overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 flex flex-col"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  <div className="relative aspect-[3/2] overflow-hidden">
                     <img src={s.image} alt={s.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                   </div>
-                  <div className="p-8 lg:p-10 flex flex-col flex-grow">
-                    <h3 className="font-bold text-xl lg:text-2xl text-slate-900 mb-3 group-hover:text-brand transition-colors duration-300">
+                  <div className="p-5 lg:p-6 flex flex-col flex-grow">
+                    <h3 className="font-bold text-base lg:text-lg text-slate-900 mb-2 group-hover:text-brand transition-colors duration-300">
                       {s.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed text-sm lg:text-base mb-6 flex-grow">
+                    <p className="text-gray-600 leading-relaxed text-sm mb-4 flex-grow">
                       {s.desc}
                     </p>
-                    <div className="text-brand font-bold flex items-center gap-2 group-hover:gap-4 transition-all duration-300">
+                    <div className="text-brand font-bold flex items-center gap-2 group-hover:gap-4 transition-all duration-300 text-sm">
                       Plačiau <span>→</span>
                     </div>
                   </div>
@@ -374,9 +374,9 @@ export default function Home() {
       <SectionDivider />
 
       {/* NEMOKAMA KONSULTACIJA */}
-      <section className="relative z-10 py-20 bg-transparent">
+      <section className="relative z-10 py-12 bg-transparent">
         <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12">
-          <div className="relative overflow-hidden rounded-[3rem] bg-white border border-slate-100 shadow-2xl min-h-[500px] md:min-h-[600px] flex items-center">
+          <div className="relative overflow-hidden rounded-[2rem] bg-white border border-slate-100 shadow-2xl min-h-[320px] md:min-h-[380px] flex items-center">
             <div className="absolute inset-0 z-0">
               <img
                 src="/hero.webp"
@@ -386,18 +386,18 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 md:via-white/80 to-transparent" />
             </div>
 
-            <div className="relative z-10 px-8 py-16 sm:px-16 lg:py-24 max-w-4xl">
-              <div className="space-y-8">
-                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-slate-900">
+            <div className="relative z-10 px-8 py-10 sm:px-12 lg:py-14 max-w-3xl">
+              <div className="space-y-5">
+                <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight text-slate-900">
                   Pirminė konsultacija <span className="text-brand">nemokama</span>
                 </h2>
-                <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-xl">
+                <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl">
                   Užsiregistruokite pirminiam įvertinimui ir gaukite 10–15% nuolaidą tęstiniam gydymui pereinant į pilną planą. Mūsų tikslas – aiškus kelias link Jūsų sveikos šypsenos be jokių paslėptų mokesčių.
                 </p>
-                <div className="pt-4">
+                <div className="pt-2">
                   <Link
                     to="/kontaktai#registracija"
-                    className="bg-brand hover:bg-brand-600 text-white rounded-2xl px-12 py-5 font-bold text-xl transition-all shadow-xl shadow-brand/20 hover:scale-105 inline-block text-center"
+                    className="bg-brand hover:bg-brand-600 text-white rounded-xl px-8 py-3.5 font-bold text-base transition-all shadow-xl shadow-brand/20 hover:scale-105 inline-block text-center"
                   >
                     Registruotis dabar
                   </Link>

@@ -41,7 +41,7 @@
 }
 
 /* ====== Components / Utilities ====== */
-.container-narrow { @apply max-w-6xl mx-auto px-4; }
+.container-narrow { @apply max-w-6xl mx-auto px-6; }
 
 .btn { @apply inline-flex items-center justify-center rounded-xl font-medium transition px-4 py-2; }
 .btn-primary { @apply btn bg-primary-600 text-white hover:bg-primary-700 shadow-soft; }
