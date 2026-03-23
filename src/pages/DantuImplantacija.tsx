@@ -261,7 +261,7 @@ export default function DantuImplantacija() {
           </motion.section>
 
           <div className="space-y-4 mb-12">
-            <div className="bg-brand-50 rounded-2xl p-6 border border-slate-100 shadow-sm space-y-4 text-slate-700 leading-relaxed">
+            <div className="bg-brand-50 rounded-2xl p-6 border border-brand border-slate-100 shadow-sm space-y-4 text-slate-700 leading-relaxed">
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700">Nuo ko priklauso galutinė implantacijos kaina?</h2>
               <p>
                 Galutinė dantų implantacijos kaina nėra vienoda visiems pacientams, nes ji priklauso nuo kelių individualių
@@ -276,7 +276,7 @@ export default function DantuImplantacija() {
                 implantacijos bei galutinės kainos planą.
               </p>
             </div>
-            <div className="bg-brand-50 rounded-2xl p-6 border border-brand/10 shadow-sm space-y-4 text-slate-700 leading-relaxed">
+            <div className="bg-brand-50 rounded-2xl p-6 border border-brand shadow-sm space-y-4 text-slate-700 leading-relaxed">
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700">Investicija į ilgalaikį sprendimą</h2>
               <p>
                 Nors dantų implantacija yra didesnė investicija nei laikini sprendimai, ilgalaikėje perspektyvoje ji dažnai
@@ -295,7 +295,7 @@ export default function DantuImplantacija() {
           {/* KAS YRA */}
           <motion.section
             id="kas-yra-implantacija"
-            className="mb-12 bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24"
+            className="mb-12 bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand scroll-mt-36 2xl:scroll-mt-24"
             variants={item}
           >
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
@@ -335,7 +335,7 @@ export default function DantuImplantacija() {
               {processSteps.map((step) => (
                 <div
                   key={step.step}
-                  className="bg-brand-50 rounded-2xl border border-slate-100 shadow-sm overflow-hidden"
+                  className="bg-brand-50 rounded-2xl border border-brand border-slate-100 shadow-sm overflow-hidden"
                 >
                   <div className="relative">
                     <img src={step.image} alt={step.title} className="w-full h-48 object-cover" />
@@ -371,7 +371,7 @@ export default function DantuImplantacija() {
                 "Abutmentas (jungtis) – tarpinė dalis, jungianti implantą su protezu",
                 "Karūnėlė arba protezas – matoma danties dalis, atkurianti estetiką ir funkciją",
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-brand-50 border border-slate-100 shadow-sm">
+                <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-brand-50 border border-brand border-slate-100 shadow-sm">
                   <span className="mt-1"><CheckIcon /></span>
                   <span className="text-slate-700">{text}</span>
                 </div>
@@ -388,7 +388,7 @@ export default function DantuImplantacija() {
             className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
             variants={item}
           >
-            <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+            <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
                 Kuo implantacija skiriasi nuo kitų dantų atkūrimo metodų?
               </h2>
@@ -414,7 +414,7 @@ export default function DantuImplantacija() {
             variants={item}
           >
             <div className="space-y-6">
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
                   Ar implantacija – visiems tinkamas sprendimas?
                 </h2>
@@ -428,19 +428,19 @@ export default function DantuImplantacija() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">
                   Implantacija gali būti taikoma:
                 </h3>
 
-                <div className="grid sm:grid-cols-2 gap-3">
+                <div className="grid sm:grid-cols-2 gap-3 ">
                   {[
                     "netekus vieno danties",
                     "netekus kelių dantų",
                     "netekus visų dantų viename ar abiejuose žandikauliuose",
                     "pacientams, nepatenkintiems išimamais protezais",
                   ].map((text, i) => (
-                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-brand/10 shadow-sm">
+                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-brand shadow-sm">
                       <span className="mt-1"><CheckIcon /></span>
                       <span className="text-slate-700">{text}</span>
                     </div>
@@ -456,7 +456,7 @@ export default function DantuImplantacija() {
             className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
             variants={item}
           >
-            <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8 mb-8">
+            <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8 mb-8">
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
                 Kodėl prarastą dantį svarbu atstatyti kuo greičiau?
               </h2>
@@ -470,7 +470,7 @@ export default function DantuImplantacija() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-brand border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Gretimų dantų slinkimas ir sąkandžio pokyčiai</h3>
                 <p className="text-slate-700 leading-relaxed text-sm">
                   Netekus danties, atsiradusi tuščia vieta burnoje niekada nelieka „neutrali". Gretimi dantys palaipsniui
@@ -479,7 +479,7 @@ export default function DantuImplantacija() {
                   tai gali sukelti žandikaulio sąnario diskomfortą, galvos ar kaklo skausmus.
                 </p>
               </div>
-              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-brand border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Žandikaulio kaulo nykimas</h3>
                 <p className="text-slate-700 leading-relaxed text-sm">
                   Natūralaus danties šaknis stimuliuoja žandikaulio kaulą kramtymo metu. Netekus danties, ši stimuliacija
@@ -488,7 +488,7 @@ export default function DantuImplantacija() {
                   apsunkinti ar net apriboti galimybes ateityje atlikti implantaciją be papildomų procedūrų.
                 </p>
               </div>
-              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-brand border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Kramtymo funkcijos ir virškinimo problemos</h3>
                 <p className="text-slate-700 leading-relaxed text-sm">
                   Trūkstant dantų, kramtymo funkcija tampa neefektyvi. Maistas nėra tinkamai susmulkinamas, todėl didesnė
@@ -496,7 +496,7 @@ export default function DantuImplantacija() {
                   sutrikimus. Be to, žmonės dažnai pradeda vengti kietesnio maisto, o tai daro įtaką mitybos kokybei.
                 </p>
               </div>
-              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-brand border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Burnos higienos ir dantenų problemos</h3>
                 <p className="text-slate-700 leading-relaxed text-sm">
                   Tarpai tarp dantų tampa vieta, kurioje lengviau kaupiasi maisto likučiai ir bakterijos. Tai apsunkina
@@ -506,7 +506,7 @@ export default function DantuImplantacija() {
               </div>
             </div>
             <div className="mt-6 grid gap-6 md:grid-cols-2">
-              <div className="bg-brand-50 p-6 rounded-2xl border border-brand/10">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-brand">
                 <h3 className="font-bold text-darkblue-700 mb-2">Veido estetikos ir pasitikėjimo savimi pokyčiai</h3>
                 <p className="text-slate-700 leading-relaxed text-sm">
                   Ilgainiui dėl kaulo nykimo ir sąkandžio pakitimų gali keistis veido kontūrai – atsirasti įkritę skruostai,
@@ -514,7 +514,7 @@ export default function DantuImplantacija() {
                   poveikį: žmonės pradeda vengti šypsotis, jaustis nejaukiai bendraudami ar fotografuodamiesi.
                 </p>
               </div>
-              <div className="bg-brand-50 p-6 rounded-2xl border border-brand/10">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-brand">
                 <h3 className="font-bold text-darkblue-700 mb-2">Ankstyvas atkūrimas – mažiau sudėtingas gydymas</h3>
                 <p className="text-slate-700 leading-relaxed text-sm">
                   Kuo greičiau atkuriamas prarastas dantis, tuo paprastesnis ir prognozuojamesnis tampa gydymas. Laiku
@@ -532,7 +532,7 @@ export default function DantuImplantacija() {
             variants={item}
           >
             <div className="space-y-6">
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
                   Kam reikalinga dantų implantacija?
                 </h2>
@@ -546,7 +546,7 @@ export default function DantuImplantacija() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">
                   Kada reikalinga dantų implantacija?
                 </h3>
@@ -562,7 +562,7 @@ export default function DantuImplantacija() {
                     "seniai netekti dantys sukėlė sąkandžio ar kramtymo problemas",
                     "išimami protezai kelia diskomfortą ar nestabilumą",
                   ].map((text, i) => (
-                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-brand/10 shadow-sm">
+                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-brand shadow-sm">
                       <span className="mt-1"><CheckIcon /></span>
                       <span className="text-slate-700">{text}</span>
                     </div>
@@ -576,7 +576,7 @@ export default function DantuImplantacija() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">
                   Dėl ko pacientai renkasi implantaciją?
                 </h3>
@@ -592,7 +592,7 @@ export default function DantuImplantacija() {
                     "Gretimų dantų apsauga – nereikia šlifuoti sveikų dantų, kaip tiltų atveju.",
                     "Ilgaamžiškumas – tinkamai prižiūrimi implantai gali tarnauti dešimtmečius.",
                   ].map((text, i) => (
-                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-brand/10 shadow-sm">
+                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-brand shadow-sm">
                       <span className="mt-1"><CheckIcon /></span>
                       <span className="text-slate-700">{text}</span>
                     </div>
@@ -609,7 +609,7 @@ export default function DantuImplantacija() {
             variants={item}
           >
             {/* Poster image block */}
-            <div className="rounded-[28px] border border-brand/10 bg-brand-50 overflow-hidden shadow-soft mb-8">
+            <div className="rounded-[28px] border border-brand bg-brand-50 overflow-hidden shadow-soft mb-8">
               <div className="grid lg:grid-cols-2 gap-0 items-stretch">
                 <div className="p-6 sm:p-8 lg:p-10">
                   <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand mb-4">
@@ -651,7 +651,7 @@ export default function DantuImplantacija() {
 
             {/* Detailed ALL-ON-4 content */}
             <div className="space-y-6 text-slate-700 leading-relaxed">
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">Kas yra ALL-ON-4 metodas?</h3>
                 <p>
                   ALL-ON-4 – tai implantacijos technika, kai visas vieno žandikaulio dantų lankas atkuriamas naudojant
@@ -675,7 +675,7 @@ export default function DantuImplantacija() {
                     "nereikia nešioti išimamų protezų gijimo laikotarpiu",
                     "pacientas iš klinikos išeina su dantimis",
                   ].map((text, i) => (
-                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
+                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-brand border-slate-100 shadow-sm">
                       <span className="mt-1"><CheckIcon /></span>
                       <span className="text-slate-700">{text}</span>
                     </div>
@@ -694,7 +694,7 @@ export default function DantuImplantacija() {
                     "pacientams, kuriems nustatytas žandikaulio kaulo sumažėjimas",
                     "tiems, kurie nori greito ir fiksuoto sprendimo, o ne ilgo gydymo",
                   ].map((text, i) => (
-                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
+                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-brand border-slate-100 shadow-sm">
                       <span className="mt-1"><CheckIcon /></span>
                       <span className="text-slate-700">{text}</span>
                     </div>
@@ -702,7 +702,7 @@ export default function DantuImplantacija() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">Kodėl ALL-ON-4 dažnai leidžia išvengti kaulo priauginimo?</h3>
                 <p>
                   Tradicinėje implantacijoje dažnai prireikia papildomų procedūrų, jei žandikaulio kaulo kiekis yra
@@ -715,7 +715,7 @@ export default function DantuImplantacija() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">Laikini ir galutiniai dantys – kaip vyksta procesas?</h3>
                 <p>
                   Pirmąją dieną pacientui pritvirtinami laikini, bet fiksuoti dantys, kurie yra estetiški, stabilūs ir
@@ -736,7 +736,7 @@ export default function DantuImplantacija() {
             variants={item}
           >
             <div className="space-y-6">
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
                   ALL-ON-4 privalumai, lyginant su kitais dantų atkūrimo sprendimais
                 </h2>
@@ -749,7 +749,7 @@ export default function DantuImplantacija() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">
                   ALL-ON-4 ir išimami protezai
                 </h3>
@@ -767,7 +767,7 @@ export default function DantuImplantacija() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">
                   ALL-ON-4 ir klasikinė implantacija su daug implantų
                 </h3>
@@ -785,7 +785,7 @@ export default function DantuImplantacija() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">
                   Laikas – vienas didžiausių ALL-ON-4 privalumų
                 </h3>
@@ -802,7 +802,7 @@ export default function DantuImplantacija() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">
                   Ilgalaikė vertė
                 </h3>
@@ -828,7 +828,7 @@ export default function DantuImplantacija() {
             variants={item}
           >
             <div className="space-y-6">
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
                   Ar dantų implantacija yra saugi? O gal skausminga?
                 </h2>
@@ -842,7 +842,7 @@ export default function DantuImplantacija() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">
                   Implantacijos saugumas
                 </h3>
@@ -863,7 +863,7 @@ export default function DantuImplantacija() {
                       "patyrusių specialistų darbas",
                       "šiuolaikinės chirurginės technologijos",
                     ].map((text, i) => (
-                      <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-brand/10 shadow-sm">
+                      <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-brand shadow-sm">
                         <span className="mt-1"><CheckIcon /></span>
                         <span className="text-slate-700">{text}</span>
                       </div>
@@ -877,7 +877,7 @@ export default function DantuImplantacija() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">
                   Ar implantacija yra skausminga?
                 </h3>
@@ -894,7 +894,7 @@ export default function DantuImplantacija() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">
                   Pojūčiai po procedūros
                 </h3>
@@ -912,7 +912,7 @@ export default function DantuImplantacija() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">
                   Rizikos ir kaip jos valdomos
                 </h3>
@@ -932,7 +932,7 @@ export default function DantuImplantacija() {
             variants={item}
           >
             <div className="space-y-6">
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
                   Kiek laiko tarnauja dantų implantai?
                 </h2>
@@ -946,7 +946,7 @@ export default function DantuImplantacija() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">
                   Ilgaamžiškumo pagrindas – implantas ir kaulas
                 </h3>
@@ -957,7 +957,7 @@ export default function DantuImplantacija() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">
                   Kas turi įtakos implantų tarnavimo laikui?
                 </h3>
@@ -972,7 +972,7 @@ export default function DantuImplantacija() {
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">
                   Karūnėlės ir protezai – ar juos reikia keisti?
                 </h3>
@@ -989,7 +989,7 @@ export default function DantuImplantacija() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <div className="rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8">
                 <h3 className="font-semibold text-darkblue-700 mb-4">
                   Implantai kaip ilgalaikė investicija
                 </h3>
@@ -1020,7 +1020,7 @@ export default function DantuImplantacija() {
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-brand border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Pirmosios dienos po implantacijos</h3>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Pirmosiomis dienomis po procedūros gali pasireikšti nedidelis patinimas, tempimo pojūtis ar jautrumas
@@ -1032,7 +1032,7 @@ export default function DantuImplantacija() {
                   nevartoti labai karšto maisto ar gėrimų bei nerūkyti ir nevartoti alkoholio.
                 </p>
               </div>
-              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-brand border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Burnos higiena gijimo laikotarpiu</h3>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Tinkama burnos higiena yra viena svarbiausių sąlygų sėkmingam implantų prigijimui. Nors implantacijos vieta
@@ -1043,7 +1043,7 @@ export default function DantuImplantacija() {
                   priežiūros priemones ir laikytis individualių higienos rekomendacijų.
                 </p>
               </div>
-              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-brand border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Mityba po implantacijos</h3>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Pirmosiomis dienomis rekomenduojama rinktis minkštą, lengvai kramtomą maistą. Vėliau, gijimui progresuojant,
@@ -1055,7 +1055,7 @@ export default function DantuImplantacija() {
                   gijimo procesui.
                 </p>
               </div>
-              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-brand border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Kontroliniai vizitai – būtini ilgalaikiam rezultatui</h3>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Po implantacijos suplanuojami kontroliniai vizitai, kurių metu gydytojas stebi gijimo eigą, implantų
@@ -1067,7 +1067,7 @@ export default function DantuImplantacija() {
                 </p>
               </div>
             </div>
-            <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-6 rounded-2xl border border-brand border-slate-100 shadow-sm">
               <h3 className="text-lg font-semibold text-darkblue-700 mb-2">Ilgalaikė priežiūra</h3>
               <p className="text-slate-700 text-sm leading-relaxed">
                 Net ir sėkmingai prigijus implantams, būtina rūpintis jų priežiūra ilgalaikėje perspektyvoje. Reguliari burnos
@@ -1086,7 +1086,7 @@ export default function DantuImplantacija() {
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
               Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
             </h2>
-            <div className="bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/10">
+            <div className="bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand">
               <p className="text-slate-700 leading-relaxed mb-6">
                 Renkantis, kur atlikti dantų atkūrimą implantais, svarbu ne tik procedūros kaina ar greitis, bet ir tai, kas stovės
                 už galutinio rezultato. Bangų odontologijos klinikoje Klaipėdoje dantų implantacija atliekama remiantis šiuolaikiniais
@@ -1111,7 +1111,7 @@ export default function DantuImplantacija() {
                     text: "Pacientai vertina aiškų paaiškinimą, skaidrią kainodarą ir profesionalų, ramų požiūrį viso gydymo metu.",
                   },
                 ].map((c, i) => (
-                  <div key={i} className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
+                  <div key={i} className="bg-brand-50 p-5 rounded-xl border border-brand border-slate-100 shadow-sm">
                     <div className="flex items-start gap-3">
                       <span className="mt-1"><CheckIcon /></span>
                       <div>
@@ -1127,7 +1127,7 @@ export default function DantuImplantacija() {
 
           {/* CTA */}
           <motion.div className="mt-8 mb-12" variants={item}>
-            <div className="bg-white rounded-[28px] border border-brand/10 shadow-soft overflow-hidden">
+            <div className="bg-white rounded-[28px] border border-brand shadow-soft overflow-hidden">
               <div className="grid lg:grid-cols-[5fr_4fr] gap-0 items-stretch">
                 {/* Left: content */}
                 <div className="p-6 sm:p-8 lg:p-10">
