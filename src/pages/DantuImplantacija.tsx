@@ -222,7 +222,7 @@ export default function DantuImplantacija() {
             </div>
 
             <div className="divide-y divide-slate-100">
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Straumann® implantas</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">650 €</span>
               </div>
@@ -232,7 +232,7 @@ export default function DantuImplantacija() {
                 ieškantiems aukščiausios klasės sprendimo.
               </div>
 
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Neodent® implantas</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">500 €</span>
               </div>
@@ -248,7 +248,7 @@ export default function DantuImplantacija() {
               Papildomos procedūros
             </div>
             <div className="divide-y divide-slate-100">
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Sinuso pakėlimo operacija</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">500–700 €</span>
               </div>
@@ -261,7 +261,7 @@ export default function DantuImplantacija() {
           </motion.section>
 
           <div className="space-y-4 mb-12">
-            <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm space-y-4 text-slate-700 leading-relaxed">
+            <div className="bg-brand-50 rounded-2xl p-6 border border-slate-100 shadow-sm space-y-4 text-slate-700 leading-relaxed">
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700">Nuo ko priklauso galutinė implantacijos kaina?</h2>
               <p>
                 Galutinė dantų implantacijos kaina nėra vienoda visiems pacientams, nes ji priklauso nuo kelių individualių
@@ -276,7 +276,7 @@ export default function DantuImplantacija() {
                 implantacijos bei galutinės kainos planą.
               </p>
             </div>
-            <div className="bg-white rounded-2xl p-6 border border-brand/10 shadow-sm space-y-4 text-slate-700 leading-relaxed">
+            <div className="bg-brand-50 rounded-2xl p-6 border border-brand/10 shadow-sm space-y-4 text-slate-700 leading-relaxed">
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700">Investicija į ilgalaikį sprendimą</h2>
               <p>
                 Nors dantų implantacija yra didesnė investicija nei laikini sprendimai, ilgalaikėje perspektyvoje ji dažnai
@@ -295,7 +295,7 @@ export default function DantuImplantacija() {
           {/* KAS YRA */}
           <motion.section
             id="kas-yra-implantacija"
-            className="mb-12 bg-white p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24"
+            className="mb-12 bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24"
             variants={item}
           >
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
@@ -335,7 +335,7 @@ export default function DantuImplantacija() {
               {processSteps.map((step) => (
                 <div
                   key={step.step}
-                  className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"
+                  className="bg-brand-50 rounded-2xl border border-slate-100 shadow-sm overflow-hidden"
                 >
                   <div className="relative">
                     <img src={step.image} alt={step.title} className="w-full h-48 object-cover" />
@@ -371,7 +371,7 @@ export default function DantuImplantacija() {
                 "Abutmentas (jungtis) – tarpinė dalis, jungianti implantą su protezu",
                 "Karūnėlė arba protezas – matoma danties dalis, atkurianti estetiką ir funkciją",
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-100 shadow-sm">
+                <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-brand-50 border border-slate-100 shadow-sm">
                   <span className="mt-1"><CheckIcon /></span>
                   <span className="text-slate-700">{text}</span>
                 </div>
@@ -388,20 +388,22 @@ export default function DantuImplantacija() {
             className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              Kuo implantacija skiriasi nuo kitų dantų atkūrimo metodų?
-            </h2>
-            <div className="space-y-4 text-slate-700 leading-relaxed">
-              <p>
-                Lyginant su dantų tiltais ar išimamais protezais, implantacija turi esminių pranašumų. Protezuojant
-                tilteliu, dažnai tenka šlifuoti sveikus gretimus dantis, kurie tampa atrama dirbtiniam dančiui. Implantacijos
-                atveju gretimi dantys neliečiami, todėl išsaugomas jų vientisumas.
-              </p>
-              <p>
-                Išimami protezai dažnai sukelia diskomfortą, judėjimą, spaudimą dantenoms ir ne visada užtikrina pakankamą
-                kramtymo stabilumą. Implantais paremti sprendimai yra fiksuoti, nejuda ir leidžia jaustis užtikrintai valgant,
-                kalbant ar šypsantis.
-              </p>
+            <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+                Kuo implantacija skiriasi nuo kitų dantų atkūrimo metodų?
+              </h2>
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Lyginant su dantų tiltais ar išimamais protezais, implantacija turi esminių pranašumų. Protezuojant
+                  tilteliu, dažnai tenka šlifuoti sveikus gretimus dantis, kurie tampa atrama dirbtiniam dančiui. Implantacijos
+                  atveju gretimi dantys neliečiami, todėl išsaugomas jų vientisumas.
+                </p>
+                <p>
+                  Išimami protezai dažnai sukelia diskomfortą, judėjimą, spaudimą dantenoms ir ne visada užtikrina pakankamą
+                  kramtymo stabilumą. Implantais paremti sprendimai yra fiksuoti, nejuda ir leidžia jaustis užtikrintai valgant,
+                  kalbant ar šypsantis.
+                </p>
+              </div>
             </div>
           </motion.section>
 
@@ -411,48 +413,40 @@ export default function DantuImplantacija() {
             className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              Ar implantacija – visiems tinkamas sprendimas?
-            </h2>
-            <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-              <p>
-                Dantų implantacija gali būti taikoma daugeliui pacientų, tačiau prieš gydymą visuomet atliekamas išsamus
-                įvertinimas. Svarbiausi veiksniai – bendroji burnos būklė, žandikaulio kaulo kiekis ir paciento sveikatos
-                būklė. Net ir tais atvejais, kai kaulo trūksta, šiuolaikinė odontologija siūlo sprendimus, leidžiančius
-                pasiruošti implantacijai.
-              </p>
-              <p>Implantacija gali būti taikoma:</p>
-            </div>
-            <div className="grid sm:grid-cols-2 gap-3 mb-8">
-              {[
-                "netekus vieno danties",
-                "netekus kelių dantų",
-                "netekus visų dantų viename ar abiejuose žandikauliuose",
-                "pacientams, nepatenkintiems išimamais protezais",
-              ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
-                  <span className="mt-1"><CheckIcon /></span>
-                  <span className="text-slate-700">{text}</span>
+            <div className="space-y-6">
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+                  Ar implantacija – visiems tinkamas sprendimas?
+                </h2>
+                <div className="space-y-4 text-slate-700 leading-relaxed">
+                  <p>
+                    Dantų implantacija gali būti taikoma daugeliui pacientų, tačiau prieš gydymą visuomet atliekamas išsamus
+                    įvertinimas. Svarbiausi veiksniai – bendroji burnos būklė, žandikaulio kaulo kiekis ir paciento sveikatos
+                    būklė. Net ir tais atvejais, kai kaulo trūksta, šiuolaikinė odontologija siūlo sprendimus, leidžiančius
+                    pasiruošti implantacijai.
+                  </p>
                 </div>
-              ))}
-            </div>
-            <p className="text-slate-700 leading-relaxed mb-8">
-              Svarbiausia – individualus planavimas ir tinkamai parinkta gydymo strategija, leidžianti pasiekti stabilų ir
-              ilgalaikį rezultatą.
-            </p>
+              </div>
 
-            <div className="grid lg:grid-cols-3 gap-6">
-              {treatmentOptions.map((option, i) => (
-                <div key={i} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img src={option.image} alt={option.title} className="w-full h-full object-cover" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-semibold text-darkblue-700 mb-3">{option.title}</h3>
-                    <p className="text-sm text-slate-700 leading-relaxed">{option.text}</p>
-                  </div>
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  Implantacija gali būti taikoma:
+                </h3>
+
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {[
+                    "netekus vieno danties",
+                    "netekus kelių dantų",
+                    "netekus visų dantų viename ar abiejuose žandikauliuose",
+                    "pacientams, nepatenkintiems išimamais protezais",
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-brand/10 shadow-sm">
+                      <span className="mt-1"><CheckIcon /></span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </motion.section>
 
@@ -462,18 +456,21 @@ export default function DantuImplantacija() {
             className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              Kodėl prarastą dantį svarbu atstatyti kuo greičiau?
-            </h2>
-            <div className="space-y-4 text-slate-700 leading-relaxed mb-8">
-              <p>
-                Prarasto danties atkūrimas neturėtų būti atidedamas ilgam laikui. Nors iš pradžių gali atrodyti, kad vieno
-                danties netekimas nesukelia didelių nepatogumų, ilgainiui burnoje prasideda sudėtingi ir dažnai nepastebimi
-                pokyčiai, kurie gali turėti įtakos tiek burnos sveikatai, tiek bendrai savijautai.
-              </p>
+            <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8 mb-8">
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+                Kodėl prarastą dantį svarbu atstatyti kuo greičiau?
+              </h2>
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Prarasto danties atkūrimas neturėtų būti atidedamas ilgam laikui. Nors iš pradžių gali atrodyti, kad vieno
+                  danties netekimas nesukelia didelių nepatogumų, ilgainiui burnoje prasideda sudėtingi ir dažnai nepastebimi
+                  pokyčiai, kurie gali turėti įtakos tiek burnos sveikatai, tiek bendrai savijautai.
+                </p>
+              </div>
             </div>
+
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Gretimų dantų slinkimas ir sąkandžio pokyčiai</h3>
                 <p className="text-slate-700 leading-relaxed text-sm">
                   Netekus danties, atsiradusi tuščia vieta burnoje niekada nelieka „neutrali". Gretimi dantys palaipsniui
@@ -482,7 +479,7 @@ export default function DantuImplantacija() {
                   tai gali sukelti žandikaulio sąnario diskomfortą, galvos ar kaklo skausmus.
                 </p>
               </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Žandikaulio kaulo nykimas</h3>
                 <p className="text-slate-700 leading-relaxed text-sm">
                   Natūralaus danties šaknis stimuliuoja žandikaulio kaulą kramtymo metu. Netekus danties, ši stimuliacija
@@ -491,7 +488,7 @@ export default function DantuImplantacija() {
                   apsunkinti ar net apriboti galimybes ateityje atlikti implantaciją be papildomų procedūrų.
                 </p>
               </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Kramtymo funkcijos ir virškinimo problemos</h3>
                 <p className="text-slate-700 leading-relaxed text-sm">
                   Trūkstant dantų, kramtymo funkcija tampa neefektyvi. Maistas nėra tinkamai susmulkinamas, todėl didesnė
@@ -499,7 +496,7 @@ export default function DantuImplantacija() {
                   sutrikimus. Be to, žmonės dažnai pradeda vengti kietesnio maisto, o tai daro įtaką mitybos kokybei.
                 </p>
               </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Burnos higienos ir dantenų problemos</h3>
                 <p className="text-slate-700 leading-relaxed text-sm">
                   Tarpai tarp dantų tampa vieta, kurioje lengviau kaupiasi maisto likučiai ir bakterijos. Tai apsunkina
@@ -509,7 +506,7 @@ export default function DantuImplantacija() {
               </div>
             </div>
             <div className="mt-6 grid gap-6 md:grid-cols-2">
-              <div className="bg-brand-50/30 p-6 rounded-2xl border border-brand/10">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-brand/10">
                 <h3 className="font-bold text-darkblue-700 mb-2">Veido estetikos ir pasitikėjimo savimi pokyčiai</h3>
                 <p className="text-slate-700 leading-relaxed text-sm">
                   Ilgainiui dėl kaulo nykimo ir sąkandžio pakitimų gali keistis veido kontūrai – atsirasti įkritę skruostai,
@@ -517,7 +514,7 @@ export default function DantuImplantacija() {
                   poveikį: žmonės pradeda vengti šypsotis, jaustis nejaukiai bendraudami ar fotografuodamiesi.
                 </p>
               </div>
-              <div className="bg-brand-50/30 p-6 rounded-2xl border border-brand/10">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-brand/10">
                 <h3 className="font-bold text-darkblue-700 mb-2">Ankstyvas atkūrimas – mažiau sudėtingas gydymas</h3>
                 <p className="text-slate-700 leading-relaxed text-sm">
                   Kuo greičiau atkuriamas prarastas dantis, tuo paprastesnis ir prognozuojamesnis tampa gydymas. Laiku
@@ -534,116 +531,74 @@ export default function DantuImplantacija() {
             className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              Kam reikalinga dantų implantacija?
-            </h2>
-            <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-              <p>
-                Dantų implantacija yra vienas universaliausių ir plačiausiai pritaikomų sprendimų šiuolaikinėje odontologijoje.
-                Ji gali būti taikoma labai skirtingose situacijose – nuo vieno prarasto danties atkūrimo iki sudėtingų atvejų,
-                kai netekta visų dantų viename ar abiejuose žandikauliuose. Tinkamumas implantacijai visada vertinamas
-                individualiai, tačiau indikacijų spektras yra labai platus.
-              </p>
-              <h3 className="font-semibold text-darkblue-700">Kada reikalinga dantų implantacija?</h3>
-              <p>Implantacija rekomenduojama tada, kai:</p>
-            </div>
-            <div className="grid sm:grid-cols-2 gap-3 mb-8">
-              {[
-                "netenkama vieno ar kelių nuolatinių dantų",
-                "dantis buvo pašalintas dėl karieso, periodonto ligų ar traumos",
-                "dantys stipriai pažeisti ir nebetinkami atstatyti plombomis ar vainikėliais",
-                "seniai netekti dantys sukėlė sąkandžio ar kramtymo problemas",
-                "išimami protezai kelia diskomfortą ar nestabilumą",
-              ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
-                  <span className="mt-1"><CheckIcon /></span>
-                  <span className="text-slate-700">{text}</span>
+            <div className="space-y-6">
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+                  Kam reikalinga dantų implantacija?
+                </h2>
+                <div className="space-y-4 text-slate-700 leading-relaxed">
+                  <p>
+                    Dantų implantacija yra vienas universaliausių ir plačiausiai pritaikomų sprendimų šiuolaikinėje odontologijoje.
+                    Ji gali būti taikoma labai skirtingose situacijose – nuo vieno prarasto danties atkūrimo iki sudėtingų atvejų,
+                    kai netekta visų dantų viename ar abiejuose žandikauliuose. Tinkamumas implantacijai visada vertinamas
+                    individualiai, tačiau indikacijų spektras yra labai platus.
+                  </p>
                 </div>
-              ))}
-            </div>
-            <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-              <p>
-                Svarbu pabrėžti, kad implantacija gali būti planuojama tiek iškart po danties netekimo, tiek praėjus ilgesniam
-                laikui. Tačiau ankstyvas sprendimas dažnai leidžia išvengti papildomų procedūrų ir sutrumpina visą gydymo
-                procesą.
-              </p>
-              <h3 className="font-semibold text-darkblue-700">Dėl ko pacientai renkasi implantaciją?</h3>
-              <p>
-                Pacientai implantaciją renkasi dėl jos funkcinių, estetinių ir ilgalaikių privalumų. Pagrindinės priežastys:
-              </p>
-            </div>
-            <div className="grid sm:grid-cols-2 gap-3 mb-8">
-              {[
-                "Natūralus pojūtis – implantais atkurti dantys funkciškai ir vizualiai labiausiai primena natūralius.",
-                "Stabilumas – implantai yra fiksuoti, nejuda ir netrukdo kasdienėje veikloje.",
-                "Kaulo išsaugojimas – implantai padeda sustabdyti žandikaulio kaulo nykimą.",
-                "Gretimų dantų apsauga – nereikia šlifuoti sveikų dantų, kaip tiltų atveju.",
-                "Ilgaamžiškumas – tinkamai prižiūrimi implantai gali tarnauti dešimtmečius.",
-              ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
-                  <span className="mt-1"><CheckIcon /></span>
-                  <span className="text-slate-700">{text}</span>
+              </div>
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  Kada reikalinga dantų implantacija?
+                </h3>
+                <p className="text-slate-700 leading-relaxed mb-4">
+                  Implantacija rekomenduojama tada, kai:
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-3 mb-6">
+                  {[
+                    "netenkama vieno ar kelių nuolatinių dantų",
+                    "dantis buvo pašalintas dėl karieso, periodonto ligų ar traumos",
+                    "dantys stipriai pažeisti ir nebetinkami atstatyti plombomis ar vainikėliais",
+                    "seniai netekti dantys sukėlė sąkandžio ar kramtymo problemas",
+                    "išimami protezai kelia diskomfortą ar nestabilumą",
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-brand/10 shadow-sm">
+                      <span className="mt-1"><CheckIcon /></span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <p className="text-slate-700 leading-relaxed mb-8">
-              Dėl šių savybių implantacija dažnai laikoma ne trumpalaikiu sprendimu, o ilgalaike investicija į burnos sveikatą
-              ir gyvenimo kokybę.
-            </p>
-            <h3 className="text-lg font-semibold text-darkblue-700 mb-4">Kam dantų implantacija yra tinkamiausia?</h3>
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                <h4 className="font-bold text-darkblue-700 mb-2">Pacientams, netekusiems vieno danties</h4>
-                <p className="text-slate-700 text-sm leading-relaxed">
-                  Tai leidžia atkurti trūkstamą dantį nepažeidžiant gretimų sveikų dantų ir išlaikyti natūralią burnos
-                  struktūrą.
+
+                <p className="text-slate-700 leading-relaxed">
+                  Svarbu pabrėžti, kad implantacija gali būti planuojama tiek iškart po danties netekimo, tiek praėjus ilgesniam
+                  laikui. Tačiau ankstyvas sprendimas dažnai leidžia išvengti papildomų procedūrų ir sutrumpina visą gydymo
+                  procesą.
                 </p>
               </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                <h4 className="font-bold text-darkblue-700 mb-2">Pacientams, netekusiems kelių dantų</h4>
-                <p className="text-slate-700 text-sm leading-relaxed">
-                  Implantai gali būti naudojami kaip atrama tiltams ar atskiriems vainikėliams, užtikrinant stabilų ir
-                  estetišką rezultatą.
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  Dėl ko pacientai renkasi implantaciją?
+                </h3>
+                <p className="text-slate-700 leading-relaxed mb-4">
+                  Pacientai implantaciją renkasi dėl jos funkcinių, estetinių ir ilgalaikių privalumų. Pagrindinės priežastys:
                 </p>
+
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {[
+                    "Natūralus pojūtis – implantais atkurti dantys funkciškai ir vizualiai labiausiai primena natūralius.",
+                    "Stabilumas – implantai yra fiksuoti, nejuda ir netrukdo kasdienėje veikloje.",
+                    "Kaulo išsaugojimas – implantai padeda sustabdyti žandikaulio kaulo nykimą.",
+                    "Gretimų dantų apsauga – nereikia šlifuoti sveikų dantų, kaip tiltų atveju.",
+                    "Ilgaamžiškumas – tinkamai prižiūrimi implantai gali tarnauti dešimtmečius.",
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-brand/10 shadow-sm">
+                      <span className="mt-1"><CheckIcon /></span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                <h4 className="font-bold text-darkblue-700 mb-2">Pacientams, netekusiems visų dantų viename žandikaulyje</h4>
-                <p className="text-slate-700 text-sm leading-relaxed">
-                  Tokiais atvejais implantacija leidžia atsisakyti išimamų protezų ir pereiti prie fiksuotų sprendimų,
-                  atkuriant visą dantų lanką.
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                <h4 className="font-bold text-darkblue-700 mb-2">Pacientams, nešiojantiems išimamus protezus</h4>
-                <p className="text-slate-700 text-sm leading-relaxed">
-                  Implantai gali ženkliai pagerinti protezų stabilumą arba visiškai pakeisti juos fiksuotais sprendimais,
-                  suteikiančiais daugiau komforto ir pasitikėjimo.
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm md:col-span-2">
-                <h4 className="font-bold text-darkblue-700 mb-2">Vyresnio amžiaus pacientams</h4>
-                <p className="text-slate-700 text-sm leading-relaxed">
-                  Amžius savaime nėra kliūtis implantacijai. Svarbiausia – bendra sveikatos būklė ir individualus gydymo
-                  planavimas.
-                </p>
-              </div>
-            </div>
-            <div className="mt-8 bg-white p-6 rounded-2xl border border-brand/10">
-              <h3 className="text-lg font-semibold text-darkblue-700 mb-3">Individualus įvertinimas – būtinas žingsnis</h3>
-              <p className="text-slate-700 leading-relaxed mb-4">
-                Nors dantų implantacija tinka daugeliui pacientų, kiekvienu atveju būtina išsami konsultacija. Jos metu
-                įvertinama:
-              </p>
-              <ul className="list-disc pl-5 space-y-2 text-slate-700 text-sm">
-                <li>burnos ir dantenų būklė</li>
-                <li>žandikaulio kaulo kiekis</li>
-                <li>bendroji sveikata</li>
-                <li>paciento lūkesčiai ir galimi sprendimai</li>
-              </ul>
-              <p className="text-slate-700 leading-relaxed mt-4">
-                Tik atlikus tokį įvertinimą galima parinkti optimalų implantacijos metodą ir suplanuoti gydymą,
-                užtikrinantį saugų ir ilgalaikį rezultatą.
-              </p>
             </div>
           </motion.section>
 
@@ -654,7 +609,7 @@ export default function DantuImplantacija() {
             variants={item}
           >
             {/* Poster image block */}
-            <div className="rounded-[28px] border border-brand/10 bg-white overflow-hidden shadow-soft mb-8">
+            <div className="rounded-[28px] border border-brand/10 bg-brand-50 overflow-hidden shadow-soft mb-8">
               <div className="grid lg:grid-cols-2 gap-0 items-stretch">
                 <div className="p-6 sm:p-8 lg:p-10">
                   <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand mb-4">
@@ -695,68 +650,82 @@ export default function DantuImplantacija() {
             </div>
 
             {/* Detailed ALL-ON-4 content */}
-            <div className="space-y-4 text-slate-700 leading-relaxed">
-              <h3 className="font-semibold text-darkblue-700">Kas yra ALL-ON-4 metodas?</h3>
-              <p>
-                ALL-ON-4 – tai implantacijos technika, kai visas vieno žandikaulio dantų lankas atkuriamas naudojant
-                keturis implantus. Du implantai sriegiami vertikaliai priekinėje žandikaulio dalyje, o kiti du – pasviru
-                kampu užpakalinėje srityje. Toks išdėstymas leidžia maksimaliai išnaudoti esamą kaulą ir užtikrinti tvirtą
-                atramą visam dantų lankui.
-              </p>
-              <p>
-                Ant šių keturių implantų tą pačią dieną tvirtinamas laikinas, bet fiksuotas protezas, kuris atrodo kaip
-                natūralūs dantys ir leidžia pacientui grįžti prie įprasto gyvenimo ritmo.
-              </p>
-              <h3 className="font-semibold text-darkblue-700">Vienas žandikaulis per vieną dieną – ką tai reiškia pacientui?</h3>
-              <p>Praktiškai ALL-ON-4 reiškia:</p>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {[
-                  "tik per vieną dieną atliekamas implantų įsriegimas",
-                  "tą pačią dieną pritvirtinami laikini fiksuoti dantys",
-                  "nereikia nešioti išimamų protezų gijimo laikotarpiu",
-                  "pacientas iš klinikos išeina su dantimis",
-                ].map((text, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
-                    <span className="mt-1"><CheckIcon /></span>
-                    <span className="text-slate-700">{text}</span>
-                  </div>
-                ))}
+            <div className="space-y-6 text-slate-700 leading-relaxed">
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">Kas yra ALL-ON-4 metodas?</h3>
+                <p>
+                  ALL-ON-4 – tai implantacijos technika, kai visas vieno žandikaulio dantų lankas atkuriamas naudojant
+                  keturis implantus. Du implantai sriegiami vertikaliai priekinėje žandikaulio dalyje, o kiti du – pasviru
+                  kampu užpakalinėje srityje. Toks išdėstymas leidžia maksimaliai išnaudoti esamą kaulą ir užtikrinti tvirtą
+                  atramą visam dantų lankui.
+                </p>
+                <p className="mt-4">
+                  Ant šių keturių implantų tą pačią dieną tvirtinamas laikinas, bet fiksuotas protezas, kuris atrodo kaip
+                  natūralūs dantys ir leidžia pacientui grįžti prie įprasto gyvenimo ritmo.
+                </p>
               </div>
-              <h3 className="font-semibold text-darkblue-700">Kam ALL-ON-4 implantacija yra tinkamiausia?</h3>
-              <p>ALL-ON-4 metodas dažniausiai rekomenduojamas:</p>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {[
-                  "pacientams, netekusiems visų dantų viename ar abiejuose žandikauliuose",
-                  "tiems, kurių likę dantys yra stipriai pažeisti ir nebetinkami gydyti",
-                  "žmonėms, kurie nepatenkinti išimamais protezais",
-                  "pacientams, kuriems nustatytas žandikaulio kaulo sumažėjimas",
-                  "tiems, kurie nori greito ir fiksuoto sprendimo, o ne ilgo gydymo",
-                ].map((text, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
-                    <span className="mt-1"><CheckIcon /></span>
-                    <span className="text-slate-700">{text}</span>
-                  </div>
-                ))}
+
+              <div>
+                <h3 className="font-semibold text-darkblue-700">Vienas žandikaulis per vieną dieną – ką tai reiškia pacientui?</h3>
+                <p className="mt-4">Praktiškai ALL-ON-4 reiškia:</p>
+                <div className="grid sm:grid-cols-2 gap-3 mt-4">
+                  {[
+                    "tik per vieną dieną atliekamas implantų įsriegimas",
+                    "tą pačią dieną pritvirtinami laikini fiksuoti dantys",
+                    "nereikia nešioti išimamų protezų gijimo laikotarpiu",
+                    "pacientas iš klinikos išeina su dantimis",
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
+                      <span className="mt-1"><CheckIcon /></span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <h3 className="font-semibold text-darkblue-700">Kodėl ALL-ON-4 dažnai leidžia išvengti kaulo priauginimo?</h3>
-              <p>
-                Tradicinėje implantacijoje dažnai prireikia papildomų procedūrų, jei žandikaulio kaulo kiekis yra
-                nepakankamas. ALL-ON-4 metodas išnaudoja tas žandikaulio sritis, kur kaulo paprastai išlieka daugiau, ir
-                leidžia implantus įsriegti kampu, užtikrinant stabilumą net esant kaulo trūkumui.
-              </p>
-              <p>
-                Tai reiškia: trumpesnį gydymo laiką, mažiau chirurginių intervencijų, mažesnę komplikacijų riziką bei
-                greitesnį grįžimą prie įprasto gyvenimo.
-              </p>
-              <h3 className="font-semibold text-darkblue-700">Laikini ir galutiniai dantys – kaip vyksta procesas?</h3>
-              <p>
-                Pirmąją dieną pacientui pritvirtinami laikini, bet fiksuoti dantys, kurie yra estetiški, stabilūs ir
-                funkcionalūs. Jie leidžia komfortiškai gyventi gijimo laikotarpiu, kol implantai pilnai suauga su kaulu.
-              </p>
-              <p>
-                Po gijimo etapo laikini dantys pakeičiami galutiniais protezais, kurie gaminami individualiai, atsižvelgiant
-                į veido bruožus, šypsenos liniją, sąkandį ir paciento estetikos lūkesčius.
-              </p>
+
+              <div>
+                <h3 className="font-semibold text-darkblue-700">Kam ALL-ON-4 implantacija yra tinkamiausia?</h3>
+                <p className="mt-4">ALL-ON-4 metodas dažniausiai rekomenduojamas:</p>
+                <div className="grid sm:grid-cols-2 gap-3 mt-4">
+                  {[
+                    "pacientams, netekusiems visų dantų viename ar abiejuose žandikauliuose",
+                    "tiems, kurių likę dantys yra stipriai pažeisti ir nebetinkami gydyti",
+                    "žmonėms, kurie nepatenkinti išimamais protezais",
+                    "pacientams, kuriems nustatytas žandikaulio kaulo sumažėjimas",
+                    "tiems, kurie nori greito ir fiksuoto sprendimo, o ne ilgo gydymo",
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
+                      <span className="mt-1"><CheckIcon /></span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">Kodėl ALL-ON-4 dažnai leidžia išvengti kaulo priauginimo?</h3>
+                <p>
+                  Tradicinėje implantacijoje dažnai prireikia papildomų procedūrų, jei žandikaulio kaulo kiekis yra
+                  nepakankamas. ALL-ON-4 metodas išnaudoja tas žandikaulio sritis, kur kaulo paprastai išlieka daugiau, ir
+                  leidžia implantus įsriegti kampu, užtikrinant stabilumą net esant kaulo trūkumui.
+                </p>
+                <p className="mt-4">
+                  Tai reiškia: trumpesnį gydymo laiką, mažiau chirurginių intervencijų, mažesnę komplikacijų riziką bei
+                  greitesnį grįžimą prie įprasto gyvenimo.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">Laikini ir galutiniai dantys – kaip vyksta procesas?</h3>
+                <p>
+                  Pirmąją dieną pacientui pritvirtinami laikini, bet fiksuoti dantys, kurie yra estetiški, stabilūs ir
+                  funkcionalūs. Jie leidžia komfortiškai gyventi gijimo laikotarpiu, kol implantai pilnai suauga su kaulu.
+                </p>
+                <p className="mt-4">
+                  Po gijimo etapo laikini dantys pakeičiami galutiniais protezais, kurie gaminami individualiai, atsižvelgiant
+                  į veido bruožus, šypsenos liniją, sąkandį ir paciento estetikos lūkesčius.
+                </p>
+              </div>
             </div>
           </motion.section>
 
@@ -766,57 +735,89 @@ export default function DantuImplantacija() {
             className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              ALL-ON-4 privalumai, lyginant su kitais dantų atkūrimo sprendimais
-            </h2>
-            <div className="space-y-4 text-slate-700 leading-relaxed">
-              <p>
-                Renkantis dantų atkūrimo metodą, pacientams dažnai kyla klausimas, kuo ALL-ON-4 skiriasi nuo kitų galimų
-                sprendimų ir kodėl šis metodas laikomas vienu pažangiausių. Norint priimti pagrįstą sprendimą, svarbu
-                suprasti pagrindinius skirtumus tarp ALL-ON-4, tradicinės implantacijos ir išimamų protezų.
-              </p>
-              <h3 className="font-semibold text-darkblue-700">ALL-ON-4 ir išimami protezai</h3>
-              <p>
-                Išimami protezai dažnai pasirenkami kaip laikinas ar pigesnis sprendimas, tačiau jie turi nemažai trūkumų.
-                Tokie protezai gali judėti, spausti dantenas, trukdyti kalbai ar valgymui. Be to, jie nesustabdo žandikaulio
-                kaulo nykimo, todėl laikui bėgant situacija gali tik blogėti.
-              </p>
-              <p>
-                ALL-ON-4 implantacija, priešingai, suteikia fiksuotą sprendimą, kuris nejuda ir yra tvirtai pritvirtintas prie
-                implantų. Pacientas gali jaustis užtikrintai valgydamas, kalbėdamas ar šypsodamasis, be baimės, kad dantys
-                pasislinks ar iškris. Be to, implantai stimuliuoja žandikaulio kaulą, padėdami išsaugoti jo struktūrą.
-              </p>
-              <h3 className="font-semibold text-darkblue-700">ALL-ON-4 ir klasikinė implantacija su daug implantų</h3>
-              <p>
-                Tradicinė viso žandikaulio implantacija dažnai reikalauja didelio implantų skaičiaus, papildomų chirurginių
-                procedūrų ir ilgesnio gydymo laiko. Tokiais atvejais gali būti reikalingas kaulo priauginimas, sinusų pakėlimas
-                ir ilgas gijimo laikotarpis, kol galima tvirtinti galutinius dantis.
-              </p>
-              <p>
-                ALL-ON-4 metodas leidžia pasiekti stabilų rezultatą naudojant vos keturis implantus, išvengiant sudėtingų
-                papildomų procedūrų daugelyje atvejų. Tai reiškia trumpesnį gydymo laiką, mažesnį chirurginį krūvį ir
-                greitesnį grįžimą prie įprasto gyvenimo ritmo.
-              </p>
-              <h3 className="font-semibold text-darkblue-700">Laikas – vienas didžiausių ALL-ON-4 privalumų</h3>
-              <p>
-                Vienas iš esminių skirtumų tarp ALL-ON-4 ir kitų metodų yra gydymo trukmė. Klasikinės implantacijos atveju
-                pacientas gali laukti kelis mėnesius ar net ilgiau, kol bus galima džiaugtis galutiniais dantimis.
-              </p>
-              <p>
-                ALL-ON-4 leidžia per vieną dieną atkurti visą dantų lanką, suteikiant laikinus, bet fiksuotus dantis tą pačią
-                dieną. Tai ypač svarbu pacientams, kurie nenori ar negali ilgą laiką likti be dantų ar naudoti išimamus
-                protezus.
-              </p>
-              <h3 className="font-semibold text-darkblue-700">Ilgalaikė vertė</h3>
-              <p>
-                Nors pradinė ALL-ON-4 investicija gali atrodyti didesnė, ilgalaikėje perspektyvoje tai dažnai tampa ekonomiškai
-                naudingesniu sprendimu. Mažesnis implantų skaičius, trumpesnis gydymo laikas ir retesnės korekcijos leidžia
-                išvengti papildomų išlaidų ateityje.
-              </p>
-              <p>
-                ALL-ON-4 implantacija sujungia stabilumą, estetiką, laiką ir komfortą į vieną sprendimą, kuris daugeliui
-                pacientų tampa optimaliausiu pasirinkimu.
-              </p>
+            <div className="space-y-6">
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+                  ALL-ON-4 privalumai, lyginant su kitais dantų atkūrimo sprendimais
+                </h2>
+                <div className="space-y-4 text-slate-700 leading-relaxed">
+                  <p>
+                    Renkantis dantų atkūrimo metodą, pacientams dažnai kyla klausimas, kuo ALL-ON-4 skiriasi nuo kitų galimų
+                    sprendimų ir kodėl šis metodas laikomas vienu pažangiausių. Norint priimti pagrįstą sprendimą, svarbu
+                    suprasti pagrindinius skirtumus tarp ALL-ON-4, tradicinės implantacijos ir išimamų protezų.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  ALL-ON-4 ir išimami protezai
+                </h3>
+                <div className="space-y-4 text-slate-700 leading-relaxed">
+                  <p>
+                    Išimami protezai dažnai pasirenkami kaip laikinas ar pigesnis sprendimas, tačiau jie turi nemažai trūkumų.
+                    Tokie protezai gali judėti, spausti dantenas, trukdyti kalbai ar valgymui. Be to, jie nesustabdo žandikaulio
+                    kaulo nykimo, todėl laikui bėgant situacija gali tik blogėti.
+                  </p>
+                  <p>
+                    ALL-ON-4 implantacija, priešingai, suteikia fiksuotą sprendimą, kuris nejuda ir yra tvirtai pritvirtintas prie
+                    implantų. Pacientas gali jaustis užtikrintai valgydamas, kalbėdamas ar šypsodamasis, be baimės, kad dantys
+                    pasislinks ar iškris. Be to, implantai stimuliuoja žandikaulio kaulą, padėdami išsaugoti jo struktūrą.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  ALL-ON-4 ir klasikinė implantacija su daug implantų
+                </h3>
+                <div className="space-y-4 text-slate-700 leading-relaxed">
+                  <p>
+                    Tradicinė viso žandikaulio implantacija dažnai reikalauja didelio implantų skaičiaus, papildomų chirurginių
+                    procedūrų ir ilgesnio gydymo laiko. Tokiais atvejais gali būti reikalingas kaulo priauginimas, sinusų pakėlimas
+                    ir ilgas gijimo laikotarpis, kol galima tvirtinti galutinius dantis.
+                  </p>
+                  <p>
+                    ALL-ON-4 metodas leidžia pasiekti stabilų rezultatą naudojant vos keturis implantus, išvengiant sudėtingų
+                    papildomų procedūrų daugelyje atvejų. Tai reiškia trumpesnį gydymo laiką, mažesnį chirurginį krūvį ir
+                    greitesnį grįžimą prie įprasto gyvenimo ritmo.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  Laikas – vienas didžiausių ALL-ON-4 privalumų
+                </h3>
+                <div className="space-y-4 text-slate-700 leading-relaxed">
+                  <p>
+                    Vienas iš esminių skirtumų tarp ALL-ON-4 ir kitų metodų yra gydymo trukmė. Klasikinės implantacijos atveju
+                    pacientas gali laukti kelis mėnesius ar net ilgiau, kol bus galima džiaugtis galutiniais dantimis.
+                  </p>
+                  <p>
+                    ALL-ON-4 leidžia per vieną dieną atkurti visą dantų lanką, suteikiant laikinus, bet fiksuotus dantis tą pačią
+                    dieną. Tai ypač svarbu pacientams, kurie nenori ar negali ilgą laiką likti be dantų ar naudoti išimamus
+                    protezus.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  Ilgalaikė vertė
+                </h3>
+                <div className="space-y-4 text-slate-700 leading-relaxed">
+                  <p>
+                    Nors pradinė ALL-ON-4 investicija gali atrodyti didesnė, ilgalaikėje perspektyvoje tai dažnai tampa ekonomiškai
+                    naudingesniu sprendimu. Mažesnis implantų skaičius, trumpesnis gydymo laikas ir retesnės korekcijos leidžia
+                    išvengti papildomų išlaidų ateityje.
+                  </p>
+                  <p>
+                    ALL-ON-4 implantacija sujungia stabilumą, estetiką, laiką ir komfortą į vieną sprendimą, kuris daugeliui
+                    pacientų tampa optimaliausiu pasirinkimu.
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.section>
 
@@ -826,69 +827,101 @@ export default function DantuImplantacija() {
             className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              Ar dantų implantacija yra saugi? O gal skausminga?
-            </h2>
-            <div className="space-y-4 text-slate-700 leading-relaxed">
-              <p>
-                Dantų implantacija dažnai kelia nemažai klausimų ir nerimo, ypač pacientams, kurie su chirurginėmis
-                procedūromis susiduria pirmą kartą. Vieni dažniausių nuogąstavimų – ar procedūra bus skausminga ir ar
-                implantacija yra saugi ilgalaikėje perspektyvoje. Šiuolaikinė odontologija leidžia į šiuos klausimus
-                atsakyti užtikrintai.
-              </p>
-              <h3 className="font-semibold text-darkblue-700">Implantacijos saugumas</h3>
-              <p>
-                Dantų implantacija yra viena labiausiai ištirtų ir patikimų procedūrų šiuolaikinėje odontologijoje.
-                Pasaulyje ji atliekama jau kelis dešimtmečius, o naudojami implantai gaminami laikantis griežtų medicininių
-                standartų. Klinikoje naudojami implantai yra biologiškai suderinami su žmogaus organizmu, todėl organizmas
-                juos priima kaip natūralią dalį.
-              </p>
-              <p>Procedūros saugumą užtikrina:</p>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {[
-                  "išsami diagnostika prieš gydymą",
-                  "individualus gydymo planavimas",
-                  "sterilios darbo sąlygos",
-                  "patyrusių specialistų darbas",
-                  "šiuolaikinės chirurginės technologijos",
-                ].map((text, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
-                    <span className="mt-1"><CheckIcon /></span>
-                    <span className="text-slate-700">{text}</span>
-                  </div>
-                ))}
+            <div className="space-y-6">
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+                  Ar dantų implantacija yra saugi? O gal skausminga?
+                </h2>
+                <div className="space-y-4 text-slate-700 leading-relaxed">
+                  <p>
+                    Dantų implantacija dažnai kelia nemažai klausimų ir nerimo, ypač pacientams, kurie su chirurginėmis
+                    procedūromis susiduria pirmą kartą. Vieni dažniausių nuogąstavimų – ar procedūra bus skausminga ir ar
+                    implantacija yra saugi ilgalaikėje perspektyvoje. Šiuolaikinė odontologija leidžia į šiuos klausimus
+                    atsakyti užtikrintai.
+                  </p>
+                </div>
               </div>
-              <p>
-                Tinkamai suplanuota ir atlikta implantacija pasižymi labai aukštu sėkmės rodikliu, kuris daugeliu atvejų
-                viršija 95 %.
-              </p>
-              <h3 className="font-semibold text-darkblue-700">Ar implantacija yra skausminga?</h3>
-              <p>
-                Implantų įsriegimas atliekamas taikant vietinę nejautrą, todėl procedūros metu pacientas nejaučia skausmo.
-                Dauguma pacientų procedūrą apibūdina kaip trumpą ir gerokai mažiau nemalonią, nei jie tikėjosi iš anksto.
-              </p>
-              <p>
-                Procedūros metu gali būti juntamas lengvas spaudimas, vibracija ar judesio pojūtis – tačiau skausmo tikrai
-                nejaučiama. Jei pacientas jaučia didesnį nerimą, gydytojas visuomet parenka tinkamiausią nuskausminimo
-                sprendimą.
-              </p>
-              <h3 className="font-semibold text-darkblue-700">Pojūčiai po procedūros</h3>
-              <p>
-                Pasibaigus nuskausminimo poveikiui, gali pasireikšti nedidelis diskomfortas, patinimas ar tempimo pojūtis –
-                tai normali organizmo reakcija po chirurginės intervencijos. Šie simptomai dažniausiai būna laikini ir
-                sumažėja per kelias dienas.
-              </p>
-              <p>
-                Po implantacijos pacientams pateikiamos aiškios rekomendacijos, kaip prižiūrėti burną, ko vengti
-                pirmosiomis dienomis ir kaip sumažinti patinimą bei diskomfortą. Laikantis šių nurodymų gijimo procesas
-                vyksta sklandžiai ir be komplikacijų.
-              </p>
-              <h3 className="font-semibold text-darkblue-700">Rizikos ir kaip jos valdomos</h3>
-              <p>
-                Kaip ir bet kuri medicininė procedūra, implantacija turi tam tikrų rizikų, tačiau jos yra retos ir
-                dažniausiai susijusios su nepakankama burnos higiena, rūkymu ar bendromis sveikatos būklėmis. Būtent todėl
-                prieš gydymą atliekamas išsamus įvertinimas, leidžiantis sumažinti galimas rizikas iki minimumo.
-              </p>
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  Implantacijos saugumas
+                </h3>
+                <div className="space-y-4 text-slate-700 leading-relaxed">
+                  <p>
+                    Dantų implantacija yra viena labiausiai ištirtų ir patikimų procedūrų šiuolaikinėje odontologijoje.
+                    Pasaulyje ji atliekama jau kelis dešimtmečius, o naudojami implantai gaminami laikantis griežtų medicininių
+                    standartų. Klinikoje naudojami implantai yra biologiškai suderinami su žmogaus organizmu, todėl organizmas
+                    juos priima kaip natūralią dalį.
+                  </p>
+                  <p>Procedūros saugumą užtikrina:</p>
+
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {[
+                      "išsami diagnostika prieš gydymą",
+                      "individualus gydymo planavimas",
+                      "sterilios darbo sąlygos",
+                      "patyrusių specialistų darbas",
+                      "šiuolaikinės chirurginės technologijos",
+                    ].map((text, i) => (
+                      <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-brand/10 shadow-sm">
+                        <span className="mt-1"><CheckIcon /></span>
+                        <span className="text-slate-700">{text}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <p>
+                    Tinkamai suplanuota ir atlikta implantacija pasižymi labai aukštu sėkmės rodikliu, kuris daugeliu atvejų
+                    viršija 95 %.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  Ar implantacija yra skausminga?
+                </h3>
+                <div className="space-y-4 text-slate-700 leading-relaxed">
+                  <p>
+                    Implantų įsriegimas atliekamas taikant vietinę nejautrą, todėl procedūros metu pacientas nejaučia skausmo.
+                    Dauguma pacientų procedūrą apibūdina kaip trumpą ir gerokai mažiau nemalonią, nei jie tikėjosi iš anksto.
+                  </p>
+                  <p>
+                    Procedūros metu gali būti juntamas lengvas spaudimas, vibracija ar judesio pojūtis – tačiau skausmo tikrai
+                    nejaučiama. Jei pacientas jaučia didesnį nerimą, gydytojas visuomet parenka tinkamiausią nuskausminimo
+                    sprendimą.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  Pojūčiai po procedūros
+                </h3>
+                <div className="space-y-4 text-slate-700 leading-relaxed">
+                  <p>
+                    Pasibaigus nuskausminimo poveikiui, gali pasireikšti nedidelis diskomfortas, patinimas ar tempimo pojūtis –
+                    tai normali organizmo reakcija po chirurginės intervencijos. Šie simptomai dažniausiai būna laikini ir
+                    sumažėja per kelias dienas.
+                  </p>
+                  <p>
+                    Po implantacijos pacientams pateikiamos aiškios rekomendacijos, kaip prižiūrėti burną, ko vengti pirmosiomis
+                    dienomis ir kaip sumažinti patinimą bei diskomfortą. Laikantis šių nurodymų gijimo procesas vyksta sklandžiai
+                    ir be komplikacijų.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  Rizikos ir kaip jos valdomos
+                </h3>
+                <p className="text-slate-700 leading-relaxed">
+                  Kaip ir bet kuri medicininė procedūra, implantacija turi tam tikrų rizikų, tačiau jos yra retos ir dažniausiai
+                  susijusios su nepakankama burnos higiena, rūkymu ar bendromis sveikatos būklėmis. Būtent todėl prieš gydymą
+                  atliekamas išsamus įvertinimas, leidžiantis sumažinti galimas rizikas iki minimumo.
+                </p>
+              </div>
             </div>
           </motion.section>
 
@@ -898,47 +931,75 @@ export default function DantuImplantacija() {
             className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              Kiek laiko tarnauja dantų implantai?
-            </h2>
-            <div className="space-y-4 text-slate-700 leading-relaxed">
-              <p>
-                Vienas dažniausių klausimų, kurį užduoda pacientai svarstydami apie implantaciją, yra susijęs su
-                ilgaamžiškumu – kiek laiko tarnaus dantų implantai ir ar tai tikrai ilgalaikis sprendimas. Šiuolaikinė
-                odontologija leidžia drąsiai teigti, kad tinkamai suplanuoti ir profesionaliai įsriegti implantai gali
-                tarnauti dešimtmečius ar net visą gyvenimą.
-              </p>
-              <h3 className="font-semibold text-darkblue-700">Ilgaamžiškumo pagrindas – implantas ir kaulas</h3>
-              <p>
-                Dantų implantų ilgaamžiškumą lemia osteointegracija – procesas, kurio metu implantas suauga su žandikaulio
-                kaulu. Kai implantas pilnai integruojasi, jis tampa stabilia ir tvirta atrama, galinčia atlaikyti kasdienes
-                kramtymo apkrovas. Šis procesas yra vienas svarbiausių veiksnių, lemiančių ilgalaikę sėkmę.
-              </p>
-              <h3 className="font-semibold text-darkblue-700">Kas turi įtakos implantų tarnavimo laikui?</h3>
-              <p>Nors pats implantas yra labai patvarus, jo tarnavimo trukmę veikia keletas svarbių veiksnių:</p>
-              <ul className="list-disc pl-5 space-y-2 text-slate-700 text-sm">
-                <li>Burnos higiena: kasdienė priežiūra ir profesionali higiena padeda išvengti uždegiminių procesų aplink implantą.</li>
-                <li>Reguliarūs profilaktiniai vizitai: periodinės patikros leidžia laiku pastebėti pokyčius ir užkirsti kelią galimoms komplikacijoms.</li>
-                <li>Bendroji sveikata: tam tikros ligos ar žalingi įpročiai gali turėti įtakos gijimui ir ilgalaikei implantų būklei.</li>
-                <li>Gydytojo patirtis ir planavimas: tikslus implantų išdėstymas ir tinkamas gydymo planas yra esminiai stabilumo veiksniai.</li>
-              </ul>
-              <h3 className="font-semibold text-darkblue-700">Karūnėlės ir protezai – ar juos reikia keisti?</h3>
-              <p>
-                Svarbu atskirti patį implantą nuo ant jo tvirtinamos karūnėlės ar protezo. Pats implantas dažniausiai tarnauja
-                labai ilgai, o ant jo tvirtinami protezai laikui bėgant gali būti atnaujinami dėl natūralaus nusidėvėjimo ar
-                estetinių pokyčių.
-              </p>
-              <p>
-                Tai leidžia ilgalaikėje perspektyvoje išlaikyti stabilų implantą ir prireikus atnaujinti tik viršutinę,
-                matomą dantų dalį.
-              </p>
-              <h3 className="font-semibold text-darkblue-700">Implantai kaip ilgalaikė investicija</h3>
-              <p>
-                Nors implantacija gali atrodyti kaip didesnė pradinė investicija, vertinant ilgalaikį rezultatą ji dažnai
-                tampa ekonomiškai naudingesniu sprendimu nei alternatyvos, reikalaujančios dažnesnio atnaujinimo ar korekcijų.
-                Ilgaamžiai, stabilūs ir funkcionalūs implantai leidžia pacientams džiaugtis pilnaverte šypsena, komfortu ir
-                pasitikėjimu daugelį metų.
-              </p>
+            <div className="space-y-6">
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+                  Kiek laiko tarnauja dantų implantai?
+                </h2>
+                <div className="space-y-4 text-slate-700 leading-relaxed">
+                  <p>
+                    Vienas dažniausių klausimų, kurį užduoda pacientai svarstydami apie implantaciją, yra susijęs su
+                    ilgaamžiškumu – kiek laiko tarnaus dantų implantai ir ar tai tikrai ilgalaikis sprendimas. Šiuolaikinė
+                    odontologija leidžia drąsiai teigti, kad tinkamai suplanuoti ir profesionaliai įsriegti implantai gali
+                    tarnauti dešimtmečius ar net visą gyvenimą.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  Ilgaamžiškumo pagrindas – implantas ir kaulas
+                </h3>
+                <p className="text-slate-700 leading-relaxed">
+                  Dantų implantų ilgaamžiškumą lemia osteointegracija – procesas, kurio metu implantas suauga su žandikaulio
+                  kaulu. Kai implantas pilnai integruojasi, jis tampa stabilia ir tvirta atrama, galinčia atlaikyti kasdienes
+                  kramtymo apkrovas. Šis procesas yra vienas svarbiausių veiksnių, lemiančių ilgalaikę sėkmę.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  Kas turi įtakos implantų tarnavimo laikui?
+                </h3>
+                <p className="text-slate-700 leading-relaxed mb-4">
+                  Nors pats implantas yra labai patvarus, jo tarnavimo trukmę veikia keletas svarbių veiksnių:
+                </p>
+                <ul className="list-disc pl-5 space-y-2 text-slate-700 text-sm">
+                  <li>Burnos higiena: kasdienė priežiūra ir profesionali higiena padeda išvengti uždegiminių procesų aplink implantą.</li>
+                  <li>Reguliarūs profilaktiniai vizitai: periodinės patikros leidžia laiku pastebėti pokyčius ir užkirsti kelią galimoms komplikacijoms.</li>
+                  <li>Bendroji sveikata: tam tikros ligos ar žalingi įpročiai gali turėti įtakos gijimui ir ilgalaikei implantų būklei.</li>
+                  <li>Gydytojo patirtis ir planavimas: tikslus implantų išdėstymas ir tinkamas gydymo planas yra esminiai stabilumo veiksniai.</li>
+                </ul>
+              </div>
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  Karūnėlės ir protezai – ar juos reikia keisti?
+                </h3>
+                <div className="space-y-4 text-slate-700 leading-relaxed">
+                  <p>
+                    Svarbu atskirti patį implantą nuo ant jo tvirtinamos karūnėlės ar protezo. Pats implantas dažniausiai tarnauja
+                    labai ilgai, o ant jo tvirtinami protezai laikui bėgant gali būti atnaujinami dėl natūralaus nusidėvėjimo ar
+                    estetinių pokyčių.
+                  </p>
+                  <p>
+                    Tai leidžia ilgalaikėje perspektyvoje išlaikyti stabilų implantą ir prireikus atnaujinti tik viršutinę,
+                    matomą dantų dalį.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-brand/10 bg-brand-50 p-6 sm:p-8">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  Implantai kaip ilgalaikė investicija
+                </h3>
+                <p className="text-slate-700 leading-relaxed">
+                  Nors implantacija gali atrodyti kaip didesnė pradinė investicija, vertinant ilgalaikį rezultatą ji dažnai
+                  tampa ekonomiškai naudingesniu sprendimu nei alternatyvos, reikalaujančios dažnesnio atnaujinimo ar korekcijų.
+                  Ilgaamžiai, stabilūs ir funkcionalūs implantai leidžia pacientams džiaugtis pilnaverte šypsena, komfortu ir
+                  pasitikėjimu daugelį metų.
+                </p>
+              </div>
             </div>
           </motion.section>
 
@@ -959,7 +1020,7 @@ export default function DantuImplantacija() {
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Pirmosios dienos po implantacijos</h3>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Pirmosiomis dienomis po procedūros gali pasireikšti nedidelis patinimas, tempimo pojūtis ar jautrumas
@@ -971,7 +1032,7 @@ export default function DantuImplantacija() {
                   nevartoti labai karšto maisto ar gėrimų bei nerūkyti ir nevartoti alkoholio.
                 </p>
               </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Burnos higiena gijimo laikotarpiu</h3>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Tinkama burnos higiena yra viena svarbiausių sąlygų sėkmingam implantų prigijimui. Nors implantacijos vieta
@@ -982,7 +1043,7 @@ export default function DantuImplantacija() {
                   priežiūros priemones ir laikytis individualių higienos rekomendacijų.
                 </p>
               </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Mityba po implantacijos</h3>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Pirmosiomis dienomis rekomenduojama rinktis minkštą, lengvai kramtomą maistą. Vėliau, gijimui progresuojant,
@@ -994,7 +1055,7 @@ export default function DantuImplantacija() {
                   gijimo procesui.
                 </p>
               </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Kontroliniai vizitai – būtini ilgalaikiam rezultatui</h3>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Po implantacijos suplanuojami kontroliniai vizitai, kurių metu gydytojas stebi gijimo eigą, implantų
@@ -1006,7 +1067,7 @@ export default function DantuImplantacija() {
                 </p>
               </div>
             </div>
-            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
               <h3 className="text-lg font-semibold text-darkblue-700 mb-2">Ilgalaikė priežiūra</h3>
               <p className="text-slate-700 text-sm leading-relaxed">
                 Net ir sėkmingai prigijus implantams, būtina rūpintis jų priežiūra ilgalaikėje perspektyvoje. Reguliari burnos
@@ -1025,7 +1086,7 @@ export default function DantuImplantacija() {
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
               Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
             </h2>
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-brand/10">
+            <div className="bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/10">
               <p className="text-slate-700 leading-relaxed mb-6">
                 Renkantis, kur atlikti dantų atkūrimą implantais, svarbu ne tik procedūros kaina ar greitis, bet ir tai, kas stovės
                 už galutinio rezultato. Bangų odontologijos klinikoje Klaipėdoje dantų implantacija atliekama remiantis šiuolaikiniais
@@ -1050,7 +1111,7 @@ export default function DantuImplantacija() {
                     text: "Pacientai vertina aiškų paaiškinimą, skaidrią kainodarą ir profesionalų, ramų požiūrį viso gydymo metu.",
                   },
                 ].map((c, i) => (
-                  <div key={i} className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+                  <div key={i} className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
                     <div className="flex items-start gap-3">
                       <span className="mt-1"><CheckIcon /></span>
                       <div>
