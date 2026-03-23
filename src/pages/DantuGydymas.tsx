@@ -15,6 +15,11 @@ const item = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
 }
 
+// UI helper klasės
+const sectionWrap = 'mb-12 scroll-mt-36 2xl:scroll-mt-24'
+const whiteCard = 'bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft'
+const innerCard = 'bg-white p-5 rounded-xl border border-slate-200 shadow-sm'
+
 // Ikonos
 function CheckIcon() {
   return (
@@ -69,7 +74,9 @@ export default function DantuGydymas() {
       "name": "Bangų klinika"
     }
   }
+
   const pageRef = useRef(null)
+
   return (
     <AnimatedSection>
       <SEO
@@ -87,24 +94,25 @@ export default function DantuGydymas() {
         animate="visible"
       >
         <TableOfContents sections={tocSections} rootRef={pageRef} cta={{ label: "Registruotis vizitui", to: "/kontaktai" }} />
-        <div className="min-w-0 flex-1">
 
+        <div className="min-w-0 flex-1">
           {/* HERO */}
           <motion.header className="mb-10 text-left" variants={item}>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
               Profesionalus dantų gydymas Klaipėdoje
             </h1>
 
-            <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed mb-8">
-              <p className="mb-4">
-                Dantų skausmas, diskomfortas ar profilaktinio patikrinimo poreikis – tai dažniausios priežastys, dėl kurių pacientai kreipiasi į odontologą. Laiku atliktas dantų gydymas leidžia ne tik pašalinti nemalonius simptomus, bet ir išsaugoti natūralius dantis bei užkirsti kelią sudėtingesniems gydymo etapams ateityje.
-              </p>
-              <p>
-                Bangų odontologijos klinikoje Klaipėdoje teikiama dantų taisymo paslauga apima platų spektrą procedūrų – nuo konsultacijų ir profilaktinių patikrinimų iki sudėtingų gydymo ir atkūrimo procedūrų. Klinikos specialistai operatyviai padeda tiek esant ūmiam danties skausmui, tiek planuojant ilgalaikį gydymą. Kompleksinis požiūris leidžia pacientams gauti visas reikalingas paslaugas vienoje vietoje, todėl dantų tvarkymas tampa patogus, aiškus ir užtikrintas procesas.
-              </p>
+            <div className={`mb-8`}>
+              <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
+                <p className="mb-4">
+                  Dantų skausmas, diskomfortas ar profilaktinio patikrinimo poreikis – tai dažniausios priežastys, dėl kurių pacientai kreipiasi į odontologą. Laiku atliktas dantų gydymas leidžia ne tik pašalinti nemalonius simptomus, bet ir išsaugoti natūralius dantis bei užkirsti kelią sudėtingesniems gydymo etapams ateityje.
+                </p>
+                <p>
+                  Bangų odontologijos klinikoje Klaipėdoje teikiama dantų taisymo paslauga apima platų spektrą procedūrų – nuo konsultacijų ir profilaktinių patikrinimų iki sudėtingų gydymo ir atkūrimo procedūrų. Klinikos specialistai operatyviai padeda tiek esant ūmiam danties skausmui, tiek planuojant ilgalaikį gydymą. Kompleksinis požiūris leidžia pacientams gauti visas reikalingas paslaugas vienoje vietoje, todėl dantų tvarkymas tampa patogus, aiškus ir užtikrintas procesas.
+                </p>
+              </div>
             </div>
 
-            {/* CTA MYGTUKAS VIRŠUJE */}
             <div className="flex justify-start">
               <Link to="/kontaktai" className="btn-primary btn-glow rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
                 Registruotis vizitui
@@ -113,241 +121,270 @@ export default function DantuGydymas() {
 
             {/* KAINOS */}
             <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-                Dantų gydymo kainos
-              </h2>
-              <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-                <p>
-                  Dantų gydymo kaina priklauso nuo paciento amžiaus, dantų būklės, taikomo gydymo metodo ir procedūros sudėtingumo. Bangų odontologijos klinikoje prieš pradedant gydymą visuomet atliekama konsultacija ir profilaktinis patikrinimas, kurių metu sudaromas individualus gydymo planas ir aptariama preliminari gydymo apimtis bei kaina. Toks požiūris leidžia užtikrinti skaidrumą ir parinkti tinkamiausią sprendimą kiekvienam pacientui.
+              <div className="space-y-5">
+                <div className="w-full">
+                  <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                    Dantų gydymo kainos
+                  </h2>
+                  <p className="text-slate-600 leading-relaxed">
+                    Dantų gydymo kaina priklauso nuo paciento amžiaus, dantų būklės, taikomo gydymo metodo ir procedūros sudėtingumo. Bangų odontologijos klinikoje prieš pradedant gydymą visuomet atliekama konsultacija ir profilaktinis patikrinimas, kurių metu sudaromas individualus gydymo planas ir aptariama preliminari gydymo apimtis bei kaina. Toks požiūris leidžia užtikrinti skaidrumą ir parinkti tinkamiausią sprendimą kiekvienam pacientui.
+                  </p>
+                </div>
+
+                <div className="w-full rounded-2xl border border-brand/20 bg-white shadow-soft overflow-hidden">
+                  <div className="grid lg:grid-cols-2">
+                    {/* KAIRĖ */}
+                    <div className="lg:border-r lg:border-slate-100">
+                      <div className="bg-brand-50/50 px-4 py-3 border-b border-slate-100 font-bold text-darkblue-700">
+                        Suaugusiųjų gydymas
+                      </div>
+                      <div className="divide-y divide-slate-100">
+                        <div className="flex justify-between items-center px-4 py-3 gap-4">
+                          <span className="text-slate-700">Konsultacija ir plano sudarymas</span>
+                          <span className="text-slate-900 font-bold whitespace-nowrap">20 €</span>
+                        </div>
+                        <div className="flex justify-between items-center px-4 py-3 gap-4">
+                          <span className="text-slate-700">Plombavimas helio plomba</span>
+                          <span className="text-slate-900 font-bold whitespace-nowrap">70 – 90 €</span>
+                        </div>
+                        <div className="flex justify-between items-center px-4 py-3 gap-4">
+                          <span className="text-slate-700">Plombavimas stiklojonomerine plomba</span>
+                          <span className="text-slate-900 font-bold whitespace-nowrap">40 – 60 €</span>
+                        </div>
+                        <div className="flex justify-between items-center px-4 py-3 gap-4">
+                          <span className="text-slate-700">Laikina plomba</span>
+                          <span className="text-slate-900 font-bold whitespace-nowrap">nuo 40 €</span>
+                        </div>
+                        <div className="flex justify-between items-center px-4 py-3 gap-4">
+                          <span className="text-slate-700">Nuskausminimas / Rentgeno nuotrauka</span>
+                          <span className="text-slate-900 font-bold whitespace-nowrap">po 10 €</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* DEŠINĖ */}
+                    <div>
+                      <div className="bg-brand-50/50 px-4 py-3 border-b border-slate-100 font-bold text-darkblue-700">
+                        Vaikų gydymas
+                      </div>
+                      <div className="divide-y divide-slate-100">
+                        <div className="flex justify-between items-center px-4 py-3 gap-4">
+                          <span className="text-slate-700">Konsultacija vaikams</span>
+                          <span className="text-slate-900 font-bold whitespace-nowrap">20 €</span>
+                        </div>
+                        <div className="flex justify-between items-center px-4 py-3 gap-4">
+                          <span className="text-slate-700">Pieninių dantų gydymas</span>
+                          <span className="text-slate-900 font-bold whitespace-nowrap">nuo 50 €</span>
+                        </div>
+                        <div className="flex justify-between items-center px-4 py-3 gap-4">
+                          <span className="text-slate-700">Stiklojonomerinė / kompomerinė plomba</span>
+                          <span className="text-slate-900 font-bold whitespace-nowrap">nuo 30 €</span>
+                        </div>
+                        <div className="flex justify-between items-center px-4 py-3 gap-4">
+                          <span className="text-slate-700">Vizitas, kai vaikas nesileidžia gydomas (iki 30 min.)</span>
+                          <span className="text-slate-900 font-bold whitespace-nowrap">nuo 30 €</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-slate-700 leading-relaxed text-sm">
+                  Tiksli dantų gydymo kaina visada nustatoma individualios konsultacijos metu, įvertinus konkrečią situaciją ir gydymo poreikius. Aiški ir skaidri kainodara leidžia pacientams ir tėvams jaustis užtikrintai planuojant dantų gydymą.
                 </p>
               </div>
-
-              <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
-                {/* Suaugusiems */}
-                <div className="bg-brand-50/50 p-4 border-b border-brand/10 font-bold text-darkblue-700">
-                  Suaugusiųjų gydymas
-                </div>
-                <div className="divide-y divide-slate-100">
-                  <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                    <span className="text-slate-700">Konsultacija ir plano sudarymas</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">20 €</span>
-                  </div>
-                  <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                    <span className="text-slate-700">Plombavimas helio plomba</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">70 – 90 €</span>
-                  </div>
-                  <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                    <span className="text-slate-700">Plombavimas stiklojonomerine plomba</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">40 – 60 €</span>
-                  </div>
-                  <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                    <span className="text-slate-700">Laikina plomba</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 40 €</span>
-                  </div>
-                  <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                    <span className="text-slate-700">Nuskausminimas / Rentgeno nuotrauka</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">po 10 €</span>
-                  </div>
-                </div>
-
-                {/* Vaikams */}
-                <div className="bg-brand-50/50 p-4 border-y border-brand/10 font-bold text-darkblue-700 mt-2">
-                  Vaikų gydymas
-                </div>
-                <div className="divide-y divide-slate-100">
-                  <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                    <span className="text-slate-700">Konsultacija vaikams</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">20 €</span>
-                  </div>
-                  <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                    <span className="text-slate-700">Pieninių dantų gydymas</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 50 €</span>
-                  </div>
-                  <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                    <span className="text-slate-700">Stiklojonomerinė / kompomerinė plomba</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 30 €</span>
-                  </div>
-                  <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
-                    <span className="text-slate-700">Vizitas, kai vaikas nesileidžia gydomas (iki 30 min.)</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 30 €</span>
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-slate-700 leading-relaxed text-sm">
-                Tiksli dantų gydymo kaina visada nustatoma individualios konsultacijos metu, įvertinus konkrečią situaciją ir gydymo poreikius. Aiški ir skaidri kainodara leidžia pacientams ir tėvams jaustis užtikrintai planuojant dantų gydymą.
-              </p>
             </div>
           </motion.header>
 
           {/* KAS YRA DANTŲ GYDYMAS */}
-          <motion.section id="kas-yra" className="mb-12 bg-white p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-              Kas yra dantų gydymas?
-            </h2>
-            <div className="space-y-4 text-slate-700 leading-relaxed">
-              <p>
-                Dantų gydymas – tai įvairių odontologinių procedūrų visuma, skirta palaikyti burnos sveikatą, gydyti pažeistus dantis ir atkurti jų funkciją bei estetiką. Jis apima tiek profilaktinius patikrinimus, leidžiančius anksti pastebėti problemas, tiek aktyvų gydymą, kai būtina pašalinti pažeidimus ir atkurti dantų struktūrą.
-              </p>
-              <p>
-                Dantų gydymo metu sprendžiamos tokios problemos kaip dantų ėduonis, danties skausmas, jautrumas, uždegiminiai procesai ar mechaniniai pažeidimai. Priklausomai nuo situacijos, gydymas gali apimti plombavimą, šaknų kanalų gydymą, profesionalią burnos higieną ar kitas procedūras. Toks nuoseklus ir individualiai suplanuotas požiūris leidžia užtikrinti, kad dantų tvarkymas mūsų klinikoje būtų ne tik efektyvus, bet ir orientuotas į ilgalaikį rezultatą.
-              </p>
+          <motion.section id="kas-yra" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kas yra dantų gydymas?
+              </h2>
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Dantų gydymas – tai įvairių odontologinių procedūrų visuma, skirta palaikyti burnos sveikatą, gydyti pažeistus dantis ir atkurti jų funkciją bei estetiką. Jis apima tiek profilaktinius patikrinimus, leidžiančius anksti pastebėti problemas, tiek aktyvų gydymą, kai būtina pašalinti pažeidimus ir atkurti dantų struktūrą.
+                </p>
+                <p>
+                  Dantų gydymo metu sprendžiamos tokios problemos kaip dantų ėduonis, danties skausmas, jautrumas, uždegiminiai procesai ar mechaniniai pažeidimai. Priklausomai nuo situacijos, gydymas gali apimti plombavimą, šaknų kanalų gydymą, profesionalią burnos higieną ar kitas procedūras. Toks nuoseklus ir individualiai suplanuotas požiūris leidžia užtikrinti, kad dantų tvarkymas mūsų klinikoje būtų ne tik efektyvus, bet ir orientuotas į ilgalaikį rezultatą.
+                </p>
+              </div>
             </div>
           </motion.section>
 
-          {/* KADA REIKALINGAS (CHECKLIST) */}
-          <motion.section id="kada-reikalingas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              Kada reikalingas dantų gydymas?
-            </h2>
-            <p className="text-slate-700 mb-6 leading-relaxed">
-              Dantų gydymas reikalingas ne tik tada, kai atsiranda stiprus skausmas. Daugelis burnos problemų vystosi palaipsniui ir ilgą laiką gali nesukelti ryškių simptomų, todėl reguliarūs profilaktiniai patikrinimai yra itin svarbūs. Laiku pastebėtos problemos leidžia jas išspręsti paprasčiau ir išvengti sudėtingesnio gydymo ateityje.
-            </p>
+          {/* KADA REIKALINGAS */}
+          <motion.section id="kada-reikalingas" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kada reikalingas dantų gydymas?
+              </h2>
 
-            <div className="space-y-4 mb-6">
-              <h3 className="font-semibold text-darkblue-700">Į odontologą rekomenduojama kreiptis, jei pastebimi šie požymiai:</h3>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {[
-                  "Danties skausmas ar maudimas (spontaniškai arba valgant)",
-                  "Padidėjęs jautrumas šalčiui, karščiui ar saldumui",
-                  "Nuskilęs, įtrūkęs ar patamsėjęs dantis",
-                  "Kraujuojančios ar patinusios dantenos",
-                  "Nemalonus kvapas iš burnos (nepraeina valant)",
-                  "Poreikis profilaktiniam patikrinimui"
-                ].map((text, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
-                    <span className="mt-1"><CheckIcon /></span>
-                    <span className="text-slate-700">{text}</span>
-                  </div>
-                ))}
+              <p className="text-slate-700 leading-relaxed max-w-4xl mb-6">
+                Dantų gydymas reikalingas ne tik tada, kai atsiranda stiprus skausmas. Daugelis burnos problemų vystosi palaipsniui ir ilgą laiką gali nesukelti ryškių simptomų, todėl reguliarūs profilaktiniai patikrinimai yra itin svarbūs. Laiku pastebėtos problemos leidžia jas išspręsti paprasčiau ir išvengti sudėtingesnio gydymo ateityje.
+              </p>
+
+              <div className={innerCard + ' mb-6'}>
+                <h3 className="font-semibold text-darkblue-700 mb-4">Į odontologą rekomenduojama kreiptis, jei pastebimi šie požymiai:</h3>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {[
+                    "Danties skausmas ar maudimas (spontaniškai arba valgant)",
+                    "Padidėjęs jautrumas šalčiui, karščiui ar saldumui",
+                    "Nuskilęs, įtrūkęs ar patamsėjęs dantis",
+                    "Kraujuojančios ar patinusios dantenos",
+                    "Nemalonus kvapas iš burnos (nepraeina valant)",
+                    "Poreikis profilaktiniam patikrinimui"
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                      <span className="mt-1"><CheckIcon /></span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <p className="text-slate-700 leading-relaxed">
-              Reguliarus ir laiku atliekamas dantų taisymas padeda išsaugoti dantų sveikatą, sumažinti gydymo apimtis ir išlaidas bei užtikrinti gerą savijautą ilgalaikėje perspektyvoje.
-            </p>
+              <p className="text-slate-700 leading-relaxed">
+                Reguliarus ir laiku atliekamas dantų taisymas padeda išsaugoti dantų sveikatą, sumažinti gydymo apimtis ir išlaidas bei užtikrinti gerą savijautą ilgalaikėje perspektyvoje.
+              </p>
+            </div>
           </motion.section>
 
           {/* KOKIAS PASLAUGAS TEIKIAME */}
-          <motion.section id="paslaugos" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              Kokias dantų gydymo paslaugas teikiame?
-            </h2>
-            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-soft">
+          <motion.section id="paslaugos" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kokias dantų gydymo paslaugas teikiame?
+              </h2>
+
               <p className="text-slate-700 mb-6 leading-relaxed">
                 Bangų odontologijos klinikoje teikiamos visos pagrindinės dantų gydymo paslaugos, leidžiančios pacientams gauti kompleksinę pagalbą vienoje vietoje. Atsižvelgiant į individualią situaciją, sudaromas aiškus ir nuoseklus gydymo planas.
               </p>
-              <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
-                {[
-                  "Konsultacijos ir gydymo plano sudarymas",
-                  "Danties plombavimas (helio/stiklojonomerine)",
-                  "Dentalinė rentgenograma",
-                  "Profesionali burnos higiena",
-                  "Estetinis dantų plombavimas",
-                  "Dantų šaknų kanalų gydymas",
-                  "Vaikų dantų gydymas",
-                  "Dantų traukimas",
-                  "Dantų implantacija",
-                  "Kaulo priauginimo operacijos",
-                  "Dantų protezavimas"
-                ].map((service, i) => (
-                  <li key={i} className="flex items-center gap-2 text-slate-700">
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand shrink-0" />
-                    <span>{service}</span>
-                  </li>
-                ))}
-              </ul>
+
+              <div className={innerCard + ' mb-6'}>
+                <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+                  {[
+                    "Konsultacijos ir gydymo plano sudarymas",
+                    "Danties plombavimas (helio/stiklojonomerine)",
+                    "Dentalinė rentgenograma",
+                    "Profesionali burnos higiena",
+                    "Estetinis dantų plombavimas",
+                    "Dantų šaknų kanalų gydymas",
+                    "Vaikų dantų gydymas",
+                    "Dantų traukimas",
+                    "Dantų implantacija",
+                    "Kaulo priauginimo operacijos",
+                    "Dantų protezavimas"
+                  ].map((service, i) => (
+                    <li key={i} className="flex items-center gap-2 text-slate-700">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand shrink-0" />
+                      <span>{service}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <p className="text-slate-700 leading-relaxed">
+                Platus paslaugų spektras leidžia užtikrinti, kad dantų tvarkymas būtų atliekamas nuosekliai, saugiai ir orientuotai į ilgalaikį rezultatą, nesiunčiant paciento iš vienos klinikos į kitą.
+              </p>
             </div>
-            <p className="text-slate-700 mt-4 leading-relaxed">
-              Platus paslaugų spektras leidžia užtikrinti, kad dantų tvarkymas būtų atliekamas nuosekliai, saugiai ir orientuotai į ilgalaikį rezultatą, nesiunčiant paciento iš vienos klinikos į kitą.
-            </p>
           </motion.section>
 
           {/* KAIP VYKSTA GYDYMAS */}
-          <motion.section id="procesas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              Kaip vyksta dantų gydymas mūsų klinikoje?
-            </h2>
-            <div className="grid gap-6 md:grid-cols-3">
-              <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-                <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
-                <h3 className="font-bold text-darkblue-700 mb-2">Konsultacija ir diagnostika</h3>
-                <p className="text-sm text-slate-600">Patikrinimas, rentgeno tyrimai, būklės įvertinimas. Sudaromas individualus gydymo planas su prioritetais.</p>
-              </div>
-              <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-                <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
-                <h3 className="font-bold text-darkblue-700 mb-2">Gydymo atlikimas</h3>
-                <p className="text-sm text-slate-600">Atliekamos procedūros (plombavimas, kanalų gydymas ir kt.) naudojant nuskausminimą, užtikrinant komfortą.</p>
-              </div>
-              <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-                <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
-                <h3 className="font-bold text-darkblue-700 mb-2">Rekomendacijos ir priežiūra</h3>
-                <p className="text-sm text-slate-600">Patarimai dėl priežiūros namuose ir kito vizito suplanavimas ilgalaikiam rezultatui užtikrinti.</p>
+          <motion.section id="procesas" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kaip vyksta dantų gydymas mūsų klinikoje?
+              </h2>
+
+              <div className="grid gap-6 md:grid-cols-3">
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Konsultacija ir diagnostika</h3>
+                  <p className="text-sm text-slate-600">Patikrinimas, rentgeno tyrimai, būklės įvertinimas. Sudaromas individualus gydymo planas su prioritetais.</p>
+                </div>
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Gydymo atlikimas</h3>
+                  <p className="text-sm text-slate-600">Atliekamos procedūros (plombavimas, kanalų gydymas ir kt.) naudojant nuskausminimą, užtikrinant komfortą.</p>
+                </div>
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Rekomendacijos ir priežiūra</h3>
+                  <p className="text-sm text-slate-600">Patarimai dėl priežiūros namuose ir kito vizito suplanavimas ilgalaikiam rezultatui užtikrinti.</p>
+                </div>
               </div>
             </div>
           </motion.section>
 
-          {/* PROFILAKTIKA (BURBULAI) */}
-          <motion.section id="profilaktika" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              Kodėl svarbūs profilaktiniai patikrinimai?
-            </h2>
-            <div className="grid sm:grid-cols-3 gap-6">
-              <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
-                <ShieldCheckIcon />
-                <h3 className="font-semibold text-darkblue-700 mb-2">Ankstyva diagnostika</h3>
-                <p className="text-sm text-slate-700 leading-relaxed">
-                  Leidžia nustatyti ėduonį ar uždegimą dar pradinėje stadijoje, kai nejaučiamas skausmas.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
-                <ClipboardListIcon />
-                <h3 className="font-semibold text-darkblue-700 mb-2">Paprastesnis gydymas</h3>
-                <p className="text-sm text-slate-700 leading-relaxed">
-                  Laiku pastebėtos problemos reikalauja mažesnės intervencijos, trumpesnio laiko ir mažesnių išlaidų.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
-                <HeartPulseIcon />
-                <h3 className="font-semibold text-darkblue-700 mb-2">Ilgalaikė sveikata</h3>
-                <p className="text-sm text-slate-700 leading-relaxed">
-                  Reguliarūs vizitai padeda išvengti netikėto skausmo ir išsaugoti natūralius dantis kuo ilgiau.
-                </p>
+          {/* PROFILAKTIKA */}
+          <motion.section id="profilaktika" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kodėl svarbūs profilaktiniai patikrinimai?
+              </h2>
+
+              <div className="grid sm:grid-cols-3 gap-6">
+                <div className={innerCard}>
+                  <ShieldCheckIcon />
+                  <h3 className="font-semibold text-darkblue-700 mb-2">Ankstyva diagnostika</h3>
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    Leidžia nustatyti ėduonį ar uždegimą dar pradinėje stadijoje, kai nejaučiamas skausmas.
+                  </p>
+                </div>
+                <div className={innerCard}>
+                  <ClipboardListIcon />
+                  <h3 className="font-semibold text-darkblue-700 mb-2">Paprastesnis gydymas</h3>
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    Laiku pastebėtos problemos reikalauja mažesnės intervencijos, trumpesnio laiko ir mažesnių išlaidų.
+                  </p>
+                </div>
+                <div className={innerCard}>
+                  <HeartPulseIcon />
+                  <h3 className="font-semibold text-darkblue-700 mb-2">Ilgalaikė sveikata</h3>
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    Reguliarūs vizitai padeda išvengti netikėto skausmo ir išsaugoti natūralius dantis kuo ilgiau.
+                  </p>
+                </div>
               </div>
             </div>
           </motion.section>
 
           {/* KODĖL MES */}
-          <motion.section id="kodel-mes" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-              Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
-            </h2>
-            <div className="space-y-4 text-slate-700 leading-relaxed">
-              <p>
-                Renkantis dantų gydymą svarbu ne tik greitai pašalinti problemą, bet ir užtikrinti ilgalaikį rezultatą bei saugų gydymo procesą. Bangų odontologijos klinikoje dantų taisymas ir gydymas atliekami vadovaujantis šiuolaikiniais odontologijos standartais, derinant patirtį, modernias technologijas ir individualų požiūrį į kiekvieną pacientą.
-              </p>
-              <p>
-                Klinikoje dirbantys specialistai skiria ypatingą dėmesį tiksliai diagnostikai, aiškiam gydymo plano sudarymui ir nuosekliam jo įgyvendinimui. Tai leidžia pacientams suprasti gydymo eigą, pasirinkti tinkamiausius sprendimus ir jaustis užtikrintai viso proceso metu. Platus paslaugų spektras užtikrina, kad dantų tvarkymas Klaipėdoje būtų atliekamas vienoje vietoje – nuo profilaktikos iki sudėtingesnių gydymo ar atkūrimo procedūrų.
-              </p>
-              <p>
-                Pacientai vertina ramų bendravimą, skaidrią kainodarą ir dėmesingą požiūrį, o teigiami atsiliepimai dažnai pabrėžia profesionalumą, komfortą ir pasitikėjimą galutiniu rezultatu. Tai leidžia Bangų odontologijos klinikai tapti patikimu pasirinkimu ieškantiems kokybiško ir atsakingo dantų gydymo.
-              </p>
+          <motion.section id="kodel-mes" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
+              </h2>
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Renkantis dantų gydymą svarbu ne tik greitai pašalinti problemą, bet ir užtikrinti ilgalaikį rezultatą bei saugų gydymo procesą. Bangų odontologijos klinikoje dantų taisymas ir gydymas atliekami vadovaujantis šiuolaikiniais odontologijos standartais, derinant patirtį, modernias technologijas ir individualų požiūrį į kiekvieną pacientą.
+                </p>
+                <p>
+                  Klinikoje dirbantys specialistai skiria ypatingą dėmesį tiksliai diagnostikai, aiškiam gydymo plano sudarymui ir nuosekliam jo įgyvendinimui. Tai leidžia pacientams suprasti gydymo eigą, pasirinkti tinkamiausius sprendimus ir jaustis užtikrintai viso proceso metu. Platus paslaugų spektras užtikrina, kad dantų tvarkymas Klaipėdoje būtų atliekamas vienoje vietoje – nuo profilaktikos iki sudėtingesnių gydymo ar atkūrimo procedūrų.
+                </p>
+                <p>
+                  Pacientai vertina ramų bendravimą, skaidrią kainodarą ir dėmesingą požiūrį, o teigiami atsiliepimai dažnai pabrėžia profesionalumą, komfortą ir pasitikėjimą galutiniu rezultatu. Tai leidžia Bangų odontologijos klinikai tapti patikimu pasirinkimu ieškantiems kokybiško ir atsakingo dantų gydymo.
+                </p>
+              </div>
             </div>
           </motion.section>
 
           {/* PABAIGOS CTA */}
           <motion.div className="mt-8 mb-12 text-left" variants={item}>
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-              Kviečiame registruotis dantų gydymui Bangų klinikoje
-            </h2>
-            <p className="text-slate-700 mb-8 max-w-3xl leading-relaxed">
-              Jeigu jaučiate danties skausmą, pastebėjote diskomfortą ar tiesiog norite atlikti profilaktinį patikrinimą, kviečiame registruotis konsultacijai Bangų odontologijos klinikoje. Laiku pradėtas dantų gydymas padeda išvengti sudėtingesnių procedūrų ir išsaugoti natūralius dantis.
-            </p>
-            <Link to="/kontaktai" className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
-              Registruotis vizitui
-            </Link>
-          </motion.div>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kviečiame registruotis dantų gydymui Bangų klinikoje
+              </h2>
 
+              <p className="text-slate-700 mb-8 max-w-3xl leading-relaxed">
+                Jeigu jaučiate danties skausmą, pastebėjote diskomfortą ar tiesiog norite atlikti profilaktinį patikrinimą, kviečiame registruotis konsultacijai Bangų odontologijos klinikoje. Laiku pradėtas dantų gydymas padeda išvengti sudėtingesnių procedūrų ir išsaugoti natūralius dantis.
+              </p>
+
+              <Link to="/kontaktai" className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
+                Registruotis vizitui
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </motion.div>
     </AnimatedSection>

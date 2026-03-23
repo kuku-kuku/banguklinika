@@ -14,6 +14,11 @@ const item = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
 }
 
+// UI helper klasės
+const sectionWrap = 'mb-12 scroll-mt-36 2xl:scroll-mt-24'
+const whiteCard = 'bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft'
+const innerCard = 'bg-white p-5 rounded-xl border border-slate-200 shadow-sm'
+
 function CheckIcon() {
   return (
     <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0 text-brand" aria-hidden>
@@ -73,7 +78,7 @@ export default function SkubiPagalba() {
               Skubi odontologinė pagalba Klaipėdoje
             </h1>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft">
+            <div className={`mb-8`}>
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
                 <p className="mb-4">
                   Staigus danties skausmas ar netikėtai atsiradusi burnos problema gali stipriai sutrikdyti kasdienį gyvenimą.
@@ -93,7 +98,6 @@ export default function SkubiPagalba() {
               </div>
             </div>
 
-            {/* CTA */}
             <div className="flex justify-start mt-6">
               <Link
                 to="/kontaktai"
@@ -107,14 +111,14 @@ export default function SkubiPagalba() {
           {/* KADA REIKALINGA */}
           <motion.section
             id="kada-reikalinga"
-            className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
+            className={sectionWrap}
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-              Kada reikalinga skubi odontologinė pagalba?
-            </h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kada reikalinga skubi odontologinė pagalba?
+              </h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-brand/10 shadow-soft">
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Skubi odontologinė pagalba reikalinga tuomet, kai burnos ertmėje atsiranda staigių simptomų, kurių negalima
@@ -134,14 +138,14 @@ export default function SkubiPagalba() {
           {/* KAINA */}
           <motion.section
             id="kaina"
-            className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
+            className={sectionWrap}
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-              Nuo ko priklauso skubios odontologinės pagalbos kaina?
-            </h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Nuo ko priklauso skubios odontologinės pagalbos kaina?
+              </h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft">
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Skubios odontologinės pagalbos kaina gali skirtis priklausomai nuo kelių svarbių veiksnių. Pirmiausia ji
@@ -169,67 +173,67 @@ export default function SkubiPagalba() {
           {/* SITUACIJOS */}
           <motion.section
             id="situacijos"
-            className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
+            className={sectionWrap}
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              Dažniausios situacijos, kai reikalinga skubi pagalba
-            </h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Dažniausios situacijos, kai reikalinga skubi pagalba
+              </h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft mb-6">
-              <p className="text-slate-700 leading-relaxed">
+              <p className="text-slate-700 leading-relaxed mb-6">
                 Skubi odontologinė pagalba dažniausiai reikalinga tuomet, kai atsiranda netikėti simptomai ar burnos ertmės
                 pažeidimai, kurių negalima atidėti. Tokiose situacijose svarbu kuo greičiau kreiptis į odontologą, nes ankstyvas
                 gydymas dažnai padeda išvengti rimtesnių komplikacijų.
               </p>
-            </div>
 
-            <div className="space-y-4">
-              {[
-                {
-                  title: 'Staigus ir stiprus danties skausmas',
-                  text: 'Vienas dažniausių skubios pagalbos atvejų – stiprus, pulsuojantis danties skausmas. Jis gali atsirasti dėl pažengusio ėduonies, danties nervo uždegimo ar infekcijos. Tokiu atveju būtina kuo greičiau atlikti diagnostiką ir pradėti gydymą, kad skausmas būtų sumažintas ir sustabdytas uždegimas.',
-                },
-                {
-                  title: 'Danties lūžis ar nuskilimas',
-                  text: 'Dantys gali būti pažeisti dėl traumos, smūgio ar kietų maisto produktų. Net ir nedidelis nuskilimas gali sukelti jautrumą ar skausmą, todėl svarbu kreiptis į odontologą, kuris įvertins pažeidimo mastą ir atkurs danties formą.',
-                },
-                {
-                  title: 'Patinimas ar infekcija burnos srityje',
-                  text: 'Dantenų patinimas, pūlinys ar infekcija gali rodyti bakterinį uždegimą. Tokiais atvejais skubi pagalba padeda sustabdyti infekcijos plitimą ir sumažinti komplikacijų riziką.',
-                },
-                {
-                  title: 'Iškritusi plomba arba karūnėlė',
-                  text: 'Jei iškrenta plomba ar karūnėlė, dantis lieka neapsaugotas ir gali tapti jautrus ar pažeidžiamas. Skubus apsilankymas pas odontologą padeda apsaugoti dantį ir atkurti jo funkciją.',
-                },
-                {
-                  title: 'Traumos ar kraujavimas burnoje',
-                  text: 'Po nelaimingo atsitikimo ar sporto traumos gali būti pažeisti dantys ar minkštieji audiniai. Tokiais atvejais būtina kuo greičiau kreiptis į specialistus, kad būtų įvertinta situacija ir suteikta tinkama pagalba.',
-                },
-                {
-                  title: 'Protinių dantų skausmas',
-                  text: 'Protinių dantų dygimas kartais sukelia stiprų skausmą, patinimą ar uždegimą. Jei simptomai tampa intensyvūs, reikalinga skubi odontologinė pagalba, kuri padės sumažinti diskomfortą ir parinkti tinkamą gydymo sprendimą.',
-                },
-              ].map((s, i) => (
-                <div key={i} className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-                  <h3 className="font-bold text-darkblue-700 mb-2">{s.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{s.text}</p>
-                </div>
-              ))}
+              <div className="space-y-4">
+                {[
+                  {
+                    title: 'Staigus ir stiprus danties skausmas',
+                    text: 'Vienas dažniausių skubios pagalbos atvejų – stiprus, pulsuojantis danties skausmas. Jis gali atsirasti dėl pažengusio ėduonies, danties nervo uždegimo ar infekcijos. Tokiu atveju būtina kuo greičiau atlikti diagnostiką ir pradėti gydymą, kad skausmas būtų sumažintas ir sustabdytas uždegimas.',
+                  },
+                  {
+                    title: 'Danties lūžis ar nuskilimas',
+                    text: 'Dantys gali būti pažeisti dėl traumos, smūgio ar kietų maisto produktų. Net ir nedidelis nuskilimas gali sukelti jautrumą ar skausmą, todėl svarbu kreiptis į odontologą, kuris įvertins pažeidimo mastą ir atkurs danties formą.',
+                  },
+                  {
+                    title: 'Patinimas ar infekcija burnos srityje',
+                    text: 'Dantenų patinimas, pūlinys ar infekcija gali rodyti bakterinį uždegimą. Tokiais atvejais skubi pagalba padeda sustabdyti infekcijos plitimą ir sumažinti komplikacijų riziką.',
+                  },
+                  {
+                    title: 'Iškritusi plomba arba karūnėlė',
+                    text: 'Jei iškrenta plomba ar karūnėlė, dantis lieka neapsaugotas ir gali tapti jautrus ar pažeidžiamas. Skubus apsilankymas pas odontologą padeda apsaugoti dantį ir atkurti jo funkciją.',
+                  },
+                  {
+                    title: 'Traumos ar kraujavimas burnoje',
+                    text: 'Po nelaimingo atsitikimo ar sporto traumos gali būti pažeisti dantys ar minkštieji audiniai. Tokiais atvejais būtina kuo greičiau kreiptis į specialistus, kad būtų įvertinta situacija ir suteikta tinkama pagalba.',
+                  },
+                  {
+                    title: 'Protinių dantų skausmas',
+                    text: 'Protinių dantų dygimas kartais sukelia stiprų skausmą, patinimą ar uždegimą. Jei simptomai tampa intensyvūs, reikalinga skubi odontologinė pagalba, kuri padės sumažinti diskomfortą ir parinkti tinkamą gydymo sprendimą.',
+                  },
+                ].map((s, i) => (
+                  <div key={i} className={innerCard}>
+                    <h3 className="font-bold text-darkblue-700 mb-2">{s.title}</h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">{s.text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.section>
 
           {/* KODĖL NEATIDĖLIOTI */}
           <motion.section
             id="kodel-neatidelioti"
-            className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
+            className={sectionWrap}
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-              Kodėl nereikėtų atidėlioti vizito pas odontologą?
-            </h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kodėl nereikėtų atidėlioti vizito pas odontologą?
+              </h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft">
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Daugelis žmonių linkę atidėti vizitą pas odontologą, tikėdamiesi, kad skausmas praeis savaime. Tačiau
@@ -256,52 +260,52 @@ export default function SkubiPagalba() {
           {/* VIZITAS */}
           <motion.section
             id="vizitas"
-            className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
+            className={sectionWrap}
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              Kaip vyksta skubios pagalbos vizitas?
-            </h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kaip vyksta skubios pagalbos vizitas?
+              </h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft mb-6">
-              <p className="text-slate-700 leading-relaxed">
+              <p className="text-slate-700 leading-relaxed mb-6">
                 Skubios odontologinės pagalbos vizitas pirmiausia skirtas greitai nustatyti problemos priežastį ir sumažinti
                 paciento patiriamą skausmą. Bangų odontologijos klinikoje kiekviena situacija vertinama individualiai, todėl
                 gydytojai stengiasi kuo greičiau suteikti reikalingą pagalbą ir parinkti tinkamiausią gydymo sprendimą.
               </p>
-            </div>
 
-            <div className="grid gap-6 md:grid-cols-4">
-              <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-                <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
-                <h3 className="font-bold text-darkblue-700 mb-2">Pirminė apžiūra ir diagnostika</h3>
-                <p className="text-sm text-slate-600">
-                  Odontologas atlieka burnos ertmės apžiūrą ir įvertina simptomus. Jei reikia, atliekamas rentgeno tyrimas.
-                </p>
-              </div>
+              <div className="grid gap-6 md:grid-cols-4">
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Pirminė apžiūra ir diagnostika</h3>
+                  <p className="text-sm text-slate-600">
+                    Odontologas atlieka burnos ertmės apžiūrą ir įvertina simptomus. Jei reikia, atliekamas rentgeno tyrimas.
+                  </p>
+                </div>
 
-              <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-                <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
-                <h3 className="font-bold text-darkblue-700 mb-2">Skausmo malšinimas</h3>
-                <p className="text-sm text-slate-600">
-                  Pirmiausia imamasi priemonių skausmui sumažinti – vietinė nejautra ar kitos procedūros.
-                </p>
-              </div>
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Skausmo malšinimas</h3>
+                  <p className="text-sm text-slate-600">
+                    Pirmiausia imamasi priemonių skausmui sumažinti – vietinė nejautra ar kitos procedūros.
+                  </p>
+                </div>
 
-              <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-                <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
-                <h3 className="font-bold text-darkblue-700 mb-2">Problemos sprendimas</h3>
-                <p className="text-sm text-slate-600">
-                  Atliekama reikalinga procedūra arba laikinas gydymas, kuris stabilizuoja būklę iki planinio gydymo.
-                </p>
-              </div>
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Problemos sprendimas</h3>
+                  <p className="text-sm text-slate-600">
+                    Atliekama reikalinga procedūra arba laikinas gydymas, kuris stabilizuoja būklę iki planinio gydymo.
+                  </p>
+                </div>
 
-              <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-                <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
-                <h3 className="font-bold text-darkblue-700 mb-2">Tolimesnio gydymo planas</h3>
-                <p className="text-sm text-slate-600">
-                  Sudaromas tolimesnio gydymo planas, padedantis išspręsti problemą galutinai ir užtikrinti ilgalaikę burnos sveikatą.
-                </p>
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Tolimesnio gydymo planas</h3>
+                  <p className="text-sm text-slate-600">
+                    Sudaromas tolimesnio gydymo planas, padedantis išspręsti problemą galutinai ir užtikrinti ilgalaikę burnos sveikatą.
+                  </p>
+                </div>
               </div>
             </div>
           </motion.section>
@@ -309,14 +313,14 @@ export default function SkubiPagalba() {
           {/* SKAUSMO MAŽINIMAS */}
           <motion.section
             id="skausmo-mazinimas"
-            className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
+            className={sectionWrap}
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-              Kaip sumažinti dantų skausmą iki vizito pas odontologą?
-            </h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kaip sumažinti dantų skausmą iki vizito pas odontologą?
+              </h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft">
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Staigus dantų skausmas gali būti labai nemalonus, todėl daugelis pacientų ieško būdų, kaip palengvinti būklę
@@ -331,14 +335,14 @@ export default function SkubiPagalba() {
                     'Jei atsirado patinimas, laikyti šaltą kompresą išorinėje žando pusėje.',
                     'Naudoti gydytojo rekomenduotus skausmą malšinančius vaistus.',
                   ].map((text, i) => (
-                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-slate-50 border border-slate-100">
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
                       <span className="mt-1"><CheckIcon /></span>
                       <span className="text-slate-700">{text}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-4 rounded-xl border border-slate-100 bg-slate-50 p-4">
+                <div className="mt-4 rounded-xl border border-slate-200 bg-white p-4">
                   <p className="text-sm text-slate-700 leading-relaxed">
                     <span className="font-semibold text-darkblue-700">Svarbu:</span>{' '}
                     Tai tik laikinieji sprendimai. Kuo anksčiau nustatoma dantų skausmo priežastis, tuo paprastesnis ir greitesnis
@@ -352,14 +356,14 @@ export default function SkubiPagalba() {
           {/* TRAUMA */}
           <motion.section
             id="trauma"
-            className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
+            className={sectionWrap}
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-              Ką daryti patyrus danties traumą?
-            </h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Ką daryti patyrus danties traumą?
+              </h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft">
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Danties trauma gali įvykti dėl įvairių priežasčių – sporto, nelaimingo atsitikimo ar stipraus smūgio. Tokiose
@@ -390,14 +394,14 @@ export default function SkubiPagalba() {
           {/* KODĖL BANGŲ */}
           <motion.section
             id="kodel-bangu"
-            className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
+            className={sectionWrap}
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-              Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
-            </h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
+              </h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft">
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Renkantis odontologijos kliniką skubiai pagalbai, svarbiausia yra profesionalumas, patirtis ir greita reakcija.
@@ -421,12 +425,12 @@ export default function SkubiPagalba() {
 
           {/* CTA */}
           <motion.div className="mt-8 mb-12 text-left" variants={item}>
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-              Kviečiame registruotis skubiai odontologinei pagalbai Bangų klinikoje
-            </h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kviečiame registruotis skubiai odontologinei pagalbai Bangų klinikoje
+              </h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft mb-6">
-              <p className="text-slate-700 max-w-3xl leading-relaxed">
+              <p className="text-slate-700 max-w-3xl leading-relaxed mb-8">
                 Jei jaučiate stiprų danties skausmą, pastebėjote patinimą ar patyrėte danties traumą, svarbu nedelsti ir kuo
                 greičiau kreiptis į specialistus. Laiku suteikta skubi odontologinė pagalba gali padėti sumažinti skausmą,
                 sustabdyti uždegimą ir išsaugoti natūralius dantis.
@@ -436,14 +440,14 @@ export default function SkubiPagalba() {
                 sveikata. Kreipkitės į mūsų kliniką ir užsiregistruokite skubiai konsultacijai – patyrę specialistai įvertins
                 situaciją ir parinks tinkamiausią gydymo sprendimą.
               </p>
-            </div>
 
-            <Link
-              to="/kontaktai"
-              className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1"
-            >
-              Registruotis vizitui
-            </Link>
+              <Link
+                to="/kontaktai"
+                className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1"
+              >
+                Registruotis vizitui
+              </Link>
+            </div>
           </motion.div>
         </div>
       </motion.div>

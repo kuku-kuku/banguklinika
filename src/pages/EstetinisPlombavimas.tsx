@@ -15,11 +15,10 @@ const item = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
 }
 
-// UI helper klasės (vienodumui)
+// UI helper klasės
 const sectionWrap = 'mb-14 scroll-mt-36 2xl:scroll-mt-24'
-const sectionTitle = 'text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4'
-const whiteCard = 'bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft'
-const whiteCardTight = 'bg-white p-6 rounded-2xl border border-slate-100 shadow-soft'
+const whiteCard = 'bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft'
+const innerCard = 'bg-white p-5 rounded-xl border border-slate-200 shadow-sm'
 
 // Ikonos
 function CheckIcon() {
@@ -85,7 +84,7 @@ export default function EstetinisPlombavimas() {
         initial="hidden"
         animate="visible"
       >
-        <TableOfContents sections={tocSections} rootRef={pageRef} cta={{ label: "Registruotis vizitui", to: "/kontaktai" }} />
+        <TableOfContents sections={tocSections} rootRef={pageRef} cta={{ label: 'Registruotis vizitui', to: '/kontaktai' }} />
 
         <div className="min-w-0 flex-1">
           {/* HERO / ĮŽANGA */}
@@ -94,8 +93,7 @@ export default function EstetinisPlombavimas() {
               Profesionalus estetinis dantų plombavimas Klaipėdoje
             </h1>
 
-            {/* Įžanga į balta kortelę (vienodumas su kitais puslapiais) */}
-            <div className={`${whiteCard} mb-8`}>
+            <div className={`mb-8`}>
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4">
                 <p>
                   Šypsenos estetika turi didelę įtaką pasitikėjimui savimi ir bendrai savijautai. Net ir nedideli dantų defektai – nuskilimai,
@@ -110,7 +108,6 @@ export default function EstetinisPlombavimas() {
               </div>
             </div>
 
-            {/* CTA MYGTUKAS VIRŠUJE */}
             <div className="flex justify-start">
               <Link
                 to="/kontaktai"
@@ -126,7 +123,7 @@ export default function EstetinisPlombavimas() {
                 Estetinio plombavimo kainos mūsų klinikoje
               </h2>
 
-              <div className={`${whiteCard} mb-6`}>
+              <div className="mb-6">
                 <p className="text-slate-700 leading-relaxed">
                   Estetinio plombavimo kaina priklauso nuo restauruojamo danties būklės, pažeidimo apimties ir reikalingų estetinių korekcijų.
                   Prieš procedūrą visuomet atliekama konsultacija, kurios metu įvertinama situacija ir parenkamas tinkamiausias gydymo sprendimas,
@@ -134,23 +131,24 @@ export default function EstetinisPlombavimas() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
-                <div className="divide-y divide-slate-100">
-                  {/* nuimtas hover */}
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-5">
-                    <span className="text-slate-700 font-medium">Estetinis vieno danties plombavimas</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap mt-2 sm:mt-0 ml-0 sm:ml-4">150 – 200 €</span>
+              <div className="rounded-2xl border border-brand/20 bg-white shadow-soft overflow-hidden mb-6">
+                <div className="grid md:grid-cols-2">
+                  <div className="divide-y divide-slate-100">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-5 py-4 gap-2 sm:gap-4">
+                      <span className="text-slate-700 font-medium">Estetinis vieno danties plombavimas</span>
+                      <span className="text-darkblue-700 font-bold whitespace-nowrap">150 – 200 €</span>
+                    </div>
                   </div>
 
-                  {/* nuimtas hover */}
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-5">
-                    <span className="text-slate-700 font-medium">Estetinės plombos poliravimas (atnaujinimas)</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap mt-2 sm:mt-0 ml-0 sm:ml-4">nuo 29 €</span>
+                  <div className="divide-y divide-slate-100 md:border-l md:border-slate-100">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-5 py-4 gap-2 sm:gap-4">
+                      <span className="text-slate-700 font-medium">Estetinės plombos poliravimas (atnaujinimas)</span>
+                      <span className="text-darkblue-700 font-bold whitespace-nowrap">nuo 29 €</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* kainų paaiškinimai į baltą bloką, kad nesusilietų */}
               <div className={whiteCard}>
                 <div className="text-slate-700 leading-relaxed space-y-4">
                   <p>
@@ -172,9 +170,9 @@ export default function EstetinisPlombavimas() {
 
           {/* KAS YRA ESTETINIS PLOMBAVIMAS */}
           <motion.section id="kas-yra" className={sectionWrap} variants={item}>
-            <h2 className={sectionTitle}>Kas yra estetinis plombavimas?</h2>
-
             <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas yra estetinis plombavimas?</h2>
+
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Estetinis plombavimas – tai odontologinė procedūra, kurios metu dantys atkuriami sluoksniavimo metodu, naudojant aukštos estetikos
@@ -197,19 +195,17 @@ export default function EstetinisPlombavimas() {
 
           {/* PROBLEMOS */}
           <motion.section id="problemos" className={sectionWrap} variants={item}>
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              Kokias problemas galima išspręsti estetiniu plombavimu?
-            </h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+                Kokias problemas galima išspręsti estetiniu plombavimu?
+              </h2>
 
-            <div className={`${whiteCard} mb-6`}>
-              <p className="text-slate-700 leading-relaxed">
+              <p className="text-slate-700 leading-relaxed mb-6">
                 Estetinis plombavimas yra universali procedūra, leidžianti išspręsti įvairias – tiek estetines, tiek funkcines – dantų problemas.
                 Dėl sluoksniavimo technikos ir modernių restauracinių medžiagų galima itin tiksliai atkurti natūralią dantų išvaizdą, pritaikant ją
                 prie visos šypsenos proporcijų.
               </p>
-            </div>
 
-            <div className={whiteCard}>
               <h3 className="font-semibold text-darkblue-700 mb-4">
                 Dažniausiai estetiniu plombavimu sprendžiamos šios problemos:
               </h3>
@@ -222,7 +218,7 @@ export default function EstetinisPlombavimas() {
                   'Netaisyklinga dantų forma ar ilgis, kai dantys atrodo per trumpi ar nevienodi',
                   'Spalvos netolygumai, kurių neįmanoma pašalinti dantų balinimu'
                 ].map((text, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                  <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
                     <span className="mt-1">
                       <CheckIcon />
                     </span>
@@ -240,77 +236,76 @@ export default function EstetinisPlombavimas() {
 
           {/* PROCESAS */}
           <motion.section id="procesas" className={sectionWrap} variants={item}>
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              Kaip atliekamas estetinis plombavimas?
-            </h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
+                Kaip atliekamas estetinis plombavimas?
+              </h2>
 
-            <div className={`${whiteCard} mb-6`}>
-              <p className="text-slate-700 leading-relaxed">
+              <p className="text-slate-700 leading-relaxed mb-6">
                 Estetinis plombavimas Bangų odontologijos klinikoje atliekamas laikantis nuoseklios ir kruopščiai suplanuotos procedūros eigos,
                 užtikrinančios tiek estetiką, tiek dantų ilgaamžiškumą. Kiekvienas etapas pritaikomas individualiai, atsižvelgiant į paciento dantų
                 būklę ir norimą pasiekti rezultatą.
               </p>
-            </div>
 
-            <div className="grid gap-6 md:grid-cols-2">
-              {/* nuimtas group-hover, paliekam vienodą */}
-              <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden">
-                <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none">
-                  01
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+                  <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none">
+                    01
+                  </div>
+                  <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Konsultacija ir planavimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed relative z-10">
+                    Procedūra pradedama išsamia apžiūra, kurios metu įvertinama dantų būklė, forma, spalva ir sąkandis. Aptariami paciento lūkesčiai ir
+                    galimos korekcijos ribos, siekiant natūralaus rezultato.
+                  </p>
                 </div>
-                <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Konsultacija ir planavimas</h3>
-                <p className="text-sm text-slate-600 leading-relaxed relative z-10">
-                  Procedūra pradedama išsamia apžiūra, kurios metu įvertinama dantų būklė, forma, spalva ir sąkandis. Aptariami paciento lūkesčiai ir
-                  galimos korekcijos ribos, siekiant natūralaus rezultato.
-                </p>
+
+                <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+                  <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none">
+                    02
+                  </div>
+                  <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Pasiruošimas procedūrai</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed relative z-10">
+                    Prieš estetinį plombavimą dažniausiai rekomenduojama atlikti profesionalią burnos higieną. Tai padeda užtikrinti švarų dantų
+                    paviršių ir geresnį restauracinių medžiagų sukibimą.
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+                  <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none">
+                    03
+                  </div>
+                  <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Dantų restauravimas sluoksniais</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed relative z-10">
+                    Naudojant modernias plombines medžiagas, dantis atkuriamas sluoksniais, formuojant natūralią danties anatomiją ir atspalvį. Vieno
+                    danties restauracija vidutiniškai trunka apie 1,5 valandos, o darbas atliekamas maksimaliai tausojant sveikus danties audinius.
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+                  <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none">
+                    04
+                  </div>
+                  <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Galutinis formavimas ir poliravimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed relative z-10">
+                    Procedūra užbaigiama kruopščiu dantų paviršiaus poliravimu, kad atkurti dantys būtų lygūs, blizgūs ir harmoningai įsilietų į bendrą
+                    šypsenos vaizdą.
+                  </p>
+                </div>
               </div>
 
-              <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden">
-                <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none">
-                  02
-                </div>
-                <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Pasiruošimas procedūrai</h3>
-                <p className="text-sm text-slate-600 leading-relaxed relative z-10">
-                  Prieš estetinį plombavimą dažniausiai rekomenduojama atlikti profesionalią burnos higieną. Tai padeda užtikrinti švarų dantų
-                  paviršių ir geresnį restauracinių medžiagų sukibimą.
+              <div className={`${innerCard} mt-6`}>
+                <p className="text-slate-700 leading-relaxed">
+                  Toks nuoseklus procesas leidžia pasiekti estetišką, natūralų ir ilgalaikį rezultatą.
                 </p>
               </div>
-
-              <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden">
-                <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none">
-                  03
-                </div>
-                <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Dantų restauravimas sluoksniais</h3>
-                <p className="text-sm text-slate-600 leading-relaxed relative z-10">
-                  Naudojant modernias plombines medžiagas, dantis atkuriamas sluoksniais, formuojant natūralią danties anatomiją ir atspalvį. Vieno
-                  danties restauracija vidutiniškai trunka apie 1,5 valandos, o darbas atliekamas maksimaliai tausojant sveikus danties audinius.
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden">
-                <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none">
-                  04
-                </div>
-                <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Galutinis formavimas ir poliravimas</h3>
-                <p className="text-sm text-slate-600 leading-relaxed relative z-10">
-                  Procedūra užbaigiama kruopščiu dantų paviršiaus poliravimu, kad atkurti dantys būtų lygūs, blizgūs ir harmoningai įsilietų į bendrą
-                  šypsenos vaizdą.
-                </p>
-              </div>
-            </div>
-
-            <div className={`${whiteCard} mt-6`}>
-              <p className="text-slate-700 leading-relaxed">
-                Toks nuoseklus procesas leidžia pasiekti estetišką, natūralų ir ilgalaikį rezultatą.
-              </p>
             </div>
           </motion.section>
 
           {/* PRIVALUMAI */}
           <motion.section id="privalumai" className={sectionWrap} variants={item}>
-            <h2 className={sectionTitle}>Kokie estetinio plombavimo privalumai?</h2>
-
             <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kokie estetinio plombavimo privalumai?</h2>
+
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Estetinis plombavimas vertinamas kaip viena universaliausių estetinės odontologijos procedūrų, nes leidžia pasiekti ryškų rezultatą
@@ -336,9 +331,9 @@ export default function EstetinisPlombavimas() {
 
           {/* REZULTATO TRUKME */}
           <motion.section id="rezultato-trukme" className={sectionWrap} variants={item}>
-            <h2 className={sectionTitle}>Kiek laiko išlieka estetinio plombavimo rezultatas?</h2>
-
             <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kiek laiko išlieka estetinio plombavimo rezultatas?</h2>
+
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Estetinio plombavimo rezultato ilgaamžiškumas priklauso nuo kelių veiksnių, todėl kiekvieno paciento atvejis yra individualus.
@@ -358,9 +353,9 @@ export default function EstetinisPlombavimas() {
 
           {/* PO PLOMBAVIMO */}
           <motion.section id="po-plombavimo" className={sectionWrap} variants={item}>
-            <h2 className={sectionTitle}>Ką svarbu žinoti po estetinio plombavimo?</h2>
-
             <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Ką svarbu žinoti po estetinio plombavimo?</h2>
+
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Po estetinio plombavimo procedūros pacientai dažniausiai iš karto pastebi šypsenos estetikos pagerėjimą. Atkurtų dantų paviršiai
@@ -368,7 +363,7 @@ export default function EstetinisPlombavimas() {
                   tikrų rekomendacijų, kad rezultatas išliktų kuo ilgiau.
                 </p>
 
-                <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
+                <div className={innerCard}>
                   <p className="mb-4">
                     Pirmąsias valandas po procedūros rekomenduojama vengti labai kieto ar itin dažančio maisto ir gėrimų, ypač jei buvo atkuriami
                     priekiniai dantys. Taip pat patariama nenaudoti dantų kaip įrankių ir vengti didelio mechaninio krūvio restauruotai vietai.
@@ -389,9 +384,9 @@ export default function EstetinisPlombavimas() {
 
           {/* AR SAUGU */}
           <motion.section id="ar-saugu" className={sectionWrap} variants={item}>
-            <h2 className={sectionTitle}>Ar estetinis plombavimas yra saugus?</h2>
-
             <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Ar estetinis plombavimas yra saugus?</h2>
+
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Estetinis plombavimas yra saugi ir plačiai taikoma odontologinė procedūra, kai ji atliekama laikantis šiuolaikinių gydymo standartų
@@ -412,9 +407,9 @@ export default function EstetinisPlombavimas() {
 
           {/* KODEL MES */}
           <motion.section id="kodel-mes" className={sectionWrap} variants={item}>
-            <h2 className={sectionTitle}>Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?</h2>
-
             <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?</h2>
+
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Renkantis estetinį plombavimą svarbu pasitikėti klinika, kurioje vyrauja profesionali patirtis, estetinė nuovoka ir atsakingas
@@ -436,9 +431,9 @@ export default function EstetinisPlombavimas() {
 
           {/* CTA */}
           <motion.div className="mt-8 mb-12 text-left" variants={item}>
-            <h2 className={sectionTitle}>Kviečiame registruotis estetiniam plombavimui Bangų klinikoje</h2>
-
             <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kviečiame registruotis estetiniam plombavimui Bangų klinikoje</h2>
+
               <p className="text-slate-700 mb-8 max-w-3xl leading-relaxed">
                 Jeigu ieškote patikimos odontologijos klinikos, kurioje atliekamas saugus ir estetiškai aukštos kokybės dantų estetinis plombavimas,
                 kviečiame apsilankyti Bangų odontologijos klinikoje. Čia Jūsų laukia individualus požiūris, modernios technologijos ir patyrę

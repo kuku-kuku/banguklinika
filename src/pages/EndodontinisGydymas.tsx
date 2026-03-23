@@ -19,15 +19,11 @@ const item = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
 }
 
-// UI helpers (vieningumas)
-const sectionWrap =
-  "mb-12 scroll-mt-36 2xl:scroll-mt-24"
-const sectionTitle =
-  "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4"
-const whiteCard =
-  "bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft"
-const whiteCardTight =
-  "bg-white p-6 rounded-2xl border border-slate-100 shadow-soft"
+// UI helpers
+const sectionWrap = "mb-12 scroll-mt-36 2xl:scroll-mt-24"
+const whiteCard = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft"
+const whiteCardTight = "bg-brand-50 p-6 rounded-2xl border border-brand/20 shadow-soft"
+const innerCard = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm"
 
 // Ikonos
 function CheckIcon() {
@@ -103,8 +99,7 @@ export default function EndodontinisGydymas() {
               Profesionalus endodontinis (šaknų kanalų) gydymas Klaipėdoje
             </h1>
 
-            {/* Intro tekstas - į baltą kortelę (vieningumas) */}
-            <div className={`${whiteCard} mb-8`}>
+            <div className="mb-8">
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
                 <p className="mb-4">
                   Stiprus, pulsuojantis danties skausmas, ilgai nepraeinantis jautrumas karščiui ar šalčiui, patinimas ar
@@ -129,7 +124,6 @@ export default function EndodontinisGydymas() {
               </div>
             </div>
 
-            {/* CTA */}
             <div className="flex justify-start">
               <Link
                 to="/kontaktai"
@@ -142,72 +136,82 @@ export default function EndodontinisGydymas() {
 
           {/* KAINOS */}
           <motion.section id="kainos" className={sectionWrap} variants={item}>
-            <h2 className={sectionTitle}>Endodontinės (pirminės) pagalbos kainos</h2>
+            <div className="rounded-2xl border border-brand/20 bg-white shadow-soft overflow-hidden">
+              <div className="p-6 sm:p-8 border-b border-slate-100">
+                <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                  Endodontinės (pirminės) pagalbos kainos
+                </h2>
 
-            <div className={`${whiteCard} mb-6`}>
-              <p className="text-slate-700 leading-relaxed">
-                Pirminės endodontinės pagalbos kaina priklauso nuo konkrečios klinikinės situacijos, danties būklės ir reikalingų
-                paruošiamųjų procedūrų apimties. Kadangi kiekvienas atvejis yra individualus, prieš pradedant gydymą visada atliekama
-                konsultacija ir diagnostika, leidžianti tiksliai įvertinti situaciją ir parinkti tinkamiausią sprendimą.
-              </p>
-            </div>
+                <p className="text-slate-700 leading-relaxed">
+                  Pirminės endodontinės pagalbos kaina priklauso nuo konkrečios klinikinės situacijos, danties būklės ir reikalingų
+                  paruošiamųjų procedūrų apimties. Kadangi kiekvienas atvejis yra individualus, prieš pradedant gydymą visada atliekama
+                  konsultacija ir diagnostika, leidžianti tiksliai įvertinti situaciją ir parinkti tinkamiausią sprendimą.
+                </p>
+              </div>
 
-            <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
-              <div className="divide-y divide-slate-100">
-                <div className="p-5">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-slate-900 font-bold">Pirminė endodontinė pagalba</span>
-                    <span className="text-darkblue-700 font-bold">nuo 70 €</span>
+              <div className="grid md:grid-cols-2">
+                <div className="divide-y divide-slate-100">
+                  <div className="px-5 py-4">
+                    <div className="flex justify-between items-center mb-1 gap-4">
+                      <span className="text-slate-900 font-bold">Pirminė endodontinė pagalba</span>
+                      <span className="text-darkblue-700 font-bold whitespace-nowrap">nuo 70 €</span>
+                    </div>
+                    <span className="block text-slate-600 text-sm">
+                      Dažniausiai taikoma esant ūmiam skausmui ar uždegimui – stabilizavimui ir paruošimui tolimesniam gydymui.
+                    </span>
                   </div>
-                  <span className="block text-slate-600 text-sm">
-                    Dažniausiai taikoma esant ūmiam skausmui ar uždegimui – stabilizavimui ir paruošimui tolimesniam gydymui.
-                  </span>
+
+                  <div className="px-5 py-4">
+                    <div className="flex justify-between items-center mb-1 gap-4">
+                      <span className="text-slate-900 font-bold">Kanalų vaistai</span>
+                      <span className="text-darkblue-700 font-bold whitespace-nowrap">nuo 30 €</span>
+                    </div>
+                    <span className="block text-slate-600 text-sm">
+                      Vaistiniai preparatai kanalų dezinfekcijai ar uždegimo kontrolei, kai to reikia klinikinėje situacijoje.
+                    </span>
+                  </div>
                 </div>
 
-                <div className="p-5">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-slate-900 font-bold">Kanalų vaistai</span>
-                    <span className="text-darkblue-700 font-bold">nuo 30 €</span>
+                <div className="divide-y divide-slate-100 md:border-l md:border-slate-100">
+                  <div className="px-5 py-4">
+                    <div className="flex justify-between items-center mb-1 gap-4">
+                      <span className="text-slate-900 font-bold">Vieno danties šaknies kanalo chemomechaninis paruošimas</span>
+                      <span className="text-darkblue-700 font-bold whitespace-nowrap">nuo 35 €</span>
+                    </div>
+                    <span className="block text-slate-600 text-sm">
+                      Kanalų valymas ir dezinfekcija pirminiame etape.
+                    </span>
                   </div>
-                  <span className="block text-slate-600 text-sm">
-                    Vaistiniai preparatai kanalų dezinfekcijai ar uždegimo kontrolei, kai to reikia klinikinėje situacijoje.
-                  </span>
-                </div>
 
-                <div className="p-5">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-slate-900 font-bold">Vieno danties šaknies kanalo chemomechaninis paruošimas</span>
-                    <span className="text-darkblue-700 font-bold">nuo 35 €</span>
+                  <div className="px-5 py-4">
+                    <div className="flex justify-between items-center mb-1 gap-4">
+                      <span className="text-slate-900 font-bold">Vieno danties šaknies kanalo plombavimas (paruošiamasis)</span>
+                      <span className="text-darkblue-700 font-bold whitespace-nowrap">nuo 35 €</span>
+                    </div>
+                    <span className="block text-slate-600 text-sm">
+                      Laikinas arba paruošiamasis kanalų plombavimas, kai tai reikalinga danties apsaugai.
+                    </span>
                   </div>
-                  <span className="block text-slate-600 text-sm">Kanalų valymas ir dezinfekcija pirminiame etape.</span>
-                </div>
-
-                <div className="p-5">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-slate-900 font-bold">Vieno danties šaknies kanalo plombavimas (paruošiamasis)</span>
-                    <span className="text-darkblue-700 font-bold">nuo 35 €</span>
-                  </div>
-                  <span className="block text-slate-600 text-sm">
-                    Laikinas arba paruošiamasis kanalų plombavimas, kai tai reikalinga danties apsaugai.
-                  </span>
                 </div>
               </div>
-            </div>
 
-            <div className={whiteCard}>
-              <p className="text-slate-700 leading-relaxed text-sm">
-                Svarbu pabrėžti, kad tai yra paruošiamųjų procedūrų kainos. Galutinė pilno endodontinio gydymo kaina nustatoma gydymo
-                įstaigoje, kurioje atliekamas visas šaknų kanalų gydymas. Skaidri kainodara leidžia pacientams aiškiai suprasti, už ką
-                mokama kiekviename gydymo etape, ir ramiai planuoti tolimesnį gydymą.
-              </p>
+              <div className="px-6 sm:px-8 py-5 border-t border-slate-100">
+                <p className="text-slate-700 leading-relaxed text-sm">
+                  Svarbu pabrėžti, kad tai yra paruošiamųjų procedūrų kainos. Galutinė pilno endodontinio gydymo kaina nustatoma gydymo
+                  įstaigoje, kurioje atliekamas visas šaknų kanalų gydymas. Skaidri kainodara leidžia pacientams aiškiai suprasti, už ką
+                  mokama kiekviename gydymo etape, ir ramiai planuoti tolimesnį gydymą.
+                </p>
+              </div>
             </div>
           </motion.section>
 
           {/* KAS YRA ENDODONTIJA */}
           <motion.section id="kas-yra" className={sectionWrap} variants={item}>
-            <h2 className={sectionTitle}>Kas yra endodontinis (šaknų kanalų) gydymas?</h2>
-
             <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kas yra endodontinis (šaknų kanalų) gydymas?
+              </h2>
+
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Endodontinis gydymas – tai odontologinė procedūra, kurios metu gydomi danties šaknų kanalai. Šių kanalų viduje
@@ -239,10 +243,12 @@ export default function EndodontinisGydymas() {
 
           {/* KADA REIKALINGAS */}
           <motion.section id="kada-reikalingas" className={sectionWrap} variants={item}>
-            <h2 className={sectionTitle}>Kada reikalingas endodontinis gydymas?</h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kada reikalingas endodontinis gydymas?
+              </h2>
 
-            <div className={`${whiteCard} mb-6`}>
-              <div className="text-slate-700 leading-relaxed space-y-4">
+              <div className="text-slate-700 leading-relaxed space-y-4 mb-6">
                 <p>
                   Endodontinis gydymas reikalingas tuomet, kai danties pažeidimas pasiekia gilesnius audinius ir infekcija apima pulpos
                   sritį. Tokiais atvejais paviršinis gydymas ar paprastas plombavimas nebegali pašalinti problemos priežasties, todėl
@@ -254,33 +260,31 @@ export default function EndodontinisGydymas() {
                   dantį. Kai kuriais atvejais atsiranda dantenų patinimas, paraudimas ar net pūlinys šalia pažeisto danties.
                 </p>
               </div>
-            </div>
 
-            <div className={`${whiteCard} mb-6`}>
-              <h3 className="font-semibold text-darkblue-700 mb-4">
-                Endodontinis gydymas dažniausiai reikalingas, jei:
-              </h3>
+              <div className="mb-6">
+                <h3 className="font-semibold text-darkblue-700 mb-4">
+                  Endodontinis gydymas dažniausiai reikalingas, jei:
+                </h3>
 
-              <div className="grid sm:grid-cols-1 gap-3">
-                {[
-                  "jaučiamas stiprus ar pulsuojantis danties skausmas (ypač naktį ar kramtant)",
-                  "ilgai nepraeina jautrumas karščiui ar šalčiui",
-                  "jaučiamas spaudimo pojūtis ar skausmas aplink dantį",
-                  "atsiranda dantenų patinimas, paraudimas ar pūlinys šalia danties",
-                  "profilaktikos metu ar rentgeno nuotraukoje nustatomi uždegiminiai pakitimai ties danties šaknimi",
-                  "po danties traumos simptomai pasireiškia vėliau, nors dantis iš išorės atrodo nepažeistas",
-                ].map((text, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
-                    <span className="mt-1">
-                      <CheckIcon />
-                    </span>
-                    <span className="text-slate-700">{text}</span>
-                  </div>
-                ))}
+                <div className="grid gap-3">
+                  {[
+                    "jaučiamas stiprus ar pulsuojantis danties skausmas (ypač naktį ar kramtant)",
+                    "ilgai nepraeina jautrumas karščiui ar šalčiui",
+                    "jaučiamas spaudimo pojūtis ar skausmas aplink dantį",
+                    "atsiranda dantenų patinimas, paraudimas ar pūlinys šalia danties",
+                    "profilaktikos metu ar rentgeno nuotraukoje nustatomi uždegiminiai pakitimai ties danties šaknimi",
+                    "po danties traumos simptomai pasireiškia vėliau, nors dantis iš išorės atrodo nepažeistas",
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                      <span className="mt-1">
+                        <CheckIcon />
+                      </span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <div className={whiteCard}>
               <div className="text-slate-700 leading-relaxed space-y-4">
                 <p>
                   Svarbu žinoti, kad ne visais atvejais endodontinio gydymo poreikį lydi stiprus skausmas. Kartais pulpa žūsta
@@ -297,110 +301,108 @@ export default function EndodontinisGydymas() {
 
           {/* PASLAUGA KLINIKOJE */}
           <motion.section id="paslauga" className={sectionWrap} variants={item}>
-            <h2 className={sectionTitle}>
-              Kokia endodontinio gydymo dalis atliekama Bangų odontologijos klinikoje?
-            </h2>
-
             <div className={whiteCard}>
-              <div className="flex flex-col md:flex-row gap-8 items-start">
-                <div className="flex-1">
-                  <div className="space-y-4 text-slate-700 leading-relaxed">
-                    <p>
-                      Bangų odontologijos klinikoje atliekama pirminė endodontinė pagalba, kurios tikslas – stabilizuoti situaciją,
-                      sumažinti skausmą ir paruošti dantį tolimesniam specializuotam šaknų kanalų gydymui. Šiuo metu klinikoje nėra
-                      gydytojo, kuris specializuotųsi tik pilname endodontiniame gydyme, todėl pacientai, kuriems reikalingas
-                      sudėtingas ar pilnas šaknų kanalų gydymas, nukreipiami pas patikimus specialistus kitose gydymo įstaigose.
-                    </p>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kokia endodontinio gydymo dalis atliekama Bangų odontologijos klinikoje?
+              </h2>
 
-                    <p>
-                      Pirminės endodontinės pagalbos metu pirmiausia atliekama išsami diagnostika – klinikinė apžiūra ir rentgeno
-                      tyrimai, leidžiantys įvertinti pažeidimo gylį ir uždegimo apimtį. Prireikus taikoma vietinė nejautra, kad būtų
-                      sumažintas skausmas ir diskomfortas. Dantis atveriamas, pašalinami infekuoti audiniai, sumažinamas bakterijų
-                      kiekis ir, esant poreikiui, naudojami vaistiniai preparatai uždegimui kontroliuoti.
-                    </p>
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Bangų odontologijos klinikoje atliekama pirminė endodontinė pagalba, kurios tikslas – stabilizuoti situaciją,
+                  sumažinti skausmą ir paruošti dantį tolimesniam specializuotam šaknų kanalų gydymui. Šiuo metu klinikoje nėra
+                  gydytojo, kuris specializuotųsi tik pilname endodontiniame gydyme, todėl pacientai, kuriems reikalingas
+                  sudėtingas ar pilnas šaknų kanalų gydymas, nukreipiami pas patikimus specialistus kitose gydymo įstaigose.
+                </p>
 
-                    <p>
-                      Tolimesniam gydymui pacientai nukreipiami pas profesionalų endodontą Klaipėdoje, kuris specializuojasi šaknų
-                      kanalų gydyme. Toks bendradarbiavimo modelis leidžia užtikrinti, kad kiekvieną gydymo etapą atliktų būtent tos
-                      srities specialistas, o pacientas gautų kokybišką ir saugų gydymą.
-                    </p>
+                <p>
+                  Pirminės endodontinės pagalbos metu pirmiausia atliekama išsami diagnostika – klinikinė apžiūra ir rentgeno
+                  tyrimai, leidžiantys įvertinti pažeidimo gylį ir uždegimo apimtį. Prireikus taikoma vietinė nejautra, kad būtų
+                  sumažintas skausmas ir diskomfortas. Dantis atveriamas, pašalinami infekuoti audiniai, sumažinamas bakterijų
+                  kiekis ir, esant poreikiui, naudojami vaistiniai preparatai uždegimui kontroliuoti.
+                </p>
 
-                    <p>
-                      Svarbu pabrėžti, kad pirminė endodontinė pagalba nėra laikinas sprendimas „atidėjimui“. Tai kryptingas ir
-                      atsakingas gydymo etapas, kuris ženkliai padidina tolimesnio endodontinio gydymo sėkmę ir leidžia pacientui
-                      ramiai planuoti kitus gydymo žingsnius kartu su patyrusiais endodontais Klaipėdoje.
-                    </p>
-                  </div>
-                </div>
+                <p>
+                  Tolimesniam gydymui pacientai nukreipiami pas profesionalų endodontą Klaipėdoje, kuris specializuojasi šaknų
+                  kanalų gydyme. Toks bendradarbiavimo modelis leidžia užtikrinti, kad kiekvieną gydymo etapą atliktų būtent tos
+                  srities specialistas, o pacientas gautų kokybišką ir saugų gydymą.
+                </p>
+
+                <p>
+                  Svarbu pabrėžti, kad pirminė endodontinė pagalba nėra laikinas sprendimas „atidėjimui“. Tai kryptingas ir
+                  atsakingas gydymo etapas, kuris ženkliai padidina tolimesnio endodontinio gydymo sėkmę ir leidžia pacientui
+                  ramiai planuoti kitus gydymo žingsnius kartu su patyrusiais endodontais Klaipėdoje.
+                </p>
               </div>
             </div>
           </motion.section>
 
           {/* PROCESAS */}
           <motion.section id="procesas" className={sectionWrap} variants={item}>
-            <h2 className={sectionTitle}>
-              Kaip atliekama pirminė endodontinė pagalba Bangų odontologijos klinikoje?
-            </h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kaip atliekama pirminė endodontinė pagalba Bangų odontologijos klinikoje?
+              </h2>
 
-            <div className={`${whiteCard} mb-6`}>
-              <p className="text-slate-700 leading-relaxed">
+              <p className="text-slate-700 leading-relaxed mb-6">
                 Pirminė endodontinė pagalba Bangų odontologijos klinikoje atliekama siekiant greitai ir saugiai stabilizuoti danties
                 būklę bei paruošti jį tolimesniam šaknų kanalų gydymui. Šis procesas yra nuoseklus ir orientuotas į paciento savijautos
                 pagerinimą bei infekcijos kontrolę.
               </p>
-            </div>
 
-            <div className="space-y-6">
-              {[
-                {
-                  n: 1,
-                  t: "Diagnostika",
-                  d:
-                    "Pirmiausia atliekama išsami klinikinė apžiūra ir rentgeno tyrimai. Jie leidžia įvertinti danties pažeidimo gylį, galimų kanalų skaičių, jų anatomiją ir uždegimo apimtį ties danties šaknimi. Tiksli diagnostika yra būtina, kad būtų parinktas tinkamiausias pirminės pagalbos sprendimas ir išvengta papildomų komplikacijų.",
-                },
-                {
-                  n: 2,
-                  t: "Nuskausminimas",
-                  d:
-                    "Prieš pradedant procedūrą taikoma vietinė nejautra, todėl pacientas nejaučia skausmo. Nuskausminimas leidžia gydytojui dirbti tiksliai ir ramiai, o pacientui – jaustis saugiai.",
-                },
-                {
-                  n: 3,
-                  t: "Danties atvėrimas ir infekuotų audinių pašalinimas",
-                  d:
-                    "Nuskausminus dantį, jis atsargiai atveriamas, kad būtų galima pasiekti infekuotus vidinius audinius. Pažeisti pulpos audiniai pašalinami, o kanalų vidus apdorojamas taip, kad būtų sumažintas bakterijų kiekis ir sustabdytas uždegiminis procesas.",
-                },
-                {
-                  n: 4,
-                  t: "Vaistiniai preparatai (jei reikalinga)",
-                  d:
-                    "Esant poreikiui, į kanalus gali būti įdedami vaistiniai preparatai, kurie padeda kontroliuoti infekciją ir sumažinti uždegimą iki tol, kol pacientas galės tęsti gydymą pas specializuotą gydytoją.",
-                },
-                {
-                  n: 5,
-                  t: "Laikina apsauga ir tolimesnio gydymo planas",
-                  d:
-                    "Procedūra užbaigiama laikinu sprendimu, apsaugančiu dantį nuo tolimesnio bakterijų patekimo. Pirminės endodontinės pagalbos tikslas – ne užbaigti visą šaknų kanalų gydymą, o sudaryti saugias ir palankias sąlygas tolimesniam, pilnam endodontiniam gydymui.",
-                },
-              ].map((s) => (
-                <div key={s.n} className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
-                  <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
-                    <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">
-                      {s.n}
-                    </span>
-                    {s.t}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">{s.d}</p>
-                </div>
-              ))}
+              <div className="space-y-6">
+                {[
+                  {
+                    n: 1,
+                    t: "Diagnostika",
+                    d:
+                      "Pirmiausia atliekama išsami klinikinė apžiūra ir rentgeno tyrimai. Jie leidžia įvertinti danties pažeidimo gylį, galimų kanalų skaičių, jų anatomiją ir uždegimo apimtį ties danties šaknimi. Tiksli diagnostika yra būtina, kad būtų parinktas tinkamiausias pirminės pagalbos sprendimas ir išvengta papildomų komplikacijų.",
+                  },
+                  {
+                    n: 2,
+                    t: "Nuskausminimas",
+                    d:
+                      "Prieš pradedant procedūrą taikoma vietinė nejautra, todėl pacientas nejaučia skausmo. Nuskausminimas leidžia gydytojui dirbti tiksliai ir ramiai, o pacientui – jaustis saugiai.",
+                  },
+                  {
+                    n: 3,
+                    t: "Danties atvėrimas ir infekuotų audinių pašalinimas",
+                    d:
+                      "Nuskausminus dantį, jis atsargiai atveriamas, kad būtų galima pasiekti infekuotus vidinius audinius. Pažeisti pulpos audiniai pašalinami, o kanalų vidus apdorojamas taip, kad būtų sumažintas bakterijų kiekis ir sustabdytas uždegiminis procesas.",
+                  },
+                  {
+                    n: 4,
+                    t: "Vaistiniai preparatai (jei reikalinga)",
+                    d:
+                      "Esant poreikiui, į kanalus gali būti įdedami vaistiniai preparatai, kurie padeda kontroliuoti infekciją ir sumažinti uždegimą iki tol, kol pacientas galės tęsti gydymą pas specializuotą gydytoją.",
+                  },
+                  {
+                    n: 5,
+                    t: "Laikina apsauga ir tolimesnio gydymo planas",
+                    d:
+                      "Procedūra užbaigiama laikinu sprendimu, apsaugančiu dantį nuo tolimesnio bakterijų patekimo. Pirminės endodontinės pagalbos tikslas – ne užbaigti visą šaknų kanalų gydymą, o sudaryti saugias ir palankias sąlygas tolimesniam, pilnam endodontiniam gydymui.",
+                  },
+                ].map((s) => (
+                  <div key={s.n} className={innerCard}>
+                    <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
+                      <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">
+                        {s.n}
+                      </span>
+                      {s.t}
+                    </h3>
+                    <p className="text-slate-600 leading-relaxed">{s.d}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.section>
 
           {/* AR SKAUSMINGA */}
           <motion.section id="ar-skausminga" className={sectionWrap} variants={item}>
-            <h2 className={sectionTitle}>Ar pirminė endodontinė pagalba yra skausminga?</h2>
-
             <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Ar pirminė endodontinė pagalba yra skausminga?
+              </h2>
+
               <div className="text-slate-700 leading-relaxed space-y-4">
                 <p>
                   Vienas dažniausių pacientų klausimų – ar procedūra bus skausminga. Šiuolaikinėje odontologijoje pirminė endodontinė
@@ -430,9 +432,11 @@ export default function EndodontinisGydymas() {
 
           {/* KODEL NEVILKINTI */}
           <motion.section id="kodel-atideti" className={sectionWrap} variants={item}>
-            <h2 className={sectionTitle}>Kas nutinka, jei šaknų kanalų gydymas atidedamas?</h2>
-
             <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kas nutinka, jei šaknų kanalų gydymas atidedamas?
+              </h2>
+
               <div className="text-slate-700 leading-relaxed space-y-4">
                 <p>
                   Šaknų kanalų infekcija savaime neišnyksta. Nors kartais skausmas gali laikinai sumažėti ar visai praeiti, tai
@@ -463,9 +467,11 @@ export default function EndodontinisGydymas() {
 
           {/* KADA NEPADEDA */}
           <motion.section id="kada-negali" className={sectionWrap} variants={item}>
-            <h2 className={sectionTitle}>Kada endodontinis gydymas gali nebepadėti?</h2>
+            <div className="bg-red-50 p-6 sm:p-8 rounded-2xl border border-red-200 shadow-soft">
+              <h2 className="text-xl sm:text-2xl font-semibold text-red-900 mb-4">
+                Kada endodontinis gydymas gali nebepadėti?
+              </h2>
 
-            <div className="bg-red-50 p-6 sm:p-8 rounded-2xl border border-red-100">
               <p className="text-slate-700 mb-4 leading-relaxed">
                 Nors endodontinis gydymas daugeliu atvejų leidžia sėkmingai išsaugoti natūralų dantį, tam tikrose situacijose jis gali
                 būti neefektyvus arba neturėti prognozuojamos ilgalaikės sėkmės. Tokiais atvejais sprendimas priimamas įvertinus danties
@@ -498,11 +504,11 @@ export default function EndodontinisGydymas() {
 
           {/* KODEL MES */}
           <motion.section id="kodel-mes" className={sectionWrap} variants={item}>
-            <h2 className={sectionTitle}>
-              Kodėl verta kreiptis į Bangų odontologijos kliniką dėl pirminės endodontinės pagalbos?
-            </h2>
-
             <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kodėl verta kreiptis į Bangų odontologijos kliniką dėl pirminės endodontinės pagalbos?
+              </h2>
+
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Renkantis, kur kreiptis dėl danties skausmo ar įtariamo šaknų kanalų pažeidimo, svarbiausia yra greita reakcija, aiškus
@@ -535,9 +541,11 @@ export default function EndodontinisGydymas() {
 
           {/* PABAIGOS CTA */}
           <motion.section className="mt-8 mb-12" variants={item}>
-            <h2 className={sectionTitle}>Kviečiame registruotis pirminiam endodontiniam gydymui Bangų klinikoje</h2>
-
             <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kviečiame registruotis pirminiam endodontiniam gydymui Bangų klinikoje
+              </h2>
+
               <p className="text-slate-700 mb-8 max-w-3xl leading-relaxed">
                 Jeigu jaučiate stiprų danties skausmą, pastebėjote patinimą, ilgalaikį jautrumą ar gavote rekomendaciją dėl šaknų kanalų
                 gydymo, kviečiame nedelsti ir registruotis konsultacijai Bangų odontologijos klinikoje. Vizito metu bus įvertinta Jūsų danties

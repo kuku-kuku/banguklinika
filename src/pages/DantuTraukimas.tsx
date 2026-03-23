@@ -15,6 +15,11 @@ const item = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
 }
 
+// UI helpers
+const sectionWrap = 'mb-12 scroll-mt-36 2xl:scroll-mt-24'
+const whiteCard = 'bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft'
+const innerCard = 'bg-white p-5 rounded-xl border border-slate-200 shadow-sm'
+
 // Ikonos
 function CheckIcon() {
   return (
@@ -105,7 +110,7 @@ export default function DantuTraukimas() {
         initial="hidden"
         animate="visible"
       >
-        <TableOfContents sections={tocSections} rootRef={pageRef} cta={{ label: "Registruotis vizitui", to: "/kontaktai" }} />
+        <TableOfContents sections={tocSections} rootRef={pageRef} cta={{ label: 'Registruotis vizitui', to: '/kontaktai' }} />
 
         <div className="min-w-0 flex-1">
           {/* HERO */}
@@ -114,7 +119,7 @@ export default function DantuTraukimas() {
               Profesionalus dantų traukimas Klaipėdoje
             </h1>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft">
+            <div className="">
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
                 <p className="mb-4">
                   Dantų traukimas yra odontologinė procedūra, atliekama tuomet, kai danties išsaugoti nebeįmanoma arba kai jis
@@ -130,7 +135,6 @@ export default function DantuTraukimas() {
               </div>
             </div>
 
-            {/* CTA */}
             <div className="flex justify-start mt-6">
               <Link
                 to="/kontaktai"
@@ -144,50 +148,53 @@ export default function DantuTraukimas() {
             <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">Dantų traukimo kainos</h2>
 
-              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft mb-6">
-                <div className="space-y-4 text-slate-700 leading-relaxed">
-                  <p>
-                    Dantų traukimo kaina priklauso nuo procedūros sudėtingumo, danties padėties, šaknų struktūros ir aplinkinių
-                    audinių būklės. Prieš atliekant procedūrą visuomet atliekama apžiūra, kurios metu įvertinama situacija ir
-                    parenkamas saugiausias bei tinkamiausias danties šalinimo metodas.
-                  </p>
-                </div>
+              <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+                <p>
+                  Dantų traukimo kaina priklauso nuo procedūros sudėtingumo, danties padėties, šaknų struktūros ir aplinkinių
+                  audinių būklės. Prieš atliekant procedūrą visuomet atliekama apžiūra, kurios metu įvertinama situacija ir
+                  parenkamas saugiausias bei tinkamiausias danties šalinimo metodas.
+                </p>
+              </div>
 
-                <div className="rounded-2xl border border-brand bg-white overflow-hidden mt-6">
+              <div className="rounded-2xl border border-brand/20 bg-white shadow-soft overflow-hidden mb-6">
+                <div className="grid md:grid-cols-2">
                   <div className="divide-y divide-slate-100">
-                    <div className="flex justify-between items-center p-4">
+                    <div className="flex justify-between items-center px-5 py-4 gap-4">
                       <span className="text-slate-700">Šaknies šalinimas</span>
-                      <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">60 – 80 €</span>
+                      <span className="text-darkblue-700 font-bold whitespace-nowrap">60 – 80 €</span>
                     </div>
-                    <div className="flex justify-between items-center p-4">
+                    <div className="flex justify-between items-center px-5 py-4 gap-4">
                       <span className="text-slate-700">Paprastas danties šalinimas</span>
-                      <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">80 – 100 €</span>
+                      <span className="text-darkblue-700 font-bold whitespace-nowrap">80 – 100 €</span>
                     </div>
-                    <div className="flex justify-between items-center p-4">
+                  </div>
+
+                  <div className="divide-y divide-slate-100 md:border-l md:border-slate-100">
+                    <div className="flex justify-between items-center px-5 py-4 gap-4">
                       <span className="text-slate-700">Komplikuotas protinių dantų šalinimas</span>
-                      <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">120 – 150 €</span>
+                      <span className="text-darkblue-700 font-bold whitespace-nowrap">120 – 150 €</span>
                     </div>
                   </div>
                 </div>
-
-                <p className="text-slate-700 leading-relaxed text-sm mt-6">
-                  Tiksli dantų traukimo Klaipėdoje kaina aptariama individualios konsultacijos metu, atsižvelgiant į konkrečią
-                  klinikinę situaciją. Skaidri kainodara ir profesionalus požiūris leidžia pacientams jaustis užtikrintai ir
-                  priimti informuotą sprendimą.
-                </p>
               </div>
+
+              <p className="text-slate-700 leading-relaxed text-sm">
+                Tiksli dantų traukimo Klaipėdoje kaina aptariama individualios konsultacijos metu, atsižvelgiant į konkrečią
+                klinikinę situaciją. Skaidri kainodara ir profesionalus požiūris leidžia pacientams jaustis užtikrintai ir
+                priimti informuotą sprendimą.
+              </p>
             </div>
           </motion.header>
 
           {/* KAS YRA TRAUKIMAS */}
           <motion.section
             id="kas-yra"
-            className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
+            className={sectionWrap}
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas yra dantų traukimas?</h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas yra dantų traukimas?</h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-brand/10 shadow-soft">
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Dantų traukimas – tai odontologinė procedūra, kurios metu dantis pašalinamas iš žandikaulio kaulo alveolės. Ši
@@ -207,94 +214,94 @@ export default function DantuTraukimas() {
           {/* KADA REIKALINGA */}
           <motion.section
             id="kada-reikalingas"
-            className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
+            className={sectionWrap}
             variants={item}
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">Kada reikalingas dantų traukimas?</h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kada reikalingas dantų traukimas?</h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft mb-6">
-              <p className="text-slate-700 leading-relaxed">
+              <p className="text-slate-700 leading-relaxed mb-6">
                 Dantų traukimas atliekamas tik tuomet, kai nėra galimybės danties išsaugoti arba kai jo palikimas burnoje gali
                 sukelti rimtesnių sveikatos problemų. Prieš priimant sprendimą, visuomet įvertinamos galimos alternatyvos, tačiau
                 tam tikrais atvejais danties pašalinimas yra saugiausias ir efektyviausias sprendimas.
               </p>
-            </div>
 
-            <div className="space-y-4 mb-6">
-              <h3 className="font-semibold text-darkblue-700">Dantų traukimas gali būti reikalingas, kai:</h3>
+              <div className="space-y-4 mb-6">
+                <h3 className="font-semibold text-darkblue-700">Dantų traukimas gali būti reikalingas, kai:</h3>
 
-              <div className="grid sm:grid-cols-1 gap-3">
-                {[
-                  'dantis yra stipriai pažeistas ėduonies ar traumos, o atkūrimas nebeįmanomas',
-                  'pasireiškia ūmus skausmas, uždegimas ar infekcija, kuri plinta į aplinkinius audinius',
-                  'dantis yra netaisyklingai išdygęs arba įstrigęs ir trukdo kitiems dantims',
-                  'reikia sudaryti vietos ortodontiniam gydymui',
-                  'dantis kelia grėsmę bendrai burnos ir žandikaulio sveikatai'
-                ].map((text, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
-                    <span className="mt-1">
-                      <CheckIcon />
-                    </span>
-                    <span className="text-slate-700">{text}</span>
-                  </div>
-                ))}
+                <div className="grid gap-3">
+                  {[
+                    'dantis yra stipriai pažeistas ėduonies ar traumos, o atkūrimas nebeįmanomas',
+                    'pasireiškia ūmus skausmas, uždegimas ar infekcija, kuri plinta į aplinkinius audinius',
+                    'dantis yra netaisyklingai išdygęs arba įstrigęs ir trukdo kitiems dantims',
+                    'reikia sudaryti vietos ortodontiniam gydymui',
+                    'dantis kelia grėsmę bendrai burnos ir žandikaulio sveikatai'
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                      <span className="mt-1">
+                        <CheckIcon />
+                      </span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <div className="mt-6 rounded-xl border border-slate-100 bg-slate-50 p-4 sm:p-5">
-              <p className="text-sm text-slate-700 leading-relaxed">
-                <span className="font-semibold text-darkblue-700">Pastaba:</span>{" "}
-                Laiku atliktas dantų traukimas padeda išvengti sudėtingesnių komplikacijų ir sudaro sąlygas tolimesniam gydymui, pavyzdžiui,
-                protezavimui ar implantacijai.
-              </p>
+              <div className="rounded-xl border border-slate-200 bg-white p-4 sm:p-5">
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  <span className="font-semibold text-darkblue-700">Pastaba:</span>{' '}
+                  Laiku atliktas dantų traukimas padeda išvengti sudėtingesnių komplikacijų ir sudaro sąlygas tolimesniam gydymui, pavyzdžiui,
+                  protezavimui ar implantacijai.
+                </p>
+              </div>
             </div>
           </motion.section>
 
           {/* TRAUKIMO RŪŠYS */}
-          <motion.section id="rusys" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">Kokios yra dantų traukimo rūšys?</h2>
+          <motion.section id="rusys" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kokios yra dantų traukimo rūšys?</h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft mb-6">
-              <p className="text-slate-700 leading-relaxed">
+              <p className="text-slate-700 leading-relaxed mb-6">
                 Dantų traukimo būdas parenkamas individualiai, atsižvelgiant į danties padėtį, šaknų struktūrą ir aplinkinių audinių
                 būklę. Dažniausiai skiriami du pagrindiniai dantų traukimo tipai.
               </p>
-            </div>
 
-            <div className="grid gap-6 md:grid-cols-3">
-              <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-                <h3 className="font-bold text-darkblue-700 mb-2">Paprastas dantų traukimas</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Atliekamas, kai dantis visiškai išdygęs ir lengvai pasiekiamas. Odontologas švelniai atlaisvina dantį ir jį
-                  pašalina. Greita procedūra ir sklandus gijimas.
-                </p>
-              </div>
+              <div className="grid gap-6 md:grid-cols-3">
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Paprastas dantų traukimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Atliekamas, kai dantis visiškai išdygęs ir lengvai pasiekiamas. Odontologas švelniai atlaisvina dantį ir jį
+                    pašalina. Greita procedūra ir sklandus gijimas.
+                  </p>
+                </div>
 
-              <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-                <h3 className="font-bold text-darkblue-700 mb-2">Chirurginis dantų traukimas</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Taikomas sudėtingesniais atvejais (dantis neišdygęs, įstrigęs, nulūžęs). Gali prireikti nedidelio pjūvio ar danties
-                  padalinimo. Atliekama saugiai ir kontroliuojamai.
-                </p>
-              </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Chirurginis dantų traukimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Taikomas sudėtingesniais atvejais (dantis neišdygęs, įstrigęs, nulūžęs). Gali prireikti nedidelio pjūvio ar danties
+                    padalinimo. Atliekama saugiai ir kontroliuojamai.
+                  </p>
+                </div>
 
-              <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-                <h3 className="font-bold text-darkblue-700 mb-2">Dantų traukimas vaikams</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Atliekamas ypač švelniai, kai būtina šalinti pieninius ar nuolatinius dantis. Prieš procedūrą skiriama laiko
-                  paaiškinimui ir vaiko nuraminimui.
-                </p>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Dantų traukimas vaikams</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Atliekamas ypač švelniai, kai būtina šalinti pieninius ar nuolatinius dantis. Prieš procedūrą skiriama laiko
+                    paaiškinimui ir vaiko nuraminimui.
+                  </p>
+                </div>
               </div>
             </div>
           </motion.section>
 
           {/* DELSIMAS */}
-          <motion.section id="kodel-laiku" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-              Kas vyksta, jei dantis nepašalinamas laiku?
-            </h2>
+          <motion.section id="kodel-laiku" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kas vyksta, jei dantis nepašalinamas laiku?
+              </h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft">
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Atidėliojamas dantų traukimas gali lemti ne tik užsitęsusį skausmą, bet ir rimtesnes burnos sveikatos problemas.
@@ -319,41 +326,41 @@ export default function DantuTraukimas() {
           </motion.section>
 
           {/* KAIP ATLIEKAMA */}
-          <motion.section id="procesas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">Kaip atliekamas dantų traukimas?</h2>
+          <motion.section id="procesas" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip atliekamas dantų traukimas?</h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft mb-6">
-              <p className="text-slate-700 leading-relaxed">
+              <p className="text-slate-700 leading-relaxed mb-6">
                 Dantų traukimas Bangų odontologijos klinikoje atliekamas pagal aiškią ir saugią eigą, kad procedūra būtų kuo
                 komfortiškesnė pacientui ir nekeltų papildomo streso.
               </p>
-            </div>
 
-            <div className="grid gap-6 md:grid-cols-4">
-              <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-                <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
-                <h3 className="font-bold text-darkblue-700 mb-2">Apžiūra</h3>
-                <p className="text-sm text-slate-600">
-                  Klinikinė apžiūra, rentgeno tyrimas, rizikos įvertinimas ir metodo parinkimas.
-                </p>
-              </div>
+              <div className="grid gap-6 md:grid-cols-4">
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Apžiūra</h3>
+                  <p className="text-sm text-slate-600">
+                    Klinikinė apžiūra, rentgeno tyrimas, rizikos įvertinimas ir metodo parinkimas.
+                  </p>
+                </div>
 
-              <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-                <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
-                <h3 className="font-bold text-darkblue-700 mb-2">Nuskausminimas</h3>
-                <p className="text-sm text-slate-600">Vietinė nejautra užtikrina, kad jausite tik spaudimą, bet ne skausmą.</p>
-              </div>
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Nuskausminimas</h3>
+                  <p className="text-sm text-slate-600">Vietinė nejautra užtikrina, kad jausite tik spaudimą, bet ne skausmą.</p>
+                </div>
 
-              <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-                <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
-                <h3 className="font-bold text-darkblue-700 mb-2">Pašalinimas</h3>
-                <p className="text-sm text-slate-600">Dantis atsargiai atlaisvinamas ir pašalinamas (prireikus – dalimis).</p>
-              </div>
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Pašalinimas</h3>
+                  <p className="text-sm text-slate-600">Dantis atsargiai atlaisvinamas ir pašalinamas (prireikus – dalimis).</p>
+                </div>
 
-              <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
-                <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
-                <h3 className="font-bold text-darkblue-700 mb-2">Priežiūra</h3>
-                <p className="text-sm text-slate-600">Žaizdos sutvarkymas, hemostazė ir rekomendacijos gijimui.</p>
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Priežiūra</h3>
+                  <p className="text-sm text-slate-600">Žaizdos sutvarkymas, hemostazė ir rekomendacijos gijimui.</p>
+                </div>
               </div>
             </div>
           </motion.section>
@@ -361,11 +368,11 @@ export default function DantuTraukimas() {
           {/* SKAUSMAS IR PRIEŽIŪRA */}
           <motion.section className="mb-12 space-y-8" variants={item}>
             <div id="ar-skausminga" className="scroll-mt-36 2xl:scroll-mt-24">
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-                Ar dantų traukimas yra skausmingas?
-              </h2>
+              <div className={whiteCard}>
+                <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                  Ar dantų traukimas yra skausmingas?
+                </h2>
 
-              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft">
                 <div className="text-slate-700 leading-relaxed space-y-4">
                   <p>
                     Šiuolaikinėje odontologijoje dantų traukimas atliekamas taip, kad pacientas nepatirtų skausmo. Taikant
@@ -382,11 +389,11 @@ export default function DantuTraukimas() {
             </div>
 
             <div>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-                Ką daryti, jei dantį skauda dar prieš traukimą?
-              </h2>
+              <div className={whiteCard}>
+                <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                  Ką daryti, jei dantį skauda dar prieš traukimą?
+                </h2>
 
-              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft">
                 <p className="text-slate-700 leading-relaxed">
                   Jeigu dantį skauda stipriai, nuolat ar skausmas stiprėja, svarbu nedelsti ir kreiptis į odontologą. Laiku atlikta
                   apžiūra leidžia įvertinti situaciją ir nuspręsti, ar dantį galima gydyti, ar reikalingas dantų traukimas.
@@ -395,33 +402,35 @@ export default function DantuTraukimas() {
             </div>
 
             <div id="po-traukimo" className="scroll-mt-36 2xl:scroll-mt-24">
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Ką svarbu žinoti po dantų traukimo?</h2>
+              <div className={whiteCard}>
+                <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Ką svarbu žinoti po dantų traukimo?</h2>
 
-              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-brand/10 shadow-soft text-slate-700 leading-relaxed">
-                <p className="mb-4">
-                  Pirmosiomis valandomis po procedūros rekomenduojama vengti intensyvios fizinės veiklos ir leisti organizmui
-                  pailsėti. Traukimo vietoje susiformuoja kraujo krešulys, kuris yra būtinas gijimo procesui, todėl labai svarbu jo
-                  nepažeisti.
-                </p>
+                <div className="text-slate-700 leading-relaxed">
+                  <p className="mb-4">
+                    Pirmosiomis valandomis po procedūros rekomenduojama vengti intensyvios fizinės veiklos ir leisti organizmui
+                    pailsėti. Traukimo vietoje susiformuoja kraujo krešulys, kuris yra būtinas gijimo procesui, todėl labai svarbu jo
+                    nepažeisti.
+                  </p>
 
-                <ul className="list-disc pl-5 space-y-2">
-                  <li>Pirmąją parą vengti karšto maisto ir gėrimų, rinktis minkštą maistą.</li>
-                  <li>Nerūkyti ir nevartoti alkoholio bent 24–48 valandas.</li>
-                  <li>Laikytis odontologo paskirtų nuskausminamųjų ar kitų vaistų vartojimo rekomendacijų.</li>
-                  <li>Palaikyti burnos higieną, tačiau valyti dantis atsargiai, vengiant traukimo vietos.</li>
-                </ul>
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>Pirmąją parą vengti karšto maisto ir gėrimų, rinktis minkštą maistą.</li>
+                    <li>Nerūkyti ir nevartoti alkoholio bent 24–48 valandas.</li>
+                    <li>Laikytis odontologo paskirtų nuskausminamųjų ar kitų vaistų vartojimo rekomendacijų.</li>
+                    <li>Palaikyti burnos higieną, tačiau valyti dantis atsargiai, vengiant traukimo vietos.</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </motion.section>
 
           {/* CTA */}
           <motion.div className="mt-8 mb-12 text-left" variants={item}>
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-              Kviečiame registruotis dantų traukimui Bangų klinikoje
-            </h2>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kviečiame registruotis dantų traukimui Bangų klinikoje
+              </h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-soft mb-6">
-              <p className="text-slate-700 max-w-3xl leading-relaxed">
+              <p className="text-slate-700 max-w-3xl leading-relaxed mb-8">
                 Jeigu jaučiate danties skausmą, diskomfortą ar gavote rekomendaciją šalinti dantį, kviečiame registruotis
                 konsultacijai Bangų odontologijos klinikoje. Vizito metu bus įvertinta Jūsų burnos būklė, aptartos galimos gydymo
                 alternatyvos ir, esant poreikiui, suplanuotas saugus dantų traukimas.
@@ -431,14 +440,14 @@ export default function DantuTraukimas() {
                 kuo mažiau keliančios streso. Čia Jūsų laukia patyrę specialistai, moderni įranga ir rūpestingas požiūris į kiekvieną
                 pacientą.
               </p>
-            </div>
 
-            <Link
-              to="/kontaktai"
-              className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1"
-            >
-              Registruotis vizitui
-            </Link>
+              <Link
+                to="/kontaktai"
+                className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1"
+              >
+                Registruotis vizitui
+              </Link>
+            </div>
           </motion.div>
         </div>
       </motion.div>
