@@ -351,24 +351,50 @@ export default function BurnosHigiena() {
               <div className="space-y-4">
                 <div className={innerCard}>
                   <h3 className="font-bold text-slate-900 mb-2">Mitas #1: higiena pažeidžia emalį</h3>
-                  <p className="text-slate-600 text-sm">Tai klaidingas įsitikinimas. Naudojamos priemonės (AIRFLOW) yra saugios ir nepažeidžia emalio, o dantys išlieka lygūs ir nepažeisti.</p>
+                  <p className="text-slate-600 text-sm">Tai vienas dažniausių klaidingų įsitikinimų. Profesionalios burnos higienos metu naudojamos priemonės ir technologijos yra pritaikytos saugiam apnašų bei dantų akmenų šalinimui nepažeidžiant emalio. AIRFLOW® technologija veikia švelniai ir tiksliai, todėl dantų paviršiai po procedūros išlieka lygūs ir nepažeisti.</p>
                 </div>
                 <div className={innerCard}>
                   <h3 className="font-bold text-slate-900 mb-2">Mitas #2: procedūra skausminga</h3>
-                  <p className="text-slate-600 text-sm">Dauguma pacientų procedūrą apibūdina kaip komfortišką. Diskomfortas minimalus ir laikinas, priklausomai nuo apnašų kiekio.</p>
+                  <p className="text-slate-600 text-sm">Dauguma pacientų profesionalią burnos higieną apibūdina kaip komfortišką procedūrą. Galimas tik nežymus diskomfortas, ypač jei buvo daug dantų akmenų ar jautrios dantenos, tačiau šis pojūtis yra laikinas. Procedūros eiga visuomet pritaikoma individualiai, atsižvelgiant į paciento savijautą.</p>
                 </div>
                 <div className={innerCard}>
                   <h3 className="font-bold text-slate-900 mb-2">Mitas #3: pakanka valyti dantis namuose</h3>
-                  <p className="text-slate-600 text-sm">Namuose neįmanoma pasiekti visų vietų (pvz., po dantenomis). Profesionali higiena pašalina apnašas iš sunkiai prieinamų zonų.</p>
+                  <p className="text-slate-600 text-sm">Kasdienė burnos priežiūra yra būtina, tačiau ji negali visiškai pakeisti profesionalios burnos higienos. Net ir kruopščiai valant dantis namuose, ne visos vietos pasiekiamos šepetėliu ar siūlu. Profesionalios procedūros metu pašalinamos apnašos iš sunkiai prieinamų zonų, kurios ilgainiui gali sukelti dantenų ligas.</p>
                 </div>
                 <div className={innerCard}>
                   <h3 className="font-bold text-slate-900 mb-2">Mitas #4: higiena reikalinga tik tada, kai skauda</h3>
-                  <p className="text-slate-600 text-sm">Ligos vystosi be skausmo. Reguliari higiena užkerta kelią problemoms (kraujavimui, kvapui) dar prieš joms pasireiškiant.</p>
+                  <p className="text-slate-600 text-sm">LBurnos ligos dažnai vystosi nepastebimai ir be skausmo. Kraujuojančios dantenos, nemalonus kvapas ar dantų jautrumas gali būti ankstyvi signalai, kad reikalinga profesionali higiena. Reguliari procedūra leidžia užkirsti kelią problemoms dar prieš joms pasireiškiant.</p>
                 </div>
                 <div className={innerCard}>
                   <h3 className="font-bold text-slate-900 mb-2">Mitas #5: higiena tik dėl grožio</h3>
-                  <p className="text-slate-600 text-sm">Nors dantys tampa šviesesni, pagrindinis tikslas – sveikata: karieso ir dantenų ligų prevencija.</p>
+                  <p className="text-slate-600 text-sm">Nors po procedūros dantys atrodo švaresni ir šviesesni, pagrindinis profesionalios burnos higienos tikslas yra burnos sveikatos palaikymas. Procedūra padeda sumažinti karieso, dantenų uždegimo ir periodonto ligų riziką bei išsaugoti natūralius dantis ilgą laiką.</p>
                 </div>
+              </div>
+            </div>
+          </motion.section>
+          {/* KODĖL RINKTIS */}
+          <motion.section id="kodel-rinktis" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
+              </h2>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Renkantis odontologijos kliniką svarbu ne tik pati procedūra, bet ir tai, kas ją atlieka, kokiomis sąlygomis ir kokiu požiūriu į pacientą. Bangų odontologijos klinikoje profesionali burnos higiena atliekama laikantis aukštų medicininių standartų, derinant pažangias technologijas ir individualų dėmesį kiekvienam pacientui.
+                </p>
+                <p>
+                  Klinikoje dirbantys specialistai nuolat tobulina savo kvalifikaciją ir taiko šiuolaikinius, moksliškai pagrįstus sprendimus. Burnos higiena atliekama naudojant modernią AIRFLOW® technologiją, kuri užtikrina ne tik efektyvų apnašų šalinimą, bet ir komfortą procedūros metu. Tai ypač svarbu pacientams, kurie vertina švelnų, saugų ir ilgalaikį rezultatą.
+                </p>
+                <p>
+                  Bangų odontologijos klinikoje ypatingas dėmesys skiriamas individualiam požiūriui. Prieš procedūrą įvertinama paciento burnos būklė, dantenų jautrumas, turimos restauracijos ar implantai, o procedūros apimtis ir dažnumas pritaikomi pagal konkrečius poreikius. Po burnos higienos pacientui suteikiamos aiškios ir praktiškos rekomendacijos, padedančios palaikyti rezultatą kasdienėje priežiūroje.
+                </p>
+                <p>
+                  Svarbus klinikos privalumas – aiški komunikacija ir skaidrumas. Pacientai iš anksto supažindinami su procedūros eiga, galimais pojūčiais ir kainodara. Tai padeda jaustis saugiai, užtikrintai ir be nereikalingo streso.
+                </p>
+                <p>
+                  Pasirinkę Bangų odontologijos kliniką Klaipėdoje, pacientai renkasi ne tik profesionalią burnos higieną, bet ir patikimą partnerį ilgalaikei burnos sveikatai palaikyti.
+                </p>
               </div>
             </div>
           </motion.section>

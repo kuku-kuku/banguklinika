@@ -366,7 +366,13 @@ export default function DantuPlombavimas() {
                 Kodėl verta rinktis Bangų odontologijos kliniką?
               </h2>
               <p className="text-slate-700 mb-0 max-w-3xl leading-relaxed">
-                Renkantis danties plombavimą svarbu ne tik kaina, bet ir kokybė. Bangų odontologijos klinikoje naudojame modernias medžiagas ir technologijas, užtikriname skaidrią kainodarą ir profesionalumą. Mūsų specialistai kiekvieną atvejį vertina individualiai, siekdami ilgaamžio ir estetiško rezultato.
+                Renkantis danties plombavimą svarbu ne tik procedūros kaina, bet ir gydymo kokybė, naudojamos medžiagos bei specialisto patirtis. Bangų odontologijos klinikoje dantų plombavimas atliekamas laikantis šiuolaikinių odontologijos standartų, skiriant ypatingą dėmesį tikslumui, saugumui ir ilgalaikiam rezultatui.
+              </p>
+              <p>
+                Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai – nuo kruopščios diagnostikos iki tinkamiausio plombavimo metodo parinkimo. Naudojamos patikimos, ilgaamžės plombinės medžiagos, o procedūros metu taikomos papildomos saugumo priemonės, užtikrinančios komfortą ir sandarumą.
+              </p>
+              <p>
+                Pacientai vertina aiškų bendravimą, skaidrią kainodarą ir nuoseklų gydymo procesą. Teigiami atsiliepimai dažnai pabrėžia profesionalų požiūrį, ramų procedūros atlikimą ir pasitikėjimą rezultatu. Tai leidžia Bangų odontologijos klinikai tapti patikimu pasirinkimu ieškantiems kokybiškos danties plombavimo paslaugos Klaipėdoje.
               </p>
             </div>
 
@@ -374,6 +380,9 @@ export default function DantuPlombavimas() {
               <h3 className="font-bold text-xl text-darkblue-700 mb-3">Kviečiame registruotis vizitui</h3>
               <p className="text-slate-600 mb-6 max-w-2xl">
                 Jeigu pastebėjote danties pažeidimus, jautrumą ar skausmą, nelaukite. Laiku atliktas gydymas padeda išsaugoti dantis.
+              </p>
+              <p className="text-slate-600 mb-6 max-w-2xl">
+                Bangų odontologijos klinikoje Jūsų laukia profesionali komanda, modernios technologijos ir individualus požiūris į kiekvieną pacientą. Užsiregistruokite vizitui ir pasirūpinkite savo dantų sveikata patikimai ir užtikrintai.
               </p>
               <Link to="/kontaktai" className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
                 Registruotis vizitui

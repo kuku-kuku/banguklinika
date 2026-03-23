@@ -53,6 +53,7 @@ const tocSections = [
   { id: "kada-reikalingas", label: "Kada reikalingas?" },
   { id: "paslauga", label: "Paslauga klinikoje" },
   { id: "procesas", label: "Kaip atliekama?" },
+  { id: "kodel-laiku-kitur", label: "Kodėl svarbu kreiptis laiku?" },
   { id: "ar-skausminga", label: "Ar skausminga?" },
   { id: "kodel-atideti", label: "Kodėl nevilkinti?" },
   { id: "kada-negali", label: "Kada gydymas nebepadeda?" },
@@ -395,7 +396,44 @@ export default function EndodontinisGydymas() {
               </div>
             </div>
           </motion.section>
+          {/* KODĖL SVARBU KREIPTIS LAIKU, NET JEI GYDYMAS BUS ATLIEKAMAS KITUR */}
+          <motion.section id="kodel-laiku-kitur" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kodėl svarbu laiku kreiptis, net jei pilnas endodontinis gydymas atliekamas kitur?
+              </h2>
 
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Daugelis pacientų mano, kad jei pilnas šaknų kanalų gydymas bus atliekamas pas kitą specialistą, pirminė pagalba nėra būtina.
+                  Tačiau praktikoje būtent ankstyvas įsikišimas dažnai lemia, ar dantį pavyks išsaugoti, ar gydymas taps sudėtingesnis.
+                </p>
+
+                <p>
+                  Laiku suteikta pirminė endodontinė pagalba leidžia sumažinti skausmą ir uždegimą dar prieš apsilankant pas endodontą. Tai ypač
+                  svarbu esant ūmiam skausmui, patinimui ar infekcijos požymiams, kai delsti gali būti pavojinga. Stabilizavus situaciją,
+                  tolimesnis gydymas pas endodontą tampa saugesnis, prognozuojamesnis ir dažnai greitesnis.
+                </p>
+
+                <p>
+                  Kita svarbi priežastis – infekcijos kontrolė. Negydoma pulpos infekcija gali plisti į aplinkinius audinius, sukelti pūlinius,
+                  kaulo pažeidimus ar bendros sveikatos komplikacijas. Pirminė pagalba padeda sustabdyti šį procesą ir apsaugoti nuo rimtesnių
+                  pasekmių.
+                </p>
+
+                <p>
+                  Be to, paruoštas dantis leidžia endodontologui tiksliau ir efektyviau atlikti pilną šaknų kanalų gydymą. Aiški diagnostika,
+                  sumažintas uždegimas ir tinkamai paruošti kanalai didina gydymo sėkmės tikimybę ir padeda pasiekti ilgalaikį rezultatą.
+                </p>
+
+                <p>
+                  Bangų odontologijos klinikos pasirinktas bendradarbiavimo modelis su kitais endodontais Klaipėdoje leidžia pacientams gauti
+                  kompleksinę pagalbą – nuo pirmosios intervencijos iki galutinio gydymo sprendimo. Toks požiūris užtikrina, kad kiekvieną
+                  gydymo etapą atlieka atitinkamos srities specialistas, o pacientas gauna optimalų ir saugų gydymą.
+                </p>
+              </div>
+            </div>
+          </motion.section>
           {/* AR SKAUSMINGA */}
           <motion.section id="ar-skausminga" className={sectionWrap} variants={item}>
             <div className={whiteCard}>

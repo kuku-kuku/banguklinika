@@ -29,54 +29,18 @@ function CheckIcon() {
   )
 }
 
-function ScalpelIcon() {
-  return (
-    <svg className="w-8 h-8 text-brand mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1.5}
-        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-      />
-    </svg>
-  )
-}
-
-function ExclamationIcon() {
-  return (
-    <svg className="w-8 h-8 text-brand mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1.5}
-        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-      />
-    </svg>
-  )
-}
-
-function ShieldCheckIcon() {
-  return (
-    <svg className="w-8 h-8 text-brand mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1.5}
-        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-      />
-    </svg>
-  )
-}
-
 const tocSections = [
   { id: 'kainos', label: 'Kainos' },
   { id: 'kas-yra', label: 'Kas yra dantų traukimas?' },
   { id: 'kada-reikalingas', label: 'Kada reikalingas?' },
   { id: 'rusys', label: 'Traukimo rūšys' },
+  { id: 'vaikams', label: 'Vaikams ir paaugliams' },
   { id: 'kodel-laiku', label: 'Kodėl svarbu laiku?' },
   { id: 'procesas', label: 'Kaip atliekamas?' },
   { id: 'ar-skausminga', label: 'Ar skausminga?' },
-  { id: 'po-traukimo', label: 'Po traukimo' }
+  { id: 'pries-traukima', label: 'Jei skauda prieš traukimą' },
+  { id: 'po-traukimo', label: 'Po traukimo' },
+  { id: 'kodel-rinktis', label: 'Kodėl verta rinktis mus?' }
 ]
 
 export default function DantuTraukimas() {
@@ -119,7 +83,7 @@ export default function DantuTraukimas() {
               Profesionalus dantų traukimas Klaipėdoje
             </h1>
 
-            <div className="">
+            <div>
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
                 <p className="mb-4">
                   Dantų traukimas yra odontologinė procedūra, atliekama tuomet, kai danties išsaugoti nebeįmanoma arba kai jis
@@ -187,11 +151,7 @@ export default function DantuTraukimas() {
           </motion.header>
 
           {/* KAS YRA TRAUKIMAS */}
-          <motion.section
-            id="kas-yra"
-            className={sectionWrap}
-            variants={item}
-          >
+          <motion.section id="kas-yra" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas yra dantų traukimas?</h2>
 
@@ -212,11 +172,7 @@ export default function DantuTraukimas() {
           </motion.section>
 
           {/* KADA REIKALINGA */}
-          <motion.section
-            id="kada-reikalingas"
-            className={sectionWrap}
-            variants={item}
-          >
+          <motion.section id="kada-reikalingas" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kada reikalingas dantų traukimas?</h2>
 
@@ -267,30 +223,39 @@ export default function DantuTraukimas() {
                 būklę. Dažniausiai skiriami du pagrindiniai dantų traukimo tipai.
               </p>
 
-              <div className="grid gap-6 md:grid-cols-3">
+              <div className="grid gap-6 md:grid-cols-2">
                 <div className={innerCard}>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Paprastas dantų traukimas</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Paprastas dantų traukimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Atliekamas, kai dantis visiškai išdygęs ir lengvai pasiekiamas. Odontologas švelniai atlaisvina dantį ir jį
-                    pašalina. Greita procedūra ir sklandus gijimas.
+                    Paprastas dantų traukimas atliekamas tuomet, kai dantis yra visiškai išdygęs ir lengvai pasiekiamas. Procedūros metu odontologas, naudodamas specialius instrumentus, švelniai atlaisvina dantį ir jį pašalina. Šis metodas paprastai atliekamas greitai, o gijimas – sklandus.
                   </p>
                 </div>
 
                 <div className={innerCard}>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Chirurginis dantų traukimas</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Chirurginis dantų traukimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Taikomas sudėtingesniais atvejais (dantis neišdygęs, įstrigęs, nulūžęs). Gali prireikti nedidelio pjūvio ar danties
-                    padalinimo. Atliekama saugiai ir kontroliuojamai.
+                    Chirurginis dantų traukimas taikomas sudėtingesniais atvejais – kai dantis yra dalinai ar visiškai neišdygęs, įstrigęs, nulūžęs arba kai šaknys yra sudėtingos formos. Procedūros metu gali būti atliekamas nedidelis pjūvis dantenose ar dantis pašalinamas dalimis. Nepaisant sudėtingumo, naudojant šiuolaikinius metodus ir tinkamą nuskausminimą, procedūra atliekama saugiai ir kontroliuojamai.
                   </p>
                 </div>
+              </div>
+            </div>
+          </motion.section>
 
-                <div className={innerCard}>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Dantų traukimas vaikams</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Atliekamas ypač švelniai, kai būtina šalinti pieninius ar nuolatinius dantis. Prieš procedūrą skiriama laiko
-                    paaiškinimui ir vaiko nuraminimui.
-                  </p>
-                </div>
+          {/* VAIKAMS IR PAAUGLIAMS */}
+          <motion.section id="vaikams" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Dantų traukimas vaikams ir paaugliams</h2>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Dantų traukimas vaikams ar paaugliams dažniausiai atliekamas tik tuomet, kai tai yra būtina ir kai nėra galimybės išsaugoti danties. Tai gali būti pieninių dantų šalinimas, kai jie trukdo nuolatinių dantų dygimui, arba nuolatinių dantų traukimas esant dideliems pažeidimams ar ortodontinio gydymo poreikiui.
+                </p>
+                <p>
+                  Bangų odontologijos klinikoje dantų traukimas jauniems pacientams atliekamas ypač švelniai, atsižvelgiant į vaiko amžių, emocinę būklę ir individualius poreikius. Prieš procedūrą odontologas skiria laiko paaiškinimui, ramiai supažindina vaiką su eiga ir atsako į visus jam kylančius klausimus. Tai padeda sumažinti baimę ir sukurti teigiamą patirtį.
+                </p>
+                <p>
+                  Procedūros metu taikomi vaikams pritaikyti nuskausminimo metodai, o pats dantų traukimas atliekamas atsargiai ir kontroliuojamai. Po procedūros tėvams pateikiamos aiškios rekomendacijos, kaip prižiūrėti burną namuose ir į ką atkreipti dėmesį gijimo laikotarpiu. Toks požiūris padeda užtikrinti sklandų gijimą ir teigiamą vaiko požiūrį į būsimus apsilankymus pas odontologą.
+                </p>
               </div>
             </div>
           </motion.section>
@@ -304,22 +269,16 @@ export default function DantuTraukimas() {
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Atidėliojamas dantų traukimas gali lemti ne tik užsitęsusį skausmą, bet ir rimtesnes burnos sveikatos problemas.
-                  Pažeistas ar infekuotas dantis dažnai tampa nuolatiniu bakterijų židiniu, kuris ilgainiui gali paveikti aplinkinius
-                  audinius, dantenas ir žandikaulio kaulą.
+                  Atidėliojamas dantų traukimas gali lemti ne tik užsitęsusį skausmą, bet ir rimtesnes burnos sveikatos problemas. Pažeistas ar infekuotas dantis dažnai tampa nuolatiniu bakterijų židiniu, kuris ilgainiui gali paveikti aplinkinius audinius, dantenas ir žandikaulio kaulą.
                 </p>
                 <p>
-                  Jeigu probleminis dantis nėra pašalinamas laiku, uždegimas gali plisti į gilesnius audinius, sukelti stipresnį
-                  patinimą, skausmą ar net bendros savijautos pablogėjimą. Tokiais atvejais gydymas tampa sudėtingesnis ir gali
-                  reikalauti papildomų procedūrų ar ilgesnio gijimo laikotarpio.
+                  Jeigu probleminis dantis nėra pašalinamas laiku, uždegimas gali plisti į gilesnius audinius, sukelti stipresnį patinimą, skausmą ar net bendros savijautos pablogėjimą. Tokiais atvejais gydymas tampa sudėtingesnis ir gali reikalauti papildomų procedūrų ar ilgesnio gijimo laikotarpio.
                 </p>
                 <p>
-                  Be to, uždelstas dantų traukimas gali neigiamai paveikti gretimus dantis. Infekcija ar nuolatinis spaudimas gali
-                  paskatinti aplinkinių dantų pažeidimus, dantenų atsitraukimą ar kaulo nykimą.
+                  Be to, uždelstas dantų traukimas gali neigiamai paveikti gretimus dantis. Infekcija ar nuolatinis spaudimas gali paskatinti aplinkinių dantų pažeidimus, dantenų atsitraukimą ar kaulo nykimą. Tai ypač svarbu planuojant tolimesnį gydymą, pavyzdžiui, implantaciją ar protezavimą, nes prarastas kaulas gali apsunkinti šias procedūras.
                 </p>
                 <p>
-                  Laiku atliktas dantų traukimas padeda išvengti šių komplikacijų, sumažina gydymo apimtį ir leidžia greičiau pereiti
-                  prie sprendimų, kurie atkuria funkciją ir komfortą.
+                  Laiku atliktas dantų traukimas padeda išvengti šių komplikacijų, sumažina gydymo apimtį ir leidžia greičiau pereiti prie sprendimų, kurie atkuria funkciją ir komfortą. Todėl svarbu neignoruoti simptomų ir kreiptis į odontologą vos pastebėjus problemą.
                 </p>
               </div>
             </div>
@@ -332,93 +291,148 @@ export default function DantuTraukimas() {
 
               <p className="text-slate-700 leading-relaxed mb-6">
                 Dantų traukimas Bangų odontologijos klinikoje atliekamas pagal aiškią ir saugią eigą, kad procedūra būtų kuo
-                komfortiškesnė pacientui ir nekeltų papildomo streso.
+                komfortiškesnė pacientui ir nekeltų papildomo streso. Kiekvienas atvejis vertinamas individualiai, todėl procedūros eiga gali nežymiai skirtis priklausomai nuo danties padėties ir sudėtingumo.
               </p>
 
-              <div className="grid gap-6 md:grid-cols-4">
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Apžiūra</h3>
-                  <p className="text-sm text-slate-600">
-                    Klinikinė apžiūra, rentgeno tyrimas, rizikos įvertinimas ir metodo parinkimas.
+                  <h3 className="font-bold text-darkblue-700 mb-2">Apžiūra ir pasiruošimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Prieš atliekant dantų traukimą, odontologas kruopščiai įvertina danties ir visos burnos ertmės būklę. Atliekama klinikinė apžiūra, įvertinama danties padėtis, aplinkinių audinių būklė ir galimi rizikos veiksniai. Jei situacija reikalauja detalesnio įvertinimo, paskiriamas rentgeno tyrimas, kuris leidžia tiksliai nustatyti danties šaknų formą, jų padėtį žandikaulio kaulo atžvilgiu bei artumą gretimiems dantims ar nervams. Ši informacija yra būtina, norint parinkti saugiausią ir efektyviausią dantų traukimo metodą bei išvengti galimų komplikacijų.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
                   <h3 className="font-bold text-darkblue-700 mb-2">Nuskausminimas</h3>
-                  <p className="text-sm text-slate-600">Vietinė nejautra užtikrina, kad jausite tik spaudimą, bet ne skausmą.</p>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Prieš pradedant procedūrą taikoma vietinė nejautra, kuri patikimai nuskausmina gydomą sritį. Tai užtikrina, kad dantų traukimo metu pacientas nejaus skausmo, o tik lengvą spaudimą ar judesį. Nuskausminimo metodas parenkamas individualiai, atsižvelgiant į paciento jautrumą, procedūros sudėtingumą ir bendrą savijautą. Esant poreikiui, gali būti taikomi papildomi nuskausminimo sprendimai, kad procedūra būtų kuo komfortiškesnė.
+                  </p>
                 </div>
 
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Pašalinimas</h3>
-                  <p className="text-sm text-slate-600">Dantis atsargiai atlaisvinamas ir pašalinamas (prireikus – dalimis).</p>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Danties pašalinimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Kai nuskausminimas pradeda veikti, odontologas atsargiai atlaisvina dantį iš alveolės ir jį pašalina. Procedūra atliekama švelniai, stengiantis kuo mažiau traumuoti aplinkinius audinius. Sudėtingesniais atvejais, pavyzdžiui, kai dantis yra tvirtai įsitvirtinęs ar dalinai neišdygęs, jis gali būti šalinamas dalimis. Toks metodas leidžia išlaikyti maksimalų saugumą ir užtikrinti kontroliuojamą procedūros eigą.
+                  </p>
                 </div>
 
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Priežiūra</h3>
-                  <p className="text-sm text-slate-600">Žaizdos sutvarkymas, hemostazė ir rekomendacijos gijimui.</p>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Žaizdos sutvarkymas ir rekomendacijos</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Pašalinus dantį, žaizda kruopščiai išvaloma, siekiant sumažinti infekcijos riziką ir sudaryti sąlygas natūraliam gijimui. Prireikus uždedami siūlai ar specialios hemostatinės priemonės, kurios padeda sustabdyti kraujavimą ir pagreitina gijimo procesą. Procedūros pabaigoje pacientui pateikiamos aiškios ir suprantamos rekomendacijos, kaip elgtis po dantų traukimo, ko vengti pirmosiomis dienomis ir kada kreiptis pakartotinei apžiūrai.
+                  </p>
                 </div>
               </div>
             </div>
           </motion.section>
 
-          {/* SKAUSMAS IR PRIEŽIŪRA */}
-          <motion.section className="mb-12 space-y-8" variants={item}>
-            <div id="ar-skausminga" className="scroll-mt-36 2xl:scroll-mt-24">
-              <div className={whiteCard}>
-                <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-                  Ar dantų traukimas yra skausmingas?
-                </h2>
+          {/* SKAUSMAS */}
+          <motion.section id="ar-skausminga" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Ar dantų traukimas yra skausmingas?
+              </h2>
 
-                <div className="text-slate-700 leading-relaxed space-y-4">
-                  <p>
-                    Šiuolaikinėje odontologijoje dantų traukimas atliekamas taip, kad pacientas nepatirtų skausmo. Taikant
-                    veiksmingą vietinę nejautrą, procedūros metu skausmas nejaučiamas, o dauguma pacientų procedūrą apibūdina kaip
-                    trumpą ir lengviau pakeliamą, nei tikėjosi.
-                  </p>
-                  <p>
-                    Po procedūros, kai nuskausminimo poveikis baigiasi, gali pasireikšti lengvas maudimas, patinimas ar jautrumas –
-                    tai normali organizmo reakcija. Šie pojūčiai paprastai sumažėja per kelias dienas ir gali būti kontroliuojami
-                    odontologo rekomenduotomis priemonėmis.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div className={whiteCard}>
-                <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-                  Ką daryti, jei dantį skauda dar prieš traukimą?
-                </h2>
-
-                <p className="text-slate-700 leading-relaxed">
-                  Jeigu dantį skauda stipriai, nuolat ar skausmas stiprėja, svarbu nedelsti ir kreiptis į odontologą. Laiku atlikta
-                  apžiūra leidžia įvertinti situaciją ir nuspręsti, ar dantį galima gydyti, ar reikalingas dantų traukimas.
+              <div className="text-slate-700 leading-relaxed space-y-4">
+                <p>
+                  Šiuolaikinėje odontologijoje dantų traukimas atliekamas taip, kad pacientas nepatirtų skausmo. Taikant veiksmingą vietinę nejautrą, procedūros metu skausmas nejaučiamas, o dauguma pacientų procedūrą apibūdina kaip trumpą ir lengviau pakeliamą, nei tikėjosi.
+                </p>
+                <p>
+                  Po procedūros, kai nuskausminimo poveikis baigiasi, gali pasireikšti lengvas maudimas, patinimas ar jautrumas – tai normali organizmo reakcija. Šie pojūčiai paprastai sumažėja per kelias dienas ir gali būti kontroliuojami odontologo rekomenduotomis priemonėmis. Laikantis pateiktų nurodymų, gijimas vyksta sklandžiai ir be komplikacijų.
                 </p>
               </div>
             </div>
+          </motion.section>
 
-            <div id="po-traukimo" className="scroll-mt-36 2xl:scroll-mt-24">
-              <div className={whiteCard}>
-                <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Ką svarbu žinoti po dantų traukimo?</h2>
+          {/* PRIEŠ TRAUKIMĄ */}
+          <motion.section id="pries-traukima" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Ką daryti, jei dantį skauda dar prieš traukimą?
+              </h2>
 
-                <div className="text-slate-700 leading-relaxed">
-                  <p className="mb-4">
-                    Pirmosiomis valandomis po procedūros rekomenduojama vengti intensyvios fizinės veiklos ir leisti organizmui
-                    pailsėti. Traukimo vietoje susiformuoja kraujo krešulys, kuris yra būtinas gijimo procesui, todėl labai svarbu jo
-                    nepažeisti.
-                  </p>
+              <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+                <p>
+                  Danties skausmas dažnai yra signalas, kad burnos ertmėje vyksta uždegiminiai procesai ar pažeidimai, kurių ignoruoti nereikėtų. Jeigu dantį skauda stipriai, nuolat ar skausmas stiprėja, svarbu nedelsti ir kreiptis į odontologą. Laiku atlikta apžiūra leidžia įvertinti situaciją ir nuspręsti, ar dantį galima gydyti, ar reikalingas dantų traukimas.
+                </p>
+                <p>
+                  Kol laukiate vizito, rekomenduojama vengti veiksmų, kurie gali pabloginti būklę. Nereikėtų šildyti skaudančios vietos, spausti ar bandyti savarankiškai „gydyti“ danties liaudiškomis priemonėmis. Taip pat patariama vengti kieto maisto skaudančioje pusėje ir palaikyti įprastą, bet švelnią burnos higieną.
+                </p>
+                <p>
+                  Esant poreikiui, trumpam skausmo malšinimui galima vartoti odontologo ar vaistininko rekomenduotus nuskausminamuosius vaistus, tačiau jie neišsprendžia pagrindinės problemos. Jei pasireiškia stiprus patinimas, karščiavimas ar skausmas plinta, būtina kuo greičiau kreiptis į specialistus, nes tai gali rodyti infekciją.
+                </p>
+                <p>
+                  Profesionalus įvertinimas leidžia ne tik sumažinti skausmą, bet ir pasirinkti saugiausią gydymo sprendimą. Laiku suplanuotas dantų traukimas, jei jis būtinas, padeda išvengti rimtesnių komplikacijų ir palengvina tolimesnį gydymą.
+                </p>
+              </div>
+            </div>
+          </motion.section>
 
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>Pirmąją parą vengti karšto maisto ir gėrimų, rinktis minkštą maistą.</li>
-                    <li>Nerūkyti ir nevartoti alkoholio bent 24–48 valandas.</li>
-                    <li>Laikytis odontologo paskirtų nuskausminamųjų ar kitų vaistų vartojimo rekomendacijų.</li>
-                    <li>Palaikyti burnos higieną, tačiau valyti dantis atsargiai, vengiant traukimo vietos.</li>
-                  </ul>
-                </div>
+          {/* PO TRAUKIMO */}
+          <motion.section id="po-traukimo" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Ką svarbu žinoti po dantų traukimo?</h2>
+
+              <div className="text-slate-700 leading-relaxed space-y-4 mb-6">
+                <p>
+                  Po dantų traukimo organizmui reikalingas laikas gijimui, todėl pirmosios dienos po procedūros yra ypač svarbios. Tinkama priežiūra padeda sumažinti diskomfortą, užtikrina sklandų gijimą ir padeda išvengti galimų komplikacijų.
+                </p>
+                <p>
+                  Pirmosiomis valandomis po procedūros rekomenduojama vengti intensyvios fizinės veiklos ir leisti organizmui pailsėti. Traukimo vietoje susiformuoja kraujo krešulys, kuris yra būtinas gijimo procesui, todėl labai svarbu jo nepažeisti. Dėl šios priežasties patariama neplauti burnos intensyviai, nesiurbti per šiaudelį ir neliesti žaizdos liežuviu ar pirštais.
+                </p>
+              </div>
+
+              <div className={innerCard + ' mb-6'}>
+                <h3 className="font-semibold text-darkblue-700 mb-4">Taip pat rekomenduojama:</h3>
+                <ul className="space-y-3">
+                  {[
+                    'pirmąją parą vengti karšto maisto ir gėrimų, rinktis minkštą, drungną maistą',
+                    'nerūkyti ir nevartoti alkoholio bent 24–48 valandas, nes tai gali sulėtinti gijimą',
+                    'laikytis odontologo paskirtų nuskausminamųjų ar kitų vaistų vartojimo rekomendacijų',
+                    'palaikyti burnos higieną, tačiau valyti dantis atsargiai, vengiant traukimo vietos'
+                  ].map((text, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="mt-1">
+                        <CheckIcon />
+                      </span>
+                      <span className="text-slate-700">{text}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Lengvas patinimas, jautrumas ar maudimas pirmosiomis dienomis yra normali organizmo reakcija. Šie pojūčiai paprastai palaipsniui silpnėja. Jeigu skausmas stiprėja, atsiranda intensyvus patinimas ar kiti neįprasti simptomai, svarbu nedelsti ir kreiptis į odontologą.
+                </p>
+                <p>
+                  Laikantis pateiktų rekomendacijų, gijimas po dantų traukimo vyksta sklandžiai, o burnos audiniai atsistato be komplikacijų.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* KODĖL RINKTIS */}
+          <motion.section id="kodel-rinktis" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
+              </h2>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Renkantis dantų traukimo paslaugas svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo sprendimo priėmimo iki priežiūros po procedūros. Bangų odontologijos klinikoje dantų traukimas atliekamas atsakingai, siekiant maksimaliai apsaugoti paciento komfortą ir burnos sveikatą.
+                </p>
+                <p>
+                  Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, neskuba priimti sprendimo ir visuomet pirmiausia ieško galimybių išsaugoti dantį. Jei dantų traukimas yra neišvengiamas, procedūra atliekama taikant šiuolaikinius nuskausminimo metodus ir kruopščiai suplanuotą eigą. Dėmesys skiriamas ne tik pačiai procedūrai, bet ir aiškiam situacijos paaiškinimui bei rekomendacijoms po jos.
+                </p>
+                <p>
+                  Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis saugiai viso gydymo metu. Todėl ieškantiems patikimo ir profesionalaus dantų traukimo Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas.
+                </p>
               </div>
             </div>
           </motion.section>
@@ -430,16 +444,17 @@ export default function DantuTraukimas() {
                 Kviečiame registruotis dantų traukimui Bangų klinikoje
               </h2>
 
-              <p className="text-slate-700 max-w-3xl leading-relaxed mb-8">
-                Jeigu jaučiate danties skausmą, diskomfortą ar gavote rekomendaciją šalinti dantį, kviečiame registruotis
-                konsultacijai Bangų odontologijos klinikoje. Vizito metu bus įvertinta Jūsų burnos būklė, aptartos galimos gydymo
-                alternatyvos ir, esant poreikiui, suplanuotas saugus dantų traukimas.
-                <br />
-                <br />
-                Bangų odontologijos klinikoje siekiame, kad net ir tokios procedūros kaip dantų traukimas būtų aiškios, valdomos ir
-                kuo mažiau keliančios streso. Čia Jūsų laukia patyrę specialistai, moderni įranga ir rūpestingas požiūris į kiekvieną
-                pacientą.
-              </p>
+              <div className="text-slate-700 max-w-3xl leading-relaxed mb-8 space-y-4">
+                <p>
+                  Jeigu jaučiate danties skausmą, diskomfortą ar gavote rekomendaciją šalinti dantį, kviečiame registruotis konsultacijai Bangų odontologijos klinikoje. Vizito metu bus įvertinta Jūsų burnos būklė, aptartos galimos gydymo alternatyvos ir, esant poreikiui, suplanuotas saugus dantų traukimas.
+                </p>
+                <p>
+                  Bangų odontologijos klinikoje siekiame, kad net ir tokios procedūros kaip dantų traukimas būtų aiškios, valdomos ir kuo mažiau keliančios streso. Čia Jūsų laukia patyrę specialistai, moderni įranga ir rūpestingas požiūris į kiekvieną pacientą.
+                </p>
+                <p>
+                  Registruokitės dantų traukimui ir pasirūpinkite savo burnos sveikata laiku bei profesionaliai.
+                </p>
+              </div>
 
               <Link
                 to="/kontaktai"

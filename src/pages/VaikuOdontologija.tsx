@@ -126,7 +126,7 @@ export default function VaikuOdontologija() {
 
                 <div className="space-y-4 text-slate-700 leading-relaxed">
                   <p>
-                    Vaikų dantų gydymo kaina priklauso nuo vaiko amžiaus, dantų būklės, pasirinkto gydymo metodo ir procedūros sudėtingumo. Bangų odontologijos klinikoje prieš pradedant bet kokį gydymą pirmiausia atliekama apžiūra.
+                    Vaikų dantų gydymo kaina priklauso nuo vaiko amžiaus, dantų būklės, pasirinkto gydymo metodo ir procedūros sudėtingumo. Bangų odontologijos klinikoje prieš pradedant bet kokį gydymą pirmiausia atliekama apžiūra, kurios metu įvertinama situacija ir parenkamas tinkamiausias sprendimas, atsižvelgiant į vaiko savijautą.
                   </p>
                 </div>
               </div>
@@ -186,33 +186,49 @@ export default function VaikuOdontologija() {
           </motion.section>
 
           <motion.section id="pieniniai" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-            <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-              Kodėl svarbu prižiūrėti pieninius dantis?
-            </h2>
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                  Kodėl svarbu prižiūrėti pieninius dantis?
+                </h2>
 
-            <div className="grid sm:grid-cols-3 gap-6">
-              <div className="rounded-2xl border border-brand/20 bg-brand-50 shadow-soft p-6 flex flex-col items-start">
-                <SmileIcon />
-                <h3 className="font-semibold text-darkblue-700 mb-2">Vystymasis</h3>
-                <p className="text-sm text-slate-700 leading-relaxed">
-                  Pieniniai dantys padeda vaikui taisyklingai kramtyti, formuoti kalbą ir palaikyti vietą nuolatiniams dantims.
-                </p>
+                <div className="space-y-4 text-slate-700 leading-relaxed">
+                  <p>
+                    Nors pieniniai dantys laikini, jų priežiūra yra labai svarbi vaiko burnos sveikatai ir vystymuisi. Pieniniai dantys padeda vaikui taisyklingai kramtyti, formuoti kalbą ir palaikyti vietą nuolatiniams dantims. Negydomi pieninių dantų pažeidimai gali sukelti skausmą, infekcijas ir turėti neigiamos įtakos nuolatinių dantų formavimuisi.
+                  </p>
+                  <p>
+                    Pieninių dantų ėduonis dažnai vystosi greičiau nei suaugusiųjų dantyse, todėl problemos gali progresuoti nepastebimai. Laiku apsilankius pas specialistą, vaikų odontologas gali anksti nustatyti pakitimus ir taikyti švelnius, vaikui pritaikytus gydymo ar profilaktikos metodus.
+                  </p>
+                  <p>
+                    Svarbu paneigti mitą, kad pieninių dantų gydyti nereikia, nes jie vis tiek iškris. Priešingai – tinkamai prižiūrėti pieniniai dantys padeda išvengti sudėtingesnių problemų ateityje ir formuoja vaiko teigiamą požiūrį į burnos priežiūrą.
+                  </p>
+                </div>
               </div>
 
-              <div className="rounded-2xl border border-brand/20 bg-brand-50 shadow-soft p-6 flex flex-col items-start">
-                <StarIcon />
-                <h3 className="font-semibold text-darkblue-700 mb-2">Greitas gedimas</h3>
-                <p className="text-sm text-slate-700 leading-relaxed">
-                  Pieninių dantų ėduonis vystosi greičiau. Laiku apsilankius, galima nustatyti pakitimus ir taikyti švelnius metodus.
-                </p>
-              </div>
+              <div className="grid sm:grid-cols-3 gap-6">
+                <div className="rounded-2xl border border-brand/20 bg-brand-50 shadow-soft p-6 flex flex-col items-start">
+                  <SmileIcon />
+                  <h3 className="font-semibold text-darkblue-700 mb-2">Vystymasis</h3>
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    Pieniniai dantys padeda vaikui taisyklingai kramtyti, formuoti kalbą ir palaikyti vietą nuolatiniams dantims.
+                  </p>
+                </div>
 
-              <div className="rounded-2xl border border-brand/20 bg-brand-50 shadow-soft p-6 flex flex-col items-start">
-                <HeartIcon />
-                <h3 className="font-semibold text-darkblue-700 mb-2">Ateities sveikata</h3>
-                <p className="text-sm text-slate-700 leading-relaxed">
-                  Paneigiame mitą, kad jų gydyti nereikia. Sveiki pieniniai dantys formuoja teigiamą vaiko požiūrį į burnos priežiūrą.
-                </p>
+                <div className="rounded-2xl border border-brand/20 bg-brand-50 shadow-soft p-6 flex flex-col items-start">
+                  <StarIcon />
+                  <h3 className="font-semibold text-darkblue-700 mb-2">Greitas gedimas</h3>
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    Pieninių dantų ėduonis vystosi greičiau. Laiku apsilankius, galima nustatyti pakitimus ir taikyti švelnius metodus.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-brand/20 bg-brand-50 shadow-soft p-6 flex flex-col items-start">
+                  <HeartIcon />
+                  <h3 className="font-semibold text-darkblue-700 mb-2">Ateities sveikata</h3>
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    Paneigiame mitą, kad jų gydyti nereikia. Sveiki pieniniai dantys formuoja teigiamą vaiko požiūrį į burnos priežiūrą.
+                  </p>
+                </div>
               </div>
             </div>
           </motion.section>
@@ -224,18 +240,18 @@ export default function VaikuOdontologija() {
               </h2>
 
               <p className="text-slate-700 mb-6 leading-relaxed">
-                Pirmasis vaiko apsilankymas pas odontologą rekomenduojamas vos išdygus pirmiesiems dantims arba ne vėliau kaip iki vienerių metų amžiaus. Ankstyvas vizitas leidžia vaikui susipažinti su aplinka, o tėvams – gauti naudingų patarimų.
+                Pirmasis vaiko apsilankymas pas odontologą rekomenduojamas vos išdygus pirmiesiems dantims arba ne vėliau kaip iki vienerių metų amžiaus. Ankstyvas vizitas leidžia vaikui susipažinti su aplinka, o tėvams – gauti naudingų patarimų apie dantų priežiūrą namuose.
               </p>
 
               <div className="space-y-4">
-                <h3 className="font-semibold text-darkblue-700">Į odontologą reikėtų kreiptis, jei pastebimi šie požymiai:</h3>
+                <h3 className="font-semibold text-darkblue-700">Į odontologą taip pat reikėtų kreiptis, jei pastebimi šie požymiai:</h3>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {[
-                    'Vaikas skundžiasi dantų skausmu ar jautrumu',
-                    'Ant dantų matomos baltos ar tamsios dėmės',
-                    'Dantenos paraudusios ar kraujuoja',
-                    'Vaikas vengia kramtyti viena puse',
-                    'Atėjo laikas profilaktiniam patikrinimui (net jei nėra skausmo)',
+                    'vaikas skundžiasi dantų skausmu ar jautrumu',
+                    'ant dantų matomos baltos ar tamsios dėmės',
+                    'dantenos paraudusios ar kraujuoja',
+                    'vaikas vengia kramtyti viena puse',
+                    'atėjo laikas profilaktiniam patikrinimui, net jei nėra nusiskundimų',
                   ].map((text, i) => (
                     <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
                       <span className="mt-1"><CheckIcon /></span>
@@ -244,6 +260,10 @@ export default function VaikuOdontologija() {
                   ))}
                 </div>
               </div>
+
+              <p className="text-slate-700 mt-6 leading-relaxed">
+                Reguliarūs patikrinimai padeda užkirsti kelią rimtesnėms problemoms ir leidžia palaipsniui pratinti vaiką prie odontologinių vizitų. Toks nuoseklus požiūris užtikrina, kad vaiko dantų priežiūra būtų rami, o gydymas – minimalus ir savalaikis.
+              </p>
             </div>
           </motion.section>
 
@@ -253,14 +273,20 @@ export default function VaikuOdontologija() {
                 Kokias vaikų odontologijos paslaugas teikiame?
               </h2>
 
+              <p className="text-slate-700 mb-6 leading-relaxed">
+                Bangų odontologijos klinikoje vaikų odontologija apima visą paslaugų spektrą – nuo pirmųjų profilaktinių patikrinimų iki gydomųjų procedūrų. Kiekviena paslauga parenkama atsižvelgiant į vaiko amžių, dantų vystymosi etapą ir individualius poreikius, siekiant kuo švelnesnio ir efektyvesnio gydymo.
+              </p>
+
+              <h3 className="font-semibold text-darkblue-700 mb-4">Vaikams teikiamos šios pagrindinės paslaugos:</h3>
+
               <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
                 {[
-                  'Konsultacijos ir profilaktiniai patikrinimai',
-                  'Pieninių dantų gydymas (vaikams pritaikytos medžiagos)',
-                  'Dantų plombavimas (ėduonies stabdymas)',
-                  'Ėduonies profilaktika',
-                  'Profesionali burnos higiena vaikams',
-                  'Dantų šalinimas (tik kai neišvengiama)',
+                  'Konsultacijos ir profilaktiniai patikrinimai, padedantys anksti pastebėti galimus pakitimus',
+                  'Pieninių dantų gydymas, taikant vaikams pritaikytas medžiagas',
+                  'Dantų plombavimas, siekiant atkurti pažeistus dantis ir sustabdyti ėduonį',
+                  'Ėduonies profilaktika, skirta apsaugoti dantis nuo pažeidimų',
+                  'Profesionali burnos higiena vaikams, formuojanti taisyklingus priežiūros įpročius',
+                  'Dantų šalinimas, kai tai neišvengiama ir būtina vaiko sveikatai',
                 ].map((service, i) => (
                   <li key={i} className="flex items-center gap-2 text-slate-700">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand shrink-0" />
@@ -281,34 +307,38 @@ export default function VaikuOdontologija() {
                 Kaip vyksta vaikų dantų gydymas klinikoje?
               </h2>
 
+              <p className="text-slate-700 mb-6 leading-relaxed">
+                Vaikų dantų gydymas Bangų odontologijos klinikoje pradedamas nuo vaiko pažinties su aplinka ir specialistu. Pirmojo vizito metu siekiama užmegzti pasitikėjimą, todėl gydymas dažnai nepradedamas iš karto – vaikas supažindinamas su procedūromis jam suprantama ir draugiška forma.
+              </p>
+
               <div className="grid gap-6 md:grid-cols-3">
                 <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                   <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
                   <h3 className="font-bold text-darkblue-700 mb-2">Adaptacija ir apžiūra</h3>
                   <p className="text-sm text-slate-600">
-                    Ramus susipažinimas su odontologu ir aplinka. Apžiūra atliekama neskubant, paaiškinant vaikui suprantama kalba.
+                    Vaiko vizitas pradedamas nuo ramios pažinties su aplinka ir odontologu. Specialistui svarbu užmegzti pasitikėjimą, todėl apžiūra atliekama neskubant, vaikui suprantama forma. Odontologas apžiūri dantukus, įvertina jų būklę, o tuo pačiu paprastai ir draugiškai paaiškina, kas bus daroma vizito metu. Toks požiūris padeda vaikui jaustis saugiai ir sumažina įtampą dar prieš pradedant bet kokias procedūras.
                   </p>
                 </div>
 
                 <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                   <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Gydymas (jei reikia)</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Gydymas arba profilaktika</h3>
                   <p className="text-sm text-slate-600">
-                    Atliekamas švelniai, vaiko tempu. Naudojamos vaikams pritaikytos priemonės, daromos pertraukos.
+                    Jeigu nustatoma, kad reikalingas gydymas ar profilaktinės procedūros, jos atliekamos švelniai ir atsižvelgiant į vaiko emocinę bei fizinę savijautą. Odontologas dirba vaiko tempu, stebi jo reakcijas ir, esant poreikiui, daro pertraukas. Procedūrų metu naudojami vaikams pritaikyti metodai ir priemonės, kad vizitas būtų kuo komfortiškesnis ir nesukeltų neigiamų asociacijų.
                   </p>
                 </div>
 
                 <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                   <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Paskatinimas</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Paskatinimas ir rekomendacijos</h3>
                   <p className="text-sm text-slate-600">
-                    Vaikas paskatinamas už drąsą, tėvams suteikiamos rekomendacijos dėl priežiūros namuose.
+                    Po vizito vaikas visuomet paskatinamas už drąsą ir bendradarbiavimą, kad apsilankymas pas odontologą būtų siejamas su teigiama patirtimi. Tėvams pateikiamos aiškios ir praktiškos burnos priežiūros rekomendacijos, atsižvelgiant į vaiko amžių ir dantų būklę. Taip pat aptariamas kito profilaktinio vizito laikas, siekiant užtikrinti nuoseklią ir ilgalaikę vaiko burnos sveikatos priežiūrą.
                   </p>
                 </div>
               </div>
 
               <p className="text-slate-700 mt-6 leading-relaxed">
-                Toks nuoseklus ir ramus procesas padeda sukurti teigiamą patirtį ir mažina baimę ateities vizitams.
+                Toks nuoseklus ir ramus procesas padeda sukurti teigiamą patirtį ir mažina baimę ateities vizitams. Dėl to apsilankymai pas vaikų odontologą tampa įprasta ir nebaugia vaiko kasdienybės dalimi.
               </p>
             </div>
           </motion.section>
@@ -316,16 +346,24 @@ export default function VaikuOdontologija() {
           <motion.section id="paruosimas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
             <div className="bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft">
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-                Kaip paruošti vaiką vizitui?
+                Kaip paruošti vaiką vizitui pas odontologą?
               </h2>
+
+              <p className="text-slate-700 mb-6 leading-relaxed">
+                Tinkamas pasiruošimas vizitui pas odontologą gali turėti didelę įtaką vaiko patirčiai. Pagrindinis tikslas – suformuoti pozityvų požiūrį ir sumažinti nerimą dar prieš atvykstant į kliniką.
+              </p>
 
               <h3 className="font-semibold text-darkblue-700 mb-4">Tėvams rekomenduojama:</h3>
               <ul className="list-disc pl-5 space-y-2 text-slate-700">
-                <li>Apie vizitą kalbėti ramiai ir pozityviai, vengti bauginančių žodžių.</li>
-                <li>Paaiškinti, kad odontologas padeda dantukams būti sveikiems.</li>
-                <li>Nevartoti žodžių, susijusių su skausmu ar baime.</li>
-                <li>Pasirinkti vizitui laiką, kai vaikas yra pailsėjęs ir geros nuotaikos.</li>
+                <li>apie vizitą kalbėti ramiai ir pozityviai, vengiant bauginančių žodžių ar neigiamų asmeninių patirčių</li>
+                <li>paaiškinti vaikui, kad odontologas padeda dantukams būti sveikiems</li>
+                <li>nevartoti žodžių, susijusių su skausmu ar baime</li>
+                <li>pasirinkti vizitui laiką, kai vaikas yra pailsėjęs ir geros nuotaikos</li>
               </ul>
+
+              <p className="text-slate-700 mt-6 leading-relaxed">
+                Taip pat svarbu neperdėti vizito reikšmės – odontologo apsilankymas turėtų būti pateikiamas kaip įprasta ir natūrali veikla. Patyręs vaikų odontologas vizito metu pasirūpina, kad vaikas jaustųsi saugiai, todėl tėvų ramybė ir pasitikėjimas specialistu yra itin svarbūs.
+              </p>
             </div>
           </motion.section>
 
@@ -337,7 +375,15 @@ export default function VaikuOdontologija() {
                 </h2>
 
                 <p className="text-slate-700 leading-relaxed">
-                  Šiuolaikinėje vaikų odontologijoje didelis dėmesys skiriamas komfortui. Procedūros dažniausiai atliekamos be skausmo arba su minimaliu diskomfortu, naudojant vaikams pritaikytus nuskausminimo metodus. Daugeliu atvejų didžiausią baimę sukelia nežinomybė, todėl aiškus paaiškinimas ir draugiškas bendravimas padeda sukurti teigiamą patirtį.
+                  Vienas dažniausių tėvų klausimų – ar vaikų dantų gydymas sukelia skausmą. Šiuolaikinėje vaikų odontologijoje didelis dėmesys skiriamas komfortui ir švelniam gydymui, todėl procedūros dažniausiai atliekamos be skausmo arba su minimaliu diskomfortu.
+                </p>
+
+                <p className="text-slate-700 leading-relaxed mt-4">
+                  Jei reikalingas gydymas, taikomi vaikams pritaikyti nuskausminimo metodai, o procedūros atliekamos atsižvelgiant į vaiko savijautą ir reakcijas. Odontologas dirba vaiko tempu, prireikus daromos pertraukos, kad vaikas jaustųsi kuo ramiau.
+                </p>
+
+                <p className="text-slate-700 leading-relaxed mt-4">
+                  Daugeliu atvejų didžiausią baimę vaikams sukelia ne pats gydymas, o nežinomybė. Todėl aiškus paaiškinimas, draugiškas bendravimas ir palaipsniui vykstanti adaptacija leidžia sukurti teigiamą patirtį. Dėl šios priežasties apsilankymai pas vaikų odontologą mūsų klinikoje Klaipėdoje dažnai tampa nebaugūs net ir jautresniems vaikams.
                 </p>
               </div>
             </div>
@@ -348,9 +394,17 @@ export default function VaikuOdontologija() {
                   Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
                 </h2>
 
-                <p className="text-slate-700 leading-relaxed">
-                  Mūsų klinikoje vaikų odontologija grindžiama kantrybe, pagarba vaiko jausmams ir nuosekliu pasitikėjimo kūrimu. Kiekvienas vaikas vertinamas individualiai, skiriant laiko adaptacijai. Tėvai vertina ramią aplinką, aiškią komunikaciją ir nuoširdų specialistų bendravimą su mažaisiais pacientais.
-                </p>
+                <div className="space-y-4 text-slate-700 leading-relaxed">
+                  <p>
+                    Renkantis odontologijos kliniką vaikui svarbu ne tik gydymo rezultatas, bet ir pati patirtis. Bangų odontologijos klinikoje vaikų odontologija grindžiama kantrybe, pagarba vaiko jausmams ir nuosekliu pasitikėjimo kūrimu nuo pirmojo vizito.
+                  </p>
+                  <p>
+                    Klinikoje dirbantis vaikų odontologas kiekvieną vaiką vertina individualiai, atsižvelgdamas į jo amžių, emocinę būklę ir ankstesnę patirtį. Didelis dėmesys skiriamas adaptacijai, aiškiam paaiškinimui vaikui suprantama kalba ir švelniems gydymo metodams. Tai leidžia sumažinti baimę ir formuoti teigiamą požiūrį į odontologinius vizitus ateityje.
+                  </p>
+                  <p>
+                    Tėvai vertina ramią aplinką, aiškią komunikaciją ir skaidrią kainodarą. Teigiami atsiliepimai dažnai pabrėžia ne tik profesionalų gydymą, bet ir nuoširdų bendravimą su vaikais. Tokia patirtis leidžia Bangų odontologijos klinikai tapti patikimu pasirinkimu šeimoms, ieškančioms atsakingos ir ilgalaikės vaikų dantų priežiūros.
+                  </p>
+                </div>
               </div>
             </div>
           </motion.section>
@@ -361,9 +415,14 @@ export default function VaikuOdontologija() {
                 Kviečiame registruotis vaikų odontologo konsultacijai Bangų klinikoje
               </h2>
 
-              <p className="text-slate-700 mb-8 max-w-3xl leading-relaxed">
-                Jeigu norite pasirūpinti savo vaiko dantų sveikata nuo pat pirmųjų dantukų arba pastebėjote požymių, kad reikalingas gydymas, kviečiame registruotis vizitui Bangų odontologijos klinikoje. Ankstyva priežiūra padeda išvengti sudėtingesnių problemų ir leidžia vaikui priprasti prie odontologo be streso.
-              </p>
+              <div className="text-slate-700 mb-8 max-w-3xl leading-relaxed space-y-4">
+                <p>
+                  Jeigu norite pasirūpinti savo vaiko dantų sveikata nuo pat pirmųjų dantukų arba pastebėjote požymių, kad reikalingas gydymas, kviečiame registruotis vizitui Bangų odontologijos klinikoje. Ankstyva priežiūra padeda išvengti sudėtingesnių problemų ir leidžia vaikui priprasti prie odontologo be streso.
+                </p>
+                <p>
+                  Bangų odontologijos klinikoje Jūsų vaiko laukia saugi aplinka, patyrę specialistai ir dėmesingas požiūris. Užsiregistruokite konsultacijai ir leiskite vaikų odontologui pasirūpinti Jūsų vaiko šypsena ramiai, atsakingai ir profesionaliai.
+                </p>
+              </div>
 
               <Link
                 to="/kontaktai"
