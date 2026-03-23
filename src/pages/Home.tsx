@@ -252,7 +252,7 @@ export default function Home() {
 
             <motion.div className="relative" initial={{ opacity: 0, scale: .98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .6 }}>
               <div
-                className="relative aspect-square md:aspect-[16/10] lg:aspect-[4/5] lg:max-h-[62vh] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-white"
+                className="relative aspect-[1.12/1] md:aspect-[1.22/1] lg:aspect-[0.96/1] lg:max-h-[68vh] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-white"
                 onTouchStart={onTouchStart}
                 onTouchEnd={onTouchEnd}
               >
