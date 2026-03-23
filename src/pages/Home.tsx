@@ -155,7 +155,7 @@ export default function Home() {
       {/* HERO SECTION */}
       <div className="relative z-10 overflow-visible">
         <section className="relative overflow-visible pan-y">
-          <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center py-12 md:py-20 lg:py-28">
+          <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 lg:gap-24 items-start py-12 md:py-20 lg:py-20">
             <div className="space-y-8 z-10">
               <motion.h1
                 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.08] tracking-tight text-slate-900 max-w-3xl"
@@ -252,7 +252,7 @@ export default function Home() {
 
             <motion.div className="relative" initial={{ opacity: 0, scale: .98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .6 }}>
               <div
-                className="relative aspect-square md:aspect-[16/10] lg:aspect-[4/3] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-white"
+                className="relative aspect-square md:aspect-[16/10] lg:aspect-[4/5] lg:max-h-[62vh] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-white"
                 onTouchStart={onTouchStart}
                 onTouchEnd={onTouchEnd}
               >

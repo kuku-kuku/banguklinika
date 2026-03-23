@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import SEO from '../../components/SEO'
 import FAQLv from '../../components/FAQLv'
@@ -39,6 +39,25 @@ const globalStyles = `
 }
 `
 
+type GoogleData = {
+  rating: number | null
+  user_ratings_total: number | null
+  reviews_url: string | null
+}
+
+function StarIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path
+        d="M12 2.75l2.95 5.98 6.6.96-4.77 4.65 1.13 6.58L12 18.77 6.09 20.92l1.13-6.58L2.45 9.69l6.6-.96L12 2.75z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth="1"
+      />
+    </svg>
+  )
+}
+
 function SectionDivider() {
   return (
     <div className="relative z-0 flex justify-center py-0">
@@ -53,6 +72,17 @@ function SectionDivider() {
 }
 
 export default function HomeLv() {
+  const [google, setGoogle] = useState<GoogleData>({ rating: null, user_ratings_total: null, reviews_url: null })
+
+  useEffect(() => {
+    fetch('/api/reviews')
+      .then(r => r.ok ? r.json() : null)
+      .then(d => {
+        if (d?.rating) setGoogle({ rating: d.rating, user_ratings_total: d.user_ratings_total, reviews_url: d.reviews_url })
+      })
+      .catch(() => { })
+  }, [])
+
   const [index, setIndex] = useState(0)
   const [auto, setAuto] = useState(true)
   const timerRef = useRef<number | null>(null)
@@ -113,19 +143,28 @@ export default function HomeLv() {
       {/* HERO SECTION */}
       <div className="relative z-10 overflow-visible">
         <section className="relative overflow-visible pan-y">
-          <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center py-12 md:py-20 lg:py-28">
+          <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 lg:gap-24 items-start py-12 md:py-20 lg:py-20">
             <div className="space-y-8 z-10">
-              <motion.h2
-                className="text-4xl md:text-5xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-slate-900"
+              <motion.h1
+                className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.08] tracking-tight text-slate-900 max-w-3xl"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: .6 }}
+              >
+                Zobārstniecības klīnika Klaipēdā!
+              </motion.h1>
+
+              <motion.h2
+                className="text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight text-brand max-w-2xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: .08, duration: .6 }}
               >
                 {homeLv.hero.title}
               </motion.h2>
 
               <motion.p
-                className="text-gray-600 text-lg md:text-xl lg:text-2xl leading-relaxed max-w-2xl"
+                className="text-gray-600 text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: .1, duration: .6 }}
@@ -139,15 +178,49 @@ export default function HomeLv() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: .2, duration: .5 }}
               >
-                <a href={`tel:${CLINIC.phone}`} className="btn-primary px-10 py-4 lg:py-5 rounded-2xl shadow-xl shadow-brand/20 hover:scale-105 transition-all text-center justify-center text-lg font-bold">
+                <a href={`tel:${CLINIC.phone}`} className="btn-primary px-10 py-4 lg:py-5 rounded-2xl shadow-xl shadow-brand/20 hover:scale-105 transition-all text-center justify-center text-base font-bold">
                   {homeLv.hero.ctaPhone}
                 </a>
-                <Link to="/lv/kontakti#registracija" className="bg-white border-2 border-brand text-brand px-10 py-4 lg:py-5 rounded-2xl font-bold hover:bg-brand-50 transition-all text-center justify-center text-lg">
+                <Link to="/lv/kontakti#registracija" className="bg-white border-2 border-brand text-brand px-10 py-4 lg:py-5 rounded-2xl font-bold hover:bg-brand-50 transition-all text-center justify-center text-base">
                   {homeLv.hero.ctaOnline}
                 </Link>
               </motion.div>
 
-              <ul className="text-sm md:text-base font-medium text-slate-500 flex flex-wrap gap-x-8 gap-y-3 pt-2 mt-2">
+              {/* Google rating badge */}
+              {google.rating && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: .3, duration: .5 }}
+                >
+                  <a
+                    href={google.reviews_url || '#'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 px-4 py-2.5 rounded-xl border border-slate-200 bg-white hover:border-brand/30 transition-all shadow-sm hover:shadow-md"
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05" />
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+                    </svg>
+                    <div className="flex items-center gap-1.5">
+                      <span className="font-bold text-slate-900 text-sm">{google.rating.toFixed(1)}</span>
+                      <div className="flex items-center gap-0.5 text-amber-400">
+                        {[1, 2, 3, 4, 5].map(i => (
+                          <StarIcon key={i} className="w-3.5 h-3.5" />
+                        ))}
+                      </div>
+                      {google.user_ratings_total && (
+                        <span className="text-slate-500 text-sm">({google.user_ratings_total} atsauksmes)</span>
+                      )}
+                    </div>
+                  </a>
+                </motion.div>
+              )}
+
+              <ul className="text-sm md:text-base font-medium text-slate-500 flex flex-col gap-y-3 pt-2 mt-2">
                 {homeLv.hero.bullets.map((b, i) => (
                   <li key={i} className="flex items-center gap-2">
                     <span className="text-brand font-black text-lg">✓</span> {b}
@@ -158,22 +231,23 @@ export default function HomeLv() {
 
             <motion.div className="relative" initial={{ opacity: 0, scale: .98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .6 }}>
               <div
-                className="relative aspect-square md:aspect-[16/10] lg:aspect-[4/5] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-white"
+                className="relative aspect-square md:aspect-[16/10] lg:aspect-[4/5] lg:max-h-[62vh] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-white"
                 onTouchStart={onTouchStart}
                 onTouchEnd={onTouchEnd}
               >
-                <AnimatePresence initial={false} mode="wait">
+                {HERO_IMAGES.map((imgSrc, i) => (
                   <motion.img
-                    key={index}
-                    src={HERO_IMAGES[index]}
-                    alt={`Bangų klinika - Zobārstniecības klīnika Klaipēdā`}
+                    key={imgSrc}
+                    src={imgSrc}
+                    alt="Bangų klinika - Zobārstniecības klīnika Klaipēdā"
                     className="absolute inset-0 w-full h-full object-cover select-none"
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
+                    animate={{ opacity: i === index ? 1 : 0 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    decoding="async"
+                    loading={i === 0 ? "eager" : "lazy"}
                   />
-                </AnimatePresence>
+                ))}
 
                 <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-6 pointer-events-none">
                   <button onClick={() => { setAuto(false); setIndex(i => (i - 1 + HERO_IMAGES.length) % HERO_IMAGES.length) }} className="pointer-events-auto w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm shadow-lg flex items-center justify-center text-2xl hover:bg-brand hover:text-white transition-all" aria-label="Iepriekšējais attēls">‹</button>
@@ -203,7 +277,7 @@ export default function HomeLv() {
         <AnimatedSection>
           <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12">
             <div className="max-w-4xl mb-12 lg:mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">
                 {homeLv.whyChoose.title.split('Bangų')[0]}
                 <span className="text-brand">Bangų klīniku?</span>
               </h2>
@@ -212,17 +286,17 @@ export default function HomeLv() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+            <div className="grid md:grid-cols-3 gap-10 lg:gap-16">
               {homeLv.whyChoose.items.map((f, i) => (
-                <div key={i} className="group rounded-[2rem] overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                <div key={i} className="group rounded-[1.5rem] overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                  <div className="relative aspect-[3/2] overflow-hidden">
                     <img src={WHY_CHOOSE_IMAGES[i] || '/hero.webp'} alt={f.t} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                   </div>
-                  <div className="p-8 lg:p-10">
-                    <h3 className="font-bold text-2xl lg:text-3xl text-slate-900 mb-4 group-hover:text-brand transition-colors duration-300">
+                  <div className="p-5 lg:p-6">
+                    <h3 className="font-bold text-base lg:text-lg text-slate-900 mb-2 group-hover:text-brand transition-colors duration-300">
                       {f.t}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed text-sm lg:text-base">{f.d}</p>
+                    <p className="text-gray-600 leading-relaxed text-sm">{f.d}</p>
                   </div>
                 </div>
               ))}
@@ -238,29 +312,29 @@ export default function HomeLv() {
         <AnimatedSection>
           <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12">
             <div className="max-w-4xl mb-12 lg:mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">
                 Populārākie <span className="text-brand">pakalpojumi</span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
               {POPULAR_SERVICES_LV.map((s) => (
                 <Link
                   to={s.href}
                   key={s.id}
-                  className="group rounded-[2rem] overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 flex flex-col"
+                  className="group rounded-[1.5rem] overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 flex flex-col"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  <div className="relative aspect-[3/2] overflow-hidden">
                     <img src={s.image} alt={s.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                   </div>
-                  <div className="p-8 lg:p-10 flex flex-col flex-grow">
-                    <h3 className="font-bold text-2xl lg:text-3xl text-slate-900 mb-3 group-hover:text-brand transition-colors duration-300">
+                  <div className="p-5 lg:p-6 flex flex-col flex-grow">
+                    <h3 className="font-bold text-base lg:text-lg text-slate-900 mb-2 group-hover:text-brand transition-colors duration-300">
                       {s.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed text-sm lg:text-base mb-6 flex-grow">
+                    <p className="text-gray-600 leading-relaxed text-sm mb-4 flex-grow">
                       {s.desc}
                     </p>
-                    <div className="text-brand font-bold flex items-center gap-2 group-hover:gap-4 transition-all duration-300">
+                    <div className="text-brand font-bold flex items-center gap-2 group-hover:gap-4 transition-all duration-300 text-sm">
                       Uzzināt vairāk <span>→</span>
                     </div>
                   </div>
@@ -281,9 +355,9 @@ export default function HomeLv() {
       <SectionDivider />
 
       {/* FREE CONSULTATION CTA */}
-      <section className="relative z-10 py-20 bg-transparent">
+      <section className="relative z-10 py-12 bg-transparent">
         <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12">
-          <div className="relative overflow-hidden rounded-[3rem] bg-white border border-slate-100 shadow-2xl min-h-[500px] md:min-h-[600px] flex items-center">
+          <div className="relative overflow-hidden rounded-[2rem] bg-white border border-slate-100 shadow-2xl min-h-[320px] md:min-h-[380px] flex items-center">
             <div className="absolute inset-0 z-0">
               <img
                 src="/hero.webp"
@@ -293,22 +367,22 @@ export default function HomeLv() {
               <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 md:via-white/80 to-transparent" />
             </div>
 
-            <div className="relative z-10 px-8 py-16 sm:px-16 lg:py-24 max-w-4xl">
-              <div className="space-y-8">
-                <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-slate-900">
+            <div className="relative z-10 px-8 py-10 sm:px-12 lg:py-14 max-w-3xl">
+              <div className="space-y-5">
+                <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight text-slate-900">
                   {homeLv.freeConsult.title.split('bezmaksas')[0]}
                   <span className="text-brand">bezmaksas</span>
                 </h2>
-                <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-xl">
+                <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl">
                   {homeLv.freeConsult.text}
                 </p>
                 {homeLv.freeConsult.note && (
                   <p className="text-sm text-gray-500">{homeLv.freeConsult.note}</p>
                 )}
-                <div className="pt-4">
+                <div className="pt-2">
                   <Link
                     to="/lv/kontakti#registracija"
-                    className="bg-brand hover:bg-brand-600 text-white rounded-2xl px-12 py-5 font-bold text-xl transition-all shadow-xl shadow-brand/20 hover:scale-105 inline-block text-center"
+                    className="bg-brand hover:bg-brand-600 text-white rounded-xl px-8 py-3.5 font-bold text-base transition-all shadow-xl shadow-brand/20 hover:scale-105 inline-block text-center"
                   >
                     {homeLv.freeConsult.cta}
                   </Link>
@@ -327,7 +401,7 @@ export default function HomeLv() {
       <section className="relative z-10 py-20">
         <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl lg:text-5xl font-extrabold text-slate-900 mb-6">
+            <h2 className="text-2xl lg:text-4xl font-extrabold text-slate-900 mb-6">
               Biežāk uzdotie <span className="text-brand">jautājumi</span>
             </h2>
             <p className="text-gray-600 text-lg lg:text-xl leading-relaxed">
