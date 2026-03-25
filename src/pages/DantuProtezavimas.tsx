@@ -97,7 +97,7 @@ export default function DantuProtezavimas() {
 
       <motion.div
         ref={pageRef}
-        className="max-w-screen-2xl mx-auto px-4 sm:px-8 xl:px-28 2xl:px-8 2xl:flex 2xl:gap-8 2xl:items-start"
+        className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12 2xl:flex 2xl:gap-8 2xl:items-start"
         variants={container}
         initial="hidden"
         animate="visible"
