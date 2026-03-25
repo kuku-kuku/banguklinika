@@ -167,7 +167,8 @@ export const PRICING: PriceGroup[] = [
       { name: "Laikinas plastmasinis vainikėlis (pagamintas laboratorijoje)", from: 80, exact: true },
 
       { name: "Metalo keramikos vainikėlis", from: 350, exact: true },
-      { name: "Keramikos vainikėlis cirkonio oksido pagrindu", from: 400, exact: true },
+      { name: "Keramikos vainikėlis cirkonio oksido pagrindu (ant danties)", from: 400, exact: true },
+      { name: "Keramikos vainikėlis cirkonio oksido pagrindu (ant implanto)", from: 450, exact: true },
       { name: "E-max presuotos bemetalės keramikos vainikėlis", from: 400, exact: true },
 
       { name: "Vainiko kulties šlifavimas / paruošimas", from: 50, exact: true },

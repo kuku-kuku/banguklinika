@@ -182,47 +182,89 @@ export default function DantuProtezavimas() {
               </div>
             </div>
 
+            {/* top highlight row — konsultacija */}
+            <div className="grid sm:grid-cols-2 gap-3 mb-5">
+              {[
+                ['Konsultacija', '20 €'],
+                ['Gydymo plano sudarymas', '30 €'],
+              ].map(([name, price], i) => (
+                <div key={i} className="flex justify-between items-center bg-white rounded-2xl px-5 py-3 border" style={{ borderColor: S }}>
+                  <span className="text-slate-700 text-sm font-medium">{name}</span>
+                  <span className="font-extrabold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
+                </div>
+              ))}
+            </div>
+
             {/* 4-card grid */}
             <div className="grid md:grid-cols-2 gap-5">
 
-              {/* CEREC */}
-              <div className="bg-white p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
-                <h3 className="text-xl font-extrabold mb-4" style={{ color: P }}>CEREC (per 1 vizitą)</h3>
-                <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                  Pažangi CEREC sistema leidžia pagaminti itin tikslius ir estetiškus protezus per trumpą laiką:
-                </p>
-                <div className="space-y-0 divide-y divide-slate-100">
+              {/* Protezavimas ant dantų */}
+              <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Protezavimas ant dantų</h3>
+                <div className="divide-y divide-slate-100">
                   {[
-                    ['CEREC vainikėlis ant natūralaus danties', 'nuo 400 €'],
-                    ['CEREC vainikėlis ant implanto',           '450 €'],
-                    ['CEREC užklotas arba laminatė',           'nuo 600 €'],
+                    ['Laikinas plastmasinis vainikėlis (kabinete)',    '40 €'],
+                    ['Laikinas plastmasinis vainikėlis (laboratorijoje)', '80 €'],
+                    ['Metalo keramikos vainikėlis',                    '350 €'],
+                    ['Keramikos vainikėlis cirkonio oksido pagrindu (ant danties)', '400 €'],
+                    ['E-max presuotos bemetalės keramikos vainikėlis', '400 €'],
+                    ['Vainiko kulties šlifavimas / paruošimas',        '50 €'],
+                    ['Vainiko atstatymas ant stiklo pluošto kaiščio (priekinis)', '70 €'],
+                    ['Vainiko atstatymas ant stiklo pluošto kaiščio (krūminis)',  '100 €'],
+                    ['Pilnas vainiko atstatymas ant stiklo pluošto kaiščio',      '150 €'],
+                    ['Senų vainikėlių nuėmimas',                      '50 €'],
+                    ['Laikino vainikėlio cementavimas (ne gydymo metu)',  '20 €'],
+                    ['Nuolatinio vainikėlio cementavimas (ne gydymo metu)', '50 €'],
                   ].map(([name, price], i) => (
-                    <div key={i} className="flex justify-between items-center py-4">
+                    <div key={i} className="flex justify-between items-center py-2.5">
                       <span className="text-slate-600 text-sm">{name}</span>
                       <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                     </div>
                   ))}
                 </div>
-                <p className="text-slate-500 text-xs leading-relaxed mt-4">
-                  Ši technologija leidžia sutrumpinti gydymo laiką ir išvengti papildomų vizitų, todėl pacientams gali būti pasiūlytas racionalus kainos ir kokybės santykis.
-                </p>
               </div>
 
-              {/* Keramikiniai */}
-              <div className="bg-white p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
-                <h3 className="text-xl font-extrabold mb-4" style={{ color: P }}>Keramikiniai vainikėliai</h3>
-                <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                  Klinikoje taikomi skirtingi keramikiniai sprendimai, pritaikyti tiek funkciniams, tiek estetiniams poreikiams:
-                </p>
+              {/* Protezavimas ant implantų */}
+              <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Protezavimas ant implantų</h3>
                 <div className="divide-y divide-slate-100">
                   {[
-                    ['Metalo keramikos vainikėlis',                      'nuo 350 €'],
-                    ['Bemetalės E-MAX keramikos vainikėlis ant danties',  'nuo 400 €'],
-                    ['Bemetalės E-MAX keramikos vainikėlis ant implanto', 'nuo 450 €'],
-                    ['Cirkonio keramikos vainikėlis ant danties',         'nuo 400 €'],
-                    ['Cirkonio keramikos vainikėlis ant implanto',        'nuo 450 €'],
+                    ['Laikinas vainikėlis ant implanto (su laikinos atramos kaina)', '200 €'],
+                    ['Atspaudai / skenavimas nuo implantų',           '150 €'],
+                    ['Keramikos vainikėlis cirkonio oksido pagrindu (ant implanto)', '450 €'],
+                    ['E-max presuotos bemetalės keramikos vainikėlis','450 €'],
+                    ['Neodent standartinė atrama',                    '100 €'],
+                    ['Štraumann standartinė atrama',                  '200 €'],
+                    ['Individuali atrama',                            '200 €'],
                   ].map(([name, price], i) => (
-                    <div key={i} className="flex justify-between items-center py-3">
+                    <div key={i} className="flex justify-between items-center py-2.5">
+                      <span className="text-slate-600 text-sm">{name}</span>
+                      <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Plokštelės, laminatės, kapai */}
+              <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Plokštelės, laminatės, kapai</h3>
+                <div className="divide-y divide-slate-100">
+                  {[
+                    ['Kosmetinė plokštelė (plastmasinė, kieta)',      '150 €'],
+                    ['Kosmetinė plokštelė (termoplastinė, minkšta)',  '260 €'],
+                    ['Išimama pilna dantų plokštelė (plastmasinė)',   '350 €'],
+                    ['Išimama pilna dantų plokštelė (minkšta)',       '600 €'],
+                    ['Kietos plokštelės pataisa',                     '70 €'],
+                    ['Plokštelės perbazavimas',                       '80 €'],
+                    ['Lanko atraminis protezas',                      '700 €'],
+                    ['Kompozitinis užklotas',                         '150 €'],
+                    ['Keramikos užklotas',                            '300 €'],
+                    ['E-max laminatė',                                '350 €'],
+                    ['Sluoksniuota keramikos laminatė',               '450 €'],
+                    ['Minkšta kapa nuo bruksizmo',                    '100 €'],
+                    ['Kieta kapa nuo bruksizmo',                      '150 €'],
+                  ].map(([name, price], i) => (
+                    <div key={i} className="flex justify-between items-center py-2.5">
                       <span className="text-slate-600 text-sm">{name}</span>
                       <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                     </div>
@@ -231,21 +273,21 @@ export default function DantuProtezavimas() {
               </div>
 
               {/* Papildomos procedūros */}
-              <div className="bg-white p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
-                <h3 className="text-xl font-extrabold mb-4" style={{ color: P }}>Papildomos procedūros</h3>
-                <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                  Kai kuriais atvejais gali būti reikalingos papildomos procedūros, užtikrinančios stabilų ir ilgaamžį rezultatą:
-                </p>
+              <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Papildomos procedūros</h3>
                 <div className="divide-y divide-slate-100">
                   {[
-                    ['Laminatė',                          'nuo 600 €'],
-                    ['Laikinas vainikėlis (kabinete)',     'nuo 40 €'],
-                    ['Laikinas vainikėlis (laboratorijoje)', 'nuo 70 €'],
-                    ['Stiklo pluošto kaištis',             'nuo 120 €'],
-                    ['Metalinis KKĮ',                     '70–100 €'],
-                    ['Seno vainikėlio nuėmimas',           '50 €'],
+                    ['Diagnostiniai modeliai',                        '20 €'],
+                    ['Danties pavaškavimas (1 vnt.)',                  '10 €'],
+                    ['Atspaudo nuėmimas naudojant alginatą (1 žandikaulis)',  '20 €'],
+                    ['Atspaudo nuėmimas naudojant silikoną (1 žandikaulis)',  '50 €'],
+                    ['Sąkandžio registras',                           '10 €'],
+                    ['Individualus šaukštas (1 vnt.)',                '30 €'],
+                    ['KKĮ formavimas',                                '20 €'],
+                    ['Metalinis KKĮ',                                 '60 €'],
+                    ['Sudėtinis KKĮ',                                 '90 €'],
                   ].map(([name, price], i) => (
-                    <div key={i} className="flex justify-between items-center py-3">
+                    <div key={i} className="flex justify-between items-center py-2.5">
                       <span className="text-slate-600 text-sm">{name}</span>
                       <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                     </div>
@@ -253,24 +295,6 @@ export default function DantuProtezavimas() {
                 </div>
               </div>
 
-              {/* Atspaudai ir komponentai */}
-              <div className="bg-white p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
-                <h3 className="text-xl font-extrabold mb-6" style={{ color: P }}>Atspaudai ir komponentai</h3>
-                <div className="divide-y divide-slate-100">
-                  {[
-                    ['Skaitmeniniai / silikoniniai atspaudai', '150 €'],
-                    ['Alginatinis atspaudas',                  '15 €'],
-                    ['Sąkandžio registracija',                 '10 €'],
-                    ['Atramos ant implantų (Medentika®, Straumann®)', 'nuo 200 €'],
-                    ['Dantų plokštelės',                       'nuo 350 €'],
-                  ].map(([name, price], i) => (
-                    <div key={i} className="flex justify-between items-center py-3">
-                      <span className="text-slate-600 text-sm">{name}</span>
-                      <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
 
             <p className="text-slate-500 text-sm mt-6">
