@@ -25,6 +25,7 @@ import DantuTiesinimas from './pages/DantuTiesinimas'
 import EndodontinisGydymas from './pages/EndodontinisGydymas'
 
 import ScrollToTop from './components/ScrollToTop'
+import TrailingSlashRedirect from './components/TrailingSlashRedirect'
 import BackToTop from './components/BackToTop'
 import HeroWave from './components/HeroWave'
 import MobileStickyBar from './components/MobileStickyBar'
@@ -68,6 +69,7 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <ScrollToTop />
+      <TrailingSlashRedirect />
       <Navbar />
 
       {/* Banga – fone, po navbaru */}

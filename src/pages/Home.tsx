@@ -392,7 +392,7 @@ export default function Home() {
                   Pirminė konsultacija <span className="text-brand">nemokama</span>
                 </h2>
                 <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl">
-                  Užsiregistruokite pirminiam įvertinimui ir gaukite 10–15% nuolaidą tęstiniam gydymui pereinant į pilną planą. Mūsų tikslas – aiškus kelias link Jūsų sveikos šypsenos be jokių paslėptų mokesčių.
+                  Pirminė gydytojo konsultacija - nemokama!<br />Mūsų tikslas - aiškus kelias link Jūsų sveikos šypsenos be jokių pasleptų mokesčių.
                 </p>
                 <div className="pt-2">
                   <Link
