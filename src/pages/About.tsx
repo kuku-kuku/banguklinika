@@ -135,7 +135,7 @@ export default function About() {
       />
 
       <motion.div
-        className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12"
+        className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12 py-12 lg:py-16"
         variants={container}
         initial="hidden"
         animate="visible"
@@ -166,7 +166,7 @@ export default function About() {
           </div>
         </motion.section>
 
-        <motion.section className="mb-20 grid gap-8" variants={item}>
+        <motion.section className="mb-20 space-y-8" variants={item}>
           <div className="rounded-[32px] border border-sky-200 bg-white shadow-soft p-6 sm:p-8 lg:p-10">
             <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
               {about.hero?.title ?? 'Moderni odontologijos klinika Klaipėdoje'}
