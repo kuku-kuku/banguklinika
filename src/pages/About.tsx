@@ -19,8 +19,13 @@ const hasPhoto = (name: string) => TEAM_WITH_PHOTO.has(normalizeFirstName(name))
 
 const container = {
   hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut', staggerChildren: 0.06 } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: 'easeOut', staggerChildren: 0.06 },
+  },
 }
+
 const item = {
   hidden: { opacity: 0, y: 8 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
@@ -29,7 +34,14 @@ const item = {
 function CheckIcon() {
   return (
     <svg viewBox="0 0 24 24" className="w-4 h-4 shrink-0" aria-hidden>
-      <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path
+        d="M20 6L9 17l-5-5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   )
 }
@@ -116,62 +128,25 @@ export default function About() {
   return (
     <AnimatedSection>
       <SEO
-        title={about.seo?.title ?? 'Apie mus'}
+        title="Odontologijos klinika Klaipėdoje | Bangų klinika"
         description={about.seo?.description}
         keywords={about.seo?.keywords}
         structuredData={structuredData}
       />
 
-      <motion.div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12" variants={container} initial="hidden" animate="visible">
-        <motion.header className="mb-8" variants={item}>
+      <motion.div
+        className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12"
+        variants={container}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.header className="mb-12" variants={item}>
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-darkblue-700">
-            {about.hero?.title ?? 'Moderni Odontologijos Klinika Klaipėdoje'}
+            Odontologai Klaipėdos Bangų klinikoje
           </h1>
         </motion.header>
 
-        <motion.div className="prose prose-slate max-w-none mb-12" variants={item}>
-          <p className="text-xl text-slate-600 leading-relaxed">{about.intro}</p>
-        </motion.div>
-
         <motion.section className="mb-20" variants={item}>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-darkblue-700 mb-8">{about.servicesTitle}</h2>
-          <div className="grid sm:grid-cols-2 gap-x-12 gap-y-4">
-            <div className="space-y-4 text-lg text-slate-700">
-              {services.filter((_, i) => i % 2 === 0).map((s, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <span className="text-brand mt-1.5">
-                    <CheckIcon />
-                  </span>
-                  <span>{s}</span>
-                </div>
-              ))}
-            </div>
-            <div className="space-y-4 text-lg text-slate-700">
-              {services.filter((_, i) => i % 2 === 1).map((s, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <span className="text-brand mt-1.5">
-                    <CheckIcon />
-                  </span>
-                  <span>{s}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        <motion.section className="mb-20 rounded-3xl border border-brand bg-white shadow-soft p-8" variants={item}>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-darkblue-700 mb-4">{about.lab?.title}</h2>
-          <div className="text-slate-700 text-lg space-y-4">
-            <p>{about.lab?.p1}</p>
-            <p className="font-medium text-darkblue-600">{about.lab?.p2}</p>
-          </div>
-        </motion.section>
-
-        <motion.section className="mb-16" variants={item}>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-darkblue-700 mb-10 text-center sm:text-left">
-            {about.teamTitle}
-          </h2>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {team.map((m) => (
               <motion.div key={m.name} variants={item} className="w-full">
@@ -191,9 +166,68 @@ export default function About() {
           </div>
         </motion.section>
 
+        <motion.section className="mb-20 grid gap-8" variants={item}>
+          <div className="rounded-[32px] border border-sky-200 bg-white shadow-soft p-6 sm:p-8 lg:p-10">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
+              {about.hero?.title ?? 'Moderni odontologijos klinika Klaipėdoje'}
+            </h2>
+
+            <div className="max-w-none">
+              <p className="text-lg sm:text-xl text-slate-600 leading-relaxed">{about.intro}</p>
+            </div>
+          </div>
+
+          <div className="rounded-[32px] border border-emerald-200 bg-gradient-to-br from-white to-emerald-50 shadow-soft p-6 sm:p-8 lg:p-10">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-darkblue-700 mb-8">
+              {about.servicesTitle}
+            </h2>
+
+            <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+              <div className="space-y-4 text-base sm:text-lg text-slate-700">
+                {services.filter((_, i) => i % 2 === 0).map((s, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 ring-1 ring-emerald-200">
+                      <CheckIcon />
+                    </span>
+                    <span className="leading-relaxed">{s}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="space-y-4 text-base sm:text-lg text-slate-700">
+                {services.filter((_, i) => i % 2 === 1).map((s, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 ring-1 ring-emerald-200">
+                      <CheckIcon />
+                    </span>
+                    <span className="leading-relaxed">{s}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        <motion.section
+          className="mb-16 rounded-3xl border border-brand bg-white shadow-soft p-8"
+          variants={item}
+        >
+          <h2 className="text-2xl sm:text-3xl font-semibold text-darkblue-700 mb-4">
+            {about.lab?.title}
+          </h2>
+
+          <div className="text-slate-700 text-lg space-y-4">
+            <p>{about.lab?.p1}</p>
+            <p className="font-medium text-darkblue-600">{about.lab?.p2}</p>
+          </div>
+        </motion.section>
+
         {about.cta?.href && (
           <div className="mt-12 mb-20 text-center">
-            <Link to={about.cta.href} className="btn-primary rounded-full px-12 py-5 font-bold text-xl inline-block shadow-lg">
+            <Link
+              to={about.cta.href}
+              className="btn-primary rounded-full px-12 py-5 font-bold text-xl inline-block shadow-lg"
+            >
               {about.cta.text}
             </Link>
           </div>
