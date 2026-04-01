@@ -110,7 +110,7 @@ export default function Home() {
       <style dangerouslySetInnerHTML={{ __html: globalStyles }} />
       <SEO
         isHome
-        title="Odontologijos klinika (odontologai) Klaipėdoje"
+        title="Odontologijos klinika Klaipėdoje | Bangų klinika"
         description="Bangų klinika Klaipėdoje: visos dantų gydymo paslaugos☑️modernūs estetiniai sprendimai☑️profesionaliai sudaromi individualūs gydymo planai☑️Mums svarbiausia⏩Jūsų dantų sveikata!"
         keywords={home.seo?.keywords}
         image={home.seo?.image}

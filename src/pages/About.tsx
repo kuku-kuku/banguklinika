@@ -128,7 +128,7 @@ export default function About() {
   return (
     <AnimatedSection>
       <SEO
-        title="Odontologijos klinika Klaipėdoje | Bangų klinika"
+        title={about.seo?.title}
         description={about.seo?.description}
         keywords={about.seo?.keywords}
         structuredData={structuredData}
