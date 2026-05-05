@@ -55,6 +55,8 @@ import BernuOdontologijaLv from './pages/lv/BernuOdontologijaLv'
 import IpasiPiedavajumiLv from './pages/lv/IpasiPiedavajumiLv'
 import { LangProvider } from './context/LanguageContext'
 import Draugai from './pages/Draugai'
+import MusuDarbai from './pages/MusuDarbai'
+import InbankWidget from './components/InbankWidget'
 
 /** Thin wrapper that provides lang="lv" context to all /lv/* pages */
 function LvLayout() {
@@ -71,6 +73,7 @@ export default function App() {
       <ScrollToTop />
       <TrailingSlashRedirect />
       <Navbar />
+      <InbankWidget />
 
       {/* Banga – fone, po navbaru */}
       <div
@@ -107,6 +110,7 @@ export default function App() {
           <Route path="/paslaugos/dantu-implantacija" element={<DantuImplantacija />} />
           <Route path="/paslaugos/skubi-pagalba" element={<SkubiPagalba />} />
           <Route path="/draugai" element={<Draugai />} />
+          <Route path="/musu-darbai" element={<MusuDarbai />} />
 
 
 

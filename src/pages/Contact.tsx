@@ -52,13 +52,6 @@ export default function Contact() {
       />
 
       <motion.div className="container-narrow space-y-10" variants={container} initial="hidden" animate="visible">
-        {/* Žemėlapis */}
-        <motion.div variants={mapItem} className="flex justify-center" aria-label="Bangų klinikos žemėlapis">
-          <div className="w-full max-w-4xl rounded-2xl overflow-hidden ring-1 ring-gray-200 shadow-soft">
-            <Map />
-          </div>
-        </motion.div>
-
         {/* Kontaktai + forma */}
         <motion.div className="grid md:grid-cols-2 gap-8 items-stretch" variants={container}>
           <motion.div className="h-full" variants={item}>
@@ -118,6 +111,13 @@ export default function Contact() {
               </div>
             </div>
           </motion.div>
+        </motion.div>
+
+        {/* Žemėlapis */}
+        <motion.div variants={mapItem} className="flex justify-center" aria-label="Bangų klinikos žemėlapis">
+          <div className="w-full max-w-4xl rounded-2xl overflow-hidden ring-1 ring-gray-200 shadow-soft">
+            <Map />
+          </div>
         </motion.div>
 
         <motion.div className="p-5 rounded-2xl border border-primary-100 bg-primary-50" variants={item}>
