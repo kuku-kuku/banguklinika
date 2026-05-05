@@ -175,12 +175,7 @@
   }
 }
 
-/* ===== BACK TO TOP — responsive bottom ===== */
+/* ===== BACK TO TOP ===== */
 .btn-backtotop {
   bottom: max(calc(90px + env(safe-area-inset-bottom, 0px)), 100px);
-}
-@media (max-width: 767px) {
-  .btn-backtotop {
-    bottom: max(calc(160px + env(safe-area-inset-bottom, 0px)), 170px);
-  }
 }
