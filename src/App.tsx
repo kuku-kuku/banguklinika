@@ -111,6 +111,7 @@ export default function App() {
           <Route path="/paslaugos/skubi-pagalba" element={<SkubiPagalba />} />
           <Route path="/draugai" element={<Draugai />} />
           <Route path="/musu-darbai" element={<MusuDarbai />} />
+          <Route path="/musu-darbai" element={<MusuDarbai />} />
 
 
 

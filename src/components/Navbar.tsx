@@ -34,6 +34,7 @@ const nav: NavItem[] = [
   },
   { to: '/kainos', label: 'Kainos' },
   { to: '/ypatingi-pasiulymai', label: 'Ypatingi pasiūlymai' },
+  { to: '/musu-darbai', label: 'Mūsų darbai' },
   { to: '/draugai', label: 'Draugai' },
   { to: '/kontaktai', label: 'Kontaktai' },
 ]
