@@ -21,7 +21,7 @@ export default function InbankWidget() {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="fixed bottom-24 md:bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-6 z-50 flex flex-col items-center md:items-end gap-2">
+    <div className="fixed bottom-24 md:bottom-6 left-1/2 -translate-x-1/2 md:left-6 md:translate-x-0 z-50 flex flex-col items-center md:items-start gap-2">
       <AnimatePresence>
         {open && (
           <motion.div
@@ -36,7 +36,7 @@ export default function InbankWidget() {
               <div className="flex items-center gap-3">
                 <InbankLogo className="h-5 w-auto" />
                 <span className="text-slate-300 text-xs">|</span>
-                <p className="text-slate-500 text-xs">Finansuokite gydymą dalimis</p>
+                <p className="text-slate-500 text-xs whitespace-nowrap">Finansuokite gydymą dalimis</p>
               </div>
               <button
                 onClick={() => setOpen(false)}
