@@ -93,7 +93,7 @@ export default function InbankWidget() {
       >
         <InbankLogo className="h-4 w-auto" />
         <span className="text-slate-500 text-xs">|</span>
-        <span className="text-slate-700 text-sm font-semibold">Mokėkite dalimis</span>
+        <span className="text-slate-700 text-sm font-semibold whitespace-nowrap">Mokėkite dalimis</span>
         <motion.svg
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.2 }}
