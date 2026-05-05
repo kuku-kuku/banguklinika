@@ -170,7 +170,17 @@
 /* ===== COOKIEYES — virš mobile meniu juostos ===== */
 @media (max-width: 767px) {
   .cky-btn-revisit-wrapper {
-    bottom: calc(80px + env(safe-area-inset-bottom)) !important;
-    z-index: 49 !important;
+    bottom: calc(96px + env(safe-area-inset-bottom)) !important;
+    z-index: 51 !important;
+  }
+}
+
+/* ===== BACK TO TOP — responsive bottom ===== */
+.btn-backtotop {
+  bottom: max(calc(90px + env(safe-area-inset-bottom, 0px)), 100px);
+}
+@media (max-width: 767px) {
+  .btn-backtotop {
+    bottom: max(calc(160px + env(safe-area-inset-bottom, 0px)), 170px);
   }
 }

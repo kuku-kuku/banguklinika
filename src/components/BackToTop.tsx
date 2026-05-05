@@ -144,13 +144,12 @@ export default function BackToTop() {
           aria-label="Grįžti į viršų"
           title="Grįžti į viršų"
           className="
-            fixed left-4 md:left-auto md:right-6 z-[2147483647]
+            btn-backtotop fixed right-4 md:right-6 z-[2147483647]
             inline-flex items-center justify-center
             h-11 w-11 rounded-full
             bg-white border border-slate-200 shadow-lg hover:shadow-xl
             text-[#10394F]
           "
-          style={{ bottom: 'max(calc(90px + env(safe-area-inset-bottom, 0px)), 100px)' }}
         >
           <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
             <path d="M12 6l-6 7h4v5h4v-5h4z" fill="currentColor" />
