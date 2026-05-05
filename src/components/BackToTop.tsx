@@ -144,7 +144,7 @@ export default function BackToTop() {
           aria-label="Grįžti į viršų"
           title="Grįžti į viršų"
           className="
-            fixed right-4 md:right-6 z-[2147483647]
+            fixed left-4 md:left-auto md:right-6 z-[2147483647]
             inline-flex items-center justify-center
             h-11 w-11 rounded-full
             bg-white border border-slate-200 shadow-lg hover:shadow-xl

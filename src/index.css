@@ -166,3 +166,11 @@
     padding-bottom: calc(96px + env(safe-area-inset-bottom));
   }
 }
+
+/* ===== COOKIEYES — virš mobile meniu juostos ===== */
+@media (max-width: 767px) {
+  .cky-btn-revisit-wrapper {
+    bottom: calc(80px + env(safe-area-inset-bottom)) !important;
+    z-index: 49 !important;
+  }
+}
