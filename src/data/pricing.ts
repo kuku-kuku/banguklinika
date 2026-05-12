@@ -12,7 +12,7 @@ export const PRICING: PriceGroup[] = [
   {
     title: "Dantų gydymo kainoraštis",
     items: [
-      { name: "Konsultacija iki 30 min", from: 20, exact: true },
+      { name: "Konsultacija iki 30 min", from: 30, exact: true },
       { name: "Konsultacija iki 15 min", from: 25, exact: true, note: "Konsultacija, profilaktinis patikrinimas" },
       { name: "Gydymo plano sudarymas", from: 30, exact: true, note: "Išsamus, individualus gydymo planas su gydymo kainomis" },
       { name: "Nuskausminimas", from: 10, exact: true, note: "Infiltracinė nejautra" },
@@ -40,23 +40,20 @@ export const PRICING: PriceGroup[] = [
       { name: "Estetinis plombavimas (1 danties)", from: 150, note: "Nuo" },
       { name: "Plombos pataisa", from: 50, exact: true },
       { name: "Biodentino uždėjimas (MTA)", from: 40, exact: true },
+      { name: "Skubi pagalba, esant danties skausmui", from: 70, to: 120 },
+      { name: "Funkcinis dantų plombavimas pagal pavaškavimą, keliant sąkandį (1 dantis)", from: 150, exact: true },
     ],
   },
 
   {
-    title: "Pieninių dantų gydymas",
+    title: "Dantų gydymas (vaikų)",
     items: [
-      {
-        name: "Pieninių dantų gydymas",
-        from: 25,
-        exact: true,
-        note: "Konsultacija, gydymo plano sudarymas, dokumentų pildymas, pažymos mokyklai/darželiui pildymas",
-      },
-      { name: "Apsilankymas 30 min., kai vaikas nesileidžia gydyti dantų", from: 30, exact: true },
-      { name: "Stiklo jonomerinė plomba", from: 30, exact: true },
-      { name: "Kompomerinė plomba", from: 40, exact: true },
-      { name: "Komplikuotas ėduonies gydymas (pulpitas, periodontitas)", from: 60, exact: true },
-      { name: "Dantų vagelių hermetizavimas silantais (1 dantis)", from: 15, exact: true },
+      { name: "Pirminė konsultacija, apžiūra, el. pažyma į mokyklą/darželį, iki 15min.", from: 25, exact: true },
+      { name: "El. pažyma į mokyklą/darželį gydymo metu", from: 15, exact: true },
+      { name: "Pirminė konsultacija, apžiūra (jei vaikas nesileidžia gydomas), iki 30min.", from: 50, exact: true },
+      { name: "Pieninio danties plombavimas stiklo jonomerine plomba", from: 40, to: 60 },
+      { name: "Pieninio danties nervo uždegimo gydymas", from: 40, to: 80 },
+      { name: "Pieninio danties šalinimas", from: 40, to: 60 },
     ],
   },
 
@@ -135,6 +132,8 @@ export const PRICING: PriceGroup[] = [
       { name: "Alveolito gydymas (1 seansas)", from: 30, exact: true },
       { name: "Incizija (pjūviai uždegimo metu)", from: 50, exact: true },
       { name: "Siūlų išėmimas", from: 10, exact: true },
+
+      { name: "Neišdygusio, protinio danties operacinis šalinimas", from: 180, to: 300 },
 
       { name: "Chirurginis gidas implantacijai", from: 100, exact: true },
 
@@ -232,7 +231,9 @@ export const PRICING: PriceGroup[] = [
   {
     title: "Kita",
     items: [
-      { name: "Dentalinė nuotrauka", from: 10, exact: true },
+      { name: "Panoraminė rentgeno nuotrauka", from: 30, exact: true },
+      { name: "Dentalinė rentgeno nuotrauka", from: 10, exact: true },
+      { name: "Kompiuterinė tomografo nuotrauka (3D)", from: 60, to: 100 },
       { name: "Vienkartinės priemonės", from: 10, exact: true, note: "Kiekvienam apsilankymui" },
       { name: "Lūpų apsauga, optragate", from: 5, exact: true, note: "Kiekvienam apsilankymui" },
       { name: "Pooperacinis rinkinys", from: 30, exact: true },

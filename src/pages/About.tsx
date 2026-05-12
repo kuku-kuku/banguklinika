@@ -14,8 +14,10 @@ const normalizeFirstName = (name: string) =>
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
 
-const getPhotoPath = (name: string) => `/team/${normalizeFirstName(name)}.jpg`
-const hasPhoto = (name: string) => TEAM_WITH_PHOTO.has(normalizeFirstName(name))
+const getPhotoPath = (name: string, photoFile?: string) =>
+  `/team/${photoFile ?? normalizeFirstName(name)}.jpg`
+const hasPhoto = (name: string, photoFile?: string) =>
+  photoFile ? true : TEAM_WITH_PHOTO.has(normalizeFirstName(name))
 
 const container = {
   hidden: { opacity: 0, y: 10 },
@@ -46,10 +48,10 @@ function CheckIcon() {
   )
 }
 
-function TeamPhoto({ name }: { name: string }) {
+function TeamPhoto({ name, photoFile }: { name: string; photoFile?: string }) {
   const [missing, setMissing] = useState(false)
-  const src = getPhotoPath(name)
-  const photoOk = hasPhoto(name) && !missing
+  const src = getPhotoPath(name, photoFile)
+  const photoOk = hasPhoto(name, photoFile) && !missing
 
   return (
     <div
@@ -111,7 +113,7 @@ export default function About() {
 
   const services: string[] = about.services as any
 
-  let team = [...(about.team as Array<{ name: string; role: string; license?: string }>)]
+  let team = [...(about.team as Array<{ name: string; role: string; license?: string; photoFile?: string }>)]
 
   if (!team.some((m) => m.name.toLowerCase().includes('odeta'))) {
     team.push({
@@ -123,7 +125,7 @@ export default function About() {
 
   team = team
     .slice()
-    .sort((a, b) => Number(hasPhoto(b.name)) - Number(hasPhoto(a.name)) || a.name.localeCompare(b.name))
+    .sort((a, b) => Number(hasPhoto(b.name, b.photoFile)) - Number(hasPhoto(a.name, a.photoFile)) || a.name.localeCompare(b.name))
 
   return (
     <AnimatedSection>
@@ -150,7 +152,7 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {team.map((m) => (
               <motion.div key={m.name} variants={item} className="w-full">
-                <TeamPhoto name={m.name} />
+                <TeamPhoto name={m.name} photoFile={m.photoFile} />
 
                 <div className="pt-5 px-1">
                   <h3 className="font-bold text-slate-900 text-2xl leading-tight mb-1">{m.name}</h3>

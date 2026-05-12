@@ -65,7 +65,9 @@ export default function InbankWidget() {
             {/* Footer */}
             <div className="px-4 pb-4 pt-1 flex flex-col gap-2">
               <a
-                href={`tel:${CLINIC.phone}`}
+                href="https://epos.inbank.lt/lt/banguodontologijosklinika"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block text-center text-white px-4 py-2.5 rounded-xl font-bold text-sm transition-all hover:opacity-90"
                 style={{ background: '#06b6d4' }}
               >
