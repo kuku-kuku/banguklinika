@@ -1,7 +1,7 @@
 // scripts/prerender.mjs
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
+import { fileURLToPath, pathToFileURL } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,10 +9,8 @@ const __dirname = path.dirname(__filename);
 const distDir = path.resolve(__dirname, "..", "dist");
 const templatePath = path.join(distDir, "index.html");
 
-// 🔧 Pakeisk į savo tikrą domeną
 const SITE_ORIGIN = "https://www.banguklinika.lt";
 
-// ✅ Route'ų SEO head duomenys
 const pages = [
   {
     route: "/",
@@ -39,8 +37,6 @@ const pages = [
     title: "Kontaktai | Bangų klinika",
     description: "Susisiekite su Bangų odontologijos klinika Klaipėdoje. Registracija, rekvizitai, darbo laikas.",
   },
-
-  // Paslaugos (1 etapas)
   {
     route: "/paslaugos/burnos-higiena",
     title: "Burnos (dantų) higiena Klaipėdoje | Bangų klinika",
@@ -66,8 +62,6 @@ const pages = [
     title: "Dantų balinimas Klaipėdoje | Bangų klinika",
     description: "Dantų balinimas Klaipėdoje – profesionalus balinimas klinikoje ir rekomendacijos po procedūros.",
   },
-
-  // Paslaugos (2 etapas)
   {
     route: "/paslaugos/dantu-taisymas-gydymas",
     title: "Dantų gydymas, taisymas (tvarkymas) Klaipėdoje | Bangų klinika",
@@ -108,7 +102,6 @@ const pages = [
     title: "Skubi odontologinė pagalba Klaipėdoje | Bangų klinika",
     description: "Skubi odontologinė pagalba Klaipėdoje – greitas sprendimas staigiam dantų skausmui, infekcijai ar traumai.",
   },
-
   // ===== LATVIAN PAGES /lv/* =====
   {
     route: "/lv",
@@ -200,15 +193,11 @@ const pages = [
     title: "Īpašie piedāvājumi | Bangų klinika Klaipēdā",
     description: "Aktuālie Bangų klīnikas piedāvājumi un akcijas zobārstniecības pakalpojumiem.",
   },
-
-  // Draugai
   {
     route: "/draugai",
     title: "Draugai | Bangų klinika",
     description: "Mūsų partneriai ir draugai – įmonės ir projektai, su kuriais džiaugiamės bendradarbiauti.",
   },
-
-  // Ypatingi pasiūlymai
   {
     route: "/ypatingi-pasiulymai",
     title: "Ypatingi pasiūlymai | Bangų klinika klaipėdoje",
@@ -243,37 +232,6 @@ function writeFileForRoute(route, html) {
   fs.writeFileSync(path.join(outDir, "index.html"), html, "utf8");
 }
 
-function upsertTag(html, regex, replacement) {
-  if (regex.test(html)) return html.replace(regex, replacement);
-  // jei tag'o nėra – įkišam prieš </head>
-  return html.replace("</head>", `${replacement}\n</head>`);
-}
-
-function buildHeadHtml(template, { route, title, description }) {
-  const url = SITE_ORIGIN + normalizeRoute(route);
-
-  let html = template;
-
-  // title
-  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`);
-
-  // meta description
-  html = upsertTag(
-    html,
-    /<meta\s+name=["']description["']\s+content=["'][\s\S]*?["']\s*\/?>/i,
-    `<meta name="description" content="${escapeHtml(description)}" />`
-  );
-
-  // canonical
-  html = upsertTag(
-    html,
-    /<link\s+rel=["']canonical["']\s+href=["'][\s\S]*?["']\s*\/?>/i,
-    `<link rel="canonical" href="${escapeHtml(url)}" />`
-  );
-
-  return html;
-}
-
 function escapeHtml(s) {
   return String(s)
     .replaceAll("&", "&amp;")
@@ -283,28 +241,79 @@ function escapeHtml(s) {
     .replaceAll("'", "&#039;");
 }
 
-function run() {
+function upsertTag(html, regex, replacement) {
+  if (regex.test(html)) return html.replace(regex, replacement);
+  return html.replace("</head>", `${replacement}\n</head>`);
+}
+
+function injectHead(html, { route, title, description }) {
+  const url = SITE_ORIGIN + normalizeRoute(route);
+
+  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`);
+
+  html = upsertTag(
+    html,
+    /<meta\s+name=["']description["']\s+content=["'][\s\S]*?["']\s*\/?>/i,
+    `<meta name="description" content="${escapeHtml(description)}" />`
+  );
+
+  html = upsertTag(
+    html,
+    /<link\s+rel=["']canonical["']\s+href=["'][\s\S]*?["']\s*\/?>/i,
+    `<link rel="canonical" href="${escapeHtml(url)}" />`
+  );
+
+  return html;
+}
+
+async function run() {
   if (!fs.existsSync(templatePath)) {
     throw new Error(`Nerandu dist/index.html (${templatePath}). Pirma paleisk vite build.`);
   }
+
+  const serverEntryPath = path.resolve(__dirname, "..", "dist", "server", "entry-server.js");
+  if (!fs.existsSync(serverEntryPath)) {
+    throw new Error(`Nerandu ${serverEntryPath}. Pirma paleisk vite build --ssr.`);
+  }
+
+  const { render } = await import(pathToFileURL(serverEntryPath).href);
 
   const template = fs.readFileSync(templatePath, "utf8");
 
   const unique = new Map();
   for (const p of pages) unique.set(normalizeRoute(p.route), p);
 
+  let success = 0;
+  let errors = 0;
+
   for (const [route, page] of unique) {
-    const out = buildHeadHtml(template, page);
-    writeFileForRoute(route, out);
-    console.log("[prerender] wrote:", route);
+    try {
+      const { html: appHtml } = render(page.route);
+
+      let output = template;
+      output = output.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
+      output = injectHead(output, page);
+
+      writeFileForRoute(page.route, output);
+      console.log("[prerender] ✓", route);
+      success++;
+    } catch (err) {
+      console.error(`[prerender] ✗ KLAIDA ${route}:`, err.message);
+      // Jei render nepavyko – įrašom tuščią template su teisingais meta tagais
+      let fallback = template;
+      fallback = injectHead(fallback, page);
+      writeFileForRoute(page.route, fallback);
+      errors++;
+    }
   }
 
-  console.log("[prerender] done. pages:", unique.size);
+  console.log(`\n[prerender] done. success: ${success}, errors: ${errors}, total: ${unique.size}`);
+  if (errors > 0) {
+    console.warn("[prerender] Kai kurie puslapiai buvo atvaizduoti be turinio (fallback). Patikrink klaidas aukščiau.");
+  }
 }
 
-try {
-  run();
-} catch (e) {
-  console.error("[prerender] ERROR:", e);
+run().catch((e) => {
+  console.error("[prerender] FATAL:", e);
   process.exit(1);
-}
+});
