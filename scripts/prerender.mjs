@@ -288,7 +288,11 @@ async function run() {
 
   for (const [route, page] of unique) {
     try {
-      const { html: appHtml } = render(page.route);
+      const { html: rawHtml } = render(page.route);
+
+      // Framer Motion SSR outputs initial animation states (opacity:0, transforms).
+      // Replace them so crawlers see visible content in the prerendered HTML.
+      const appHtml = rawHtml.replace(/\bopacity:\s*0\b/g, "opacity:1");
 
       let output = template;
       output = output.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
