@@ -290,9 +290,20 @@ async function run() {
     try {
       const { html: rawHtml } = render(page.route);
 
-      // Framer Motion SSR outputs initial animation states (opacity:0, transforms).
-      // Replace them so crawlers see visible content in the prerendered HTML.
-      const appHtml = rawHtml.replace(/\bopacity:\s*0\b/g, "opacity:1");
+      // Framer Motion SSR outputs initial animation states (opacity:0, transforms)
+      // as inline style attributes. Strip them so crawlers see fully visible content.
+      // Only targets style="..." attributes, not <style> blocks or @keyframes.
+      const appHtml = rawHtml.replace(
+        /\bstyle="([^"]*)"/g,
+        (_, styles) => {
+          const cleaned = styles
+            .replace(/\bopacity:\s*0\b;?\s*/g, "")
+            .replace(/\btransform:[^;"]*(;|$)\s*/g, "")
+            .trim()
+            .replace(/;$/, "");
+          return cleaned ? `style="${cleaned}"` : "";
+        }
+      );
 
       let output = template;
       output = output.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
