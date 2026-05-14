@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Tomato Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
       colors: {
         // Turkio spalva (akcentams, kortelėms)
         primary: {
