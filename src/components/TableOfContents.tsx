@@ -164,10 +164,11 @@ export function TableOfContents({ sections, title = "Turinys", rootRef, cta }: T
               aria-label="Turinio navigacija"
             >
               {sections.map(({ id, label }, index) => (
-                <button
+                <a
                   key={id}
-                  onClick={() => scrollTo(id)}
-                  className={`w-full text-left px-3 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2.5 font-medium ${
+                  href={`#${id}`}
+                  onClick={(e) => { e.preventDefault(); scrollTo(id) }}
+                  className={`w-full text-left px-3 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2.5 font-medium no-underline ${
                     activeId === id ? "bg-brand/10 text-brand" : "text-slate-600 hover:bg-slate-50 hover:text-darkblue-700"
                   }`}
                 >
@@ -179,7 +180,7 @@ export function TableOfContents({ sections, title = "Turinys", rootRef, cta }: T
                     {index + 1}
                   </span>
                   {label}
-                </button>
+                </a>
               ))}
             </motion.nav>
           )}
@@ -198,10 +199,11 @@ export function TableOfContents({ sections, title = "Turinys", rootRef, cta }: T
 
           <div className="space-y-0.5 max-h-[calc(100vh-16rem)] overflow-y-auto pr-1 scrollbar-thin">
             {sections.map(({ id, label }, index) => (
-              <button
+              <a
                 key={id}
-                onClick={() => scrollTo(id)}
-                className={`group w-full text-left px-3 py-2 rounded-xl text-[13px] leading-snug transition-colors flex items-start gap-2.5 font-medium ${
+                href={`#${id}`}
+                onClick={(e) => { e.preventDefault(); scrollTo(id) }}
+                className={`group w-full text-left px-3 py-2 rounded-xl text-[13px] leading-snug transition-colors flex items-start gap-2.5 font-medium no-underline ${
                   activeId === id ? "bg-brand/10 text-brand shadow-sm" : "text-slate-500 hover:bg-slate-50 hover:text-darkblue-700"
                 }`}
               >
@@ -215,7 +217,7 @@ export function TableOfContents({ sections, title = "Turinys", rootRef, cta }: T
                   {index + 1}
                 </span>
                 <span className="flex-1">{label}</span>
-              </button>
+              </a>
             ))}
           </div>
           {cta && (
