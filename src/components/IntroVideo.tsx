@@ -1,22 +1,14 @@
 import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-const SESSION_KEY = "bk-intro-seen"
-
 export default function IntroVideo() {
-  const [visible, setVisible] = useState(() => {
-    try {
-      return !sessionStorage.getItem(SESSION_KEY)
-    } catch {
-      return false
-    }
-  })
+  const [visible, setVisible] = useState(true)
 
   const videoRef = useRef<HTMLVideoElement>(null)
 
   function dismiss() {
-    try { sessionStorage.setItem(SESSION_KEY, "1") } catch {}
     document.documentElement.style.background = ''
+    document.getElementById('intro-splash')?.remove()
     setVisible(false)
     window.dispatchEvent(new Event('bk-intro-done'))
   }
