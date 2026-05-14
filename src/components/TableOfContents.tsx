@@ -104,9 +104,9 @@ export function TableOfContents({ sections, title = "Turinys", rootRef, cta }: T
         : (document.getElementById(id) as HTMLElement | null)
 
       if (el) {
-        // iškart atnaujinam active, kad nešokinėtų highlight
         setActiveId(id)
         el.scrollIntoView({ behavior: "smooth", block: "start" })
+        window.history.pushState(null, "", `#${id}`)
         setIsOpen(false)
       }
     },
