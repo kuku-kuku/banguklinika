@@ -21,7 +21,7 @@ export default function InbankWidget() {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="fixed bottom-24 md:bottom-6 left-1/2 -translate-x-1/2 md:left-24 md:translate-x-0 z-50 flex flex-col items-center md:items-start gap-2">
+    <div className="flex fixed bottom-24 left-1/2 -translate-x-1/2 md:bottom-32 md:left-8 md:translate-x-0 z-50 flex-col items-center md:items-start gap-2">
       <AnimatePresence>
         {open && (
           <motion.div

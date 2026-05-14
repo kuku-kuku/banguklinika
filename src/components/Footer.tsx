@@ -238,7 +238,7 @@ export default function Footer() {
         <div className="md:col-span-3 space-y-5 pr-0 md:pr-4">
           <Link to={logoHref} aria-label="Bangų klinika" className="inline-flex items-center">
             <img
-              src="/logo1.png"
+              src="/Asset 64.svg"
               alt="Bangų klinika"
               className="h-14 sm:h-20 w-auto object-contain select-none"
               draggable={false}
