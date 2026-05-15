@@ -239,15 +239,17 @@ export default function Home() {
 
             <motion.div className="relative" initial={{ opacity: 0, scale: .98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .6 }}>
               <div className="relative aspect-[1.12/1] md:aspect-[1.22/1] lg:aspect-[0.96/1] lg:max-h-[68vh] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-slate-900">
-                <video
-                  ref={heroVideoRef}
-                  muted
-                  loop
-                  playsInline
-                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
-                >
-                  <source src="/hero-video.mp4" type="video/mp4" />
-                </video>
+                <div style={{ position: 'absolute', inset: 0 }}>
+                  <video
+                    ref={heroVideoRef}
+                    muted
+                    loop
+                    playsInline
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  >
+                    <source src="/hero-video.mp4" type="video/mp4" />
+                  </video>
+                </div>
               </div>
             </motion.div>
           </div>

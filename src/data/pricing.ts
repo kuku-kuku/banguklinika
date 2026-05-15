@@ -127,6 +127,11 @@ export const PRICING: PriceGroup[] = [
         exact: true,
         note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota",
       },
+      {
+        name: "Sudėtingas/komplikuotas trečiųjų apatinių krūminių dantų rovimas",
+        from: 220,
+        exact: true,
+      },
 
       { name: "Klinikinis danties vainiko prailginimas", from: 60, exact: true },
       { name: "Alveolito gydymas (1 seansas)", from: 30, exact: true },
