@@ -57,7 +57,6 @@ import { LangProvider } from './context/LanguageContext'
 import Draugai from './pages/Draugai'
 import MusuDarbai from './pages/MusuDarbai'
 import InbankWidget from './components/InbankWidget'
-import IntroVideo from './components/IntroVideo'
 
 /** Thin wrapper that provides lang="lv" context to all /lv/* pages */
 function LvLayout() {
@@ -71,7 +70,6 @@ function LvLayout() {
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <IntroVideo />
       <ScrollToTop />
       <TrailingSlashRedirect />
       <Navbar />

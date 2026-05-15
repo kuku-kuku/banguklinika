@@ -1,12 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import SEO from '../components/SEO'
+import ServiceCard from '../components/ServiceCard'
 import FAQ from '../components/FAQ'
 import AnimatedSection from '../components/AnimatedSection'
+import { SERVICES } from '../data/services'
 import { CLINIC } from '../data/clinic'
 import ReviewsCarousel from '../components/ReviewsCarousel'
+import PromoPoster from '../components/PromoPoster'
 
 import home from '../content/home.json'
 
@@ -43,46 +46,14 @@ function SectionDivider() {
 }
 
 const globalStyles = `
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(8px); }
+@keyframes fadeInUp { 
+  0% { opacity: 0; transform: translateY(8px); } 
   100% { opacity: 1; transform: translateY(0); }
 }
 `;
 
 export default function Home() {
   const [google, setGoogle] = useState<GoogleData>({ rating: null, user_ratings_total: null, reviews_url: null })
-  const heroVideoRef = useRef<HTMLVideoElement>(null)
-
-  useEffect(() => {
-    const video = heroVideoRef.current
-    if (!video) return
-
-    const alreadySeen = (() => { try { return !!sessionStorage.getItem('bk-intro-seen') } catch { return true } })()
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          video.play().catch(() => {})
-        } else {
-          video.pause()
-        }
-      },
-      { threshold: 0.1 }
-    )
-    observer.observe(video)
-
-    if (!alreadySeen) {
-      video.pause()
-      const onIntroDone = () => { if (video.paused) video.play().catch(() => {}) }
-      window.addEventListener('bk-intro-done', onIntroDone)
-      return () => {
-        observer.disconnect()
-        window.removeEventListener('bk-intro-done', onIntroDone)
-      }
-    }
-
-    return () => observer.disconnect()
-  }, [])
 
   useEffect(() => {
     fetch('/api/reviews')
@@ -93,27 +64,31 @@ export default function Home() {
       .catch(() => { })
   }, [])
 
-  const PHRASES = [
-    'Gydymas, implantai ir estetika – vienoje vietoje',
-    'Straumann® / Medentika® implantai',
-    'CEREC – vainikėliai per 1 vizitą',
-    'Profesionali higiena (AIRFLOW®)',
-    'Nemokama pirminė konsultacija',
-  ]
-  const [phraseIndex, setPhraseIndex] = useState(0)
-  const [phraseOut, setPhraseOut] = useState(false)
-  const phraseTimer = useRef<number | null>(null)
+  const images: string[] = home.hero.images as any
+  const [index, setIndex] = useState(0)
+  const [auto, setAuto] = useState(true)
+  const timerRef = useRef<number | null>(null)
+  const touchX = useRef<number | null>(null)
 
   useEffect(() => {
-    phraseTimer.current = window.setInterval(() => {
-      setPhraseOut(true)
-      window.setTimeout(() => {
-        setPhraseIndex(i => (i + 1) % PHRASES.length)
-        setPhraseOut(false)
-      }, 350)
-    }, 2800)
-    return () => { if (phraseTimer.current) window.clearInterval(phraseTimer.current) }
-  }, [])
+    if (!auto) return
+    if (timerRef.current) window.clearTimeout(timerRef.current)
+    timerRef.current = window.setTimeout(() => {
+      setIndex(i => (i + 1) % images.length)
+    }, 5000)
+    return () => { if (timerRef.current) window.clearTimeout(timerRef.current) }
+  }, [index, auto, images.length])
+
+  const onTouchStart = (e: React.TouchEvent) => { touchX.current = e.touches[0].clientX }
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchX.current == null) return
+    const dx = e.changedTouches[0].clientX - touchX.current
+    if (Math.abs(dx) > 40) {
+      setAuto(false)
+      setIndex(i => (i + (dx < 0 ? 1 : -1) + images.length) % images.length)
+    }
+    touchX.current = null
+  }
 
   const POPULAR_SERVICES = [
     { id: 'dantu-implantacija', title: 'Dantų implantacija', desc: 'Saugus ir ilgaamžis prarastų dantų atkūrimas naudojant pasaulyje pripažintas sistemas.', image: '/implantacija.webp' },
@@ -165,124 +140,155 @@ export default function Home() {
           { lang: 'x-default', url: 'https://banguklinika.lt/' },
         ]}
       />
+      {/* TEMPORARILY DISABLED: Zirconium offer poster
+      <PromoPoster
+        id="home-2025-1"
+        imageSrc="/poster.webp"
+        persistence="none"
+        frequencyDays={0}
+        delayMs={300}
+        routeOnly="/"
+        secondaryCtaText="Ypatingi pasiūlymai"
+        secondaryCtaHref="/ypatingi-pasiulymai"
+      /> */}
+
       {/* HERO SECTION */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background image */}
-        <div className="absolute inset-0 z-0">
-          <video
-            ref={heroVideoRef}
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover object-center"
-          >
-            <source src="/hero-video.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#08212F]/95 via-[#08212F]/80 to-[#08212F]/25" />
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 10% 65%, rgba(0,183,198,0.13) 0%, transparent 55%)' }} />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12 w-full py-32 lg:py-40">
-          {/* H1 — clinic name for SEO */}
-          <motion.h1
-            className="inline-flex items-center border border-brand/50 text-brand text-sm md:text-base font-semibold tracking-[0.15em] uppercase px-4 py-2 mb-10"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            Odontologijos klinika Klaipėdoje
-          </motion.h1>
-
-          {/* Tagline */}
-          <motion.p
-            className="text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1.06] tracking-tight max-w-3xl mb-10"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.6 }}
-          >
-            Šypsena, kurią<br />
-            <em className="not-italic font-semibold text-brand">norisi rodyti!</em>
-          </motion.p>
-
-          {/* Rotating phrase */}
-          <motion.div
-            className="flex items-start gap-4 mb-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            <div className="h-px w-8 bg-brand flex-shrink-0 mt-[0.6em]" />
-            <span
-              className="text-white/70 text-base lg:text-lg font-medium transition-all duration-350 block"
-              style={{ opacity: phraseOut ? 0 : 1, transform: phraseOut ? 'translateY(-6px)' : 'translateY(0)', minHeight: '3em' }}
-            >
-              {PHRASES[phraseIndex]}
-            </span>
-          </motion.div>
-
-          {/* CTA buttons */}
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 mb-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            <a
-              href={`tel:${CLINIC.phone}`}
-              className="border border-white/40 text-white px-9 py-4 font-bold text-sm tracking-wide hover:border-brand hover:text-brand transition-all duration-300 text-center rounded-none"
-            >
-              {home.hero.ctaPhone}
-            </a>
-            <Link
-              to="/kontaktai#registracija"
-              className="border border-white/40 text-white px-9 py-4 font-bold text-sm tracking-wide hover:border-brand hover:text-brand transition-all duration-300 text-center rounded-none"
-            >
-              {home.hero.ctaOnline}
-            </Link>
-          </motion.div>
-
-          {/* Google rating badge */}
-          {google.rating && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-            >
-              <a
-                href={google.reviews_url || '#'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-4 py-2.5 border border-white/20 bg-white/10 backdrop-blur-sm hover:border-brand/50 hover:bg-white/15 transition-all"
+      <div className="relative z-10 overflow-visible">
+        <section className="relative overflow-visible pan-y">
+          <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 lg:gap-24 items-start py-12 md:py-20 lg:py-20">
+            <div className="space-y-8 z-10">
+              <motion.h1
+                className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.08] tracking-tight text-slate-900 max-w-3xl"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: .6 }}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05" />
-                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
-                </svg>
-                <div className="flex items-center gap-1.5">
-                  <span className="font-bold text-white text-sm">{google.rating.toFixed(1)}</span>
-                  <div className="flex items-center gap-0.5 text-amber-400">
-                    {[1, 2, 3, 4, 5].map(i => (
-                      <StarIcon key={i} className="w-3 h-3" />
-                    ))}
-                  </div>
-                  {google.user_ratings_total && (
-                    <span className="text-white/50 text-sm">({google.user_ratings_total} atsiliepimai)</span>
-                  )}
-                </div>
-              </a>
-            </motion.div>
-          )}
-        </div>
+                Odontologijos klinika Klaipėdoje!
+              </motion.h1>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-6 lg:left-12 flex items-center gap-3 z-10">
-          <div className="w-px h-10 bg-brand" />
-          <span className="text-white/40 text-xs tracking-[0.2em] uppercase">Slinkti žemyn</span>
-        </div>
-      </section>
+              <motion.h2
+                className="text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight text-brand max-w-2xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: .08, duration: .6 }}
+              >
+                Šypsena, kurią norisi rodyti!
+              </motion.h2>
+
+              <motion.p
+                className="text-gray-600 text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: .1, duration: .6 }}
+              >
+                {home.hero.subtitle}
+              </motion.p>
+
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: .2, duration: .5 }}
+              >
+                <a href={`tel:${CLINIC.phone}`} className="btn-primary px-10 py-4 lg:py-5 rounded-2xl shadow-xl shadow-brand/20 hover:scale-105 transition-all text-center justify-center text-base font-bold">
+                  {home.hero.ctaPhone}
+                </a>
+                <Link to="/kontaktai#registracija" className="bg-white border-2 border-brand text-brand px-10 py-4 lg:py-5 rounded-2xl font-bold hover:bg-brand-50 transition-all text-center justify-center text-base">
+                  {home.hero.ctaOnline}
+                </Link>
+              </motion.div>
+
+              {/* Google rating badge */}
+              {google.rating && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: .3, duration: .5 }}
+                >
+                  <a
+                    href={google.reviews_url || '#'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 px-4 py-2.5 rounded-xl border border-slate-200 bg-white hover:border-brand/30 transition-all shadow-sm hover:shadow-md"
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05" />
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+                    </svg>
+                    <div className="flex items-center gap-1.5">
+                      <span className="font-bold text-slate-900 text-sm">{google.rating.toFixed(1)}</span>
+                      <div className="flex items-center gap-0.5 text-amber-400">
+                        {[1, 2, 3, 4, 5].map(i => (
+                          <StarIcon key={i} className="w-3.5 h-3.5" />
+                        ))}
+                      </div>
+                      {google.user_ratings_total && (
+                        <span className="text-slate-500 text-sm">({google.user_ratings_total} atsiliepimai)</span>
+                      )}
+                    </div>
+                  </a>
+                </motion.div>
+              )}
+
+              <ul className="text-sm md:text-base font-medium text-slate-500 flex flex-col gap-y-3 pt-2 mt-2">
+                {(home.hero.bullets as string[]).map((b, i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    <span className="text-brand font-black text-lg">✓</span> {b}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Technology / partner badges */}
+              <motion.div
+                className="pt-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: .4, duration: .5 }}
+              >
+              </motion.div>
+            </div>
+
+            <motion.div className="relative" initial={{ opacity: 0, scale: .98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .6 }}>
+              <div
+                className="relative aspect-[1.12/1] md:aspect-[1.22/1] lg:aspect-[0.96/1] lg:max-h-[68vh] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-white"
+                onTouchStart={onTouchStart}
+                onTouchEnd={onTouchEnd}
+              >
+                {images.map((imgSrc, i) => (
+                  <motion.img
+                    key={imgSrc}
+                    src={imgSrc}
+                    alt="Bangų klinika"
+                    className="absolute inset-0 w-full h-full object-cover select-none"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: i === index ? 1 : 0 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    decoding="async"
+                    loading={i === 0 ? "eager" : "lazy"}
+                  />
+                ))}
+
+                <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-6 pointer-events-none">
+                  <button onClick={() => { setAuto(false); setIndex(i => (i - 1 + images.length) % images.length) }} className="pointer-events-auto w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm shadow-lg flex items-center justify-center text-2xl hover:bg-brand hover:text-white transition-all">‹</button>
+                  <button onClick={() => { setAuto(false); setIndex(i => (i + 1) % images.length) }} className="pointer-events-auto w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm shadow-lg flex items-center justify-center text-2xl hover:bg-brand hover:text-white transition-all">›</button>
+                </div>
+
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3">
+                  {images.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => { setAuto(false); setIndex(i) }}
+                      className={`h-2 rounded-full transition-all ${i === index ? 'w-10 bg-white' : 'w-2 bg-white/50 hover:bg-white'}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </div>
 
       <SectionDivider />
 
