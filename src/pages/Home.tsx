@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import SEO from '../components/SEO'
 import ServiceCard from '../components/ServiceCard'
@@ -64,31 +64,18 @@ export default function Home() {
       .catch(() => { })
   }, [])
 
-  const images: string[] = home.hero.images as any
-  const [index, setIndex] = useState(0)
-  const [auto, setAuto] = useState(true)
-  const timerRef = useRef<number | null>(null)
-  const touchX = useRef<number | null>(null)
+  const heroVideoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    if (!auto) return
-    if (timerRef.current) window.clearTimeout(timerRef.current)
-    timerRef.current = window.setTimeout(() => {
-      setIndex(i => (i + 1) % images.length)
-    }, 5000)
-    return () => { if (timerRef.current) window.clearTimeout(timerRef.current) }
-  }, [index, auto, images.length])
-
-  const onTouchStart = (e: React.TouchEvent) => { touchX.current = e.touches[0].clientX }
-  const onTouchEnd = (e: React.TouchEvent) => {
-    if (touchX.current == null) return
-    const dx = e.changedTouches[0].clientX - touchX.current
-    if (Math.abs(dx) > 40) {
-      setAuto(false)
-      setIndex(i => (i + (dx < 0 ? 1 : -1) + images.length) % images.length)
-    }
-    touchX.current = null
-  }
+    const video = heroVideoRef.current
+    if (!video) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { entry.isIntersecting ? video.play().catch(() => {}) : video.pause() },
+      { threshold: 0.1 }
+    )
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
 
   const POPULAR_SERVICES = [
     { id: 'dantu-implantacija', title: 'Dantų implantacija', desc: 'Saugus ir ilgaamžis prarastų dantų atkūrimas naudojant pasaulyje pripažintas sistemas.', image: '/implantacija.webp' },
@@ -251,39 +238,16 @@ export default function Home() {
             </div>
 
             <motion.div className="relative" initial={{ opacity: 0, scale: .98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .6 }}>
-              <div
-                className="relative aspect-[1.12/1] md:aspect-[1.22/1] lg:aspect-[0.96/1] lg:max-h-[68vh] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-white"
-                onTouchStart={onTouchStart}
-                onTouchEnd={onTouchEnd}
-              >
-                {images.map((imgSrc, i) => (
-                  <motion.img
-                    key={imgSrc}
-                    src={imgSrc}
-                    alt="Bangų klinika"
-                    className="absolute inset-0 w-full h-full object-cover select-none"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: i === index ? 1 : 0 }}
-                    transition={{ duration: 0.6, ease: "easeInOut" }}
-                    decoding="async"
-                    loading={i === 0 ? "eager" : "lazy"}
-                  />
-                ))}
-
-                <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-6 pointer-events-none">
-                  <button onClick={() => { setAuto(false); setIndex(i => (i - 1 + images.length) % images.length) }} className="pointer-events-auto w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm shadow-lg flex items-center justify-center text-2xl hover:bg-brand hover:text-white transition-all">‹</button>
-                  <button onClick={() => { setAuto(false); setIndex(i => (i + 1) % images.length) }} className="pointer-events-auto w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm shadow-lg flex items-center justify-center text-2xl hover:bg-brand hover:text-white transition-all">›</button>
-                </div>
-
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3">
-                  {images.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => { setAuto(false); setIndex(i) }}
-                      className={`h-2 rounded-full transition-all ${i === index ? 'w-10 bg-white' : 'w-2 bg-white/50 hover:bg-white'}`}
-                    />
-                  ))}
-                </div>
+              <div className="relative aspect-[1.12/1] md:aspect-[1.22/1] lg:aspect-[0.96/1] lg:max-h-[68vh] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-slate-900">
+                <video
+                  ref={heroVideoRef}
+                  muted
+                  loop
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover"
+                >
+                  <source src="/hero-video.mp4" type="video/mp4" />
+                </video>
               </div>
             </motion.div>
           </div>
