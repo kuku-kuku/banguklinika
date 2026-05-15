@@ -47,19 +47,6 @@ export default function Navbar() {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const isHome = location.pathname === '/'
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    if (!isHome) { setScrolled(false); return }
-    const onScroll = () => setScrolled(window.scrollY > 80)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [isHome])
-
-  const transparent = isHome && !scrolled
-
   const scheduleClose = () => {
     if (closeTimer.current) window.clearTimeout(closeTimer.current)
     closeTimer.current = window.setTimeout(() => setOpenIndex(null), 140)
@@ -170,12 +157,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className={[
-      'top-0 z-40 w-full transition-all duration-300',
-      isHome
-        ? 'fixed ' + (transparent ? 'bg-transparent border-transparent' : 'bg-white border-b border-gray-100 shadow-sm')
-        : 'sticky bg-white border-b border-gray-100 shadow-sm',
-    ].join(' ')}>
+    <header className="sticky top-0 z-40 bg-white border-b border-gray-100 shadow-sm">
       <div className="container-narrow flex min-h-[72px] items-center justify-between">
         {/* Logo */}
         <Link
@@ -190,9 +172,9 @@ export default function Navbar() {
           aria-label="Bangų klinika — pradžia"
         >
           <img
-            src={transparent ? '/Asset 64.svg' : '/Asset 63.svg'}
+            src="/Asset 63.svg"
             alt="Bangų klinika"
-            className="h-10 md:h-11 w-auto object-contain select-none transition-all duration-300"
+            className="h-10 md:h-11 w-auto object-contain select-none"
             draggable={false}
             loading="eager"
             decoding="async"
@@ -223,10 +205,9 @@ export default function Navbar() {
                   end={n.to === '/' || n.to === '/lv'}
                   className={({ isActive }) =>
                     [
-                      'relative text-[15px] md:text-[16px] font-medium transition-colors py-2',
-                      transparent
-                        ? isActive ? 'text-white' : 'text-white/80 hover:text-white'
-                        : isActive ? 'text-primary-700' : 'text-gray-800 hover:text-primary-700',
+                      'relative text-[15px] md:text-[16px] font-medium transition-colors',
+                      isActive ? 'text-primary-700' : 'text-gray-800 hover:text-primary-700',
+                      'py-2',
                     ].join(' ')
                   }
                   onClick={() => handleNavClick(n.to)}
@@ -288,7 +269,7 @@ export default function Navbar() {
             onClick={() => setLangOpen(v => !v)}
             aria-expanded={langOpen}
             aria-label="Change language"
-            className={`flex items-center gap-1.5 text-[14px] font-semibold transition-colors py-1.5 px-2.5 rounded-lg ${transparent ? 'text-white/80 hover:text-white border border-white/30 hover:border-white/60' : 'text-gray-700 hover:text-primary-700 hover:bg-gray-50 border border-gray-200'}`}
+            className="flex items-center gap-1.5 text-[14px] font-semibold text-gray-700 hover:text-primary-700 transition-colors py-1.5 px-2.5 rounded-lg hover:bg-gray-50 border border-gray-200"
           >
             {isLv ? 'LV' : 'LT'}
             <svg
@@ -329,7 +310,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className={`md:hidden text-[15px] font-medium transition-colors ${transparent ? 'text-white/80 hover:text-white' : 'btn-ghost'}`}
+          className="md:hidden btn-ghost text-[15px] font-medium"
           onClick={() => setOpenMobile((v) => !v)}
           aria-expanded={openMobile}
           aria-label="Meniu"
