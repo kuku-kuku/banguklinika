@@ -244,7 +244,7 @@ export default function Home() {
                   muted
                   loop
                   playsInline
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-auto h-auto"
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
                 >
                   <source src="/hero-video.mp4" type="video/mp4" />
                 </video>
