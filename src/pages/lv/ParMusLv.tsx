@@ -150,62 +150,19 @@ export default function ParMusLv() {
         structuredData={structuredData}
       />
 
-      <motion.div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12" variants={container} initial="hidden" animate="visible">
-        <motion.header className="mb-8" variants={item}>
+      <motion.div
+        className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12 py-12 lg:py-16"
+        variants={container}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.header className="mb-12" variants={item}>
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-darkblue-700">
-            Moderna zobārstniecības klīnika Klaipēdā
+            Zobārsti Klaipēdā — Bangų klīnika
           </h1>
         </motion.header>
 
-        <motion.div className="prose prose-slate max-w-none mb-12" variants={item}>
-          <p className="text-xl text-slate-600 leading-relaxed">
-            Bangų zobārstniecības klīnika ir mājīga un moderna zobārstniecības klīnika Klaipēdā. Šeit vadāmies pēc idejas, ka vizīte pie zobārsta nedrīkst būt biedējoša. Gluži pretēji — tā var būt patīkama. Tādēļ katru klientu sagaidām ar pozitīvu enerģiju un tiecamies, lai pēc vizītes klients aiziet ar platu, skaistu un veselīgu smaidu.
-          </p>
-        </motion.div>
-
         <motion.section className="mb-20" variants={item}>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-darkblue-700 mb-8">Zobārstniecības klīnikā sniegtie pakalpojumi</h2>
-          <div className="grid sm:grid-cols-2 gap-x-12 gap-y-4">
-            <div className="space-y-4 text-lg text-slate-700">
-              {services.filter((_, i) => i % 2 === 0).map((s, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <span className="text-brand mt-1.5">
-                    <CheckIcon />
-                  </span>
-                  <span>{s}</span>
-                </div>
-              ))}
-            </div>
-            <div className="space-y-4 text-lg text-slate-700">
-              {services.filter((_, i) => i % 2 === 1).map((s, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <span className="text-brand mt-1.5">
-                    <CheckIcon />
-                  </span>
-                  <span>{s}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        <motion.section className="mb-20 rounded-3xl border border-brand bg-white shadow-soft p-8" variants={item}>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-darkblue-700 mb-4">Zobu tehnikas laboratorija</h2>
-          <div className="text-slate-700 text-lg space-y-4">
-            <p>
-              Bangų zobārstniecības klīnikā darbojas profesionāla zobu tehnikas laboratorija, kurā tiek sagatavoti zobārstniecībai, implantācijai un protezēšanai nepieciešamie izstrādājumi. Bez metāla keramikas zobu vainagi, pagaidu vainagi, zobu tilti, protēzes uz implantiem, loka balstprotēzes, laminēti un citi izstrādājumi tiek gatavoti, izmantojot augstākās kvalitātes materiālus un modernās iekārtas.
-            </p>
-            <p className="font-medium text-darkblue-600">
-              Ar digitālo tehnoloģiju palīdzību visi izstrādājumi tiek izcili precīzi modelēti un pielāgoti katram pacientam individuāli. Protezēšanas precizitāte ir nepieciešama nevainojamam estētiskam izskatam un pilnīgam komfortam.
-            </p>
-          </div>
-        </motion.section>
-
-        <motion.section className="mb-16" variants={item}>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-darkblue-700 mb-10 text-center sm:text-left">
-            Bangų zobārstniecības klīnikas kolektīvs
-          </h2>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {team.map((m) => (
               <motion.div key={m.name} variants={item} className="w-full">
@@ -222,6 +179,57 @@ export default function ParMusLv() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </motion.section>
+
+        <motion.section className="mb-20 space-y-8" variants={item}>
+          <div className="rounded-[32px] border border-sky-200 bg-white shadow-soft p-6 sm:p-8 lg:p-10">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
+              Moderna zobārstniecības klīnika Klaipēdā
+            </h2>
+            <p className="text-lg sm:text-xl text-slate-600 leading-relaxed">
+              Bangų zobārstniecības klīnika ir mājīga un moderna zobārstniecības klīnika Klaipēdā. Šeit vadāmies pēc idejas, ka vizīte pie zobārsta nedrīkst būt biedējoša. Gluži pretēji — tā var būt patīkama. Tādēļ katru klientu sagaidām ar pozitīvu enerģiju un tiecamies, lai pēc vizītes klients aiziet ar platu, skaistu un veselīgu smaidu.
+            </p>
+          </div>
+
+          <div className="rounded-[32px] border border-emerald-200 bg-gradient-to-br from-white to-emerald-50 shadow-soft p-6 sm:p-8 lg:p-10">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-darkblue-700 mb-8">
+              Zobārstniecības klīnikā sniegtie pakalpojumi
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+              <div className="space-y-4 text-base sm:text-lg text-slate-700">
+                {services.filter((_, i) => i % 2 === 0).map((s, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 ring-1 ring-emerald-200">
+                      <CheckIcon />
+                    </span>
+                    <span className="leading-relaxed">{s}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="space-y-4 text-base sm:text-lg text-slate-700">
+                {services.filter((_, i) => i % 2 === 1).map((s, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 ring-1 ring-emerald-200">
+                      <CheckIcon />
+                    </span>
+                    <span className="leading-relaxed">{s}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        <motion.section className="mb-16 rounded-3xl border border-brand bg-white shadow-soft p-8" variants={item}>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-darkblue-700 mb-4">Zobu tehnikas laboratorija</h2>
+          <div className="text-slate-700 text-lg space-y-4">
+            <p>
+              Bangų zobārstniecības klīnikā darbojas profesionāla zobu tehnikas laboratorija, kurā tiek sagatavoti zobārstniecībai, implantācijai un protezēšanai nepieciešamie izstrādājumi. Bez metāla keramikas zobu vainagi, pagaidu vainagi, zobu tilti, protēzes uz implantiem, loka balstprotēzes, laminēti un citi izstrādājumi tiek gatavoti, izmantojot augstākās kvalitātes materiālus un modernās iekārtas.
+            </p>
+            <p className="font-medium text-darkblue-600">
+              Ar digitālo tehnoloģiju palīdzību visi izstrādājumi tiek izcili precīzi modelēti un pielāgoti katram pacientam individuāli. Protezēšanas precizitāte ir nepieciešama nevainojamam estētiskam izskatam un pilnīgam komfortam.
+            </p>
           </div>
         </motion.section>
 
