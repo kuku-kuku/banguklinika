@@ -120,6 +120,7 @@ export default function About() {
       name: 'Odeta Venckutė',
       role: 'Gydytoja odontologė',
       license: 'OPL-05163',
+      photoFile: 'Odeta-light',
     })
   }
 

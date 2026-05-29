@@ -6,8 +6,6 @@ import SEO from '../../components/SEO'
 import { CLINIC } from '../../data/clinic'
 import { SITE_URL } from '../../i18n/lv'
 
-const TEAM_WITH_PHOTO = new Set(['donatas', 'jonas', 'odeta', 'ruta'])
-
 const normalizeFirstName = (name: string) =>
   name
     .split(' ')[0]
@@ -15,8 +13,9 @@ const normalizeFirstName = (name: string) =>
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
 
-const getPhotoPath = (name: string) => `/team/${normalizeFirstName(name)}.jpg`
-const hasPhoto = (name: string) => TEAM_WITH_PHOTO.has(normalizeFirstName(name))
+const getPhotoPath = (name: string, photoFile?: string) =>
+  `/team/${photoFile ?? normalizeFirstName(name)}.jpg`
+const hasPhoto = (_name: string, photoFile?: string) => !!photoFile
 
 const container = {
   hidden: { opacity: 0, y: 10 },
@@ -35,10 +34,10 @@ function CheckIcon() {
   )
 }
 
-function TeamPhoto({ name }: { name: string }) {
+function TeamPhoto({ name, photoFile }: { name: string; photoFile?: string }) {
   const [missing, setMissing] = useState(false)
-  const src = getPhotoPath(name)
-  const photoOk = hasPhoto(name) && !missing
+  const src = getPhotoPath(name, photoFile)
+  const photoOk = hasPhoto(name, photoFile) && !missing
 
   return (
     <div
@@ -93,11 +92,12 @@ const services = [
 ]
 
 let team = [
-  { name: "Rugilė Guntytė", role: "Zobārste", license: "OPL-06438" },
-  { name: "Donatas Bitinas", role: "Implantācijas zobārsts", license: "OPL-05611" },
+  { name: "Rugilė Guntytė", role: "Zobārste", license: "OPL-06438", photoFile: "Rugile-light LV" },
+  { name: "Donatas Bitinas", role: "Implantācijas zobārsts", license: "OPL-05611", photoFile: "Donatas_light LV" },
+  { name: "Donatas Kubilius", role: "Sejas un žokļu ķirurgs", license: "MPL-18980", photoFile: "Donatas_Kubliuslight LV" },
   { name: "Eglė Daknienė", role: "Zobu tehniķe", license: "BPL-04671" },
-  { name: "Rūta Garšvienė", role: "Mutes higieniste, zobu izlīdzināšanas kapteiņu koordinatore", license: "BPL-07858" },
-  { name: "Jonas Sabulis", role: "Protezēšanas zobārsts", license: "OPL-05936" },
+  { name: "Rūta Garšvienė", role: "Mutes higieniste, zobu izlīdzināšanas kapteiņu koordinatore", license: "BPL-07858", photoFile: "Rūta_light LV" },
+  { name: "Jonas Sabulis", role: "Protezēšanas zobārsts", license: "OPL-05936", photoFile: "Jonas-light LV" },
   { name: "Goda Daknytė", role: "Klīnikas administrācijas vadītāja" },
 ]
 
@@ -106,12 +106,13 @@ if (!team.some((m) => m.name.toLowerCase().includes('odeta'))) {
     name: 'Odeta Venckutė',
     role: 'Zobārste',
     license: 'OPL-05163',
+    photoFile: 'Odeta-light LV',
   })
 }
 
 team = team
   .slice()
-  .sort((a, b) => Number(hasPhoto(b.name)) - Number(hasPhoto(a.name)) || a.name.localeCompare(b.name))
+  .sort((a, b) => Number(hasPhoto(b.name, b.photoFile)) - Number(hasPhoto(a.name, a.photoFile)) || a.name.localeCompare(b.name))
 
 export default function ParMusLv() {
   const structuredData = {
@@ -208,7 +209,7 @@ export default function ParMusLv() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {team.map((m) => (
               <motion.div key={m.name} variants={item} className="w-full">
-                <TeamPhoto name={m.name} />
+                <TeamPhoto name={m.name} photoFile={m.photoFile} />
 
                 <div className="pt-5 px-1">
                   <h3 className="font-bold text-slate-900 text-2xl leading-tight mb-1">{m.name}</h3>

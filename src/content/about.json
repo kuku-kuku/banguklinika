@@ -30,11 +30,11 @@
   },
   "teamTitle": "Bangų Odontologijos Klinikos kolektyvas",
   "team": [
-    { "name": "Donatas Bitinas", "role": "Implantuojantis gydytojas odontologas", "license": "OPL-05611", "photoFile": "donatas" },
+    { "name": "Donatas Bitinas", "role": "Implantuojantis gydytojas odontologas", "license": "OPL-05611", "photoFile": "Donatas_light" },
     { "name": "Donatas Kubilius", "role": "Gydytojas, Veido ir Žandikaulių chirurgas", "license": "MPL-18980", "photoFile": "donataskubilius" },
     { "name": "Rugilė Guntytė", "role": "Gydytoja odontologė", "license": "OPL-06438", "photoFile": "Rugile-light" },
-    { "name": "Rūta Garšvienė", "role": "Burnos higienistė, gydymo tiesinimo kapomis koordinatorė", "license": "BPL-07858" },
-    { "name": "Jonas Sabulis", "role": "Protezuojantis gydytojas odontologas", "license": "OPL-05936" },
+    { "name": "Rūta Garšvienė", "role": "Burnos higienistė, gydymo tiesinimo kapomis koordinatorė", "license": "BPL-07858", "photoFile": "Rūta_light" },
+    { "name": "Jonas Sabulis", "role": "Protezuojantis gydytojas odontologas", "license": "OPL-05936", "photoFile": "Jonas-light" },
     { "name": "Eglė Daknienė", "role": "Dantų technikė", "license": "BPL-04671" },
     { "name": "Goda Daknytė", "role": "Klinikos administracijos vadovė" }
   ],
