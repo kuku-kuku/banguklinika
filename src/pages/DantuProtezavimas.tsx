@@ -357,8 +357,8 @@ export default function DantuProtezavimas() {
                 {/* Right: Jonas photo with fade */}
                 <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
                   <img
-                    src="/team/Jonas-light.jpg"
-                    alt="Jonas Sabulis – Protezuojantis gydytojas klinikoje"
+                    src="/team/Donatas_light.jpg"
+                    alt="Donatas Bitinas – protezuojantis gydytojas Bangų klinikoje"
                     className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />

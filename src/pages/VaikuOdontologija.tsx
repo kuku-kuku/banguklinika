@@ -212,8 +212,8 @@ export default function VaikuOdontologija() {
                 {/* Right: doctor photo */}
                 <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
                   <img
-                    src="/team/Jonas-light.jpg"
-                    alt="Bangų odontologijos klinikos gydytojas"
+                    src="/team/Rugile-light.jpg"
+                    alt="Rugilė – vaikų odontologė Bangų klinikoje"
                     className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
