@@ -11,11 +11,71 @@ const templatePath = path.join(distDir, "index.html");
 
 const SITE_ORIGIN = "https://www.banguklinika.lt";
 
+const DENTIST_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "@id": `${SITE_ORIGIN}/`,
+  name: "Bangų odontologijos klinika",
+  alternateName: "Bangų klinika",
+  url: `${SITE_ORIGIN}/`,
+  description: "Bangų odontologijos klinika Klaipėdoje teikia odontologijos paslaugas, įskaitant dantų gydymą, estetinį plombavimą, profesionalią burnos higieną, protezavimą, implantavimą ir dantų atkūrimą.",
+  telephone: "+37067191399",
+  priceRange: "€€",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Bangų g. 7-3",
+    addressLocality: "Klaipėda",
+    postalCode: "LT-91250",
+    addressCountry: "LT",
+  },
+  areaServed: { "@type": "City", name: "Klaipėda" },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+  ],
+  medicalSpecialty: ["Dentistry"],
+  makesOffer: [
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų implantacija" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų protezavimas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų gydymas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų taisymas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų tiesinimas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Burnos higiena" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Burnos chirurgija" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų balinimas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Estetinis plombavimas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų plombavimas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Vaikų odontologija" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų traukimas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Skubi odontologinė pagalba" } },
+  ],
+  sameAs: ["https://www.facebook.com/banguklinika/"],
+};
+
+function serviceSchema(name, serviceType, description, url) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name,
+    serviceType,
+    description,
+    url,
+    areaServed: { "@type": "City", name: "Klaipėda" },
+    provider: { "@id": `${SITE_ORIGIN}/#dentist` },
+  };
+}
+
 const pages = [
   {
     route: "/",
     title: "Odontologijos klinika (odontologai) Klaipėdoje",
     description: "Bangų Odontologijos Klinika – moderni odontologija Klaipėdos centre.",
+    schema: DENTIST_SCHEMA,
   },
   {
     route: "/apie",
@@ -246,7 +306,7 @@ function upsertTag(html, regex, replacement) {
   return html.replace("</head>", `${replacement}\n</head>`);
 }
 
-function injectHead(html, { route, title, description }) {
+function injectHead(html, { route, title, description, schema }) {
   const url = SITE_ORIGIN + normalizeRoute(route);
 
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`);
@@ -262,6 +322,14 @@ function injectHead(html, { route, title, description }) {
     /<link\s+rel=["']canonical["']\s+href=["'][\s\S]*?["']\s*\/?>/i,
     `<link rel="canonical" href="${escapeHtml(url)}" />`
   );
+
+  if (schema) {
+    html = upsertTag(
+      html,
+      /<script\s+type=["']application\/ld\+json["']>[\s\S]*?<\/script>/i,
+      `<script type="application/ld+json">${JSON.stringify(schema)}</script>`
+    );
+  }
 
   return html;
 }

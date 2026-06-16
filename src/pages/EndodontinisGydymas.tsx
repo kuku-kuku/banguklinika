@@ -80,7 +80,7 @@ export default function EndodontinisGydymas() {
     <AnimatedSection>
       <SEO
         title="Endodontinis (šaknų kanalų) gydymas Klaipėdoje - Bangų klinika"
-        description="Profesionalus endodontinis (šaknų kanalų) gydymas Klaipėdoje. Pirminė endodontinė pagalba: diagnostika, skausmo mažinimas, infekcijos kontrolė ir danties paruošimas tolimesniam gydymui."
+        description="Pulsuojantis danties skausmas✅ ilgai trunkantis jautrumas✅ gali signalizuoti apie gilesnius pažeidimus. Kreipkitės dėl endodontinio gydymo ➡ Bangų klinikoje."
         keywords="endodontinis gydymas, saknu kanalu gydymas, pirminė endodontinė pagalba, dantu skausmas, kanalai, klaipeda"
         structuredData={structuredData}
       />
@@ -98,7 +98,7 @@ export default function EndodontinisGydymas() {
           {/* HERO */}
           <motion.header className="mb-10 text-left" variants={item}>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
-              Profesionalus endodontinis (šaknų kanalų) gydymas Klaipėdoje
+              Endodontinis (šaknų kanalų) gydymas Klaipėdoje
             </h1>
 
             <div className="mb-8">

@@ -80,7 +80,7 @@ export default function VaikuOdontologija() {
     <AnimatedSection>
       <SEO
         title="Vaikų odontologija Klaipėdoje - Bangų klinika"
-        description="Profesionali vaikų odontologija Klaipėdoje. Pieninių dantų gydymas, profilaktika ir adaptaciniai vizitai be baimės. Registruokite vaiką vizitui."
+        description="Ieškote vaikų odontologo Klaipėdoje?✅ Bangų klinikoje dirba patyrę specialistai, užtikrinantys švelnų✅ saugų✅ gydymą vaikams. Patogi registracija ir profesionali priežiūra."
         keywords="vaiku odontologas, pieniniu dantu gydymas, vaiku dantu prieziura, klaipeda, silantai, be baimes"
         structuredData={structuredData}
       />
@@ -97,7 +97,7 @@ export default function VaikuOdontologija() {
         <div className="min-w-0 flex-1">
           <motion.header className="mb-10 text-left" variants={item}>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
-              Profesionali vaikų odontologija Klaipėdoje
+              Vaikų odontologija Klaipėdoje
             </h1>
 
             <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed mb-8">
