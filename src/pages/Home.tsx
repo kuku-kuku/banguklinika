@@ -126,7 +126,7 @@ function TeamCarousel() {
           const abs = Math.abs(d)
           if (abs > 2) return null
 
-          const x     = d * 240
+          const x     = d * 300
           const scale = Math.max(0.65, 1 - abs * 0.17)
           const z     = 100 - abs * 35
           const opacity = Math.max(0.35, 1 - abs * 0.28)
@@ -145,7 +145,7 @@ function TeamCarousel() {
               <div
                 className="rounded-2xl overflow-hidden transition-shadow duration-300"
                 style={{
-                  width: 'clamp(220px, 28vw, 320px)',
+                  width: 'clamp(260px, 36vw, 420px)',
                   boxShadow: abs === 0
                     ? `0 24px 60px ${C.deepTeal}30, 0 4px 16px ${C.deepTeal}15`
                     : `0 8px 24px ${C.charcoal}18`,
