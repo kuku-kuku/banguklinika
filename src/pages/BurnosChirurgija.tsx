@@ -66,7 +66,7 @@ export default function BurnosChirurgija() {
     <AnimatedSection>
       <SEO
         title="Burnos chirurgija Klaipėdoje - Bangų klinika"
-        description="Profesionali burnos chirurgija Klaipėdoje. Protinių dantų šalinimas, implantacija, kaulo augmentacija. Saugios ir neskausmingos procedūros."
+        description="Burnos chirurgija Klaipėdoje – profesionalios procedūros sudėtingesnėms dantų✅ minkštųjų audinių✅ žandikaulio✅ problemoms spręsti. Kreipkitės į ➡ Bangų kliniką."
         keywords="burnos chirurgija, dantu rovimas, protiniai dantys, cistos, kaulo priauginimas, klaipeda"
         structuredData={structuredData}
       />
@@ -84,7 +84,7 @@ export default function BurnosChirurgija() {
           {/* HERO / ĮŽANGA */}
           <motion.header className="mb-10 text-left" variants={item}>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
-              Profesionali burnos chirurgija Klaipėdoje
+              Burnos chirurgija Klaipėdoje
             </h1>
 
             <div className={`mb-8`}>

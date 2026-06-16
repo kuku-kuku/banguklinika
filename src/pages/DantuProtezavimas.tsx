@@ -93,7 +93,7 @@ export default function DantuProtezavimas() {
     <AnimatedSection>
       <SEO
         title="Dantų protezavimas Klaipėdoje - Bangų klinika"
-        description="Profesionalus dantų protezavimas Klaipėdoje. 3D CEREC technologija, cirkonio keramika, bemetalė keramika ir protezavimas ant implantų. Prieinamos kainos."
+        description="Dantų protezavimas Klaipėdoje – prieinamas kaina✅ patikimi sprendimai✅ prarastiems ar pažeistiems dantims atkurti. Sužinokite gydymo galimybes ➡ Bangų klinikoje jau dabar."
         keywords="dantu protezavimas, cerec, cirkonio keramika, protezai, klaipeda, implantai"
         structuredData={structuredData}
       />
@@ -124,8 +124,7 @@ export default function DantuProtezavimas() {
               {/* Left: text */}
               <div className="p-6 sm:p-8 lg:p-10">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4" style={{ color: P }}>
-                  Profesionalus ir prieinamas{' '}
-                  <span style={{ color: S }}>dantų protezavimas</span>{' '}
+                  <span style={{ color: S }}>Dantų protezavimas</span>{' '}
                   Klaipėdoje
                 </h1>
                 <p className="text-base text-slate-600 leading-relaxed mb-6">

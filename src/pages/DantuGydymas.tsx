@@ -88,7 +88,7 @@ export default function DantuGydymas() {
     <AnimatedSection>
       <SEO
         title="Dantų gydymas, taisymas (tvarkymas) Klaipėdoje - Bangų klinika"
-        description="Profesionalus dantų taisymas ir gydymas Klaipėdoje. Skubi pagalba, ėduonies gydymas, plombavimas. Registruokitės vizitui."
+        description="Dantų gydymas✅ tvarkymas✅ Klaipėdoje esant skausmui ar kitiems dantų pažeidimams. Laiku pašalinkite skausmą ir išsaugokite natūralius dantis. Registruokitės ➡ Bangų klinikoje."
         keywords="dantu gydymas, dantu taisymas, skubi pagalba, eduonis, plombavimas, klaipeda"
         structuredData={structuredData}
       />
@@ -106,7 +106,7 @@ export default function DantuGydymas() {
           {/* HERO */}
           <motion.header className="mb-10 text-left" variants={item}>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
-              Profesionalus dantų gydymas Klaipėdoje
+              Dantų gydymas Klaipėdoje
             </h1>
 
             <div className={`mb-8`}>

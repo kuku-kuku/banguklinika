@@ -14,34 +14,46 @@ const SITE_ORIGIN = "https://www.banguklinika.lt";
 const DENTIST_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "Dentist",
-  name: "Bangų klinika",
-  image: `${SITE_ORIGIN}/hero.webp`,
-  url: SITE_ORIGIN,
-  telephone: "+37046410101",
+  "@id": `${SITE_ORIGIN}/`,
+  name: "Bangų odontologijos klinika",
+  alternateName: "Bangų klinika",
+  url: `${SITE_ORIGIN}/`,
+  description: "Bangų odontologijos klinika Klaipėdoje teikia odontologijos paslaugas, įskaitant dantų gydymą, estetinį plombavimą, profesionalią burnos higieną, protezavimą, implantavimą ir dantų atkūrimą.",
+  telephone: "+37067191399",
+  priceRange: "€€",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Bangų g. 5",
+    streetAddress: "Bangų g. 7-3",
     addressLocality: "Klaipėda",
-    addressRegion: "KL",
-    postalCode: "91249",
+    postalCode: "LT-91250",
     addressCountry: "LT",
   },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 55.7033,
-    longitude: 21.1443,
-  },
+  areaServed: { "@type": "City", name: "Klaipėda" },
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "08:00",
+      opens: "09:00",
       closes: "18:00",
     },
   ],
-  priceRange: "€€",
-  currenciesAccepted: "EUR",
-  paymentAccepted: "Cash, Credit Card",
+  medicalSpecialty: ["Dentistry"],
+  makesOffer: [
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų implantacija" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų protezavimas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų gydymas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų taisymas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų tiesinimas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Burnos higiena" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Burnos chirurgija" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų balinimas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Estetinis plombavimas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų plombavimas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Vaikų odontologija" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dantų traukimas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Skubi odontologinė pagalba" } },
+  ],
+  sameAs: ["https://www.facebook.com/banguklinika/"],
 };
 
 function serviceSchema(name, serviceType, description, url) {
@@ -53,13 +65,8 @@ function serviceSchema(name, serviceType, description, url) {
     serviceType,
     description,
     url,
-    areaServed: {
-      "@type": "City",
-      name: "Klaipėda",
-    },
-    provider: {
-      "@id": `${SITE_ORIGIN}/#dentist`,
-    },
+    areaServed: { "@type": "City", name: "Klaipėda" },
+    provider: { "@id": `${SITE_ORIGIN}/#dentist` },
   };
 }
 

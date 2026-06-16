@@ -79,7 +79,7 @@ export default function EstetinisPlombavimas() {
     <AnimatedSection>
       <SEO
         title="Estetinis dantų plombavimas Klaipėdoje - Bangų odontologijos klinika"
-        description="Estetinis dantų plombavimas – greitas ir efektyvus būdas atkurti šypseną. Koreguojame nuskilimus, tarpus ir spalvą. Registruokitės konsultacijai."
+        description="Netenkina dantų forma ar spalva?✅ Estetinis dantų plombavimas Klaipėdoje leidžia greitai ir estetiškai atkurti šypseną. Kreipkitės į Bangų kliniką jau šiandien."
         keywords="estetinis plombavimas, dantu restauracija, sypsenos korekcija, tarpai tarp dantu, klaipeda"
         structuredData={structuredData}
       />
@@ -97,7 +97,7 @@ export default function EstetinisPlombavimas() {
           {/* HERO / ĮŽANGA */}
           <motion.header className="mb-12 text-left" variants={item}>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
-              Profesionalus estetinis dantų plombavimas Klaipėdoje
+              Estetinis dantų plombavimas Klaipėdoje
             </h1>
 
             <div className={`mb-8`}>
