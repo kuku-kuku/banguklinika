@@ -125,8 +125,6 @@ export default function SEO({
       <meta name="language" content={language} />
       <meta name="geo.region" content="LT-KL" />
       <meta name="geo.placename" content="Klaipėda" />
-
-      <script type="application/ld+json">{JSON.stringify(structuredDataObj)}</script>
     </Helmet>
   );
 }

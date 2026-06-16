@@ -1714,35 +1714,6 @@ function SEO({
   const finalDescription = description || "Odontologijos klinika Klaipėdoje. Dantų gydymas, implantacija, CEREC protezavimas, burnos higiena. Nemokama konsultacija.";
   const canonicalUrl = canonical || SITE_URL;
   const { language, ogLocale } = LANG_META[lang] ?? LANG_META["lt"];
-  const structuredDataObj = structuredData || {
-    "@context": "https://schema.org",
-    "@type": "Dentist",
-    name: SITE_NAME,
-    image,
-    url: SITE_URL,
-    telephone: "+37060000000",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Pavyzdžio g. 1",
-      addressLocality: "Klaipėda",
-      addressRegion: "KL",
-      postalCode: "91234",
-      addressCountry: "LT"
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 55.7033,
-      longitude: 21.1443
-    },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "08:00",
-        closes: "18:00"
-      }
-    ]
-  };
   return /* @__PURE__ */ jsxs(Helmet, { children: [
     /* @__PURE__ */ jsx("html", { lang }),
     /* @__PURE__ */ jsx("title", { children: finalTitle }),
@@ -1768,8 +1739,7 @@ function SEO({
     /* @__PURE__ */ jsx("meta", { name: "author", content: SITE_NAME }),
     /* @__PURE__ */ jsx("meta", { name: "language", content: language }),
     /* @__PURE__ */ jsx("meta", { name: "geo.region", content: "LT-KL" }),
-    /* @__PURE__ */ jsx("meta", { name: "geo.placename", content: "Klaipėda" }),
-    /* @__PURE__ */ jsx("script", { type: "application/ld+json", children: JSON.stringify(structuredDataObj) })
+    /* @__PURE__ */ jsx("meta", { name: "geo.placename", content: "Klaipėda" })
   ] });
 }
 const QA$1 = [
