@@ -128,11 +128,11 @@ export default function ZobuIzlinesanaLv() {
 
             <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
               <div className="divide-y divide-slate-100">
-                <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                   <span className="text-slate-700">Konsultācija par zobu izlīdzināšanu</span>
                   <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 50 €</span>
                 </div>
-                <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                   <span className="text-slate-700">Zobu izlīdzināšana ar ORDOLINE kapteiniem</span>
                   <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">1800 – 4000 €</span>
                 </div>
@@ -183,21 +183,21 @@ export default function ZobuIzlinesanaLv() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <EyeOffIcon />
               <h3 className="font-bold text-darkblue-700 mb-2">Neredzamība ikdienā</h3>
               <p className="text-sm text-slate-600 leading-relaxed">
                 ORDOLINE kapteini ir caurspīdīgi, tādēļ runājot, smaidot vai sazinoties tie gandrīz nav pamanāmi. Tas ir īpaši svarīgi pieaugušajiem, kuri vēlas iztaisnot zobus bez uzkrītošiem ortodontiskiem aparātiem un saglabāt pārliecību par sevi gan profesionālajā, gan personīgajā vidē.
               </p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <SmileIcon />
               <h3 className="font-bold text-darkblue-700 mb-2">Ērtums ēšanas laikā</h3>
               <p className="text-sm text-slate-600 leading-relaxed">
                 Kapteini ir viegli izņemami, tādēļ ēšanas laikā tos nevajag nēsāt. Tas nozīmē, ka nav jāatsakās no iecienītajiem ēdieniem vai jāmaina ēšanas paradumi.
               </p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <SparklesIcon />
               <h3 className="font-bold text-darkblue-700 mb-2">Higiēnisks risinājums</h3>
               <p className="text-sm text-slate-600 leading-relaxed">
@@ -207,13 +207,13 @@ export default function ZobuIzlinesanaLv() {
           </div>
 
           <div className="mt-6 grid gap-6 md:grid-cols-2">
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-darkblue-700 mb-2">Prognozējami rezultāti</h3>
               <p className="text-sm text-slate-600 leading-relaxed">
                 Pirms ārstniecības uzsākšanas tiek izstrādāts digitālais plāns, kas ļauj precīzi paredzēt zobu kustību un galarezultātu. Tas nodrošina pacientam skaidrību un pārliecību visas ārstniecības laikā.
               </p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-darkblue-700 mb-2">Īsāks ārstniecības ilgums</h3>
               <p className="text-sm text-slate-600 leading-relaxed">
                 Daudzos gadījumos zobu izlīdzināšana ar kapteiniem ilgst īsāk nekā ar tradicionālajām metodēm. Secīga kapteiņu maiņa un precīzi plānots ārstniecības plāns ļauj efektīvi sasniegt vēlamo rezultātu optimālā laikā.
@@ -232,7 +232,7 @@ export default function ZobuIzlinesanaLv() {
           </p>
 
           <div className="space-y-6">
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-6 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
                 <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">1</span>
                 Pirmais posms – diagnostika un digitālā plānošana
@@ -242,7 +242,7 @@ export default function ZobuIzlinesanaLv() {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-6 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
                 <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">2</span>
                 Otrais posms – virtuālā galarezultāta apskatīšana
@@ -252,7 +252,7 @@ export default function ZobuIzlinesanaLv() {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-6 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
                 <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">3</span>
                 Trešais posms – kapteiņu izgatavošana
@@ -262,7 +262,7 @@ export default function ZobuIzlinesanaLv() {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-6 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
                 <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">4</span>
                 Ceturtais posms – kapteiņu maiņa ik ~2 nedēļas
@@ -272,7 +272,7 @@ export default function ZobuIzlinesanaLv() {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-6 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
                 <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">5</span>
                 Piektais posms – regulāras kontroles
@@ -303,7 +303,7 @@ export default function ZobuIzlinesanaLv() {
                 "zobi ir pagriezti vai noliekti",
                 "vēlaties uzlabot ne tikai smaida estētiku, bet arī košļāšanas funkciju"
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
                   <span className="mt-1"><CheckIcon /></span>
                   <span className="text-slate-700">{text}</span>
                 </div>
@@ -406,23 +406,23 @@ export default function ZobuIzlinesanaLv() {
           </p>
 
           <div className="space-y-4">
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-slate-900 mb-2">Mīts #1: kapteini piemēroti tikai nelielām estētiskām korekcijām.</h3>
               <p className="text-slate-600 text-sm">Patiesībā ar kapteiniem var koriģēt ne tikai nelielas zobu neregularitātes, bet arī atstarpes, sapūšanu vai noteiktas sakoduma izmaiņas. Ārstniecības iespējas vienmēr tiek novērtētas individuāli, pamatojoties uz diagnostiku un digitālo plānošanu.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-slate-900 mb-2">Mīts #2: zobu izlīdzināšana ar kapteiniem ir neefektīva.</h3>
               <p className="text-slate-600 text-sm">Kapteini iedarbojas pakāpeniski, bet ļoti precīzi. Katrs kapteiņš ir izgatavots konkrētam zobu kustības posmam, tādēļ, ievērojot nēsāšanas režīmu, var sasniegt skaidri prognozējamus un stabilos rezultātus.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-slate-900 mb-2">Mīts #3: kapteini ir neērti nēsājami ikdienā.</h3>
               <p className="text-slate-600 text-sm">Caurspīdīgie kapteini ir viegli, plāni un individuāli pielāgoti, tādēļ lielākā daļa pacientu pie tiem pierod diezgan ātri. Tā kā kapteini ir izņemami, tie netraucē ne ēšanas laikā, ne veicot ikdienas mutes higiēnu.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-slate-900 mb-2">Mīts #4: kapteini pastāvīgi krīt vai tiek pazaudēti.</h3>
               <p className="text-slate-600 text-sm">Pareizi pielāgoti kapteini stingri turas uz zobiem. Ja tiek ievēroti ieteikumi un kapteini tiek glabāti speciālā kastītē, kad netiek nēsāti, to pazaudēšanas vai bojāšanas risks ir minimāls.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-slate-900 mb-2">Mīts #5: zobi pēc ārstniecības ātri atgriezīsies sākotnējā pozīcijā.</h3>
               <p className="text-slate-600 text-sm">Tāpat kā pēc jebkuras ortodontiskas ārstniecības, ļoti svarīgs ir uzturošais posms. Lietojot retencionālos kapteinus un ievērojot ārsta norādījumus, sasniegtais rezultāts paliek stabils ilgu laiku.</p>
             </div>

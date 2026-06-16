@@ -1182,7 +1182,6 @@ export default function DantuImplantacija() {
               </div>
             </div>
           </motion.div>
-
         </div>
       </motion.div>
     </AnimatedSection>

@@ -127,15 +127,15 @@ export default function ZobuEkstrakcijaLv() {
 
             <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
               <div className="divide-y divide-slate-100">
-                <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                   <span className="text-slate-700">Saknes izvilkšana</span>
                   <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">60 – 80 €</span>
                 </div>
-                <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                   <span className="text-slate-700">Vienkārša zoba izvilkšana</span>
                   <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">80 – 100 €</span>
                 </div>
-                <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                   <span className="text-slate-700">Sarežģīta gudrības zoba izvilkšana</span>
                   <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">120 – 150 €</span>
                 </div>
@@ -182,7 +182,7 @@ export default function ZobuEkstrakcijaLv() {
                 "nepieciešams radīt vietu ortodontiskai ārstniecībai",
                 "zobs apdraud vispārējo mutes un žokļa veselību"
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
                   <span className="mt-1"><CheckIcon /></span>
                   <span className="text-slate-700">{text}</span>
                 </div>
@@ -204,21 +204,21 @@ export default function ZobuEkstrakcijaLv() {
             Zobu ekstrakcijas metode tiek izvēlēta individuāli, ņemot vērā zoba atrašanās vietu, sakņu struktūru un apkārtējo audu stāvokli. Visbiežāk izšķir divus galvenos zobu ekstrakcijas veidus.
           </p>
           <div className="grid gap-6 md:grid-cols-3">
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <ScalpelIcon />
               <h3 className="font-bold text-darkblue-700 mb-2">Vienkārša zobu ekstrakcija</h3>
               <p className="text-sm text-slate-600 leading-relaxed">
                 Tiek veikta, kad zobs ir pilnībā izaudzis un viegli pieejams. Zobārsts maigi atbrīvo zobu un to izvelk. Ātra procedūra un vienmērīga dzīšana.
               </p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <ExclamationIcon />
               <h3 className="font-bold text-darkblue-700 mb-2">Ķirurģiska zobu ekstrakcija</h3>
               <p className="text-sm text-slate-600 leading-relaxed">
                 Tiek pielietota sarežģītākos gadījumos (zobs nav izaudzis, iestrēdzis, nolūzis). Var būt nepieciešams neliels iegriezums vai zoba sadalīšana. Tiek veikta droši un kontrolēti.
               </p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <ShieldCheckIcon />
               <h3 className="font-bold text-darkblue-700 mb-2">Zobu ekstrakcija bērniem</h3>
               <p className="text-sm text-slate-600 leading-relaxed">
@@ -259,22 +259,22 @@ export default function ZobuEkstrakcijaLv() {
           </p>
 
           <div className="grid gap-6 md:grid-cols-4">
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Apskate</h3>
               <p className="text-sm text-slate-600">Klīniskā apskate, rentgena izmeklēšana, riska novērtēšana un metodes izvēle.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Anestēzija</h3>
               <p className="text-sm text-slate-600">Vietējā nejutība nodrošina, ka jūtīsiet tikai spiedienu, bet ne sāpes.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Izvilkšana</h3>
               <p className="text-sm text-slate-600">Zobs uzmanīgi tiek atbrīvots un izvilkts (ja nepieciešams — pa daļām).</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Aprūpe</h3>
               <p className="text-sm text-slate-600">Brūces apstrāde, hemostāze un ieteikumi dzīšanai.</p>

@@ -112,15 +112,15 @@ export default function ZobuProtezesanaLv() {
               CEREC tehnoloģija (ātra izgatavošana)
             </div>
             <div className="divide-y divide-slate-100">
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">CEREC kronītis uz dabiskā zoba</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 400 €</span>
               </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">CEREC kronītis uz implanta</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">450 €</span>
               </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">CEREC inlejs vai lamināts</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 600 €</span>
               </div>
@@ -130,15 +130,15 @@ export default function ZobuProtezesanaLv() {
               Keramiskie kronīši
             </div>
             <div className="divide-y divide-slate-100">
-               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+               <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Metālkeramikas kronītis</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 350 €</span>
               </div>
-               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+               <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Bezmetāla E-MAX keramikas kronītis</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 400 €</span>
               </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Cirkonija keramikas kronītis</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 400 €</span>
               </div>
@@ -148,19 +148,19 @@ export default function ZobuProtezesanaLv() {
               Papildus procedūras un nospiedumi
             </div>
             <div className="divide-y divide-slate-100">
-               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+               <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Lamināts</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 600 €</span>
               </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Pagaidu kronītis (kabineta)</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 40 €</span>
               </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Ciparu / silikona nospiedumi</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">150 €</span>
               </div>
-               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+               <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Zobu plāksnes</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 350 €</span>
               </div>
@@ -205,7 +205,7 @@ export default function ZobuProtezesanaLv() {
                 "Radušās estētiskas problēmas, kas mazina pašapziņu",
                 "Mainījusies sakodiena vai jūtams diskomforts"
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
                   <span className="mt-1"><CheckIcon /></span>
                   <span className="text-slate-700">{text}</span>
                 </div>
@@ -236,7 +236,7 @@ export default function ZobuProtezesanaLv() {
                   </p>
                 </div>
              </div>
-             <div className="w-full md:w-1/3 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center">
+             <div className="w-full md:w-1/3 bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center">
                 <ChipIcon />
                 <p className="font-semibold text-darkblue-700 mt-2">Ciparu precizitāte</p>
                 <p className="text-sm text-slate-500">Bez nospiedumiem, ātrs rezultāts</p>
@@ -249,19 +249,19 @@ export default function ZobuProtezesanaLv() {
             No kādiem materiāliem tiek izgatavoti zobu protēzi?
           </h2>
           <div className="grid gap-6 md:grid-cols-3">
-             <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+             <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
                <h3 className="font-bold text-darkblue-700 mb-2">Cirkonija oksīda keramika</h3>
                <p className="text-sm text-slate-600 mb-4 leading-relaxed">
                  Ārkārtīgi izturīgs materiāls, piemērots gan priekšējiem, gan sānu zobiem. Izturīgs pret nodilumu, bez metāla malas, lēnāk vada temperatūru.
                </p>
              </div>
-             <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+             <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
                <h3 className="font-bold text-darkblue-700 mb-2">Bezmetāla keramika E-MAX</h3>
                <p className="text-sm text-slate-600 mb-4 leading-relaxed">
                  Izceļas ar izcilu estētiku un dabīgu gaismas caurlaidību. Ideāli piemērota priekšējiem zobiem, bioloģiski saderīga, nemaina krāsu.
                </p>
              </div>
-             <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+             <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
                <h3 className="font-bold text-darkblue-700 mb-2">Protezēšana uz implantiem</h3>
                <p className="text-sm text-slate-600 mb-4 leading-relaxed">
                  Mākslīgās saknes (implanti) atjauno stabilitāti un košļāšanas spēku. Izmantojam Straumann® un Medentika® sistēmas, kas ļauj atjaunot vienu vai visus zobus.
@@ -275,22 +275,22 @@ export default function ZobuProtezesanaLv() {
             Kā notiek zobu protezēšana klīnikā?
           </h2>
           <div className="grid gap-6 md:grid-cols-4">
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Diagnostika</h3>
               <p className="text-sm text-slate-600">Visaptveroša analīze, ciparu plānošana, materiālu izvēle.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Sagatavošana</h3>
               <p className="text-sm text-slate-600">Mutes sagatavošana, ārstēšana, nospiedumi vai skenēšana.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Izgatavošana</h3>
               <p className="text-sm text-slate-600">Protēžu izgatavošana (ar CEREC – pat tajā pašā dienā).</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Kontrole</h3>
               <p className="text-sm text-slate-600">Piemērotības pārbaude, ieteikumi kopšanai.</p>
@@ -327,15 +327,15 @@ export default function ZobuProtezesanaLv() {
             Biežākie mīti par zobu protezēšanu
           </h2>
           <div className="space-y-4">
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-slate-900 mb-2">Mīts #1: protēzes izskatās nedabīgi</h3>
               <p className="text-slate-600 text-sm">Moderna keramika ļauj izgatavot protēzes, kuras vizuāli neatšķiras no dabiskajiem zobiem (krāsa, caurspīdīgums).</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-slate-900 mb-2">Mīts #2: grūti pieradināties</h3>
               <p className="text-slate-600 text-sm">Pareizi pielāgotas protēzes ir komfortablas. Adaptācija ilgst īsu laiku, vēlāk pacienti aizmirst par protēzēm.</p>
             </div>
-             <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+             <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-slate-900 mb-2">Mīts #3: tikai vecākiem cilvēkiem</h3>
               <p className="text-slate-600 text-sm">Protezēšana nepieciešama jebkurā vecumā, ja zobi ir zaudēti vai stipri bojāti.</p>
             </div>

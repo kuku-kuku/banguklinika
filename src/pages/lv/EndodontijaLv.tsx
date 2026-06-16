@@ -27,6 +27,10 @@ const item = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
 }
 
+const sectionWrap = 'mb-12 scroll-mt-36 2xl:scroll-mt-24'
+const whiteCard = 'bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft'
+const innerCard = 'bg-white p-5 rounded-xl border border-slate-200 shadow-sm'
+
 function CheckIcon() {
   return (
     <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0 text-brand" aria-hidden>
@@ -100,30 +104,30 @@ export default function EndodontijaLv() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
+            <div className="max-w-2xl rounded-2xl border border-brand/20 bg-white shadow-soft overflow-hidden mb-6">
               <div className="divide-y divide-slate-100">
-                <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="px-5 py-3 hover:bg-brand-50/30 transition">
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-slate-900 font-bold">Pirmējā endodontiskā palīdzība</span>
                     <span className="text-darkblue-700 font-bold">no 70 €</span>
                   </div>
                   <span className="block text-slate-600 text-sm">Visbiežāk tiek pielietota akūtu sāpju vai iekaisuma gadījumā — stabilizēšanai un sagatavošanai turpmākajai ārstniecībai.</span>
                 </div>
-                <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="px-5 py-3 hover:bg-brand-50/30 transition">
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-slate-900 font-bold">Kanālu zāles</span>
                     <span className="text-darkblue-700 font-bold">no 30 €</span>
                   </div>
                   <span className="block text-slate-600 text-sm">Medikamenti kanālu dezinfekcijai vai iekaisuma kontrolei, ja to nosaka klīniskā situācija.</span>
                 </div>
-                <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="px-5 py-3 hover:bg-brand-50/30 transition">
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-slate-900 font-bold">Viena zoba saknes kanāla ķīmismehāniskā sagatavošana</span>
                     <span className="text-darkblue-700 font-bold">no 35 €</span>
                   </div>
                   <span className="block text-slate-600 text-sm">Kanālu tīrīšana un dezinfekcija pirmajā posmā.</span>
                 </div>
-                <div className="p-5 hover:bg-brand-50/30 transition">
+                <div className="px-5 py-3 hover:bg-brand-50/30 transition">
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-slate-900 font-bold">Viena zoba saknes kanāla plombēšana (sagatavošanas)</span>
                     <span className="text-darkblue-700 font-bold">no 35 €</span>
@@ -140,7 +144,8 @@ export default function EndodontijaLv() {
         </motion.header>
 
         {/* KAS IR ENDODONTIJA */}
-        <motion.section id="kas-ir" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="kas-ir" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas ir endodontiskā (kanālu) ārstniecība?
           </h2>
@@ -155,10 +160,12 @@ export default function EndodontijaLv() {
               Kanālu ārstniecības galvenais mērķis — saglabāt dabīgo zobu. Pat stipri bojāts zobs, pareizi ārstēts, var veiksmīgi funkcionēt kā košļāšanas daļa vai kā balsts turpmākai protezēšanai. Tas ļauj izvairīties no zoba ekstrakcijas un sarežģītākām atjaunošanas procedūrām nākotnē.
             </p>
           </div>
+          </div>
         </motion.section>
 
         {/* KAD NEPIECIEŠAMA */}
-        <motion.section id="kad-nepieciesama" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="kad-nepieciesama" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kad nepieciešama endodontiskā ārstniecība?
           </h2>
@@ -180,7 +187,7 @@ export default function EndodontijaLv() {
                 "profilakses laikā vai rentgenogrammā konstatētas iekaisuma izmaiņas pie zoba saknes",
                 "pēc zoba traumas simptomi parādās vēlāk, lai gan zobs no ārpuses izskatās nebojāts"
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                <div key={i} className={innerCard + ' flex items-start gap-3'}>
                   <span className="mt-1"><CheckIcon /></span>
                   <span className="text-slate-700">{text}</span>
                 </div>
@@ -194,10 +201,12 @@ export default function EndodontijaLv() {
           <p className="text-slate-700 leading-relaxed mt-4">
             Pamanot kādu no šiem simptomiem, svarīgi nekavēties. Jo agrāk tiek konstatēta problēma, jo lielāka iespēja veiksmīgi saglabāt dabīgo zobu.
           </p>
+          </div>
         </motion.section>
 
         {/* KĀDA DAĻA TIEK VEIKTA */}
-        <motion.section id="ka-notiek-klinika" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="ka-notiek-klinika" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kāda endodontiskās ārstniecības daļa tiek veikta Bangų zobārstniecības klīnikā?
           </h2>
@@ -215,10 +224,12 @@ export default function EndodontijaLv() {
               Svarīgi uzsvērt, ka pirmējā endodontiskā palīdzība nav pagaidu risinājums "atlikšanai". Tā ir mērķtiecīgs un atbildīgs ārstniecības posms, kas ievērojami palielina turpmākās endodontiskās ārstniecības panākumus.
             </p>
           </div>
+          </div>
         </motion.section>
 
         {/* GAITA (SOĻI) */}
-        <motion.section id="ka-notiek" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="ka-notiek" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kā tiek veikta pirmējā endodontiskā palīdzība Bangų klīnikā?
           </h2>
@@ -234,7 +245,7 @@ export default function EndodontijaLv() {
               { n: 4, title: "Medikamenti (ja nepieciešams)", text: "Pēc vajadzības kanālos var tikt ievietoti medikamenti, kas palīdz kontrolēt infekciju un mazināt iekaisumu līdz turpmākajai ārstniecībai." },
               { n: 5, title: "Pagaidu aizsardzība un turpmākais plāns", text: "Procedūra tiek pabeigta ar pagaidu risinājumu, kas pasargā zobu no turpmākas baktēriju iekļūšanas. Tiek izskaidroti turpmākie ārstniecības soļi." }
             ].map(s => (
-              <div key={s.n} className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
+              <div key={s.n} className={innerCard}>
                 <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
                   <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">{s.n}</span>
                   {s.title}
@@ -243,10 +254,12 @@ export default function EndodontijaLv() {
               </div>
             ))}
           </div>
+          </div>
         </motion.section>
 
         {/* SĀPES UN KAVĒŠANĀS */}
-        <motion.section id="sapes" className="mb-12 space-y-8 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="sapes" className={sectionWrap} variants={item}>
+          <div className={whiteCard + ' space-y-8'}>
           <div>
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Vai pirmējā endodontiskā palīdzība ir sāpīga?
@@ -280,10 +293,12 @@ export default function EndodontijaLv() {
               </p>
             </div>
           </div>
+          </div>
         </motion.section>
 
         {/* KAD NEPALĪDZ */}
-        <motion.section id="kad-nepalid" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="kad-nepalid" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kad endodontiskā ārstniecība var vairs nepalīdzēt?
           </h2>
@@ -302,10 +317,12 @@ export default function EndodontijaLv() {
               Lēmums atteikties no endodontiskās ārstniecības nekad netiek pieņemts steigā. Vispirms tiek izvērtētas visas iespējas saglabāt zobu. Tikai tad, kad prognoze ir nelabvēlīga, pacientam tiek piedāvāti alternatīvi risinājumi — piemēram, zoba ekstrakcija un vēlāka atjaunošana ar implantiem.
             </p>
           </div>
+          </div>
         </motion.section>
 
         {/* KĀPĒC MĒS */}
-        <motion.section id="kapec-mes" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="kapec-mes" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kāpēc vērts vērsties Bangų zobārstniecības klīnikā pēc pirmējās endodontiskās palīdzības?
           </h2>
@@ -320,10 +337,12 @@ export default function EndodontijaLv() {
               Svarīgs klīnikas darba princips — sadarbība ar uzticamiem speciālistiem citās ārstniecības iestādēs. Ja nepieciešama pilna kanālu ārstniecība, pacienti tiek nosūtīti pie pieredzējušiem endodontiem Klaipēdā, nodrošinot raitu ārstniecības turpinājumu.
             </p>
           </div>
+          </div>
         </motion.section>
 
         {/* BEIGU CTA */}
         <motion.div className="mt-8 mb-12 text-left" variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Aicinām pierakstīties pirmējai endodontiskajai ārstniecībai Bangų klīnikā
           </h2>
@@ -339,6 +358,7 @@ export default function EndodontijaLv() {
             <a href={`tel:${CLINIC.phone}`} className="btn-ghost rounded-full px-8 py-4 font-semibold text-lg inline-block border border-brand text-brand hover:bg-brand-50 transition">
               Zvanīt mums
             </a>
+          </div>
           </div>
         </motion.div>
 

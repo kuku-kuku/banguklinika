@@ -125,23 +125,23 @@ export default function ZobuArstniecibaLv() {
               Pieaugušo ārstēšana
             </div>
             <div className="divide-y divide-slate-100">
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Konsultācija un plāna sastādīšana</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">20 €</span>
               </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Plombēšana ar gaismas plombu</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">70 – 90 €</span>
               </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Plombēšana ar stiklajonomerplombu</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">40 – 60 €</span>
               </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Pagaidu plomba</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 40 €</span>
               </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Anestēzija / Rentgenuzņēmums</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">katrs 10 €</span>
               </div>
@@ -151,19 +151,19 @@ export default function ZobuArstniecibaLv() {
               Bērnu ārstēšana
             </div>
             <div className="divide-y divide-slate-100">
-               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+               <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Konsultācija bērniem</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">20 €</span>
               </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Piena zobu ārstēšana</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 50 €</span>
               </div>
-               <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+               <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Stiklajonomer / kompomēra plomba</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 30 €</span>
               </div>
-              <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700">Vizīts, ja bērns neļauj ārstēties (līdz 30 min.)</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 30 €</span>
               </div>
@@ -209,7 +209,7 @@ export default function ZobuArstniecibaLv() {
                 "Nepatīkama mutes smarža (nepāriet tīrot)",
                 "Nepieciešama profilaktiskā pārbaude"
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
                   <span className="mt-1"><CheckIcon /></span>
                   <span className="text-slate-700">{text}</span>
                 </div>
@@ -226,7 +226,7 @@ export default function ZobuArstniecibaLv() {
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kādus zobu ārstēšanas pakalpojumus sniedzam?
           </h2>
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-soft">
+          <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-soft">
             <p className="text-slate-700 mb-6 leading-relaxed">
               Bangų zobārstniecības klīnikā tiek sniegti visi galvenie zobu ārstēšanas pakalpojumi, ļaujot pacientiem saņemt kompleksu palīdzību vienā vietā. Ņemot vērā individuālo situāciju, tiek sastādīts skaidrs un secīgs ārstēšanas plāns.
             </p>
@@ -261,17 +261,17 @@ export default function ZobuArstniecibaLv() {
             Kā notiek zobu ārstēšana mūsu klīnikā?
           </h2>
           <div className="grid gap-6 md:grid-cols-3">
-             <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+             <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Konsultācija un diagnostika</h3>
               <p className="text-sm text-slate-600">Pārbaude, rentgena izmeklēšana, stāvokļa novērtēšana. Tiek sastādīts individuāls ārstēšanas plāns ar prioritātēm.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Ārstēšanas veikšana</h3>
               <p className="text-sm text-slate-600">Tiek veiktas procedūras (plombēšana, kanālu ārstēšana u.c.), izmantojot anestēziju, nodrošinot komfortu.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Ieteikumi un kopšana</h3>
               <p className="text-sm text-slate-600">Padomi par kopšanu mājās un nākamā vizīta plānošana ilgtermiņa rezultāta nodrošināšanai.</p>
@@ -284,21 +284,21 @@ export default function ZobuArstniecibaLv() {
             Kāpēc svarīgas profilaktiskās pārbaudes?
           </h2>
           <div className="grid sm:grid-cols-3 gap-6">
-            <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
+            <div className="rounded-2xl border border-brand bg-brand-50 shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
               <ShieldCheckIcon />
               <h3 className="font-semibold text-darkblue-700 mb-2">Agrīna diagnostika</h3>
               <p className="text-sm text-slate-700 leading-relaxed">
                 Ļauj noteikt karieso vai iekaisumu jau sākotnējā stadijā, kad nav jūtamas sāpes.
               </p>
             </div>
-            <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
+            <div className="rounded-2xl border border-brand bg-brand-50 shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
               <ClipboardListIcon />
               <h3 className="font-semibold text-darkblue-700 mb-2">Vienkāršāka ārstēšana</h3>
               <p className="text-sm text-slate-700 leading-relaxed">
                 Savlaicīgi pamanītas problēmas prasa mazāku iejaukšanos, īsāku laiku un mazākas izmaksas.
               </p>
             </div>
-            <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
+            <div className="rounded-2xl border border-brand bg-brand-50 shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
               <HeartPulseIcon />
               <h3 className="font-semibold text-darkblue-700 mb-2">Ilgtermiņa veselība</h3>
               <p className="text-sm text-slate-700 leading-relaxed">

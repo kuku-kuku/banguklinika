@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
 import { TableOfContents } from '../components/TableOfContents'
+import ReviewsCarousel from '../components/ReviewsCarousel'
 
 // Animacijų nustatymai
 const container = {
@@ -168,6 +169,13 @@ export default function BurnosHigiena() {
               </div>
             </div>
           </motion.header>
+
+          {/* ═══════════════════════════════════════════════════════════════
+              REVIEWS
+          ══════════════════════════════════════════════════════════════════ */}
+          <motion.div className="mb-10 no-x-scroll pan-y" variants={item}>
+            <ReviewsCarousel />
+          </motion.div>
 
           {/* KAS YRA HIGIENA */}
           <motion.section id="kas-yra" className={sectionWrap} variants={item}>
@@ -398,23 +406,54 @@ export default function BurnosHigiena() {
               </div>
             </div>
           </motion.section>
-
-          {/* CTA */}
-          <motion.div className="mt-8 mb-12 text-left" variants={item}>
-            <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-                Kviečiame registruotis profesionaliai burnos higienai Bangų klinikoje
-              </h2>
-
-              <p className="text-slate-700 mb-8 max-w-3xl leading-relaxed">
-                Jeigu ieškote patikimos ir profesionalios odontologijos klinikos Klaipėdoje, kviečiame apsilankyti Bangų odontologijos klinikoje. Pacientų pasitikėjimą mūsų teikiamomis paslaugomis patvirtina teigiami atsiliepimai, kuriuose dažnai minimas procedūros švelnumas, aiškus situacijos apibendrinimas ir džiuginantis ilgalaikis rezultatas. Čia Jūsų laukia modernios technologijos, patyrę specialistai ir individualus požiūris į kiekvieną pacientą.
-              </p>
-
-              <Link to="/kontaktai" className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
-                Registruotis vizitui
-              </Link>
+          {/* DOCTOR CTA */}
+          <motion.div className="mt-8 mb-12" variants={item}>
+            <div className="bg-white rounded-[28px] border border-sky-200 shadow-soft overflow-hidden">
+              <div className="grid lg:grid-cols-[5fr_4fr] gap-0 items-stretch">
+                {/* Left: content */}
+                <div className="p-6 sm:p-8 lg:p-10">
+                  <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-darkblue-700 mb-4">
+                    Kviečiame registruotis profesionaliai burnos higienai Bangų klinikoje
+                  </h2>
+                  <p className="text-slate-700 leading-relaxed mb-4">
+                    Jeigu ieškote patikimos ir profesionalios odontologijos klinikos Klaipėdoje, kviečiame apsilankyti Bangų odontologijos klinikoje. Pacientų pasitikėjimą mūsų teikiamomis paslaugomis patvirtina teigiami atsiliepimai, kuriuose dažnai minimas procedūros švelnumas, aiškus situacijos apibendrinimas ir džiuginantis ilgalaikis rezultatas. Čia Jūsų laukia modernios technologijos, patyrę specialistai ir individualus požiūris į kiekvieną pacientą.
+                  </p>
+                  <div className="bg-sky-50 rounded-xl p-5 border border-sky-200 mb-8">
+                    <p className="font-semibold text-darkblue-700 mb-3">Konsultacijos metu:</p>
+                    <ul className="space-y-2 text-slate-700">
+                      {[
+                        'atliekamas išsamus klinikinis įvertinimas',
+                        'aptariami galimi gydymo metodai',
+                        'paaiškinami procedūros etapai ir terminai',
+                        'sudaromas individualus gydymo planas',
+                      ].map((t, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className="mt-1"><CheckIcon /></span>
+                          <span className="leading-relaxed">{t}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Link
+                    to="/kontaktai"
+                    className="btn-primary btn-glow rounded-full px-7 py-3 font-semibold text-base inline-block shadow-lg hover:shadow-xl transition"
+                  >
+                    Registruotis vizitui
+                  </Link>
+                </div>
+                {/* Right: doctor photo */}
+                <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
+                  <img
+                    src="/team/ruta.jpg"
+                    alt="Bangų odontologijos klinikos gydytojas"
+                    className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
+                </div>
+              </div>
             </div>
           </motion.div>
+
         </div>
       </motion.div>
     </AnimatedSection>

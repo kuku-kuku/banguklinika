@@ -1,618 +1,177 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React, { useState, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
-import AnimatedSection from '../components/AnimatedSection'
-import { AnimatePresence, motion, useAnimationControls } from 'framer-motion'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
-type Svc = { id: string; title: string; content: React.ReactNode; to?: string }
-
-const BASE_DURATION = 0.28
-
-function Chevron({ open }: { open: boolean }) {
-  return (
-    <svg
-      className={`w-5 h-5 transition-all duration-300 text-gray-400 group-hover:text-primary-500 ${open ? 'rotate-180 text-primary-500' : 'rotate-0'}`}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      aria-hidden
-    >
-      <path d="M6 9l6 6 6-6" />
-    </svg>
-  )
-}
-
-function useIsMobile() {
-  const [mobile, setMobile] = useState(() =>
-    typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false
-  )
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-    const mql = window.matchMedia('(max-width: 767px)')
-    const handler = () => setMobile(mql.matches)
-    handler()
-    mql.addEventListener?.('change', handler)
-    return () => mql.removeEventListener?.('change', handler)
-  }, [])
-  return mobile
-}
-
-function getHeaderOffset(): number {
-  const sticky = document.querySelector('header.sticky') as HTMLElement | null
-  return sticky ? sticky.getBoundingClientRect().height : 76
-}
-
-function easeInOutCubic(t: number) {
-  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
-}
-
-function smoothScrollTo(targetY: number, duration = 450) {
-  const startY = window.scrollY
-  const diff = targetY - startY
-  if (Math.abs(diff) < 2) return Promise.resolve()
-  return new Promise<void>((resolve) => {
-    const start = performance.now()
-    const step = (now: number) => {
-      const p = Math.min(1, (now - start) / duration)
-      const y = startY + diff * easeInOutCubic(p)
-      window.scrollTo(0, y)
-      if (p < 1) requestAnimationFrame(step)
-      else resolve()
-    }
-    requestAnimationFrame(step)
-  })
-}
-
-async function smoothAlignToElement(id: string, offset = 16, ms = 360) {
-  const el = document.getElementById(id)
-  if (!el) return
-  const rect = el.getBoundingClientRect()
-  const targetY = window.scrollY + rect.top - getHeaderOffset() - offset
-  await smoothScrollTo(targetY, ms)
-}
-
-async function smoothCenterOnElement(id: string, offset = 12, ms = 420) {
-  const el = document.getElementById(id)
-  if (!el) return
-  const rect = el.getBoundingClientRect()
-  const header = getHeaderOffset()
-  const usableH = window.innerHeight - header
-  const targetY = window.scrollY + rect.top + rect.height / 2 - usableH / 2 - offset
-  await smoothScrollTo(Math.max(0, targetY), ms)
-}
-
-function durationFor(px: number) {
-  const extra = Math.min(0.27, (Math.max(0, Math.min(px, 800)) / 800) * 0.27)
-  return +(BASE_DURATION + extra).toFixed(3)
-}
-
-async function waitForLayoutStabilize(el: HTMLElement, consecutiveFrames = 4, timeoutMs = 1000) {
-  return new Promise<void>((resolve) => {
-    let last: { top: number; height: number } | null = null
-    let stable = 0
-    const start = performance.now()
-    const step = () => {
-      const r = el.getBoundingClientRect()
-      if (last && Math.abs(last.top - r.top) < 1 && Math.abs(last.height - r.height) < 1) stable++
-      else stable = 0
-      last = { top: r.top, height: r.height }
-      if (stable >= consecutiveFrames || performance.now() - start > timeoutMs) return resolve()
-      requestAnimationFrame(step)
-    }
-    requestAnimationFrame(step)
-  })
-}
-
-function useScrollThumb(containerRef: React.RefObject<HTMLElement>) {
-  const [scrollable, setScrollable] = useState(false)
-  const [thumbTop, setThumbTop] = useState(0)
-  const [thumbHeight, setThumbHeight] = useState(24)
-
-  useEffect(() => {
-    const el = containerRef.current
-    if (!el) return
-
-    const compute = () => {
-      const { scrollHeight, clientHeight, scrollTop } = el
-      const canScroll = scrollHeight > clientHeight + 2
-      setScrollable(canScroll)
-      if (!canScroll) return
-
-      const trackHeight = clientHeight
-      const ratio = clientHeight / scrollHeight
-      const h = Math.max(20, Math.round(trackHeight * ratio))
-      const maxThumbTop = trackHeight - h
-      const top = Math.round((scrollTop / (scrollHeight - clientHeight)) * maxThumbTop)
-
-      setThumbHeight(h)
-      setThumbTop(isFinite(top) ? top : 0)
-    }
-
-    compute()
-    const ro = new ResizeObserver(compute)
-    ro.observe(el)
-
-    el.addEventListener('scroll', compute, { passive: true })
-    return () => {
-      ro.disconnect()
-      el.removeEventListener('scroll', compute)
-    }
-  }, [containerRef])
-
-  return { scrollable, thumbTop, thumbHeight }
-}
-
-function AccordionItemDefault({
-  id,
-  title,
-  children,
-  open,
-  onToggle,
-}: {
+type Svc = {
   id: string
   title: string
-  children: React.ReactNode
-  open: boolean
-  onToggle: (willOpen: boolean) => void
-}) {
-  const contentRef = useRef<HTMLDivElement | null>(null)
-  const controls = useAnimationControls()
-  const [height, setHeight] = useState(0)
-  const [measured, setMeasured] = useState(0)
-
-  useEffect(() => {
-    const el = contentRef.current
-    if (!el) return
-    const ro = new ResizeObserver(() => {
-      const h = el.scrollHeight
-      setMeasured(h)
-      if (open) setHeight(h)
-    })
-    ro.observe(el)
-    setMeasured(el.scrollHeight)
-    return () => ro.disconnect()
-  }, [open])
-
-  useEffect(() => {
-    const target = open ? measured : 0
-    const d = durationFor(measured)
-    controls.start({
-      height: target,
-      transition: { type: 'spring', damping: 26, stiffness: 280, mass: 0.9, duration: d },
-    })
-  }, [open, measured, controls])
-
-  return (
-    <div
-      id={id}
-      className={[
-        'group rounded-2xl border transition-all duration-300 transform-gpu will-change-transform',
-        open 
-          ? 'bg-white border-primary-200 shadow-md ring-4 ring-primary-50' 
-          : 'bg-slate-50 border-transparent shadow-sm hover:bg-white hover:border-slate-200 hover:shadow-md hover:-translate-y-0.5',
-        'scroll-mt-28 md:scroll-mt-32',
-      ].join(' ')}
-      style={{ contain: 'paint', overflowAnchor: 'none' as any }}
-    >
-      <button
-        onClick={() => onToggle(!open)}
-        className="w-full flex items-center justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-50 rounded-2xl"
-        aria-expanded={open}
-        aria-controls={`${id}-panel`}
-      >
-        <h3 className={`text-base sm:text-lg font-semibold transition-colors duration-300 text-left ${open ? 'text-primary-600' : 'text-slate-800 group-hover:text-primary-600'}`}>
-          {title}
-        </h3>
-        <Chevron open={open} />
-      </button>
-
-      <motion.div
-        id={`${id}-panel`}
-        animate={controls}
-        initial={false}
-        style={{
-          height,
-          overflow: 'hidden',
-          willChange: 'height',
-          contentVisibility: open ? ('visible' as any) : ('auto' as any),
-          containIntrinsicSize: open ? undefined : '0 400px',
-        }}
-      >
-        <div ref={contentRef} className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 text-slate-600 leading-relaxed">
-          {children}
-        </div>
-      </motion.div>
-    </div>
-  )
+  description?: string
+  to?: string
+  expandable?: React.ReactNode
 }
 
-function AccordionItemPaper({
-  id,
-  title,
-  children,
-  open,
-  onToggle,
-  maxVh = 56,
-}: {
-  id: string
-  title: string
-  children: React.ReactNode
-  open: boolean
-  onToggle: (willOpen: boolean) => void
-  maxVh?: number
-}) {
-  const clampHeight = `clamp(280px, ${maxVh}vh, 520px)`
-  const scrollRef = useRef<HTMLDivElement | null>(null)
-  const { scrollable, thumbTop, thumbHeight } = useScrollThumb(scrollRef)
+const WaveMark = ({ className }: { className?: string }) => (
+  <img
+    src="/Asset 53@2x.png"
+    alt=""
+    aria-hidden
+    className={className}
+    draggable={false}
+  />
+)
 
-  return (
-    <div
-      id={id}
-      className={[
-        'group rounded-2xl border transition-all duration-300 transform-gpu will-change-transform',
-        open 
-          ? 'bg-white border-primary-200 shadow-md ring-4 ring-primary-50' 
-          : 'bg-slate-50 border-transparent shadow-sm hover:bg-white hover:border-slate-200 hover:shadow-md hover:-translate-y-0.5',
-        'scroll-mt-28 md:scroll-mt-32',
-      ].join(' ')}
-      style={{ contain: 'layout paint', overflowAnchor: 'none' as any }}
-    >
-      <button
-        onClick={() => onToggle(!open)}
-        className="w-full flex items-center justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-50 rounded-2xl"
-        aria-expanded={open}
-        aria-controls={`${id}-panel`}
-      >
-        <h3 className={`text-base sm:text-lg font-semibold transition-colors duration-300 text-left ${open ? 'text-primary-600' : 'text-slate-800 group-hover:text-primary-600'}`}>
-          {title}
+function ServiceCard({ svc }: { svc: Svc }) {
+  const [open, setOpen] = useState(false)
+
+  const inner = (
+    <div className="relative overflow-hidden rounded-2xl bg-white border border-[#262626]/15 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-[#262626]/30 group h-full flex flex-col">
+      {/* Wave watermark — bottom right, visible */}
+      <WaveMark className="absolute -bottom-5 -right-5 w-32 h-32 opacity-[0.10] pointer-events-none select-none transition-opacity duration-300 group-hover:opacity-[0.18]" />
+
+      <div className="relative z-10 px-7 py-8 flex items-center justify-between gap-4 flex-1 min-h-[120px]">
+        <h3 className="text-[17px] font-bold text-[#043F42] group-hover:text-[#0ABBB5] transition-colors duration-200 leading-snug">
+          {svc.title}
         </h3>
-        <Chevron open={open} />
-      </button>
 
-      <div
-        id={`${id}-panel`}
-        className="grid will-change-[grid-template-rows,opacity]"
-        style={{
-          gridTemplateRows: open ? '1fr' : '0fr',
-          opacity: open ? 1 : 0,
-          transition: `grid-template-rows ${open ? 320 : 260}ms cubic-bezier(0.22,1,0.36,1), opacity ${open ? 320 : 260}ms cubic-bezier(0.22,1,0.36,1)`,
-          transform: 'translateZ(0)',
-        }}
-      >
-        <div className="min-h-0 overflow-hidden relative">
-          <div
-            ref={scrollRef}
-            className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 text-slate-600 leading-relaxed overflow-y-auto overscroll-contain rounded-xl pr-3"
-            style={{
-              maxHeight: clampHeight,
-              transition: 'transform 160ms cubic-bezier(0.22,1,0.36,1), opacity 160ms cubic-bezier(0.22,1,0.36,1)',
-              transformOrigin: 'top left',
-              transform: open ? 'scaleY(1) translateZ(0)' : 'scaleY(0.995) translateY(-1px) translateZ(0)',
-              opacity: open ? 1 : 0.98,
-              WebkitOverflowScrolling: 'touch' as any,
-            }}
+        {svc.expandable && (
+          <button
+            onClick={e => { e.preventDefault(); setOpen(v => !v) }}
+            className="shrink-0 w-9 h-9 rounded-full bg-[#F4F5F4] hover:bg-[#0ABBB5] flex items-center justify-center text-[#043F42] hover:text-white transition-all duration-300 focus:outline-none"
+            aria-expanded={open}
           >
-            {children}
-          </div>
-
-          <AnimatePresence>
-            {scrollable && open && (
-              <motion.div
-                className="pointer-events-none absolute top-0 right-1 w-1.5 rounded-full bg-slate-100"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                style={{ height: `calc(${clampHeight})` }}
-              >
-                <div className="absolute left-0 right-0 mx-auto w-1.5 rounded-full bg-primary-300" style={{ top: thumbTop, height: thumbHeight }} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+            <svg className={`w-4 h-4 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+        )}
       </div>
+
+      {svc.expandable && (
+        <AnimatePresence initial={false}>
+          {open && (
+            <motion.div
+              key="content"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1, transition: { height: { duration: 0.28 }, opacity: { duration: 0.2, delay: 0.05 } } }}
+              exit={{ height: 0, opacity: 0, transition: { height: { duration: 0.22 }, opacity: { duration: 0.15 } } }}
+              className="overflow-hidden"
+            >
+              <div className="relative z-10 px-6 pb-6 pt-0 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
+                <div className="pt-4">{svc.expandable}</div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
     </div>
   )
-}
 
-function ServiceLinkCard({ to, title }: { to: string; title: string }) {
-  return (
-    <Link
-      to={to}
-      className={[
-        'group block rounded-2xl border shadow-sm transition-all duration-300 transform-gpu will-change-transform',
-        'bg-slate-50 border-transparent hover:bg-white hover:border-slate-200 hover:shadow-md hover:-translate-y-0.5',
-        'focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-50',
-      ].join(' ')}
-    >
-      <div className="w-full flex items-center justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5">
-        <h3 className="text-base sm:text-lg font-semibold text-slate-800 transition-colors duration-300 group-hover:text-primary-600 text-left">
-          {title}
-        </h3>
-        <svg 
-          className="w-5 h-5 text-gray-400 transition-all duration-300 group-hover:text-primary-500 group-hover:translate-x-1" 
-          viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden
-        >
-          <path d="M9 18l6-6-6-6" />
-        </svg>
-      </div>
-    </Link>
-  )
+  if (svc.to) {
+    return (
+      <Link to={svc.to} className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0ABBB5] rounded-2xl">
+        {inner}
+      </Link>
+    )
+  }
+
+  return <div className="h-full">{inner}</div>
 }
 
 export default function Services() {
-  const sections: Svc[] = useMemo(
-    () => [
-      {
-        id: 'dantu-implantacija',
-        title: 'Dantų implantacija',
-        to: '/paslaugos/dantu-implantacija',
-        content: (
-          <div className="space-y-3">
-            <p>Dantų implantacijos informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
-      },
-      {
-        id: 'skubi-pagalba',
-        title: 'Skubi pagalba',
-        to: '/paslaugos/skubi-pagalba',
-        content: (
-          <div className="space-y-3">
-            <p>
-              „Bangų Odontologijos Klinika" suteiks skubią pagalbą, jei skauda dantį, iškrito plomba,
-              nuskilo dantis ar skubiai prireikė kitų odontologo paslaugų.
-              Nereikės laukti eilėje – priimsime jus kaip įmanoma greičiau.
-            </p>
-          </div>
-        ),
-      },
+  const sections: Svc[] = useMemo(() => [
+    {
+      id: 'dantu-implantacija',
+      title: 'Dantų implantacija',
+      to: '/paslaugos/dantu-implantacija',
+    },
+    {
+      id: 'skubi-pagalba',
+      title: 'Skubi pagalba',
+      to: '/paslaugos/skubi-pagalba',
+    },
+    {
+      id: 'dantu-protezavimas',
+      title: 'Dantų protezavimas',
+      to: '/paslaugos/dantu-protezavimas',
+    },
+    {
+      id: 'dantu-gydymas',
+      title: 'Dantų gydymas',
+      to: '/paslaugos/dantu-taisymas-gydymas',
+    },
+    {
+      id: 'dantu-tiesinimas',
+      title: 'Dantų tiesinimas',
+      to: '/paslaugos/dantu-tiesinimas',
+    },
+    {
+      id: 'burnos-higiena',
+      title: 'Burnos higiena',
+      to: '/paslaugos/burnos-higiena',
+    },
+    {
+      id: 'burnos-chirurgija',
+      title: 'Burnos chirurgija',
+      to: '/paslaugos/burnos-chirurgija',
+    },
+    {
+      id: 'dantu-balinimas',
+      title: 'Dantų balinimas',
+      to: '/paslaugos/dantu-balinimas',
+    },
+    {
+      id: 'estetinis-plombavimas',
+      title: 'Estetinis plombavimas',
+      to: '/paslaugos/estetinis-plombavimas',
+    },
+    {
+      id: 'dantu-plombavimas',
+      title: 'Dantų plombavimas',
+      to: '/paslaugos/dantu-plombavimas',
+    },
+    {
+      id: 'dantu-traukimas',
+      title: 'Dantų traukimas',
+      to: '/paslaugos/dantu-traukimas',
+    },
+    {
+      id: 'endodontinis-gydymas',
+      title: 'Endodontinis gydymas',
+      to: '/paslaugos/endodontinis-gydymas',
+    },
+    {
+      id: 'vaiku-odontologija',
+      title: 'Vaikų odontologija',
+      to: '/paslaugos/vaiku-odontologija',
+    },
+    {
+      id: 'kompensuojamas-dantu-protezavimas',
+      title: 'TLK lėšomis kompensuojamas dantų protezavimas',
+      expandable: (
+        <div className="space-y-2">
+          <p>
+            Bangų odontologijos klinika yra sudariusi sutartį su Teritorinėmis ligonių kasomis (TLK),
+            kurios skiria kompensaciją dantų protezavimo išlaidoms iš Privalomojo sveikatos draudimo fondo (PSDF).
+          </p>
+          <p>Teisę į kompensuojamą protezavimą turi:</p>
+          <ul className="list-disc pl-4 space-y-1">
+            <li>Asmenys, kuriems sukako senatvės pensijos amžius</li>
+            <li>Vaikai iki 18 metų</li>
+            <li>Asmenys, pripažinti nedarbingais arba iš dalies darbingais</li>
+            <li>Asmenys po burnos, veido ir žandikaulių onkologinių ligų gydymo</li>
+          </ul>
+          <p className="text-xs text-slate-400 pt-1">
+            Detalesnė ir nuolat atnaujinama informacija skelbiama TLK interneto svetainėje.
+          </p>
+        </div>
+      ),
+    },
+  ], [])
 
-      {
-        id: 'dantu-protezavimas',
-        title: 'Dantų protezavimas',
-        to: '/paslaugos/dantu-protezavimas',
-        content: (
-          <div className="space-y-3">
-            <p>Dantų protezavimo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
-      },
-
-      {
-        id: 'kompensuojamas-dantu-protezavimas',
-        title: 'TLK lėšomis kompensuojamas dantų protezavimas',
-        content: (
-          <div className="space-y-3">
-            <p>
-              Bangų odontologijos klinika yra sudariusi sutartį su Teritorinėmis ligonių kasomis (TLK),
-              kurios skiria kompensaciją dantų protezavimo išlaidoms iš Privalomojo sveikatos draudimo fondo (PSDF).
-            </p>
-
-            <p>Teisę į kompensuojamą protezavimą turi:</p>
-
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Asmenys, kuriems sukako senatvės pensijos amžius;</li>
-              <li>Vaikai iki 18 metų;</li>
-              <li>Asmenys, pripažinti nedarbingais arba iš dalies darbingais;</li>
-              <li>Asmenys po burnos, veido ir žandikaulių onkologinių ligų gydymo.</li>
-            </ul>
-
-            <p className="text-sm text-slate-500 mt-4">
-              Detalesnė ir nuolat atnaujinama informacija skelbiama TLK interneto svetainėje.
-            </p>
-          </div>
-        ),
-      },
-
-      {
-        id: 'dantu-gydymas',
-        title: 'Dantų gydymas',
-        to: '/paslaugos/dantu-taisymas-gydymas',
-        content: (
-          <div className="space-y-3">
-            <p>Dantų gydymo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
-      },
-
-      {
-        id: 'dantu-tiesinimas',
-        title: 'Dantų tiesinimas',
-        to: '/paslaugos/dantu-tiesinimas',
-        content: (
-          <div className="space-y-3">
-            <p>Dantų tiesinimo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
-      },
-
-      {
-        id: 'burnos-higiena',
-        title: 'Burnos higiena',
-        to: '/paslaugos/burnos-higiena',
-        content: (
-          <div className="space-y-3">
-            <p>Burnos higienos informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
-      },
-
-      {
-        id: 'burnos-chirurgija',
-        title: 'Burnos chirurgija',
-        to: '/paslaugos/burnos-chirurgija',
-        content: (
-          <div className="space-y-3">
-            <p>Burnos chirurgijos informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
-      },
-
-      {
-        id: 'dantu-balinimas',
-        title: 'Dantų balinimas',
-        to: '/paslaugos/dantu-balinimas',
-        content: (
-          <div className="space-y-3">
-            <p>Dantų balinimo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
-      },
-
-      {
-        id: 'estetinis-plombavimas',
-        title: 'Estetinis plombavimas',
-        to: '/paslaugos/estetinis-plombavimas',
-        content: (
-          <div className="space-y-3">
-            <p>Estetinio plombavimo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
-      },
-
-      {
-        id: 'dantu-plombavimas',
-        title: 'Dantų plombavimas',
-        to: '/paslaugos/dantu-plombavimas',
-        content: (
-          <div className="space-y-3">
-            <p>Dantų plombavimo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
-      },
-
-      {
-        id: 'dantu-traukimas',
-        title: 'Dantų traukimas',
-        to: '/paslaugos/dantu-traukimas',
-        content: (
-          <div className="space-y-3">
-            <p>Dantų traukimo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
-      },
-
-      {
-        id: 'endodontinis-gydymas',
-        title: 'Endodontinis gydymas',
-        to: '/paslaugos/endodontinis-gydymas',
-        content: (
-          <div className="space-y-3">
-            <p>Endodontinio gydymo informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
-      },
-
-      {
-        id: 'vaiku-odontologija',
-        title: 'Vaikų odontologija',
-        to: '/paslaugos/vaiku-odontologija',
-        content: (
-          <div className="space-y-3">
-            <p>Vaikų odontologijos informacija pateikiama atskirame puslapyje.</p>
-          </div>
-        ),
-      },
-    ],
-    []
-  )
-
-  const { hash, pathname } = useLocation()
-  const [openIds, setOpenIds] = useState<Set<string>>(new Set())
-  const isAnimatingRef = useRef(false)
-  const [listAnchoringOff, setListAnchoringOff] = useState(false)
-  const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
-  const mobile = useIsMobile()
-
-  const handleToggle = async (id: string, willOpen: boolean) => {
-    if (isAnimatingRef.current) return
-    isAnimatingRef.current = true
-    setListAnchoringOff(true)
-    try {
-      const alreadyOpen = openIds.has(id)
-
-      if (!willOpen) {
-        if (!alreadyOpen) return
-        setOpenIds((prev) => {
-          const n = new Set(prev)
-          n.delete(id)
-          return n
-        })
-        await wait(320)
-        return
-      }
-
-      const hadOthers = openIds.size > 0 && !openIds.has(id)
-      if (hadOthers) {
-        setOpenIds(new Set())
-        await wait(320)
-      }
-
-      setOpenIds(new Set([id]))
-      await wait(40)
-
-      const el = document.getElementById(id)
-      if (el) await waitForLayoutStabilize(el, 4, 1000)
-
-      if (mobile) await smoothCenterOnElement(id, 14, 380)
-      else await smoothAlignToElement(id, 16, 260)
-    } finally {
-      setListAnchoringOff(false)
-      isAnimatingRef.current = false
-    }
-  }
-
-  useEffect(() => {
-    if (pathname === '/paslaugos' && !hash) setOpenIds(new Set())
-  }, [pathname, hash])
-
-  useEffect(() => {
-    const target = (hash || '').replace('#', '')
-    if (!target) return
-    const item = sections.find((s) => s.id === target)
-    if (!item) return
-    if (item.to) return
-
-    let cancelled = false
-    const run = async () => {
-      if (isAnimatingRef.current) return
-      isAnimatingRef.current = true
-      setListAnchoringOff(true)
-      try {
-        const hadOthers = openIds.size > 0 && !openIds.has(target)
-        if (hadOthers) {
-          setOpenIds(new Set())
-          await wait(320)
-          if (cancelled) return
-        }
-
-        setOpenIds(new Set([target]))
-        await wait(40)
-
-        const el = document.getElementById(target)
-        if (el) await waitForLayoutStabilize(el, 4, 1000)
-        if (cancelled) return
-
-        if (mobile) await smoothCenterOnElement(target, 14, 380)
-        else await smoothAlignToElement(target, 16, 260)
-      } finally {
-        setListAnchoringOff(false)
-        isAnimatingRef.current = false
-      }
-    }
-    run()
-    return () => { cancelled = true }
-  }, [hash, mobile, openIds, sections])
-
-  const listVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.1 } },
-  }
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] } },
-  }
+  const gridRef = useRef<HTMLDivElement>(null)
+  const gridInView = useInView(gridRef, { once: true, margin: '-80px' })
 
   return (
     <>
@@ -621,61 +180,82 @@ export default function Services() {
         description="Skubi pagalba, dantų protezavimas, kompensuojamas protezavimas, dantų gydymas, implantai, tiesinimas, higiena, chirurgija, balinimas, plombavimas, traukimas, endodontija, vaikų odontologija."
       />
 
-      <AnimatedSection>
-        <div className="container-narrow py-12 md:py-16">
-          <header className="mb-10 text-center sm:text-left">
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-800">Paslaugos</h1>
-            <p className="mt-3 text-slate-500 max-w-2xl text-lg mx-auto sm:mx-0">
-              Išsirinkite dominančią paslaugą – atsidarys išsamus aprašas arba būsite nukreipti į atskirą paslaugos puslapį.
-            </p>
-          </header>
-
-          <motion.div
-            variants={listVariants}
-            initial="hidden"
-            animate="visible"
-            className="grid gap-4 sm:gap-5"
-            style={listAnchoringOff ? ({ overflowAnchor: 'none' } as React.CSSProperties) : undefined}
-          >
-            {sections.map((s) => {
-              const open = openIds.has(s.id)
-
-              if (s.to) {
-                return (
-                  <motion.div key={s.id} variants={itemVariants} layout="position">
-                    <ServiceLinkCard to={s.to} title={s.title} />
-                  </motion.div>
-                )
-              }
-
-              return (
-                <motion.div key={s.id} variants={itemVariants} layout="position">
-                  {mobile ? (
-                    <AccordionItemPaper
-                      id={s.id}
-                      title={s.title}
-                      open={open}
-                      onToggle={(willOpen) => handleToggle(s.id, willOpen)}
-                      maxVh={56}
-                    >
-                      {s.content}
-                    </AccordionItemPaper>
-                  ) : (
-                    <AccordionItemDefault
-                      id={s.id}
-                      title={s.title}
-                      open={open}
-                      onToggle={(willOpen) => handleToggle(s.id, willOpen)}
-                    >
-                      {s.content}
-                    </AccordionItemDefault>
-                  )}
-                </motion.div>
-              )
-            })}
-          </motion.div>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-[#F4F5F4]">
+        <div className="container-narrow py-16 md:py-24 relative z-10">
+          <div className="max-w-xl">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+              className="text-sm font-semibold tracking-widest uppercase text-[#0ABBB5] mb-3"
+            >
+              Bangų klinika
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#043F42] leading-tight"
+            >
+              Paslaugos
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.22, ease: [0.4, 0, 0.2, 1] }}
+              className="mt-5 text-slate-500 text-lg leading-relaxed max-w-lg"
+            >
+              Visapusiška odontologo pagalba – nuo profilaktikos iki implantų. Pasirinkite dominančią paslaugą.
+            </motion.p>
+          </div>
         </div>
-      </AnimatedSection>
+
+        {/* Decorative wave logo — right */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85, rotate: -15 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1.1, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 pointer-events-none select-none"
+          aria-hidden
+        >
+          <img src="/Asset 53@2x.png" alt="" className="w-64 h-64 md:w-96 md:h-96 opacity-[0.13]" draggable={false} />
+        </motion.div>
+
+        {/* second smaller — bottom left */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.25, ease: [0.4, 0, 0.2, 1] }}
+          className="absolute -left-8 bottom-0 translate-y-1/3 pointer-events-none select-none"
+          aria-hidden
+        >
+          <img src="/Asset 53@2x.png" alt="" className="w-44 h-44 opacity-[0.06]" draggable={false} />
+        </motion.div>
+      </section>
+
+      {/* Services grid */}
+      <div className="container-narrow pt-10 pb-16 md:pt-12 md:pb-24">
+        <motion.div
+          ref={gridRef}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
+          {sections.map((s, i) => (
+            <motion.div
+              key={s.id}
+              initial={{ opacity: 0, y: 28 }}
+              animate={gridInView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                duration: 0.45,
+                delay: i * 0.07,
+                ease: [0.4, 0, 0.2, 1],
+              }}
+            >
+              <ServiceCard svc={s} />
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </>
   )
 }

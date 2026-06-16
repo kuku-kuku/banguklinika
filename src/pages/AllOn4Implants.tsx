@@ -3,11 +3,18 @@ import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
 import { CLINIC } from '../data/clinic'
 import { Link } from 'react-router-dom'
+import ReviewsCarousel from '../components/ReviewsCarousel'
 
 import offers from '../content/offers.json'
 
 // Pasiimam būtent antrą pasiūlymą (All-on-4)
 const allOn4 = (offers as any).offers[1]
+
+const CheckIcon = () => (
+  <svg className="w-5 h-5 text-brand shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+  </svg>
+)
 
 export default function AllOn4Implants() {
   const container = {
@@ -168,6 +175,13 @@ export default function AllOn4Implants() {
           </div>
         </motion.section>
 
+          {/* ═══════════════════════════════════════════════════════════════
+              REVIEWS
+          ══════════════════════════════════════════════════════════════════ */}
+          <motion.div className="mb-10 no-x-scroll pan-y" variants={item}>
+            <ReviewsCarousel />
+          </motion.div>
+
         <motion.div variants={item} className="mt-4">
           <Link
             to="/ypatingi-pasiulymai"
@@ -176,6 +190,60 @@ export default function AllOn4Implants() {
             ← Grįžti į visus ypatingus pasiūlymus
           </Link>
         </motion.div>
+
+          {/* ═══════════════════════════════════════════════════════════════
+              DOCTOR CTA
+          ══════════════════════════════════════════════════════════════════ */}
+          <motion.div className="mt-8 mb-12" variants={item}>
+            <div className="bg-white rounded-[28px] border border-sky-200 shadow-soft overflow-hidden">
+              <div className="grid lg:grid-cols-[5fr_4fr] gap-0 items-stretch">
+                {/* Left: content */}
+                <div className="p-6 sm:p-8 lg:p-10">
+                  <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-darkblue-700 mb-4">
+                    Kviečiame registruotis konsultacijai Bangų klinikoje
+                  </h2>
+                  <p className="text-slate-700 leading-relaxed mb-4">
+                    Jeigu turite klausimų ar norite sužinoti daugiau apie gydymo galimybes, kviečiame registruotis konsultacijai Bangų odontologijos klinikoje. Vizito metu įvertinsime Jūsų burnos būklę, atsakysime į rūpimus klausimus ir padėsime suprasti visą gydymo eigą.
+                  </p>
+                  <p className="text-slate-700 leading-relaxed mb-6">
+                    Bangų odontologijos klinikoje siekiame, kad kiekvienas pacientas jaustųsi užtikrintai – nuo pirmosios konsultacijos iki galutinio rezultato. Registruokitės ir ženkite pirmą žingsnį link sveikos šypsenos.
+                  </p>
+                  <div className="bg-sky-50 rounded-xl p-5 border border-sky-200 mb-8">
+                    <p className="font-semibold text-darkblue-700 mb-3">Konsultacijos metu:</p>
+                    <ul className="space-y-2 text-slate-700">
+                      {[
+                        'atliekamas išsamus klinikinis įvertinimas',
+                        'aptariami galimi gydymo metodai',
+                        'paaiškinami procedūros etapai ir terminai',
+                        'sudaromas individualus gydymo planas',
+                      ].map((t, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className="mt-1"><CheckIcon /></span>
+                          <span className="leading-relaxed">{t}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Link
+                    to="/kontaktai"
+                    className="btn-primary btn-glow rounded-full px-7 py-3 font-semibold text-base inline-block shadow-lg hover:shadow-xl transition"
+                  >
+                    Registruotis vizitui
+                  </Link>
+                </div>
+                {/* Right: doctor photo */}
+                <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
+                  <img
+                    src="/team/jonas.jpg"
+                    alt="Bangų odontologijos klinikos gydytojas"
+                    className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
       </motion.div>
     </AnimatedSection>
   )

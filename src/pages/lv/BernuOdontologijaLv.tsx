@@ -27,6 +27,10 @@ const item = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
 }
 
+const sectionWrap = 'mb-12 scroll-mt-36 2xl:scroll-mt-24'
+const whiteCard = 'bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft'
+const innerCard = 'bg-white p-5 rounded-xl border border-slate-200 shadow-sm'
+
 function SmileIcon() {
   return (
     <svg className="w-8 h-8 text-brand mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -121,25 +125,25 @@ export default function BernuOdontologijaLv() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
+            <div className="max-w-2xl rounded-2xl border border-brand/20 bg-white shadow-soft overflow-hidden mb-6">
               <div className="divide-y divide-slate-100">
-                <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                   <span className="text-slate-700">Pirmā konsultācija un profilakse</span>
                   <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">20 €</span>
                 </div>
-                <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                   <span className="text-slate-700">Piena zobu ārstniecība</span>
                   <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 50 €</span>
                 </div>
-                <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                   <span className="text-slate-700">Stikla jonomēra / kompomēra plomba</span>
                   <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 30 €</span>
                 </div>
-                <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                   <span className="text-slate-700">Sarežģīta kariesa ārstniecība</span>
                   <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 60 €</span>
                 </div>
-                <div className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                   <span className="text-slate-700">Adaptācijas vizīte (līdz 30 min.)</span>
                   <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 30 €</span>
                 </div>
@@ -153,7 +157,8 @@ export default function BernuOdontologijaLv() {
         </motion.header>
 
         {/* KAS IR BĒRNU ZOBĀRSTNIECĪBA */}
-        <motion.section id="kas-ir" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="kas-ir" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas ir bērnu zobārstniecība?
           </h2>
@@ -168,29 +173,31 @@ export default function BernuOdontologijaLv() {
               Pareizi kopti piena zobi ir svarīgi ne tikai košļāšanai un runas attīstībai, bet arī pastāvīgo zobu veselībai. Tādēļ regulāras apskates un savlaicīgi uzsākta kopšana ir svarīga bērna mutes veselības daļa.
             </p>
           </div>
+          </div>
         </motion.section>
 
         {/* KĀPĒC SVARĪGI KOPĪT (KARTES) */}
-        <motion.section id="kapec-piena-zobi" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="kapec-piena-zobi" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kāpēc svarīgi kopīt piena zobus?
           </h2>
           <div className="grid sm:grid-cols-3 gap-6">
-            <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
+            <div className={innerCard + ' flex flex-col items-start'}>
               <SmileIcon />
               <h3 className="font-semibold text-darkblue-700 mb-2">Attīstība</h3>
               <p className="text-sm text-slate-700 leading-relaxed">
                 Piena zobi palīdz bērnam pareizi košļāt, veidot runu un saglabāt vietu pastāvīgajiem zobiem.
               </p>
             </div>
-            <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
+            <div className={innerCard + ' flex flex-col items-start'}>
               <StarIcon />
               <h3 className="font-semibold text-darkblue-700 mb-2">Ātra bojāšanās</h3>
               <p className="text-sm text-slate-700 leading-relaxed">
                 Piena zobu kariess attīstās ātrāk. Savlaicīgi apmeklējot, var konstatēt izmaiņas un pielietot saudzīgas metodes.
               </p>
             </div>
-            <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
+            <div className={innerCard + ' flex flex-col items-start'}>
               <HeartIcon />
               <h3 className="font-semibold text-darkblue-700 mb-2">Nākotnes veselība</h3>
               <p className="text-sm text-slate-700 leading-relaxed">
@@ -198,10 +205,12 @@ export default function BernuOdontologijaLv() {
               </p>
             </div>
           </div>
+          </div>
         </motion.section>
 
         {/* KAD VĒRSTIES (KONTROLSARAKSTS) */}
-        <motion.section id="kad-vizite" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="kad-vizite" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kad bērnam nepieciešama vizīte pie zobārsta?
           </h2>
@@ -219,21 +228,23 @@ export default function BernuOdontologijaLv() {
                 "Bērns izvairās košļāt no vienas puses",
                 "Pienācis laiks profilaktiskajai pārbaudei (pat ja nav sāpju)"
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                <div key={i} className={innerCard + ' flex items-start gap-3'}>
                   <span className="mt-1"><CheckIcon /></span>
                   <span className="text-slate-700">{text}</span>
                 </div>
               ))}
             </div>
           </div>
+          </div>
         </motion.section>
 
         {/* PAKALPOJUMI */}
-        <motion.section id="pakalpojumi" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="pakalpojumi" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kādus bērnu zobārstniecības pakalpojumus sniedzam?
           </h2>
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-soft">
+          <div className={innerCard}>
             <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
               {[
                 "Konsultācijas un profilaktiskās pārbaudes",
@@ -253,25 +264,27 @@ export default function BernuOdontologijaLv() {
           <p className="text-slate-700 mt-4 leading-relaxed">
             Plašs pakalpojumu klāsts ļauj nodrošināt, ka bērna zobu kopšana ir secīga un tiek veikta vienā vietā, un bērnu zobārsts var sekot pacienta zobu stāvoklim ilgtermiņā.
           </p>
+          </div>
         </motion.section>
 
         {/* KĀ NOTIEK (SOĻI) */}
-        <motion.section id="ka-notiek" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="ka-notiek" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kā notiek bērnu zobu ārstniecība klīnikā?
           </h2>
           <div className="grid gap-6 md:grid-cols-3">
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className={innerCard}>
               <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Adaptācija un apskate</h3>
               <p className="text-sm text-slate-600">Mierīga iepazīšanās ar zobārstu un vidi. Apskate tiek veikta nesteidzīgi, izskaidrojot bērnam saprotamā valodā.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className={innerCard}>
               <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Ārstniecība (ja nepieciešama)</h3>
               <p className="text-sm text-slate-600">Tiek veikta maigi, bērna tempā. Tiek izmantotas bērniem pielāgotas metodes, tiek darītas pārtraukumi.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className={innerCard}>
               <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Uzmundrinājums</h3>
               <p className="text-sm text-slate-600">Bērns tiek uzmundrināts par drosmi, vecākiem sniegtas rekomendācijas par kopšanu mājās.</p>
@@ -280,14 +293,16 @@ export default function BernuOdontologijaLv() {
           <p className="text-slate-700 mt-6 leading-relaxed">
             Šāds secīgs un mierīgs process palīdz radīt pozitīvu pieredzi un mazina bailes turpmākajās vizītēs.
           </p>
+          </div>
         </motion.section>
 
         {/* PADOMI VECĀKIEM */}
-        <motion.section id="sagatavet" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="sagatavet" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kā sagatavot bērnu vizītei?
           </h2>
-          <div className="bg-brand-50/30 p-6 rounded-2xl border border-brand/10">
+          <div className={innerCard}>
             <h3 className="font-semibold text-darkblue-700 mb-4">Vecākiem ieteicams:</h3>
             <ul className="list-disc pl-5 space-y-2 text-slate-700">
               <li>Par vizīti runāt mierīgi un pozitīvi, izvairīties no biedējošiem vārdiem.</li>
@@ -296,10 +311,12 @@ export default function BernuOdontologijaLv() {
               <li>Izvēlēties vizītei laiku, kad bērns ir atpūties un labā noskaņojumā.</li>
             </ul>
           </div>
+          </div>
         </motion.section>
 
         {/* SĀPES UN KĀPĒC MĒS */}
-        <motion.section id="kapec-mes" className="mb-12 space-y-8 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="kapec-mes" className={sectionWrap} variants={item}>
+          <div className={whiteCard + ' space-y-8'}>
           <div>
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
               Vai bērnu zobu ārstniecība ir sāpīga?
@@ -317,10 +334,12 @@ export default function BernuOdontologijaLv() {
               Mūsu klīnikā bērnu zobārstniecība balstās uz pacietību, cieņu pret bērna jūtām un secīgu uzticēšanās veidošanu. Katrs bērns tiek vērtēts individuāli, atvēlot laiku adaptācijai. Vecāki novērtē mierīgo vidi, skaidro komunikāciju un sirsnīgo speciālistu saskarsmi ar mazajiem pacientiem.
             </p>
           </div>
+          </div>
         </motion.section>
 
         {/* BEIGU CTA */}
         <motion.div className="mt-8 mb-12 text-left" variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Aicinām pierakstīties bērnu zobārsta konsultācijai Bangų klīnikā
           </h2>
@@ -334,6 +353,7 @@ export default function BernuOdontologijaLv() {
             <a href={`tel:${CLINIC.phone}`} className="btn-ghost rounded-full px-8 py-4 font-semibold text-lg inline-block border border-brand text-brand hover:bg-brand-50 transition">
               Zvanīt mums
             </a>
+          </div>
           </div>
         </motion.div>
 

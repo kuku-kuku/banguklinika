@@ -16,6 +16,10 @@ const item = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
 }
 
+const sectionWrap = 'mb-12 scroll-mt-36 2xl:scroll-mt-24'
+const whiteCard = 'bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft'
+const innerCard = 'bg-white p-5 rounded-xl border border-slate-200 shadow-sm'
+
 // Ikonas
 function CheckIcon() {
   return (
@@ -110,13 +114,13 @@ export default function EstetikaPlombanaLv() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
+          <div className="max-w-2xl rounded-2xl border border-brand/20 bg-white shadow-soft overflow-hidden mb-6">
             <div className="divide-y divide-slate-100">
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-5 hover:bg-brand-50/30 transition">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-5 py-3 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700 font-medium">Estētiskā viena zoba plombēšana</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap mt-2 sm:mt-0 ml-0 sm:ml-4">150 – 200 €</span>
               </div>
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-5 hover:bg-brand-50/30 transition">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-5 py-3 hover:bg-brand-50/30 transition">
                 <span className="text-slate-700 font-medium">Estētiskās plombas pulēšana (atjaunošana)</span>
                 <span className="text-darkblue-700 font-bold whitespace-nowrap mt-2 sm:mt-0 ml-0 sm:ml-4">no 29 €</span>
               </div>
@@ -138,11 +142,12 @@ export default function EstetikaPlombanaLv() {
         </motion.header>
 
         {/* KAS IR ESTĒTISKĀ PLOMBĒŠANA */}
-        <motion.section id="kas-ir" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="kas-ir" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kas ir estētiskā plombēšana?
           </h2>
-          <div className="bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 space-y-4 text-slate-700 leading-relaxed">
+          <div className={innerCard + ' space-y-4 text-slate-700 leading-relaxed'}>
             <p>
               Estētiskā plombēšana ir zobārstniecības procedūra, kuras laikā zobi tiek atjaunoti ar slāņošanas metodi, izmantojot augstas estētikas restaurācijas materiālus. Šī metode ļauj precīzi atjaunot zoba formu, krāsu, virsmas tekstūru un dabisko spīdumu, vienlaikus maksimāli aizsargājot veselās zobu audis.
             </p>
@@ -153,10 +158,12 @@ export default function EstetikaPlombanaLv() {
               Bangų zobārstniecības klīnikā izmantotie modernālie restaurācijas materiāli ļauj minimāli mainīt cietās zobu audis un saglabāt ilgstošu rezultātu. Viena zoba restaurācija vidēji ilgst aptuveni 1,5 stundas, un pirms procedūras parasti ieteicams veikt profesionālu mutes higiēnu, lai nodrošinātu optimālu estētisko un funkcionālo rezultātu. Šāda pieeja ļauj sasniegt augstu kvalitāti, ko meklē pacienti, kas interesējas par labāko estētisko plombēšanu Klaipēdā.
             </p>
           </div>
+          </div>
         </motion.section>
 
         {/* KĀDAS PROBLĒMAS VAR ATRISINĀT */}
-        <motion.section id="problemas" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="problemas" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kādas problēmas var atrisināt ar estētisko plombēšanu?
           </h2>
@@ -174,7 +181,7 @@ export default function EstetikaPlombanaLv() {
                 "Nepareiza zobu forma vai garums, kad zobi izskatās pārāk īsi vai nevienmērīgi",
                 "Krāsas nevienmērīgums, ko nav iespējams novērst ar zobu balināšanu"
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                <div key={i} className={innerCard + ' flex items-start gap-3'}>
                   <span className="mt-1"><CheckIcon /></span>
                   <span className="text-slate-700">{text}</span>
                 </div>
@@ -185,10 +192,12 @@ export default function EstetikaPlombanaLv() {
           <p className="text-slate-700 leading-relaxed">
             Atkarībā no situācijas ar estētisko plombēšanu var koriģēt vienu zobu vai vairākus zobus vienlaikus. Vienas vizītes laikā bieži tiek atjaunoti 4–6 priekšzobi, tāpēc pacients rezultātu redz tajā pašā dienā. Tas ir īpaši pievilcīgs risinājums tiem, kas meklē ātru un efektīvu risinājumu estētiskās zobārstniecības jomā.
           </p>
+          </div>
         </motion.section>
 
         {/* KĀ TIEK VEIKTA ESTĒTISKĀ PLOMBĒŠANA (SOĻI) */}
-        <motion.section id="ka-notiek" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="ka-notiek" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
             Kā tiek veikta estētiskā plombēšana?
           </h2>
@@ -197,28 +206,28 @@ export default function EstetikaPlombanaLv() {
           </p>
 
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
+            <div className={innerCard + ' relative overflow-hidden group'}>
                <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none group-hover:text-brand/20 transition-colors">01</div>
               <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Konsultācija un plānošana</h3>
               <p className="text-sm text-slate-600 leading-relaxed relative z-10">
                 Procedūra sākas ar rūpīgu apskati, kuras laikā tiek novērtēts zobu stāvoklis, forma, krāsa un sakodiens. Tiek apspriestas pacienta vēlmes un iespējamās korekcijas robežas, lai sasniegtu dabīgu rezultātu.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
+            <div className={innerCard + ' relative overflow-hidden group'}>
                <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none group-hover:text-brand/20 transition-colors">02</div>
               <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Sagatavošanās procedūrai</h3>
               <p className="text-sm text-slate-600 leading-relaxed relative z-10">
                 Pirms estētiskās plombēšanas parasti ieteicams veikt profesionālu mutes higiēnu. Tas palīdz nodrošināt tīru zobu virsmu un labāku restaurācijas materiālu pielipšanu.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
+            <div className={innerCard + ' relative overflow-hidden group'}>
                <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none group-hover:text-brand/20 transition-colors">03</div>
               <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Zobu restaurācija ar slāņiem</h3>
               <p className="text-sm text-slate-600 leading-relaxed relative z-10">
                 Izmantojot modernos plombēšanas materiālus, zobs tiek atjaunots slāņos, veidojot dabīgu zoba anatomiju un nokrāsu. Viena zoba restaurācija vidēji ilgst aptuveni 1,5 stundas, un darbs tiek veikts, maksimāli saudzējot veselās zobu audis.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
+            <div className={innerCard + ' relative overflow-hidden group'}>
                <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none group-hover:text-brand/20 transition-colors">04</div>
               <h3 className="font-bold text-darkblue-700 mb-2 relative z-10">Galīgā formēšana un pulēšana</h3>
               <p className="text-sm text-slate-600 leading-relaxed relative z-10">
@@ -230,14 +239,16 @@ export default function EstetikaPlombanaLv() {
           <p className="text-slate-700 mt-6 leading-relaxed">
             Šāds konsekvents process ļauj sasniegt estētisku, dabīgu un ilgstošu rezultātu, kādu gaida pacienti, kas meklē labāko estētisko plombēšanu Klaipēdā.
           </p>
+          </div>
         </motion.section>
 
         {/* PRIEKŠROCĪBAS */}
-        <motion.section id="priekstatas" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="priekstatas" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kādas ir estētiskās plombēšanas priekšrocības?
           </h2>
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm space-y-4 text-slate-700 leading-relaxed">
+          <div className={innerCard + ' space-y-4 text-slate-700 leading-relaxed'}>
             <p>
               Estētiskā plombēšana tiek vērtēta kā viena no universālākajām estētiskās zobārstniecības procedūrām, jo ļauj sasniegt izteiktu rezultātu minimāli invazīvā veidā. Šī metode ir piemērota pacientiem, kuri vēlas uzlabot smaida estētiku, saglabājot pēc iespējas vairāk dabīgo zobu audu.
             </p>
@@ -251,10 +262,12 @@ export default function EstetikaPlombanaLv() {
               Svarīga priekšrocība ir minimālā zobu slīpēšana vai noteiktos gadījumos tās nav vispār. Tas ļauj maksimāli saglabāt veselās cietās audis, un pati procedūra ir saudzīga un droša. Šo īpašību dēļ estētiskā plombēšana bieži tiek izvēlēta kā alternatīva sarežģītākam protezēšanai vai laminētām, īpaši tad, kad tiek meklēts ātrs un estētiski pievilcīgs risinājums.
             </p>
           </div>
+          </div>
         </motion.section>
 
         {/* CIK ILGI SAGLABĀJAS */}
-        <motion.section id="ilgums" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="ilgums" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Cik ilgi saglabājas estētiskās plombēšanas rezultāts?
           </h2>
@@ -269,10 +282,12 @@ export default function EstetikaPlombanaLv() {
               Rezultāta ilgumu ietekmē arī restaurācijas vieta un apjoms. Priekšzobu estētiskā plombēšana, kurai nav lielas košļāšanas slodzes, bieži saglabājas ilgāk. Laika gaitā restaurācijas var dabiski nodilties, tāpēc dažos gadījumos var būt nepieciešamas nelielas korekcijas vai pulēšana, kas ļauj atjaunot estētisko izskatu un pagarināt plombu kalpošanas laiku.
             </p>
           </div>
+          </div>
         </motion.section>
 
         {/* KO SVARĪGI ZINĀT PĒC */}
-        <motion.section id="pec-proceduras" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="pec-proceduras" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Ko svarīgi zināt pēc estētiskās plombēšanas?
           </h2>
@@ -280,7 +295,7 @@ export default function EstetikaPlombanaLv() {
             <p>
               Pēc estētiskās plombēšanas procedūras pacienti parasti uzreiz pamana smaida estētikas uzlabojumu. Atjaunoto zobu virsmas kļūst gludi, spīdīgas un dabiski iederas ar pārējiem zobiem. Tomēr pirmajās dienās pēc procedūras svarīgi ievērot noteiktus ieteikumus, lai rezultāts saglabātos pēc iespējas ilgāk.
             </p>
-            <div className="bg-brand-50/30 p-6 rounded-xl border border-brand/10">
+            <div className={innerCard}>
               <p className="mb-4">
                 Pirmās stundas pēc procedūras ieteicams izvairīties no ļoti cietas vai intensīvi krāsojošas pārtikas un dzērieniem, īpaši ja tika atjaunoti priekšzobi. Tāpat ieteicams nelietot zobus kā instrumentus un izvairīties no lielas mehāniskas slodzes restaurētajai vietai.
               </p>
@@ -292,10 +307,12 @@ export default function EstetikaPlombanaLv() {
               Regulāras profilaktiski vizītes un, ja nepieciešams, estētiskās plombas pulēšana palīdz saglabāt restaurāciju spīdumu, krāsu un vispārējo estētisko izskatu. Šāda konsekventa pieeja ļauj ilgi baudīt kārtīgu un harmoniski izskatīgu smaidu.
             </p>
           </div>
+          </div>
         </motion.section>
 
         {/* VAI TAS IR DROŠI */}
-        <motion.section id="drosiba" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="drosiba" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Vai estētiskā plombēšana ir droša?
           </h2>
@@ -310,10 +327,12 @@ export default function EstetikaPlombanaLv() {
               Svarīgi uzsvērt, ka drošums ir atkarīgs ne tikai no materiāliem, bet arī no pareizas plānošanas un speciālista pieredzes. Pirms procedūras tiek novērtēts zobu stāvoklis, sakodiens un pacienta vēlmes, tāpēc estētiskā plombēšana tiek veikta tikai tad, kad tā ir piemērota un var nodrošināt prognozējamu rezultātu.
             </p>
           </div>
+          </div>
         </motion.section>
 
         {/* KĀPĒC MĒS */}
-        <motion.section id="kapec-mes" className="mb-14 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+        <motion.section id="kapec-mes" className={sectionWrap} variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Kāpēc vērts izvēlēties Bangų zobārstniecības klīniku Klaipēdā?
           </h2>
@@ -328,10 +347,12 @@ export default function EstetikaPlombanaLv() {
               Pacienti novērtē skaidru komunikāciju, caurspīdīgu cenu noteikšanu un konsekventu attieksmi pret ārstēšanu, bet pozitīvās atsauksmes bieži uzsver profesionālu komunikāciju, rūpīgumu un priecīgu galarezultātu. Tas ir īpaši svarīgi pacientiem, kas meklē uzticamu risinājumu Klaipēdā.
             </p>
           </div>
+          </div>
         </motion.section>
 
         {/* CTA */}
         <motion.div className="mt-8 mb-12 text-left" variants={item}>
+          <div className={whiteCard}>
           <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
             Aicinām pierakstīties estētiskai plombēšanai Bangų klīnikā
           </h2>
@@ -343,6 +364,7 @@ export default function EstetikaPlombanaLv() {
           <Link to="/lv/kontakti" className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
             Pierakstīties vizītam
           </Link>
+          </div>
         </motion.div>
           </div>
       </motion.div>

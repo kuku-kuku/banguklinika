@@ -38,6 +38,10 @@ const item = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
 }
 
+const sectionWrap = 'mb-12 scroll-mt-36 2xl:scroll-mt-24'
+const whiteCard = 'bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft'
+const innerCard = 'bg-white p-5 rounded-xl border border-slate-200 shadow-sm'
+
 function CheckIcon() {
   return (
     <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0 text-brand" aria-hidden>
@@ -146,7 +150,7 @@ export default function DantuImplantacijaLv() {
             {/* PRICES */}
             <div
               id="cenas"
-              className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6 scroll-mt-36 2xl:scroll-mt-24"
+              className="rounded-2xl border border-brand/20 bg-white shadow-soft overflow-hidden mb-6 scroll-mt-36 2xl:scroll-mt-24"
             >
               <div className="bg-brand-50/50 p-4 border-b border-brand/10 font-bold text-darkblue-700">
                 Izmantotie zobu implanti un to cenas
@@ -215,9 +219,10 @@ export default function DantuImplantacijaLv() {
           {/* KAS IR IMPLANTĀCIJA */}
           <motion.section
             id="kas-ir-implantacija"
-            className="mb-12 bg-white p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24"
+            className={sectionWrap}
             variants={item}
           >
+            <div className={whiteCard}>
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas ir zobu implantācija?</h2>
             <div className="space-y-4 text-slate-700 leading-relaxed">
               <p>
@@ -236,10 +241,12 @@ export default function DantuImplantacijaLv() {
                 var kalpot daudzus gadus vai pat visu mūžu.
               </p>
             </div>
+            </div>
           </motion.section>
 
           {/* SASTĀVDAĻAS */}
-          <motion.section id="sastavdalas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+          <motion.section id="sastavdalas" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
               No kā sastāv zobu implantācijas risinājums?
             </h2>
@@ -254,7 +261,7 @@ export default function DantuImplantacijaLv() {
                 'Abutments (savienotājs) — starpposma daļa, kas savieno implantu ar protēzi',
                 'Kronis vai protēze — redzamā zoba daļa, kas atjauno estētiku un funkciju',
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-100 shadow-sm">
+                <div key={i} className={innerCard + ' flex items-start gap-3'}>
                   <span className="mt-1">
                     <CheckIcon />
                   </span>
@@ -266,10 +273,12 @@ export default function DantuImplantacijaLv() {
             <p className="text-slate-700 leading-relaxed mt-6">
               Šo daļu kopums ļauj izveidot risinājumu, kas vizuāli un funkcionāli ir maksimāli līdzīgs dabiskam zobam.
             </p>
+            </div>
           </motion.section>
 
           {/* ATŠĶIRĪBAS */}
-          <motion.section id="atskiribas" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+          <motion.section id="atskiribas" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
               Ar ko implantācija atšķiras no citām zobu atjaunošanas metodēm?
             </h2>
@@ -285,10 +294,12 @@ export default function DantuImplantacijaLv() {
                 Uz implantiem balstīti risinājumi ir fiksēti, nekustas un ļauj justies droši ēdot, runājot vai smaidot.
               </p>
             </div>
+            </div>
           </motion.section>
 
           {/* VAI PIEMĒROTA */}
-          <motion.section id="vai-piemerota" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+          <motion.section id="vai-piemerota" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
             <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
               Vai implantācija ir piemērota visiem?
             </h2>
@@ -309,7 +320,7 @@ export default function DantuImplantacijaLv() {
                 'ja trūkst visu zobu vienā vai abos žokļos',
                 'pacientiem, kuri nav apmierināti ar izņemamām protēzēm',
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                <div key={i} className={innerCard + ' flex items-start gap-3'}>
                   <span className="mt-1">
                     <CheckIcon />
                   </span>
@@ -321,6 +332,7 @@ export default function DantuImplantacijaLv() {
             <p className="text-slate-700 leading-relaxed mt-6">
               Galvenais ir individuāla plānošana un pareizi izvēlēta ārstēšanas stratēģija, kas ļauj sasniegt stabilu un ilgtermiņa rezultātu.
             </p>
+            </div>
           </motion.section>
 
           {/* KĀPĒC ĀTRI */}
@@ -359,7 +371,7 @@ export default function DantuImplantacijaLv() {
                     'Spraugas starp zobiem kļūst par vietu, kur vieglāk uzkrājas pārtikas atliekas un baktērijas. Tas apgrūtina ikdienas higiēnu un palielina smaganu iekaisuma, kariesa un nepatīkamas elpas risku. Pat rūpīgi kopjot zobus, tukšā vieta var kļūt par pastāvīgu problēmu avotu.',
                 },
               ].map((c, i) => (
-                <div key={i} className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                <div key={i} className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                   <h3 className="font-bold text-darkblue-700 mb-2">{c.t}</h3>
                   <p className="text-slate-700 leading-relaxed text-sm">{c.d}</p>
                 </div>
@@ -409,7 +421,7 @@ export default function DantuImplantacijaLv() {
                 'senāks zobu zudums radījis sakoduma vai košļāšanas problēmas',
                 'izņemamās protēzes rada diskomfortu vai nestabilitāti',
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
                   <span className="mt-1">
                     <CheckIcon />
                   </span>
@@ -436,7 +448,7 @@ export default function DantuImplantacijaLv() {
                 'Blakus zobu aizsardzība — nav jāslīpē veseli zobi, kā tiltu gadījumā.',
                 'Ilgmūžība — pareizi kopti implanti var kalpot gadu desmitiem.',
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
                   <span className="mt-1">
                     <CheckIcon />
                   </span>
@@ -452,21 +464,21 @@ export default function DantuImplantacijaLv() {
             <h3 className="text-lg font-semibold text-darkblue-700 mb-4">Kam implantācija ir vispiemērotākā?</h3>
 
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h4 className="font-bold text-darkblue-700 mb-2">Pacientiem, kuri zaudējuši vienu zobu</h4>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Tas ļauj atjaunot trūkstošo zobu, nebojājot blakus esošos veselus zobus, un saglabāt dabisku mutes struktūru.
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h4 className="font-bold text-darkblue-700 mb-2">Pacientiem, kuri zaudējuši vairākus zobus</h4>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Implanti var kalpot par balstu tiltiem vai atsevišķiem kroņiem, nodrošinot stabilu un estētisku rezultātu.
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h4 className="font-bold text-darkblue-700 mb-2">Pacientiem, kuri zaudējuši visus zobus vienā žoklī</h4>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Šādos gadījumos implantācija ļauj atteikties no izņemamām protēzēm un pāriet uz fiksētiem risinājumiem, atjaunojot visu
@@ -474,7 +486,7 @@ export default function DantuImplantacijaLv() {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h4 className="font-bold text-darkblue-700 mb-2">Pacientiem, kuri nēsā izņemamas protēzes</h4>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Implanti var būtiski uzlabot protēžu stabilitāti vai pilnībā aizstāt tās ar fiksētiem risinājumiem, kas sniedz vairāk
@@ -482,7 +494,7 @@ export default function DantuImplantacijaLv() {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm md:col-span-2">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm md:col-span-2">
                 <h4 className="font-bold text-darkblue-700 mb-2">Vecāka gadagājuma pacientiem</h4>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Vecums pats par sevi nav šķērslis implantācijai. Galvenais ir vispārējais veselības stāvoklis un individuāla plānošana.
@@ -490,7 +502,7 @@ export default function DantuImplantacijaLv() {
               </div>
             </div>
 
-            <div className="mt-8 bg-white p-6 rounded-2xl border border-brand/10">
+            <div className="mt-8 bg-brand-50 p-6 rounded-2xl border border-brand/10">
               <h3 className="text-lg font-semibold text-darkblue-700 mb-3">Individuāls izvērtējums — obligāts solis</h3>
               <p className="text-slate-700 leading-relaxed mb-4">
                 Lai arī implantācija ir piemērota daudziem, katrā gadījumā nepieciešama rūpīga konsultācija. Tās laikā tiek izvērtēts:
@@ -550,7 +562,7 @@ export default function DantuImplantacijaLv() {
                       'nav jāvalkā izņemamas protēzes dzīšanas laikā',
                       'pacients no klīnikas iziet ar zobiem',
                     ].map((text, i) => (
-                      <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                      <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
                         <span className="mt-1">
                           <CheckIcon />
                         </span>
@@ -574,7 +586,7 @@ export default function DantuImplantacijaLv() {
                       'pacientiem ar samazinātu žokļa kaula apjomu',
                       'tiem, kuri vēlas ātru un fiksētu risinājumu, nevis ilgu ārstēšanu',
                     ].map((text, i) => (
-                      <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                      <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
                         <span className="mt-1">
                           <CheckIcon />
                         </span>
@@ -713,7 +725,7 @@ export default function DantuImplantacijaLv() {
                       'pieredzējušu speciālistu darbs',
                       'mūsdienīgas ķirurģiskās tehnoloģijas',
                     ].map((text, i) => (
-                      <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                      <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
                         <span className="mt-1">
                           <CheckIcon />
                         </span>
@@ -821,7 +833,7 @@ export default function DantuImplantacijaLv() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Pirmās dienas pēc implantācijas</h3>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Pirmajās dienās var būt neliels pietūkums, vilkšanas sajūta vai jutīgums implantācijas zonā. Tā ir normāla reakcija.
@@ -833,7 +845,7 @@ export default function DantuImplantacijaLv() {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Mutes higiēna dzīšanas laikā</h3>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Mutes higiēna ir viens no svarīgākajiem nosacījumiem implanta veiksmīgai ieaugšanai. Pat ja zona ir jutīga, kopšanu pārtraukt nedrīkst.
@@ -844,7 +856,7 @@ export default function DantuImplantacijaLv() {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Uzturs pēc implantācijas</h3>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Pirmajās dienās ieteicams mīksts, viegli sakošļājams ēdiens. Vēlāk var pakāpeniski atgriezties pie ierastā uztura, taču
@@ -855,7 +867,7 @@ export default function DantuImplantacijaLv() {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="font-bold text-darkblue-700 mb-2">Kontroles vizītes</h3>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   Pēc implantācijas tiek plānotas kontroles vizītes, kur ārsts novērtē dzīšanas gaitu, implanta stabilitāti un audu stāvokli.
@@ -867,7 +879,7 @@ export default function DantuImplantacijaLv() {
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
               <h3 className="text-lg font-semibold text-darkblue-700 mb-2">Ilgtermiņa kopšana</h3>
               <p className="text-slate-700 text-sm leading-relaxed">
                 Pat pēc veiksmīgas ieaugšanas ir svarīgi turpināt rūpēties par implantiem: ikdienas higiēna, profesionālā higiēna un profilaktiskās vizītes
@@ -882,7 +894,7 @@ export default function DantuImplantacijaLv() {
               Kāpēc izvēlēties Bangų zobārstniecības klīniku Klaipēdā?
             </h2>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-brand/10">
+            <div className="bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/10">
               <p className="text-slate-700 leading-relaxed mb-6">
                 Izvēloties, kur veikt zobu atjaunošanu ar implantiem, svarīgi ir ne tikai cena vai ātrums, bet arī komanda un pieeja, kas stāv aiz rezultāta.
                 Bangų klīnikā implantācija tiek veikta, balstoties uz mūsdienīgiem standartiem, precīzu diagnostiku un individuālu pieeju katram pacientam.
@@ -907,7 +919,7 @@ export default function DantuImplantacijaLv() {
                     text: 'Pacienti novērtē skaidru izskaidrojumu, caurspīdīgu cenu politiku un mierīgu, profesionālu attieksmi visā procesā.',
                   },
                 ].map((c, i) => (
-                  <div key={i} className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+                  <div key={i} className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
                     <div className="flex items-start gap-3">
                       <span className="mt-1">
                         <CheckIcon />
@@ -925,7 +937,7 @@ export default function DantuImplantacijaLv() {
 
           {/* FINAL CTA */}
           <motion.div className="mt-8 mb-12 text-left" variants={item}>
-            <div className="bg-white rounded-2xl border border-slate-100 shadow-soft overflow-hidden">
+            <div className="bg-brand-50 rounded-2xl border border-slate-100 shadow-soft overflow-hidden">
               <div className="p-6 sm:p-10 bg-brand-50/40 border-b border-brand/10">
                 <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-3">
                   Aicinām pierakstīties uz zobu implantācijas konsultāciju Bangų klīnikā

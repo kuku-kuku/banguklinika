@@ -97,28 +97,28 @@ export default function MutesHirurgijaLv() {
 
           <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
             <div className="divide-y divide-slate-100">
-              <div className="p-5 hover:bg-brand-50/30 transition">
+              <div className="px-5 py-3 hover:bg-brand-50/30 transition">
                 <div className="flex justify-between items-baseline mb-1">
                     <span className="text-slate-900 font-bold">Kaula augmentācija</span>
                     <span className="text-brand font-bold whitespace-nowrap ml-4">150 – 600 €</span>
                 </div>
                 <span className="block text-slate-700 text-sm">Atkarībā no nepieciešamā kaula apjoma un izmantotās ārstēšanas metodes.</span>
               </div>
-              <div className="p-5 hover:bg-brand-50/30 transition">
+              <div className="px-5 py-3 hover:bg-brand-50/30 transition">
                 <div className="flex justify-between items-baseline mb-1">
                     <span className="text-slate-900 font-bold">Saknes noņemšanas procedūra</span>
                     <span className="text-brand font-bold whitespace-nowrap ml-4">60 – 80 €</span>
                 </div>
                 <span className="block text-slate-700 text-sm">Kad zobs jau ir izvilkts, bet atlikušā sakne rada iekaisuma vai infekcijas risku.</span>
               </div>
-              <div className="p-5 hover:bg-brand-50/30 transition">
+              <div className="px-5 py-3 hover:bg-brand-50/30 transition">
                 <div className="flex justify-between items-baseline mb-1">
                     <span className="text-slate-900 font-bold">Zoba ekstrakcija</span>
                     <span className="text-brand font-bold whitespace-nowrap ml-4">80 – 100 €</span>
                 </div>
                 <span className="block text-slate-700 text-sm">Ņemot vērā zoba atrašanās vietu un procedūras sarežģītību.</span>
               </div>
-              <div className="p-5 hover:bg-brand-50/30 transition">
+              <div className="px-5 py-3 hover:bg-brand-50/30 transition">
                 <div className="flex justify-between items-baseline mb-1">
                     <span className="text-slate-900 font-bold">Sarežģīta gudrības zoba ekstrakcija</span>
                     <span className="text-brand font-bold whitespace-nowrap ml-4">120 – 150 €</span>
@@ -170,7 +170,7 @@ export default function MutesHirurgijaLv() {
                 "pirms plānotas zobu implantācijas vai sarežģītākas protezēšanas",
                 "konstatējot cistas, veidojumus vai citas patoloģiskas izmaiņas žokļa kaula zonā"
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
                   <span className="mt-1"><CheckIcon /></span>
                   <span className="text-slate-700">{text}</span>
                 </div>
@@ -204,7 +204,7 @@ export default function MutesHirurgijaLv() {
                 "Sinusa dibena pacelšana, kad augšžoklī nav pietiekami daudz kaula implantiem",
                 "Mīksto audu ķirurģija, kas paredzēta mutes gļotādas izmaiņu korekcijai"
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
                   <span className="mt-1"><CheckIcon /></span>
                   <span className="text-slate-700">{text}</span>
                 </div>
@@ -226,22 +226,22 @@ export default function MutesHirurgijaLv() {
           </p>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Konsultācija un diagnostika</h3>
               <p className="text-sm text-slate-600">Vizīta laikā tiek novērtēts mutes stāvoklis, veikta apskate, nozīmēti rentgena izmeklējumi. Tiek sastādīts individuāls plāns.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Sagatavošanās procedūrai</h3>
               <p className="text-sm text-slate-600">Tiek iepazīstināts ar gaitu, tiek izvēlēta vietējā anestēzija, nodrošinot, ka pacients nejūt sāpes.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Ķirurģiskā procedūra</h3>
               <p className="text-sm text-slate-600">Tiek veikta sterili, precīzi un maigi, izmantojot modernos instrumentus, cenšoties samazināt audu traumu.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
               <h3 className="font-bold text-darkblue-700 mb-2">Pēcoperācijas aprūpe</h3>
               <p className="text-sm text-slate-600">Tiek sniegti ieteikumi par aprūpi, uzturu, medikamentiem. Tiek apspriesti turpmākie vizīti.</p>

@@ -54,6 +54,7 @@ import EndodontijaLv from './pages/lv/EndodontijaLv'
 import BernuOdontologijaLv from './pages/lv/BernuOdontologijaLv'
 import IpasiPiedavajumiLv from './pages/lv/IpasiPiedavajumiLv'
 import { LangProvider } from './context/LanguageContext'
+import { useLenis } from './hooks/useLenis'
 import Draugai from './pages/Draugai'
 import MusuDarbai from './pages/MusuDarbai'
 import InbankWidget from './components/InbankWidget'
@@ -68,6 +69,8 @@ function LvLayout() {
 }
 
 export default function App() {
+  useLenis()
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <ScrollToTop />

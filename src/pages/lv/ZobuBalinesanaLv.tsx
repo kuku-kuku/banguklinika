@@ -123,28 +123,28 @@ export default function ZobuBalinesanaLv() {
 
           <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
             <div className="divide-y divide-slate-100">
-              <div className="p-5 hover:bg-brand-50/30 transition">
+              <div className="px-5 py-3 hover:bg-brand-50/30 transition">
                 <div className="flex justify-between items-center mb-1">
                   <span className="text-slate-900 font-bold">Ofisa zobu balināšana ar BEYOND® sistēmu</span>
                   <span className="text-darkblue-700 font-bold">no 250 €</span>
                 </div>
                 <span className="block text-slate-600 text-sm">Ātra un efektīva metode, rezultāts pēc vienas procedūras.</span>
               </div>
-              <div className="p-5 hover:bg-brand-50/30 transition">
+              <div className="px-5 py-3 hover:bg-brand-50/30 transition">
                 <div className="flex justify-between items-center mb-1">
                   <span className="text-slate-900 font-bold">Balināšanas kapsu nospiedumi</span>
                   <span className="text-darkblue-700 font-bold">no 30 €</span>
                 </div>
                 <span className="block text-slate-600 text-sm">Pirmais solis, izvēloties mājas balināšanu.</span>
               </div>
-              <div className="p-5 hover:bg-brand-50/30 transition">
+              <div className="px-5 py-3 hover:bg-brand-50/30 transition">
                 <div className="flex justify-between items-center mb-1">
                   <span className="text-slate-900 font-bold">Balināšanas kapsas ar gelu (2 gab. + gelis)</span>
                   <span className="text-darkblue-700 font-bold">no 200 €</span>
                 </div>
                 <span className="block text-slate-600 text-sm">Ļauj balināt zobus pakāpeniski mājas apstākļos.</span>
               </div>
-              <div className="p-5 hover:bg-brand-50/30 transition">
+              <div className="px-5 py-3 hover:bg-brand-50/30 transition">
                 <div className="flex justify-between items-center mb-1">
                   <span className="text-slate-900 font-bold">Zobu rotājuma piestiprināšana</span>
                   <span className="text-darkblue-700 font-bold">no 50 €</span>
@@ -196,7 +196,7 @@ export default function ZobuBalinesanaLv() {
                 </p>
               </div>
             </div>
-            <div className="w-full md:w-1/3 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center">
+            <div className="w-full md:w-1/3 bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center">
               <SparklesIcon />
               <p className="font-semibold text-darkblue-700 mt-2">Ātrais rezultāts</p>
               <p className="text-sm text-slate-500">Tikai 45 minūtēs</p>
@@ -222,7 +222,7 @@ export default function ZobuBalinesanaLv() {
               "Procedūra vienkārša un nesāpīga (ap 45 min.)",
               "Ilgstošs efekts — rezultāti bieži saglabājas līdz 2 gadiem"
             ].map((text, i) => (
-              <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100 shadow-sm">
+              <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
                 <span className="mt-1"><CheckIcon /></span>
                 <span className="text-slate-700 text-sm">{text}</span>
               </div>
@@ -247,7 +247,7 @@ export default function ZobuBalinesanaLv() {
               Balināšana ar kapsām sākas klīnikā, kur pēc pacienta zobu individuālā nospieduma tiek izgatavoti personiski pielāgoti uzliktņi. Kopā ar tiem tiek izvēlēts piemērots balināšanas gelis un sniegtas detalizētas lietošanas instrukcijas. Tādā veidā tiek nodrošināts, ka balināšana ir droša, efektīva un pielāgota konkrētam zobu stāvoklim.
             </p>
 
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm my-4">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm my-4">
               <h3 className="font-semibold text-darkblue-700 mb-2">Šo balināšanas veidu bieži izvēlas pacienti, kuri:</h3>
               <ul className="list-disc pl-5 space-y-1 text-slate-700">
                 <li>vēlas pakāpenisku un kontrolētu rezultātu</li>
@@ -290,19 +290,19 @@ export default function ZobuBalinesanaLv() {
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-darkblue-700 mb-2">1. Konsultācija un novērtēšana</h3>
               <p className="text-sm text-slate-600">Zobārsts pārbauda zobus, novērtē emaljas stāvokli, restaurācijas un piemērotību. Tiek apspriestas vēlmes.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-darkblue-700 mb-2">2. Sagatavošanās balināšanai</h3>
               <p className="text-sm text-slate-600">Ja nepieciešams, tiek veikta profesionāla higiēna aplikumu noņemšanai un vienmērīgam efektam.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-darkblue-700 mb-2">3. Balināšanas procedūra</h3>
               <p className="text-sm text-slate-600">Tiek veikta ofisa BEYOND® procedūra vai nodoti uzliktņi ar instrukcijām.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-darkblue-700 mb-2">4. Ieteikumi pēc balināšanas</h3>
               <p className="text-sm text-slate-600">Tiek sniegtas instrukcijas, kā kopēt zobus, lai rezultāts saglabātos ilgāk.</p>
             </div>
@@ -388,23 +388,23 @@ export default function ZobuBalinesanaLv() {
             Biežākie mīti par zobu balināšanu
           </h2>
           <div className="space-y-4">
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-slate-900 mb-2">Mīts #1: pēc balināšanas zobi kļūst vājāki</h3>
               <p className="text-slate-600 text-sm">Balināšana nemaina zobu stiprumu vai izturību. Pareizi veikta procedūra nevājina zobus, un izmantotie papildu kopšanas līdzekļi var pat palīdzēt stiprināt emaljas virsmu.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-slate-900 mb-2">Mīts #2: zobu balināšana bojā zobu emalju</h3>
               <p className="text-slate-600 text-sm">Profesionāla zobu balināšana, ko veic zobārsta uzraudzībā, nesbojā zobu emalju. Mūsdienu balināšanas sistēmas, piemēram, BEYOND®, ir izstrādātas tā, lai iedarbotos uz pigmentiem, saglabājot dabisko emaljas struktūru.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-slate-900 mb-2">Mīts #3: zobu balināšana vienmēr ir sāpīga</h3>
               <p className="text-slate-600 text-sm">Lielākā daļa pacientu zobu balināšanu raksturo kā ērtu procedūru. Mūsdienu metodes ļauj samazināt diskomfortu, un ja jutīgums arī parādās, tas parasti ir īslaicīgs.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-slate-900 mb-2">Mīts #4: visu cilvēku zobi balina vienādi</h3>
               <p className="text-slate-600 text-sm">Rezultāts ir individuāls un atkarīgs no sākotnējās krāsas, emaljas struktūras un pigmentācijas izcelsmes. Pirms procedūras vienmēr tiek apspriestas reālistiskas vēlmes.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-slate-900 mb-2">Mīts #5: balināšana iedarbojas uz plombām un kroņiem</h3>
               <p className="text-slate-600 text-sm">Balināšanas līdzekļi iedarbojas tikai uz dabisko zobu audu — plombas, kroņi vai laminētas nebalinojas. Tāpēc pirms balināšanas svarīgi novērtēt restaurācijas.</p>
             </div>

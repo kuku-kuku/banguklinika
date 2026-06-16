@@ -140,7 +140,7 @@ export default function ZobuPlombanaLv() {
                 { name: "Rentgena uzņēmums", price: "10 €" },
                 { name: "Koferdama sistēmas izmantošana", price: "10 €" }
               ].map((service, index) => (
-                <div key={index} className="flex justify-between items-center p-4 hover:bg-brand-50/30 transition">
+                <div key={index} className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
                   <span className="text-slate-700 font-medium">{service.name}</span>
                   <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">{service.price}</span>
                 </div>
@@ -168,21 +168,21 @@ export default function ZobuPlombanaLv() {
           </div>
 
           <div className="grid sm:grid-cols-3 gap-6">
-            <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
+            <div className="rounded-2xl border border-brand bg-brand-50 shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
               <ToothIcon />
               <h3 className="font-semibold text-darkblue-700 mb-2">Funkcijas atjaunošana</h3>
               <p className="text-sm text-slate-700 leading-relaxed">
                 Tiek atjaunota zoba košļāšanas funkcija un anatomiskā forma, novēršot sakodiens problēmas.
               </p>
             </div>
-            <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
+            <div className="rounded-2xl border border-brand bg-brand-50 shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
               <ShieldIcon />
               <h3 className="font-semibold text-darkblue-700 mb-2">Aizsardzība un hermētiskums</h3>
               <p className="text-sm text-slate-700 leading-relaxed">
                 Tiek novērsta baktēriju izplatīšanās un zoba nerva bojājumi.
               </p>
             </div>
-            <div className="rounded-2xl border border-brand bg-white shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
+            <div className="rounded-2xl border border-brand bg-brand-50 shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
               <ClockIcon />
               <h3 className="font-semibold text-darkblue-700 mb-2">Ilgmūžība</h3>
               <p className="text-sm text-slate-700 leading-relaxed">
@@ -210,7 +210,7 @@ export default function ZobuPlombanaLv() {
               "Vecas, hermētiski nesaistītas plombas, kas var ļaut baktērijām iekļūt zoba iekšpusē",
               "Ēdiena iespiešanās vai nepatīkama sajūta konkrētā zoba vietā"
             ].map((text, i) => (
-              <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-100 shadow-sm">
+              <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-brand-50 border border-slate-100 shadow-sm">
                 <span className="mt-1"><CheckIcon /></span>
                 <span className="text-slate-700 font-medium">{text}</span>
               </div>
@@ -255,7 +255,7 @@ export default function ZobuPlombanaLv() {
           <div className="grid gap-6 md:grid-cols-2">
 
             {/* 01 */}
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
+            <div className="bg-brand-50 p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
               <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none group-hover:text-brand/20 transition-colors">
                 01
               </div>
@@ -266,7 +266,7 @@ export default function ZobuPlombanaLv() {
             </div>
 
             {/* 02 */}
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
+            <div className="bg-brand-50 p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
               <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none group-hover:text-brand/20 transition-colors">
                 02
               </div>
@@ -277,7 +277,7 @@ export default function ZobuPlombanaLv() {
             </div>
 
             {/* 03 */}
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
+            <div className="bg-brand-50 p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
               <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none group-hover:text-brand/20 transition-colors">
                 03
               </div>
@@ -288,7 +288,7 @@ export default function ZobuPlombanaLv() {
             </div>
 
             {/* 04 */}
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
+            <div className="bg-brand-50 p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden group">
               <div className="text-6xl font-bold text-brand/10 absolute top-0 right-4 select-none pointer-events-none group-hover:text-brand/20 transition-colors">
                 04
               </div>
@@ -314,14 +314,14 @@ export default function ZobuPlombanaLv() {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-lg text-darkblue-700 mb-3">Cik ilgi kalpo zobu plombas?</h3>
               <p className="text-slate-700 leading-relaxed">
                 Kalpošanas laiks ir atkarīgs no plombas lieluma, vietas un kopšanas. Kvalitatīvi veiktas plombas kalpo daudzus gadus. Lielāko ietekmi uz ilgmūžību atstāj personīgā mutes higiēna un regulāras profilaktiski pārbaudes, kas ļauj savlaicīgi pamanīt un koriģēt vecās plombas.
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+            <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
               <h3 className="font-bold text-lg text-darkblue-700 mb-3">Ko svarīgi zināt pēc zobu plombēšanas?</h3>
               <p className="text-slate-700 leading-relaxed">
                 Pirmajās stundās pēc ārstēšanas ieteicams izvairīties no cieta ēdiena un nekošļāt ar plombēto pusi, īpaši ja tika piemērota anestēzija (lai neiekodieties). Ja jūtat īslaicīgu jutīgumu pret aukstumu vai košļājot — tā ir normāla reakcija, kas parasti pāriet dažu dienu laikā. Vissvarīgākais ir rūpīga ikdienas higiēna.

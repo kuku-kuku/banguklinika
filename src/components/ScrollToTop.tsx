@@ -1,6 +1,7 @@
 // src/components/ScrollToTop.tsx
 import { useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { getLenis } from "../hooks/useLenis";
 
 export default function ScrollToTop() {
   const { key, hash } = useLocation();
@@ -28,10 +29,15 @@ export default function ScrollToTop() {
       return;
     }
 
-    // į viršų (auto, ne "instant")
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    // į viršų — per Lenis jei aktyvus, kitaip tiesiogiai
+    const lenis = getLenis()
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true })
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
 
     // priverstinai "pranešam" scroll listeneriams (TOC)
     window.dispatchEvent(new Event("scroll"));
