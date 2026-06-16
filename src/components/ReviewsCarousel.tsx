@@ -160,7 +160,7 @@ function ReviewCard({
   );
 }
 
-export default function ReviewsCarousel() {
+export default function ReviewsCarousel({ hideTitle }: { hideTitle?: boolean } = {}) {
   const [loading, setLoading] = useState(true);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [rating, setRating] = useState<number | null>(null);
@@ -287,9 +287,11 @@ export default function ReviewsCarousel() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-5">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-darkblue-600 tracking-tight">
-              Klientų atsiliepimai
-            </h2>
+            {!hideTitle && (
+              <h2 className="text-2xl sm:text-3xl font-bold text-darkblue-600 tracking-tight">
+                Klientų atsiliepimai
+              </h2>
+            )}
 
             {rating !== null && count !== null && (
               <div className="flex items-center gap-2 mt-2">

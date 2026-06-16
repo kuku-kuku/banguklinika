@@ -502,6 +502,21 @@ export default function Home() {
 
       <SectionDivider />
 
+      {/* ══ REVIEWS ═══════════════════════════════════════════════════════ */}
+      <section className="py-2 pb-2 no-x-scroll pan-y">
+        <div className={`${W} mb-3`}>
+          <AnimatedSection>
+            <EyeBrow>Atsiliepimai</EyeBrow>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight" style={{ color: C.deepTeal }}>
+              Ką sako mūsų pacientai
+            </h2>
+          </AnimatedSection>
+        </div>
+        <ReviewsCarousel hideTitle />
+      </section>
+
+      <SectionDivider />
+
       {/* ══ WHY CHOOSE ════════════════════════════════════════════════════ */}
       <section className="py-2 pb-8 md:pb-12">
         <div className={W}>
