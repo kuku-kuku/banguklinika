@@ -30,7 +30,7 @@ function Star({ className = 'w-4 h-4' }: { className?: string }) {
 
 function SectionDivider() {
   return (
-    <div className="flex items-center justify-center gap-5 py-10 md:py-12 px-6">
+    <div className="flex items-center justify-center gap-5 py-6 md:py-8 px-6">
       <div className="h-[2px] flex-1 max-w-xs md:max-w-sm rounded-full" style={{ background: `linear-gradient(to right, transparent, ${C.teal}55)` }} />
       <img src="/Asset 53@2x.png" alt="" aria-hidden draggable={false} className="w-10 h-10 opacity-35" />
       <div className="h-[2px] flex-1 max-w-xs md:max-w-sm rounded-full" style={{ background: `linear-gradient(to left, transparent, ${C.teal}55)` }} />
@@ -504,7 +504,7 @@ export default function Home() {
 
       {/* ══ REVIEWS ═══════════════════════════════════════════════════════ */}
       <section className="py-2 pb-2 no-x-scroll pan-y">
-        <div className={`${W} mb-6`}>
+        <div className={`${W} mb-3`}>
           <AnimatedSection>
             <EyeBrow>Atsiliepimai</EyeBrow>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight" style={{ color: C.deepTeal }}>
