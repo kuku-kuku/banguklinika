@@ -139,25 +139,11 @@ function ReviewCard({
         </div>
       </div>
 
-      <div
-        className="h-px mb-3"
-        style={{ background: "linear-gradient(90deg, rgba(0,183,198,0.18) 0%, transparent 100%)" }}
-      />
+      <div className="h-px mb-3 bg-gray-100" />
 
       <p className="text-gray-700 text-sm leading-relaxed flex-1">
         {text?.trim() ? displayText : <span className="italic text-gray-400">Be komentaro</span>}
       </p>
-
-      {isLong && reviewsUrl && (
-        <a
-          href={reviewsUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-2 text-xs text-primary-600 hover:text-primary-700 font-medium text-left self-start"
-        >
-          Skaityti daugiau
-        </a>
-      )}
 
       {reviewsUrl && (
         <a
@@ -285,7 +271,7 @@ export default function ReviewsCarousel() {
       <div className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12 py-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="h-44 rounded-2xl animate-pulse" style={{ background: "rgba(0,183,198,0.07)" }} />
+            <div key={i} className="h-44 rounded-2xl animate-pulse bg-slate-100" />
           ))}
         </div>
       </div>

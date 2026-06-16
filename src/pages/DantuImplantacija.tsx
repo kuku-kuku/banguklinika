@@ -93,14 +93,14 @@ const treatmentOptions = [
 export default function DantuImplantacija() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "MedicalProcedure",
-    name: "Dantų implantacija",
-    description:
-      "Dantų implantacija Klaipėdoje – pažangiausias prarastų dantų atkūrimo sprendimas. Individualus planavimas, ilgaamžiai implantai, ALL-ON-4 metodas.",
-    provider: {
-      "@type": "Dentist",
-      name: "Bangų klinika",
-    },
+    "@type": "Service",
+    "@id": "https://www.banguklinika.lt/paslaugos/dantu-implantacija/#service",
+    "name": "Dantų implantacija Klaipėdoje",
+    "serviceType": "Dantų implantacija",
+    "description": "Dantų implantacijos paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Klinika padeda pacientams atkurti prarastus dantis implantais Klaipėdos mieste.",
+    "url": "https://www.banguklinika.lt/paslaugos/dantu-implantacija/",
+    "areaServed": { "@type": "City", "name": "Klaipėda" },
+    "provider": { "@id": "https://www.banguklinika.lt/#dentist" },
   }
 
   const pageRef = useRef(null)

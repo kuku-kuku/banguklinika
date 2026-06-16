@@ -45,13 +45,14 @@ const tocSections = [
 export default function BurnosChirurgija() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "MedicalProcedure",
-    "name": "Profesionali burnos chirurgija",
-    "description": "Profesionali burnos chirurgija Klaipėdoje. Dantų šalinimas, implantacija, cistų gydymas.",
-    "provider": {
-      "@type": "Dentist",
-      "name": "Bangų klinika"
-    }
+    "@type": "Service",
+    "@id": "https://www.banguklinika.lt/paslaugos/burnos-chirurgija/#service",
+    "name": "Burnos chirurgija Klaipėdoje",
+    "serviceType": "Burnos chirurgija",
+    "description": "Burnos chirurgijos paslaugos teikiamos Bangų odontologijos klinikoje Klaipėdoje. Klinikoje atliekamos odontologinės chirurginės procedūros pacientams Klaipėdos mieste.",
+    "url": "https://www.banguklinika.lt/paslaugos/burnos-chirurgija/",
+    "areaServed": { "@type": "City", "name": "Klaipėda" },
+    "provider": { "@id": "https://www.banguklinika.lt/#dentist" },
   }
 
   const pageRef = useRef(null)
