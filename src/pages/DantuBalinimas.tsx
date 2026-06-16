@@ -84,7 +84,7 @@ export default function DantuBalinimas() {
     <AnimatedSection>
       <SEO
         title="Dantų balinimas Klaipėdoje | Kaina ir atsiliepimai - Bangų klinika"
-        description="Dantų balinimas Klaipėdoje už prieinamą kainą✅ – saugus ir efektyvus būdas pašviesinti dantis bei atkurti estetišką šypseną. Registruokitės ➡ Bangų klinikoje jau dabar."
+        description="Dantų balinimas Klaipėdoje už prieinamą kainą☑️– saugus ir efektyvus būdas pašviesinti dantis bei atkurti estetišką šypseną. Registruokitės⏩Bangų klinikoje jau dabar."
         keywords="dantu balinimas, beyond sistema, balinimo kapos, dantu estetika, klaipeda"
         structuredData={structuredData}
       />

@@ -113,8 +113,8 @@ export default function DantuImplantacija() {
   return (
     <AnimatedSection>
       <SEO
-        title=" Dantų implantacija Klaipėdoje - Dantų implantai nuo 500€ | Bangų klinika"
-        description="Dantų implantacija Klaipėdoje – dantų implantai nuo 500€✅, prarastų dantų atkūrimas implantais ir estetikos atstatymas✅. Registruokitės ➡ konsultacijai Bangų klinikoje."
+        title="Dantų implantacija Klaipėdoje - Dantų implantai nuo 500€ | Bangų klinika"
+        description="Dantų implantacija Klaipėdoje – dantų implantai nuo 500€☑️, prarastų dantų atkūrimas implantais ir estetikos atstatymas☑️. Registruokitės⏩konsultacijai Bangų klinikoje."
         keywords="dantu implantacija, implantai klaipeda, straumann, neodent, all-on-4, dantu atkurimas, bangų klinika"
         structuredData={structuredData}
         lang="lt"

@@ -58,7 +58,7 @@ export default function SkubiPagalba() {
     <AnimatedSection>
       <SEO
         title="Skubi odontologinė pagalba Klaipėdoje"
-        description="Staigus dantų skausmas ar trauma? Skubi odontologinė pagalba Klaipėdoje esant uždegimui, tinimui ar netikėtai traumai. Registruokitės ➡ Bangų klinikoje jau dabar."
+        description="Staigus dantų skausmas ar trauma? Skubi odontologinė pagalba Klaipėdoje esant uždegimui, tinimui ar netikėtai traumai. Registruokitės⏩Bangų klinikoje jau dabar."
         keywords="skubi pagalba, skubus odontologas, danties skausmas, dantų traumas, klaipeda, banguklinika"
         structuredData={structuredData}
       />

@@ -88,7 +88,7 @@ export default function DantuGydymas() {
     <AnimatedSection>
       <SEO
         title="Dantų gydymas, taisymas (tvarkymas) Klaipėdoje - Bangų klinika"
-        description="Dantų gydymas✅ tvarkymas✅ Klaipėdoje esant skausmui ar kitiems dantų pažeidimams. Laiku pašalinkite skausmą ir išsaugokite natūralius dantis. Registruokitės ➡ Bangų klinikoje."
+        description="Dantų gydymas☑️tvarkymas☑️Klaipėdoje esant skausmui ar kitiems dantų pažeidimams. Laiku pašalinkite skausmą ir išsaugokite natūralius dantis. Registruokitės⏩Bangų klinikoje."
         keywords="dantu gydymas, dantu taisymas, skubi pagalba, eduonis, plombavimas, klaipeda"
         structuredData={structuredData}
       />

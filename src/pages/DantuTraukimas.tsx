@@ -68,7 +68,7 @@ export default function DantuTraukimas() {
     <AnimatedSection>
       <SEO
         title="Dantų traukimas (rovimas) Klaipėdoje - Bangų klinika"
-        description="Skaudantis ar stipriai pažeistas dantis? Dantų traukimas (rovimas) Klaipėdoje atliekamas profesionaliai✅ rūpestingai✅ Bangų klinikoje už gerą kainą✅. Kreipkitės jau dabar."
+        description="Skaudantis ar stipriai pažeistas dantis? Dantų traukimas (rovimas) Klaipėdoje atliekamas profesionaliai☑️rūpestingai☑️Bangų klinikoje už gerą kainą.⏩Kreipkitės jau dabar."
         keywords="dantu traukimas, dantu salinimas, protiniai dantys, chirurginis traukimas, klaipeda, neskausmingai"
         structuredData={structuredData}
       />

@@ -103,7 +103,7 @@ const pages = [
   },
   {
     route: "/paslaugos/burnos-higiena",
-    title: "Burnos (dantų) higiena Klaipėdoje | Bangų klinika",
+    title: "Burnos (dantų) higiena Klaipėdoje | Kaina su akcija | Geriausi atsiliepimai | Bangų klinika",
     description: "Profesionali burnos higiena Klaipėdoje. Apnašų ir akmenų šalinimas, profilaktika, patarimai.",
     schema: serviceSchema("Burnos higiena Klaipėdoje", "Profesionali burnos higiena", "Profesionali burnos higiena teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga padeda palaikyti sveikus dantis ir dantenas pacientams Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/burnos-higiena/`),
   },
@@ -127,7 +127,7 @@ const pages = [
   },
   {
     route: "/paslaugos/dantu-balinimas",
-    title: "Dantų balinimas Klaipėdoje | Bangų klinika",
+    title: "Dantų balinimas Klaipėdoje | Kaina ir atsiliepimai | Bangų klinika",
     description: "Dantų balinimas Klaipėdoje – profesionalus balinimas klinikoje ir rekomendacijos po procedūros.",
     schema: serviceSchema("Dantų balinimas Klaipėdoje", "Dantų balinimas", "Dantų balinimo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga skirta pacientams, norintiems šviesesnės ir estetiškesnės šypsenos Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/dantu-balinimas/`),
   },
@@ -169,7 +169,7 @@ const pages = [
   },
   {
     route: "/paslaugos/dantu-implantacija",
-    title: "Dantų implantacija Klaipėdoje | Bangų klinika",
+    title: "Dantų implantacija Klaipėdoje - Dantų implantai nuo 500€ | Bangų klinika",
     description: "Dantų implantacija Klaipėdoje – konsultacija, implantai, gydymo eiga ir priežiūra po procedūros.",
     schema: serviceSchema("Dantų implantacija Klaipėdoje", "Dantų implantacija", "Dantų implantacijos paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Klinika padeda pacientams atkurti prarastus dantis implantais Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/dantu-implantacija/`),
   },

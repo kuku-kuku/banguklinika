@@ -66,7 +66,7 @@ export default function BurnosChirurgija() {
     <AnimatedSection>
       <SEO
         title="Burnos chirurgija Klaipėdoje - Bangų klinika"
-        description="Burnos chirurgija Klaipėdoje – profesionalios procedūros sudėtingesnėms dantų✅ minkštųjų audinių✅ žandikaulio✅ problemoms spręsti. Kreipkitės į ➡ Bangų kliniką."
+        description="Burnos chirurgija Klaipėdoje – profesionalios procedūros sudėtingesnėms dantų☑️minkštųjų audinių☑️žandikaulio☑️problemoms spręsti. Kreipkitės į⏩Bangų kliniką."
         keywords="burnos chirurgija, dantu rovimas, protiniai dantys, cistos, kaulo priauginimas, klaipeda"
         structuredData={structuredData}
       />

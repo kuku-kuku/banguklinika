@@ -93,7 +93,7 @@ export default function DantuProtezavimas() {
     <AnimatedSection>
       <SEO
         title="Dantų protezavimas Klaipėdoje - Bangų klinika"
-        description="Dantų protezavimas Klaipėdoje – prieinamas kaina✅ patikimi sprendimai✅ prarastiems ar pažeistiems dantims atkurti. Sužinokite gydymo galimybes ➡ Bangų klinikoje jau dabar."
+        description="Dantų protezavimas Klaipėdoje – prieinama kaina☑️patikimi sprendimai☑️prarastiems ar pažeistiems dantims atkurti. Sužinokite gydymo galimybes⏩Bangų klinikoje jau dabar."
         keywords="dantu protezavimas, cerec, cirkonio keramika, protezai, klaipeda, implantai"
         structuredData={structuredData}
       />

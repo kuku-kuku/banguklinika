@@ -87,7 +87,7 @@ export default function DantuPlombavimas() {
     <AnimatedSection>
       <SEO
         title="Dantų plombavimas Klaipėdoje | Kaina - Bangų klinika"
-        description="Jautrus ar pažeistas dantis? Dantų plombavimas Klaipėdoje padeda atkurti danties funkciją✅ ir apsaugoti nuo tolimesnio gedimo✅. Kreipkitės ➡ į Bangų kliniką jau šiandien."
+        description="Jautrus ar pažeistas dantis? Dantų plombavimas Klaipėdoje padeda atkurti danties funkciją☑️ir apsaugoti nuo tolimesnio gedimo☑️. Kreipkitės į⏩Bangų kliniką jau šiandien."
         keywords="dantu plombavimas, estetinis plombavimas, dantu gydymas, eduonis, klaipeda, odontologas"
         structuredData={structuredData}
       />

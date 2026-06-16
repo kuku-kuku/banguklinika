@@ -89,7 +89,7 @@ export default function BurnosHigiena() {
     <AnimatedSection>
       <SEO
         title="Burnos (dantų) higiena Klaipėdoje | Kaina su akcija | Geriausi atsiliepimai - Bangų klinika"
-        description="Profesionali burnos (dantų) higiena Klaipėdoje gera kaina✅. Pašalinkite apnašas, sumažinkite dantenų problemų riziką ir išlaikykite sveiką šypseną✅. Kreipkitės ➡ į Bangų kliniką."
+        description="Profesionali burnos (dantų) higiena Klaipėdoje gera kaina☑️. Pašalinkite apnašas, sumažinkite dantenų problemų riziką ir išlaikykite sveiką šypseną☑️. Kreipkitės į⏩Bangų kliniką."
         keywords="burnos higiena, airflow, dantų valymas, akmenų šalinimas, klaipėda"
         structuredData={structuredData}
       />
