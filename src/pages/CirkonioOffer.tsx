@@ -167,22 +167,6 @@ export default function CirkonioOffer() {
                 </motion.section>
 
                 {/* ═══════════════════════════════════════════════════════════════
-                    REVIEWS
-                ══════════════════════════════════════════════════════════════════ */}
-                <motion.div className="mb-10 no-x-scroll pan-y" variants={item}>
-                  <ReviewsCarousel />
-                </motion.div>
-
-                <motion.div variants={item} className="mt-4">
-                    <Link
-                        to="/ypatingi-pasiulymai"
-                        className="text-sm text-brand hover:text-darkblue-700 underline-offset-4 hover:underline"
-                    >
-                        ← Grįžti į visus ypatingus pasiūlymus
-                    </Link>
-                </motion.div>
-
-                {/* ═══════════════════════════════════════════════════════════════
                     DOCTOR CTA
                 ══════════════════════════════════════════════════════════════════ */}
                 <motion.div className="mt-8 mb-12" variants={item}>
@@ -225,7 +209,7 @@ export default function CirkonioOffer() {
                       {/* Right: doctor photo */}
                       <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
                         <img
-                          src="/team/jonas.jpg"
+                          src="/team/Jonas-light.jpg"
                           alt="Bangų odontologijos klinikos gydytojas"
                           className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
                         />
@@ -233,6 +217,22 @@ export default function CirkonioOffer() {
                       </div>
                     </div>
                   </div>
+                </motion.div>
+
+                {/* ═══════════════════════════════════════════════════════════════
+                    REVIEWS
+                ══════════════════════════════════════════════════════════════════ */}
+                <motion.div className="mb-10 no-x-scroll pan-y" variants={item}>
+                  <ReviewsCarousel />
+                </motion.div>
+
+                <motion.div variants={item} className="mt-4">
+                    <Link
+                        to="/ypatingi-pasiulymai"
+                        className="text-sm text-brand hover:text-darkblue-700 underline-offset-4 hover:underline"
+                    >
+                        ← Grįžti į visus ypatingus pasiūlymus
+                    </Link>
                 </motion.div>
 
             </motion.div>
