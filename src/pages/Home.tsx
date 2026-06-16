@@ -562,34 +562,34 @@ export default function Home() {
       <section className="py-2 pb-8 md:pb-12">
         <div className={W}>
           <AnimatedSection>
-            <div
-              className="relative overflow-hidden rounded-[2.5rem] p-10 sm:p-14 lg:p-16 flex flex-col md:flex-row md:items-center md:justify-between gap-10"
-              style={{ background: C.deepTeal }}
-            >
-              <img src="/Asset 53@2x.png" alt="" aria-hidden draggable={false}
-                className="absolute -right-12 -top-12 w-72 h-72 opacity-[0.06] pointer-events-none select-none" />
-              <img src="/Asset 53@2x.png" alt="" aria-hidden draggable={false}
-                className="absolute -left-8 -bottom-8 w-48 h-48 opacity-[0.04] pointer-events-none select-none" />
-
-              <div className="relative z-10">
-                <p className="text-xs font-bold tracking-[0.2em] uppercase mb-4" style={{ color: C.teal }}>Pirmasis vizitas</p>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
-                  Pirminė konsultacija{' '}
-                  <span style={{ color: C.teal }}>nemokama</span>
-                </h2>
-                <p className="mt-4 text-base leading-relaxed max-w-lg" style={{ color: 'rgba(255,255,255,0.65)' }}>
-                  Mūsų tikslas – aiškus kelias link Jūsų sveikos šypsenos be jokių paslėptų mokesčių.
-                </p>
+            <div className="relative overflow-hidden rounded-[2rem] bg-white border border-slate-100 shadow-2xl min-h-[320px] md:min-h-[380px] flex items-center">
+              <div className="absolute inset-0 z-0">
+                <img
+                  src="/hero.webp"
+                  alt=""
+                  aria-hidden
+                  draggable={false}
+                  className="w-full h-full object-cover object-right"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 md:via-white/80 to-transparent" />
               </div>
 
-              <div className="relative z-10 shrink-0">
-                <Link
-                  to="/kontaktai#registracija"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-base text-white transition-all hover:scale-[1.04] hover:shadow-2xl whitespace-nowrap"
-                  style={{ background: C.teal, boxShadow: `0 8px 28px ${C.teal}45` }}
-                >
-                  Registruotis dabar →
-                </Link>
+              <div className="relative z-10 px-8 py-10 sm:px-12 lg:py-14 max-w-2xl">
+                <p className="text-xs font-bold tracking-[0.2em] uppercase mb-4" style={{ color: C.teal }}>Pirmasis vizitas</p>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight" style={{ color: C.deepTeal }}>
+                  Pirminė konsultacija <span style={{ color: C.teal }}>nemokama</span>
+                </h2>
+                <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
+                  Mūsų tikslas – aiškus kelias link Jūsų sveikos šypsenos be jokių paslėptų mokesčių.
+                </p>
+                <div className="pt-6">
+                  <Link
+                    to="/kontaktai#registracija"
+                    className="btn-primary btn-glow rounded-full px-8 py-3.5 font-bold text-base inline-block shadow-lg hover:shadow-xl transition"
+                  >
+                    Registruotis dabar
+                  </Link>
+                </div>
               </div>
             </div>
           </AnimatedSection>
