@@ -26,6 +26,11 @@ const whiteCard = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 sha
 const whiteCardTight = "bg-brand-50 p-6 rounded-2xl border border-brand/20 shadow-soft"
 const innerCard = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm"
 
+// Kainų dizaino žetonai
+const P  = '#002045'
+const S  = '#006b5f'
+const SL = '#ecf5fb'
+
 // Ikonos
 function CheckIcon() {
   return (
@@ -138,72 +143,53 @@ export default function EndodontinisGydymas() {
 
           {/* KAINOS */}
           <motion.section id="kainos" className={sectionWrap} variants={item}>
-            <div className="rounded-2xl border border-brand/20 bg-white shadow-soft overflow-hidden">
-              <div className="p-6 sm:p-8 border-b border-slate-100">
-                <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-                  Endodontinės (pirminės) pagalbos kainos
-                </h2>
-
-                <p className="text-slate-700 leading-relaxed">
-                  Pirminės endodontinės pagalbos kaina priklauso nuo konkrečios klinikinės situacijos, danties būklės ir reikalingų
-                  paruošiamųjų procedūrų apimties. Kadangi kiekvienas atvejis yra individualus, prieš pradedant gydymą visada atliekama
-                  konsultacija ir diagnostika, leidžianti tiksliai įvertinti situaciją ir parinkti tinkamiausią sprendimą.
-                </p>
+            <div className="rounded-3xl border border-sky-200/40 p-7 sm:p-10 lg:p-12" style={{ backgroundColor: SL }}>
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                  <h2 className="text-3xl font-extrabold tracking-tight mb-2" style={{ color: P }}>
+                    Endodontinės (pirminės) pagalbos kainos
+                  </h2>
+                  <p className="text-slate-600">
+                    Pirminės endodontinės pagalbos kaina priklauso nuo konkrečios klinikinės situacijos, danties būklės ir reikalingų paruošiamųjų procedūrų apimties. Kadangi kiekvienas atvejis yra individualus, prieš pradedant gydymą visada atliekama konsultacija ir diagnostika, leidžianti tiksliai įvertinti situaciją ir parinkti tinkamiausią sprendimą.
+                  </p>
+                </div>
               </div>
 
-              <div className="grid md:grid-cols-2">
-                <div className="divide-y divide-slate-100">
-                  <div className="px-5 py-4">
-                    <div className="flex justify-between items-center mb-1 gap-4">
-                      <span className="text-slate-900 font-bold">Pirminė endodontinė pagalba</span>
-                      <span className="text-darkblue-700 font-bold whitespace-nowrap">nuo 70 €</span>
-                    </div>
-                    <span className="block text-slate-600 text-sm">
-                      Dažniausiai taikoma esant ūmiam skausmui ar uždegimui – stabilizavimui ir paruošimui tolimesniam gydymui.
-                    </span>
-                  </div>
-
-                  <div className="px-5 py-4">
-                    <div className="flex justify-between items-center mb-1 gap-4">
-                      <span className="text-slate-900 font-bold">Kanalų vaistai</span>
-                      <span className="text-darkblue-700 font-bold whitespace-nowrap">nuo 30 €</span>
-                    </div>
-                    <span className="block text-slate-600 text-sm">
-                      Vaistiniai preparatai kanalų dezinfekcijai ar uždegimo kontrolei, kai to reikia klinikinėje situacijoje.
-                    </span>
+              <div className="grid md:grid-cols-2 gap-5">
+                <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                  <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Pirminė pagalba</h3>
+                  <div className="divide-y divide-slate-100">
+                    {[
+                      ['Pirminė endodontinė pagalba', 'nuo 70 €'],
+                      ['Kanalų vaistai', 'nuo 30 €'],
+                    ].map(([name, price], i) => (
+                      <div key={i} className="flex justify-between items-center py-2.5">
+                        <span className="text-slate-600 text-sm">{name}</span>
+                        <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                <div className="divide-y divide-slate-100 md:border-l md:border-slate-100">
-                  <div className="px-5 py-4">
-                    <div className="flex justify-between items-center mb-1 gap-4">
-                      <span className="text-slate-900 font-bold">Vieno danties šaknies kanalo chemomechaninis paruošimas</span>
-                      <span className="text-darkblue-700 font-bold whitespace-nowrap">nuo 35 €</span>
-                    </div>
-                    <span className="block text-slate-600 text-sm">
-                      Kanalų valymas ir dezinfekcija pirminiame etape.
-                    </span>
-                  </div>
-
-                  <div className="px-5 py-4">
-                    <div className="flex justify-between items-center mb-1 gap-4">
-                      <span className="text-slate-900 font-bold">Vieno danties šaknies kanalo plombavimas (paruošiamasis)</span>
-                      <span className="text-darkblue-700 font-bold whitespace-nowrap">nuo 35 €</span>
-                    </div>
-                    <span className="block text-slate-600 text-sm">
-                      Laikinas arba paruošiamasis kanalų plombavimas, kai tai reikalinga danties apsaugai.
-                    </span>
+                <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                  <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Kanalų paruošimas</h3>
+                  <div className="divide-y divide-slate-100">
+                    {[
+                      ['Vieno danties šaknies kanalo chemomechaninis paruošimas', 'nuo 35 €'],
+                      ['Vieno danties šaknies kanalo plombavimas (paruošiamasis)', 'nuo 35 €'],
+                    ].map(([name, price], i) => (
+                      <div key={i} className="flex justify-between items-center py-2.5">
+                        <span className="text-slate-600 text-sm">{name}</span>
+                        <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
 
-              <div className="px-6 sm:px-8 py-5 border-t border-slate-100">
-                <p className="text-slate-700 leading-relaxed text-sm">
-                  Svarbu pabrėžti, kad tai yra paruošiamųjų procedūrų kainos. Galutinė pilno endodontinio gydymo kaina nustatoma gydymo
-                  įstaigoje, kurioje atliekamas visas šaknų kanalų gydymas. Skaidri kainodara leidžia pacientams aiškiai suprasti, už ką
-                  mokama kiekviename gydymo etape, ir ramiai planuoti tolimesnį gydymą.
-                </p>
-              </div>
+              <p className="text-slate-500 text-sm mt-6">
+                Svarbu pabrėžti, kad tai yra paruošiamųjų procedūrų kainos. Galutinė pilno endodontinio gydymo kaina nustatoma gydymo įstaigoje, kurioje atliekamas visas šaknų kanalų gydymas. Skaidri kainodara leidžia pacientams aiškiai suprasti, už ką mokama kiekviename gydymo etape, ir ramiai planuoti tolimesnį gydymą.
+              </p>
             </div>
           </motion.section>
 

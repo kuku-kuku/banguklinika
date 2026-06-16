@@ -49,6 +49,11 @@ function CheckIcon() {
   )
 }
 
+// Kainų dizaino žetonai
+const P  = '#002045'
+const S  = '#006b5f'
+const SL = '#ecf5fb'
+
 const tocSections = [
   { id: 'kainos', label: 'Kainos' },
   { id: 'kas-yra', label: 'Kas yra vaikų odontologija?' },
@@ -120,52 +125,51 @@ export default function VaikuOdontologija() {
           </motion.header>
 
           <motion.section id="kainos" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-            <div className="rounded-2xl border border-brand/20 bg-white shadow-soft overflow-hidden">
-              <div className="p-6 sm:p-8 border-b border-slate-100">
-                <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-                  Vaikų odontologijos kainos
-                </h2>
-
-                <div className="space-y-4 text-slate-700 leading-relaxed">
-                  <p>
+            <div className="rounded-3xl border border-sky-200/40 p-7 sm:p-10 lg:p-12" style={{ backgroundColor: SL }}>
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                  <h2 className="text-3xl font-extrabold tracking-tight mb-2" style={{ color: P }}>
+                    Vaikų odontologijos kainos
+                  </h2>
+                  <p className="text-slate-600">
                     Vaikų dantų gydymo kaina priklauso nuo vaiko amžiaus, dantų būklės, pasirinkto gydymo metodo ir procedūros sudėtingumo. Bangų odontologijos klinikoje prieš pradedant bet kokį gydymą pirmiausia atliekama apžiūra, kurios metu įvertinama situacija ir parenkamas tinkamiausias sprendimas, atsižvelgiant į vaiko savijautą.
                   </p>
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2">
-                <div className="divide-y divide-slate-100">
-                  <div className="flex justify-between items-center px-5 py-4">
-                    <span className="text-slate-700">Pirminė konsultacija ir profilaktika</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">20 €</span>
+              <div className="grid sm:grid-cols-2 gap-3 mb-5">
+                {[
+                  ['Pirminė konsultacija ir profilaktika', '20 €'],
+                ].map(([name, price], i) => (
+                  <div key={i} className="flex justify-between items-center bg-white rounded-2xl px-5 py-3 border" style={{ borderColor: S }}>
+                    <span className="text-slate-700 text-sm font-medium">{name}</span>
+                    <span className="font-extrabold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                   </div>
-                  <div className="flex justify-between items-center px-5 py-4">
-                    <span className="text-slate-700">Pieninių dantų tvarkymas (gydymas)</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 50 €</span>
-                  </div>
-                  <div className="flex justify-between items-center px-5 py-4">
-                    <span className="text-slate-700">Stiklojonomerinė / kompomerinė plomba</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 30 €</span>
-                  </div>
-                </div>
+                ))}
+              </div>
 
-                <div className="divide-y divide-slate-100 md:border-l md:border-slate-100">
-                  <div className="flex justify-between items-center px-5 py-4">
-                    <span className="text-slate-700">Komplikuoto ėduonies gydymas</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 60 €</span>
-                  </div>
-                  <div className="flex justify-between items-center px-5 py-4">
-                    <span className="text-slate-700">Adaptacinis vizitas (iki 30 min.)</span>
-                    <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">nuo 30 €</span>
+              <div className="grid md:grid-cols-2 gap-5">
+                <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                  <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Vaikų gydymas</h3>
+                  <div className="divide-y divide-slate-100">
+                    {[
+                      ['Pieninių dantų tvarkymas (gydymas)', 'nuo 50 €'],
+                      ['Stiklojonomerinė / kompomerinė plomba', 'nuo 30 €'],
+                      ['Komplikuoto ėduonies gydymas', 'nuo 60 €'],
+                      ['Adaptacinis vizitas (iki 30 min.)', 'nuo 30 €'],
+                    ].map(([name, price], i) => (
+                      <div key={i} className="flex justify-between items-center py-2.5">
+                        <span className="text-slate-600 text-sm">{name}</span>
+                        <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
 
-              <div className="px-6 sm:px-8 py-5 border-t border-slate-100">
-                <p className="text-slate-700 leading-relaxed text-sm">
-                  Galutinė vaikų dantų gydymo kaina aptariama individualiai, atsižvelgiant į konkrečią situaciją ir vaiko poreikius. Skaidrus kainų pateikimas leidžia tėvams jaustis ramiai planuojant vaiko odontologinę priežiūrą.
-                </p>
-              </div>
+              <p className="text-slate-500 text-sm mt-6">
+                Galutinė vaikų dantų gydymo kaina aptariama individualiai, atsižvelgiant į konkrečią situaciją ir vaiko poreikius. Skaidrus kainų pateikimas leidžia tėvams jaustis ramiai planuojant vaiko odontologinę priežiūrą.
+              </p>
             </div>
           </motion.section>
 

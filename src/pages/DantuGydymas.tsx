@@ -21,6 +21,11 @@ const sectionWrap = 'mb-12 scroll-mt-36 2xl:scroll-mt-24'
 const whiteCard = 'bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft'
 const innerCard = 'bg-white p-5 rounded-xl border border-slate-200 shadow-sm'
 
+// Kainų dizaino žetonai
+const P  = '#002045'
+const S  = '#006b5f'
+const SL = '#ecf5fb'
+
 // Ikonos
 function CheckIcon() {
   return (
@@ -122,80 +127,71 @@ export default function DantuGydymas() {
             </div>
 
             {/* KAINOS */}
-            <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
-              <div className="space-y-5">
-                <div className="w-full">
-                  <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-                    Dantų gydymo kainos
-                  </h2>
-                  <p className="text-slate-600 leading-relaxed">
-                    Dantų gydymo kaina priklauso nuo paciento amžiaus, dantų būklės, taikomo gydymo metodo ir procedūros sudėtingumo. Bangų odontologijos klinikoje prieš pradedant gydymą visuomet atliekama konsultacija ir profilaktinis patikrinimas, kurių metu sudaromas individualus gydymo planas ir aptariama preliminari gydymo apimtis bei kaina. Toks požiūris leidžia užtikrinti skaidrumą ir parinkti tinkamiausią sprendimą kiekvienam pacientui.
-                  </p>
+            <motion.section id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+              <div className="rounded-3xl border border-sky-200/40 p-7 sm:p-10 lg:p-12" style={{ backgroundColor: SL }}>
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                  <div>
+                    <h2 className="text-3xl font-extrabold tracking-tight mb-2" style={{ color: P }}>
+                      Dantų gydymo kainos
+                    </h2>
+                    <p className="text-slate-600">
+                      Dantų gydymo kaina priklauso nuo paciento amžiaus, dantų būklės, taikomo gydymo metodo ir procedūros sudėtingumo. Bangų odontologijos klinikoje prieš pradedant gydymą visuomet atliekama konsultacija ir profilaktinis patikrinimas, kurių metu sudaromas individualus gydymo planas ir aptariama preliminari gydymo apimtis bei kaina.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="w-full rounded-2xl border border-brand/20 bg-white shadow-soft overflow-hidden">
-                  <div className="grid lg:grid-cols-2">
-                    {/* KAIRĖ */}
-                    <div className="lg:border-r lg:border-slate-100">
-                      <div className="bg-brand-50/50 px-4 py-3 border-b border-slate-100 font-bold text-darkblue-700">
-                        Suaugusiųjų gydymas
-                      </div>
-                      <div className="divide-y divide-slate-100">
-                        <div className="flex justify-between items-center px-4 py-3 gap-4">
-                          <span className="text-slate-700">Konsultacija ir plano sudarymas</span>
-                          <span className="text-slate-900 font-bold whitespace-nowrap">20 €</span>
-                        </div>
-                        <div className="flex justify-between items-center px-4 py-3 gap-4">
-                          <span className="text-slate-700">Plombavimas helio plomba</span>
-                          <span className="text-slate-900 font-bold whitespace-nowrap">70 – 90 €</span>
-                        </div>
-                        <div className="flex justify-between items-center px-4 py-3 gap-4">
-                          <span className="text-slate-700">Plombavimas stiklojonomerine plomba</span>
-                          <span className="text-slate-900 font-bold whitespace-nowrap">40 – 60 €</span>
-                        </div>
-                        <div className="flex justify-between items-center px-4 py-3 gap-4">
-                          <span className="text-slate-700">Laikina plomba</span>
-                          <span className="text-slate-900 font-bold whitespace-nowrap">nuo 40 €</span>
-                        </div>
-                        <div className="flex justify-between items-center px-4 py-3 gap-4">
-                          <span className="text-slate-700">Nuskausminimas / Rentgeno nuotrauka</span>
-                          <span className="text-slate-900 font-bold whitespace-nowrap">po 10 €</span>
-                        </div>
-                      </div>
+                <div className="grid sm:grid-cols-2 gap-3 mb-5">
+                  {[
+                    ['Konsultacija ir plano sudarymas', '20 €'],
+                    ['Konsultacija vaikams', '20 €'],
+                  ].map(([name, price], i) => (
+                    <div key={i} className="flex justify-between items-center bg-white rounded-2xl px-5 py-3 border" style={{ borderColor: S }}>
+                      <span className="text-slate-700 text-sm font-medium">{name}</span>
+                      <span className="font-extrabold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                     </div>
+                  ))}
+                </div>
 
-                    {/* DEŠINĖ */}
-                    <div>
-                      <div className="bg-brand-50/50 px-4 py-3 border-b border-slate-100 font-bold text-darkblue-700">
-                        Vaikų gydymas
-                      </div>
-                      <div className="divide-y divide-slate-100">
-                        <div className="flex justify-between items-center px-4 py-3 gap-4">
-                          <span className="text-slate-700">Konsultacija vaikams</span>
-                          <span className="text-slate-900 font-bold whitespace-nowrap">20 €</span>
+                <div className="grid md:grid-cols-2 gap-5">
+                  <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                    <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Suaugusiųjų gydymas</h3>
+                    <div className="divide-y divide-slate-100">
+                      {[
+                        ['Plombavimas helio plomba', '70 – 90 €'],
+                        ['Plombavimas stiklojonomerine plomba', '40 – 60 €'],
+                        ['Laikina plomba', 'nuo 40 €'],
+                        ['Nuskausminimas / Rentgeno nuotrauka', 'po 10 €'],
+                      ].map(([name, price], i) => (
+                        <div key={i} className="flex justify-between items-center py-2.5">
+                          <span className="text-slate-600 text-sm">{name}</span>
+                          <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                         </div>
-                        <div className="flex justify-between items-center px-4 py-3 gap-4">
-                          <span className="text-slate-700">Pieninių dantų gydymas</span>
-                          <span className="text-slate-900 font-bold whitespace-nowrap">nuo 50 €</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                    <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Vaikų gydymas</h3>
+                    <div className="divide-y divide-slate-100">
+                      {[
+                        ['Pieninių dantų gydymas', 'nuo 50 €'],
+                        ['Stiklojonomerinė / kompomerinė plomba', 'nuo 30 €'],
+                        ['Vizitas, kai vaikas nesileidžia gydomas (iki 30 min.)', 'nuo 30 €'],
+                      ].map(([name, price], i) => (
+                        <div key={i} className="flex justify-between items-center py-2.5">
+                          <span className="text-slate-600 text-sm">{name}</span>
+                          <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                         </div>
-                        <div className="flex justify-between items-center px-4 py-3 gap-4">
-                          <span className="text-slate-700">Stiklojonomerinė / kompomerinė plomba</span>
-                          <span className="text-slate-900 font-bold whitespace-nowrap">nuo 30 €</span>
-                        </div>
-                        <div className="flex justify-between items-center px-4 py-3 gap-4">
-                          <span className="text-slate-700">Vizitas, kai vaikas nesileidžia gydomas (iki 30 min.)</span>
-                          <span className="text-slate-900 font-bold whitespace-nowrap">nuo 30 €</span>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
 
-                <p className="text-slate-700 leading-relaxed text-sm">
+                <p className="text-slate-500 text-sm mt-6">
                   Tiksli dantų gydymo kaina visada nustatoma individualios konsultacijos metu, įvertinus konkrečią situaciją ir gydymo poreikius. Aiški ir skaidri kainodara leidžia pacientams ir tėvams jaustis užtikrintai planuojant dantų gydymą.
                 </p>
               </div>
-            </div>
+            </motion.section>
           </motion.header>
 
           {/*DOCTOR CTA*/}

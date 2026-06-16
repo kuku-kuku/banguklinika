@@ -21,6 +21,11 @@ const sectionWrap = 'mb-12 scroll-mt-36 2xl:scroll-mt-24'
 const whiteCard = 'bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft'
 const innerCard = 'bg-white p-5 rounded-xl border border-slate-200 shadow-sm'
 
+// Kainų dizaino žetonai
+const P  = '#002045'
+const S  = '#006b5f'
+const SL = '#ecf5fb'
+
 // Ikonos
 function CheckIcon() {
   return (
@@ -123,52 +128,56 @@ export default function BurnosHigiena() {
             </div>
 
             {/* KAINOS */}
-            <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
-              <div className="space-y-5">
-                <div className="w-full">
-                  <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-                    Burnos higienos paslaugų kainos mūsų klinikoje
-                  </h2>
-                  <p className="text-slate-600 leading-relaxed">
-                    Profesionalios burnos higienos kaina priklauso nuo individualios paciento burnos būklės, apnašų kiekio ir pasirenkamų papildomų procedūrų.
-                  </p>
+            <motion.section id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+              <div className="rounded-3xl border border-sky-200/40 p-7 sm:p-10 lg:p-12" style={{ backgroundColor: SL }}>
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                  <div>
+                    <h2 className="text-3xl font-extrabold tracking-tight mb-2" style={{ color: P }}>
+                      Burnos higienos kainos
+                    </h2>
+                    <p className="text-slate-600">
+                      Profesionalios burnos higienos kaina priklauso nuo individualios paciento burnos būklės, apnašų kiekio ir pasirenkamų papildomų procedūrų.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="w-full rounded-2xl border border-brand/20 bg-white shadow-soft overflow-hidden">
-                  <div className="grid md:grid-cols-2">
-                    <div className="md:border-r md:border-slate-100">
-                      <div className="divide-y divide-slate-100">
-                        <div className="flex justify-between items-center px-5 py-4 gap-4">
-                          <span className="text-slate-700 font-medium">Pilna profesionali burnos higiena</span>
-                          <span className="text-slate-900 font-bold whitespace-nowrap">60 – 80 €</span>
+                <div className="grid md:grid-cols-2 gap-5">
+                  <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                    <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Higienos procedūros</h3>
+                    <div className="divide-y divide-slate-100">
+                      {[
+                        ['Pilna profesionali burnos higiena', '60 – 80 €'],
+                        ['Pakartotinė burnos higiena (reguliariai lankantis)', 'nuo 50 €'],
+                      ].map(([name, price], i) => (
+                        <div key={i} className="flex justify-between items-center py-2.5">
+                          <span className="text-slate-600 text-sm">{name}</span>
+                          <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                         </div>
-                        <div className="flex justify-between items-center px-5 py-4 gap-4">
-                          <span className="text-slate-700 font-medium">Pakartotinė burnos higiena (reguliariai lankantis)</span>
-                          <span className="text-slate-900 font-bold whitespace-nowrap">nuo 50 €</span>
-                        </div>
-                      </div>
+                      ))}
                     </div>
+                  </div>
 
-                    <div className="border-t border-slate-100 md:border-t-0">
-                      <div className="divide-y divide-slate-100">
-                        <div className="flex justify-between items-center px-5 py-4 gap-4">
-                          <span className="text-slate-700 font-medium">Fluoro lako aplikacija</span>
-                          <span className="text-slate-900 font-bold whitespace-nowrap">nuo 20 €</span>
+                  <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                    <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Papildomos procedūros</h3>
+                    <div className="divide-y divide-slate-100">
+                      {[
+                        ['Fluoro lako aplikacija', 'nuo 20 €'],
+                        ['ICON gydymas (fluorozės dėmėms)', '60 €'],
+                      ].map(([name, price], i) => (
+                        <div key={i} className="flex justify-between items-center py-2.5">
+                          <span className="text-slate-600 text-sm">{name}</span>
+                          <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                         </div>
-                        <div className="flex justify-between items-center px-5 py-4 gap-4">
-                          <span className="text-slate-700 font-medium">ICON gydymas (fluorozės dėmėms)</span>
-                          <span className="text-slate-900 font-bold whitespace-nowrap">60 €</span>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
 
-                <p className="text-slate-700 leading-relaxed text-sm">
+                <p className="text-slate-500 text-sm mt-6">
                   Tiksli procedūros apimtis ir galutinė kaina aptariama individualios konsultacijos metu, atsižvelgiant į paciento poreikius ir burnos būklę.
                 </p>
               </div>
-            </div>
+            </motion.section>
           </motion.header>
 
           {/* DOCTOR CTA */}

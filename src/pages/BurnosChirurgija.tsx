@@ -21,6 +21,11 @@ const sectionWrap = 'mb-12 scroll-mt-36 2xl:scroll-mt-24'
 const whiteCard = 'bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft'
 const innerCard = 'bg-white p-5 rounded-xl border border-slate-200 shadow-sm'
 
+// Kainų dizaino žetonai
+const P  = '#002045'
+const S  = '#006b5f'
+const SL = '#ecf5fb'
+
 // Ikonos
 function CheckIcon() {
   return (
@@ -100,74 +105,56 @@ export default function BurnosChirurgija() {
             </div>
 
             {/* KAINOS */}
-            <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
-              <div className="space-y-5">
-                <div className="w-full">
-                  <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-                    Burnos chirurgijos paslaugų kainos mūsų klinikoje
-                  </h2>
-                  <p className="text-slate-700 leading-relaxed">
-                    Burnos chirurgijos paslaugų kaina priklauso nuo procedūros pobūdžio, sudėtingumo ir individualios paciento klinikinės situacijos. Prieš kiekvieną chirurginę intervenciją atliekama konsultacija, kurios metu įvertinama burnos būklė ir parenkamas tinkamiausias gydymo sprendimas.
-                  </p>
+            <motion.section id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+              <div className="rounded-3xl border border-sky-200/40 p-7 sm:p-10 lg:p-12" style={{ backgroundColor: SL }}>
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                  <div>
+                    <h2 className="text-3xl font-extrabold tracking-tight mb-2" style={{ color: P }}>
+                      Burnos chirurgijos kainos
+                    </h2>
+                    <p className="text-slate-600">
+                      Burnos chirurgijos paslaugų kaina priklauso nuo procedūros pobūdžio, sudėtingumo ir individualios paciento klinikinės situacijos. Prieš kiekvieną chirurginę intervenciją atliekama konsultacija, kurios metu įvertinama burnos būklė ir parenkamas tinkamiausias gydymo sprendimas.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="w-full rounded-2xl border border-brand/20 bg-white shadow-soft overflow-hidden">
-                  <div className="grid md:grid-cols-2">
-                    <div className="md:border-r md:border-slate-100">
-                      <div className="divide-y divide-slate-100">
-                        <div className="px-5 py-4">
-                          <div className="flex justify-between items-baseline mb-1 gap-4">
-                            <span className="text-slate-900 font-bold">Kaulo augmentacija</span>
-                            <span className="text-slate-900 font-bold whitespace-nowrap">150 – 600 €</span>
-                          </div>
-                          <span className="block text-slate-700 text-sm">
-                            Priklausomai nuo reikalingos kaulo apimties ir taikomos gydymo metodikos.
-                          </span>
+                <div className="grid md:grid-cols-2 gap-5">
+                  <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                    <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Chirurginės procedūros</h3>
+                    <div className="divide-y divide-slate-100">
+                      {[
+                        ['Šaknies šalinimo procedūra', '60 – 80 €'],
+                        ['Danties šalinimas', '80 – 100 €'],
+                        ['Komplikuotas protinių dantų šalinimas', '120 – 150 €'],
+                      ].map(([name, price], i) => (
+                        <div key={i} className="flex justify-between items-center py-2.5">
+                          <span className="text-slate-600 text-sm">{name}</span>
+                          <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                         </div>
-
-                        <div className="px-5 py-4">
-                          <div className="flex justify-between items-baseline mb-1 gap-4">
-                            <span className="text-slate-900 font-bold">Šaknies šalinimo procedūra</span>
-                            <span className="text-slate-900 font-bold whitespace-nowrap">60 – 80 €</span>
-                          </div>
-                          <span className="block text-slate-700 text-sm">
-                            Kai dantis jau yra pašalintas, tačiau likusi šaknis kelia uždegimo ar infekcijos riziką.
-                          </span>
-                        </div>
-                      </div>
+                      ))}
                     </div>
+                  </div>
 
-                    <div className="border-t border-slate-100 md:border-t-0">
-                      <div className="divide-y divide-slate-100">
-                        <div className="px-5 py-4">
-                          <div className="flex justify-between items-baseline mb-1 gap-4">
-                            <span className="text-slate-900 font-bold">Danties šalinimas</span>
-                            <span className="text-slate-900 font-bold whitespace-nowrap">80 – 100 €</span>
-                          </div>
-                          <span className="block text-slate-700 text-sm">
-                            Atsižvelgiant į danties padėtį ir procedūros sudėtingumą.
-                          </span>
+                  <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                    <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Kaulo procedūros</h3>
+                    <div className="divide-y divide-slate-100">
+                      {[
+                        ['Kaulo augmentacija', '150 – 600 €'],
+                      ].map(([name, price], i) => (
+                        <div key={i} className="flex justify-between items-center py-2.5">
+                          <span className="text-slate-600 text-sm">{name}</span>
+                          <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                         </div>
-
-                        <div className="px-5 py-4">
-                          <div className="flex justify-between items-baseline mb-1 gap-4">
-                            <span className="text-slate-900 font-bold">Komplikuotas protinių dantų šalinimas</span>
-                            <span className="text-slate-900 font-bold whitespace-nowrap">120 – 150 €</span>
-                          </div>
-                          <span className="block text-slate-700 text-sm">
-                            Atliekamas kai dantis neišdygęs pilnai, yra netaisyklingoje padėtyje ar sukelia aplinkinių audinių pažeidimus.
-                          </span>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
 
-                <p className="text-slate-700 leading-relaxed text-sm">
+                <p className="text-slate-500 text-sm mt-6">
                   Tiksli procedūros apimtis ir galutinė kaina aptariama individualios konsultacijos metu, atsižvelgiant į paciento burnos būklę, diagnostinius duomenis ir planuojamą gydymo eigą.
                 </p>
               </div>
-            </div>
+            </motion.section>
           </motion.header>
 
           {/* DOCTOR CTA*/}

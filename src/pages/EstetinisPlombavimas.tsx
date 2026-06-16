@@ -21,6 +21,11 @@ const sectionWrap = 'mb-14 scroll-mt-36 2xl:scroll-mt-24'
 const whiteCard = 'bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft'
 const innerCard = 'bg-white p-5 rounded-xl border border-slate-200 shadow-sm'
 
+// Kainų dizaino žetonai
+const P  = '#002045'
+const S  = '#006b5f'
+const SL = '#ecf5fb'
+
 // Ikonos
 function CheckIcon() {
   return (
@@ -120,54 +125,41 @@ export default function EstetinisPlombavimas() {
             </div>
 
             {/* KAINOS */}
-            <div id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-                Estetinio plombavimo kainos mūsų klinikoje
-              </h2>
+            <motion.section id="kainos" className="mt-8 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+              <div className="rounded-3xl border border-sky-200/40 p-7 sm:p-10 lg:p-12" style={{ backgroundColor: SL }}>
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                  <div>
+                    <h2 className="text-3xl font-extrabold tracking-tight mb-2" style={{ color: P }}>
+                      Estetinio plombavimo kainos
+                    </h2>
+                    <p className="text-slate-600">
+                      Estetinio plombavimo kaina priklauso nuo restauruojamo danties būklės, pažeidimo apimties ir reikalingų estetinių korekcijų. Prieš procedūrą visuomet atliekama konsultacija, kurios metu įvertinama situacija ir parenkamas tinkamiausias gydymo sprendimas, leidžiantis pasiekti optimalų estetinį ir funkcinį rezultatą.
+                    </p>
+                  </div>
+                </div>
 
-              <div className="mb-6">
-                <p className="text-slate-700 leading-relaxed">
-                  Estetinio plombavimo kaina priklauso nuo restauruojamo danties būklės, pažeidimo apimties ir reikalingų estetinių korekcijų.
-                  Prieš procedūrą visuomet atliekama konsultacija, kurios metu įvertinama situacija ir parenkamas tinkamiausias gydymo sprendimas,
-                  leidžiantis pasiekti optimalų estetinį ir funkcinį rezultatą.
+                <div className="grid md:grid-cols-2 gap-5">
+                  <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                    <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Estetinis plombavimas</h3>
+                    <div className="divide-y divide-slate-100">
+                      {[
+                        ['Estetinis vieno danties plombavimas', '150 – 200 €'],
+                        ['Estetinės plombos poliravimas (atnaujinimas)', 'nuo 29 €'],
+                      ].map(([name, price], i) => (
+                        <div key={i} className="flex justify-between items-center py-2.5">
+                          <span className="text-slate-600 text-sm">{name}</span>
+                          <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-slate-500 text-sm mt-6">
+                  Tiksli procedūros apimtis ir galutinė kaina aptariama individualios konsultacijos metu, atsižvelgiant į paciento poreikius ir norimą rezultatą. Skaidri kainodara leidžia priimti užtikrintą sprendimą dėl estetinės odontologijos paslaugų Klaipėdoje – mūsų klinikoje.
                 </p>
               </div>
-
-              <div className="rounded-2xl border border-brand/20 bg-white shadow-soft overflow-hidden mb-6">
-                <div className="grid md:grid-cols-2">
-                  <div className="divide-y divide-slate-100">
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-5 py-4 gap-2 sm:gap-4">
-                      <span className="text-slate-700 font-medium">Estetinis vieno danties plombavimas</span>
-                      <span className="text-darkblue-700 font-bold whitespace-nowrap">150 – 200 €</span>
-                    </div>
-                  </div>
-
-                  <div className="divide-y divide-slate-100 md:border-l md:border-slate-100">
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-5 py-4 gap-2 sm:gap-4">
-                      <span className="text-slate-700 font-medium">Estetinės plombos poliravimas (atnaujinimas)</span>
-                      <span className="text-darkblue-700 font-bold whitespace-nowrap">nuo 29 €</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className={whiteCard}>
-                <div className="text-slate-700 leading-relaxed space-y-4">
-                  <p>
-                    Procedūros metu dantis atkuriamas sluoksniavimo metodu, pritaikant formą, spalvą ir paviršiaus tekstūrą prie natūralių dantų.
-                  </p>
-                  <p>
-                    Jeigu reikalingas tik jau esamos restauracijos atnaujinimas, atliekamas estetinės plombos poliravimas. Ši procedūra padeda
-                    atkurti blizgesį, pagerinti estetinį vaizdą ir prailginti restauracijos tarnavimo laiką.
-                  </p>
-                  <p>
-                    Tiksli procedūros apimtis ir galutinė kaina aptariama individualios konsultacijos metu, atsižvelgiant į paciento poreikius ir
-                    norimą rezultatą. Skaidri kainodara leidžia priimti užtikrintą sprendimą dėl estetinės odontologijos paslaugų Klaipėdoje – mūsų
-                    klinikoje.
-                  </p>
-                </div>
-              </div>
-            </div>
+            </motion.section>
           </motion.header>
 
           {/* DOCTOR CTA*/}

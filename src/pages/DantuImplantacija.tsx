@@ -23,6 +23,11 @@ const tocSections = [
   { id: "kodel-mes", label: "Kodėl Bangų klinika?" },
 ]
 
+// Kainų dizaino žetonai
+const P  = '#002045'
+const S  = '#006b5f'
+const SL = '#ecf5fb'
+
 const container = {
   hidden: { opacity: 0, y: 10 },
   visible: {
@@ -214,50 +219,56 @@ export default function DantuImplantacija() {
           {/* KAINOS */}
           <motion.section
             id="implantai-kainos"
-            className="mb-12 rounded-2xl border border-brand bg-white shadow-soft overflow-hidden scroll-mt-36 2xl:scroll-mt-24"
+            className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
             variants={item}
           >
-            <div className="bg-brand-50/50 p-4 border-b border-brand/10 font-bold text-darkblue-700">
-              Naudojami dantų implantai ir jų kainos
-            </div>
-
-            <div className="divide-y divide-slate-100">
-              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Straumann® implantas</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">650 €</span>
-              </div>
-              <div className="px-4 pb-4 -mt-2 text-slate-600 text-sm leading-relaxed">
-                Tai vienas lyderiaujančių implantų gamintojų pasaulyje, garsėjantis itin aukštu prigijimo rodikliu,
-                ilgaamžiškumu ir patikimumu. Šie implantai dažnai pasirenkami sudėtingesniais atvejais ar pacientams,
-                ieškantiems aukščiausios klasės sprendimo.
+            <div className="rounded-3xl border border-sky-200/40 p-7 sm:p-10 lg:p-12" style={{ backgroundColor: SL }}>
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                  <h2 className="text-3xl font-extrabold tracking-tight mb-2" style={{ color: P }}>
+                    Dantų implantacijos kainos
+                  </h2>
+                  <p className="text-slate-600">
+                    Galutinė dantų implantacijos kaina priklauso nuo reikalingų implantų skaičiaus, pasirinkto implanto tipo, žandikaulio kaulo būklės ir papildomų procedūrų poreikio. Prieš pradedant gydymą visuomet atliekama išsami konsultacija ir diagnostika.
+                  </p>
+                </div>
               </div>
 
-              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Neodent® implantas</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">500 €</span>
-              </div>
-              <div className="px-4 pb-4 -mt-2 text-slate-600 text-sm leading-relaxed">
-                Aukštos kokybės implantai, pasižymintys patikima konstrukcija ir geru kainos bei kokybės santykiu. Neodent
-                implantai yra plačiai naudojami šiuolaikinėje odontologijoje ir dažnai pasirenkami pacientų, ieškančių
-                patikimo, ilgaamžio sprendimo už racionalią kainą. Šie implantai užtikrina stabilų prigijimą ir tinka
-                įvairioms klinikinėms situacijoms – nuo pavienių dantų atkūrimo iki sudėtingesnių implantacijos atvejų.
-              </div>
-            </div>
+              <div className="grid md:grid-cols-2 gap-5">
+                <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                  <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Naudojami dantų implantai</h3>
+                  <div className="divide-y divide-slate-100">
+                    {[
+                      ['Straumann® implantas', '650 €'],
+                      ['Neodent® implantas', '500 €'],
+                    ].map(([name, price], i) => (
+                      <div key={i} className="flex justify-between items-center py-2.5">
+                        <span className="text-slate-600 text-sm">{name}</span>
+                        <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
-            <div className="bg-brand-50/50 p-4 border-y border-brand/10 font-bold text-darkblue-700 mt-2">
-              Papildomos procedūros
-            </div>
-            <div className="divide-y divide-slate-100">
-              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Sinuso pakėlimo operacija</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">500–700 €</span>
+                <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                  <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Papildomos procedūros</h3>
+                  <div className="divide-y divide-slate-100">
+                    {[
+                      ['Sinuso pakėlimo operacija', '500–700 €'],
+                    ].map(([name, price], i) => (
+                      <div key={i} className="flex justify-between items-center py-2.5">
+                        <span className="text-slate-600 text-sm">{name}</span>
+                        <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div className="px-4 pb-4 -mt-2 text-slate-600 text-sm leading-relaxed">
-                Ši procedūra atliekama tuomet, kai viršutiniame žandikaulyje nepakanka kaulo implanto stabilumui. Ji leidžia
-                sudaryti tinkamas sąlygas implantacijai ir ženkliai padidina ilgalaikės sėkmės tikimybę.
-              </div>
-            </div>
 
+              <p className="text-slate-500 text-sm mt-6">
+                Tiksli implantacijos kaina aptariama individualios konsultacijos metu, įvertinus paciento burnos būklę, diagnostinius duomenis ir planuojamą gydymo eigą. Skaidri kainodara ir pažangios technologijos leidžia Bangų odontologijos klinikoje pasiūlyti finansiškai prieinamus implantacijos sprendimus, neatsisakant kokybės ir ilgaamžiškumo.
+              </p>
+            </div>
           </motion.section>
 
           <div className="space-y-4 mb-12">
