@@ -44,21 +44,21 @@ const DENTIST_SCHEMA = {
   paymentAccepted: "Cash, Credit Card",
 };
 
-function serviceSchema(name, description, url) {
+function serviceSchema(name, serviceType, description, url) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${url}#service`,
     name,
+    serviceType,
     description,
     url,
-    provider: {
-      "@type": "Dentist",
-      name: "Bangų klinika",
-      url: SITE_ORIGIN,
-    },
     areaServed: {
       "@type": "City",
       name: "Klaipėda",
+    },
+    provider: {
+      "@id": `${SITE_ORIGIN}/#dentist`,
     },
   };
 }
@@ -98,79 +98,79 @@ const pages = [
     route: "/paslaugos/burnos-higiena",
     title: "Burnos (dantų) higiena Klaipėdoje | Bangų klinika",
     description: "Profesionali burnos higiena Klaipėdoje. Apnašų ir akmenų šalinimas, profilaktika, patarimai.",
-    schema: serviceSchema("Burnos higiena", "Profesionali burnos higiena Klaipėdoje. Apnašų ir akmenų šalinimas, profilaktika, patarimai.", `${SITE_ORIGIN}/paslaugos/burnos-higiena/`),
+    schema: serviceSchema("Burnos higiena Klaipėdoje", "Profesionali burnos higiena", "Profesionali burnos higiena teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga padeda palaikyti sveikus dantis ir dantenas pacientams Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/burnos-higiena/`),
   },
   {
     route: "/paslaugos/dantu-plombavimas",
     title: "Dantų plombavimas Klaipėdoje | Kaina | Bangų klinika",
     description: "Dantų plombavimas Klaipėdoje – kokybiškas gydymas, modernios medžiagos ir ilgalaikis rezultatas.",
-    schema: serviceSchema("Dantų plombavimas", "Dantų plombavimas Klaipėdoje – kokybiškas gydymas, modernios medžiagos ir ilgalaikis rezultatas.", `${SITE_ORIGIN}/paslaugos/dantu-plombavimas/`),
+    schema: serviceSchema("Dantų plombavimas Klaipėdoje", "Dantų plombavimas", "Dantų plombavimo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Klinikoje atliekamas pažeistų dantų atstatymas plombomis pacientams Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/dantu-plombavimas/`),
   },
   {
     route: "/paslaugos/estetinis-plombavimas",
     title: "Estetinis dantų plombavimas Klaipėdoje - Bangų odontologijos klinika | Bangų klinika",
     description: "Estetinis plombavimas – šypsenos atstatymas, formos ir spalvos korekcija natūraliam rezultatui.",
-    schema: serviceSchema("Estetinis plombavimas", "Estetinis plombavimas – šypsenos atstatymas, formos ir spalvos korekcija natūraliam rezultatui.", `${SITE_ORIGIN}/paslaugos/estetinis-plombavimas/`),
+    schema: serviceSchema("Estetinis plombavimas Klaipėdoje", "Estetinis plombavimas", "Estetinio plombavimo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga skirta atkurti dantų formą, spalvą ir estetiką pacientams Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/estetinis-plombavimas/`),
   },
   {
     route: "/paslaugos/burnos-chirurgija",
     title: "Burnos chirurgija Klaipėdoje | Bangų klinika",
     description: "Burnos chirurgija Klaipėdoje: procedūros, konsultacijos ir saugus gydymas klinikoje.",
-    schema: serviceSchema("Burnos chirurgija", "Burnos chirurgija Klaipėdoje: procedūros, konsultacijos ir saugus gydymas klinikoje.", `${SITE_ORIGIN}/paslaugos/burnos-chirurgija/`),
+    schema: serviceSchema("Burnos chirurgija Klaipėdoje", "Burnos chirurgija", "Burnos chirurgijos paslaugos teikiamos Bangų odontologijos klinikoje Klaipėdoje. Klinikoje atliekamos odontologinės chirurginės procedūros pacientams Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/burnos-chirurgija/`),
   },
   {
     route: "/paslaugos/dantu-balinimas",
     title: "Dantų balinimas Klaipėdoje | Bangų klinika",
     description: "Dantų balinimas Klaipėdoje – profesionalus balinimas klinikoje ir rekomendacijos po procedūros.",
-    schema: serviceSchema("Dantų balinimas", "Dantų balinimas Klaipėdoje – profesionalus balinimas klinikoje ir rekomendacijos po procedūros.", `${SITE_ORIGIN}/paslaugos/dantu-balinimas/`),
+    schema: serviceSchema("Dantų balinimas Klaipėdoje", "Dantų balinimas", "Dantų balinimo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga skirta pacientams, norintiems šviesesnės ir estetiškesnės šypsenos Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/dantu-balinimas/`),
   },
   {
     route: "/paslaugos/dantu-taisymas-gydymas",
     title: "Dantų gydymas, taisymas (tvarkymas) Klaipėdoje | Bangų klinika",
     description: "Dantų taisymas ir gydymas Klaipėdoje – diagnostika, gydymo planas ir komfortiškos procedūros.",
-    schema: serviceSchema("Dantų gydymas", "Dantų taisymas ir gydymas Klaipėdoje – diagnostika, gydymo planas ir komfortiškos procedūros.", `${SITE_ORIGIN}/paslaugos/dantu-taisymas-gydymas/`),
+    schema: serviceSchema("Dantų gydymas Klaipėdoje", "Dantų gydymas", "Dantų gydymo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Klinikoje atliekamas dantų taisymas ir gydymas pacientams Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/dantu-taisymas-gydymas/`),
   },
   {
     route: "/paslaugos/vaiku-odontologija",
     title: "Vaikų odontologija Klaipėdoje | Bangų klinika",
     description: "Vaikų odontologija Klaipėdoje – švelnus bendravimas, profilaktika ir gydymas mažiesiems.",
-    schema: serviceSchema("Vaikų odontologija", "Vaikų odontologija Klaipėdoje – švelnus bendravimas, profilaktika ir gydymas mažiesiems.", `${SITE_ORIGIN}/paslaugos/vaiku-odontologija/`),
+    schema: serviceSchema("Vaikų odontologija Klaipėdoje", "Vaikų odontologija", "Vaikų odontologijos paslaugos teikiamos Bangų odontologijos klinikoje Klaipėdoje. Klinikoje atliekama vaikų dantų priežiūra ir gydymas pacientams Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/vaiku-odontologija/`),
   },
   {
     route: "/paslaugos/dantu-protezavimas",
     title: "Dantų protezavimas Klaipėdoje | Bangų klinika",
     description: "Dantų protezavimas: vainikėliai, protezai, individualūs sprendimai šypsenos atstatymui.",
-    schema: serviceSchema("Dantų protezavimas", "Dantų protezavimas: vainikėliai, protezai, individualūs sprendimai šypsenos atstatymui.", `${SITE_ORIGIN}/paslaugos/dantu-protezavimas/`),
+    schema: serviceSchema("Dantų protezavimas Klaipėdoje", "Dantų protezavimas", "Dantų protezavimo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga skirta pacientams, norintiems atkurti dantų funkciją ir estetiką Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/dantu-protezavimas/`),
   },
   {
     route: "/paslaugos/dantu-traukimas",
     title: "Dantų traukimas (rovimas) Klaipėdoje | Bangų klinika",
     description: "Saugus dantų šalinimas Klaipėdoje – konsultacija, nuskausminimas ir priežiūra po procedūros.",
-    schema: serviceSchema("Dantų traukimas", "Saugus dantų šalinimas Klaipėdoje – konsultacija, nuskausminimas ir priežiūra po procedūros.", `${SITE_ORIGIN}/paslaugos/dantu-traukimas/`),
+    schema: serviceSchema("Dantų traukimas Klaipėdoje", "Dantų traukimas", "Dantų traukimo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Klinikoje atliekamas dantų šalinimas pacientams Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/dantu-traukimas/`),
   },
   {
     route: "/paslaugos/dantu-tiesinimas",
     title: "Dantų tiesinimas kapomis (Ordoline) Klaipėdoje | Bangų klinika",
     description: "Dantų tiesinimas: konsultacija, gydymo planas ir šiuolaikiniai sprendimai taisyklingam sąkandžiui.",
-    schema: serviceSchema("Dantų tiesinimas", "Dantų tiesinimas: konsultacija, gydymo planas ir šiuolaikiniai sprendimai taisyklingam sąkandžiui.", `${SITE_ORIGIN}/paslaugos/dantu-tiesinimas/`),
+    schema: serviceSchema("Dantų tiesinimas Klaipėdoje", "Dantų tiesinimas", "Dantų tiesinimo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga skirta pacientams, norintiems tiesesnės šypsenos Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/dantu-tiesinimas/`),
   },
   {
     route: "/paslaugos/endodontinis-gydymas",
     title: "Endodontinis (šaknų kanalų) gydymas Klaipėdoje | Bangų klinika",
     description: "Kanalų gydymas (endodontija) Klaipėdoje – tikslus gydymas ir skausmo kontrolė.",
-    schema: serviceSchema("Endodontinis gydymas", "Kanalų gydymas (endodontija) Klaipėdoje – tikslus gydymas ir skausmo kontrolė.", `${SITE_ORIGIN}/paslaugos/endodontinis-gydymas/`),
+    schema: serviceSchema("Endodontinis gydymas Klaipėdoje", "Endodontinis gydymas", "Endodontinis gydymas teikiamas Bangų odontologijos klinikoje Klaipėdoje. Paslauga skirta dantų šaknų kanalų gydymui pacientams Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/endodontinis-gydymas/`),
   },
   {
     route: "/paslaugos/dantu-implantacija",
     title: "Dantų implantacija Klaipėdoje | Bangų klinika",
     description: "Dantų implantacija Klaipėdoje – konsultacija, implantai, gydymo eiga ir priežiūra po procedūros.",
-    schema: serviceSchema("Dantų implantacija", "Dantų implantacija Klaipėdoje – konsultacija, implantai, gydymo eiga ir priežiūra po procedūros.", `${SITE_ORIGIN}/paslaugos/dantu-implantacija/`),
+    schema: serviceSchema("Dantų implantacija Klaipėdoje", "Dantų implantacija", "Dantų implantacijos paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Klinika padeda pacientams atkurti prarastus dantis implantais Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/dantu-implantacija/`),
   },
   {
     route: "/paslaugos/skubi-pagalba",
     title: "Skubi odontologinė pagalba Klaipėdoje | Bangų klinika",
     description: "Skubi odontologinė pagalba Klaipėdoje – greitas sprendimas staigiam dantų skausmui, infekcijai ar traumai.",
-    schema: serviceSchema("Skubi odontologinė pagalba", "Skubi odontologinė pagalba Klaipėdoje – greitas sprendimas staigiam dantų skausmui, infekcijai ar traumai.", `${SITE_ORIGIN}/paslaugos/skubi-pagalba/`),
+    schema: serviceSchema("Skubi odontologinė pagalba Klaipėdoje", "Skubi odontologinė pagalba", "Skubi odontologinė pagalba teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga skirta pacientams, kuriems reikalinga skubi dantų gydymo, skausmo malšinimo ar kita odontologinė pagalba Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/skubi-pagalba/`),
   },
   // ===== LATVIAN PAGES /lv/* =====
   {
