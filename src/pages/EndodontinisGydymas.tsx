@@ -63,14 +63,14 @@ const tocSections = [
 export default function EndodontinisGydymas() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "MedicalProcedure",
-    name: "Endodontinis gydymas",
-    description:
-      "Profesionalus endodontinis (šaknų kanalų) gydymas Klaipėdoje. Pirminė endodontinė pagalba: diagnostika, skausmo ir uždegimo mažinimas, danties paruošimas tolimesniam gydymui.",
-    provider: {
-      "@type": "Dentist",
-      name: "Bangų klinika",
-    },
+    "@type": "Service",
+    "@id": "https://www.banguklinika.lt/paslaugos/endodontinis-gydymas/#service",
+    "name": "Endodontinis gydymas Klaipėdoje",
+    "serviceType": "Endodontinis gydymas",
+    "description": "Endodontinis gydymas teikiamas Bangų odontologijos klinikoje Klaipėdoje. Paslauga skirta dantų šaknų kanalų gydymui pacientams Klaipėdos mieste.",
+    "url": "https://www.banguklinika.lt/paslaugos/endodontinis-gydymas/",
+    "areaServed": { "@type": "City", "name": "Klaipėda" },
+    "provider": { "@id": "https://www.banguklinika.lt/#dentist" },
   }
 
   const pageRef = useRef(null)

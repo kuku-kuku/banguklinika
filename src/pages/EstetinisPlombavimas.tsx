@@ -56,14 +56,15 @@ const tocSections = [
 
 export default function EstetinisPlombavimas() {
   const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'MedicalProcedure',
-    name: 'Estetinis dantų plombavimas',
-    description: 'Estetinis dantų plombavimas Klaipėdoje. Šypsenos korekcija, tarpų uždarymas, nuskilusių dantų atstatymas.',
-    provider: {
-      '@type': 'Dentist',
-      name: 'Bangų klinika'
-    }
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://www.banguklinika.lt/paslaugos/estetinis-plombavimas/#service",
+    "name": "Estetinis plombavimas Klaipėdoje",
+    "serviceType": "Estetinis plombavimas",
+    "description": "Estetinio plombavimo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga skirta atkurti dantų formą, spalvą ir estetiką pacientams Klaipėdos mieste.",
+    "url": "https://www.banguklinika.lt/paslaugos/estetinis-plombavimas/",
+    "areaServed": { "@type": "City", "name": "Klaipėda" },
+    "provider": { "@id": "https://www.banguklinika.lt/#dentist" },
   }
 
   const pageRef = useRef(null)

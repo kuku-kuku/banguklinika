@@ -69,13 +69,14 @@ const tocSections = [
 export default function DantuTiesinimas() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "MedicalProcedure",
-    "name": "Dantų tiesinimas",
-    "description": "Profesionalus dantų tiesinimas Klaipėdoje su ORDOLINE kapomis. Nematomas, patogus ir efektyvus būdas tiesinti dantis.",
-    "provider": {
-      "@type": "Dentist",
-      "name": "Bangų klinika"
-    }
+    "@type": "Service",
+    "@id": "https://www.banguklinika.lt/paslaugos/dantu-tiesinimas/#service",
+    "name": "Dantų tiesinimas Klaipėdoje",
+    "serviceType": "Dantų tiesinimas",
+    "description": "Dantų tiesinimo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga skirta pacientams, norintiems tiesesnės šypsenos Klaipėdos mieste.",
+    "url": "https://www.banguklinika.lt/paslaugos/dantu-tiesinimas/",
+    "areaServed": { "@type": "City", "name": "Klaipėda" },
+    "provider": { "@id": "https://www.banguklinika.lt/#dentist" },
   }
 
   const pageRef = useRef(null)

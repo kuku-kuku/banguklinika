@@ -65,13 +65,14 @@ const tocSections = [
 export default function DantuPlombavimas() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "MedicalProcedure",
-    "name": "Dantų plombavimas",
-    "description": "Profesionalus dantų plombavimas Klaipėdoje. Estetinis ir gydomasis plombavimas, ėduonies gydymas.",
-    "provider": {
-      "@type": "Dentist",
-      "name": "Bangų klinika"
-    }
+    "@type": "Service",
+    "@id": "https://www.banguklinika.lt/paslaugos/dantu-plombavimas/#service",
+    "name": "Dantų plombavimas Klaipėdoje",
+    "serviceType": "Dantų plombavimas",
+    "description": "Dantų plombavimo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Klinikoje atliekamas pažeistų dantų atstatymas plombomis pacientams Klaipėdos mieste.",
+    "url": "https://www.banguklinika.lt/paslaugos/dantu-plombavimas/",
+    "areaServed": { "@type": "City", "name": "Klaipėda" },
+    "provider": { "@id": "https://www.banguklinika.lt/#dentist" },
   }
 
   const pageRef = useRef(null)

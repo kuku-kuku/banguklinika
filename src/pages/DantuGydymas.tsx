@@ -66,13 +66,14 @@ const tocSections = [
 export default function DantuGydymas() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "MedicalProcedure",
-    "name": "Dantų taisymas ir gydymas",
-    "description": "Profesionalus dantų gydymas Klaipėdoje. Terapinis gydymas, plombavimas, kanalų gydymas, skubi pagalba.",
-    "provider": {
-      "@type": "Dentist",
-      "name": "Bangų klinika"
-    }
+    "@type": "Service",
+    "@id": "https://www.banguklinika.lt/paslaugos/dantu-taisymas-gydymas/#service",
+    "name": "Dantų gydymas Klaipėdoje",
+    "serviceType": "Dantų gydymas",
+    "description": "Dantų gydymo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Klinikoje atliekamas dantų taisymas ir gydymas pacientams Klaipėdos mieste.",
+    "url": "https://www.banguklinika.lt/paslaugos/dantu-taisymas-gydymas/",
+    "areaServed": { "@type": "City", "name": "Klaipėda" },
+    "provider": { "@id": "https://www.banguklinika.lt/#dentist" },
   }
 
   const pageRef = useRef(null)

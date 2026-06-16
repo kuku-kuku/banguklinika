@@ -62,13 +62,14 @@ const tocSections = [
 export default function DantuBalinimas() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "MedicalProcedure",
-    "name": "Dantų balinimas",
-    "description": "Profesionalus dantų balinimas Klaipėdoje su BEYOND® sistema ir kapomis namuose.",
-    "provider": {
-      "@type": "Dentist",
-      "name": "Bangų klinika"
-    }
+    "@type": "Service",
+    "@id": "https://www.banguklinika.lt/paslaugos/dantu-balinimas/#service",
+    "name": "Dantų balinimas Klaipėdoje",
+    "serviceType": "Dantų balinimas",
+    "description": "Dantų balinimo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga skirta pacientams, norintiems šviesesnės ir estetiškesnės šypsenos Klaipėdos mieste.",
+    "url": "https://www.banguklinika.lt/paslaugos/dantu-balinimas/",
+    "areaServed": { "@type": "City", "name": "Klaipėda" },
+    "provider": { "@id": "https://www.banguklinika.lt/#dentist" },
   }
 
   const pageRef = useRef(null)

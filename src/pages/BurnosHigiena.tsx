@@ -67,13 +67,14 @@ const tocSections = [
 export default function BurnosHigiena() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "MedicalProcedure",
-    "name": "Profesionali burnos higiena",
-    "description": "Burnos higiena su AIRFLOW technologija Klaipėdoje.",
-    "provider": {
-      "@type": "Dentist",
-      "name": "Bangų klinika"
-    }
+    "@type": "Service",
+    "@id": "https://www.banguklinika.lt/paslaugos/burnos-higiena/#service",
+    "name": "Burnos higiena Klaipėdoje",
+    "serviceType": "Profesionali burnos higiena",
+    "description": "Profesionali burnos higiena teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga padeda palaikyti sveikus dantis ir dantenas pacientams Klaipėdos mieste.",
+    "url": "https://www.banguklinika.lt/paslaugos/burnos-higiena/",
+    "areaServed": { "@type": "City", "name": "Klaipėda" },
+    "provider": { "@id": "https://www.banguklinika.lt/#dentist" },
   }
 
   const pageRef = useRef(null)

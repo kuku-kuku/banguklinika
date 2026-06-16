@@ -40,15 +40,15 @@ const tocSections = [
 
 export default function SkubiPagalba() {
   const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'MedicalProcedure',
-    name: 'Skubi odontologinė pagalba',
-    description:
-      'Skubi odontologinė pagalba Klaipėdoje – greitas sprendimas staigiam dantų skausmui, infekcijai ar traumai.',
-    provider: {
-      '@type': 'Dentist',
-      name: 'Bangų klinika'
-    }
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://www.banguklinika.lt/paslaugos/skubi-pagalba/#service",
+    "name": "Skubi odontologinė pagalba Klaipėdoje",
+    "serviceType": "Skubi odontologinė pagalba",
+    "description": "Skubi odontologinė pagalba teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga skirta pacientams, kuriems reikalinga skubi dantų gydymo, skausmo malšinimo ar kita odontologinė pagalba Klaipėdos mieste.",
+    "url": "https://www.banguklinika.lt/paslaugos/skubi-pagalba/",
+    "areaServed": { "@type": "City", "name": "Klaipėda" },
+    "provider": { "@id": "https://www.banguklinika.lt/#dentist" },
   }
 
   const pageRef = useRef(null)

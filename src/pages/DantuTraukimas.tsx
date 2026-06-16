@@ -45,15 +45,15 @@ const tocSections = [
 
 export default function DantuTraukimas() {
   const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'MedicalProcedure',
-    name: 'Dantų traukimas',
-    description:
-      'Profesionalus dantų traukimas Klaipėdoje. Neskausmingas dantų šalinimas, protiniai dantys, vaikų dantų traukimas.',
-    provider: {
-      '@type': 'Dentist',
-      name: 'Bangų klinika'
-    }
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://www.banguklinika.lt/paslaugos/dantu-traukimas/#service",
+    "name": "Dantų traukimas Klaipėdoje",
+    "serviceType": "Dantų traukimas",
+    "description": "Dantų traukimo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Klinikoje atliekamas dantų šalinimas pacientams Klaipėdos mieste.",
+    "url": "https://www.banguklinika.lt/paslaugos/dantu-traukimas/",
+    "areaServed": { "@type": "City", "name": "Klaipėda" },
+    "provider": { "@id": "https://www.banguklinika.lt/#dentist" },
   }
 
   const pageRef = useRef(null)

@@ -76,12 +76,15 @@ const tocSections = [
 
 export default function DantuProtezavimas() {
   const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'MedicalProcedure',
-    name: 'Dantų protezavimas',
-    description:
-      'Profesionalus dantų protezavimas Klaipėdoje. CEREC technologija, cirkonio keramika, protezavimas ant implantų.',
-    provider: { '@type': 'Dentist', name: 'Bangų klinika' },
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://www.banguklinika.lt/paslaugos/dantu-protezavimas/#service",
+    "name": "Dantų protezavimas Klaipėdoje",
+    "serviceType": "Dantų protezavimas",
+    "description": "Dantų protezavimo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga skirta pacientams, norintiems atkurti dantų funkciją ir estetiką Klaipėdos mieste.",
+    "url": "https://www.banguklinika.lt/paslaugos/dantu-protezavimas/",
+    "areaServed": { "@type": "City", "name": "Klaipėda" },
+    "provider": { "@id": "https://www.banguklinika.lt/#dentist" },
   }
 
   const pageRef = useRef<HTMLDivElement | null>(null)

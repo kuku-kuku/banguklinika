@@ -62,14 +62,15 @@ const tocSections = [
 
 export default function VaikuOdontologija() {
   const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'MedicalProcedure',
-    name: 'Vaikų odontologija',
-    description: 'Profesionali vaikų dantų priežiūra ir gydymas Klaipėdoje. Adaptaciniai vizitai, pieninių dantų gydymas.',
-    provider: {
-      '@type': 'Dentist',
-      name: 'Bangų klinika',
-    },
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://www.banguklinika.lt/paslaugos/vaiku-odontologija/#service",
+    "name": "Vaikų odontologija Klaipėdoje",
+    "serviceType": "Vaikų odontologija",
+    "description": "Vaikų odontologijos paslaugos teikiamos Bangų odontologijos klinikoje Klaipėdoje. Klinikoje atliekama vaikų dantų priežiūra ir gydymas pacientams Klaipėdos mieste.",
+    "url": "https://www.banguklinika.lt/paslaugos/vaiku-odontologija/",
+    "areaServed": { "@type": "City", "name": "Klaipėda" },
+    "provider": { "@id": "https://www.banguklinika.lt/#dentist" },
   }
 
   const pageRef = useRef(null)
