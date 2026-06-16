@@ -38,8 +38,8 @@ function SectionDivider() {
   )
 }
 
-function EyeBrow({ children }: { children: React.ReactNode }) {
-  return <p className="text-xs font-bold tracking-[0.2em] uppercase mb-4" style={{ color: C.teal }}>{children}</p>
+function EyeBrow(_: { children: React.ReactNode }) {
+  return null
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
