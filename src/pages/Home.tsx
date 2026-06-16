@@ -120,7 +120,7 @@ function TeamCarousel() {
   return (
     <div className="relative select-none">
       {/* Cards stage */}
-      <div className="relative h-[560px] sm:h-[660px] flex items-center justify-center overflow-hidden" style={{ perspective: '1100px' }}>
+      <div className="relative h-[640px] sm:h-[760px] flex items-center justify-center overflow-hidden" style={{ perspective: '1100px' }}>
         {TEAM.map((member, i) => {
           const d = getDist(i)
           const abs = Math.abs(d)
