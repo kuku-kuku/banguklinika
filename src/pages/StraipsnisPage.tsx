@@ -120,6 +120,25 @@ export default function StraipsnisPage() {
     }
   }, [activeId])
 
+  // Wheel handler: scroll TOC when it has room, otherwise let Lenis scroll the page
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    const nav = tocNavRef.current
+    if (!nav) return
+    function onWheel(e: WheelEvent) {
+      const { scrollTop, scrollHeight, clientHeight } = nav!
+      const atTop = scrollTop === 0 && e.deltaY < 0
+      const atBottom = scrollTop + clientHeight >= scrollHeight - 1 && e.deltaY > 0
+      if (!atTop && !atBottom) {
+        e.stopPropagation()
+        e.preventDefault()
+        nav!.scrollTop += e.deltaY
+      }
+    }
+    nav.addEventListener('wheel', onWheel, { passive: false })
+    return () => nav.removeEventListener('wheel', onWheel)
+  }, [])
+
   function scrollTo(id: string) {
     const el = pageRef.current?.querySelector<HTMLElement>(`#${CSS.escape(id)}`)
     if (el) {
@@ -378,7 +397,7 @@ export default function StraipsnisPage() {
                     <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-2 px-1">
                       Turinys
                     </p>
-                    <nav ref={tocNavRef} className="max-h-56 overflow-y-auto" data-lenis-prevent>
+                    <nav ref={tocNavRef} className="max-h-56 overflow-y-auto">
                       {tocSections.map(({ id, label }) => (
                         <a
                           key={id}
