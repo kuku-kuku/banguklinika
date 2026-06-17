@@ -292,6 +292,7 @@ export default function Footer() {
                 <li><Link to="/apie" className="footer-link">Apie</Link></li>
                 <li><Link to="/ypatingi-pasiulymai" className="footer-link">Ypatingi pasiūlymai</Link></li>
                 <li><Link to="/draugai" className="footer-link">Draugai</Link></li>
+                <li><Link to="/straipsniai" className="footer-link">Straipsniai</Link></li>
               </>
             )}
           </ul>
