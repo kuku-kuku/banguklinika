@@ -378,7 +378,7 @@ export default function StraipsnisPage() {
                     <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-2 px-1">
                       Turinys
                     </p>
-                    <nav ref={tocNavRef} className="max-h-56 overflow-y-auto">
+                    <nav ref={tocNavRef} className="max-h-56 overflow-y-auto" data-lenis-prevent>
                       {tocSections.map(({ id, label }) => (
                         <a
                           key={id}
