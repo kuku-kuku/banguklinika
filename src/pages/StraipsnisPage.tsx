@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
@@ -76,18 +76,46 @@ export default function StraipsnisPage() {
   const { slug } = useParams<{ slug: string }>()
   const post = getPost(slug ?? '')
   const pageRef = useRef<HTMLDivElement>(null)
+  const [activeId, setActiveId] = useState('')
 
   if (!post) return <Navigate to="/straipsniai" replace />
 
   const SITE = 'https://www.banguklinika.lt'
 
-  // Build TOC sections from headings + optional FAQ
   const tocSections: TocSection[] = [
     ...post.sections
       .filter(s => s.h)
       .map(s => ({ id: slugify(s.h!), label: s.h! })),
     ...(post.faq && post.faq.length > 0 ? [{ id: 'duk', label: 'Dažniausiai užduodami klausimai' }] : []),
   ]
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    if (tocSections.length > 0) setActiveId(tocSections[0].id)
+
+    function update() {
+      let active = tocSections[0]?.id ?? ''
+      for (const { id } of tocSections) {
+        const el = pageRef.current?.querySelector<HTMLElement>(`#${CSS.escape(id)}`)
+        if (!el) continue
+        if (el.getBoundingClientRect().top <= 160) active = id
+      }
+      setActiveId(active)
+    }
+
+    window.addEventListener('scroll', update, { passive: true })
+    requestAnimationFrame(() => requestAnimationFrame(update))
+    return () => window.removeEventListener('scroll', update)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [post.slug])
+
+  function scrollTo(id: string) {
+    const el = pageRef.current?.querySelector<HTMLElement>(`#${CSS.escape(id)}`)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      window.history.pushState(null, '', `#${id}`)
+    }
+  }
 
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -200,130 +228,159 @@ export default function StraipsnisPage() {
 
       {/* Article body */}
       <section className="py-12 md:py-16">
-        <div className="max-w-screen-2xl mx-auto px-6 lg:px-12 2xl:flex 2xl:gap-8 2xl:items-start">
+        <div className={W}>
+          {/* Mobile TOC sticky bar only — desktop sidebar handled below */}
+          <div className="lg:hidden">
+            <TableOfContents
+              sections={tocSections}
+              title="Turinys"
+              rootRef={pageRef as React.RefObject<HTMLElement>}
+            />
+          </div>
 
-          {/* TOC — mobile sticky dropdown + 2xl left sidebar */}
-          <TableOfContents
-            sections={tocSections}
-            title="Turinys"
-            rootRef={pageRef as React.RefObject<HTMLElement>}
-            cta={{ label: 'Registruotis', to: '/kontaktai#registracija' }}
-          />
+          <div className="lg:grid lg:grid-cols-[1fr_280px] lg:gap-12 xl:gap-16">
 
-          {/* Content + right sidebar */}
-          <div ref={pageRef} className="min-w-0 flex-1">
-            <div className="lg:grid lg:grid-cols-[1fr_280px] lg:gap-12 xl:gap-16">
-
-              {/* Main article */}
-              <div>
-                <article className="prose-article">
-                  {post.sections.map((section, i) => (
-                    <AnimatedSection key={i}>
-                      {section.image && (
-                        <div className="not-prose my-6 rounded-2xl overflow-hidden shadow-md">
-                          <img
-                            src={section.image}
-                            alt={section.h ?? ''}
-                            className="w-full object-cover"
-                            style={{ maxHeight: 420 }}
-                          />
-                        </div>
-                      )}
-                      {section.h && (
-                        <h2
-                          id={slugify(section.h)}
-                          className="scroll-mt-36 2xl:scroll-mt-24"
-                          style={{ color: C.deepTeal }}
-                        >
-                          {section.h}
-                        </h2>
-                      )}
-                      {section.p.map((para, j) => (
-                        <p key={j}>{para}</p>
-                      ))}
-                    </AnimatedSection>
-                  ))}
-
-                  {/* FAQ */}
-                  {post.faq && post.faq.length > 0 && (
-                    <AnimatedSection>
+            {/* Main article */}
+            <div ref={pageRef}>
+              <article className="prose-article">
+                {post.sections.map((section, i) => (
+                  <AnimatedSection key={i}>
+                    {section.image && (
+                      <div className="not-prose my-6 rounded-2xl overflow-hidden shadow-md">
+                        <img
+                          src={section.image}
+                          alt={section.h ?? ''}
+                          className="w-full object-cover"
+                          style={{ maxHeight: 420 }}
+                        />
+                      </div>
+                    )}
+                    {section.h && (
                       <h2
-                        id="duk"
-                        className="scroll-mt-36 2xl:scroll-mt-24"
+                        id={slugify(section.h)}
+                        className="scroll-mt-36"
                         style={{ color: C.deepTeal }}
                       >
-                        Dažniausiai užduodami klausimai
+                        {section.h}
                       </h2>
-                      <div className="not-prose space-y-4 mt-6">
-                        {post.faq.map((item, i) => (
-                          <div key={i}>
-                            {item.preImage && (
-                              <div className="rounded-2xl overflow-hidden shadow-md mb-4">
-                                <img
-                                  src={item.preImage}
-                                  alt=""
-                                  className="w-full object-cover"
-                                  style={{ maxHeight: 380 }}
-                                />
-                              </div>
-                            )}
-                            <div
-                              className="rounded-2xl border p-5"
-                              style={{ borderColor: `${C.charcoal}12`, background: '#F4F5F4' }}
-                            >
-                              <p className="font-bold text-sm leading-snug mb-2" style={{ color: C.deepTeal }}>
-                                {item.q}
-                              </p>
-                              <p className="text-sm text-slate-600 leading-relaxed">{item.a}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </AnimatedSection>
-                  )}
-                </article>
-              </div>
+                    )}
+                    {section.p.map((para, j) => (
+                      <p key={j}>{para}</p>
+                    ))}
+                  </AnimatedSection>
+                ))}
 
-              {/* Right sidebar — CTA card */}
-              <aside className="hidden lg:block">
-                <div className="sticky top-28">
-                  <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                    <p
-                      className="text-[10px] font-bold tracking-[0.18em] uppercase mb-2"
-                      style={{ color: C.teal }}
-                    >
-                      Pirmasis vizitas
-                    </p>
-                    <h3
-                      className="text-base font-extrabold leading-snug mb-2"
+                {/* FAQ */}
+                {post.faq && post.faq.length > 0 && (
+                  <AnimatedSection>
+                    <h2
+                      id="duk"
+                      className="scroll-mt-36"
                       style={{ color: C.deepTeal }}
                     >
-                      Pirminė konsultacija nemokama
-                    </h3>
-                    <p className="text-sm text-slate-500 leading-relaxed mb-5">
-                      Turite klausimų? Mūsų gydytojai įvertins situaciją ir pasiūlys tinkamiausią sprendimą.
-                    </p>
-                    <a
-                      href={`tel:${CLINIC.phone}`}
-                      className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold text-sm text-white transition-opacity hover:opacity-90"
-                      style={{ background: C.teal }}
-                    >
-                      <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.4 2.11 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16z"/>
-                      </svg>
-                      {CLINIC.phone}
-                    </a>
-                    <Link
-                      to="/kontaktai#registracija"
-                      className="flex items-center justify-center w-full py-3 mt-2 rounded-xl font-bold text-sm transition-colors hover:bg-slate-50"
-                      style={{ border: `1.5px solid ${C.teal}`, color: C.teal }}
-                    >
-                      Registruotis internetu
-                    </Link>
-                  </div>
-                </div>
-              </aside>
+                      Dažniausiai užduodami klausimai
+                    </h2>
+                    <div className="not-prose space-y-4 mt-6">
+                      {post.faq.map((item, i) => (
+                        <div key={i}>
+                          {item.preImage && (
+                            <div className="rounded-2xl overflow-hidden shadow-md mb-4">
+                              <img
+                                src={item.preImage}
+                                alt=""
+                                className="w-full object-cover"
+                                style={{ maxHeight: 380 }}
+                              />
+                            </div>
+                          )}
+                          <div
+                            className="rounded-2xl border p-5"
+                            style={{ borderColor: `${C.charcoal}12`, background: '#F4F5F4' }}
+                          >
+                            <p className="font-bold text-sm leading-snug mb-2" style={{ color: C.deepTeal }}>
+                              {item.q}
+                            </p>
+                            <p className="text-sm text-slate-600 leading-relaxed">{item.a}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </AnimatedSection>
+                )}
+              </article>
             </div>
+
+            {/* Right sidebar — CTA + compact TOC */}
+            <aside className="hidden lg:block">
+              <div className="sticky top-28 space-y-4">
+
+                {/* CTA card */}
+                <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <p
+                    className="text-[10px] font-bold tracking-[0.18em] uppercase mb-2"
+                    style={{ color: C.teal }}
+                  >
+                    Pirmasis vizitas
+                  </p>
+                  <h3
+                    className="text-base font-extrabold leading-snug mb-2"
+                    style={{ color: C.deepTeal }}
+                  >
+                    Pirminė konsultacija nemokama
+                  </h3>
+                  <p className="text-sm text-slate-500 leading-relaxed mb-5">
+                    Turite klausimų? Mūsų gydytojai įvertins situaciją ir pasiūlys tinkamiausią sprendimą.
+                  </p>
+                  <a
+                    href={`tel:${CLINIC.phone}`}
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold text-sm text-white transition-opacity hover:opacity-90"
+                    style={{ background: C.teal }}
+                  >
+                    <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.4 2.11 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16z"/>
+                    </svg>
+                    {CLINIC.phone}
+                  </a>
+                  <Link
+                    to="/kontaktai#registracija"
+                    className="flex items-center justify-center w-full py-3 mt-2 rounded-xl font-bold text-sm transition-colors hover:bg-slate-50"
+                    style={{ border: `1.5px solid ${C.teal}`, color: C.teal }}
+                  >
+                    Registruotis internetu
+                  </Link>
+                </div>
+
+                {/* Compact TOC */}
+                {tocSections.length > 0 && (
+                  <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-2 px-1">
+                      Turinys
+                    </p>
+                    <nav className="max-h-60 overflow-y-auto">
+                      {tocSections.map(({ id, label }) => (
+                        <a
+                          key={id}
+                          href={`#${id}`}
+                          onClick={(e) => { e.preventDefault(); scrollTo(id) }}
+                          className={`flex items-start gap-2 px-2 py-1.5 rounded-lg text-xs leading-snug transition-colors no-underline ${
+                            activeId === id
+                              ? 'text-[#0ABBB5] font-semibold bg-teal-50'
+                              : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'
+                          }`}
+                        >
+                          <span
+                            className={`mt-px shrink-0 w-1 h-1 rounded-full self-center transition-all ${
+                              activeId === id ? 'bg-[#0ABBB5] scale-150' : 'bg-slate-300'
+                            }`}
+                          />
+                          {label}
+                        </a>
+                      ))}
+                    </nav>
+                  </div>
+                )}
+              </div>
+            </aside>
           </div>
         </div>
       </section>
