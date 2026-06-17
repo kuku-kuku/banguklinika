@@ -76,6 +76,7 @@ export default function StraipsnisPage() {
   const { slug } = useParams<{ slug: string }>()
   const post = getPost(slug ?? '')
   const pageRef = useRef<HTMLDivElement>(null)
+  const tocNavRef = useRef<HTMLElement>(null)
   const [activeId, setActiveId] = useState('')
 
   if (!post) return <Navigate to="/straipsniai" replace />
@@ -108,6 +109,16 @@ export default function StraipsnisPage() {
     return () => window.removeEventListener('scroll', update)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [post.slug])
+
+  // Auto-scroll TOC nav to keep active item visible
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    if (!tocNavRef.current || !activeId) return
+    const activeEl = tocNavRef.current.querySelector<HTMLElement>(`[data-toc-id="${activeId}"]`)
+    if (activeEl) {
+      activeEl.scrollIntoView({ block: 'nearest' })
+    }
+  }, [activeId])
 
   function scrollTo(id: string) {
     const el = pageRef.current?.querySelector<HTMLElement>(`#${CSS.escape(id)}`)
@@ -356,10 +367,11 @@ export default function StraipsnisPage() {
                     <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-2 px-1">
                       Turinys
                     </p>
-                    <nav className="max-h-60 overflow-y-auto">
+                    <nav ref={tocNavRef} className="max-h-60 overflow-y-auto overscroll-contain">
                       {tocSections.map(({ id, label }) => (
                         <a
                           key={id}
+                          data-toc-id={id}
                           href={`#${id}`}
                           onClick={(e) => { e.preventDefault(); scrollTo(id) }}
                           className={`flex items-start gap-2 px-2 py-1.5 rounded-lg text-xs leading-snug transition-colors no-underline ${
