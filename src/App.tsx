@@ -57,6 +57,8 @@ import { LangProvider } from './context/LanguageContext'
 import { useLenis } from './hooks/useLenis'
 import Draugai from './pages/Draugai'
 import MusuDarbai from './pages/MusuDarbai'
+import Straipsniai from './pages/Straipsniai'
+import StraipsnisPage from './pages/StraipsnisPage'
 import InbankWidget from './components/InbankWidget'
 
 /** Thin wrapper that provides lang="lv" context to all /lv/* pages */
@@ -114,7 +116,8 @@ export default function App() {
           <Route path="/paslaugos/skubi-pagalba" element={<SkubiPagalba />} />
           <Route path="/draugai" element={<Draugai />} />
           <Route path="/musu-darbai" element={<MusuDarbai />} />
-          <Route path="/musu-darbai" element={<MusuDarbai />} />
+          <Route path="/straipsniai" element={<Straipsniai />} />
+          <Route path="/straipsniai/:slug" element={<StraipsnisPage />} />
 
 
 

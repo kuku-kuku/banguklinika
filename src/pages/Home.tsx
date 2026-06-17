@@ -8,6 +8,7 @@ import AnimatedSection from '../components/AnimatedSection'
 import { CLINIC } from '../data/clinic'
 import ReviewsCarousel from '../components/ReviewsCarousel'
 import home from '../content/home.json'
+import { BLOG_POSTS, formatDate } from '../data/blog'
 
 // ─── Brand palette ────────────────────────────────────────────────────────────
 const C = {
@@ -593,6 +594,91 @@ export default function Home() {
               </div>
             </div>
           </AnimatedSection>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* ══ BLOG PREVIEW ══════════════════════════════════════════════════ */}
+      <section className="py-2 pb-8 md:pb-12">
+        <div className={W}>
+          <AnimatedSection>
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+              <div>
+                <p className="text-xs font-bold tracking-[0.2em] uppercase mb-2" style={{ color: C.teal }}>
+                  Iš mūsų blogo
+                </p>
+                <h2 className="text-3xl sm:text-4xl font-bold tracking-tight" style={{ color: C.deepTeal }}>
+                  Naudinga informacija
+                </h2>
+              </div>
+              <Link
+                to="/straipsniai"
+                className="text-sm font-bold transition-opacity hover:opacity-75 shrink-0"
+                style={{ color: C.teal }}
+              >
+                Žiūrėti visus →
+              </Link>
+            </div>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {BLOG_POSTS.slice(0, 3).map((post, i) => (
+              <motion.div
+                key={post.slug}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.4, delay: i * 0.08, ease: [0.4, 0, 0.2, 1] }}
+              >
+                <Link
+                  to={`/straipsniai/${post.slug}`}
+                  className="group flex flex-col rounded-2xl overflow-hidden bg-white border transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl h-full"
+                  style={{ borderColor: `${C.charcoal}12` }}
+                >
+                  <div className="relative overflow-hidden" style={{ aspectRatio: '16/9' }}>
+                    <img
+                      src={post.coverImage}
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{ background: `linear-gradient(to top, ${C.deepTeal}60, transparent)` }}
+                    />
+                  </div>
+                  <div className="flex flex-col flex-1 p-5">
+                    <p className="text-xs text-slate-400 mb-2">{formatDate(post.date)}</p>
+                    <h3
+                      className="font-bold text-[15px] leading-snug mb-2 transition-colors duration-200 group-hover:text-[#0ABBB5]"
+                      style={{ color: C.deepTeal }}
+                    >
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-slate-500 leading-relaxed flex-1 line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                    <div
+                      className="flex items-center gap-1.5 mt-4 text-xs font-bold transition-all duration-200 group-hover:gap-2.5"
+                      style={{ color: C.teal }}
+                    >
+                      Skaityti daugiau <span>→</span>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="flex justify-center mt-10">
+            <Link
+              to="/straipsniai"
+              className="inline-flex items-center gap-2.5 px-10 py-4 rounded-2xl font-bold text-base transition-all hover:scale-[1.03] hover:shadow-xl"
+              style={{ border: `2px solid ${C.teal}`, color: C.teal, background: 'white' }}
+            >
+              Žiūrėti visus straipsnius →
+            </Link>
+          </div>
         </div>
       </section>
 

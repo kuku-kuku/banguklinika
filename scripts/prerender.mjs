@@ -179,6 +179,42 @@ const pages = [
     description: "Staigus dantų skausmas ar trauma? Skubi odontologinė pagalba Klaipėdoje esant uždegimui, tinimui ar netikėtai traumai. Registruokitės⏩Bangų klinikoje jau dabar.",
     schema: serviceSchema("Skubi odontologinė pagalba Klaipėdoje", "Skubi odontologinė pagalba", "Skubi odontologinė pagalba teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga skirta pacientams, kuriems reikalinga skubi dantų gydymo, skausmo malšinimo ar kita odontologinė pagalba Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/skubi-pagalba/`),
   },
+  // ===== BLOG =====
+  {
+    route: "/straipsniai",
+    title: "Straipsniai apie dantų sveikatą | Bangų klinika",
+    description: "Naudinga informacija apie dantų sveikatą, gydymą ir priežiūrą. Odontologų patarimai ir atsakymai į dažniausius klausimus iš Bangų klinikos Klaipėdoje.",
+  },
+  {
+    route: "/straipsniai/ka-daryti-kai-skauda-danti",
+    title: "Ką daryti, kai skauda dantį? | Bangų klinika",
+    description: "Danties skausmas dažnai užklumpa netikėtai. Ką daryti, kai skauda dantį, kaip atskirti skubią situaciją ir kur kreiptis – atsakome į dažniausius klausimus.",
+  },
+  {
+    route: "/straipsniai/ka-daryti-kai-skauda-protini-danti",
+    title: "Ką daryti, kai skauda protinį dantį? | Bangų klinika",
+    description: "Protinio danties skausmas – viena dažniausių priežasčių, dėl kurių kreipiamasi į odontologą. Sužinokite priežastis, ką daryti ir kada būtina kreiptis į gydytoją.",
+  },
+  {
+    route: "/straipsniai/ar-skauda-kai-traukia-danti",
+    title: "Ar skauda, kai traukia dantį? | Bangų klinika",
+    description: "Ar danties traukimas skausminga procedūra? Ko tikėtis po rovimo ir kaip prižiūrėti žaizdą – atsakome į dažniausius klausimus apie danties šalinimą.",
+  },
+  {
+    route: "/straipsniai/kodel-skauda-danti-po-plombavimo",
+    title: "Kodėl skauda dantį po plombavimo? | Bangų klinika",
+    description: "Nedidelis jautrumas po plombavimo dažnai yra laikinas. Sužinokite, kada skausmas yra normali gijimo dalis ir kada reikia kreiptis į odontologą.",
+  },
+  {
+    route: "/straipsniai/ka-reikia-zinoti-po-danties-implantacijos",
+    title: "Ką reikia žinoti po danties implantacijos? | Bangų klinika",
+    description: "Po danties implantacijos svarbiausia tinkama priežiūra. Sužinokite, kokia savijauta yra normali, ką galima valgyti ir ko vengti, kad gijimas vyktų sklandžiai.",
+  },
+  {
+    route: "/straipsniai/kokie-yra-danties-implanto-atmetimo-pozymiai",
+    title: "Kokie yra danties implanto atmetimo požymiai? | Bangų klinika",
+    description: "Kaip atpažinti, kad implantas neprigijo? Sužinokite, į kokius požymius svarbu atkreipti dėmesį po dantų implantacijos ir kada reikia kreiptis į gydytoją.",
+  },
   // ===== LATVIAN PAGES /lv/* =====
   {
     route: "/lv",
