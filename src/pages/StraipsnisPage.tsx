@@ -352,8 +352,8 @@ export default function StraipsnisPage() {
             </div>
 
             {/* Right sidebar — CTA + compact TOC */}
-            <aside className="hidden lg:block">
-              <div className="sticky top-28 space-y-4">
+            <aside className="hidden lg:block self-start sticky top-28">
+              <div className="space-y-4">
 
                 {/* CTA card */}
                 <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
