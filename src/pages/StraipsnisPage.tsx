@@ -255,7 +255,13 @@ export default function StraipsnisPage() {
             <div ref={pageRef}>
               <article className="prose-article">
                 {post.sections.map((section, i) => (
-                  <AnimatedSection key={i}>
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ duration: 0.45 }}
+                  >
                     {section.image && (
                       <div className="not-prose my-6 rounded-2xl overflow-hidden shadow-md">
                         <img
@@ -278,12 +284,17 @@ export default function StraipsnisPage() {
                     {section.p.map((para, j) => (
                       <p key={j}>{para}</p>
                     ))}
-                  </AnimatedSection>
+                  </motion.div>
                 ))}
 
                 {/* FAQ */}
                 {post.faq && post.faq.length > 0 && (
-                  <AnimatedSection>
+                  <motion.div
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ duration: 0.45 }}
+                  >
                     <h2
                       id="duk"
                       className="scroll-mt-36"
@@ -316,7 +327,7 @@ export default function StraipsnisPage() {
                         </div>
                       ))}
                     </div>
-                  </AnimatedSection>
+                  </motion.div>
                 )}
               </article>
             </div>
@@ -367,7 +378,7 @@ export default function StraipsnisPage() {
                     <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-2 px-1">
                       Turinys
                     </p>
-                    <nav ref={tocNavRef} className="max-h-60 overflow-y-auto overscroll-contain">
+                    <nav ref={tocNavRef} className="max-h-56 overflow-y-auto">
                       {tocSections.map(({ id, label }) => (
                         <a
                           key={id}
