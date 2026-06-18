@@ -521,7 +521,6 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         h: 'Kur kreiptis, kai skauda dantį?',
-        image: 'https://images.unsplash.com/photo-1681939278218-a755fb2bf2d3?w=1200&q=80&fit=crop&auto=format',
         p: [
           'Kai skauda dantį, svarbu įvertinti skausmo stiprumą ir kitus simptomus. Jei skausmas nestiprus, pasireiškia tik valgant ar geriant šaltus gėrimus, galima registruotis į įprastą odontologo konsultaciją artimiausiu metu. Tačiau jei skausmas stiprus, pulsuojantis, trukdo miegoti, kartu atsiranda patinimas, pūlinys, kraujavimas ar danties trauma, reikalinga skubi odontologinė pagalba.',
           'Tokiais atvejais geriausia kreiptis į odontologijos kliniką, kuri teikia skubią pagalbą. Vizito metu gydytojas įvertina danties būklę, nustato skausmo priežastį ir parenka tinkamiausią sprendimą.',
@@ -566,7 +565,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { q: 'Ką daryti, jei labai skauda dantį?', a: 'Jei labai skauda dantį, pirmiausia švelniai išsivalykite dantis, praskalaukite burną drungnu vandeniu ir venkite karšto, šalto, saldaus ar kieto maisto. Jei yra patinimas, prie skruosto iš išorės galima pridėti šaltą kompresą. Stiprus, pulsuojantis ar ilgai nepraeinantis skausmas – ženklas, kad reikalinga odontologo apžiūra.' },
       { q: 'Ką daryti, kai skauda dantį ir nėra vaistų?', a: 'Švelniai išsivalykite dantis, praskalaukite burną drungnu vandeniu, naudokite šaltą kompresą jei yra patinimas. Nedėkite aspirino, česnako ar spirito tiesiai ant dantenų – tai gali pažeisti gleivinę. Kreipkitės į odontologą, jei skausmas stiprus ar kartojasi.' },
       { q: 'Ar danties skausmas gali praeiti savaime?', a: 'Kartais danties skausmas gali trumpam sumažėti, tačiau tai nebūtinai reiškia, kad problema išnyko. Uždegimas ar infekcija gali toliau progresuoti. Jei skausmas kartojasi ar stiprėja, reikėtų kreiptis į odontologą.' },
-      { q: 'Kur kreiptis, kai skauda dantį?', a: 'Jei skausmas nestiprus, galima registruotis į artimiausią odontologo konsultaciją. Jei skausmas stiprus, pulsuojantis, yra patinimas, pūlinys ar trauma, reikėtų kreiptis dėl skubios pagalbos. Bangų klinikoje Klaipėdoje teikiama pagalba esant ūmiam danties skausmui.' },
+      { q: 'Kur kreiptis, kai skauda dantį?', preImage: 'https://images.unsplash.com/photo-1681939278218-a755fb2bf2d3?w=1200&q=80&fit=crop&auto=format', a: 'Jei skausmas nestiprus, galima registruotis į artimiausią odontologo konsultaciją. Jei skausmas stiprus, pulsuojantis, yra patinimas, pūlinys ar trauma, reikėtų kreiptis dėl skubios pagalbos. Bangų klinikoje Klaipėdoje teikiama pagalba esant ūmiam danties skausmui.' },
       { q: 'Ką daryti, jei dantį skauda savaitgalį?', a: 'Įvertinkite simptomų rimtumą. Jei skausmas nestiprus, nėra patinimo ar pūlinio – registruokitės vizitui artimiausiu metu. Jei skausmas labai stiprus, patino veidas ar atsiranda pūlinys ir temperatūra – kreipkitės į skubią pagalbą.' },
       { q: 'Ar galima šildyti skaudamą dantį?', a: 'Šildyti skaudamos vietos nerekomenduojama, ypač jei yra patinimas ar įtariamas pūlinys. Šiluma gali paskatinti uždegimo plitimą. Saugesnis pasirinkimas – šaltas kompresas iš išorinės skruosto pusės.' },
     ],
