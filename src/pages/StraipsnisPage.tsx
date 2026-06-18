@@ -327,12 +327,14 @@ export default function StraipsnisPage() {
                               </p>
                             </div>
                             {item.preImage && (
-                              <img
-                                src={item.preImage}
-                                alt=""
-                                className="w-full object-cover"
-                                style={{ maxHeight: 380 }}
-                              />
+                              <div className="px-5 pb-2">
+                                <img
+                                  src={item.preImage}
+                                  alt=""
+                                  className="w-full object-cover rounded-xl"
+                                  style={{ maxHeight: 380 }}
+                                />
+                              </div>
                             )}
                             <div className="p-5">
                               <p className="text-sm text-slate-600 leading-relaxed">{item.a}</p>
