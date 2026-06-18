@@ -210,17 +210,6 @@ export default function StraipsnisPage() {
             </nav>
 
             <div className="max-w-3xl">
-              <div className="flex items-center gap-3 mb-4">
-                <span
-                  className="px-3 py-1 rounded-full text-[11px] font-bold text-white"
-                  style={{ background: C.teal }}
-                >
-                  {post.category}
-                </span>
-                <span className="text-xs text-slate-400">{formatDate(post.date)}</span>
-                <span className="text-xs text-slate-400">· {post.readTime} min. skaitymas</span>
-              </div>
-
               <h1
                 className="text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.15] tracking-tight"
                 style={{ color: C.deepTeal }}
