@@ -317,24 +317,26 @@ export default function StraipsnisPage() {
                     <div className="not-prose space-y-4 mt-6">
                       {post.faq.map((item, i) => (
                         <div key={i}>
-                          {item.preImage && (
-                            <div className="rounded-2xl overflow-hidden shadow-md mb-4">
+                          <div
+                            className="rounded-2xl border overflow-hidden"
+                            style={{ borderColor: `${C.charcoal}12`, background: '#F4F5F4' }}
+                          >
+                            <div className="p-5">
+                              <p className="font-bold text-sm leading-snug mb-2" style={{ color: C.deepTeal }}>
+                                {item.q}
+                              </p>
+                            </div>
+                            {item.preImage && (
                               <img
                                 src={item.preImage}
                                 alt=""
                                 className="w-full object-cover"
                                 style={{ maxHeight: 380 }}
                               />
+                            )}
+                            <div className="p-5">
+                              <p className="text-sm text-slate-600 leading-relaxed">{item.a}</p>
                             </div>
-                          )}
-                          <div
-                            className="rounded-2xl border p-5"
-                            style={{ borderColor: `${C.charcoal}12`, background: '#F4F5F4' }}
-                          >
-                            <p className="font-bold text-sm leading-snug mb-2" style={{ color: C.deepTeal }}>
-                              {item.q}
-                            </p>
-                            <p className="text-sm text-slate-600 leading-relaxed">{item.a}</p>
                           </div>
                         </div>
                       ))}
