@@ -227,10 +227,6 @@ export default function StraipsnisPage() {
               >
                 {post.title}
               </h1>
-
-              <p className="mt-4 text-lg text-slate-500 leading-relaxed max-w-2xl">
-                {post.excerpt}
-              </p>
             </div>
           </motion.div>
         </div>
@@ -253,6 +249,14 @@ export default function StraipsnisPage() {
               style={{ maxHeight: 480 }}
             />
           </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-5 text-lg text-slate-500 leading-relaxed max-w-2xl"
+          >
+            {post.excerpt}
+          </motion.p>
         </div>
       </section>
 
