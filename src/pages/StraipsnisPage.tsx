@@ -274,6 +274,15 @@ export default function StraipsnisPage() {
                     viewport={{ once: true, margin: '-60px' }}
                     transition={{ duration: 0.45 }}
                   >
+                    {section.h && (
+                      <h2
+                        id={slugify(section.h)}
+                        className="scroll-mt-36"
+                        style={{ color: C.deepTeal }}
+                      >
+                        {section.h}
+                      </h2>
+                    )}
                     {section.image && (
                       <div className="not-prose my-6 rounded-2xl overflow-hidden shadow-md">
                         <img
@@ -283,15 +292,6 @@ export default function StraipsnisPage() {
                           style={{ maxHeight: 420 }}
                         />
                       </div>
-                    )}
-                    {section.h && (
-                      <h2
-                        id={slugify(section.h)}
-                        className="scroll-mt-36"
-                        style={{ color: C.deepTeal }}
-                      >
-                        {section.h}
-                      </h2>
                     )}
                     {section.p.map((para, j) => (
                       <p key={j}>{para}</p>
