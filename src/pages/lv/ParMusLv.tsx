@@ -92,7 +92,7 @@ const services = [
 ]
 
 let team = [
-  { name: "Rugilė Guntytė", role: "Zobārste", license: "OPL-06438", photoFile: "Rugile-light LV" },
+  { name: "Odeta Venckutė", role: "Zobārste", license: "OPL-05163", photoFile: "Odeta-light LV" },
   { name: "Donatas Bitinas", role: "Implantācijas zobārsts", license: "OPL-05611", photoFile: "Donatas_light LV" },
   { name: "Donatas Kubilius", role: "Sejas un žokļu ķirurgs", license: "MPL-18980", photoFile: "Donatas_Kubliuslight LV" },
   { name: "Eglė Daknienė", role: "Zobu tehniķe", license: "BPL-04671" },
@@ -100,15 +100,6 @@ let team = [
   { name: "Jonas Sabulis", role: "Protezēšanas zobārsts", license: "OPL-05936", photoFile: "Jonas-light LV" },
   { name: "Goda Daknytė", role: "Klīnikas administrācijas vadītāja" },
 ]
-
-if (!team.some((m) => m.name.toLowerCase().includes('odeta'))) {
-  team.push({
-    name: 'Odeta Venckutė',
-    role: 'Zobārste',
-    license: 'OPL-05163',
-    photoFile: 'Odeta-light LV',
-  })
-}
 
 team = team
   .slice()

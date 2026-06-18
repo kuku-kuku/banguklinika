@@ -82,7 +82,6 @@ const TEAM = [
   { name: 'Odeta Balsienė',       role: 'Odontologė · Klinikos vadovė', img: '/team/Odeta-light.jpg' },
   { name: 'Donatas Bitinas',      role: 'Odontologas',                 img: '/team/Donatas_light.jpg' },
   { name: 'Donatas Kubilius',    role: 'Odontologas',                 img: '/team/donataskubilius.jpg' },
-  { name: 'Rugilė',               role: 'Odontologė',                  img: '/team/Rugile-light.jpg' },
   { name: 'Rūta',                 role: 'Burnos higienistė',           img: '/team/Rūta_light.jpg' },
 ]
 
@@ -132,14 +131,13 @@ function TeamCarousel() {
           const z     = 100 - abs * 35
           const opacity = Math.max(0.35, 1 - abs * 0.28)
           const rotY  = -d * 10
-          const blur  = abs > 0 ? Math.max(0, abs * 1.5) : 0
 
           return (
             <motion.div
               key={member.name}
-              className="absolute pointer-events-none"
-              style={{ zIndex: z }}
-              animate={{ x, scale, opacity, rotateY: rotY, filter: `blur(${blur}px)` }}
+              className="absolute"
+              style={{ zIndex: z, willChange: 'transform', cursor: abs > 0 ? 'pointer' : 'default' }}
+              animate={{ x, scale, opacity, rotateY: rotY }}
               transition={{ type: 'spring', stiffness: 280, damping: 28 }}
               onClick={() => abs > 0 && handleSelect(i)}
             >
