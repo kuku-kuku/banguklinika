@@ -4444,7 +4444,7 @@ function BurnosHigiena() {
       SEO,
       {
         title: "Burnos (dantų) higiena Klaipėdoje | Kaina su akcija | Geriausi atsiliepimai - Bangų klinika",
-        description: "Profesionali burnos higiena su AIRFLOW® technologija. Pašaliname akmenis, apnašas ir grąžiname dantims natūralų baltumą. Registruokitės vizitui Klaipėdoje.",
+        description: "Profesionali burnos (dantų) higiena Klaipėdoje gera kaina☑️. Pašalinkite apnašas, sumažinkite dantenų problemų riziką ir išlaikykite sveiką šypseną☑️. Kreipkitės į⏩Bangų kliniką.",
         keywords: "burnos higiena, airflow, dantų valymas, akmenų šalinimas, klaipėda",
         structuredData
       }
@@ -4461,7 +4461,7 @@ function BurnosHigiena() {
           /* @__PURE__ */ jsx(TableOfContents, { sections: tocSections$o, rootRef: pageRef, cta: { label: "Registruotis vizitui", to: "/kontaktai" } }),
           /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$q, children: [
-              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Profesionali burnos higiena Klaipėdoje su AIRFLOW® technologija" }),
+              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Burnos higiena Klaipėdoje su AIRFLOW® technologija" }),
               /* @__PURE__ */ jsx("div", { className: `mb-8`, children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
                 /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Net ir kasdien kruopščiai valant dantis namuose, šepetėlis bei tarpdančių siūlas nepasiekia visų burnos vietų. Ilgainiui susidariusios apnašos ir dantų akmenys gali sukelti kariesą, dantenų uždegimą ar nemalonų burnos kvapą. Būtent todėl profesionali burnos higiena yra viena svarbiausių profilaktinių procedūrų, padedančių išsaugoti sveikus dantis ir dantenas." }),
                 /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje atliekama burnos higiena naudojant modernią AIRFLOW® technologiją. Procedūros metu dantys ne tik kruopščiai išvalomi, bet ir tampa šviesesni, lygesni, gaivesni. Tai saugus ir efektyvus sprendimas tiek profilaktikai, tiek prieš kitas odontologines procedūras." })
@@ -4720,7 +4720,7 @@ function DantuPlombavimas() {
       SEO,
       {
         title: "Dantų plombavimas Klaipėdoje | Kaina - Bangų klinika",
-        description: "Profesionalus dantų plombavimas Klaipėdoje. Estetinis ir funkcinis plombavimas, karieso gydymas, kokybiškos medžiagos ir ilgalaikis rezultatas.",
+        description: "Jautrus ar pažeistas dantis? Dantų plombavimas Klaipėdoje padeda atkurti danties funkciją☑️ir apsaugoti nuo tolimesnio gedimo☑️. Kreipkitės į⏩Bangų kliniką jau šiandien.",
         keywords: "dantu plombavimas, estetinis plombavimas, dantu gydymas, eduonis, klaipeda, odontologas",
         structuredData
       }
@@ -4737,7 +4737,7 @@ function DantuPlombavimas() {
           /* @__PURE__ */ jsx(TableOfContents, { sections: tocSections$n, rootRef: pageRef, cta: { label: "Registruotis vizitui", to: "/kontaktai" } }),
           /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-12 text-left", variants: item$p, children: [
-              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Profesionalus danties plombavimas Klaipėdoje" }),
+              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Dantų plombavimas Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { className: "mb-8", children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
                 /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Dantų plombavimas yra viena dažniausiai atliekamų odontologinių procedūrų, skirta sustabdyti danties pažeidimų progresavimą ir atkurti jo funkciją bei sandarumą. Laiku atliktas danties plombavimas padeda apsaugoti dantį nuo tolimesnio gedimo, sumažinti skausmo riziką ir išvengti sudėtingesnio gydymo ateityje." }),
                 /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje atliekamas danties plombavimas grindžiamas kruopščia diagnostika, moderniomis plombinėmis medžiagomis ir individualiu požiūriu į kiekvieną pacientą. Procedūros metu siekiama ne tik pašalinti pažeistus audinius, bet ir atkurti natūralią danties formą bei kramtymo funkciją. Prieš gydymą įvertinama danties būklė, todėl parenkamas tinkamiausias plombavimo būdas, užtikrinantis ilgalaikį ir patikimą rezultatą." })
@@ -4983,7 +4983,7 @@ function EstetinisPlombavimas() {
       SEO,
       {
         title: "Estetinis dantų plombavimas Klaipėdoje - Bangų odontologijos klinika",
-        description: "Estetinis dantų plombavimas – greitas ir efektyvus būdas atkurti šypseną. Koreguojame nuskilimus, tarpus ir spalvą. Registruokitės konsultacijai.",
+        description: "Netenkina dantų forma ar spalva?⏩Estetinis dantų plombavimas Klaipėdoje leidžia greitai ir estetiškai atkurti šypseną. Kreipkitės į Bangų kliniką jau šiandien.",
         keywords: "estetinis plombavimas, dantu restauracija, sypsenos korekcija, tarpai tarp dantu, klaipeda",
         structuredData
       }
@@ -5000,7 +5000,7 @@ function EstetinisPlombavimas() {
           /* @__PURE__ */ jsx(TableOfContents, { sections: tocSections$m, rootRef: pageRef, cta: { label: "Registruotis vizitui", to: "/kontaktai" } }),
           /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-12 text-left", variants: item$o, children: [
-              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Profesionalus estetinis dantų plombavimas Klaipėdoje" }),
+              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Estetinis dantų plombavimas Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { className: `mb-8`, children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4", children: [
                 /* @__PURE__ */ jsx("p", { children: "Šypsenos estetika turi didelę įtaką pasitikėjimui savimi ir bendrai savijautai. Net ir nedideli dantų defektai – nuskilimai, nudilimai, tarpai ar spalvos netolygumai – gali pastebimai keisti šypsenos vaizdą. Tokiais atvejais estetinis plombavimas tampa greitu ir efektyviu sprendimu, leidžiančiu atkurti natūralią dantų išvaizdą be sudėtingų ir ilgalaikių procedūrų." }),
                 /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje atliekamas dantų estetinis plombavimas yra viena iš pagrindinių estetinės odontologijos paslaugų. Procedūros metu siekiama ne tik pagerinti dantų išvaizdą, bet ir maksimaliai išsaugoti natūralų danties audinį. Individualus požiūris, modernios medžiagos ir kruopštus darbas leidžia pasiekti harmoningą ir natūraliai atrodančią šypseną." })
@@ -5234,7 +5234,7 @@ function BurnosChirurgija() {
       SEO,
       {
         title: "Burnos chirurgija Klaipėdoje - Bangų klinika",
-        description: "Profesionali burnos chirurgija Klaipėdoje. Protinių dantų šalinimas, implantacija, kaulo augmentacija. Saugios ir neskausmingos procedūros.",
+        description: "Burnos chirurgija Klaipėdoje – profesionalios procedūros sudėtingesnėms dantų☑️minkštųjų audinių☑️žandikaulio☑️problemoms spręsti. Kreipkitės į⏩Bangų kliniką.",
         keywords: "burnos chirurgija, dantu rovimas, protiniai dantys, cistos, kaulo priauginimas, klaipeda",
         structuredData
       }
@@ -5251,7 +5251,7 @@ function BurnosChirurgija() {
           /* @__PURE__ */ jsx(TableOfContents, { sections: tocSections$l, rootRef: pageRef, cta: { label: "Registruotis vizitui", to: "/kontaktai" } }),
           /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$n, children: [
-              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Profesionali burnos chirurgija Klaipėdoje" }),
+              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Burnos chirurgija Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { className: `mb-8`, children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4", children: [
                 /* @__PURE__ */ jsx("p", { children: "Burnos chirurgija – tai odontologinio gydymo sritis, skirta spręsti sudėtingesnes dantų, minkštųjų audinių ir žandikaulio kaulo problemas, kai įprastas terapinis gydymas nebėra pakankamas. Tokios procedūros dažnai reikalingos siekiant pašalinti infekcijos židinius, atkurti burnos funkciją ar paruošti burną tolimesniam gydymui, pavyzdžiui, implantacijai ar protezavimui." }),
                 /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje burnos chirurginės procedūros atliekamos laikantis šiuolaikinių medicininių standartų, naudojant modernią diagnostiką ir patikimus nuskausminimo metodus. Patyręs burnos chirurgas kiekvieną klinikinę situaciją vertina individualiai, siekdamas saugaus, prognozuojamo ir ilgalaikio rezultato. Didelis dėmesys skiriamas ne tik pačiai procedūrai, bet ir paciento savijautai, aiškiam gydymo paaiškinimui bei sklandžiam gijimo procesui." })
@@ -5504,7 +5504,7 @@ function DantuBalinimas() {
       SEO,
       {
         title: "Dantų balinimas Klaipėdoje | Kaina ir atsiliepimai - Bangų klinika",
-        description: "Profesionalus dantų balinimas Klaipėdoje: BEYOND® ofisinis balinimas ir balinimas kapomis namuose. Saugus, efektyvus ir ilgalaikis rezultatas.",
+        description: "Dantų balinimas Klaipėdoje už prieinamą kainą☑️– saugus ir efektyvus būdas pašviesinti dantis bei atkurti estetišką šypseną. Registruokitės⏩Bangų klinikoje jau dabar.",
         keywords: "dantu balinimas, beyond sistema, balinimo kapos, dantu estetika, klaipeda",
         structuredData
       }
@@ -5521,7 +5521,7 @@ function DantuBalinimas() {
           /* @__PURE__ */ jsx(TableOfContents, { sections: tocSections$k, rootRef: pageRef, cta: { label: "Registruotis vizitui", to: "/kontaktai" } }),
           /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$m, children: [
-              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Profesionalus dantų balinimas Klaipėdoje" }),
+              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Dantų balinimas Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { className: `mb-8`, children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
                 /* @__PURE__ */ jsx("p", { children: "Dantų spalva laikui bėgant gali pakisti dėl įvairių priežasčių – mitybos įpročių, rūkymo, amžiaus ar tam tikrų vaistų poveikio. Net ir kruopšti kasdienė burnos priežiūra ne visuomet leidžia atkurti natūralų dantų baltumą, todėl profesionalus dantų balinimas tampa vienu efektyviausių estetinių sprendimų." }),
                 /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje atliekamas dantų balinimas padeda saugiai ir greitai pasiekti pastebimą rezultatą. Naudojami modernūs balinimo metodai leidžia dantis pašviesinti keliais atspalviais, išlaikant emalio saugumą ir komfortą procedūros metu. Prieš kiekvieną balinimą įvertinama individuali burnos būklė, todėl parenkamas tinkamiausias sprendimas kiekvienam pacientui." })
@@ -5815,7 +5815,7 @@ function DantuGydymas() {
       SEO,
       {
         title: "Dantų gydymas, taisymas (tvarkymas) Klaipėdoje - Bangų klinika",
-        description: "Profesionalus dantų taisymas ir gydymas Klaipėdoje. Skubi pagalba, ėduonies gydymas, plombavimas. Registruokitės vizitui.",
+        description: "Dantų gydymas☑️tvarkymas☑️Klaipėdoje esant skausmui ar kitiems dantų pažeidimams. Laiku pašalinkite skausmą ir išsaugokite natūralius dantis. Registruokitės⏩Bangų klinikoje.",
         keywords: "dantu gydymas, dantu taisymas, skubi pagalba, eduonis, plombavimas, klaipeda",
         structuredData
       }
@@ -5832,7 +5832,7 @@ function DantuGydymas() {
           /* @__PURE__ */ jsx(TableOfContents, { sections: tocSections$j, rootRef: pageRef, cta: { label: "Registruotis vizitui", to: "/kontaktai" } }),
           /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$l, children: [
-              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Profesionalus dantų gydymas Klaipėdoje" }),
+              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Dantų gydymas Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { className: `mb-8`, children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
                 /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Dantų skausmas, diskomfortas ar profilaktinio patikrinimo poreikis – tai dažniausios priežastys, dėl kurių pacientai kreipiasi į odontologą. Laiku atliktas dantų gydymas leidžia ne tik pašalinti nemalonius simptomus, bet ir išsaugoti natūralius dantis bei užkirsti kelią sudėtingesniems gydymo etapams ateityje." }),
                 /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje teikiama dantų taisymo paslauga apima platų spektrą procedūrų – nuo konsultacijų ir profilaktinių patikrinimų iki sudėtingų gydymo ir atkūrimo procedūrų. Klinikos specialistai operatyviai padeda tiek esant ūmiam danties skausmui, tiek planuojant ilgalaikį gydymą. Kompleksinis požiūris leidžia pacientams gauti visas reikalingas paslaugas vienoje vietoje, todėl dantų tvarkymas tampa patogus, aiškus ir užtikrintas procesas." })
@@ -6070,7 +6070,7 @@ function VaikuOdontologija() {
       SEO,
       {
         title: "Vaikų odontologija Klaipėdoje - Bangų klinika",
-        description: "Profesionali vaikų odontologija Klaipėdoje. Pieninių dantų gydymas, profilaktika ir adaptaciniai vizitai be baimės. Registruokite vaiką vizitui.",
+        description: "Ieškote vaikų odontologo Klaipėdoje?⏩Bangų klinikoje dirba patyrę specialistai, užtikrinantys švelnų☑️saugų☑️gydymą vaikams. Patogi registracija ir profesionali priežiūra.",
         keywords: "vaiku odontologas, pieniniu dantu gydymas, vaiku dantu prieziura, klaipeda, silantai, be baimes",
         structuredData
       }
@@ -6087,7 +6087,7 @@ function VaikuOdontologija() {
           /* @__PURE__ */ jsx(TableOfContents, { sections: tocSections$i, rootRef: pageRef, cta: { label: "Registruotis vizitui", to: "/kontaktai" } }),
           /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$k, children: [
-              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Profesionali vaikų odontologija Klaipėdoje" }),
+              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Vaikų odontologija Klaipėdoje" }),
               /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed mb-8", children: [
                 /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Vaikų dantų priežiūra reikalauja ne tik odontologinių žinių, bet ir ypatingo dėmesio vaiko emocinei savijautai. Pirmieji apsilankymai pas odontologą dažnai formuoja vaiko požiūrį į dantų gydymą visam gyvenimui, todėl svarbu, kad ši patirtis būtų rami, saugi ir pozityvi." }),
                 /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje dirbantis vaikų odontologas siekia sukurti draugišką aplinką, kurioje vaikas jaustųsi suprastas ir nebijotų gydymo. Klinikoje didelis dėmesys skiriamas ne tik dantų gydymui, bet ir profilaktikai, adaptacijai bei nuosekliam vaiko supažindinimui su odontologinėmis procedūromis. Toks požiūris padeda formuoti teigiamus įpročius ir ilgalaikį pasitikėjimą gydytoju." })
@@ -6474,7 +6474,7 @@ function DantuProtezavimas() {
       SEO,
       {
         title: "Dantų protezavimas Klaipėdoje - Bangų klinika",
-        description: "Profesionalus dantų protezavimas Klaipėdoje. 3D CEREC technologija, cirkonio keramika, bemetalė keramika ir protezavimas ant implantų. Prieinamos kainos.",
+        description: "Dantų protezavimas Klaipėdoje – prieinama kaina☑️patikimi sprendimai☑️prarastiems ar pažeistiems dantims atkurti. Sužinokite gydymo galimybes⏩Bangų klinikoje jau dabar.",
         keywords: "dantu protezavimas, cerec, cirkonio keramika, protezai, klaipeda, implantai",
         structuredData
       }
@@ -6505,9 +6505,7 @@ function DantuProtezavimas() {
                 children: /* @__PURE__ */ jsxs("div", { className: "grid lg:grid-cols-[5fr_7fr] gap-0 items-stretch", children: [
                   /* @__PURE__ */ jsxs("div", { className: "p-6 sm:p-8 lg:p-10", children: [
                     /* @__PURE__ */ jsxs("h1", { className: "text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4", style: { color: P$4 }, children: [
-                      "Profesionalus ir prieinamas",
-                      " ",
-                      /* @__PURE__ */ jsx("span", { style: { color: S$4 }, children: "dantų protezavimas" }),
+                      /* @__PURE__ */ jsx("span", { style: { color: S$4 }, children: "Dantų protezavimas" }),
                       " ",
                       "Klaipėdoje"
                     ] }),
@@ -7222,7 +7220,7 @@ function DantuTraukimas() {
       SEO,
       {
         title: "Dantų traukimas (rovimas) Klaipėdoje - Bangų klinika",
-        description: "Profesionalus ir saugus dantų traukimas Klaipėdoje. Protinių dantų šalinimas, chirurginis traukimas, vaikų dantų šalinimas. Registruokitės vizitui.",
+        description: "Skaudantis ar stipriai pažeistas dantis? Dantų traukimas (rovimas) Klaipėdoje atliekamas profesionaliai☑️rūpestingai☑️Bangų klinikoje už gerą kainą.⏩Kreipkitės jau dabar.",
         keywords: "dantu traukimas, dantu salinimas, protiniai dantys, chirurginis traukimas, klaipeda, neskausmingai",
         structuredData
       }
@@ -7239,7 +7237,7 @@ function DantuTraukimas() {
           /* @__PURE__ */ jsx(TableOfContents, { sections: tocSections$g, rootRef: pageRef, cta: { label: "Registruotis vizitui", to: "/kontaktai" } }),
           /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$i, children: [
-              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Profesionalus dantų traukimas Klaipėdoje" }),
+              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Dantų traukimas Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
                 /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Dantų traukimas yra odontologinė procedūra, atliekama tuomet, kai danties išsaugoti nebeįmanoma arba kai jis kelia grėsmę bendrai burnos sveikatai. Nors šiuolaikinė odontologija visada siekia išsaugoti natūralius dantis, tam tikrose situacijose jų pašalinimas tampa būtinu ir racionaliausiu sprendimu." }),
                 /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje atliekamas dantų traukimas yra saugus, kruopščiai suplanuotas ir orientuotas į paciento komfortą. Procedūros metu naudojami šiuolaikiniai nuskausminimo metodai, leidžiantys išvengti skausmo ir sumažinti stresą. Kiekvienu atveju sprendimas dėl danties šalinimo priimamas individualiai, įvertinus danties būklę, galimas alternatyvas ir ilgalaikę burnos sveikatos perspektyvą." })
@@ -7521,7 +7519,7 @@ function DantuTiesinimas() {
       SEO,
       {
         title: "Dantų tiesinimas kapomis (Ordoline) Klaipėdoje - Bangų klinika",
-        description: "Profesionalus dantų tiesinimas skaidriomis ORDOLINE kapomis. Nematomas, patogus ir efektyvus gydymas Klaipėdoje. Registruokitės konsultacijai.",
+        description: "Dantų tiesinimas kapomis (ORDOLINE) Klaipėdoje – patogus☑️modernus☑️sprendimas tiesesnei šypsenai bei taisyklingam sąkandžiui. Registruokitės⏩Bangų klinikoje jau dabar.",
         keywords: "dantu tiesinimas, ordoline kapos, skaidrios kapos, ortodontinis gydymas, klaipeda, tiesūs dantys",
         structuredData
       }
@@ -7538,7 +7536,7 @@ function DantuTiesinimas() {
           /* @__PURE__ */ jsx(TableOfContents, { sections: tocSections$f, rootRef: pageRef, cta: { label: "Registruotis vizitui", to: "/kontaktai" } }),
           /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$h, children: [
-              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Profesionalus dantų tiesinimas Klaipėdoje ORDOLINE kapomis" }),
+              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Dantų tiesinimas Klaipėdoje ORDOLINE kapomis" }),
               /* @__PURE__ */ jsx("div", { className: `${whiteCard$7} mb-8`, children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
                 /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Taisyklinga dantų padėtis yra svarbi ne tik estetinei šypsenai, bet ir visai burnos sveikatai. Netaisyklingai išsidėstę dantys gali apsunkinti burnos higieną, didinti karieso ir dantenų ligų riziką, lemti netolygų dantų dilimą ar žandikaulio sąnarių diskomfortą. Dėl šių priežasčių vis daugiau pacientų renkasi dantų tiesinimą kaip ilgalaikę investiciją į savo sveikatą ir savijautą." }),
                 /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje atliekamas dantų tiesinimas orientuotas į individualius paciento poreikius ir šiuolaikinius gydymo sprendimus. Prieš pradedant gydymą visuomet atliekama išsami diagnostika, leidžianti įvertinti sąkandį, dantų padėtį ir parinkti tinkamiausią tiesinimo metodą. Tinkamai suplanuotas gydymas padeda ne tik pasiekti estetišką rezultatą, bet ir pagerinti dantų funkciją bei ilgalaikę burnos sveikatą." })
@@ -7833,7 +7831,7 @@ function EndodontinisGydymas() {
       SEO,
       {
         title: "Endodontinis (šaknų kanalų) gydymas Klaipėdoje - Bangų klinika",
-        description: "Profesionalus endodontinis (šaknų kanalų) gydymas Klaipėdoje. Pirminė endodontinė pagalba: diagnostika, skausmo mažinimas, infekcijos kontrolė ir danties paruošimas tolimesniam gydymui.",
+        description: "Pulsuojantis danties skausmas☑️ilgai trunkantis jautrumas☑️gali signalizuoti apie gilesnius pažeidimus. Kreipkitės dėl endodontinio gydymo⏩Bangų klinikoje.",
         keywords: "endodontinis gydymas, saknu kanalu gydymas, pirminė endodontinė pagalba, dantu skausmas, kanalai, klaipeda",
         structuredData
       }
@@ -7850,7 +7848,7 @@ function EndodontinisGydymas() {
           /* @__PURE__ */ jsx(TableOfContents, { sections: tocSections$e, rootRef: pageRef, cta: { label: "Registruotis vizitui", to: "/kontaktai" } }),
           /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$g, children: [
-              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Profesionalus endodontinis (šaknų kanalų) gydymas Klaipėdoje" }),
+              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Endodontinis (šaknų kanalų) gydymas Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { className: "mb-8", children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
                 /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Stiprus, pulsuojantis danties skausmas, ilgai nepraeinantis jautrumas karščiui ar šalčiui, patinimas ar nemalonus spaudimo pojūtis dažnai signalizuoja apie gilesnius danties pažeidimus. Tokiais atvejais įprasto plombavimo nepakanka, nes problema slypi ne danties paviršiuje, o jo viduje. Būtent tuomet prireikia endodontinio gydymo – šaknų kanalų gydymo, kurio tikslas yra pašalinti infekciją ir išsaugoti natūralų dantį." }),
                 /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Endodontinis gydymas yra svarbi šiuolaikinės odontologijos dalis, leidžianti išvengti danties šalinimo net ir sudėtingais atvejais. Laiku atliktas gydymas padeda sustabdyti infekcijos plitimą, sumažinti skausmą ir išsaugoti dantį tolimesniam funkcionavimui. Negydomi šaknų kanalų pažeidimai gali sukelti rimtas komplikacijas – nuo pūlinių iki žandikaulio kaulo pažeidimų, todėl ankstyvas reagavimas yra itin svarbus." }),
@@ -8920,8 +8918,8 @@ function DantuImplantacija() {
     /* @__PURE__ */ jsx(
       SEO,
       {
-        title: " Dantų implantacija Klaipėdoje - Dantų implantai nuo 500€ | Bangų klinika",
-        description: "Dantų implantacija Klaipėdoje – pažangiausias prarastų dantų atkūrimo sprendimas. Ilgaamžiai Straumann® ir Neodent® implantai, ALL-ON-4 metodas, skaidri kainodara.",
+        title: "Dantų implantacija Klaipėdoje - Dantų implantai nuo 500€ | Bangų klinika",
+        description: "Dantų implantacija Klaipėdoje – dantų implantai nuo 500€☑️, prarastų dantų atkūrimas implantais ir estetikos atstatymas☑️. Registruokitės⏩konsultacijai Bangų klinikoje.",
         keywords: "dantu implantacija, implantai klaipeda, straumann, neodent, all-on-4, dantu atkurimas, bangų klinika",
         structuredData,
         lang: "lt",
@@ -9613,7 +9611,7 @@ function SkubiPagalba() {
       SEO,
       {
         title: "Skubi odontologinė pagalba Klaipėdoje",
-        description: "Skubi odontologinė pagalba Klaipėdoje – greitas sprendimas staigiam dantų skausmui, infekcijai ar traumai. Registruokitės kuo greičiau.",
+        description: "Staigus dantų skausmas ar trauma? Skubi odontologinė pagalba Klaipėdoje esant uždegimui, tinimui ar netikėtai traumai. Registruokitės⏩Bangų klinikoje jau dabar.",
         keywords: "skubi pagalba, skubus odontologas, danties skausmas, dantų traumas, klaipeda, banguklinika",
         structuredData
       }

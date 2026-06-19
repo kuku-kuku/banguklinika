@@ -6,23 +6,25 @@ export type Section = {
 
 export type FaqItem = { q: string; a: string; preImage?: string }
 
+export type Source = { label: string; url: string }
+
 export type BlogPost = {
   slug: string
   title: string
-  excerpt: string
+  excerpt?: string
   date: string
   category: string
   coverImage: string
   readTime: number
   sections: Section[]
   faq?: FaqItem[]
+  sources?: Source[]
 }
 
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'kokie-yra-danties-implanto-atmetimo-pozymiai',
     title: 'Kokie yra danties implanto atmetimo požymiai?',
-    excerpt: 'Dantų implantacija – tai patikimas būdas atkurti prarastus dantis. Tačiau kartais po procedūros gali kilti komplikacijų. Sužinokite, į kokius požymius svarbu atkreipti dėmesį.',
     date: '2026-06-10',
     category: 'Dantų implantacija',
     coverImage: 'https://images.unsplash.com/photo-1664529845843-b4192b8246fa?w=1200&q=80&fit=crop&auto=format',
@@ -30,79 +32,96 @@ export const BLOG_POSTS: BlogPost[] = [
     sections: [
       {
         p: [
-          'Dantų implantacija yra viena patikimiausių ir ilgalaikių galimybių atkurti prarastus dantis. Dauguma implantų sėkmingai integruojasi į kaulą ir ilgus metus tarnauja be problemų. Tačiau kartais po implantavimo gali kilti komplikacijų. Pacientai dažnai klausia: kaip atpažinti, kad implantas neprigijo arba yra atmetamas?',
-          'Svarbu suprasti, kad tikras implanto „atmetimas" kaip alerginė reakcija yra itin retas. Dažniausiai tai, ką žmonės vadina „atmetimu", yra uždegimas, infekcija, neprigijimas arba audinių problemos. Šiame straipsnyje aptarsime, kokie požymiai gali rodyti, kad su implantu kyla problemų.',
+          'Dantų implantai dažniausiai sėkmingai prigyja ir tampa patikimu sprendimu netekus danties. Vis dėlto, kaip ir po bet kurios chirurginės procedūros, komplikacijų po dantų implantavimo pasitaikyti gali. Pacientai dažnai tai vadina „implanto atmetimu“, tačiau dažniausiai kalbama ne apie tikrą alerginę reakciją, o apie implanto neprigijimą, uždegimą, infekciją ar aplinkinių audinių problemas.',
+          'Svarbiausia – mokėti atskirti normalią gijimo eigą nuo simptomų, kurių nereikėtų ignoruoti. Nedidelis maudimas ar patinimas pirmomis dienomis gali būti įprastas, tačiau stiprėjantis skausmas, pūliavimas, blogas kvapas, karščiavimas ar implanto judėjimas yra ženklai, kad reikia kreiptis į gydytoją. Kuo anksčiau įvertinama situacija, tuo didesnė tikimybė išvengti rimtesnių komplikacijų.',
         ],
       },
       {
         h: 'Normalūs pojūčiai po implantacijos ir pavojingi simptomai',
         p: [
-          'Pirmomis dienomis po dantų implantacijos normalu jausti nedidelį maudimą, jautrumą, tempimą ar patinimą operuotoje vietoje. Pirmomis valandomis gali būti nežymus kraujavimas. Svarbiausia – kad šie simptomai palaipsniui mažėtų.',
-          'Pavojingi simptomai, į kuriuos reikėtų atkreipti dėmesį: stiprėjantis skausmas, didėjantis patinimas, pūliavimas, blogas kvapas ar skonis burnoje ir implantas ar laikinas protezas, kuris juda ar juda. Tokie požymiai gali rodyti uždegimą ar neprigijimą.',
+          'Po implantacijos organizmui reikia laiko gyti, todėl tam tikri pojūčiai pirmomis dienomis yra normalūs. Gali būti jaučiamas lengvas maudimas, tempimas, jautrumas ar nedidelis patinimas aplink operuotą vietą. Pirmomis valandomis galimas ir nežymus kraujavimas. Įprastai šie simptomai turėtų palaipsniui mažėti.',
+          'Sunerimti reikėtų tada, jei savijauta ne gerėja, o blogėja. Pavojingi požymiai yra stiprėjantis skausmas, didėjantis patinimas, pūliavimas, blogas kvapas ar nemalonus skonis burnoje, karščiavimas, kraujavimas, kuris nesustoja, arba jausmas, kad implantas juda. Tokie simptomai gali rodyti infekciją, uždegimą ar kitą komplikaciją.',
+          'Svarbu vertinti ne tik patį simptomą, bet ir jo eigą. Jei po kelių dienų maudimas mažėja, tai dažniausiai atitinka įprastą gijimą. Jei skausmas stiprėja, atsiranda naujų simptomų ar bendra savijauta blogėja, reikėtų susisiekti su implantavusiu gydytoju.',
         ],
       },
       {
         h: 'Dažniausi danties implanto atmetimo arba neprigijimo požymiai',
         p: [
-          'Pagrindiniai požymiai, kurie gali rodyti komplikacijas: ilgai nepraeina arba stiprėja skausmas implanto srityje, dantenose aplink implantą atsiranda paraudimas ar patinimas, gali formuotis pūlinys ar atsirasti nemalonus skonis, implanto apylinkėse matomos dantenos pasitraukia arba matosi implanto sraigtinė dalis.',
-          'Vėlesnio stadijos komplikacijos gali pasireikšti mėnesiais ar net metais po implantavimo. Jos dažniausiai susijusios su uždegimo procesu aplink implantą – vadinamu periimplantitu – kuris negydomas gali pažeisti aplinkinį kaulą ir sukelti implanto praradimą.',
+          'Vienas svarbiausių požymių, kad implantas gali neprigyti arba vystosi komplikacija, yra skausmas, kuris ne mažėja, o stiprėja. Pirmomis dienomis po implantacijos maudimas gali būti normalus, tačiau stiprus, pulsuojantis ar ilgai nepraeinantis skausmas turėtų būti įvertintas gydytojo.',
+          'Kitas nerimą keliantis simptomas – didėjantis patinimas. Nedidelis patinimas po procedūros yra įprastas, tačiau jei jis po kelių dienų stiprėja, plinta į veidą ar kartu atsiranda temperatūra, tai gali rodyti uždegimą ar infekciją. Dantenos aplink implantą taip pat gali parausti, tapti jautrios, kraujuoti ar pūliuoti.',
+          'Blogas kvapas, nemalonus skonis burnoje ar pūliai aplink implantą yra požymiai, kurių nereikėtų ignoruoti. Jie gali būti susiję su bakterine infekcija arba uždegimu aplink implantą. Taip pat labai svarbus simptomas yra implanto, gijimo galvutės ar laikino protezo judėjimas. Implantas turi būti stabilus, todėl bet koks judėjimo pojūtis turėtų būti kuo greičiau įvertintas.',
+          'Vėlesniu laikotarpiu apie problemą gali įspėti dantenų atsitraukimas, matomas implanto sriegis, skausmas kandant ar spaudžiant. Tokiais atvejais būtina odontologo apžiūra, nes laiku pastebėtas problemas dažnai galima suvaldyti greičiau.',
         ],
       },
       {
         h: 'Danties implanto uždegimas: kaip jis pasireiškia?',
+        image: '/implanto-uzdegimas.webp',
         p: [
-          'Ankstyvasis uždegimas aplink implantą pasireiškia paraudusiomis, patinusiomis ar jautriomis dantenomis. Galimas kraujavimas valant dantis, nemalonus skonis ar kvapas burnoje, skausmas kramtant.',
-          'Pažengęs uždegimas (periimplantitas) gali paveikti kaulą aplink implantą. Toks procesas pasireiškia dantenų pasitraukimu, matoma implanto dalimi, padidėjusiu judumu ir skausmu. Šiuos simptomus būtina vertinti kuo greičiau – kuo anksčiau nustatoma problema, tuo daugiau galimybių ją suvaldyti.',
+          'Danties implanto uždegimas gali pažeisti dantenas ir audinius aplink implantą. Iš pradžių simptomai kartais būna nestiprūs, todėl pacientas gali manyti, kad tai tik įprastas jautrumas po procedūros. Tačiau uždegimas aplink implantą neturėtų būti ignoruojamas, nes laiku negydomas jis gali progresuoti.',
+          'Ankstyvi uždegimo požymiai gali būti paraudusios, patinusios ar jautrios dantenos aplink implantą. Valant dantis ar liečiant dantenas gali atsirasti kraujavimas. Kartais jaučiamas spaudimas, maudimas arba skausmas kandant. Jei atsiranda pūliavimas, blogas kvapas ar nemalonus skonis burnoje, tai gali rodyti aktyvesnį uždegimą ar infekciją.',
+          'Pažengęs uždegimas gali paveikti ne tik dantenas, bet ir kaulą aplink implantą. Tokiu atveju gali atsirasti dantenų atsitraukimas, matomas implanto paviršius ar net implanto judėjimas. Danties implanto uždegimą turi įvertinti gydytojas – savarankiškas gydymas ar antibiotikų vartojimas be paskyrimo problemos neišsprendžia.',
         ],
       },
       {
         h: 'Kodėl gali kilti komplikacijos po dantų implantavimo?',
         p: [
-          'Komplikacijos po implantavimo gali atsirasti dėl įvairių priežasčių. Viena dažniausių – nepakankama burnos higiena. Jei aplink implantą kaupiasi apnašos ir bakterijos, gali prasidėti uždegimas.',
-          'Rūkymas yra žinomas rizikos veiksnys, blogintis kraujotaką ir lėtinantis gijimą. Nekontroliuojamos ligos (diabetas, imuninės sistemos sutrikimai), per ankstyvas implanto apkrovimas, praleisti kontroliniai vizitai taip pat gali prisidėti prie komplikacijų atsiradimo. Svarbu suprasti, kad komplikacijos nebūtinai reiškia gydytojo ar paciento klaidą – kartais gijimas tiesiog nevyksta taip, kaip tikimasi.',
+          'Komplikacijos po dantų implantavimo gali atsirasti dėl skirtingų priežasčių. Kartais jos susijusios su individualia paciento gijimo reakcija, bendra sveikatos būkle ar kaulo kokybe, o kartais – su priežiūra po procedūros. Svarbu suprasti, kad komplikacijos nebūtinai reiškia paciento ar gydytojo klaidą, tačiau jas būtina laiku pastebėti.',
+          'Viena dažniausių rizikos priežasčių yra nepakankama burnos higiena. Jei aplink implantą kaupiasi apnašos ir bakterijos, didėja dantenų uždegimo rizika. Rūkymas taip pat gali bloginti audinių kraujotaką, lėtinti gijimą ir didinti komplikacijų tikimybę. Riziką gali didinti ir nekontroliuojamos bendros ligos, per ankstyvas implanto apkrovimas ar neatvykimas į kontrolinius vizitus.',
+          'Kartais įtakos turi dantų griežimas, stiprus sukandimas ar per didelė kramtymo apkrova. Todėl po implantacijos svarbu laikytis gydytojo rekomendacijų, reguliariai tikrintis ir pranešti apie bet kokius neįprastus pojūčius.',
         ],
       },
       {
         h: 'Kada simptomai gali atsirasti?',
         p: [
-          'Ankstyvosios komplikacijos dažniausiai atsiranda per pirmąsias dienas ar savaites po procedūros. Jos dažnai susijusios su infekcija ar gijimo sutrikimais.',
-          'Vėlyvosios komplikacijos gali pasireikšti praėjus mėnesiams ar net metams po implantavimo. Jos dažniausiai susijusios su periimplantitu – lėtiniu uždegimu aplink implantą, kurį provokuoja nepakankami burnos priežiūros įpročiai ar kiti rizikos veiksniai.',
+          'Galimi implanto neprigijimo ar uždegimo simptomai gali atsirasti skirtingu metu. Ankstyvos komplikacijos dažniausiai pasireiškia pirmomis dienomis ar savaitėmis po implantacijos. Jos gali būti susijusios su gijimu, infekcija, kraujavimu, stiprėjančiu skausmu, didėjančiu patinimu ar operuotos vietos dirginimu.',
+          'Vėlyvos komplikacijos gali atsirasti po kelių mėnesių ar net metų. Dažniausiai jos susijusios su uždegimu aplink implantą, nepakankama burnos higiena, rūkymu, per didele apkrova, protezavimo problemomis ar reguliarių patikrų trūkumu. Tokiais atvejais pacientas gali pastebėti kraujavimą valant, nemalonų skonį, dantenų atsitraukimą, skausmą kandant ar implanto judėjimą.',
+          'Dėl šios priežasties svarbios ne tik pirmosios dienos po implantacijos, bet ir ilgalaikė implantų priežiūra. Net jei implantas ilgą laiką nekėlė problemų, bet atsirado naujų simptomų, reikėtų kreiptis į odontologą.',
         ],
       },
       {
         h: 'Ką daryti pastebėjus galimus implanto atmetimo požymius?',
         p: [
-          'Jei pastebite bet kurį iš minėtų požymių, kuo greičiau susisiekite su savo odontologu. Neatidėliokite vizito, net jei simptomai atrodo nežymūs – anksti nustatyta problema sprendžiama daug paprasčiau.',
-          'Kol laukiate vizito: palaikykite švelną burnos higieną, nekrapštykite implanto vietos, nevartokite antibiotikų be gydytojo patarimo. Gydytojas apžiūros metu įvertins situaciją, prireikus atliks rentgeno nuotrauką ir pasiūlys tinkamiausią gydymo sprendimą.',
+          'Jei pastebėjote simptomus, kurie gali rodyti implanto neprigijimą ar uždegimą, svarbiausia nedelsti ir susisiekti su implantavusiu gydytoju. Nereikėtų laukti, kol skausmas ar patinimas praeis savaime, ypač jei simptomai stiprėja arba atsiranda pūliavimas, blogas kvapas, karščiavimas ar implanto judėjimas.',
+          'Kol laukiate vizito, nejudinkite implanto, nespauskite dantenų ir nekrapštykite operuotos vietos. Burnos higieną palaikykite atsargiai – valykite švelniai, nepažeisdami sudirgusių audinių. Nevartokite antibiotikų ar kitų vaistų savarankiškai, jei jų nepaskyrė gydytojas.',
+          'Vizito metu gydytojas įvertins dantenas, implanto stabilumą, aplinkinius audinius ir, jei reikės, atliks rentgeno tyrimą. Gydymas priklauso nuo problemos priežasties: kartais pakanka uždegimo kontrolės ir higienos korekcijos, o kartais reikalingas sudėtingesnis gydymas.',
+          ''
         ],
       },
       {
         h: 'Ar galima išvengti implanto komplikacijų?',
         image: 'https://images.unsplash.com/photo-1593022356769-11f762e25ed9?w=1200&q=80&fit=crop&auto=format',
         p: [
-          'Komplikacijų visiškai išvengti neįmanoma, tačiau jų riziką galima žymiai sumažinti. Svarbiausia – laikytis gydytojo rekomendacijų po procedūros, palaikyti gerą burnos higieną, nerūkyti ir reguliariai lankytis profilaktinėse apžiūrose.',
-          'Reguliarūs kontroliniai vizitai leidžia anksti aptikti galimas problemas ir jas spręsti, kol jos dar nesukėlė rimtesnių pažeidimų. Ilgalaikė implanto sėkmė priklauso ne tik nuo pačios procedūros kokybės, bet ir nuo nuolatinės priežiūros.',
+          'Ne visų komplikacijų galima visiškai išvengti, tačiau riziką galima gerokai sumažinti. Pirmiausia svarbu laikytis gydytojo rekomendacijų po implantacijos: saugoti operuotą vietą, nevarginti jos per anksti, vartoti paskirtus vaistus ir atvykti į kontrolinius vizitus.',
+          'Labai svarbi kasdienė burnos higiena. Aplink implantą, kaip ir aplink natūralius dantis, gali kauptis apnašos ir bakterijos, todėl dantis reikia valyti kruopščiai, bet neagresyviai. Gydytojas ar burnos higienistas gali rekomenduoti tinkamas priemones implantų priežiūrai.',
+          'Rūkymas, prasta higiena, nekontroliuojamos ligos, dantų griežimas ir praleistos patikros gali didinti komplikacijų riziką. Todėl verta iš anksto informuoti gydytoją apie savo sveikatos būklę, vartojamus vaistus ir įpročius. Reguliari profesionali burnos higiena ir profilaktinės apžiūros padeda laiku pastebėti pokyčius aplink implantą.',
         ],
       },
       {
         h: 'Danties implanto atmetimo požymių nereikėtų ignoruoti',
         p: [
-          'Dantų implantai pasižymi aukštu sėkmingumo rodikliu, tačiau kaip ir bet kuri medicininė procedūra, implantavimas reikalauja atidaus požiūrio ir tinkamos priežiūros. Jei po implantacijos pastebite neįprastų simptomų, nedelskite ir kreipkitės į odontologą.',
-          'Jei turite klausimų dėl implanto priežiūros ar pastebėjote nerimą keliančių simptomų, registruokitės konsultacijai Bangų klinikoje Klaipėdoje. Gydytojas įvertins situaciją ir pasiūlys tinkamiausią sprendimą.',
+          'Ne kiekvienas skausmas ar maudimas po implantacijos reiškia, kad implantas neprigijo. Pirmomis dienomis lengvas jautrumas, patinimas ar diskomfortas gali būti normali gijimo dalis. Vis dėlto svarbu stebėti, ar simptomai palaipsniui mažėja.',
+          'Pavojingi požymiai yra stiprėjantis skausmas, didėjantis patinimas, pūliavimas, blogas kvapas, nemalonus skonis, karščiavimas, kraujavimas ar implanto judėjimas. Tokiais atvejais reikėtų kuo greičiau kreiptis į gydytoją. Laiku įvertinus situaciją, dalį komplikacijų galima suvaldyti ir apsaugoti implantą bei aplinkinius audinius.',
+          'Jei įtariate danties implanto uždegimą ar pastebite neįprastus simptomus po implantacijos, registruokitės konsultacijai Bangų klinikoje Klaipėdoje.',
         ],
       },
     ],
     faq: [
-      { q: 'Kaip atpažinti, kad implantas neprigijo?', a: 'Pagrindiniai požymiai – stiprėjantis skausmas, didėjantis patinimas, pūliavimas, implantas, kuris juda, ar matomos implanto dalys dėl pasitraukusių dantenų. Pastebėjus šiuos simptomus, reikėtų kuo greičiau kreiptis į odontologą.' },
-      { q: 'Ar implanto atmetimas yra dažnas reiškinys?', a: 'Tikras implanto „atmetimas" kaip alerginė reakcija yra labai retas. Dažniausiai komplikacijos susijusios su uždegimo procesais ar neprigyjimu, kuriuos galima gydyti, ypač jei problema nustatoma anksti.' },
-      { q: 'Kiek laiko trunka gijimas po implantacijos?', a: 'Pirminis diskomfortas mažėja per kelias dienas, tačiau pats implantas suauga su kaulu per kelis mėnesius. Tiksli trukmė priklauso nuo individualios situacijos, kaulo kokybės ir papildomų procedūrų.' },
-      { q: 'Ar galima rūkyti po implantacijos?', a: 'Rūkyti nerekomenduojama, nes rūkymas blogina kraujotaką, lėtina gijimą ir didina komplikacijų, įskaitant periimplantitą, riziką.' },
+      { q: 'Kokie yra danties implanto atmetimo požymiai?', a: 'Dažniausi požymiai yra stiprėjantis skausmas, didėjantis patinimas, pūliavimas, blogas kvapas, nemalonus skonis burnoje, karščiavimas, nesustojantis kraujavimas ir implanto judėjimas.' },
+      { q: 'Ar skausmas po implantacijos reiškia, kad implantas neprigijo?', a: 'Ne visada. Nedidelis maudimas ar jautrumas pirmomis dienomis po implantacijos gali būti normalus. Nerimą kelia skausmas, kuris stiprėja, nepraeina arba atsiranda kartu su kitais simptomais.' },
+      { q: 'Kaip pasireiškia danties implanto uždegimas?', a: 'Danties implanto uždegimas gali pasireikšti paraudusiomis, patinusiomis ar kraujuojančiomis dantenomis, jautrumu, pūliavimu, blogu kvapu, nemaloniu skoniu burnoje, skausmu kandant ar implanto judėjimu.' },
+      { q: 'Kada po implantacijos reikia kreiptis į gydytoją?', a: 'Į gydytoją reikėtų kreiptis, jei skausmas stiprėja, patinimas didėja, atsiranda pūliavimas, karščiavimas, blogas kvapas, kraujavimas ar implantas, gijimo galvutė arba laikinas protezas juda.' },
+      { q: 'Ar danties implanto uždegimą galima gydyti namuose?', a: 'Ne. Namuose galima palaikyti švelnią burnos higieną, tačiau uždegimą aplink implantą turi įvertinti gydytojas. Savarankiškas antibiotikų vartojimas ar gydymas be apžiūros gali pabloginti situaciją.' },
+      { q: 'Ar galima išvengti komplikacijų po dantų implantavimo?', a: 'Riziką galima sumažinti laikantis gydytojo rekomendacijų, palaikant gerą burnos higieną, nerūkant, vengiant per ankstyvos apkrovos ir reguliariai lankantis kontroliniuose vizituose.' },
+    ],
+    sources: [
+      { label: 'Peri-implant diseases and conditions: Consensus report of Workgroup 4 of the 2017 World Workshop on the Classification of Periodontal and Peri-Implant Diseases and Conditions', url: 'https://pubmed.ncbi.nlm.nih.gov/29926491/' },
+      { label: 'Smoking and Dental Implants: A Systematic Review and Meta-Analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/35056347/' },
+      { label: 'A Retrospective Analysis of Biological Complications of Dental Implants', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9391181/' },
     ],
   },
   {
     slug: 'ka-reikia-zinoti-po-danties-implantacijos',
     title: 'Ką reikia žinoti po danties implantacijos?',
-    excerpt: 'Po danties implantacijos svarbiausia – tinkama priežiūra. Sužinokite, kokia savijauta yra normali, ką galima valgyti ir ko vengti, kad gijimas vyktų sklandžiai.',
     date: '2026-06-03',
     category: 'Dantų implantacija',
     coverImage: 'https://images.unsplash.com/photo-1609918438269-9a4c5f8fe3a4?w=1200&q=80&fit=crop&auto=format',
@@ -110,96 +129,100 @@ export const BLOG_POSTS: BlogPost[] = [
     sections: [
       {
         p: [
-          'Danties implantacija atliekama kontroliuojamomis sąlygomis, tačiau galutiniam rezultatui labai svarbu ir tai, kaip pacientas elgiasi po procedūros. Tinkama priežiūra sumažina komplikacijų riziką ir sudaro geresnes sąlygas implantui prigyti.',
-          'Po implantavimo svarbu laikytis gydytojo rekomendacijų. Nedidelis maudimas, patinimas ar jautrumas gali būti normali gijimo dalis, tačiau simptomai turėtų palaipsniui mažėti.',
+          'Danties implantacija – tai chirurginė procedūra, todėl po jos organizmui reikia laiko gyti. Nors pati implantacija atliekama kontroliuojamomis sąlygomis, galutiniam rezultatui labai svarbu ir tai, kaip pacientas elgiasi po procedūros. Tinkama priežiūra pirmosiomis dienomis padeda sumažinti komplikacijų riziką, palengvina gijimą ir sudaro geresnes sąlygas implantui prigyti.',
+          'Po danties implantavimo svarbu laikytis gydytojo rekomendacijų, saugoti operuotą vietą ir stebėti savo savijautą. Nedidelis maudimas, patinimas ar jautrumas gali būti normali gijimo dalis, tačiau simptomai turėtų palaipsniui mažėti. Jei skausmas stiprėja, atsiranda pūliavimas, karščiavimas ar didėjantis patinimas, būtina kreiptis į gydytoją.',
         ],
       },
       {
         h: 'Kokia savijauta po danties implantavimo yra normali?',
         p: [
-          'Savijauta skiriasi priklausomai nuo procedūros sudėtingumo, implanto vietos ir sveikatos būklės. Pirmomis dienomis galite jausti maudimą, tempimą ar jautrumą operuotoje vietoje.',
-          'Taip pat galimas nedidelis patinimas, dantenų jautrumas ar sunkesnis kramtymas. Pirmomis valandomis po procedūros galimas nežymus kraujavimas.',
-          'Normalu, jei diskomfortas palaipsniui mažėja, o patinimas po kelių dienų pradeda slūgti. Tačiau reikėtų nedelsti ir susisiekti su gydytoju, jei skausmas stiprėja arba atsiranda pūliavimas.',
+          'Savijauta po danties implantavimo gali skirtis priklausomai nuo procedūros sudėtingumo, implanto vietos, paciento sveikatos būklės ir to, ar buvo atliktos papildomos procedūros, pavyzdžiui, kaulo priauginimas. Vis dėlto tam tikri pojūčiai po implantacijos yra įprasti ir dažniausiai neturėtų kelti nerimo.',
+          'Pirmomis dienomis galite jausti maudimą, tempimą ar jautrumą operuotoje vietoje. Taip pat gali atsirasti nedidelis patinimas, dantenų jautrumas ar sunkesnis kramtymas ta puse, kurioje buvo įsuktas implantas. Pirmomis valandomis po procedūros galimas nežymus kraujavimas. Kai kuriems pacientams po chirurginės procedūros jaučiamas lengvas nuovargis.',
+          'Svarbiausia stebėti, ar savijauta gerėja. Normalu, jei diskomfortas palaipsniui mažėja, o patinimas po kelių dienų pradeda slūgti. Tačiau jei skausmas stiprėja, patinimas didėja, atsiranda blogas kvapas, nemalonus skonis burnoje, pūliavimas ar temperatūra, reikėtų nedelsti ir susisiekti su gydytoju.',
         ],
       },
       {
         h: 'Pirmosios valandos po danties implantavimo',
         p: [
-          'Šis laikotarpis ypač svarbus, nes pradeda formuotis pirminis gijimo procesas. Jei gydytojas uždėjo tamponą, jį reikėtų laikyti nurodytą laiką.',
-          'Kol veikia nejautra, geriau nevalgyti. Taip pat pirmąją dieną reikėtų vengti karšto maisto ir intensyvaus burnos skalavimo.',
-          'Operuotos vietos nelieskite liežuviu, pirštais ar daiktais. Rekomenduojama ilsėtis ir vengti intensyvaus fizinio krūvio.',
+          'Pirmosios valandos po danties implantavimo yra ypač svarbios, nes tuo metu pradeda formuotis pirminis gijimo procesas. Jei gydytojas uždėjo tamponą, jį reikėtų laikyti tiek laiko, kiek buvo nurodyta. Nereikėtų jo keisti be reikalo ar nuolat tikrinti žaizdos, nes taip galima sudirginti operuotą vietą',
+          'Kol veikia nejautra, geriau nevalgyti. Aptirpusi burnos sritis gali lemti, kad netyčia įsikąsite į skruostą, lūpą ar liežuvį. Pirmąją dieną venkite karšto maisto ir gėrimų, intensyvaus burnos skalavimo, spjaudymo ir gėrimo per šiaudelį. Šie veiksmai gali sutrikdyti kraujo krešulio susidarymą ir sulėtinti gijimą',
+          'Operuotos vietos nelieskite liežuviu, pirštais ar daiktais. Po procedūros rekomenduojama ilsėtis ir vengti intensyvaus fizinio krūvio. Jei gydytojas paskyrė vaistus ar pateikė individualias rekomendacijas, jų reikėtų laikytis tiksliai taip, kaip nurodyta.',
         ],
       },
       {
         h: 'Gijimas po dantų implantacijos: ko tikėtis?',
         p: [
-          'Gijimas vyksta etapais. Pirmiausia gyja dantenos ir minkštieji audiniai. Pirmomis dienomis gali būti jaučiamas maudimas, jautrumas ar tempimas, o patinimas dažniausiai būna ryškiausias antrą ar trečią dieną po procedūros.',
-          'Svarbu suprasti, kad iš išorės dantenos gali atrodyti sugijusios gana greitai, tačiau pats implantas dar turi integruotis į kaulą. Šis procesas vadinamas osteointegracija ir trunka kelis mėnesius.',
-          'Gijimo trukmė priklauso nuo paciento sveikatos, kaulo kokybės ir papildomų procedūrų. Gydytojas įvertina gijimo eigą kontrolinių vizitų metu ir nusprendžia, kada galima pereiti prie tolimesnio protezavimo etapo.',
+          'Gijimas po dantų implantacijos vyksta etapais. Pirmiausia gyja dantenos ir minkštieji audiniai aplink implantą. Pirmomis dienomis gali būti jaučiamas maudimas, jautrumas ar tempimas, o patinimas dažniausiai būna ryškiausias antrą ar trečią dieną po procedūros. Vėliau šie pojūčiai turėtų palaipsniui mažėti.',
+          'Svarbu suprasti, kad iš išorės dantenos gali atrodyti sugijusios gana greitai, tačiau pats implantas dar turi integruotis į kaulą. Šis procesas vadinamas osteointegracija ir trunka ilgiau nei pirminis minkštųjų audinių gijimas. Todėl net jei skausmo nebėra, nereikėtų savarankiškai apkrauti implanto ar praleisti kontrolinių vizitų.',
+          'Gijimo trukmė priklauso nuo daugelio veiksnių: paciento sveikatos būklės, kaulo kokybės, implanto vietos, implantų skaičiaus, burnos higienos ir to, ar buvo atliktos papildomos procedūros, pavyzdžiui, kaulo priauginimas. Gydytojas įvertina gijimo eigą kontrolinių vizitų metu ir nusprendžia, kada galima pereiti prie tolimesnio protezavimo etapo.',
         ],
       },
       {
         h: 'Kaip prižiūrėti burną po implantacijos?',
         p: [
-          'Po implantacijos burnos higiena turi būti atsargi, bet nuosekli. Pirmąją dieną nerekomenduojama intensyviai skalauti, nes tai gali sutrikdyti gijimą.',
-          'Valykite dantis švelniai, naudodami minkštą dantų šepetėlį. Venkite stipraus spaudimo operuotoje vietoje.',
-          'Švara yra svarbi, nes apnašos ir bakterijos gali didinti uždegimo riziką. Vėliau implantą reikės prižiūrėti kaip natūralius dantis – reguliariai valyti ir lankytis profilaktinėse apžiūrose.',
+          'Po implantacijos burnos higiena turi būti atsargi, bet nuosekli. Pirmąją dieną nerekomenduojama intensyviai skalauti burnos, nes stiprus skalavimas gali sutrikdyti žaizdos gijimą. Tačiau tai nereiškia, kad burnos švaros galima nepaisyti. Dantis reikia valyti, tik operuotą vietą pirmomis dienomis saugoti nuo tiesioginio dirginimo.',
+          'Valykite dantis švelniai, naudodami minkštą dantų šepetėlį. Venkite stipriai spausti šepetėliu operuotą vietą, nekrapštykite žaizdos ir nelieskite jos pirštais ar liežuviu. Jei gydytojas paskyrė specialų skalavimo skystį ar kitas priemones, jas naudokite tiksliai taip, kaip nurodyta.',
+          'Švara yra svarbi, nes apnašos ir bakterijos gali didinti uždegimo riziką. Vėliau, kai audiniai sugis, implantą reikės prižiūrėti taip pat atsakingai kaip ir natūralius dantis. Reguliari burnos higiena ir profilaktiniai vizitai padeda palaikyti gerą implanto bei aplinkinių audinių būklę.',
         ],
       },
       {
         h: 'Ką galima valgyti po danties implantavimo?',
         p: [
-          'Po danties implantavimo pirmomis valandomis geriausia nevalgyti, kol visiškai nepraeina nejautra. Kai nejautra praeina, rinkitės minkštą, nekarštą maistą.',
-          'Pirmomis dienomis tinka košės, jogurtas, sriubos, minkšti troškiniai, trintas ar lengvai kramtomas maistas. Reikėtų vengti kieto, traškaus ir aštraus maisto.',
-          'Kramtykite kita burnos puse ir stenkitės neapkrauti implanto srities. Pirmąją parą venkite gerti per šiaudelį.',
+          'Po danties implantavimo pirmomis valandomis geriausia nevalgyti, kol visiškai nepraeina nejautra. Jei valgysite, kol burna aptirpusi, galite netyčia įsikąsti į lūpą, skruostą ar liežuvį. Kai nejautra praeina, rinkitės minkštą, nekarštą maistą, kuris nedirgina operuotos vietos.',
+          'Pirmomis dienomis tinka košės, jogurtas, sriubos, minkšti troškiniai, trintas ar lengvai kramtomas maistas. Reikėtų vengti kieto, traškaus, aštraus, labai karšto ar lipnaus maisto. Taip pat geriau vengti sėklų, riešutų, trupinių ir kitų smulkių produktų, kurie gali patekti į žaizdos vietą.',
+          'Kramtykite kita burnos puse ir stenkitės neapkrauti implanto srities. Gerkite pakankamai vandens, tačiau pirmąją parą venkite gerti per šiaudelį. Alkoholio taip pat reikėtų vengti, ypač jei vartojate gydytojo paskirtus vaistus. Mityba po procedūros turėtų padėti gijimui, o ne papildomai dirginti operuotą vietą.',
         ],
       },
       {
         h: 'Ko negalima daryti po danties implantacijos?',
         image: 'https://images.unsplash.com/photo-1468493858157-0da44aaf1d13?w=1200&q=80&fit=crop&auto=format',
         p: [
-          'Po implantavimo svarbu vengti veiksmų, kurie sutrikdytų gijimą. Pirmąją parą nereikėtų intensyviai skalauti burnos, spjaudyti ar gerti per šiaudelį.',
-          'Pirmomis dienomis nerekomenduojama rūkyti ir vartoti alkoholio. Rūkymas blogina kraujotaką ir gali didinti uždegimo riziką.',
-          'Venkite intensyvaus sporto, sunkaus fizinio krūvio ir pirties pirmomis dienomis po procedūros. Taip pat nepraleiskite kontrolinių vizitų – jie yra svarbi sėkmingo gijimo dalis.',
+          'Po danties implantacijos svarbu vengti veiksmų, kurie gali sutrikdyti gijimą arba padidinti komplikacijų riziką. Pirmąją parą nereikėtų intensyviai skalauti burnos, spjaudyti ar gerti per šiaudelį. Tokie veiksmai gali trikdyti kraujo krešulio formavimąsi ir dirginti operuotą vietą.',
+          'Pirmomis dienomis nerekomenduojama rūkyti ir vartoti alkoholio. Rūkymas blogina audinių kraujotaką, lėtina gijimą ir gali didinti uždegimo riziką. Alkoholio reikėtų vengti ypač tada, jei vartojate gydytojo paskirtus vaistus. Taip pat nešildykite operuotos vietos, nes šiluma gali paskatinti patinimą ar kraujavimą.',
+          'Venkite intensyvaus sporto, sunkaus fizinio krūvio ir pirties pirmomis dienomis po procedūros. Nekrapštykite žaizdos, nelieskite jos pirštais ar liežuviu, nebandykite savarankiškai vertinti implanto vietos. Taip pat nepraleiskite kontrolinių vizitų – jie svarbūs norint įsitikinti, kad gijimas po dantų implantacijos vyksta sklandžiai.',
         ],
       },
       {
         h: 'Kada reikėtų sunerimti ir kreiptis į gydytoją?',
         p: [
-          'Nedidelis maudimas gali būti normalus, tačiau simptomai turėtų palaipsniui mažėti. Jei skausmas stiprėja, reikėtų susisiekti su gydytoju.',
-          'Nerimą turėtų kelti didėjantis patinimas po kelių dienų, pūliavimas, nemalonus kvapas ar skonis burnoje, karščiavimas, nesustojantis kraujavimas arba judantis implantas.',
-          'Jei stipriai tinsta veidas, tampa sunku ryti ar kvėpuoti, arba atsiranda bendra bloga savijauta, reikalinga skubi medicininė pagalba.',
+          'Nedidelis maudimas, patinimas ar jautrumas pirmomis dienomis po implantacijos gali būti normalūs. Tačiau simptomai turėtų palaipsniui mažėti. Jei skausmas ne silpnėja, o stiprėja, reikėtų susisiekti su gydytoju. Ypač svarbu kreiptis, jei skausmas tampa pulsuojantis, trukdo miegoti ar nepraeina vartojant gydytojo rekomenduotas priemones.',
+          'Nerimą turėtų kelti didėjantis patinimas po kelių dienų, pūliavimas, nemalonus kvapas ar skonis burnoje, karščiavimas, nesustojantis kraujavimas ar stiprus skausmas kandant. Taip pat būtina kreiptis, jei atrodo, kad implantas, gijimo galvutė ar laikinas protezas juda.',
+          'Jei stipriai tinsta veidas, tampa sunku ryti, kvėpuoti ar atsiranda bendra bloga savijauta, reikalinga skubi medicininė pagalba. Tokiais atvejais nereikėtų laukti kontrolinio vizito – kuo anksčiau gydytojas įvertina situaciją, tuo greičiau galima išvengti rimtesnių komplikacijų',
         ],
       },
       {
         h: 'Kiek laiko trunka gijimas po dantų implantacijos?',
         p: [
-          'Gijimas vyksta nuosekliai. Pirminis diskomfortas, maudimas ar patinimas dažniausiai pradeda mažėti per kelias dienas.',
-          'Svarbiausias etapas – implanto suaugimas su kaulu. Šis procesas trunka ilgiau ir dažnai užima kelis mėnesius.',
-          'Tiksli gijimo trukmė priklauso nuo individualios situacijos: kaulo būklės, implantų skaičiaus, paciento sveikatos, burnos higienos, rūkymo ir papildomų procedūrų. Gydytojas stebės eigą ir informuos, kada galima pradėti kitus gydymo etapus.',
+          'Gijimas po dantų implantacijos vyksta ne vienu metu. Pirmiausia gyja dantenos ir minkštieji audiniai. Pirminis diskomfortas, maudimas ar patinimas dažniausiai pradeda mažėti per kelias dienas. Per pirmąsias savaites operuota vieta gali atrodyti gerokai nurimusi, tačiau tai dar nereiškia, kad visas gijimo procesas baigtas.',
+          'Svarbiausias etapas – implanto suaugimas su kaulu. Šis procesas trunka ilgiau ir dažnai užima kelis mėnesius. Tik tada, kai gydytojas įvertina, kad implantas stabilus ir gijimas vyksta tinkamai, galima pereiti prie tolimesnio protezavimo etapo.',
+          'Tiksli gijimo trukmė priklauso nuo individualios situacijos: kaulo būklės, implantų skaičiaus, paciento sveikatos, burnos higienos, rūkymo, papildomų procedūrų ir gydytojo rekomendacijų laikymosi. Todėl labai svarbu nepraleisti suplanuotų kontrolinių vizitų.',
         ],
       },
       {
         h: 'Sėkmingam rezultatui svarbios pirmosios dienos ir ilgalaikė priežiūra',
         p: [
-          'Po implantavimo svarbiausia laikytis gydytojo rekomendacijų, saugoti operuotą vietą ir stebėti savo savijautą.',
-          'Tinkama burnos higiena, atsargumas pirmomis dienomis ir reguliarūs kontroliniai vizitai padeda užtikrinti geresnį rezultatą. Jei kyla klausimų ar nerimą keliančių simptomų, registruokitės konsultacijai Bangų klinikoje Klaipėdoje.',
+          'Po danties implantavimo svarbiausia laikytis gydytojo rekomendacijų, saugoti operuotą vietą ir stebėti savo savijautą. Nedidelis maudimas, patinimas ar jautrumas gali būti normali gijimo dalis, tačiau šie simptomai turėtų palaipsniui mažėti.',
+          'Gijimas po dantų implantacijos vyksta etapais: pirmiausia gyja dantenos, vėliau implantas integruojasi kaule. Tinkama burnos higiena, atsargumas pirmomis dienomis ir reguliarūs kontroliniai vizitai padeda užtikrinti geresnį rezultatą. Jei planuojate danties implantaciją arba turite klausimų po procedūros, registruokitės konsultacijai Bangų klinikoje Klaipėdoje.',
         ],
       },
     ],
     faq: [
       { q: 'Kokia savijauta po danties implantavimo yra normali?', a: 'Normalu jausti nedidelį maudimą, jautrumą, tempimą ar patinimą operuotoje vietoje. Pirmomis valandomis gali būti nežymus kraujavimas. Svarbiausia, kad šie simptomai palaipsniui mažėtų.' },
-      { q: 'Kiek trunka gijimas po dantų implantacijos?', a: 'Pirminis diskomfortas sumažėja per kelias dienas, tačiau implanto suaugimas su kaulu trunka ilgiau – dažnai kelis mėnesius.' },
-      { q: 'Ką galima valgyti po danties implantavimo?', a: 'Pirmomis dienomis rekomenduojamas minkštas, nekarštas maistas: košės, jogurtas, sriubos, trinti patiekalai. Reikėtų vengti kieto ir traškaus maisto.' },
+      { q: 'Kiek trunka gijimas po dantų implantacijos?', a: 'Pirminis diskomfortas dažniausiai sumažėja per kelias dienas, tačiau implanto suaugimas su kaulu trunka ilgiau – dažnai kelis mėnesius. Tiksli trukmė priklauso nuo individualios situacijos.' },
+      { q: 'Ką galima valgyti po danties implantavimo?', a: 'Pirmomis dienomis rekomenduojamas minkštas, nekarštas maistas. Reikėtų vengti kieto, traškaus, aštraus, labai karšto ar smulkių trupinių turinčio maisto, kuris gali dirginti operuotą vietą.' },
       { q: 'Ar galima skalauti burną po implantacijos?', a: 'Pirmą parą nereikėtų intensyviai skalauti burnos, nes tai gali sutrikdyti gijimą. Vėliau burnos priežiūra atliekama pagal gydytojo rekomendacijas.' },
       { q: 'Ar galima rūkyti po danties implantacijos?', a: 'Rūkyti nerekomenduojama, nes rūkymas gali lėtinti gijimą, bloginti audinių kraujotaką ir didinti komplikacijų riziką.' },
-      { q: 'Kada kreiptis į gydytoją po implantacijos?', a: 'Į gydytoją reikėtų kreiptis, jei skausmas stiprėja, didėja patinimas, atsiranda pūliavimas, karščiavimas, blogas kvapas, nesustoja kraujavimas arba implantas juda.' },
+      { q: 'Kada kreiptis į gydytoją po implantacijos?', a: 'Į gydytoją reikėtų kreiptis, jei skausmas stiprėja, didėja patinimas, atsiranda pūliavimas, karščiavimas, blogas kvapas, nesustoja kraujavimas arba implantas ar laikinas protezas juda.' },
+    ],
+    sources: [
+      { label: 'Growth factors and osseointegration in dental implants — A review', url: 'https://pubmed.ncbi.nlm.nih.gov/41393465/' },
+      { label: 'Post-operative pain management using two drugs following dental implant surgery', url: 'https://pubmed.ncbi.nlm.nih.gov/37822832/' },
+      { label: 'Smoking and Dental Implants: A Systematic Review and Meta-Analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/35056347/' },
     ],
   },
   {
     slug: 'kodel-skauda-danti-po-plombavimo',
     title: 'Kodėl skauda dantį po plombavimo?',
-    excerpt: 'Nedidelis jautrumas po plombavimo dažnai yra laikinas. Tačiau kada skausmas – normali gijimo dalis, o kada jį reikia tikrinti? Atsakome į dažniausius klausimus.',
     date: '2026-05-27',
     category: 'Dantų gydymas',
     coverImage: 'https://images.unsplash.com/photo-1592400400196-bf709e32aa88?w=1200&q=80&fit=crop&auto=format',
@@ -231,6 +254,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         h: 'Kada skausmas po plombavimo yra normalus?',
+        image: '/skausmas-plombavimo.webp',
         p: [
           'Nedidelis skausmas ar jautrumas po plombavimo ne visada reiškia, kad kažkas atlikta netinkamai. Dantis buvo gydomas, todėl jo audiniai gali kurį laiką reaguoti jautriau. Dažniausiai normalu, jei dantis trumpai sureaguoja į šaltą, karštą, saldų ar rūgštų maistą, bet skausmas greitai praeina pašalinus dirgiklį.',
           'Po gilios plombos jautrumas gali būti ryškesnis, nes gydyta vieta yra arčiau danties nervo. Tokiu atveju gali būti jaučiamas lengvas maudimas ar diskomfortas kramtant, tačiau svarbiausia, kad šie pojūčiai palaipsniui mažėtų.',
@@ -285,20 +309,24 @@ export const BLOG_POSTS: BlogPost[] = [
       { q: 'Ką daryti, jei skauda užplombuotą dantį?', a: 'Stebėkite, ar skausmas mažėja, venkite dirginančio maisto ir nekramtykite ta puse, jei skauda sukandus. Jei skausmas stiprėja, nepraeina ar trukdo kramtyti, kreipkitės į odontologą.' },
       { q: 'Kada skausmas po plombavimo nėra normalus?', a: 'Nenormalu, jei skausmas stiprėja, yra pulsuojantis, pažadina naktį, plinta į kitas sritis, atsiranda patinimas, pūlinys ar temperatūra. Tokiais atvejais reikalinga odontologo apžiūra.' },
     ],
+    sources: [
+      { label: 'Postoperative Hypersensitivity in Class I Resin-based Composite Restorations in General Practice', url: 'https://pubmed.ncbi.nlm.nih.gov/19715013/' },
+      { label: 'A Randomised Controlled Trial of Postoperative Sensitivity after Class II Restorations with Bulk-fill or Conventional Composite', url: 'https://pubmed.ncbi.nlm.nih.gov/38373222/' },
+      { label: 'Effect of different adhesive systems on postoperative sensitivity of composite resin restorations in adults: a systematic review and network meta-analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/37017757/' },
+    ],
   },
   {
     slug: 'ar-skauda-kai-traukia-danti',
     title: 'Ar skauda, kai traukia dantį?',
-    excerpt: 'Danties rovimas daugeliui kelia nerimą. Ar procedūra skausminga? Ko tikėtis po rovimo? Atsakome į dažniausius klausimus apie danties traukimą.',
+    coverImage : '/skauda-traukia.webp',
     date: '2026-05-20',
     category: 'Dantų chirurgija',
-    coverImage: '/kodel-verta-3.webp',
     readTime: 9,
     sections: [
       {
         p: [
           'Danties rovimas daugeliui pacientų kelia nerimą. Dažniausiai bijoma ne tik pačios procedūros, bet ir nežinojimo, ko tikėtis: ar skaudės, kiek laiko truks, ką bus galima jausti ir kaip jausitės po to. Vis dėlto šiuolaikinėje odontologijoje danties traukimas atliekamas taikant nuskausminimą, todėl procedūros metu aštraus skausmo pacientas neturėtų jausti.',
-          'Svarbu suprasti, kad skausmas ir spaudimas nėra tas pats. Kai traukia dantį, galima jausti tempimą, judinimą ar spaudimą žandikaulyje, tačiau tai neturėtų būti skausminga.',
+          'Svarbu suprasti, kad skausmas ir spaudimas nėra tas pats. Kai traukia dantį, galima jausti tempimą, judinimą ar spaudimą žandikaulyje, tačiau tai neturėtų būti skausminga. Šiame įraše aptarsime, kada gali prireikti šalinti dantį, ką galima jausti, kai rauna dantį, ir kiek laiko skauda ištraukus dantį.',
         ],
       },
       {
@@ -382,20 +410,25 @@ export const BLOG_POSTS: BlogPost[] = [
       { q: 'Ko negalima daryti po danties rovimo?', a: 'Po rovimo nereikėtų intensyviai skalauti burnos, spjaudyti, gerti per šiaudelį, valgyti karšto maisto, rūkyti, vartoti alkoholio ar krapštyti žaizdos.' },
       { q: 'Kada po rovimo reikia kreiptis į gydytoją?', a: 'Į gydytoją reikia kreiptis, jei skausmas stiprėja, atsiranda blogas kvapas, nemalonus skonis, pūliavimas, karščiavimas, didėjantis patinimas ar gausus kraujavimas.' },
     ],
+    sources: [
+      { label: 'Evidence-based clinical practice guideline for the pharmacologic management of acute dental pain in children, adolescents, and adults', url: 'https://pubmed.ncbi.nlm.nih.gov/37634915/' },
+      { label: 'Acute Postoperative Pain Due to Dental Extraction in the Adult Population: A Systematic Review and Network Meta-analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/36631957/' },
+      { label: 'Local interventions for the management of alveolar osteitis, dry socket', url: 'https://pubmed.ncbi.nlm.nih.gov/36156769/' },
+    ],
   },
   {
     slug: 'ka-daryti-kai-skauda-protini-danti',
     title: 'Ką daryti, kai skauda protinį dantį?',
-    excerpt: 'Protinio danties skausmas – viena dažniausių priežasčių, dėl kurių pacientai skubiai kreipiasi į odontologą. Sužinokite, ką daryti ir kada būtina apsilankyti pas gydytoją.',
     date: '2026-05-13',
     category: 'Dantų gydymas',
-    coverImage: '/kodel-verta-2.webp',
+    coverImage: '/protini-skauda.webp',
     readTime: 12,
     sections: [
       {
         p: [
           'Protinių dantų skausmas – viena dažniausių priežasčių, dėl kurios pacientai kreipiasi į odontologą skubiau nei planavo. Šie dantys dygsta vėliausiai, dažniausiai jau suaugus, kai žandikaulyje ne visada lieka pakankamai vietos. Dėl to protinis dantis gali dygti netaisyklingai, spausti šalia esančius dantis, likti dalinai prasikalęs arba sukelti dantenų uždegimą.',
           'Jei skauda protinį dantį, svarbu suprasti, kad skausmo priežastys gali būti skirtingos. Kartais tai tik laikinas dygimo diskomfortas, tačiau kitais atvejais skausmas rodo uždegimą, infekciją, ėduonį ar įstrigusį dantį. Todėl nereikėtų ilgai laukti ir tikėtis, kad problema praeis savaime.',
+          'Šiame įraše aptarsime, ką daryti, kai skauda protinį dantį, kada būtina kreiptis į odontologą, ar skauda, kai rauna protinį dantį, ir ko tikėtis po rovimo.',
         ],
       },
       {
@@ -413,15 +446,16 @@ export const BLOG_POSTS: BlogPost[] = [
           'Ne visada lengva tiksliai suprasti, kuris dantis sukelia skausmą. Protinio danties skausmas dažniausiai jaučiamas pačiame žandikaulio gale, už paskutinio krūminio danties. Skausmas gali būti maudžiantis, pulsuojantis arba sustiprėti kramtant, plačiau išsižiojant ar liečiant dantenas toje vietoje.',
           'Dažnas požymis – patinusios ar jautrios dantenos aplink protinį dantį. Jei dantis prasikalęs tik iš dalies, gali atrodyti, kad dalį jo dengia dantenos. Šioje vietoje gali kauptis maistas, todėl atsiranda blogas burnos kvapas, nemalonus skonis ar jausmas, kad dantenos yra sudirgusios.',
           'Kartais protinio danties problema pasireiškia ne tik vietiniu skausmu. Skausmas gali plisti į ausį, smilkinį, gerklę ar visą žandikaulio pusę. Kai kuriems pacientams tampa sunkiau pilnai išsižioti, kramtyti ar valyti dantis toje pusėje. Jei yra uždegimas, gali atsirasti patinimas, bendras silpnumas ar pakilti temperatūra.',
+          'Vis dėlto vien pagal simptomus ne visada įmanoma tiksliai nustatyti, ar problemą sukelia protinis dantis. Panašiai gali skaudėti ir dėl kitų dantų ėduonies, dantenų uždegimo ar žandikaulio sąnario problemų. Todėl, jei skausmas kartojasi, stiprėja ar nepraeina, reikalinga odontologo apžiūra.',
         ],
       },
       {
         h: 'Skauda protinį dantį – ką daryti pirmiausia?',
         p: [
-          'Kai skauda protinį dantį, pirmiausia reikėtų įvertinti, ar skausmas yra lengvas ir laikinas, ar stiprus, didėjantis ir lydimas kitų simptomų. Jeigu jaučiamas tik nedidelis maudimas dygstančio danties srityje, galima pradėti nuo švelnios burnos higienos ir skaudamos vietos stebėjimo.',
-          'Pirmas žingsnis – atsargiai išsivalyti dantis, ypač sritį aplink protinį dantį. Kadangi šie dantys yra pačiame žandikaulio gale, aplink juos dažnai kaupiasi maisto likučiai ir apnašos. Valyti reikėtų švelniai, nenaudojant jėgos, kad dar labiau nesudirgintumėte dantenų.',
-          'Burną galima praskalauti drungnu vandeniu. Reikėtų vengti labai karšto, šalto, aštraus, kieto ar lipnaus maisto. Jei yra patinimas, prie išorinės skruosto pusės galima trumpais intervalais pridėti šaltą kompresą. Jo nereikėtų dėti tiesiai ant odos – geriau įvynioti į rankšluostį.',
-          'Svarbu nekrapštyti dantenų aštriais daiktais, nebandyti pradurti patinusios vietos ir nedėti vaistų tiesiai ant dantenų. Namų priemonės gali tik laikinai palengvinti simptomus, tačiau jos nepašalina priežasties.',
+          'Kai skauda protinį dantį, pirmiausia reikėtų įvertinti, ar skausmas yra lengvas ir laikinas, ar stiprus, didėjantis ir lydimas kitų simptomų. Jeigu jaučiamas tik nedidelis maudimas dygstančio danties srityje, galima pradėti nuo švelnios burnos higienos ir skaudamos vietos stebėjimo. Vis dėlto, jei skausmas stiprėja, atsiranda patinimas ar sunku išsižioti, reikėtų neatidėlioti vizito pas odontologą.',
+          'Pirmas žingsnis – atsargiai išsivalyti dantis, ypač sritį aplink protinį dantį. Kadangi šie dantys yra pačiame žandikaulio gale, aplink juos dažnai kaupiasi maisto likučiai ir apnašos. Jei dantis prasikalęs tik iš dalies, po dantenų kraštu gali patekti bakterijų, kurios sukelia uždegimą ir skausmą. Valyti reikėtų švelniai, nenaudojant jėgos, kad dar labiau nesudirgintumėte dantenų.',
+          'Burną galima praskalauti drungnu vandeniu. Reikėtų vengti labai karšto, šalto, aštraus, kieto ar lipnaus maisto, nes jis gali sustiprinti skausmą arba papildomai traumuoti jautrią vietą. Jei yra patinimas, prie išorinės skruosto pusės galima trumpais intervalais pridėti šaltą kompresą. Jo nereikėtų dėti tiesiai ant odos – geriau įvynioti į rankšluostį.',
+          'Svarbu nekrapštyti dantenų aštriais daiktais, nebandyti pradurti patinusios vietos ir nedėti vaistų tiesiai ant dantenų. Tokie veiksmai gali pažeisti gleivinę ir pabloginti būklę. Namų priemonės gali tik laikinai palengvinti simptomus, tačiau jos nepašalina priežasties. Todėl, jei skauda protinį dantį ir nežinote, ką daryti, saugiausias sprendimas – registruotis odontologo apžiūrai.',
         ],
       },
       {
@@ -429,61 +463,88 @@ export const BLOG_POSTS: BlogPost[] = [
         image: 'https://images.unsplash.com/photo-1684607633217-462056580c3c?w=1200&q=80&fit=crop&auto=format',
         p: [
           'Į odontologą reikėtų kreiptis tada, kai protinio danties skausmas nepraeina, kartojasi arba stiprėja. Net jei skausmas kuriam laikui sumažėja, tai nebūtinai reiškia, kad problema išnyko. Uždegimas aplink protinį dantį gali atsinaujinti, o negydomas ilgainiui sukelti didesnį patinimą, infekciją ar pažeisti šalia esančius dantis.',
-          'Skubi odontologo apžiūra reikalinga, jei skausmas yra stiprus, pulsuojantis, trukdo miegoti, valgyti ar normaliai išsižioti. Taip pat nereikėtų delsti, jei patino dantenos, žandas ar veidas, atsirado pūlinys, blogas skonis burnoje, nemalonus kvapas ar pakilo temperatūra.',
-          'Svarbu kreiptis ir tuomet, kai skausmas plinta į ausį, smilkinį, gerklę ar visą žandikaulio pusę. Dažnai protinio danties būklei įvertinti reikalinga rentgeno nuotrauka. Ji padeda pamatyti, kaip dantis išsidėstęs kaule, ar jis spaudžia gretimą dantį ir kokia šaknų padėtis.',
+          'Skubi odontologo apžiūra reikalinga, jei skausmas yra stiprus, pulsuojantis, trukdo miegoti, valgyti ar normaliai išsižioti. Taip pat nereikėtų delsti, jei patino dantenos, žandas ar veidas, atsirado pūlinys, blogas skonis burnoje, nemalonus kvapas ar pakilo temperatūra. Šie simptomai gali rodyti infekciją, kuriai reikalingas profesionalus gydymas.',
+          'Svarbu kreiptis ir tuomet, kai skausmas plinta į ausį, smilkinį, gerklę ar visą žandikaulio pusę. Tokiais atvejais žmogui gali atrodyti, kad skauda ne vieną konkretų dantį, o visą pusę burnos ar veido. Odontologas apžiūros metu gali nustatyti, ar skausmą iš tiesų sukelia protinis dantis, ar kita problema.',
+          'Dažnai protinio danties būklei įvertinti reikalinga rentgeno nuotrauka. Ji padeda pamatyti, kaip dantis išsidėstęs kaule, ar jis spaudžia gretimą dantį, ar yra pakankamai vietos dygimui, kokia šaknų padėtis ir ar nėra uždegimo požymių. Tik įvertinus situaciją galima nuspręsti, ar dantį reikia stebėti, gydyti, ar šalinti.',
         ],
       },
       {
         h: 'Ar visada reikia rauti protinį dantį?',
         p: [
           'Ne, protinį dantį ne visada reikia rauti. Jei dantis išdygęs taisyklingai, nespaudžia kitų dantų, nesukelia uždegimo ir jį galima kokybiškai išvalyti, jis gali likti burnoje. Tokiu atveju svarbiausia reguliari priežiūra, gera burnos higiena ir profilaktinės odontologo apžiūros.',
-          'Tačiau protiniai dantys dažnai kelia problemų dėl savo padėties. Kadangi jie yra pačiame žandikaulio gale, juos sunkiau pasiekti šepetėliu ir tarpdančių priemonėmis. Jei dantis pažeistas taip, kad jo kokybiškai gydyti neįmanoma, gali būti rekomenduojamas šalinimas.',
-          'Rovimas taip pat svarstomas, kai protinis dantis dygsta kreivai, remiasi į gretimą dantį, sukelia spaudimą ar pažeidžia šalia esančius audinius. Sprendimas dėl rovimo priimamas individualiai – odontologas įvertina paciento nusiskundimus, danties padėtį, rentgeno nuotrauką ir galimybes dantį prižiūrėti ar gydyti.',
+          'Tačiau protiniai dantys dažnai kelia problemų dėl savo padėties. Kadangi jie yra pačiame žandikaulio gale, juos sunkiau pasiekti šepetėliu ir tarpdančių priemonėmis. Dėl to aplink juos greičiau kaupiasi apnašos, vystosi ėduonis arba kartojasi dantenų uždegimas. Jei dantis pažeistas taip, kad jo kokybiškai gydyti neįmanoma, gali būti rekomenduojamas šalinimas.',
+          'Rovimas taip pat svarstomas, kai protinis dantis dygsta kreivai, remiasi į gretimą dantį, sukelia spaudimą, skausmą ar pažeidžia šalia esančius audinius. Jei dantis prasikalęs tik iš dalies, aplink jį gali nuolat kartotis uždegimai. Tokiais atvejais vien laikinas simptomų sumažinimas problemos neišsprendžia.',
+          'Sprendimas dėl rovimo priimamas individualiai. Odontologas įvertina paciento nusiskundimus, danties padėtį, rentgeno nuotrauką, uždegimo riziką ir galimybes dantį prižiūrėti ar gydyti. Todėl nereikėtų iš anksto manyti, kad skaudant protinį dantį jį būtinai reikės šalinti. Pirmiausia svarbu tiksliai nustatyti skausmo priežastį.',
+        ],
+      },
+      {
+        h: 'Kaip odontologas nustato protinio danties problemą?',
+        p: [
+          'Protinio danties problemos ne visada matomos vien apžiūrint burną. Kartais dantis būna prasikalęs tik iš dalies, o kartais jis gali būti visiškai pasislėpęs po dantenomis ar kaule. Todėl odontologas pirmiausia įvertina paciento simptomus: kada prasidėjo skausmas, ar jis stiprėja, ar yra patinimas, ar sunku kramtyti, išsižioti, ryti, ar skausmas plinta į ausį, smilkinį ar žandikaulį.',
+          'Po pokalbio atliekama burnos apžiūra. Gydytojas įvertina dantenų būklę aplink protinį dantį, ar nėra paraudimo, patinimo, pūliavimo, maisto likučių susikaupimo ar ėduonies požymių. Taip pat apžiūrimi šalia esantys dantys, nes protinis dantis gali spausti gretimą krūminį dantį arba prisidėti prie jo pažeidimo.',
+          'Dažnai reikalinga rentgeno nuotrauka arba panoraminė rentgeno nuotrauka. Ji padeda pamatyti protinio danties padėtį, šaknų formą, santykį su šalia esančiais dantimis ir aplinkiniais audiniais. Pagal šią informaciją odontologas gali nuspręsti, ar dantį galima stebėti, ar reikia gydyti uždegimą, ar geriausias sprendimas būtų protinio danties šalinimas.',
         ],
       },
       {
         h: 'Ar skauda, kai rauna protinį dantį?',
         p: [
           'Vienas dažniausių pacientų klausimų – ar skauda, kai rauna protinį dantį. Dažniausiai pati procedūra atliekama taikant vietinę nejautrą, todėl aštraus skausmo pacientas neturėtų jausti. Prieš pradedant rovimo procedūrą, gydytojas pasirūpina, kad danties ir aplinkinių audinių sritis būtų nuskausminta.',
-          'Procedūros metu galima jausti spaudimą, tempimą, judesį ar vibraciją, tačiau tai nėra tas pats, kas skausmas. Jei pacientas vis dėlto jaučia skausmą, svarbu iš karto pasakyti gydytojui – nejautrą galima papildyti.',
-          'Tai, kiek sudėtinga bus pašalinti protinį dantį, priklauso nuo jo padėties. Jei dantis visiškai išdygęs ir šaknys nėra sudėtingos, rovimas dažnai būna paprastesnis. Jei protinis dantis įstrigęs, dygsta kreivai arba yra po dantenomis ar kaule, gali prireikti chirurginio šalinimo.',
+          'Procedūros metu galima jausti spaudimą, tempimą, judesį ar vibraciją, tačiau tai nėra tas pats, kas skausmas. Šie pojūčiai atsiranda todėl, kad gydytojas dirba su dantimi ir aplinkiniais audiniais, tačiau nejautra blokuoja skausmo pojūtį. Jei pacientas vis dėlto jaučia skausmą, svarbu iš karto pasakyti gydytojui – nejautrą galima papildyti.',
+          'Tai, kiek sudėtinga bus pašalinti protinį dantį, priklauso nuo jo padėties. Jei dantis visiškai išdygęs ir šaknys nėra sudėtingos, rovimas dažnai būna paprastesnis. Jei protinis dantis įstrigęs, dygsta kreivai, yra po dantenomis ar kaule, gali prireikti chirurginio šalinimo. Tokiu atveju procedūra gali užtrukti ilgiau, tačiau ji taip pat atliekama nuskausminus.',
+          'Svarbiausia suprasti, kad šiuolaikinėje odontologijoje protinio danties rovimas neturėtų būti skausminga procedūra. Pacientui gali būti nemalonu dėl spaudimo ar nerimo, tačiau gydytojas kontroliuoja nuskausminimą ir procedūros eigą.',
         ],
       },
       {
         h: 'Ar skauda išrovus protinį dantį?',
+        p: [
+          'Po protinio danties rovimo, pasibaigus nejautros poveikiui, gali atsirasti maudimas, jautrumas, patinimas ar tempimo pojūtis. Tai yra normali gijimo proceso dalis, ypač jei dantis buvo šalinamas sudėtingiau arba reikėjo chirurginės intervencijos. Dažniausiai didesnis diskomfortas jaučiamas pirmomis dienomis po procedūros.',
+          'Kiek skauda išrovus protinį dantį, priklauso nuo kelių dalykų: danties padėties, šaknų formos, rovimo sudėtingumo, uždegimo buvimo ir individualios gijimo reakcijos. Vieniems pacientams pakanka lengvo maudimo, kitiems kelias dienas gali būti sunkiau plačiai išsižioti ar kramtyti toje pusėje. Gydytojas po procedūros pateikia rekomendacijas, kaip kontroliuoti skausmą ir prižiūrėti žaizdą',
+          'Po rovimo gali būti nedidelis kraujavimas, patinimas, jautrumas ir ribotas išsižiojimas. Tačiau svarbu stebėti, ar simptomai neblogėja. Jei po kelių dienų skausmas stiprėja, atsiranda blogas kvapas, nemalonus skonis burnoje, karščiavimas, gausus kraujavimas ar didėjantis patinimas, reikėtų kreiptis į odontologą.',
+          'Tinkama priežiūra po procedūros padeda sumažinti komplikacijų riziką ir užtikrinti sklandesnį gijimą. Todėl labai svarbu laikytis gydytojo nurodymų, nevarginti žaizdos ir neatidėlioti pakartotinio vizito, jei atsiranda neįprastų simptomų.',
+        ],
+      },
+      {
+        h: 'Kaip prižiūrėti burną po protinio danties rovimo?',
         image: 'https://images.unsplash.com/photo-1676897288522-e8a081e71430?w=1200&q=80&fit=crop&auto=format',
         p: [
-          'Po protinio danties rovimo, pasibaigus nejautros poveikiui, gali atsirasti maudimas, jautrumas, patinimas ar tempimo pojūtis. Tai yra normali gijimo proceso dalis, ypač jei dantis buvo šalinamas sudėtingiau.',
-          'Kiek skauda išrovus protinį dantį, priklauso nuo danties padėties, šaknų formos, rovimo sudėtingumo, uždegimo buvimo ir individualios gijimo reakcijos. Gydytojas po procedūros pateikia rekomendacijas, kaip kontroliuoti skausmą ir prižiūrėti žaizdą.',
-          'Jei po kelių dienų skausmas stiprėja, atsiranda blogas kvapas, nemalonus skonis burnoje, karščiavimas, gausus kraujavimas ar didėjantis patinimas, reikėtų kreiptis į odontologą.',
+          'Po protinio danties rovimo labai svarbu laikytis gydytojo rekomendacijų, nes pirmosios valandos ir dienos turi didelę įtaką gijimui. Iš karto po procedūros žaizdos vietoje susiformuoja kraujo krešulys, kuris saugo žaizdą ir padeda jai gyti. Todėl svarbu jo nepažeisti.',
+          'Pirmą parą nereikėtų intensyviai skalauti burnos, spjaudyti ar gerti per šiaudelį. Tokie veiksmai gali išjudinti krešulį ir sulėtinti gijimą. Taip pat reikėtų vengti karšto maisto ir gėrimų, nes šiluma gali paskatinti kraujavimą. Geriausia rinktis minkštą, nekarštą maistą ir kramtyti kita burnos puse.',
+          'Pirmomis dienomis nerekomenduojama rūkyti, vartoti alkoholio ar intensyviai sportuoti. Rūkymas gali trikdyti gijimą, o fizinis krūvis gali padidinti kraujavimo ir patinimo riziką. Žaizdos nereikėtų liesti pirštais, liežuviu ar krapštyti maisto likučių aštriais daiktais.',
+          'Dantis valyti reikia, tačiau atsargiai. Šalia rovimo vietos reikėtų valyti švelniai, kad nebūtų pažeista gyjanti sritis. Jei gydytojas paskyrė vaistus ar specialias priežiūros priemones, jas būtina vartoti taip, kaip nurodyta. Jeigu skausmas, patinimas ar kraujavimas didėja, reikėtų kreiptis į odontologą.',
         ],
       },
       {
         h: 'Ko nedaryti, kai skauda protinį dantį?',
         p: [
-          'Kai skauda protinį dantį, svarbu ne tik žinoti, ką daryti, bet ir ko vengti. Viena dažniausių klaidų – bandymas skausmą malšinti dedant vaistus tiesiai ant dantenų ar danties. Aspirinas, spiritas, česnakas ar kitos dirginančios medžiagos gali pažeisti burnos gleivinę ir dar labiau sustiprinti diskomfortą.',
-          'Nereikėtų šildyti patinusios vietos. Jei skausmą sukelia uždegimas ar pūlinys, šiluma gali pabloginti situaciją ir paskatinti infekcijos plitimą. Taip pat nerekomenduojama savarankiškai vartoti antibiotikų be gydytojo paskyrimo.',
+          'Kai skauda protinį dantį, svarbu ne tik žinoti, ką daryti, bet ir ko vengti. Viena dažniausių klaidų – bandymas skausmą malšinti dedant vaistus tiesiai ant dantenų ar danties. Aspirinas, spiritas, česnakas ar kitos dirginančios medžiagos gali pažeisti burnos gleivinę, sukelti nudegimą ir dar labiau sustiprinti diskomfortą.',
+          'Taip pat nereikėtų šildyti patinusios vietos. Jei skausmą sukelia uždegimas ar pūlinys, šiluma gali pabloginti situaciją ir paskatinti infekcijos plitimą. Tokiais atvejais saugiau naudoti šaltą kompresą iš išorinės skruosto pusės, tačiau tai tik laikina priemonė iki odontologo apžiūros.',
+          'Nereikėtų bandyti pradurti pūlinio, spausti patinusių dantenų ar krapštyti srities aplink protinį dantį aštriais daiktais. Taip galima pažeisti audinius ir įnešti dar daugiau bakterijų. Taip pat nerekomenduojama savarankiškai vartoti antibiotikų be gydytojo paskyrimo. Antibiotikai reikalingi ne visada, o netinkamas jų vartojimas gali būti žalingas.',
           'Svarbiausia – neatidėlioti vizito, jei skausmas stiprėja, kartojasi, atsiranda patinimas, temperatūra ar sunku išsižioti. Pasikartojantis protinio danties uždegimas dažniausiai neišnyksta savaime, todėl jį turi įvertinti odontologas.',
         ],
       },
       {
         h: 'Protinio danties skausmo nereikėtų ignoruoti',
         p: [
-          'Jei skauda protinį dantį, svarbiausia nustatyti tikrąją skausmo priežastį. Nors kartais diskomfortas gali būti susijęs su dygimu, dažnai skausmą sukelia dantenų uždegimas, vietos trūkumas, netaisyklinga danties padėtis, ėduonis ar infekcija.',
-          'Laiku atlikta odontologo apžiūra padeda suprasti, ar protinį dantį galima stebėti, gydyti, ar vis dėlto reikalingas jo šalinimas. Kuo anksčiau kreipiamasi, tuo lengviau suvaldyti uždegimą ir išvengti sudėtingesnių komplikacijų. Registruokitės konsultacijai Bangų klinikoje Klaipėdoje.',
+          'Jei skauda protinį dantį, svarbiausia nustatyti tikrąją skausmo priežastį. Nors kartais diskomfortas gali būti susijęs su dygimu, dažnai skausmą sukelia dantenų uždegimas, vietos trūkumas, netaisyklinga danties padėtis, ėduonis ar infekcija. Tokiais atvejais vien laikinos namų priemonės problemos neišsprendžia.',
+          'Laiku atlikta odontologo apžiūra padeda suprasti, ar protinį dantį galima stebėti, gydyti, ar vis dėlto reikalingas jo šalinimas. Kuo anksčiau kreipiamasi, tuo lengviau suvaldyti uždegimą, sumažinti skausmą ir išvengti sudėtingesnių komplikacijų.',
+          'Jei protinis dantis sukelia skausmą, patinimą, nemalonų skonį burnoje ar skausmas kartojasi, nelaukite, kol problema paūmės. Registruokitės konsultacijai Bangų klinikoje Klaipėdoje – gydytojas įvertins situaciją ir pasiūlys tinkamiausią gydymo sprendimą.',
         ],
       },
     ],
     faq: [
-      { q: 'Ką daryti, jei skauda protinį dantį?', a: 'Pirmiausia švelniai išsivalykite dantis, praskalaukite burną drungnu vandeniu ir venkite kieto, karšto ar aštraus maisto. Jei yra patinimas, prie skruosto iš išorės galima trumpam pridėti šaltą kompresą. Jei skausmas stiprus ar kartojasi, kreipkitės į odontologą.' },
-      { q: 'Kiek laiko skauda po protinio danties rovimo?', a: 'Diskomfortas po protinio danties rovimo dažniausiai jaučiamas kelias dienas. Trukmė priklauso nuo danties padėties, procedūros sudėtingumo ir individualaus gijimo. Jei skausmas ne mažėja, o stiprėja, reikėtų pasitarti su odontologu.' },
-      { q: 'Ko negalima daryti po protinio danties rovimo?', a: 'Po rovimo pirmą parą nereikėtų intensyviai skalauti burnos, spjaudyti, gerti per šiaudelį ar valgyti karšto maisto. Pirmomis dienomis taip pat reikėtų vengti rūkymo ir alkoholio.' },
+      { q: 'Ką daryti, jei skauda protinį dantį?', a: 'Jei skauda protinį dantį, pirmiausia švelniai išsivalykite dantis, praskalaukite burną drungnu vandeniu ir venkite kieto, karšto, šalto ar aštraus maisto. Jei yra patinimas, prie skruosto iš išorės galima trumpam pridėti šaltą kompresą. Tačiau jei skausmas stiprus, kartojasi ar atsiranda papildomų simptomų, reikėtų kreiptis į odontologą.' },
+      { q: 'Kiek laiko skauda po protinio danties rovimo?', a: 'Diskomfortas po protinio danties rovimo dažniausiai jaučiamas kelias dienas. Trukmė priklauso nuo danties padėties, procedūros sudėtingumo, uždegimo buvimo ir individualaus gijimo. Jei skausmas ne mažėja, o stiprėja, reikėtų pasitarti su odontologu.' },
+      { q: 'Ko negalima daryti po protinio danties rovimo?', a: 'Po rovimo pirmą parą nereikėtų intensyviai skalauti burnos, spjaudyti, gerti per šiaudelį, valgyti karšto maisto ar sportuoti. Pirmomis dienomis taip pat reikėtų vengti rūkymo ir alkoholio. Žaizdos negalima krapštyti ar liesti pirštais, nes tai gali sutrikdyti gijimą.' },
+    ],
+    sources: [
+      { label: 'Patterns of Third-Molar-Pericoronitis-Related Pain: A Morphometrical Observational Study', url: 'https://pubmed.ncbi.nlm.nih.gov/37444724/' },
+      { label: 'Surgical removal versus retention for the management of asymptomatic disease-free impacted wisdom teeth', url: 'https://pubmed.ncbi.nlm.nih.gov/32368796/' },
+      { label: 'Prediction of postoperative facial swelling, pain and trismus following third molar surgery based on preoperative variables', url: 'https://pubmed.ncbi.nlm.nih.gov/23229245/' },
     ],
   },
   {
     slug: 'ka-daryti-kai-skauda-danti',
     title: 'Ką daryti, kai skauda dantį?',
-    excerpt: 'Danties skausmas dažnai užklumpa netikėtai. Ką daryti, kai skauda dantį ir kaip atskirti, kada tai skubi situacija? Atsakome į dažniausius klausimus.',
     date: '2026-05-06',
     category: 'Skubi pagalba',
     coverImage: 'https://images.unsplash.com/photo-1602932213623-cc17e9541bb4?w=1200&q=80&fit=crop&auto=format',
@@ -508,22 +569,22 @@ export const BLOG_POSTS: BlogPost[] = [
         p: [
           'Jei labai skauda dantį, ypač kai skausmas yra pulsuojantis, stiprėja naktį ar trukdo miegoti, tai gali būti ženklas, kad problema yra rimtesnė nei paprastas jautrumas. Skubi odontologo apžiūra reikalinga tada, kai skausmas nepraeina kelias valandas, plinta į žandikaulį, ausį, smilkinį ar galvą, taip pat kai kartu atsiranda dantenų, žando ar veido patinimas.',
           'Nereikėtų delsti ir tais atvejais, kai burnoje matomas pūlinys, jaučiamas nemalonus skonis, pakyla temperatūra, sunku išsižioti ar kramtyti. Skubi pagalba taip pat reikalinga po danties traumos – jei dantis nuskilo, lūžo, buvo išmuštas, iškrito plomba ar karūnėlė ir dantis tapo labai jautrus.',
-          'Tokiose situacijose skausmo malšinimas namuose gali būti tik laikinas sprendimas. Tik odontologas gali nustatyti tikslią priežastį ir parinkti tinkamą gydymą.',
+          'Tokiose situacijose skausmo malšinimas namuose gali būti tik laikinas sprendimas. Tik odontologas gali nustatyti tikslią priežastį ir parinkti tinkamą gydymą, kad būtų sustabdytas uždegimas, sumažintas skausmas ir išvengta komplikacijų.',
         ],
       },
       {
         h: 'Ką daryti, kai skauda dantį ir nėra vaistų?',
         p: [
-          'Kai skauda dantį ir nėra vaistų, svarbiausia nepanikuoti ir vengti veiksmų, kurie gali pabloginti situaciją. Pirmiausia švelniai išsivalykite dantis, pašalinkite maisto likučius iš tarpdančių ir praskalaukite burną drungnu vandeniu.',
+          'Kai skauda dantį ir nėra vaistų, svarbiausia nepanikuoti ir vengti veiksmų, kurie gali pabloginti situaciją. Pirmiausia švelniai išsivalykite dantis, pašalinkite maisto likučius iš tarpdančių ir praskalaukite burną drungnu vandeniu. Tai gali padėti, jei skausmą sustiprino įstrigęs maistas ar sudirgintos dantenos.',
           'Jeigu yra patinimas, prie skruosto iš išorės galima pridėti šaltą kompresą. Jį laikykite trumpais intervalais ir nedėkite ledo tiesiai ant odos. Svarbu vengti karštų kompresų, nes šiluma gali paskatinti uždegimo plitimą, ypač jei susiformavęs pūlinys.',
-          'Nereikėtų dėti aspirino, česnako, spirito ar kitų dirginančių medžiagų tiesiai ant dantenų ar danties. Tokie metodai gali nudeginti gleivinę ir sukelti dar didesnį skausmą. Jei skausmas stiprus, kartojasi ar atsiranda patinimas, būtina kreiptis į odontologą.',
+          'Nereikėtų dėti aspirino, česnako, spirito ar kitų dirginančių medžiagų tiesiai ant dantenų ar danties. Tokie metodai gali nudeginti gleivinę ir sukelti dar didesnį skausmą. Namų priemonės gali tik laikinai sumažinti diskomfortą, tačiau jos neišsprendžia pagrindinės problemos. Jei skausmas stiprus, kartojasi ar atsiranda patinimas, būtina kreiptis į odontologą.',
         ],
       },
       {
         h: 'Kur kreiptis, kai skauda dantį?',
         p: [
           'Kai skauda dantį, svarbu įvertinti skausmo stiprumą ir kitus simptomus. Jei skausmas nestiprus, pasireiškia tik valgant ar geriant šaltus gėrimus, galima registruotis į įprastą odontologo konsultaciją artimiausiu metu. Tačiau jei skausmas stiprus, pulsuojantis, trukdo miegoti, kartu atsiranda patinimas, pūlinys, kraujavimas ar danties trauma, reikalinga skubi odontologinė pagalba.',
-          'Tokiais atvejais geriausia kreiptis į odontologijos kliniką, kuri teikia skubią pagalbą. Vizito metu gydytojas įvertina danties būklę, nustato skausmo priežastį ir parenka tinkamiausią sprendimą.',
+          'Tokiais atvejais geriausia kreiptis į odontologijos kliniką, kuri teikia skubią pagalbą. Vizito metu gydytojas įvertina danties būklę, nustato skausmo priežastį ir parenka tinkamiausią sprendimą. Kartais pakanka pašalinti dirgiklį ar laikinai sumažinti uždegimą, tačiau kitais atvejais gali prireikti endodontinio gydymo, plombavimo, pūlinio gydymo ar kitos procedūros.',
           'Bangų klinikoje Klaipėdoje teikiama skubi odontologinė pagalba pacientams, kuriuos vargina stiprus danties skausmas, patinimas, danties trauma, iškritusi plomba ar kitos ūmios problemos. Laiku kreipiantis pagalbos galima greičiau numalšinti skausmą ir sumažinti komplikacijų riziką.',
         ],
       },
@@ -532,7 +593,7 @@ export const BLOG_POSTS: BlogPost[] = [
         p: [
           'Jeigu skauda dantį savaitgalį, pirmiausia įvertinkite, ar situacija gali palaukti iki artimiausio odontologo vizito. Jei skausmas nestiprus, nėra patinimo, karščiavimo, pūlinio ar traumos požymių, laikinai venkite kieto, karšto, šalto ir saldaus maisto, palaikykite burnos higieną ir registruokitės vizitui artimiausiu metu.',
           'Tačiau jei skausmas labai stiprus, pulsuojantis, nepraeina, trukdo miegoti, patino žandas ar dantenos, atsirado pūlinys, temperatūra ar sunku išsižioti, delsti nereikėtų. Tokie simptomai gali rodyti infekciją ar ūmų uždegimą, kuriam reikalinga skubi pagalba.',
-          'Bangų klinikos darbo laikas nurodomas klinikos svetainėje, todėl prieš vykstant visada rekomenduojama pasitikrinti aktualią informaciją ir susisiekti dėl registracijos.',
+          'Jei savaitgalį jūsų pasirinkta klinika nedirba, o simptomai yra pavojingi, reikėtų kreiptis į budinčią skubios pagalbos įstaigą. Jei būklė nėra ūmi, verta kuo anksčiau registruotis artimiausiam odontologo vizitui. Bangų klinikos darbo laikas nurodomas klinikos svetainėje, todėl prieš vykstant visada rekomenduojama pasitikrinti aktualią informaciją ir susisiekti dėl registracijos.',
         ],
       },
       {
@@ -548,8 +609,16 @@ export const BLOG_POSTS: BlogPost[] = [
         h: 'Kaip vyksta skubus vizitas pas odontologą?',
         p: [
           'Skubaus vizito metu odontologas pirmiausia išklauso paciento nusiskundimus: kada prasidėjo skausmas, koks jo pobūdis, ar yra patinimas, trauma, jautrumas, karščiavimas ar kiti simptomai. Tuomet atliekama burnos apžiūra, įvertinama dantų, dantenų ir aplinkinių audinių būklė.',
-          'Jei vien apžiūros nepakanka, gali būti atliekamas rentgeno tyrimas. Jis padeda tiksliau nustatyti, ar yra gilus ėduonis, uždegimas šaknų srityje, pūlinys, danties lūžis ar kita problema.',
-          'Pagrindinis skubaus vizito tikslas – sumažinti skausmą, suvaldyti ūmią būklę ir nuspręsti, koks gydymas reikalingas toliau. Kartais problema išsprendžiama to paties vizito metu, o kartais atliekamas laikinas gydymas ir sudaromas tolimesnis planas.',
+          'Jei vien apžiūros nepakanka, gali būti atliekamas rentgeno tyrimas. Jis padeda tiksliau nustatyti, ar yra gilus ėduonis, uždegimas šaknų srityje, pūlinys, danties lūžis ar kita problema, kurios plika akimi nematyti.',
+          'Pagrindinis skubaus vizito tikslas – sumažinti skausmą, suvaldyti ūmią būklę ir nuspręsti, koks gydymas reikalingas toliau. Kartais problema išsprendžiama to paties vizito metu, o kartais atliekamas laikinas gydymas ir sudaromas tolimesnis gydymo planas. Svarbiausia, kad pacientas negyventų su neaiškia ir tik blogėjančia situacija...',
+        ],
+      },
+      {
+        h: 'Kada nebegalima laukti?',
+        p: [
+          'Laukti nereikėtų, jei danties skausmas yra labai stiprus, pulsuojantis arba nepraeina net kelias valandas. Ypač svarbu nedelsti, jei kartu patino žandas, dantenos ar veidas, atsirado pūlinys, nemalonus skonis burnoje, karščiavimas ar bendras silpnumas. Tokie simptomai gali rodyti infekciją, kuri negydoma gali plisti.',
+          'Skubi pagalba reikalinga ir po traumos: jei dantis nuskilo, lūžo, buvo išmuštas, pradėjo kraujuoti dantenos ar tapo sunku sukąsti. Taip pat nereikėtų laukti, jei iškrito plomba ar karūnėlė, o dantis tapo labai jautrus ir skausmingas.',
+          'Net jei skausmas trumpam sumažėja, tai nebūtinai reiškia, kad problema išnyko. Kartais ūmus skausmas aprimsta, tačiau uždegimas toliau progresuoja. Todėl esant stipriems ar pasikartojantiems simptomams geriausia kuo greičiau kreiptis į odontologą.',
         ],
       },
       {
@@ -562,12 +631,17 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
     faq: [
-      { q: 'Ką daryti, jei labai skauda dantį?', a: 'Jei labai skauda dantį, pirmiausia švelniai išsivalykite dantis, praskalaukite burną drungnu vandeniu ir venkite karšto, šalto, saldaus ar kieto maisto. Jei yra patinimas, prie skruosto iš išorės galima pridėti šaltą kompresą. Stiprus, pulsuojantis ar ilgai nepraeinantis skausmas – ženklas, kad reikalinga odontologo apžiūra.' },
-      { q: 'Ką daryti, kai skauda dantį ir nėra vaistų?', a: 'Švelniai išsivalykite dantis, praskalaukite burną drungnu vandeniu, naudokite šaltą kompresą jei yra patinimas. Nedėkite aspirino, česnako ar spirito tiesiai ant dantenų – tai gali pažeisti gleivinę. Kreipkitės į odontologą, jei skausmas stiprus ar kartojasi.' },
-      { q: 'Ar danties skausmas gali praeiti savaime?', a: 'Kartais danties skausmas gali trumpam sumažėti, tačiau tai nebūtinai reiškia, kad problema išnyko. Uždegimas ar infekcija gali toliau progresuoti. Jei skausmas kartojasi ar stiprėja, reikėtų kreiptis į odontologą.' },
-      { q: 'Kur kreiptis, kai skauda dantį?', preImage: 'https://images.unsplash.com/photo-1681939278218-a755fb2bf2d3?w=1200&q=80&fit=crop&auto=format', a: 'Jei skausmas nestiprus, galima registruotis į artimiausią odontologo konsultaciją. Jei skausmas stiprus, pulsuojantis, yra patinimas, pūlinys ar trauma, reikėtų kreiptis dėl skubios pagalbos. Bangų klinikoje Klaipėdoje teikiama pagalba esant ūmiam danties skausmui.' },
+      { q: 'Ką daryti, jei labai skauda dantį?', a: 'Jei labai skauda dantį, pirmiausia švelniai išsivalykite dantis, praskalaukite burną drungnu vandeniu ir venkite karšto, šalto, saldaus ar kieto maisto. Jei yra patinimas, prie skruosto iš išorės galima pridėti šaltą kompresą. Tačiau stiprus, pulsuojantis ar ilgai nepraeinantis skausmas yra ženklas, kad reikalinga odontologo apžiūra. Tokiu atveju nereikėtų laukti, kol skausmas praeis savaime.' },
+      { q: 'Ką daryti, kai skauda dantį ir nėra vaistų?', a: 'Kai skauda dantį ir nėra vaistų, svarbiausia vengti dirginančių ar pavojingų priemonių. Nedėkite vaistų, spirito, česnako ar kitų medžiagų tiesiai ant dantenų, nes jos gali pažeisti gleivinę. Laikinai gali padėti burnos skalavimas drungnu vandeniu, švelni burnos higiena ir šaltas kompresas, jei yra patinimas. Vis dėlto tokios priemonės tik palengvina simptomus, bet nepašalina skausmo priežasties.' },
+      { q: 'Ar danties skausmas gali praeiti savaime?', a: 'Kartais danties skausmas gali trumpam sumažėti, tačiau tai nebūtinai reiškia, kad problema išnyko. Pavyzdžiui, uždegimas ar infekcija gali toliau progresuoti net tada, kai skausmas tampa silpnesnis. Jei skausmas kartojasi, stiprėja, atsiranda jautrumas kramtant, patinimas ar kiti simptomai, reikėtų kreiptis į odontologą.' },
+      { q: 'Kur kreiptis, kai skauda dantį?', preImage: 'https://images.unsplash.com/photo-1681939278218-a755fb2bf2d3?w=1200&q=80&fit=crop&auto=format', a: 'Jei skauda dantį savaitgalį, įvertinkite simptomų rimtumą. Jei skausmas nestiprus, nėra patinimo, karščiavimo ar pūlinio, stenkitės nedirginti skaudamos vietos ir registruokitės vizitui artimiausiu metu. Jei skausmas labai stiprus, patino veidas ar dantenos, atsirado pūlinys, temperatūra ar sunku išsižioti, reikėtų kreiptis į skubią pagalbą nedelsiant.' },
       { q: 'Ką daryti, jei dantį skauda savaitgalį?', a: 'Įvertinkite simptomų rimtumą. Jei skausmas nestiprus, nėra patinimo ar pūlinio – registruokitės vizitui artimiausiu metu. Jei skausmas labai stiprus, patino veidas ar atsiranda pūlinys ir temperatūra – kreipkitės į skubią pagalbą.' },
-      { q: 'Ar galima šildyti skaudamą dantį?', a: 'Šildyti skaudamos vietos nerekomenduojama, ypač jei yra patinimas ar įtariamas pūlinys. Šiluma gali paskatinti uždegimo plitimą. Saugesnis pasirinkimas – šaltas kompresas iš išorinės skruosto pusės.' },
+      { q: 'Ar galima šildyti skaudamą dantį?', a: 'Šildyti skaudamos vietos nerekomenduojama, ypač jei yra patinimas ar įtariamas pūlinys. Šiluma gali paskatinti uždegimo plitimą ir pabloginti būklę. Jei yra patinimas, saugesnis pasirinkimas – trumpais intervalais naudojamas šaltas kompresas iš išorinės skruosto pusės.' },
+    ],
+    sources: [
+      { label: 'Acute Dental Pain Management Guideline — American Dental Association', url: 'https://www.ada.org/resources/research/science/evidence-based-dental-research/pain-management-guideline' },
+      { label: 'Evidence-based clinical practice guideline for the pharmacologic management of acute dental pain', url: 'https://jada.ada.org/article/S0002-8177(23)00672-4/fulltext' },
+      { label: 'Management of odontogenic infections and sepsis: an update', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7517749/' },
     ],
   },
 ]

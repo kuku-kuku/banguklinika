@@ -21,6 +21,8 @@ interface TableOfContentsProps {
   rootRef?: React.RefObject<HTMLElement>
   /** CTA mygtukas po TOC sąrašo (tiek mobile, tiek desktop) */
   cta?: { label: string; to: string }
+  /** Rodo tik mobile sticky bar, slepia desktop sidebar */
+  mobileOnly?: boolean
 }
 
 function escapeId(id: string) {
@@ -32,7 +34,7 @@ function escapeId(id: string) {
     : id.replace(/([ #;?%&,.+*~\\':"!^$[\]()=>|\/@])/g, "\\$1")
 }
 
-export function TableOfContents({ sections, title = "Turinys", rootRef, cta }: TableOfContentsProps) {
+export function TableOfContents({ sections, title = "Turinys", rootRef, cta, mobileOnly = false }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("")
   const [isOpen, setIsOpen] = useState(false)
   const tocRef = useRef<HTMLDivElement>(null)
@@ -106,7 +108,7 @@ export function TableOfContents({ sections, title = "Turinys", rootRef, cta }: T
       if (el) {
         setActiveId(id)
         el.scrollIntoView({ behavior: "smooth", block: "start" })
-        window.history.pushState(null, "", `#${id}`)
+        window.history.replaceState(null, "", `#${id}`)
         setIsOpen(false)
       }
     },
@@ -187,8 +189,8 @@ export function TableOfContents({ sections, title = "Turinys", rootRef, cta }: T
         </AnimatePresence>
       </div>
 
-      {/* Desktop TOC – sticky sidebar (visible on 2xl+) */}
-      <nav className="hidden 2xl:block sticky top-20 self-start w-56 shrink-0" aria-label="Turinio navigacija">
+      {/* Desktop TOC – sticky sidebar (visible on 2xl+, hidden if mobileOnly) */}
+      <nav className={`${mobileOnly ? 'hidden' : 'hidden 2xl:block'} sticky top-20 self-start w-56 shrink-0`} aria-label="Turinio navigacija">
         <div className="bg-white rounded-2xl border border-slate-200/80 shadow-lg shadow-slate-200/50 p-5">
           <div className="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
             <svg className="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -29,14 +29,15 @@ export default function ScrollToTop() {
       return;
     }
 
-    // į viršų — per Lenis jei aktyvus, kitaip tiesiogiai
+    // Native scroll to 0 first (synchronous, before paint)
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    // Tell Lenis its internal state is also at 0
     const lenis = getLenis()
     if (lenis) {
       lenis.scrollTo(0, { immediate: true })
-    } else {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
     }
 
     // priverstinai "pranešam" scroll listeneriams (TOC)

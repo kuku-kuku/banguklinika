@@ -84,6 +84,7 @@ export default function StraipsnisPage() {
   const SITE = 'https://www.banguklinika.lt'
 
   const tocSections: TocSection[] = [
+    { id: 'pradzia', label: 'Pradžia' },
     ...post.sections
       .filter(s => s.h)
       .map(s => ({ id: slugify(s.h!), label: s.h! })),
@@ -93,7 +94,6 @@ export default function StraipsnisPage() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     if (tocSections.length > 0) setActiveId(tocSections[0].id)
-
     function update() {
       let active = tocSections[0]?.id ?? ''
       for (const { id } of tocSections) {
@@ -103,24 +103,19 @@ export default function StraipsnisPage() {
       }
       setActiveId(active)
     }
-
     window.addEventListener('scroll', update, { passive: true })
     requestAnimationFrame(() => requestAnimationFrame(update))
     return () => window.removeEventListener('scroll', update)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [post.slug])
 
-  // Auto-scroll TOC nav to keep active item visible
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     if (!tocNavRef.current || !activeId) return
     const activeEl = tocNavRef.current.querySelector<HTMLElement>(`[data-toc-id="${activeId}"]`)
-    if (activeEl) {
-      activeEl.scrollIntoView({ block: 'nearest' })
-    }
+    if (activeEl) activeEl.scrollIntoView({ block: 'nearest' })
   }, [activeId])
 
-  // Wheel handler: scroll TOC when it has room, otherwise let Lenis scroll the page
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     const nav = tocNavRef.current
@@ -129,21 +124,22 @@ export default function StraipsnisPage() {
       const { scrollTop, scrollHeight, clientHeight } = nav!
       const atTop = scrollTop === 0 && e.deltaY < 0
       const atBottom = scrollTop + clientHeight >= scrollHeight - 1 && e.deltaY > 0
-      if (!atTop && !atBottom) {
-        e.stopPropagation()
-        e.preventDefault()
-        nav!.scrollTop += e.deltaY
-      }
+      if (!atTop && !atBottom) { e.stopPropagation(); e.preventDefault(); nav!.scrollTop += e.deltaY }
     }
     nav.addEventListener('wheel', onWheel, { passive: false })
     return () => nav.removeEventListener('wheel', onWheel)
   }, [])
 
   function scrollTo(id: string) {
+    if (id === 'pradzia') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      window.history.replaceState(null, '', window.location.pathname)
+      return
+    }
     const el = pageRef.current?.querySelector<HTMLElement>(`#${CSS.escape(id)}`)
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      window.history.pushState(null, '', `#${id}`)
+      window.history.replaceState(null, '', `#${id}`)
     }
   }
 
@@ -252,14 +248,14 @@ export default function StraipsnisPage() {
       {/* Article body */}
       <section className="py-12 md:py-16">
         <div className={W}>
-          {/* Mobile TOC sticky bar only — desktop sidebar handled below */}
-          <div className="lg:hidden">
-            <TableOfContents
-              sections={tocSections}
-              title="Turinys"
-              rootRef={pageRef as React.RefObject<HTMLElement>}
-            />
-          </div>
+
+          {/* Mobile TOC — inside tall section so sticky works; desktop sidebar handles lg+ */}
+          <TableOfContents
+            mobileOnly
+            sections={tocSections}
+            title="Turinys"
+            rootRef={pageRef as React.RefObject<HTMLElement>}
+          />
 
           <div className="lg:grid lg:grid-cols-[1fr_280px] lg:gap-12 xl:gap-16">
 
@@ -346,24 +342,32 @@ export default function StraipsnisPage() {
                   </motion.div>
                 )}
               </article>
+
+              {/* Šaltiniai */}
+              {post.sources && post.sources.some(s => s.label) && (
+                <div className="mt-10 pt-6 border-t border-slate-200">
+                  <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Šaltiniai</p>
+                  <ol className="space-y-1.5 list-decimal list-inside">
+                    {post.sources.map((s, i) => (
+                      <li key={i} className="text-xs text-slate-400 leading-relaxed">
+                        <a href={s.url} target="_blank" rel="noopener noreferrer" className="hover:text-slate-600 underline underline-offset-2 transition-colors">
+                          {s.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
             </div>
 
-            {/* Right sidebar — CTA + compact TOC */}
+            {/* Desktop sidebar — CTA + compact TOC */}
             <aside className="hidden lg:block self-start sticky top-28">
               <div className="space-y-4">
-
-                {/* CTA card */}
                 <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                  <p
-                    className="text-[10px] font-bold tracking-[0.18em] uppercase mb-2"
-                    style={{ color: C.teal }}
-                  >
+                  <p className="text-[10px] font-bold tracking-[0.18em] uppercase mb-2" style={{ color: C.teal }}>
                     Pirmasis vizitas
                   </p>
-                  <h3
-                    className="text-base font-extrabold leading-snug mb-2"
-                    style={{ color: C.deepTeal }}
-                  >
+                  <h3 className="text-base font-extrabold leading-snug mb-2" style={{ color: C.deepTeal }}>
                     Pirminė konsultacija nemokama
                   </h3>
                   <p className="text-sm text-slate-500 leading-relaxed mb-5">
@@ -388,12 +392,9 @@ export default function StraipsnisPage() {
                   </Link>
                 </div>
 
-                {/* Compact TOC */}
                 {tocSections.length > 0 && (
                   <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                    <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-2 px-1">
-                      Turinys
-                    </p>
+                    <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-2 px-1">Turinys</p>
                     <nav ref={tocNavRef} className="max-h-56 overflow-y-auto">
                       {tocSections.map(({ id, label }) => (
                         <a
@@ -402,16 +403,10 @@ export default function StraipsnisPage() {
                           href={`#${id}`}
                           onClick={(e) => { e.preventDefault(); scrollTo(id) }}
                           className={`flex items-start gap-2 px-2 py-1.5 rounded-lg text-xs leading-snug transition-colors no-underline ${
-                            activeId === id
-                              ? 'text-[#0ABBB5] font-semibold bg-teal-50'
-                              : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'
+                            activeId === id ? 'text-[#0ABBB5] font-semibold bg-teal-50' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'
                           }`}
                         >
-                          <span
-                            className={`mt-px shrink-0 w-1 h-1 rounded-full self-center transition-all ${
-                              activeId === id ? 'bg-[#0ABBB5] scale-150' : 'bg-slate-300'
-                            }`}
-                          />
+                          <span className={`mt-px shrink-0 w-1 h-1 rounded-full self-center transition-all ${activeId === id ? 'bg-[#0ABBB5] scale-150' : 'bg-slate-300'}`} />
                           {label}
                         </a>
                       ))}

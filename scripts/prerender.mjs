@@ -139,7 +139,7 @@ const pages = [
   },
   {
     route: "/paslaugos/vaiku-odontologija",
-    title: "Vaikų odontologija Klaipėdoje | Bangų klinika",
+    title: "Vaikų odontologija (stomatologija) Klaipėdoje | Bangų klinika",
     description: "Ieškote vaikų odontologo Klaipėdoje?⏩Bangų klinikoje dirba patyrę specialistai, užtikrinantys švelnų☑️saugų☑️gydymą vaikams. Patogi registracija ir profesionali priežiūra.",
     schema: serviceSchema("Vaikų odontologija Klaipėdoje", "Vaikų odontologija", "Vaikų odontologijos paslaugos teikiamos Bangų odontologijos klinikoje Klaipėdoje. Klinikoje atliekama vaikų dantų priežiūra ir gydymas pacientams Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/vaiku-odontologija/`),
   },
