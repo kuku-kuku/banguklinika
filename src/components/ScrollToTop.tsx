@@ -29,16 +29,15 @@ export default function ScrollToTop() {
       return;
     }
 
-    // Native scroll to 0 first (synchronous, before paint)
+    const lenis = getLenis()
+    if (lenis) {
+      // scrollTo(immediate) internally calls setScroll(this.scroll) which resets native scroll
+      // to the OLD position — so we override it synchronously right after
+      lenis.scrollTo(0, { immediate: true })
+    }
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
-
-    // Tell Lenis its internal state is also at 0
-    const lenis = getLenis()
-    if (lenis) {
-      lenis.scrollTo(0, { immediate: true })
-    }
 
     // priverstinai "pranešam" scroll listeneriams (TOC)
     window.dispatchEvent(new Event("scroll"));

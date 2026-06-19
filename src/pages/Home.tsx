@@ -136,9 +136,9 @@ function TeamCarousel() {
             <motion.div
               key={member.name}
               className="absolute"
-              style={{ zIndex: z, willChange: 'transform', cursor: abs > 0 ? 'pointer' : 'default' }}
+              style={{ zIndex: z, cursor: abs > 0 ? 'pointer' : 'default' }}
               animate={{ x, scale, opacity, rotateY: rotY }}
-              transition={{ type: 'spring', stiffness: 280, damping: 28 }}
+              transition={{ type: 'spring', stiffness: 220, damping: 30 }}
               onClick={() => abs > 0 && handleSelect(i)}
             >
               <div

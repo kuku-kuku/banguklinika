@@ -112,8 +112,18 @@ export default function StraipsnisPage() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     if (!tocNavRef.current || !activeId) return
-    const activeEl = tocNavRef.current.querySelector<HTMLElement>(`[data-toc-id="${activeId}"]`)
-    if (activeEl) activeEl.scrollIntoView({ block: 'nearest' })
+    const nav = tocNavRef.current
+    const activeEl = nav.querySelector<HTMLElement>(`[data-toc-id="${activeId}"]`)
+    if (activeEl) {
+      // offsetTop is relative to offsetParent (sticky aside), not the nav — use getBCR instead
+      const elRelTop = activeEl.getBoundingClientRect().top - nav.getBoundingClientRect().top + nav.scrollTop
+      const elRelBottom = elRelTop + activeEl.offsetHeight
+      if (elRelBottom > nav.scrollTop + nav.clientHeight) {
+        nav.scrollTop = elRelBottom - nav.clientHeight
+      } else if (elRelTop < nav.scrollTop) {
+        nav.scrollTop = elRelTop
+      }
+    }
   }, [activeId])
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -192,11 +202,7 @@ export default function StraipsnisPage() {
       {/* Hero */}
       <section className="pt-12 pb-8 md:pt-16 md:pb-10">
         <div className={W}>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <div>
             <nav className="flex items-center gap-2 text-xs text-slate-400 mb-6">
               <Link to="/" className="hover:text-slate-600 transition-colors">Pradžia</Link>
               <span>/</span>
@@ -213,7 +219,7 @@ export default function StraipsnisPage() {
                 {post.title}
               </h1>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
