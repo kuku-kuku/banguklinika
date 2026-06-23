@@ -78,11 +78,11 @@ const POPULAR_SERVICES = [
 ]
 
 const TEAM = [
-  { name: 'Jonas Balsys',         role: 'Odontologas',                 img: '/team/Jonas-light.jpg' },
-  { name: 'Odeta Balsienė',       role: 'Odontologė · Klinikos vadovė', img: '/team/Odeta-light.jpg' },
-  { name: 'Donatas Bitinas',      role: 'Odontologas',                 img: '/team/Donatas_light.jpg' },
-  { name: 'Donatas Kubilius',    role: 'Odontologas',                 img: '/team/donataskubilius.jpg' },
-  { name: 'Rūta',                 role: 'Burnos higienistė',           img: '/team/Rūta_light.jpg' },
+  { name: 'Donatas Bitinas',   role: 'Implantuojantis gydytojas odontologas',              img: '/team/Donatas_light.jpg' },
+  { name: 'Donatas Kubilius',  role: 'Gydytojas, Veido ir Žandikaulių chirurgas',          img: '/team/donataskubilius.jpg' },
+  { name: 'Jonas Sabulis',     role: 'Protezuojantis gydytojas odontologas',               img: '/team/Jonas-light.jpg' },
+  { name: 'Odeta Venckutė',    role: 'Gydytoja odontologė',                                img: '/team/Odeta-light.jpg' },
+  { name: 'Rūta Garšvienė',   role: 'Burnos higienistė, tiesinimo kapomis koordinatorė', img: '/team/Rūta_light.jpg' },
 ]
 
 // ─── Team coverflow carousel ──────────────────────────────────────────────────
