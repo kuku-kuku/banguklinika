@@ -16,7 +16,7 @@ const FORCE_EXACT = new Set<string>([
 
   // Implantai
   'Straumann® implantas',
-  'Neodenta® implantas',
+  'Neodent® implantas',
 ])
 
 function formatPrice(p: { name: string; from?: number; to?: number; exact?: boolean }): string {

@@ -868,7 +868,7 @@ const navLv = [
 const homeLv = {
   seo: {
     title: "Zobārstniecības klīnika Klaipēdā",
-    description: "Zobārstniecības klīnika Klaipēdā: zobu ārstniecība, implantācija (Straumann®/Neodenta®), CEREC protezēšana 1 vizītē, AIRFLOW® higiēna, estētiskā plombēšana. Bezmaksas sākotnējā konsultācija.",
+    description: "Zobārstniecības klīnika Klaipēdā: zobu ārstniecība, implantācija (Straumann®/Neodent®), CEREC protezēšana 1 vizītē, AIRFLOW® higiēna, estētiskā plombēšana. Bezmaksas sākotnējā konsultācija.",
     keywords: "zobārstniecības klīnika Klaipēda, zobu ārstniecība Klaipēda, zobu implanti, CEREC Klaipēda, mutes higiēna, estētiskā zobārstniecība, zobu protezēšana"
   },
   hero: {
@@ -877,7 +877,7 @@ const homeLv = {
     ctaPhone: "Reģistrācija pa tālruni",
     ctaOnline: "Reģistrācija tiešsaistē",
     bullets: [
-      "Straumann® / Neodenta® implanti",
+      "Straumann® / Neodent® implanti",
       "CEREC – kroņi 1 vizītē",
       "Estētiskā plombēšana",
       "Profesionāla higiēna (AIRFLOW®)"
@@ -1745,7 +1745,7 @@ function SEO({
 }
 const QA$1 = [
   { q: "Ar balinimas saugus?", a: "Taip, taikant klinikinius protokolus ir individualią priežiūrą – procedūra saugi." },
-  { q: "Ar dedame Straumann implantus?", a: "Taip, dirbame su Straumann® ir Neodenta® sistemomis." },
+  { q: "Ar dedame Straumann implantus?", a: "Taip, dirbame su Straumann® ir Neodent® sistemomis." },
   { q: "Ar darote CEREC vainikėlius per 1 vizitą?", a: "Taip, daugeliu atvejų vainikėlis ar įklotas pagaminamas tą pačią dieną." }
 ];
 function FAQ() {
@@ -2133,7 +2133,7 @@ const hero$1 = {
   ctaPhone: "Registracija telefonu",
   ctaOnline: "Registracija internetu",
   bullets: [
-    "Straumann® / Neodenta® implantai",
+    "Straumann® / Neodent® implantai",
     "CEREC – vainikėliai per 1 vizitą",
     "Estetinis plombavimas",
     "Profesionali higiena (AIRFLOW®)"
@@ -2810,7 +2810,7 @@ function EyeBrow(_) {
   return null;
 }
 const POPULAR_SERVICES = [
-  { id: "dantu-implantacija", title: "Dantų implantacija", desc: "Saugus ir ilgaamžis prarastų dantų atkūrimas naudojant Straumann® / Neodenta® sistemas.", image: "/implantacija.webp" },
+  { id: "dantu-implantacija", title: "Dantų implantacija", desc: "Saugus ir ilgaamžis prarastų dantų atkūrimas naudojant Straumann® / Neodent® sistemas.", image: "/implantacija.webp" },
   { id: "dantu-protezavimas", title: "Dantų protezavimas", desc: "Atstatome dantų formą ir funkciją pasitelkiant CEREC technologiją – vainikėlis per 1 vizitą.", image: "/protezavimas.webp" },
   { id: "dantu-balinimas", title: "Dantų balinimas", desc: "Saugi BEYOND® sistema – matomas rezultatas jau per vieną procedūrą.", image: "/balinimas.webp" },
   { id: "burnos-higiena", title: "Burnos higiena", desc: "Profesionali AIRFLOW® procedūra – švelni ir efektyvi burnos ertmės priežiūra.", image: "/higiena.webp" },
@@ -4469,7 +4469,7 @@ const servicesTitle = "Odontologijos klinikoje teikiamos paslaugos";
 const services$1 = [
   "Dantų gydymas, konsultacijos dantų priežiūros klausimais.",
   "Dantų plombavimas.",
-  "Implantai (Straumann®, Neodenta®).",
+  "Implantai (Straumann®, Neodent®).",
   "Skaitmeninis dantų protezavimas CEREC sistema, protezavimas ant implantų, dantų karūnėlės, dantų tiltai, vainikėliai, užklotai, laminatės.",
   "Dantų protezavimas iš karto vietoje.",
   "Mikroprotezavimas (daliniai vainikėliai – karūnėlės, įklotai, užklotai, laminatės).",
@@ -7675,7 +7675,7 @@ function DantuProtezavimas() {
               /* @__PURE__ */ jsxs("div", { className: "flex-1 space-y-5", children: [
                 /* @__PURE__ */ jsx("h2", { className: "text-3xl font-extrabold tracking-tight", style: { color: P$4 }, children: "Protezavimas ant implantų" }),
                 /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-lg leading-relaxed", children: "Protezavimas ant implantų laikomas vienu pažangiausių dantų atkūrimo būdų, kai prarastų dantų vietoje įtvirtinamos dirbtinės šaknys – implantai, ant kurių vėliau tvirtinami individualiai pagaminti protezai. Šis metodas leidžia atkurti ne tik dantų estetiką, bet ir natūralų kramtymo pojūtį bei stabilumą." }),
-                /* @__PURE__ */ jsx("p", { className: "text-slate-600 leading-relaxed", children: "Bangų odontologijos klinikoje protezavimas ant implantų atliekamas naudojant patikimas ir pasaulyje pripažintas sistemas – Straumann® ir Neodenta® implantus. Ant implantų tvirtinami protezai gaminami taip, kad būtų vizualiai ir funkciniu požiūriu beveik neatskiriami nuo natūralių dantų. Tai sprendimas, tinkantis tiek vieno danties atkūrimui, tiek kelių ar visų dantų protezavimui." }),
+                /* @__PURE__ */ jsx("p", { className: "text-slate-600 leading-relaxed", children: "Bangų odontologijos klinikoje protezavimas ant implantų atliekamas naudojant patikimas ir pasaulyje pripažintas sistemas – Straumann® ir Neodent® implantus. Ant implantų tvirtinami protezai gaminami taip, kad būtų vizualiai ir funkciniu požiūriu beveik neatskiriami nuo natūralių dantų. Tai sprendimas, tinkantis tiek vieno danties atkūrimui, tiek kelių ar visų dantų protezavimui." }),
                 /* @__PURE__ */ jsx(
                   "div",
                   {
@@ -10604,7 +10604,7 @@ function SkubiPagalba() {
 }
 const QA = [
   { q: "Vai balināšana ir droša?", a: "Jā, izmantojot klīniskos protokolus un individuālu uzraudzību — procedūra ir droša." },
-  { q: "Vai jūs izmantojat Straumann implantus?", a: "Jā, mēs strādājam ar Straumann® un Neodenta® sistēmām." },
+  { q: "Vai jūs izmantojat Straumann implantus?", a: "Jā, mēs strādājam ar Straumann® un Neodent® sistēmām." },
   { q: "Vai jūs izgatavojat CEREC vainagus 1 vizītes laikā?", a: "Jā, vairumā gadījumu vainags vai uzklājs tiek izgatavots tajā pašā dienā." }
 ];
 function FAQLv() {
@@ -10663,7 +10663,7 @@ const HREFLANG_ALTERNATES = [
   { lang: "x-default", url: `${SITE_URL$1}/` }
 ];
 const POPULAR_SERVICES_LV = [
-  { id: "zobu-implantacija", title: "Zobu implantācija", desc: "Droša un ilgstoša zaudēto zobu atjaunošana ar pasaulē atzītām Straumann® un Neodenta® sistēmām.", image: "/implantacija.webp", href: "/lv/pakalpojumi/zobu-implantacija" },
+  { id: "zobu-implantacija", title: "Zobu implantācija", desc: "Droša un ilgstoša zaudēto zobu atjaunošana ar pasaulē atzītām Straumann® un Neodent® sistēmām.", image: "/implantacija.webp", href: "/lv/pakalpojumi/zobu-implantacija" },
   { id: "zobu-protezesana", title: "Digitālā protezēšana (CEREC)", desc: "Vainagi un uzklāji vienas vizītes laikā ar jaunāko CEREC tehnoloģiju.", image: "/protezavimas.webp", href: "/lv/pakalpojumi/zobu-protezesana" },
   { id: "zobu-balinesana", title: "Zobu balināšana", desc: "Droša un efektīva balināšana ar BEYOND® sistēmu kabinetā vai individuālām kalsēm mājās.", image: "/balinimas.webp", href: "/lv/pakalpojumi/zobu-balinesana" },
   { id: "mutes-higiena", title: "Profesionālā mutes higiēna", desc: "Aplikumu un akmeņu noņemšana profesionālai mutes dobuma veselības uzturēšanai.", image: "/higiena.webp", href: "/lv/pakalpojumi/mutes-higiena" },
@@ -11567,7 +11567,7 @@ function TeamPhoto({ name, photoFile }) {
 const services = [
   "Zobu ārstniecība, konsultācijas zobu kopšanas jautājumos.",
   "Zobu plombēšana.",
-  "Implanti (Straumann®, Neodenta®).",
+  "Implanti (Straumann®, Neodent®).",
   "Digitālā zobu protezēšana CEREC sistēmā, protezēšana uz implantiem, zobu kroņi, zobu tilti, vainagi, uzklājumi, laminēti.",
   "Zobu protezēšana uzreiz uz vietas.",
   "Mikroprotezēšana (daļēji vainagi — kroņi, ieliktņi, uzklājumi, laminēti).",
@@ -13175,7 +13175,7 @@ function ZobuProtezesanaLv() {
             ] }),
             /* @__PURE__ */ jsxs("div", { className: "bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm", children: [
               /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Protezēšana uz implantiem" }),
-              /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 mb-4 leading-relaxed", children: "Mākslīgās saknes (implanti) atjauno stabilitāti un košļāšanas spēku. Izmantojam Straumann® un Neodenta® sistēmas, kas ļauj atjaunot vienu vai visus zobus." })
+              /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 mb-4 leading-relaxed", children: "Mākslīgās saknes (implanti) atjauno stabilitāti un košļāšanas spēku. Izmantojam Straumann® un Neodent® sistēmas, kas ļauj atjaunot vienu vai visus zobus." })
             ] })
           ] })
         ] }),

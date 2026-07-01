@@ -3,7 +3,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 const QA = [
   { q: 'Ar balinimas saugus?', a: 'Taip, taikant klinikinius protokolus ir individualią priežiūrą – procedūra saugi.' },
-  { q: 'Ar dedame Straumann implantus?', a: 'Taip, dirbame su Straumann® ir Neodenta® sistemomis.' },
+  { q: 'Ar dedame Straumann implantus?', a: 'Taip, dirbame su Straumann® ir Neodent® sistemomis.' },
   { q: 'Ar darote CEREC vainikėlius per 1 vizitą?', a: 'Taip, daugeliu atvejų vainikėlis ar įklotas pagaminamas tą pačią dieną.' },
 ]
 

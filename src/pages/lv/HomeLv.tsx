@@ -18,7 +18,7 @@ const HREFLANG_ALTERNATES = [
 ]
 
 const POPULAR_SERVICES_LV = [
-  { id: 'zobu-implantacija',  title: 'Zobu implantācija',           desc: 'Droša un ilgstoša zaudēto zobu atjaunošana ar pasaulē atzītām Straumann® un Neodenta® sistēmām.', image: '/implantacija.webp', href: '/lv/pakalpojumi/zobu-implantacija' },
+  { id: 'zobu-implantacija',  title: 'Zobu implantācija',           desc: 'Droša un ilgstoša zaudēto zobu atjaunošana ar pasaulē atzītām Straumann® un Neodent® sistēmām.', image: '/implantacija.webp', href: '/lv/pakalpojumi/zobu-implantacija' },
   { id: 'zobu-protezesana',   title: 'Digitālā protezēšana (CEREC)', desc: 'Vainagi un uzklāji vienas vizītes laikā ar jaunāko CEREC tehnoloģiju.',                            image: '/protezavimas.webp',        href: '/lv/pakalpojumi/zobu-protezesana' },
   { id: 'zobu-balinesana',    title: 'Zobu balināšana',              desc: 'Droša un efektīva balināšana ar BEYOND® sistēmu kabinetā vai individuālām kalsēm mājās.',           image: '/balinimas.webp',        href: '/lv/pakalpojumi/zobu-balinesana' },
   { id: 'mutes-higiena',      title: 'Profesionālā mutes higiēna',  desc: 'Aplikumu un akmeņu noņemšana profesionālai mutes dobuma veselības uzturēšanai.',                     image: '/higiena.webp',      href: '/lv/pakalpojumi/mutes-higiena' },
