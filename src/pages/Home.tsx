@@ -69,7 +69,7 @@ const FEATURES = [
 ]
 
 const POPULAR_SERVICES = [
-  { id: 'dantu-implantacija',   title: 'Dantų implantacija',    desc: 'Saugus ir ilgaamžis prarastų dantų atkūrimas naudojant Straumann® / Medentika® sistemas.', image: '/implantacija.webp' },
+  { id: 'dantu-implantacija',   title: 'Dantų implantacija',    desc: 'Saugus ir ilgaamžis prarastų dantų atkūrimas naudojant Straumann® / Neodenta® sistemas.', image: '/implantacija.webp' },
   { id: 'dantu-protezavimas',   title: 'Dantų protezavimas',    desc: 'Atstatome dantų formą ir funkciją pasitelkiant CEREC technologiją – vainikėlis per 1 vizitą.', image: '/protezavimas.webp' },
   { id: 'dantu-balinimas',      title: 'Dantų balinimas',       desc: 'Saugi BEYOND® sistema – matomas rezultatas jau per vieną procedūrą.', image: '/balinimas.webp' },
   { id: 'burnos-higiena',       title: 'Burnos higiena',        desc: 'Profesionali AIRFLOW® procedūra – švelni ir efektyvi burnos ertmės priežiūra.', image: '/higiena.webp' },

@@ -723,7 +723,7 @@ export default function DantuProtezavimas() {
                     Protezavimas ant implantų laikomas vienu pažangiausių dantų atkūrimo būdų, kai prarastų dantų vietoje įtvirtinamos dirbtinės šaknys – implantai, ant kurių vėliau tvirtinami individualiai pagaminti protezai. Šis metodas leidžia atkurti ne tik dantų estetiką, bet ir natūralų kramtymo pojūtį bei stabilumą.
                   </p>
                   <p className="text-slate-600 leading-relaxed">
-                    Bangų odontologijos klinikoje protezavimas ant implantų atliekamas naudojant patikimas ir pasaulyje pripažintas sistemas – Straumann® ir Medentika® implantus. Ant implantų tvirtinami protezai gaminami taip, kad būtų vizualiai ir funkciniu požiūriu beveik neatskiriami nuo natūralių dantų. Tai sprendimas, tinkantis tiek vieno danties atkūrimui, tiek kelių ar visų dantų protezavimui.
+                    Bangų odontologijos klinikoje protezavimas ant implantų atliekamas naudojant patikimas ir pasaulyje pripažintas sistemas – Straumann® ir Neodenta® implantus. Ant implantų tvirtinami protezai gaminami taip, kad būtų vizualiai ir funkciniu požiūriu beveik neatskiriami nuo natūralių dantų. Tai sprendimas, tinkantis tiek vieno danties atkūrimui, tiek kelių ar visų dantų protezavimui.
                   </p>
                   <div
                     className="p-5 rounded-2xl border-l-4"

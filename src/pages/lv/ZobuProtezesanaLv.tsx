@@ -264,7 +264,7 @@ export default function ZobuProtezesanaLv() {
              <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
                <h3 className="font-bold text-darkblue-700 mb-2">Protezēšana uz implantiem</h3>
                <p className="text-sm text-slate-600 mb-4 leading-relaxed">
-                 Mākslīgās saknes (implanti) atjauno stabilitāti un košļāšanas spēku. Izmantojam Straumann® un Medentika® sistēmas, kas ļauj atjaunot vienu vai visus zobus.
+                 Mākslīgās saknes (implanti) atjauno stabilitāti un košļāšanas spēku. Izmantojam Straumann® un Neodenta® sistēmas, kas ļauj atjaunot vienu vai visus zobus.
                </p>
              </div>
           </div>

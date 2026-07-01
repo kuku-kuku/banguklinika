@@ -78,7 +78,7 @@ function TeamPhoto({ name, photoFile }: { name: string; photoFile?: string }) {
 const services = [
   "Zobu ārstniecība, konsultācijas zobu kopšanas jautājumos.",
   "Zobu plombēšana.",
-  "Implanti (Straumann®, Medentika®).",
+  "Implanti (Straumann®, Neodenta®).",
   "Digitālā zobu protezēšana CEREC sistēmā, protezēšana uz implantiem, zobu kroņi, zobu tilti, vainagi, uzklājumi, laminēti.",
   "Zobu protezēšana uzreiz uz vietas.",
   "Mikroprotezēšana (daļēji vainagi — kroņi, ieliktņi, uzklājumi, laminēti).",

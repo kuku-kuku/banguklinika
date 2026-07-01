@@ -59,7 +59,7 @@ export const homeLv = {
   seo: {
     title: 'Zobārstniecības klīnika Klaipēdā',
     description:
-      'Zobārstniecības klīnika Klaipēdā: zobu ārstniecība, implantācija (Straumann®/Medentika®), CEREC protezēšana 1 vizītē, AIRFLOW® higiēna, estētiskā plombēšana. Bezmaksas sākotnējā konsultācija.',
+      'Zobārstniecības klīnika Klaipēdā: zobu ārstniecība, implantācija (Straumann®/Neodenta®), CEREC protezēšana 1 vizītē, AIRFLOW® higiēna, estētiskā plombēšana. Bezmaksas sākotnējā konsultācija.',
     keywords:
       'zobārstniecības klīnika Klaipēda, zobu ārstniecība Klaipēda, zobu implanti, CEREC Klaipēda, mutes higiēna, estētiskā zobārstniecība, zobu protezēšana',
   },
@@ -70,7 +70,7 @@ export const homeLv = {
     ctaPhone: 'Reģistrācija pa tālruni',
     ctaOnline: 'Reģistrācija tiešsaistē',
     bullets: [
-      'Straumann® / Medentika® implanti',
+      'Straumann® / Neodenta® implanti',
       'CEREC – kroņi 1 vizītē',
       'Estētiskā plombēšana',
       'Profesionāla higiēna (AIRFLOW®)',

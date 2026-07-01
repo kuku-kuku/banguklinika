@@ -98,7 +98,7 @@ export default function Draugai() {
             {/* Logo decoration – right side, fades in from left */}
             <div className="absolute right-0 top-0 h-full w-1/2 flex items-center justify-end pointer-events-none select-none">
               <div className="absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-white to-transparent z-10" />
-              <img src="/logo.png" alt="" aria-hidden="true" className="h-4/5 object-contain opacity-20" />
+              <img src="/Asset 63.svg" alt="" aria-hidden="true" className="h-4/5 object-contain opacity-20" />
             </div>
             {/* Text content */}
             <div className="relative z-10 max-w-xl">
