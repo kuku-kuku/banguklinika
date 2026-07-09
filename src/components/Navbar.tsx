@@ -314,7 +314,7 @@ export default function Navbar() {
                               <NavLink
                                 key={d.to}
                                 to={d.to!}
-                                className="block px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700"
+                                className="block px-3 py-2 rounded-xl text-sm font-semibold text-gray-800 hover:bg-primary-50 hover:text-primary-700"
                                 onClick={() => handleNavClick(d.to!)}
                               >
                                 {d.label}
@@ -330,13 +330,13 @@ export default function Navbar() {
                                 {d.to ? (
                                   <NavLink
                                     to={d.to}
-                                    className="flex-1 px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700"
+                                    className="flex-1 px-3 py-2 rounded-xl text-sm font-semibold text-gray-800 hover:bg-primary-50 hover:text-primary-700"
                                     onClick={() => handleNavClick(d.to!)}
                                   >
                                     {d.label}
                                   </NavLink>
                                 ) : (
-                                  <span className="flex-1 px-3 py-2 text-sm text-gray-500 select-none">
+                                  <span className="flex-1 px-3 py-2 text-sm font-semibold text-gray-800 select-none">
                                     {d.label}
                                   </span>
                                 )}
@@ -364,12 +364,12 @@ export default function Navbar() {
                                     transition={{ duration: 0.18, ease: 'easeOut' }}
                                     className="overflow-hidden"
                                   >
-                                    <div className="pl-3 pb-1">
+                                    <div className="pl-3 pb-1 border-l border-gray-100 ml-3">
                                       {d.children!.map((c) => (
                                         <NavLink
                                           key={c.to}
                                           to={c.to!}
-                                          className="block px-3 py-2 rounded-lg text-[13px] text-gray-700 hover:bg-primary-50 hover:text-primary-700"
+                                          className="block px-3 py-1.5 rounded-lg text-[13px] font-normal text-gray-500 hover:bg-primary-50 hover:text-primary-700"
                                           onClick={() => handleNavClick(c.to!)}
                                         >
                                           {c.label}
@@ -539,7 +539,7 @@ export default function Navbar() {
                                   <NavLink
                                     key={d.to}
                                     to={d.to!}
-                                    className="block px-3 py-2 rounded-lg text-[14px] text-gray-800 hover:bg-primary-50 hover:text-primary-700"
+                                    className="block px-3 py-2 rounded-lg text-[14px] font-semibold text-gray-800 hover:bg-primary-50 hover:text-primary-700"
                                     onClick={() => handleNavClick(d.to!)}
                                   >
                                     {d.label}
@@ -555,13 +555,13 @@ export default function Navbar() {
                                     {d.to ? (
                                       <NavLink
                                         to={d.to}
-                                        className="flex-1 px-3 py-2 block text-[14px] text-gray-800 hover:bg-primary-50 hover:text-primary-700"
+                                        className="flex-1 px-3 py-2 block text-[14px] font-semibold text-gray-800 hover:bg-primary-50 hover:text-primary-700"
                                         onClick={() => handleNavClick(d.to!)}
                                       >
                                         {d.label}
                                       </NavLink>
                                     ) : (
-                                      <span className="flex-1 px-3 py-2 block text-[14px] text-gray-500">
+                                      <span className="flex-1 px-3 py-2 block text-[14px] font-semibold text-gray-800">
                                         {d.label}
                                       </span>
                                     )}
@@ -589,12 +589,12 @@ export default function Navbar() {
                                         transition={{ duration: 0.18, ease: 'easeOut' }}
                                         className="bg-white"
                                       >
-                                        <div className="pl-3 pb-1">
+                                        <div className="pl-3 pb-1 border-l border-gray-100 ml-3">
                                           {d.children!.map((c) => (
                                             <NavLink
                                               key={c.to}
                                               to={c.to!}
-                                              className="block px-3 py-2 rounded-lg text-[13px] text-gray-700 hover:bg-primary-50 hover:text-primary-700"
+                                              className="block px-3 py-1.5 rounded-lg text-[13px] font-normal text-gray-500 hover:bg-primary-50 hover:text-primary-700"
                                               onClick={() => handleNavClick(c.to!)}
                                             >
                                               {c.label}

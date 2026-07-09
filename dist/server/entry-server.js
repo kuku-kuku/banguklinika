@@ -1180,7 +1180,7 @@ function Navbar() {
                               NavLink,
                               {
                                 to: d.to,
-                                className: "block px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700",
+                                className: "block px-3 py-2 rounded-xl text-sm font-semibold text-gray-800 hover:bg-primary-50 hover:text-primary-700",
                                 onClick: () => handleNavClick(d.to),
                                 children: d.label
                               },
@@ -1194,11 +1194,11 @@ function Navbar() {
                                 NavLink,
                                 {
                                   to: d.to,
-                                  className: "flex-1 px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700",
+                                  className: "flex-1 px-3 py-2 rounded-xl text-sm font-semibold text-gray-800 hover:bg-primary-50 hover:text-primary-700",
                                   onClick: () => handleNavClick(d.to),
                                   children: d.label
                                 }
-                              ) : /* @__PURE__ */ jsx("span", { className: "flex-1 px-3 py-2 text-sm text-gray-500 select-none", children: d.label }),
+                              ) : /* @__PURE__ */ jsx("span", { className: "flex-1 px-3 py-2 text-sm font-semibold text-gray-800 select-none", children: d.label }),
                               /* @__PURE__ */ jsx(
                                 "button",
                                 {
@@ -1223,11 +1223,11 @@ function Navbar() {
                                 exit: { height: 0, opacity: 0 },
                                 transition: { duration: 0.18, ease: "easeOut" },
                                 className: "overflow-hidden",
-                                children: /* @__PURE__ */ jsx("div", { className: "pl-3 pb-1", children: d.children.map((c) => /* @__PURE__ */ jsx(
+                                children: /* @__PURE__ */ jsx("div", { className: "pl-3 pb-1 border-l border-gray-100 ml-3", children: d.children.map((c) => /* @__PURE__ */ jsx(
                                   NavLink,
                                   {
                                     to: c.to,
-                                    className: "block px-3 py-2 rounded-lg text-[13px] text-gray-700 hover:bg-primary-50 hover:text-primary-700",
+                                    className: "block px-3 py-1.5 rounded-lg text-[13px] font-normal text-gray-500 hover:bg-primary-50 hover:text-primary-700",
                                     onClick: () => handleNavClick(c.to),
                                     children: c.label
                                   },
@@ -1397,7 +1397,7 @@ function Navbar() {
                         NavLink,
                         {
                           to: d.to,
-                          className: "block px-3 py-2 rounded-lg text-[14px] text-gray-800 hover:bg-primary-50 hover:text-primary-700",
+                          className: "block px-3 py-2 rounded-lg text-[14px] font-semibold text-gray-800 hover:bg-primary-50 hover:text-primary-700",
                           onClick: () => handleNavClick(d.to),
                           children: d.label
                         },
@@ -1411,11 +1411,11 @@ function Navbar() {
                           NavLink,
                           {
                             to: d.to,
-                            className: "flex-1 px-3 py-2 block text-[14px] text-gray-800 hover:bg-primary-50 hover:text-primary-700",
+                            className: "flex-1 px-3 py-2 block text-[14px] font-semibold text-gray-800 hover:bg-primary-50 hover:text-primary-700",
                             onClick: () => handleNavClick(d.to),
                             children: d.label
                           }
-                        ) : /* @__PURE__ */ jsx("span", { className: "flex-1 px-3 py-2 block text-[14px] text-gray-500", children: d.label }),
+                        ) : /* @__PURE__ */ jsx("span", { className: "flex-1 px-3 py-2 block text-[14px] font-semibold text-gray-800", children: d.label }),
                         /* @__PURE__ */ jsx(
                           "button",
                           {
@@ -1440,11 +1440,11 @@ function Navbar() {
                           exit: { height: 0, opacity: 0 },
                           transition: { duration: 0.18, ease: "easeOut" },
                           className: "bg-white",
-                          children: /* @__PURE__ */ jsx("div", { className: "pl-3 pb-1", children: d.children.map((c) => /* @__PURE__ */ jsx(
+                          children: /* @__PURE__ */ jsx("div", { className: "pl-3 pb-1 border-l border-gray-100 ml-3", children: d.children.map((c) => /* @__PURE__ */ jsx(
                             NavLink,
                             {
                               to: c.to,
-                              className: "block px-3 py-2 rounded-lg text-[13px] text-gray-700 hover:bg-primary-50 hover:text-primary-700",
+                              className: "block px-3 py-1.5 rounded-lg text-[13px] font-normal text-gray-500 hover:bg-primary-50 hover:text-primary-700",
                               onClick: () => handleNavClick(c.to),
                               children: c.label
                             },
