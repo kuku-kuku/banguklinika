@@ -75,10 +75,13 @@ const nav: NavItem[] = [
   { to: '/kontaktai', label: 'Kontaktai' },
 ]
 
-function ChevronRight() {
+function ChevronDown({ open }: { open: boolean }) {
   return (
-    <svg className="w-3.5 h-3.5 shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-      <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 010-1.06L10.168 10 7.21 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
+    <svg
+      className={`w-4 h-4 shrink-0 text-gray-400 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+      viewBox="0 0 20 20" fill="currentColor" aria-hidden
+    >
+      <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
     </svg>
   )
 }
@@ -86,11 +89,10 @@ function ChevronRight() {
 export default function Navbar() {
   const [openMobile, setOpenMobile] = useState(false)
   const [openIndex, setOpenIndex] = useState<number | null>(null) // desktop dropdown
-  const [openSub, setOpenSub] = useState<string | null>(null) // desktop flyout submenu (keyed by label)
+  const [openSub, setOpenSub] = useState<string | null>(null) // desktop nested accordion (keyed by label)
   const [mobileOpenIndex, setMobileOpenIndex] = useState<number | null>(null) // mobile accordion
   const [mobileOpenSub, setMobileOpenSub] = useState<string | null>(null) // mobile nested accordion (keyed by label)
   const closeTimer = useRef<number | null>(null)
-  const subCloseTimer = useRef<number | null>(null)
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -103,15 +105,6 @@ export default function Navbar() {
     closeTimer.current = null
   }
 
-  const scheduleSubClose = () => {
-    if (subCloseTimer.current) window.clearTimeout(subCloseTimer.current)
-    subCloseTimer.current = window.setTimeout(() => setOpenSub(null), 140)
-  }
-  const cancelSubClose = () => {
-    if (subCloseTimer.current) window.clearTimeout(subCloseTimer.current)
-    subCloseTimer.current = null
-  }
-
   // Close menus on route/hash change
   useEffect(() => {
     setOpenIndex(null)
@@ -121,7 +114,7 @@ export default function Navbar() {
     setMobileOpenSub(null)
   }, [location.pathname, location.hash])
 
-  // Sub-flyout follows the top-level dropdown open/close state
+  // Nested accordion follows the top-level dropdown open/close state
   useEffect(() => {
     setOpenSub(null)
   }, [openIndex])
@@ -134,7 +127,6 @@ export default function Navbar() {
   useEffect(() => {
     return () => {
       if (closeTimer.current) window.clearTimeout(closeTimer.current)
-      if (subCloseTimer.current) window.clearTimeout(subCloseTimer.current)
     }
   }, [])
 
@@ -313,7 +305,7 @@ export default function Navbar() {
                       }`}
                       onMouseEnter={cancelClose}
                     >
-                      <div className="w-64 rounded-2xl border border-gray-100 bg-white shadow-soft p-2 max-h-[70vh] overflow-auto">
+                      <div className="w-64 rounded-2xl border border-gray-100 bg-white shadow-soft p-2 max-h-[70vh] overflow-y-auto overscroll-contain">
                         {n.dropdown!.map((d) => {
                           const hasChildren = !!d.children?.length
 
@@ -330,47 +322,63 @@ export default function Navbar() {
                             )
                           }
 
-                          return (
-                            <div
-                              key={d.label}
-                              className="relative"
-                              onMouseEnter={() => { cancelSubClose(); setOpenSub(d.label) }}
-                              onMouseLeave={scheduleSubClose}
-                            >
-                              {d.to ? (
-                                <NavLink
-                                  to={d.to}
-                                  className="flex items-center justify-between gap-2 px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700"
-                                  onClick={() => handleNavClick(d.to!)}
-                                >
-                                  {d.label}
-                                  <ChevronRight />
-                                </NavLink>
-                              ) : (
-                                <div className="flex items-center justify-between gap-2 px-3 py-2 rounded-xl text-sm text-gray-500 cursor-default select-none">
-                                  {d.label}
-                                  <ChevronRight />
-                                </div>
-                              )}
+                          const isSubOpen = openSub === d.label
 
-                              <div
-                                className={`absolute left-full top-0 ml-1 w-64 rounded-2xl border border-gray-100 bg-white shadow-soft p-2 max-h-[70vh] overflow-auto z-50 transition ${
-                                  openSub === d.label ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
-                                }`}
-                                onMouseEnter={cancelSubClose}
-                                onMouseLeave={scheduleSubClose}
-                              >
-                                {d.children!.map((c) => (
+                          return (
+                            <div key={d.label}>
+                              <div className="flex items-center">
+                                {d.to ? (
                                   <NavLink
-                                    key={c.to}
-                                    to={c.to!}
-                                    className="block px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700"
-                                    onClick={() => handleNavClick(c.to!)}
+                                    to={d.to}
+                                    className="flex-1 px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700"
+                                    onClick={() => handleNavClick(d.to!)}
                                   >
-                                    {c.label}
+                                    {d.label}
                                   </NavLink>
-                                ))}
+                                ) : (
+                                  <span className="flex-1 px-3 py-2 text-sm text-gray-500 select-none">
+                                    {d.label}
+                                  </span>
+                                )}
+                                <button
+                                  type="button"
+                                  className="p-2 mr-1 rounded-lg hover:bg-gray-50"
+                                  onClick={(e) => {
+                                    e.preventDefault()
+                                    e.stopPropagation()
+                                    setOpenSub((cur) => (cur === d.label ? null : d.label))
+                                  }}
+                                  aria-expanded={isSubOpen}
+                                  aria-label={`${d.label} sub-paslaugos`}
+                                >
+                                  <ChevronDown open={isSubOpen} />
+                                </button>
                               </div>
+
+                              <AnimatePresence initial={false}>
+                                {isSubOpen && (
+                                  <motion.div
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: 'auto', opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    transition={{ duration: 0.18, ease: 'easeOut' }}
+                                    className="overflow-hidden"
+                                  >
+                                    <div className="pl-3 pb-1">
+                                      {d.children!.map((c) => (
+                                        <NavLink
+                                          key={c.to}
+                                          to={c.to!}
+                                          className="block px-3 py-2 rounded-lg text-[13px] text-gray-700 hover:bg-primary-50 hover:text-primary-700"
+                                          onClick={() => handleNavClick(c.to!)}
+                                        >
+                                          {c.label}
+                                        </NavLink>
+                                      ))}
+                                    </div>
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
                             </div>
                           )
                         })}

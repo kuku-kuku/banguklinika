@@ -11,7 +11,7 @@ import invariant from "invariant";
 import shallowEqual from "shallowequal";
 import { AnimatePresence, motion, useReducedMotion, useInView, useAnimationControls, MotionConfig } from "framer-motion";
 import { useLocation, useNavigate, Link, NavLink, useParams, Navigate, Routes, Route, Outlet } from "react-router-dom";
-import { MapPin, Phone, Mail, Clock, ChevronDown, Navigation } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ChevronDown as ChevronDown$1, Navigation } from "lucide-react";
 import clsx from "clsx";
 import Lenis from "lenis";
 import { createPortal } from "react-dom";
@@ -969,8 +969,17 @@ const nav = [
   { to: "/draugai", label: "Draugai" },
   { to: "/kontaktai", label: "Kontaktai" }
 ];
-function ChevronRight() {
-  return /* @__PURE__ */ jsx("svg", { className: "w-3.5 h-3.5 shrink-0 text-gray-400", viewBox: "0 0 20 20", fill: "currentColor", "aria-hidden": true, children: /* @__PURE__ */ jsx("path", { fillRule: "evenodd", d: "M7.21 14.77a.75.75 0 010-1.06L10.168 10 7.21 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 01-1.06-.02z", clipRule: "evenodd" }) });
+function ChevronDown({ open }) {
+  return /* @__PURE__ */ jsx(
+    "svg",
+    {
+      className: `w-4 h-4 shrink-0 text-gray-400 transition-transform duration-200 ${open ? "rotate-180" : ""}`,
+      viewBox: "0 0 20 20",
+      fill: "currentColor",
+      "aria-hidden": true,
+      children: /* @__PURE__ */ jsx("path", { fillRule: "evenodd", d: "M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z", clipRule: "evenodd" })
+    }
+  );
 }
 function Navbar() {
   const [openMobile, setOpenMobile] = useState(false);
@@ -979,7 +988,6 @@ function Navbar() {
   const [mobileOpenIndex, setMobileOpenIndex] = useState(null);
   const [mobileOpenSub, setMobileOpenSub] = useState(null);
   const closeTimer = useRef(null);
-  const subCloseTimer = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
   const scheduleClose = () => {
@@ -989,14 +997,6 @@ function Navbar() {
   const cancelClose = () => {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
     closeTimer.current = null;
-  };
-  const scheduleSubClose = () => {
-    if (subCloseTimer.current) window.clearTimeout(subCloseTimer.current);
-    subCloseTimer.current = window.setTimeout(() => setOpenSub(null), 140);
-  };
-  const cancelSubClose = () => {
-    if (subCloseTimer.current) window.clearTimeout(subCloseTimer.current);
-    subCloseTimer.current = null;
   };
   useEffect(() => {
     setOpenIndex(null);
@@ -1014,7 +1014,6 @@ function Navbar() {
   useEffect(() => {
     return () => {
       if (closeTimer.current) window.clearTimeout(closeTimer.current);
-      if (subCloseTimer.current) window.clearTimeout(subCloseTimer.current);
     };
   }, []);
   useEffect(() => {
@@ -1173,7 +1172,7 @@ function Navbar() {
                         role: "menu",
                         className: `absolute left-1/2 -translate-x-1/2 top-[calc(100%+10px)] z-50 transition ${openIndex === idx ? "opacity-100 visible" : "opacity-0 invisible"}`,
                         onMouseEnter: cancelClose,
-                        children: /* @__PURE__ */ jsx("div", { className: "w-64 rounded-2xl border border-gray-100 bg-white shadow-soft p-2 max-h-[70vh] overflow-auto", children: n.dropdown.map((d) => {
+                        children: /* @__PURE__ */ jsx("div", { className: "w-64 rounded-2xl border border-gray-100 bg-white shadow-soft p-2 max-h-[70vh] overflow-y-auto overscroll-contain", children: n.dropdown.map((d) => {
                           var _a2;
                           const hasChildren = !!((_a2 = d.children) == null ? void 0 : _a2.length);
                           if (!hasChildren) {
@@ -1188,53 +1187,55 @@ function Navbar() {
                               d.to
                             );
                           }
-                          return /* @__PURE__ */ jsxs(
-                            "div",
-                            {
-                              className: "relative",
-                              onMouseEnter: () => {
-                                cancelSubClose();
-                                setOpenSub(d.label);
-                              },
-                              onMouseLeave: scheduleSubClose,
-                              children: [
-                                d.to ? /* @__PURE__ */ jsxs(
+                          const isSubOpen = openSub === d.label;
+                          return /* @__PURE__ */ jsxs("div", { children: [
+                            /* @__PURE__ */ jsxs("div", { className: "flex items-center", children: [
+                              d.to ? /* @__PURE__ */ jsx(
+                                NavLink,
+                                {
+                                  to: d.to,
+                                  className: "flex-1 px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700",
+                                  onClick: () => handleNavClick(d.to),
+                                  children: d.label
+                                }
+                              ) : /* @__PURE__ */ jsx("span", { className: "flex-1 px-3 py-2 text-sm text-gray-500 select-none", children: d.label }),
+                              /* @__PURE__ */ jsx(
+                                "button",
+                                {
+                                  type: "button",
+                                  className: "p-2 mr-1 rounded-lg hover:bg-gray-50",
+                                  onClick: (e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    setOpenSub((cur) => cur === d.label ? null : d.label);
+                                  },
+                                  "aria-expanded": isSubOpen,
+                                  "aria-label": `${d.label} sub-paslaugos`,
+                                  children: /* @__PURE__ */ jsx(ChevronDown, { open: isSubOpen })
+                                }
+                              )
+                            ] }),
+                            /* @__PURE__ */ jsx(AnimatePresence, { initial: false, children: isSubOpen && /* @__PURE__ */ jsx(
+                              motion.div,
+                              {
+                                initial: { height: 0, opacity: 0 },
+                                animate: { height: "auto", opacity: 1 },
+                                exit: { height: 0, opacity: 0 },
+                                transition: { duration: 0.18, ease: "easeOut" },
+                                className: "overflow-hidden",
+                                children: /* @__PURE__ */ jsx("div", { className: "pl-3 pb-1", children: d.children.map((c) => /* @__PURE__ */ jsx(
                                   NavLink,
                                   {
-                                    to: d.to,
-                                    className: "flex items-center justify-between gap-2 px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700",
-                                    onClick: () => handleNavClick(d.to),
-                                    children: [
-                                      d.label,
-                                      /* @__PURE__ */ jsx(ChevronRight, {})
-                                    ]
-                                  }
-                                ) : /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-between gap-2 px-3 py-2 rounded-xl text-sm text-gray-500 cursor-default select-none", children: [
-                                  d.label,
-                                  /* @__PURE__ */ jsx(ChevronRight, {})
-                                ] }),
-                                /* @__PURE__ */ jsx(
-                                  "div",
-                                  {
-                                    className: `absolute left-full top-0 ml-1 w-64 rounded-2xl border border-gray-100 bg-white shadow-soft p-2 max-h-[70vh] overflow-auto z-50 transition ${openSub === d.label ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`,
-                                    onMouseEnter: cancelSubClose,
-                                    onMouseLeave: scheduleSubClose,
-                                    children: d.children.map((c) => /* @__PURE__ */ jsx(
-                                      NavLink,
-                                      {
-                                        to: c.to,
-                                        className: "block px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700",
-                                        onClick: () => handleNavClick(c.to),
-                                        children: c.label
-                                      },
-                                      c.to
-                                    ))
-                                  }
-                                )
-                              ]
-                            },
-                            d.label
-                          );
+                                    to: c.to,
+                                    className: "block px-3 py-2 rounded-lg text-[13px] text-gray-700 hover:bg-primary-50 hover:text-primary-700",
+                                    onClick: () => handleNavClick(c.to),
+                                    children: c.label
+                                  },
+                                  c.to
+                                )) })
+                              }
+                            ) })
+                          ] }, d.label);
                         }) })
                       }
                     )
@@ -1790,7 +1791,7 @@ function Footer() {
                 children: [
                   /* @__PURE__ */ jsx("span", { className: "text-[11px] font-semibold text-white/70 uppercase tracking-widest", children: group.heading }),
                   /* @__PURE__ */ jsx(
-                    ChevronDown,
+                    ChevronDown$1,
                     {
                       size: 14,
                       className: `text-white/50 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`
