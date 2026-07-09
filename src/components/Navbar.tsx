@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ROUTE_MAP_LT_TO_LV, ROUTE_MAP_LV_TO_LT, navLv } from '../i18n/lv'
 
-type DropItem = { to: string; label: string }
+type DropItem = { to: string; label: string; heading?: false } | { to?: undefined; label: string; heading: true }
 type NavItem =
   | { to: string; label: string; dropdown?: undefined }
   | { to: string; label: string; dropdown: DropItem[] }
@@ -18,18 +18,30 @@ const nav: NavItem[] = [
     dropdown: [
       { to: '/paslaugos/skubi-pagalba/', label: 'Skubi pagalba' },
       { to: '/paslaugos/dantu-implantacija/', label: 'Dantų implantacija' },
+      { to: '/paslaugos/vienmomente-implantacija/', label: 'Vienmomentė implantacija' },
       { to: '/paslaugos/dantu-protezavimas/', label: 'Dantų protezavimas' },
-      { to: '/paslaugos/#kompensuojamas-dantu-protezavimas', label: 'Kompensuojamas dantų protezavimas' },
+      { to: '/paslaugos/dantu-karunieles/', label: 'Dantų karūnėlės (vainikėliai)' },
+      { to: '/paslaugos/cirkonio-keramikos-vainikelis/', label: 'Cirkonio keramikos vainikėlis' },
+      { to: '/paslaugos/dantu-tiltai/', label: 'Dantų tiltai' },
+      { to: '/paslaugos/kompensacija-protezavimui/', label: 'Kompensacija protezavimui' },
       { to: '/paslaugos/dantu-taisymas-gydymas/', label: 'Dantų gydymas' },
       { to: '/paslaugos/dantu-tiesinimas/', label: 'Dantų tiesinimas' },
       { to: '/paslaugos/burnos-higiena/', label: 'Burnos higiena' },
       { to: '/paslaugos/burnos-chirurgija/', label: 'Burnos chirurgija' },
+      { to: '/paslaugos/sinuso-pakelimas/', label: 'Sinuso pakėlimas' },
+      { to: '/paslaugos/zandikaulio-kaulo-priauginimas/', label: 'Žandikaulio kaulo priauginimas' },
       { to: '/paslaugos/dantu-balinimas/', label: 'Dantų balinimas' },
       { to: '/paslaugos/estetinis-plombavimas/', label: 'Estetinis plombavimas' },
       { to: '/paslaugos/dantu-plombavimas/', label: 'Dantų plombavimas' },
       { to: '/paslaugos/dantu-traukimas/', label: 'Dantų traukimas' },
+      { to: '/paslaugos/protiniu-dantu-salinimas/', label: 'Protinių dantų šalinimas' },
       { to: '/paslaugos/endodontinis-gydymas/', label: 'Endodontinis Gydymas' },
       { to: '/paslaugos/vaiku-odontologija/', label: 'Vaikų Odontologija' },
+      { to: '/paslaugos/vaiku-profilaktinis-patikrinimas/', label: 'Vaikų profilaktinis patikrinimas' },
+      { to: '/paslaugos/dantu-higiena-vaikams/', label: 'Dantų higiena vaikams' },
+      { label: 'Kitos paslaugos', heading: true },
+      { to: '/paslaugos/rentgenologiniai-tyrimai/', label: 'Rentgenologiniai tyrimai' },
+      { to: '/paslaugos/bruksizmo-dantu-kapa/', label: 'Bruksizmo dantų kapa' },
     ],
   },
   { to: '/kainos', label: 'Kainos' },
@@ -243,16 +255,25 @@ export default function Navbar() {
                       onMouseEnter={cancelClose}
                     >
                       <div className="w-64 rounded-2xl border border-gray-100 bg-white shadow-soft p-2 max-h-[70vh] overflow-auto">
-                        {n.dropdown!.map((d) => (
-                          <NavLink
-                            key={d.to}
-                            to={d.to}
-                            className="block px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700"
-                            onClick={() => handleNavClick(d.to)}
-                          >
-                            {d.label}
-                          </NavLink>
-                        ))}
+                        {n.dropdown!.map((d) =>
+                          d.heading ? (
+                            <p
+                              key={d.label}
+                              className="px-3 pt-3 pb-1 text-[11px] font-semibold uppercase tracking-wide text-gray-400"
+                            >
+                              {d.label}
+                            </p>
+                          ) : (
+                            <NavLink
+                              key={d.to}
+                              to={d.to}
+                              className="block px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700"
+                              onClick={() => handleNavClick(d.to)}
+                            >
+                              {d.label}
+                            </NavLink>
+                          )
+                        )}
                       </div>
                     </div>
                   </>
@@ -402,16 +423,25 @@ export default function Navbar() {
                           className="bg-white"
                         >
                           <div className="px-1 pb-2">
-                            {n.dropdown!.map((d) => (
-                              <NavLink
-                                key={d.to}
-                                to={d.to}
-                                className="block px-3 py-2 rounded-lg text-[14px] text-gray-800 hover:bg-primary-50 hover:text-primary-700"
-                                onClick={() => handleNavClick(d.to)}
-                              >
-                                {d.label}
-                              </NavLink>
-                            ))}
+                            {n.dropdown!.map((d) =>
+                              d.heading ? (
+                                <p
+                                  key={d.label}
+                                  className="px-3 pt-3 pb-1 text-[11px] font-semibold uppercase tracking-wide text-gray-400"
+                                >
+                                  {d.label}
+                                </p>
+                              ) : (
+                                <NavLink
+                                  key={d.to}
+                                  to={d.to}
+                                  className="block px-3 py-2 rounded-lg text-[14px] text-gray-800 hover:bg-primary-50 hover:text-primary-700"
+                                  onClick={() => handleNavClick(d.to)}
+                                >
+                                  {d.label}
+                                </NavLink>
+                              )
+                            )}
                           </div>
                         </motion.div>
                       )}

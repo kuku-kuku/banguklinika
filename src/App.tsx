@@ -34,6 +34,20 @@ import AllOn4Implants from './pages/AllOn4Implants'
 import DantuImplantacija from './pages/DantuImplantacija'
 import SkubiPagalba from './pages/SkubiPagalba'
 
+// 3 etapas (naujos sub-paslaugos)
+import ProtiniuDantuSalinimas from './pages/ProtiniuDantuSalinimas'
+import RentgenologiniaiTyrimai from './pages/RentgenologiniaiTyrimai'
+import VienmomeneImplantacija from './pages/VienmomeneImplantacija'
+import DantuKarunieles from './pages/DantuKarunieles'
+import KompensacijaProtezavimui from './pages/KompensacijaProtezavimui'
+import SinusoPakelimas from './pages/SinusoPakelimas'
+import ZandikaulioKauloPriauginimas from './pages/ZandikaulioKauloPriauginimas'
+import DantuTiltai from './pages/DantuTiltai'
+import BruksizmoDantuKapa from './pages/BruksizmoDantuKapa'
+import CirkonioKeramikosVainikelis from './pages/CirkonioKeramikosVainikelis'
+import VaikuProfilaktinisPatikrinimas from './pages/VaikuProfilaktinisPatikrinimas'
+import DantuHigienaVaikams from './pages/DantuHigienaVaikams'
+
 // Latvian pages
 import HomeLv from './pages/lv/HomeLv'
 import DantuImplantacijaLv from './pages/lv/DantuImplantacijaLv'
@@ -114,6 +128,20 @@ export default function App() {
           <Route path="/paslaugos/endodontinis-gydymas" element={<EndodontinisGydymas />} />
           <Route path="/paslaugos/dantu-implantacija" element={<DantuImplantacija />} />
           <Route path="/paslaugos/skubi-pagalba" element={<SkubiPagalba />} />
+
+          {/* Atskiros paslaugos (3 etapas - naujos sub-paslaugos) */}
+          <Route path="/paslaugos/protiniu-dantu-salinimas" element={<ProtiniuDantuSalinimas />} />
+          <Route path="/paslaugos/rentgenologiniai-tyrimai" element={<RentgenologiniaiTyrimai />} />
+          <Route path="/paslaugos/vienmomente-implantacija" element={<VienmomeneImplantacija />} />
+          <Route path="/paslaugos/dantu-karunieles" element={<DantuKarunieles />} />
+          <Route path="/paslaugos/kompensacija-protezavimui" element={<KompensacijaProtezavimui />} />
+          <Route path="/paslaugos/sinuso-pakelimas" element={<SinusoPakelimas />} />
+          <Route path="/paslaugos/zandikaulio-kaulo-priauginimas" element={<ZandikaulioKauloPriauginimas />} />
+          <Route path="/paslaugos/dantu-tiltai" element={<DantuTiltai />} />
+          <Route path="/paslaugos/bruksizmo-dantu-kapa" element={<BruksizmoDantuKapa />} />
+          <Route path="/paslaugos/cirkonio-keramikos-vainikelis" element={<CirkonioKeramikosVainikelis />} />
+          <Route path="/paslaugos/vaiku-profilaktinis-patikrinimas" element={<VaikuProfilaktinisPatikrinimas />} />
+          <Route path="/paslaugos/dantu-higiena-vaikams" element={<DantuHigienaVaikams />} />
           <Route path="/draugai" element={<Draugai />} />
           <Route path="/musu-darbai" element={<MusuDarbai />} />
           <Route path="/straipsniai" element={<Straipsniai />} />

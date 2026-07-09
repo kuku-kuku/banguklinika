@@ -179,6 +179,78 @@ const pages = [
     description: "Staigus dantų skausmas ar trauma? Skubi odontologinė pagalba Klaipėdoje esant uždegimui, tinimui ar netikėtai traumai. Registruokitės⏩Bangų klinikoje jau dabar.",
     schema: serviceSchema("Skubi odontologinė pagalba Klaipėdoje", "Skubi odontologinė pagalba", "Skubi odontologinė pagalba teikiama Bangų odontologijos klinikoje Klaipėdoje. Paslauga skirta pacientams, kuriems reikalinga skubi dantų gydymo, skausmo malšinimo ar kita odontologinė pagalba Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/skubi-pagalba/`),
   },
+  {
+    route: "/paslaugos/protiniu-dantu-salinimas",
+    title: "Protinių dantų šalinimas Klaipėdoje - Bangų klinika",
+    description: "Protinių dantų šalinimas Klaipėdoje – saugiai☑️profesionaliai☑️Bangų klinikoje už kainą nuo 150€.⏩Registruokitės konsultacijai jau šiandien.",
+    schema: serviceSchema("Protinių dantų šalinimas Klaipėdoje", "Protinių dantų šalinimas", "Protinių dantų šalinimo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/protiniu-dantu-salinimas/`),
+  },
+  {
+    route: "/paslaugos/rentgenologiniai-tyrimai",
+    title: "Rentgenologiniai tyrimai Klaipėdoje - Bangų klinika",
+    description: "Rentgenologiniai tyrimai ir dantų rentgenas Klaipėdoje☑️moderni skaitmeninė įranga☑️tiksli diagnostika už kainą nuo 30€.⏩Registruokitės Bangų klinikoje jau dabar.",
+    schema: serviceSchema("Rentgenologiniai tyrimai Klaipėdoje", "Rentgenologiniai tyrimai", "Rentgenologinės diagnostikos paslaugos teikiamos Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/rentgenologiniai-tyrimai/`),
+  },
+  {
+    route: "/paslaugos/vienmomente-implantacija",
+    title: "Vienmomentė implantacija Klaipėdoje - Bangų klinika",
+    description: "Vienmomentė implantacija Klaipėdoje – danties šalinimas ir implanto įsriegimas per vieną vizitą☑️greičiau, patogiau☑️Kaina nuo 1200€.⏩Registruokitės konsultacijai jau dabar.",
+    schema: serviceSchema("Vienmomentė implantacija Klaipėdoje", "Vienmomentė implantacija", "Vienmomentės implantacijos paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/vienmomente-implantacija/`),
+  },
+  {
+    route: "/paslaugos/dantu-karunieles",
+    title: "Dantų karūnėlės (vainikėliai) Klaipėdoje - Bangų klinika",
+    description: "Pažeistas ar nusilpęs dantis? Dantų karūnėlės (vainikėliai) Klaipėdoje☑️tvirtai☑️estetiškai atkuria dantį jau nuo 400€.⏩Registruokitės konsultacijai Bangų klinikoje.",
+    schema: serviceSchema("Dantų karūnėlės Klaipėdoje", "Dantų karūnėlės", "Dantų karūnėlių (vainikėlių) paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/dantu-karunieles/`),
+  },
+  {
+    route: "/paslaugos/kompensacija-protezavimui",
+    title: "Kompensacija dantų protezavimui Klaipėdoje - Bangų klinika",
+    description: "TLK kompensacija dantų protezavimui Klaipėdoje☑️sužinokite, ar priklausote tinkamų pacientų grupei☑️Bangų klinikoje.⏩Registruokitės konsultacijai jau dabar.",
+    schema: serviceSchema("Kompensacija dantų protezavimui Klaipėdoje", "Kompensuojamas dantų protezavimas", "Informacija apie TLK kompensuojamą dantų protezavimą teikiama Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/kompensacija-protezavimui/`),
+  },
+  {
+    route: "/paslaugos/sinuso-pakelimas",
+    title: "Sinuso pakėlimas Klaipėdoje - Bangų klinika",
+    description: "Sinuso pakėlimą Klaipėdoje atliekame profesionaliai☑️saugiai☑️patikimai☑️Kaina nuo 200€, tinkamas implantacijos paruošimas.⏩Registruokitės konsultacijai jau dabar.",
+    schema: serviceSchema("Sinuso pakėlimas Klaipėdoje", "Sinuso pakėlimas", "Sinuso pakėlimo procedūra atliekama Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/sinuso-pakelimas/`),
+  },
+  {
+    route: "/paslaugos/zandikaulio-kaulo-priauginimas",
+    title: "Žandikaulio kaulo priauginimas Klaipėdoje - Bangų klinika",
+    description: "Nepakanka kaulo implantacijai? Žandikaulio kaulo priauginimas (kaulo augmentacija) Klaipėdoje☑️individualus planavimas☑️kaina nuo 450€.⏩Registruokitės konsultacijai jau dabar.",
+    schema: serviceSchema("Žandikaulio kaulo priauginimas Klaipėdoje", "Žandikaulio kaulo priauginimas", "Žandikaulio kaulo priauginimo (augmentacijos) paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/zandikaulio-kaulo-priauginimas/`),
+  },
+  {
+    route: "/paslaugos/dantu-tiltai",
+    title: "Dantų tiltai Klaipėdoje - Bangų klinika",
+    description: "Trūksta danties? Dantų tiltai Klaipėdoje – fiksuotas protezavimas☑️natūrali išvaizda☑️kaina nuo 400€ už vienetą.⏩Registruokitės konsultacijai Bangų klinikoje jau dabar.",
+    schema: serviceSchema("Dantų tiltai Klaipėdoje", "Dantų tiltai", "Dantų tiltų (fiksuoto protezavimo) paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/dantu-tiltai/`),
+  },
+  {
+    route: "/paslaugos/bruksizmo-dantu-kapa",
+    title: "Bruksizmo dantų kapa Klaipėdoje - Bangų klinika",
+    description: "Griežiate dantimis miegodami? Bruksizmo dantų kapa Klaipėdoje apsaugos dantis nuo dilimo☑️pagaminta individualiai☑️kaina nuo 150€.⏩Registruokitės jau dabar.",
+    schema: serviceSchema("Bruksizmo dantų kapa Klaipėdoje", "Bruksizmo dantų kapa", "Bruksizmo (dantų griežimo) kapų gamybos paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/bruksizmo-dantu-kapa/`),
+  },
+  {
+    route: "/paslaugos/cirkonio-keramikos-vainikelis",
+    title: "Cirkonio keramikos vainikėlis Klaipėdoje - Bangų klinika",
+    description: "Cirkonio keramikos vainikėlis Klaipėdoje – natūrali išvaizda☑️tvirtumas☑️kaina nuo 400€.⏩Registruokitės konsultacijai Bangų klinikoje jau šiandien.",
+    schema: serviceSchema("Cirkonio keramikos vainikėlis Klaipėdoje", "Cirkonio keramikos vainikėlis", "Cirkonio keramikos vainikėlių paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/cirkonio-keramikos-vainikelis/`),
+  },
+  {
+    route: "/paslaugos/vaiku-profilaktinis-patikrinimas",
+    title: "Vaikų profilaktinis dantų patikrinimas Klaipėdoje - Bangų klinika",
+    description: "Vaikų dantų patikrinimas Klaipėdoje☑️ankstyva diagnostika☑️rūpestingi specialistai☑️kaina nuo 30€.⏩Registruokite vaiką profilaktiniam patikrinimui jau dabar.",
+    schema: serviceSchema("Vaikų profilaktinis dantų patikrinimas Klaipėdoje", "Vaikų profilaktinis dantų patikrinimas", "Vaikų profilaktinio dantų patikrinimo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/vaiku-profilaktinis-patikrinimas/`),
+  },
+  {
+    route: "/paslaugos/dantu-higiena-vaikams",
+    title: "Dantų higiena vaikams Klaipėdoje - Bangų klinika",
+    description: "Profesionali dantų higiena vaikams Klaipėdoje☑️saugi, neskausminga ir vaiko amžių atitinkanti procedūra☑️kaina nuo 70€.⏩Registruokite savo vaiką jau šiandien.",
+    schema: serviceSchema("Dantų higiena vaikams Klaipėdoje", "Dantų higiena vaikams", "Dantų higienos paslauga vaikams teikiama Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/dantu-higiena-vaikams/`),
+  },
   // ===== BLOG =====
   {
     route: "/straipsniai",

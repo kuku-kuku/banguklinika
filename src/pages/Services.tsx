@@ -87,6 +87,11 @@ export default function Services() {
       to: '/paslaugos/dantu-implantacija',
     },
     {
+      id: 'vienmomente-implantacija',
+      title: 'Vienmomentė implantacija',
+      to: '/paslaugos/vienmomente-implantacija',
+    },
+    {
       id: 'skubi-pagalba',
       title: 'Skubi pagalba',
       to: '/paslaugos/skubi-pagalba',
@@ -95,6 +100,26 @@ export default function Services() {
       id: 'dantu-protezavimas',
       title: 'Dantų protezavimas',
       to: '/paslaugos/dantu-protezavimas',
+    },
+    {
+      id: 'dantu-karunieles',
+      title: 'Dantų karūnėlės (vainikėliai)',
+      to: '/paslaugos/dantu-karunieles',
+    },
+    {
+      id: 'cirkonio-keramikos-vainikelis',
+      title: 'Cirkonio keramikos vainikėlis',
+      to: '/paslaugos/cirkonio-keramikos-vainikelis',
+    },
+    {
+      id: 'dantu-tiltai',
+      title: 'Dantų tiltai',
+      to: '/paslaugos/dantu-tiltai',
+    },
+    {
+      id: 'kompensacija-protezavimui',
+      title: 'Kompensacija protezavimui',
+      to: '/paslaugos/kompensacija-protezavimui',
     },
     {
       id: 'dantu-gydymas',
@@ -117,6 +142,16 @@ export default function Services() {
       to: '/paslaugos/burnos-chirurgija',
     },
     {
+      id: 'sinuso-pakelimas',
+      title: 'Sinuso pakėlimas',
+      to: '/paslaugos/sinuso-pakelimas',
+    },
+    {
+      id: 'zandikaulio-kaulo-priauginimas',
+      title: 'Žandikaulio kaulo priauginimas',
+      to: '/paslaugos/zandikaulio-kaulo-priauginimas',
+    },
+    {
       id: 'dantu-balinimas',
       title: 'Dantų balinimas',
       to: '/paslaugos/dantu-balinimas',
@@ -137,6 +172,11 @@ export default function Services() {
       to: '/paslaugos/dantu-traukimas',
     },
     {
+      id: 'protiniu-dantu-salinimas',
+      title: 'Protinių dantų šalinimas',
+      to: '/paslaugos/protiniu-dantu-salinimas',
+    },
+    {
       id: 'endodontinis-gydymas',
       title: 'Endodontinis gydymas',
       to: '/paslaugos/endodontinis-gydymas',
@@ -147,26 +187,24 @@ export default function Services() {
       to: '/paslaugos/vaiku-odontologija',
     },
     {
-      id: 'kompensuojamas-dantu-protezavimas',
-      title: 'TLK lėšomis kompensuojamas dantų protezavimas',
-      expandable: (
-        <div className="space-y-2">
-          <p>
-            Bangų odontologijos klinika yra sudariusi sutartį su Teritorinėmis ligonių kasomis (TLK),
-            kurios skiria kompensaciją dantų protezavimo išlaidoms iš Privalomojo sveikatos draudimo fondo (PSDF).
-          </p>
-          <p>Teisę į kompensuojamą protezavimą turi:</p>
-          <ul className="list-disc pl-4 space-y-1">
-            <li>Asmenys, kuriems sukako senatvės pensijos amžius</li>
-            <li>Vaikai iki 18 metų</li>
-            <li>Asmenys, pripažinti nedarbingais arba iš dalies darbingais</li>
-            <li>Asmenys po burnos, veido ir žandikaulių onkologinių ligų gydymo</li>
-          </ul>
-          <p className="text-xs text-slate-400 pt-1">
-            Detalesnė ir nuolat atnaujinama informacija skelbiama TLK interneto svetainėje.
-          </p>
-        </div>
-      ),
+      id: 'vaiku-profilaktinis-patikrinimas',
+      title: 'Vaikų profilaktinis patikrinimas',
+      to: '/paslaugos/vaiku-profilaktinis-patikrinimas',
+    },
+    {
+      id: 'dantu-higiena-vaikams',
+      title: 'Dantų higiena vaikams',
+      to: '/paslaugos/dantu-higiena-vaikams',
+    },
+    {
+      id: 'rentgenologiniai-tyrimai',
+      title: 'Rentgenologiniai tyrimai',
+      to: '/paslaugos/rentgenologiniai-tyrimai',
+    },
+    {
+      id: 'bruksizmo-dantu-kapa',
+      title: 'Bruksizmo dantų kapa',
+      to: '/paslaugos/bruksizmo-dantu-kapa',
     },
   ], [])
 
