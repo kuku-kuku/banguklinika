@@ -907,31 +907,60 @@ const nav = [
     label: "Paslaugos",
     dropdown: [
       { to: "/paslaugos/skubi-pagalba/", label: "Skubi pagalba" },
-      { to: "/paslaugos/dantu-implantacija/", label: "Dantų implantacija" },
-      { to: "/paslaugos/vienmomente-implantacija/", label: "Vienmomentė implantacija" },
-      { to: "/paslaugos/dantu-protezavimas/", label: "Dantų protezavimas" },
-      { to: "/paslaugos/dantu-karunieles/", label: "Dantų karūnėlės (vainikėliai)" },
-      { to: "/paslaugos/cirkonio-keramikos-vainikelis/", label: "Cirkonio keramikos vainikėlis" },
-      { to: "/paslaugos/dantu-tiltai/", label: "Dantų tiltai" },
-      { to: "/paslaugos/kompensacija-protezavimui/", label: "Kompensacija protezavimui" },
+      {
+        to: "/paslaugos/dantu-implantacija/",
+        label: "Dantų implantacija",
+        children: [
+          { to: "/paslaugos/vienmomente-implantacija/", label: "Vienmomentė implantacija" }
+        ]
+      },
+      {
+        to: "/paslaugos/dantu-protezavimas/",
+        label: "Dantų protezavimas",
+        children: [
+          { to: "/paslaugos/dantu-karunieles/", label: "Dantų karūnėlės (vainikėliai)" },
+          { to: "/paslaugos/cirkonio-keramikos-vainikelis/", label: "Cirkonio keramikos vainikėlis" },
+          { to: "/paslaugos/dantu-tiltai/", label: "Dantų tiltai" },
+          { to: "/paslaugos/kompensacija-protezavimui/", label: "Kompensacija protezavimui" }
+        ]
+      },
       { to: "/paslaugos/dantu-taisymas-gydymas/", label: "Dantų gydymas" },
       { to: "/paslaugos/dantu-tiesinimas/", label: "Dantų tiesinimas" },
       { to: "/paslaugos/burnos-higiena/", label: "Burnos higiena" },
-      { to: "/paslaugos/burnos-chirurgija/", label: "Burnos chirurgija" },
-      { to: "/paslaugos/sinuso-pakelimas/", label: "Sinuso pakėlimas" },
-      { to: "/paslaugos/zandikaulio-kaulo-priauginimas/", label: "Žandikaulio kaulo priauginimas" },
+      {
+        to: "/paslaugos/burnos-chirurgija/",
+        label: "Burnos chirurgija",
+        children: [
+          { to: "/paslaugos/sinuso-pakelimas/", label: "Sinuso pakėlimas" },
+          { to: "/paslaugos/zandikaulio-kaulo-priauginimas/", label: "Žandikaulio kaulo priauginimas" }
+        ]
+      },
       { to: "/paslaugos/dantu-balinimas/", label: "Dantų balinimas" },
       { to: "/paslaugos/estetinis-plombavimas/", label: "Estetinis plombavimas" },
       { to: "/paslaugos/dantu-plombavimas/", label: "Dantų plombavimas" },
-      { to: "/paslaugos/dantu-traukimas/", label: "Dantų traukimas" },
-      { to: "/paslaugos/protiniu-dantu-salinimas/", label: "Protinių dantų šalinimas" },
+      {
+        to: "/paslaugos/dantu-traukimas/",
+        label: "Dantų traukimas",
+        children: [
+          { to: "/paslaugos/protiniu-dantu-salinimas/", label: "Protinių dantų šalinimas" }
+        ]
+      },
       { to: "/paslaugos/endodontinis-gydymas/", label: "Endodontinis Gydymas" },
-      { to: "/paslaugos/vaiku-odontologija/", label: "Vaikų Odontologija" },
-      { to: "/paslaugos/vaiku-profilaktinis-patikrinimas/", label: "Vaikų profilaktinis patikrinimas" },
-      { to: "/paslaugos/dantu-higiena-vaikams/", label: "Dantų higiena vaikams" },
-      { label: "Kitos paslaugos", heading: true },
-      { to: "/paslaugos/rentgenologiniai-tyrimai/", label: "Rentgenologiniai tyrimai" },
-      { to: "/paslaugos/bruksizmo-dantu-kapa/", label: "Bruksizmo dantų kapa" }
+      {
+        to: "/paslaugos/vaiku-odontologija/",
+        label: "Vaikų Odontologija",
+        children: [
+          { to: "/paslaugos/vaiku-profilaktinis-patikrinimas/", label: "Vaikų profilaktinis patikrinimas" },
+          { to: "/paslaugos/dantu-higiena-vaikams/", label: "Dantų higiena vaikams" }
+        ]
+      },
+      {
+        label: "Kitos paslaugos",
+        children: [
+          { to: "/paslaugos/rentgenologiniai-tyrimai/", label: "Rentgenologiniai tyrimai" },
+          { to: "/paslaugos/bruksizmo-dantu-kapa/", label: "Bruksizmo dantų kapa" }
+        ]
+      }
     ]
   },
   { to: "/kainos", label: "Kainos" },
@@ -940,11 +969,17 @@ const nav = [
   { to: "/draugai", label: "Draugai" },
   { to: "/kontaktai", label: "Kontaktai" }
 ];
+function ChevronRight() {
+  return /* @__PURE__ */ jsx("svg", { className: "w-3.5 h-3.5 shrink-0 text-gray-400", viewBox: "0 0 20 20", fill: "currentColor", "aria-hidden": true, children: /* @__PURE__ */ jsx("path", { fillRule: "evenodd", d: "M7.21 14.77a.75.75 0 010-1.06L10.168 10 7.21 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 01-1.06-.02z", clipRule: "evenodd" }) });
+}
 function Navbar() {
   const [openMobile, setOpenMobile] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
+  const [openSub, setOpenSub] = useState(null);
   const [mobileOpenIndex, setMobileOpenIndex] = useState(null);
+  const [mobileOpenSub, setMobileOpenSub] = useState(null);
   const closeTimer = useRef(null);
+  const subCloseTimer = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
   const scheduleClose = () => {
@@ -955,14 +990,31 @@ function Navbar() {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
     closeTimer.current = null;
   };
+  const scheduleSubClose = () => {
+    if (subCloseTimer.current) window.clearTimeout(subCloseTimer.current);
+    subCloseTimer.current = window.setTimeout(() => setOpenSub(null), 140);
+  };
+  const cancelSubClose = () => {
+    if (subCloseTimer.current) window.clearTimeout(subCloseTimer.current);
+    subCloseTimer.current = null;
+  };
   useEffect(() => {
     setOpenIndex(null);
+    setOpenSub(null);
     setOpenMobile(false);
     setMobileOpenIndex(null);
+    setMobileOpenSub(null);
   }, [location.pathname, location.hash]);
+  useEffect(() => {
+    setOpenSub(null);
+  }, [openIndex]);
+  useEffect(() => {
+    setMobileOpenSub(null);
+  }, [mobileOpenIndex]);
   useEffect(() => {
     return () => {
       if (closeTimer.current) window.clearTimeout(closeTimer.current);
+      if (subCloseTimer.current) window.clearTimeout(subCloseTimer.current);
     };
   }, []);
   useEffect(() => {
@@ -1019,8 +1071,10 @@ function Navbar() {
   }
   function handleNavClick(to) {
     setOpenIndex(null);
+    setOpenSub(null);
     setOpenMobile(false);
     setMobileOpenIndex(null);
+    setMobileOpenSub(null);
     const hasHash = to.includes("#");
     if (hasHash) {
       navigate(to);
@@ -1119,25 +1173,69 @@ function Navbar() {
                         role: "menu",
                         className: `absolute left-1/2 -translate-x-1/2 top-[calc(100%+10px)] z-50 transition ${openIndex === idx ? "opacity-100 visible" : "opacity-0 invisible"}`,
                         onMouseEnter: cancelClose,
-                        children: /* @__PURE__ */ jsx("div", { className: "w-64 rounded-2xl border border-gray-100 bg-white shadow-soft p-2 max-h-[70vh] overflow-auto", children: n.dropdown.map(
-                          (d) => d.heading ? /* @__PURE__ */ jsx(
-                            "p",
+                        children: /* @__PURE__ */ jsx("div", { className: "w-64 rounded-2xl border border-gray-100 bg-white shadow-soft p-2 max-h-[70vh] overflow-auto", children: n.dropdown.map((d) => {
+                          var _a2;
+                          const hasChildren = !!((_a2 = d.children) == null ? void 0 : _a2.length);
+                          if (!hasChildren) {
+                            return /* @__PURE__ */ jsx(
+                              NavLink,
+                              {
+                                to: d.to,
+                                className: "block px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700",
+                                onClick: () => handleNavClick(d.to),
+                                children: d.label
+                              },
+                              d.to
+                            );
+                          }
+                          return /* @__PURE__ */ jsxs(
+                            "div",
                             {
-                              className: "px-3 pt-3 pb-1 text-[11px] font-semibold uppercase tracking-wide text-gray-400",
-                              children: d.label
+                              className: "relative",
+                              onMouseEnter: () => {
+                                cancelSubClose();
+                                setOpenSub(d.label);
+                              },
+                              onMouseLeave: scheduleSubClose,
+                              children: [
+                                d.to ? /* @__PURE__ */ jsxs(
+                                  NavLink,
+                                  {
+                                    to: d.to,
+                                    className: "flex items-center justify-between gap-2 px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700",
+                                    onClick: () => handleNavClick(d.to),
+                                    children: [
+                                      d.label,
+                                      /* @__PURE__ */ jsx(ChevronRight, {})
+                                    ]
+                                  }
+                                ) : /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-between gap-2 px-3 py-2 rounded-xl text-sm text-gray-500 cursor-default select-none", children: [
+                                  d.label,
+                                  /* @__PURE__ */ jsx(ChevronRight, {})
+                                ] }),
+                                /* @__PURE__ */ jsx(
+                                  "div",
+                                  {
+                                    className: `absolute left-full top-0 ml-1 w-64 rounded-2xl border border-gray-100 bg-white shadow-soft p-2 max-h-[70vh] overflow-auto z-50 transition ${openSub === d.label ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`,
+                                    onMouseEnter: cancelSubClose,
+                                    onMouseLeave: scheduleSubClose,
+                                    children: d.children.map((c) => /* @__PURE__ */ jsx(
+                                      NavLink,
+                                      {
+                                        to: c.to,
+                                        className: "block px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700",
+                                        onClick: () => handleNavClick(c.to),
+                                        children: c.label
+                                      },
+                                      c.to
+                                    ))
+                                  }
+                                )
+                              ]
                             },
                             d.label
-                          ) : /* @__PURE__ */ jsx(
-                            NavLink,
-                            {
-                              to: d.to,
-                              className: "block px-3 py-2 rounded-xl text-sm hover:bg-primary-50 hover:text-primary-700",
-                              onClick: () => handleNavClick(d.to),
-                              children: d.label
-                            },
-                            d.to
-                          )
-                        ) })
+                          );
+                        }) })
                       }
                     )
                   ] })
@@ -1290,25 +1388,71 @@ function Navbar() {
                   exit: { height: 0, opacity: 0 },
                   transition: { duration: 0.18, ease: "easeOut" },
                   className: "bg-white",
-                  children: /* @__PURE__ */ jsx("div", { className: "px-1 pb-2", children: n.dropdown.map(
-                    (d) => d.heading ? /* @__PURE__ */ jsx(
-                      "p",
-                      {
-                        className: "px-3 pt-3 pb-1 text-[11px] font-semibold uppercase tracking-wide text-gray-400",
-                        children: d.label
-                      },
-                      d.label
-                    ) : /* @__PURE__ */ jsx(
-                      NavLink,
-                      {
-                        to: d.to,
-                        className: "block px-3 py-2 rounded-lg text-[14px] text-gray-800 hover:bg-primary-50 hover:text-primary-700",
-                        onClick: () => handleNavClick(d.to),
-                        children: d.label
-                      },
-                      d.to
-                    )
-                  ) })
+                  children: /* @__PURE__ */ jsx("div", { className: "px-1 pb-2", children: n.dropdown.map((d) => {
+                    var _a2;
+                    const hasChildren = !!((_a2 = d.children) == null ? void 0 : _a2.length);
+                    if (!hasChildren) {
+                      return /* @__PURE__ */ jsx(
+                        NavLink,
+                        {
+                          to: d.to,
+                          className: "block px-3 py-2 rounded-lg text-[14px] text-gray-800 hover:bg-primary-50 hover:text-primary-700",
+                          onClick: () => handleNavClick(d.to),
+                          children: d.label
+                        },
+                        d.to
+                      );
+                    }
+                    const isSubOpen = mobileOpenSub === d.label;
+                    return /* @__PURE__ */ jsxs("div", { className: "rounded-lg overflow-hidden", children: [
+                      /* @__PURE__ */ jsxs("div", { className: "flex items-center", children: [
+                        d.to ? /* @__PURE__ */ jsx(
+                          NavLink,
+                          {
+                            to: d.to,
+                            className: "flex-1 px-3 py-2 block text-[14px] text-gray-800 hover:bg-primary-50 hover:text-primary-700",
+                            onClick: () => handleNavClick(d.to),
+                            children: d.label
+                          }
+                        ) : /* @__PURE__ */ jsx("span", { className: "flex-1 px-3 py-2 block text-[14px] text-gray-500", children: d.label }),
+                        /* @__PURE__ */ jsx(
+                          "button",
+                          {
+                            type: "button",
+                            className: "px-3 py-2 text-[13px] font-medium text-gray-700 hover:bg-gray-50",
+                            onClick: (e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setMobileOpenSub((cur) => cur === d.label ? null : d.label);
+                            },
+                            "aria-expanded": isSubOpen,
+                            "aria-label": `${d.label} meniu`,
+                            children: isSubOpen ? "−" : "+"
+                          }
+                        )
+                      ] }),
+                      /* @__PURE__ */ jsx(AnimatePresence, { initial: false, children: isSubOpen && /* @__PURE__ */ jsx(
+                        motion.div,
+                        {
+                          initial: { height: 0, opacity: 0 },
+                          animate: { height: "auto", opacity: 1 },
+                          exit: { height: 0, opacity: 0 },
+                          transition: { duration: 0.18, ease: "easeOut" },
+                          className: "bg-white",
+                          children: /* @__PURE__ */ jsx("div", { className: "pl-3 pb-1", children: d.children.map((c) => /* @__PURE__ */ jsx(
+                            NavLink,
+                            {
+                              to: c.to,
+                              className: "block px-3 py-2 rounded-lg text-[13px] text-gray-700 hover:bg-primary-50 hover:text-primary-700",
+                              onClick: () => handleNavClick(c.to),
+                              children: c.label
+                            },
+                            c.to
+                          )) })
+                        }
+                      ) })
+                    ] }, d.label);
+                  }) })
                 }
               ) })
             ] }, n.to);
