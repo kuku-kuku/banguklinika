@@ -3638,9 +3638,9 @@ const PRICING = [
   {
     title: "Dantų gydymo kainoraštis",
     items: [
-      { name: "Konsultacija iki 30 min", from: 30, exact: true },
-      { name: "Konsultacija iki 15 min", from: 25, exact: true, note: "Konsultacija, profilaktinis patikrinimas" },
-      { name: "Gydymo plano sudarymas", from: 30, exact: true, note: "Išsamus, individualus gydymo planas su gydymo kainomis" },
+      { name: "Konsultacija iki 30 min", from: 40, exact: true },
+      { name: "Konsultacija iki 15 min", from: 30, exact: true, note: "Konsultacija, profilaktinis patikrinimas" },
+      { name: "Gydymo plano sudarymas", from: 50, exact: true, note: "Išsamus, individualus gydymo planas su gydymo kainomis" },
       { name: "Nuskausminimas", from: 10, exact: true, note: "Infiltracinė nejautra" }
     ]
   },
@@ -3651,15 +3651,19 @@ const PRICING = [
       { name: "Stiklo jonomerinė plomba (maža)", from: 40, exact: true },
       { name: "Stiklo jonomerinė plomba (didelė)", from: 60, exact: true },
       // Helio plombos (šviesoje kietėjantis kompozitas)
-      { name: "Helio plomba (maža)", from: 60, exact: true, note: "Šviesoje kietėjantis kompozitas" },
-      { name: "Helio plomba (vidutinė)", from: 80, exact: true, note: "Šviesoje kietėjantis kompozitas" },
-      { name: "Helio plomba (didelė)", from: 100, exact: true, note: "Šviesoje kietėjantis kompozitas" },
-      { name: "Gydomasis pamušalas (kalcio hidroksido pagrindu)", from: 5, exact: true },
-      { name: "Stiklo jonomerinis pamušalas", from: 5, exact: true },
+      { name: "Helio plomba (maža)", from: 70, exact: true, note: "Šviesoje kietėjantis kompozitas" },
+      { name: "Helio plomba (vidutinė)", from: 90, exact: true, note: "Šviesoje kietėjantis kompozitas" },
+      { name: "Helio plomba (didelė)", from: 110, exact: true, note: "Šviesoje kietėjantis kompozitas" },
+      // Priekinio danties helio plomba
+      { name: "Priekinio danties helio plomba (maža)", from: 90, exact: true, note: "Šviesoje kietėjantis kompozitas" },
+      { name: "Priekinio danties helio plomba (vidutinė)", from: 110, exact: true, note: "Šviesoje kietėjantis kompozitas" },
+      { name: "Priekinio danties helio plomba (didelė)", from: 130, exact: true, note: "Šviesoje kietėjantis kompozitas" },
+      { name: "Gydomasis pamušalas (kalcio hidroksido pagrindu)", from: 10, exact: true },
+      { name: "Stiklo jonomerinis pamušalas", from: 10, exact: true },
       { name: "Laikina plomba (didelė)", from: 30, exact: true },
-      { name: "Laikina plomba (maža)", from: 15, exact: true },
-      { name: "Estetinis plombavimas (1 danties)", from: 150, note: "Nuo" },
-      { name: "Plombos pataisa", from: 50, exact: true },
+      { name: "Laikina plomba (maža)", from: 20, exact: true },
+      { name: "Estetinis plombavimas (1 danties)", from: 170, note: "Nuo" },
+      { name: "Plombos pataisa", from: 60, exact: true },
       { name: "Biodentino uždėjimas (MTA)", from: 40, exact: true },
       { name: "Skubi pagalba, esant danties skausmui", from: 70, to: 120 },
       { name: "Funkcinis dantų plombavimas pagal pavaškavimą, keliant sąkandį (1 dantis)", from: 150, exact: true }
@@ -3668,12 +3672,12 @@ const PRICING = [
   {
     title: "Dantų gydymas (vaikų)",
     items: [
-      { name: "Pirminė konsultacija, apžiūra, el. pažyma į mokyklą/darželį, iki 15min.", from: 25, exact: true },
+      { name: "Pirminė konsultacija, apžiūra, el. pažyma į mokyklą/darželį, iki 15min.", from: 30, exact: true },
       { name: "El. pažyma į mokyklą/darželį gydymo metu", from: 15, exact: true },
       { name: "Pirminė konsultacija, apžiūra (jei vaikas nesileidžia gydomas), iki 30min.", from: 50, exact: true },
       { name: "Pieninio danties plombavimas stiklo jonomerine plomba", from: 40, to: 60 },
       { name: "Pieninio danties nervo uždegimo gydymas", from: 40, to: 80 },
-      { name: "Pieninio danties šalinimas", from: 40, to: 60 }
+      { name: "Pieninio danties šalinimas", from: 60, to: 80 }
     ]
   },
   {
@@ -3698,11 +3702,11 @@ const PRICING = [
   {
     title: "Profesionali burnos higiena (apnašų/konkrementų pašalinimas)",
     items: [
-      { name: "Pilna profesionali burnos higiena (vienas vizitas)", from: 80, exact: true },
-      { name: "Konkrementų pašalinimas (pirminis vizitas)", from: 60, exact: true },
-      { name: "Konkrementų pašalinimas + poliravimas AIR FLOW (antrinis vizitas)", from: 60, exact: true },
+      { name: "Pilna profesionali burnos higiena (vienas vizitas)", from: 90, exact: true },
+      { name: "Konkrementų pašalinimas (pirminis vizitas)", from: 70, exact: true },
+      { name: "Konkrementų pašalinimas + poliravimas AIR FLOW (antrinis vizitas)", from: 80, exact: true },
       { name: "Poliravimas AIR FLOW aparatu", from: 50, exact: true },
-      { name: "Medikamentinis dantenų gydymas (1 dantis)", from: 15, exact: true },
+      { name: "Medikamentinis dantenų gydymas (1 dantis)", from: 20, exact: true },
       { name: "Fluoro lako aplikacija (1 dantis)", from: 10, exact: true }
     ]
   },
@@ -3713,7 +3717,7 @@ const PRICING = [
       { name: "Ofisinis balinimas BEYOND aparatu (kartojant procedūrą)", from: 150, exact: true },
       { name: "Dantų balinimo kapos (2 kapos + balinimo gelis)", from: 200, exact: true },
       { name: "Balinimo gelis (1 švirkštas)", from: 30, exact: true },
-      { name: "Balinimo kapos (2 vnt)", from: 130, exact: true },
+      { name: "Balinimo kapos (2 vnt)", from: 150, exact: true },
       { name: "Vidinis negyvo danties balinimas (1 dantis)", from: 20, exact: true },
       { name: "Swarovski danties papuošalo įdėjimas", from: 50, exact: true },
       { name: "Icon procedūra (1 dantis)", from: 80, exact: true }
@@ -3722,12 +3726,12 @@ const PRICING = [
   {
     title: "Burnos chirurgijos kainoraštis",
     items: [
-      { name: "Konsultacija iki 30 min", from: 20, exact: true },
-      { name: "Gydymo plano sudarymas", from: 30, exact: true, note: "Išsamus, individualus gydymo planas su gydymo kainomis" },
-      { name: "Pieninio danties rovimas su aplikaciniu nuskausminimu", from: 30, exact: true },
-      { name: "Pieninio danties rovimas su injekciniu nuskausminimu", from: 50, exact: true },
+      { name: "Konsultacija iki 30 min", from: 30, exact: true },
+      { name: "Gydymo plano sudarymas", from: 50, exact: true, note: "Išsamus, individualus gydymo planas su gydymo kainomis" },
+      { name: "Pieninio danties rovimas su aplikaciniu nuskausminimu", from: 60, exact: true },
+      { name: "Pieninio danties rovimas su injekciniu nuskausminimu", from: 80, exact: true },
       { name: "Nuolatinio danties rovimas", from: 100, exact: true, note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota" },
-      { name: "Nuolatinio danties šaknies rovimas", from: 70, exact: true, note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota" },
+      { name: "Nuolatinio danties šaknies rovimas", from: 80, exact: true, note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota" },
       { name: "Sudėtingas nuolatinio danties rovimas", from: 120, exact: true, note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota" },
       {
         name: "Sudėtingas nuolatinio danties šaknies rovimas",
@@ -3736,15 +3740,13 @@ const PRICING = [
         note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota"
       },
       {
-        name: "Trečiųjų apatinių krūminių dantų rovimas",
+        name: "Trečiųjų krūminių dantų rovimas (Protinių dantų rovimas)",
         from: 150,
-        exact: true,
         note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota"
       },
       {
-        name: "Sudėtingas/komplikuotas trečiųjų apatinių krūminių dantų rovimas",
-        from: 220,
-        exact: true
+        name: "Sudėtingas/komplikuotas trečiųjų krūminių dantų rovimas (Protinių dantų rovimas)",
+        from: 220
       },
       { name: "Klinikinis danties vainiko prailginimas", from: 60, exact: true },
       { name: "Alveolito gydymas (1 seansas)", from: 30, exact: true },
@@ -3769,8 +3771,8 @@ const PRICING = [
   {
     title: "Dantų protezavimas (ant dantų)",
     items: [
-      { name: "Konsultacija", from: 20, exact: true },
-      { name: "Gydymo plano sudarymas", from: 30, exact: true, note: "Išsamus, individualus gydymo planas su gydymo kainomis" },
+      { name: "Konsultacija", from: 30, exact: true },
+      { name: "Gydymo plano sudarymas", from: 50, exact: true, note: "Išsamus, individualus gydymo planas su gydymo kainomis" },
       { name: "Laikinas plastmasinis vainikėlis (pagamintas kabinete)", from: 40, exact: true },
       { name: "Laikinas plastmasinis vainikėlis (pagamintas laboratorijoje)", from: 80, exact: true },
       { name: "Metalo keramikos vainikėlis", from: 350, exact: true },
@@ -3828,7 +3830,7 @@ const PRICING = [
       { name: "Kompiuterinė tomografo nuotrauka (3D)", from: 60, to: 100 },
       { name: "Vienkartinės priemonės", from: 10, exact: true, note: "Kiekvienam apsilankymui" },
       { name: "Lūpų apsauga, optragate", from: 5, exact: true, note: "Kiekvienam apsilankymui" },
-      { name: "Pooperacinis rinkinys", from: 30, exact: true },
+      { name: "Pooperacinis rinkinys", from: 50, exact: true },
       { name: "Darbų kainos, nenumatytos kainininke", note: "Aptariamos su gydančiu gydytoju" },
       { name: "Detalesnė informacija", note: "Jums suteiks įstaigos darbuotojai" }
     ]
@@ -11880,6 +11882,9 @@ const LV_ITEMS = {
   "Helio plomba (maža)": "Gaismas plomba (maza)",
   "Helio plomba (vidutinė)": "Gaismas plomba (vidēja)",
   "Helio plomba (didelė)": "Gaismas plomba (liela)",
+  "Priekinio danties helio plomba (maža)": "Priekšzoba gaismas plomba (maza)",
+  "Priekinio danties helio plomba (vidutinė)": "Priekšzoba gaismas plomba (vidēja)",
+  "Priekinio danties helio plomba (didelė)": "Priekšzoba gaismas plomba (liela)",
   "Gydomasis pamušalas (kalcio hidroksido pagrindu)": "Ārstnieciskais ieliktnis (kalcija hidroksīda bāzē)",
   "Stiklo jonomerinis pamušalas": "Stikla jonomēra ieliktnis",
   "Laikina plomba (didelė)": "Pagaidu plomba (liela)",
@@ -11923,7 +11928,8 @@ const LV_ITEMS = {
   "Nuolatinio danties šaknies rovimas": "Pastāvīgā zoba saknes ekstrakcija",
   "Sudėtingas nuolatinio danties rovimas": "Sarežģīta pastāvīgā zoba ekstrakcija",
   "Sudėtingas nuolatinio danties šaknies rovimas": "Sarežģīta pastāvīgā zoba saknes ekstrakcija",
-  "Trečiųjų apatinių krūminių dantų rovimas": "Trešo apakšžokļa molāra ekstrakcija",
+  "Trečiųjų krūminių dantų rovimas (Protinių dantų rovimas)": "Trešo molāra ekstrakcija (Gudrības zoba ekstrakcija)",
+  "Sudėtingas/komplikuotas trečiųjų krūminių dantų rovimas (Protinių dantų rovimas)": "Sarežģīta/komplicēta trešo molāra ekstrakcija (Gudrības zoba ekstrakcija)",
   "Klinikinis danties vainiko prailginimas": "Klīniskā zoba vainaga pagarināšana",
   "Alveolito gydymas (1 seansas)": "Alveolīta ārstniecība (1 seanss)",
   "Incizija (pjūviai uždegimo metu)": "Incīzija (griezieni iekaisuma laikā)",
