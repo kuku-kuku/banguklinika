@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
+import { getLenis } from "../hooks/useLenis"
 
 export interface TocSection {
   id: string
@@ -107,7 +108,19 @@ export function TableOfContents({ sections, title = "Turinys", rootRef, cta, mob
 
       if (el) {
         setActiveId(id)
-        el.scrollIntoView({ behavior: "smooth", block: "start" })
+
+        // Puslapis naudoja Lenis sklandžiam scroll'ui. Jei šokam per native
+        // el.scrollIntoView(), Lenis vidinė būsena (animatedScroll/targetScroll)
+        // nebesutampa su tikra scroll pozicija, ir po to wheel scroll "užstringa"
+        // pusiaukelėje – todėl čia scroll'inam per pačio Lenis scrollTo().
+        const lenis = getLenis()
+        if (lenis) {
+          const scrollMarginTop = parseFloat(getComputedStyle(el).scrollMarginTop) || 0
+          lenis.scrollTo(el, { offset: -scrollMarginTop })
+        } else {
+          el.scrollIntoView({ behavior: "smooth", block: "start" })
+        }
+
         window.history.replaceState(null, "", `#${id}`)
         setIsOpen(false)
       }

@@ -22,7 +22,15 @@ export default function ScrollToTop() {
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           const el = document.getElementById(id);
-          if (el) el.scrollIntoView({ block: "start", behavior: "auto" });
+          if (!el) return;
+
+          const lenis = getLenis();
+          if (lenis) {
+            const scrollMarginTop = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+            lenis.scrollTo(el, { offset: -scrollMarginTop, immediate: true });
+          } else {
+            el.scrollIntoView({ block: "start", behavior: "auto" });
+          }
         });
       });
 
