@@ -38,9 +38,12 @@ function CheckIcon() {
 const tocSections = [
   { id: 'kainos', label: 'Kainos' },
   { id: 'kas-yra', label: 'Kas yra bruksizmo dantų kapa?' },
+  { id: 'bruksizmas', label: 'Kas yra bruksizmas?' },
   { id: 'pozymiai', label: 'Bruksizmo požymiai' },
+  { id: 'kaip-veikia', label: 'Kaip veikia kapa?' },
   { id: 'gamyba', label: 'Kapos gamyba' },
   { id: 'prieziura', label: 'Kapos priežiūra' },
+  { id: 'duk', label: 'Dažniausi klausimai' },
   { id: 'kodel-rinktis', label: 'Kodėl verta rinktis mus?' }
 ]
 
@@ -81,21 +84,23 @@ export default function BruksizmoDantuKapa() {
           {/* HERO */}
           <motion.header className="mb-10 text-left" variants={item}>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
-              Bruksizmo dantų kapa Klaipėdoje
+              Bruksizmo kapa Klaipėdoje
             </h1>
 
             <div>
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
                 <p className="mb-4">
-                  Bruksizmas, dažniau vadinamas dantų griežimu, yra paplitusi problema, kuri gali sukelti rimtą žalą dantims,
-                  žandikaulio sąnariams ir bendrai burnos sveikatai. Dažniausiai jis pasireiškia miego metu, todėl daugelis
-                  pacientų net nesuvokia, kad griežia dantimis, kol nepastebi pirmųjų pasekmių.
+                  Dantų griežimas ar stiprus sukandimas dažnai vyksta nevalingai, ypač miego metu, todėl žmogus
+                  ilgą laiką gali net nežinoti, kad ši problema veikia jo dantis, kramtomuosius raumenis ir
+                  žandikaulio sąnarį. Rytais jaučiamas žandikaulio nuovargis, galvos ar smilkinių skausmas,
+                  padidėjęs dantų jautrumas ar pastebimas dantų nudilimas gali būti ženklai, kad dantys patiria per
+                  didelę apkrovą.
                 </p>
                 <p>
-                  Bangų odontologijos klinikoje Klaipėdoje pacientams siūloma individualiai pagaminta bruksizmo dantų kapa –
-                  patikima ir paprasta priemonė, padedanti apsaugoti dantis nuo tolimesnio dilimo, įtrūkimų ir kitų su bruksizmu
-                  susijusių pažeidimų. Kapa pagaminama pagal tikslius Jūsų burnos matmenis, todėl dėvima patogiai ir nekelia
-                  papildomo diskomforto.
+                  Bangų odontologijos klinikoje Klaipėdoje bruksizmo požymiai vertinami individualiai, atsižvelgiant
+                  į dantų nudilimą, sąkandį, restauracijų būklę ir paciento nusiskundimus. Vienas dažniausiai
+                  taikomų apsaugos būdų yra bruksizmo kapa – individualiai pagaminta kapa nuo dantų griežimo,
+                  padedanti apsaugoti dantis nuo tolimesnio dilimo, skilimų ir per didelės apkrovos.
                 </p>
               </div>
             </div>
@@ -187,11 +192,11 @@ export default function BruksizmoDantuKapa() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
+                <div className="relative aspect-[4/5] bg-sky-50">
                   <img
                     src="/team/Jonas-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
                 </div>
@@ -213,14 +218,59 @@ export default function BruksizmoDantuKapa() {
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Bruksizmo dantų kapa – tai individualiai pagaminta apsauginė priemonė, kurią pacientai dažniausiai dėvi
-                  nakties metu. Kapa tarnauja kaip barjeras tarp viršutinio ir apatinio žandikaulio dantų, todėl griežimo ar
-                  sukandimo metu susidariusi apkrova paskirstoma tolygiau ir nebeveikia tiesiogiai dantų emalio.
+                  Bruksizmo dantų kapa – tai individualiai pagal paciento dantis pagaminta apsauginė kapa,
+                  dažniausiai naudojama naktį. Jos pagrindinis tikslas – sukurti apsauginį barjerą tarp viršutinių
+                  ir apatinių dantų, kad griežimo ar stipraus sukandimo metu dantys tiesiogiai nesitrintų vienas į
+                  kitą.
                 </p>
                 <p>
-                  Reguliariai dėvima bruksizmo kapa padeda sumažinti dantų emalio dilimą, apsaugoti dantis nuo įtrūkimų,
-                  lūžių ir jau esamų restauracijų – plombų, vainikėlių ar kitų atkūrimų – pažeidimų. Kadangi kapa gaminama
-                  individualiai pagal Jūsų burnos matmenis, ji tiksliai priglunda ir yra patogi dėvėti kasdien.
+                  Tinkamai pagaminta bruksizmo kapa padeda sumažinti dantų emalio dilimą, apsaugoti dantis nuo
+                  įtrūkimų, lūžių ir restauracijų pažeidimų. Ji ypač aktuali pacientams, kurie jau turi plombų,
+                  vainikėlių, užklotų, laminačių ar kitų restauracijų, nes bruksizmas gali sutrumpinti jų tarnavimo
+                  laiką.
+                </p>
+                <p>
+                  Pacientai šią priemonę dažnai vadina skirtingai: kapos nuo dantų griežimo, dantų kapos nuo
+                  griežimo arba dantų kapos nuo bruksizmo. Visi šie pavadinimai dažniausiai apibūdina tą pačią
+                  paskirtį – apsaugoti dantis nuo nevalingo griežimo ar stipraus sukandimo padarinių.
+                </p>
+                <p>
+                  Svarbu suprasti, kad kapa ne visada pašalina pačią bruksizmo priežastį. Dažnai ji yra apsauginė
+                  ir stabilizuojanti priemonė, padedanti kontroliuoti bruksizmo pasekmes bei išvengti sudėtingesnio
+                  dantų gydymo ateityje.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* BRUKSIZMAS */}
+          <motion.section id="bruksizmas" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas yra bruksizmas ir kodėl svarbu jo neignoruoti?</h2>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Bruksizmas – tai nevalingas dantų griežimas arba stiprus dantų sukandimas. Jis dažniausiai
+                  pasireiškia nakties metu, kai žmogus negali sąmoningai kontroliuoti kramtomųjų raumenų veiklos.
+                  Kai kuriais atvejais stiprus sukandimas gali pasireikšti ir dieną, ypač patiriant įtampą, stresą
+                  ar ilgai susikaupus.
+                </p>
+                <p>
+                  Bruksizmo priežastys gali būti įvairios. Dažnai jis siejamas su stresu, emocine įtampa, miego
+                  sutrikimais, netaisyklingu sąkandžiu, tam tikrais įpročiais ar bendru kramtomųjų raumenų
+                  aktyvumu. Dėl šios priežasties dantų griežimo gydymas gali būti kompleksinis – vieniems
+                  pacientams pakanka apsauginės kapos, o kitiems gali reikėti papildomai vertinti sąkandį,
+                  restauracijas, raumenų įtampą ar kitus veiksnius.
+                </p>
+                <p>
+                  Ignoruojamas bruksizmas ilgainiui gali sukelti reikšmingų dantų ir žandikaulio problemų. Nuolatinė
+                  mechaninė apkrova gali lemti emalio nusidėvėjimą, dantų aukščio sumažėjimą, jautrumą šalčiui ar
+                  karščiui, plombų skilimą, keramikos restauracijų pažeidimus ar net dantų lūžius.
+                </p>
+                <p>
+                  Kai kuriais atvejais dėl bruksizmo gali atsirasti ir žandikaulio sąnario diskomfortas: traškesys,
+                  maudimas, ribotas išsižiojimas, kramtomųjų raumenų įtampa ar galvos skausmai. Todėl pastebėjus
+                  galimus požymius svarbu nedelsti ir pasikonsultuoti su odontologu.
                 </p>
               </div>
             </div>
@@ -229,27 +279,81 @@ export default function BruksizmoDantuKapa() {
           {/* BRUKSIZMO POŽYMIAI */}
           <motion.section id="pozymiai" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Bruksizmo požymiai</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kokie požymiai rodo, kad jums gali reikėti kapos nuo dantų griežimo?</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Kadangi bruksizmas dažniausiai pasireiškia miego metu, patys pacientai jo dažnai nepastebi. Tačiau yra keletas
-                įspėjamųjų ženklų, į kuriuos verta atkreipti dėmesį ir, juos pastebėjus, apsilankyti pas odontologą.
+                Bruksizmas dažnai nustatomas ne iš karto, nes žmogus dantimis dažniausiai griežia miegodamas.
+                Kartais apie problemą pasako šalia miegantis artimasis, tačiau neretai pirmuosius požymius pastebi
+                odontologas profilaktinės apžiūros metu.
               </p>
 
-              <div className="grid gap-3 sm:grid-cols-2">
-                {[
-                  'rytą jaučiamas žandikaulio nuovargis ar skausmas',
-                  'galvos skausmas, ypač jaučiamas rytais',
-                  'padidėjęs dantų jautrumas',
-                  'pastebimas dantų nudilimas',
-                ].map((text, i) => (
-                  <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
-                    <span className="mt-1">
-                      <CheckIcon />
-                    </span>
-                    <span className="text-slate-700">{text}</span>
-                  </div>
-                ))}
+              <div className="space-y-3 mb-6">
+                <h3 className="font-semibold text-darkblue-700">Kapa nuo dantų griežimo gali būti reikalinga, jei:</h3>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {[
+                    'rytais jaučiate žandikaulio nuovargį, įtampą ar skausmą',
+                    'dažnai skauda galvą, smilkinius, kaklą ar ausų sritį',
+                    'pastebite dantų nudilimą, patrumpėjimą ar pasikeitusią jų formą',
+                    'dantys tapo jautresni šalčiui, karščiui ar prisilietimui',
+                    'skilinėja plombos, vainikėliai, laminatės ar kitos restauracijos',
+                    'ant dantų matomi įtrūkimai ar nuskilimai',
+                    'partneris pastebi dantų griežimą naktį',
+                    'dienos metu dažnai laikote dantis stipriai sukąstus',
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                      <span className="mt-1">
+                        <CheckIcon />
+                      </span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Šie požymiai ne visuomet reiškia, kad problema jau yra pažengusi, tačiau jie rodo, kad dantys
+                  gali patirti per didelę apkrovą. Kuo anksčiau nustatomi bruksizmo požymiai, tuo didesnė tikimybė
+                  apsaugoti dantis nuo didesnio nudilimo ir sudėtingesnio atkūrimo ateityje.
+                </p>
+                <p>
+                  Jei dantys jau stipriai nudilę, yra pakitęs sąkandžio aukštis, dažnai lūžta restauracijos ar
+                  vargina žandikaulio sąnario skausmai, vien kapos gali nepakakti. Tokiais atvejais reikalingas
+                  išsamesnis gydymo planas, apimantis ne tik dantų apsaugą, bet ir pažeidimų atkūrimą.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* KAIP VEIKIA */}
+          <motion.section id="kaip-veikia" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip veikia bruksizmo kapa?</h2>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Bruksizmo kapa veikia kaip apsauginis sluoksnis tarp viršutinių ir apatinių dantų. Griežimo ar
+                  stipraus sukandimo metu ji perima dalį mechaninės apkrovos ir neleidžia dantims tiesiogiai
+                  trintis vieniems į kitus. Tokiu būdu saugomas emalis, dentinas, plombos ir kitos restauracijos.
+                </p>
+                <p>
+                  Individualiai pritaikyta kapa taip pat padeda stabilizuoti dantų kontaktus nakties metu. Tai
+                  svarbu pacientams, kurių dantys yra nudilę, apkrauti restauracijomis arba jautrūs dėl per
+                  didelio sukandimo. Kapa padeda sumažinti netolygią apkrovą ir apsaugoti silpnesnius dantis nuo
+                  skilimo.
+                </p>
+                <p>
+                  Svarbu pabrėžti, kad bruksizmo kapos nėra vienintelis sprendimas visais atvejais. Jei dantys jau
+                  stipriai nudilę, sukandimas pakitęs arba yra žandikaulio sąnario sutrikimų, gali prireikti
+                  platesnio gydymo plano. Tokiais atvejais odontologas gali rekomenduoti restauracijų atnaujinimą,
+                  sąkandžio analizę, protezavimą, ortodontinį gydymą ar kitus papildomus sprendimus.
+                </p>
+                <p>
+                  Vis dėlto daugeliui pacientų individuali kapa yra pirmas ir labai svarbus žingsnis siekiant
+                  sustabdyti tolimesnį dantų pažeidimą. Ji padeda apsaugoti natūralius dantis ir jau atliktus
+                  gydymo darbus, todėl ypač rekomenduojama pacientams po didesnių plombavimo, protezavimo ar
+                  estetinių restauracijų procedūrų.
+                </p>
               </div>
             </div>
           </motion.section>
@@ -257,65 +361,130 @@ export default function BruksizmoDantuKapa() {
           {/* KAPOS GAMYBA */}
           <motion.section id="gamyba" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip vyksta kapos gamyba?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip gaminama individuali bruksizmo kapa?</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Bruksizmo dantų kapa gaminama laikantis aiškios eigos, kad galutinis rezultatas tiksliai atitiktų Jūsų burnos
-                anatomiją ir kapa būtų patogi dėvėti kasdien.
+                Individualios bruksizmo kapos gamyba Bangų odontologijos klinikoje atliekama nuosekliai, kad kapa
+                būtų tiksli, patogi ir saugi naudoti kasdien. Kiekvienas etapas svarbus tam, kad kapa gerai
+                laikytųsi burnoje ir atliktų savo apsauginę funkciją.
               </p>
 
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Dantų apžiūra</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Apžiūra ir dantų būklės įvertinimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Pirmiausia odontologas atlieka dantų ir žandikaulio sąnarių apžiūrą, įvertina galimus bruksizmo požymius bei aptaria su pacientu jo jaučiamus simptomus. Tai leidžia parinkti tinkamiausią kapos tipą.
+                    Odontologas įvertina dantų būklę, nudilimo požymius, plombas, vainikėlius, sąkandį ir paciento
+                    nusiskundimus. Aptariama, kada pasireiškia griežimas ar stiprus sukandimas.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Skenavimas ar atspaudų nuėmimas</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Sąkandžio ir restauracijų analizė</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Siekiant pagaminti kapą, tiksliai atitinkančią Jūsų dantų formą, nuimami dantų atspaudai arba atliekamas skaitmeninis burnos skenavimas.
+                    Jei burnoje yra daug restauracijų, dantys stipriai nudilę arba pacientas jaučia diskomfortą
+                    kramtant, papildomai vertinamas sąkandis, siekiant nuspręsti, ar pakanka apsauginės kapos.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Medžiagos panaudojimas</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Dantų skenavimas arba atspaudai</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Remiantis gautais duomenimis, kapa pagaminama iš specialios medicininės medžiagos, užtikrinančios tiek patvarumą, tiek dėvėjimo komfortą.
+                    Kad kapa tiksliai atitiktų paciento dantų formą, atliekamas skaitmeninis skenavimas arba
+                    nuimami dantų atspaudai, pagal kuriuos gaminama individuali kapa.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Pritaikymas burnoje</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Kapos gamyba</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Pagaminta kapa pritaikoma tiesiogiai burnoje – patikrinamas jos priglundimas, patogumas ir, esant poreikiui, atliekami smulkūs pakoregavimai.
+                    Kapa gaminama iš specialios medicininės medžiagos, parenkant tinkamą storį ir standumą pagal
+                    paciento situaciją – nuo plonesnės apsauginės kapos iki tvirtesnio okliuzinio sprendimo.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">05</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Pritaikymas ir naudojimo rekomendacijos</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Pagaminta kapa pamatuojama burnoje, įvertinamas jos prigludimas ir stabilumas. Pacientui
+                    paaiškinama, kaip kapą įsidėti, išimti, valyti, laikyti ir kaip dažnai ją naudoti.
                   </p>
                 </div>
               </div>
+
+              <p className="text-slate-700 leading-relaxed mt-6">
+                Individuali bruksizmo kapa skiriasi nuo standartinių universalių kapų tuo, kad ji gaminama pagal
+                konkretaus paciento dantis. Todėl ji tiksliau priglunda, geriau laikosi, mažiau trukdo miegui ir
+                padeda saugiau paskirstyti apkrovą.
+              </p>
             </div>
           </motion.section>
 
           {/* KAPOS PRIEŽIŪRA */}
           <motion.section id="prieziura" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kapos priežiūra</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kiek laiko tarnauja ir kaip prižiūrėti bruksizmo kapą?</h2>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Tinkama bruksizmo dantų kapos priežiūra padeda ilgiau išlaikyti jos funkcionalumą ir švarą. Kapa turi būti
-                  valoma šaltu vandeniu po kiekvieno naudojimo, o kai ji nenaudojama – laikoma specialioje dėžutėje, kuri
-                  apsaugo ją nuo pažeidimų, dulkių ir nešvarumų.
+                  Bruksizmo kapos tarnavimo laikas priklauso nuo griežimo intensyvumo, kapos medžiagos, jos
+                  storio, priežiūros ir reguliarių patikrinimų. Vieniems pacientams kapa gali tarnauti ilgiau,
+                  kitiems, esant labai intensyviam griežimui, ji gali nusidėvėti greičiau. Jei kapa pradyla,
+                  įtrūksta, tampa laisva ar nepatogi, svarbu kreiptis į odontologą.
                 </p>
                 <p>
-                  Taip pat rekomenduojama reguliariai apsilankyti pas odontologą profilaktinės apžiūros vizitų metu – tai
-                  leidžia įvertinti kapos būklę, jos priglundimą ir, esant poreikiui, laiku aptarti tolimesnę priežiūrą ar
-                  kapos atnaujinimą.
+                  Kapos priežiūra nėra sudėtinga, tačiau ji turi būti nuosekli. Po kiekvieno naudojimo kapą
+                  rekomenduojama nuplauti vėsiu arba drungnu vandeniu ir švelniai nuvalyti tam skirta priemone ar
+                  minkštu šepetėliu. Nereikėtų naudoti karšto vandens, nes jis gali deformuoti kapą.
                 </p>
+                <p>
+                  Kai kapa nenaudojama, ją reikėtų laikyti specialioje dėžutėje, apsaugotoje nuo karščio, dulkių ir
+                  mechaninių pažeidimų. Taip pat svarbu nepamiršti kasdienės burnos higienos – kapa dedama ant
+                  švarių dantų, todėl prieš miegą būtina kruopščiai išsivalyti dantis ir tarpdančius.
+                </p>
+                <p>
+                  Reguliarūs profilaktiniai vizitai padeda įvertinti, ar kapa vis dar tinkamai priglunda, ar nėra
+                  naujų dantų nudilimo požymių, įtrūkimų ar sąkandžio pokyčių. Tai ypač svarbu pacientams, kuriems
+                  bruksizmas yra intensyvus arba jau atlikti didesni dantų atkūrimo darbai.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* DUK */}
+          <motion.section id="duk" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Dažniausiai užduodami klausimai apie bruksizmo kapas</h2>
+
+              <div className="space-y-4">
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ar bruksizmo kapa išgydo dantų griežimą?</h3>
+                  <p className="text-slate-600 text-sm">Ne visada. Bruksizmo kapa dažniausiai nepašalina pačios dantų griežimo priežasties, tačiau padeda apsaugoti dantis nuo jo pasekmių. Jei bruksizmas susijęs su stresu, miego sutrikimais ar sąkandžio problemomis, gali būti reikalingas platesnis požiūris.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ar kapą reikia nešioti kiekvieną naktį?</h3>
+                  <p className="text-slate-600 text-sm">Dažniausiai taip, jei odontologas rekomendavo ją naudoti naktiniam bruksizmui kontroliuoti. Reguliarus naudojimas padeda apsaugoti dantis ir restauracijas nuo nuolatinės apkrovos.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ar bruksizmo kapa bus patogi?</h3>
+                  <p className="text-slate-600 text-sm">Individualiai pagaminta kapa pritaikoma pagal paciento dantis, todėl paprastai yra gerai toleruojama. Pirmomis naktimis gali būti jaučiamas nedidelis svetimkūnio pojūtis, tačiau dauguma pacientų prie kapos pripranta palaipsniui.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ar kapa reikalinga po protezavimo ar estetinių restauracijų?</h3>
+                  <p className="text-slate-600 text-sm">Jei pacientas griežia dantimis ar stipriai sukanda dantis, kapa gali būti labai svarbi po protezavimo, estetinio plombavimo, laminačių ar užklotų. Ji padeda apsaugoti restauracijas nuo skilimo, nusidėvėjimo ir per didelės apkrovos.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Kada reikia keisti bruksizmo kapą?</h3>
+                  <p className="text-slate-600 text-sm">Kapą reikėtų keisti, jei ji susidėvi, įtrūksta, nebetiksliai laikosi, pasikeičia dantų padėtis arba atsiranda diskomfortas. Sprendimą dėl kapos keitimo geriausia priimti po odontologo apžiūros.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Nuo ko priklauso bruksizmo kapos kaina?</h3>
+                  <p className="text-slate-600 text-sm">Bruksizmo kapos kaina priklauso nuo kapos tipo, naudojamos medžiagos, gamybos būdo ir individualios klinikinės situacijos. Tiksli kaina aptariama konsultacijos metu, kai įvertinama dantų būklė, sąkandis ir bruksizmo požymiai.</p>
+                </div>
               </div>
             </div>
           </motion.section>
@@ -329,20 +498,21 @@ export default function BruksizmoDantuKapa() {
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Renkantis bruksizmo dantų kapą svarbu ne tik pati priemonė, bet ir tai, kaip ji pagaminama – nuo tikslios
-                  apžiūros iki galutinio pritaikymo burnoje. Bangų odontologijos klinikoje kapa gaminama atsakingai, siekiant
-                  maksimaliai apsaugoti paciento dantis ir užtikrinti dėvėjimo komfortą.
+                  Renkantis bruksizmo kapą svarbu ne tik pati apsauginė priemonė, bet ir tikslus dantų, sąkandžio
+                  bei restauracijų būklės įvertinimas. Bangų odontologijos klinikoje Klaipėdoje bruksizmo požymiai
+                  vertinami individualiai, siekiant parinkti pacientui tinkamą, patogų ir ilgalaikę dantų apsaugą
+                  užtikrinantį sprendimą.
                 </p>
                 <p>
-                  Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, atsižvelgdami į paciento burnos
-                  anatomiją ir bruksizmo pasireiškimo pobūdį. Kapa gaminama naudojant kokybiškas medicinines medžiagas, o
-                  procesas apima tikslų skenavimą ar atspaudų nuėmimą, kad galutinis rezultatas tiksliai atitiktų Jūsų
-                  poreikius.
+                  Klinikoje didelis dėmesys skiriamas aiškiam gydymo plano paaiškinimui. Konsultacijos metu
+                  aptariama, ar konkrečiu atveju pakanka individualios kapos, ar dėl dantų nudilimo, restauracijų
+                  pažeidimų ar žandikaulio sąnario diskomforto reikalingas platesnis gydymo planas.
                 </p>
                 <p>
-                  Pacientai vertina profesionalų bendravimą, aiškias priežiūros rekomendacijas ir dėmesį kiekvienai detalei.
-                  Todėl ieškantiems patikimos bruksizmo dantų kapos Klaipėdoje, Bangų odontologijos klinika yra patikimas
-                  pasirinkimas.
+                  Bangų odontologijos klinikoje specialistai skiria laiko paciento klausimams, paaiškina kapos
+                  naudojimo ir priežiūros rekomendacijas bei užtikrina tolimesnę kontrolę. Toks požiūris padeda
+                  pacientui jaustis ramiai, suprasti savo situaciją ir laiku apsaugoti dantis nuo tolimesnio
+                  dilimo.
                 </p>
               </div>
             </div>

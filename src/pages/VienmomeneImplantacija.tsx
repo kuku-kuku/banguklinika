@@ -38,9 +38,9 @@ function CheckIcon() {
 const tocSections = [
   { id: 'kainos', label: 'Kainos' },
   { id: 'kas-yra', label: 'Kas yra vienmomentė implantacija?' },
-  { id: 'privalumai', label: 'Pagrindiniai privalumai' },
   { id: 'kada-taikoma', label: 'Kada taikoma?' },
   { id: 'procesas', label: 'Kaip vyksta procedūra?' },
+  { id: 'privalumai', label: 'Pagrindiniai privalumai' },
   { id: 'kodel-rinktis', label: 'Kodėl verta rinktis mus?' }
 ]
 
@@ -87,15 +87,19 @@ export default function VienmomeneImplantacija() {
             <div>
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
                 <p className="mb-4">
-                  Bangų odontologijos klinika siūlo modernią dantų atkūrimo procedūrą, kurios metu danties pašalinimas ir
-                  implanto įsriegimas atliekami vieno vizito metu. Toks sprendimas leidžia sutrumpinti gydymo trukmę ir
-                  paprasčiau planuoti tolimesnius vizitus, neprarandant saugumo ar procedūros kokybės.
+                  Danties netekimas ar būtinybė jį pašalinti dažnai turi tiesioginę įtaką ne tik burnos funkcijai, bet
+                  ir bendrai savijautai bei pasitikėjimui savimi. Net ir vieno danties praradimas gali sukelti kramtymo
+                  diskomfortą, šypsenos estetikos pokyčius, o ilgainiui lemti žandikaulio kaulo nykimą bei gretimų
+                  dantų pasislinkimą. Tokiose situacijose vienmomentė implantacija tampa moderniu ir kliniškai
+                  pažangiu sprendimu, leidžiančiu vieno vizito metu pašalinti dantį ir iš karto atkurti jo šaknį
+                  implantu.
                 </p>
                 <p>
-                  Vienmomentė implantacija Klaipėdoje atliekama pasitelkiant šiuolaikinę skaitmeninę diagnostiką ir kruopščiai
-                  suplanuotą eigą, todėl kiekvienas atvejis vertinamas individualiai, atsižvelgiant į danties būklę, aplinkinių
-                  audinių sveikatą ir kaulo tūrį. Bangų odontologijos klinikoje siekiame, kad procedūra būtų kuo patogesnė ir
-                  suteiktų greitą, patikimą rezultatą.
+                  Bangų odontologijos klinikoje Klaipėdoje vienmomentė implantacija atliekama taikant šiuolaikinius
+                  implantologijos principus ir skaitmeninę diagnostiką. Procedūros metu siekiama ne tik kuo greičiau
+                  atkurti prarastą dantį, bet ir maksimaliai išsaugoti aplinkinius audinius bei natūralią dantenų
+                  struktūrą. Individualus gydymo planavimas, tiksli diagnostika ir atsakingas požiūris leidžia
+                  užtikrinti prognozuojamą, estetiškai harmoningą ir ilgalaikį rezultatą.
                 </p>
               </div>
             </div>
@@ -187,11 +191,11 @@ export default function VienmomeneImplantacija() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
+                <div className="relative aspect-[4/5] bg-sky-50">
                   <img
                     src="/team/Jonas-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
                 </div>
@@ -213,45 +217,27 @@ export default function VienmomeneImplantacija() {
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Vienmomentė implantacija – tai gydymo metodas, kurio metu du atskiri etapai, danties pašalinimas ir implanto
-                  įsriegimas, sujungiami į vieną procedūrą. Dantis pašalinamas maksimaliai tausojant aplinkinius audinius, o iš
-                  karto po to į atsilaisvinusią vietą įsriegiamas implantas.
+                  Vienmomentė implantacija – tai modernus dantų atkūrimo metodas, kai pažeisto ar nebeišsaugomo
+                  danties pašalinimas ir dantų implanto įsriegimas atliekami to paties vizito metu. Šis gydymo būdas
+                  leidžia ženkliai sutrumpinti bendrą gydymo laiką ir išvengti papildomų chirurginių etapų.
                 </p>
                 <p>
-                  Toks požiūris leidžia išvengti papildomo laukimo laikotarpio tarp danties šalinimo ir implantavimo, kuris
-                  taikomas taikant klasikinį, kelių etapų gydymo metodą. Bangų odontologijos klinikoje vienmomentė implantacija
-                  atliekama kruopščiai suplanuotos eigos metu, siekiant užtikrinti tiek saugumą, tiek geriausią įmanomą rezultatą.
+                  Skirtingai nuo tradicinės implantacijos, kai po danties šalinimo reikia laukti kaulo gijimo
+                  laikotarpio, vienmomentės implantacijos metu implantas įsriegiamas iš karto į pašalinto danties
+                  vietą. Tai padeda išsaugoti natūralią kaulo struktūrą, sumažinti jo rezorbciją ir palaikyti
+                  dantenų kontūrą.
                 </p>
-              </div>
-            </div>
-          </motion.section>
-
-          {/* PRIVALUMAI */}
-          <motion.section id="privalumai" className={sectionWrap} variants={item}>
-            <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Pagrindiniai privalumai</h2>
-
-              <p className="text-slate-700 leading-relaxed mb-6">
-                Vienmomentė implantacija turi keletą svarbių privalumų, dėl kurių šis metodas tampa patrauklia alternatyva
-                klasikiniam, kelių etapų implantavimui.
-              </p>
-
-              <div className="grid gap-3">
-                {[
-                  ['Sutrumpintas laikas', 'Danties pašalinimas ir implanto įsriegimas atliekami vienos procedūros metu, todėl nereikia laukti tarp dviejų atskirų vizitų ir gydymo procesas tampa gerokai spartesnis.'],
-                  ['Audinių išsaugojimas', 'Implantą įsriegiant iš karto po danties pašalinimo, sumažinamas kaulo nykimas ir suteikiamos palankesnės sąlygos greitesniam gijimui.'],
-                  ['Estetika', 'Tam tikrais atvejais galimas laikino vainikėlio uždėjimas iš karto, o tai ypač svarbu, kai gydoma priekinių dantų zona ir svarbus estetinis rezultatas.'],
-                  ['Komfortas', 'Mažesnis chirurginių intervencijų skaičius reiškia paprastesnį, aiškesnį gydymo planą ir mažiau streso pacientui.'],
-                ].map(([title, text], i) => (
-                  <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
-                    <span className="mt-1">
-                      <CheckIcon />
-                    </span>
-                    <span className="text-slate-700">
-                      <span className="font-semibold text-darkblue-700">{title}.</span> {text}
-                    </span>
-                  </div>
-                ))}
+                <p>
+                  Svarbu pabrėžti, kad vienmomentė implantacija nėra universalus sprendimas visiems pacientams. Tai
+                  individualiai planuojamas gydymo metodas, kuris taikomas tik tuomet, kai užtikrinamas pakankamas
+                  kaulo kiekis ir nėra aktyvaus uždegimo. Dėl šios priežasties kiekvienu atveju atliekama išsami
+                  diagnostika ir gydymo plano sudarymas.
+                </p>
+                <p>
+                  Bangų odontologijos klinikoje Klaipėdoje vienmomentė implantacija planuojama skaitmeniniu būdu,
+                  siekiant maksimaliai tiksliai įvertinti klinikinę situaciją ir užtikrinti prognozuojamą ilgalaikį
+                  rezultatą.
+                </p>
               </div>
             </div>
           </motion.section>
@@ -261,17 +247,41 @@ export default function VienmomeneImplantacija() {
             <div className={whiteCard}>
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kada taikoma vienmomentė implantacija?</h2>
 
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Vienmomentė implantacija taikoma tik kruopščiai įvertinus burnos būklę. Dažniausiai ji
+                rekomenduojama, kai dantis yra nepataisomai pažeistas, tačiau aplinkiniai audiniai yra pakankamai
+                sveiki.
+              </p>
+
+              <div className="space-y-3 mb-6">
+                <h3 className="font-semibold text-darkblue-700">Šis metodas ypač tinkamas, kai:</h3>
+                <div className="grid gap-3">
+                  {[
+                    'reikalingas danties šalinimas dėl traumos ar karieso',
+                    'nėra aktyvios infekcijos ar pūlinio',
+                    'kaulo kiekis leidžia užtikrinti implanto stabilumą',
+                    'svarbus greitas estetinės zonos atkūrimas',
+                    'pacientas nori sumažinti bendrą gydymo trukmę',
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                      <span className="mt-1">
+                        <CheckIcon />
+                      </span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Vienmomentė implantacija rekomenduojama tais atvejais, kai dantis nebegali būti išsaugotas, tačiau aplinkiniai
-                  audiniai yra sveiki, o kaulo tūris pakankamas saugiam implanto įsriegimui. Prieš priimant sprendimą dėl šio
-                  gydymo metodo, visuomet atliekama kruopšti apžiūra ir skaitmeninė diagnostika, leidžianti tiksliai įvertinti
-                  situaciją.
+                  Priekinėje dantų srityje šis metodas dažnai pasirenkamas dėl estetikos svarbos ir psichologinio
+                  komforto, nes net trumpalaikis danties netekimas gali turėti įtakos šypsenai ir savijautai.
                 </p>
                 <p>
-                  Vienmomentė implantacija netaikoma esant aktyviai infekcijai gydomoje srityje arba kai kaulo tūris yra
-                  nepakankamas patikimam implanto įtvirtinimui. Tokiais atvejais renkamasi klasikinis, kelių etapų gydymo
-                  metodas, kuris leidžia pirmiausia užtikrinti audinių sveikimą ir tik vėliau atlikti implantaciją.
+                  Tačiau vienmomentė implantacija negali būti atliekama, jei nustatomas aktyvus uždegimas,
+                  nepakankamas kaulo tūris arba sudėtinga anatominė situacija. Tokiais atvejais parenkamas
+                  alternatyvus gydymo planas, kuris užtikrina saugesnį ilgalaikį rezultatą.
                 </p>
               </div>
             </div>
@@ -280,28 +290,29 @@ export default function VienmomeneImplantacija() {
           {/* PROCESAS */}
           <motion.section id="procesas" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip vyksta procedūra?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip atliekama vienmomentė implantacija?</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Bangų odontologijos klinikoje vienmomentė implantacija atliekama naudojant skaitmeninę diagnostiką, kuri padeda
-                tiksliai suplanuoti kiekvieną gydymo etapą. Procedūros eiga yra aiški ir nuosekli, kad pacientas jaustųsi
-                saugiai viso vizito metu.
+                Vienmomentė implantacija yra nuoseklus, keliais etapais pagrįstas gydymo procesas, kuriame kiekvienas
+                žingsnis turi įtakos galutiniam rezultatui.
               </p>
 
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Diagnostika</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Diagnostika ir planavimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Atliekama skaitmeninė diagnostika, kurios metu įvertinama danties, aplinkinių audinių ir kaulo būklė. Ši informacija padeda nustatyti, ar pacientui tinka vienmomentė implantacija, ir suplanuoti tikslią procedūros eigą.
+                    Atliekami rentgeno arba 3D kompiuterinės tomografijos tyrimai. Įvertinamas kaulo kiekis,
+                    dantenų būklė, infekcijos rizika ir sudaromas individualus gydymo planas.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Pašalinimas</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Danties pašalinimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Dantis pašalinamas maksimaliai tausojant aplinkinius audinius ir kaulą, kad būtų sudarytos kuo geresnės sąlygos sėkmingam implanto įsriegimui.
+                    Dantis pašalinamas maksimaliai tausojant aplinkinius audinius, siekiant išsaugoti natūralią
+                    kaulo struktūrą, kuri yra svarbi implanto stabilumui.
                   </p>
                 </div>
 
@@ -309,17 +320,67 @@ export default function VienmomeneImplantacija() {
                   <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
                   <h3 className="font-bold text-darkblue-700 mb-2">Implanto įsriegimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Iš karto po danties pašalinimo į atsilaisvinusią vietą įsriegiamas implantas, taip sujungiant abu gydymo etapus į vieną vizitą.
+                    Į tą pačią vietą įsriegiamas dantų implantas. Jei pasiekiamas pakankamas pirminis stabilumas,
+                    gali būti tvirtinamas laikinas vainikėlis, ypač estetinėje zonoje.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Gijimas ir protezavimas</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Gijimo laikotarpis</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Po procedūros seka gijimo laikotarpis, o jam pasibaigus atliekamas galutinis protezavimas, atkuriantis danties funkciją ir estetiką.
+                    Vyksta osteointegracija – implanto suaugimas su kaulu. Šis procesas trunka kelis mėnesius ir
+                    yra esminis ilgalaikio rezultato užtikrinimui.
                   </p>
                 </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">05</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Galutinis protezavimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Pagaminamas individualus danties vainikėlis, kuris atkartoja natūralią danties formą, spalvą
+                    ir funkciją.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* PRIVALUMAI */}
+          <motion.section id="privalumai" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Vienmomentės implantacijos privalumai</h2>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Vienmomentė implantacija šiuolaikinėje implantologijoje vertinama kaip pažangus ir pacientui itin
+                  patogus gydymo metodas, leidžiantis efektyviai suderinti danties šalinimą ir implantavimą vieno
+                  vizito metu. Toks sprendimas ne tik sutrumpina bendrą gydymo laiką, bet ir suteikia daugiau
+                  komforto viso gydymo proceso metu.
+                </p>
+                <p>
+                  Vienas svarbiausių šio metodo privalumų – ženkliai sutrumpintas gydymo kelias. Danties
+                  pašalinimas ir implanto įsriegimas atliekami vienos procedūros metu, todėl išvengiama ilgo
+                  laukimo laikotarpio tarp etapų. Tai leidžia pacientui greičiau atkurti kramtymo funkciją ir grįžti
+                  prie įprastos kasdienės veiklos.
+                </p>
+                <p>
+                  Ne mažiau svarbu ir tai, kad sumažinamas chirurginių intervencijų skaičius. Vietoje dviejų
+                  atskirų procedūrų pacientui atliekama viena, o tai dažnai reiškia mažesnį audinių dirginimą,
+                  trumpesnį gijimo laikotarpį ir paprastesnį, aiškiau suplanuotą gydymo procesą.
+                </p>
+                <p>
+                  Estetinis aspektas ypač reikšmingas, ypač priekinių dantų zonoje. Tam tikrais atvejais galima iš
+                  karto po procedūros atkurti laikiną danties vainikėlį, todėl pacientas išvengia matomo danties
+                  tarpo ir gali jaustis užtikrintai jau iškart po gydymo.
+                </p>
+                <p>
+                  Dar vienas svarbus privalumas – natūralių audinių išsaugojimas. Vienmomentė implantacija padeda
+                  sumažinti kaulo nykimą ir išlaikyti dantenų kontūrą, kuris yra itin svarbus tiek estetinei
+                  išvaizdai, tiek ilgalaikiam implanto stabilumui. Dėl šių priežasčių šis metodas dažnai
+                  pasirenkamas kaip optimalus sprendimas, kai siekiama suderinti greitį, estetiką ir ilgalaikį
+                  rezultatą.
+                </p>
               </div>
             </div>
           </motion.section>
@@ -328,18 +389,26 @@ export default function VienmomeneImplantacija() {
           <motion.section id="kodel-rinktis" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-                Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
+                Kodėl verta kreiptis į Bangų odontologijos kliniką dėl vienmomentės implantacijos?
               </h2>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Renkantis vienmomentę implantaciją svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo tikslios diagnostikos iki priežiūros po gydymo. Bangų odontologijos klinikoje vienmomentė implantacija atliekama atsakingai, siekiant maksimaliai apsaugoti paciento komfortą ir burnos sveikatą.
+                  Danties netekimas ar būtinybė jį šalinti dažnai sukelia ne tik funkcinius, bet ir estetinius bei
+                  emocinius iššūkius. Tokiose situacijose svarbiausia tampa greitas, tikslus ir saugus sprendimas,
+                  leidžiantis kuo greičiau atkurti prarastą dantį ir išvengti ilgalaikių pokyčių žandikaulio
+                  audiniuose. Vienmomentė implantacija yra vienas pažangiausių metodų, leidžiančių tai pasiekti per
+                  maksimaliai trumpą laiką.
                 </p>
                 <p>
-                  Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, naudoja skaitmeninę diagnostiką ir kruopščiai planuoja procedūros eigą. Jei vienmomentė implantacija yra tinkamas sprendimas, ji atliekama taikant šiuolaikinius metodus, kurie leidžia sutrumpinti gydymo laiką neprarandant saugumo ar kokybės.
+                  Bangų odontologijos klinikoje Klaipėdoje vienmomentė implantacija planuojama atsakingai,
+                  remiantis išsamia diagnostika ir individualia paciento situacija. Kiekvienas atvejis įvertinamas
+                  kompleksiškai – analizuojama kaulo būklė, dantenų sveikata, infekcijos rizika ir bendras burnos
+                  stabilumas. Tik tuomet parenkamas saugiausias ir prognozuojamas gydymo sprendimas.
                 </p>
                 <p>
-                  Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis saugiai viso gydymo metu. Todėl ieškantiems patikimos ir profesionalios vienmomentės implantacijos Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas.
+                  Bangų odontologijos klinikoje siekiama ne tik atkurti dantį, bet ir išsaugoti natūralią audinių
+                  struktūrą, užtikrinant ilgalaikį implantų stabilumą bei estetiškai harmoningą rezultatą.
                 </p>
               </div>
             </div>

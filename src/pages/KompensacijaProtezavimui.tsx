@@ -36,10 +36,12 @@ function CheckIcon() {
 }
 
 const tocSections = [
-  { id: 'kas-yra', label: 'Kas yra kompensuojamas protezavimas?' },
+  { id: 'kas-yra', label: 'Kas yra kompensacija protezavimui?' },
   { id: 'kas-gauna', label: 'Kas gali gauti kompensaciją?' },
+  { id: 'kaip-suzinoti', label: 'Kaip sužinoti, ar priklauso?' },
   { id: 'procesas', label: 'Kaip vyksta gydymo procesas?' },
   { id: 'svarbu-zinoti', label: 'Ką svarbu žinoti?' },
+  { id: 'duk', label: 'Dažniausi klausimai' },
   { id: 'kodel-rinktis', label: 'Kodėl verta rinktis mus?' }
 ]
 
@@ -48,7 +50,7 @@ export default function KompensacijaProtezavimui() {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": "https://www.banguklinika.lt/paslaugos/kompensacija-protezavimui/#service",
-    "name": "Kompensacija dantų protezavimui Klaipėdoje",
+    "name": "Kompensacija protezavimui Klaipėdoje",
     "serviceType": "Kompensuojamas dantų protezavimas",
     "description": "Informacija apie dantų protezavimo kompensaciją Bangų odontologijos klinikoje Klaipėdoje, skiriamą tam tikroms pacientų grupėms per TLK ir PSDF.",
     "url": "https://www.banguklinika.lt/paslaugos/kompensacija-protezavimui/",
@@ -61,7 +63,7 @@ export default function KompensacijaProtezavimui() {
   return (
     <AnimatedSection>
       <SEO
-        title="Kompensacija dantų protezavimui Klaipėdoje - Bangų klinika"
+        title="Kompensacija protezavimui Klaipėdoje - Bangų klinika"
         description="TLK kompensacija dantų protezavimui Klaipėdoje☑️sužinokite, ar priklausote tinkamų pacientų grupei☑️Bangų klinikoje.⏩Registruokitės konsultacijai jau dabar."
         keywords="kompensacija protezavimui, TLK kompensacija, dantu protezavimas, nemokamas protezavimas, klaipeda"
         structuredData={structuredData}
@@ -80,20 +82,22 @@ export default function KompensacijaProtezavimui() {
           {/* HERO */}
           <motion.header className="mb-10 text-left" variants={item}>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
-              Kompensacija dantų protezavimui Klaipėdoje
+              Kompensacija protezavimui Klaipėdoje
             </h1>
 
             <div>
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
                 <p className="mb-4">
-                  Bangų odontologijos klinika Klaipėdoje teikia informaciją apie dantų protezavimo kompensaciją, kurią gali gauti
-                  tam tikros pacientų grupės. Klinika yra sudariusi sutartį su Teritorinėmis ligonių kasomis (TLK), kurios
-                  skiria kompensaciją dantų protezavimo išlaidoms iš Privalomojo sveikatos draudimo fondo (PSDF).
+                  Dantų netekimas ar stipriai pažeisti dantys gali apsunkinti kramtymą, kalbėjimą, šypseną ir
+                  kasdienį komfortą. Kai dantų atkurti plombomis ar kitais paprastesniais būdais nebeįmanoma, gali
+                  būti reikalingas dantų protezavimas. Tam tikroms pacientų grupėms ši paslauga gali būti iš dalies
+                  kompensuojama Privalomojo sveikatos draudimo fondo lėšomis.
                 </p>
                 <p>
-                  Kompensuojamas protezavimas leidžia tinkamoms pacientų grupėms sumažinti gydymo išlaidas ir atkurti prarastų
-                  dantų funkciją bei šypseną. Bangų odontologijos klinikoje pacientams padedama suprasti, ar jie atitinka
-                  kompensacijai keliamus reikalavimus, ir kartu sudaromas aiškus, individualiai pritaikytas gydymo planas.
+                  Kompensacija protezavimui padeda sumažinti paciento išlaidas ir sudaro galimybę laiku atkurti
+                  prarastus ar stipriai pažeistus dantis. Bangų odontologijos klinikoje Klaipėdoje pacientui
+                  suteikiama aiški informacija apie galimus protezavimo sprendimus, gydymo eigą ir tai, ką svarbu
+                  žinoti prieš naudojantis kompensavimo galimybe.
                 </p>
               </div>
             </div>
@@ -149,11 +153,11 @@ export default function KompensacijaProtezavimui() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
+                <div className="relative aspect-[4/5] bg-sky-50">
                   <img
                     src="/team/Jonas-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
                 </div>
@@ -171,20 +175,25 @@ export default function KompensacijaProtezavimui() {
           {/* KAS YRA KOMPENSUOJAMAS PROTEZAVIMAS */}
           <motion.section id="kas-yra" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas yra kompensuojamas dantų protezavimas?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas yra kompensacija dantų protezavimui?</h2>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Kompensuojamas dantų protezavimas – tai valstybės remiama programa, leidžianti tam tikroms pacientų grupėms
-                  sumažinti protezavimo išlaidas. Bangų odontologijos klinika yra sudariusi sutartį su Teritorinėmis ligonių
-                  kasomis (TLK), kurios skiria kompensaciją dantų protezavimo išlaidoms iš Privalomojo sveikatos draudimo
-                  fondo (PSDF).
+                  Kompensacija dantų protezavimui – tai valstybės nustatyta tvarka teikiama finansinė pagalba
+                  pacientams, kuriems reikalingas dantų atkūrimas protezais. Ji skiriama tam, kad tam tikros
+                  pacientų grupės galėtų lengviau pasirūpinti kramtymo funkcijos, estetikos ir bendros burnos
+                  sveikatos atkūrimu.
                 </p>
                 <p>
-                  Ši kompensacija skirta padėti pacientams, kuriems dantų protezavimas yra reikalingas, tačiau pilna gydymo
-                  kaina galėtų būti sunkiai pakeliama. Kompensacija skiriama tik tam tikroms, privalomuoju sveikatos draudimu
-                  apdraustoms pacientų grupėms, todėl prieš pradedant gydymą svarbu išsiaiškinti, ar konkretus pacientas
-                  atitinka nustatytus reikalavimus.
+                  Dantų protezavimas gali būti reikalingas netekus vieno, kelių ar visų dantų, esant dideliam dantų
+                  nusidėvėjimui, stipriai pažeistiems dantims ar sutrikusiai kramtymo funkcijai. Tinkamai parinkti
+                  protezavimo sprendimai padeda ne tik atkurti šypseną, bet ir sumažinti likusių dantų apkrovą,
+                  pagerinti maisto kramtymą bei bendrą gyvenimo kokybę.
+                </p>
+                <p>
+                  Svarbu žinoti, kad kompensacija ne visada padengia visą gydymo kainą. Kompensuojama suma ir jos
+                  taikymo sąlygos priklauso nuo galiojančios tvarkos, paciento grupės, klinikinės situacijos ir
+                  pasirinkto protezavimo plano.
                 </p>
               </div>
             </div>
@@ -193,19 +202,20 @@ export default function KompensacijaProtezavimui() {
           {/* KAS GALI GAUTI */}
           <motion.section id="kas-gauna" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas gali gauti kompensaciją?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kam gali būti skiriama dantų protezavimo kompensacija?</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Kompensacija gali būti skiriama tik tam tikroms pacientų grupėms, kurios yra apdraustos privalomuoju sveikatos
-                draudimu. Žemiau pateikiamos pagrindinės grupės, kurioms gali būti taikoma dantų protezavimo kompensacija.
+                Dantų protezavimo kompensacija gali būti skiriama tik tam tikroms pacientų grupėms, kurios yra
+                apdraustos privalomuoju sveikatos draudimu. Dažniausiai teisę į kompensuojamą dantų protezavimą
+                gali turėti šios grupės:
               </p>
 
               <div className="grid gap-3">
                 {[
-                  'asmenys, kuriems sukako senatvės pensijos amžius',
+                  'senatvės pensijos amžiaus sulaukę asmenys',
                   'vaikai iki 18 metų',
-                  'asmenys, pripažinti nedarbingais arba iš dalies darbingais',
-                  'asmenys po burnos, veido ir žandikaulių onkologinių ligų gydymo'
+                  'asmenys, kuriems nustatytas nedarbingumas ar dalinis darbingumas',
+                  'pacientai, kuriems buvo taikytas gydymas dėl burnos, veido ar žandikaulių onkologinių ligų'
                 ].map((text, i) => (
                   <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
                     <span className="mt-1">
@@ -216,11 +226,43 @@ export default function KompensacijaProtezavimui() {
                 ))}
               </div>
 
-              <div className="rounded-xl border border-slate-200 bg-white p-4 sm:p-5 mt-6">
-                <p className="text-sm text-slate-700 leading-relaxed">
-                  <span className="font-semibold text-darkblue-700">Pastaba:</span>{' '}
-                  Tiksliai nustatyti, ar priklausote kompensaciją gaunančiai pacientų grupei, galima konsultacijos Bangų
-                  odontologijos klinikoje metu.
+              <div className="space-y-4 text-slate-700 leading-relaxed mt-6">
+                <p>
+                  Vis dėlto priklausymas vienai iš šių grupių dar nereiškia, kad kompensacija automatiškai bus
+                  pritaikyta visais atvejais. Vertinama ir paciento burnos būklė, dantų protezavimo poreikis,
+                  kramtymo funkcija bei kiti medicininiai kriterijai.
+                </p>
+                <p>
+                  Kadangi kompensavimo tvarka, sumos ir kriterijai gali keistis, tiksliausia informacija patvirtinama
+                  pagal galiojančią TLK tvarką. Konsultacijos metu pacientui paaiškinama, kokie žingsniai reikalingi
+                  ir kokius duomenis ar dokumentus gali reikėti turėti.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* KAIP SUŽINOTI */}
+          <motion.section id="kaip-suzinoti" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip sužinoti, ar jums priklauso kompensacija protezavimui?</h2>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Norint sužinoti, ar jums gali būti taikoma kompensacija protezavimui, pirmiausia reikalingas
+                  burnos būklės įvertinimas. Gydytojas odontologas apžiūros metu įvertina, kiek dantų yra prarasta,
+                  kokia likusių dantų būklė, ar yra kramtymo funkcijos sutrikimų, ar burnos ertmė paruošta
+                  protezavimui.
+                </p>
+                <p>
+                  Kai kuriais atvejais pacientas dėl teisės į kompensaciją pirmiausia kreipiasi į gydymo įstaigą,
+                  prie kurios yra prisirašęs. Ten įvertinamas protezavimo poreikis ir pacientas registruojamas pagal
+                  galiojančią kompensavimo tvarką. Jei pacientas jau turi patvirtintą teisę į kompensaciją,
+                  atvykstant į kliniką svarbu apie tai informuoti registracijos metu.
+                </p>
+                <p>
+                  Bangų odontologijos klinikoje konsultacijos metu pacientui aiškiai paaiškinama, kokie protezavimo
+                  sprendimai galimi jo situacijoje, kokie paruošiamieji gydymo etapai gali būti reikalingi ir kaip
+                  kompensacija gali būti pritaikoma konkrečiam gydymo planui.
                 </p>
               </div>
             </div>
@@ -229,29 +271,29 @@ export default function KompensacijaProtezavimui() {
           {/* GYDYMO PROCESAS */}
           <motion.section id="procesas" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip vyksta gydymo procesas?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip vyksta dantų protezavimas su kompensacija?</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Klinika siūlo šešių etapų protezavimo schemą, kuri užtikrina, kad pacientas visą gydymo eigą suprastų aiškiai
-                ir jaustųsi užtikrintai kiekviename žingsnyje.
+                Dantų protezavimas su kompensacija vyksta nuosekliai, kad pacientas aiškiai suprastų visą gydymo
+                eigą ir numatomas išlaidas.
               </p>
 
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Konsultacija</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Konsultacija ir burnos būklės įvertinimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Pirmojo vizito metu odontologas įvertina paciento burnos būklę, aptaria dantų netekimo priežastis ir
-                    galimus protezavimo sprendimus.
+                    Pirmojo vizito metu įvertinama dantų, dantenų, sąkandžio ir bendra burnos būklė. Jei reikia,
+                    atliekami papildomi tyrimai, padedantys tiksliau suplanuoti protezavimą.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Kompensacijos aptarimas</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Kompensacijos galimybės aptarimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Kartu su pacientu išsiaiškinama, ar jis priklauso kompensaciją gaunančiai pacientų grupei, ir aptariama,
-                    kokia dalis gydymo išlaidų galėtų būti padengta.
+                    Pacientui paaiškinama, ar jo situacijoje gali būti taikoma kompensacija, kokius žingsnius reikia
+                    atlikti ir kokia dalis gydymo gali būti kompensuojama pagal galiojančią tvarką.
                   </p>
                 </div>
 
@@ -259,8 +301,9 @@ export default function KompensacijaProtezavimui() {
                   <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
                   <h3 className="font-bold text-darkblue-700 mb-2">Gydymo plano sudarymas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Atsižvelgiant į paciento poreikius ir kompensacijos galimybes, sudaromas individualus, aiškiai
-                    struktūruotas gydymo planas.
+                    Gydytojas parenka tinkamiausią protezavimo sprendimą pagal paciento burnos būklę, funkcinius
+                    poreikius, estetikos lūkesčius ir finansines galimybes. Plane aiškiai nurodoma gydymo eiga ir
+                    numatomos išlaidos.
                   </p>
                 </div>
 
@@ -268,17 +311,18 @@ export default function KompensacijaProtezavimui() {
                   <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
                   <h3 className="font-bold text-darkblue-700 mb-2">Paruošiamasis gydymas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Prieš protezavimą, jei reikia, atliekamas paruošiamasis gydymas – gydomi ar šalinami pažeisti dantys,
-                    sutvarkoma dantenų ir burnos ertmės būklė.
+                    Prieš protezavimą gali reikėti atlikti dantų gydymą, profesionalią burnos higieną, pašalinti
+                    nebeišsaugomus dantis ar pasirūpinti dantenų būkle. Tai svarbu, kad protezavimo rezultatas
+                    būtų stabilesnis ir ilgaamžiškesnis.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">05</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Protezo gamyba</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Protezo gamyba ir pritaikymas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Pagal individualius matmenis pagaminamas dantų protezas, kuris pritaikomas taip, kad atkurtų tiek
-                    funkciją, tiek natūralią šypseną.
+                    Pagal pasirinktą gydymo planą gaminami ir pritaikomi dantų protezai. Vizitų metu tikrinamas jų
+                    patogumas, sąkandis, estetika ir funkcija.
                   </p>
                 </div>
 
@@ -286,8 +330,8 @@ export default function KompensacijaProtezavimui() {
                   <div className="text-4xl font-bold text-brand/20 mb-2">06</div>
                   <h3 className="font-bold text-darkblue-700 mb-2">Priežiūros rekomendacijos</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Užbaigus protezavimą, pacientui pateikiamos rekomendacijos, kaip tinkamai prižiūrėti protezą ir burnos
-                    ertmę, kad rezultatas išliktų ilgai.
+                    Po protezavimo pacientui paaiškinama, kaip prižiūrėti protezus, kada atvykti kontrolei ir kokių
+                    įpročių vengti, kad rezultatas tarnautų kuo ilgiau.
                   </p>
                 </div>
               </div>
@@ -297,22 +341,46 @@ export default function KompensacijaProtezavimui() {
           {/* SVARBU ŽINOTI */}
           <motion.section id="svarbu-zinoti" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Ką svarbu žinoti apie kompensaciją?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Ką svarbu žinoti prieš naudojantis kompensacija protezavimui?</h2>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Kompensacija gali sumažinti protezavimo išlaidas, tačiau ne visada padengia visą pasirinktą gydymo planą.
-                  Kompensuojamos sumos ir sąlygos priklauso nuo pacientui priskirtos grupės bei pasirinkto protezavimo tipo.
+                  Prieš pradedant gydymą svarbu suprasti, kad kompensacija gali sumažinti protezavimo išlaidas,
+                  tačiau ne visada padengia visą pasirinktą gydymo planą. Jei pacientas renkasi sudėtingesnius,
+                  estetiškesnius ar platesnės apimties protezavimo sprendimus, gali būti reikalinga priemoka.
                 </p>
                 <p>
-                  Pacientai turėtų numatyti galimą savitarpę sumą, jei pasirinks sudėtingesnes procedūras ar papildomus
-                  sprendimus, kurių pilna kompensacija neapima. Todėl prieš pradedant gydymą svarbu aiškiai aptarti visas
-                  galimybes su klinikos specialistais, kad būtų priimtas informuotas ir pacientui tinkamiausias sprendimas.
+                  Galutinė protezavimo kaina priklauso nuo burnos būklės, trūkstamų dantų skaičiaus, pasirinkto
+                  protezavimo tipo, naudojamų medžiagų ir paruošiamųjų procedūrų. Todėl tikslus gydymo planas ir
+                  paciento mokama dalis aptariami individualiai po apžiūros.
                 </p>
                 <p>
-                  Klinikai rekomenduojama apsilankyti, jei trūksta dantų arba esama kramtymo problema – laiku suplanuotas
-                  protezavimas padeda atkurti kramtymo funkciją ir išvengti tolimesnių burnos sveikatos komplikacijų.
+                  Renkantis dantų protezavimą svarbu atkreipti dėmesį ne tik į kompensaciją, bet ir į ilgalaikį
+                  rezultatą. Tinkamai suplanuotas protezavimas padeda atkurti kramtymo funkciją, apsaugoti likusius
+                  dantis nuo per didelės apkrovos ir pagerinti kasdienį komfortą.
                 </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* DUK */}
+          <motion.section id="duk" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Dažniausiai užduodami klausimai apie kompensaciją protezavimui</h2>
+
+              <div className="space-y-4">
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ar kompensacija protezavimui padengia visą gydymo kainą?</h3>
+                  <p className="text-slate-600 text-sm">Ne visada. Kompensacija gali padengti dalį protezavimo išlaidų, tačiau jei pasirinktas gydymo planas viršija kompensuojamą sumą, skirtumą pacientas dengia savo lėšomis.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ar kompensacija taikoma visiems protezavimo sprendimams?</h3>
+                  <p className="text-slate-600 text-sm">Kompensacija taikoma pagal galiojančią tvarką ir mediciniškai pagrįstą protezavimo poreikį. Ne visi estetiniai ar sudėtingesni sprendimai gali būti visiškai kompensuojami.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Kada verta kreiptis dėl kompensacijos protezavimui?</h3>
+                  <p className="text-slate-600 text-sm">Kreiptis verta tada, kai trūksta dantų, sunku kramtyti, esami protezai nebėra patogūs arba gydytojas yra nurodęs, kad reikalingas dantų protezavimas.</p>
+                </div>
               </div>
             </div>
           </motion.section>
@@ -326,20 +394,18 @@ export default function KompensacijaProtezavimui() {
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Renkantis kompensuojamą protezavimą svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo
-                  sprendimo priėmimo iki priežiūros po procedūros. Bangų odontologijos klinikoje protezavimas atliekamas
-                  atsakingai, siekiant maksimaliai apsaugoti paciento komfortą ir burnos sveikatą.
+                  Renkantis kompensaciją protezavimui svarbu ne tik pati valstybės kompensacija, bet ir kokybiškas,
+                  ilgalaikis gydymo rezultatas. Bangų odontologijos klinikoje Klaipėdoje kiekvienas pacientas
+                  įvertinamas individualiai, sudarant aiškų ir pagrįstą gydymo planą.
                 </p>
                 <p>
-                  Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, neskuba priimti sprendimo ir
-                  visuomet pirmiausia ieško galimybių, kurios geriausiai atitinka paciento poreikius. Procedūra atliekama
-                  taikant šiuolaikinius metodus ir kruopščiai suplanuotą eigą. Dėmesys skiriamas ne tik pačiai procedūrai,
-                  bet ir aiškiam situacijos paaiškinimui bei rekomendacijoms po jos.
+                  Klinikoje daug dėmesio skiriama aiškiam viso proceso paaiškinimui – nuo kompensacijos galimybių
+                  iki galutinio protezavimo sprendimo. Pacientai viso gydymo metu gauna aiškias rekomendacijas ir
+                  nuoseklią priežiūrą.
                 </p>
                 <p>
-                  Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis
-                  saugiai viso gydymo metu. Todėl ieškantiems patikimo ir profesionalaus kompensuojamo dantų protezavimo
-                  Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas.
+                  Toks požiūris leidžia užtikrinti, kad kompensacija protezavimui būtų pritaikyta sklandžiai, o
+                  gydymo rezultatas būtų funkcionalus, patogus ir ilgaamžis.
                 </p>
               </div>
             </div>

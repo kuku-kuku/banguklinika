@@ -88,15 +88,17 @@ export default function ProtiniuDantuSalinimas() {
             <div>
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
                 <p className="mb-4">
-                  Protiniai dantys – paskutiniai išdygstantys krūminiai dantys, dažnai keliantys nepatogumų dėl vietos stokos
-                  žandikaulyje, netaisyklingos padėties ar sudėtingos šaknų sandaros. Kai jie sukelia skausmą, uždegimą ar
-                  trukdo gretimiems dantims, jų pašalinimas tampa saugiausiu ir racionaliausiu sprendimu.
+                  Protinių dantų dygimas yra vienas dažniausių vėlyvojo dantų vystymosi etapų, kuris neretai sukelia
+                  įvairių komplikacijų. Dėl vietos stokos žandikaulyje šie dantys dažnai išdygsta netaisyklingai, būna
+                  dalinai neišdygę arba lieka visiškai retinuoti. Tokios situacijos gali lemti skausmą, dantenų
+                  uždegimus, gretimų dantų spaudimą ar net sąkandžio pokyčius.
                 </p>
                 <p>
-                  Bangų odontologijos klinika Klaipėdoje specializuojasi protinių dantų šalinime, naudodama šiuolaikines
-                  diagnostikos technologijas ir chirurginius metodus. Procedūra atliekama individualiai kiekvienam pacientui,
-                  atsižvelgiant į danties padėtį, šaknų struktūrą ir aplinkinių audinių anatomines ypatybes, siekiant
-                  užtikrinti kuo didesnį saugumą ir komfortą.
+                  Bangų odontologijos klinikoje Klaipėdoje protinių dantų šalinimas atliekamas taikant modernius
+                  chirurginius metodus ir skaitmeninę diagnostiką, leidžiančią tiksliai įvertinti danties padėtį bei
+                  šaknų anatomiją. Kiekvienas atvejis vertinamas individualiai, siekiant užtikrinti maksimalų saugumą,
+                  audinių tausojimą ir sklandų gijimo procesą. Pagrindinis tikslas – ne tik pašalinti problemą
+                  sukeliantį dantį, bet ir užkirsti kelią galimoms komplikacijoms ateityje.
                 </p>
               </div>
             </div>
@@ -192,11 +194,11 @@ export default function ProtiniuDantuSalinimas() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
+                <div className="relative aspect-[4/5] bg-sky-50">
                   <img
                     src="/team/Jonas-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
                 </div>
@@ -214,21 +216,24 @@ export default function ProtiniuDantuSalinimas() {
           {/* KAS YRA */}
           <motion.section id="kas-yra" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas yra protinių dantų šalinimas?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas yra protinių dantų šalinimas ir kodėl jis atliekamas?</h2>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Protinių dantų šalinimas – tai chirurginė procedūra, kurios metu pašalinamas paskutinis, vėliausiai
-                  dygstantis krūminis dantis. Dėl riboto laisvos vietos žandikaulyje protiniai dantys dažnai dygsta
-                  netaisyklingai, įstringa arba lieka iš dalies pridengti dantenos, todėl gali sukelti diskomfortą ar
-                  pažeisti gretimus dantis.
+                  Protinių dantų šalinimas – tai chirurginė odontologinė procedūra, kurios metu pašalinami tretieji
+                  krūminiai dantys, dar vadinami protiniais dantimis. Jie dažniausiai išdygsta paskutiniai, todėl
+                  žandikaulyje jiems neretai nepakanka vietos tinkamai išsidėstyti dantų lanke.
                 </p>
                 <p>
-                  Bangų odontologijos klinika Klaipėdoje specializuojasi protinių dantų šalinime, naudodama šiuolaikines
-                  diagnostikos technologijas ir chirurginius metodus. Procedūra atliekama individualiai kiekvienam
-                  pacientui, atsižvelgiant į danties padėtį ir anatominius veiksnius – šaknų formą, artumą nervams bei
-                  žandikaulio kaulo struktūrą. Toks individualus požiūris leidžia parinkti saugiausią ir tiksliausią
-                  gydymo strategiją.
+                  Kai protinis dantis dygsta netaisyklingai, jis gali sukelti spaudimą gretimiems dantims, formuoti
+                  uždegiminius židinius ar tapti nuolatine infekcijos priežastimi. Taip pat dėl sudėtingos prieigos
+                  šiuos dantis sunkiau išvalyti, todėl jie dažniau pažeidžiami karieso.
+                </p>
+                <p>
+                  Protinių dantų šalinimas gali būti atliekamas tiek gydymo, tiek profilaktiniais tikslais. Kai
+                  kuriais atvejais šie dantys šalinami dar ne pasireiškus ryškiems simptomams, siekiant išvengti
+                  būsimų komplikacijų, ypač jei planuojamas ortodontinis gydymas ar dantų lanko korekcija. Toks
+                  sprendimas padeda užtikrinti stabilesnę ilgalaikę burnos sveikatą.
                 </p>
               </div>
             </div>
@@ -237,23 +242,25 @@ export default function ProtiniuDantuSalinimas() {
           {/* INDIKACIJOS */}
           <motion.section id="indikacijos" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kada reikia šalinti protinius dantis?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kada būtina šalinti protinius dantis?</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Sprendimas dėl protinio danties šalinimo priimamas įvertinus jo padėtį, sukeliamus simptomus ir poveikį
-                aplinkiniams audiniams. Dažniausiai protiniai dantys šalinami, kai jie kelia realų diskomfortą ar riziką
-                bendrai burnos sveikatai.
+                Sprendimas dėl protinių dantų šalinimo priimamas tik atlikus išsamią klinikinę apžiūrą ir
+                radiologinius tyrimus. Ne visi protiniai dantys turi būti šalinami, tačiau tam tikrose situacijose
+                jie tampa aiškiu rizikos veiksniu burnos sveikatai.
               </p>
 
               <div className="space-y-4 mb-6">
-                <h3 className="font-semibold text-darkblue-700">Protiniai dantys šalinami, kai:</h3>
+                <h3 className="font-semibold text-darkblue-700">Dažniausios indikacijos protinių dantų šalinimui:</h3>
 
                 <div className="grid gap-3">
                   {[
-                    'jaučiamas nuolatinis ar pasikartojantis skausmas danties srityje',
-                    'atsiranda dantenų uždegimas aplink dygstantį ar iš dalies pridengtą dantį',
-                    'protinis dantis spaudžia gretimus dantis ir kelia grėsmę jų padėčiai',
-                    'dantis šalinamas profilaktiniais tikslais prieš ortodontinį gydymą'
+                    'nuolatinis ar pasikartojantis skausmas danties srityje',
+                    'dantenų uždegimas, patinimas ar pūliavimas aplink protinį dantį',
+                    'netaisyklinga danties padėtis arba dalinis neišdygimas',
+                    'gretimų dantų spaudimas ar jų pasislinkimas',
+                    'karieso pažeidimai, kurių neįmanoma kokybiškai gydyti',
+                    'pasiruošimas ortodontiniam gydymui ar sąkandžio korekcijai'
                   ].map((text, i) => (
                     <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
                       <span className="mt-1">
@@ -267,9 +274,10 @@ export default function ProtiniuDantuSalinimas() {
 
               <div className="rounded-xl border border-slate-200 bg-white p-4 sm:p-5">
                 <p className="text-sm text-slate-700 leading-relaxed">
-                  <span className="font-semibold text-darkblue-700">Pastaba:</span>{' '}
-                  Laiku pašalintas problemiškas protinis dantis padeda išvengti skausmo, uždegimo ir gretimų dantų
-                  pažeidimų, todėl svarbu nedelsti apsilankyti pas odontologą pastebėjus pirmuosius simptomus.
+                  Svarbu suprasti, kad net ir besimptomiai protiniai dantys gali kelti riziką ateityje. Dėl to
+                  gydytojas visada vertina ne tik esamą situaciją, bet ir galimą ilgalaikę prognozę. Kai dantys yra
+                  pilnai išdygę, stabilūs ir nesukelia jokių nusiskundimų, jie gali būti paliekami stebėjimui,
+                  reguliariai kontroliuojant jų būklę.
                 </p>
               </div>
             </div>
@@ -278,40 +286,45 @@ export default function ProtiniuDantuSalinimas() {
           {/* PROCESAS */}
           <motion.section id="procesas" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip vyksta procedūra?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip atliekamas protinių dantų šalinimas?</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Protinio danties šalinimas Bangų odontologijos klinikoje atliekamas pagal aiškią ir saugią eigą. Metodas
-                pritaikomas kiekvieno paciento specifiniam atvejui, siekiant minimizuoti audinių traumą ir užtikrinti
-                sklandų gijimą.
+                Protinių dantų šalinimas yra kruopščiai suplanuota chirurginė procedūra, kurios eiga priklauso nuo
+                danties padėties, šaknų formos ir aplinkinių audinių būklės. Kiekvienas atvejis yra individualus,
+                todėl prieš procedūrą atliekama išsami diagnostika, leidžianti tiksliai įvertinti galimus
+                sudėtingumo veiksnius ir parinkti saugiausią gydymo metodą.
               </p>
 
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Diagnostika</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Diagnostika ir planavimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Prieš atliekant šalinimą, odontologas įvertina protinio danties padėtį, šaknų formą ir artumą
-                    aplinkiniams audiniams bei nervams. Naudojant šiuolaikines diagnostikos technologijas, tiksliai
-                    suplanuojama saugiausia procedūros eiga.
+                    Prieš protinių dantų šalinimą atliekama klinikinė apžiūra ir rentgenologinis arba 3D
+                    kompiuterinės tomografijos tyrimas. Šie duomenys leidžia įvertinti danties padėtį kaulo
+                    atžvilgiu, šaknų struktūrą, nervų kanalų artumą bei galimas rizikas. Remiantis šia informacija
+                    sudaromas individualus gydymo planas, kuris užtikrina maksimalų procedūros tikslumą ir saugumą.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Vietinė nejautra</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Nuskausminimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Prieš pradedant šalinimą, taikoma vietinė nejautra, kuri patikimai nuskausmina gydomą sritį. Tai
-                    leidžia procedūrą atlikti be skausmo, o pacientas jaučia tik lengvą spaudimą.
+                    Procedūra atliekama taikant vietinę nejautrą, kuri užtikrina, kad pacientas procedūros metu
+                    nejaus skausmo. Esant sudėtingesniems atvejams ar padidėjusiam nerimui, gali būti taikomi
+                    papildomi nuskausminimo metodai, siekiant užtikrinti visišką komfortą.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Danties atlaisvinimas</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Danties pašalinimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Odontologas atsargiai atlaisvina protinį dantį iš alveolės, taikydamas metodą, pritaikytą konkrečiam
-                    atvejui. Procedūra atliekama kontroliuojamai, siekiant minimizuoti aplinkinių audinių traumą.
+                    Dantis atsargiai atlaisvinamas ir pašalinamas iš kaulo alveolės. Jei dantis yra retinuotas ar
+                    sudėtingos padėties, gali būti taikomas dalinis šalinimas, leidžiantis sumažinti audinių traumą
+                    ir užtikrinti kontroliuojamą procedūros eigą. Tokia taktika padeda išsaugoti aplinkinius
+                    audinius ir sumažinti gijimo laikotarpį.
                   </p>
                 </div>
 
@@ -319,8 +332,9 @@ export default function ProtiniuDantuSalinimas() {
                   <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
                   <h3 className="font-bold text-darkblue-700 mb-2">Žaizdos sutvarkymas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Pašalinus dantį, žaizda kruopščiai sutvarkoma, siekiant sumažinti infekcijos riziką ir sudaryti
-                    sąlygas sklandžiam gijimui. Pacientui pateikiamos aiškios rekomendacijos tolimesnei priežiūrai.
+                    Po danties pašalinimo žaizda kruopščiai išvaloma, prireikus uždedami siūlai arba naudojamos
+                    hemostazinės priemonės. Tai padeda užtikrinti tinkamą kraujo krešulio formavimąsi, kuris yra
+                    būtinas sklandžiam gijimui.
                   </p>
                 </div>
               </div>
@@ -330,28 +344,30 @@ export default function ProtiniuDantuSalinimas() {
           {/* GIJIMAS */}
           <motion.section id="gijimas" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Gijimas po procedūros</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip vyksta gijimas po protinių dantų šalinimo?</h2>
 
               <div className="text-slate-700 leading-relaxed space-y-4 mb-6">
                 <p>
-                  Pradinis gijimas po protinio danties šalinimo trunka 7–10 dienų. Šiuo laikotarpiu audiniai palaipsniui
-                  atsistato, o traukimo vietoje susiformavęs kraujo krešulys yra būtinas sklandžiam gijimo procesui,
-                  todėl svarbu jo nepažeisti.
+                  Gijimas po protinių dantų šalinimo yra natūralus organizmo procesas, kuris vyksta etapais. Jo
+                  trukmė priklauso nuo procedūros sudėtingumo, individualių paciento savybių ir to, kaip laikomasi
+                  gydytojo rekomendacijų. Dažniausiai pirminis gijimas trunka 7–10 dienų, tačiau visiškas audinių
+                  atsistatymas gali užtrukti ilgiau.
                 </p>
                 <p>
-                  Tinkama priežiūra šiuo laikotarpiu padeda sumažinti diskomfortą, paspartina gijimą ir sumažina
-                  komplikacijų riziką.
+                  Pirmosiomis valandomis po procedūros svarbiausias procesas yra kraujo krešulio susiformavimas. Šis
+                  krešulys apsaugo žaizdą ir yra būtinas normaliam gijimui. Jo pažeidimas gali sukelti komplikacijas
+                  ir sulėtinti gijimą.
                 </p>
               </div>
 
               <div className={innerCard + ' mb-6'}>
-                <h3 className="font-semibold text-darkblue-700 mb-4">Gijimo laikotarpiu rekomenduojama vengti:</h3>
+                <h3 className="font-semibold text-darkblue-700 mb-4">Tipinis gijimo procesas:</h3>
                 <ul className="space-y-3">
                   {[
-                    'karšto maisto ir gėrimų, kol žaizda pradės gyti',
-                    'intensyvaus fizinio krūvio pirmosiomis dienomis po procedūros',
-                    'rūkymo, kuris gali sulėtinti gijimą ir padidinti komplikacijų riziką',
-                    'intensyvaus burnos skalavimo, kad nebūtų pažeistas kraujo krešulys'
+                    '1 diena – krešulio formavimasis, galimas lengvas kraujavimas',
+                    '2–3 dienos – patinimo ir jautrumo pikas',
+                    '4–7 dienos – audinių regeneracijos pradžia',
+                    '1–2 savaitės – pirminis žaizdos užgijimas'
                   ].map((text, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <span className="mt-1">
@@ -365,8 +381,9 @@ export default function ProtiniuDantuSalinimas() {
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Laikantis šių rekomendacijų, gijimas po protinio danties šalinimo vyksta sklandžiai, o audiniai
-                  atsistato be papildomų komplikacijų.
+                  Siekiant užtikrinti sklandų gijimą, rekomenduojama vengti karšto maisto, fizinio krūvio, rūkymo ir
+                  intensyvaus burnos skalavimo pirmosiomis dienomis. Taip pat svarbu laikytis individualių gydytojo
+                  nurodymų. Tinkama priežiūra ženkliai sumažina komplikacijų riziką ir pagreitina atsistatymą.
                 </p>
               </div>
             </div>
@@ -375,18 +392,45 @@ export default function ProtiniuDantuSalinimas() {
           {/* KOMPLIKACIJOS */}
           <motion.section id="komplikacijos" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Galimos komplikacijos</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kokios galimos komplikacijos po protinių dantų šalinimo?</h2>
+
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Nors protinių dantų šalinimas laikomas saugia ir įprasta chirurgine procedūra, kaip ir bet kuri
+                intervencija, jis gali turėti tam tikrų galimų komplikacijų. Dažniausiai jos yra laikinos ir lengvai
+                valdomos, jei pacientas laikosi pooperacinių rekomendacijų.
+              </p>
+
+              <div className="space-y-4 mb-6">
+                <h3 className="font-semibold text-darkblue-700">Galimos komplikacijos:</h3>
+
+                <div className="grid gap-3">
+                  {[
+                    'alveolitas (sausa alveolė) dėl prarasto kraujo krešulio',
+                    'laikinas patinimas ir jautrumas',
+                    'nedidelis kraujavimas pirmosiomis valandomis',
+                    'žandikaulio sustingimas ar ribotas išsižiojimas',
+                    'retais atvejais – infekciniai procesai'
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                      <span className="mt-1">
+                        <CheckIcon />
+                      </span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Nors protinių dantų šalinimas yra dažnai atliekama ir gerai ištirta procedūra, retais atvejais gali
-                  pasitaikyti tam tikrų komplikacijų – alveolitas (žaizdos uždegimas dėl pažeisto kraujo krešulio),
-                  patinimas ar infekciniai procesai.
+                  Alveolitas yra viena dažniausių komplikacijų, pasireiškianti stipresniu skausmu, kuris gali plisti
+                  į ausies ar smilkinio sritį. Tokiu atveju reikalinga gydytojo apžiūra ir vietinis gydymas, kuris
+                  dažniausiai greitai palengvina simptomus.
                 </p>
                 <p>
-                  Šios rizikos gali būti sėkmingai išvengtos laikantis gydytojo rekomendacijų tiek prieš procedūrą, tiek
-                  gijimo laikotarpiu. Jei po procedūros atsiranda neįprastas skausmas, ilgai nemažėjantis patinimas ar
-                  kiti neįprasti simptomai, svarbu nedelsti ir kreiptis į odontologą.
+                  Svarbu pabrėžti, kad komplikacijų rizika reikšmingai sumažėja, kai procedūra atliekama
+                  profesionaliai, o pacientas laikosi rekomendacijų. Daugeliu atvejų gijimas vyksta sklandžiai ir be
+                  rimtesnių nesklandumų.
                 </p>
               </div>
             </div>
@@ -396,26 +440,30 @@ export default function ProtiniuDantuSalinimas() {
           <motion.section id="kodel-rinktis" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-                Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
+                Kodėl verta rinktis Bangų odontologijos kliniką protinių dantų šalinimui?
               </h2>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Renkantis protinių dantų šalinimo paslaugas svarbu ne tik pati procedūra, bet ir tai, kaip ji
-                  atliekama – nuo sprendimo priėmimo iki priežiūros po procedūros. Bangų odontologijos klinikoje
-                  protinių dantų šalinimas atliekamas atsakingai, siekiant maksimaliai apsaugoti paciento komfortą ir
-                  burnos sveikatą.
+                  Protinių dantų šalinimas reikalauja ne tik chirurginės patirties, bet ir tikslaus planavimo bei
+                  atsakingo diagnostinio įvertinimo. Todėl svarbu rinktis kliniką, kurioje kiekvienas atvejis
+                  vertinamas individualiai, o gydymo sprendimai grindžiami ne tik simptomais, bet ir ilgalaike
+                  paciento burnos sveikatos prognoze.
                 </p>
                 <p>
-                  Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, neskuba priimti sprendimo ir
-                  visuomet pirmiausia ieško galimybių išsaugoti dantį. Jei protinio danties šalinimas yra neišvengiamas,
-                  procedūra atliekama taikant šiuolaikinius nuskausminimo metodus ir kruopščiai suplanuotą eigą. Dėmesys
-                  skiriamas ne tik pačiai procedūrai, bet ir aiškiam situacijos paaiškinimui bei rekomendacijoms po jos.
+                  Bangų odontologijos klinikoje Klaipėdoje protinių dantų šalinimas atliekamas naudojant modernią
+                  diagnostiką ir šiuolaikinius chirurginius metodus. Prieš procedūrą kruopščiai įvertinama danties
+                  padėtis, šaknų anatomija ir aplinkinių struktūrų rizikos, siekiant užtikrinti maksimalų saugumą.
                 </p>
                 <p>
-                  Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda
-                  jaustis saugiai viso gydymo metu. Todėl ieškantiems patikimo ir profesionalaus protinių dantų
-                  šalinimo Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas.
+                  Klinikoje didelis dėmesys skiriamas paciento komfortui. Taikoma efektyvi vietinė nejautra, o
+                  sudėtingesniais atvejais parenkami papildomi nuskausminimo sprendimai. Procedūros eiga visada
+                  aiškiai paaiškinama, kad pacientas jaustųsi užtikrintai ir suprastų kiekvieną gydymo etapą.
+                </p>
+                <p>
+                  Pacientai vertina profesionalų požiūrį, nuoseklų gydymo procesą ir ramų bendravimą. Todėl Bangų
+                  odontologijos klinika yra patikimas pasirinkimas, kai reikalingas saugus ir profesionalus protinių
+                  dantų šalinimas Klaipėdoje.
                 </p>
               </div>
             </div>

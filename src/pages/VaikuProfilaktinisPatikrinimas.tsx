@@ -37,9 +37,10 @@ function CheckIcon() {
 
 const tocSections = [
   { id: 'kainos', label: 'Kainos' },
-  { id: 'svarba', label: 'Kodėl svarbus patikrinimas?' },
+  { id: 'kas-yra', label: 'Kodėl svarbus patikrinimas?' },
   { id: 'daznis', label: 'Rekomenduojamas dažnis' },
   { id: 'etapai', label: 'Patikrinimo proceso etapai' },
+  { id: 'nauda', label: 'Ką padeda išvengti?' },
   { id: 'kodel-rinktis', label: 'Kodėl verta rinktis mus?' }
 ]
 
@@ -86,16 +87,17 @@ export default function VaikuProfilaktinisPatikrinimas() {
             <div>
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
                 <p className="mb-4">
-                  Bangų odontologijos klinika Klaipėdoje siūlo reguliarius vaikų burnos sveikatos patikrinimus. Pagrindinis jų
-                  tikslas – anksti nustatyti bet kokius dantų ar dantenų pokyčius, kol jie dar nesukėlė didesnių problemų. Toks
-                  prevencinis požiūris leidžia vaiko dantų sveikatą prižiūrėti nuolat, o ne tik tuomet, kai jau atsiranda skausmas
-                  ar akivaizdūs pažeidimai.
+                  Vaikų burnos sveikata yra dinamiška ir nuolat kintanti, todėl reguliari kontrolė leidžia laiku
+                  pastebėti net ir labai ankstyvus dantų ar dantenų pakitimus. Nors pieniniai dantys yra laikini,
+                  jų būklė turi tiesioginę įtaką nuolatinių dantų užuomazgoms, sąkandžio formavimuisi, kramtymo
+                  funkcijai bei kalbos raidai.
                 </p>
                 <p>
-                  Profilaktinis patikrinimas – tai neatsiejama vaiko burnos sveikatos priežiūros dalis, padedanti laiku pastebėti
-                  ėduonies pradžią, dantenų uždegimo požymius ar sąkandžio pokyčius. Bangų odontologijos klinikoje vizitai
-                  vaikams pritaikomi taip, kad jie jaustųsi saugiai ir ramiai, o tėvai gautų aiškias rekomendacijas dėl tolimesnės
-                  priežiūros.
+                  Bangų odontologijos klinikoje Klaipėdoje vaikų profilaktinis dantų patikrinimas atliekamas
+                  siekiant ne tik įvertinti esamą burnos būklę, bet ir užkirsti kelią ėduonies progresavimui,
+                  dantenų uždegimui ar netaisyklingam dantų dygimui. Tai yra viena svarbiausių vaikų odontologijos
+                  priemonių, padedanti išvengti sudėtingesnio gydymo ateityje ir užtikrinti nuoseklią burnos
+                  sveikatos priežiūrą nuo ankstyvo amžiaus.
                 </p>
               </div>
             </div>
@@ -188,11 +190,11 @@ export default function VaikuProfilaktinisPatikrinimas() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
+                <div className="relative aspect-[4/5] bg-sky-50">
                   <img
                     src="/team/Jonas-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
                 </div>
@@ -208,21 +210,32 @@ export default function VaikuProfilaktinisPatikrinimas() {
           </motion.div>
 
           {/* SVARBA */}
-          <motion.section id="svarba" className={sectionWrap} variants={item}>
+          <motion.section id="kas-yra" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kodėl svarbus profilaktinis patikrinimas?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas yra vaikų profilaktinis dantų patikrinimas ir kodėl jis svarbus?</h2>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Kadangi vaiko burnos ertmė nuolat keičiasi dygstant naujiems dantims, profilaktika yra esminė vaiko dantų
-                  sveikatos priežiūros dalis. Pieniniai dantys ilgainiui keičiasi nuolatiniais, o šis procesas gali sukelti
-                  įvairių pokyčių – nuo sąkandžio nukrypimų iki padidėjusios ėduonies rizikos.
+                  Vaikų profilaktinis dantų patikrinimas – tai reguliari odontologinė apžiūra, kurios metu
+                  gydytojas įvertina dantų, dantenų, burnos gleivinės ir sąkandžio būklę. Vizito tikslas yra ne tik
+                  nustatyti jau esamus pakitimus, bet ir identifikuoti rizikos veiksnius, kurie ateityje gali
+                  sukelti ėduonį, emalio pažeidimus ar ortodontines problemas.
                 </p>
                 <p>
-                  Reguliari kontrolė leidžia laiku pastebėti net ir labai ankstyvus dantų ar dantenų pakitimus, kuriuos vaikas
-                  ar tėvai patys namuose gali nepastebėti. Anksti nustačius problemą, gydymas dažniausiai būna paprastesnis,
-                  greitesnis ir mažiau varginantis vaikui. Todėl profilaktiniai patikrinimai yra viena efektyviausių priemonių,
-                  padedančių išlaikyti vaiko burnos sveikatą nuo pat mažens.
+                  Vaikų burnos ertmė nuolat keičiasi – dygsta nauji dantys, keičiasi sąkandis, o emalis dar nėra
+                  pilnai subrendęs. Dėl šių priežasčių net ir nedidelės apnašų sankaupos ar netinkami higienos
+                  įpročiai gali greitai sukelti ėduonies vystymąsi. Profilaktinio patikrinimo metu šie pokyčiai
+                  nustatomi ankstyvoje stadijoje, kai juos galima sustabdyti minimalia intervencija.
+                </p>
+                <p>
+                  Vaikų profilaktinis dantų patikrinimas taip pat leidžia įvertinti, kaip efektyviai atliekama
+                  kasdienė burnos higiena namuose. Jei pastebimos nuolatinės apnašų kaupimosi vietos, tėvams
+                  pateikiamos konkrečios rekomendacijos dėl dantų valymo technikos, priemonių pasirinkimo bei
+                  priežiūros rutinos.
+                </p>
+                <p>
+                  Svarbu suprasti, kad profilaktika nėra formalumas. Tai nuoseklus stebėjimo procesas, leidžiantis
+                  užtikrinti, kad vaiko dantys vystytųsi sveikai ir be komplikacijų.
                 </p>
               </div>
             </div>
@@ -231,18 +244,44 @@ export default function VaikuProfilaktinisPatikrinimas() {
           {/* DAŽNIS */}
           <motion.section id="daznis" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Rekomenduojamas vizitų dažnis</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kada rekomenduojama atlikti vaikų profilaktinį dantų patikrinimą?</h2>
+
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Vaikų profilaktinis dantų patikrinimas rekomenduojamas reguliariai, net jei nėra jokių nusiskundimų.
+                Įprastai vizitas turėtų būti atliekamas kas 6–12 mėnesių, priklausomai nuo individualios ėduonies
+                rizikos, burnos higienos kokybės ir dantų vystymosi etapo.
+              </p>
+
+              <div className="space-y-3 mb-6">
+                <h3 className="font-semibold text-darkblue-700">Ypač svarbu planuoti profilaktinį patikrinimą šiais atvejais:</h3>
+                <div className="grid gap-3">
+                  {[
+                    'išdygus pirmiesiems pieniniams ar nuolatiniams dantims',
+                    'intensyvaus sąkandžio keitimosi laikotarpiu',
+                    'prieš ortodontinio gydymo pradžią ar aparatų nuėmimą',
+                    'esant padidėjusiai ėduonies rizikai ar dažnam kariesui',
+                    'pastebėjus dantenų kraujavimą, jautrumą ar blogą burnos kvapą',
+                    'prieš pateikiant sveikatos pažymą ugdymo įstaigai',
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                      <span className="mt-1">
+                        <CheckIcon />
+                      </span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Vizitai turėtų vykti kas 6–12 mėnesių, atsižvelgiant į individualią ėduonies riziką ir burnos higienos būklę.
-                  Kai kuriems vaikams, turintiems didesnę ėduonies riziką ar sudėtingesnę burnos higienos situaciją, odontologas
-                  gali rekomenduoti dažnesnius vizitus, kad situacija būtų nuolat stebima ir kontroliuojama.
+                  Dažnai vaikų profilaktinis dantų patikrinimas atliekamas prieš mokslo metų pradžią, tačiau
+                  medicininiu požiūriu svarbiausia yra ne data, o reguliarumas. Ankstyvas vizitas leidžia išvengti
+                  eilių ir užtikrinti, kad galimi pakitimai būtų įvertinti laiku, dar jiems neprogresuojant.
                 </p>
                 <p>
-                  Patikrinimas ypač svarbus keičiantis dantims ar prieš pradedant ortodontinį gydymą. Šiais laikotarpiais burnos
-                  ertmėje vyksta daug pokyčių, todėl reguliari odontologo priežiūra padeda užtikrinti, kad dantys dygtų ir
-                  augtų taisyklingai, o galimos problemos būtų pastebėtos kuo anksčiau.
+                  Reguliarūs patikrinimai taip pat padeda formuoti teigiamą vaiko požiūrį į odontologą, nes vizitas
+                  tampa įprasta profilaktinės priežiūros dalimi, o ne tik gydymo poreikio situacija.
                 </p>
               </div>
             </div>
@@ -251,27 +290,82 @@ export default function VaikuProfilaktinisPatikrinimas() {
           {/* ETAPAI */}
           <motion.section id="etapai" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Patikrinimo proceso etapai</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip vyksta vaikų profilaktinis dantų patikrinimas klinikoje?</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Klinikoje atliekamą vizitą sudaro keli pagrindiniai etapai, leidžiantys visapusiškai įvertinti vaiko burnos
-                sveikatą ir sudaryti individualiai pritaikytą tolimesnės priežiūros planą.
+                Vaikų profilaktinis dantų patikrinimas Bangų odontologijos klinikoje atliekamas nuosekliai,
+                užtikrinant vaiko komfortą ir aiškų kiekvieno etapo paaiškinimą. Vizito metu vertinama visa burnos
+                sveikatos situacija, o tėvams pateikiamos individualios išvados bei rekomendacijos.
               </p>
 
-              <div className="grid gap-3">
-                {[
-                  'Burnos ir dantų apžiūra',
-                  'Sąkandžio bei dantų dygimo analizė',
-                  'Higienos įpročių vertinimas',
-                  'Individualaus plano sudarymas',
-                ].map((text, i) => (
-                  <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
-                    <span className="mt-1">
-                      <CheckIcon />
-                    </span>
-                    <span className="text-slate-700">{text}</span>
-                  </div>
-                ))}
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Burnos ir dantų būklės įvertinimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Atliekama išsami dantų, dantenų ir burnos gleivinės apžiūra. Vertinamas ėduonies buvimas,
+                    emalio demineralizacijos požymiai, apnašų kaupimasis bei galimi uždegiminiai procesai.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Sąkandžio ir dantų dygimo analizė</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Vertinama, kaip vystosi vaiko sąkandis, ar dantys dygsta taisyklingai, ar nėra ankstyvų
+                    ortodontinių anomalijų požymių. Tai ypač svarbu keičiantis pieniniams dantims į nuolatinius.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Burnos higienos įpročių įvertinimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Analizuojama, kaip vaikas prižiūri dantis namuose, ar pakankamai efektyviai pašalinamos
+                    apnašos. Identifikuojamos vietos, kuriose higiena yra nepakankama, ir pateikiamos rekomendacijos.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Individualus planas ir rekomendacijos</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Po patikrinimo tėvams pateikiamas aiškus veiksmų planas: burnos priežiūros patarimai,
+                    profilaktikos dažnis, galimos rizikos bei, jei reikia, tolimesni gydymo ar higienos žingsniai.
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-slate-700 leading-relaxed mt-6">
+                Toks struktūruotas procesas leidžia vaikų profilaktinį dantų patikrinimą paversti ne formaliu
+                vizitu, o realia ankstyvos diagnostikos ir prevencijos priemone.
+              </p>
+            </div>
+          </motion.section>
+
+          {/* NAUDA */}
+          <motion.section id="nauda" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Ką padeda išvengti reguliarus vaikų profilaktinis dantų patikrinimas?</h2>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Reguliarus vaikų profilaktinis dantų patikrinimas yra viena efektyviausių priemonių užkertant
+                  kelią ankstyvam ėduoniui, dantenų uždegimui ir netaisyklingo sąkandžio progresavimui. Anksti
+                  nustatyti pakitimai leidžia taikyti minimaliai invazinius sprendimus, kurie yra paprastesni,
+                  greitesni ir mažiau apkraunantys vaiką.
+                </p>
+                <p>
+                  Negydomas ėduonis vaikų dantyse gali progresuoti itin greitai dėl plonesnio emalio ir intensyvaus
+                  bakterinio aktyvumo. Tai gali lemti skausmą, infekcijas, dantų netekimą ar net poveikį
+                  nuolatinių dantų užuomazgoms. Taip pat gali atsirasti poreikis sudėtingesniam gydymui ar
+                  ortodontinėms korekcijoms ateityje.
+                </p>
+                <p>
+                  Reguliari profilaktika leidžia užtikrinti, kad visi pokyčiai būtų pastebėti ankstyvoje stadijoje,
+                  o vaiko burnos sveikata būtų nuolat kontroliuojama. Tai ne tik apsaugo dantis, bet ir padeda
+                  formuoti ilgalaikius, taisyklingus burnos higienos įpročius.
+                </p>
               </div>
             </div>
           </motion.section>
@@ -285,17 +379,21 @@ export default function VaikuProfilaktinisPatikrinimas() {
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Renkantis vaikų profilaktinį dantų patikrinimą svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo pirmojo kontakto su vaiku iki rekomendacijų tėvams. Bangų odontologijos klinikoje patikrinimas atliekamas atsakingai, siekiant maksimaliai apsaugoti vaiko komfortą ir burnos sveikatą.
+                  Renkantis vaikų profilaktinį dantų patikrinimą svarbiausia yra ne tik diagnostikos tikslumas, bet
+                  ir vaiko patirtis vizito metu. Bangų odontologijos klinikoje kiekvienas patikrinimas atliekamas
+                  laikantis individualaus, švelnaus ir aiškaus komunikacijos principo, užtikrinant, kad vaikas
+                  jaustųsi saugiai.
                 </p>
                 <p>
-                  Klinikoje dirbantys specialistai kiekvieną vaiką vertina individualiai, skiria laiko paaiškinimui ir stengiasi
-                  sukurti draugišką, nestresinę aplinką. Dėmesys skiriamas ne tik pačiai apžiūrai, bet ir aiškiam situacijos
-                  paaiškinimui bei rekomendacijoms tėvams dėl burnos higienos namuose.
+                  Klinikos specialistai vertina ne tik dantų būklę, bet ir bendrą burnos sveikatos kontekstą: dantų
+                  dygimą, sąkandžio raidą, apnašų kaupimosi modelius bei ankstyvus rizikos veiksnius. Tėvams
+                  pateikiamos aiškios, praktiškai pritaikomos rekomendacijos, orientuotos į ilgalaikę burnos
+                  sveikatą.
                 </p>
                 <p>
-                  Reguliarus patikrinimas padeda išvengti sudėtingesnio gydymo ateityje ir formuoti teigiamą vaiko požiūrį į
-                  odontologinę priežiūrą. Todėl ieškantiems patikimo ir profesionalaus vaikų dantų patikrinimo Klaipėdoje,
-                  Bangų odontologijos klinika yra patikimas pasirinkimas.
+                  Reguliarus vaikų profilaktinis dantų patikrinimas Bangų odontologijos klinikoje leidžia ne tik
+                  užkirsti kelią dantų ligoms, bet ir formuoti teigiamą vaiko požiūrį į odontologinę priežiūrą nuo
+                  pat ankstyvo amžiaus.
                 </p>
               </div>
             </div>

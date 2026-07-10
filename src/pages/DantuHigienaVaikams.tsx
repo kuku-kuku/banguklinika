@@ -37,8 +37,9 @@ function CheckIcon() {
 
 const tocSections = [
   { id: 'kainos', label: 'Kainos' },
-  { id: 'paslaugos', label: 'Ką apima procedūra?' },
-  { id: 'daznis', label: 'Vizito dažnis' },
+  { id: 'kas-yra', label: 'Kas yra vaikų dantų higiena?' },
+  { id: 'daznis', label: 'Kada reikalinga?' },
+  { id: 'paslaugos', label: 'Kaip vyksta procedūra?' },
   { id: 'saugumas', label: 'Ar saugu vaikams?' },
   { id: 'kodel-rinktis', label: 'Kodėl verta rinktis mus?' }
 ]
@@ -86,14 +87,17 @@ export default function DantuHigienaVaikams() {
             <div>
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
                 <p className="mb-4">
-                  Bangų odontologijos klinika siūlo profesionalią vaikų dantų priežiūrą, pabrėždama, kad tinkama burnos
-                  higiena yra svarbi nuo pat pirmųjų dantukų išdygimo. Reguliari profesionali higiena padeda laiku pastebėti
-                  galimas problemas, apsaugo dantis nuo ėduonies ir moko vaiką rūpintis savo burnos sveikata jau nuo mažens.
+                  Vaikų dantų priežiūra yra svarbi nuo pat pirmųjų dantų išdygimo. Nors pieniniai dantys yra
+                  laikini, jų būklė turi tiesioginės įtakos kramtymo funkcijai, kalbos raidai, nuolatinių dantų
+                  užuomazgų formavimuisi bei visos burnos ertmės sveikatai. Dėl šios priežasties kasdienė dantų
+                  priežiūra namuose turi būti derinama su reguliaria profesionalia kontrole odontologijos
+                  klinikoje.
                 </p>
                 <p>
-                  Klinikoje procedūra atliekama rūpestingai ir šiltai, atsižvelgiant į kiekvieno vaiko amžių bei emocinę
-                  būseną, kad apsilankymas pas odontologą taptų maloni ir nebauginanti patirtis, o ne stresą kelianti
-                  procedūra.
+                  Bangų odontologijos klinikoje Klaipėdoje dantų higiena vaikams atliekama laikantis šiuolaikinių
+                  odontologijos principų, atsižvelgiant į vaiko amžių, elgseną ir individualią burnos būklę.
+                  Procedūros tikslas nėra tik apnašų pašalinimas – tai ir ankstyvas ėduonies rizikos įvertinimas,
+                  burnos higienos įpročių korekcija bei vaiko adaptacija prie odontologinės priežiūros be baimės.
                 </p>
               </div>
             </div>
@@ -185,11 +189,11 @@ export default function DantuHigienaVaikams() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
+                <div className="relative aspect-[4/5] bg-sky-50">
                   <img
                     src="/team/Jonas-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
                 </div>
@@ -204,32 +208,35 @@ export default function DantuHigienaVaikams() {
             <ReviewsCarousel />
           </motion.div>
 
-          {/* KĄ APIMA PASLAUGA */}
-          <motion.section id="paslaugos" className={sectionWrap} variants={item}>
+          {/* KAS YRA */}
+          <motion.section id="kas-yra" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Ką apima dantų higienos procedūra?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas yra vaikų dantų higiena ir kodėl ji svarbi?</h2>
 
-              <p className="text-slate-700 leading-relaxed mb-6">
-                Vaikų dantų higienos procedūra Bangų odontologijos klinikoje apima kompleksinę burnos priežiūrą, skirtą
-                įvertinti ir palaikyti sveiką vaiko burnos ertmę. Kiekvienas vizitas pritaikomas individualiai, atsižvelgiant
-                į vaiko amžių ir dantų būklę.
-              </p>
-
-              <div className="grid gap-3">
-                {[
-                  'burnos būklės įvertinimas',
-                  'apnašų pašalinimas',
-                  'dantų poliravimas',
-                  'fluoravimas',
-                  'konsultacijos tėvams apie kasdienę burnos higienos praktiką'
-                ].map((text, i) => (
-                  <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
-                    <span className="mt-1">
-                      <CheckIcon />
-                    </span>
-                    <span className="text-slate-700">{text}</span>
-                  </div>
-                ))}
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Vaikų dantų higiena – tai profesionali profilaktinė procedūra, kurios metu nuo dantų paviršių
+                  pašalinamos minkštosios apnašos, pigmentiniai nešvarumai bei, esant poreikiui, pradiniai dantų
+                  akmenys. Tai viena svarbiausių priemonių siekiant užkirsti kelią vaikų ėduoniui, gingivitui ir
+                  ankstyvam emalio pažeidimui.
+                </p>
+                <p>
+                  Vaikų burnos higiena skiriasi nuo suaugusiųjų, nes vaikų dantų emalis yra plonesnis, o apnašos
+                  susidaro greičiau dėl dažnesnio užkandžiavimo ir dar tik formuojamų higienos įgūdžių. Net ir
+                  tais atvejais, kai dantys valomi du kartus per dieną, dažnai lieka vietų, kurių vaikas
+                  nepasiekia, ypač krūminių dantų vagelėse ar prie dantenų krašto.
+                </p>
+                <p>
+                  Profesionali burnos higiena vaikams Klaipėdoje yra ne tik valymo procedūra. Tai ir diagnostinis
+                  etapas, kurio metu vertinama, ar nėra pradinio ėduonies požymių, emalio demineralizacijos,
+                  dantenų uždegimo ar netaisyklingos apnašų kaupimosi zonų. Tėvams suteikiamos individualios
+                  rekomendacijos, kaip pagerinti kasdienę burnos priežiūrą namuose.
+                </p>
+                <p>
+                  Svarbu suprasti, kad dantų higiena vaikams nėra skirta tik esant problemoms. Tai profilaktinė
+                  priemonė, leidžianti išvengti sudėtingesnio gydymo ateityje ir užtikrinti, kad vaiko nuolatiniai
+                  dantys formuotųsi sveikoje aplinkoje.
+                </p>
               </div>
             </div>
           </motion.section>
@@ -237,19 +244,106 @@ export default function DantuHigienaVaikams() {
           {/* VIZITO DAŽNIS */}
           <motion.section id="daznis" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Rekomenduojamas vizito dažnis</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kada vaikui reikalinga profesionali burnos higiena?</h2>
+
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Profesionali burnos higiena vaikams rekomenduojama nuo to momento, kai susiformuoja pilnas
+                pieninių dantų sąkandis, dažniausiai apie 2–3 metų amžių, tačiau poreikis vertinamas individualiai.
+              </p>
+
+              <div className="space-y-3 mb-6">
+                <h3 className="font-semibold text-darkblue-700">Dažniausiai ši procedūra reikalinga, kai:</h3>
+                <div className="grid gap-3">
+                  {[
+                    'ant dantų matomos gelsvos, rusvos ar tamsios apnašos',
+                    'pastebimas blogas burnos kvapas, nepaisant reguliaraus valymo',
+                    'dantenos parausta ar kraujuoja valant dantis',
+                    'vaikas turi padidėjusią ėduonies riziką',
+                    'nešiojami ortodontiniai aparatai',
+                    'dantys greitai „apsineša“ apnašomis nepaisant higienos',
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                      <span className="mt-1">
+                        <CheckIcon />
+                      </span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Profesionali dantų higiena rekomenduojama nuo 2–3 metų amžiaus, kai vaikas jau turi pieninius dantis ir
-                  gali priprasti prie reguliarių apsilankymų pas odontologą. Ankstyva pradžia padeda vaikui nuo mažens
-                  suvokti burnos priežiūros svarbą ir mažina baimę, susijusią su vėlesniais vizitais.
+                  Vaikų burnos higiena taip pat tampa ypač svarbi keičiantis sąkandžiui, kai pradeda dygti
+                  nuolatiniai dantys. Šiuo laikotarpiu emalis yra jautresnis, o apnašų kaupimasis gali greitai
+                  lemti pradinius ėduonies židinius.
                 </p>
                 <p>
-                  Toliau profesionali higiena atliekama kas 6–12 mėnesių, o esant didesnei ėduonies ar kitų burnos
-                  problemų rizikai – dažniau. Vizitų dažnumas nustatomas individualiai, atsižvelgiant į vaiko burnos
-                  būklę ir gydytojo rekomendacijas.
+                  Rekomenduojamas dažnis priklauso nuo individualios situacijos, tačiau dažniausiai profesionali
+                  dantų higiena vaikams atliekama kas 6–12 mėnesių, o esant didesnei rizikai – dažniau.
                 </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* KAIP VYKSTA */}
+          <motion.section id="paslaugos" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip atliekama vaikų dantų higiena klinikoje?</h2>
+
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Vaikų dantų higiena Bangų odontologijos klinikoje atliekama nuosekliai, užtikrinant vaiko
+                komfortą ir emocinį saugumą kiekviename etape. Procedūra pritaikoma pagal vaiko amžių,
+                bendradarbiavimą ir apnašų kiekį.
+              </p>
+
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Burnos būklės įvertinimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Atliekama dantų ir dantenų apžiūra, įvertinamas apnašų kiekis, emalio būklė bei galimi
+                    ėduonies rizikos veiksniai. Esant poreikiui, naudojami specialūs indikatoriai, parodantys
+                    apnašų kaupimosi zonas.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Apnašų pašalinimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Švelniai pašalinamos minkštosios ir, jei reikia, kietesnės apnašos. Vaikams taikomi saugūs,
+                    amžiui pritaikyti metodai, vengiant bet kokio diskomforto.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Dantų poliravimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Dantų paviršiai poliruojami specialiomis priemonėmis, kad būtų sumažintas apnašų kaupimosi
+                    greitis ir atkurta natūrali emalio švara.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Fluoravimo ir profilaktikos rekomendacijos</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Esant poreikiui, atliekamas emalio stiprinimas fluoro preparatais. Tėvams suteikiamos
+                    individualios rekomendacijos dėl dantų pastos pasirinkimo, valymo technikos ir tarpdančių
+                    priežiūros.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">05</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Įpročių formavimo konsultacija</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Paaiškinama, kaip taisyklingai prižiūrėti vaikų dantis kasdien, kokių klaidų vengti ir kaip
+                    sumažinti ėduonies riziką ilgalaikėje perspektyvoje.
+                  </p>
+                </div>
               </div>
             </div>
           </motion.section>
@@ -257,18 +351,28 @@ export default function DantuHigienaVaikams() {
           {/* SAUGUMAS */}
           <motion.section id="saugumas" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Ar procedūra saugi vaikams?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Ar vaikų dantų higiena yra saugi ir kaip jai pasiruošti?</h2>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Dantų higienos procedūra yra visiškai saugi, neskausminga ir neinvazinė, pritaikyta pagal vaiko amžių ir
-                  emocinį pasirengimą. Bangų odontologijos klinikoje procedūra atliekama švelniai, o odontologas visada
-                  atsižvelgia į vaiko savijautą ir jam parodo, kas bus daroma, kad procedūra netaptų nemaloni patirtis.
+                  Vaikų dantų higiena yra visiškai saugi, neskausminga ir neinvazinė procedūra, kai ji atliekama
+                  laikantis odontologinių standartų ir pritaikant metodus pagal vaiko amžių. Dažniausiai vaikai
+                  nejaučia jokio skausmo, o pagrindinis iššūkis yra emocinis pasiruošimas.
                 </p>
                 <p>
-                  Klinika akcentuoja individualų požiūrį į kiekvieną mažąjį pacientą, greitą ankstyvos ėduonies diagnozę
-                  bei tėvų edukaciją, siekiant ilgalaikės burnos sveikatos. Toks kompleksinis požiūris leidžia laiku
-                  pastebėti galimas problemas ir jų išvengti dar prieš joms išsivystant.
+                  Prieš vizitą rekomenduojama vaikui paprastai paaiškinti, kad gydytojas apžiūrės ir nuvalys
+                  dantukus. Vengiant gąsdinančių formuluočių ir perteklinio dramatizavimo, vaiko patirtis
+                  dažniausiai būna rami ir pozityvi.
+                </p>
+                <p>
+                  Bangų odontologijos klinikoje didelis dėmesys skiriamas adaptacijai – procedūra atliekama
+                  neskubant, aiškiai paaiškinant kiekvieną veiksmą vaikui suprantama kalba. Jei reikia, daromos
+                  pertraukos, kad vaikas jaustųsi saugiai.
+                </p>
+                <p>
+                  Tėvams svarbu suprasti, kad ankstyvas ir reguliarus vizitas pas odontologą bei profesionali
+                  burnos higiena vaikams ženkliai sumažina ėduonies, dantenų uždegimų ir sudėtingesnio gydymo
+                  riziką ateityje.
                 </p>
               </div>
             </div>
@@ -283,13 +387,22 @@ export default function DantuHigienaVaikams() {
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Renkantis vaikų dantų higienos paslaugas svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo pirmojo kontakto su vaiku iki priežiūros rekomendacijų po vizito. Bangų odontologijos klinikoje dantų higiena vaikams atliekama atsakingai, siekiant maksimaliai apsaugoti mažojo paciento komfortą ir burnos sveikatą.
+                  Renkantis vaikų dantų higienos paslaugą svarbiausia yra ne tik procedūros kokybė, bet ir
+                  patirtis, kurią vaikas įgyja jos metu. Bangų odontologijos klinikoje dantų higiena vaikams
+                  atliekama laikantis individualaus, švelnaus ir aiškaus komunikacijos modelio, kuris padeda
+                  formuoti teigiamą požiūrį į odontologinę priežiūrą.
                 </p>
                 <p>
-                  Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, skiria laiko vaiko emocinei būsenai ir visuomet siekia, kad apsilankymas paliktų teigiamą įspūdį. Dėmesys skiriamas ne tik pačiai procedūrai, bet ir aiškiam situacijos paaiškinimui tėvams bei rekomendacijoms, kaip rūpintis vaiko burnos higiena namuose.
+                  Kiekvienas vaikas vertinamas individualiai, atsižvelgiant į jo amžių, burnos būklę ir emocinį
+                  pasirengimą. Klinikoje siekiama ne tik pašalinti apnašas, bet ir užkirsti kelią jų greitam
+                  susidarymui ateityje, todėl daug dėmesio skiriama tėvų edukacijai ir praktinėms
+                  rekomendacijoms.
                 </p>
                 <p>
-                  Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis saugiai viso vizito metu. Todėl ieškantiems patikimos ir profesionalios dantų higienos vaikams Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas.
+                  Tėvai vertina aiškią komunikaciją, profesionalų požiūrį į profilaktiką ir nuoseklų dėmesį vaiko
+                  emocinei savijautai. Dėl šių priežasčių Bangų odontologijos klinika tampa patikimu pasirinkimu
+                  šeimoms, siekiančioms ilgalaikės vaikų burnos sveikatos ir stabilios dantų priežiūros sistemos
+                  nuo ankstyvo amžiaus.
                 </p>
               </div>
             </div>
