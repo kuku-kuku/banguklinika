@@ -27,6 +27,18 @@ const cases = [
     image: '/musu-darbai/20.jpg',
     alt: 'All-on-4 implantacija — prieš ir po',
   },
+  {
+    num: '04',
+    category: 'All-on-4 Implantacija',
+    image: '/1.jpg',
+    alt: 'All-on-4 implantacija — prieš ir po',
+  },
+  {
+    num: '05',
+    category: 'All-on-4 Implantacija',
+    image: '/2.jpg',
+    alt: 'All-on-4 implantacija — prieš ir po',
+  },
 ]
 
 export default function MusuDarbai() {

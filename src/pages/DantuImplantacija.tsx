@@ -710,7 +710,7 @@ export default function DantuImplantacija() {
                 </div>
                 <div className="relative min-h-[320px] lg:min-h-full">
                   <img
-                    src="/poster1.webp"
+                    src="/1.jpg"
                     alt="ALL-ON-4 implantacija"
                     className="absolute inset-0 w-full h-full object-cover object-center"
                   />
