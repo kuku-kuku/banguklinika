@@ -233,6 +233,7 @@ export default function DantuPlombavimas() {
                 </div>
                 {/* Right: doctor photo */}
                 <div className="relative aspect-[4/5] bg-sky-50">
+                  <div className="pt-[125%]" />
                   <img
                     src="/team/Odeta-light.jpg"
                     alt="Odeta Balsienė – odontologė Bangų klinikoje"

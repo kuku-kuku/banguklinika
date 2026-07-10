@@ -154,6 +154,7 @@ export default function KompensacijaProtezavimui() {
                 </div>
                 {/* Right: doctor photo */}
                 <div className="relative aspect-[4/5] bg-sky-50">
+                  <div className="pt-[125%]" />
                   <img
                     src="/team/Jonas-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"

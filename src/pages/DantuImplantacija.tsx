@@ -709,6 +709,7 @@ export default function DantuImplantacija() {
                   </div>
                 </div>
                 <div className="relative aspect-[4/5] bg-brand-50">
+                  <div className="pt-[125%]" />
                   <img
                     src="/1.jpg"
                     alt="ALL-ON-4 implantacija"

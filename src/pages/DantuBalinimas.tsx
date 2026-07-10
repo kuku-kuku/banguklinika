@@ -217,6 +217,7 @@ export default function DantuBalinimas() {
                 </div>
                 {/* Right: doctor photo */}
                 <div className="relative aspect-[4/5] bg-sky-50">
+                  <div className="pt-[125%]" />
                   <img
                     src="/team/Rūta_light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
