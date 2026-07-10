@@ -38,8 +38,8 @@ function CheckIcon() {
 const tocSections = [
   { id: 'kainos', label: 'Kainos' },
   { id: 'kas-yra', label: 'Kas yra rentgenologiniai tyrimai?' },
-  { id: 'paslaugu-tipai', label: 'Tyrimų rūšys' },
   { id: 'indikacijos', label: 'Kada reikalingas?' },
+  { id: 'paslaugu-tipai', label: 'Tyrimų rūšys' },
   { id: 'procesas', label: 'Kaip atliekamas tyrimas?' },
   { id: 'kodel-rinktis', label: 'Kodėl verta rinktis mus?' }
 ]
@@ -263,62 +263,6 @@ export default function RentgenologiniaiTyrimai() {
             </div>
           </motion.section>
 
-          {/* PASLAUGŲ TIPAI */}
-          <motion.section id="paslaugu-tipai" className={sectionWrap} variants={item}>
-            <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kokie rentgenologiniai tyrimai atliekami Bangų odontologijos klinikoje?</h2>
-
-              <p className="text-slate-700 leading-relaxed mb-6">
-                Bangų odontologijos klinikoje atliekamas platus rentgenologinių tyrimų spektras, leidžiantis tiksliai
-                įvertinti skirtingas klinikines situacijas. Tyrimo metodas parenkamas individualiai, atsižvelgiant į
-                paciento būklę ir planuojamą gydymą.
-              </p>
-
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className={innerCard}>
-                  <h3 className="font-bold text-darkblue-700 mb-3">Dentalinės rentgeno nuotraukos</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Tai tikslinis vieno ar kelių dantų vaizdas, leidžiantis įvertinti šaknų kanalus, ėduonies
-                    pažeidimus, uždegiminius procesus ir kaulo pokyčius aplink konkretų dantį. Šis tyrimas ypač
-                    svarbus endodontiniam gydymui.
-                  </p>
-                </div>
-
-                <div className={innerCard}>
-                  <h3 className="font-bold text-darkblue-700 mb-3">Panoraminės rentgeno nuotraukos (ortopantomogramos)</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Tai bendras viso žandikaulio vaizdas, kuriame matomi visi dantys, šaknys ir aplinkinės
-                    struktūros. Tyrimas dažnai naudojamas implantacijos, protezavimo ar chirurginių procedūrų
-                    planavimui.
-                  </p>
-                </div>
-
-                <div className={innerCard}>
-                  <h3 className="font-bold text-darkblue-700 mb-3">3D kompiuterinė tomografija (CBCT)</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Tai trimatis vaizdas, leidžiantis itin tiksliai įvertinti kaulo tūrį, tankį, nervų kanalų padėtį
-                    bei kitus anatominius ypatumus. Tai vienas svarbiausių tyrimų implantologijoje.
-                  </p>
-                </div>
-
-                <div className={innerCard}>
-                  <h3 className="font-bold text-darkblue-700 mb-3">Cefalometriniai tyrimai</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Naudojami ortodontijoje, vertinant žandikaulių santykį, augimo kryptį ir dantų pozicijas.
-                  </p>
-                </div>
-
-                <div className={innerCard}>
-                  <h3 className="font-bold text-darkblue-700 mb-3">Intraoralinis skenavimas</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Skaitmeninis dantų modeliavimas, leidžiantis sukurti itin tikslų 3D burnos vaizdą be tradicinių
-                    atspaudų. Naudojamas protezavimui ir ortodontiniam gydymui.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.section>
-
           {/* INDIKACIJOS */}
           <motion.section id="indikacijos" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
@@ -381,6 +325,62 @@ export default function RentgenologiniaiTyrimai() {
                 Dėl šių priežasčių rentgenologinė diagnostika laikoma neatsiejama tiek gydymo, tiek profilaktikos
                 dalimi.
               </p>
+            </div>
+          </motion.section>
+
+          {/* PASLAUGŲ TIPAI */}
+          <motion.section id="paslaugu-tipai" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kokie rentgenologiniai tyrimai atliekami Bangų odontologijos klinikoje?</h2>
+
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Bangų odontologijos klinikoje atliekamas platus rentgenologinių tyrimų spektras, leidžiantis tiksliai
+                įvertinti skirtingas klinikines situacijas. Tyrimo metodas parenkamas individualiai, atsižvelgiant į
+                paciento būklę ir planuojamą gydymą.
+              </p>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Dentalinės rentgeno nuotraukos</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Tai tikslinis vieno ar kelių dantų vaizdas, leidžiantis įvertinti šaknų kanalus, ėduonies
+                    pažeidimus, uždegiminius procesus ir kaulo pokyčius aplink konkretų dantį. Šis tyrimas ypač
+                    svarbus endodontiniam gydymui.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Panoraminės rentgeno nuotraukos (ortopantomogramos)</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Tai bendras viso žandikaulio vaizdas, kuriame matomi visi dantys, šaknys ir aplinkinės
+                    struktūros. Tyrimas dažnai naudojamas implantacijos, protezavimo ar chirurginių procedūrų
+                    planavimui.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-3">3D kompiuterinė tomografija (CBCT)</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Tai trimatis vaizdas, leidžiantis itin tiksliai įvertinti kaulo tūrį, tankį, nervų kanalų padėtį
+                    bei kitus anatominius ypatumus. Tai vienas svarbiausių tyrimų implantologijoje.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Cefalometriniai tyrimai</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Naudojami ortodontijoje, vertinant žandikaulių santykį, augimo kryptį ir dantų pozicijas.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Intraoralinis skenavimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Skaitmeninis dantų modeliavimas, leidžiantis sukurti itin tikslų 3D burnos vaizdą be tradicinių
+                    atspaudų. Naudojamas protezavimui ir ortodontiniam gydymui.
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.section>
 
