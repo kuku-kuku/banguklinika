@@ -708,11 +708,11 @@ export default function DantuImplantacija() {
                     </Link>
                   </div>
                 </div>
-                <div className="relative min-h-[320px] lg:min-h-full">
+                <div className="relative aspect-[4/5] bg-brand-50">
                   <img
                     src="/1.jpg"
                     alt="ALL-ON-4 implantacija"
-                    className="absolute inset-0 w-full h-full object-cover object-center"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                 </div>
               </div>
