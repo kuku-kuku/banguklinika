@@ -38,10 +38,13 @@ function CheckIcon() {
 const tocSections = [
   { id: 'kainos', label: 'Kainos' },
   { id: 'kas-yra', label: 'Kas yra kaulo priauginimas?' },
+  { id: 'priezastis', label: 'Kodėl kaulas nyksta?' },
   { id: 'kada-reikalingas', label: 'Kada reikalingas?' },
-  { id: 'medziagos', label: 'Naudojamos medžiagos' },
+  { id: 'nustatymas', label: 'Kaip nustatoma, ar būtinas?' },
   { id: 'metodai', label: 'Priauginimo metodai' },
-  { id: 'gijimas', label: 'Gijimo laikas' },
+  { id: 'medziagos', label: 'Naudojamos medžiagos' },
+  { id: 'procesas', label: 'Kaip vyksta procedūra?' },
+  { id: 'duk', label: 'Dažniausi klausimai' },
   { id: 'kodel-rinktis', label: 'Kodėl verta rinktis mus?' }
 ]
 
@@ -88,16 +91,16 @@ export default function ZandikaulioKauloPriauginimas() {
             <div>
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
                 <p className="mb-4">
-                  Žandikaulio kaulo priauginimas – tai paruošiamoji dantų implantacijos procedūra, skirta atkurti arba padidinti
-                  žandikaulio kaulo tūrį tose vietose, kur natūralaus kaulo nepakanka saugiam ir tvirtam implanto įsriegimui.
-                  Ši procedūra, dar vadinama kaulo augmentacija, leidžia sukurti tinkamas sąlygas ilgalaikiam ir stabiliam
-                  implantacijos rezultatui.
+                  Dantų implantacija yra vienas patikimiausių būdų atkurti prarastus dantis, tačiau sėkmingam
+                  implantui reikalingas pakankamas žandikaulio kaulo kiekis. Jei kaulas yra per siauras, per žemas
+                  arba sunykęs po danties netekimo, implanto įsriegimas gali būti sudėtingas arba nerekomenduojamas
+                  be papildomo paruošimo. Tokiais atvejais gali būti atliekamas žandikaulio kaulo priauginimas.
                 </p>
                 <p>
-                  Bangų odontologijos klinikoje Klaipėdoje kaulo priauginimas planuojamas individualiai, atlikus išsamią
-                  diagnostiką ir įvertinus kiekvieno paciento žandikaulio kaulo būklę. Toks individualus požiūris leidžia
-                  parinkti tinkamiausią priauginimo metodą ir užtikrinti saugų bei nuspėjamą gydymo rezultatą, atveriantį kelią
-                  sėkmingai dantų implantacijai.
+                  Bangų odontologijos klinikoje Klaipėdoje kaulo priauginimas planuojamas individualiai, įvertinus
+                  paciento burnos būklę, kaulo tūrį, būsimų implantų padėtį ir bendrą gydymo planą. Tikslas –
+                  sukurti pakankamą ir saugų pagrindą implantui, atkurti prarastą kaulo atramą ir sudaryti sąlygas
+                  ilgalaikiam dantų atkūrimo rezultatui.
                 </p>
               </div>
             </div>
@@ -193,11 +196,11 @@ export default function ZandikaulioKauloPriauginimas() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
+                <div className="relative aspect-[4/5] bg-sky-50">
                   <img
                     src="/team/Jonas-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
                 </div>
@@ -219,15 +222,57 @@ export default function ZandikaulioKauloPriauginimas() {
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Žandikaulio kaulo priauginimas, dar vadinamas kaulo augmentacija, yra chirurginė procedūra, skirta atkurti arba
-                  padidinti žandikaulio kaulo tūrį, kai planuojama dantų implantacija. Sėkmingam implanto įsitvirtinimui
-                  būtinas pakankamas kaulo storis ir aukštis, todėl kai natūralaus kaulo trūksta, jis prieš implantaciją yra
-                  papildomai priauginamas.
+                  Žandikaulio kaulo priauginimas, dar vadinamas kaulo augmentacija, yra chirurginė procedūra, kurios
+                  metu atkuriamas arba padidinamas žandikaulio kaulo tūris. Ji dažniausiai atliekama tada, kai
+                  planuojama dantų implantacija, tačiau esamo kaulo aukščio ar pločio nepakanka saugiam implanto
+                  įsriegimui.
                 </p>
                 <p>
-                  Procedūra leidžia sukurti tvirtą ir stabilų pagrindą implantui, sumažina komplikacijų riziką ir padidina
-                  tikimybę, kad implantacijos rezultatas bus ilgalaikis. Bangų odontologijos klinikoje kaulo priauginimas
-                  atliekamas kruopščiai suplanavus gydymą, atsižvelgiant į kiekvieno paciento individualią kaulo būklę.
+                  Implantas turi būti stabiliai įtvirtintas kaule. Jei kaulo per mažai, implantas gali neturėti
+                  pakankamos atramos, o tai gali padidinti komplikacijų ar nesėkmingo gydymo riziką. Todėl kaulo
+                  priauginimas implantui gali būti svarbus paruošiamasis etapas prieš implantaciją arba jos metu.
+                </p>
+                <p>
+                  Procedūros metu naudojama speciali kaulo pakaitalo medžiaga arba kiti individualiai parenkami
+                  sprendimai, padedantys atkurti trūkstamą kaulo tūrį. Laikui bėgant priauginta sritis gyja,
+                  integruojasi su paciento audiniais ir gali tapti tinkamu pagrindu implantui.
+                </p>
+                <p>
+                  Svarbu suprasti, kad žandikaulio kaulo priauginimas reikalingas ne visiems pacientams. Kai kuriais
+                  atvejais implantaciją galima atlikti be papildomo kaulo atkūrimo, tačiau tai galima tiksliai
+                  nustatyti tik atlikus diagnostiką.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* PRIEŽASTIS */}
+          <motion.section id="priezastis" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kodėl žandikaulio kaulas nyksta?</h2>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Žandikaulio kaulas yra gyvas audinys, kuris reaguoja į kramtymo krūvį. Kol burnoje yra natūralus
+                  dantis, jo šaknis perduoda kramtymo apkrovą kaului ir padeda palaikyti jo tūrį. Netekus danties,
+                  toje vietoje kaulas nebegauna įprasto mechaninio krūvio, todėl ilgainiui gali pradėti mažėti.
+                </p>
+                <p>
+                  Viena dažniausių kaulo nykimo priežasčių yra ilgą laiką neatkurtas prarastas dantis. Kuo ilgiau
+                  danties nėra, tuo didesnė tikimybė, kad kaulas toje srityje bus sumažėjęs. Dėl to implantacija
+                  vėliau gali tapti sudėtingesnė ir gali prireikti papildomų chirurginių procedūrų.
+                </p>
+                <p>
+                  Kaulo netekimą taip pat gali lemti periodonto ligos. Kai uždegimas pažeidžia dantenas ir aplink
+                  dantis esantį kaulą, dantys gali tapti paslankūs, o kaulo atrama mažėti. Tokiais atvejais prieš
+                  planuojant implantaciją svarbu įvertinti ne tik trūkstamo danties vietą, bet ir bendrą dantenų bei
+                  periodonto būklę.
+                </p>
+                <p>
+                  Žandikaulio kaulas gali būti prarandamas ir dėl traumų, cistų, infekcijų, sudėtingo danties
+                  šalinimo ar individualių anatominių savybių. Kai kurių pacientų kaulo kiekis tam tikrose
+                  žandikaulio vietose iš prigimties gali būti mažesnis, ypač viršutinio žandikaulio krūminių dantų
+                  srityje, kur arti yra žandiniai sinusai.
                 </p>
               </div>
             </div>
@@ -236,23 +281,25 @@ export default function ZandikaulioKauloPriauginimas() {
           {/* KADA REIKALINGAS */}
           <motion.section id="kada-reikalingas" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kada reikalingas kaulo priauginimas?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kada reikalingas kaulo priauginimas prieš implantaciją?</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Kaulo priauginimo procedūra atliekama tuomet, kai esamo žandikaulio kaulo nepakanka saugiam implanto
-                įsriegimui. Kaulo tūrio sumažėjimą gali lemti įvairios priežastys, todėl prieš implantaciją visuomet
-                atliekamas kruopštus kaulo būklės įvertinimas.
+                Kaulo priauginimas prieš implantaciją gali būti reikalingas tada, kai 3D tyrimas ar klinikinis
+                įvertinimas parodo, kad implantui nepakanka kaulo aukščio, pločio ar tankio. Tokiu atveju pirmiausia
+                turi būti atkuriama atrama, kuri leistų saugiai ir tiksliai suplanuoti implantą.
               </p>
 
-              <div className="space-y-4 mb-6">
-                <h3 className="font-semibold text-darkblue-700">Kaulo priauginimas gali būti būtinas, kai:</h3>
-
+              <div className="space-y-3 mb-6">
+                <h3 className="font-semibold text-darkblue-700">Kaulo priauginimas gali būti rekomenduojamas, kai:</h3>
                 <div className="grid gap-3">
                   {[
-                    'dantis buvo prarastas jau seniai, o kaulas toje vietoje ilgainiui sumažėjo',
-                    'kaulo tūrį sumažino patirta trauma',
-                    'kaulą pažeidė periodonto ligos',
-                    'kaulo tūris yra nepakankamas dėl individualių anatominių savybių'
+                    'dantis buvo prarastas seniai ir kaulas toje vietoje sunyko',
+                    'po danties šalinimo kaulas sugijo nepakankamai',
+                    'žandikaulio kaulas yra per siauras arba per žemas implantui',
+                    'buvo uždegimas, cista, trauma ar sudėtingas danties rovimas',
+                    'planuojama implantacija estetiškai svarbioje šypsenos zonoje',
+                    'reikia atkurti dantenų ir kaulo kontūrą būsimam protezavimui',
+                    '3D tyrimas rodo, kad implantui trūksta stabilios atramos',
                   ].map((text, i) => (
                     <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
                       <span className="mt-1">
@@ -264,30 +311,48 @@ export default function ZandikaulioKauloPriauginimas() {
                 </div>
               </div>
 
-              <div className="rounded-xl border border-slate-200 bg-white p-4 sm:p-5">
-                <p className="text-sm text-slate-700 leading-relaxed">
-                  <span className="font-semibold text-darkblue-700">Pastaba:</span>{' '}
-                  Tiksli kaulo priauginimo poreikio priežastis nustatoma diagnostikos metu, atlikus išsamų žandikaulio kaulo
-                  įvertinimą.
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Ne visais atvejais kaulo priauginimas yra vienintelis kelias. Kartais galima parinkti kitokį
+                  implantą, pakeisti jo padėtį arba pasirinkti alternatyvų dantų atkūrimo planą. Todėl labai svarbu,
+                  kad sprendimas būtų priimamas ne pagal bendrą prielaidą, o pagal tikslius diagnostikos duomenis.
+                </p>
+                <p>
+                  Jei kaulo trūkumas nedidelis, tam tikrais atvejais kaulo priauginimas gali būti atliekamas kartu su
+                  implantacija. Jei kaulo trūkumas didesnis, pirmiausia atliekama kaulo priauginimo procedūra,
+                  palaukiama gijimo, o implantacija planuojama vėliau.
                 </p>
               </div>
             </div>
           </motion.section>
 
-          {/* NAUDOJAMOS MEDŽIAGOS */}
-          <motion.section id="medziagos" className={sectionWrap} variants={item}>
+          {/* KAIP NUSTATOMA */}
+          <motion.section id="nustatymas" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Naudojamos medžiagos</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip nustatoma, ar kaulo priauginimas būtinas?</h2>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Kaulo priauginimui gali būti naudojamas paties paciento kaulas, paimtas iš kitos žandikaulio vietos, arba
-                  sintetiniai, donoriniai ar gyvūninės kilmės kaulo pakaitalai. Kiekviena medžiaga turi savų privalumų, todėl
-                  jos pasirinkimas priklauso nuo trūkstamo kaulo kiekio, gydymo vietos ir individualios paciento situacijos.
+                  Vien apžiūros dažnai nepakanka norint įvertinti, ar pacientui reikalingas kaulo priauginimas.
+                  Išoriškai dantenos gali atrodyti pakankamos apimties, tačiau po jomis esantis kaulas gali būti
+                  per siauras, per žemas arba netinkamos formos implantui.
                 </p>
                 <p>
-                  Naudojama medžiaga paprastai dengiama apsauginėmis membranomis, kurios apsaugo priauginamą kaulą gijimo
-                  metu ir padeda užtikrinti stabilų bei nuspėjamą rezultatą.
+                  Todėl planuojant implantaciją dažnai atliekami radiologiniai tyrimai, padedantys tiksliai
+                  įvertinti kaulo būklę. Vienas svarbiausių tyrimų yra 3D rentgeno tyrimas arba kompiuterinė
+                  tomografija. Šis tyrimas leidžia matyti kaulo aukštį, plotį, nervų eigą, sinusų padėtį ir būsimų
+                  implantų planavimo galimybes.
+                </p>
+                <p>
+                  Pagal diagnostikos duomenis gydytojas įvertina, ar implantą galima sriegti iš karto, ar reikalingas
+                  papildomas kaulo atkūrimas. Taip pat sprendžiama, ar procedūrą galima atlikti kartu su
+                  implantacija, ar geriau ją skaidyti į atskirus etapus.
+                </p>
+                <p>
+                  Toks planavimas svarbus paciento saugumui ir ilgalaikiam rezultatui. Tiksliai įvertinus kaulo
+                  tūrį, galima sumažinti komplikacijų riziką, parinkti tinkamą implantų poziciją ir suplanuoti
+                  protezavimą taip, kad atkurtas dantis būtų ne tik stabilus, bet ir estetiškai derėtų prie
+                  šypsenos.
                 </p>
               </div>
             </div>
@@ -296,64 +361,210 @@ export default function ZandikaulioKauloPriauginimas() {
           {/* METODAI */}
           <motion.section id="metodai" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Priauginimo metodai</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kokie yra žandikaulio kaulo priauginimo būdai?</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Kaulo priauginimo metodas parenkamas individualiai, atsižvelgiant į trūkstamo kaulo kiekį ir gydymo vietą
-                žandikaulyje. Bangų odontologijos klinikoje taikomi šiuolaikiniai kaulo augmentacijos metodai.
+                Žandikaulio kaulo priauginimo būdas parenkamas individualiai, įvertinus kaulo trūkumo vietą,
+                apimtį, būsimų implantų padėtį ir bendrą burnos būklę. Vieniems pacientams pakanka nedidelio kaulo
+                tūrio atkūrimo, kitiems gali reikėti sudėtingesnio pasiruošimo implantacijai.
               </p>
 
               <div className="grid gap-6 md:grid-cols-2">
                 <div className={innerCard}>
-                  <h3 className="font-bold text-darkblue-700 mb-3">Kaulo augmentacija vienos ar kelių vietų srityje</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Kaulo augmentacija vieno ar kelių dantų srityje</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Taikoma, kai kaulo trūksta vienoje ar keliose lokalizuotose žandikaulio vietose, kur planuojama implantacija.
+                    Tai vienas dažniausių kaulo priauginimo būdų, kai reikia padidinti kaulo plotį ar aukštį
+                    konkrečioje vietoje. Šis metodas taikomas tada, kai planuojamam implantui trūksta stabilios
+                    atramos, tačiau kaulo defektas nėra labai didelės apimties.
                   </p>
                 </div>
 
                 <div className={innerCard}>
-                  <h3 className="font-bold text-darkblue-700 mb-3">Alveolės išsaugojimas</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Alveolės išsaugojimas po danties šalinimo</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Atliekamas iškart po danties šalinimo, siekiant išsaugoti alveolės formą ir sumažinti natūralų kaulo
-                    nykimą.
+                    Kai dantis šalinamas ir ateityje planuojama implantacija, gali būti atliekamas alveolės
+                    išsaugojimas. Po danties pašalinimo į jo vietą įdedama kaulo pakaitalo medžiaga, padedanti
+                    sumažinti kaulo tūrio netekimą gijimo metu ir palengvinti vėlesnį implantacijos planavimą.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <h3 className="font-bold text-darkblue-700 mb-3">Sinuso dugno pakėlimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Taikomas viršutinio žandikaulio galinėje dalyje, kai dėl žandinės ertmės artumo kaulo aukštis yra
-                    nepakankamas implantacijai.
+                    Viršutinio žandikaulio krūminių dantų srityje kartais trūksta kaulo aukščio dėl arti esančio
+                    žandinio sinuso. Tokiu atveju gali būti atliekamas sinuso dugno pakėlimas – procedūra, kurios
+                    metu sukuriama daugiau vietos kaulo pakaitalui ir sudaromos sąlygos saugiam implanto įsriegimui.
                   </p>
                 </div>
 
                 <div className={innerCard}>
-                  <h3 className="font-bold text-darkblue-700 mb-3">Didesnės apimties restauravimas</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Kaulo priauginimas kartu su implantacija</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Taikomas, kai kaulo trūkumas yra ženklus ir reikalauja platesnės apimties kaulo tūrio atkūrimo prieš
-                    implantaciją.
+                    Jei kaulo trūkumas nedidelis ir galima užtikrinti pirminį implanto stabilumą, kaulo priauginimas
+                    gali būti atliekamas tos pačios procedūros metu kaip implantacija. Tai leidžia sutrumpinti
+                    gydymo eigą, tačiau toks sprendimas tinka ne visais atvejais.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Didesnės apimties kaulo atstatymas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Kai kaulo trūkumas ryškesnis, gali būti reikalingas platesnės apimties kaulo atstatymas.
+                    Tokiais atvejais gydymas dažniausiai planuojamas etapais: pirmiausia atkuriamas kaulo tūris,
+                    palaukiama gijimo, o implantacija atliekama vėliau.
                   </p>
                 </div>
               </div>
             </div>
           </motion.section>
 
-          {/* GIJIMAS */}
-          <motion.section id="gijimas" className={sectionWrap} variants={item}>
+          {/* MEDŽIAGOS */}
+          <motion.section id="medziagos" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Gijimo laikas</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kokios medžiagos naudojamos kaulo priauginimui?</h2>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Gijimo trukmė po žandikaulio kaulo priauginimo priklauso nuo procedūros apimties – ji gali svyruoti nuo
-                  kelių savaičių iki kelių mėnesių. Nedidelės apimties kaulo priauginimas dažniausiai sugyja greičiau, o
-                  platesnės apimties restauravimo atvejais reikalingas ilgesnis gijimo laikotarpis, kad priauginta kaulo
-                  medžiaga tvirtai susijungtų su esamu kaulu.
+                  Kaulo priauginimui gali būti naudojamos skirtingos medžiagos. Tinkamiausias pasirinkimas priklauso
+                  nuo kaulo trūkumo apimties, vietos, paciento sveikatos būklės, planuojamos implantacijos ir
+                  gydytojo sudaryto gydymo plano.
                 </p>
                 <p>
-                  Bangų odontologijos klinikoje kiekvienam pacientui pateikiamos aiškios rekomendacijos, padedančios užtikrinti
-                  sklandų gijimą ir sudaryti geriausias sąlygas tolimesnei implantacijai.
+                  Kai kuriais atvejais gali būti naudojamas paciento nuosavas kaulas. Jis gali būti paimamas iš
+                  kitos burnos srities ir naudojamas ten, kur reikia atkurti kaulo tūrį. Tai biologiniu požiūriu
+                  artima medžiaga, tačiau jos panaudojimas priklauso nuo konkretaus defekto ir procedūros apimties.
                 </p>
+                <p>
+                  Taip pat naudojami sintetiniai, donoriniai arba gyvūninės kilmės kaulo pakaitalai. Šios medžiagos
+                  veikia kaip atraminė struktūra, padedanti organizmui formuoti naują kaulinį audinį. Gijimo metu
+                  paciento audiniai palaipsniui integruojasi su priauginta sritimi.
+                </p>
+                <p>
+                  Dažnai naudojamos ir specialios membranos. Jos padeda apsaugoti priauginamą sritį, išlaikyti
+                  kaulo pakaitalą reikiamoje vietoje ir sudaryti geresnes sąlygas gijimui. Membranos poreikis
+                  priklauso nuo defekto dydžio ir pasirinktos procedūros.
+                </p>
+                <p>
+                  Pacientui nebūtina iš anksto žinoti visų medžiagų skirtumų. Konsultacijos metu gydytojas
+                  paaiškina, kokios medžiagos rekomenduojamos konkrečiu atveju, kodėl jos pasirenkamos ir kokio
+                  gijimo proceso galima tikėtis.
+                </p>
+                <p>
+                  Papildomai gydytojas įvertina ir paciento gijimo sąlygas: burnos higieną, rūkymo įpročius, bendrą
+                  sveikatos būklę, vartojamus vaistus ir planuojamos implantacijos laiką. Šie veiksniai gali turėti
+                  įtakos tam, kaip sklandžiai gyja priaugintas kaulas ir kada galima pereiti prie kito gydymo etapo.
+                  Todėl medžiagos pasirinkimas nėra vien techninis sprendimas – jis visada siejamas su visa gydymo
+                  eiga.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* PROCESAS */}
+          <motion.section id="procesas" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip atliekama žandikaulio kaulo priauginimo procedūra?</h2>
+
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Žandikaulio kaulo priauginimo procedūra Bangų odontologijos klinikoje planuojama nuosekliai,
+                remiantis diagnostikos duomenimis ir individualia paciento situacija. Tikslus planavimas leidžia
+                procedūrą atlikti saugiau ir numatyti tolimesnius implantacijos etapus.
+              </p>
+
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Konsultacija ir diagnostika</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Įvertinama paciento burnos būklė, trūkstamų dantų vieta, dantenos, sąkandis ir bendras gydymo
+                    poreikis. Prireikus atliekami radiologiniai tyrimai, padedantys tiksliai nustatyti kaulo
+                    trūkumo apimtį.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">3D tyrimo įvertinimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Kompiuterinės tomografijos ar kito 3D tyrimo duomenys leidžia įvertinti kaulo aukštį, plotį,
+                    nervų, sinusų ir kitų anatominių struktūrų padėtį. Šis etapas ypač svarbus planuojant saugią
+                    implantaciją.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Gydymo plano sudarymas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Pacientui paaiškinama, ar reikalingas kaulo priauginimas, koks metodas tinkamiausias ir ar
+                    implantaciją bus galima atlikti tuo pačiu metu. Aptariama ir kaulo priauginimo kaina, priklausanti
+                    nuo procedūros apimties, naudojamų medžiagų ir papildomų gydymo etapų.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Procedūros atlikimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Kaulo priauginimas atliekamas taikant vietinę nejautrą, todėl procedūros metu pacientas
+                    neturėtų jausti skausmo. Gydytojas paruošia sritį, pritaiko pasirinktą kaulo pakaitalą ar kitą
+                    medžiagą, prireikus naudoja membraną ir susiuva audinius.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">05</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Gijimo laikotarpis</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Pacientui pateikiamos aiškios rekomendacijos dėl mitybos, burnos higienos, fizinio krūvio,
+                    vaistų vartojimo ir kontrolinių vizitų. Gijimo metu svarbu laikytis gydytojo nurodymų, nerūkyti
+                    ir stebėti savijautą.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">06</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Implantacijos planavimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Kai priaugintas kaulas sugija ir yra tinkamas implantui, planuojamas kitas gydymo etapas. Kai
+                    kuriais atvejais implantacija gali būti atliekama kartu su kaulo priauginimu, tačiau jei
+                    defektas didesnis, dažniausiai laukiama kelių mėnesių.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* DUK */}
+          <motion.section id="duk" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Dažniausiai užduodami klausimai apie žandikaulio kaulo priauginimą</h2>
+
+              <div className="space-y-4">
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ar kaulo priauginimas visada būtinas prieš implantaciją?</h3>
+                  <p className="text-slate-600 text-sm">Ne visada. Kaulo priauginimas reikalingas tik tada, kai esamo kaulo kiekio nepakanka saugiam implanto įsriegimui. Jei kaulo tūris pakankamas, implantacija gali būti atliekama be papildomo priauginimo.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ar kaulo priauginimą galima atlikti kartu su implantacija?</h3>
+                  <p className="text-slate-600 text-sm">Kai kuriais atvejais taip. Jei kaulo trūkumas nedidelis ir galima užtikrinti pirminį implanto stabilumą, kaulo priauginimas gali būti atliekamas tuo pačiu metu kaip implantacija. Jei kaulo trūkumas didesnis, pirmiausia atliekamas priauginimas, o implantacija planuojama po gijimo.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ar žandikaulio kaulo priauginimas yra skausmingas?</h3>
+                  <p className="text-slate-600 text-sm">Procedūra atliekama taikant vietinę nejautrą, todėl jos metu skausmo neturėtų būti. Po procedūros gali būti patinimas, maudimas, jautrumas ar mėlynės. Tai dažniausiai yra normali gijimo dalis, kuri kontroliuojama gydytojo rekomendacijomis ir paskirtais vaistais.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Kiek laiko gyja kaulas po priauginimo?</h3>
+                  <p className="text-slate-600 text-sm">Gijimo trukmė priklauso nuo procedūros apimties, vietos, paciento sveikatos, burnos higienos ir pasirinkto metodo. Mažesni defektai gali gyti greičiau, o didesnės apimties kaulo priauginimui gali prireikti kelių mėnesių, kol bus galima planuoti implantaciją.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Kokios galimos kaulo priauginimo komplikacijos?</h3>
+                  <p className="text-slate-600 text-sm">Kaip ir po bet kurios chirurginės procedūros, galimos kaulo priauginimo komplikacijos gali būti infekcija, užsitęsęs patinimas, kraujavimas, skausmas, žaizdos gijimo sutrikimai ar nepakankama kaulo integracija. Komplikacijų riziką mažina tiksli diagnostika, tinkamas procedūros planavimas, gydytojo rekomendacijų laikymasis ir gera burnos higiena.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Nuo ko priklauso žandikaulio kaulo priauginimo kaina?</h3>
+                  <p className="text-slate-600 text-sm">Žandikaulio kaulo priauginimo kaina priklauso nuo kaulo trūkumo apimties, pasirinkto metodo, naudojamų medžiagų, procedūros sudėtingumo ir to, ar ji atliekama kartu su implantacija. Tiksli kaina nustatoma konsultacijos metu, įvertinus paciento burnos būklę ir sudarius individualų gydymo planą.</p>
+                </div>
               </div>
             </div>
           </motion.section>
@@ -367,20 +578,22 @@ export default function ZandikaulioKauloPriauginimas() {
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Renkantis žandikaulio kaulo priauginimo paslaugas svarbu ne tik pati procedūra, bet ir tai, kaip ji
-                  atliekama – nuo diagnostikos iki priežiūros po procedūros. Bangų odontologijos klinikoje kaulo priauginimas
-                  atliekamas atsakingai, siekiant maksimaliai apsaugoti paciento komfortą ir burnos sveikatą.
+                  Renkantis žandikaulio kaulo priauginimą svarbu ne tik pati chirurginė procedūra, bet ir visas
+                  pasiruošimo implantacijai procesas – nuo tikslios diagnostikos iki gijimo kontrolės ir tolimesnio
+                  dantų atkūrimo plano. Bangų odontologijos klinikoje Klaipėdoje kaulo priauginimas planuojamas
+                  individualiai, įvertinus paciento kaulo tūrį, dantenų būklę, sąkandį ir būsimų implantų padėtį.
                 </p>
                 <p>
-                  Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, neskuba priimti sprendimo ir
-                  visuomet pirmiausia ieško galimybių pasirinkti pacientui tinkamiausią gydymo kelią. Procedūra atliekama
-                  taikant šiuolaikinius metodus ir kruopščiai suplanuotą eigą. Dėmesys skiriamas ne tik pačiai procedūrai, bet
-                  ir aiškiam situacijos paaiškinimui bei rekomendacijoms po jos.
+                  Klinikoje didelis dėmesys skiriamas individualiam planavimui. Prieš pradedant gydymą atliekama
+                  išsami diagnostika, padedanti tiksliai įvertinti, ar kaulo priauginimas yra būtinas, kokio metodo
+                  gali reikėti ir kada būtų galima planuoti implantaciją. Toks požiūris leidžia pacientui aiškiai
+                  suprasti gydymo eigą, galimus etapus ir priimti informuotą sprendimą.
                 </p>
                 <p>
-                  Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis
-                  saugiai viso gydymo metu. Todėl ieškantiems patikimo ir profesionalaus žandikaulio kaulo priauginimo
-                  Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas.
+                  Bangų odontologijos klinikoje pacientui aiškiai paaiškinama, kaip vyksta procedūra, kokios
+                  medžiagos gali būti naudojamos ir ko tikėtis po kaulo priauginimo operacijos. Po gydymo
+                  suteikiamos rekomendacijos dėl gijimo, higienos, mitybos ir kontrolinių vizitų, kad būtų sudarytos
+                  kuo geresnės sąlygos sklandžiam gijimui bei tolimesniam dantų atkūrimui implantais.
                 </p>
               </div>
             </div>

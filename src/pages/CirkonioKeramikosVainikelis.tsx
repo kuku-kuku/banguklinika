@@ -38,7 +38,8 @@ function CheckIcon() {
 const tocSections = [
   { id: 'kainos', label: 'Kainos' },
   { id: 'kas-yra', label: 'Kas yra cirkonio keramikos vainikėlis?' },
-  { id: 'privalumai', label: 'Privalumai' },
+  { id: 'reikalingumas', label: 'Kada reikalingas?' },
+  { id: 'privalumai', label: 'Kodėl rinktis cirkonio keramiką?' },
   { id: 'procesas', label: 'Kaip vyksta procedūra?' },
   { id: 'trukme', label: 'Kiek laiko tarnauja?' },
   { id: 'kodel-rinktis', label: 'Kodėl verta rinktis mus?' }
@@ -87,15 +88,18 @@ export default function CirkonioKeramikosVainikelis() {
             <div>
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
                 <p className="mb-4">
-                  Bangų odontologijos klinika Klaipėdoje specializuojasi cirkonio keramikos vainikėlių gamyboje ir pritaikyme –
-                  šiuolaikiniame ir plačiai pripažintame danties atkūrimo metode. Cirkonio keramika šiandien yra viena
-                  patikimiausių medžiagų, leidžiančių atkurti pažeistą dantį taip, kad rezultatas atrodytų natūraliai ir
-                  tarnautų ilgai.
+                  Pažeistas, nusilpęs ar estetiškai pakitęs dantis gali turėti įtakos ne tik šypsenos išvaizdai,
+                  bet ir kasdieniam komfortui. Kai danties audinių nepakanka patikimam atkūrimui plomba, o norima
+                  išsaugoti jo funkciją, formą ir natūralų vaizdą, vienas dažniausiai pasirenkamų sprendimų yra
+                  cirkonio keramikos vainikėlis. Tai tvirtas, estetiškas ir šiuolaikinėje odontologijoje plačiai
+                  naudojamas danties atkūrimo būdas.
                 </p>
                 <p>
-                  Kiekvienas vainikėlis gaminamas individualiai, atsižvelgiant į paciento danties formą, spalvą ir sąkandžio
-                  ypatumus. Toks individualus požiūris leidžia pasiekti rezultatą, kuris organiškai įsilieja tarp natūralių
-                  dantų ir atkuria pilnavertę danties funkciją.
+                  Bangų odontologijos klinikoje Klaipėdoje dantų atkūrimas vainikėliais planuojamas individualiai,
+                  įvertinus paciento burnos būklę, sąkandį, danties pažeidimo mastą ir estetinius lūkesčius. Gydymo
+                  tikslas – ne tik atkurti gražią šypseną, bet ir užtikrinti, kad dantis būtų funkcionalus, patogus
+                  kramtymui ir ilgainiui tarnautų stabiliai. Tinkamai parinkta cirkonio keramika leidžia suderinti
+                  tvirtumą, natūralų vaizdą ir ilgalaikį rezultatą.
                 </p>
               </div>
             </div>
@@ -190,11 +194,11 @@ export default function CirkonioKeramikosVainikelis() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
+                <div className="relative aspect-[4/5] bg-sky-50">
                   <img
                     src="/team/Jonas-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
                 </div>
@@ -216,14 +220,78 @@ export default function CirkonioKeramikosVainikelis() {
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Cirkonio keramikos vainikėlis – tai individualiai pagaminta danties restauracija, skirta pažeistiems ar
-                  estetiškai netinkamiems dantims atkurti. Vainikėlis gaminamas iš cirkonio oksido keramikos – medžiagos,
-                  plačiai naudojamos šiuolaikinėje odontologijoje dėl jos tvirtumo ir estetinių savybių.
+                  Cirkonio keramikos vainikėlis – tai individualiai pagaminta danties restauracija, kuri uždengia
+                  pažeistą, nusilpusį ar estetiškai netinkamą dantį ir atkuria jo formą, spalvą, tvirtumą bei
+                  kramtymo funkciją. Vainikėlis gali būti tvirtinamas ant paruošto natūralaus danties arba, tam
+                  tikrais atvejais, ant implanto.
                 </p>
                 <p>
-                  Toks vainikėlis pilnai uždengia danties karūnėlę, atkurdamas tiek jos formą ir funkciją, tiek natūralią
-                  išvaizdą. Kiekvienas vainikėlis gaminamas individualiai pagal paciento danties parametrus, todėl rezultatas
-                  yra tikslus, patogus ir vizualiai harmoningas su likusiais dantimis.
+                  Šiuolaikinėje odontologijoje cirkonio oksido keramika vertinama dėl savo patvarumo, tikslumo ir
+                  estetikos. Tai bemetalė medžiaga, todėl cirkonio oksido keramikos vainikėlis neturi metalinio
+                  karkaso ir atrodo natūraliau, ypač ties dantenų kraštu. Dėl šios priežasties jis dažnai
+                  pasirenkamas tiek priekinių, tiek šoninių dantų atkūrimui.
+                </p>
+                <p>
+                  Pacientai šią restauraciją kartais vadina cirkonio karūnėlėmis arba cirkonio dantų karūnėlėmis.
+                  Kasdienėje kalboje šie terminai vartojami gana dažnai, tačiau odontologijoje tikslesnis
+                  pavadinimas yra cirkonio keramikos vainikėlis. Nepriklausomai nuo vartojamo termino, kalbama apie
+                  individualiai pritaikytą restauraciją, kurios tikslas – atkurti danties funkciją, estetiką ir
+                  apsaugoti likusius danties audinius.
+                </p>
+                <p>
+                  Cirkonio keramikos vainikėliai gaminami atsižvelgiant į paciento dantų formą, spalvą, sąkandį ir
+                  bendrą šypsenos vaizdą. Tinkamai pritaikytas vainikėlis vizualiai dera prie kitų dantų, nekelia
+                  diskomforto ir leidžia pacientui patogiai kramtyti, kalbėti bei šypsotis.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* REIKALINGUMAS */}
+          <motion.section id="reikalingumas" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kada reikalingas cirkonio keramikos vainikėlis?</h2>
+
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Cirkonio keramikos vainikėlis rekomenduojamas tada, kai natūralaus danties audinių nepakanka
+                patikimam ir ilgalaikiam atkūrimui paprasta plomba. Tokiais atvejais vainikėlis padeda apsaugoti
+                likusią danties struktūrą, atkurti jo funkciją ir sumažinti tolimesnio skilimo ar lūžio riziką.
+              </p>
+
+              <div className="space-y-3 mb-6">
+                <h3 className="font-semibold text-darkblue-700">Cirkonio keramikos vainikėlis gali būti reikalingas, kai:</h3>
+                <div className="grid gap-3">
+                  {[
+                    'dantis yra stipriai pažeistas ėduonies ar traumos',
+                    'dantis yra nulūžęs, įskilęs ar stipriai nusidėvėjęs',
+                    'po šaknų kanalų gydymo dantis tapo silpnesnis',
+                    'yra didelė sena plomba, kuri nebeužtikrina stabilumo',
+                    'reikia atkurti danties formą, spalvą ar estetinį vaizdą',
+                    'atkuriamas dantis ant implanto',
+                    'seni vainikėliai nebeatitinka funkcinių ar estetinių poreikių',
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                      <span className="mt-1">
+                        <CheckIcon />
+                      </span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Svarbu suprasti, kad kiekvienas atvejis vertinamas individualiai. Kartais pacientui gali pakakti
+                  įkloto, užkloto ar kito mažiau invazyvaus sprendimo, o kitais atvejais cirkonio oksido keramikos
+                  vainikėlis yra saugiausias ir ilgaamžiškiausias pasirinkimas. Todėl prieš pradedant gydymą
+                  atliekama apžiūra, įvertinama danties būklė ir aptariamos visos galimos alternatyvos.
+                </p>
+                <p>
+                  Laiku pasirinktas tinkamas danties atkūrimo būdas padeda išvengti sudėtingesnių problemų
+                  ateityje. Jei silpnas ar stipriai pažeistas dantis ilgą laiką paliekamas neatkurtas, gali didėti
+                  jo skilimo, infekcijos ar net pašalinimo rizika. Tinkamai suplanuotas vainikėlis padeda išsaugoti
+                  dantį ir užtikrinti stabilesnę burnos sveikatą.
                 </p>
               </div>
             </div>
@@ -232,27 +300,38 @@ export default function CirkonioKeramikosVainikelis() {
           {/* PRIVALUMAI */}
           <motion.section id="privalumai" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Privalumai</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kodėl verta rinktis cirkonio keramiką?</h2>
 
-              <p className="text-slate-700 leading-relaxed mb-6">
-                Cirkonio keramika pasižymi eile savybių, dėl kurių ji tapo vienu populiariausių pasirinkimų atkuriant dantis –
-                tiek estetiniu, tiek funkciniu požiūriu.
-              </p>
-
-              <div className="grid gap-3 sm:grid-cols-2">
-                {[
-                  'tvirtumas – medžiaga atspari kramtymo apkrovoms ir kasdieniam naudojimui',
-                  'natūrali išvaizda – vainikėlis vizualiai beveik nesiskiria nuo natūralaus danties',
-                  'biologinis suderinamumas – medžiaga gerai priimama organizmo ir dantenų audinių',
-                  'be metalinio karkaso – nėra pilkšvo kraštelio prie dantenos, kaip būna su metaline keramika',
-                ].map((text, i) => (
-                  <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
-                    <span className="mt-1">
-                      <CheckIcon />
-                    </span>
-                    <span className="text-slate-700">{text}</span>
-                  </div>
-                ))}
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Cirkonio keramika yra viena pažangiausių medžiagų, naudojamų šiuolaikiniame dantų protezavime.
+                  Ji pasižymi dideliu tvirtumu, atsparumu nusidėvėjimui ir estetišku vaizdu, todėl tinka
+                  pacientams, kurie ieško patikimo ilgalaikio sprendimo.
+                </p>
+                <p>
+                  Vienas svarbiausių cirkonio keramikos privalumų – natūrali išvaizda. Cirkonio oksido keramika
+                  leidžia atkurti danties formą ir spalvą taip, kad restauracija harmoningai derėtų prie kitų
+                  dantų. Tai ypač aktualu atkuriant priekinius ar šypsenos zonoje esančius dantis, kur estetinis
+                  tikslumas yra labai svarbus.
+                </p>
+                <p>
+                  Lyginant su metalo keramika, cirkonio keramikos vainikėlis neturi metalinio karkaso, todėl ties
+                  dantenomis neatsiranda pilkšvo kraštelio. Tai leidžia pasiekti natūralesnį estetinį rezultatą ir
+                  išvengti vizualinio kontrasto, kuris kartais pastebimas naudojant senesnio tipo restauracijas.
+                </p>
+                <p>
+                  Cirkonio oksido keramika taip pat yra biologiškai suderinama, todėl gerai toleruojama burnos
+                  audinių. Tinkamai pagamintas ir pritaikytas vainikėlis yra lygus, tiksliai priglunda prie danties
+                  ir padeda sumažinti apnašų kaupimosi riziką. Dėl šių savybių cirkonio karūnėlės dažnai
+                  pasirenkamos pacientų, kuriems svarbu ne tik gražus rezultatas, bet ir patogumas kasdienėje
+                  burnos priežiūroje.
+                </p>
+                <p>
+                  Ši medžiaga tinka tiek pavieniams vainikėliams, tiek sudėtingesniems protezavimo sprendimams. Ji
+                  gali būti naudojama atkuriant priekinius dantis, kuriems svarbiausia estetika, ir krūminius
+                  dantis, kuriems tenka didesnis kramtymo krūvis. Tinkamai parinkta restauracija padeda suderinti
+                  estetinį vaizdą, funkcionalumą ir ilgalaikį patvarumą.
+                </p>
               </div>
             </div>
           </motion.section>
@@ -260,20 +339,22 @@ export default function CirkonioKeramikosVainikelis() {
           {/* PROCESAS */}
           <motion.section id="procesas" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip vyksta procedūra?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip gaminamas ir uždedamas cirkonio keramikos vainikėlis?</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Cirkonio keramikos vainikėlio gamyba ir pritaikymas Bangų odontologijos klinikoje vyksta pagal aiškią eigą,
-                apimančią kelis pagrindinius etapus – nuo diagnostikos iki galutinio vainikėlio pritaikymo.
+                Cirkonio keramikos vainikėlio gamyba ir pritaikymas Bangų odontologijos klinikoje atliekami pagal
+                aiškią, pacientui suprantamą eigą. Kiekvienas etapas svarbus tam, kad galutinis rezultatas būtų
+                tikslus, patogus ir ilgaamžis.
               </p>
 
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Diagnostika</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Diagnostika ir gydymo plano sudarymas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Pirmiausia įvertinama danties ir aplinkinių audinių būklė, nustatoma, ar vainikėlis yra tinkamiausias
-                    sprendimas, ir suplanuojama tolimesnė gydymo eiga.
+                    Atliekama klinikinė apžiūra, įvertinama danties būklė, sąkandis, aplinkiniai audiniai ir
+                    paciento lūkesčiai. Aptariama, ar konkrečiu atveju tinkamiausias sprendimas yra cirkonio
+                    keramikos vainikėlis.
                   </p>
                 </div>
 
@@ -281,25 +362,35 @@ export default function CirkonioKeramikosVainikelis() {
                   <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
                   <h3 className="font-bold text-darkblue-700 mb-2">Danties paruošimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Dantis atsargiai apdirbamas, suteikiant jam formą, reikalingą tolygiai ir tvirtai užsidėti vainikėliui.
+                    Pašalinami pažeisti ar nepatikimi audiniai, dantis suformuojamas taip, kad vainikėlis galėtų
+                    tiksliai priglusti. Procedūros metu taikoma vietinė nejautra, todėl pacientas nejaučia skausmo.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Skaitmeninis skenavimas</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Skaitmeninis skenavimas arba atspaudas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Paruošto danties duomenys nuskaitomi skaitmeniniu būdu, kad vainikėlis būtų pagamintas tiksliai pagal
-                    paciento danties formą ir sąkandį.
+                    Paruošus dantį, užfiksuojama tiksli jo forma naudojant skaitmeninį skenavimą arba tradicinį
+                    atspaudą. Tikslūs duomenys leidžia pagaminti individualų vainikėlį.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Gamyba ir pritaikymas</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Vainikėlio gamyba</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Vainikėlis pagaminamas pagal individualius parametrus ir pritaikomas burnoje, atliekant reguliarią
-                    priežiūrą, kad rezultatas būtų patogus ir ilgaamžis.
+                    Pagal surinktus duomenis gaminamas cirkonio oksido keramikos vainikėlis. Jo spalva, forma ir
+                    dydis parenkami taip, kad restauracija harmoningai derėtų prie kitų dantų.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">05</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Pritaikymas, fiksavimas ir rekomendacijos</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Pagamintas vainikėlis pamatuojamas, įvertinamas jo prigludimas, spalva ir paciento pojūtis.
+                    Po fiksavimo pacientui paaiškinama, kaip prižiūrėti restauraciją ir kada atvykti apžiūrai.
                   </p>
                 </div>
               </div>
@@ -309,17 +400,33 @@ export default function CirkonioKeramikosVainikelis() {
           {/* TRUKME */}
           <motion.section id="trukme" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kiek laiko tarnauja vainikėlis?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kiek laiko tarnauja cirkonio keramikos vainikėlis?</h2>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Tinkamai pagamintas cirkonio keramikos vainikėlis tarnauja daugelį metų, jei laikomasi tinkamos burnos
-                  higienos ir vengiama žalingų įpročių. Reguliari priežiūra ir atsakingas požiūris į kasdienę burnos higieną
-                  leidžia išlaikyti vainikėlio funkciją ir estetiką ilgą laiką.
+                  Cirkonio keramikos vainikėlio tarnavimo laikas priklauso nuo kelių svarbių veiksnių: danties
+                  būklės, restauracijos tikslumo, sąkandžio, paciento burnos higienos įpročių ir reguliarios
+                  profilaktinės priežiūros. Tinkamai pagamintas ir prižiūrimas vainikėlis gali tarnauti daugelį
+                  metų.
                 </p>
                 <p>
-                  Vainikėlio ilgaamžiškumas taip pat priklauso nuo bendros burnos sveikatos, todėl svarbu reguliariai
-                  apsilankyti pas odontologą profilaktinių apžiūrų metu.
+                  Cirkonio karūnėlės priežiūra nėra sudėtinga, tačiau ji turi būti nuosekli. Vainikėlį, kaip ir
+                  natūralius dantis, reikia valyti du kartus per dieną, naudoti tarpdančių siūlą, tarpdančių
+                  šepetėlius ar kitas specialisto rekomenduotas priemones. Taip pat svarbu reguliariai atlikti
+                  profesionalią burnos higieną ir profilaktinius patikrinimus.
+                </p>
+                <p>
+                  Nors cirkonio keramika yra tvirta ir atspari, svarbu vengti žalingų įpročių, pavyzdžiui, dantimis
+                  nekramtyti labai kietų daiktų, neatidarinėti pakuočių ar nekąsti nagų. Jei pacientas griežia
+                  dantimis, gali būti rekomenduojama apsauginė kapa nakčiai, padedanti sumažinti vainikėlio ir
+                  natūralių dantų apkrovą.
+                </p>
+                <p>
+                  Tiksli cirkonio keramikos vainikėlio kaina priklauso nuo individualios situacijos – danties
+                  paruošimo, papildomo gydymo poreikio, vainikėlio tipo ir pasirinktos technologijos. Galutinė
+                  kaina aptariama konsultacijos metu, kai įvertinama konkreti klinikinė situacija ir sudaromas
+                  aiškus gydymo planas. Laikantis odontologo rekomendacijų, cirkonio keramikos vainikėlis išlieka
+                  stabilus, estetiškas ir patogus kasdienėje veikloje.
                 </p>
               </div>
             </div>
@@ -334,19 +441,22 @@ export default function CirkonioKeramikosVainikelis() {
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Renkantis cirkonio keramikos vainikėlį svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo
-                  sprendimo priėmimo iki priežiūros po procedūros. Bangų odontologijos klinikoje vainikėliai gaminami
-                  atsakingai, siekiant maksimaliai apsaugoti paciento komfortą ir burnos sveikatą.
+                  Renkantis cirkonio keramikos vainikėlį svarbu ne tik estetiškas galutinis rezultatas, bet ir
+                  visas danties atkūrimo procesas – nuo pirmos konsultacijos iki galutinio vainikėlio pritaikymo.
+                  Bangų odontologijos klinikoje Klaipėdoje dantų atkūrimas atliekamas taikant šiuolaikinius,
+                  pacientui patogius sprendimus, leidžiančius suderinti natūralų vaizdą, tvirtumą ir ilgalaikį
+                  funkcionalumą.
                 </p>
                 <p>
-                  Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, neskuba priimti sprendimo ir
-                  visuomet ieško rezultato, kuris atrodytų natūraliai ir tarnautų ilgai. Dėmesys skiriamas ne tik pačiai
-                  procedūrai, bet ir aiškiam situacijos paaiškinimui bei rekomendacijoms po jos.
+                  Klinikoje didelis dėmesys skiriamas individualiam planavimui. Prieš pradedant gydymą įvertinama
+                  danties būklė, sąkandis, aplinkiniai audiniai ir paciento lūkesčiai. Toks požiūris leidžia
+                  aiškiai suprasti, ar cirkonio keramikos vainikėlis yra tinkamiausias sprendimas, ir priimti
+                  informuotą sprendimą dėl gydymo.
                 </p>
                 <p>
-                  Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis
-                  saugiai viso gydymo metu. Todėl ieškantiems patikimo ir profesionalaus cirkonio keramikos vainikėlio
-                  Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas.
+                  Bangų odontologijos klinikoje specialistai skiria laiko paciento klausimams, aiškiai paaiškina
+                  kiekvieną gydymo etapą ir užtikrina atsakingą požiūrį į ilgalaikį rezultatą. Pacientai vertina
+                  profesionalų bendravimą, komfortą procedūros metu ir natūraliai atrodantį galutinį rezultatą.
                 </p>
               </div>
             </div>

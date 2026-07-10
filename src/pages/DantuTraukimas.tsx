@@ -194,11 +194,11 @@ export default function DantuTraukimas() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
+                <div className="relative aspect-[4/5] bg-sky-50">
                   <img
                     src="/team/Jonas-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
                 </div>

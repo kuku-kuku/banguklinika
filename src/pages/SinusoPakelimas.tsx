@@ -38,8 +38,12 @@ function CheckIcon() {
 const tocSections = [
   { id: 'kainos', label: 'Kainos' },
   { id: 'kas-yra', label: 'Kas yra sinuso pakėlimas?' },
+  { id: 'priezastis', label: 'Kodėl gali prireikti?' },
+  { id: 'kada', label: 'Kada atliekamas?' },
   { id: 'budai', label: 'Procedūros būdai' },
+  { id: 'procesas', label: 'Kaip vyksta procedūra?' },
   { id: 'gijimas', label: 'Gijimas ir rekomendacijos' },
+  { id: 'duk', label: 'Dažniausi klausimai' },
   { id: 'kodel-rinktis', label: 'Kodėl verta rinktis mus?' }
 ]
 
@@ -86,14 +90,16 @@ export default function SinusoPakelimas() {
             <div>
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
                 <p className="mb-4">
-                  Sinuso pakėlimas yra chirurginė procedūra, skirta viršutinio žandikaulio kaulo augmentacijai. Ji atliekama tais
-                  atvejais, kai tarp burnos ertmės ir žandinio sinuso nepakanka kaulo aukščio, o tai trukdo saugiai ir patikimai
-                  atlikti dantų implantaciją.
+                  Dantų implantacija viršutinio žandikaulio krūminių ir prieškrūminių dantų srityje kartais
+                  reikalauja papildomo pasiruošimo. Viena dažniausių priežasčių – nepakankamas kaulo aukštis tarp
+                  burnos ertmės ir žandinio sinuso. Tokiu atveju implantui gali trūkti stabilios atramos, todėl
+                  prieš implantaciją arba jos metu gali būti atliekamas sinuso pakėlimas.
                 </p>
                 <p>
-                  Bangų odontologijos klinikoje Klaipėdoje sinuso pakėlimas atliekamas kruopščiai suplanuotai, atsižvelgiant į
-                  individualią paciento kaulo struktūrą ir bendrą burnos sveikatos būklę. Tinkamai atlikta procedūra sukuria
-                  tvirtą pagrindą sėkmingai implantacijai ir ilgalaikiam gydymo rezultatui.
+                  Bangų odontologijos klinikoje Klaipėdoje sinuso pakėlimo poreikis vertinamas individualiai,
+                  remiantis paciento burnos būkle, 3D tyrimo duomenimis, planuojamų implantų padėtimi ir bendru
+                  dantų atkūrimo planu. Tikslas – saugiai sukurti pakankamą kaulo aukštį implantui ir sudaryti
+                  sąlygas ilgalaikiam, funkcionaliam dantų atkūrimui.
                 </p>
               </div>
             </div>
@@ -186,11 +192,11 @@ export default function SinusoPakelimas() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
+                <div className="relative aspect-[4/5] bg-sky-50">
                   <img
                     src="/team/Jonas-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
                 </div>
@@ -212,16 +218,87 @@ export default function SinusoPakelimas() {
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Sinuso pakėlimas – tai chirurginė procedūra, skirta viršutinio žandikaulio kaulo augmentacijai. Ji atliekama
-                  tuomet, kai kaulo aukštis tarp burnos ertmės ir žandinio sinuso yra nepakankamas, o tai trukdo saugiai atlikti
-                  dantų implantaciją. Nepakankamas kaulo kiekis šioje srityje dažniausiai susijęs su ilgalaikiu dantų nebuvimu,
-                  dėl kurio kaulinis audinys palaipsniui rezorbuojasi.
+                  Sinuso pakėlimas – tai chirurginė kaulo priauginimo procedūra, atliekama viršutinio žandikaulio
+                  šoninių dantų srityje. Jos metu atsargiai pakeliama žandinio sinuso gleivinė, o po ja suformuota
+                  ertmė užpildoma kaulo pakaitalo medžiaga. Taip sukuriamas papildomas kaulo aukštis, reikalingas
+                  saugiam dantų implantų įsriegimui.
                 </p>
                 <p>
-                  Procedūros metu žandinio sinuso dugno membrana atsargiai pakeliama, o susidariusi erdvė užpildoma kaulą
-                  atkuriančia medžiaga. Taip sukuriamas pakankamas kaulo aukštis, leidžiantis vėliau saugiai ir stabiliai
-                  įtvirtinti dantų implantą. Sinuso pakėlimas yra dažnai atliekamas kaip parengiamasis etapas prieš implantaciją
-                  arba tuo pačiu metu su ja, priklausomai nuo turimo kaulo kiekio.
+                  Žandiniai sinusai yra viršutinio žandikaulio srityje esančios ertmės, susijusios su nosies ertme.
+                  Kai viršutiniai krūminiai ar prieškrūminiai dantys prarandami, po sinusu esantis kaulas ilgainiui
+                  gali mažėti. Dėl to atstumas tarp burnos ertmės ir sinuso dugno tampa per mažas implantui.
+                </p>
+                <p>
+                  Sinuso pakėlimas nėra reikalingas visiems pacientams. Jis atliekamas tik tais atvejais, kai
+                  diagnostika parodo, kad natūralaus kaulo aukščio nepakanka implantui stabiliai įtvirtinti. Kai
+                  kaulo pakanka, implantacija gali būti atliekama be papildomo sinuso dugno pakėlimo.
+                </p>
+                <p>
+                  Ši procedūra yra viena iš kaulo augmentacijos rūšių. Ji padeda pasiruošti implantacijai
+                  viršutiniame žandikaulyje, kai dėl anatominių savybių, dantų netekimo ar kaulo nykimo implantui
+                  trūksta tinkamos atramos.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* PRIEŽASTIS */}
+          <motion.section id="priezastis" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kodėl prieš implantaciją gali prireikti sinuso pakėlimo?</h2>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Pagrindinė priežastis, dėl kurios gali prireikti sinuso pakėlimo prieš implantaciją, yra
+                  nepakankamas viršutinio žandikaulio kaulo aukštis. Implantas turi būti įsriegiamas į kaulą taip,
+                  kad būtų stabilus ir galėtų atlaikyti kramtymo krūvį. Jei kaulo per mažai, implantą sriegti gali
+                  būti nesaugu arba neįmanoma be papildomo paruošimo.
+                </p>
+                <p>
+                  Kaulo aukštis viršutinio žandikaulio šoninėje srityje dažnai mažėja netekus dantų. Kai dantis
+                  pašalinamas ir jo vieta ilgą laiką neatkuriama, kaulas nebegauna įprasto kramtymo krūvio, todėl
+                  pradeda nykti. Tuo pačiu metu sinusas gali būti arti būsimos implantacijos vietos arba laikui
+                  bėgant dar labiau priartėti prie žandikaulio keteros.
+                </p>
+                <p>
+                  Sinuso pakėlimo gali prireikti ir dėl individualios anatomijos. Kai kurių pacientų žandiniai
+                  sinusai natūraliai yra didesni arba jų dugnas yra žemiau, todėl net ir neseniai netekus danties
+                  implantacijai gali trūkti kaulo aukščio.
+                </p>
+                <p>
+                  Papildomas pasiruošimas gali būti reikalingas ir po sudėtingo danties šalinimo, uždegimų,
+                  infekcijų ar ilgesnio išimamų protezų nešiojimo. Tokiais atvejais kaulas gali būti praradęs dalį
+                  tūrio, todėl implantaciją būtina planuoti atsargiai.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* KADA ATLIEKAMAS */}
+          <motion.section id="kada" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kada atliekamas sinuso pakėlimas?</h2>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Sinuso pakėlimas gali būti rekomenduojamas tada, kai planuojama dantų implantacija viršutinio
+                  žandikaulio krūminių ar prieškrūminių dantų srityje, tačiau 3D tyrimas parodo, kad kaulo aukščio
+                  implantui nepakanka. Tai dažniausiai nustatoma konsultacijos ir radiologinio tyrimo metu.
+                </p>
+                <p>
+                  Procedūra gali būti reikalinga, kai ilgą laiką trūksta vieno ar kelių viršutinių šoninių dantų.
+                  Kuo ilgiau dantis neatkurtas, tuo didesnė tikimybė, kad kaulas toje vietoje bus sumažėjęs. Dėl to
+                  vėliau planuojama implantacija gali reikalauti papildomo kaulo priauginimo.
+                </p>
+                <p>
+                  Sinuso pakėlimas taip pat gali būti atliekamas, kai pacientas nori atkurti viršutinius krūminius
+                  dantis implantais, tačiau žandinis sinusas yra arti būsimo implanto vietos. Tokiu atveju procedūra
+                  leidžia sukurti daugiau kaulo aukščio ir saugiai suplanuoti implantą.
+                </p>
+                <p>
+                  Kartais sinuso dugno pakėlimas reikalingas po sudėtingo danties šalinimo, kai pašalinus dantį
+                  lieka mažai kaulo arba gijimo metu jo tūris sumažėja. Tokiais atvejais gydytojas įvertina, ar
+                  implantaciją galima atlikti iš karto, ar pirmiausia reikalingas paruošiamasis etapas.
                 </p>
               </div>
             </div>
@@ -230,31 +307,149 @@ export default function SinusoPakelimas() {
           {/* PROCEDŪROS BŪDAI */}
           <motion.section id="budai" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Procedūros būdai</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kokie yra sinuso pakėlimo būdai?</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Sinuso pakėlimas gali būti atliekamas dviem pagrindiniais metodais. Tinkamiausias būdas parenkamas individualiai,
-                atsižvelgiant į trūkstamo kaulo kiekį ir žandinio sinuso būklę.
+                Sinuso pakėlimo būdas parenkamas pagal tai, kiek kaulo trūksta, kiek implantų planuojama sriegti ir
+                ar implantaciją galima atlikti tos pačios procedūros metu. Dažniausiai taikomi du pagrindiniai
+                metodai – uždaras ir atviras sinuso pakėlimas.
               </p>
 
               <div className="grid gap-6 md:grid-cols-2">
                 <div className={innerCard}>
                   <h3 className="font-bold text-darkblue-700 mb-3">Uždaras sinuso pakėlimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Uždaras sinuso pakėlimas taikomas tuomet, kai kaulo trūkumas nėra didelis. Šis metodas dažnai atliekamas
-                    kartu su implantacija – per tą pačią implanto vietos preparaciją atsargiai pakeliama sinuso dugno membrana ir
-                    suformuojamas papildomas kaulo tūris. Toks būdas leidžia sutrumpinti bendrą gydymo laiką, nes implantas gali
-                    būti įsodinamas iš karto arba po trumpo gijimo laikotarpio.
+                    Uždaras sinuso pakėlimas dažniausiai taikomas tada, kai kaulo trūkumas nėra didelis. Procedūra
+                    atliekama per implantui paruoštą vietą, todėl ji paprastai yra mažiau invazyvi nei atviras
+                    metodas. Šis būdas dažnai gali būti atliekamas kartu su implantacija, jei esamo kaulo pakanka
+                    pirminiam implanto stabilumui. Procedūros metu sinuso dugnas švelniai pakeliamas, o susidariusi
+                    vieta užpildoma kaulo pakaitalo medžiaga.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <h3 className="font-bold text-darkblue-700 mb-3">Atviras sinuso pakėlimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Atviras sinuso pakėlimas atliekamas tuomet, kai reikalingas didesnis kaulo atkūrimas. Procedūros metu
-                    žandikaulio šoninėje sienelėje suformuojama nedidelė prieiga, per kurią atsargiai pakeliama sinuso dugno
-                    membrana ir suformuojama erdvė, užpildoma kaulą atkuriančia medžiaga. Kadangi atkuriamas didesnis kaulo
-                    kiekis, šis metodas paprastai reikalauja ilgesnio gijimo laikotarpio prieš atliekant implantaciją.
+                    Atviras sinuso pakėlimas taikomas tada, kai kaulo aukščio trūksta daugiau ir reikalingas
+                    didesnės apimties kaulo atkūrimas. Tokiu atveju gydytojas suformuoja nedidelį priėjimą
+                    viršutinio žandikaulio šoninėje sienelėje, atsargiai pakelia sinuso gleivinę ir po ja įdeda
+                    kaulo pakaitalo medžiagą. Šis metodas leidžia atkurti didesnį kaulo tūrį, tačiau dažniausiai
+                    reikalauja ilgesnio gijimo laikotarpio. Kai kuriais atvejais implantai gali būti įsriegiami tos
+                    pačios procedūros metu, tačiau jei kaulo trūkumas didelis, implantacija dažniausiai planuojama
+                    po kelių mėnesių.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Sinuso pakėlimas kartu su implantacija</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Kai situacija leidžia, sinuso pakėlimas gali būti atliekamas tuo pačiu metu kaip implantacija.
+                    Toks sprendimas gali sutrumpinti bendrą gydymo trukmę, tačiau jis tinkamas ne visiems
+                    pacientams. Svarbiausia sąlyga – pakankamas pirminis implanto stabilumas.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Sinuso pakėlimas kaip atskiras etapas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Jei kaulo trūkumas didesnis, pirmiausia atliekamas sinuso pakėlimas, leidžiama kaului sugyti, o
+                    implantacija planuojama vėliau. Toks etapinis gydymas gali užtrukti ilgiau, tačiau kai kuriais
+                    atvejais jis yra saugesnis ir labiau prognozuojamas.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* PROCESAS */}
+          <motion.section id="procesas" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip atliekama sinuso pakėlimo procedūra?</h2>
+
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Sinuso pakėlimo procedūra planuojama etapais, nes tikslus pasiruošimas padeda saugiai įvertinti
+                kaulo kiekį, sinuso padėtį ir būsimos implantacijos galimybes.
+              </p>
+
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Konsultacija ir pirminis įvertinimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Gydytojas įvertina paciento burnos būklę, trūkstamų dantų vietą, dantenų ir kaulo būklę, taip
+                    pat aptaria paciento lūkesčius dėl dantų atkūrimo implantais. Šiame etape svarbu suprasti, ar
+                    sinuso pakėlimas apskritai gali būti reikalingas.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">3D tyrimas ir sinuso anatomijos įvertinimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Atliekamas 3D rentgeno tyrimas arba kompiuterinė tomografija. Šis tyrimas leidžia tiksliai
+                    įvertinti kaulo aukštį, sinuso dugno padėtį, sinuso anatomiją ir būsimų implantų planavimo
+                    galimybes.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Individualaus gydymo plano sudarymas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Pagal diagnostikos duomenis sudaromas gydymo planas. Pacientui paaiškinama, ar reikalingas
+                    uždaras, ar atviras sinuso pakėlimas, ar procedūrą galima atlikti kartu su implantacija, kiek
+                    gali trukti gijimas ir kokie bus tolimesni gydymo etapai.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Vietinė nejautra</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Pati procedūra atliekama taikant vietinę nejautrą, todėl jos metu pacientas neturėtų jausti
+                    skausmo. Prireikus gydytojas papildomai paaiškina, kokių pojūčių galima tikėtis procedūros metu
+                    ir po jos.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">05</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Sinuso gleivinės pakėlimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Priklausomai nuo pasirinkto metodo, gydytojas pasiekia sinuso dugną per implantui paruoštą vietą
+                    arba per nedidelį priėjimą viršutinio žandikaulio šoninėje sienelėje. Tuomet sinuso gleivinė
+                    atsargiai pakeliama, kad būtų sukurta vieta kaulo pakaitalui.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">06</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Kaulo pakaitalo pritaikymas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Po pakelta sinuso gleivine įdedama pasirinkta kaulo pakaitalo medžiaga. Jei reikia, naudojama
+                    speciali membrana, padedanti apsaugoti priauginamą sritį ir sudaryti geresnes sąlygas gijimui.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">07</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Žaizdos susiuvimas ir pirminės rekomendacijos</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Po procedūros audiniai susiuvami, o pacientui suteikiamos aiškios rekomendacijos dėl gijimo.
+                    Pirmomis dienomis gali būti patinimas, maudimas, jautrumas, nedidelis kraujavimas iš nosies ar
+                    kraujosruvos – tai dažniausiai normali reakcija, tačiau simptomams stiprėjant būtina kreiptis į
+                    gydytoją.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">08</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Gijimo kontrolė ir implantacijos planavimas</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Gijimo trukmė priklauso nuo procedūros apimties, paciento sveikatos ir pasirinkto gydymo plano.
+                    Kai implantas įsriegiamas tos pačios procedūros metu, tolimesnis gydymas planuojamas pagal
+                    implanto gijimą. Jei implantacija atidedama, ji dažniausiai planuojama tik tada, kai priaugintas
+                    kaulas pakankamai sugija.
                   </p>
                 </div>
               </div>
@@ -264,16 +459,14 @@ export default function SinusoPakelimas() {
           {/* GIJIMAS IR REKOMENDACIJOS */}
           <motion.section id="gijimas" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Gijimas ir rekomendacijos</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Priežiūra po sinuso pakėlimo</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Po sinuso pakėlimo operuotai sričiai reikalingas ramus ir kontroliuojamas gijimo laikotarpis. Norint išvengti
-                papildomo slėgio operuotoje srityje ir sudaryti geriausias sąlygas gijimui, pacientams rekomenduojama laikinai
-                vengti tam tikros veiklos.
+                Po sinuso pakėlimo ypač svarbu saugoti operuotą sritį nuo staigių slėgio pokyčių. Gijimo laikotarpiu
+                dažniausiai rekomenduojama nepūsti nosies stipriai, čiaudėti atvira burna ir vengti šių dalykų:
               </p>
 
               <div className="space-y-3">
-                <h3 className="font-semibold text-darkblue-700 mb-2">Po procedūros rekomenduojama vengti:</h3>
                 {[
                   'nardymo',
                   'skrydžių lėktuvu',
@@ -291,9 +484,44 @@ export default function SinusoPakelimas() {
               </div>
 
               <p className="text-slate-700 leading-relaxed mt-6">
-                Šių rekomendacijų laikymasis padeda išvengti spaudimo pokyčių, kurie gali pakenkti operuotai sričiai, ir
-                užtikrina sklandų bei saugų gijimo procesą.
+                Taip pat svarbu vartoti paskirtus vaistus, laikytis mitybos bei burnos higienos rekomendacijų ir
+                atvykti į kontrolinius vizitus. Šių rekomendacijų laikymasis padeda išvengti spaudimo pokyčių,
+                kurie gali pakenkti operuotai sričiai, ir užtikrina sklandų bei saugų gijimo procesą.
               </p>
+            </div>
+          </motion.section>
+
+          {/* DUK */}
+          <motion.section id="duk" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Dažniausiai užduodami klausimai apie sinuso pakėlimą</h2>
+
+              <div className="space-y-4">
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ar sinuso pakėlimas yra skausmingas?</h3>
+                  <p className="text-slate-600 text-sm">Procedūra atliekama taikant vietinę nejautrą, todėl jos metu skausmo neturėtų būti. Po procedūros gali būti jaučiamas maudimas, patinimas ar jautrumas. Šie pojūčiai dažniausiai kontroliuojami gydytojo paskirtais vaistais ir tinkama pooperacine priežiūra.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Kiek laiko gyjama po sinuso pakėlimo?</h3>
+                  <p className="text-slate-600 text-sm">Gijimo trukmė priklauso nuo to, ar buvo atliktas uždaras, ar atviras sinuso pakėlimas, kiek kaulo reikėjo atkurti ir ar implantas buvo įsriegiamas tos pačios procedūros metu. Kai kuriais atvejais pakanka trumpesnio gijimo laikotarpio, kitais implantacija planuojama po kelių mėnesių.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ar sinuso pakėlimą galima atlikti kartu su implantacija?</h3>
+                  <p className="text-slate-600 text-sm">Taip, kai kuriais atvejais sinuso pakėlimas gali būti atliekamas kartu su implantacija. Tai įmanoma tada, kai esamo kaulo pakanka tam, kad implantas būtų stabiliai įtvirtintas. Jei kaulo trūkumas didesnis, saugiau pirmiausia atlikti sinuso pakėlimą ir implantaciją planuoti po gijimo.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ko negalima daryti po sinuso pakėlimo operacijos?</h3>
+                  <p className="text-slate-600 text-sm">Po sinuso pakėlimo svarbu laikytis gydytojo rekomendacijų. Dažniausiai rekomenduojama kurį laiką vengti intensyvaus fizinio krūvio, rūkymo, pirties, karštų vonių, nardymo ir stipraus nosies pūtimo. Čiaudėti reikėtų atvira burna, kad sinuso srityje nesusidarytų per didelis spaudimas.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Nuo ko priklauso sinuso pakėlimo kaina?</h3>
+                  <p className="text-slate-600 text-sm">Sinuso pakėlimo kaina priklauso nuo procedūros tipo, kaulo trūkumo apimties, naudojamų medžiagų, chirurginio sudėtingumo ir to, ar procedūra atliekama kartu su implantacija. Tiksli kaina nustatoma konsultacijos metu, atlikus diagnostiką ir sudarius individualų gydymo planą.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Kokios galimos sinuso pakėlimo komplikacijos ir kaip jų riziką sumažinti?</h3>
+                  <p className="text-slate-600 text-sm">Kaip ir po bet kurios chirurginės procedūros, galimos sinuso pakėlimo komplikacijos gali būti infekcija, užsitęsęs patinimas, kraujavimas, skausmas, sinuso gleivinės pažeidimas ar lėtesnis kaulo gijimas. Riziką mažina tiksli 3D diagnostika, individualus procedūros planavimas, tinkama chirurginė technika ir paciento laikymasis pooperacinių rekomendacijų.</p>
+                </div>
+              </div>
             </div>
           </motion.section>
 
@@ -306,19 +534,23 @@ export default function SinusoPakelimas() {
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Bangų odontologijos klinika Klaipėdoje pabrėžia individualų kiekvieno paciento vertinimą ir nuoseklų
-                  procedūros planavimą – nuo pirminės diagnostikos iki gijimo kontrolės. Toks nuoseklus požiūris leidžia
-                  užtikrinti sėkmingus ir ilgalaikius sinuso pakėlimo rezultatus.
+                  Renkantis sinuso pakėlimą svarbu ne tik pati chirurginė procedūra, bet ir visas pasiruošimo
+                  implantacijai procesas – nuo tikslios diagnostikos iki gijimo kontrolės ir tolimesnio dantų
+                  atkūrimo plano. Bangų odontologijos klinikoje Klaipėdoje kiekviena situacija vertinama
+                  individualiai, įvertinus paciento kaulo aukštį, sinuso padėtį, dantenų būklę ir būsimų implantų
+                  vietą.
                 </p>
                 <p>
-                  Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, atsižvelgdami į turimą kaulo kiekį,
-                  žandinio sinuso būklę ir bendrus paciento gydymo tikslus. Procedūra atliekama taikant šiuolaikinius metodus ir
-                  kruopščiai suplanuotą eigą, o po jos pacientui pateikiamos aiškios gijimo rekomendacijos.
+                  Klinikoje didelis dėmesys skiriamas individualiam planavimui. Prieš pradedant gydymą atliekama
+                  išsami diagnostika, padedanti tiksliai nustatyti, ar sinuso pakėlimas yra būtinas, koks metodas
+                  tinkamiausias ir ar implantaciją galima atlikti tos pačios procedūros metu. Toks požiūris leidžia
+                  pacientui aiškiai suprasti gydymo eigą, galimus etapus ir priimti informuotą sprendimą.
                 </p>
                 <p>
-                  Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis saugiai
-                  viso gydymo metu. Todėl ieškantiems patikimo ir profesionalaus sinuso pakėlimo Klaipėdoje, Bangų odontologijos
-                  klinika yra patikimas pasirinkimas.
+                  Bangų odontologijos klinikoje pacientui aiškiai paaiškinama, kaip vyksta procedūra, ko tikėtis po
+                  jos ir kokių rekomendacijų svarbu laikytis gijimo laikotarpiu. Nuoseklus planavimas, aiški
+                  komunikacija ir atsakinga priežiūra padeda sudaryti geresnes sąlygas sklandžiam gijimui bei
+                  tolimesniam dantų atkūrimui implantais.
                 </p>
               </div>
             </div>

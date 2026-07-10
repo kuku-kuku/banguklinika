@@ -38,10 +38,15 @@ function CheckIcon() {
 const tocSections = [
   { id: 'kainos', label: 'Kainos' },
   { id: 'kas-yra', label: 'Kas yra dantų karūnėlės?' },
-  { id: 'taikymo-situacijos', label: 'Kada rekomenduojamos?' },
+  { id: 'taikymo-situacijos', label: 'Kada reikalingos?' },
+  { id: 'problemos', label: 'Kokias problemas išsprendžia?' },
   { id: 'medziagos', label: 'Naudojamos medžiagos' },
   { id: 'procesas', label: 'Kaip vyksta procedūra?' },
+  { id: 'skausmas', label: 'Ar tai skausminga?' },
   { id: 'prieziura', label: 'Priežiūra ir tarnavimo laikas' },
+  { id: 'kada-negalima', label: 'Kada karūnėlė nebeįmanoma?' },
+  { id: 'mitai', label: 'Dažniausi mitai' },
+  { id: 'duk', label: 'Dažniausi klausimai' },
   { id: 'kodel-rinktis', label: 'Kodėl verta rinktis mus?' }
 ]
 
@@ -82,20 +87,26 @@ export default function DantuKarunieles() {
           {/* HERO */}
           <motion.header className="mb-10 text-left" variants={item}>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
-              Dantų karūnėlės (dantų vainikėliai) Klaipėdoje
+              Dantų karūnėlės Klaipėdoje
             </h1>
 
             <div>
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
                 <p className="mb-4">
-                  Dantų karūnėlės, dar vadinamos vainikėliais, yra fiksuoti protezai, naudojami atkurti stipriai pažeisto ar
-                  nusilpusio danties struktūrą. Jos dažnai taikomos tada, kai paprastas plombavimas nebegali užtikrinti
-                  reikalingo dantų tvirtumo ir funkcionalumo.
+                  Dantų pažeidimai, nusidėvėjimas ar stipresnis danties audinių praradimas yra dažnos priežastys,
+                  dėl kurių pacientams prireikia protezavimo sprendimų. Tokiais atvejais danties struktūra tampa
+                  nepakankamai stipri, kad galėtų atlaikyti kasdienį kramtymo krūvį, todėl reikalingas papildomas
+                  danties sutvirtinimas ir atkūrimas. Laiku pritaikytos dantų karūnėlės leidžia atkurti ne tik
+                  danties funkciją, bet ir estetinį vaizdą, išvengiant tolimesnių komplikacijų ar danties netekimo.
                 </p>
                 <p>
-                  Bangų odontologijos klinikoje Klaipėdoje dantų karūnėlės gaminamos ir tvirtinamos individualiai, atsižvelgiant
-                  į kiekvieno paciento danties būklę, sąkandį ir estetinius lūkesčius. Tinkamai parinkta ir pritaikyta karūnėlė
-                  ne tik grąžina dančiui natūralią išvaizdą, bet ir leidžia juo naudotis kasdien be diskomforto ilgus metus.
+                  Bangų odontologijos klinikoje Klaipėdoje dantų karūnėlių protezavimas atliekamas remiantis
+                  individualiu gydymo planu ir skaitmeninėmis technologijomis, leidžiančiomis tiksliai įvertinti
+                  paciento burnos būklę. Kiekvienas danties vainikėlis pritaikomas konkrečiai situacijai,
+                  atsižvelgiant į sąkandį, dantų padėtį ir estetinį poreikį. Klinikos specialistai siekia užtikrinti,
+                  kad galutinis rezultatas būtų ne tik funkcionalus, bet ir natūraliai atrodantis, todėl kiekvienas
+                  protezavimo etapas yra kruopščiai suplanuotas ir kontroliuojamas. Toks požiūris leidžia pacientams
+                  jaustis užtikrintai viso gydymo proceso metu.
                 </p>
               </div>
             </div>
@@ -188,11 +199,11 @@ export default function DantuKarunieles() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
+                <div className="relative aspect-[4/5] bg-sky-50">
                   <img
                     src="/team/Jonas-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
                 </div>
@@ -210,18 +221,26 @@ export default function DantuKarunieles() {
           {/* KAS YRA KARŪNĖLĖS */}
           <motion.section id="kas-yra" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas yra dantų karūnėlės?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kas yra dantų karūnėlės (dantų vainikėliai)?</h2>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Dantų karūnėlės (vainikėliai) yra fiksuoti protezai, uždedami ant natūralaus danties ar implanto, siekiant
-                  atkurti stipriai pažeisto arba nusilpusio danties formą, funkciją ir stiprumą. Jos dažnai taikomos tais
-                  atvejais, kai paprastas plombavimas nebegali užtikrinti danties tvirtumo ar tinkamai atkurti jo išvaizdos.
+                  Dantų karūnėlės, dar vadinamos dantų vainikėliais, yra fiksuotas dantų protezavimo sprendimas,
+                  skirtas atkurti stipriai pažeisto ar nusilpusio danties struktūrą. Tai individualiai gaminamas
+                  danties apvalkalas, kuris uždedamas ant nušlifuoto natūralaus danties arba implanto atramos,
+                  visiškai atkuriant jo formą, spalvą ir funkciją. Dantų karūnėlės leidžia išsaugoti natūralią
+                  šaknį ar implantą, tuo pačiu atkuriant pilnavertį kramtymo efektyvumą.
                 </p>
                 <p>
-                  Karūnėlė visiškai apgaubia matomą danties dalį, todėl dantis tampa atsparesnis kramtymo apkrovai ir apsaugotas
-                  nuo tolesnio pažeidimo. Priklausomai nuo situacijos, karūnėlė gali būti tvirtinama tiek ant natūralaus danties
-                  po jo paruošimo, tiek ant implanto, kai trūkstamas dantis atkuriamas nuo pat šaknies.
+                  Šis gydymo metodas taikomas tada, kai įprastas plombavimas nebegali užtikrinti pakankamo danties
+                  tvirtumo. Karūnėlė veikia kaip apsauginis sluoksnis, kuris paskirsto kramtymo apkrovas ir sumažina
+                  danties lūžimo riziką. Be funkcinės naudos, dantų vainikėlis taip pat atkuria estetinę šypsenos
+                  išvaizdą, todėl yra plačiai naudojamas tiek priekinėje, tiek krūminių dantų srityje.
+                </p>
+                <p>
+                  Šiuolaikinėje odontologijoje dantų karūnėlės gaminamos iš pažangių medžiagų, leidžiančių pasiekti
+                  natūralų skaidrumą ir tvirtumą. Tai užtikrina, kad atkurtas dantis vizualiai nesiskirtų nuo
+                  natūralių dantų, o pacientas galėtų jaustis komfortiškai kasdienėje veikloje.
                 </p>
               </div>
             </div>
@@ -230,27 +249,95 @@ export default function DantuKarunieles() {
           {/* TAIKYMO SITUACIJOS */}
           <motion.section id="taikymo-situacijos" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kada rekomenduojamos dantų karūnėlės?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kada reikalingos dantų karūnėlės?</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Sprendimas dėl karūnėlės priimamas individualiai, įvertinus danties būklę ir jo tolesnio naudojimo galimybes.
-                Dažniausiai karūnėlės rekomenduojamos esant šioms situacijoms:
+                Dantų karūnėlės taikomos tada, kai natūralaus danties audinių nebeužtenka pilnavertei funkcijai
+                užtikrinti. Tai nėra pirmo pasirinkimo procedūra – ji rekomenduojama tik tuomet, kai paprastas
+                plombavimas nebegali suteikti ilgalaikio sprendimo.
               </p>
 
-              <div className="grid gap-3">
-                {[
-                  'ėduonies sukeltiems pažeidimams, kai dantis yra per silpnas plombai',
-                  'danties lūžiams ar įtrūkimams',
-                  'dantims po šaknų kanalų gydymo',
-                  'stipriam dantų nusidėvėjimui'
-                ].map((text, i) => (
-                  <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
-                    <span className="mt-1">
-                      <CheckIcon />
-                    </span>
-                    <span className="text-slate-700">{text}</span>
-                  </div>
-                ))}
+              <div className="space-y-3 mb-6">
+                <h3 className="font-semibold text-darkblue-700">Dažniausios situacijos:</h3>
+                <div className="grid gap-3">
+                  {[
+                    'stipriai pažeistas dantis dėl ėduonies',
+                    'danties lūžis ar įtrūkimas',
+                    'didelės senos plombos, silpninančios dantį',
+                    'dantis po šaknų kanalų gydymo',
+                    'stiprus dantų nusidėvėjimas dėl bruksizmo',
+                    'estetinis danties formos ar spalvos koregavimas',
+                    'danties atkūrimas ant implanto',
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                      <span className="mt-1">
+                        <CheckIcon />
+                      </span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <p className="text-slate-700 leading-relaxed">
+                Kiekvienu atveju sprendimas priimamas individualiai, įvertinus danties šaknies būklę ir bendrą
+                burnos situaciją. Svarbiausias tikslas – išsaugoti natūralų dantį tiek, kiek tai mediciniškai
+                įmanoma.
+              </p>
+            </div>
+          </motion.section>
+
+          {/* PROBLEMOS */}
+          <motion.section id="problemos" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kokias problemas padeda išspręsti dantų karūnėlės?</h2>
+
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Dantų karūnėlės yra vienas universaliausių protezavimo sprendimų odontologijoje, nes leidžia vienu
+                metu atkurti tiek danties funkciją, tiek estetiką, tiek struktūrinį tvirtumą. Jos taikomos tais
+                atvejais, kai natūralaus danties audinių nebeužtenka patikimam kramtymo krūvio atlaikymui, tačiau
+                danties šaknį dar galima išsaugoti.
+              </p>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Stipriai pažeistas dantis</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Kai dantis yra pažeistas ėduonies arba traumos, o likę audiniai yra silpni, karūnėlė sustiprina
+                    dantį ir apsaugo jį nuo tolesnio lūžimo ar skilimo.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Dantis po šaknų kanalų gydymo</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Endodontiškai gydyti dantys tampa trapūs, todėl karūnėlė padeda atkurti jų atsparumą ir
+                    prailginti tarnavimo laiką.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Nuskilę ar nudilę dantys</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Dantų vainikėlis atkuria natūralią danties formą, leidžia tolygiai paskirstyti kramtymo krūvį ir
+                    atkuria pilnavertę funkciją.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Estetiniai dantų defektai</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Kai danties spalva, forma ar proporcijos neatitinka šypsenos linijos, karūnėlė leidžia pasiekti
+                    natūralų ir harmoningą estetinį vaizdą.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Dantų atkūrimas ant implantų</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Karūnėlės naudojamos kaip galutinis protezas ant implantų, atkuriant tiek funkciją, tiek estetiką.
+                  </p>
+                </div>
               </div>
             </div>
           </motion.section>
@@ -258,32 +345,47 @@ export default function DantuKarunieles() {
           {/* MEDŽIAGOS */}
           <motion.section id="medziagos" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kokios medžiagos naudojamos?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Iš kokių medžiagų gaminamos dantų karūnėlės?</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Karūnėlių gamybai naudojamos skirtingos medžiagos, kurių pasirinkimas priklauso nuo estetinių ir funkcinių
-                paciento poreikių, danties padėties bei kramtymo apkrovos.
+                Dantų karūnėlės gaminamos iš skirtingų medžiagų, kurios parenkamos individualiai, atsižvelgiant į
+                danties būklę, jo vietą burnoje, sąkandžio apkrovą ir estetinius paciento lūkesčius. Tinkamas
+                medžiagos pasirinkimas yra vienas svarbiausių veiksnių, užtikrinančių ilgaamžišką rezultatą.
               </p>
 
-              <div className="grid gap-6 md:grid-cols-3">
+              <div className="grid gap-6 md:grid-cols-2">
                 <div className={innerCard}>
                   <h3 className="font-bold text-darkblue-700 mb-3">Cirkonio keramika</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Itin tvirta ir ilgaamžė medžiaga, pasižyminti natūraliai atrodančiu, švelniai permatomu paviršiumi – dažnai renkamasi tiek priekiniams, tiek kramtomiesiems dantims.
+                    Tai viena moderniausių ir dažniausiai naudojamų medžiagų. Ji pasižymi itin dideliu tvirtumu,
+                    atsparumu kramtymo apkrovoms ir natūralia estetika. Cirkonio karūnėlės tinka tiek priekiniams,
+                    tiek krūminiams dantims, nes leidžia išlaikyti balansą tarp estetikos ir funkcijos.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <h3 className="font-bold text-darkblue-700 mb-3">Bemetalė keramika (E-MAX)</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Pasižymi ypač aukšta estetika ir natūraliu šviesos atspindžiu, todėl dažniausiai naudojama priekinių dantų sričiai, kur svarbiausia natūrali išvaizda.
+                    Tai itin estetiškas sprendimas, pasižymintis natūraliu šviesos pralaidumu. Dėl šios savybės
+                    dantis atrodo labai artimas natūraliam emaliui, todėl ši medžiaga dažniausiai naudojama
+                    priekinėje dantų srityje, kur estetika yra svarbiausia.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <h3 className="font-bold text-darkblue-700 mb-3">Metalo keramika</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Sujungia metalinį karkasą su keramine danga, todėl pasižymi dideliu atsparumu apkrovai – tinkamas sprendimas kramtomųjų dantų atkūrimui.
+                    Tai patikimas ir tvirtas, tačiau ekonomiškesnis sprendimas. Ji dažniausiai taikoma krūminių
+                    dantų srityje, kur svarbiausia yra atsparumas kramtymo apkrovoms, o estetiniai reikalavimai yra
+                    mažesni.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-3">Laikinos karūnėlės</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Gaminamos iš plastiko ar kompozito ir naudojamos pereinamuoju gydymo laikotarpiu, kol
+                    pagaminamas galutinis protezas. Jos apsaugo dantį ir palaiko estetiką gydymo metu.
                   </p>
                 </div>
               </div>
@@ -293,19 +395,22 @@ export default function DantuKarunieles() {
           {/* PROCESAS */}
           <motion.section id="procesas" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip vyksta procedūra?</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip atliekamas dantų karūnėlių protezavimas?</h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Dantų karūnėlės gamyba ir tvirtinimas Bangų odontologijos klinikoje vyksta pagal aiškiai suplanuotą eigą,
-                kuri apima keturis pagrindinius etapus.
+                Dantų karūnėlių protezavimas yra nuoseklus, etapais pagrįstas procesas, kuris planuojamas
+                individualiai kiekvienam pacientui. Toks nuoseklumas leidžia užtikrinti tikslų pritaikymą, komfortą
+                ir ilgalaikį rezultatą.
               </p>
 
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Konsultacija</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Konsultacija ir diagnostika</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Odontologas įvertina danties būklę, aptaria galimas medžiagas ir kartu su pacientu parenka tinkamiausią karūnėlės sprendimą, atsižvelgiant į estetinius ir funkcinius poreikius.
+                    Pirmojo vizito metu įvertinama bendra burnos būklė, danties pažeidimo laipsnis ir sąkandžio
+                    ypatumai. Atliekamas tyrimas ir sudaromas individualus gydymo planas, atsižvelgiant į funkcinius
+                    ir estetinius poreikius.
                   </p>
                 </div>
 
@@ -313,7 +418,9 @@ export default function DantuKarunieles() {
                   <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
                   <h3 className="font-bold text-darkblue-700 mb-2">Danties paruošimas</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Dantis nušlifuojamas iki reikiamos formos, kad karūnėlė ant jo tvirtai ir tiksliai priglustų, o esant poreikiui atkuriama trūkstama danties struktūra.
+                    Dantis yra minimaliai nušlifuojamas tam, kad būtų sudaryta vieta karūnėlei. Jei reikia, prieš
+                    tai atliekamas šaknų kanalų gydymas ar kiti paruošiamieji gydymo etapai, užtikrinantys stabilų
+                    pagrindą protezui.
                   </p>
                 </div>
 
@@ -321,17 +428,53 @@ export default function DantuKarunieles() {
                   <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
                   <h3 className="font-bold text-darkblue-700 mb-2">Nuskaitymas ir gamyba</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Paimamas skaitmeninis nuskaitymas arba atspaudas, pagal kurį gaminama individuali, danties formą ir sąkandį atitinkanti karūnėlė.
+                    Atliekamas skaitmeninis dantų nuskaitymas arba atspaudas, pagal kurį dantų technikų
+                    laboratorijoje gaminama individuali karūnėlė. Šiame etape atkuriama tiksli danties forma,
+                    spalva ir anatomija, siekiant natūralaus rezultato.
                   </p>
                 </div>
 
                 <div className={innerCard}>
                   <div className="text-4xl font-bold text-brand/20 mb-2">04</div>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Tvirtinimas</h3>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Tvirtinimas ir korekcija</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Pagaminta karūnėlė patikrinama dėl tikslaus tinkamumo, prireikus pakoreguojama ir galiausiai patikimai pritvirtinama ant danties ar implanto.
+                    Pagamintas danties vainikėlis yra tvirtinamas prie danties arba implanto. Esant poreikiui,
+                    atliekami minimalūs koregavimai, kad būtų užtikrintas komfortiškas sukandimas ir natūralus
+                    pojūtis burnoje.
                   </p>
                 </div>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* SKAUSMAS */}
+          <motion.section id="skausmas" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Ar dantų karūnėlės yra skausmingos?</h2>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Dantų karūnėlių protezavimas yra atliekamas taikant vietinę nejautrą, todėl pati procedūra
+                  pacientui nesukelia skausmo. Tai vienas iš dažniausiai pacientų užduodamų klausimų, todėl svarbu
+                  pabrėžti, kad visas danties paruošimo ir protezavimo procesas yra kontroliuojamas ir pritaikytas
+                  maksimaliam komfortui.
+                </p>
+                <p>
+                  Procedūros metu gydytojas odontologas užtikrina, kad dantis būtų paruošiamas tik tiek, kiek
+                  būtina tiksliai karūnėlei pritaikyti. Tai reiškia, kad intervencija yra minimali ir orientuota į
+                  maksimalų natūralių audinių išsaugojimą. Daugeliu atvejų pacientas jaučia tik lengvą spaudimą arba
+                  vibraciją, bet ne skausmą.
+                </p>
+                <p>
+                  Po procedūros, kai nuskausminimas baigia veikti, gali pasireikšti laikinas jautrumas ar nedidelis
+                  maudimas danties srityje. Tai yra normali organizmo reakcija į gydymą ir paprastai praeina per
+                  kelias dienas. Esant sudėtingesniems atvejams, diskomfortas gali būti šiek tiek ryškesnis, tačiau
+                  jis yra trumpalaikis ir lengvai kontroliuojamas.
+                </p>
+                <p>
+                  Svarbu suprasti, kad dantų karūnėlės šiandien yra planuojamos itin tiksliai, todėl visas procesas
+                  yra prognozuojamas, saugus ir pacientui komfortiškas.
+                </p>
               </div>
             </div>
           </motion.section>
@@ -339,19 +482,147 @@ export default function DantuKarunieles() {
           {/* PRIEŽIŪRA IR TARNAVIMO LAIKAS */}
           <motion.section id="prieziura" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
-              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Priežiūra ir tarnavimo laikas</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kaip prižiūrėti dantų karūnėles?</h2>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Reguliarus dantų valymas ir periodiniai odontologiniai vizitai yra esminiai dantų karūnėlės ilgaamžiškumui.
-                  Tinkama burnos higiena padeda apsaugoti tiek pačią karūnėlę, tiek po ja esantį dantį ar implantą nuo
-                  papildomų pažeidimų.
+                  Tinkama dantų karūnėlių priežiūra yra esminė sąlyga, siekiant užtikrinti jų ilgaamžiškumą ir
+                  stabilų funkcionalumą. Nors pati karūnėlė yra pagaminta iš atsparių medžiagų, aplinkiniai audiniai
+                  ir atraminis dantis vis tiek reikalauja kasdienės priežiūros.
                 </p>
                 <p>
-                  Vidutiniškai dantų karūnėlės tarnauja nuo 5 iki 15 metų, o tinkamai prižiūrėtos gali tarnauti dar ilgiau.
-                  Todėl atsakingas požiūris į kasdienę burnos priežiūrą ir reguliarus apsilankymas pas odontologą yra
-                  geriausias būdas užtikrinti ilgą ir patikimą karūnėlės tarnavimo laiką.
+                  Rekomenduojama dantis valyti bent du kartus per dieną, naudojant minkštą dantų šepetėlį ir fluoro
+                  turinčią dantų pastą. Ypač svarbu kruopščiai išvalyti vietas ties dantenų kraštu, kur gali kauptis
+                  apnašos. Taip pat būtina naudoti tarpdančių siūlą arba tarpdančių šepetėlius, kad būtų užtikrinta
+                  švara aplink karūnėlės kraštus.
                 </p>
+                <p>
+                  Reguliarūs vizitai pas odontologą ir profesionali burnos higiena padeda laiku pastebėti bet kokius
+                  pokyčius ir užtikrinti, kad karūnėlė išliktų stabiliai pritvirtinta. Taip pat svarbu vengti
+                  žalingų įpročių, tokių kaip dantų griežimas, nagų kramtymas ar labai kieto maisto kandimas, nes
+                  tai gali padidinti protezo nusidėvėjimą.
+                </p>
+                <p>
+                  Tinkamai prižiūrimos dantų karūnėlės leidžia ilgą laiką išlaikyti tiek estetiką, tiek pilnavertę
+                  kramtymo funkciją.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* KADA NEGALIMA */}
+          <motion.section id="kada-negalima" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Kada danties jau nebeįmanoma atkurti tik karūnėle?</h2>
+
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Nors dantų karūnėlės yra vienas efektyviausių būdų atkurti stipriai pažeistus dantis, ne visais
+                atvejais jos gali būti taikomos kaip vienintelis sprendimas. Karūnėlė reikalauja stabilaus danties
+                pagrindo, todėl kai kuriose situacijose natūralaus danties išsaugojimo galimybės tampa ribotos.
+              </p>
+
+              <div className="space-y-3 mb-6">
+                <h3 className="font-semibold text-darkblue-700">Danties atkūrimas karūnėle gali nebebūti įmanomas, kai:</h3>
+                <div className="grid gap-3">
+                  {[
+                    'dantis yra stipriai suiręs žemiau dantenų linijos ir nebelieka pakankamo audinio protezui tvirtinti',
+                    'nustatomas vertikalus danties šaknies skilimas, kuris pažeidžia visą struktūrinį stabilumą',
+                    'aplink danties šaknį yra labai išplitęs uždegimas, o kaulo praradimas yra per didelis',
+                    'dantis yra nebepritaikomas atstatymui net po endodontinio gydymo ar chirurginio paruošimo',
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                      <span className="mt-1">
+                        <CheckIcon />
+                      </span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Tokiais atvejais vien karūnėlė negali užtikrinti ilgalaikio rezultato, nes ji neturi pakankamo
+                  atraminio pagrindo. Sprendimas visada priimamas individualiai, įvertinus danties išsaugojimo
+                  galimybes ir bendrą burnos būklę.
+                </p>
+                <p>
+                  Svarbu pabrėžti, kad pirmiausia visada siekiama išsaugoti natūralų dantį. Tik tada, kai prognozė
+                  yra nepalanki, pacientui siūlomi alternatyvūs sprendimai, tokie kaip implantacija ar kompleksinis
+                  protezavimas. Aiškus situacijos įvertinimas leidžia pasirinkti sprendimą, kuris užtikrina
+                  ilgalaikę funkciją ir burnos sveikatą.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* MITAI */}
+          <motion.section id="mitai" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">Dažniausi mitai apie dantų karūnėles</h2>
+
+              <p className="text-slate-700 leading-relaxed max-w-4xl mb-6">
+                Dantų karūnėlės yra dažnai atliekama procedūra, tačiau apie ją vis dar egzistuoja nemažai klaidingų
+                įsitikinimų, kurie gali sukelti nereikalingą pacientų nerimą ar paskatinti atidėti reikalingą
+                gydymą. Tinkamas informavimas padeda suprasti realią procedūros eigą ir priimti pagrįstus sprendimus
+                dėl burnos sveikatos.
+              </p>
+
+              <div className="space-y-4">
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Mitas: „Karūnėlės atrodo nenatūraliai.“</h3>
+                  <p className="text-slate-600 text-sm">Šiuolaikinės dantų karūnėlės gaminamos iš estetiškų medžiagų, kurios tiksliai atkartoja natūralaus danties spalvą, skaidrumą ir formą. Tinkamai pritaikytas vainikėlis vizualiai nesiskiria nuo natūralių dantų ir yra pritaikomas prie bendros šypsenos linijos.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Mitas: „Tai laikinas sprendimas.“</h3>
+                  <p className="text-slate-600 text-sm">Nors karūnėlė yra protezavimo konstrukcija, ji yra ilgalaikis gydymo sprendimas. Tinkamai pagaminta ir prižiūrima karūnėlė gali tarnauti daugelį metų, o kai kuriais atvejais – net kelis dešimtmečius.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Mitas: „Procedūra labai skausminga.“</h3>
+                  <p className="text-slate-600 text-sm">Danties paruošimas atliekamas taikant vietinę nejautrą, todėl pacientas skausmo nejaučia. Diskomfortas po procedūros yra laikinas ir lengvai kontroliuojamas.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Mitas: „Karūnėlės lengvai iškrenta.“</h3>
+                  <p className="text-slate-600 text-sm">Tinkamai pritvirtintos karūnėlės yra stabilios ir patikimos. Atsiskyrimo rizika yra minimali ir dažniausiai susijusi tik su nepakankama burnos higiena ar papildomais veiksniais.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Mitas: „Užtenka bet kokios medžiagos.“</h3>
+                  <p className="text-slate-600 text-sm">Iš tiesų medžiagos pasirinkimas yra kritiškai svarbus. Nuo jo priklauso tiek estetika, tiek ilgaamžiškumas, tiek karūnėlės atsparumas kramtymo apkrovai.</p>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* DUK */}
+          <motion.section id="duk" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">DUK – dažniausiai užduodami klausimai apie dantų karūnėles</h2>
+
+              <div className="space-y-4">
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Kiek laiko tarnauja dantų karūnėlės?</h3>
+                  <p className="text-slate-600 text-sm">Dantų karūnėlių tarnavimo laikas priklauso nuo pasirinktos medžiagos, burnos higienos ir paciento įpročių. Vidutiniškai jos tarnauja nuo 5 iki 15 metų, tačiau tinkamai prižiūrimos gali išlikti dar ilgiau. Cirkonio ir keraminės karūnėlės dažnai pasižymi ilgesniu tarnavimo laikotarpiu dėl savo atsparumo nusidėvėjimui.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Nuo ko priklauso dantų karūnėlės kaina?</h3>
+                  <p className="text-slate-600 text-sm">Dantų karūnėlės kaina priklauso nuo kelių pagrindinių veiksnių: pasirinktos medžiagos, danties padėties burnoje, gydymo sudėtingumo bei papildomų procedūrų poreikio. Taip pat įtakos turi tai, ar karūnėlė tvirtinama ant natūralaus danties, ar ant implanto.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ar prieš karūnėlės uždėjimą reikia šlifuoti dantį?</h3>
+                  <p className="text-slate-600 text-sm">Taip, dantis yra minimaliai nušlifuojamas tam, kad būtų sudaryta vieta karūnėlei ir užtikrintas tikslus prigludimas. Šlifavimo apimtis visada parenkama individualiai, siekiant išsaugoti kuo daugiau sveikų audinių.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ar procedūra tinka jautriems pacientams?</h3>
+                  <p className="text-slate-600 text-sm">Taip, procedūra atliekama taikant vietinę nejautrą, todėl net ir jautresni pacientai paprastai nejaučia skausmo. Gydymas planuojamas taip, kad būtų užtikrintas maksimalus komfortas.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ar galima valgyti įprastai su karūnėle?</h3>
+                  <p className="text-slate-600 text-sm">Taip, tinkamai pritaikytas danties vainikėlis pilnai atkuria kramtymo funkciją. Po adaptacijos laikotarpio pacientas gali valgyti įprastą maistą be apribojimų.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Ar karūnėlę galima pakeisti ateityje?</h3>
+                  <p className="text-slate-600 text-sm">Taip, esant poreikiui karūnėlė gali būti pakeičiama nauja. Tai priklauso nuo danties būklės ir pačios karūnėlės nusidėvėjimo.</p>
+                </div>
               </div>
             </div>
           </motion.section>
@@ -360,24 +631,25 @@ export default function DantuKarunieles() {
           <motion.section id="kodel-rinktis" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-                Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?
+                Kodėl verta rinktis Bangų odontologijos kliniką karūnėlėms?
               </h2>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  Renkantis dantų karūnėles svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo tikslaus danties
-                  paruošimo iki kruopštaus karūnėlės pritaikymo. Bangų odontologijos klinikoje dantų karūnėlės gaminamos ir
-                  tvirtinamos atsakingai, siekiant maksimaliai apsaugoti paciento komfortą ir burnos sveikatą.
+                  Dantų karūnėlės yra tikslumo ir profesionalaus planavimo reikalaujantis protezavimo sprendimas,
+                  todėl svarbu, kad gydymas būtų atliekamas laikantis aukštų medicininių standartų. Bangų
+                  odontologijos klinikoje kiekvienas atvejis vertinamas individualiai, atsižvelgiant į paciento
+                  dantų būklę, sąkandį ir estetinį poreikį.
                 </p>
                 <p>
-                  Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, padeda parinkti tinkamiausią
-                  medžiagą ir sprendimą, atsižvelgiant į estetinius bei funkcinius poreikius. Dėmesys skiriamas ne tik pačiai
-                  procedūrai, bet ir aiškiam situacijos paaiškinimui bei rekomendacijoms dėl tolesnės priežiūros.
+                  Klinikoje taikomas skaitmeninis gydymo planavimas leidžia užtikrinti itin tikslų karūnėlių
+                  pritaikymą, kuris lemia komfortą kasdienėje veikloje ir natūralų estetinį rezultatą. Naudojamos
+                  šiuolaikinės medžiagos leidžia suderinti tvirtumą, ilgaamžiškumą ir natūralią išvaizdą.
                 </p>
                 <p>
-                  Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis
-                  saugiai viso gydymo metu. Todėl ieškantiems patikimų ir profesionaliai atliekamų dantų karūnėlių Klaipėdoje,
-                  Bangų odontologijos klinika yra patikimas pasirinkimas.
+                  Viso gydymo metu pacientui suteikiama aiški informacija apie kiekvieną etapą, todėl procesas
+                  tampa suprantamas, kontroliuojamas ir prognozuojamas. Toks požiūris leidžia užtikrinti ne tik
+                  kokybišką dantų funkcijos atkūrimą, bet ir ilgalaikę burnos sveikatą.
                 </p>
               </div>
             </div>
