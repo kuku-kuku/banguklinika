@@ -69,7 +69,7 @@ export default function MobileStickyBar({
 
       <div
         className="fixed left-0 right-0 z-50 md:hidden"
-        style={{ bottom: 'max(env(safe-area-inset-bottom, 0px), 10px)' }}
+        style={{ bottom: 'max(env(safe-area-inset-bottom, 0px), 10px)', willChange: 'transform' }}
         data-mobile-sticky-bar
       >
         <div className="mx-auto max-w-[520px] px-3">
