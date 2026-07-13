@@ -21,6 +21,7 @@ interface Friend {
   url: string
   name: string
   alt: string
+  ext?: string
 }
 
 const friends: Friend[] = [
@@ -43,6 +44,7 @@ const friends: Friend[] = [
   { key: 'vairuoti', url: 'https://www.vairuoti.lt/', name: 'vairuoti.lt', alt: 'vairuoti.lt' },
   { key: 'fishwish', url: 'https://fishwish.eu/', name: 'fishwish.eu', alt: 'fishwish.eu' },
   { key: 'homosanus', url: 'https://www.homosanus.lt/', name: 'homosanus.lt', alt: 'Homo Sanus klinika Vilniuje' },
+  { key: 'savy', url: 'https://gosavy.com/', name: 'gosavy.com', alt: 'gosavy.com', ext: 'jpeg' },
 ]
 
 function FriendSlot({ friend }: { friend: Friend }) {
@@ -55,7 +57,7 @@ function FriendSlot({ friend }: { friend: Friend }) {
       className="group relative flex items-center justify-center aspect-[3/2] bg-white rounded-[2rem] border border-slate-100 hover:shadow-2xl hover:shadow-slate-200/50 hover:-translate-y-2 transition-all duration-500 ease-out overflow-hidden"
     >
       <img
-        src={`/friends/${friend.key}.png`}
+        src={`/friends/${friend.key}.${friend.ext ?? 'png'}`}
         alt={friend.alt}
         className="w-full h-full object-cover transform-gpu will-change-transform group-hover:scale-105 transition-transform duration-500"
         loading="lazy"
