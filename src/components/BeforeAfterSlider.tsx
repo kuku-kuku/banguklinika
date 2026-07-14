@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 type BeforeAfterSliderProps = {
   beforeSrc: string
@@ -16,6 +16,7 @@ export default function BeforeAfterSlider({
   className = '',
 }: BeforeAfterSliderProps) {
   const [sliderX, setSliderX] = useState(50)
+  const dragging = useRef(false)
 
   const updateSlider = (clientX: number, rect: DOMRect) => {
     const x = ((clientX - rect.left) / rect.width) * 100
@@ -28,14 +29,22 @@ export default function BeforeAfterSlider({
     >
       <div
         className="relative w-full h-[220px] sm:h-[250px] lg:h-[280px]"
-        onMouseMove={(e) => {
-          if (e.buttons !== 1) return
+        onPointerDown={(e) => {
+          dragging.current = true
+          e.currentTarget.setPointerCapture(e.pointerId)
           updateSlider(e.clientX, e.currentTarget.getBoundingClientRect())
         }}
-        onClick={(e) => updateSlider(e.clientX, e.currentTarget.getBoundingClientRect())}
-        onTouchMove={(e) =>
-          updateSlider(e.touches[0].clientX, e.currentTarget.getBoundingClientRect())
-        }
+        onPointerMove={(e) => {
+          if (!dragging.current) return
+          updateSlider(e.clientX, e.currentTarget.getBoundingClientRect())
+        }}
+        onPointerUp={(e) => {
+          dragging.current = false
+          e.currentTarget.releasePointerCapture(e.pointerId)
+        }}
+        onPointerCancel={() => {
+          dragging.current = false
+        }}
       >
         {/* Apačioje - PO */}
         <img
@@ -77,8 +86,18 @@ export default function BeforeAfterSlider({
 
         {/* Handle */}
         <div
-          className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-10"
+          role="slider"
+          tabIndex={0}
+          aria-label="Before and after slider"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={Math.round(sliderX)}
+          className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 cursor-ew-resize outline-none"
           style={{ left: `${sliderX}%` }}
+          onKeyDown={(e) => {
+            if (e.key === 'ArrowLeft') setSliderX((v) => Math.max(0, v - 5))
+            if (e.key === 'ArrowRight') setSliderX((v) => Math.min(100, v + 5))
+          }}
         >
           <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/80 bg-white shadow-lg">
             <svg
@@ -96,17 +115,6 @@ export default function BeforeAfterSlider({
             </svg>
           </div>
         </div>
-
-        {/* Nematomas range viršuje */}
-        <input
-          type="range"
-          min="0"
-          max="100"
-          value={sliderX}
-          onChange={(e) => setSliderX(Number(e.target.value))}
-          className="absolute inset-0 z-20 h-full w-full cursor-ew-resize opacity-0"
-          aria-label="Before and after slider"
-        />
       </div>
     </div>
   )
