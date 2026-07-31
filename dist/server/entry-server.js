@@ -920,10 +920,10 @@ const nav = [
         children: [
           { to: "/paslaugos/dantu-karunieles/", label: "Dantų karūnėlės (vainikėliai)" },
           { to: "/paslaugos/cirkonio-keramikos-vainikelis/", label: "Cirkonio keramikos vainikėlis" },
-          { to: "/paslaugos/dantu-tiltai/", label: "Dantų tiltai" },
-          { to: "/paslaugos/kompensacija-protezavimui/", label: "Kompensacija protezavimui" }
+          { to: "/paslaugos/dantu-tiltai/", label: "Dantų tiltai" }
         ]
       },
+      { to: "/paslaugos/kompensacija-protezavimui/", label: "Kompensacija protezavimui" },
       { to: "/paslaugos/dantu-taisymas-gydymas/", label: "Dantų gydymas" },
       { to: "/paslaugos/dantu-tiesinimas/", label: "Dantų tiesinimas" },
       { to: "/paslaugos/burnos-higiena/", label: "Burnos higiena" },
@@ -5368,7 +5368,7 @@ const item$C = {
 };
 const sectionWrap$r = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$q = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$o = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$q = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$m = "#002045";
 const S$m = "#006b5f";
 const SL$m = "#ecf5fb";
@@ -5490,13 +5490,14 @@ function BurnosHigiena() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Rūta_light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -5506,15 +5507,15 @@ function BurnosHigiena() {
             /* @__PURE__ */ jsx(motion.section, { id: "kas-yra", className: sectionWrap$r, variants: item$C, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$q, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra profesionali burnos higiena?" }),
               /* @__PURE__ */ jsxs("div", { className: "grid sm:grid-cols-3 gap-6", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$o, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$q, children: [
                   /* @__PURE__ */ jsx(ToothIcon$3, {}),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-700 leading-relaxed", children: "Profesionali burnos higiena – tai specialisto atliekama procedūra, kurios metu nuo dantų paviršių, tarpdančių ir po dantenomis pašalinamos minkštosios apnašos, dantų akmenys bei pigmentinės dėmės." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$o, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$q, children: [
                   /* @__PURE__ */ jsx(ShieldIcon$3, {}),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-700 leading-relaxed", children: "Ilgainiui apnašos mineralizuojasi ir virsta dantų akmenimis. Tai sudaro palankią terpę bakterijoms, kurios gali sukelti dantenų uždegimą ir periodonto ligas. Higiena yra svarbiausia profilaktikos priemonė." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$o, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$q, children: [
                   /* @__PURE__ */ jsx(ClockIcon$3, {}),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-700 leading-relaxed", children: "Reguliariai atliekama dantų higiena padeda palaikyti sveikas dantenas ir sumažina karieso riziką. Dažniausiai procedūra rekomenduojama kas 6 mėnesius, o esant problemoms – dažniau." })
                 ] })
@@ -5546,7 +5547,7 @@ function BurnosHigiena() {
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kada-reikalinga", className: sectionWrap$r, variants: item$C, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$q, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada profesionali burnos higiena yra ypač reikalinga?" }),
-              /* @__PURE__ */ jsx("div", { className: innerCard$o, children: /* @__PURE__ */ jsxs("ul", { className: "list-disc pl-5 space-y-2 text-slate-700", children: [
+              /* @__PURE__ */ jsx("div", { className: innerCard$q, children: /* @__PURE__ */ jsxs("ul", { className: "list-disc pl-5 space-y-2 text-slate-700", children: [
                 /* @__PURE__ */ jsx("li", { children: "Pacientams, kurie pastebi kraujuojančias dantenas, nemalonų kvapą ar jautrumą." }),
                 /* @__PURE__ */ jsx("li", { children: "Turintiems implantus, tiltus, vainikėlius ar protezus (ilgaamžiškumui užtikrinti)." }),
                 /* @__PURE__ */ jsx("li", { children: "Nešiojantiems ortodontinius aparatus (kai higiena sudėtingesnė)." }),
@@ -5558,21 +5559,21 @@ function BurnosHigiena() {
             /* @__PURE__ */ jsx(motion.section, { id: "procesas", className: sectionWrap$r, variants: item$C, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$q, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip atliekama burnos higiena su AIRFLOW® technologija?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-6", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$o, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$q, children: [
                   /* @__PURE__ */ jsxs("h3", { className: "font-bold text-darkblue-700 mb-2 flex items-center", children: [
                     /* @__PURE__ */ jsx("span", { className: "bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm", children: "1" }),
                     "Dantų akmenų šalinimas ultragarsiniu skaleriu"
                   ] }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 leading-relaxed", children: "Procedūra pradedama dantų akmenų šalinimu naudojant ultragarsinį skalerį. Šis prietaisas vibracijų pagalba efektyviai suskaldo ir pašalina kietas apnašas nuo dantų paviršių ir po dantenomis, nepažeisdamas emalio." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$o, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$q, children: [
                   /* @__PURE__ */ jsxs("h3", { className: "font-bold text-darkblue-700 mb-2 flex items-center", children: [
                     /* @__PURE__ */ jsx("span", { className: "bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm", children: "2" }),
                     "Apnašų šalinimas AIRFLOW® metodu"
                   ] }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 leading-relaxed", children: "Toliau atliekamas dantų valymas AIRFLOW® aparatu. Naudojamas oro, vandens ir specialios sodos mišinys leidžia švelniai pašalinti minkštąsias apnašas bei pigmentines dėmes net sunkiai pasiekiamose vietose. Šis etapas ypač vertinamas dėl komforto ir akivaizdaus estetinio rezultato." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$o, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$q, children: [
                   /* @__PURE__ */ jsxs("h3", { className: "font-bold text-darkblue-700 mb-2 flex items-center", children: [
                     /* @__PURE__ */ jsx("span", { className: "bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm", children: "3" }),
                     "Dantų poliravimas specialia pasta"
@@ -5584,7 +5585,7 @@ function BurnosHigiena() {
             /* @__PURE__ */ jsx(motion.section, { id: "po-higienos", className: sectionWrap$r, variants: item$C, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$q, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Ką svarbu žinoti po profesionalios burnos higienos?" }),
               /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed max-w-4xl mb-6", children: "Po profesionalios burnos higienos dauguma pacientų jau iš karto pastebi švaros, gaivumo ir lengvumo pojūtį burnoje. Dantų paviršiai tampa lygesni, vizualiai šviesesni, o burnos kvapas – malonesnis. Kai kuriais atvejais, ypač jei buvo daug dantų akmenų ar jautrios dantenos, trumpam gali pasireikšti nežymus dantenų jautrumas ar kraujavimas – tai normali ir laikina organizmo reakcija." }),
-              /* @__PURE__ */ jsxs("div", { className: innerCard$o + " mb-6", children: [
+              /* @__PURE__ */ jsxs("div", { className: innerCard$q + " mb-6", children: [
                 /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-3", children: "Rekomendacijos rezultatui išlaikyti:" }),
                 /* @__PURE__ */ jsxs("ul", { className: "list-disc pl-5 space-y-2 text-slate-700", children: [
                   /* @__PURE__ */ jsx("li", { children: "Laikytis individualių higienisto patarimų." }),
@@ -5598,23 +5599,23 @@ function BurnosHigiena() {
             /* @__PURE__ */ jsx(motion.section, { id: "mitai", className: sectionWrap$r, variants: item$C, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$q, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Dažniausi mitai apie profesionalią burnos higieną" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$o, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$q, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas #1: higiena pažeidžia emalį" }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Tai vienas dažniausių klaidingų įsitikinimų. Profesionalios burnos higienos metu naudojamos priemonės ir technologijos yra pritaikytos saugiam apnašų bei dantų akmenų šalinimui nepažeidžiant emalio. AIRFLOW® technologija veikia švelniai ir tiksliai, todėl dantų paviršiai po procedūros išlieka lygūs ir nepažeisti." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$o, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$q, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas #2: procedūra skausminga" }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Dauguma pacientų profesionalią burnos higieną apibūdina kaip komfortišką procedūrą. Galimas tik nežymus diskomfortas, ypač jei buvo daug dantų akmenų ar jautrios dantenos, tačiau šis pojūtis yra laikinas. Procedūros eiga visuomet pritaikoma individualiai, atsižvelgiant į paciento savijautą." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$o, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$q, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas #3: pakanka valyti dantis namuose" }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Kasdienė burnos priežiūra yra būtina, tačiau ji negali visiškai pakeisti profesionalios burnos higienos. Net ir kruopščiai valant dantis namuose, ne visos vietos pasiekiamos šepetėliu ar siūlu. Profesionalios procedūros metu pašalinamos apnašos iš sunkiai prieinamų zonų, kurios ilgainiui gali sukelti dantenų ligas." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$o, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$q, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas #4: higiena reikalinga tik tada, kai skauda" }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "LBurnos ligos dažnai vystosi nepastebimai ir be skausmo. Kraujuojančios dantenos, nemalonus kvapas ar dantų jautrumas gali būti ankstyvi signalai, kad reikalinga profesionali higiena. Reguliari procedūra leidžia užkirsti kelią problemoms dar prieš joms pasireiškiant." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$o, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$q, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas #5: higiena tik dėl grožio" }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Nors po procedūros dantys atrodo švaresni ir šviesesni, pagrindinis profesionalios burnos higienos tikslas yra burnos sveikatos palaikymas. Procedūra padeda sumažinti karieso, dantenų uždegimo ir periodonto ligų riziką bei išsaugoti natūralius dantis ilgą laiką." })
                 ] })
@@ -5646,7 +5647,7 @@ const item$B = {
 };
 const sectionWrap$q = "mb-14 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$p = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$n = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$p = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$l = "#002045";
 const S$l = "#006b5f";
 const SL$l = "#ecf5fb";
@@ -5777,13 +5778,14 @@ function DantuPlombavimas() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Odeta-light.jpg",
                     alt: "Odeta Balsienė – odontologė Bangų klinikoje",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -5797,17 +5799,17 @@ function DantuPlombavimas() {
                 /* @__PURE__ */ jsx("p", { children: "Plombavimo metu atkuriama ne tik danties struktūra, bet ir jo anatominė forma, leidžianti taisyklingai kramtyti ir išvengti netolygaus apkrovimo. Priklausomai nuo pažeidimo gylio ir vietos, gali būti taikomi skirtingi plombavimo sprendimai – nuo paprasto paviršinio plombavimo iki gilesnių restauracijų." })
               ] }),
               /* @__PURE__ */ jsxs("div", { className: "grid sm:grid-cols-3 gap-6", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$n, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$p, children: [
                   /* @__PURE__ */ jsx(ToothIcon$2, {}),
                   /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-2", children: "Funkcijos atkūrimas" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-700 leading-relaxed", children: "Atkuriama danties kramtymo funkcija ir anatominė forma, leidžianti išvengti sąkandžio problemų." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$n, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$p, children: [
                   /* @__PURE__ */ jsx(ShieldIcon$2, {}),
                   /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-2", children: "Apsauga ir sandarumas" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-700 leading-relaxed", children: "Užkertamas kelias bakterijų plitimui ir danties nervo pažeidimams." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$n, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$p, children: [
                   /* @__PURE__ */ jsx(ClockIcon$2, {}),
                   /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-2", children: "Ilgaamžiškumas" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-700 leading-relaxed", children: "Laiku atliktas plombavimas leidžia išsaugoti natūralų dantį ilgus metus." })
@@ -5837,7 +5839,7 @@ function DantuPlombavimas() {
                 { title: "Estetinis plombavimas", desc: "Kai atkuriama ne tik danties funkcija, bet ir jo forma bei spalva (ypač aktualu priekiniams dantims)." },
                 { title: "Laikinas plombavimas", desc: "Taikomas tarp gydymo etapų arba kai reikia stebėti danties būklę prieš nuolatinį plombavimą." },
                 { title: "Gilus plombavimas", desc: "Kai pažeidimas yra arti danties nervo ir reikalingas ypatingas tikslumas bei papildomos apsauginės medžiagos." }
-              ].map((type, i) => /* @__PURE__ */ jsxs("div", { className: innerCard$n, children: [
+              ].map((type, i) => /* @__PURE__ */ jsxs("div", { className: innerCard$p, children: [
                 /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: type.title }),
                 /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-700 leading-relaxed", children: type.desc })
               ] }, i)) })
@@ -5871,15 +5873,15 @@ function DantuPlombavimas() {
             /* @__PURE__ */ jsx(motion.section, { id: "svarbi-informacija", className: sectionWrap$q, variants: item$B, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$p, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6", children: "Svarbi informacija pacientams" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-6", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$n, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$p, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-lg text-darkblue-700 mb-3", children: "Ar dantų plombavimas skausmingas?" }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed", children: "Dantų plombavimas dažniausiai atliekamas be skausmo, taikant vietinę nejautrą. Prieš procedūrą odontologas pasirūpina, kad jaustumėtės komfortiškai. Procedūros metu galite jausti tik nežymų spaudimą ar vibraciją. Po plombavimo kai kuriais atvejais gali pasireikšti laikinas jautrumas, kuris greitai praeina." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$n, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$p, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-lg text-darkblue-700 mb-3", children: "Kiek laiko tarnauja dantų plombos?" }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed", children: "Tarnavimo laikas priklauso nuo plombos dydžio, vietos ir priežiūros. Kokybiškai atliktos plombos tarnauja daugelį metų. Didžiausią įtaką ilgaamžiškumui turi asmeninė burnos higiena ir reguliarūs profilaktiniai patikrinimai, leidžiantys laiku pastebėti ir pakoreguoti senas plombas." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$n, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$p, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-lg text-darkblue-700 mb-3", children: "Ką svarbu žinoti po dantų plombavimo?" }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed", children: "Pirmosiomis valandomis po gydymo rekomenduojama vengti kieto maisto ir nekramtyti plombuota puse, ypač jei buvo taikyta nejautra (kad neįsikąstumėte). Jei jaučiate laikiną jautrumą šalčiui ar kramtant – tai normalu ir dažniausiai praeina per kelias dienas. Svarbiausia – kruopšti kasdienė higiena." })
                 ] })
@@ -5915,7 +5917,7 @@ const item$A = {
 };
 const sectionWrap$p = "mb-14 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$o = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$m = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$o = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$k = "#002045";
 const S$k = "#006b5f";
 const SL$k = "#ecf5fb";
@@ -6025,13 +6027,14 @@ function EstetinisPlombavimas() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Odeta-light.jpg",
                     alt: "Odeta Balsienė – odontologė Bangų klinikoje",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -6087,7 +6090,7 @@ function EstetinisPlombavimas() {
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed relative z-10", children: "Procedūra užbaigiama kruopščiu dantų paviršiaus poliravimu, kad atkurti dantys būtų lygūs, blizgūs ir harmoningai įsilietų į bendrą šypsenos vaizdą." })
                 ] })
               ] }),
-              /* @__PURE__ */ jsx("div", { className: `${innerCard$m} mt-6`, children: /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed", children: "Toks nuoseklus procesas leidžia pasiekti estetišką, natūralų ir ilgalaikį rezultatą." }) })
+              /* @__PURE__ */ jsx("div", { className: `${innerCard$o} mt-6`, children: /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed", children: "Toks nuoseklus procesas leidžia pasiekti estetišką, natūralų ir ilgalaikį rezultatą." }) })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "privalumai", className: sectionWrap$p, variants: item$A, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$o, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kokie estetinio plombavimo privalumai?" }),
@@ -6110,7 +6113,7 @@ function EstetinisPlombavimas() {
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Ką svarbu žinoti po estetinio plombavimo?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
                 /* @__PURE__ */ jsx("p", { children: "Po estetinio plombavimo procedūros pacientai dažniausiai iš karto pastebi šypsenos estetikos pagerėjimą. Atkurtų dantų paviršiai tampa lygūs, blizgūs ir natūraliai dera su likusiais dantimis. Vis dėlto pirmosiomis dienomis po procedūros svarbu laikytis tam tikrų rekomendacijų, kad rezultatas išliktų kuo ilgiau." }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$m, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$o, children: [
                   /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Pirmąsias valandas po procedūros rekomenduojama vengti labai kieto ar itin dažančio maisto ir gėrimų, ypač jei buvo atkuriami priekiniai dantys. Taip pat patariama nenaudoti dantų kaip įrankių ir vengti didelio mechaninio krūvio restauruotai vietai." }),
                   /* @__PURE__ */ jsx("p", { children: "Kasdienė burnos priežiūra po estetinio plombavimo turėtų būti švelni, bet nuosekli. Rekomenduojama valyti dantis minkštu arba vidutinio minkštumo šepetėliu, naudoti neabrazyvią dantų pastą ir reguliariai valyti tarpdančius." })
                 ] }),
@@ -6166,7 +6169,7 @@ const item$z = {
 };
 const sectionWrap$o = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$n = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$l = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$n = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$j = "#002045";
 const S$j = "#006b5f";
 const SL$j = "#ecf5fb";
@@ -6281,13 +6284,14 @@ function BurnosChirurgija() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/donataskubilius.jpg",
                     alt: "Donatas Kubilius – burnos chirurgas Bangų klinikoje",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -6305,7 +6309,7 @@ function BurnosChirurgija() {
             /* @__PURE__ */ jsx(motion.section, { id: "kada-reikalinga", className: sectionWrap$o, variants: item$z, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$n, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada reikalinga burnos chirurgo konsultacija?" }),
               /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed max-w-4xl mb-6", children: "Burnos chirurgo konsultacija reikalinga tuomet, kai dantų ar burnos audinių problemų neįmanoma išspręsti taikant įprastus gydymo metodus arba kai būtina tiksliai įvertinti situaciją prieš sudėtingesnį gydymą. Dažnai pacientai delsia kreiptis, nes skausmas būna nestiprus arba visai nejaučiamas, tačiau burnos ligos gali progresuoti tyliai ir nepastebimai." }),
-              /* @__PURE__ */ jsxs("div", { className: innerCard$l + " mb-6", children: [
+              /* @__PURE__ */ jsxs("div", { className: innerCard$n + " mb-6", children: [
                 /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-4", children: "Į burnos chirurgą mūsų klinikoje Klaipėdoje rekomenduojama kreiptis šiais atvejais:" }),
                 /* @__PURE__ */ jsx("div", { className: "grid sm:grid-cols-1 gap-3", children: [
                   "kai dantis yra stipriai pažeistas ir jo neįmanoma išsaugoti gydant terapiniu būdu",
@@ -6324,7 +6328,7 @@ function BurnosChirurgija() {
             /* @__PURE__ */ jsx(motion.section, { id: "procedūros", className: sectionWrap$o, variants: item$z, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$n, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kokias procedūras atlieka burnos chirurgas?" }),
               /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed max-w-4xl mb-6", children: "Burnos chirurgas atlieka platų spektrą procedūrų, skirtų dantų, minkštųjų audinių ir žandikaulio kaulo patologijų gydymui. Procedūros parenkamos individualiai, atsižvelgiant į paciento burnos būklę, bendrą sveikatą ir ilgalaikius gydymo tikslus." }),
-              /* @__PURE__ */ jsxs("div", { className: innerCard$l + " mb-6", children: [
+              /* @__PURE__ */ jsxs("div", { className: innerCard$n + " mb-6", children: [
                 /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-4", children: "Dažniausiai atliekamos burnos chirurginės procedūros:" }),
                 /* @__PURE__ */ jsx("div", { className: "grid sm:grid-cols-1 gap-3", children: [
                   "Dantų šalinimas – kai dantis yra nepagydomai pažeistas, sukelia infekciją ar kelia grėsmę aplinkiniams audiniams",
@@ -6346,22 +6350,22 @@ function BurnosChirurgija() {
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip atliekamas burnos chirurginis gydymas?" }),
               /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed max-w-4xl mb-6", children: "Burnos chirurginis gydymas Bangų odontologijos klinikoje atliekamas pagal aiškią ir pacientui suprantamą eigą. Kiekvienas etapas yra kruopščiai suplanuotas tam, kad procedūra būtų saugi, efektyvi ir kiek įmanoma komfortiškesnė." }),
               /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-4", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$l, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$n, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Konsultacija ir diagnostika" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600", children: "Vizito metu įvertinama burnos būklė, atliekama apžiūra, paskiriami rentgeno tyrimai. Sudaromas individualus planas." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$l, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$n, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Pasiruošimas procedūrai" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600", children: "Supažindinama su eiga, parenkama vietinė nejautra, užtikrinanti, kad pacientas nejaustų skausmo." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$l, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$n, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Chirurginė procedūra" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600", children: "Atliekama steriliai, tiksliai ir švelniai, naudojant modernius instrumentus, siekiant sumažinti audinių traumą." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$l, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$n, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Pooperacinė priežiūra" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600", children: "Suteikiamos rekomendacijos dėl priežiūros, mitybos, vaistų. Aptariami tolimesni vizitai." })
@@ -6389,7 +6393,7 @@ function BurnosChirurgija() {
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Ką svarbu žinoti prieš ir po burnos chirurginės procedūros?" }),
               /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed max-w-4xl mb-6", children: "Tinkamas pasiruošimas ir pooperacinė priežiūra yra svarbi sėkmingo burnos chirurginio gydymo dalis. Prieš procedūrą pacientui suteikiama visa reikalinga informacija apie planuojamą gydymą, nuskausminimą ir galimus pojūčius, kad būtų užtikrintas ramus ir užtikrintas pasirengimas." }),
               /* @__PURE__ */ jsxs("div", { className: "grid sm:grid-cols-2 gap-6 mb-6", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$l, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$n, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-4", children: "Prieš burnos chirurginę procedūrą gali būti rekomenduojama:" }),
                   /* @__PURE__ */ jsxs("ul", { className: "list-disc pl-5 text-slate-700 space-y-2 text-sm", children: [
                     /* @__PURE__ */ jsx("li", { children: "laikytis gydytojo nurodymų dėl mitybos ar vaistų vartojimo" }),
@@ -6397,7 +6401,7 @@ function BurnosChirurgija() {
                     /* @__PURE__ */ jsx("li", { children: "vengti rūkymo, nes jis gali turėti neigiamos įtakos gijimo procesui" })
                   ] })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$l, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$n, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-4", children: "Po procedūros svarbu laikytis rekomendacijų:" }),
                   /* @__PURE__ */ jsxs("ul", { className: "list-disc pl-5 text-slate-700 space-y-2 text-sm", children: [
                     /* @__PURE__ */ jsx("li", { children: "kurį laiką vengti intensyvaus fizinio krūvio" }),
@@ -6434,7 +6438,7 @@ const item$y = {
 };
 const sectionWrap$n = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$m = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$k = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$m = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$i = "#002045";
 const S$i = "#006b5f";
 const SL$i = "#ecf5fb";
@@ -6551,13 +6555,14 @@ function DantuBalinimas() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Rūta_light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -6604,7 +6609,7 @@ function DantuBalinimas() {
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
                 /* @__PURE__ */ jsx("p", { children: "Pacientams, kurie nori balinti dantis palaipsniui ir lankstesniu būdu, Bangų odontologijos klinikoje siūlomas dantų balinimas kapomis namuose. Šis metodas leidžia pasiekti tolygų rezultatą per ilgesnį laiką, balinimą atliekant patogiai namų aplinkoje." }),
                 /* @__PURE__ */ jsx("p", { children: "Balinimas kapomis pradedamas klinikoje, kur pagal individualų paciento dantų atspaudą pagaminamos asmeniškai pritaikytos kapos. Kartu parenkamas tinkamas balinimo gelis ir suteikiamos išsamios naudojimo instrukcijos. Tokiu būdu užtikrinama, kad balinimas būtų saugus, efektyvus ir pritaikytas konkrečiai dantų būklei." }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$k + " my-4", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$m + " my-4", children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-2", children: "Šis balinimo būdas dažnai pasirenkamas pacientų, kurie:" }),
                   /* @__PURE__ */ jsxs("ul", { className: "list-disc pl-5 space-y-1 text-slate-700", children: [
                     /* @__PURE__ */ jsx("li", { children: "nori palaipsnio ir kontroliuojamo rezultato" }),
@@ -6627,19 +6632,19 @@ function DantuBalinimas() {
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6", children: "Kaip vyksta dantų balinimo procedūra klinikoje?" }),
               /* @__PURE__ */ jsx("p", { className: "text-slate-700 mb-6 leading-relaxed", children: "Siekiant saugaus ir prognozuojamo rezultato, dantų balinimas Bangų odontologijos klinikoje atliekamas pagal aiškią ir pacientui suprantamą eigą. Prieš pasirenkant konkretų balinimo metodą, visada įvertinama individuali burnos būklė." }),
               /* @__PURE__ */ jsxs("div", { className: "grid md:grid-cols-2 gap-6", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$k, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$m, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "1. Konsultacija ir įvertinimas" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600", children: "Odontologas apžiūri dantis, įvertina emalio būklę, restauracijas ir tinkamumą. Aptariami lūkesčiai." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$k, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$m, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "2. Pasiruošimas balinimui" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600", children: "Jei reikia, atliekama profesionali higiena apnašų pašalinimui ir tolygiam efektui." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$k, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$m, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "3. Balinimo procedūra" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600", children: "Atliekama ofisinė BEYOND® procedūra arba perduodamos kapos su instrukcijomis." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$k, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$m, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "4. Rekomendacijos po balinimo" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600", children: "Suteikiamos instrukcijos, kaip prižiūrėti dantis, kad rezultatas būtų ilgaamžis." })
                 ] })
@@ -6684,23 +6689,23 @@ function DantuBalinimas() {
             /* @__PURE__ */ jsx(motion.section, { id: "mitai", className: sectionWrap$n, variants: item$y, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$m, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6", children: "Dažniausi mitai apie dantų balinimą" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$k, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$m, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas #1: po balinimo dantys tampa silpnesni" }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Balinimas nekeičia danties tvirtumo ar atsparumo. Tinkamai atlikta procedūra nesilpnina dantų, o naudojamos papildomos priežiūros priemonės gali net padėti sustiprinti emalio paviršių." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$k, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$m, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas #2: dantų balinimas pažeidžia dantų emalį" }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Profesionalus dantų balinimas, atliekamas odontologo priežiūroje, nepažeidžia dantų emalio. Šiuolaikinės balinimo sistemos, tokios kaip BEYOND®, sukurtos taip, kad veiktų pigmentus, bet išsaugotų natūralią emalio struktūrą." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$k, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$m, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas #3: dantų balinimas visada yra skausmingas" }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Dauguma pacientų dantų balinimą apibūdina kaip komfortišką procedūrą. Šiuolaikiniai metodai leidžia sumažinti diskomfortą, o jei jautrumas ir pasireiškia, jis dažniausiai būna trumpalaikis." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$k, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$m, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas #4: visų žmonių dantys išbąla vienodai" }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Rezultatas yra individualus ir priklauso nuo pradinės spalvos, emalio struktūros bei pigmentacijos kilmės. Prieš procedūrą visuomet aptariami realūs lūkesčiai." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$k, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$m, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas #5: balinimas veikia plombas ir vainikėlius" }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Balinimo priemonės veikia tik natūralų danties audinį – plombos, vainikėliai ar laminatės nebąla. Todėl svarbu įvertinti restauracijas prieš balinimą." })
                 ] })
@@ -6740,7 +6745,7 @@ const item$x = {
 };
 const sectionWrap$m = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$l = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$j = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$l = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$h = "#002045";
 const S$h = "#006b5f";
 const SL$h = "#ecf5fb";
@@ -6872,13 +6877,14 @@ function DantuGydymas() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Odeta-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -6895,7 +6901,7 @@ function DantuGydymas() {
             /* @__PURE__ */ jsx(motion.section, { id: "kada-reikalingas", className: sectionWrap$m, variants: item$x, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$l, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada reikalingas dantų gydymas?" }),
               /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed max-w-4xl mb-6", children: "Dantų gydymas reikalingas ne tik tada, kai atsiranda stiprus skausmas. Daugelis burnos problemų vystosi palaipsniui ir ilgą laiką gali nesukelti ryškių simptomų, todėl reguliarūs profilaktiniai patikrinimai yra itin svarbūs. Laiku pastebėtos problemos leidžia jas išspręsti paprasčiau ir išvengti sudėtingesnio gydymo ateityje." }),
-              /* @__PURE__ */ jsxs("div", { className: innerCard$j + " mb-6", children: [
+              /* @__PURE__ */ jsxs("div", { className: innerCard$l + " mb-6", children: [
                 /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-4", children: "Į odontologą rekomenduojama kreiptis, jei pastebimi šie požymiai:" }),
                 /* @__PURE__ */ jsx("div", { className: "grid sm:grid-cols-2 gap-3", children: [
                   "Danties skausmas ar maudimas (spontaniškai arba valgant)",
@@ -6914,7 +6920,7 @@ function DantuGydymas() {
             /* @__PURE__ */ jsx(motion.section, { id: "paslaugos", className: sectionWrap$m, variants: item$x, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$l, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kokias dantų gydymo paslaugas teikiame?" }),
               /* @__PURE__ */ jsx("p", { className: "text-slate-700 mb-6 leading-relaxed", children: "Bangų odontologijos klinikoje teikiamos visos pagrindinės dantų gydymo paslaugos, leidžiančios pacientams gauti kompleksinę pagalbą vienoje vietoje. Atsižvelgiant į individualią situaciją, sudaromas aiškus ir nuoseklus gydymo planas." }),
-              /* @__PURE__ */ jsx("div", { className: innerCard$j + " mb-6", children: /* @__PURE__ */ jsx("ul", { className: "grid sm:grid-cols-2 gap-x-6 gap-y-3", children: [
+              /* @__PURE__ */ jsx("div", { className: innerCard$l + " mb-6", children: /* @__PURE__ */ jsx("ul", { className: "grid sm:grid-cols-2 gap-x-6 gap-y-3", children: [
                 "Konsultacijos ir gydymo plano sudarymas",
                 "Danties plombavimas (helio/stiklojonomerine)",
                 "Dentalinė rentgenograma",
@@ -6935,17 +6941,17 @@ function DantuGydymas() {
             /* @__PURE__ */ jsx(motion.section, { id: "procesas", className: sectionWrap$m, variants: item$x, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$l, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip vyksta dantų gydymas mūsų klinikoje?" }),
               /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-3", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$l, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Konsultacija ir diagnostika" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600", children: "Patikrinimas, rentgeno tyrimai, būklės įvertinimas. Sudaromas individualus gydymo planas su prioritetais." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$l, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Gydymo atlikimas" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600", children: "Atliekamos procedūros (plombavimas, kanalų gydymas ir kt.) naudojant nuskausminimą, užtikrinant komfortą." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$l, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Rekomendacijos ir priežiūra" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600", children: "Patarimai dėl priežiūros namuose ir kito vizito suplanavimas ilgalaikiam rezultatui užtikrinti." })
@@ -6955,17 +6961,17 @@ function DantuGydymas() {
             /* @__PURE__ */ jsx(motion.section, { id: "profilaktika", className: sectionWrap$m, variants: item$x, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$l, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl svarbūs profilaktiniai patikrinimai?" }),
               /* @__PURE__ */ jsxs("div", { className: "grid sm:grid-cols-3 gap-6", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$l, children: [
                   /* @__PURE__ */ jsx(ShieldCheckIcon$2, {}),
                   /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-2", children: "Ankstyva diagnostika" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-700 leading-relaxed", children: "Leidžia nustatyti ėduonį ar uždegimą dar pradinėje stadijoje, kai nejaučiamas skausmas." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$l, children: [
                   /* @__PURE__ */ jsx(ClipboardListIcon$1, {}),
                   /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-2", children: "Paprastesnis gydymas" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-700 leading-relaxed", children: "Laiku pastebėtos problemos reikalauja mažesnės intervencijos, trumpesnio laiko ir mažesnių išlaidų." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$l, children: [
                   /* @__PURE__ */ jsx(HeartPulseIcon$1, {}),
                   /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-2", children: "Ilgalaikė sveikata" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-700 leading-relaxed", children: "Reguliarūs vizitai padeda išvengti netikėto skausmo ir išsaugoti natūralius dantis kuo ilgiau." })
@@ -7120,13 +7126,14 @@ function VaikuOdontologija() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Odeta-light.jpg",
                     alt: "Odeta Balsienė – odontologė Bangų klinikoje",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -7636,13 +7643,14 @@ function DantuProtezavimas() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Donatas_light.jpg",
                     alt: "Donatas Bitinas – protezuojantis gydytojas Bangų klinikoje",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -8150,7 +8158,7 @@ const item$u = {
 };
 const sectionWrap$k = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$k = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$i = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$k = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$e = "#002045";
 const S$e = "#006b5f";
 const SL$e = "#ecf5fb";
@@ -8263,13 +8271,14 @@ function DantuTraukimas() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Jonas-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -8309,11 +8318,11 @@ function DantuTraukimas() {
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kokios yra dantų traukimo rūšys?" }),
               /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Dantų traukimo būdas parenkamas individualiai, atsižvelgiant į danties padėtį, šaknų struktūrą ir aplinkinių audinių būklę. Dažniausiai skiriami du pagrindiniai dantų traukimo tipai." }),
               /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$i, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$k, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Paprastas dantų traukimas" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Paprastas dantų traukimas atliekamas tuomet, kai dantis yra visiškai išdygęs ir lengvai pasiekiamas. Procedūros metu odontologas, naudodamas specialius instrumentus, švelniai atlaisvina dantį ir jį pašalina. Šis metodas paprastai atliekamas greitai, o gijimas – sklandus." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$i, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$k, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Chirurginis dantų traukimas" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Chirurginis dantų traukimas taikomas sudėtingesniais atvejais – kai dantis yra dalinai ar visiškai neišdygęs, įstrigęs, nulūžęs arba kai šaknys yra sudėtingos formos. Procedūros metu gali būti atliekamas nedidelis pjūvis dantenose ar dantis pašalinamas dalimis. Nepaisant sudėtingumo, naudojant šiuolaikinius metodus ir tinkamą nuskausminimą, procedūra atliekama saugiai ir kontroliuojamai." })
                 ] })
@@ -8340,22 +8349,22 @@ function DantuTraukimas() {
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip atliekamas dantų traukimas?" }),
               /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Dantų traukimas Bangų odontologijos klinikoje atliekamas pagal aiškią ir saugią eigą, kad procedūra būtų kuo komfortiškesnė pacientui ir nekeltų papildomo streso. Kiekvienas atvejis vertinamas individualiai, todėl procedūros eiga gali nežymiai skirtis priklausomai nuo danties padėties ir sudėtingumo." }),
               /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-4", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$i, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$k, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Apžiūra ir pasiruošimas" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Prieš atliekant dantų traukimą, odontologas kruopščiai įvertina danties ir visos burnos ertmės būklę. Atliekama klinikinė apžiūra, įvertinama danties padėtis, aplinkinių audinių būklė ir galimi rizikos veiksniai. Jei situacija reikalauja detalesnio įvertinimo, paskiriamas rentgeno tyrimas, kuris leidžia tiksliai nustatyti danties šaknų formą, jų padėtį žandikaulio kaulo atžvilgiu bei artumą gretimiems dantims ar nervams. Ši informacija yra būtina, norint parinkti saugiausią ir efektyviausią dantų traukimo metodą bei išvengti galimų komplikacijų." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$i, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$k, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Nuskausminimas" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Prieš pradedant procedūrą taikoma vietinė nejautra, kuri patikimai nuskausmina gydomą sritį. Tai užtikrina, kad dantų traukimo metu pacientas nejaus skausmo, o tik lengvą spaudimą ar judesį. Nuskausminimo metodas parenkamas individualiai, atsižvelgiant į paciento jautrumą, procedūros sudėtingumą ir bendrą savijautą. Esant poreikiui, gali būti taikomi papildomi nuskausminimo sprendimai, kad procedūra būtų kuo komfortiškesnė." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$i, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$k, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Danties pašalinimas" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kai nuskausminimas pradeda veikti, odontologas atsargiai atlaisvina dantį iš alveolės ir jį pašalina. Procedūra atliekama švelniai, stengiantis kuo mažiau traumuoti aplinkinius audinius. Sudėtingesniais atvejais, pavyzdžiui, kai dantis yra tvirtai įsitvirtinęs ar dalinai neišdygęs, jis gali būti šalinamas dalimis. Toks metodas leidžia išlaikyti maksimalų saugumą ir užtikrinti kontroliuojamą procedūros eigą." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$i, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$k, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Žaizdos sutvarkymas ir rekomendacijos" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pašalinus dantį, žaizda kruopščiai išvaloma, siekiant sumažinti infekcijos riziką ir sudaryti sąlygas natūraliam gijimui. Prireikus uždedami siūlai ar specialios hemostatinės priemonės, kurios padeda sustabdyti kraujavimą ir pagreitina gijimo procesą. Procedūros pabaigoje pacientui pateikiamos aiškios ir suprantamos rekomendacijos, kaip elgtis po dantų traukimo, ko vengti pirmosiomis dienomis ir kada kreiptis pakartotinei apžiūrai." })
@@ -8384,7 +8393,7 @@ function DantuTraukimas() {
                 /* @__PURE__ */ jsx("p", { children: "Po dantų traukimo organizmui reikalingas laikas gijimui, todėl pirmosios dienos po procedūros yra ypač svarbios. Tinkama priežiūra padeda sumažinti diskomfortą, užtikrina sklandų gijimą ir padeda išvengti galimų komplikacijų." }),
                 /* @__PURE__ */ jsx("p", { children: "Pirmosiomis valandomis po procedūros rekomenduojama vengti intensyvios fizinės veiklos ir leisti organizmui pailsėti. Traukimo vietoje susiformuoja kraujo krešulys, kuris yra būtinas gijimo procesui, todėl labai svarbu jo nepažeisti. Dėl šios priežasties patariama neplauti burnos intensyviai, nesiurbti per šiaudelį ir neliesti žaizdos liežuviu ar pirštais." })
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: innerCard$i + " mb-6", children: [
+              /* @__PURE__ */ jsxs("div", { className: innerCard$k + " mb-6", children: [
                 /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-4", children: "Taip pat rekomenduojama:" }),
                 /* @__PURE__ */ jsx("ul", { className: "space-y-3", children: [
                   "pirmąją parą vengti karšto maisto ir gėrimų, rinktis minkštą, drungną maistą",
@@ -8441,7 +8450,7 @@ const item$t = {
 };
 const sectionWrap$j = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$j = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$h = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$j = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$d = "#002045";
 const S$d = "#006b5f";
 const SL$d = "#ecf5fb";
@@ -8559,13 +8568,14 @@ function DantuTiesinimas() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Jonas-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -8584,28 +8594,28 @@ function DantuTiesinimas() {
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis skaidrias ORDOLINE kapas?" }),
               /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed max-w-4xl mb-6", children: "Skaidrios kapos yra modernus dantų tiesinimo sprendimas, vertinamas dėl estetikos, patogumo ir prognozuojamų rezultatų. Bangų odontologijos klinikoje naudojamos ORDOLINE kapos leidžia koreguoti dantų padėtį diskretiškai ir prisitaikant prie paciento kasdienio gyvenimo būdo." }),
               /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-3 mb-6", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
                   /* @__PURE__ */ jsx(EyeOffIcon$1, {}),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Nematomumas kasdienybėje" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "ORDOLINE kapos yra skaidrios, todėl beveik nepastebimos kalbant, šypsantis ar bendraujant. Tai ypač aktualu suaugusiesiems, kurie nori tiesinti dantis be ryškių ortodontinių aparatų ir išlaikyti pasitikėjimą savimi tiek profesinėje, tiek asmeninėje aplinkoje." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
                   /* @__PURE__ */ jsx(SmileIcon$2, {}),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Patogumas valgant" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kapos yra lengvai išimamos, todėl valgymo metu jų nereikia nešioti. Tai reiškia, kad nereikia atsisakyti mėgstamo maisto ar keisti mitybos įpročių." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
                   /* @__PURE__ */ jsx(SparklesIcon$2, {}),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Higieniškas sprendimas" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Dėl galimybės kapas išimti, kasdienė burnos higiena tampa paprastesnė ir efektyvesnė, lyginant su fiksuotais ortodontiniais aparatais. Tai sumažina apnašų kaupimosi riziką." })
                 ] })
               ] }),
               /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Prognozuojami rezultatai" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Prieš pradedant gydymą sudaromas skaitmeninis planas, leidžiantis tiksliai numatyti dantų judėjimą ir galutinį rezultatą. Tai suteikia pacientui aiškumą ir užtikrintumą viso gydymo metu." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Trumpesnė gydymo trukmė" }),
                   /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Daugeliu atvejų dantų tiesinimas kapomis trunka trumpiau nei tradiciniais metodais. Nuoseklus kapų keitimas ir tiksliai suplanuotas gydymo planas leidžia efektyviai pasiekti norimą rezultatą per optimalų laiką." })
                 ] })
@@ -8615,35 +8625,35 @@ function DantuTiesinimas() {
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip vyksta dantų tiesinimas ORDOLINE kapomis?" }),
               /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed max-w-4xl mb-6", children: "Dantų tiesinimas ORDOLINE kapomis Bangų odontologijos klinikoje atliekamas pagal aiškią ir pacientui suprantamą eigą. Kiekvienas etapas yra svarbus siekiant tikslaus ir ilgalaikio rezultato." }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-6", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
                   /* @__PURE__ */ jsxs("h3", { className: "font-bold text-darkblue-700 mb-2 flex items-center", children: [
                     /* @__PURE__ */ jsx("span", { className: "bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm", children: "1" }),
                     "Pirmasis etapas – diagnostika ir skaitmeninis planavimas"
                   ] }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 leading-relaxed", children: "Dantų tiesinimas kapomis pradedamas nuo išsamios burnos būklės analizės. Klinikinės apžiūros metu įvertinama dantų padėtis, sąkandis, žandikaulių santykis bei bendroji burnos sveikata. Atliekami dantų atspaudai arba modernus skaitmeninis skenavimas, kuris leidžia itin tiksliai užfiksuoti esamą situaciją. Remiantis surinktais duomenimis sudaromas individualus skaitmeninis gydymo planas, kuriame suplanuojamas kiekvienas dantų judėjimo etapas. Toks planavimas leidžia užtikrinti prognozuojamą, kontroliuojamą ir saugų gydymą." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
                   /* @__PURE__ */ jsxs("h3", { className: "font-bold text-darkblue-700 mb-2 flex items-center", children: [
                     /* @__PURE__ */ jsx("span", { className: "bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm", children: "2" }),
                     "Antrasis etapas – virtualus galutinio rezultato matymas"
                   ] }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 leading-relaxed", children: "Vienas didžiausių šio gydymo privalumų – galimybė dar prieš pradedant gydymą pamatyti, kaip keisis dantų padėtis laikui bėgant. Skaitmeninio planavimo metu pacientui pateikiama vizualizacija, kurioje matomas dantų tiesinimo progresas ir numatomas galutinis rezultatas. Tai padeda geriau suprasti gydymo eigą, jo trukmę ir tikslus, o taip pat suteikia papildomo pasitikėjimo priimant sprendimą dėl gydymo." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
                   /* @__PURE__ */ jsxs("h3", { className: "font-bold text-darkblue-700 mb-2 flex items-center", children: [
                     /* @__PURE__ */ jsx("span", { className: "bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm", children: "3" }),
                     "Trečiasis etapas – kapų gamyba"
                   ] }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 leading-relaxed", children: "Patvirtinus gydymo planą, pagal individualius paciento duomenis pradedama kapų gamyba. Pagaminamas visas nuoseklus kapų rinkinys, kur kiekviena kapa atitinka konkretų dantų judėjimo etapą. Kapos yra preciziškai pritaikytos, lengvos ir patogios nešioti, todėl gydymas vyksta sklandžiai ir be nereikalingo diskomforto." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
                   /* @__PURE__ */ jsxs("h3", { className: "font-bold text-darkblue-700 mb-2 flex items-center", children: [
                     /* @__PURE__ */ jsx("span", { className: "bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm", children: "4" }),
                     "Ketvirtasis etapas – kapų keitimas kas ~2 savaites"
                   ] }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 leading-relaxed", children: "Gydymo metu pacientas kapas keičia maždaug kas dvi savaites, laikydamasis odontologo nurodyto grafiko. Kiekviena nauja kapa palaipsniui koreguoja dantų padėtį, darydama nedidelį, bet tikslų spaudimą. Toks nuoseklus keitimas leidžia dantims judėti saugiai, be staigių apkrovų, ir artėti prie suplanuoto galutinio rezultato." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
                   /* @__PURE__ */ jsxs("h3", { className: "font-bold text-darkblue-700 mb-2 flex items-center", children: [
                     /* @__PURE__ */ jsx("span", { className: "bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm", children: "5" }),
                     "Penktasis etapas – reguliarios kontrolės"
@@ -8655,7 +8665,7 @@ function DantuTiesinimas() {
             /* @__PURE__ */ jsx(motion.section, { id: "kam-tinka", className: sectionWrap$j, variants: item$t, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$j, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kam tinka dantų tiesinimas kapomis?" }),
               /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed max-w-4xl mb-6", children: "Dantų tiesinimas kapomis yra universalus sprendimas, tinkantis daugeliui pacientų, kurie nori koreguoti dantų padėtį estetišku ir patogiu būdu. Šis metodas dažniausiai pasirenkamas tuomet, kai siekiama efektyvaus, bet kasdienio gyvenimo netrikdančio gydymo." }),
-              /* @__PURE__ */ jsxs("div", { className: innerCard$h + " mb-6", children: [
+              /* @__PURE__ */ jsxs("div", { className: innerCard$j + " mb-6", children: [
                 /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-4", children: "Dantų tiesinimas kapomis tinka, jei:" }),
                 /* @__PURE__ */ jsx("div", { className: "grid sm:grid-cols-1 gap-3", children: [
                   "tarp dantų yra tarpai, kuriuos norima uždaryti",
@@ -8712,23 +8722,23 @@ function DantuTiesinimas() {
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Dažniausi mitai apie dantų tiesinimą kapomis" }),
               /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed max-w-4xl mb-6", children: "Dantų tiesinimas kapomis vis dar kelia nemažai klausimų ir abejonių, ypač pacientams, kurie su šiuo gydymo metodu susiduria pirmą kartą. Daugelis nuogąstavimų kyla iš pasenusių įsitikinimų ar netikslios informacijos, todėl svarbu juos aiškiai išsklaidyti." }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas #1: kapos tinka tik nedidelėms estetinėms korekcijoms." }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Iš tiesų kapomis galima koreguoti ne tik smulkius dantų nelygumus, bet ir tarpus, susigrūdimą ar tam tikrus sąkandžio pakitimus. Gydymo galimybės visuomet įvertinamos individualiai, remiantis diagnostika ir skaitmeniniu planavimu." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas #2: dantų tiesinimas kapomis neveiksmingas." }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Kapos veikia palaipsniui, tačiau labai tiksliai. Kiekviena kapa yra sukurta konkrečiam dantų judėjimo etapui, todėl laikantis nešiojimo režimo galima pasiekti aiškiai prognozuojamus ir stabilius rezultatus." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas #3: kapas nepatogu nešioti kasdien." }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Skaidrios kapos yra lengvos, plonos ir pritaikytos individualiai, todėl dauguma pacientų prie jų pripranta gana greitai. Kadangi kapos yra išimamos, jos netrukdo nei valgant, nei atliekant kasdienę burnos higieną." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas #4: kapos nuolat krenta ar pasimeta." }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Tinkamai pritaikytos kapos tvirtai laikosi ant dantų. Jei laikomasi rekomendacijų ir kapos laikomos specialioje dėžutėje, kai jos nenešiojamos, jų praradimo ar pažeidimo rizika yra minimali." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$j, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas #5: dantys po gydymo greitai grįš į pradinę padėtį." }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Kaip ir po bet kokio ortodontinio gydymo, labai svarbus yra palaikomasis etapas. Naudojant retencines kapas ir laikantis gydytojo nurodymų, pasiektas rezultatas išlieka stabilus ilgą laiką." })
                 ] })
@@ -8762,7 +8772,7 @@ const item$s = {
 };
 const sectionWrap$i = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$i = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$g = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$i = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$c = "#002045";
 const S$c = "#006b5f";
 const SL$c = "#ecf5fb";
@@ -8886,13 +8896,14 @@ function EndodontinisGydymas() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Jonas-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -8971,7 +8982,7 @@ function EndodontinisGydymas() {
                   t: "Laikina apsauga ir tolimesnio gydymo planas",
                   d: "Procedūra užbaigiama laikinu sprendimu, apsaugančiu dantį nuo tolimesnio bakterijų patekimo. Pirminės endodontinės pagalbos tikslas – ne užbaigti visą šaknų kanalų gydymą, o sudaryti saugias ir palankias sąlygas tolimesniam, pilnam endodontiniam gydymui."
                 }
-              ].map((s) => /* @__PURE__ */ jsxs("div", { className: innerCard$g, children: [
+              ].map((s) => /* @__PURE__ */ jsxs("div", { className: innerCard$i, children: [
                 /* @__PURE__ */ jsxs("h3", { className: "font-bold text-darkblue-700 mb-2 flex items-center", children: [
                   /* @__PURE__ */ jsx("span", { className: "bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm", children: s.n }),
                   s.t
@@ -9345,7 +9356,7 @@ function MobileStickyBar({
       "div",
       {
         className: "fixed left-0 right-0 z-50 md:hidden",
-        style: { bottom: "max(env(safe-area-inset-bottom, 0px), 10px)" },
+        style: { bottom: "max(env(safe-area-inset-bottom, 0px), 10px)", willChange: "transform" },
         "data-mobile-sticky-bar": true,
         children: /* @__PURE__ */ jsx("div", { className: "mx-auto max-w-[520px] px-3", children: /* @__PURE__ */ jsxs(
           "div",
@@ -9579,13 +9590,14 @@ function CirkonioOffer() {
                 }
               )
             ] }),
-            /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+            /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+              /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
               /* @__PURE__ */ jsx(
                 "img",
                 {
                   src: "/team/Jonas-light.jpg",
                   alt: "Bangų odontologijos klinikos gydytojas",
-                  className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                  className: "absolute inset-0 w-full h-full object-contain"
                 }
               ),
               /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -9760,13 +9772,14 @@ function AllOn4Implants() {
                 }
               )
             ] }),
-            /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+            /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+              /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
               /* @__PURE__ */ jsx(
                 "img",
                 {
                   src: "/team/Jonas-light.jpg",
                   alt: "Bangų odontologijos klinikos gydytojas",
-                  className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                  className: "absolute inset-0 w-full h-full object-contain"
                 }
               ),
               /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -10243,14 +10256,17 @@ function DantuImplantacija() {
                         }
                       ) })
                     ] }),
-                    /* @__PURE__ */ jsx("div", { className: "relative min-h-[320px] lg:min-h-full", children: /* @__PURE__ */ jsx(
-                      "img",
-                      {
-                        src: "/poster1.webp",
-                        alt: "ALL-ON-4 implantacija",
-                        className: "absolute inset-0 w-full h-full object-cover object-center"
-                      }
-                    ) })
+                    /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-brand-50", children: [
+                      /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
+                      /* @__PURE__ */ jsx(
+                        "img",
+                        {
+                          src: "/1.jpg",
+                          alt: "ALL-ON-4 implantacija",
+                          className: "absolute inset-0 w-full h-full object-contain"
+                        }
+                      )
+                    ] })
                   ] }) }),
                   /* @__PURE__ */ jsxs("div", { className: "space-y-6 text-slate-700 leading-relaxed", children: [
                     /* @__PURE__ */ jsxs("div", { className: "rounded-2xl border border-brand bg-brand-50 p-6 sm:p-8", children: [
@@ -10524,7 +10540,7 @@ const item$q = {
 };
 const sectionWrap$h = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$h = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$f = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$h = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 function CheckIcon$p() {
   return /* @__PURE__ */ jsx("svg", { viewBox: "0 0 24 24", className: "w-5 h-5 shrink-0 text-brand", "aria-hidden": true, children: /* @__PURE__ */ jsx("path", { d: "M20 6L9 17l-5-5", fill: "none", stroke: "currentColor", strokeWidth: "2" }) });
 }
@@ -10647,13 +10663,14 @@ function SkubiPagalba() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Odeta-light.jpg",
                     alt: "Odeta Balsienė – odontologė Bangų klinikoje",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -10694,7 +10711,7 @@ function SkubiPagalba() {
                       title: "Protinių dantų skausmas",
                       text: "Protinių dantų dygimas kartais sukelia stiprų skausmą, patinimą ar uždegimą. Jei simptomai tampa intensyvūs, reikalinga skubi odontologinė pagalba, kuri padės sumažinti diskomfortą ir parinkti tinkamą gydymo sprendimą."
                     }
-                  ].map((s, i) => /* @__PURE__ */ jsxs("div", { className: innerCard$f, children: [
+                  ].map((s, i) => /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
                     /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: s.title }),
                     /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: s.text })
                   ] }, i)) })
@@ -10728,22 +10745,22 @@ function SkubiPagalba() {
                   /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip vyksta skubios pagalbos vizitas?" }),
                   /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Skubios odontologinės pagalbos vizitas pirmiausia skirtas greitai nustatyti problemos priežastį ir sumažinti paciento patiriamą skausmą. Bangų odontologijos klinikoje kiekviena situacija vertinama individualiai, todėl gydytojai stengiasi kuo greičiau suteikti reikalingą pagalbą ir parinkti tinkamiausią gydymo sprendimą." }),
                   /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-4", children: [
-                    /* @__PURE__ */ jsxs("div", { className: innerCard$f, children: [
+                    /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
                       /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
                       /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Pirminė apžiūra ir diagnostika" }),
                       /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600", children: "Odontologas atlieka burnos ertmės apžiūrą ir įvertina simptomus. Jei reikia, atliekamas rentgeno tyrimas." })
                     ] }),
-                    /* @__PURE__ */ jsxs("div", { className: innerCard$f, children: [
+                    /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
                       /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
                       /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Skausmo malšinimas" }),
                       /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600", children: "Pirmiausia imamasi priemonių skausmui sumažinti – vietinė nejautra ar kitos procedūros." })
                     ] }),
-                    /* @__PURE__ */ jsxs("div", { className: innerCard$f, children: [
+                    /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
                       /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
                       /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Problemos sprendimas" }),
                       /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600", children: "Atliekama reikalinga procedūra arba laikinas gydymas, kuris stabilizuoja būklę iki planinio gydymo." })
                     ] }),
-                    /* @__PURE__ */ jsxs("div", { className: innerCard$f, children: [
+                    /* @__PURE__ */ jsxs("div", { className: innerCard$h, children: [
                       /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
                       /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Tolimesnio gydymo planas" }),
                       /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600", children: "Sudaromas tolimesnio gydymo planas, padedantis išspręsti problemą galutinai ir užtikrinti ilgalaikę burnos sveikatą." })
@@ -10847,7 +10864,7 @@ const item$p = {
 };
 const sectionWrap$g = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$g = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$e = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$g = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$a = "#002045";
 const S$a = "#006b5f";
 const SL$a = "#ecf5fb";
@@ -10900,8 +10917,8 @@ function ProtiniuDantuSalinimas() {
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$p, children: [
               /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Protinių dantų šalinimas Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Protiniai dantys – paskutiniai išdygstantys krūminiai dantys, dažnai keliantys nepatogumų dėl vietos stokos žandikaulyje, netaisyklingos padėties ar sudėtingos šaknų sandaros. Kai jie sukelia skausmą, uždegimą ar trukdo gretimiems dantims, jų pašalinimas tampa saugiausiu ir racionaliausiu sprendimu." }),
-                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinika Klaipėdoje specializuojasi protinių dantų šalinime, naudodama šiuolaikines diagnostikos technologijas ir chirurginius metodus. Procedūra atliekama individualiai kiekvienam pacientui, atsižvelgiant į danties padėtį, šaknų struktūrą ir aplinkinių audinių anatomines ypatybes, siekiant užtikrinti kuo didesnį saugumą ir komfortą." })
+                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Protinių dantų dygimas yra vienas dažniausių vėlyvojo dantų vystymosi etapų, kuris neretai sukelia įvairių komplikacijų. Dėl vietos stokos žandikaulyje šie dantys dažnai išdygsta netaisyklingai, būna dalinai neišdygę arba lieka visiškai retinuoti. Tokios situacijos gali lemti skausmą, dantenų uždegimus, gretimų dantų spaudimą ar net sąkandžio pokyčius." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje protinių dantų šalinimas atliekamas taikant modernius chirurginius metodus ir skaitmeninę diagnostiką, leidžiančią tiksliai įvertinti danties padėtį bei šaknų anatomiją. Kiekvienas atvejis vertinamas individualiai, siekiant užtikrinti maksimalų saugumą, audinių tausojimą ir sklandų gijimo procesą. Pagrindinis tikslas – ne tik pašalinti problemą sukeliantį dantį, bet ir užkirsti kelią galimoms komplikacijoms ateityje." })
               ] }) }),
               /* @__PURE__ */ jsx("div", { className: "flex justify-start mt-6", children: /* @__PURE__ */ jsx(
                 Link,
@@ -10954,13 +10971,14 @@ function ProtiniuDantuSalinimas() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Jonas-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -10968,92 +10986,106 @@ function ProtiniuDantuSalinimas() {
             ] }) }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mb-10 no-x-scroll pan-y", variants: item$p, children: /* @__PURE__ */ jsx(ReviewsCarousel, {}) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kas-yra", className: sectionWrap$g, variants: item$p, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$g, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra protinių dantų šalinimas?" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra protinių dantų šalinimas ir kodėl jis atliekamas?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Protinių dantų šalinimas – tai chirurginė procedūra, kurios metu pašalinamas paskutinis, vėliausiai dygstantis krūminis dantis. Dėl riboto laisvos vietos žandikaulyje protiniai dantys dažnai dygsta netaisyklingai, įstringa arba lieka iš dalies pridengti dantenos, todėl gali sukelti diskomfortą ar pažeisti gretimus dantis." }),
-                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinika Klaipėdoje specializuojasi protinių dantų šalinime, naudodama šiuolaikines diagnostikos technologijas ir chirurginius metodus. Procedūra atliekama individualiai kiekvienam pacientui, atsižvelgiant į danties padėtį ir anatominius veiksnius – šaknų formą, artumą nervams bei žandikaulio kaulo struktūrą. Toks individualus požiūris leidžia parinkti saugiausią ir tiksliausią gydymo strategiją." })
+                /* @__PURE__ */ jsx("p", { children: "Protinių dantų šalinimas – tai chirurginė odontologinė procedūra, kurios metu pašalinami tretieji krūminiai dantys, dar vadinami protiniais dantimis. Jie dažniausiai išdygsta paskutiniai, todėl žandikaulyje jiems neretai nepakanka vietos tinkamai išsidėstyti dantų lanke." }),
+                /* @__PURE__ */ jsx("p", { children: "Kai protinis dantis dygsta netaisyklingai, jis gali sukelti spaudimą gretimiems dantims, formuoti uždegiminius židinius ar tapti nuolatine infekcijos priežastimi. Taip pat dėl sudėtingos prieigos šiuos dantis sunkiau išvalyti, todėl jie dažniau pažeidžiami karieso." }),
+                /* @__PURE__ */ jsx("p", { children: "Protinių dantų šalinimas gali būti atliekamas tiek gydymo, tiek profilaktiniais tikslais. Kai kuriais atvejais šie dantys šalinami dar ne pasireiškus ryškiems simptomams, siekiant išvengti būsimų komplikacijų, ypač jei planuojamas ortodontinis gydymas ar dantų lanko korekcija. Toks sprendimas padeda užtikrinti stabilesnę ilgalaikę burnos sveikatą." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "indikacijos", className: sectionWrap$g, variants: item$p, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$g, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada reikia šalinti protinius dantis?" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Sprendimas dėl protinio danties šalinimo priimamas įvertinus jo padėtį, sukeliamus simptomus ir poveikį aplinkiniams audiniams. Dažniausiai protiniai dantys šalinami, kai jie kelia realų diskomfortą ar riziką bendrai burnos sveikatai." }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada būtina šalinti protinius dantis?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Sprendimas dėl protinių dantų šalinimo priimamas tik atlikus išsamią klinikinę apžiūrą ir radiologinius tyrimus. Ne visi protiniai dantys turi būti šalinami, tačiau tam tikrose situacijose jie tampa aiškiu rizikos veiksniu burnos sveikatai." }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 mb-6", children: [
-                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700", children: "Protiniai dantys šalinami, kai:" }),
+                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700", children: "Dažniausios indikacijos protinių dantų šalinimui:" }),
                 /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
-                  "jaučiamas nuolatinis ar pasikartojantis skausmas danties srityje",
-                  "atsiranda dantenų uždegimas aplink dygstantį ar iš dalies pridengtą dantį",
-                  "protinis dantis spaudžia gretimus dantis ir kelia grėsmę jų padėčiai",
-                  "dantis šalinamas profilaktiniais tikslais prieš ortodontinį gydymą"
+                  "nuolatinis ar pasikartojantis skausmas danties srityje",
+                  "dantenų uždegimas, patinimas ar pūliavimas aplink protinį dantį",
+                  "netaisyklinga danties padėtis arba dalinis neišdygimas",
+                  "gretimų dantų spaudimas ar jų pasislinkimas",
+                  "karieso pažeidimai, kurių neįmanoma kokybiškai gydyti",
+                  "pasiruošimas ortodontiniam gydymui ar sąkandžio korekcijai"
                 ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
                   /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$o, {}) }),
                   /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
                 ] }, i)) })
               ] }),
-              /* @__PURE__ */ jsx("div", { className: "rounded-xl border border-slate-200 bg-white p-4 sm:p-5", children: /* @__PURE__ */ jsxs("p", { className: "text-sm text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("span", { className: "font-semibold text-darkblue-700", children: "Pastaba:" }),
-                " ",
-                "Laiku pašalintas problemiškas protinis dantis padeda išvengti skausmo, uždegimo ir gretimų dantų pažeidimų, todėl svarbu nedelsti apsilankyti pas odontologą pastebėjus pirmuosius simptomus."
-              ] }) })
+              /* @__PURE__ */ jsx("div", { className: "rounded-xl border border-slate-200 bg-white p-4 sm:p-5", children: /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-700 leading-relaxed", children: "Svarbu suprasti, kad net ir besimptomiai protiniai dantys gali kelti riziką ateityje. Dėl to gydytojas visada vertina ne tik esamą situaciją, bet ir galimą ilgalaikę prognozę. Kai dantys yra pilnai išdygę, stabilūs ir nesukelia jokių nusiskundimų, jie gali būti paliekami stebėjimui, reguliariai kontroliuojant jų būklę." }) })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "procesas", className: sectionWrap$g, variants: item$p, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$g, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip vyksta procedūra?" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Protinio danties šalinimas Bangų odontologijos klinikoje atliekamas pagal aiškią ir saugią eigą. Metodas pritaikomas kiekvieno paciento specifiniam atvejui, siekiant minimizuoti audinių traumą ir užtikrinti sklandų gijimą." }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip atliekamas protinių dantų šalinimas?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Protinių dantų šalinimas yra kruopščiai suplanuota chirurginė procedūra, kurios eiga priklauso nuo danties padėties, šaknų formos ir aplinkinių audinių būklės. Kiekvienas atvejis yra individualus, todėl prieš procedūrą atliekama išsami diagnostika, leidžianti tiksliai įvertinti galimus sudėtingumo veiksnius ir parinkti saugiausią gydymo metodą." }),
               /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-4", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$e, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$g, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Diagnostika" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Prieš atliekant šalinimą, odontologas įvertina protinio danties padėtį, šaknų formą ir artumą aplinkiniams audiniams bei nervams. Naudojant šiuolaikines diagnostikos technologijas, tiksliai suplanuojama saugiausia procedūros eiga." })
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Diagnostika ir planavimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Prieš protinių dantų šalinimą atliekama klinikinė apžiūra ir rentgenologinis arba 3D kompiuterinės tomografijos tyrimas. Šie duomenys leidžia įvertinti danties padėtį kaulo atžvilgiu, šaknų struktūrą, nervų kanalų artumą bei galimas rizikas. Remiantis šia informacija sudaromas individualus gydymo planas, kuris užtikrina maksimalų procedūros tikslumą ir saugumą." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$e, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$g, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Vietinė nejautra" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Prieš pradedant šalinimą, taikoma vietinė nejautra, kuri patikimai nuskausmina gydomą sritį. Tai leidžia procedūrą atlikti be skausmo, o pacientas jaučia tik lengvą spaudimą." })
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Nuskausminimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Procedūra atliekama taikant vietinę nejautrą, kuri užtikrina, kad pacientas procedūros metu nejaus skausmo. Esant sudėtingesniems atvejams ar padidėjusiam nerimui, gali būti taikomi papildomi nuskausminimo metodai, siekiant užtikrinti visišką komfortą." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$e, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$g, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Danties atlaisvinimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Odontologas atsargiai atlaisvina protinį dantį iš alveolės, taikydamas metodą, pritaikytą konkrečiam atvejui. Procedūra atliekama kontroliuojamai, siekiant minimizuoti aplinkinių audinių traumą." })
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Danties pašalinimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Dantis atsargiai atlaisvinamas ir pašalinamas iš kaulo alveolės. Jei dantis yra retinuotas ar sudėtingos padėties, gali būti taikomas dalinis šalinimas, leidžiantis sumažinti audinių traumą ir užtikrinti kontroliuojamą procedūros eigą. Tokia taktika padeda išsaugoti aplinkinius audinius ir sumažinti gijimo laikotarpį." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$e, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$g, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Žaizdos sutvarkymas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pašalinus dantį, žaizda kruopščiai sutvarkoma, siekiant sumažinti infekcijos riziką ir sudaryti sąlygas sklandžiam gijimui. Pacientui pateikiamos aiškios rekomendacijos tolimesnei priežiūrai." })
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Po danties pašalinimo žaizda kruopščiai išvaloma, prireikus uždedami siūlai arba naudojamos hemostazinės priemonės. Tai padeda užtikrinti tinkamą kraujo krešulio formavimąsi, kuris yra būtinas sklandžiam gijimui." })
                 ] })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "gijimas", className: sectionWrap$g, variants: item$p, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$g, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Gijimas po procedūros" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip vyksta gijimas po protinių dantų šalinimo?" }),
               /* @__PURE__ */ jsxs("div", { className: "text-slate-700 leading-relaxed space-y-4 mb-6", children: [
-                /* @__PURE__ */ jsx("p", { children: "Pradinis gijimas po protinio danties šalinimo trunka 7–10 dienų. Šiuo laikotarpiu audiniai palaipsniui atsistato, o traukimo vietoje susiformavęs kraujo krešulys yra būtinas sklandžiam gijimo procesui, todėl svarbu jo nepažeisti." }),
-                /* @__PURE__ */ jsx("p", { children: "Tinkama priežiūra šiuo laikotarpiu padeda sumažinti diskomfortą, paspartina gijimą ir sumažina komplikacijų riziką." })
+                /* @__PURE__ */ jsx("p", { children: "Gijimas po protinių dantų šalinimo yra natūralus organizmo procesas, kuris vyksta etapais. Jo trukmė priklauso nuo procedūros sudėtingumo, individualių paciento savybių ir to, kaip laikomasi gydytojo rekomendacijų. Dažniausiai pirminis gijimas trunka 7–10 dienų, tačiau visiškas audinių atsistatymas gali užtrukti ilgiau." }),
+                /* @__PURE__ */ jsx("p", { children: "Pirmosiomis valandomis po procedūros svarbiausias procesas yra kraujo krešulio susiformavimas. Šis krešulys apsaugo žaizdą ir yra būtinas normaliam gijimui. Jo pažeidimas gali sukelti komplikacijas ir sulėtinti gijimą." })
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: innerCard$e + " mb-6", children: [
-                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-4", children: "Gijimo laikotarpiu rekomenduojama vengti:" }),
+              /* @__PURE__ */ jsxs("div", { className: innerCard$g + " mb-6", children: [
+                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-4", children: "Tipinis gijimo procesas:" }),
                 /* @__PURE__ */ jsx("ul", { className: "space-y-3", children: [
-                  "karšto maisto ir gėrimų, kol žaizda pradės gyti",
-                  "intensyvaus fizinio krūvio pirmosiomis dienomis po procedūros",
-                  "rūkymo, kuris gali sulėtinti gijimą ir padidinti komplikacijų riziką",
-                  "intensyvaus burnos skalavimo, kad nebūtų pažeistas kraujo krešulys"
+                  "1 diena – krešulio formavimasis, galimas lengvas kraujavimas",
+                  "2–3 dienos – patinimo ir jautrumo pikas",
+                  "4–7 dienos – audinių regeneracijos pradžia",
+                  "1–2 savaitės – pirminis žaizdos užgijimas"
                 ].map((text, i) => /* @__PURE__ */ jsxs("li", { className: "flex items-start gap-3", children: [
                   /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$o, {}) }),
                   /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
                 ] }, i)) })
               ] }),
-              /* @__PURE__ */ jsx("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: /* @__PURE__ */ jsx("p", { children: "Laikantis šių rekomendacijų, gijimas po protinio danties šalinimo vyksta sklandžiai, o audiniai atsistato be papildomų komplikacijų." }) })
+              /* @__PURE__ */ jsx("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: /* @__PURE__ */ jsx("p", { children: "Siekiant užtikrinti sklandų gijimą, rekomenduojama vengti karšto maisto, fizinio krūvio, rūkymo ir intensyvaus burnos skalavimo pirmosiomis dienomis. Taip pat svarbu laikytis individualių gydytojo nurodymų. Tinkama priežiūra ženkliai sumažina komplikacijų riziką ir pagreitina atsistatymą." }) })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "komplikacijos", className: sectionWrap$g, variants: item$p, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$g, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Galimos komplikacijos" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kokios galimos komplikacijos po protinių dantų šalinimo?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Nors protinių dantų šalinimas laikomas saugia ir įprasta chirurgine procedūra, kaip ir bet kuri intervencija, jis gali turėti tam tikrų galimų komplikacijų. Dažniausiai jos yra laikinos ir lengvai valdomos, jei pacientas laikosi pooperacinių rekomendacijų." }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 mb-6", children: [
+                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700", children: "Galimos komplikacijos:" }),
+                /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
+                  "alveolitas (sausa alveolė) dėl prarasto kraujo krešulio",
+                  "laikinas patinimas ir jautrumas",
+                  "nedidelis kraujavimas pirmosiomis valandomis",
+                  "žandikaulio sustingimas ar ribotas išsižiojimas",
+                  "retais atvejais – infekciniai procesai"
+                ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
+                  /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$o, {}) }),
+                  /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
+                ] }, i)) })
+              ] }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Nors protinių dantų šalinimas yra dažnai atliekama ir gerai ištirta procedūra, retais atvejais gali pasitaikyti tam tikrų komplikacijų – alveolitas (žaizdos uždegimas dėl pažeisto kraujo krešulio), patinimas ar infekciniai procesai." }),
-                /* @__PURE__ */ jsx("p", { children: "Šios rizikos gali būti sėkmingai išvengtos laikantis gydytojo rekomendacijų tiek prieš procedūrą, tiek gijimo laikotarpiu. Jei po procedūros atsiranda neįprastas skausmas, ilgai nemažėjantis patinimas ar kiti neįprasti simptomai, svarbu nedelsti ir kreiptis į odontologą." })
+                /* @__PURE__ */ jsx("p", { children: "Alveolitas yra viena dažniausių komplikacijų, pasireiškianti stipresniu skausmu, kuris gali plisti į ausies ar smilkinio sritį. Tokiu atveju reikalinga gydytojo apžiūra ir vietinis gydymas, kuris dažniausiai greitai palengvina simptomus." }),
+                /* @__PURE__ */ jsx("p", { children: "Svarbu pabrėžti, kad komplikacijų rizika reikšmingai sumažėja, kai procedūra atliekama profesionaliai, o pacientas laikosi rekomendacijų. Daugeliu atvejų gijimas vyksta sklandžiai ir be rimtesnių nesklandumų." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kodel-rinktis", className: sectionWrap$g, variants: item$p, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$g, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis Bangų odontologijos kliniką protinių dantų šalinimui?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Renkantis protinių dantų šalinimo paslaugas svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo sprendimo priėmimo iki priežiūros po procedūros. Bangų odontologijos klinikoje protinių dantų šalinimas atliekamas atsakingai, siekiant maksimaliai apsaugoti paciento komfortą ir burnos sveikatą." }),
-                /* @__PURE__ */ jsx("p", { children: "Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, neskuba priimti sprendimo ir visuomet pirmiausia ieško galimybių išsaugoti dantį. Jei protinio danties šalinimas yra neišvengiamas, procedūra atliekama taikant šiuolaikinius nuskausminimo metodus ir kruopščiai suplanuotą eigą. Dėmesys skiriamas ne tik pačiai procedūrai, bet ir aiškiam situacijos paaiškinimui bei rekomendacijoms po jos." }),
-                /* @__PURE__ */ jsx("p", { children: "Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis saugiai viso gydymo metu. Todėl ieškantiems patikimo ir profesionalaus protinių dantų šalinimo Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas." })
+                /* @__PURE__ */ jsx("p", { children: "Protinių dantų šalinimas reikalauja ne tik chirurginės patirties, bet ir tikslaus planavimo bei atsakingo diagnostinio įvertinimo. Todėl svarbu rinktis kliniką, kurioje kiekvienas atvejis vertinamas individualiai, o gydymo sprendimai grindžiami ne tik simptomais, bet ir ilgalaike paciento burnos sveikatos prognoze." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje protinių dantų šalinimas atliekamas naudojant modernią diagnostiką ir šiuolaikinius chirurginius metodus. Prieš procedūrą kruopščiai įvertinama danties padėtis, šaknų anatomija ir aplinkinių struktūrų rizikos, siekiant užtikrinti maksimalų saugumą." }),
+                /* @__PURE__ */ jsx("p", { children: "Klinikoje didelis dėmesys skiriamas paciento komfortui. Taikoma efektyvi vietinė nejautra, o sudėtingesniais atvejais parenkami papildomi nuskausminimo sprendimai. Procedūros eiga visada aiškiai paaiškinama, kad pacientas jaustųsi užtikrintai ir suprastų kiekvieną gydymo etapą." }),
+                /* @__PURE__ */ jsx("p", { children: "Pacientai vertina profesionalų požiūrį, nuoseklų gydymo procesą ir ramų bendravimą. Todėl Bangų odontologijos klinika yra patikimas pasirinkimas, kai reikalingas saugus ir profesionalus protinių dantų šalinimas Klaipėdoje." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mt-8 mb-12 text-left", variants: item$p, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$g, children: [
@@ -11088,7 +11120,7 @@ const item$o = {
 };
 const sectionWrap$f = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$f = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$d = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$f = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$9 = "#002045";
 const S$9 = "#006b5f";
 const SL$9 = "#ecf5fb";
@@ -11098,9 +11130,9 @@ function CheckIcon$n() {
 const tocSections$m = [
   { id: "kainos", label: "Kainos" },
   { id: "kas-yra", label: "Kas yra rentgenologiniai tyrimai?" },
-  { id: "paslaugu-tipai", label: "Tyrimų rūšys" },
   { id: "indikacijos", label: "Kada reikalingas?" },
-  { id: "privalumai", label: "Klinikos privalumai" },
+  { id: "paslaugu-tipai", label: "Tyrimų rūšys" },
+  { id: "procesas", label: "Kaip atliekamas tyrimas?" },
   { id: "kodel-rinktis", label: "Kodėl verta rinktis mus?" }
 ];
 function RentgenologiniaiTyrimai() {
@@ -11140,8 +11172,8 @@ function RentgenologiniaiTyrimai() {
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$o, children: [
               /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Rentgenologiniai tyrimai Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Rentgenologiniai tyrimai yra neatsiejama tikslios odontologinės diagnostikos dalis. Jie leidžia gydytojui pamatyti tai, kas nėra matoma įprastos apžiūros metu – danties šaknis, žandikaulio kaulo struktūrą, aplinkinius audinius bei galimus paslėptus pažeidimus." }),
-                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinika Klaipėdoje teikia rentgenologinės diagnostikos paslaugas naudodama modernią skaitmeninę įrangą. Tai leidžia atlikti tyrimus greitai, saugiai ir su minimalia spinduliuotės doze, o gauti vaizdai yra aiškūs ir tikslūs, todėl padeda gydytojui priimti pagrįstus sprendimus dėl tolimesnio gydymo." })
+                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Dantų ir žandikaulių ligos dažnai vystosi nepastebimai, o ankstyvose stadijose jų požymiai gali būti nematomi plika akimi. Dėl šios priežasties rentgenologinė diagnostika yra viena svarbiausių šiuolaikinės odontologijos dalių, leidžianti tiksliai įvertinti tiek dantų, tiek aplinkinių audinių būklę. Laiku atliktas rentgenologinis tyrimas padeda išvengti sudėtingesnių gydymo etapų ir užtikrina tikslesnį gydymo planavimą." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje rentgenologiniai tyrimai atliekami naudojant modernią skaitmeninę diagnostinę įrangą, kuri leidžia gauti aiškius, detalius ir greitai apdorojamus vaizdus. Tai suteikia gydytojams galimybę įvertinti situaciją tiksliai ir parinkti optimalų gydymo sprendimą kiekvienam pacientui individualiai." })
               ] }) }),
               /* @__PURE__ */ jsx("div", { className: "flex justify-start mt-6", children: /* @__PURE__ */ jsx(
                 Link,
@@ -11195,13 +11227,14 @@ function RentgenologiniaiTyrimai() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Jonas-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -11209,65 +11242,125 @@ function RentgenologiniaiTyrimai() {
             ] }) }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mb-10 no-x-scroll pan-y", variants: item$o, children: /* @__PURE__ */ jsx(ReviewsCarousel, {}) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kas-yra", className: sectionWrap$f, variants: item$o, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$f, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra rentgenologiniai tyrimai?" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra rentgenologiniai tyrimai odontologijoje?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Rentgenologiniai tyrimai – tai diagnostikos metodai, leidžiantys gauti vaizdą apie dantų, jų šaknų ir žandikaulio kaulo struktūrą. Šie tyrimai atskleidžia informaciją, kurios nepavyksta pastebėti įprastos vizualinės apžiūros metu, todėl jie yra svarbi tikslios diagnostikos dalis." }),
-                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje rentgenologiniai tyrimai atliekami naudojant modernią skaitmeninę įrangą, kuri užtikrina aiškius, tikslius vaizdus ir minimalią spinduliuotės dozę. Priklausomai nuo klinikinio poreikio, gydytojas parenka tinkamiausią tyrimo tipą – nuo vieno danties nuotraukos iki trimatės kaulo struktūros vizualizacijos." })
-              ] })
-            ] }) }),
-            /* @__PURE__ */ jsx(motion.section, { id: "paslaugu-tipai", className: sectionWrap$f, variants: item$o, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$f, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Rentgenologinių tyrimų rūšys" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Klinika atlieka įvairius rentgenologinių tyrimų tipus, kurie parenkami priklausomai nuo konkretaus klinikinio poreikio ir gydymo plano." }),
-              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Dentalinės nuotraukos" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Vieno ar kelių dantų vaizdas, leidžiantis įvertinti šaknų kanalus, jų būklę bei aplinkinius audinius. Šis tyrimas dažniausiai atliekamas tikslinei konkretaus danties problemai įvertinti." })
+                /* @__PURE__ */ jsx("p", { children: "Rentgenologiniai tyrimai odontologijoje – tai modernūs diagnostikos metodai, leidžiantys gydytojui pamatyti struktūras, kurios nėra matomos įprastos apžiūros metu. Tai vienas svarbiausių diagnostikos etapų, be kurio šiuolaikinis gydymo planavimas dažnai būtų neįmanomas arba nepakankamai tikslus." }),
+                /* @__PURE__ */ jsxs("div", { className: "space-y-3 my-2", children: [
+                  /* @__PURE__ */ jsx("p", { className: "font-semibold text-darkblue-700", children: "Rentgenologinio tyrimo metu gaunama informacija apie:" }),
+                  /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
+                    "dantų šaknų struktūrą ir anatomiją",
+                    "kaulo tankį, kiekį ir rezorbcijos laipsnį",
+                    "paslėptus ėduonies židinius tarp dantų",
+                    "uždegiminius procesus prie šaknų ar kaulo audiniuose",
+                    "cistas, darinius, retinuotus ar neišdygusius dantis"
+                  ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
+                    /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$n, {}) }),
+                    /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
+                  ] }, i)) })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Panoraminės nuotraukos" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Bendras žandikaulio vaizdas, apimantis visus dantis, jų šaknis ir kaulo struktūrą. Tokia nuotrauka suteikia platų vaizdą apie bendrą burnos ertmės būklę." })
-                ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "3D kompiuterinė tomografija (CBCT)" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Trimatis kaulo struktūros vertinimas, suteikiantis itin tikslią informaciją apie žandikaulio kaulo tankį, formą ir tūrį. Šis tyrimas ypač naudingas planuojant sudėtingesnes procedūras." })
-                ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Cefalometriniai tyrimai" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Specializuotas tyrimas, atliekamas ortodontiniam gydymui, leidžiantis įvertinti veido kaulų ir žandikaulių tarpusavio santykį bei suplanuoti tikslų gydymo eigą." })
-                ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Intraoralinis skenavimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Skaitmeninis dantų modeliavimas, kurio metu sukuriamas tikslus, be klasikinių atspaudų gaunamas dantų ir dantenų vaizdas, naudojamas tolimesniam gydymo planavimui." })
-                ] })
+                /* @__PURE__ */ jsx("p", { children: "Šie duomenys leidžia gydytojui remtis ne spėjimu, o objektyvia diagnostine informacija. Tai ženkliai sumažina gydymo klaidų riziką ir pagerina ilgalaikę prognozę." }),
+                /* @__PURE__ */ jsx("p", { children: "Svarbu pabrėžti, kad rentgenologinis tyrimas nėra tik papildomas diagnostinis žingsnis. Daugeliu atvejų tai yra esminė gydymo dalis, ypač planuojant implantaciją, endodontinį gydymą, ortodontiją ar chirurgines procedūras." }),
+                /* @__PURE__ */ jsx("p", { children: "Šiuolaikinė skaitmeninė rentgeno technologija leidžia gauti itin aukštos raiškos vaizdus su minimalia spinduliuotės doze. Dėl to tyrimas yra saugus, greitas ir gali būti taikomas tiek suaugusiems, tiek vaikams, kai tai yra mediciniškai būtina." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "indikacijos", className: sectionWrap$f, variants: item$o, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$f, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada reikalingas rentgenologinis tyrimas?" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Rentgenologinis tyrimas skiriamas tuomet, kai gydytojui reikalinga papildoma informacija, kurios nepavyksta gauti įprastos klinikinės apžiūros metu. Tyrimai atliekami šiais atvejais:" }),
-              /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
-                "jaučiamas dantų skausmas, kurio priežastis nėra aiški iš išorinės apžiūros",
-                "planuojama implantacija ir reikalingas tikslus žandikaulio kaulo įvertinimas",
-                "atliekamas ortodontinis gydymas, kuriam būtinas tikslus dantų ir žandikaulių santykio vertinimas",
-                "planuojamas dantų šalinimas ir reikia įvertinti šaknų padėtį bei formą",
-                "reikia įvertinti traumos pasekmes dantims, dantenoms ar žandikaulio kaului"
-              ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
-                /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$n, {}) }),
-                /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
-              ] }, i)) })
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada reikalingi rentgenologiniai tyrimai?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Rentgenologiniai tyrimai skiriami tada, kai gydytojui būtina tiksliai įvertinti vidines burnos struktūras, kurių neįmanoma nustatyti vizualinės apžiūros metu. Dažnai jie atliekami ne tik esant simptomams, bet ir planuojant gydymą iš anksto." }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-3 mb-6", children: [
+                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700", children: "Dažniausios indikacijos:" }),
+                /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
+                  "dantų skausmas, jautrumas ar spaudimo pojūtis",
+                  "įtariamas šaknų kanalų uždegimas",
+                  "implantacijos planavimas",
+                  "ortodontinis gydymas ar sąkandžio vertinimas",
+                  "dantų šalinimas ar chirurginės intervencijos",
+                  "traumos, smūgiai ar žandikaulio pažeidimai",
+                  "retinuoti, papildomi ar neišdygę dantys"
+                ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
+                  /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$n, {}) }),
+                  /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
+                ] }, i)) })
+              ] }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Labai svarbu tai, kad daugelis dantų patologijų ilgą laiką vystosi be simptomų. Pavyzdžiui, uždegimas prie šaknies gali progresuoti tyliai, kol jau paveikia kaulo audinį." }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-3", children: [
+                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700", children: "Laiku atliktas rentgenologinis tyrimas leidžia:" }),
+                /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
+                  "anksti nustatyti patologijas",
+                  "išvengti sudėtingo chirurginio gydymo",
+                  "išsaugoti natūralius dantis",
+                  "tiksliai suplanuoti implantaciją",
+                  "sumažinti komplikacijų riziką"
+                ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
+                  /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$n, {}) }),
+                  /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
+                ] }, i)) })
+              ] }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mt-6", children: "Dėl šių priežasčių rentgenologinė diagnostika laikoma neatsiejama tiek gydymo, tiek profilaktikos dalimi." })
             ] }) }),
-            /* @__PURE__ */ jsx(motion.section, { id: "privalumai", className: sectionWrap$f, variants: item$o, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$f, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Klinikos privalumai" }),
-              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinika pabrėžia kompleksišką požiūrį į diagnostiką, derindama rentgenologinių tyrimų duomenis su klinikine apžiūra. Toks derinys leidžia gydytojui susidaryti pilną vaizdą apie paciento burnos sveikatą ir priimti pagrįstus sprendimus dėl tolimesnio gydymo." }),
-                /* @__PURE__ */ jsx("p", { children: "Tyrimas atliekamas greitai, saugiai ir su minimalia spinduliuotės doze, todėl pacientai gali jaustis ramūs dėl procedūros saugumo. Naudojama moderni skaitmeninė įranga užtikrina aiškius ir tikslius vaizdus, o rezultatai gaunami itin operatyviai, sudarant sąlygas greitam ir efektyviam gydymo planavimui." })
+            /* @__PURE__ */ jsx(motion.section, { id: "paslaugu-tipai", className: sectionWrap$f, variants: item$o, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$f, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kokie rentgenologiniai tyrimai atliekami Bangų odontologijos klinikoje?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Bangų odontologijos klinikoje atliekamas platus rentgenologinių tyrimų spektras, leidžiantis tiksliai įvertinti skirtingas klinikines situacijas. Tyrimo metodas parenkamas individualiai, atsižvelgiant į paciento būklę ir planuojamą gydymą." }),
+              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$f, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Dentalinės rentgeno nuotraukos" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Tai tikslinis vieno ar kelių dantų vaizdas, leidžiantis įvertinti šaknų kanalus, ėduonies pažeidimus, uždegiminius procesus ir kaulo pokyčius aplink konkretų dantį. Šis tyrimas ypač svarbus endodontiniam gydymui." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$f, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Panoraminės rentgeno nuotraukos (ortopantomogramos)" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Tai bendras viso žandikaulio vaizdas, kuriame matomi visi dantys, šaknys ir aplinkinės struktūros. Tyrimas dažnai naudojamas implantacijos, protezavimo ar chirurginių procedūrų planavimui." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$f, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "3D kompiuterinė tomografija (CBCT)" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Tai trimatis vaizdas, leidžiantis itin tiksliai įvertinti kaulo tūrį, tankį, nervų kanalų padėtį bei kitus anatominius ypatumus. Tai vienas svarbiausių tyrimų implantologijoje." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$f, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Cefalometriniai tyrimai" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Naudojami ortodontijoje, vertinant žandikaulių santykį, augimo kryptį ir dantų pozicijas." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$f, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Intraoralinis skenavimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Skaitmeninis dantų modeliavimas, leidžiantis sukurti itin tikslų 3D burnos vaizdą be tradicinių atspaudų. Naudojamas protezavimui ir ortodontiniam gydymui." })
+                ] })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "procesas", className: sectionWrap$f, variants: item$o, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$f, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip atliekami rentgenologiniai tyrimai?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Rentgenologiniai tyrimai Bangų odontologijos klinikoje atliekami pagal aiškią ir nuoseklią eigą, užtikrinant diagnostikos tikslumą ir paciento komfortą. Kiekvienas atvejis vertinamas individualiai, todėl tyrimo eiga gali nežymiai skirtis priklausomai nuo pasirinkto metodo." }),
+              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-5", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$f, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Paciento informavimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pacientas supažindinamas su tyrimu, jo tikslu ir eiga. Paaiškinama, kokia informacija bus gauta ir kaip ji bus naudojama gydymo planavimui." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$f, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Apsaugos priemonės" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Uždedamos apsauginės priemonės, tokios kaip švininė prijuostė, siekiant maksimaliai sumažinti spinduliuotės poveikį. Šiuolaikinė įranga naudoja itin mažą apšvitą, todėl tyrimas yra saugus." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$f, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Tyrimo parinkimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Parenkamas tinkamiausias metodas – dentalinė, panoraminė ar 3D nuotrauka – pagal klinikinę situaciją ir diagnostinį poreikį." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$f, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Vaizdo fiksavimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Atliekamas greitas skaitmeninis vaizdo fiksavimas, trunkantis vos kelias sekundes. Svarbu išlikti nejudant, kad vaizdas būtų tikslus." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$f, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "05" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Rezultatų vertinimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Gauti duomenys perduodami gydytojui, kuris juos įvertina ir įtraukia į gydymo planą. Tyrimas atliekamas tik esant medicininei indikacijai, todėl yra pagrįstas ir saugus." })
+                ] })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kodel-rinktis", className: sectionWrap$f, variants: item$o, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$f, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis Bangų odontologijos kliniką rentgenologiniams tyrimams?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Renkantis rentgenologinius tyrimus svarbu ne tik pati procedūra, bet ir tai, kaip tiksliai bei saugiai ji atliekama. Bangų odontologijos klinikoje diagnostika atliekama atsakingai, siekiant maksimaliai apsaugoti paciento sveikatą ir suteikti tikslią informaciją tolimesniam gydymui." }),
-                /* @__PURE__ */ jsx("p", { children: "Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, parenka tinkamiausią tyrimo tipą ir derina gautus duomenis su klininiu vertinimu. Naudojama moderni skaitmeninė įranga leidžia atlikti tyrimus greitai ir su minimalia spinduliuotės doze, nepakenkiant tyrimo tikslumui." }),
-                /* @__PURE__ */ jsx("p", { children: "Pacientai vertina profesionalų bendravimą, aiškų situacijos paaiškinimą ir rūpestingą požiūrį viso vizito metu. Todėl ieškantiems patikimų rentgenologinių tyrimų Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas." })
+                /* @__PURE__ */ jsx("p", { children: "Tiksli diagnostika yra sėkmingo odontologinio gydymo pagrindas, todėl rentgenologinis tyrimas turi būti atliekamas ne tik techniškai kokybiškai, bet ir profesionaliai interpretuojant gautus duomenis. Bangų odontologijos klinikoje Klaipėdoje didelis dėmesys skiriamas tiek moderniai skaitmeninei įrangai, tiek gydytojų patirčiai analizuojant diagnostinius vaizdus." }),
+                /* @__PURE__ */ jsx("p", { children: "Klinikoje kiekvienas atvejis vertinamas kompleksiškai – rentgenologiniai duomenys visada derinami su klinikine apžiūra ir paciento anamneze. Tai leidžia išvengti paviršutiniškų sprendimų ir užtikrinti individualiai pritaikytą gydymo planą, atitinkantį realią burnos būklę. Tokia metodika ypač svarbi planuojant implantaciją, endodontinį ar chirurginį gydymą, kai net mažiausios detalės gali turėti įtakos galutiniam rezultatui." }),
+                /* @__PURE__ */ jsx("p", { children: "Moderni skaitmeninė rentgenologinė įranga suteikia galimybę greitai gauti aukštos raiškos vaizdus, todėl diagnostika ir gydymo planavimas gali būti pradedami iš karto. Pacientai taip pat gali gauti aiškų paaiškinimą apie savo būklę jau pirmo vizito metu, be papildomo laukimo ar neapibrėžtumo." }),
+                /* @__PURE__ */ jsx("p", { children: "Pacientai vertina profesionalų bendravimą, aiškias rekomendacijas ir atsakingą požiūrį į diagnostiką. Todėl Bangų odontologijos klinika Klaipėdoje yra patikimas pasirinkimas, kai reikalingas tikslus, saugus ir profesionaliai atliktas rentgenologinis tyrimas." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mt-8 mb-12 text-left", variants: item$o, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$f, children: [
@@ -11302,7 +11395,7 @@ const item$n = {
 };
 const sectionWrap$e = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$e = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$c = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$e = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$8 = "#002045";
 const S$8 = "#006b5f";
 const SL$8 = "#ecf5fb";
@@ -11312,9 +11405,9 @@ function CheckIcon$m() {
 const tocSections$l = [
   { id: "kainos", label: "Kainos" },
   { id: "kas-yra", label: "Kas yra vienmomentė implantacija?" },
-  { id: "privalumai", label: "Pagrindiniai privalumai" },
   { id: "kada-taikoma", label: "Kada taikoma?" },
   { id: "procesas", label: "Kaip vyksta procedūra?" },
+  { id: "privalumai", label: "Pagrindiniai privalumai" },
   { id: "kodel-rinktis", label: "Kodėl verta rinktis mus?" }
 ];
 function VienmomeneImplantacija() {
@@ -11354,8 +11447,8 @@ function VienmomeneImplantacija() {
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$n, children: [
               /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Vienmomentė implantacija Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Bangų odontologijos klinika siūlo modernią dantų atkūrimo procedūrą, kurios metu danties pašalinimas ir implanto įsriegimas atliekami vieno vizito metu. Toks sprendimas leidžia sutrumpinti gydymo trukmę ir paprasčiau planuoti tolimesnius vizitus, neprarandant saugumo ar procedūros kokybės." }),
-                /* @__PURE__ */ jsx("p", { children: "Vienmomentė implantacija Klaipėdoje atliekama pasitelkiant šiuolaikinę skaitmeninę diagnostiką ir kruopščiai suplanuotą eigą, todėl kiekvienas atvejis vertinamas individualiai, atsižvelgiant į danties būklę, aplinkinių audinių sveikatą ir kaulo tūrį. Bangų odontologijos klinikoje siekiame, kad procedūra būtų kuo patogesnė ir suteiktų greitą, patikimą rezultatą." })
+                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Danties netekimas ar būtinybė jį pašalinti dažnai turi tiesioginę įtaką ne tik burnos funkcijai, bet ir bendrai savijautai bei pasitikėjimui savimi. Net ir vieno danties praradimas gali sukelti kramtymo diskomfortą, šypsenos estetikos pokyčius, o ilgainiui lemti žandikaulio kaulo nykimą bei gretimų dantų pasislinkimą. Tokiose situacijose vienmomentė implantacija tampa moderniu ir kliniškai pažangiu sprendimu, leidžiančiu vieno vizito metu pašalinti dantį ir iš karto atkurti jo šaknį implantu." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje vienmomentė implantacija atliekama taikant šiuolaikinius implantologijos principus ir skaitmeninę diagnostiką. Procedūros metu siekiama ne tik kuo greičiau atkurti prarastą dantį, bet ir maksimaliai išsaugoti aplinkinius audinius bei natūralią dantenų struktūrą. Individualus gydymo planavimas, tiksli diagnostika ir atsakingas požiūris leidžia užtikrinti prognozuojamą, estetiškai harmoningą ir ilgalaikį rezultatą." })
               ] }) }),
               /* @__PURE__ */ jsx("div", { className: "flex justify-start mt-6", children: /* @__PURE__ */ jsx(
                 Link,
@@ -11408,13 +11501,14 @@ function VienmomeneImplantacija() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Jonas-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -11424,69 +11518,80 @@ function VienmomeneImplantacija() {
             /* @__PURE__ */ jsx(motion.section, { id: "kas-yra", className: sectionWrap$e, variants: item$n, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$e, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra vienmomentė implantacija?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Vienmomentė implantacija – tai gydymo metodas, kurio metu du atskiri etapai, danties pašalinimas ir implanto įsriegimas, sujungiami į vieną procedūrą. Dantis pašalinamas maksimaliai tausojant aplinkinius audinius, o iš karto po to į atsilaisvinusią vietą įsriegiamas implantas." }),
-                /* @__PURE__ */ jsx("p", { children: "Toks požiūris leidžia išvengti papildomo laukimo laikotarpio tarp danties šalinimo ir implantavimo, kuris taikomas taikant klasikinį, kelių etapų gydymo metodą. Bangų odontologijos klinikoje vienmomentė implantacija atliekama kruopščiai suplanuotos eigos metu, siekiant užtikrinti tiek saugumą, tiek geriausią įmanomą rezultatą." })
+                /* @__PURE__ */ jsx("p", { children: "Vienmomentė implantacija – tai modernus dantų atkūrimo metodas, kai pažeisto ar nebeišsaugomo danties pašalinimas ir dantų implanto įsriegimas atliekami to paties vizito metu. Šis gydymo būdas leidžia ženkliai sutrumpinti bendrą gydymo laiką ir išvengti papildomų chirurginių etapų." }),
+                /* @__PURE__ */ jsx("p", { children: "Skirtingai nuo tradicinės implantacijos, kai po danties šalinimo reikia laukti kaulo gijimo laikotarpio, vienmomentės implantacijos metu implantas įsriegiamas iš karto į pašalinto danties vietą. Tai padeda išsaugoti natūralią kaulo struktūrą, sumažinti jo rezorbciją ir palaikyti dantenų kontūrą." }),
+                /* @__PURE__ */ jsx("p", { children: "Svarbu pabrėžti, kad vienmomentė implantacija nėra universalus sprendimas visiems pacientams. Tai individualiai planuojamas gydymo metodas, kuris taikomas tik tuomet, kai užtikrinamas pakankamas kaulo kiekis ir nėra aktyvaus uždegimo. Dėl šios priežasties kiekvienu atveju atliekama išsami diagnostika ir gydymo plano sudarymas." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje vienmomentė implantacija planuojama skaitmeniniu būdu, siekiant maksimaliai tiksliai įvertinti klinikinę situaciją ir užtikrinti prognozuojamą ilgalaikį rezultatą." })
               ] })
-            ] }) }),
-            /* @__PURE__ */ jsx(motion.section, { id: "privalumai", className: sectionWrap$e, variants: item$n, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$e, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Pagrindiniai privalumai" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Vienmomentė implantacija turi keletą svarbių privalumų, dėl kurių šis metodas tampa patrauklia alternatyva klasikiniam, kelių etapų implantavimui." }),
-              /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
-                ["Sutrumpintas laikas", "Danties pašalinimas ir implanto įsriegimas atliekami vienos procedūros metu, todėl nereikia laukti tarp dviejų atskirų vizitų ir gydymo procesas tampa gerokai spartesnis."],
-                ["Audinių išsaugojimas", "Implantą įsriegiant iš karto po danties pašalinimo, sumažinamas kaulo nykimas ir suteikiamos palankesnės sąlygos greitesniam gijimui."],
-                ["Estetika", "Tam tikrais atvejais galimas laikino vainikėlio uždėjimas iš karto, o tai ypač svarbu, kai gydoma priekinių dantų zona ir svarbus estetinis rezultatas."],
-                ["Komfortas", "Mažesnis chirurginių intervencijų skaičius reiškia paprastesnį, aiškesnį gydymo planą ir mažiau streso pacientui."]
-              ].map(([title, text], i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
-                /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$m, {}) }),
-                /* @__PURE__ */ jsxs("span", { className: "text-slate-700", children: [
-                  /* @__PURE__ */ jsxs("span", { className: "font-semibold text-darkblue-700", children: [
-                    title,
-                    "."
-                  ] }),
-                  " ",
-                  text
-                ] })
-              ] }, i)) })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kada-taikoma", className: sectionWrap$e, variants: item$n, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$e, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada taikoma vienmomentė implantacija?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Vienmomentė implantacija taikoma tik kruopščiai įvertinus burnos būklę. Dažniausiai ji rekomenduojama, kai dantis yra nepataisomai pažeistas, tačiau aplinkiniai audiniai yra pakankamai sveiki." }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-3 mb-6", children: [
+                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700", children: "Šis metodas ypač tinkamas, kai:" }),
+                /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
+                  "reikalingas danties šalinimas dėl traumos ar karieso",
+                  "nėra aktyvios infekcijos ar pūlinio",
+                  "kaulo kiekis leidžia užtikrinti implanto stabilumą",
+                  "svarbus greitas estetinės zonos atkūrimas",
+                  "pacientas nori sumažinti bendrą gydymo trukmę"
+                ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
+                  /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$m, {}) }),
+                  /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
+                ] }, i)) })
+              ] }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Vienmomentė implantacija rekomenduojama tais atvejais, kai dantis nebegali būti išsaugotas, tačiau aplinkiniai audiniai yra sveiki, o kaulo tūris pakankamas saugiam implanto įsriegimui. Prieš priimant sprendimą dėl šio gydymo metodo, visuomet atliekama kruopšti apžiūra ir skaitmeninė diagnostika, leidžianti tiksliai įvertinti situaciją." }),
-                /* @__PURE__ */ jsx("p", { children: "Vienmomentė implantacija netaikoma esant aktyviai infekcijai gydomoje srityje arba kai kaulo tūris yra nepakankamas patikimam implanto įtvirtinimui. Tokiais atvejais renkamasi klasikinis, kelių etapų gydymo metodas, kuris leidžia pirmiausia užtikrinti audinių sveikimą ir tik vėliau atlikti implantaciją." })
+                /* @__PURE__ */ jsx("p", { children: "Priekinėje dantų srityje šis metodas dažnai pasirenkamas dėl estetikos svarbos ir psichologinio komforto, nes net trumpalaikis danties netekimas gali turėti įtakos šypsenai ir savijautai." }),
+                /* @__PURE__ */ jsx("p", { children: "Tačiau vienmomentė implantacija negali būti atliekama, jei nustatomas aktyvus uždegimas, nepakankamas kaulo tūris arba sudėtinga anatominė situacija. Tokiais atvejais parenkamas alternatyvus gydymo planas, kuris užtikrina saugesnį ilgalaikį rezultatą." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "procesas", className: sectionWrap$e, variants: item$n, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$e, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip vyksta procedūra?" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Bangų odontologijos klinikoje vienmomentė implantacija atliekama naudojant skaitmeninę diagnostiką, kuri padeda tiksliai suplanuoti kiekvieną gydymo etapą. Procedūros eiga yra aiški ir nuosekli, kad pacientas jaustųsi saugiai viso vizito metu." }),
-              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-4", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$c, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip atliekama vienmomentė implantacija?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Vienmomentė implantacija yra nuoseklus, keliais etapais pagrįstas gydymo procesas, kuriame kiekvienas žingsnis turi įtakos galutiniam rezultatui." }),
+              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-5", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$e, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Diagnostika" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Atliekama skaitmeninė diagnostika, kurios metu įvertinama danties, aplinkinių audinių ir kaulo būklė. Ši informacija padeda nustatyti, ar pacientui tinka vienmomentė implantacija, ir suplanuoti tikslią procedūros eigą." })
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Diagnostika ir planavimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Atliekami rentgeno arba 3D kompiuterinės tomografijos tyrimai. Įvertinamas kaulo kiekis, dantenų būklė, infekcijos rizika ir sudaromas individualus gydymo planas." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$c, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$e, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Pašalinimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Dantis pašalinamas maksimaliai tausojant aplinkinius audinius ir kaulą, kad būtų sudarytos kuo geresnės sąlygos sėkmingam implanto įsriegimui." })
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Danties pašalinimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Dantis pašalinamas maksimaliai tausojant aplinkinius audinius, siekiant išsaugoti natūralią kaulo struktūrą, kuri yra svarbi implanto stabilumui." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$c, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$e, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Implanto įsriegimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Iš karto po danties pašalinimo į atsilaisvinusią vietą įsriegiamas implantas, taip sujungiant abu gydymo etapus į vieną vizitą." })
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Į tą pačią vietą įsriegiamas dantų implantas. Jei pasiekiamas pakankamas pirminis stabilumas, gali būti tvirtinamas laikinas vainikėlis, ypač estetinėje zonoje." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$c, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$e, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Gijimas ir protezavimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Po procedūros seka gijimo laikotarpis, o jam pasibaigus atliekamas galutinis protezavimas, atkuriantis danties funkciją ir estetiką." })
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Gijimo laikotarpis" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Vyksta osteointegracija – implanto suaugimas su kaulu. Šis procesas trunka kelis mėnesius ir yra esminis ilgalaikio rezultato užtikrinimui." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$e, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "05" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Galutinis protezavimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pagaminamas individualus danties vainikėlis, kuris atkartoja natūralią danties formą, spalvą ir funkciją." })
                 ] })
               ] })
             ] }) }),
-            /* @__PURE__ */ jsx(motion.section, { id: "kodel-rinktis", className: sectionWrap$e, variants: item$n, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$e, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?" }),
+            /* @__PURE__ */ jsx(motion.section, { id: "privalumai", className: sectionWrap$e, variants: item$n, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$e, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Vienmomentės implantacijos privalumai" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Renkantis vienmomentę implantaciją svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo tikslios diagnostikos iki priežiūros po gydymo. Bangų odontologijos klinikoje vienmomentė implantacija atliekama atsakingai, siekiant maksimaliai apsaugoti paciento komfortą ir burnos sveikatą." }),
-                /* @__PURE__ */ jsx("p", { children: "Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, naudoja skaitmeninę diagnostiką ir kruopščiai planuoja procedūros eigą. Jei vienmomentė implantacija yra tinkamas sprendimas, ji atliekama taikant šiuolaikinius metodus, kurie leidžia sutrumpinti gydymo laiką neprarandant saugumo ar kokybės." }),
-                /* @__PURE__ */ jsx("p", { children: "Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis saugiai viso gydymo metu. Todėl ieškantiems patikimos ir profesionalios vienmomentės implantacijos Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas." })
+                /* @__PURE__ */ jsx("p", { children: "Vienmomentė implantacija šiuolaikinėje implantologijoje vertinama kaip pažangus ir pacientui itin patogus gydymo metodas, leidžiantis efektyviai suderinti danties šalinimą ir implantavimą vieno vizito metu. Toks sprendimas ne tik sutrumpina bendrą gydymo laiką, bet ir suteikia daugiau komforto viso gydymo proceso metu." }),
+                /* @__PURE__ */ jsx("p", { children: "Vienas svarbiausių šio metodo privalumų – ženkliai sutrumpintas gydymo kelias. Danties pašalinimas ir implanto įsriegimas atliekami vienos procedūros metu, todėl išvengiama ilgo laukimo laikotarpio tarp etapų. Tai leidžia pacientui greičiau atkurti kramtymo funkciją ir grįžti prie įprastos kasdienės veiklos." }),
+                /* @__PURE__ */ jsx("p", { children: "Ne mažiau svarbu ir tai, kad sumažinamas chirurginių intervencijų skaičius. Vietoje dviejų atskirų procedūrų pacientui atliekama viena, o tai dažnai reiškia mažesnį audinių dirginimą, trumpesnį gijimo laikotarpį ir paprastesnį, aiškiau suplanuotą gydymo procesą." }),
+                /* @__PURE__ */ jsx("p", { children: "Estetinis aspektas ypač reikšmingas, ypač priekinių dantų zonoje. Tam tikrais atvejais galima iš karto po procedūros atkurti laikiną danties vainikėlį, todėl pacientas išvengia matomo danties tarpo ir gali jaustis užtikrintai jau iškart po gydymo." }),
+                /* @__PURE__ */ jsx("p", { children: "Dar vienas svarbus privalumas – natūralių audinių išsaugojimas. Vienmomentė implantacija padeda sumažinti kaulo nykimą ir išlaikyti dantenų kontūrą, kuris yra itin svarbus tiek estetinei išvaizdai, tiek ilgalaikiam implanto stabilumui. Dėl šių priežasčių šis metodas dažnai pasirenkamas kaip optimalus sprendimas, kai siekiama suderinti greitį, estetiką ir ilgalaikį rezultatą." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "kodel-rinktis", className: sectionWrap$e, variants: item$n, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$e, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta kreiptis į Bangų odontologijos kliniką dėl vienmomentės implantacijos?" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Danties netekimas ar būtinybė jį šalinti dažnai sukelia ne tik funkcinius, bet ir estetinius bei emocinius iššūkius. Tokiose situacijose svarbiausia tampa greitas, tikslus ir saugus sprendimas, leidžiantis kuo greičiau atkurti prarastą dantį ir išvengti ilgalaikių pokyčių žandikaulio audiniuose. Vienmomentė implantacija yra vienas pažangiausių metodų, leidžiančių tai pasiekti per maksimaliai trumpą laiką." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje vienmomentė implantacija planuojama atsakingai, remiantis išsamia diagnostika ir individualia paciento situacija. Kiekvienas atvejis įvertinamas kompleksiškai – analizuojama kaulo būklė, dantenų sveikata, infekcijos rizika ir bendras burnos stabilumas. Tik tuomet parenkamas saugiausias ir prognozuojamas gydymo sprendimas." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje siekiama ne tik atkurti dantį, bet ir išsaugoti natūralią audinių struktūrą, užtikrinant ilgalaikį implantų stabilumą bei estetiškai harmoningą rezultatą." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mt-8 mb-12 text-left", variants: item$n, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$e, children: [
@@ -11521,7 +11626,7 @@ const item$m = {
 };
 const sectionWrap$d = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$d = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$b = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$d = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$7 = "#002045";
 const S$7 = "#006b5f";
 const SL$7 = "#ecf5fb";
@@ -11531,10 +11636,15 @@ function CheckIcon$l() {
 const tocSections$k = [
   { id: "kainos", label: "Kainos" },
   { id: "kas-yra", label: "Kas yra dantų karūnėlės?" },
-  { id: "taikymo-situacijos", label: "Kada rekomenduojamos?" },
+  { id: "taikymo-situacijos", label: "Kada reikalingos?" },
+  { id: "problemos", label: "Kokias problemas išsprendžia?" },
   { id: "medziagos", label: "Naudojamos medžiagos" },
   { id: "procesas", label: "Kaip vyksta procedūra?" },
+  { id: "skausmas", label: "Ar tai skausminga?" },
   { id: "prieziura", label: "Priežiūra ir tarnavimo laikas" },
+  { id: "kada-negalima", label: "Kada karūnėlė nebeįmanoma?" },
+  { id: "mitai", label: "Dažniausi mitai" },
+  { id: "duk", label: "Dažniausi klausimai" },
   { id: "kodel-rinktis", label: "Kodėl verta rinktis mus?" }
 ];
 function DantuKarunieles() {
@@ -11572,10 +11682,10 @@ function DantuKarunieles() {
           /* @__PURE__ */ jsx(TableOfContents, { sections: tocSections$k, rootRef: pageRef, cta: { label: "Registruotis vizitui", to: "/kontaktai" } }),
           /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$m, children: [
-              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Dantų karūnėlės (dantų vainikėliai) Klaipėdoje" }),
+              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Dantų karūnėlės Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Dantų karūnėlės, dar vadinamos vainikėliais, yra fiksuoti protezai, naudojami atkurti stipriai pažeisto ar nusilpusio danties struktūrą. Jos dažnai taikomos tada, kai paprastas plombavimas nebegali užtikrinti reikalingo dantų tvirtumo ir funkcionalumo." }),
-                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje dantų karūnėlės gaminamos ir tvirtinamos individualiai, atsižvelgiant į kiekvieno paciento danties būklę, sąkandį ir estetinius lūkesčius. Tinkamai parinkta ir pritaikyta karūnėlė ne tik grąžina dančiui natūralią išvaizdą, bet ir leidžia juo naudotis kasdien be diskomforto ilgus metus." })
+                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Dantų pažeidimai, nusidėvėjimas ar stipresnis danties audinių praradimas yra dažnos priežastys, dėl kurių pacientams prireikia protezavimo sprendimų. Tokiais atvejais danties struktūra tampa nepakankamai stipri, kad galėtų atlaikyti kasdienį kramtymo krūvį, todėl reikalingas papildomas danties sutvirtinimas ir atkūrimas. Laiku pritaikytos dantų karūnėlės leidžia atkurti ne tik danties funkciją, bet ir estetinį vaizdą, išvengiant tolimesnių komplikacijų ar danties netekimo." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje dantų karūnėlių protezavimas atliekamas remiantis individualiu gydymo planu ir skaitmeninėmis technologijomis, leidžiančiomis tiksliai įvertinti paciento burnos būklę. Kiekvienas danties vainikėlis pritaikomas konkrečiai situacijai, atsižvelgiant į sąkandį, dantų padėtį ir estetinį poreikį. Klinikos specialistai siekia užtikrinti, kad galutinis rezultatas būtų ne tik funkcionalus, bet ir natūraliai atrodantis, todėl kiekvienas protezavimo etapas yra kruopščiai suplanuotas ir kontroliuojamas. Toks požiūris leidžia pacientams jaustis užtikrintai viso gydymo proceso metu." })
               ] }) }),
               /* @__PURE__ */ jsx("div", { className: "flex justify-start mt-6", children: /* @__PURE__ */ jsx(
                 Link,
@@ -11629,13 +11739,14 @@ function DantuKarunieles() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Jonas-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -11643,82 +11754,206 @@ function DantuKarunieles() {
             ] }) }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mb-10 no-x-scroll pan-y", variants: item$m, children: /* @__PURE__ */ jsx(ReviewsCarousel, {}) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kas-yra", className: sectionWrap$d, variants: item$m, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$d, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra dantų karūnėlės?" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra dantų karūnėlės (dantų vainikėliai)?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Dantų karūnėlės (vainikėliai) yra fiksuoti protezai, uždedami ant natūralaus danties ar implanto, siekiant atkurti stipriai pažeisto arba nusilpusio danties formą, funkciją ir stiprumą. Jos dažnai taikomos tais atvejais, kai paprastas plombavimas nebegali užtikrinti danties tvirtumo ar tinkamai atkurti jo išvaizdos." }),
-                /* @__PURE__ */ jsx("p", { children: "Karūnėlė visiškai apgaubia matomą danties dalį, todėl dantis tampa atsparesnis kramtymo apkrovai ir apsaugotas nuo tolesnio pažeidimo. Priklausomai nuo situacijos, karūnėlė gali būti tvirtinama tiek ant natūralaus danties po jo paruošimo, tiek ant implanto, kai trūkstamas dantis atkuriamas nuo pat šaknies." })
+                /* @__PURE__ */ jsx("p", { children: "Dantų karūnėlės, dar vadinamos dantų vainikėliais, yra fiksuotas dantų protezavimo sprendimas, skirtas atkurti stipriai pažeisto ar nusilpusio danties struktūrą. Tai individualiai gaminamas danties apvalkalas, kuris uždedamas ant nušlifuoto natūralaus danties arba implanto atramos, visiškai atkuriant jo formą, spalvą ir funkciją. Dantų karūnėlės leidžia išsaugoti natūralią šaknį ar implantą, tuo pačiu atkuriant pilnavertį kramtymo efektyvumą." }),
+                /* @__PURE__ */ jsx("p", { children: "Šis gydymo metodas taikomas tada, kai įprastas plombavimas nebegali užtikrinti pakankamo danties tvirtumo. Karūnėlė veikia kaip apsauginis sluoksnis, kuris paskirsto kramtymo apkrovas ir sumažina danties lūžimo riziką. Be funkcinės naudos, dantų vainikėlis taip pat atkuria estetinę šypsenos išvaizdą, todėl yra plačiai naudojamas tiek priekinėje, tiek krūminių dantų srityje." }),
+                /* @__PURE__ */ jsx("p", { children: "Šiuolaikinėje odontologijoje dantų karūnėlės gaminamos iš pažangių medžiagų, leidžiančių pasiekti natūralų skaidrumą ir tvirtumą. Tai užtikrina, kad atkurtas dantis vizualiai nesiskirtų nuo natūralių dantų, o pacientas galėtų jaustis komfortiškai kasdienėje veikloje." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "taikymo-situacijos", className: sectionWrap$d, variants: item$m, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$d, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada rekomenduojamos dantų karūnėlės?" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Sprendimas dėl karūnėlės priimamas individualiai, įvertinus danties būklę ir jo tolesnio naudojimo galimybes. Dažniausiai karūnėlės rekomenduojamos esant šioms situacijoms:" }),
-              /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
-                "ėduonies sukeltiems pažeidimams, kai dantis yra per silpnas plombai",
-                "danties lūžiams ar įtrūkimams",
-                "dantims po šaknų kanalų gydymo",
-                "stipriam dantų nusidėvėjimui"
-              ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
-                /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$l, {}) }),
-                /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
-              ] }, i)) })
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada reikalingos dantų karūnėlės?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Dantų karūnėlės taikomos tada, kai natūralaus danties audinių nebeužtenka pilnavertei funkcijai užtikrinti. Tai nėra pirmo pasirinkimo procedūra – ji rekomenduojama tik tuomet, kai paprastas plombavimas nebegali suteikti ilgalaikio sprendimo." }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-3 mb-6", children: [
+                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700", children: "Dažniausios situacijos:" }),
+                /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
+                  "stipriai pažeistas dantis dėl ėduonies",
+                  "danties lūžis ar įtrūkimas",
+                  "didelės senos plombos, silpninančios dantį",
+                  "dantis po šaknų kanalų gydymo",
+                  "stiprus dantų nusidėvėjimas dėl bruksizmo",
+                  "estetinis danties formos ar spalvos koregavimas",
+                  "danties atkūrimas ant implanto"
+                ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
+                  /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$l, {}) }),
+                  /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
+                ] }, i)) })
+              ] }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed", children: "Kiekvienu atveju sprendimas priimamas individualiai, įvertinus danties šaknies būklę ir bendrą burnos situaciją. Svarbiausias tikslas – išsaugoti natūralų dantį tiek, kiek tai mediciniškai įmanoma." })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "problemos", className: sectionWrap$d, variants: item$m, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$d, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kokias problemas padeda išspręsti dantų karūnėlės?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Dantų karūnėlės yra vienas universaliausių protezavimo sprendimų odontologijoje, nes leidžia vienu metu atkurti tiek danties funkciją, tiek estetiką, tiek struktūrinį tvirtumą. Jos taikomos tais atvejais, kai natūralaus danties audinių nebeužtenka patikimam kramtymo krūvio atlaikymui, tačiau danties šaknį dar galima išsaugoti." }),
+              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Stipriai pažeistas dantis" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kai dantis yra pažeistas ėduonies arba traumos, o likę audiniai yra silpni, karūnėlė sustiprina dantį ir apsaugo jį nuo tolesnio lūžimo ar skilimo." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Dantis po šaknų kanalų gydymo" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Endodontiškai gydyti dantys tampa trapūs, todėl karūnėlė padeda atkurti jų atsparumą ir prailginti tarnavimo laiką." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Nuskilę ar nudilę dantys" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Dantų vainikėlis atkuria natūralią danties formą, leidžia tolygiai paskirstyti kramtymo krūvį ir atkuria pilnavertę funkciją." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Estetiniai dantų defektai" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kai danties spalva, forma ar proporcijos neatitinka šypsenos linijos, karūnėlė leidžia pasiekti natūralų ir harmoningą estetinį vaizdą." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Dantų atkūrimas ant implantų" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Karūnėlės naudojamos kaip galutinis protezas ant implantų, atkuriant tiek funkciją, tiek estetiką." })
+                ] })
+              ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "medziagos", className: sectionWrap$d, variants: item$m, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$d, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kokios medžiagos naudojamos?" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Karūnėlių gamybai naudojamos skirtingos medžiagos, kurių pasirinkimas priklauso nuo estetinių ir funkcinių paciento poreikių, danties padėties bei kramtymo apkrovos." }),
-              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-3", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Iš kokių medžiagų gaminamos dantų karūnėlės?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Dantų karūnėlės gaminamos iš skirtingų medžiagų, kurios parenkamos individualiai, atsižvelgiant į danties būklę, jo vietą burnoje, sąkandžio apkrovą ir estetinius paciento lūkesčius. Tinkamas medžiagos pasirinkimas yra vienas svarbiausių veiksnių, užtikrinančių ilgaamžišką rezultatą." }),
+              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Cirkonio keramika" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Itin tvirta ir ilgaamžė medžiaga, pasižyminti natūraliai atrodančiu, švelniai permatomu paviršiumi – dažnai renkamasi tiek priekiniams, tiek kramtomiesiems dantims." })
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Tai viena moderniausių ir dažniausiai naudojamų medžiagų. Ji pasižymi itin dideliu tvirtumu, atsparumu kramtymo apkrovoms ir natūralia estetika. Cirkonio karūnėlės tinka tiek priekiniams, tiek krūminiams dantims, nes leidžia išlaikyti balansą tarp estetikos ir funkcijos." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Bemetalė keramika (E-MAX)" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pasižymi ypač aukšta estetika ir natūraliu šviesos atspindžiu, todėl dažniausiai naudojama priekinių dantų sričiai, kur svarbiausia natūrali išvaizda." })
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Tai itin estetiškas sprendimas, pasižymintis natūraliu šviesos pralaidumu. Dėl šios savybės dantis atrodo labai artimas natūraliam emaliui, todėl ši medžiaga dažniausiai naudojama priekinėje dantų srityje, kur estetika yra svarbiausia." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Metalo keramika" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Sujungia metalinį karkasą su keramine danga, todėl pasižymi dideliu atsparumu apkrovai – tinkamas sprendimas kramtomųjų dantų atkūrimui." })
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Tai patikimas ir tvirtas, tačiau ekonomiškesnis sprendimas. Ji dažniausiai taikoma krūminių dantų srityje, kur svarbiausia yra atsparumas kramtymo apkrovoms, o estetiniai reikalavimai yra mažesni." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Laikinos karūnėlės" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Gaminamos iš plastiko ar kompozito ir naudojamos pereinamuoju gydymo laikotarpiu, kol pagaminamas galutinis protezas. Jos apsaugo dantį ir palaiko estetiką gydymo metu." })
                 ] })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "procesas", className: sectionWrap$d, variants: item$m, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$d, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip vyksta procedūra?" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Dantų karūnėlės gamyba ir tvirtinimas Bangų odontologijos klinikoje vyksta pagal aiškiai suplanuotą eigą, kuri apima keturis pagrindinius etapus." }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip atliekamas dantų karūnėlių protezavimas?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Dantų karūnėlių protezavimas yra nuoseklus, etapais pagrįstas procesas, kuris planuojamas individualiai kiekvienam pacientui. Toks nuoseklumas leidžia užtikrinti tikslų pritaikymą, komfortą ir ilgalaikį rezultatą." }),
               /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-4", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Konsultacija" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Odontologas įvertina danties būklę, aptaria galimas medžiagas ir kartu su pacientu parenka tinkamiausią karūnėlės sprendimą, atsižvelgiant į estetinius ir funkcinius poreikius." })
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Konsultacija ir diagnostika" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pirmojo vizito metu įvertinama bendra burnos būklė, danties pažeidimo laipsnis ir sąkandžio ypatumai. Atliekamas tyrimas ir sudaromas individualus gydymo planas, atsižvelgiant į funkcinius ir estetinius poreikius." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Danties paruošimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Dantis nušlifuojamas iki reikiamos formos, kad karūnėlė ant jo tvirtai ir tiksliai priglustų, o esant poreikiui atkuriama trūkstama danties struktūra." })
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Dantis yra minimaliai nušlifuojamas tam, kad būtų sudaryta vieta karūnėlei. Jei reikia, prieš tai atliekamas šaknų kanalų gydymas ar kiti paruošiamieji gydymo etapai, užtikrinantys stabilų pagrindą protezui." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Nuskaitymas ir gamyba" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Paimamas skaitmeninis nuskaitymas arba atspaudas, pagal kurį gaminama individuali, danties formą ir sąkandį atitinkanti karūnėlė." })
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Atliekamas skaitmeninis dantų nuskaitymas arba atspaudas, pagal kurį dantų technikų laboratorijoje gaminama individuali karūnėlė. Šiame etape atkuriama tiksli danties forma, spalva ir anatomija, siekiant natūralaus rezultato." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Tvirtinimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pagaminta karūnėlė patikrinama dėl tikslaus tinkamumo, prireikus pakoreguojama ir galiausiai patikimai pritvirtinama ant danties ar implanto." })
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Tvirtinimas ir korekcija" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pagamintas danties vainikėlis yra tvirtinamas prie danties arba implanto. Esant poreikiui, atliekami minimalūs koregavimai, kad būtų užtikrintas komfortiškas sukandimas ir natūralus pojūtis burnoje." })
                 ] })
               ] })
             ] }) }),
-            /* @__PURE__ */ jsx(motion.section, { id: "prieziura", className: sectionWrap$d, variants: item$m, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$d, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Priežiūra ir tarnavimo laikas" }),
+            /* @__PURE__ */ jsx(motion.section, { id: "skausmas", className: sectionWrap$d, variants: item$m, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$d, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Ar dantų karūnėlės yra skausmingos?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Reguliarus dantų valymas ir periodiniai odontologiniai vizitai yra esminiai dantų karūnėlės ilgaamžiškumui. Tinkama burnos higiena padeda apsaugoti tiek pačią karūnėlę, tiek po ja esantį dantį ar implantą nuo papildomų pažeidimų." }),
-                /* @__PURE__ */ jsx("p", { children: "Vidutiniškai dantų karūnėlės tarnauja nuo 5 iki 15 metų, o tinkamai prižiūrėtos gali tarnauti dar ilgiau. Todėl atsakingas požiūris į kasdienę burnos priežiūrą ir reguliarus apsilankymas pas odontologą yra geriausias būdas užtikrinti ilgą ir patikimą karūnėlės tarnavimo laiką." })
+                /* @__PURE__ */ jsx("p", { children: "Dantų karūnėlių protezavimas yra atliekamas taikant vietinę nejautrą, todėl pati procedūra pacientui nesukelia skausmo. Tai vienas iš dažniausiai pacientų užduodamų klausimų, todėl svarbu pabrėžti, kad visas danties paruošimo ir protezavimo procesas yra kontroliuojamas ir pritaikytas maksimaliam komfortui." }),
+                /* @__PURE__ */ jsx("p", { children: "Procedūros metu gydytojas odontologas užtikrina, kad dantis būtų paruošiamas tik tiek, kiek būtina tiksliai karūnėlei pritaikyti. Tai reiškia, kad intervencija yra minimali ir orientuota į maksimalų natūralių audinių išsaugojimą. Daugeliu atvejų pacientas jaučia tik lengvą spaudimą arba vibraciją, bet ne skausmą." }),
+                /* @__PURE__ */ jsx("p", { children: "Po procedūros, kai nuskausminimas baigia veikti, gali pasireikšti laikinas jautrumas ar nedidelis maudimas danties srityje. Tai yra normali organizmo reakcija į gydymą ir paprastai praeina per kelias dienas. Esant sudėtingesniems atvejams, diskomfortas gali būti šiek tiek ryškesnis, tačiau jis yra trumpalaikis ir lengvai kontroliuojamas." }),
+                /* @__PURE__ */ jsx("p", { children: "Svarbu suprasti, kad dantų karūnėlės šiandien yra planuojamos itin tiksliai, todėl visas procesas yra prognozuojamas, saugus ir pacientui komfortiškas." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "prieziura", className: sectionWrap$d, variants: item$m, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$d, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip prižiūrėti dantų karūnėles?" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Tinkama dantų karūnėlių priežiūra yra esminė sąlyga, siekiant užtikrinti jų ilgaamžiškumą ir stabilų funkcionalumą. Nors pati karūnėlė yra pagaminta iš atsparių medžiagų, aplinkiniai audiniai ir atraminis dantis vis tiek reikalauja kasdienės priežiūros." }),
+                /* @__PURE__ */ jsx("p", { children: "Rekomenduojama dantis valyti bent du kartus per dieną, naudojant minkštą dantų šepetėlį ir fluoro turinčią dantų pastą. Ypač svarbu kruopščiai išvalyti vietas ties dantenų kraštu, kur gali kauptis apnašos. Taip pat būtina naudoti tarpdančių siūlą arba tarpdančių šepetėlius, kad būtų užtikrinta švara aplink karūnėlės kraštus." }),
+                /* @__PURE__ */ jsx("p", { children: "Reguliarūs vizitai pas odontologą ir profesionali burnos higiena padeda laiku pastebėti bet kokius pokyčius ir užtikrinti, kad karūnėlė išliktų stabiliai pritvirtinta. Taip pat svarbu vengti žalingų įpročių, tokių kaip dantų griežimas, nagų kramtymas ar labai kieto maisto kandimas, nes tai gali padidinti protezo nusidėvėjimą." }),
+                /* @__PURE__ */ jsx("p", { children: "Tinkamai prižiūrimos dantų karūnėlės leidžia ilgą laiką išlaikyti tiek estetiką, tiek pilnavertę kramtymo funkciją." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "kada-negalima", className: sectionWrap$d, variants: item$m, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$d, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada danties jau nebeįmanoma atkurti tik karūnėle?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Nors dantų karūnėlės yra vienas efektyviausių būdų atkurti stipriai pažeistus dantis, ne visais atvejais jos gali būti taikomos kaip vienintelis sprendimas. Karūnėlė reikalauja stabilaus danties pagrindo, todėl kai kuriose situacijose natūralaus danties išsaugojimo galimybės tampa ribotos." }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-3 mb-6", children: [
+                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700", children: "Danties atkūrimas karūnėle gali nebebūti įmanomas, kai:" }),
+                /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
+                  "dantis yra stipriai suiręs žemiau dantenų linijos ir nebelieka pakankamo audinio protezui tvirtinti",
+                  "nustatomas vertikalus danties šaknies skilimas, kuris pažeidžia visą struktūrinį stabilumą",
+                  "aplink danties šaknį yra labai išplitęs uždegimas, o kaulo praradimas yra per didelis",
+                  "dantis yra nebepritaikomas atstatymui net po endodontinio gydymo ar chirurginio paruošimo"
+                ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
+                  /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$l, {}) }),
+                  /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
+                ] }, i)) })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Tokiais atvejais vien karūnėlė negali užtikrinti ilgalaikio rezultato, nes ji neturi pakankamo atraminio pagrindo. Sprendimas visada priimamas individualiai, įvertinus danties išsaugojimo galimybes ir bendrą burnos būklę." }),
+                /* @__PURE__ */ jsx("p", { children: "Svarbu pabrėžti, kad pirmiausia visada siekiama išsaugoti natūralų dantį. Tik tada, kai prognozė yra nepalanki, pacientui siūlomi alternatyvūs sprendimai, tokie kaip implantacija ar kompleksinis protezavimas. Aiškus situacijos įvertinimas leidžia pasirinkti sprendimą, kuris užtikrina ilgalaikę funkciją ir burnos sveikatą." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "mitai", className: sectionWrap$d, variants: item$m, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$d, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Dažniausi mitai apie dantų karūnėles" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed max-w-4xl mb-6", children: "Dantų karūnėlės yra dažnai atliekama procedūra, tačiau apie ją vis dar egzistuoja nemažai klaidingų įsitikinimų, kurie gali sukelti nereikalingą pacientų nerimą ar paskatinti atidėti reikalingą gydymą. Tinkamas informavimas padeda suprasti realią procedūros eigą ir priimti pagrįstus sprendimus dėl burnos sveikatos." }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas: „Karūnėlės atrodo nenatūraliai.“" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Šiuolaikinės dantų karūnėlės gaminamos iš estetiškų medžiagų, kurios tiksliai atkartoja natūralaus danties spalvą, skaidrumą ir formą. Tinkamai pritaikytas vainikėlis vizualiai nesiskiria nuo natūralių dantų ir yra pritaikomas prie bendros šypsenos linijos." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas: „Tai laikinas sprendimas.“" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Nors karūnėlė yra protezavimo konstrukcija, ji yra ilgalaikis gydymo sprendimas. Tinkamai pagaminta ir prižiūrima karūnėlė gali tarnauti daugelį metų, o kai kuriais atvejais – net kelis dešimtmečius." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas: „Procedūra labai skausminga.“" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Danties paruošimas atliekamas taikant vietinę nejautrą, todėl pacientas skausmo nejaučia. Diskomfortas po procedūros yra laikinas ir lengvai kontroliuojamas." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas: „Karūnėlės lengvai iškrenta.“" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Tinkamai pritvirtintos karūnėlės yra stabilios ir patikimos. Atsiskyrimo rizika yra minimali ir dažniausiai susijusi tik su nepakankama burnos higiena ar papildomais veiksniais." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Mitas: „Užtenka bet kokios medžiagos.“" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Iš tiesų medžiagos pasirinkimas yra kritiškai svarbus. Nuo jo priklauso tiek estetika, tiek ilgaamžiškumas, tiek karūnėlės atsparumas kramtymo apkrovai." })
+                ] })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "duk", className: sectionWrap$d, variants: item$m, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$d, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "DUK – dažniausiai užduodami klausimai apie dantų karūnėles" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Kiek laiko tarnauja dantų karūnėlės?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Dantų karūnėlių tarnavimo laikas priklauso nuo pasirinktos medžiagos, burnos higienos ir paciento įpročių. Vidutiniškai jos tarnauja nuo 5 iki 15 metų, tačiau tinkamai prižiūrimos gali išlikti dar ilgiau. Cirkonio ir keraminės karūnėlės dažnai pasižymi ilgesniu tarnavimo laikotarpiu dėl savo atsparumo nusidėvėjimui." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Nuo ko priklauso dantų karūnėlės kaina?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Dantų karūnėlės kaina priklauso nuo kelių pagrindinių veiksnių: pasirinktos medžiagos, danties padėties burnoje, gydymo sudėtingumo bei papildomų procedūrų poreikio. Taip pat įtakos turi tai, ar karūnėlė tvirtinama ant natūralaus danties, ar ant implanto." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar prieš karūnėlės uždėjimą reikia šlifuoti dantį?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Taip, dantis yra minimaliai nušlifuojamas tam, kad būtų sudaryta vieta karūnėlei ir užtikrintas tikslus prigludimas. Šlifavimo apimtis visada parenkama individualiai, siekiant išsaugoti kuo daugiau sveikų audinių." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar procedūra tinka jautriems pacientams?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Taip, procedūra atliekama taikant vietinę nejautrą, todėl net ir jautresni pacientai paprastai nejaučia skausmo. Gydymas planuojamas taip, kad būtų užtikrintas maksimalus komfortas." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar galima valgyti įprastai su karūnėle?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Taip, tinkamai pritaikytas danties vainikėlis pilnai atkuria kramtymo funkciją. Po adaptacijos laikotarpio pacientas gali valgyti įprastą maistą be apribojimų." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$d, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar karūnėlę galima pakeisti ateityje?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Taip, esant poreikiui karūnėlė gali būti pakeičiama nauja. Tai priklauso nuo danties būklės ir pačios karūnėlės nusidėvėjimo." })
+                ] })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kodel-rinktis", className: sectionWrap$d, variants: item$m, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$d, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis Bangų odontologijos kliniką karūnėlėms?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Renkantis dantų karūnėles svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo tikslaus danties paruošimo iki kruopštaus karūnėlės pritaikymo. Bangų odontologijos klinikoje dantų karūnėlės gaminamos ir tvirtinamos atsakingai, siekiant maksimaliai apsaugoti paciento komfortą ir burnos sveikatą." }),
-                /* @__PURE__ */ jsx("p", { children: "Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, padeda parinkti tinkamiausią medžiagą ir sprendimą, atsižvelgiant į estetinius bei funkcinius poreikius. Dėmesys skiriamas ne tik pačiai procedūrai, bet ir aiškiam situacijos paaiškinimui bei rekomendacijoms dėl tolesnės priežiūros." }),
-                /* @__PURE__ */ jsx("p", { children: "Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis saugiai viso gydymo metu. Todėl ieškantiems patikimų ir profesionaliai atliekamų dantų karūnėlių Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas." })
+                /* @__PURE__ */ jsx("p", { children: "Dantų karūnėlės yra tikslumo ir profesionalaus planavimo reikalaujantis protezavimo sprendimas, todėl svarbu, kad gydymas būtų atliekamas laikantis aukštų medicininių standartų. Bangų odontologijos klinikoje kiekvienas atvejis vertinamas individualiai, atsižvelgiant į paciento dantų būklę, sąkandį ir estetinį poreikį." }),
+                /* @__PURE__ */ jsx("p", { children: "Klinikoje taikomas skaitmeninis gydymo planavimas leidžia užtikrinti itin tikslų karūnėlių pritaikymą, kuris lemia komfortą kasdienėje veikloje ir natūralų estetinį rezultatą. Naudojamos šiuolaikinės medžiagos leidžia suderinti tvirtumą, ilgaamžiškumą ir natūralią išvaizdą." }),
+                /* @__PURE__ */ jsx("p", { children: "Viso gydymo metu pacientui suteikiama aiški informacija apie kiekvieną etapą, todėl procesas tampa suprantamas, kontroliuojamas ir prognozuojamas. Toks požiūris leidžia užtikrinti ne tik kokybišką dantų funkcijos atkūrimą, bet ir ilgalaikę burnos sveikatą." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mt-8 mb-12 text-left", variants: item$m, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$d, children: [
@@ -11753,15 +11988,17 @@ const item$l = {
 };
 const sectionWrap$c = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$c = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$a = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$c = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 function CheckIcon$k() {
   return /* @__PURE__ */ jsx("svg", { viewBox: "0 0 24 24", className: "w-5 h-5 shrink-0 text-brand", "aria-hidden": true, children: /* @__PURE__ */ jsx("path", { d: "M20 6L9 17l-5-5", fill: "none", stroke: "currentColor", strokeWidth: "2" }) });
 }
 const tocSections$j = [
-  { id: "kas-yra", label: "Kas yra kompensuojamas protezavimas?" },
+  { id: "kas-yra", label: "Kas yra kompensacija protezavimui?" },
   { id: "kas-gauna", label: "Kas gali gauti kompensaciją?" },
+  { id: "kaip-suzinoti", label: "Kaip sužinoti, ar priklauso?" },
   { id: "procesas", label: "Kaip vyksta gydymo procesas?" },
   { id: "svarbu-zinoti", label: "Ką svarbu žinoti?" },
+  { id: "duk", label: "Dažniausi klausimai" },
   { id: "kodel-rinktis", label: "Kodėl verta rinktis mus?" }
 ];
 function KompensacijaProtezavimui() {
@@ -11769,7 +12006,7 @@ function KompensacijaProtezavimui() {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": "https://www.banguklinika.lt/paslaugos/kompensacija-protezavimui/#service",
-    "name": "Kompensacija dantų protezavimui Klaipėdoje",
+    "name": "Kompensacija protezavimui Klaipėdoje",
     "serviceType": "Kompensuojamas dantų protezavimas",
     "description": "Informacija apie dantų protezavimo kompensaciją Bangų odontologijos klinikoje Klaipėdoje, skiriamą tam tikroms pacientų grupėms per TLK ir PSDF.",
     "url": "https://www.banguklinika.lt/paslaugos/kompensacija-protezavimui/",
@@ -11781,7 +12018,7 @@ function KompensacijaProtezavimui() {
     /* @__PURE__ */ jsx(
       SEO,
       {
-        title: "Kompensacija dantų protezavimui Klaipėdoje - Bangų klinika",
+        title: "Kompensacija protezavimui Klaipėdoje - Bangų klinika",
         description: "TLK kompensacija dantų protezavimui Klaipėdoje☑️sužinokite, ar priklausote tinkamų pacientų grupei☑️Bangų klinikoje.⏩Registruokitės konsultacijai jau dabar.",
         keywords: "kompensacija protezavimui, TLK kompensacija, dantu protezavimas, nemokamas protezavimas, klaipeda",
         structuredData
@@ -11799,10 +12036,10 @@ function KompensacijaProtezavimui() {
           /* @__PURE__ */ jsx(TableOfContents, { sections: tocSections$j, rootRef: pageRef, cta: { label: "Registruotis vizitui", to: "/kontaktai" } }),
           /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$l, children: [
-              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Kompensacija dantų protezavimui Klaipėdoje" }),
+              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Kompensacija protezavimui Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Bangų odontologijos klinika Klaipėdoje teikia informaciją apie dantų protezavimo kompensaciją, kurią gali gauti tam tikros pacientų grupės. Klinika yra sudariusi sutartį su Teritorinėmis ligonių kasomis (TLK), kurios skiria kompensaciją dantų protezavimo išlaidoms iš Privalomojo sveikatos draudimo fondo (PSDF)." }),
-                /* @__PURE__ */ jsx("p", { children: "Kompensuojamas protezavimas leidžia tinkamoms pacientų grupėms sumažinti gydymo išlaidas ir atkurti prarastų dantų funkciją bei šypseną. Bangų odontologijos klinikoje pacientams padedama suprasti, ar jie atitinka kompensacijai keliamus reikalavimus, ir kartu sudaromas aiškus, individualiai pritaikytas gydymo planas." })
+                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Dantų netekimas ar stipriai pažeisti dantys gali apsunkinti kramtymą, kalbėjimą, šypseną ir kasdienį komfortą. Kai dantų atkurti plombomis ar kitais paprastesniais būdais nebeįmanoma, gali būti reikalingas dantų protezavimas. Tam tikroms pacientų grupėms ši paslauga gali būti iš dalies kompensuojama Privalomojo sveikatos draudimo fondo lėšomis." }),
+                /* @__PURE__ */ jsx("p", { children: "Kompensacija protezavimui padeda sumažinti paciento išlaidas ir sudaro galimybę laiku atkurti prarastus ar stipriai pažeistus dantis. Bangų odontologijos klinikoje Klaipėdoje pacientui suteikiama aiški informacija apie galimus protezavimo sprendimus, gydymo eigą ir tai, ką svarbu žinoti prieš naudojantis kompensavimo galimybe." })
               ] }) }),
               /* @__PURE__ */ jsx("div", { className: "flex justify-start mt-6", children: /* @__PURE__ */ jsx(
                 Link,
@@ -11839,13 +12076,14 @@ function KompensacijaProtezavimui() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Jonas-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -11853,80 +12091,105 @@ function KompensacijaProtezavimui() {
             ] }) }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mb-10 no-x-scroll pan-y", variants: item$l, children: /* @__PURE__ */ jsx(ReviewsCarousel, {}) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kas-yra", className: sectionWrap$c, variants: item$l, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$c, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra kompensuojamas dantų protezavimas?" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra kompensacija dantų protezavimui?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Kompensuojamas dantų protezavimas – tai valstybės remiama programa, leidžianti tam tikroms pacientų grupėms sumažinti protezavimo išlaidas. Bangų odontologijos klinika yra sudariusi sutartį su Teritorinėmis ligonių kasomis (TLK), kurios skiria kompensaciją dantų protezavimo išlaidoms iš Privalomojo sveikatos draudimo fondo (PSDF)." }),
-                /* @__PURE__ */ jsx("p", { children: "Ši kompensacija skirta padėti pacientams, kuriems dantų protezavimas yra reikalingas, tačiau pilna gydymo kaina galėtų būti sunkiai pakeliama. Kompensacija skiriama tik tam tikroms, privalomuoju sveikatos draudimu apdraustoms pacientų grupėms, todėl prieš pradedant gydymą svarbu išsiaiškinti, ar konkretus pacientas atitinka nustatytus reikalavimus." })
+                /* @__PURE__ */ jsx("p", { children: "Kompensacija dantų protezavimui – tai valstybės nustatyta tvarka teikiama finansinė pagalba pacientams, kuriems reikalingas dantų atkūrimas protezais. Ji skiriama tam, kad tam tikros pacientų grupės galėtų lengviau pasirūpinti kramtymo funkcijos, estetikos ir bendros burnos sveikatos atkūrimu." }),
+                /* @__PURE__ */ jsx("p", { children: "Dantų protezavimas gali būti reikalingas netekus vieno, kelių ar visų dantų, esant dideliam dantų nusidėvėjimui, stipriai pažeistiems dantims ar sutrikusiai kramtymo funkcijai. Tinkamai parinkti protezavimo sprendimai padeda ne tik atkurti šypseną, bet ir sumažinti likusių dantų apkrovą, pagerinti maisto kramtymą bei bendrą gyvenimo kokybę." }),
+                /* @__PURE__ */ jsx("p", { children: "Svarbu žinoti, kad kompensacija ne visada padengia visą gydymo kainą. Kompensuojama suma ir jos taikymo sąlygos priklauso nuo galiojančios tvarkos, paciento grupės, klinikinės situacijos ir pasirinkto protezavimo plano." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kas-gauna", className: sectionWrap$c, variants: item$l, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$c, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas gali gauti kompensaciją?" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Kompensacija gali būti skiriama tik tam tikroms pacientų grupėms, kurios yra apdraustos privalomuoju sveikatos draudimu. Žemiau pateikiamos pagrindinės grupės, kurioms gali būti taikoma dantų protezavimo kompensacija." }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kam gali būti skiriama dantų protezavimo kompensacija?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Dantų protezavimo kompensacija gali būti skiriama tik tam tikroms pacientų grupėms, kurios yra apdraustos privalomuoju sveikatos draudimu. Dažniausiai teisę į kompensuojamą dantų protezavimą gali turėti šios grupės:" }),
               /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
-                "asmenys, kuriems sukako senatvės pensijos amžius",
+                "senatvės pensijos amžiaus sulaukę asmenys",
                 "vaikai iki 18 metų",
-                "asmenys, pripažinti nedarbingais arba iš dalies darbingais",
-                "asmenys po burnos, veido ir žandikaulių onkologinių ligų gydymo"
+                "asmenys, kuriems nustatytas nedarbingumas ar dalinis darbingumas",
+                "pacientai, kuriems buvo taikytas gydymas dėl burnos, veido ar žandikaulių onkologinių ligų"
               ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
                 /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$k, {}) }),
                 /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
               ] }, i)) }),
-              /* @__PURE__ */ jsx("div", { className: "rounded-xl border border-slate-200 bg-white p-4 sm:p-5 mt-6", children: /* @__PURE__ */ jsxs("p", { className: "text-sm text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("span", { className: "font-semibold text-darkblue-700", children: "Pastaba:" }),
-                " ",
-                "Tiksliai nustatyti, ar priklausote kompensaciją gaunančiai pacientų grupei, galima konsultacijos Bangų odontologijos klinikoje metu."
-              ] }) })
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed mt-6", children: [
+                /* @__PURE__ */ jsx("p", { children: "Vis dėlto priklausymas vienai iš šių grupių dar nereiškia, kad kompensacija automatiškai bus pritaikyta visais atvejais. Vertinama ir paciento burnos būklė, dantų protezavimo poreikis, kramtymo funkcija bei kiti medicininiai kriterijai." }),
+                /* @__PURE__ */ jsx("p", { children: "Kadangi kompensavimo tvarka, sumos ir kriterijai gali keistis, tiksliausia informacija patvirtinama pagal galiojančią TLK tvarką. Konsultacijos metu pacientui paaiškinama, kokie žingsniai reikalingi ir kokius duomenis ar dokumentus gali reikėti turėti." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "kaip-suzinoti", className: sectionWrap$c, variants: item$l, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$c, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip sužinoti, ar jums priklauso kompensacija protezavimui?" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Norint sužinoti, ar jums gali būti taikoma kompensacija protezavimui, pirmiausia reikalingas burnos būklės įvertinimas. Gydytojas odontologas apžiūros metu įvertina, kiek dantų yra prarasta, kokia likusių dantų būklė, ar yra kramtymo funkcijos sutrikimų, ar burnos ertmė paruošta protezavimui." }),
+                /* @__PURE__ */ jsx("p", { children: "Kai kuriais atvejais pacientas dėl teisės į kompensaciją pirmiausia kreipiasi į gydymo įstaigą, prie kurios yra prisirašęs. Ten įvertinamas protezavimo poreikis ir pacientas registruojamas pagal galiojančią kompensavimo tvarką. Jei pacientas jau turi patvirtintą teisę į kompensaciją, atvykstant į kliniką svarbu apie tai informuoti registracijos metu." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje konsultacijos metu pacientui aiškiai paaiškinama, kokie protezavimo sprendimai galimi jo situacijoje, kokie paruošiamieji gydymo etapai gali būti reikalingi ir kaip kompensacija gali būti pritaikoma konkrečiam gydymo planui." })
+              ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "procesas", className: sectionWrap$c, variants: item$l, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$c, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip vyksta gydymo procesas?" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Klinika siūlo šešių etapų protezavimo schemą, kuri užtikrina, kad pacientas visą gydymo eigą suprastų aiškiai ir jaustųsi užtikrintai kiekviename žingsnyje." }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip vyksta dantų protezavimas su kompensacija?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Dantų protezavimas su kompensacija vyksta nuosekliai, kad pacientas aiškiai suprastų visą gydymo eigą ir numatomas išlaidas." }),
               /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$c, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Konsultacija" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pirmojo vizito metu odontologas įvertina paciento burnos būklę, aptaria dantų netekimo priežastis ir galimus protezavimo sprendimus." })
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Konsultacija ir burnos būklės įvertinimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pirmojo vizito metu įvertinama dantų, dantenų, sąkandžio ir bendra burnos būklė. Jei reikia, atliekami papildomi tyrimai, padedantys tiksliau suplanuoti protezavimą." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$c, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Kompensacijos aptarimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kartu su pacientu išsiaiškinama, ar jis priklauso kompensaciją gaunančiai pacientų grupei, ir aptariama, kokia dalis gydymo išlaidų galėtų būti padengta." })
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Kompensacijos galimybės aptarimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pacientui paaiškinama, ar jo situacijoje gali būti taikoma kompensacija, kokius žingsnius reikia atlikti ir kokia dalis gydymo gali būti kompensuojama pagal galiojančią tvarką." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$c, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Gydymo plano sudarymas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Atsižvelgiant į paciento poreikius ir kompensacijos galimybes, sudaromas individualus, aiškiai struktūruotas gydymo planas." })
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Gydytojas parenka tinkamiausią protezavimo sprendimą pagal paciento burnos būklę, funkcinius poreikius, estetikos lūkesčius ir finansines galimybes. Plane aiškiai nurodoma gydymo eiga ir numatomos išlaidos." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$c, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Paruošiamasis gydymas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Prieš protezavimą, jei reikia, atliekamas paruošiamasis gydymas – gydomi ar šalinami pažeisti dantys, sutvarkoma dantenų ir burnos ertmės būklė." })
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Prieš protezavimą gali reikėti atlikti dantų gydymą, profesionalią burnos higieną, pašalinti nebeišsaugomus dantis ar pasirūpinti dantenų būkle. Tai svarbu, kad protezavimo rezultatas būtų stabilesnis ir ilgaamžiškesnis." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$c, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "05" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Protezo gamyba" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pagal individualius matmenis pagaminamas dantų protezas, kuris pritaikomas taip, kad atkurtų tiek funkciją, tiek natūralią šypseną." })
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Protezo gamyba ir pritaikymas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pagal pasirinktą gydymo planą gaminami ir pritaikomi dantų protezai. Vizitų metu tikrinamas jų patogumas, sąkandis, estetika ir funkcija." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$c, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "06" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Priežiūros rekomendacijos" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Užbaigus protezavimą, pacientui pateikiamos rekomendacijos, kaip tinkamai prižiūrėti protezą ir burnos ertmę, kad rezultatas išliktų ilgai." })
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Po protezavimo pacientui paaiškinama, kaip prižiūrėti protezus, kada atvykti kontrolei ir kokių įpročių vengti, kad rezultatas tarnautų kuo ilgiau." })
                 ] })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "svarbu-zinoti", className: sectionWrap$c, variants: item$l, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$c, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Ką svarbu žinoti apie kompensaciją?" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Ką svarbu žinoti prieš naudojantis kompensacija protezavimui?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Kompensacija gali sumažinti protezavimo išlaidas, tačiau ne visada padengia visą pasirinktą gydymo planą. Kompensuojamos sumos ir sąlygos priklauso nuo pacientui priskirtos grupės bei pasirinkto protezavimo tipo." }),
-                /* @__PURE__ */ jsx("p", { children: "Pacientai turėtų numatyti galimą savitarpę sumą, jei pasirinks sudėtingesnes procedūras ar papildomus sprendimus, kurių pilna kompensacija neapima. Todėl prieš pradedant gydymą svarbu aiškiai aptarti visas galimybes su klinikos specialistais, kad būtų priimtas informuotas ir pacientui tinkamiausias sprendimas." }),
-                /* @__PURE__ */ jsx("p", { children: "Klinikai rekomenduojama apsilankyti, jei trūksta dantų arba esama kramtymo problema – laiku suplanuotas protezavimas padeda atkurti kramtymo funkciją ir išvengti tolimesnių burnos sveikatos komplikacijų." })
+                /* @__PURE__ */ jsx("p", { children: "Prieš pradedant gydymą svarbu suprasti, kad kompensacija gali sumažinti protezavimo išlaidas, tačiau ne visada padengia visą pasirinktą gydymo planą. Jei pacientas renkasi sudėtingesnius, estetiškesnius ar platesnės apimties protezavimo sprendimus, gali būti reikalinga priemoka." }),
+                /* @__PURE__ */ jsx("p", { children: "Galutinė protezavimo kaina priklauso nuo burnos būklės, trūkstamų dantų skaičiaus, pasirinkto protezavimo tipo, naudojamų medžiagų ir paruošiamųjų procedūrų. Todėl tikslus gydymo planas ir paciento mokama dalis aptariami individualiai po apžiūros." }),
+                /* @__PURE__ */ jsx("p", { children: "Renkantis dantų protezavimą svarbu atkreipti dėmesį ne tik į kompensaciją, bet ir į ilgalaikį rezultatą. Tinkamai suplanuotas protezavimas padeda atkurti kramtymo funkciją, apsaugoti likusius dantis nuo per didelės apkrovos ir pagerinti kasdienį komfortą." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "duk", className: sectionWrap$c, variants: item$l, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$c, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Dažniausiai užduodami klausimai apie kompensaciją protezavimui" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$c, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar kompensacija protezavimui padengia visą gydymo kainą?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Ne visada. Kompensacija gali padengti dalį protezavimo išlaidų, tačiau jei pasirinktas gydymo planas viršija kompensuojamą sumą, skirtumą pacientas dengia savo lėšomis." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$c, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar kompensacija taikoma visiems protezavimo sprendimams?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Kompensacija taikoma pagal galiojančią tvarką ir mediciniškai pagrįstą protezavimo poreikį. Ne visi estetiniai ar sudėtingesni sprendimai gali būti visiškai kompensuojami." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$c, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Kada verta kreiptis dėl kompensacijos protezavimui?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Kreiptis verta tada, kai trūksta dantų, sunku kramtyti, esami protezai nebėra patogūs arba gydytojas yra nurodęs, kad reikalingas dantų protezavimas." })
+                ] })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kodel-rinktis", className: sectionWrap$c, variants: item$l, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$c, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Renkantis kompensuojamą protezavimą svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo sprendimo priėmimo iki priežiūros po procedūros. Bangų odontologijos klinikoje protezavimas atliekamas atsakingai, siekiant maksimaliai apsaugoti paciento komfortą ir burnos sveikatą." }),
-                /* @__PURE__ */ jsx("p", { children: "Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, neskuba priimti sprendimo ir visuomet pirmiausia ieško galimybių, kurios geriausiai atitinka paciento poreikius. Procedūra atliekama taikant šiuolaikinius metodus ir kruopščiai suplanuotą eigą. Dėmesys skiriamas ne tik pačiai procedūrai, bet ir aiškiam situacijos paaiškinimui bei rekomendacijoms po jos." }),
-                /* @__PURE__ */ jsx("p", { children: "Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis saugiai viso gydymo metu. Todėl ieškantiems patikimo ir profesionalaus kompensuojamo dantų protezavimo Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas." })
+                /* @__PURE__ */ jsx("p", { children: "Renkantis kompensaciją protezavimui svarbu ne tik pati valstybės kompensacija, bet ir kokybiškas, ilgalaikis gydymo rezultatas. Bangų odontologijos klinikoje Klaipėdoje kiekvienas pacientas įvertinamas individualiai, sudarant aiškų ir pagrįstą gydymo planą." }),
+                /* @__PURE__ */ jsx("p", { children: "Klinikoje daug dėmesio skiriama aiškiam viso proceso paaiškinimui – nuo kompensacijos galimybių iki galutinio protezavimo sprendimo. Pacientai viso gydymo metu gauna aiškias rekomendacijas ir nuoseklią priežiūrą." }),
+                /* @__PURE__ */ jsx("p", { children: "Toks požiūris leidžia užtikrinti, kad kompensacija protezavimui būtų pritaikyta sklandžiai, o gydymo rezultatas būtų funkcionalus, patogus ir ilgaamžis." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mt-8 mb-12 text-left", variants: item$l, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$c, children: [
@@ -11961,7 +12224,7 @@ const item$k = {
 };
 const sectionWrap$b = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$b = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$9 = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$b = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$6 = "#002045";
 const S$6 = "#006b5f";
 const SL$6 = "#ecf5fb";
@@ -11971,8 +12234,12 @@ function CheckIcon$j() {
 const tocSections$i = [
   { id: "kainos", label: "Kainos" },
   { id: "kas-yra", label: "Kas yra sinuso pakėlimas?" },
+  { id: "priezastis", label: "Kodėl gali prireikti?" },
+  { id: "kada", label: "Kada atliekamas?" },
   { id: "budai", label: "Procedūros būdai" },
+  { id: "procesas", label: "Kaip vyksta procedūra?" },
   { id: "gijimas", label: "Gijimas ir rekomendacijos" },
+  { id: "duk", label: "Dažniausi klausimai" },
   { id: "kodel-rinktis", label: "Kodėl verta rinktis mus?" }
 ];
 function SinusoPakelimas() {
@@ -12012,8 +12279,8 @@ function SinusoPakelimas() {
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$k, children: [
               /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Sinuso pakėlimas Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Sinuso pakėlimas yra chirurginė procedūra, skirta viršutinio žandikaulio kaulo augmentacijai. Ji atliekama tais atvejais, kai tarp burnos ertmės ir žandinio sinuso nepakanka kaulo aukščio, o tai trukdo saugiai ir patikimai atlikti dantų implantaciją." }),
-                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje sinuso pakėlimas atliekamas kruopščiai suplanuotai, atsižvelgiant į individualią paciento kaulo struktūrą ir bendrą burnos sveikatos būklę. Tinkamai atlikta procedūra sukuria tvirtą pagrindą sėkmingai implantacijai ir ilgalaikiam gydymo rezultatui." })
+                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Dantų implantacija viršutinio žandikaulio krūminių ir prieškrūminių dantų srityje kartais reikalauja papildomo pasiruošimo. Viena dažniausių priežasčių – nepakankamas kaulo aukštis tarp burnos ertmės ir žandinio sinuso. Tokiu atveju implantui gali trūkti stabilios atramos, todėl prieš implantaciją arba jos metu gali būti atliekamas sinuso pakėlimas." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje sinuso pakėlimo poreikis vertinamas individualiai, remiantis paciento burnos būkle, 3D tyrimo duomenimis, planuojamų implantų padėtimi ir bendru dantų atkūrimo planu. Tikslas – saugiai sukurti pakankamą kaulo aukštį implantui ir sudaryti sąlygas ilgalaikiam, funkcionaliam dantų atkūrimui." })
               ] }) }),
               /* @__PURE__ */ jsx("div", { className: "flex justify-start mt-6", children: /* @__PURE__ */ jsx(
                 Link,
@@ -12067,13 +12334,14 @@ function SinusoPakelimas() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Jonas-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -12083,48 +12351,148 @@ function SinusoPakelimas() {
             /* @__PURE__ */ jsx(motion.section, { id: "kas-yra", className: sectionWrap$b, variants: item$k, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$b, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra sinuso pakėlimas?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Sinuso pakėlimas – tai chirurginė procedūra, skirta viršutinio žandikaulio kaulo augmentacijai. Ji atliekama tuomet, kai kaulo aukštis tarp burnos ertmės ir žandinio sinuso yra nepakankamas, o tai trukdo saugiai atlikti dantų implantaciją. Nepakankamas kaulo kiekis šioje srityje dažniausiai susijęs su ilgalaikiu dantų nebuvimu, dėl kurio kaulinis audinys palaipsniui rezorbuojasi." }),
-                /* @__PURE__ */ jsx("p", { children: "Procedūros metu žandinio sinuso dugno membrana atsargiai pakeliama, o susidariusi erdvė užpildoma kaulą atkuriančia medžiaga. Taip sukuriamas pakankamas kaulo aukštis, leidžiantis vėliau saugiai ir stabiliai įtvirtinti dantų implantą. Sinuso pakėlimas yra dažnai atliekamas kaip parengiamasis etapas prieš implantaciją arba tuo pačiu metu su ja, priklausomai nuo turimo kaulo kiekio." })
+                /* @__PURE__ */ jsx("p", { children: "Sinuso pakėlimas – tai chirurginė kaulo priauginimo procedūra, atliekama viršutinio žandikaulio šoninių dantų srityje. Jos metu atsargiai pakeliama žandinio sinuso gleivinė, o po ja suformuota ertmė užpildoma kaulo pakaitalo medžiaga. Taip sukuriamas papildomas kaulo aukštis, reikalingas saugiam dantų implantų įsriegimui." }),
+                /* @__PURE__ */ jsx("p", { children: "Žandiniai sinusai yra viršutinio žandikaulio srityje esančios ertmės, susijusios su nosies ertme. Kai viršutiniai krūminiai ar prieškrūminiai dantys prarandami, po sinusu esantis kaulas ilgainiui gali mažėti. Dėl to atstumas tarp burnos ertmės ir sinuso dugno tampa per mažas implantui." }),
+                /* @__PURE__ */ jsx("p", { children: "Sinuso pakėlimas nėra reikalingas visiems pacientams. Jis atliekamas tik tais atvejais, kai diagnostika parodo, kad natūralaus kaulo aukščio nepakanka implantui stabiliai įtvirtinti. Kai kaulo pakanka, implantacija gali būti atliekama be papildomo sinuso dugno pakėlimo." }),
+                /* @__PURE__ */ jsx("p", { children: "Ši procedūra yra viena iš kaulo augmentacijos rūšių. Ji padeda pasiruošti implantacijai viršutiniame žandikaulyje, kai dėl anatominių savybių, dantų netekimo ar kaulo nykimo implantui trūksta tinkamos atramos." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "priezastis", className: sectionWrap$b, variants: item$k, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$b, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl prieš implantaciją gali prireikti sinuso pakėlimo?" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Pagrindinė priežastis, dėl kurios gali prireikti sinuso pakėlimo prieš implantaciją, yra nepakankamas viršutinio žandikaulio kaulo aukštis. Implantas turi būti įsriegiamas į kaulą taip, kad būtų stabilus ir galėtų atlaikyti kramtymo krūvį. Jei kaulo per mažai, implantą sriegti gali būti nesaugu arba neįmanoma be papildomo paruošimo." }),
+                /* @__PURE__ */ jsx("p", { children: "Kaulo aukštis viršutinio žandikaulio šoninėje srityje dažnai mažėja netekus dantų. Kai dantis pašalinamas ir jo vieta ilgą laiką neatkuriama, kaulas nebegauna įprasto kramtymo krūvio, todėl pradeda nykti. Tuo pačiu metu sinusas gali būti arti būsimos implantacijos vietos arba laikui bėgant dar labiau priartėti prie žandikaulio keteros." }),
+                /* @__PURE__ */ jsx("p", { children: "Sinuso pakėlimo gali prireikti ir dėl individualios anatomijos. Kai kurių pacientų žandiniai sinusai natūraliai yra didesni arba jų dugnas yra žemiau, todėl net ir neseniai netekus danties implantacijai gali trūkti kaulo aukščio." }),
+                /* @__PURE__ */ jsx("p", { children: "Papildomas pasiruošimas gali būti reikalingas ir po sudėtingo danties šalinimo, uždegimų, infekcijų ar ilgesnio išimamų protezų nešiojimo. Tokiais atvejais kaulas gali būti praradęs dalį tūrio, todėl implantaciją būtina planuoti atsargiai." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "kada", className: sectionWrap$b, variants: item$k, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$b, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada atliekamas sinuso pakėlimas?" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Sinuso pakėlimas gali būti rekomenduojamas tada, kai planuojama dantų implantacija viršutinio žandikaulio krūminių ar prieškrūminių dantų srityje, tačiau 3D tyrimas parodo, kad kaulo aukščio implantui nepakanka. Tai dažniausiai nustatoma konsultacijos ir radiologinio tyrimo metu." }),
+                /* @__PURE__ */ jsx("p", { children: "Procedūra gali būti reikalinga, kai ilgą laiką trūksta vieno ar kelių viršutinių šoninių dantų. Kuo ilgiau dantis neatkurtas, tuo didesnė tikimybė, kad kaulas toje vietoje bus sumažėjęs. Dėl to vėliau planuojama implantacija gali reikalauti papildomo kaulo priauginimo." }),
+                /* @__PURE__ */ jsx("p", { children: "Sinuso pakėlimas taip pat gali būti atliekamas, kai pacientas nori atkurti viršutinius krūminius dantis implantais, tačiau žandinis sinusas yra arti būsimo implanto vietos. Tokiu atveju procedūra leidžia sukurti daugiau kaulo aukščio ir saugiai suplanuoti implantą." }),
+                /* @__PURE__ */ jsx("p", { children: "Kartais sinuso dugno pakėlimas reikalingas po sudėtingo danties šalinimo, kai pašalinus dantį lieka mažai kaulo arba gijimo metu jo tūris sumažėja. Tokiais atvejais gydytojas įvertina, ar implantaciją galima atlikti iš karto, ar pirmiausia reikalingas paruošiamasis etapas." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "budai", className: sectionWrap$b, variants: item$k, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$b, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Procedūros būdai" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Sinuso pakėlimas gali būti atliekamas dviem pagrindiniais metodais. Tinkamiausias būdas parenkamas individualiai, atsižvelgiant į trūkstamo kaulo kiekį ir žandinio sinuso būklę." }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kokie yra sinuso pakėlimo būdai?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Sinuso pakėlimo būdas parenkamas pagal tai, kiek kaulo trūksta, kiek implantų planuojama sriegti ir ar implantaciją galima atlikti tos pačios procedūros metu. Dažniausiai taikomi du pagrindiniai metodai – uždaras ir atviras sinuso pakėlimas." }),
               /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Uždaras sinuso pakėlimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Uždaras sinuso pakėlimas taikomas tuomet, kai kaulo trūkumas nėra didelis. Šis metodas dažnai atliekamas kartu su implantacija – per tą pačią implanto vietos preparaciją atsargiai pakeliama sinuso dugno membrana ir suformuojamas papildomas kaulo tūris. Toks būdas leidžia sutrumpinti bendrą gydymo laiką, nes implantas gali būti įsodinamas iš karto arba po trumpo gijimo laikotarpio." })
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Uždaras sinuso pakėlimas dažniausiai taikomas tada, kai kaulo trūkumas nėra didelis. Procedūra atliekama per implantui paruoštą vietą, todėl ji paprastai yra mažiau invazyvi nei atviras metodas. Šis būdas dažnai gali būti atliekamas kartu su implantacija, jei esamo kaulo pakanka pirminiam implanto stabilumui. Procedūros metu sinuso dugnas švelniai pakeliamas, o susidariusi vieta užpildoma kaulo pakaitalo medžiaga." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Atviras sinuso pakėlimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Atviras sinuso pakėlimas atliekamas tuomet, kai reikalingas didesnis kaulo atkūrimas. Procedūros metu žandikaulio šoninėje sienelėje suformuojama nedidelė prieiga, per kurią atsargiai pakeliama sinuso dugno membrana ir suformuojama erdvė, užpildoma kaulą atkuriančia medžiaga. Kadangi atkuriamas didesnis kaulo kiekis, šis metodas paprastai reikalauja ilgesnio gijimo laikotarpio prieš atliekant implantaciją." })
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Atviras sinuso pakėlimas taikomas tada, kai kaulo aukščio trūksta daugiau ir reikalingas didesnės apimties kaulo atkūrimas. Tokiu atveju gydytojas suformuoja nedidelį priėjimą viršutinio žandikaulio šoninėje sienelėje, atsargiai pakelia sinuso gleivinę ir po ja įdeda kaulo pakaitalo medžiagą. Šis metodas leidžia atkurti didesnį kaulo tūrį, tačiau dažniausiai reikalauja ilgesnio gijimo laikotarpio. Kai kuriais atvejais implantai gali būti įsriegiami tos pačios procedūros metu, tačiau jei kaulo trūkumas didelis, implantacija dažniausiai planuojama po kelių mėnesių." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Sinuso pakėlimas kartu su implantacija" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kai situacija leidžia, sinuso pakėlimas gali būti atliekamas tuo pačiu metu kaip implantacija. Toks sprendimas gali sutrumpinti bendrą gydymo trukmę, tačiau jis tinkamas ne visiems pacientams. Svarbiausia sąlyga – pakankamas pirminis implanto stabilumas." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Sinuso pakėlimas kaip atskiras etapas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Jei kaulo trūkumas didesnis, pirmiausia atliekamas sinuso pakėlimas, leidžiama kaului sugyti, o implantacija planuojama vėliau. Toks etapinis gydymas gali užtrukti ilgiau, tačiau kai kuriais atvejais jis yra saugesnis ir labiau prognozuojamas." })
+                ] })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "procesas", className: sectionWrap$b, variants: item$k, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$b, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip atliekama sinuso pakėlimo procedūra?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Sinuso pakėlimo procedūra planuojama etapais, nes tikslus pasiruošimas padeda saugiai įvertinti kaulo kiekį, sinuso padėtį ir būsimos implantacijos galimybes." }),
+              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Konsultacija ir pirminis įvertinimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Gydytojas įvertina paciento burnos būklę, trūkstamų dantų vietą, dantenų ir kaulo būklę, taip pat aptaria paciento lūkesčius dėl dantų atkūrimo implantais. Šiame etape svarbu suprasti, ar sinuso pakėlimas apskritai gali būti reikalingas." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "3D tyrimas ir sinuso anatomijos įvertinimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Atliekamas 3D rentgeno tyrimas arba kompiuterinė tomografija. Šis tyrimas leidžia tiksliai įvertinti kaulo aukštį, sinuso dugno padėtį, sinuso anatomiją ir būsimų implantų planavimo galimybes." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Individualaus gydymo plano sudarymas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pagal diagnostikos duomenis sudaromas gydymo planas. Pacientui paaiškinama, ar reikalingas uždaras, ar atviras sinuso pakėlimas, ar procedūrą galima atlikti kartu su implantacija, kiek gali trukti gijimas ir kokie bus tolimesni gydymo etapai." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Vietinė nejautra" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pati procedūra atliekama taikant vietinę nejautrą, todėl jos metu pacientas neturėtų jausti skausmo. Prireikus gydytojas papildomai paaiškina, kokių pojūčių galima tikėtis procedūros metu ir po jos." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "05" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Sinuso gleivinės pakėlimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Priklausomai nuo pasirinkto metodo, gydytojas pasiekia sinuso dugną per implantui paruoštą vietą arba per nedidelį priėjimą viršutinio žandikaulio šoninėje sienelėje. Tuomet sinuso gleivinė atsargiai pakeliama, kad būtų sukurta vieta kaulo pakaitalui." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "06" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Kaulo pakaitalo pritaikymas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Po pakelta sinuso gleivine įdedama pasirinkta kaulo pakaitalo medžiaga. Jei reikia, naudojama speciali membrana, padedanti apsaugoti priauginamą sritį ir sudaryti geresnes sąlygas gijimui." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "07" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Žaizdos susiuvimas ir pirminės rekomendacijos" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Po procedūros audiniai susiuvami, o pacientui suteikiamos aiškios rekomendacijos dėl gijimo. Pirmomis dienomis gali būti patinimas, maudimas, jautrumas, nedidelis kraujavimas iš nosies ar kraujosruvos – tai dažniausiai normali reakcija, tačiau simptomams stiprėjant būtina kreiptis į gydytoją." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "08" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Gijimo kontrolė ir implantacijos planavimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Gijimo trukmė priklauso nuo procedūros apimties, paciento sveikatos ir pasirinkto gydymo plano. Kai implantas įsriegiamas tos pačios procedūros metu, tolimesnis gydymas planuojamas pagal implanto gijimą. Jei implantacija atidedama, ji dažniausiai planuojama tik tada, kai priaugintas kaulas pakankamai sugija." })
                 ] })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "gijimas", className: sectionWrap$b, variants: item$k, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$b, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Gijimas ir rekomendacijos" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Po sinuso pakėlimo operuotai sričiai reikalingas ramus ir kontroliuojamas gijimo laikotarpis. Norint išvengti papildomo slėgio operuotoje srityje ir sudaryti geriausias sąlygas gijimui, pacientams rekomenduojama laikinai vengti tam tikros veiklos." }),
-              /* @__PURE__ */ jsxs("div", { className: "space-y-3", children: [
-                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700 mb-2", children: "Po procedūros rekomenduojama vengti:" }),
-                [
-                  "nardymo",
-                  "skrydžių lėktuvu",
-                  "pirties ir garų procedūrų",
-                  "intensyvaus sporto ir fizinio krūvio",
-                  "rūkymo"
-                ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
-                  /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$j, {}) }),
-                  /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
-                ] }, i))
-              ] }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mt-6", children: "Šių rekomendacijų laikymasis padeda išvengti spaudimo pokyčių, kurie gali pakenkti operuotai sričiai, ir užtikrina sklandų bei saugų gijimo procesą." })
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Priežiūra po sinuso pakėlimo" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Po sinuso pakėlimo ypač svarbu saugoti operuotą sritį nuo staigių slėgio pokyčių. Gijimo laikotarpiu dažniausiai rekomenduojama nepūsti nosies stipriai, čiaudėti atvira burna ir vengti šių dalykų:" }),
+              /* @__PURE__ */ jsx("div", { className: "space-y-3", children: [
+                "nardymo",
+                "skrydžių lėktuvu",
+                "pirties ir garų procedūrų",
+                "intensyvaus sporto ir fizinio krūvio",
+                "rūkymo"
+              ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
+                /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$j, {}) }),
+                /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
+              ] }, i)) }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mt-6", children: "Taip pat svarbu vartoti paskirtus vaistus, laikytis mitybos bei burnos higienos rekomendacijų ir atvykti į kontrolinius vizitus. Šių rekomendacijų laikymasis padeda išvengti spaudimo pokyčių, kurie gali pakenkti operuotai sričiai, ir užtikrina sklandų bei saugų gijimo procesą." })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "duk", className: sectionWrap$b, variants: item$k, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$b, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Dažniausiai užduodami klausimai apie sinuso pakėlimą" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar sinuso pakėlimas yra skausmingas?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Procedūra atliekama taikant vietinę nejautrą, todėl jos metu skausmo neturėtų būti. Po procedūros gali būti jaučiamas maudimas, patinimas ar jautrumas. Šie pojūčiai dažniausiai kontroliuojami gydytojo paskirtais vaistais ir tinkama pooperacine priežiūra." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Kiek laiko gyjama po sinuso pakėlimo?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Gijimo trukmė priklauso nuo to, ar buvo atliktas uždaras, ar atviras sinuso pakėlimas, kiek kaulo reikėjo atkurti ir ar implantas buvo įsriegiamas tos pačios procedūros metu. Kai kuriais atvejais pakanka trumpesnio gijimo laikotarpio, kitais implantacija planuojama po kelių mėnesių." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar sinuso pakėlimą galima atlikti kartu su implantacija?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Taip, kai kuriais atvejais sinuso pakėlimas gali būti atliekamas kartu su implantacija. Tai įmanoma tada, kai esamo kaulo pakanka tam, kad implantas būtų stabiliai įtvirtintas. Jei kaulo trūkumas didesnis, saugiau pirmiausia atlikti sinuso pakėlimą ir implantaciją planuoti po gijimo." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ko negalima daryti po sinuso pakėlimo operacijos?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Po sinuso pakėlimo svarbu laikytis gydytojo rekomendacijų. Dažniausiai rekomenduojama kurį laiką vengti intensyvaus fizinio krūvio, rūkymo, pirties, karštų vonių, nardymo ir stipraus nosies pūtimo. Čiaudėti reikėtų atvira burna, kad sinuso srityje nesusidarytų per didelis spaudimas." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Nuo ko priklauso sinuso pakėlimo kaina?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Sinuso pakėlimo kaina priklauso nuo procedūros tipo, kaulo trūkumo apimties, naudojamų medžiagų, chirurginio sudėtingumo ir to, ar procedūra atliekama kartu su implantacija. Tiksli kaina nustatoma konsultacijos metu, atlikus diagnostiką ir sudarius individualų gydymo planą." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$b, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Kokios galimos sinuso pakėlimo komplikacijos ir kaip jų riziką sumažinti?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Kaip ir po bet kurios chirurginės procedūros, galimos sinuso pakėlimo komplikacijos gali būti infekcija, užsitęsęs patinimas, kraujavimas, skausmas, sinuso gleivinės pažeidimas ar lėtesnis kaulo gijimas. Riziką mažina tiksli 3D diagnostika, individualus procedūros planavimas, tinkama chirurginė technika ir paciento laikymasis pooperacinių rekomendacijų." })
+                ] })
+              ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kodel-rinktis", className: sectionWrap$b, variants: item$k, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$b, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinika Klaipėdoje pabrėžia individualų kiekvieno paciento vertinimą ir nuoseklų procedūros planavimą – nuo pirminės diagnostikos iki gijimo kontrolės. Toks nuoseklus požiūris leidžia užtikrinti sėkmingus ir ilgalaikius sinuso pakėlimo rezultatus." }),
-                /* @__PURE__ */ jsx("p", { children: "Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, atsižvelgdami į turimą kaulo kiekį, žandinio sinuso būklę ir bendrus paciento gydymo tikslus. Procedūra atliekama taikant šiuolaikinius metodus ir kruopščiai suplanuotą eigą, o po jos pacientui pateikiamos aiškios gijimo rekomendacijos." }),
-                /* @__PURE__ */ jsx("p", { children: "Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis saugiai viso gydymo metu. Todėl ieškantiems patikimo ir profesionalaus sinuso pakėlimo Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas." })
+                /* @__PURE__ */ jsx("p", { children: "Renkantis sinuso pakėlimą svarbu ne tik pati chirurginė procedūra, bet ir visas pasiruošimo implantacijai procesas – nuo tikslios diagnostikos iki gijimo kontrolės ir tolimesnio dantų atkūrimo plano. Bangų odontologijos klinikoje Klaipėdoje kiekviena situacija vertinama individualiai, įvertinus paciento kaulo aukštį, sinuso padėtį, dantenų būklę ir būsimų implantų vietą." }),
+                /* @__PURE__ */ jsx("p", { children: "Klinikoje didelis dėmesys skiriamas individualiam planavimui. Prieš pradedant gydymą atliekama išsami diagnostika, padedanti tiksliai nustatyti, ar sinuso pakėlimas yra būtinas, koks metodas tinkamiausias ir ar implantaciją galima atlikti tos pačios procedūros metu. Toks požiūris leidžia pacientui aiškiai suprasti gydymo eigą, galimus etapus ir priimti informuotą sprendimą." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje pacientui aiškiai paaiškinama, kaip vyksta procedūra, ko tikėtis po jos ir kokių rekomendacijų svarbu laikytis gijimo laikotarpiu. Nuoseklus planavimas, aiški komunikacija ir atsakinga priežiūra padeda sudaryti geresnes sąlygas sklandžiam gijimui bei tolimesniam dantų atkūrimui implantais." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mt-8 mb-12 text-left", variants: item$k, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$b, children: [
@@ -12159,7 +12527,7 @@ const item$j = {
 };
 const sectionWrap$a = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$a = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$8 = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$a = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$5 = "#002045";
 const S$5 = "#006b5f";
 const SL$5 = "#ecf5fb";
@@ -12169,10 +12537,13 @@ function CheckIcon$i() {
 const tocSections$h = [
   { id: "kainos", label: "Kainos" },
   { id: "kas-yra", label: "Kas yra kaulo priauginimas?" },
+  { id: "priezastis", label: "Kodėl kaulas nyksta?" },
   { id: "kada-reikalingas", label: "Kada reikalingas?" },
-  { id: "medziagos", label: "Naudojamos medžiagos" },
+  { id: "nustatymas", label: "Kaip nustatoma, ar būtinas?" },
   { id: "metodai", label: "Priauginimo metodai" },
-  { id: "gijimas", label: "Gijimo laikas" },
+  { id: "medziagos", label: "Naudojamos medžiagos" },
+  { id: "procesas", label: "Kaip vyksta procedūra?" },
+  { id: "duk", label: "Dažniausi klausimai" },
   { id: "kodel-rinktis", label: "Kodėl verta rinktis mus?" }
 ];
 function ZandikaulioKauloPriauginimas() {
@@ -12212,8 +12583,8 @@ function ZandikaulioKauloPriauginimas() {
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$j, children: [
               /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Žandikaulio kaulo priauginimas Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Žandikaulio kaulo priauginimas – tai paruošiamoji dantų implantacijos procedūra, skirta atkurti arba padidinti žandikaulio kaulo tūrį tose vietose, kur natūralaus kaulo nepakanka saugiam ir tvirtam implanto įsriegimui. Ši procedūra, dar vadinama kaulo augmentacija, leidžia sukurti tinkamas sąlygas ilgalaikiam ir stabiliam implantacijos rezultatui." }),
-                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje kaulo priauginimas planuojamas individualiai, atlikus išsamią diagnostiką ir įvertinus kiekvieno paciento žandikaulio kaulo būklę. Toks individualus požiūris leidžia parinkti tinkamiausią priauginimo metodą ir užtikrinti saugų bei nuspėjamą gydymo rezultatą, atveriantį kelią sėkmingai dantų implantacijai." })
+                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Dantų implantacija yra vienas patikimiausių būdų atkurti prarastus dantis, tačiau sėkmingam implantui reikalingas pakankamas žandikaulio kaulo kiekis. Jei kaulas yra per siauras, per žemas arba sunykęs po danties netekimo, implanto įsriegimas gali būti sudėtingas arba nerekomenduojamas be papildomo paruošimo. Tokiais atvejais gali būti atliekamas žandikaulio kaulo priauginimas." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje kaulo priauginimas planuojamas individualiai, įvertinus paciento burnos būklę, kaulo tūrį, būsimų implantų padėtį ir bendrą gydymo planą. Tikslas – sukurti pakankamą ir saugų pagrindą implantui, atkurti prarastą kaulo atramą ir sudaryti sąlygas ilgalaikiam dantų atkūrimo rezultatui." })
               ] }) }),
               /* @__PURE__ */ jsx("div", { className: "flex justify-start mt-6", children: /* @__PURE__ */ jsx(
                 Link,
@@ -12266,13 +12637,14 @@ function ZandikaulioKauloPriauginimas() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Jonas-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -12282,73 +12654,161 @@ function ZandikaulioKauloPriauginimas() {
             /* @__PURE__ */ jsx(motion.section, { id: "kas-yra", className: sectionWrap$a, variants: item$j, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$a, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra žandikaulio kaulo priauginimas?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Žandikaulio kaulo priauginimas, dar vadinamas kaulo augmentacija, yra chirurginė procedūra, skirta atkurti arba padidinti žandikaulio kaulo tūrį, kai planuojama dantų implantacija. Sėkmingam implanto įsitvirtinimui būtinas pakankamas kaulo storis ir aukštis, todėl kai natūralaus kaulo trūksta, jis prieš implantaciją yra papildomai priauginamas." }),
-                /* @__PURE__ */ jsx("p", { children: "Procedūra leidžia sukurti tvirtą ir stabilų pagrindą implantui, sumažina komplikacijų riziką ir padidina tikimybę, kad implantacijos rezultatas bus ilgalaikis. Bangų odontologijos klinikoje kaulo priauginimas atliekamas kruopščiai suplanavus gydymą, atsižvelgiant į kiekvieno paciento individualią kaulo būklę." })
+                /* @__PURE__ */ jsx("p", { children: "Žandikaulio kaulo priauginimas, dar vadinamas kaulo augmentacija, yra chirurginė procedūra, kurios metu atkuriamas arba padidinamas žandikaulio kaulo tūris. Ji dažniausiai atliekama tada, kai planuojama dantų implantacija, tačiau esamo kaulo aukščio ar pločio nepakanka saugiam implanto įsriegimui." }),
+                /* @__PURE__ */ jsx("p", { children: "Implantas turi būti stabiliai įtvirtintas kaule. Jei kaulo per mažai, implantas gali neturėti pakankamos atramos, o tai gali padidinti komplikacijų ar nesėkmingo gydymo riziką. Todėl kaulo priauginimas implantui gali būti svarbus paruošiamasis etapas prieš implantaciją arba jos metu." }),
+                /* @__PURE__ */ jsx("p", { children: "Procedūros metu naudojama speciali kaulo pakaitalo medžiaga arba kiti individualiai parenkami sprendimai, padedantys atkurti trūkstamą kaulo tūrį. Laikui bėgant priauginta sritis gyja, integruojasi su paciento audiniais ir gali tapti tinkamu pagrindu implantui." }),
+                /* @__PURE__ */ jsx("p", { children: "Svarbu suprasti, kad žandikaulio kaulo priauginimas reikalingas ne visiems pacientams. Kai kuriais atvejais implantaciją galima atlikti be papildomo kaulo atkūrimo, tačiau tai galima tiksliai nustatyti tik atlikus diagnostiką." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "priezastis", className: sectionWrap$a, variants: item$j, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$a, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl žandikaulio kaulas nyksta?" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Žandikaulio kaulas yra gyvas audinys, kuris reaguoja į kramtymo krūvį. Kol burnoje yra natūralus dantis, jo šaknis perduoda kramtymo apkrovą kaului ir padeda palaikyti jo tūrį. Netekus danties, toje vietoje kaulas nebegauna įprasto mechaninio krūvio, todėl ilgainiui gali pradėti mažėti." }),
+                /* @__PURE__ */ jsx("p", { children: "Viena dažniausių kaulo nykimo priežasčių yra ilgą laiką neatkurtas prarastas dantis. Kuo ilgiau danties nėra, tuo didesnė tikimybė, kad kaulas toje srityje bus sumažėjęs. Dėl to implantacija vėliau gali tapti sudėtingesnė ir gali prireikti papildomų chirurginių procedūrų." }),
+                /* @__PURE__ */ jsx("p", { children: "Kaulo netekimą taip pat gali lemti periodonto ligos. Kai uždegimas pažeidžia dantenas ir aplink dantis esantį kaulą, dantys gali tapti paslankūs, o kaulo atrama mažėti. Tokiais atvejais prieš planuojant implantaciją svarbu įvertinti ne tik trūkstamo danties vietą, bet ir bendrą dantenų bei periodonto būklę." }),
+                /* @__PURE__ */ jsx("p", { children: "Žandikaulio kaulas gali būti prarandamas ir dėl traumų, cistų, infekcijų, sudėtingo danties šalinimo ar individualių anatominių savybių. Kai kurių pacientų kaulo kiekis tam tikrose žandikaulio vietose iš prigimties gali būti mažesnis, ypač viršutinio žandikaulio krūminių dantų srityje, kur arti yra žandiniai sinusai." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kada-reikalingas", className: sectionWrap$a, variants: item$j, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$a, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada reikalingas kaulo priauginimas?" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Kaulo priauginimo procedūra atliekama tuomet, kai esamo žandikaulio kaulo nepakanka saugiam implanto įsriegimui. Kaulo tūrio sumažėjimą gali lemti įvairios priežastys, todėl prieš implantaciją visuomet atliekamas kruopštus kaulo būklės įvertinimas." }),
-              /* @__PURE__ */ jsxs("div", { className: "space-y-4 mb-6", children: [
-                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700", children: "Kaulo priauginimas gali būti būtinas, kai:" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada reikalingas kaulo priauginimas prieš implantaciją?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Kaulo priauginimas prieš implantaciją gali būti reikalingas tada, kai 3D tyrimas ar klinikinis įvertinimas parodo, kad implantui nepakanka kaulo aukščio, pločio ar tankio. Tokiu atveju pirmiausia turi būti atkuriama atrama, kuri leistų saugiai ir tiksliai suplanuoti implantą." }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-3 mb-6", children: [
+                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700", children: "Kaulo priauginimas gali būti rekomenduojamas, kai:" }),
                 /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
-                  "dantis buvo prarastas jau seniai, o kaulas toje vietoje ilgainiui sumažėjo",
-                  "kaulo tūrį sumažino patirta trauma",
-                  "kaulą pažeidė periodonto ligos",
-                  "kaulo tūris yra nepakankamas dėl individualių anatominių savybių"
+                  "dantis buvo prarastas seniai ir kaulas toje vietoje sunyko",
+                  "po danties šalinimo kaulas sugijo nepakankamai",
+                  "žandikaulio kaulas yra per siauras arba per žemas implantui",
+                  "buvo uždegimas, cista, trauma ar sudėtingas danties rovimas",
+                  "planuojama implantacija estetiškai svarbioje šypsenos zonoje",
+                  "reikia atkurti dantenų ir kaulo kontūrą būsimam protezavimui",
+                  "3D tyrimas rodo, kad implantui trūksta stabilios atramos"
                 ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
                   /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$i, {}) }),
                   /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
                 ] }, i)) })
               ] }),
-              /* @__PURE__ */ jsx("div", { className: "rounded-xl border border-slate-200 bg-white p-4 sm:p-5", children: /* @__PURE__ */ jsxs("p", { className: "text-sm text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("span", { className: "font-semibold text-darkblue-700", children: "Pastaba:" }),
-                " ",
-                "Tiksli kaulo priauginimo poreikio priežastis nustatoma diagnostikos metu, atlikus išsamų žandikaulio kaulo įvertinimą."
-              ] }) })
-            ] }) }),
-            /* @__PURE__ */ jsx(motion.section, { id: "medziagos", className: sectionWrap$a, variants: item$j, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$a, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Naudojamos medžiagos" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Kaulo priauginimui gali būti naudojamas paties paciento kaulas, paimtas iš kitos žandikaulio vietos, arba sintetiniai, donoriniai ar gyvūninės kilmės kaulo pakaitalai. Kiekviena medžiaga turi savų privalumų, todėl jos pasirinkimas priklauso nuo trūkstamo kaulo kiekio, gydymo vietos ir individualios paciento situacijos." }),
-                /* @__PURE__ */ jsx("p", { children: "Naudojama medžiaga paprastai dengiama apsauginėmis membranomis, kurios apsaugo priauginamą kaulą gijimo metu ir padeda užtikrinti stabilų bei nuspėjamą rezultatą." })
+                /* @__PURE__ */ jsx("p", { children: "Ne visais atvejais kaulo priauginimas yra vienintelis kelias. Kartais galima parinkti kitokį implantą, pakeisti jo padėtį arba pasirinkti alternatyvų dantų atkūrimo planą. Todėl labai svarbu, kad sprendimas būtų priimamas ne pagal bendrą prielaidą, o pagal tikslius diagnostikos duomenis." }),
+                /* @__PURE__ */ jsx("p", { children: "Jei kaulo trūkumas nedidelis, tam tikrais atvejais kaulo priauginimas gali būti atliekamas kartu su implantacija. Jei kaulo trūkumas didesnis, pirmiausia atliekama kaulo priauginimo procedūra, palaukiama gijimo, o implantacija planuojama vėliau." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "nustatymas", className: sectionWrap$a, variants: item$j, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$a, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip nustatoma, ar kaulo priauginimas būtinas?" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Vien apžiūros dažnai nepakanka norint įvertinti, ar pacientui reikalingas kaulo priauginimas. Išoriškai dantenos gali atrodyti pakankamos apimties, tačiau po jomis esantis kaulas gali būti per siauras, per žemas arba netinkamos formos implantui." }),
+                /* @__PURE__ */ jsx("p", { children: "Todėl planuojant implantaciją dažnai atliekami radiologiniai tyrimai, padedantys tiksliai įvertinti kaulo būklę. Vienas svarbiausių tyrimų yra 3D rentgeno tyrimas arba kompiuterinė tomografija. Šis tyrimas leidžia matyti kaulo aukštį, plotį, nervų eigą, sinusų padėtį ir būsimų implantų planavimo galimybes." }),
+                /* @__PURE__ */ jsx("p", { children: "Pagal diagnostikos duomenis gydytojas įvertina, ar implantą galima sriegti iš karto, ar reikalingas papildomas kaulo atkūrimas. Taip pat sprendžiama, ar procedūrą galima atlikti kartu su implantacija, ar geriau ją skaidyti į atskirus etapus." }),
+                /* @__PURE__ */ jsx("p", { children: "Toks planavimas svarbus paciento saugumui ir ilgalaikiam rezultatui. Tiksliai įvertinus kaulo tūrį, galima sumažinti komplikacijų riziką, parinkti tinkamą implantų poziciją ir suplanuoti protezavimą taip, kad atkurtas dantis būtų ne tik stabilus, bet ir estetiškai derėtų prie šypsenos." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "metodai", className: sectionWrap$a, variants: item$j, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$a, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Priauginimo metodai" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Kaulo priauginimo metodas parenkamas individualiai, atsižvelgiant į trūkstamo kaulo kiekį ir gydymo vietą žandikaulyje. Bangų odontologijos klinikoje taikomi šiuolaikiniai kaulo augmentacijos metodai." }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kokie yra žandikaulio kaulo priauginimo būdai?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Žandikaulio kaulo priauginimo būdas parenkamas individualiai, įvertinus kaulo trūkumo vietą, apimtį, būsimų implantų padėtį ir bendrą burnos būklę. Vieniems pacientams pakanka nedidelio kaulo tūrio atkūrimo, kitiems gali reikėti sudėtingesnio pasiruošimo implantacijai." }),
               /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$8, children: [
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Kaulo augmentacija vienos ar kelių vietų srityje" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Taikoma, kai kaulo trūksta vienoje ar keliose lokalizuotose žandikaulio vietose, kur planuojama implantacija." })
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Kaulo augmentacija vieno ar kelių dantų srityje" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Tai vienas dažniausių kaulo priauginimo būdų, kai reikia padidinti kaulo plotį ar aukštį konkrečioje vietoje. Šis metodas taikomas tada, kai planuojamam implantui trūksta stabilios atramos, tačiau kaulo defektas nėra labai didelės apimties." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$8, children: [
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Alveolės išsaugojimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Atliekamas iškart po danties šalinimo, siekiant išsaugoti alveolės formą ir sumažinti natūralų kaulo nykimą." })
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Alveolės išsaugojimas po danties šalinimo" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kai dantis šalinamas ir ateityje planuojama implantacija, gali būti atliekamas alveolės išsaugojimas. Po danties pašalinimo į jo vietą įdedama kaulo pakaitalo medžiaga, padedanti sumažinti kaulo tūrio netekimą gijimo metu ir palengvinti vėlesnį implantacijos planavimą." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$8, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Sinuso dugno pakėlimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Taikomas viršutinio žandikaulio galinėje dalyje, kai dėl žandinės ertmės artumo kaulo aukštis yra nepakankamas implantacijai." })
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Viršutinio žandikaulio krūminių dantų srityje kartais trūksta kaulo aukščio dėl arti esančio žandinio sinuso. Tokiu atveju gali būti atliekamas sinuso dugno pakėlimas – procedūra, kurios metu sukuriama daugiau vietos kaulo pakaitalui ir sudaromos sąlygos saugiam implanto įsriegimui." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$8, children: [
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Didesnės apimties restauravimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Taikomas, kai kaulo trūkumas yra ženklus ir reikalauja platesnės apimties kaulo tūrio atkūrimo prieš implantaciją." })
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Kaulo priauginimas kartu su implantacija" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Jei kaulo trūkumas nedidelis ir galima užtikrinti pirminį implanto stabilumą, kaulo priauginimas gali būti atliekamas tos pačios procedūros metu kaip implantacija. Tai leidžia sutrumpinti gydymo eigą, tačiau toks sprendimas tinka ne visais atvejais." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Didesnės apimties kaulo atstatymas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kai kaulo trūkumas ryškesnis, gali būti reikalingas platesnės apimties kaulo atstatymas. Tokiais atvejais gydymas dažniausiai planuojamas etapais: pirmiausia atkuriamas kaulo tūris, palaukiama gijimo, o implantacija atliekama vėliau." })
                 ] })
               ] })
             ] }) }),
-            /* @__PURE__ */ jsx(motion.section, { id: "gijimas", className: sectionWrap$a, variants: item$j, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$a, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Gijimo laikas" }),
+            /* @__PURE__ */ jsx(motion.section, { id: "medziagos", className: sectionWrap$a, variants: item$j, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$a, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kokios medžiagos naudojamos kaulo priauginimui?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Gijimo trukmė po žandikaulio kaulo priauginimo priklauso nuo procedūros apimties – ji gali svyruoti nuo kelių savaičių iki kelių mėnesių. Nedidelės apimties kaulo priauginimas dažniausiai sugyja greičiau, o platesnės apimties restauravimo atvejais reikalingas ilgesnis gijimo laikotarpis, kad priauginta kaulo medžiaga tvirtai susijungtų su esamu kaulu." }),
-                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje kiekvienam pacientui pateikiamos aiškios rekomendacijos, padedančios užtikrinti sklandų gijimą ir sudaryti geriausias sąlygas tolimesnei implantacijai." })
+                /* @__PURE__ */ jsx("p", { children: "Kaulo priauginimui gali būti naudojamos skirtingos medžiagos. Tinkamiausias pasirinkimas priklauso nuo kaulo trūkumo apimties, vietos, paciento sveikatos būklės, planuojamos implantacijos ir gydytojo sudaryto gydymo plano." }),
+                /* @__PURE__ */ jsx("p", { children: "Kai kuriais atvejais gali būti naudojamas paciento nuosavas kaulas. Jis gali būti paimamas iš kitos burnos srities ir naudojamas ten, kur reikia atkurti kaulo tūrį. Tai biologiniu požiūriu artima medžiaga, tačiau jos panaudojimas priklauso nuo konkretaus defekto ir procedūros apimties." }),
+                /* @__PURE__ */ jsx("p", { children: "Taip pat naudojami sintetiniai, donoriniai arba gyvūninės kilmės kaulo pakaitalai. Šios medžiagos veikia kaip atraminė struktūra, padedanti organizmui formuoti naują kaulinį audinį. Gijimo metu paciento audiniai palaipsniui integruojasi su priauginta sritimi." }),
+                /* @__PURE__ */ jsx("p", { children: "Dažnai naudojamos ir specialios membranos. Jos padeda apsaugoti priauginamą sritį, išlaikyti kaulo pakaitalą reikiamoje vietoje ir sudaryti geresnes sąlygas gijimui. Membranos poreikis priklauso nuo defekto dydžio ir pasirinktos procedūros." }),
+                /* @__PURE__ */ jsx("p", { children: "Pacientui nebūtina iš anksto žinoti visų medžiagų skirtumų. Konsultacijos metu gydytojas paaiškina, kokios medžiagos rekomenduojamos konkrečiu atveju, kodėl jos pasirenkamos ir kokio gijimo proceso galima tikėtis." }),
+                /* @__PURE__ */ jsx("p", { children: "Papildomai gydytojas įvertina ir paciento gijimo sąlygas: burnos higieną, rūkymo įpročius, bendrą sveikatos būklę, vartojamus vaistus ir planuojamos implantacijos laiką. Šie veiksniai gali turėti įtakos tam, kaip sklandžiai gyja priaugintas kaulas ir kada galima pereiti prie kito gydymo etapo. Todėl medžiagos pasirinkimas nėra vien techninis sprendimas – jis visada siejamas su visa gydymo eiga." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "procesas", className: sectionWrap$a, variants: item$j, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$a, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip atliekama žandikaulio kaulo priauginimo procedūra?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Žandikaulio kaulo priauginimo procedūra Bangų odontologijos klinikoje planuojama nuosekliai, remiantis diagnostikos duomenimis ir individualia paciento situacija. Tikslus planavimas leidžia procedūrą atlikti saugiau ir numatyti tolimesnius implantacijos etapus." }),
+              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Konsultacija ir diagnostika" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Įvertinama paciento burnos būklė, trūkstamų dantų vieta, dantenos, sąkandis ir bendras gydymo poreikis. Prireikus atliekami radiologiniai tyrimai, padedantys tiksliai nustatyti kaulo trūkumo apimtį." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "3D tyrimo įvertinimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kompiuterinės tomografijos ar kito 3D tyrimo duomenys leidžia įvertinti kaulo aukštį, plotį, nervų, sinusų ir kitų anatominių struktūrų padėtį. Šis etapas ypač svarbus planuojant saugią implantaciją." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Gydymo plano sudarymas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pacientui paaiškinama, ar reikalingas kaulo priauginimas, koks metodas tinkamiausias ir ar implantaciją bus galima atlikti tuo pačiu metu. Aptariama ir kaulo priauginimo kaina, priklausanti nuo procedūros apimties, naudojamų medžiagų ir papildomų gydymo etapų." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Procedūros atlikimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kaulo priauginimas atliekamas taikant vietinę nejautrą, todėl procedūros metu pacientas neturėtų jausti skausmo. Gydytojas paruošia sritį, pritaiko pasirinktą kaulo pakaitalą ar kitą medžiagą, prireikus naudoja membraną ir susiuva audinius." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "05" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Gijimo laikotarpis" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pacientui pateikiamos aiškios rekomendacijos dėl mitybos, burnos higienos, fizinio krūvio, vaistų vartojimo ir kontrolinių vizitų. Gijimo metu svarbu laikytis gydytojo nurodymų, nerūkyti ir stebėti savijautą." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "06" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Implantacijos planavimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kai priaugintas kaulas sugija ir yra tinkamas implantui, planuojamas kitas gydymo etapas. Kai kuriais atvejais implantacija gali būti atliekama kartu su kaulo priauginimu, tačiau jei defektas didesnis, dažniausiai laukiama kelių mėnesių." })
+                ] })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "duk", className: sectionWrap$a, variants: item$j, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$a, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Dažniausiai užduodami klausimai apie žandikaulio kaulo priauginimą" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar kaulo priauginimas visada būtinas prieš implantaciją?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Ne visada. Kaulo priauginimas reikalingas tik tada, kai esamo kaulo kiekio nepakanka saugiam implanto įsriegimui. Jei kaulo tūris pakankamas, implantacija gali būti atliekama be papildomo priauginimo." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar kaulo priauginimą galima atlikti kartu su implantacija?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Kai kuriais atvejais taip. Jei kaulo trūkumas nedidelis ir galima užtikrinti pirminį implanto stabilumą, kaulo priauginimas gali būti atliekamas tuo pačiu metu kaip implantacija. Jei kaulo trūkumas didesnis, pirmiausia atliekamas priauginimas, o implantacija planuojama po gijimo." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar žandikaulio kaulo priauginimas yra skausmingas?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Procedūra atliekama taikant vietinę nejautrą, todėl jos metu skausmo neturėtų būti. Po procedūros gali būti patinimas, maudimas, jautrumas ar mėlynės. Tai dažniausiai yra normali gijimo dalis, kuri kontroliuojama gydytojo rekomendacijomis ir paskirtais vaistais." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Kiek laiko gyja kaulas po priauginimo?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Gijimo trukmė priklauso nuo procedūros apimties, vietos, paciento sveikatos, burnos higienos ir pasirinkto metodo. Mažesni defektai gali gyti greičiau, o didesnės apimties kaulo priauginimui gali prireikti kelių mėnesių, kol bus galima planuoti implantaciją." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Kokios galimos kaulo priauginimo komplikacijos?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Kaip ir po bet kurios chirurginės procedūros, galimos kaulo priauginimo komplikacijos gali būti infekcija, užsitęsęs patinimas, kraujavimas, skausmas, žaizdos gijimo sutrikimai ar nepakankama kaulo integracija. Komplikacijų riziką mažina tiksli diagnostika, tinkamas procedūros planavimas, gydytojo rekomendacijų laikymasis ir gera burnos higiena." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$a, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Nuo ko priklauso žandikaulio kaulo priauginimo kaina?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Žandikaulio kaulo priauginimo kaina priklauso nuo kaulo trūkumo apimties, pasirinkto metodo, naudojamų medžiagų, procedūros sudėtingumo ir to, ar ji atliekama kartu su implantacija. Tiksli kaina nustatoma konsultacijos metu, įvertinus paciento burnos būklę ir sudarius individualų gydymo planą." })
+                ] })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kodel-rinktis", className: sectionWrap$a, variants: item$j, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$a, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Renkantis žandikaulio kaulo priauginimo paslaugas svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo diagnostikos iki priežiūros po procedūros. Bangų odontologijos klinikoje kaulo priauginimas atliekamas atsakingai, siekiant maksimaliai apsaugoti paciento komfortą ir burnos sveikatą." }),
-                /* @__PURE__ */ jsx("p", { children: "Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, neskuba priimti sprendimo ir visuomet pirmiausia ieško galimybių pasirinkti pacientui tinkamiausią gydymo kelią. Procedūra atliekama taikant šiuolaikinius metodus ir kruopščiai suplanuotą eigą. Dėmesys skiriamas ne tik pačiai procedūrai, bet ir aiškiam situacijos paaiškinimui bei rekomendacijoms po jos." }),
-                /* @__PURE__ */ jsx("p", { children: "Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis saugiai viso gydymo metu. Todėl ieškantiems patikimo ir profesionalaus žandikaulio kaulo priauginimo Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas." })
+                /* @__PURE__ */ jsx("p", { children: "Renkantis žandikaulio kaulo priauginimą svarbu ne tik pati chirurginė procedūra, bet ir visas pasiruošimo implantacijai procesas – nuo tikslios diagnostikos iki gijimo kontrolės ir tolimesnio dantų atkūrimo plano. Bangų odontologijos klinikoje Klaipėdoje kaulo priauginimas planuojamas individualiai, įvertinus paciento kaulo tūrį, dantenų būklę, sąkandį ir būsimų implantų padėtį." }),
+                /* @__PURE__ */ jsx("p", { children: "Klinikoje didelis dėmesys skiriamas individualiam planavimui. Prieš pradedant gydymą atliekama išsami diagnostika, padedanti tiksliai įvertinti, ar kaulo priauginimas yra būtinas, kokio metodo gali reikėti ir kada būtų galima planuoti implantaciją. Toks požiūris leidžia pacientui aiškiai suprasti gydymo eigą, galimus etapus ir priimti informuotą sprendimą." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje pacientui aiškiai paaiškinama, kaip vyksta procedūra, kokios medžiagos gali būti naudojamos ir ko tikėtis po kaulo priauginimo operacijos. Po gydymo suteikiamos rekomendacijos dėl gijimo, higienos, mitybos ir kontrolinių vizitų, kad būtų sudarytos kuo geresnės sąlygos sklandžiam gijimui bei tolimesniam dantų atkūrimui implantais." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mt-8 mb-12 text-left", variants: item$j, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$a, children: [
@@ -12383,7 +12843,7 @@ const item$i = {
 };
 const sectionWrap$9 = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$9 = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$7 = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$9 = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$4 = "#002045";
 const S$4 = "#006b5f";
 const SL$4 = "#ecf5fb";
@@ -12394,9 +12854,10 @@ const tocSections$g = [
   { id: "kainos", label: "Kainos" },
   { id: "kas-yra", label: "Kas yra dantų tiltas?" },
   { id: "reikalingumas", label: "Kada rekomenduojamas?" },
+  { id: "svarba", label: "Kodėl svarbu atkurti laiku?" },
   { id: "rusys", label: "Tiltų rūšys" },
   { id: "procesas", label: "Gamybos procesas" },
-  { id: "privalumai", label: "Privalumai" },
+  { id: "duk", label: "Dažniausi klausimai" },
   { id: "kodel-rinktis", label: "Kodėl verta rinktis mus?" }
 ];
 function DantuTiltai() {
@@ -12436,8 +12897,8 @@ function DantuTiltai() {
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$i, children: [
               /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Dantų tiltai Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Dantų tiltai yra fiksuoti protezai, skirti atkurti vieną ar kelis trūkstamus dantis. Tai patikimas ir natūraliai atrodantis sprendimas pacientams, netekusiems danties ar kelių dantų dėl traumos, ėduonies ar kitų priežasčių. Skirtingai nei išimami protezai, dantų tiltas yra tvirtai pritvirtinamas burnoje ir funkcionuoja kaip natūralūs dantys." }),
-                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje dantų tiltai gaminami individualiai, atsižvelgiant į kiekvieno paciento anatomines ypatybes, sąkandžio ypatumus ir estetinius lūkesčius. Kruopštus gydymo planavimas ir tinkama paciento edukacija leidžia pasiekti tvarų, funkcionalų ir natūraliai atrodantį rezultatą." })
+                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Praradus vieną ar kelis dantis, keičiasi ne tik šypsenos estetika, bet ir kasdienė burnos funkcija. Gali tapti sunkiau kramtyti, aiškiai kalbėti, didėja likusių dantų apkrova, o gretimi dantys ilgainiui gali pradėti slinkti į atsiradusią tuščią vietą. Dantų tiltai padeda atkurti trūkstamus dantis, kramtymo funkciją, sąkandžio stabilumą ir šypsenos vientisumą." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje dantų atkūrimo būdai parenkami individualiai, įvertinus paciento burnos būklę, trūkstamų dantų skaičių, atraminių dantų ar implantų galimybes, sąkandį ir paciento lūkesčius. Vienas iš galimų sprendimų, kai reikia atkurti vieną ar kelis trūkstamus dantis, yra dantų tiltai. Tai fiksuoti protezai, kurie padeda grąžinti kramtymo komfortą, šypsenos estetiką ir pasitikėjimą kasdienėse situacijose." })
               ] }) }),
               /* @__PURE__ */ jsx("div", { className: "flex justify-start mt-6", children: /* @__PURE__ */ jsx(
                 Link,
@@ -12491,13 +12952,14 @@ function DantuTiltai() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Jonas-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -12507,65 +12969,139 @@ function DantuTiltai() {
             /* @__PURE__ */ jsx(motion.section, { id: "kas-yra", className: sectionWrap$9, variants: item$i, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$9, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra dantų tiltas?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Dantų tiltas – tai fiksuotas, neišimamas protezas, skirtas atkurti vieną ar kelis trūkstamus dantis. Jį sudaro dirbtiniai dantys, kurie sujungiami su atramomis – jomis gali būti tiek natūralūs, gretimi dantys, tiek įsriegti dantų implantai. Taip suformuojama vientisa, stabili konstrukcija, kuri užpildo tarpą ir atkuria tiek kramtymo funkciją, tiek estetišką šypseną." }),
-                /* @__PURE__ */ jsx("p", { children: "Kadangi dantų tiltas yra fiksuotas burnoje, jo nereikia kasdien nuimti ar valyti atskirai, kaip įprastų išimamų protezų. Toks sprendimas leidžia pacientui jaustis natūraliai ir užtikrintai kasdieniame gyvenime, o tinkamai parinkta konstrukcija ir medžiagos padeda tiltui ilgai tarnauti." })
+                /* @__PURE__ */ jsx("p", { children: "Dantų tiltas – tai fiksuotas neišimamas protezas, skirtas atkurti vieną ar kelis trūkstamus dantis. Jis tarsi „užpildo“ tarpą tarp likusių dantų: dirbtinis dantis arba keli dirbtiniai dantys sujungiami su atramomis, kurios gali būti natūralūs paciento dantys arba implantai." }),
+                /* @__PURE__ */ jsx("p", { children: "Jei dantų tiltas tvirtinamas ant natūralių dantų, šalia trūkstamo danties esantys dantys dažniausiai paruošiami ir ant jų fiksuojami vainikėliai. Tarp jų esanti dalis atkuria prarastą dantį. Jei tiltas tvirtinamas ant implantų, atramą suteikia į žandikaulį įsriegti implantai, todėl kai kuriais atvejais galima išvengti gretimų dantų šlifavimo." }),
+                /* @__PURE__ */ jsx("p", { children: "Pacientai dantų tiltus dažnai vadina ir dantų tilteliais. Abu terminai apibūdina tą patį protezavimo principą – fiksuotą konstrukciją, kuri atkuria prarastus dantis ir nėra kasdien išimama iš burnos." }),
+                /* @__PURE__ */ jsx("p", { children: "Dantų tiltas gali būti gaminamas iš skirtingų medžiagų, pavyzdžiui, metalo keramikos, cirkonio keramikos ar kitų šiuolaikinių protezavimui naudojamų medžiagų. Tinkamiausias variantas parenkamas individualiai, atsižvelgiant į atkuriamų dantų vietą, kramtymo apkrovą, estetikos poreikius ir burnos būklę." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "reikalingumas", className: sectionWrap$9, variants: item$i, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$9, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada rekomenduojamas dantų tiltas?" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada reikalingas dantų tiltas?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Dantų tiltas gali būti rekomenduojamas tada, kai pacientas yra netekęs vieno ar kelių gretimų dantų ir nori fiksuoto, stabilaus dantų atkūrimo sprendimo. Šis protezavimo būdas gali būti svarstomas tiek priekinių, tiek šoninių dantų srityje, tačiau kiekvienu atveju sprendimas priklauso nuo individualios klinikinės situacijos." }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-3 mb-6", children: [
+                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700", children: "Dantų tiltas gali būti reikalingas, kai:" }),
+                /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
+                  "trūksta vieno ar kelių šalia esančių dantų",
+                  "dėl dantų netekimo tapo sunkiau kramtyti",
+                  "suprastėjo šypsenos estetika",
+                  "pakito kalba ar tarimas",
+                  "gretimi dantys pradeda krypti į tuščią vietą",
+                  "likę dantys patiria didesnę apkrovą",
+                  "pacientas nori neišimamo protezavimo sprendimo",
+                  "dėl tam tikrų priežasčių implantacija nėra tinkamiausias pasirinkimas"
+                ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
+                  /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$h, {}) }),
+                  /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
+                ] }, i)) })
+              ] }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Dantų tiltas dažniausiai rekomenduojamas pacientams, kurie neteko vieno ar kelių gretimų dantų ir ieško stabilaus, ilgalaikio sprendimo. Trūkstamas dantis – tai ne tik estetinė problema. Laikui bėgant jis gali sutrikdyti kramtymo funkciją, paveikti taisyklingą kalbos tarimą, o gretimi dantys gali pradėti pamažu slinkti į susidariusią tuščią vietą." }),
-                /* @__PURE__ */ jsx("p", { children: "Būtent tokiais atvejais – kai sutrinka kramtymas, pablogėja šypsenos estetika arba atsiranda kalbos sutrikimų dėl trūkstamo danties – dantų tiltas tampa vienu efektyviausių sprendimų. Jis leidžia atkurti visą dantų sistemos funkcionalumą, išlaikant natūralų ir harmoningą šypsenos vaizdą." })
+                /* @__PURE__ */ jsx("p", { children: "Svarbu žinoti, kad dantų tiltas nėra universalus sprendimas visais atvejais. Jei planuojama tilto konstrukcija ant natūralių dantų, atraminiai dantys turi būti pakankamai tvirti, stabilūs ir tinkami protezavimui. Jei atraminiai dantys yra silpni, paslankūs ar pažeisti periodonto ligų, gali reikėti svarstyti kitus dantų atkūrimo būdus." }),
+                /* @__PURE__ */ jsx("p", { children: "Jei gretimi dantys yra visiškai sveiki, kai kuriais atvejais gali būti racionaliau svarstyti implantą, nes taip išvengiama atraminių dantų šlifavimo. Tačiau jei gretimi dantys jau yra stipriai plombuoti, nusilpę ar jiems taip pat reikalingas protezavimas, dantų tiltas gali būti logiškas ir pagrįstas pasirinkimas." }),
+                /* @__PURE__ */ jsx("p", { children: "Konsultacijos metu odontologas įvertina ne tik trūkstamų dantų skaičių, bet ir bendrą burnos būklę, sąkandį, dantenų sveikatą, kaulo kiekį ir paciento higienos įpročius. Tai leidžia parinkti tokį sprendimą, kuris būtų saugus, funkcionalus ir ilgalaikėje perspektyvoje pagrįstas." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "svarba", className: sectionWrap$9, variants: item$i, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$9, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl svarbu atkurti trūkstamus dantis laiku?" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Danties netekimas nėra tik estetinė problema. Net ir vieno danties trūkumas gali turėti įtakos visai dantų sistemai. Kai dantų lanke atsiranda tuščia vieta, gretimi dantys ilgainiui gali pradėti slinkti ar krypti, o priešingo žandikaulio dantis – ilgėti į tuščią tarpą. Tai gali keisti sąkandį ir apsunkinti vėlesnį gydymą." }),
+                /* @__PURE__ */ jsx("p", { children: "Trūkstant dantų, likusiems dantims tenka didesnė kramtymo apkrova. Dėl to jie gali greičiau dėvėtis, skilti, jautrėti ar tapti paslankesni. Taip pat gali pasikeisti kramtymo įpročiai – pacientas pradeda labiau kramtyti viena puse, todėl apkrova burnoje pasiskirsto netolygiai." }),
+                /* @__PURE__ */ jsx("p", { children: "Ilgainiui dantų netekimas gali turėti įtakos ir žandikaulio kaului. Toje vietoje, kur nebėra danties šaknies ar implanto, kaulas nebegauna įprastos apkrovos ir gali palaipsniui mažėti. Tai ypač svarbu planuojant ilgalaikį dantų atkūrimą, nes kaulo kiekis gali turėti įtakos implantacijos galimybėms ateityje." }),
+                /* @__PURE__ */ jsx("p", { children: "Laiku atkurti dantys padeda išlaikyti taisyklingesnį sąkandį, sumažinti likusių dantų apkrovą, pagerinti kramtymo funkciją ir išsaugoti šypsenos vientisumą. Dėl šios priežasties, net jei trūkstamas dantis nesimato šypsantis, verta pasikonsultuoti su odontologu ir aptarti galimus atkūrimo sprendimus." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "rusys", className: sectionWrap$9, variants: item$i, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$9, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Dantų tiltų rūšys" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Dantų tilto rūšis parenkama individualiai, atsižvelgiant į paciento burnos būklę, atramų tipą ir estetinius bei funkcinius lūkesčius. Bangų odontologijos klinikoje siūlomi skirtingi dantų tiltų sprendimai." }),
-              /* @__PURE__ */ jsx("div", { className: "grid gap-6 md:grid-cols-2", children: [
-                ["Tiltas ant natūralių dantų", "Konstrukcija fiksuojama prie gretimų, sveikų natūralių dantų, kurie paruošiami ir tampa tilto atramomis."],
-                ["Tiltas ant implantų", "Kai gretimų dantų nėra arba jų nenorima naudoti kaip atramų, tiltas fiksuojamas ant iš anksto įsriegtų dantų implantų."],
-                ["Iš cirkonio keramikos", "Itin natūralios išvaizdos, tvirtas ir ilgaamžis sprendimas, dažnai renkamasis dėl estetinių ir biologinio suderinamumo savybių."],
-                ["Iš metalo keramikos", "Patikimas ir tvirtas sprendimas, derinantis metalinio karkaso stiprumą su keramikos dengimo natūralia išvaizda."],
-                ["Laikinas tiltas", "Naudojamas pereinamuoju laikotarpiu, kol gaminama nuolatinė konstrukcija – apsaugo dantenas ir palaiko estetiką bei funkciją."]
-              ].map(([title, text], i) => /* @__PURE__ */ jsxs("div", { className: innerCard$7, children: [
-                /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: title }),
-                /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: text })
-              ] }, i)) })
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kokios yra dantų tiltų rūšys?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Dantų tiltai gali skirtis pagal tai, ant ko jie tvirtinami ir iš kokios medžiagos gaminami. Tinkamiausias sprendimas parenkamas individualiai, įvertinus trūkstamų dantų vietą, atraminių dantų būklę, sąkandį, kramtymo apkrovą ir paciento estetinius lūkesčius." }),
+              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Dantų tiltas ant natūralių dantų" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Tai vienas dažniausių dantų atkūrimo būdų, kai šalia trūkstamo danties esantys dantys naudojami kaip atramos. Jie paruošiami protezavimui, ant jų fiksuojami vainikėliai, o tarp jų esanti dalis atkuria prarastą dantį. Šis sprendimas gali būti tinkamas, kai atraminiai dantys jau yra pažeisti, plombuoti ar jiems taip pat reikalingas protezavimas." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Dantų tiltas ant implantų" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kai norima atkurti kelis trūkstamus dantis arba išvengti gretimų sveikų dantų šlifavimo, gali būti svarstomas dantų tiltas ant implantų. Tokiu atveju tiltas tvirtinamas ne ant natūralių dantų, o ant implantų, kurie atlieka atramos funkciją. Šis sprendimas reikalauja pakankamo kaulo kiekio ir implantacijos etapo, todėl gydymo planas visuomet sudaromas individualiai." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Cirkonio keramikos tiltas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Cirkonio keramikos dantų tiltai dažnai pasirenkami dėl tvirtumo, estetikos ir natūralios išvaizdos. Ši medžiaga gali būti tinkama tiek priekinių, tiek krūminių dantų srityje, kai svarbu suderinti atsparumą kramtymo apkrovai ir estetinį rezultatą. Galutinis pasirinkimas priklauso nuo atkuriamų dantų vietos ir individualios burnos būklės." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Metalo keramikos tiltas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Metalo keramikos tiltas pasižymi tvirtumu ir gali būti naudojamas atkuriant didesnę kramtymo apkrovą patiriančius dantis. Vis dėlto dėl metalinio karkaso ši konstrukcija gali būti mažiau estetiška priekinių dantų srityje. Todėl ji dažniau svarstoma ten, kur pagrindinis prioritetas yra funkcija ir atsparumas." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-3", children: "Laikinas dantų tiltas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kai kuriais atvejais, kol gaminamas nuolatinis protezas, pacientui gali būti pritaikomas laikinas dantų tiltas. Jis padeda apsaugoti paruoštus dantis, palaikyti estetiką ir leidžia patogiau jaustis gydymo laikotarpiu. Nuolatinis tiltas fiksuojamas tik tuomet, kai yra pagaminta individuali, tiksliai paciento burnai pritaikyta konstrukcija." })
+                ] })
+              ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "procesas", className: sectionWrap$9, variants: item$i, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$9, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Gamybos procesas" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Dantų tilto gamyba Bangų odontologijos klinikoje vyksta pagal aiškiai suplanuotą eigą, kad rezultatas būtų tikslus, patogus ir ilgaamžis. Kiekvienas etapas atliekamas kruopščiai, siekiant užtikrinti geriausią įmanomą tilto pritaikymą." }),
-              /* @__PURE__ */ jsx("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3", children: [
-                ["01", "Konsultacija", "Įvertinama paciento burnos būklė, aptariami lūkesčiai ir parenkamas tinkamiausias dantų tilto sprendimas."],
-                ["02", "Gydymo planas", "Sudaromas individualus gydymo planas, numatant atramų tipą, tilto rūšį ir procedūros etapus."],
-                ["03", "Dantų paruošimas", "Atramoms skirti dantys yra atsargiai apdorojami ir paruošiami, kad tiksliai priimtų būsimą konstrukciją."],
-                ["04", "Skenavimas", "Atliekamas skaitmeninis ar tradicinis atspaudas, leidžiantis tiksliai atkurti burnos anatomiją."],
-                ["05", "Laboratorinė gamyba", "Pagal gautus duomenis dantų technikų laboratorijoje pagaminamas individualiai pritaikytas dantų tiltas."],
-                ["06", "Pritaikymas", "Gatavas tiltas tiksliai pritaikomas ir fiksuojamas burnoje, patikrinant sąkandį ir bendrą komfortą."]
-              ].map(([num, title, text], i) => /* @__PURE__ */ jsxs("div", { className: innerCard$7, children: [
-                /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: num }),
-                /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: title }),
-                /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: text })
-              ] }, i)) })
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip gaminamas ir pritvirtinamas dantų tiltas?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Dantų tilto gamyba ir pritaikymas Bangų odontologijos klinikoje atliekami nuosekliai, kad protezas būtų tikslus, stabilus, patogus ir estetiškai derėtų prie paciento šypsenos. Kiekvienas etapas svarbus galutiniam rezultatui." }),
+              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Konsultacija ir diagnostika" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Įvertinama burnos būklė, trūkstamų dantų vieta, atraminiai dantys, sąkandis ir dantenų būklė. Prireikus atliekami radiologiniai tyrimai. Aptariamos galimos alternatyvos: dantų tiltas ant natūralių dantų, tiltas ant implantų ar kiti dantų atkūrimo sprendimai." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Gydymo plano sudarymas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Gydytojas paaiškina, koks sprendimas tinkamiausias konkrečiu atveju, kokių paruošiamųjų procedūrų gali reikėti ir kokios medžiagos galėtų būti naudojamos. Aptariama ir dantų tilto kaina, priklausanti nuo atkuriamų dantų skaičiaus, tvirtinimo būdo, medžiagos ir papildomo gydymo poreikio." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Atraminių dantų arba implantų paruošimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Jei tiltas tvirtinamas ant natūralių dantų, atraminiai dantys paruošiami protezavimui taikant vietinę nejautrą. Jei tiltas tvirtinamas ant implantų, pirmiausia atliekamas implantacijos ir gijimo etapas." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Skaitmeninis skenavimas arba atspaudai" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kad tiltas būtų tikslus, užfiksuojama paciento burnos anatomija naudojant skaitmeninį skenavimą arba tradicinius atspaudus. Šie duomenys perduodami dantų technikų laboratorijai." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "05" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Tilto gamyba" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Dantų technikų laboratorijoje gaminamas individualus dantų tiltas. Parenkama dantų forma, spalva, medžiaga ir konstrukcija, siekiant, kad protezas natūraliai derėtų prie paciento šypsenos." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "06" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Pritaikymas ir fiksavimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pagamintas tiltas pamatuojamas burnoje, įvertinamas jo prigludimas, spalva, forma, sąkandis ir paciento pojūtis. Jei viskas tinka, tiltas fiksuojamas ir paaiškinama, kaip jį prižiūrėti." })
+                ] })
+              ] })
             ] }) }),
-            /* @__PURE__ */ jsx(motion.section, { id: "privalumai", className: sectionWrap$9, variants: item$i, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$9, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Privalumai" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Dantų tiltas – tai sprendimas, teikiantis nemažai naudos tiek kasdieniam komfortui, tiek ilgalaikei burnos sveikatai." }),
-              /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
-                "natūrali išvaizda – dantų tiltas gaminamas individualiai, todėl atrodo ir funkcionuoja kaip savi dantys",
-                "fiksuota konstrukcija – tilto nereikia kasdien nuimti ar valyti atskirai, kaip įprastų išimamų protezų",
-                "laiku atkurtas dantis padeda išsaugoti bendrą dantų sistemos sveikatą, apsaugant gretimus dantis nuo poslinkio"
-              ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
-                /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$h, {}) }),
-                /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
-              ] }, i)) })
+            /* @__PURE__ */ jsx(motion.section, { id: "duk", className: sectionWrap$9, variants: item$i, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$9, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Dažniausiai užduodami klausimai apie dantų tiltus" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar dantų tiltas yra išimamas?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Dažniausiai ne. Dantų tiltas yra fiksuotas protezas, kuris pritvirtinamas ant atraminių dantų arba implantų ir kasdien nėra išimamas iš burnos. Jei protezas yra ant implantų, prireikus jį gali nuimti gydytojas." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar dedant dantų tiltą reikia šlifuoti gretimus dantis?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Jei tiltas tvirtinamas ant natūralių dantų, atraminiai dantys dažniausiai turi būti paruošiami. Jei tiltas tvirtinamas ant implantų, gretimų sveikų dantų šlifuoti nereikia. Dėl šios priežasties prieš gydymą svarbu aptarti visas galimas alternatyvas." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar dantų tiltas atrodo natūraliai?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Taip, tinkamai parinkus medžiagą, spalvą ir formą, dantų tiltas gali atrodyti natūraliai ir derėti prie paciento šypsenos. Estetikai ypač svarbi individuali dantų forma, spalvos parinkimas ir tikslus protezo pritaikymas." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Nuo ko priklauso dantų tiltų kainos?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Dantų tilto kaina ir dantų tiltų kainos priklauso nuo atkuriamų dantų skaičiaus, pasirinktos medžiagos, tvirtinimo būdo, atraminių dantų ar implantų būklės ir papildomo gydymo poreikio. Tiksli kaina nustatoma konsultacijos metu, sudarius individualų gydymo planą." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$9, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Kiek dantų galima atkurti dantų tiltu?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Tai priklauso nuo atraminių dantų ar implantų skaičiaus, jų stabilumo, sąkandžio ir bendros burnos būklės. Kuo ilgesnė tilto konstrukcija, tuo svarbesnis tikslus planavimas ir tinkamas apkrovos paskirstymas." })
+                ] })
+              ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kodel-rinktis", className: sectionWrap$9, variants: item$i, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$9, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Renkantis dantų tiltus svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo gydymo plano sudarymo iki galutinio konstrukcijos pritaikymo. Bangų odontologijos klinikoje dantų tiltai gaminami atsakingai, siekiant maksimaliai apsaugoti paciento komfortą ir burnos sveikatą." }),
-                /* @__PURE__ */ jsx("p", { children: "Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, kruopščiai planuoja gydymą ir parenka tinkamiausią tilto rūšį pagal paciento poreikius. Dėmesys skiriamas ne tik pačiai konstrukcijai, bet ir aiškiam situacijos paaiškinimui bei paciento edukacijai viso gydymo metu." }),
-                /* @__PURE__ */ jsx("p", { children: "Pacientai vertina profesionalų bendravimą, individualų požiūrį ir skaidrią kainodarą, kurios padeda jaustis saugiai viso gydymo metu. Todėl ieškantiems patikimo ir profesionalaus dantų protezavimo Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas." })
+                /* @__PURE__ */ jsx("p", { children: "Renkantis dantų tiltą svarbu ne tik atkurti trūkstamus dantis, bet ir užtikrinti, kad protezas būtų patogus, estetiškas ir saugus ilgalaikėje perspektyvoje. Bangų odontologijos klinikoje Klaipėdoje dantų tiltai planuojami individualiai, įvertinus paciento dantų, dantenų, sąkandžio ir bendrą burnos būklę." }),
+                /* @__PURE__ */ jsx("p", { children: "Klinikoje didelis dėmesys skiriamas tiksliam gydymo planavimui. Prieš pradedant protezavimą aptariama, ar konkrečiu atveju tinkamesnis dantų tiltas ant natūralių dantų, tiltas ant implantų ar kitas dantų atkūrimo sprendimas. Pacientui aiškiai paaiškinama gydymo eiga, galimos medžiagos, paruošiamieji etapai ir būsima protezo priežiūra." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje siekiama, kad dantų atkūrimas būtų ne tik funkcionalus, bet ir natūraliai derėtų prie paciento šypsenos. Po protezavimo pacientui suteikiamos aiškios rekomendacijos dėl kasdienės higienos, profilaktinių vizitų ir tilto apsaugos nuo per didelės apkrovos, kad pasiektas rezultatas būtų kuo ilgaamžiškesnis." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mt-8 mb-12 text-left", variants: item$i, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$9, children: [
@@ -12600,7 +13136,7 @@ const item$h = {
 };
 const sectionWrap$8 = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$8 = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$6 = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$8 = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$3 = "#002045";
 const S$3 = "#006b5f";
 const SL$3 = "#ecf5fb";
@@ -12610,9 +13146,12 @@ function CheckIcon$g() {
 const tocSections$f = [
   { id: "kainos", label: "Kainos" },
   { id: "kas-yra", label: "Kas yra bruksizmo dantų kapa?" },
+  { id: "bruksizmas", label: "Kas yra bruksizmas?" },
   { id: "pozymiai", label: "Bruksizmo požymiai" },
+  { id: "kaip-veikia", label: "Kaip veikia kapa?" },
   { id: "gamyba", label: "Kapos gamyba" },
   { id: "prieziura", label: "Kapos priežiūra" },
+  { id: "duk", label: "Dažniausi klausimai" },
   { id: "kodel-rinktis", label: "Kodėl verta rinktis mus?" }
 ];
 function BruksizmoDantuKapa() {
@@ -12650,10 +13189,10 @@ function BruksizmoDantuKapa() {
           /* @__PURE__ */ jsx(TableOfContents, { sections: tocSections$f, rootRef: pageRef, cta: { label: "Registruotis vizitui", to: "/kontaktai" } }),
           /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$h, children: [
-              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Bruksizmo dantų kapa Klaipėdoje" }),
+              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Bruksizmo kapa Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Bruksizmas, dažniau vadinamas dantų griežimu, yra paplitusi problema, kuri gali sukelti rimtą žalą dantims, žandikaulio sąnariams ir bendrai burnos sveikatai. Dažniausiai jis pasireiškia miego metu, todėl daugelis pacientų net nesuvokia, kad griežia dantimis, kol nepastebi pirmųjų pasekmių." }),
-                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje pacientams siūloma individualiai pagaminta bruksizmo dantų kapa – patikima ir paprasta priemonė, padedanti apsaugoti dantis nuo tolimesnio dilimo, įtrūkimų ir kitų su bruksizmu susijusių pažeidimų. Kapa pagaminama pagal tikslius Jūsų burnos matmenis, todėl dėvima patogiai ir nekelia papildomo diskomforto." })
+                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Dantų griežimas ar stiprus sukandimas dažnai vyksta nevalingai, ypač miego metu, todėl žmogus ilgą laiką gali net nežinoti, kad ši problema veikia jo dantis, kramtomuosius raumenis ir žandikaulio sąnarį. Rytais jaučiamas žandikaulio nuovargis, galvos ar smilkinių skausmas, padidėjęs dantų jautrumas ar pastebimas dantų nudilimas gali būti ženklai, kad dantys patiria per didelę apkrovą." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje bruksizmo požymiai vertinami individualiai, atsižvelgiant į dantų nudilimą, sąkandį, restauracijų būklę ir paciento nusiskundimus. Vienas dažniausiai taikomų apsaugos būdų yra bruksizmo kapa – individualiai pagaminta kapa nuo dantų griežimo, padedanti apsaugoti dantis nuo tolimesnio dilimo, skilimų ir per didelės apkrovos." })
               ] }) }),
               /* @__PURE__ */ jsx("div", { className: "flex justify-start mt-6", children: /* @__PURE__ */ jsx(
                 Link,
@@ -12706,13 +13245,14 @@ function BruksizmoDantuKapa() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Jonas-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -12722,62 +13262,130 @@ function BruksizmoDantuKapa() {
             /* @__PURE__ */ jsx(motion.section, { id: "kas-yra", className: sectionWrap$8, variants: item$h, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$8, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra bruksizmo dantų kapa?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Bruksizmo dantų kapa – tai individualiai pagaminta apsauginė priemonė, kurią pacientai dažniausiai dėvi nakties metu. Kapa tarnauja kaip barjeras tarp viršutinio ir apatinio žandikaulio dantų, todėl griežimo ar sukandimo metu susidariusi apkrova paskirstoma tolygiau ir nebeveikia tiesiogiai dantų emalio." }),
-                /* @__PURE__ */ jsx("p", { children: "Reguliariai dėvima bruksizmo kapa padeda sumažinti dantų emalio dilimą, apsaugoti dantis nuo įtrūkimų, lūžių ir jau esamų restauracijų – plombų, vainikėlių ar kitų atkūrimų – pažeidimų. Kadangi kapa gaminama individualiai pagal Jūsų burnos matmenis, ji tiksliai priglunda ir yra patogi dėvėti kasdien." })
+                /* @__PURE__ */ jsx("p", { children: "Bruksizmo dantų kapa – tai individualiai pagal paciento dantis pagaminta apsauginė kapa, dažniausiai naudojama naktį. Jos pagrindinis tikslas – sukurti apsauginį barjerą tarp viršutinių ir apatinių dantų, kad griežimo ar stipraus sukandimo metu dantys tiesiogiai nesitrintų vienas į kitą." }),
+                /* @__PURE__ */ jsx("p", { children: "Tinkamai pagaminta bruksizmo kapa padeda sumažinti dantų emalio dilimą, apsaugoti dantis nuo įtrūkimų, lūžių ir restauracijų pažeidimų. Ji ypač aktuali pacientams, kurie jau turi plombų, vainikėlių, užklotų, laminačių ar kitų restauracijų, nes bruksizmas gali sutrumpinti jų tarnavimo laiką." }),
+                /* @__PURE__ */ jsx("p", { children: "Pacientai šią priemonę dažnai vadina skirtingai: kapos nuo dantų griežimo, dantų kapos nuo griežimo arba dantų kapos nuo bruksizmo. Visi šie pavadinimai dažniausiai apibūdina tą pačią paskirtį – apsaugoti dantis nuo nevalingo griežimo ar stipraus sukandimo padarinių." }),
+                /* @__PURE__ */ jsx("p", { children: "Svarbu suprasti, kad kapa ne visada pašalina pačią bruksizmo priežastį. Dažnai ji yra apsauginė ir stabilizuojanti priemonė, padedanti kontroliuoti bruksizmo pasekmes bei išvengti sudėtingesnio dantų gydymo ateityje." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "bruksizmas", className: sectionWrap$8, variants: item$h, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$8, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra bruksizmas ir kodėl svarbu jo neignoruoti?" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Bruksizmas – tai nevalingas dantų griežimas arba stiprus dantų sukandimas. Jis dažniausiai pasireiškia nakties metu, kai žmogus negali sąmoningai kontroliuoti kramtomųjų raumenų veiklos. Kai kuriais atvejais stiprus sukandimas gali pasireikšti ir dieną, ypač patiriant įtampą, stresą ar ilgai susikaupus." }),
+                /* @__PURE__ */ jsx("p", { children: "Bruksizmo priežastys gali būti įvairios. Dažnai jis siejamas su stresu, emocine įtampa, miego sutrikimais, netaisyklingu sąkandžiu, tam tikrais įpročiais ar bendru kramtomųjų raumenų aktyvumu. Dėl šios priežasties dantų griežimo gydymas gali būti kompleksinis – vieniems pacientams pakanka apsauginės kapos, o kitiems gali reikėti papildomai vertinti sąkandį, restauracijas, raumenų įtampą ar kitus veiksnius." }),
+                /* @__PURE__ */ jsx("p", { children: "Ignoruojamas bruksizmas ilgainiui gali sukelti reikšmingų dantų ir žandikaulio problemų. Nuolatinė mechaninė apkrova gali lemti emalio nusidėvėjimą, dantų aukščio sumažėjimą, jautrumą šalčiui ar karščiui, plombų skilimą, keramikos restauracijų pažeidimus ar net dantų lūžius." }),
+                /* @__PURE__ */ jsx("p", { children: "Kai kuriais atvejais dėl bruksizmo gali atsirasti ir žandikaulio sąnario diskomfortas: traškesys, maudimas, ribotas išsižiojimas, kramtomųjų raumenų įtampa ar galvos skausmai. Todėl pastebėjus galimus požymius svarbu nedelsti ir pasikonsultuoti su odontologu." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "pozymiai", className: sectionWrap$8, variants: item$h, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$8, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Bruksizmo požymiai" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Kadangi bruksizmas dažniausiai pasireiškia miego metu, patys pacientai jo dažnai nepastebi. Tačiau yra keletas įspėjamųjų ženklų, į kuriuos verta atkreipti dėmesį ir, juos pastebėjus, apsilankyti pas odontologą." }),
-              /* @__PURE__ */ jsx("div", { className: "grid gap-3 sm:grid-cols-2", children: [
-                "rytą jaučiamas žandikaulio nuovargis ar skausmas",
-                "galvos skausmas, ypač jaučiamas rytais",
-                "padidėjęs dantų jautrumas",
-                "pastebimas dantų nudilimas"
-              ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
-                /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$g, {}) }),
-                /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
-              ] }, i)) })
-            ] }) }),
-            /* @__PURE__ */ jsx(motion.section, { id: "gamyba", className: sectionWrap$8, variants: item$h, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$8, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip vyksta kapos gamyba?" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Bruksizmo dantų kapa gaminama laikantis aiškios eigos, kad galutinis rezultatas tiksliai atitiktų Jūsų burnos anatomiją ir kapa būtų patogi dėvėti kasdien." }),
-              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-4", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$6, children: [
-                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Dantų apžiūra" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pirmiausia odontologas atlieka dantų ir žandikaulio sąnarių apžiūrą, įvertina galimus bruksizmo požymius bei aptaria su pacientu jo jaučiamus simptomus. Tai leidžia parinkti tinkamiausią kapos tipą." })
-                ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$6, children: [
-                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Skenavimas ar atspaudų nuėmimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Siekiant pagaminti kapą, tiksliai atitinkančią Jūsų dantų formą, nuimami dantų atspaudai arba atliekamas skaitmeninis burnos skenavimas." })
-                ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$6, children: [
-                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Medžiagos panaudojimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Remiantis gautais duomenimis, kapa pagaminama iš specialios medicininės medžiagos, užtikrinančios tiek patvarumą, tiek dėvėjimo komfortą." })
-                ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$6, children: [
-                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Pritaikymas burnoje" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pagaminta kapa pritaikoma tiesiogiai burnoje – patikrinamas jos priglundimas, patogumas ir, esant poreikiui, atliekami smulkūs pakoregavimai." })
-                ] })
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kokie požymiai rodo, kad jums gali reikėti kapos nuo dantų griežimo?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Bruksizmas dažnai nustatomas ne iš karto, nes žmogus dantimis dažniausiai griežia miegodamas. Kartais apie problemą pasako šalia miegantis artimasis, tačiau neretai pirmuosius požymius pastebi odontologas profilaktinės apžiūros metu." }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-3 mb-6", children: [
+                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700", children: "Kapa nuo dantų griežimo gali būti reikalinga, jei:" }),
+                /* @__PURE__ */ jsx("div", { className: "grid gap-3 sm:grid-cols-2", children: [
+                  "rytais jaučiate žandikaulio nuovargį, įtampą ar skausmą",
+                  "dažnai skauda galvą, smilkinius, kaklą ar ausų sritį",
+                  "pastebite dantų nudilimą, patrumpėjimą ar pasikeitusią jų formą",
+                  "dantys tapo jautresni šalčiui, karščiui ar prisilietimui",
+                  "skilinėja plombos, vainikėliai, laminatės ar kitos restauracijos",
+                  "ant dantų matomi įtrūkimai ar nuskilimai",
+                  "partneris pastebi dantų griežimą naktį",
+                  "dienos metu dažnai laikote dantis stipriai sukąstus"
+                ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
+                  /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$g, {}) }),
+                  /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
+                ] }, i)) })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Šie požymiai ne visuomet reiškia, kad problema jau yra pažengusi, tačiau jie rodo, kad dantys gali patirti per didelę apkrovą. Kuo anksčiau nustatomi bruksizmo požymiai, tuo didesnė tikimybė apsaugoti dantis nuo didesnio nudilimo ir sudėtingesnio atkūrimo ateityje." }),
+                /* @__PURE__ */ jsx("p", { children: "Jei dantys jau stipriai nudilę, yra pakitęs sąkandžio aukštis, dažnai lūžta restauracijos ar vargina žandikaulio sąnario skausmai, vien kapos gali nepakakti. Tokiais atvejais reikalingas išsamesnis gydymo planas, apimantis ne tik dantų apsaugą, bet ir pažeidimų atkūrimą." })
               ] })
             ] }) }),
-            /* @__PURE__ */ jsx(motion.section, { id: "prieziura", className: sectionWrap$8, variants: item$h, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$8, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kapos priežiūra" }),
+            /* @__PURE__ */ jsx(motion.section, { id: "kaip-veikia", className: sectionWrap$8, variants: item$h, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$8, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip veikia bruksizmo kapa?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Tinkama bruksizmo dantų kapos priežiūra padeda ilgiau išlaikyti jos funkcionalumą ir švarą. Kapa turi būti valoma šaltu vandeniu po kiekvieno naudojimo, o kai ji nenaudojama – laikoma specialioje dėžutėje, kuri apsaugo ją nuo pažeidimų, dulkių ir nešvarumų." }),
-                /* @__PURE__ */ jsx("p", { children: "Taip pat rekomenduojama reguliariai apsilankyti pas odontologą profilaktinės apžiūros vizitų metu – tai leidžia įvertinti kapos būklę, jos priglundimą ir, esant poreikiui, laiku aptarti tolimesnę priežiūrą ar kapos atnaujinimą." })
+                /* @__PURE__ */ jsx("p", { children: "Bruksizmo kapa veikia kaip apsauginis sluoksnis tarp viršutinių ir apatinių dantų. Griežimo ar stipraus sukandimo metu ji perima dalį mechaninės apkrovos ir neleidžia dantims tiesiogiai trintis vieniems į kitus. Tokiu būdu saugomas emalis, dentinas, plombos ir kitos restauracijos." }),
+                /* @__PURE__ */ jsx("p", { children: "Individualiai pritaikyta kapa taip pat padeda stabilizuoti dantų kontaktus nakties metu. Tai svarbu pacientams, kurių dantys yra nudilę, apkrauti restauracijomis arba jautrūs dėl per didelio sukandimo. Kapa padeda sumažinti netolygią apkrovą ir apsaugoti silpnesnius dantis nuo skilimo." }),
+                /* @__PURE__ */ jsx("p", { children: "Svarbu pabrėžti, kad bruksizmo kapos nėra vienintelis sprendimas visais atvejais. Jei dantys jau stipriai nudilę, sukandimas pakitęs arba yra žandikaulio sąnario sutrikimų, gali prireikti platesnio gydymo plano. Tokiais atvejais odontologas gali rekomenduoti restauracijų atnaujinimą, sąkandžio analizę, protezavimą, ortodontinį gydymą ar kitus papildomus sprendimus." }),
+                /* @__PURE__ */ jsx("p", { children: "Vis dėlto daugeliui pacientų individuali kapa yra pirmas ir labai svarbus žingsnis siekiant sustabdyti tolimesnį dantų pažeidimą. Ji padeda apsaugoti natūralius dantis ir jau atliktus gydymo darbus, todėl ypač rekomenduojama pacientams po didesnių plombavimo, protezavimo ar estetinių restauracijų procedūrų." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "gamyba", className: sectionWrap$8, variants: item$h, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$8, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip gaminama individuali bruksizmo kapa?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Individualios bruksizmo kapos gamyba Bangų odontologijos klinikoje atliekama nuosekliai, kad kapa būtų tiksli, patogi ir saugi naudoti kasdien. Kiekvienas etapas svarbus tam, kad kapa gerai laikytųsi burnoje ir atliktų savo apsauginę funkciją." }),
+              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$8, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Apžiūra ir dantų būklės įvertinimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Odontologas įvertina dantų būklę, nudilimo požymius, plombas, vainikėlius, sąkandį ir paciento nusiskundimus. Aptariama, kada pasireiškia griežimas ar stiprus sukandimas." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$8, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Sąkandžio ir restauracijų analizė" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Jei burnoje yra daug restauracijų, dantys stipriai nudilę arba pacientas jaučia diskomfortą kramtant, papildomai vertinamas sąkandis, siekiant nuspręsti, ar pakanka apsauginės kapos." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$8, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Dantų skenavimas arba atspaudai" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kad kapa tiksliai atitiktų paciento dantų formą, atliekamas skaitmeninis skenavimas arba nuimami dantų atspaudai, pagal kuriuos gaminama individuali kapa." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$8, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Kapos gamyba" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Kapa gaminama iš specialios medicininės medžiagos, parenkant tinkamą storį ir standumą pagal paciento situaciją – nuo plonesnės apsauginės kapos iki tvirtesnio okliuzinio sprendimo." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$8, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "05" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Pritaikymas ir naudojimo rekomendacijos" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pagaminta kapa pamatuojama burnoje, įvertinamas jos prigludimas ir stabilumas. Pacientui paaiškinama, kaip kapą įsidėti, išimti, valyti, laikyti ir kaip dažnai ją naudoti." })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mt-6", children: "Individuali bruksizmo kapa skiriasi nuo standartinių universalių kapų tuo, kad ji gaminama pagal konkretaus paciento dantis. Todėl ji tiksliau priglunda, geriau laikosi, mažiau trukdo miegui ir padeda saugiau paskirstyti apkrovą." })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "prieziura", className: sectionWrap$8, variants: item$h, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$8, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kiek laiko tarnauja ir kaip prižiūrėti bruksizmo kapą?" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Bruksizmo kapos tarnavimo laikas priklauso nuo griežimo intensyvumo, kapos medžiagos, jos storio, priežiūros ir reguliarių patikrinimų. Vieniems pacientams kapa gali tarnauti ilgiau, kitiems, esant labai intensyviam griežimui, ji gali nusidėvėti greičiau. Jei kapa pradyla, įtrūksta, tampa laisva ar nepatogi, svarbu kreiptis į odontologą." }),
+                /* @__PURE__ */ jsx("p", { children: "Kapos priežiūra nėra sudėtinga, tačiau ji turi būti nuosekli. Po kiekvieno naudojimo kapą rekomenduojama nuplauti vėsiu arba drungnu vandeniu ir švelniai nuvalyti tam skirta priemone ar minkštu šepetėliu. Nereikėtų naudoti karšto vandens, nes jis gali deformuoti kapą." }),
+                /* @__PURE__ */ jsx("p", { children: "Kai kapa nenaudojama, ją reikėtų laikyti specialioje dėžutėje, apsaugotoje nuo karščio, dulkių ir mechaninių pažeidimų. Taip pat svarbu nepamiršti kasdienės burnos higienos – kapa dedama ant švarių dantų, todėl prieš miegą būtina kruopščiai išsivalyti dantis ir tarpdančius." }),
+                /* @__PURE__ */ jsx("p", { children: "Reguliarūs profilaktiniai vizitai padeda įvertinti, ar kapa vis dar tinkamai priglunda, ar nėra naujų dantų nudilimo požymių, įtrūkimų ar sąkandžio pokyčių. Tai ypač svarbu pacientams, kuriems bruksizmas yra intensyvus arba jau atlikti didesni dantų atkūrimo darbai." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "duk", className: sectionWrap$8, variants: item$h, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$8, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Dažniausiai užduodami klausimai apie bruksizmo kapas" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$8, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar bruksizmo kapa išgydo dantų griežimą?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Ne visada. Bruksizmo kapa dažniausiai nepašalina pačios dantų griežimo priežasties, tačiau padeda apsaugoti dantis nuo jo pasekmių. Jei bruksizmas susijęs su stresu, miego sutrikimais ar sąkandžio problemomis, gali būti reikalingas platesnis požiūris." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$8, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar kapą reikia nešioti kiekvieną naktį?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Dažniausiai taip, jei odontologas rekomendavo ją naudoti naktiniam bruksizmui kontroliuoti. Reguliarus naudojimas padeda apsaugoti dantis ir restauracijas nuo nuolatinės apkrovos." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$8, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar bruksizmo kapa bus patogi?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Individualiai pagaminta kapa pritaikoma pagal paciento dantis, todėl paprastai yra gerai toleruojama. Pirmomis naktimis gali būti jaučiamas nedidelis svetimkūnio pojūtis, tačiau dauguma pacientų prie kapos pripranta palaipsniui." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$8, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Ar kapa reikalinga po protezavimo ar estetinių restauracijų?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Jei pacientas griežia dantimis ar stipriai sukanda dantis, kapa gali būti labai svarbi po protezavimo, estetinio plombavimo, laminačių ar užklotų. Ji padeda apsaugoti restauracijas nuo skilimo, nusidėvėjimo ir per didelės apkrovos." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$8, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Kada reikia keisti bruksizmo kapą?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Kapą reikėtų keisti, jei ji susidėvi, įtrūksta, nebetiksliai laikosi, pasikeičia dantų padėtis arba atsiranda diskomfortas. Sprendimą dėl kapos keitimo geriausia priimti po odontologo apžiūros." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$8, children: [
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-slate-900 mb-2", children: "Nuo ko priklauso bruksizmo kapos kaina?" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm", children: "Bruksizmo kapos kaina priklauso nuo kapos tipo, naudojamos medžiagos, gamybos būdo ir individualios klinikinės situacijos. Tiksli kaina aptariama konsultacijos metu, kai įvertinama dantų būklė, sąkandis ir bruksizmo požymiai." })
+                ] })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kodel-rinktis", className: sectionWrap$8, variants: item$h, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$8, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Renkantis bruksizmo dantų kapą svarbu ne tik pati priemonė, bet ir tai, kaip ji pagaminama – nuo tikslios apžiūros iki galutinio pritaikymo burnoje. Bangų odontologijos klinikoje kapa gaminama atsakingai, siekiant maksimaliai apsaugoti paciento dantis ir užtikrinti dėvėjimo komfortą." }),
-                /* @__PURE__ */ jsx("p", { children: "Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, atsižvelgdami į paciento burnos anatomiją ir bruksizmo pasireiškimo pobūdį. Kapa gaminama naudojant kokybiškas medicinines medžiagas, o procesas apima tikslų skenavimą ar atspaudų nuėmimą, kad galutinis rezultatas tiksliai atitiktų Jūsų poreikius." }),
-                /* @__PURE__ */ jsx("p", { children: "Pacientai vertina profesionalų bendravimą, aiškias priežiūros rekomendacijas ir dėmesį kiekvienai detalei. Todėl ieškantiems patikimos bruksizmo dantų kapos Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas." })
+                /* @__PURE__ */ jsx("p", { children: "Renkantis bruksizmo kapą svarbu ne tik pati apsauginė priemonė, bet ir tikslus dantų, sąkandžio bei restauracijų būklės įvertinimas. Bangų odontologijos klinikoje Klaipėdoje bruksizmo požymiai vertinami individualiai, siekiant parinkti pacientui tinkamą, patogų ir ilgalaikę dantų apsaugą užtikrinantį sprendimą." }),
+                /* @__PURE__ */ jsx("p", { children: "Klinikoje didelis dėmesys skiriamas aiškiam gydymo plano paaiškinimui. Konsultacijos metu aptariama, ar konkrečiu atveju pakanka individualios kapos, ar dėl dantų nudilimo, restauracijų pažeidimų ar žandikaulio sąnario diskomforto reikalingas platesnis gydymo planas." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje specialistai skiria laiko paciento klausimams, paaiškina kapos naudojimo ir priežiūros rekomendacijas bei užtikrina tolimesnę kontrolę. Toks požiūris padeda pacientui jaustis ramiai, suprasti savo situaciją ir laiku apsaugoti dantis nuo tolimesnio dilimo." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mt-8 mb-12 text-left", variants: item$h, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$8, children: [
@@ -12812,7 +13420,7 @@ const item$g = {
 };
 const sectionWrap$7 = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$7 = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
-const innerCard$5 = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
+const innerCard$7 = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$2 = "#002045";
 const S$2 = "#006b5f";
 const SL$2 = "#ecf5fb";
@@ -12822,7 +13430,8 @@ function CheckIcon$f() {
 const tocSections$e = [
   { id: "kainos", label: "Kainos" },
   { id: "kas-yra", label: "Kas yra cirkonio keramikos vainikėlis?" },
-  { id: "privalumai", label: "Privalumai" },
+  { id: "reikalingumas", label: "Kada reikalingas?" },
+  { id: "privalumai", label: "Kodėl rinktis cirkonio keramiką?" },
   { id: "procesas", label: "Kaip vyksta procedūra?" },
   { id: "trukme", label: "Kiek laiko tarnauja?" },
   { id: "kodel-rinktis", label: "Kodėl verta rinktis mus?" }
@@ -12864,8 +13473,8 @@ function CirkonioKeramikosVainikelis() {
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$g, children: [
               /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Cirkonio keramikos vainikėlis Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Bangų odontologijos klinika Klaipėdoje specializuojasi cirkonio keramikos vainikėlių gamyboje ir pritaikyme – šiuolaikiniame ir plačiai pripažintame danties atkūrimo metode. Cirkonio keramika šiandien yra viena patikimiausių medžiagų, leidžiančių atkurti pažeistą dantį taip, kad rezultatas atrodytų natūraliai ir tarnautų ilgai." }),
-                /* @__PURE__ */ jsx("p", { children: "Kiekvienas vainikėlis gaminamas individualiai, atsižvelgiant į paciento danties formą, spalvą ir sąkandžio ypatumus. Toks individualus požiūris leidžia pasiekti rezultatą, kuris organiškai įsilieja tarp natūralių dantų ir atkuria pilnavertę danties funkciją." })
+                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Pažeistas, nusilpęs ar estetiškai pakitęs dantis gali turėti įtakos ne tik šypsenos išvaizdai, bet ir kasdieniam komfortui. Kai danties audinių nepakanka patikimam atkūrimui plomba, o norima išsaugoti jo funkciją, formą ir natūralų vaizdą, vienas dažniausiai pasirenkamų sprendimų yra cirkonio keramikos vainikėlis. Tai tvirtas, estetiškas ir šiuolaikinėje odontologijoje plačiai naudojamas danties atkūrimo būdas." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje dantų atkūrimas vainikėliais planuojamas individualiai, įvertinus paciento burnos būklę, sąkandį, danties pažeidimo mastą ir estetinius lūkesčius. Gydymo tikslas – ne tik atkurti gražią šypseną, bet ir užtikrinti, kad dantis būtų funkcionalus, patogus kramtymui ir ilgainiui tarnautų stabiliai. Tinkamai parinkta cirkonio keramika leidžia suderinti tvirtumą, natūralų vaizdą ir ilgalaikį rezultatą." })
               ] }) }),
               /* @__PURE__ */ jsx("div", { className: "flex justify-start mt-6", children: /* @__PURE__ */ jsx(
                 Link,
@@ -12919,13 +13528,14 @@ function CirkonioKeramikosVainikelis() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Jonas-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
@@ -12935,62 +13545,91 @@ function CirkonioKeramikosVainikelis() {
             /* @__PURE__ */ jsx(motion.section, { id: "kas-yra", className: sectionWrap$7, variants: item$g, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$7, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra cirkonio keramikos vainikėlis?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Cirkonio keramikos vainikėlis – tai individualiai pagaminta danties restauracija, skirta pažeistiems ar estetiškai netinkamiems dantims atkurti. Vainikėlis gaminamas iš cirkonio oksido keramikos – medžiagos, plačiai naudojamos šiuolaikinėje odontologijoje dėl jos tvirtumo ir estetinių savybių." }),
-                /* @__PURE__ */ jsx("p", { children: "Toks vainikėlis pilnai uždengia danties karūnėlę, atkurdamas tiek jos formą ir funkciją, tiek natūralią išvaizdą. Kiekvienas vainikėlis gaminamas individualiai pagal paciento danties parametrus, todėl rezultatas yra tikslus, patogus ir vizualiai harmoningas su likusiais dantimis." })
+                /* @__PURE__ */ jsx("p", { children: "Cirkonio keramikos vainikėlis – tai individualiai pagaminta danties restauracija, kuri uždengia pažeistą, nusilpusį ar estetiškai netinkamą dantį ir atkuria jo formą, spalvą, tvirtumą bei kramtymo funkciją. Vainikėlis gali būti tvirtinamas ant paruošto natūralaus danties arba, tam tikrais atvejais, ant implanto." }),
+                /* @__PURE__ */ jsx("p", { children: "Šiuolaikinėje odontologijoje cirkonio oksido keramika vertinama dėl savo patvarumo, tikslumo ir estetikos. Tai bemetalė medžiaga, todėl cirkonio oksido keramikos vainikėlis neturi metalinio karkaso ir atrodo natūraliau, ypač ties dantenų kraštu. Dėl šios priežasties jis dažnai pasirenkamas tiek priekinių, tiek šoninių dantų atkūrimui." }),
+                /* @__PURE__ */ jsx("p", { children: "Pacientai šią restauraciją kartais vadina cirkonio karūnėlėmis arba cirkonio dantų karūnėlėmis. Kasdienėje kalboje šie terminai vartojami gana dažnai, tačiau odontologijoje tikslesnis pavadinimas yra cirkonio keramikos vainikėlis. Nepriklausomai nuo vartojamo termino, kalbama apie individualiai pritaikytą restauraciją, kurios tikslas – atkurti danties funkciją, estetiką ir apsaugoti likusius danties audinius." }),
+                /* @__PURE__ */ jsx("p", { children: "Cirkonio keramikos vainikėliai gaminami atsižvelgiant į paciento dantų formą, spalvą, sąkandį ir bendrą šypsenos vaizdą. Tinkamai pritaikytas vainikėlis vizualiai dera prie kitų dantų, nekelia diskomforto ir leidžia pacientui patogiai kramtyti, kalbėti bei šypsotis." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "reikalingumas", className: sectionWrap$7, variants: item$g, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$7, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada reikalingas cirkonio keramikos vainikėlis?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Cirkonio keramikos vainikėlis rekomenduojamas tada, kai natūralaus danties audinių nepakanka patikimam ir ilgalaikiam atkūrimui paprasta plomba. Tokiais atvejais vainikėlis padeda apsaugoti likusią danties struktūrą, atkurti jo funkciją ir sumažinti tolimesnio skilimo ar lūžio riziką." }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-3 mb-6", children: [
+                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700", children: "Cirkonio keramikos vainikėlis gali būti reikalingas, kai:" }),
+                /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
+                  "dantis yra stipriai pažeistas ėduonies ar traumos",
+                  "dantis yra nulūžęs, įskilęs ar stipriai nusidėvėjęs",
+                  "po šaknų kanalų gydymo dantis tapo silpnesnis",
+                  "yra didelė sena plomba, kuri nebeužtikrina stabilumo",
+                  "reikia atkurti danties formą, spalvą ar estetinį vaizdą",
+                  "atkuriamas dantis ant implanto",
+                  "seni vainikėliai nebeatitinka funkcinių ar estetinių poreikių"
+                ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
+                  /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$f, {}) }),
+                  /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
+                ] }, i)) })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Svarbu suprasti, kad kiekvienas atvejis vertinamas individualiai. Kartais pacientui gali pakakti įkloto, užkloto ar kito mažiau invazyvaus sprendimo, o kitais atvejais cirkonio oksido keramikos vainikėlis yra saugiausias ir ilgaamžiškiausias pasirinkimas. Todėl prieš pradedant gydymą atliekama apžiūra, įvertinama danties būklė ir aptariamos visos galimos alternatyvos." }),
+                /* @__PURE__ */ jsx("p", { children: "Laiku pasirinktas tinkamas danties atkūrimo būdas padeda išvengti sudėtingesnių problemų ateityje. Jei silpnas ar stipriai pažeistas dantis ilgą laiką paliekamas neatkurtas, gali didėti jo skilimo, infekcijos ar net pašalinimo rizika. Tinkamai suplanuotas vainikėlis padeda išsaugoti dantį ir užtikrinti stabilesnę burnos sveikatą." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "privalumai", className: sectionWrap$7, variants: item$g, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$7, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Privalumai" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Cirkonio keramika pasižymi eile savybių, dėl kurių ji tapo vienu populiariausių pasirinkimų atkuriant dantis – tiek estetiniu, tiek funkciniu požiūriu." }),
-              /* @__PURE__ */ jsx("div", { className: "grid gap-3 sm:grid-cols-2", children: [
-                "tvirtumas – medžiaga atspari kramtymo apkrovoms ir kasdieniam naudojimui",
-                "natūrali išvaizda – vainikėlis vizualiai beveik nesiskiria nuo natūralaus danties",
-                "biologinis suderinamumas – medžiaga gerai priimama organizmo ir dantenų audinių",
-                "be metalinio karkaso – nėra pilkšvo kraštelio prie dantenos, kaip būna su metaline keramika"
-              ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
-                /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$f, {}) }),
-                /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
-              ] }, i)) })
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis cirkonio keramiką?" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Cirkonio keramika yra viena pažangiausių medžiagų, naudojamų šiuolaikiniame dantų protezavime. Ji pasižymi dideliu tvirtumu, atsparumu nusidėvėjimui ir estetišku vaizdu, todėl tinka pacientams, kurie ieško patikimo ilgalaikio sprendimo." }),
+                /* @__PURE__ */ jsx("p", { children: "Vienas svarbiausių cirkonio keramikos privalumų – natūrali išvaizda. Cirkonio oksido keramika leidžia atkurti danties formą ir spalvą taip, kad restauracija harmoningai derėtų prie kitų dantų. Tai ypač aktualu atkuriant priekinius ar šypsenos zonoje esančius dantis, kur estetinis tikslumas yra labai svarbus." }),
+                /* @__PURE__ */ jsx("p", { children: "Lyginant su metalo keramika, cirkonio keramikos vainikėlis neturi metalinio karkaso, todėl ties dantenomis neatsiranda pilkšvo kraštelio. Tai leidžia pasiekti natūralesnį estetinį rezultatą ir išvengti vizualinio kontrasto, kuris kartais pastebimas naudojant senesnio tipo restauracijas." }),
+                /* @__PURE__ */ jsx("p", { children: "Cirkonio oksido keramika taip pat yra biologiškai suderinama, todėl gerai toleruojama burnos audinių. Tinkamai pagamintas ir pritaikytas vainikėlis yra lygus, tiksliai priglunda prie danties ir padeda sumažinti apnašų kaupimosi riziką. Dėl šių savybių cirkonio karūnėlės dažnai pasirenkamos pacientų, kuriems svarbu ne tik gražus rezultatas, bet ir patogumas kasdienėje burnos priežiūroje." }),
+                /* @__PURE__ */ jsx("p", { children: "Ši medžiaga tinka tiek pavieniams vainikėliams, tiek sudėtingesniems protezavimo sprendimams. Ji gali būti naudojama atkuriant priekinius dantis, kuriems svarbiausia estetika, ir krūminius dantis, kuriems tenka didesnis kramtymo krūvis. Tinkamai parinkta restauracija padeda suderinti estetinį vaizdą, funkcionalumą ir ilgalaikį patvarumą." })
+              ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "procesas", className: sectionWrap$7, variants: item$g, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$7, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip vyksta procedūra?" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Cirkonio keramikos vainikėlio gamyba ir pritaikymas Bangų odontologijos klinikoje vyksta pagal aiškią eigą, apimančią kelis pagrindinius etapus – nuo diagnostikos iki galutinio vainikėlio pritaikymo." }),
-              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-4", children: [
-                /* @__PURE__ */ jsxs("div", { className: innerCard$5, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip gaminamas ir uždedamas cirkonio keramikos vainikėlis?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Cirkonio keramikos vainikėlio gamyba ir pritaikymas Bangų odontologijos klinikoje atliekami pagal aiškią, pacientui suprantamą eigą. Kiekvienas etapas svarbus tam, kad galutinis rezultatas būtų tikslus, patogus ir ilgaamžis." }),
+              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$7, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Diagnostika" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pirmiausia įvertinama danties ir aplinkinių audinių būklė, nustatoma, ar vainikėlis yra tinkamiausias sprendimas, ir suplanuojama tolimesnė gydymo eiga." })
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Diagnostika ir gydymo plano sudarymas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Atliekama klinikinė apžiūra, įvertinama danties būklė, sąkandis, aplinkiniai audiniai ir paciento lūkesčiai. Aptariama, ar konkrečiu atveju tinkamiausias sprendimas yra cirkonio keramikos vainikėlis." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$5, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$7, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
                   /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Danties paruošimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Dantis atsargiai apdirbamas, suteikiant jam formą, reikalingą tolygiai ir tvirtai užsidėti vainikėliui." })
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pašalinami pažeisti ar nepatikimi audiniai, dantis suformuojamas taip, kad vainikėlis galėtų tiksliai priglusti. Procedūros metu taikoma vietinė nejautra, todėl pacientas nejaučia skausmo." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$5, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$7, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Skaitmeninis skenavimas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Paruošto danties duomenys nuskaitomi skaitmeniniu būdu, kad vainikėlis būtų pagamintas tiksliai pagal paciento danties formą ir sąkandį." })
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Skaitmeninis skenavimas arba atspaudas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Paruošus dantį, užfiksuojama tiksli jo forma naudojant skaitmeninį skenavimą arba tradicinį atspaudą. Tikslūs duomenys leidžia pagaminti individualų vainikėlį." })
                 ] }),
-                /* @__PURE__ */ jsxs("div", { className: innerCard$5, children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$7, children: [
                   /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
-                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Gamyba ir pritaikymas" }),
-                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Vainikėlis pagaminamas pagal individualius parametrus ir pritaikomas burnoje, atliekant reguliarią priežiūrą, kad rezultatas būtų patogus ir ilgaamžis." })
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Vainikėlio gamyba" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pagal surinktus duomenis gaminamas cirkonio oksido keramikos vainikėlis. Jo spalva, forma ir dydis parenkami taip, kad restauracija harmoningai derėtų prie kitų dantų." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$7, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "05" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Pritaikymas, fiksavimas ir rekomendacijos" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Pagamintas vainikėlis pamatuojamas, įvertinamas jo prigludimas, spalva ir paciento pojūtis. Po fiksavimo pacientui paaiškinama, kaip prižiūrėti restauraciją ir kada atvykti apžiūrai." })
                 ] })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "trukme", className: sectionWrap$7, variants: item$g, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$7, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kiek laiko tarnauja vainikėlis?" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kiek laiko tarnauja cirkonio keramikos vainikėlis?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Tinkamai pagamintas cirkonio keramikos vainikėlis tarnauja daugelį metų, jei laikomasi tinkamos burnos higienos ir vengiama žalingų įpročių. Reguliari priežiūra ir atsakingas požiūris į kasdienę burnos higieną leidžia išlaikyti vainikėlio funkciją ir estetiką ilgą laiką." }),
-                /* @__PURE__ */ jsx("p", { children: "Vainikėlio ilgaamžiškumas taip pat priklauso nuo bendros burnos sveikatos, todėl svarbu reguliariai apsilankyti pas odontologą profilaktinių apžiūrų metu." })
+                /* @__PURE__ */ jsx("p", { children: "Cirkonio keramikos vainikėlio tarnavimo laikas priklauso nuo kelių svarbių veiksnių: danties būklės, restauracijos tikslumo, sąkandžio, paciento burnos higienos įpročių ir reguliarios profilaktinės priežiūros. Tinkamai pagamintas ir prižiūrimas vainikėlis gali tarnauti daugelį metų." }),
+                /* @__PURE__ */ jsx("p", { children: "Cirkonio karūnėlės priežiūra nėra sudėtinga, tačiau ji turi būti nuosekli. Vainikėlį, kaip ir natūralius dantis, reikia valyti du kartus per dieną, naudoti tarpdančių siūlą, tarpdančių šepetėlius ar kitas specialisto rekomenduotas priemones. Taip pat svarbu reguliariai atlikti profesionalią burnos higieną ir profilaktinius patikrinimus." }),
+                /* @__PURE__ */ jsx("p", { children: "Nors cirkonio keramika yra tvirta ir atspari, svarbu vengti žalingų įpročių, pavyzdžiui, dantimis nekramtyti labai kietų daiktų, neatidarinėti pakuočių ar nekąsti nagų. Jei pacientas griežia dantimis, gali būti rekomenduojama apsauginė kapa nakčiai, padedanti sumažinti vainikėlio ir natūralių dantų apkrovą." }),
+                /* @__PURE__ */ jsx("p", { children: "Tiksli cirkonio keramikos vainikėlio kaina priklauso nuo individualios situacijos – danties paruošimo, papildomo gydymo poreikio, vainikėlio tipo ir pasirinktos technologijos. Galutinė kaina aptariama konsultacijos metu, kai įvertinama konkreti klinikinė situacija ir sudaromas aiškus gydymo planas. Laikantis odontologo rekomendacijų, cirkonio keramikos vainikėlis išlieka stabilus, estetiškas ir patogus kasdienėje veikloje." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kodel-rinktis", className: sectionWrap$7, variants: item$g, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$7, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Renkantis cirkonio keramikos vainikėlį svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo sprendimo priėmimo iki priežiūros po procedūros. Bangų odontologijos klinikoje vainikėliai gaminami atsakingai, siekiant maksimaliai apsaugoti paciento komfortą ir burnos sveikatą." }),
-                /* @__PURE__ */ jsx("p", { children: "Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, neskuba priimti sprendimo ir visuomet ieško rezultato, kuris atrodytų natūraliai ir tarnautų ilgai. Dėmesys skiriamas ne tik pačiai procedūrai, bet ir aiškiam situacijos paaiškinimui bei rekomendacijoms po jos." }),
-                /* @__PURE__ */ jsx("p", { children: "Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis saugiai viso gydymo metu. Todėl ieškantiems patikimo ir profesionalaus cirkonio keramikos vainikėlio Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas." })
+                /* @__PURE__ */ jsx("p", { children: "Renkantis cirkonio keramikos vainikėlį svarbu ne tik estetiškas galutinis rezultatas, bet ir visas danties atkūrimo procesas – nuo pirmos konsultacijos iki galutinio vainikėlio pritaikymo. Bangų odontologijos klinikoje Klaipėdoje dantų atkūrimas atliekamas taikant šiuolaikinius, pacientui patogius sprendimus, leidžiančius suderinti natūralų vaizdą, tvirtumą ir ilgalaikį funkcionalumą." }),
+                /* @__PURE__ */ jsx("p", { children: "Klinikoje didelis dėmesys skiriamas individualiam planavimui. Prieš pradedant gydymą įvertinama danties būklė, sąkandis, aplinkiniai audiniai ir paciento lūkesčiai. Toks požiūris leidžia aiškiai suprasti, ar cirkonio keramikos vainikėlis yra tinkamiausias sprendimas, ir priimti informuotą sprendimą dėl gydymo." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje specialistai skiria laiko paciento klausimams, aiškiai paaiškina kiekvieną gydymo etapą ir užtikrina atsakingą požiūrį į ilgalaikį rezultatą. Pacientai vertina profesionalų bendravimą, komfortą procedūros metu ir natūraliai atrodantį galutinį rezultatą." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mt-8 mb-12 text-left", variants: item$g, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$7, children: [
@@ -13025,6 +13664,7 @@ const item$f = {
 };
 const sectionWrap$6 = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$6 = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
+const innerCard$6 = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P$1 = "#002045";
 const S$1 = "#006b5f";
 const SL$1 = "#ecf5fb";
@@ -13033,9 +13673,10 @@ function CheckIcon$e() {
 }
 const tocSections$d = [
   { id: "kainos", label: "Kainos" },
-  { id: "svarba", label: "Kodėl svarbus patikrinimas?" },
+  { id: "kas-yra", label: "Kodėl svarbus patikrinimas?" },
   { id: "daznis", label: "Rekomenduojamas dažnis" },
   { id: "etapai", label: "Patikrinimo proceso etapai" },
+  { id: "nauda", label: "Ką padeda išvengti?" },
   { id: "kodel-rinktis", label: "Kodėl verta rinktis mus?" }
 ];
 function VaikuProfilaktinisPatikrinimas() {
@@ -13075,8 +13716,8 @@ function VaikuProfilaktinisPatikrinimas() {
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$f, children: [
               /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Vaikų profilaktinis dantų patikrinimas Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Bangų odontologijos klinika Klaipėdoje siūlo reguliarius vaikų burnos sveikatos patikrinimus. Pagrindinis jų tikslas – anksti nustatyti bet kokius dantų ar dantenų pokyčius, kol jie dar nesukėlė didesnių problemų. Toks prevencinis požiūris leidžia vaiko dantų sveikatą prižiūrėti nuolat, o ne tik tuomet, kai jau atsiranda skausmas ar akivaizdūs pažeidimai." }),
-                /* @__PURE__ */ jsx("p", { children: "Profilaktinis patikrinimas – tai neatsiejama vaiko burnos sveikatos priežiūros dalis, padedanti laiku pastebėti ėduonies pradžią, dantenų uždegimo požymius ar sąkandžio pokyčius. Bangų odontologijos klinikoje vizitai vaikams pritaikomi taip, kad jie jaustųsi saugiai ir ramiai, o tėvai gautų aiškias rekomendacijas dėl tolimesnės priežiūros." })
+                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Vaikų burnos sveikata yra dinamiška ir nuolat kintanti, todėl reguliari kontrolė leidžia laiku pastebėti net ir labai ankstyvus dantų ar dantenų pakitimus. Nors pieniniai dantys yra laikini, jų būklė turi tiesioginę įtaką nuolatinių dantų užuomazgoms, sąkandžio formavimuisi, kramtymo funkcijai bei kalbos raidai." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje vaikų profilaktinis dantų patikrinimas atliekamas siekiant ne tik įvertinti esamą burnos būklę, bet ir užkirsti kelią ėduonies progresavimui, dantenų uždegimui ar netaisyklingam dantų dygimui. Tai yra viena svarbiausių vaikų odontologijos priemonių, padedanti išvengti sudėtingesnio gydymo ateityje ir užtikrinti nuoseklią burnos sveikatos priežiūrą nuo ankstyvo amžiaus." })
               ] }) }),
               /* @__PURE__ */ jsx("div", { className: "flex justify-start mt-6", children: /* @__PURE__ */ jsx(
                 Link,
@@ -13130,52 +13771,92 @@ function VaikuProfilaktinisPatikrinimas() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Jonas-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
               ] })
             ] }) }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mb-10 no-x-scroll pan-y", variants: item$f, children: /* @__PURE__ */ jsx(ReviewsCarousel, {}) }),
-            /* @__PURE__ */ jsx(motion.section, { id: "svarba", className: sectionWrap$6, variants: item$f, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$6, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl svarbus profilaktinis patikrinimas?" }),
+            /* @__PURE__ */ jsx(motion.section, { id: "kas-yra", className: sectionWrap$6, variants: item$f, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$6, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra vaikų profilaktinis dantų patikrinimas ir kodėl jis svarbus?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Kadangi vaiko burnos ertmė nuolat keičiasi dygstant naujiems dantims, profilaktika yra esminė vaiko dantų sveikatos priežiūros dalis. Pieniniai dantys ilgainiui keičiasi nuolatiniais, o šis procesas gali sukelti įvairių pokyčių – nuo sąkandžio nukrypimų iki padidėjusios ėduonies rizikos." }),
-                /* @__PURE__ */ jsx("p", { children: "Reguliari kontrolė leidžia laiku pastebėti net ir labai ankstyvus dantų ar dantenų pakitimus, kuriuos vaikas ar tėvai patys namuose gali nepastebėti. Anksti nustačius problemą, gydymas dažniausiai būna paprastesnis, greitesnis ir mažiau varginantis vaikui. Todėl profilaktiniai patikrinimai yra viena efektyviausių priemonių, padedančių išlaikyti vaiko burnos sveikatą nuo pat mažens." })
+                /* @__PURE__ */ jsx("p", { children: "Vaikų profilaktinis dantų patikrinimas – tai reguliari odontologinė apžiūra, kurios metu gydytojas įvertina dantų, dantenų, burnos gleivinės ir sąkandžio būklę. Vizito tikslas yra ne tik nustatyti jau esamus pakitimus, bet ir identifikuoti rizikos veiksnius, kurie ateityje gali sukelti ėduonį, emalio pažeidimus ar ortodontines problemas." }),
+                /* @__PURE__ */ jsx("p", { children: "Vaikų burnos ertmė nuolat keičiasi – dygsta nauji dantys, keičiasi sąkandis, o emalis dar nėra pilnai subrendęs. Dėl šių priežasčių net ir nedidelės apnašų sankaupos ar netinkami higienos įpročiai gali greitai sukelti ėduonies vystymąsi. Profilaktinio patikrinimo metu šie pokyčiai nustatomi ankstyvoje stadijoje, kai juos galima sustabdyti minimalia intervencija." }),
+                /* @__PURE__ */ jsx("p", { children: "Vaikų profilaktinis dantų patikrinimas taip pat leidžia įvertinti, kaip efektyviai atliekama kasdienė burnos higiena namuose. Jei pastebimos nuolatinės apnašų kaupimosi vietos, tėvams pateikiamos konkrečios rekomendacijos dėl dantų valymo technikos, priemonių pasirinkimo bei priežiūros rutinos." }),
+                /* @__PURE__ */ jsx("p", { children: "Svarbu suprasti, kad profilaktika nėra formalumas. Tai nuoseklus stebėjimo procesas, leidžiantis užtikrinti, kad vaiko dantys vystytųsi sveikai ir be komplikacijų." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "daznis", className: sectionWrap$6, variants: item$f, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$6, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Rekomenduojamas vizitų dažnis" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada rekomenduojama atlikti vaikų profilaktinį dantų patikrinimą?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Vaikų profilaktinis dantų patikrinimas rekomenduojamas reguliariai, net jei nėra jokių nusiskundimų. Įprastai vizitas turėtų būti atliekamas kas 6–12 mėnesių, priklausomai nuo individualios ėduonies rizikos, burnos higienos kokybės ir dantų vystymosi etapo." }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-3 mb-6", children: [
+                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700", children: "Ypač svarbu planuoti profilaktinį patikrinimą šiais atvejais:" }),
+                /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
+                  "išdygus pirmiesiems pieniniams ar nuolatiniams dantims",
+                  "intensyvaus sąkandžio keitimosi laikotarpiu",
+                  "prieš ortodontinio gydymo pradžią ar aparatų nuėmimą",
+                  "esant padidėjusiai ėduonies rizikai ar dažnam kariesui",
+                  "pastebėjus dantenų kraujavimą, jautrumą ar blogą burnos kvapą",
+                  "prieš pateikiant sveikatos pažymą ugdymo įstaigai"
+                ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
+                  /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$e, {}) }),
+                  /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
+                ] }, i)) })
+              ] }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Vizitai turėtų vykti kas 6–12 mėnesių, atsižvelgiant į individualią ėduonies riziką ir burnos higienos būklę. Kai kuriems vaikams, turintiems didesnę ėduonies riziką ar sudėtingesnę burnos higienos situaciją, odontologas gali rekomenduoti dažnesnius vizitus, kad situacija būtų nuolat stebima ir kontroliuojama." }),
-                /* @__PURE__ */ jsx("p", { children: "Patikrinimas ypač svarbus keičiantis dantims ar prieš pradedant ortodontinį gydymą. Šiais laikotarpiais burnos ertmėje vyksta daug pokyčių, todėl reguliari odontologo priežiūra padeda užtikrinti, kad dantys dygtų ir augtų taisyklingai, o galimos problemos būtų pastebėtos kuo anksčiau." })
+                /* @__PURE__ */ jsx("p", { children: "Dažnai vaikų profilaktinis dantų patikrinimas atliekamas prieš mokslo metų pradžią, tačiau medicininiu požiūriu svarbiausia yra ne data, o reguliarumas. Ankstyvas vizitas leidžia išvengti eilių ir užtikrinti, kad galimi pakitimai būtų įvertinti laiku, dar jiems neprogresuojant." }),
+                /* @__PURE__ */ jsx("p", { children: "Reguliarūs patikrinimai taip pat padeda formuoti teigiamą vaiko požiūrį į odontologą, nes vizitas tampa įprasta profilaktinės priežiūros dalimi, o ne tik gydymo poreikio situacija." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "etapai", className: sectionWrap$6, variants: item$f, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$6, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Patikrinimo proceso etapai" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Klinikoje atliekamą vizitą sudaro keli pagrindiniai etapai, leidžiantys visapusiškai įvertinti vaiko burnos sveikatą ir sudaryti individualiai pritaikytą tolimesnės priežiūros planą." }),
-              /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
-                "Burnos ir dantų apžiūra",
-                "Sąkandžio bei dantų dygimo analizė",
-                "Higienos įpročių vertinimas",
-                "Individualaus plano sudarymas"
-              ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
-                /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$e, {}) }),
-                /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
-              ] }, i)) })
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip vyksta vaikų profilaktinis dantų patikrinimas klinikoje?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Vaikų profilaktinis dantų patikrinimas Bangų odontologijos klinikoje atliekamas nuosekliai, užtikrinant vaiko komfortą ir aiškų kiekvieno etapo paaiškinimą. Vizito metu vertinama visa burnos sveikatos situacija, o tėvams pateikiamos individualios išvados bei rekomendacijos." }),
+              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-4", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$6, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Burnos ir dantų būklės įvertinimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Atliekama išsami dantų, dantenų ir burnos gleivinės apžiūra. Vertinamas ėduonies buvimas, emalio demineralizacijos požymiai, apnašų kaupimasis bei galimi uždegiminiai procesai." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$6, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Sąkandžio ir dantų dygimo analizė" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Vertinama, kaip vystosi vaiko sąkandis, ar dantys dygsta taisyklingai, ar nėra ankstyvų ortodontinių anomalijų požymių. Tai ypač svarbu keičiantis pieniniams dantims į nuolatinius." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$6, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Burnos higienos įpročių įvertinimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Analizuojama, kaip vaikas prižiūri dantis namuose, ar pakankamai efektyviai pašalinamos apnašos. Identifikuojamos vietos, kuriose higiena yra nepakankama, ir pateikiamos rekomendacijos." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$6, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Individualus planas ir rekomendacijos" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Po patikrinimo tėvams pateikiamas aiškus veiksmų planas: burnos priežiūros patarimai, profilaktikos dažnis, galimos rizikos bei, jei reikia, tolimesni gydymo ar higienos žingsniai." })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mt-6", children: "Toks struktūruotas procesas leidžia vaikų profilaktinį dantų patikrinimą paversti ne formaliu vizitu, o realia ankstyvos diagnostikos ir prevencijos priemone." })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "nauda", className: sectionWrap$6, variants: item$f, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$6, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Ką padeda išvengti reguliarus vaikų profilaktinis dantų patikrinimas?" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Reguliarus vaikų profilaktinis dantų patikrinimas yra viena efektyviausių priemonių užkertant kelią ankstyvam ėduoniui, dantenų uždegimui ir netaisyklingo sąkandžio progresavimui. Anksti nustatyti pakitimai leidžia taikyti minimaliai invazinius sprendimus, kurie yra paprastesni, greitesni ir mažiau apkraunantys vaiką." }),
+                /* @__PURE__ */ jsx("p", { children: "Negydomas ėduonis vaikų dantyse gali progresuoti itin greitai dėl plonesnio emalio ir intensyvaus bakterinio aktyvumo. Tai gali lemti skausmą, infekcijas, dantų netekimą ar net poveikį nuolatinių dantų užuomazgoms. Taip pat gali atsirasti poreikis sudėtingesniam gydymui ar ortodontinėms korekcijoms ateityje." }),
+                /* @__PURE__ */ jsx("p", { children: "Reguliari profilaktika leidžia užtikrinti, kad visi pokyčiai būtų pastebėti ankstyvoje stadijoje, o vaiko burnos sveikata būtų nuolat kontroliuojama. Tai ne tik apsaugo dantis, bet ir padeda formuoti ilgalaikius, taisyklingus burnos higienos įpročius." })
+              ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kodel-rinktis", className: sectionWrap$6, variants: item$f, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$6, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Renkantis vaikų profilaktinį dantų patikrinimą svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo pirmojo kontakto su vaiku iki rekomendacijų tėvams. Bangų odontologijos klinikoje patikrinimas atliekamas atsakingai, siekiant maksimaliai apsaugoti vaiko komfortą ir burnos sveikatą." }),
-                /* @__PURE__ */ jsx("p", { children: "Klinikoje dirbantys specialistai kiekvieną vaiką vertina individualiai, skiria laiko paaiškinimui ir stengiasi sukurti draugišką, nestresinę aplinką. Dėmesys skiriamas ne tik pačiai apžiūrai, bet ir aiškiam situacijos paaiškinimui bei rekomendacijoms tėvams dėl burnos higienos namuose." }),
-                /* @__PURE__ */ jsx("p", { children: "Reguliarus patikrinimas padeda išvengti sudėtingesnio gydymo ateityje ir formuoti teigiamą vaiko požiūrį į odontologinę priežiūrą. Todėl ieškantiems patikimo ir profesionalaus vaikų dantų patikrinimo Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas." })
+                /* @__PURE__ */ jsx("p", { children: "Renkantis vaikų profilaktinį dantų patikrinimą svarbiausia yra ne tik diagnostikos tikslumas, bet ir vaiko patirtis vizito metu. Bangų odontologijos klinikoje kiekvienas patikrinimas atliekamas laikantis individualaus, švelnaus ir aiškaus komunikacijos principo, užtikrinant, kad vaikas jaustųsi saugiai." }),
+                /* @__PURE__ */ jsx("p", { children: "Klinikos specialistai vertina ne tik dantų būklę, bet ir bendrą burnos sveikatos kontekstą: dantų dygimą, sąkandžio raidą, apnašų kaupimosi modelius bei ankstyvus rizikos veiksnius. Tėvams pateikiamos aiškios, praktiškai pritaikomos rekomendacijos, orientuotos į ilgalaikę burnos sveikatą." }),
+                /* @__PURE__ */ jsx("p", { children: "Reguliarus vaikų profilaktinis dantų patikrinimas Bangų odontologijos klinikoje leidžia ne tik užkirsti kelią dantų ligoms, bet ir formuoti teigiamą vaiko požiūrį į odontologinę priežiūrą nuo pat ankstyvo amžiaus." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mt-8 mb-12 text-left", variants: item$f, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$6, children: [
@@ -13210,6 +13891,7 @@ const item$e = {
 };
 const sectionWrap$5 = "mb-12 scroll-mt-36 2xl:scroll-mt-24";
 const whiteCard$5 = "bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft";
+const innerCard$5 = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm";
 const P = "#002045";
 const S = "#006b5f";
 const SL = "#ecf5fb";
@@ -13218,8 +13900,9 @@ function CheckIcon$d() {
 }
 const tocSections$c = [
   { id: "kainos", label: "Kainos" },
-  { id: "paslaugos", label: "Ką apima procedūra?" },
-  { id: "daznis", label: "Vizito dažnis" },
+  { id: "kas-yra", label: "Kas yra vaikų dantų higiena?" },
+  { id: "daznis", label: "Kada reikalinga?" },
+  { id: "paslaugos", label: "Kaip vyksta procedūra?" },
   { id: "saugumas", label: "Ar saugu vaikams?" },
   { id: "kodel-rinktis", label: "Kodėl verta rinktis mus?" }
 ];
@@ -13260,8 +13943,8 @@ function DantuHigienaVaikams() {
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$e, children: [
               /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Dantų higiena vaikams Klaipėdoje" }),
               /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Bangų odontologijos klinika siūlo profesionalią vaikų dantų priežiūrą, pabrėždama, kad tinkama burnos higiena yra svarbi nuo pat pirmųjų dantukų išdygimo. Reguliari profesionali higiena padeda laiku pastebėti galimas problemas, apsaugo dantis nuo ėduonies ir moko vaiką rūpintis savo burnos sveikata jau nuo mažens." }),
-                /* @__PURE__ */ jsx("p", { children: "Klinikoje procedūra atliekama rūpestingai ir šiltai, atsižvelgiant į kiekvieno vaiko amžių bei emocinę būseną, kad apsilankymas pas odontologą taptų maloni ir nebauginanti patirtis, o ne stresą kelianti procedūra." })
+                /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Vaikų dantų priežiūra yra svarbi nuo pat pirmųjų dantų išdygimo. Nors pieniniai dantys yra laikini, jų būklė turi tiesioginės įtakos kramtymo funkcijai, kalbos raidai, nuolatinių dantų užuomazgų formavimuisi bei visos burnos ertmės sveikatai. Dėl šios priežasties kasdienė dantų priežiūra namuose turi būti derinama su reguliaria profesionalia kontrole odontologijos klinikoje." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje dantų higiena vaikams atliekama laikantis šiuolaikinių odontologijos principų, atsižvelgiant į vaiko amžių, elgseną ir individualią burnos būklę. Procedūros tikslas nėra tik apnašų pašalinimas – tai ir ankstyvas ėduonies rizikos įvertinimas, burnos higienos įpročių korekcija bei vaiko adaptacija prie odontologinės priežiūros be baimės." })
               ] }) }),
               /* @__PURE__ */ jsx("div", { className: "flex justify-start mt-6", children: /* @__PURE__ */ jsx(
                 Link,
@@ -13314,53 +13997,97 @@ function DantuHigienaVaikams() {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "relative min-h-[320px] lg:min-h-full bg-sky-50", children: [
+              /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-sky-50", children: [
+                /* @__PURE__ */ jsx("div", { className: "pt-[125%]" }),
                 /* @__PURE__ */ jsx(
                   "img",
                   {
                     src: "/team/Jonas-light.jpg",
                     alt: "Bangų odontologijos klinikos gydytojas",
-                    className: "absolute inset-0 w-full h-full object-cover object-[30%_10%] lg:object-[30%_100%]"
+                    className: "absolute inset-0 w-full h-full object-contain"
                   }
                 ),
                 /* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" })
               ] })
             ] }) }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mb-10 no-x-scroll pan-y", variants: item$e, children: /* @__PURE__ */ jsx(ReviewsCarousel, {}) }),
-            /* @__PURE__ */ jsx(motion.section, { id: "paslaugos", className: sectionWrap$5, variants: item$e, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$5, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Ką apima dantų higienos procedūra?" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Vaikų dantų higienos procedūra Bangų odontologijos klinikoje apima kompleksinę burnos priežiūrą, skirtą įvertinti ir palaikyti sveiką vaiko burnos ertmę. Kiekvienas vizitas pritaikomas individualiai, atsižvelgiant į vaiko amžių ir dantų būklę." }),
-              /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
-                "burnos būklės įvertinimas",
-                "apnašų pašalinimas",
-                "dantų poliravimas",
-                "fluoravimas",
-                "konsultacijos tėvams apie kasdienę burnos higienos praktiką"
-              ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
-                /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$d, {}) }),
-                /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
-              ] }, i)) })
+            /* @__PURE__ */ jsx(motion.section, { id: "kas-yra", className: sectionWrap$5, variants: item$e, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$5, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra vaikų dantų higiena ir kodėl ji svarbi?" }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
+                /* @__PURE__ */ jsx("p", { children: "Vaikų dantų higiena – tai profesionali profilaktinė procedūra, kurios metu nuo dantų paviršių pašalinamos minkštosios apnašos, pigmentiniai nešvarumai bei, esant poreikiui, pradiniai dantų akmenys. Tai viena svarbiausių priemonių siekiant užkirsti kelią vaikų ėduoniui, gingivitui ir ankstyvam emalio pažeidimui." }),
+                /* @__PURE__ */ jsx("p", { children: "Vaikų burnos higiena skiriasi nuo suaugusiųjų, nes vaikų dantų emalis yra plonesnis, o apnašos susidaro greičiau dėl dažnesnio užkandžiavimo ir dar tik formuojamų higienos įgūdžių. Net ir tais atvejais, kai dantys valomi du kartus per dieną, dažnai lieka vietų, kurių vaikas nepasiekia, ypač krūminių dantų vagelėse ar prie dantenų krašto." }),
+                /* @__PURE__ */ jsx("p", { children: "Profesionali burnos higiena vaikams Klaipėdoje yra ne tik valymo procedūra. Tai ir diagnostinis etapas, kurio metu vertinama, ar nėra pradinio ėduonies požymių, emalio demineralizacijos, dantenų uždegimo ar netaisyklingos apnašų kaupimosi zonų. Tėvams suteikiamos individualios rekomendacijos, kaip pagerinti kasdienę burnos priežiūrą namuose." }),
+                /* @__PURE__ */ jsx("p", { children: "Svarbu suprasti, kad dantų higiena vaikams nėra skirta tik esant problemoms. Tai profilaktinė priemonė, leidžianti išvengti sudėtingesnio gydymo ateityje ir užtikrinti, kad vaiko nuolatiniai dantys formuotųsi sveikoje aplinkoje." })
+              ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "daznis", className: sectionWrap$5, variants: item$e, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$5, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Rekomenduojamas vizito dažnis" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kada vaikui reikalinga profesionali burnos higiena?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Profesionali burnos higiena vaikams rekomenduojama nuo to momento, kai susiformuoja pilnas pieninių dantų sąkandis, dažniausiai apie 2–3 metų amžių, tačiau poreikis vertinamas individualiai." }),
+              /* @__PURE__ */ jsxs("div", { className: "space-y-3 mb-6", children: [
+                /* @__PURE__ */ jsx("h3", { className: "font-semibold text-darkblue-700", children: "Dažniausiai ši procedūra reikalinga, kai:" }),
+                /* @__PURE__ */ jsx("div", { className: "grid gap-3", children: [
+                  "ant dantų matomos gelsvos, rusvos ar tamsios apnašos",
+                  "pastebimas blogas burnos kvapas, nepaisant reguliaraus valymo",
+                  "dantenos parausta ar kraujuoja valant dantis",
+                  "vaikas turi padidėjusią ėduonies riziką",
+                  "nešiojami ortodontiniai aparatai",
+                  "dantys greitai „apsineša“ apnašomis nepaisant higienos"
+                ].map((text, i) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm", children: [
+                  /* @__PURE__ */ jsx("span", { className: "mt-1", children: /* @__PURE__ */ jsx(CheckIcon$d, {}) }),
+                  /* @__PURE__ */ jsx("span", { className: "text-slate-700", children: text })
+                ] }, i)) })
+              ] }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Profesionali dantų higiena rekomenduojama nuo 2–3 metų amžiaus, kai vaikas jau turi pieninius dantis ir gali priprasti prie reguliarių apsilankymų pas odontologą. Ankstyva pradžia padeda vaikui nuo mažens suvokti burnos priežiūros svarbą ir mažina baimę, susijusią su vėlesniais vizitais." }),
-                /* @__PURE__ */ jsx("p", { children: "Toliau profesionali higiena atliekama kas 6–12 mėnesių, o esant didesnei ėduonies ar kitų burnos problemų rizikai – dažniau. Vizitų dažnumas nustatomas individualiai, atsižvelgiant į vaiko burnos būklę ir gydytojo rekomendacijas." })
+                /* @__PURE__ */ jsx("p", { children: "Vaikų burnos higiena taip pat tampa ypač svarbi keičiantis sąkandžiui, kai pradeda dygti nuolatiniai dantys. Šiuo laikotarpiu emalis yra jautresnis, o apnašų kaupimasis gali greitai lemti pradinius ėduonies židinius." }),
+                /* @__PURE__ */ jsx("p", { children: "Rekomenduojamas dažnis priklauso nuo individualios situacijos, tačiau dažniausiai profesionali dantų higiena vaikams atliekama kas 6–12 mėnesių, o esant didesnei rizikai – dažniau." })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx(motion.section, { id: "paslaugos", className: sectionWrap$5, variants: item$e, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$5, children: [
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kaip atliekama vaikų dantų higiena klinikoje?" }),
+              /* @__PURE__ */ jsx("p", { className: "text-slate-700 leading-relaxed mb-6", children: "Vaikų dantų higiena Bangų odontologijos klinikoje atliekama nuosekliai, užtikrinant vaiko komfortą ir emocinį saugumą kiekviename etape. Procedūra pritaikoma pagal vaiko amžių, bendradarbiavimą ir apnašų kiekį." }),
+              /* @__PURE__ */ jsxs("div", { className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3", children: [
+                /* @__PURE__ */ jsxs("div", { className: innerCard$5, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "01" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Burnos būklės įvertinimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Atliekama dantų ir dantenų apžiūra, įvertinamas apnašų kiekis, emalio būklė bei galimi ėduonies rizikos veiksniai. Esant poreikiui, naudojami specialūs indikatoriai, parodantys apnašų kaupimosi zonas." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$5, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "02" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Apnašų pašalinimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Švelniai pašalinamos minkštosios ir, jei reikia, kietesnės apnašos. Vaikams taikomi saugūs, amžiui pritaikyti metodai, vengiant bet kokio diskomforto." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$5, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "03" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Dantų poliravimas" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Dantų paviršiai poliruojami specialiomis priemonėmis, kad būtų sumažintas apnašų kaupimosi greitis ir atkurta natūrali emalio švara." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$5, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "04" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Fluoravimo ir profilaktikos rekomendacijos" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Esant poreikiui, atliekamas emalio stiprinimas fluoro preparatais. Tėvams suteikiamos individualios rekomendacijos dėl dantų pastos pasirinkimo, valymo technikos ir tarpdančių priežiūros." })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: innerCard$5, children: [
+                  /* @__PURE__ */ jsx("div", { className: "text-4xl font-bold text-brand/20 mb-2", children: "05" }),
+                  /* @__PURE__ */ jsx("h3", { className: "font-bold text-darkblue-700 mb-2", children: "Įpročių formavimo konsultacija" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-sm text-slate-600 leading-relaxed", children: "Paaiškinama, kaip taisyklingai prižiūrėti vaikų dantis kasdien, kokių klaidų vengti ir kaip sumažinti ėduonies riziką ilgalaikėje perspektyvoje." })
+                ] })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "saugumas", className: sectionWrap$5, variants: item$e, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$5, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Ar procedūra saugi vaikams?" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Ar vaikų dantų higiena yra saugi ir kaip jai pasiruošti?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Dantų higienos procedūra yra visiškai saugi, neskausminga ir neinvazinė, pritaikyta pagal vaiko amžių ir emocinį pasirengimą. Bangų odontologijos klinikoje procedūra atliekama švelniai, o odontologas visada atsižvelgia į vaiko savijautą ir jam parodo, kas bus daroma, kad procedūra netaptų nemaloni patirtis." }),
-                /* @__PURE__ */ jsx("p", { children: "Klinika akcentuoja individualų požiūrį į kiekvieną mažąjį pacientą, greitą ankstyvos ėduonies diagnozę bei tėvų edukaciją, siekiant ilgalaikės burnos sveikatos. Toks kompleksinis požiūris leidžia laiku pastebėti galimas problemas ir jų išvengti dar prieš joms išsivystant." })
+                /* @__PURE__ */ jsx("p", { children: "Vaikų dantų higiena yra visiškai saugi, neskausminga ir neinvazinė procedūra, kai ji atliekama laikantis odontologinių standartų ir pritaikant metodus pagal vaiko amžių. Dažniausiai vaikai nejaučia jokio skausmo, o pagrindinis iššūkis yra emocinis pasiruošimas." }),
+                /* @__PURE__ */ jsx("p", { children: "Prieš vizitą rekomenduojama vaikui paprastai paaiškinti, kad gydytojas apžiūrės ir nuvalys dantukus. Vengiant gąsdinančių formuluočių ir perteklinio dramatizavimo, vaiko patirtis dažniausiai būna rami ir pozityvi." }),
+                /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje didelis dėmesys skiriamas adaptacijai – procedūra atliekama neskubant, aiškiai paaiškinant kiekvieną veiksmą vaikui suprantama kalba. Jei reikia, daromos pertraukos, kad vaikas jaustųsi saugiai." }),
+                /* @__PURE__ */ jsx("p", { children: "Tėvams svarbu suprasti, kad ankstyvas ir reguliarus vizitas pas odontologą bei profesionali burnos higiena vaikams ženkliai sumažina ėduonies, dantenų uždegimų ir sudėtingesnio gydymo riziką ateityje." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kodel-rinktis", className: sectionWrap$5, variants: item$e, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$5, children: [
               /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kodėl verta rinktis Bangų odontologijos kliniką Klaipėdoje?" }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
-                /* @__PURE__ */ jsx("p", { children: "Renkantis vaikų dantų higienos paslaugas svarbu ne tik pati procedūra, bet ir tai, kaip ji atliekama – nuo pirmojo kontakto su vaiku iki priežiūros rekomendacijų po vizito. Bangų odontologijos klinikoje dantų higiena vaikams atliekama atsakingai, siekiant maksimaliai apsaugoti mažojo paciento komfortą ir burnos sveikatą." }),
-                /* @__PURE__ */ jsx("p", { children: "Klinikoje dirbantys specialistai kiekvieną atvejį vertina individualiai, skiria laiko vaiko emocinei būsenai ir visuomet siekia, kad apsilankymas paliktų teigiamą įspūdį. Dėmesys skiriamas ne tik pačiai procedūrai, bet ir aiškiam situacijos paaiškinimui tėvams bei rekomendacijoms, kaip rūpintis vaiko burnos higiena namuose." }),
-                /* @__PURE__ */ jsx("p", { children: "Pacientai vertina profesionalų bendravimą, ramų požiūrį ir aiškias instrukcijas, kurios padeda jaustis saugiai viso vizito metu. Todėl ieškantiems patikimos ir profesionalios dantų higienos vaikams Klaipėdoje, Bangų odontologijos klinika yra patikimas pasirinkimas." })
+                /* @__PURE__ */ jsx("p", { children: "Renkantis vaikų dantų higienos paslaugą svarbiausia yra ne tik procedūros kokybė, bet ir patirtis, kurią vaikas įgyja jos metu. Bangų odontologijos klinikoje dantų higiena vaikams atliekama laikantis individualaus, švelnaus ir aiškaus komunikacijos modelio, kuris padeda formuoti teigiamą požiūrį į odontologinę priežiūrą." }),
+                /* @__PURE__ */ jsx("p", { children: "Kiekvienas vaikas vertinamas individualiai, atsižvelgiant į jo amžių, burnos būklę ir emocinį pasirengimą. Klinikoje siekiama ne tik pašalinti apnašas, bet ir užkirsti kelią jų greitam susidarymui ateityje, todėl daug dėmesio skiriama tėvų edukacijai ir praktinėms rekomendacijoms." }),
+                /* @__PURE__ */ jsx("p", { children: "Tėvai vertina aiškią komunikaciją, profesionalų požiūrį į profilaktiką ir nuoseklų dėmesį vaiko emocinei savijautai. Dėl šių priežasčių Bangų odontologijos klinika tampa patikimu pasirinkimu šeimoms, siekiančioms ilgalaikės vaikų burnos sveikatos ir stabilios dantų priežiūros sistemos nuo ankstyvo amžiaus." })
               ] })
             ] }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mt-8 mb-12 text-left", variants: item$e, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$5, children: [
@@ -18508,7 +19235,8 @@ const friends = [
   { key: "atvila", url: "https://www.atvila.lt/lt", name: "atvila.lt", alt: "atvila.lt" },
   { key: "vairuoti", url: "https://www.vairuoti.lt/", name: "vairuoti.lt", alt: "vairuoti.lt" },
   { key: "fishwish", url: "https://fishwish.eu/", name: "fishwish.eu", alt: "fishwish.eu" },
-  { key: "homosanus", url: "https://www.homosanus.lt/", name: "homosanus.lt", alt: "Homo Sanus klinika Vilniuje" }
+  { key: "homosanus", url: "https://www.homosanus.lt/", name: "homosanus.lt", alt: "Homo Sanus klinika Vilniuje" },
+  { key: "savy", url: "https://gosavy.com/", name: "gosavy.com", alt: "gosavy.com", ext: "jpeg" }
 ];
 function FriendSlot({ friend }) {
   return /* @__PURE__ */ jsx(
@@ -18522,7 +19250,7 @@ function FriendSlot({ friend }) {
       children: /* @__PURE__ */ jsx(
         "img",
         {
-          src: `/friends/${friend.key}.png`,
+          src: `/friends/${friend.key}.${friend.ext ?? "png"}`,
           alt: friend.alt,
           className: "w-full h-full object-cover transform-gpu will-change-transform group-hover:scale-105 transition-transform duration-500",
           loading: "lazy"
@@ -18591,6 +19319,18 @@ const cases = [
     num: "03",
     category: "All-on-4 Implantacija",
     image: "/musu-darbai/20.jpg",
+    alt: "All-on-4 implantacija — prieš ir po"
+  },
+  {
+    num: "04",
+    category: "All-on-4 Implantacija",
+    image: "/1.jpg",
+    alt: "All-on-4 implantacija — prieš ir po"
+  },
+  {
+    num: "05",
+    category: "All-on-4 Implantacija",
+    image: "/2.jpg",
     alt: "All-on-4 implantacija — prieš ir po"
   }
 ];
@@ -19173,94 +19913,101 @@ function InbankLogo({ className }) {
 }
 function InbankWidget() {
   const [open, setOpen] = useState(false);
-  return /* @__PURE__ */ jsxs("div", { className: "flex fixed bottom-24 left-1/2 -translate-x-1/2 md:bottom-32 md:left-8 md:translate-x-0 z-50 flex-col items-center md:items-start gap-2", children: [
-    /* @__PURE__ */ jsx(AnimatePresence, { children: open && /* @__PURE__ */ jsxs(
-      motion.div,
-      {
-        initial: { opacity: 0, y: 10, scale: 0.97 },
-        animate: { opacity: 1, y: 0, scale: 1 },
-        exit: { opacity: 0, y: 10, scale: 0.97 },
-        transition: { duration: 0.2, ease: "easeOut" },
-        className: "w-72 rounded-2xl bg-white border border-slate-200 shadow-xl overflow-hidden",
-        children: [
-          /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-between px-4 py-3 border-b border-slate-100", children: [
-            /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3", children: [
-              /* @__PURE__ */ jsx(InbankLogo, { className: "h-5 w-auto" }),
-              /* @__PURE__ */ jsx("span", { className: "text-slate-300 text-xs", children: "|" }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-500 text-xs whitespace-nowrap", children: "Finansuokite gydymą dalimis" })
-            ] }),
-            /* @__PURE__ */ jsx(
-              "button",
-              {
-                onClick: () => setOpen(false),
-                className: "text-slate-400 hover:text-slate-600 transition-colors w-6 h-6 flex items-center justify-center rounded-lg hover:bg-slate-100 shrink-0 ml-2",
-                "aria-label": "Uždaryti",
-                children: /* @__PURE__ */ jsx("svg", { viewBox: "0 0 16 16", className: "w-3.5 h-3.5", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", children: /* @__PURE__ */ jsx("path", { d: "M3 3l10 10M13 3L3 13" }) })
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsx("div", { className: "px-4 py-3 space-y-1", children: FEATURES.map((f) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-2.5 py-2", children: [
-            /* @__PURE__ */ jsx("span", { className: "mt-1 w-1.5 h-1.5 rounded-full shrink-0", style: { background: "#06b6d4" } }),
-            /* @__PURE__ */ jsxs("div", { children: [
-              /* @__PURE__ */ jsx("p", { className: "text-slate-800 font-semibold text-xs", children: f.title }),
-              /* @__PURE__ */ jsx("p", { className: "text-slate-500 text-xs leading-relaxed", children: f.desc })
-            ] })
-          ] }, f.title)) }),
-          /* @__PURE__ */ jsxs("div", { className: "px-4 pb-4 pt-1 flex flex-col gap-2", children: [
-            /* @__PURE__ */ jsx(
-              "a",
-              {
-                href: "https://epos.inbank.lt/lt/banguodontologijosklinika",
-                target: "_blank",
-                rel: "noopener noreferrer",
-                className: "block text-center text-white px-4 py-2.5 rounded-xl font-bold text-sm transition-all hover:opacity-90",
-                style: { background: "#06b6d4" },
-                children: "Teirautis dėl lizingo"
-              }
-            ),
-            /* @__PURE__ */ jsx(
-              "a",
-              {
-                href: "https://www.inbank.lt",
-                target: "_blank",
-                rel: "noopener noreferrer",
-                className: "block text-center border border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-800 px-4 py-2.5 rounded-xl font-semibold text-sm transition-all",
-                children: "Apie Inbank →"
-              }
-            )
-          ] })
-        ]
-      }
-    ) }),
-    /* @__PURE__ */ jsxs(
-      motion.button,
-      {
-        onClick: () => setOpen((o) => !o),
-        whileHover: { scale: 1.03 },
-        whileTap: { scale: 0.97 },
-        className: "flex items-center gap-2.5 bg-white border border-slate-200 hover:border-slate-300 pl-3 pr-4 py-2.5 rounded-2xl shadow-lg hover:shadow-xl transition-all",
-        children: [
-          /* @__PURE__ */ jsx(InbankLogo, { className: "h-4 w-auto" }),
-          /* @__PURE__ */ jsx("span", { className: "text-slate-500 text-xs", children: "|" }),
-          /* @__PURE__ */ jsx("span", { className: "text-slate-700 text-sm font-semibold whitespace-nowrap", children: "Mokėkite dalimis" }),
-          /* @__PURE__ */ jsx(
-            motion.svg,
-            {
-              animate: { rotate: open ? 180 : 0 },
-              transition: { duration: 0.2 },
-              viewBox: "0 0 16 16",
-              className: "w-3.5 h-3.5 text-slate-400",
-              fill: "none",
-              stroke: "currentColor",
-              strokeWidth: "2.5",
-              strokeLinecap: "round",
-              children: /* @__PURE__ */ jsx("path", { d: "M3 6l5 5 5-5" })
-            }
-          )
-        ]
-      }
-    )
-  ] });
+  return /* @__PURE__ */ jsxs(
+    "div",
+    {
+      className: "flex fixed bottom-[calc(max(env(safe-area-inset-bottom,0px),10px)_+_82px)] left-1/2 -translate-x-1/2 md:bottom-32 md:left-8 md:translate-x-0 z-40 flex-col items-center md:items-start gap-2",
+      style: { willChange: "transform" },
+      children: [
+        /* @__PURE__ */ jsx(AnimatePresence, { children: open && /* @__PURE__ */ jsxs(
+          motion.div,
+          {
+            initial: { opacity: 0, y: 10, scale: 0.97 },
+            animate: { opacity: 1, y: 0, scale: 1 },
+            exit: { opacity: 0, y: 10, scale: 0.97 },
+            transition: { duration: 0.2, ease: "easeOut" },
+            className: "w-72 rounded-2xl bg-white border border-slate-200 shadow-xl overflow-hidden",
+            children: [
+              /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-between px-4 py-3 border-b border-slate-100", children: [
+                /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3", children: [
+                  /* @__PURE__ */ jsx(InbankLogo, { className: "h-5 w-auto" }),
+                  /* @__PURE__ */ jsx("span", { className: "text-slate-300 text-xs", children: "|" }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-500 text-xs whitespace-nowrap", children: "Finansuokite gydymą dalimis" })
+                ] }),
+                /* @__PURE__ */ jsx(
+                  "button",
+                  {
+                    onClick: () => setOpen(false),
+                    className: "text-slate-400 hover:text-slate-600 transition-colors w-6 h-6 flex items-center justify-center rounded-lg hover:bg-slate-100 shrink-0 ml-2",
+                    "aria-label": "Uždaryti",
+                    children: /* @__PURE__ */ jsx("svg", { viewBox: "0 0 16 16", className: "w-3.5 h-3.5", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", children: /* @__PURE__ */ jsx("path", { d: "M3 3l10 10M13 3L3 13" }) })
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ jsx("div", { className: "px-4 py-3 space-y-1", children: FEATURES.map((f) => /* @__PURE__ */ jsxs("div", { className: "flex items-start gap-2.5 py-2", children: [
+                /* @__PURE__ */ jsx("span", { className: "mt-1 w-1.5 h-1.5 rounded-full shrink-0", style: { background: "#06b6d4" } }),
+                /* @__PURE__ */ jsxs("div", { children: [
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-800 font-semibold text-xs", children: f.title }),
+                  /* @__PURE__ */ jsx("p", { className: "text-slate-500 text-xs leading-relaxed", children: f.desc })
+                ] })
+              ] }, f.title)) }),
+              /* @__PURE__ */ jsxs("div", { className: "px-4 pb-4 pt-1 flex flex-col gap-2", children: [
+                /* @__PURE__ */ jsx(
+                  "a",
+                  {
+                    href: "https://epos.inbank.lt/lt/banguodontologijosklinika",
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                    className: "block text-center text-white px-4 py-2.5 rounded-xl font-bold text-sm transition-all hover:opacity-90",
+                    style: { background: "#06b6d4" },
+                    children: "Teirautis dėl lizingo"
+                  }
+                ),
+                /* @__PURE__ */ jsx(
+                  "a",
+                  {
+                    href: "https://www.inbank.lt",
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                    className: "block text-center border border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-800 px-4 py-2.5 rounded-xl font-semibold text-sm transition-all",
+                    children: "Apie Inbank →"
+                  }
+                )
+              ] })
+            ]
+          }
+        ) }),
+        /* @__PURE__ */ jsxs(
+          motion.button,
+          {
+            onClick: () => setOpen((o) => !o),
+            whileHover: { scale: 1.03 },
+            whileTap: { scale: 0.97 },
+            className: "flex items-center gap-2.5 bg-white border border-slate-200 hover:border-slate-300 pl-3 pr-4 py-2.5 rounded-2xl shadow-lg hover:shadow-xl transition-all",
+            children: [
+              /* @__PURE__ */ jsx(InbankLogo, { className: "h-4 w-auto" }),
+              /* @__PURE__ */ jsx("span", { className: "text-slate-500 text-xs", children: "|" }),
+              /* @__PURE__ */ jsx("span", { className: "text-slate-700 text-sm font-semibold whitespace-nowrap", children: "Mokėkite dalimis" }),
+              /* @__PURE__ */ jsx(
+                motion.svg,
+                {
+                  animate: { rotate: open ? 180 : 0 },
+                  transition: { duration: 0.2 },
+                  viewBox: "0 0 16 16",
+                  className: "w-3.5 h-3.5 text-slate-400",
+                  fill: "none",
+                  stroke: "currentColor",
+                  strokeWidth: "2.5",
+                  strokeLinecap: "round",
+                  children: /* @__PURE__ */ jsx("path", { d: "M3 6l5 5 5-5" })
+                }
+              )
+            ]
+          }
+        )
+      ]
+    }
+  );
 }
 function LvLayout() {
   return /* @__PURE__ */ jsx(LangProvider, { lang: "lv", children: /* @__PURE__ */ jsx(Outlet, {}) });
