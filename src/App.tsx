@@ -47,6 +47,16 @@ import BruksizmoDantuKapa from './pages/BruksizmoDantuKapa'
 import CirkonioKeramikosVainikelis from './pages/CirkonioKeramikosVainikelis'
 import VaikuProfilaktinisPatikrinimas from './pages/VaikuProfilaktinisPatikrinimas'
 import DantuHigienaVaikams from './pages/DantuHigienaVaikams'
+import TerapinisDantuGydymas from './pages/TerapinisDantuGydymas'
+import GydymasIconSistema from './pages/GydymasIconSistema'
+import DantuBalinimoKapos from './pages/DantuBalinimoKapos'
+import StraumannDantuImplantai from './pages/StraumannDantuImplantai'
+import DantuMikroprotezavimas from './pages/DantuMikroprotezavimas'
+import DantuUzklotai from './pages/DantuUzklotai'
+import IsimamiProtezai from './pages/IsimamiProtezai'
+import PulinioAtverimas from './pages/PulinioAtverimas'
+import DantenuUzdegimas from './pages/DantenuUzdegimas'
+import DantuFluoravimas from './pages/DantuFluoravimas'
 
 // Latvian pages
 import HomeLv from './pages/lv/HomeLv'
@@ -142,6 +152,16 @@ export default function App() {
           <Route path="/paslaugos/cirkonio-keramikos-vainikelis" element={<CirkonioKeramikosVainikelis />} />
           <Route path="/paslaugos/vaiku-profilaktinis-patikrinimas" element={<VaikuProfilaktinisPatikrinimas />} />
           <Route path="/paslaugos/dantu-higiena-vaikams" element={<DantuHigienaVaikams />} />
+          <Route path="/paslaugos/terapinis-dantu-gydymas" element={<TerapinisDantuGydymas />} />
+          <Route path="/paslaugos/gydymas-icon-sistema" element={<GydymasIconSistema />} />
+          <Route path="/paslaugos/dantu-balinimo-kapos" element={<DantuBalinimoKapos />} />
+          <Route path="/paslaugos/straumann-dantu-implantai" element={<StraumannDantuImplantai />} />
+          <Route path="/paslaugos/dantu-mikroprotezavimas" element={<DantuMikroprotezavimas />} />
+          <Route path="/paslaugos/dantu-uzklotai" element={<DantuUzklotai />} />
+          <Route path="/paslaugos/isimami-protezai" element={<IsimamiProtezai />} />
+          <Route path="/paslaugos/pulinio-atverimas" element={<PulinioAtverimas />} />
+          <Route path="/paslaugos/dantenu-uzdegimas-gingivitas" element={<DantenuUzdegimas />} />
+          <Route path="/paslaugos/dantu-fluoravimas" element={<DantuFluoravimas />} />
           <Route path="/draugai" element={<Draugai />} />
           <Route path="/musu-darbai" element={<MusuDarbai />} />
           <Route path="/straipsniai" element={<Straipsniai />} />

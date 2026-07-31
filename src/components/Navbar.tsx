@@ -21,6 +21,7 @@ const nav: NavItem[] = [
         to: '/paslaugos/dantu-implantacija/', label: 'Dantų implantacija',
         children: [
           { to: '/paslaugos/vienmomente-implantacija/', label: 'Vienmomentė implantacija' },
+          { to: '/paslaugos/straumann-dantu-implantai/', label: 'STRAUMANN dantų implantai' },
         ],
       },
       {
@@ -29,20 +30,34 @@ const nav: NavItem[] = [
           { to: '/paslaugos/dantu-karunieles/', label: 'Dantų karūnėlės (vainikėliai)' },
           { to: '/paslaugos/cirkonio-keramikos-vainikelis/', label: 'Cirkonio keramikos vainikėlis' },
           { to: '/paslaugos/dantu-tiltai/', label: 'Dantų tiltai' },
+          { to: '/paslaugos/dantu-mikroprotezavimas/', label: 'Dantų mikroprotezavimas' },
+          { to: '/paslaugos/dantu-uzklotai/', label: 'Dantų užklotai' },
+          { to: '/paslaugos/isimami-protezai/', label: 'Išimami protezai' },
         ],
       },
       { to: '/paslaugos/kompensacija-protezavimui/', label: 'Kompensacija protezavimui' },
       { to: '/paslaugos/dantu-taisymas-gydymas/', label: 'Dantų gydymas' },
       { to: '/paslaugos/dantu-tiesinimas/', label: 'Dantų tiesinimas' },
-      { to: '/paslaugos/burnos-higiena/', label: 'Burnos higiena' },
+      {
+        to: '/paslaugos/burnos-higiena/', label: 'Burnos higiena',
+        children: [
+          { to: '/paslaugos/dantu-fluoravimas/', label: 'Dantų fluoravimas' },
+        ],
+      },
       {
         to: '/paslaugos/burnos-chirurgija/', label: 'Burnos chirurgija',
         children: [
           { to: '/paslaugos/sinuso-pakelimas/', label: 'Sinuso pakėlimas' },
           { to: '/paslaugos/zandikaulio-kaulo-priauginimas/', label: 'Žandikaulio kaulo priauginimas' },
+          { to: '/paslaugos/pulinio-atverimas/', label: 'Pūlinio atvėrimas' },
         ],
       },
-      { to: '/paslaugos/dantu-balinimas/', label: 'Dantų balinimas' },
+      {
+        to: '/paslaugos/dantu-balinimas/', label: 'Dantų balinimas',
+        children: [
+          { to: '/paslaugos/dantu-balinimo-kapos/', label: 'Dantų balinimo kapos' },
+        ],
+      },
       { to: '/paslaugos/estetinis-plombavimas/', label: 'Estetinis plombavimas' },
       { to: '/paslaugos/dantu-plombavimas/', label: 'Dantų plombavimas' },
       {
@@ -60,10 +75,17 @@ const nav: NavItem[] = [
         ],
       },
       {
+        to: '/paslaugos/terapinis-dantu-gydymas/', label: 'Terapinis dantų gydymas',
+        children: [
+          { to: '/paslaugos/gydymas-icon-sistema/', label: 'Gydymas „ICON“ sistema' },
+        ],
+      },
+      {
         label: 'Kitos paslaugos',
         children: [
           { to: '/paslaugos/rentgenologiniai-tyrimai/', label: 'Rentgenologiniai tyrimai' },
           { to: '/paslaugos/bruksizmo-dantu-kapa/', label: 'Bruksizmo dantų kapa' },
+          { to: '/paslaugos/dantenu-uzdegimas-gingivitas/', label: 'Dantenų uždegimas (gingivitas)' },
         ],
       },
     ],

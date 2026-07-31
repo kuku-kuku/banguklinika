@@ -92,6 +92,11 @@ export default function Services() {
       to: '/paslaugos/vienmomente-implantacija',
     },
     {
+      id: 'straumann-dantu-implantai',
+      title: 'STRAUMANN dantų implantai',
+      to: '/paslaugos/straumann-dantu-implantai',
+    },
+    {
       id: 'skubi-pagalba',
       title: 'Skubi pagalba',
       to: '/paslaugos/skubi-pagalba',
@@ -117,6 +122,21 @@ export default function Services() {
       to: '/paslaugos/dantu-tiltai',
     },
     {
+      id: 'dantu-mikroprotezavimas',
+      title: 'Dantų mikroprotezavimas',
+      to: '/paslaugos/dantu-mikroprotezavimas',
+    },
+    {
+      id: 'dantu-uzklotai',
+      title: 'Dantų užklotai',
+      to: '/paslaugos/dantu-uzklotai',
+    },
+    {
+      id: 'isimami-protezai',
+      title: 'Išimami protezai',
+      to: '/paslaugos/isimami-protezai',
+    },
+    {
       id: 'kompensacija-protezavimui',
       title: 'Kompensacija protezavimui',
       to: '/paslaugos/kompensacija-protezavimui',
@@ -127,6 +147,16 @@ export default function Services() {
       to: '/paslaugos/dantu-taisymas-gydymas',
     },
     {
+      id: 'terapinis-dantu-gydymas',
+      title: 'Terapinis dantų gydymas',
+      to: '/paslaugos/terapinis-dantu-gydymas',
+    },
+    {
+      id: 'gydymas-icon-sistema',
+      title: 'Gydymas „ICON“ sistema',
+      to: '/paslaugos/gydymas-icon-sistema',
+    },
+    {
       id: 'dantu-tiesinimas',
       title: 'Dantų tiesinimas',
       to: '/paslaugos/dantu-tiesinimas',
@@ -135,6 +165,11 @@ export default function Services() {
       id: 'burnos-higiena',
       title: 'Burnos higiena',
       to: '/paslaugos/burnos-higiena',
+    },
+    {
+      id: 'dantu-fluoravimas',
+      title: 'Dantų fluoravimas',
+      to: '/paslaugos/dantu-fluoravimas',
     },
     {
       id: 'burnos-chirurgija',
@@ -152,9 +187,19 @@ export default function Services() {
       to: '/paslaugos/zandikaulio-kaulo-priauginimas',
     },
     {
+      id: 'pulinio-atverimas',
+      title: 'Pūlinio atvėrimas',
+      to: '/paslaugos/pulinio-atverimas',
+    },
+    {
       id: 'dantu-balinimas',
       title: 'Dantų balinimas',
       to: '/paslaugos/dantu-balinimas',
+    },
+    {
+      id: 'dantu-balinimo-kapos',
+      title: 'Dantų balinimo kapos',
+      to: '/paslaugos/dantu-balinimo-kapos',
     },
     {
       id: 'estetinis-plombavimas',
@@ -205,6 +250,11 @@ export default function Services() {
       id: 'bruksizmo-dantu-kapa',
       title: 'Bruksizmo dantų kapa',
       to: '/paslaugos/bruksizmo-dantu-kapa',
+    },
+    {
+      id: 'dantenu-uzdegimas-gingivitas',
+      title: 'Dantenų uždegimas (gingivitas)',
+      to: '/paslaugos/dantenu-uzdegimas-gingivitas',
     },
   ], [])
 
