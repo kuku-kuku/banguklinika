@@ -133,10 +133,7 @@ export default function TerapinisDantuGydymas() {
                     <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Terapinis dantų gydymas</h3>
                     <div className="divide-y divide-slate-100">
                       {[
-                        ['Konsultacija ir diagnostika', 'nuo 30 €'],
-                        ['Dantų plombavimas (kompozicine medžiaga)', 'nuo 80 €'],
-                        ['Senos plombos keitimas', 'nuo 90 €'],
-                        ['Nuskilusio danties atkūrimas', 'nuo 100 €'],
+                        ['Terapinis dantų (karieso) gydymas', '110–170 €'],
                       ].map(([name, price], i) => (
                         <div key={i} className="flex justify-between items-center py-2.5">
                           <span className="text-slate-600 text-sm">{name}</span>
