@@ -295,9 +295,23 @@ export default function StraipsnisPage() {
                         />
                       </div>
                     )}
-                    {section.p.map((para, j) => (
-                      <p key={j}>{para}</p>
-                    ))}
+                    {section.blocks
+                      ? section.blocks.map((block, j) => {
+                          if (block.type === 'p') return <p key={j}>{block.text}</p>
+                          if (block.type === 'ul') return (
+                            <ul key={j} className="list-disc pl-6 mb-4 space-y-1.5 text-slate-600 leading-relaxed">
+                              {block.items.map((it, k) => <li key={k}>{it}</li>)}
+                            </ul>
+                          )
+                          return (
+                            <ol key={j} className="list-decimal pl-6 mb-4 space-y-1.5 text-slate-600 leading-relaxed">
+                              {block.items.map((it, k) => <li key={k}>{it}</li>)}
+                            </ol>
+                          )
+                        })
+                      : section.p.map((para, j) => (
+                          <p key={j}>{para}</p>
+                        ))}
                   </motion.div>
                 ))}
 
