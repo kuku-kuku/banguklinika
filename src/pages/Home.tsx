@@ -157,6 +157,8 @@ function TeamCarousel() {
                     alt={member.name}
                     className="w-full h-full object-cover object-top"
                     draggable={false}
+                    loading="lazy"
+                    decoding="async"
                   />
                   {/* Name overlay on active card */}
                   <AnimatePresence>
@@ -467,6 +469,7 @@ export default function Home() {
                 >
                   <div className="relative overflow-hidden" style={{ aspectRatio: '16/9' }}>
                     <img src={s.image} alt={s.title}
+                      loading="lazy" decoding="async"
                       className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-105" />
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400"
                       style={{ background: `linear-gradient(to top, ${C.deepTeal}70, transparent)` }} />
@@ -539,6 +542,7 @@ export default function Home() {
                 >
                   <div className="relative aspect-[3/2] overflow-hidden">
                     <img src={WHY_IMAGES[i]} alt={f.t}
+                      loading="lazy" decoding="async"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${C.deepTeal}55, transparent)` }} />
                   </div>
@@ -568,6 +572,8 @@ export default function Home() {
                   alt=""
                   aria-hidden
                   draggable={false}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover object-right"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 md:via-white/80 to-transparent" />
@@ -638,6 +644,8 @@ export default function Home() {
                     <img
                       src={post.coverImage}
                       alt={post.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div
