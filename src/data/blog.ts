@@ -31,7 +31,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'dantu-griezimas-nakti-kada-padeda-kapos',
     title: 'Dantų griežimas naktį: kada padeda kapos?',
-    date: '2026-10-05',
+    date: '2026-08-04',
     category: 'Dantų gydymas',
     coverImage: 'https://images.unsplash.com/photo-1777793636393-a0fec488f3fb?w=1200&q=80&fit=crop&auto=format',
     readTime: 12,
@@ -189,7 +189,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'kaip-pasalinti-dantu-akmenis',
     title: 'Kaip pašalinti dantų akmenis?',
-    date: '2026-09-28',
+    date: '2026-08-01',
     category: 'Burnos higiena',
     coverImage: '/blog/kaip-pasalinti-dantu-akmenis.jpg',
     readTime: 12,
@@ -337,7 +337,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'kariesas-be-grezimo-ka-galima-atlikti-klinikoje-ir-namuose',
     title: 'Kariesas be gręžimo: ką galima atlikti klinikoje ir namuose?',
-    date: '2026-09-21',
+    date: '2026-07-26',
     category: 'Dantų gydymas',
     coverImage: '/blog/kariesas-be-grezimo.jpg',
     readTime: 13,
@@ -589,7 +589,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'kaip-saugiai-balinti-dantis-namuose',
     title: 'Kaip saugiai balinti dantis namuose?',
-    date: '2026-09-14',
+    date: '2026-07-24',
     category: 'Dantų balinimas',
     coverImage: '/blog/kaip-saugiai-balinti-dantis-namuose.jpg',
     readTime: 12,
@@ -772,7 +772,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'ka-daryti-kai-susidaro-danties-pulinys',
     title: 'Ką daryti, kai susidaro danties pūlinys?',
-    date: '2026-09-07',
+    date: '2026-07-17',
     category: 'Skubi pagalba',
     coverImage: 'https://images.unsplash.com/photo-1664530837411-0c2e8a3d4dca?w=1200&q=80&fit=crop&auto=format',
     readTime: 10,
@@ -932,7 +932,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'kaulo-priauginimas-ka-butina-zinoti-pries-operacija',
     title: 'Kaulo priauginimas: ką būtina žinoti prieš operaciją?',
-    date: '2026-08-31',
+    date: '2026-07-15',
     category: 'Burnos chirurgija',
     coverImage: '/blog/kaulo-priauginimas.jpg',
     readTime: 11,
@@ -1058,7 +1058,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'kam-kompensuojami-dantu-implantai',
     title: 'Kam kompensuojami dantų implantai?',
-    date: '2026-08-24',
+    date: '2026-07-11',
     category: 'Dantų implantacija',
     coverImage: 'https://images.unsplash.com/photo-1643386281892-f8417a49130e?w=1200&q=80&fit=crop&auto=format',
     readTime: 11,
@@ -1195,7 +1195,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'kiek-trunka-burnos-higiena',
     title: 'Kiek trunka burnos higiena?',
-    date: '2026-08-17',
+    date: '2026-07-08',
     category: 'Burnos higiena',
     coverImage: 'https://images.unsplash.com/photo-1663755489920-5e09f66d011a?w=1200&q=80&fit=crop&auto=format',
     readTime: 10,
@@ -1303,7 +1303,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'kiek-laiko-skauda-danti-po-kanalu-valymo',
     title: 'Kiek laiko skauda dantį po kanalų valymo?',
-    date: '2026-08-10',
+    date: '2026-07-03',
     category: 'Endodontinis gydymas',
     coverImage: '/blog/kiek-laiko-skauda-danti-po-kanalu-valymo.jpg',
     readTime: 9,
@@ -1421,7 +1421,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'ka-daryti-kai-vaikui-skauda-danti',
     title: 'Ką daryti, kai vaikui skauda dantį?',
-    date: '2026-08-03',
+    date: '2026-07-03',
     category: 'Vaikų odontologija',
     coverImage: '/blog/vaikui-skauda-danti.jpg',
     readTime: 9,
