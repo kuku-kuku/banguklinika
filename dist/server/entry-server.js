@@ -4865,7 +4865,7 @@ function Home() {
           animate: { opacity: 1, scale: 1 },
           transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] },
           children: [
-            /* @__PURE__ */ jsx("div", { className: "absolute -inset-3 rounded-[3rem] blur-3xl opacity-15 pointer-events-none", style: { background: C$2.teal } }),
+            /* @__PURE__ */ jsx("div", { className: "absolute -inset-3 rounded-[3rem] opacity-15 pointer-events-none", style: { background: `radial-gradient(closest-side, ${C$2.teal}55, transparent 70%)` } }),
             /* @__PURE__ */ jsxs("div", { className: "relative aspect-[1.1/1] lg:aspect-[0.95/1] lg:max-h-[70vh] rounded-[2.5rem] overflow-hidden shadow-2xl", style: { outline: `1px solid ${C$2.charcoal}12` }, children: [
               /* @__PURE__ */ jsx("video", { ref: heroVideoRef, muted: true, loop: true, playsInline: true, className: "w-full h-full object-cover", children: /* @__PURE__ */ jsx("source", { src: "/hero-video.mp4", type: "video/mp4" }) }),
               /* @__PURE__ */ jsx("div", { className: "absolute inset-0 pointer-events-none", style: { background: `linear-gradient(160deg, transparent 60%, ${C$2.deepTeal}18)` } })
@@ -4884,7 +4884,7 @@ function Home() {
       /* @__PURE__ */ jsx(TeamCarousel, {})
     ] }) }),
     /* @__PURE__ */ jsx(SectionDivider$1, {}),
-    /* @__PURE__ */ jsx("section", { className: "py-2 pb-8 md:pb-12", children: /* @__PURE__ */ jsxs("div", { className: W2, children: [
+    /* @__PURE__ */ jsx("section", { className: "py-2 pb-8 md:pb-12 cv-auto", children: /* @__PURE__ */ jsxs("div", { className: W2, children: [
       /* @__PURE__ */ jsx(AnimatedSection, { children: /* @__PURE__ */ jsxs("div", { className: "mb-5", children: [
         /* @__PURE__ */ jsx(EyeBrow, { children: "Paslaugos" }),
         /* @__PURE__ */ jsx("h2", { className: "text-3xl sm:text-4xl font-bold tracking-tight", style: { color: C$2.deepTeal }, children: "Populiariausios paslaugos" })
@@ -4968,7 +4968,7 @@ function Home() {
       /* @__PURE__ */ jsx(ReviewsCarousel, { hideTitle: true })
     ] }),
     /* @__PURE__ */ jsx(SectionDivider$1, {}),
-    /* @__PURE__ */ jsx("section", { className: "py-2 pb-8 md:pb-12", children: /* @__PURE__ */ jsxs("div", { className: W2, children: [
+    /* @__PURE__ */ jsx("section", { className: "py-2 pb-8 md:pb-12 cv-auto", children: /* @__PURE__ */ jsxs("div", { className: W2, children: [
       /* @__PURE__ */ jsx(AnimatedSection, { children: /* @__PURE__ */ jsx("div", { className: "flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-3", children: /* @__PURE__ */ jsxs("div", { children: [
         /* @__PURE__ */ jsx(EyeBrow, { children: "Kodėl mes" }),
         /* @__PURE__ */ jsxs("h2", { className: "text-3xl sm:text-4xl font-bold tracking-tight", style: { color: C$2.deepTeal }, children: [
@@ -5005,7 +5005,7 @@ function Home() {
       ) }, i)) })
     ] }) }),
     /* @__PURE__ */ jsx(SectionDivider$1, {}),
-    /* @__PURE__ */ jsx("section", { className: "py-2 pb-8 md:pb-12", children: /* @__PURE__ */ jsx("div", { className: W2, children: /* @__PURE__ */ jsx(AnimatedSection, { children: /* @__PURE__ */ jsxs("div", { className: "relative overflow-hidden rounded-[2rem] bg-white border border-slate-100 shadow-2xl min-h-[320px] md:min-h-[380px] flex items-center", children: [
+    /* @__PURE__ */ jsx("section", { className: "py-2 pb-8 md:pb-12 cv-auto", children: /* @__PURE__ */ jsx("div", { className: W2, children: /* @__PURE__ */ jsx(AnimatedSection, { children: /* @__PURE__ */ jsxs("div", { className: "relative overflow-hidden rounded-[2rem] bg-white border border-slate-100 shadow-2xl min-h-[320px] md:min-h-[380px] flex items-center", children: [
       /* @__PURE__ */ jsxs("div", { className: "absolute inset-0 z-0", children: [
         /* @__PURE__ */ jsx(
           "img",
@@ -5039,7 +5039,7 @@ function Home() {
       ] })
     ] }) }) }) }),
     /* @__PURE__ */ jsx(SectionDivider$1, {}),
-    /* @__PURE__ */ jsx("section", { className: "py-2 pb-8 md:pb-12", children: /* @__PURE__ */ jsxs("div", { className: W2, children: [
+    /* @__PURE__ */ jsx("section", { className: "py-2 pb-8 md:pb-12 cv-auto", children: /* @__PURE__ */ jsxs("div", { className: W2, children: [
       /* @__PURE__ */ jsx(AnimatedSection, { children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6", children: [
         /* @__PURE__ */ jsxs("div", { children: [
           /* @__PURE__ */ jsx("p", { className: "text-xs font-bold tracking-[0.2em] uppercase mb-2", style: { color: C$2.teal }, children: "Iš mūsų blogo" }),
@@ -5128,7 +5128,7 @@ function Home() {
       ) })
     ] }) }),
     /* @__PURE__ */ jsx(SectionDivider$1, {}),
-    /* @__PURE__ */ jsx("section", { className: "py-2 pb-10 md:pb-14", children: /* @__PURE__ */ jsxs("div", { className: W2, children: [
+    /* @__PURE__ */ jsx("section", { className: "py-2 pb-10 md:pb-14 cv-auto", children: /* @__PURE__ */ jsxs("div", { className: W2, children: [
       /* @__PURE__ */ jsx(AnimatedSection, { children: /* @__PURE__ */ jsxs("div", { className: "max-w-3xl mb-5", children: [
         /* @__PURE__ */ jsx(EyeBrow, { children: "DUK" }),
         /* @__PURE__ */ jsx("h2", { className: "text-3xl lg:text-4xl font-extrabold tracking-tight", style: { color: C$2.deepTeal }, children: "Dažniausiai užduodami klausimai" }),

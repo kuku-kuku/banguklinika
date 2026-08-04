@@ -225,6 +225,15 @@
   bottom: max(calc(90px + env(safe-area-inset-bottom, 0px)), 100px);
 }
 
+/* ===== SCROLL PERF ===== */
+/* Skip painting sections that are offscreen. `contain-intrinsic-size` gives
+   the browser a placeholder height so scrollbars and layout are stable
+   before the section renders. Only applied to blocks with .cv-auto. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
+}
+
 /* ===== BLOG ARTICLE PROSE ===== */
 .prose-article h2 {
   font-size: 1.35rem;

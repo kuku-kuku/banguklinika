@@ -422,7 +422,9 @@ export default function Home() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
           >
-            <div className="absolute -inset-3 rounded-[3rem] blur-3xl opacity-15 pointer-events-none" style={{ background: C.teal }} />
+            {/* Static teal glow — removed 64px blur that re-composited every
+                scroll frame on Mac retina behind the autoplaying video. */}
+            <div className="absolute -inset-3 rounded-[3rem] opacity-15 pointer-events-none" style={{ background: `radial-gradient(closest-side, ${C.teal}55, transparent 70%)` }} />
             <div className="relative aspect-[1.1/1] lg:aspect-[0.95/1] lg:max-h-[70vh] rounded-[2.5rem] overflow-hidden shadow-2xl" style={{ outline: `1px solid ${C.charcoal}12` }}>
               <video ref={heroVideoRef} muted loop playsInline className="w-full h-full object-cover">
                 <source src="/hero-video.mp4" type="video/mp4" />
@@ -456,7 +458,7 @@ export default function Home() {
       <SectionDivider />
 
       {/* ══ POPULAR SERVICES ══════════════════════════════════════════════ */}
-      <section className="py-2 pb-8 md:pb-12">
+      <section className="py-2 pb-8 md:pb-12 cv-auto">
         <div className={W}>
           <AnimatedSection>
             <div className="mb-5">
@@ -533,7 +535,7 @@ export default function Home() {
       <SectionDivider />
 
       {/* ══ WHY CHOOSE ════════════════════════════════════════════════════ */}
-      <section className="py-2 pb-8 md:pb-12">
+      <section className="py-2 pb-8 md:pb-12 cv-auto">
         <div className={W}>
           <AnimatedSection>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-3">
@@ -575,7 +577,7 @@ export default function Home() {
       <SectionDivider />
 
       {/* ══ FREE CONSULTATION CTA ═════════════════════════════════════════ */}
-      <section className="py-2 pb-8 md:pb-12">
+      <section className="py-2 pb-8 md:pb-12 cv-auto">
         <div className={W}>
           <AnimatedSection>
             <div className="relative overflow-hidden rounded-[2rem] bg-white border border-slate-100 shadow-2xl min-h-[320px] md:min-h-[380px] flex items-center">
@@ -617,7 +619,7 @@ export default function Home() {
       <SectionDivider />
 
       {/* ══ BLOG PREVIEW ══════════════════════════════════════════════════ */}
-      <section className="py-2 pb-8 md:pb-12">
+      <section className="py-2 pb-8 md:pb-12 cv-auto">
         <div className={W}>
           <AnimatedSection>
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
@@ -704,7 +706,7 @@ export default function Home() {
       <SectionDivider />
 
       {/* ══ FAQ ═══════════════════════════════════════════════════════════ */}
-      <section className="py-2 pb-10 md:pb-14">
+      <section className="py-2 pb-10 md:pb-14 cv-auto">
         <div className={W}>
           <AnimatedSection>
             <div className="max-w-3xl mb-5">
