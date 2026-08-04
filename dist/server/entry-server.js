@@ -4530,17 +4530,27 @@ function TeamCarousel() {
   const [active, setActive] = useState(0);
   const n = TEAM.length;
   const intervalRef = useRef(null);
+  const stageRef = useRef(null);
+  const [inView, setInView] = useState(true);
   const go = useCallback((dir) => {
     setActive((prev) => (prev + dir + n) % n);
   }, [n]);
   useEffect(() => {
+    if (!stageRef.current) return;
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.15 });
+    io.observe(stageRef.current);
+    return () => io.disconnect();
+  }, []);
+  useEffect(() => {
+    if (!inView) return;
     intervalRef.current = setInterval(() => go(1), 4e3);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [go]);
+  }, [go, inView]);
   const resetTimer = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
+    if (!inView) return;
     intervalRef.current = setInterval(() => go(1), 4e3);
   };
   const handleGo = (dir) => {
@@ -4558,7 +4568,7 @@ function TeamCarousel() {
     return d;
   };
   return /* @__PURE__ */ jsxs("div", { className: "relative select-none", children: [
-    /* @__PURE__ */ jsx("div", { className: "relative h-[640px] sm:h-[760px] flex items-center justify-center overflow-hidden", style: { perspective: "1100px" }, children: TEAM.map((member, i) => {
+    /* @__PURE__ */ jsx("div", { ref: stageRef, className: "relative h-[640px] sm:h-[760px] flex items-center justify-center overflow-hidden", style: { perspective: "1100px" }, children: TEAM.map((member, i) => {
       const d = getDist(i);
       const abs = Math.abs(d);
       if (abs > 2) return null;
@@ -4571,9 +4581,9 @@ function TeamCarousel() {
         motion.div,
         {
           className: "absolute",
-          style: { zIndex: z, cursor: abs > 0 ? "pointer" : "default" },
+          style: { zIndex: z, cursor: abs > 0 ? "pointer" : "default", willChange: "transform, opacity" },
           animate: { x, scale, opacity, rotateY: rotY },
-          transition: { type: "spring", stiffness: 220, damping: 30 },
+          transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
           onClick: () => abs > 0 && handleSelect(i),
           children: /* @__PURE__ */ jsx(
             "div",
@@ -6746,6 +6756,9 @@ function getLenis() {
 function useLenis() {
   useEffect(() => {
     if (typeof window === "undefined") return;
+    const isTouch = matchMedia("(hover: none)").matches;
+    const prefersReduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isTouch || prefersReduced) return;
     const lenis = new Lenis({
       duration: 0.75,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -6761,15 +6774,23 @@ function useLenis() {
       rafId = requestAnimationFrame(raf);
     }
     rafId = requestAnimationFrame(raf);
-    const resizeObserver = new ResizeObserver(() => lenis.resize());
-    resizeObserver.observe(document.documentElement);
+    let resizeTimer = null;
+    function scheduleResize() {
+      if (resizeTimer != null) return;
+      resizeTimer = window.setTimeout(() => {
+        resizeTimer = null;
+        lenis.resize();
+      }, 120);
+    }
+    const resizeObserver = new ResizeObserver(scheduleResize);
     resizeObserver.observe(document.body);
     function onImageLoad() {
-      lenis.resize();
+      scheduleResize();
     }
     document.addEventListener("load", onImageLoad, true);
     return () => {
       cancelAnimationFrame(rafId);
+      if (resizeTimer != null) clearTimeout(resizeTimer);
       resizeObserver.disconnect();
       document.removeEventListener("load", onImageLoad, true);
       lenis.destroy();

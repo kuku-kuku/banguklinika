@@ -90,19 +90,32 @@ function TeamCarousel() {
   const [active, setActive] = useState(0)
   const n = TEAM.length
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const stageRef = useRef<HTMLDivElement>(null)
+  const [inView, setInView] = useState(true)
 
   const go = useCallback((dir: 1 | -1) => {
     setActive(prev => (prev + dir + n) % n)
   }, [n])
 
-  // auto-advance
+  // Pause auto-advance when the carousel is off-screen — otherwise Framer
+  // Motion spring animations keep running rAF while the user is scrolling
+  // through the rest of the page, adding main-thread work for nothing.
   useEffect(() => {
+    if (!stageRef.current) return
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.15 })
+    io.observe(stageRef.current)
+    return () => io.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!inView) return
     intervalRef.current = setInterval(() => go(1), 4000)
     return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
-  }, [go])
+  }, [go, inView])
 
   const resetTimer = () => {
     if (intervalRef.current) clearInterval(intervalRef.current)
+    if (!inView) return
     intervalRef.current = setInterval(() => go(1), 4000)
   }
 
@@ -120,7 +133,7 @@ function TeamCarousel() {
   return (
     <div className="relative select-none">
       {/* Cards stage */}
-      <div className="relative h-[640px] sm:h-[760px] flex items-center justify-center overflow-hidden" style={{ perspective: '1100px' }}>
+      <div ref={stageRef} className="relative h-[640px] sm:h-[760px] flex items-center justify-center overflow-hidden" style={{ perspective: '1100px' }}>
         {TEAM.map((member, i) => {
           const d = getDist(i)
           const abs = Math.abs(d)
@@ -136,9 +149,9 @@ function TeamCarousel() {
             <motion.div
               key={member.name}
               className="absolute"
-              style={{ zIndex: z, cursor: abs > 0 ? 'pointer' : 'default' }}
+              style={{ zIndex: z, cursor: abs > 0 ? 'pointer' : 'default', willChange: 'transform, opacity' }}
               animate={{ x, scale, opacity, rotateY: rotY }}
-              transition={{ type: 'spring', stiffness: 220, damping: 30 }}
+              transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
               onClick={() => abs > 0 && handleSelect(i)}
             >
               <div
