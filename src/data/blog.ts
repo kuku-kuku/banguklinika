@@ -191,7 +191,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Kaip pašalinti dantų akmenis?',
     date: '2026-09-28',
     category: 'Burnos higiena',
-    coverImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1200&q=80&fit=crop&auto=format',
+    coverImage: '/blog/kaip-pasalinti-dantu-akmenis.jpg',
     readTime: 12,
     sections: [
       {
@@ -339,7 +339,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Kariesas be gręžimo: ką galima atlikti klinikoje ir namuose?',
     date: '2026-09-21',
     category: 'Dantų gydymas',
-    coverImage: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=1200&q=80&fit=crop&auto=format',
+    coverImage: '/blog/kariesas-be-grezimo.jpg',
     readTime: 13,
     sections: [
       {
@@ -591,7 +591,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Kaip saugiai balinti dantis namuose?',
     date: '2026-09-14',
     category: 'Dantų balinimas',
-    coverImage: 'https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=1200&q=80&fit=crop&auto=format',
+    coverImage: '/blog/kaip-saugiai-balinti-dantis-namuose.jpg',
     readTime: 12,
     sections: [
       {
@@ -934,7 +934,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Kaulo priauginimas: ką būtina žinoti prieš operaciją?',
     date: '2026-08-31',
     category: 'Burnos chirurgija',
-    coverImage: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&q=80&fit=crop&auto=format',
+    coverImage: '/blog/kaulo-priauginimas.jpg',
     readTime: 11,
     sections: [
       {
@@ -1305,7 +1305,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Kiek laiko skauda dantį po kanalų valymo?',
     date: '2026-08-10',
     category: 'Endodontinis gydymas',
-    coverImage: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=1200&q=80&fit=crop&auto=format',
+    coverImage: '/blog/kiek-laiko-skauda-danti-po-kanalu-valymo.jpg',
     readTime: 9,
     sections: [
       {
@@ -1423,7 +1423,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Ką daryti, kai vaikui skauda dantį?',
     date: '2026-08-03',
     category: 'Vaikų odontologija',
-    coverImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1200&q=80&fit=crop&auto=format',
+    coverImage: '/blog/vaikui-skauda-danti.jpg',
     readTime: 9,
     sections: [
       {
