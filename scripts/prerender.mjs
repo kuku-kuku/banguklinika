@@ -323,6 +323,56 @@ const pages = [
     description: "Danties skausmas dažnai užklumpa netikėtai. Ką daryti, kai skauda dantį, kaip atskirti skubią situaciją ir kur kreiptis – atsakome į dažniausius klausimus.",
   },
   {
+    route: "/straipsniai/ka-daryti-kai-vaikui-skauda-danti",
+    title: "Ką daryti, kai vaikui skauda dantį? | Bangų klinika",
+    description: "Kai vaikui skauda dantį, svarbu žinoti, kaip padėti iki vizito ir kada reikia skubios pagalbos. Odontologų patarimai tėvams iš Bangų klinikos Klaipėdoje.",
+  },
+  {
+    route: "/straipsniai/kiek-laiko-skauda-danti-po-kanalu-valymo",
+    title: "Kiek laiko skauda dantį po kanalų valymo? | Bangų klinika",
+    description: "Kiek laiko skauda dantį po kanalų valymo, kada tai normali gijimo dalis ir kada reikia kreiptis į odontologą – paaiškina Bangų klinikos specialistai Klaipėdoje.",
+  },
+  {
+    route: "/straipsniai/kiek-trunka-burnos-higiena",
+    title: "Kiek trunka burnos higiena? | Bangų klinika",
+    description: "Kiek trunka profesionali burnos higiena, kas veikia procedūros laiką ir kada gali prireikti kelių vizitų – paaiškina Bangų klinikos specialistai Klaipėdoje.",
+  },
+  {
+    route: "/straipsniai/kam-kompensuojami-dantu-implantai",
+    title: "Kam kompensuojami dantų implantai? | Bangų klinika",
+    description: "Kam ir kada priklauso kompensacija už dantų implantus bei protezavimą Lietuvoje – kompensuojamos sumos ir sąlygos aiškiai paaiškinamos Bangų klinikoje Klaipėdoje.",
+  },
+  {
+    route: "/straipsniai/kaulo-priauginimas-ka-butina-zinoti-pries-operacija",
+    title: "Kaulo priauginimas: ką būtina žinoti prieš operaciją? | Bangų klinika",
+    description: "Kaip vyksta kaulo priauginimas, kiek trunka gijimas ir kokie simptomai gali rodyti komplikaciją – paaiškina Bangų klinikos specialistai Klaipėdoje.",
+  },
+  {
+    route: "/straipsniai/ka-daryti-kai-susidaro-danties-pulinys",
+    title: "Ką daryti, kai susidaro danties pūlinys? | Bangų klinika",
+    description: "Danties pūlinys reikalauja odontologo pagalbos. Kaip atpažinti simptomus, kaip palengvinti skausmą iki vizito ir kada būtina skubi pagalba – Bangų klinika Klaipėdoje.",
+  },
+  {
+    route: "/straipsniai/kaip-saugiai-balinti-dantis-namuose",
+    title: "Kaip saugiai balinti dantis namuose? | Bangų klinika",
+    description: "Kaip saugiai balinti dantis namuose, kurie metodai iš tiesų veikia ir kokių priemonių reikėtų vengti – paaiškina Bangų klinikos specialistai Klaipėdoje.",
+  },
+  {
+    route: "/straipsniai/kariesas-be-grezimo-ka-galima-atlikti-klinikoje-ir-namuose",
+    title: "Kariesas be gręžimo: ką galima atlikti klinikoje ir namuose? | Bangų klinika",
+    description: "Kada karieso gydymas be gręžimo galimas, kokie metodai taikomi klinikoje ir ką galima daryti namuose – paaiškina Bangų klinikos specialistai Klaipėdoje.",
+  },
+  {
+    route: "/straipsniai/kaip-pasalinti-dantu-akmenis",
+    title: "Kaip pašalinti dantų akmenis? | Bangų klinika",
+    description: "Kodėl susidaro dantų akmenys, kodėl jų negalima šalinti namuose ir kaip vyksta profesionali procedūra – paaiškina Bangų klinikos specialistai Klaipėdoje.",
+  },
+  {
+    route: "/straipsniai/dantu-griezimas-nakti-kada-padeda-kapos",
+    title: "Dantų griežimas naktį: kada padeda kapos? | Bangų klinika",
+    description: "Kaip atpažinti dantų bruksizmą, kokias problemas jis gali sukelti ir kada padeda apsauginė kapa – paaiškina Bangų klinikos specialistai Klaipėdoje.",
+  },
+  {
     route: "/straipsniai/ka-daryti-kai-skauda-protini-danti",
     title: "Ką daryti, kai skauda protinį dantį? | Bangų klinika",
     description: "Protinio danties skausmas – viena dažniausių priežasčių, dėl kurių kreipiamasi į odontologą. Sužinokite priežastis, ką daryti ir kada būtina kreiptis į gydytoją.",
