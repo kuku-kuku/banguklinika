@@ -35,21 +35,82 @@ export const navLv = [
     to: '/lv/pakalpojumi',
     label: 'Pakalpojumi',
     dropdown: [
-      { to: '/lv/pakalpojumi/zobu-implantacija',  label: 'Zobu implantācija' },
-      { to: '/lv/pakalpojumi/zobu-protezesana',   label: 'Zobu protezēšana' },
-      { to: '/lv/pakalpojumi/zobu-arstnieciba',   label: 'Zobu ārstniecība' },
-      { to: '/lv/pakalpojumi/zobu-izlinesana',    label: 'Zobu izlīdzināšana' },
-      { to: '/lv/pakalpojumi/mutes-higiena',      label: 'Mutes higiēna' },
-      { to: '/lv/pakalpojumi/mutes-hirurgija',    label: 'Mutes ķirurģija' },
-      { to: '/lv/pakalpojumi/zobu-balinesana',    label: 'Zobu balināšana' },
+      { to: '/lv/pakalpojumi/neatliekama-palidziba', label: 'Neatliekamā palīdzība' },
+      {
+        to: '/lv/pakalpojumi/zobu-implantacija', label: 'Zobu implantācija',
+        children: [
+          { to: '/lv/pakalpojumi/tulitejas-implantacija', label: 'Tūlītējā implantācija' },
+          { to: '/lv/pakalpojumi/straumann-implanti',     label: 'STRAUMANN zobu implanti' },
+        ],
+      },
+      {
+        to: '/lv/pakalpojumi/zobu-protezesana', label: 'Zobu protezēšana',
+        children: [
+          { to: '/lv/pakalpojumi/zobu-kroniti',                  label: 'Zobu kronīši' },
+          { to: '/lv/pakalpojumi/cirkonija-keramikas-kronitis',  label: 'Cirkonija keramikas kronītis' },
+          { to: '/lv/pakalpojumi/zobu-tilti',                    label: 'Zobu tilti' },
+          { to: '/lv/pakalpojumi/mikroprotezesana',              label: 'Zobu mikroprotezēšana' },
+          { to: '/lv/pakalpojumi/zobu-uzlikas',                  label: 'Zobu uzlikas' },
+          { to: '/lv/pakalpojumi/iznemamas-protezes',            label: 'Izņemamās protēzes' },
+        ],
+      },
+      { to: '/lv/pakalpojumi/protezesanas-kompensacija', label: 'Protezēšanas kompensācija' },
+      { to: '/lv/pakalpojumi/zobu-arstnieciba',          label: 'Zobu ārstniecība' },
+      { to: '/lv/pakalpojumi/zobu-izlinesana',           label: 'Zobu izlīdzināšana' },
+      {
+        to: '/lv/pakalpojumi/mutes-higiena', label: 'Mutes higiēna',
+        children: [
+          { to: '/lv/pakalpojumi/zobu-fluoresana', label: 'Zobu fluorēšana' },
+        ],
+      },
+      {
+        to: '/lv/pakalpojumi/mutes-hirurgija', label: 'Mutes ķirurģija',
+        children: [
+          { to: '/lv/pakalpojumi/sinusa-pacelsana',        label: 'Sinusa pacelšana' },
+          { to: '/lv/pakalpojumi/zoklakaula-augmentacija', label: 'Žokļa kaula augmentācija' },
+          { to: '/lv/pakalpojumi/abscesa-atversana',       label: 'Abscesa atvēršana' },
+        ],
+      },
+      {
+        to: '/lv/pakalpojumi/zobu-balinesana', label: 'Zobu balināšana',
+        children: [
+          { to: '/lv/pakalpojumi/zobu-balinesanas-kapas', label: 'Zobu balināšanas kapas' },
+        ],
+      },
       { to: '/lv/pakalpojumi/estetiska-plombana', label: 'Estētiskā plombēšana' },
       { to: '/lv/pakalpojumi/zobu-plombana',      label: 'Zobu plombēšana' },
-      { to: '/lv/pakalpojumi/zobu-ekstrakcija',   label: 'Zobu ekstrakcija' },
-      { to: '/lv/pakalpojumi/endodontija',        label: 'Endodontija' },
-      { to: '/lv/pakalpojumi/bernu-odontologija', label: 'Bērnu zobārstniecība' },
+      {
+        to: '/lv/pakalpojumi/zobu-ekstrakcija', label: 'Zobu ekstrakcija',
+        children: [
+          { to: '/lv/pakalpojumi/gudribas-zobu-izvilksana', label: 'Gudrības zobu izvilkšana' },
+        ],
+      },
+      { to: '/lv/pakalpojumi/endodontija', label: 'Endodontija' },
+      {
+        to: '/lv/pakalpojumi/bernu-odontologija', label: 'Bērnu zobārstniecība',
+        children: [
+          { to: '/lv/pakalpojumi/bernu-profilaktiska-parbaude', label: 'Bērnu profilaktiskā pārbaude' },
+          { to: '/lv/pakalpojumi/bernu-mutes-higiena',          label: 'Bērnu mutes higiēna' },
+        ],
+      },
+      {
+        to: '/lv/pakalpojumi/terapeitiska-arstesana', label: 'Terapeitiskā ārstēšana',
+        children: [
+          { to: '/lv/pakalpojumi/arstesana-icon-sistema', label: 'Ārstēšana ar „ICON" sistēmu' },
+        ],
+      },
+      {
+        label: 'Citi pakalpojumi',
+        children: [
+          { to: '/lv/pakalpojumi/rentgena-izmeklejumi',        label: 'Rentgena izmeklējumi' },
+          { to: '/lv/pakalpojumi/bruksisma-kapa',              label: 'Bruksisma kapa' },
+          { to: '/lv/pakalpojumi/smaganu-iekaisums-gingivits', label: 'Smaganu iekaisums (gingivīts)' },
+        ],
+      },
     ],
   },
   { to: '/lv/cenas',               label: 'Cenas' },
+  { to: '/lv/musu-darbi',          label: 'Mūsu darbi' },
   { to: '/lv/ipasi-piedavajumi',   label: 'Īpašie piedāvājumi' },
   { to: '/lv/kontakti',            label: 'Kontakti' },
 ]

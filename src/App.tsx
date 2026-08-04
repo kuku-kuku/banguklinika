@@ -77,6 +77,34 @@ import ZobuEkstrakcijaLv from './pages/lv/ZobuEkstrakcijaLv'
 import EndodontijaLv from './pages/lv/EndodontijaLv'
 import BernuOdontologijaLv from './pages/lv/BernuOdontologijaLv'
 import IpasiPiedavajumiLv from './pages/lv/IpasiPiedavajumiLv'
+// LV batch 1: implantologija + chirurgija
+import NeatliekamaPalidzibaLv from './pages/lv/NeatliekamaPalidzibaLv'
+import StraumannImplantiLv from './pages/lv/StraumannImplantiLv'
+import SinusaPacelsanaLv from './pages/lv/SinusaPacelsanaLv'
+import ZoklakaulaAugmentacijaLv from './pages/lv/ZoklakaulaAugmentacijaLv'
+import GudribasZobuIzvilksanaLv from './pages/lv/GudribasZobuIzvilksanaLv'
+import AbscesaAtversanaLv from './pages/lv/AbscesaAtversanaLv'
+import TulitejasImplantacijaLv from './pages/lv/TulitejasImplantacijaLv'
+// LV batch 2: protezavimas
+import CirkonijaKeramikasKronitisLv from './pages/lv/CirkonijaKeramikasKronitisLv'
+import ZobuKronitiLv from './pages/lv/ZobuKronitiLv'
+import ZobuTiltiLv from './pages/lv/ZobuTiltiLv'
+import MikroprotezesanaLv from './pages/lv/MikroprotezesanaLv'
+import ZobuUzlikasLv from './pages/lv/ZobuUzlikasLv'
+import IznemamasProtezesLv from './pages/lv/IznemamasProtezesLv'
+import ProtezesanasKompensacijaLv from './pages/lv/ProtezesanasKompensacijaLv'
+// LV batch 3: gydymas + higiena
+import TerapeitiskaArstesanaLv from './pages/lv/TerapeitiskaArstesanaLv'
+import ArstesanaIconSistemaLv from './pages/lv/ArstesanaIconSistemaLv'
+import SmaganuIekaisumsGingivitsLv from './pages/lv/SmaganuIekaisumsGingivitsLv'
+import BruksismaKapaLv from './pages/lv/BruksismaKapaLv'
+import ZobuBalinesanasKapasLv from './pages/lv/ZobuBalinesanasKapasLv'
+import ZobuFluoresanaLv from './pages/lv/ZobuFluoresanaLv'
+// LV batch 4: vaikams + rentgenas + Musu darbi
+import BernuProfilaktiskaParbaudeLv from './pages/lv/BernuProfilaktiskaParbaudeLv'
+import BernuMutesHigienaLv from './pages/lv/BernuMutesHigienaLv'
+import RentgenaIzmeklejumiLv from './pages/lv/RentgenaIzmeklejumiLv'
+import MusuDarbiLv from './pages/lv/MusuDarbiLv'
 import { LangProvider } from './context/LanguageContext'
 import { useLenis } from './hooks/useLenis'
 import Draugai from './pages/Draugai'
@@ -189,6 +217,34 @@ export default function App() {
             <Route path="pakalpojumi/zobu-ekstrakcija" element={<ZobuEkstrakcijaLv />} />
             <Route path="pakalpojumi/endodontija" element={<EndodontijaLv />} />
             <Route path="pakalpojumi/bernu-odontologija" element={<BernuOdontologijaLv />} />
+            {/* Pakalpojumi — batch 1 (implantoloģija + ķirurģija) */}
+            <Route path="pakalpojumi/neatliekama-palidziba" element={<NeatliekamaPalidzibaLv />} />
+            <Route path="pakalpojumi/straumann-implanti" element={<StraumannImplantiLv />} />
+            <Route path="pakalpojumi/sinusa-pacelsana" element={<SinusaPacelsanaLv />} />
+            <Route path="pakalpojumi/zoklakaula-augmentacija" element={<ZoklakaulaAugmentacijaLv />} />
+            <Route path="pakalpojumi/gudribas-zobu-izvilksana" element={<GudribasZobuIzvilksanaLv />} />
+            <Route path="pakalpojumi/abscesa-atversana" element={<AbscesaAtversanaLv />} />
+            <Route path="pakalpojumi/tulitejas-implantacija" element={<TulitejasImplantacijaLv />} />
+            {/* Pakalpojumi — batch 2 (protezēšana) */}
+            <Route path="pakalpojumi/cirkonija-keramikas-kronitis" element={<CirkonijaKeramikasKronitisLv />} />
+            <Route path="pakalpojumi/zobu-kroniti" element={<ZobuKronitiLv />} />
+            <Route path="pakalpojumi/zobu-tilti" element={<ZobuTiltiLv />} />
+            <Route path="pakalpojumi/mikroprotezesana" element={<MikroprotezesanaLv />} />
+            <Route path="pakalpojumi/zobu-uzlikas" element={<ZobuUzlikasLv />} />
+            <Route path="pakalpojumi/iznemamas-protezes" element={<IznemamasProtezesLv />} />
+            <Route path="pakalpojumi/protezesanas-kompensacija" element={<ProtezesanasKompensacijaLv />} />
+            {/* Pakalpojumi — batch 3 (ārstēšana + higiēna) */}
+            <Route path="pakalpojumi/terapeitiska-arstesana" element={<TerapeitiskaArstesanaLv />} />
+            <Route path="pakalpojumi/arstesana-icon-sistema" element={<ArstesanaIconSistemaLv />} />
+            <Route path="pakalpojumi/smaganu-iekaisums-gingivits" element={<SmaganuIekaisumsGingivitsLv />} />
+            <Route path="pakalpojumi/bruksisma-kapa" element={<BruksismaKapaLv />} />
+            <Route path="pakalpojumi/zobu-balinesanas-kapas" element={<ZobuBalinesanasKapasLv />} />
+            <Route path="pakalpojumi/zobu-fluoresana" element={<ZobuFluoresanaLv />} />
+            {/* Pakalpojumi — batch 4 (bērniem + rentgens) */}
+            <Route path="pakalpojumi/bernu-profilaktiska-parbaude" element={<BernuProfilaktiskaParbaudeLv />} />
+            <Route path="pakalpojumi/bernu-mutes-higiena" element={<BernuMutesHigienaLv />} />
+            <Route path="pakalpojumi/rentgena-izmeklejumi" element={<RentgenaIzmeklejumiLv />} />
+            <Route path="musu-darbi" element={<MusuDarbiLv />} />
             <Route path="ipasi-piedavajumi" element={<IpasiPiedavajumiLv />} />
           </Route>
 
