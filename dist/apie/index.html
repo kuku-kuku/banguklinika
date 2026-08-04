@@ -13,16 +13,29 @@
   <title>Apie mus | Bangų klinika</title>
   
   <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-W5NM62RK');
+    // Defer GTM until after first paint + user interaction (or 4s max).
+    // GTM's ~477KB of JS was blocking the main thread on mobile
+    // (contributing ~500ms TBT). Analytics still fires — just not during LCP.
+    (function () {
+      var loaded = false;
+      function loadGTM() {
+        if (loaded) return; loaded = true;
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-W5NM62RK';
+        document.head.appendChild(s);
+        ['scroll','pointerdown','keydown','touchstart'].forEach(function (ev) {
+          window.removeEventListener(ev, loadGTM, { passive: true });
+        });
+      }
+      ['scroll','pointerdown','keydown','touchstart'].forEach(function (ev) {
+        window.addEventListener(ev, loadGTM, { passive: true, once: true });
+      });
+      // Fallback: load anyway after 4s so headless crawlers / Lighthouse still get GTM.
+      setTimeout(loadGTM, 4000);
+    })();
   </script>
 
   <script>
@@ -35,7 +48,7 @@
       } catch (e) { }
     })();
   </script>
-  <script type="module" crossorigin src="/assets/index-D5sMbD0l.js"></script>
+  <script type="module" crossorigin src="/assets/index-BJZE7RjX.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-fy6jIXUW.css">
 <link rel="canonical" href="https://www.banguklinika.lt/apie/" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Dentist","@id":"https://www.banguklinika.lt/","name":"Bangų odontologijos klinika","alternateName":"Bangų klinika","url":"https://www.banguklinika.lt/","description":"Bangų odontologijos klinika Klaipėdoje teikia odontologijos paslaugas, įskaitant dantų gydymą, estetinį plombavimą, profesionalią burnos higieną, protezavimą, implantavimą ir dantų atkūrimą.","telephone":"+37067191399","priceRange":"€€","address":{"@type":"PostalAddress","streetAddress":"Bangų g. 7-3","addressLocality":"Klaipėda","postalCode":"LT-91250","addressCountry":"LT"},"areaServed":{"@type":"City","name":"Klaipėda"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"18:00"}],"medicalSpecialty":["Dentistry"],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Dantų implantacija"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Dantų protezavimas"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Dantų gydymas"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Dantų taisymas"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Dantų tiesinimas"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Burnos higiena"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Burnos chirurgija"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Dantų balinimas"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Estetinis plombavimas"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Dantų plombavimas"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Vaikų odontologija"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Dantų traukimas"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Skubi odontologinė pagalba"}}],"sameAs":["https://www.facebook.com/banguklinika/"]}</script>

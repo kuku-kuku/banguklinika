@@ -13,16 +13,29 @@
   <title>Zobu protezēšana Klaipēdā | Bangų klinika</title>
   
   <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-W5NM62RK');
+    // Defer GTM until after first paint + user interaction (or 4s max).
+    // GTM's ~477KB of JS was blocking the main thread on mobile
+    // (contributing ~500ms TBT). Analytics still fires — just not during LCP.
+    (function () {
+      var loaded = false;
+      function loadGTM() {
+        if (loaded) return; loaded = true;
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-W5NM62RK';
+        document.head.appendChild(s);
+        ['scroll','pointerdown','keydown','touchstart'].forEach(function (ev) {
+          window.removeEventListener(ev, loadGTM, { passive: true });
+        });
+      }
+      ['scroll','pointerdown','keydown','touchstart'].forEach(function (ev) {
+        window.addEventListener(ev, loadGTM, { passive: true, once: true });
+      });
+      // Fallback: load anyway after 4s so headless crawlers / Lighthouse still get GTM.
+      setTimeout(loadGTM, 4000);
+    })();
   </script>
 
   <script>
@@ -35,7 +48,7 @@
       } catch (e) { }
     })();
   </script>
-  <script type="module" crossorigin src="/assets/index-D5sMbD0l.js"></script>
+  <script type="module" crossorigin src="/assets/index-BJZE7RjX.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-fy6jIXUW.css">
 <link rel="canonical" href="https://www.banguklinika.lt/lv/pakalpojumi/zobu-protezesana/" />
 </head>
