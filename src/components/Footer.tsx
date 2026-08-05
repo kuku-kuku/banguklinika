@@ -298,6 +298,7 @@ export default function Footer() {
                 <li><Link to="/lv/kontakti" className="footer-link">Kontakti</Link></li>
                 <li><Link to="/lv/par-mums" className="footer-link">Par mums</Link></li>
                 <li><Link to="/lv/ipasi-piedavajumi" className="footer-link">Īpaši piedāvājumi</Link></li>
+                <li><Link to="/lv/raksti" className="footer-link">Raksti</Link></li>
               </>
             ) : (
               <>

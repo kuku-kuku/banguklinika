@@ -111,6 +111,7 @@ export const navLv = [
   },
   { to: '/lv/cenas',               label: 'Cenas' },
   { to: '/lv/musu-darbi',          label: 'Mūsu darbi' },
+  { to: '/lv/raksti',              label: 'Raksti' },
   { to: '/lv/ipasi-piedavajumi',   label: 'Īpašie piedāvājumi' },
   { to: '/lv/kontakti',            label: 'Kontakti' },
 ]

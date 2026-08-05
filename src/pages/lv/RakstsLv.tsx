@@ -1,0 +1,443 @@
+import { useRef, useState, useEffect } from 'react'
+import { useParams, Link, Navigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import SEO from '../../components/SEO'
+import AnimatedSection from '../../components/AnimatedSection'
+import { TableOfContents, type TocSection } from '../../components/TableOfContents'
+import { BLOG_POSTS_LV, getPostLv, formatDateLv } from '../../data/blogLv'
+import { CLINIC } from '../../data/clinic'
+import { SITE_URL } from '../../i18n/lv'
+
+const C = {
+  teal:     '#0ABBB5',
+  deepTeal: '#043F42',
+  charcoal: '#262626',
+}
+
+const W = 'max-w-7xl mx-auto px-6 lg:px-12'
+
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .replace(/[āčēģīķļņōŗšūž]/g, (c) => ({ ā:'a',č:'c',ē:'e',ģ:'g',ī:'i',ķ:'k',ļ:'l',ņ:'n',ō:'o',ŗ:'r',š:'s',ū:'u',ž:'z' }[c] ?? c))
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+}
+
+function RelatedPosts({ currentSlug }: { currentSlug: string }) {
+  const others = BLOG_POSTS_LV.filter(p => p.slug !== currentSlug).slice(0, 3)
+  if (others.length === 0) return null
+  return (
+    <section className="py-14 border-t" style={{ borderColor: `${C.charcoal}10` }}>
+      <div className={W}>
+        <AnimatedSection>
+          <h2 className="text-2xl font-bold mb-8" style={{ color: C.deepTeal }}>
+            Citi raksti
+          </h2>
+        </AnimatedSection>
+        <div className="grid md:grid-cols-3 gap-5">
+          {others.map((post, i) => (
+            <motion.div
+              key={post.slug}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
+            >
+              <Link
+                to={`/lv/raksti/${post.slug}`}
+                className="group flex flex-col rounded-2xl overflow-hidden bg-white border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg h-full"
+                style={{ borderColor: `${C.charcoal}12` }}
+              >
+                <div className="overflow-hidden" style={{ aspectRatio: '16/9' }}>
+                  <img
+                    src={post.coverImage}
+                    alt={post.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-4">
+                  <p className="text-xs text-slate-400 mb-1.5">{formatDateLv(post.date)}</p>
+                  <h3
+                    className="font-bold text-sm leading-snug transition-colors group-hover:text-[#0ABBB5]"
+                    style={{ color: C.deepTeal }}
+                  >
+                    {post.title}
+                  </h3>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default function RakstsLv() {
+  const { slug } = useParams<{ slug: string }>()
+  const post = getPostLv(slug ?? '')
+  const pageRef = useRef<HTMLDivElement>(null)
+  const tocNavRef = useRef<HTMLElement>(null)
+  const [activeId, setActiveId] = useState('')
+
+  if (!post) return <Navigate to="/lv/raksti" replace />
+
+  const tocSections: TocSection[] = [
+    { id: 'sakums', label: 'Sākums' },
+    ...post.sections
+      .filter(s => s.h)
+      .map(s => ({ id: slugify(s.h!), label: s.h! })),
+    ...(post.faq && post.faq.length > 0 ? [{ id: 'buj', label: 'Biežāk uzdotie jautājumi' }] : []),
+  ]
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    if (tocSections.length > 0) setActiveId(tocSections[0].id)
+    function update() {
+      let active = tocSections[0]?.id ?? ''
+      for (const { id } of tocSections) {
+        const el = pageRef.current?.querySelector<HTMLElement>(`#${CSS.escape(id)}`)
+        if (!el) continue
+        if (el.getBoundingClientRect().top <= 160) active = id
+      }
+      setActiveId(active)
+    }
+    window.addEventListener('scroll', update, { passive: true })
+    requestAnimationFrame(() => requestAnimationFrame(update))
+    return () => window.removeEventListener('scroll', update)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [post.slug])
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    if (!tocNavRef.current || !activeId) return
+    const nav = tocNavRef.current
+    const activeEl = nav.querySelector<HTMLElement>(`[data-toc-id="${activeId}"]`)
+    if (activeEl) {
+      const elRelTop = activeEl.getBoundingClientRect().top - nav.getBoundingClientRect().top + nav.scrollTop
+      const elRelBottom = elRelTop + activeEl.offsetHeight
+      if (elRelBottom > nav.scrollTop + nav.clientHeight) {
+        nav.scrollTop = elRelBottom - nav.clientHeight
+      } else if (elRelTop < nav.scrollTop) {
+        nav.scrollTop = elRelTop
+      }
+    }
+  }, [activeId])
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    const nav = tocNavRef.current
+    if (!nav) return
+    function onWheel(e: WheelEvent) {
+      const { scrollTop, scrollHeight, clientHeight } = nav!
+      const atTop = scrollTop === 0 && e.deltaY < 0
+      const atBottom = scrollTop + clientHeight >= scrollHeight - 1 && e.deltaY > 0
+      if (!atTop && !atBottom) { e.stopPropagation(); e.preventDefault(); nav!.scrollTop += e.deltaY }
+    }
+    nav.addEventListener('wheel', onWheel, { passive: false })
+    return () => nav.removeEventListener('wheel', onWheel)
+  }, [])
+
+  function scrollTo(id: string) {
+    if (id === 'sakums') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      window.history.replaceState(null, '', window.location.pathname)
+      return
+    }
+    const el = pageRef.current?.querySelector<HTMLElement>(`#${CSS.escape(id)}`)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      window.history.replaceState(null, '', `#${id}`)
+    }
+  }
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    image: post.coverImage.startsWith('http') ? post.coverImage : `${SITE_URL}${post.coverImage}`,
+    datePublished: post.date,
+    inLanguage: 'lv',
+    author: {
+      '@type': 'Organization',
+      name: 'Bangų klīnika',
+      url: SITE_URL,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Bangų klīnika',
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/Asset 64.svg` },
+    },
+  }
+
+  const faqSchema = post.faq
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: post.faq.map(item => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: { '@type': 'Answer', text: item.a },
+        })),
+      }
+    : undefined
+
+  return (
+    <>
+      <SEO
+        lang="lv"
+        title={`${post.title} | Bangų klīnika`}
+        description={post.excerpt}
+        canonical={`${SITE_URL}/lv/raksti/${post.slug}`}
+        structuredData={articleSchema}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+
+      {/* Hero */}
+      <section className="pt-12 pb-8 md:pt-16 md:pb-10">
+        <div className={W}>
+          <div>
+            <nav className="flex items-center gap-2 text-xs text-slate-400 mb-6">
+              <Link to="/lv" className="hover:text-slate-600 transition-colors">Sākums</Link>
+              <span>/</span>
+              <Link to="/lv/raksti" className="hover:text-slate-600 transition-colors">Raksti</Link>
+              <span>/</span>
+              <span className="text-slate-600 line-clamp-1">{post.title}</span>
+            </nav>
+
+            <div className="max-w-3xl">
+              <h1
+                className="text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.15] tracking-tight"
+                style={{ color: C.deepTeal }}
+              >
+                {post.title}
+              </h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Cover image */}
+      <section>
+        <div className={W}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+            className="rounded-[2rem] overflow-hidden shadow-lg"
+            style={{ maxHeight: 480 }}
+          >
+            <img
+              src={post.coverImage}
+              alt={post.title}
+              className="w-full h-full object-cover"
+              style={{ maxHeight: 480 }}
+            />
+          </motion.div>
+          {post.excerpt && (
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mt-5 text-lg text-slate-500 leading-relaxed max-w-2xl"
+            >
+              {post.excerpt}
+            </motion.p>
+          )}
+        </div>
+      </section>
+
+      {/* Article body */}
+      <section className="py-12 md:py-16">
+        <div className={W}>
+
+          <TableOfContents
+            mobileOnly
+            sections={tocSections}
+            title="Saturs"
+            rootRef={pageRef as React.RefObject<HTMLElement>}
+          />
+
+          <div className="lg:grid lg:grid-cols-[1fr_280px] lg:gap-12 xl:gap-16">
+
+            <div ref={pageRef}>
+              <article className="prose-article">
+                {post.sections.map((section, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ duration: 0.45 }}
+                  >
+                    {section.h && (
+                      <h2
+                        id={slugify(section.h)}
+                        className="scroll-mt-36"
+                        style={{ color: C.deepTeal }}
+                      >
+                        {section.h}
+                      </h2>
+                    )}
+                    {section.image && (
+                      <div className="not-prose my-6 rounded-2xl overflow-hidden shadow-md">
+                        <img
+                          src={section.image}
+                          alt={section.h ?? ''}
+                          className="w-full object-cover"
+                          style={{ maxHeight: 420 }}
+                        />
+                      </div>
+                    )}
+                    {section.blocks
+                      ? section.blocks.map((block, j) => {
+                          if (block.type === 'p') return <p key={j}>{block.text}</p>
+                          if (block.type === 'ul') return (
+                            <ul key={j} className="list-disc pl-6 mb-4 space-y-1.5 text-slate-600 leading-relaxed">
+                              {block.items.map((it, k) => <li key={k}>{it}</li>)}
+                            </ul>
+                          )
+                          return (
+                            <ol key={j} className="list-decimal pl-6 mb-4 space-y-1.5 text-slate-600 leading-relaxed">
+                              {block.items.map((it, k) => <li key={k}>{it}</li>)}
+                            </ol>
+                          )
+                        })
+                      : section.p.map((para, j) => (
+                          <p key={j}>{para}</p>
+                        ))}
+                  </motion.div>
+                ))}
+
+                {post.faq && post.faq.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ duration: 0.45 }}
+                  >
+                    <h2
+                      id="buj"
+                      className="scroll-mt-36"
+                      style={{ color: C.deepTeal }}
+                    >
+                      Biežāk uzdotie jautājumi
+                    </h2>
+                    <div className="not-prose space-y-4 mt-6">
+                      {post.faq.map((item, i) => (
+                        <div key={i}>
+                          <div
+                            className="rounded-2xl border overflow-hidden"
+                            style={{ borderColor: `${C.charcoal}12`, background: '#F4F5F4' }}
+                          >
+                            <div className="p-5">
+                              <p className="font-bold text-sm leading-snug mb-2" style={{ color: C.deepTeal }}>
+                                {item.q}
+                              </p>
+                            </div>
+                            {item.preImage && (
+                              <div className="px-5 pb-2">
+                                <img
+                                  src={item.preImage}
+                                  alt=""
+                                  className="w-full object-cover rounded-xl"
+                                  style={{ maxHeight: 380 }}
+                                />
+                              </div>
+                            )}
+                            <div className="p-5">
+                              <p className="text-sm text-slate-600 leading-relaxed">{item.a}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </article>
+
+              {post.sources && post.sources.some(s => s.label) && (
+                <div className="mt-10 pt-6 border-t border-slate-200">
+                  <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Avoti</p>
+                  <ol className="space-y-1.5 list-decimal list-inside">
+                    {post.sources.map((s, i) => (
+                      <li key={i} className="text-xs text-slate-400 leading-relaxed">
+                        <a href={s.url} target="_blank" rel="noopener noreferrer" className="hover:text-slate-600 underline underline-offset-2 transition-colors">
+                          {s.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+            </div>
+
+            <aside className="hidden lg:block self-start sticky top-28">
+              <div className="space-y-4">
+                <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <p className="text-[10px] font-bold tracking-[0.18em] uppercase mb-2" style={{ color: C.teal }}>
+                    Pirmais vizīts
+                  </p>
+                  <h3 className="text-base font-extrabold leading-snug mb-2" style={{ color: C.deepTeal }}>
+                    Sākotnējā konsultācija ir bezmaksas
+                  </h3>
+                  <p className="text-sm text-slate-500 leading-relaxed mb-5">
+                    Ir jautājumi? Mūsu ārsti novērtēs situāciju un piedāvās piemērotāko risinājumu.
+                  </p>
+                  <a
+                    href={`tel:${CLINIC.phone}`}
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold text-sm text-white transition-opacity hover:opacity-90"
+                    style={{ background: C.teal }}
+                  >
+                    <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.4 2.11 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16z"/>
+                    </svg>
+                    {CLINIC.phone}
+                  </a>
+                  <Link
+                    to="/lv/kontakti#registracija"
+                    className="flex items-center justify-center w-full py-3 mt-2 rounded-xl font-bold text-sm transition-colors hover:bg-slate-50"
+                    style={{ border: `1.5px solid ${C.teal}`, color: C.teal }}
+                  >
+                    Reģistrācija tiešsaistē
+                  </Link>
+                </div>
+
+                {tocSections.length > 0 && (
+                  <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-2 px-1">Saturs</p>
+                    <nav ref={tocNavRef} className="max-h-56 overflow-y-auto">
+                      {tocSections.map(({ id, label }) => (
+                        <a
+                          key={id}
+                          data-toc-id={id}
+                          href={`#${id}`}
+                          onClick={(e) => { e.preventDefault(); scrollTo(id) }}
+                          className={`flex items-start gap-2 px-2 py-1.5 rounded-lg text-xs leading-snug transition-colors no-underline ${
+                            activeId === id ? 'text-[#0ABBB5] font-semibold bg-teal-50' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'
+                          }`}
+                        >
+                          <span className={`mt-px shrink-0 w-1 h-1 rounded-full self-center transition-all ${activeId === id ? 'bg-[#0ABBB5] scale-150' : 'bg-slate-300'}`} />
+                          {label}
+                        </a>
+                      ))}
+                    </nav>
+                  </div>
+                )}
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <RelatedPosts currentSlug={post.slug} />
+    </>
+  )
+}
