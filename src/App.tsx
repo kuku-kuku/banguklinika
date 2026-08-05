@@ -105,6 +105,8 @@ import BernuProfilaktiskaParbaudeLv from './pages/lv/BernuProfilaktiskaParbaudeL
 import BernuMutesHigienaLv from './pages/lv/BernuMutesHigienaLv'
 import RentgenaIzmeklejumiLv from './pages/lv/RentgenaIzmeklejumiLv'
 import MusuDarbiLv from './pages/lv/MusuDarbiLv'
+import RakstiLv from './pages/lv/RakstiLv'
+import RakstsLv from './pages/lv/RakstsLv'
 import { LangProvider } from './context/LanguageContext'
 import { useLenis } from './hooks/useLenis'
 import Draugai from './pages/Draugai'
@@ -246,6 +248,8 @@ export default function App() {
             <Route path="pakalpojumi/rentgena-izmeklejumi" element={<RentgenaIzmeklejumiLv />} />
             <Route path="musu-darbi" element={<MusuDarbiLv />} />
             <Route path="ipasi-piedavajumi" element={<IpasiPiedavajumiLv />} />
+            <Route path="raksti" element={<RakstiLv />} />
+            <Route path="raksti/:slug" element={<RakstsLv />} />
           </Route>
 
           {/* Ypatingi pasiūlymai – bendras sąrašas */}

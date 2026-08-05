@@ -93,6 +93,7 @@ const nav: NavItem[] = [
   { to: '/kainos', label: 'Kainos' },
   { to: '/ypatingi-pasiulymai', label: 'Ypatingi pasiūlymai' },
   { to: '/musu-darbai', label: 'Mūsų darbai' },
+  { to: '/straipsniai', label: 'Straipsniai' },
   { to: '/draugai', label: 'Draugai' },
   { to: '/kontaktai', label: 'Kontaktai' },
 ]
@@ -243,7 +244,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-gray-100 shadow-sm">
-      <div className="container-narrow flex min-h-[72px] items-center justify-between">
+      <div className="max-w-7xl xl:max-w-[1400px] mx-auto px-4 lg:px-6 xl:px-8 flex min-h-[72px] items-center justify-between gap-6">
         {/* Logo */}
         <Link
           to="/"
@@ -268,7 +269,7 @@ export default function Navbar() {
 
         {/* Desktop NAV */}
         <nav
-          className="hidden md:flex items-center gap-7 relative"
+          className="hidden md:flex items-center gap-4 lg:gap-5 xl:gap-7 relative"
           onMouseLeave={scheduleClose}
           onMouseEnter={cancelClose}
         >
