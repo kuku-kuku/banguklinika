@@ -41,14 +41,14 @@ export default function SEO({
   alternates,
 }: Props) {
   const cleanTitle = (title || "")
-    .replace(new RegExp(`\\s*[|–—-]\\s*${SITE_NAME}\\s*$`, "i"), "")
-    .replace(new RegExp(`\\s*${SITE_NAME}\\s*$`, "i"), "")
+    .replace(/\s*[|–—-]\s*Bangų\s*kl[iī]nika\s*$/i, "")
+    .replace(/\s*Bangų\s*kl[iī]nika\s*$/i, "")
     .trim();
 
-  const finalTitle = isHome
-    ? HOME_TITLE
-    : cleanTitle
-      ? `${cleanTitle} | ${SITE_NAME}`
+  const finalTitle = cleanTitle
+    ? `${cleanTitle} | ${SITE_NAME}`
+    : isHome
+      ? HOME_TITLE
       : SITE_NAME;
 
   const finalDescription =
