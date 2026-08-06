@@ -4,8 +4,8 @@ import AnimatedSection from '../../components/AnimatedSection'
 import SEO from '../../components/SEO'
 import { TableOfContents } from '../../components/TableOfContents'
 import { useRef } from 'react'
-import { CLINIC } from '../../data/clinic'
 import { SITE_URL } from '../../i18n/lv'
+import ReviewsCarousel from '../../components/ReviewsCarousel'
 
 // TOC (pilna – kaip LT puslapyje)
 const tocSections = [
@@ -64,10 +64,10 @@ export default function DantuImplantacijaLv() {
       '@type': 'Dentist',
       name: 'Bangų klinika',
       url: SITE_URL,
-      telephone: CLINIC.phone,
+      telephone: '+37067191399',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: CLINIC.address,
+        streetAddress: 'Bangų g. 7-3, Klaipėda',
         addressLocality: 'Klaipēda',
         addressCountry: 'LT',
       },
@@ -97,7 +97,7 @@ export default function DantuImplantacijaLv() {
         initial="hidden"
         animate="visible"
       >
-        <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} cta={{ label: "Pierakstīties vizītei", to: "/kontaktai" }} />
+        <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} cta={{ label: "Pierakstīties vizītei", to: "/lv/kontakti" }} />
 
         <div className="min-w-0 flex-1">
           {/* HERO */}
@@ -215,6 +215,61 @@ export default function DantuImplantacijaLv() {
               </p>
             </div>
           </motion.header>
+
+          {/* DOCTOR CTA */}
+          <motion.div className="mt-8 mb-12" variants={item}>
+            <div className="bg-white rounded-[28px] border border-sky-200 shadow-soft overflow-hidden">
+              <div className="grid lg:grid-cols-[5fr_4fr] gap-0 items-stretch">
+                <div className="p-6 sm:p-8 lg:p-10">
+                  <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-darkblue-700 mb-4">
+                    Aicinām pierakstīties implantācijas konsultācijai Bangų klīnikā
+                  </h2>
+                  <p className="text-slate-700 leading-relaxed mb-4">
+                    Ja apsverat zobu atjaunošanu ar implantiem un vēlaties uzzināt, kāds risinājums būtu vispiemērotākais jūsu situācijā, aicinām pierakstīties konsultācijai Bangų zobārstniecības klīnikā. Vizītes laikā pieredzējuši implantologi novērtēs mutes stāvokli, atbildēs uz jūsu jautājumiem un palīdzēs izprast visu ārstēšanas gaitu.
+                  </p>
+                  <p className="text-slate-700 leading-relaxed mb-6">
+                    Bangų zobārstniecības klīnikā mēs cenšamies, lai implantācija būtu skaidrs, drošs un pacientam saprotams process, kas ved pie ilgtermiņa un stabila rezultāta. Pierakstieties konsultācijai un speriet drošu soli pretī pilnvērtīgam smaidam.
+                  </p>
+
+                  <div className="bg-sky-50 rounded-xl p-5 border border-sky-200 mb-8">
+                    <p className="font-semibold text-darkblue-700 mb-3">Konsultācijas laikā:</p>
+                    <ul className="space-y-2 text-slate-700">
+                      {[
+                        'tiek veikts detalizēts klīniskais novērtējums',
+                        'tiek apspriesti iespējamie ārstēšanas veidi',
+                        'tiek izskaidroti procedūras posmi un termiņi',
+                        'tiek izstrādāts individuāls ārstēšanas plāns',
+                      ].map((t, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className="mt-1"><CheckIcon /></span>
+                          <span className="leading-relaxed">{t}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Link
+                    to="/lv/kontakti"
+                    className="btn-primary btn-glow rounded-full px-7 py-3 font-semibold text-base inline-block shadow-lg hover:shadow-xl transition"
+                  >
+                    Pierakstīties vizītei
+                  </Link>
+                </div>
+                <div className="relative min-h-[320px] lg:min-h-full bg-sky-50">
+                  <img
+                    src="/team/donataskubilius.jpg"
+                    alt="Donatas Kubilius – implantologs Bangų klīnikā"
+                    className="absolute inset-0 w-full h-full object-cover object-top"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_bottom,white_0%,transparent_30%)] lg:bg-[linear-gradient(to_right,white_0%,transparent_20%)]" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* REVIEWS */}
+          <motion.div className="mb-12 no-x-scroll pan-y" variants={item}>
+            <ReviewsCarousel />
+          </motion.div>
 
           {/* KAS IR IMPLANTĀCIJA */}
           <motion.section

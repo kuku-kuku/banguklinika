@@ -1,9 +1,10 @@
-import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useRef } from 'react'
 import AnimatedSection from '../../components/AnimatedSection'
 import SEO from '../../components/SEO'
 import { TableOfContents } from '../../components/TableOfContents'
+import ReviewsCarousel from '../../components/ReviewsCarousel'
 import { SITE_URL } from '../../i18n/lv'
 
 const container = {
@@ -18,6 +19,10 @@ const item = {
 const sectionWrap = 'mb-12 scroll-mt-36 2xl:scroll-mt-24'
 const whiteCard = 'bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft'
 const innerCard = 'bg-white p-5 rounded-xl border border-slate-200 shadow-sm'
+
+const P  = '#002045'
+const S  = '#006b5f'
+const SL = '#ecf5fb'
 
 function CheckIcon() {
   return (
@@ -55,32 +60,33 @@ const tocSections = [
   { id: "cenas", label: "Cenas" },
   { id: "kas-ir", label: "Kas ir mutes higiēna?" },
   { id: "airflow", label: "AIRFLOW® tehnoloģija" },
-  { id: "kapec-vertigi", label: "Kāpēc vērts?" },
+  { id: "kapec-izveleties", label: "Kāpēc izvēlēties?" },
   { id: "kad-nepieciesama", label: "Kad īpaši nepieciešama?" },
-  { id: "ka-notiek", label: "Procedūras gaita" },
-  { id: "pec-proceduras", label: "Pēc procedūras" },
-  { id: "miti", label: "Biežākie mīti" },
+  { id: "process", label: "Kā tiek veikta?" },
+  { id: "pec-higienas", label: "Pēc higiēnas" },
+  { id: "miti", label: "Mīti" },
 ]
 
 export default function MutesHigiennaLv() {
-  const pageRef = useRef(null)
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "MedicalProcedure",
-    "name": "Profesionāla mutes higiēna",
-    "description": "Mutes higiēna ar AIRFLOW tehnoloģiju Klaipēdā.",
-    "provider": {
-      "@type": "Dentist",
-      "name": "Bangų klīnika"
-    }
+    "@type": "Service",
+    "@id": `${SITE_URL}/lv/pakalpojumi/mutes-higiena/#service`,
+    "name": "Mutes higiēna Klaipēdā",
+    "serviceType": "Profesionāla mutes higiēna",
+    "description": "Profesionāla mutes higiēna tiek sniegta Bangų zobārstniecības klīnikā Klaipēdā. Pakalpojums palīdz uzturēt veselus zobus un smaganas.",
+    "url": `${SITE_URL}/lv/pakalpojumi/mutes-higiena/`,
+    "areaServed": { "@type": "City", "name": "Klaipēda" },
   }
+
+  const pageRef = useRef(null)
 
   return (
     <AnimatedSection>
       <SEO
         lang="lv"
-        title="Mutes (zobu) higiēna Klaipēdā | Cena ar akciju | Labākās atsauksmes — Bangų klīnika"
-        description="Profesionāla mutes higiēna ar AIRFLOW® tehnoloģiju. Noņemam zobakmeni, aplikumus un atjaunojam zobiem dabīgo baltumu. Pierakstieties vizītam Klaipēdā."
+        title="Mutes higiēna Klaipēdā ar AIRFLOW®"
+        description="Profesionāla mutes higiēna Klaipēdā ar labu cenu. Noņemiet aplikumus, samaziniet smaganu problēmu risku un uzturiet veselīgu smaidu Bangų klīnikā."
         keywords="mutes higiēna, airflow, zobu tīrīšana, zobakmens noņemšana, Klaipēda"
         canonical={`${SITE_URL}/lv/pakalpojumi/mutes-higiena`}
         alternates={[
@@ -91,267 +97,376 @@ export default function MutesHigiennaLv() {
         structuredData={structuredData}
       />
 
-      <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-8 xl:px-28 2xl:px-8 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
-          <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} cta={{ label: "Pierakstīties vizītei", to: "/kontaktai" }} />
-          <div className="min-w-0 flex-1">
+      <motion.div
+        ref={pageRef}
+        className="max-w-screen-2xl mx-auto px-8 xl:px-28 2xl:px-8 2xl:flex 2xl:gap-8 2xl:items-start"
+        variants={container}
+        initial="hidden"
+        animate="visible"
+      >
+        <TableOfContents sections={tocSections} rootRef={pageRef} cta={{ label: "Reģistrēties vizītei", to: "/lv/kontakti" }} />
+        <div className="min-w-0 flex-1">
 
-        <motion.header className="mb-10 text-left" variants={item}>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
-            Profesionāla mutes higiēna Klaipēdā ar AIRFLOW® tehnoloģiju
-          </h1>
+          {/* HERO HEADER */}
+          <motion.header className="mb-10 text-left" variants={item}>
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
+              Mutes higiēna Klaipēdā ar AIRFLOW® tehnoloģiju
+            </h1>
 
-          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed mb-8">
-            <p className="mb-4">
-              Pat katru dienu rūpīgi tīrot zobus mājās, birste un starpzobu diegi nesasniedz visas mutes vietas. Laika gaitā veidojušies aplikumi un zobakmens var izraisīt karieso, smaganu iekaisumu vai nepatīkamu mutes smaržu. Tieši tāpēc profesionāla mutes higiēna ir viena no svarīgākajām profilaktiskajām procedūrām, kas palīdz saglabāt veselus zobus un smaganas.
-            </p>
-            <p>
-              Bangų zobārstniecības klīnikā Klaipēdā mutes higiēna tiek veikta, izmantojot moderno AIRFLOW® tehnoloģiju. Procedūras laikā zobi ne tikai rūpīgi tiek iztīrīti, bet arī kļūst gaišāki, gludi, svaigāki. Tas ir drošs un efektīvs risinājums gan profilaksei, gan pirms citām zobārstnieciskām procedūrām.
-            </p>
-          </div>
-
-          <div className="flex justify-start">
-            <Link to="/lv/kontakti" className="btn-primary btn-glow rounded-full px-8 py-3 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
-              Pierakstīties vizītam
-            </Link>
-          </div>
-
-          <div id="cenas" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Mutes higiēnas pakalpojumu cenas mūsu klīnikā
-          </h2>
-          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-             <p>
-               Profesionālās mutes higiēnas cena ir atkarīga no pacienta individuālā mutes stāvokļa, aplikumu daudzuma un izvēlētajām papildu procedūrām.
-             </p>
-          </div>
-
-          <div className="max-w-2xl rounded-2xl border border-brand/20 bg-white shadow-soft overflow-hidden mb-6">
-            <div className="divide-y divide-slate-100">
-              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700 font-medium">Pilna profesionālā mutes higiēna</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">60 – 80 €</span>
-              </div>
-              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700 font-medium">Atkārtota mutes higiēna (regulāri apmeklējot)</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 50 €</span>
-              </div>
-              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700 font-medium">Fluora laka aplikācija</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 20 €</span>
-              </div>
-              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700 font-medium">ICON ārstēšana (fluorozes plankumiem)</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">60 €</span>
+            <div className="mb-8">
+              <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
+                <p className="mb-4">
+                  Pat rūpīgi tīrot zobus mājās ikdienā, suka un starpzobu diegs nesasniedz visas mutes vietas. Ar laiku uzkrājušies aplikumi un zobakmeņi var izraisīt kariesu, smaganu iekaisumu vai nepatīkamu mutes smaku. Tieši tāpēc profesionāla mutes higiēna ir viena no svarīgākajām profilaktiskām procedūrām, kas palīdz saglabāt veselus zobus un smaganas.
+                </p>
+                <p>
+                  Bangų zobārstniecības klīnikā Klaipēdā mutes higiēna tiek veikta, izmantojot moderno AIRFLOW® tehnoloģiju. Procedūras laikā zobi tiek ne tikai rūpīgi iztīrīti, bet arī kļūst gaišāki, gludāki un svaigāki. Tas ir drošs un efektīvs risinājums gan profilaksei, gan pirms citām zobārstniecības procedūrām.
+                </p>
               </div>
             </div>
-          </div>
 
-          <p className="text-slate-700 leading-relaxed text-sm">
-            Precīzs procedūras apjoms un galīgā cena tiek apspriesta individuālas konsultācijas laikā, ņemot vērā pacienta vajadzības un mutes stāvokli.
-          </p>
-          </div>
-        </motion.header>
-
-        <motion.section id="kas-ir" className={sectionWrap} variants={item}>
-          <div className={whiteCard}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Kas ir profesionāla mutes higiēna?
-          </h2>
-          <div className="grid sm:grid-cols-3 gap-6">
-            <div className={innerCard + ' flex flex-col items-start'}>
-              <ToothIcon />
-              <p className="text-sm text-slate-700 leading-relaxed">
-                Profesionāla mutes higiēna – tā ir speciālista veikta procedūra, kuras laikā no zobu virsmām, starpzobiem un zem smaganām tiek noņemti mīkstie aplikumi, zobakmens un pigmenta plankumi.
-              </p>
+            <div className="flex justify-start">
+              <Link to="/lv/kontakti" className="btn-primary btn-glow rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+                Reģistrēties vizītei
+              </Link>
             </div>
-            <div className={innerCard + ' flex flex-col items-start'}>
-              <ShieldIcon />
-              <p className="text-sm text-slate-700 leading-relaxed">
-                Laika gaitā aplikumi mineralizējas un pārvēršas par zobakmeni. Tas rada labvēlīgu vidi baktērijām, kas var izraisīt smaganu iekaisumu un parodonta slimības. Higiēna ir vissvarīgākais profilakses līdzeklis.
-              </p>
-            </div>
-            <div className={innerCard + ' flex flex-col items-start'}>
-              <ClockIcon />
-              <p className="text-sm text-slate-700 leading-relaxed">
-                Regulāri veikta zobu higiēna palīdz uzturēt veselīgas smaganas un samazina kariesa risku. Visbiežāk procedūra tiek ieteikta ik pēc 6 mēnešiem, bet problēmu gadījumā – biežāk.
-              </p>
-            </div>
-          </div>
-          </div>
-        </motion.section>
 
-        <motion.section id="airflow" className={sectionWrap} variants={item}>
-          <div className={whiteCard}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-            Kas ir AIRFLOW® tehnoloģija?
-          </h2>
-          <div className="space-y-4 text-slate-700 leading-relaxed">
-            <p>
-              AIRFLOW® – tā ir moderna zobu aplikumu noņemšanas tehnoloģija, kuras laikā tiek izmantots gaisa, ūdens un speciālās sodas maisījums. Šī metode ļauj maigi, bet ārkārtīgi precīzi noņemt mīkstos aplikumus un pigmenta plankumus pat grūti sasniedzamās vietās.
-            </p>
-            <p>
-              AIRFLOW® tehnoloģija ir īpaši piemērota pacientiem ar implantiem, plombām, kronīšiem vai protēzēm, jo procedūra ir droša zobu emaljai un restaurācijām. Komforta un efektivitātes dēļ šī tehnoloģija bieži tiek izvēlēta gan regulārai profilaksei, gan kā palīglīdzeklis smaganu slimību ārstēšanā.
-            </p>
-            <p>
-              AIRFLOW® palīdz arī atjaunot dabīgo zobu toni un nodrošina ilgāk saglabājušos tīrības sajūtu pēc profesionālās mutes higiēnas.
-            </p>
-          </div>
-          </div>
-        </motion.section>
+            {/* CENAS */}
+            <motion.section id="cenas" className="mt-8 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+              <div className="rounded-3xl border border-sky-200/40 p-7 sm:p-10 lg:p-12" style={{ backgroundColor: SL }}>
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                  <div>
+                    <h2 className="text-3xl font-extrabold tracking-tight mb-2" style={{ color: P }}>
+                      Mutes higiēnas cenas
+                    </h2>
+                    <p className="text-slate-600">
+                      Profesionālas mutes higiēnas cena atkarīga no individuālā pacienta mutes stāvokļa, aplikumu daudzuma un izvēlētajām papildu procedūrām.
+                    </p>
+                  </div>
+                </div>
 
-        <motion.section id="kapec-vertigi" className={sectionWrap} variants={item}>
-          <div className={whiteCard}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Kāpēc vērts izvēlēties profesionālu mutes higiēnu?
-          </h2>
-          <p className="text-slate-700 mb-6 leading-relaxed">
-            Profesionāla mutes higiēna ir ne tikai estētiska, bet arī ārstnieciska un profilaktiska procedūra. Regulāra aplikumu un zobakmens noņemšana palīdz izvairīties no daudzām mutes slimībām, kas bieži attīstās nepamanīti un laika gaitā rada nopietnas komplikācijas. Bangų zobārstniecības klīnikā Klaipēdā veiktā zobu higiēna ir orientēta uz ilgtermiņa rezultātu.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {[
-              "Tiek noņemti neredzamie aplikumi zem smaganām un starpzobos",
-              "Tiek noņemts zobakmens – gingivīta cēlonis",
-              "Tiek pulētas zobu virsmas (zobi kļūst gludi un baltāki)",
-              "Uzlabojas mutes smarža",
-              "Samazinās agrīnas zobu zaudēšanas risks",
-              "Tiek sniegti individuāli higiēnas padomi"
-            ].map((text, i) => (
-              <div key={i} className={innerCard + ' flex items-start gap-3'}>
-                <span className="mt-0.5"><CheckIcon /></span>
-                <span className="text-slate-700 text-sm font-medium">{text}</span>
+                <div className="grid md:grid-cols-2 gap-5">
+                  <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                    <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Higiēnas procedūras</h3>
+                    <div className="divide-y divide-slate-100">
+                      {[
+                        ['Pilna profesionāla mutes higiēna', '60 – 80 €'],
+                        ['Atkārtota mutes higiēna (regulāri apmeklējot)', 'no 50 €'],
+                      ].map(([name, price], i) => (
+                        <div key={i} className="flex justify-between items-center py-2.5">
+                          <span className="text-slate-600 text-sm">{name}</span>
+                          <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                    <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Papildu procedūras</h3>
+                    <div className="divide-y divide-slate-100">
+                      {[
+                        ['Fluora lakas aplikācija', 'no 20 €'],
+                        ['ICON ārstēšana (fluorozes plankumiem)', '60 €'],
+                      ].map(([name, price], i) => (
+                        <div key={i} className="flex justify-between items-center py-2.5">
+                          <span className="text-slate-600 text-sm">{name}</span>
+                          <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-slate-500 text-sm mt-6">
+                  Precīzs procedūras apjoms un galīgā cena tiek apspriesta individuālas konsultācijas laikā, ņemot vērā pacienta vajadzības un mutes stāvokli.
+                </p>
               </div>
-            ))}
-          </div>
-          <p className="text-slate-700 mt-4 leading-relaxed">
-            Šī procedūra ir īpaši svarīga pacientiem, kuri vēlas ne tikai skaistu smaidu, bet arī ilgtermiņa mutes veselību. Regulāra profesionāla higiēna palīdz izvairīties no sarežģītiem un dārgiem ārstēšanas etapiem nākotnē.
-          </p>
-          </div>
-        </motion.section>
+            </motion.section>
+          </motion.header>
 
-        <motion.section id="kad-nepieciesama" className={sectionWrap} variants={item}>
-          <div className={whiteCard}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Kad profesionāla mutes higiēna ir īpaši nepieciešama?
-          </h2>
-          <div className={innerCard}>
-            <ul className="list-disc pl-5 space-y-2 text-slate-700">
-              <li>Pacientiem, kuri pamana asiņojošas smaganas, nepatīkamu smaržu vai jutīgumu.</li>
-              <li>Tiem, kam ir implanti, tilti, kronīši vai protēzes (ilgmūžības nodrošināšanai).</li>
-              <li>Tiem, kas nēsā ortodontiskos aparātus (kad higiēna ir sarežģītāka).</li>
-              <li>Smēķētājiem vai tiem, kas bieži lieto kafiju, tēju.</li>
-              <li>Pirms zobu balināšanas, plombēšanas vai protezēšanas.</li>
-              <li>Kā regulāru profilaksi ik pēc 6 mēnešiem (vai ik pēc 3 mēnešiem problēmu gadījumā).</li>
-            </ul>
-          </div>
-          </div>
-        </motion.section>
+          {/* DOCTOR CTA */}
+          <motion.div className="mt-8 mb-12" variants={item}>
+            <div className="bg-white rounded-[28px] border border-sky-200 shadow-soft overflow-hidden">
+              <div className="grid lg:grid-cols-[5fr_4fr] gap-0 items-stretch">
+                <div className="p-6 sm:p-8 lg:p-10">
+                  <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-darkblue-700 mb-4">
+                    Aicinām reģistrēties profesionālai mutes higiēnai Bangų klīnikā
+                  </h2>
+                  <p className="text-slate-700 leading-relaxed mb-4">
+                    Ja meklējat uzticamu un profesionālu zobārstniecības klīniku Klaipēdā, aicinām apmeklēt Bangų zobārstniecības klīniku. Pacientu uzticību mūsu sniegtajiem pakalpojumiem apstiprina pozitīvās atsauksmes, kurās bieži tiek minēts procedūras maigums, skaidra situācijas apkopošana un iepriecinošs ilgtermiņa rezultāts. Šeit Jūs sagaida modernas tehnoloģijas, pieredzējuši speciālisti un individuāla pieeja katram pacientam.
+                  </p>
+                  <div className="bg-sky-50 rounded-xl p-5 border border-sky-200 mb-8">
+                    <p className="font-semibold text-darkblue-700 mb-3">Konsultācijas laikā:</p>
+                    <ul className="space-y-2 text-slate-700">
+                      {[
+                        'tiek veikts izsmeļošs klīniskais novērtējums',
+                        'tiek apspriestas iespējamās ārstēšanas metodes',
+                        'tiek izskaidroti procedūras posmi un termiņi',
+                        'tiek izveidots individuāls ārstēšanas plāns',
+                      ].map((t, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className="mt-1"><CheckIcon /></span>
+                          <span className="leading-relaxed">{t}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Link
+                    to="/lv/kontakti"
+                    className="btn-primary btn-glow rounded-full px-7 py-3 font-semibold text-base inline-block shadow-lg hover:shadow-xl transition"
+                  >
+                    Reģistrēties vizītei
+                  </Link>
+                </div>
+                <div className="relative aspect-[4/5] bg-sky-50">
+                  <div className="pt-[125%]" />
+                  <img
+                    src="/team/Rūta_light.jpg"
+                    alt="Bangų zobārstniecības klīnikas ārsts"
+                    className="absolute inset-0 w-full h-full object-contain"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
-        <motion.section id="ka-notiek" className={sectionWrap} variants={item}>
-          <div className={whiteCard}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Kā tiek veikta mutes higiēna ar AIRFLOW® tehnoloģiju?
-          </h2>
-          <div className="space-y-6">
-            <div className={innerCard}>
-              <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
-                <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">1</span>
-                Zobakmens noņemšana ar ultraskaņas skaleri
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                Procedūra sākas ar zobakmens noņemšanu, izmantojot ultraskaņas skaleri. Šī ierīce ar vibrāciju palīdzību efektīvi sadala un noņem cietajus aplikumus no zobu virsmām un zem smaganām, nesabojājot emalju.
+          {/* REVIEWS */}
+          <motion.div className="mb-10 no-x-scroll pan-y" variants={item}>
+            <ReviewsCarousel />
+          </motion.div>
+
+          {/* KAS IR HIGIĒNA */}
+          <motion.section id="kas-ir" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kas ir profesionāla mutes higiēna?
+              </h2>
+
+              <div className="grid sm:grid-cols-3 gap-6">
+                <div className={innerCard}>
+                  <ToothIcon />
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    Profesionāla mutes higiēna ir speciālista veikta procedūra, kuras laikā no zobu virsmām, starpzobu telpām un zem smaganām tiek noņemti mīkstie aplikumi, zobakmeņi un pigmenta plankumi.
+                  </p>
+                </div>
+                <div className={innerCard}>
+                  <ShieldIcon />
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    Ar laiku aplikumi mineralizējas un pārvēršas par zobakmeņiem. Tas rada labvēlīgu vidi baktērijām, kas var izraisīt smaganu iekaisumu un periodonta slimības. Higiēna ir svarīgākā profilakses ierīce.
+                  </p>
+                </div>
+                <div className={innerCard}>
+                  <ClockIcon />
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    Regulāri veikta zobu higiēna palīdz uzturēt veselas smaganas un samazina kariesa risku. Visbiežāk procedūra ir ieteicama ik pēc 6 mēnešiem, un problēmu gadījumā — biežāk.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* AIRFLOW TEHNOLOĢIJA */}
+          <motion.section id="airflow" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kas ir AIRFLOW® tehnoloģija?
+              </h2>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  AIRFLOW® ir moderna zobu aplikumu noņemšanas tehnoloģija, kuras laikā tiek izmantots gaisa, ūdens un speciālas sodas maisījums. Šī metode ļauj maigi, taču īpaši precīzi noņemt mīkstos aplikumus un pigmenta plankumus pat grūti sasniedzamās vietās.
+                </p>
+                <p>
+                  AIRFLOW® tehnoloģija īpaši piemērota pacientiem, kuriem ir implanti, plombas, kronīši vai protēzes, jo procedūra ir droša zobu emaljai un restaurācijām. Komforta un efektivitātes dēļ šī tehnoloģija bieži tiek izvēlēta gan regulārai profilaksei, gan kā palīgierīce, ārstējot smaganu slimības.
+                </p>
+                <p>
+                  AIRFLOW® arī palīdz atjaunot dabisko zobu nokrāsu un nodrošina ilgāk saglabājošos tīrības sajūtu pēc profesionālas mutes higiēnas.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* IEGUVUMS */}
+          <motion.section id="kapec-izveleties" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kāpēc izvēlēties profesionālu mutes higiēnu?
+              </h2>
+
+              <p className="text-slate-700 leading-relaxed max-w-4xl mb-6">
+                Profesionāla mutes higiēna ir ne tikai estētiska, bet arī ārstējoša un profilaktiska procedūra. Regulāra aplikumu un zobakmeņu noņemšana palīdz izvairīties no daudzām mutes slimībām, kas bieži attīstās nepamanāmi un ar laiku izraisa nopietnas komplikācijas. Bangų zobārstniecības klīnikā Klaipēdā veiktā zobu higiēna orientēta uz ilgtermiņa rezultātu.
+              </p>
+
+              <div className="grid sm:grid-cols-2 gap-3 mb-6">
+                {[
+                  "Tiek noņemti neredzamie aplikumi zem smaganām un starpzobu telpās",
+                  "Tiek notīrīti zobakmeņi — gingivīta iemesls",
+                  "Tiek pulētas zobu virsmas (zobi kļūst gludāki un baltāki)",
+                  "Uzlabojas mutes smaka",
+                  "Samazinās agrīnas zobu zaudēšanas risks",
+                  "Tiek sniegti individuāli higiēnas padomi"
+                ].map((text, i) => (
+                  <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                    <span className="mt-0.5"><CheckIcon /></span>
+                    <span className="text-slate-700 text-sm font-medium">{text}</span>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-slate-700 leading-relaxed">
+                Šī procedūra ir īpaši svarīga pacientiem, kuri vēlas ne tikai skaistu smaidu, bet arī ilgtermiņa mutes veselību. Regulāra profesionāla higiēna palīdz izvairīties no sarežģītām un dārgām ārstēšanas stadijām nākotnē.
               </p>
             </div>
-            <div className={innerCard}>
-              <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
-                <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">2</span>
-                Aplikumu noņemšana ar AIRFLOW® metodi
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                Tālāk tiek veikta zobu tīrīšana ar AIRFLOW® aparātu. Gaisa, ūdens un speciālās sodas maisījums ļauj maigi noņemt mīkstos aplikumus un pigmenta plankumus pat grūti sasniedzamās vietās. Šis etaps tiek īpaši novērtēts komforta un redzamā estētiskā rezultāta dēļ.
+          </motion.section>
+
+          {/* KAD NEPIECIEŠAMA */}
+          <motion.section id="kad-nepieciesama" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kad profesionāla mutes higiēna ir īpaši nepieciešama?
+              </h2>
+
+              <div className={innerCard}>
+                <ul className="list-disc pl-5 space-y-2 text-slate-700">
+                  <li>Pacientiem, kuri pamana asiņojošas smaganas, nepatīkamu smaku vai jutīgumu.</li>
+                  <li>Cilvēkiem ar implantiem, tiltiem, kronīšiem vai protēzēm (ilgmūžības nodrošināšanai).</li>
+                  <li>Cilvēkiem, kuri valkā ortodontiskās ierīces (kad higiēna ir sarežģītāka).</li>
+                  <li>Smēķētājiem vai tiem, kuri bieži lieto kafiju un tēju.</li>
+                  <li>Pirms zobu balināšanas, plombēšanas vai protezēšanas.</li>
+                  <li>Kā regulāra profilakse ik pēc 6 mēnešiem (vai ik pēc 3 mēnešiem, ja ir problēmas).</li>
+                </ul>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* GAITA */}
+          <motion.section id="process" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kā tiek veikta mutes higiēna ar AIRFLOW® tehnoloģiju?
+              </h2>
+
+              <div className="space-y-6">
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
+                    <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">1</span>
+                    Zobakmeņu noņemšana ar ultraskaņas skaleri
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Procedūra sākas ar zobakmeņu noņemšanu, izmantojot ultraskaņas skaleri. Šī ierīce ar vibrāciju palīdzību efektīvi sadala un noņem cietos aplikumus no zobu virsmām un zem smaganām, nebojājot emalju.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
+                    <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">2</span>
+                    Aplikumu noņemšana ar AIRFLOW® metodi
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Tālāk tiek veikta zobu tīrīšana ar AIRFLOW® ierīci. Izmantotais gaisa, ūdens un speciālas sodas maisījums ļauj maigi noņemt mīkstos aplikumus un pigmenta plankumus pat grūti sasniedzamās vietās. Šis posms īpaši tiek novērtēts komforta un manāma estētiska rezultāta dēļ.
+                  </p>
+                </div>
+
+                <div className={innerCard}>
+                  <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
+                    <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">3</span>
+                    Zobu pulēšana ar speciālu pastu
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Procedūra tiek pabeigta ar zobu pulēšanu ar speciālu pastu. Pulēta zobu virsma kļūst gludāka, tāpēc aplikumi uzkrājas lēnāk, un zobi ilgāk saglabājas tīri un mirdzoši.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* PĒC PROCEDŪRAS */}
+          <motion.section id="pec-higienas" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kas svarīgi zināt pēc profesionālas mutes higiēnas?
+              </h2>
+
+              <p className="text-slate-700 leading-relaxed max-w-4xl mb-6">
+                Pēc profesionālas mutes higiēnas vairums pacientu jau uzreiz pamana tīrības, svaiguma un vieglumu sajūtu mutē. Zobu virsmas kļūst gludākas, vizuāli gaišākas, un mutes smaka — patīkamāka. Dažos gadījumos, īpaši, ja bija daudz zobakmeņu vai jutīgas smaganas, uz īsu brīdi var izpausties neliels smaganu jutīgums vai asiņošana — tā ir normāla un īslaicīga organisma reakcija.
+              </p>
+
+              <div className={innerCard + ' mb-6'}>
+                <h3 className="font-semibold text-darkblue-700 mb-3">Ieteikumi rezultāta saglabāšanai:</h3>
+                <ul className="list-disc pl-5 space-y-2 text-slate-700">
+                  <li>Ievērot individuālus higiēnista padomus.</li>
+                  <li>Tīrīt zobus vismaz 2 reizes dienā, lietot starpzobu diegu/sukas.</li>
+                  <li>Pirmās stundas izvairīties no krāsojošiem produktiem (kafijas, vīna, tējas).</li>
+                  <li>Apmeklēt higiēnai ik pēc 6 mēnešiem (vai biežāk).</li>
+                </ul>
+              </div>
+
+              <p className="text-slate-700 leading-relaxed">
+                Pareiza ikdienas mutes kopšana un regulāras profilaktiskas vizītes palīdz ne tikai saglabāt tīrus zobus, bet arī pasargā no smaganu slimībām un sarežģītas ārstēšanas nākotnē.
               </p>
             </div>
-            <div className={innerCard}>
-              <h3 className="font-bold text-darkblue-700 mb-2 flex items-center">
-                <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">3</span>
-                Zobu pulēšana ar speciālu pastu
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                Procedūra tiek pabeigta ar zobu pulēšanu ar speciālu pastu. Pulēta zobu virsma kļūst gluda, tāpēc aplikumi uzkrājas lēnāk, un zobi ilgāk paliek tīri un spīdīgi.
-              </p>
-            </div>
-          </div>
-          </div>
-        </motion.section>
+          </motion.section>
 
-        <motion.section id="pec-proceduras" className={sectionWrap} variants={item}>
-          <div className={whiteCard}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Ko ir svarīgi zināt pēc profesionālās mutes higiēnas?
-          </h2>
-          <div className="space-y-4 text-slate-700 leading-relaxed">
-             <p>
-               Pēc profesionālās mutes higiēnas lielākā daļa pacientu uzreiz pamana tīrības, svaiguma un viegluma sajūtu mutē. Zobu virsmas kļūst gludi, vizuāli gaišākas, bet mutes smarža – patīkamāka. Dažos gadījumos, īpaši, ja bijis daudz zobakmens vai jutīgas smaganas, īslaicīgi var parādīties neliels smaganu jutīgums vai asiņošana – tā ir normāla un pārejoša organisma reakcija.
-             </p>
-             <div className={innerCard}>
-               <h3 className="font-semibold text-darkblue-700 mb-3">Ieteikumi rezultāta saglabāšanai:</h3>
-               <ul className="list-disc pl-5 space-y-2">
-                 <li>Ievērot higiēnista individuālos padomus.</li>
-                 <li>Tīrīt zobus vismaz 2 reizes dienā, izmantot starpzobu diegu/birstes.</li>
-                 <li>Pirmās stundas izvairīties no krāsojošiem produktiem (kafija, vīns, tēja).</li>
-                 <li>Apmeklēt higiēnu ik pēc 6 mēnešiem (vai biežāk).</li>
-               </ul>
-             </div>
-             <p>
-               Atbilstoša ikdienas mutes kopšana un regulāri profilaktiskie vizīti palīdz ne tikai uzturēt tīrus zobus, bet arī aizsargā no smaganu slimībām un sarežģītas ārstēšanas nākotnē.
-             </p>
-          </div>
-          </div>
-        </motion.section>
+          {/* MĪTI */}
+          <motion.section id="miti" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Biežākie mīti par profesionālu mutes higiēnu
+              </h2>
 
-        <motion.section id="miti" className={sectionWrap} variants={item}>
-          <div className={whiteCard}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Biežākie mīti par profesionālo mutes higiēnu
-          </h2>
-          <div className="space-y-4">
-            <div className={innerCard}>
-              <h3 className="font-bold text-slate-900 mb-2">Mīts #1: higiēna bojā emalju</h3>
-              <p className="text-slate-600 text-sm">Tā ir nepareiza pārliecība. Izmantotie līdzekļi (AIRFLOW) ir droši un nebojā emalju, bet zobi paliek gludi un nebojāti.</p>
+              <div className="space-y-4">
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Mīts #1: higiēna bojā emalju</h3>
+                  <p className="text-slate-600 text-sm">Tas ir viens no biežākajiem kļūdainajiem uzskatiem. Profesionālas mutes higiēnas laikā izmantotās ierīces un tehnoloģijas ir pielāgotas drošai aplikumu un zobakmeņu noņemšanai, nebojājot emalju. AIRFLOW® tehnoloģija darbojas maigi un precīzi, tāpēc zobu virsmas pēc procedūras saglabājas gludas un nebojātas.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Mīts #2: procedūra ir sāpīga</h3>
+                  <p className="text-slate-600 text-sm">Vairums pacientu profesionālu mutes higiēnu apraksta kā ērtu procedūru. Iespējams tikai neliels diskomforts, īpaši, ja bija daudz zobakmeņu vai jutīgas smaganas, taču šī sajūta ir īslaicīga. Procedūras gaita vienmēr tiek pielāgota individuāli, ņemot vērā pacienta pašsajūtu.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Mīts #3: pietiek tīrīt zobus mājās</h3>
+                  <p className="text-slate-600 text-sm">Ikdienas mutes kopšana ir nepieciešama, taču tā nevar pilnīgi aizvietot profesionālu mutes higiēnu. Pat rūpīgi tīrot zobus mājās, ne visas vietas ir sasniedzamas ar suku vai diegu. Profesionālas procedūras laikā tiek noņemti aplikumi no grūti pieejamām zonām, kas ar laiku var izraisīt smaganu slimības.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Mīts #4: higiēna nepieciešama tikai tad, kad sāp</h3>
+                  <p className="text-slate-600 text-sm">Mutes slimības bieži attīstās nepamanāmi un bez sāpēm. Asiņojošas smaganas, nepatīkama smaka vai zobu jutīgums var būt agrīni signāli, ka nepieciešama profesionāla higiēna. Regulāra procedūra ļauj novērst problēmas jau pirms to izpausmes.</p>
+                </div>
+                <div className={innerCard}>
+                  <h3 className="font-bold text-slate-900 mb-2">Mīts #5: higiēna tikai skaistuma dēļ</h3>
+                  <p className="text-slate-600 text-sm">Lai gan pēc procedūras zobi izskatās tīrāki un gaišāki, profesionālas mutes higiēnas galvenais mērķis ir mutes veselības uzturēšana. Procedūra palīdz samazināt kariesa, smaganu iekaisuma un periodonta slimību risku un saglabāt dabiskos zobus ilgu laiku.</p>
+                </div>
+              </div>
             </div>
-            <div className={innerCard}>
-              <h3 className="font-bold text-slate-900 mb-2">Mīts #2: procedūra ir sāpīga</h3>
-              <p className="text-slate-600 text-sm">Lielākā daļa pacientu procedūru raksturo kā komfortablu. Diskomforts ir minimāls un pārejošs, atkarībā no aplikumu daudzuma.</p>
-            </div>
-            <div className={innerCard}>
-              <h3 className="font-bold text-slate-900 mb-2">Mīts #3: pietiek tīrīt zobus mājās</h3>
-              <p className="text-slate-600 text-sm">Mājās nav iespējams sasniegt visas vietas (piemēram, zem smaganām). Profesionāla higiēna noņem aplikumus no grūti sasniedzamām zonām.</p>
-            </div>
-             <div className={innerCard}>
-              <h3 className="font-bold text-slate-900 mb-2">Mīts #4: higiēna vajadzīga tikai tad, kad sāp</h3>
-              <p className="text-slate-600 text-sm">Slimības attīstās bez sāpēm. Regulāra higiēna novērš problēmas (asiņošanu, smaržu) vēl pirms to izpausmes.</p>
-            </div>
-             <div className={innerCard}>
-              <h3 className="font-bold text-slate-900 mb-2">Mīts #5: higiēna tikai skaistuma dēļ</h3>
-              <p className="text-slate-600 text-sm">Lai gan zobi kļūst gaišāki, galvenais mērķis – veselība: kariesa un smaganu slimību profilakse.</p>
-            </div>
-          </div>
-          </div>
-        </motion.section>
+          </motion.section>
 
-        <motion.div className="mt-8 mb-12 text-left" variants={item}>
-          <div className={whiteCard}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-            Aicinām pierakstīties profesionālajai mutes higiēnai Bangų klīnikā
-          </h2>
-          <p className="text-slate-700 mb-8 max-w-3xl leading-relaxed">
-            Ja meklējat uzticamu un profesionālu zobārstniecības klīniku Klaipēdā, aicinām apmeklēt Bangų zobārstniecības klīniku. Pacientu uzticēšanos mūsu sniegtajiem pakalpojumiem apliecina pozitīvas atsauksmes, kurās bieži tiek minēts procedūras maigums, skaidrs situācijas apkopojums un iepriecinošs ilgtermiņa rezultāts. Šeit Jūs sagaida modernās tehnoloģijas, pieredzējuši speciālisti un individuāla pieeja katram pacientam.
-          </p>
-          <Link to="/lv/kontakti" className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
-            Pierakstīties vizītam
-          </Link>
-          </div>
-        </motion.div>
-          </div>
+          {/* KĀPĒC MĒS */}
+          <motion.section id="kodel-rinktis" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kāpēc izvēlēties Bangų zobārstniecības klīniku Klaipēdā?
+              </h2>
+
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Izvēloties zobārstniecības klīniku, svarīga ir ne tikai pati procedūra, bet arī tas, kas to veic, kādos apstākļos un ar kādu pieeju pacientam. Bangų zobārstniecības klīnikā profesionāla mutes higiēna tiek veikta, ievērojot augstus medicīniskos standartus, apvienojot progresīvas tehnoloģijas un individuālu uzmanību katram pacientam.
+                </p>
+                <p>
+                  Klīnikā strādājošie speciālisti pastāvīgi pilnveido savu kvalifikāciju un piemēro mūsdienīgus, zinātniski pamatotus risinājumus. Mutes higiēna tiek veikta, izmantojot moderno AIRFLOW® tehnoloģiju, kas nodrošina ne tikai efektīvu aplikumu noņemšanu, bet arī komfortu procedūras laikā. Tas ir īpaši svarīgi pacientiem, kuri novērtē maigu, drošu un ilgtermiņa rezultātu.
+                </p>
+                <p>
+                  Bangų zobārstniecības klīnikā īpaša uzmanība tiek pievērsta individuālai pieejai. Pirms procedūras tiek novērtēts pacienta mutes stāvoklis, smaganu jutīgums, esošās restaurācijas vai implanti, un procedūras apjoms un biežums tiek pielāgots konkrētām vajadzībām. Pēc mutes higiēnas pacientam tiek sniegti skaidri un praktiski ieteikumi, kas palīdz uzturēt rezultātu ikdienas kopšanā.
+                </p>
+                <p>
+                  Svarīgs klīnikas priekšrocība — skaidra komunikācija un caurspīdība. Pacienti iepriekš tiek iepazīstināti ar procedūras gaitu, iespējamām sajūtām un cenu politiku. Tas palīdz justies droši, pārliecināti un bez lieka stresa.
+                </p>
+                <p>
+                  Izvēloties Bangų zobārstniecības klīniku Klaipēdā, pacienti izvēlas ne tikai profesionālu mutes higiēnu, bet arī uzticamu partneri ilgtermiņa mutes veselības uzturēšanai.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+        </div>
       </motion.div>
     </AnimatedSection>
   )
