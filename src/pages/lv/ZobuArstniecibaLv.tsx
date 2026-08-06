@@ -1,9 +1,10 @@
-import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../../components/AnimatedSection'
 import SEO from '../../components/SEO'
+import { useRef } from 'react'
 import { TableOfContents } from '../../components/TableOfContents'
+import ReviewsCarousel from '../../components/ReviewsCarousel'
 import { SITE_URL } from '../../i18n/lv'
 
 const container = {
@@ -14,6 +15,14 @@ const item = {
   hidden: { opacity: 0, y: 8 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
 }
+
+const sectionWrap = 'mb-12 scroll-mt-36 2xl:scroll-mt-24'
+const whiteCard = 'bg-brand-50 p-6 sm:p-8 rounded-2xl border border-brand/20 shadow-soft'
+const innerCard = 'bg-white p-5 rounded-xl border border-slate-200 shadow-sm'
+
+const P  = '#002045'
+const S  = '#006b5f'
+const SL = '#ecf5fb'
 
 function CheckIcon() {
   return (
@@ -49,34 +58,35 @@ function ClipboardListIcon() {
 
 const tocSections = [
   { id: "cenas", label: "Cenas" },
-  { id: "kas-ir", label: "Kas ir zobu ārstēšana?" },
+  { id: "kas-ir", label: "Kas ir zobu ārstniecība?" },
   { id: "kad-nepieciesama", label: "Kad nepieciešama?" },
-  { id: "pakalpojumi", label: "Mūsu pakalpojumi" },
-  { id: "ka-notiek", label: "Ārstēšanas gaita" },
+  { id: "pakalpojumi", label: "Sniegtie pakalpojumi" },
+  { id: "process", label: "Kā notiek ārstēšana?" },
   { id: "profilakse", label: "Profilaktiskās pārbaudes" },
   { id: "kapec-mes", label: "Kāpēc Bangų klīnika?" },
 ]
 
 export default function ZobuArstniecibaLv() {
-  const pageRef = useRef(null)
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "MedicalProcedure",
-    "name": "Zobu ārstēšana",
-    "description": "Profesionāla zobu ārstēšana Klaipēdā. Terapeitiskā ārstēšana, plombēšana, kanālu ārstēšana, neatliekamā palīdzība.",
-    "provider": {
-      "@type": "Dentist",
-      "name": "Bangų klīnika"
-    }
+    "@type": "Service",
+    "@id": `${SITE_URL}/lv/pakalpojumi/zobu-arstnieciba/#service`,
+    "name": "Zobu ārstniecība Klaipēdā",
+    "serviceType": "Zobu ārstniecība",
+    "description": "Zobu ārstniecības pakalpojums tiek sniegts Bangų zobārstniecības klīnikā Klaipēdā. Klīnikā tiek veikta zobu labošana un ārstēšana.",
+    "url": `${SITE_URL}/lv/pakalpojumi/zobu-arstnieciba/`,
+    "areaServed": { "@type": "City", "name": "Klaipēda" },
   }
+
+  const pageRef = useRef(null)
 
   return (
     <AnimatedSection>
       <SEO
         lang="lv"
-        title="Zobu ārstēšana Klaipēdā — Bangų klīnika"
-        description="Profesionāla zobu ārstēšana Klaipēdā. Neatliekamā palīdzība, kariesa ārstēšana, plombēšana. Pierakstieties vizītam."
-        keywords="zobu ārstēšana, zobārsts, neatliekamā palīdzība, kariess, plombēšana, Klaipēda"
+        title="Zobu ārstniecība Klaipēdā"
+        description="Zobu ārstniecība Klaipēdā sāpju vai citu bojājumu gadījumā. Laikus novērsiet sāpes un saglabājiet dabiskos zobus. Reģistrējieties Bangų klīnikā."
+        keywords="zobu ārstniecība, zobu labošana, neatliekamā palīdzība, kariess, plombēšana, Klaipēda"
         canonical={`${SITE_URL}/lv/pakalpojumi/zobu-arstnieciba`}
         alternates={[
           { lang: 'lt', url: `${SITE_URL}/paslaugos/dantu-taisymas-gydymas` },
@@ -86,257 +96,336 @@ export default function ZobuArstniecibaLv() {
         structuredData={structuredData}
       />
 
-      <motion.div ref={pageRef} className="max-w-screen-2xl mx-auto px-8 xl:px-28 2xl:px-8 2xl:flex 2xl:gap-8 2xl:items-start" variants={container} initial="hidden" animate="visible">
-          <TableOfContents sections={tocSections} title="Saturs" rootRef={pageRef} cta={{ label: "Pierakstīties vizītei", to: "/kontaktai" }} />
-          <div className="min-w-0 flex-1">
+      <motion.div
+        ref={pageRef}
+        className="max-w-screen-2xl mx-auto px-8 xl:px-28 2xl:px-8 2xl:flex 2xl:gap-8 2xl:items-start"
+        variants={container}
+        initial="hidden"
+        animate="visible"
+      >
+        <TableOfContents sections={tocSections} rootRef={pageRef} cta={{ label: "Reģistrēties vizītei", to: "/lv/kontakti" }} />
 
-        <motion.header className="mb-10 text-left" variants={item}>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
-            Profesionāla zobu ārstēšana Klaipēdā
-          </h1>
+        <div className="min-w-0 flex-1">
+          {/* HERO */}
+          <motion.header className="mb-10 text-left" variants={item}>
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
+              Zobu ārstniecība Klaipēdā
+            </h1>
 
-          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed mb-8">
-            <p className="mb-4">
-              Zobu sāpes, diskomforts vai profilaktiskas pārbaudes nepieciešamība – tās ir visbiežākās iemesls, kāpēc pacienti vēršas pie zobārsta. Savlaicīgi veikta zobu ārstēšana ļauj ne tikai novērst nepatīkamus simptomus, bet arī saglabāt dabiskos zobus un novērst sarežģītākus ārstēšanas etapus nākotnē.
-            </p>
-            <p>
-              Bangų zobārstniecības klīnikā Klaipēdā sniegtais zobu ārstēšanas pakalpojums aptver plašu procedūru klāstu – no konsultācijām un profilaktiskām pārbaudēm līdz sarežģītām ārstēšanas un atjaunošanas procedūrām. Klīnikas speciālisti operatīvi palīdz gan akūtu zobu sāpju gadījumā, gan plānojot ilgtermiņa ārstēšanu. Kompleksā pieeja ļauj pacientiem saņemt visus nepieciešamos pakalpojumus vienā vietā.
-            </p>
-          </div>
-
-          <div className="flex justify-start">
-             <Link to="/lv/kontakti" className="btn-primary btn-glow rounded-full px-8 py-3 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
-              Pierakstīties vizītam
-            </Link>
-          </div>
-
-          <div id="cenas" className="mt-8 scroll-mt-36 2xl:scroll-mt-24">
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Zobu ārstēšanas cenas
-          </h2>
-          <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-            <p>
-              Zobu ārstēšanas cena ir atkarīga no pacienta vecuma, zobu stāvokļa, izmantotās ārstēšanas metodes un procedūras sarežģītības. Bangų zobārstniecības klīnikā pirms ārstēšanas uzsākšanas vienmēr tiek veikta konsultācija un profilaktiskā pārbaude, kuras laikā tiek sastādīts individuāls ārstēšanas plāns un apspriesta provizoriskā ārstēšanas apjoma un cena.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-brand bg-white shadow-soft overflow-hidden mb-6">
-            <div className="bg-brand-50/50 p-4 border-b border-brand/10 font-bold text-darkblue-700">
-              Pieaugušo ārstēšana
-            </div>
-            <div className="divide-y divide-slate-100">
-              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Konsultācija un plāna sastādīšana</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">20 €</span>
-              </div>
-              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Plombēšana ar gaismas plombu</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">70 – 90 €</span>
-              </div>
-              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Plombēšana ar stiklajonomerplombu</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">40 – 60 €</span>
-              </div>
-              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Pagaidu plomba</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 40 €</span>
-              </div>
-              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Anestēzija / Rentgenuzņēmums</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">katrs 10 €</span>
+            <div className="mb-8">
+              <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
+                <p className="mb-4">
+                  Zoba sāpes, diskomforts vai profilaktiskās pārbaudes nepieciešamība — tie ir biežākie iemesli, kāpēc pacienti vēršas pie zobārsta. Laikus veikta zobu ārstēšana ļauj ne tikai novērst nepatīkamus simptomus, bet arī saglabāt dabiskos zobus un novērst sarežģītākas ārstēšanas stadijas nākotnē.
+                </p>
+                <p>
+                  Bangų zobārstniecības klīnikā Klaipēdā sniegtais zobu labošanas pakalpojums ietver plašu procedūru klāstu — no konsultācijām un profilaktiskām pārbaudēm līdz sarežģītām ārstēšanas un atjaunošanas procedūrām. Klīnikas speciālisti operatīvi palīdz gan akūtu zoba sāpju, gan ilgtermiņa ārstēšanas plānošanas gadījumā. Kompleksa pieeja ļauj pacientiem saņemt visus nepieciešamos pakalpojumus vienā vietā, tāpēc zobu labošana kļūst par ērtu, skaidru un pārliecinātu procesu.
+                </p>
               </div>
             </div>
 
-            <div className="bg-brand-50/50 p-4 border-y border-brand/10 font-bold text-darkblue-700 mt-2">
-              Bērnu ārstēšana
+            <div className="flex justify-start">
+              <Link to="/lv/kontakti" className="btn-primary btn-glow rounded-full px-8 py-3 font-semibold text-lg inline-block shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+                Reģistrēties vizītei
+              </Link>
             </div>
-            <div className="divide-y divide-slate-100">
-               <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Konsultācija bērniem</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">20 €</span>
-              </div>
-              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Piena zobu ārstēšana</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 50 €</span>
-              </div>
-               <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Stiklajonomer / kompomēra plomba</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 30 €</span>
-              </div>
-              <div className="flex justify-between items-center px-4 py-2 hover:bg-brand-50/30 transition">
-                <span className="text-slate-700">Vizīts, ja bērns neļauj ārstēties (līdz 30 min.)</span>
-                <span className="text-darkblue-700 font-bold whitespace-nowrap ml-4">no 30 €</span>
-              </div>
-            </div>
-          </div>
 
-          <p className="text-slate-700 leading-relaxed text-sm">
-            Precīza zobu ārstēšanas cena vienmēr tiek noteikta individuālas konsultācijas laikā, novērtējot konkrēto situāciju un ārstēšanas vajadzības. Skaidra un caurspīdīga cenu veidošana ļauj pacientiem un vecākiem justies droši, plānojot zobu ārstēšanu.
-          </p>
-          </div>
-        </motion.header>
-
-        <motion.section id="kas-ir" className="mb-12 bg-brand-50/30 p-6 sm:p-8 rounded-2xl border border-brand/10 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-            Kas ir zobu ārstēšana?
-          </h2>
-          <div className="space-y-4 text-slate-700 leading-relaxed">
-            <p>
-              Zobu ārstēšana – tā ir dažādu zobārstniecisko procedūru kopums, kas paredzēts mutes veselības uzturēšanai, bojāto zobu ārstēšanai un to funkcijas un estētikas atjaunošanai. Tā aptver gan profilaktiskās pārbaudes, ļaujot savlaicīgi pamanīt problēmas, gan aktīvo ārstēšanu, kad nepieciešams novērst bojājumus un atjaunot zobu struktūru.
-            </p>
-            <p>
-              Zobu ārstēšanas laikā tiek risinātas tādas problēmas kā zobu kariess, zobu sāpes, jutīgums, iekaisuma procesi vai mehāniski bojājumi. Atkarībā no situācijas ārstēšana var ietvert plombēšanu, sakņu kanālu ārstēšanu, profesionālu mutes higiēnu vai citas procedūras.
-            </p>
-          </div>
-        </motion.section>
-
-        <motion.section id="kad-nepieciesama" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Kad nepieciešama zobu ārstēšana?
-          </h2>
-          <p className="text-slate-700 mb-6 leading-relaxed">
-            Zobu ārstēšana nav nepieciešama tikai tad, kad parādās stipras sāpes. Daudzas mutes problēmas attīstās pakāpeniski un ilgu laiku var neizraisīt redzamus simptomus, tāpēc regulāras profilaktiskās pārbaudes ir ārkārtīgi svarīgas. Savlaicīgi pamanītas problēmas ļauj tās atrisināt vienkāršāk un izvairīties no sarežģītākas ārstēšanas nākotnē.
-          </p>
-
-          <div className="space-y-4 mb-6">
-            <h3 className="font-semibold text-darkblue-700">Pie zobārsta ieteicams vērsties, ja pamanāt šādas pazīmes:</h3>
-            <div className="grid sm:grid-cols-2 gap-3">
-              {[
-                "Zobu sāpes vai sāpīgums (spontāni vai ēdot)",
-                "Paaugstināts jutīgums pret aukstu, karstu vai saldu",
-                "Noskaldīts, plaisājis vai tumšāks zobs",
-                "Asiņojošas vai uzpampušas smaganas",
-                "Nepatīkama mutes smarža (nepāriet tīrot)",
-                "Nepieciešama profilaktiskā pārbaude"
-              ].map((text, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-slate-100 shadow-sm">
-                  <span className="mt-1"><CheckIcon /></span>
-                  <span className="text-slate-700">{text}</span>
+            {/* CENAS */}
+            <motion.section id="cenas" className="mt-8 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
+              <div className="rounded-3xl border border-sky-200/40 p-7 sm:p-10 lg:p-12" style={{ backgroundColor: SL }}>
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                  <div>
+                    <h2 className="text-3xl font-extrabold tracking-tight mb-2" style={{ color: P }}>
+                      Zobu ārstniecības cenas
+                    </h2>
+                    <p className="text-slate-600">
+                      Zobu ārstniecības cena ir atkarīga no pacienta vecuma, zobu stāvokļa, izmantotās ārstēšanas metodes un procedūras sarežģītības. Bangų zobārstniecības klīnikā pirms ārstēšanas sākuma vienmēr tiek veikta konsultācija un profilaktiskā pārbaude, kuras laikā tiek izveidots individuāls ārstēšanas plāns un apspriests iepriekšējs ārstēšanas apjoms un cena.
+                    </p>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          <p className="text-slate-700 leading-relaxed">
-            Regulāra un savlaicīga zobu ārstēšana palīdz saglabāt zobu veselību, samazināt ārstēšanas apjomu un izmaksas, kā arī nodrošināt labu pašsajūtu ilgtermiņa perspektīvā.
-          </p>
-        </motion.section>
+                <div className="grid sm:grid-cols-2 gap-3 mb-5">
+                  {[
+                    ['Konsultācija un plāna izveide', '20 €'],
+                    ['Konsultācija bērniem', '20 €'],
+                  ].map(([name, price], i) => (
+                    <div key={i} className="flex justify-between items-center bg-white rounded-2xl px-5 py-3 border" style={{ borderColor: S }}>
+                      <span className="text-slate-700 text-sm font-medium">{name}</span>
+                      <span className="font-extrabold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
+                    </div>
+                  ))}
+                </div>
 
-        <motion.section id="pakalpojumi" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Kādus zobu ārstēšanas pakalpojumus sniedzam?
-          </h2>
-          <div className="bg-brand-50 p-6 rounded-2xl border border-slate-100 shadow-soft">
-            <p className="text-slate-700 mb-6 leading-relaxed">
-              Bangų zobārstniecības klīnikā tiek sniegti visi galvenie zobu ārstēšanas pakalpojumi, ļaujot pacientiem saņemt kompleksu palīdzību vienā vietā. Ņemot vērā individuālo situāciju, tiek sastādīts skaidrs un secīgs ārstēšanas plāns.
-            </p>
-            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
-              {[
-                "Konsultācijas un ārstēšanas plāna sastādīšana",
-                "Zoba plombēšana (ar gaismas/stiklajonomerplombu)",
-                "Dentālā rentgenogrāfija",
-                "Profesionāla mutes higiēna",
-                "Estētiskā zobu plombēšana",
-                "Zobu sakņu kanālu ārstēšana",
-                "Bērnu zobu ārstēšana",
-                "Zobu ekstrakcija",
-                "Zobu implantācija",
-                "Kaula augmentācijas operācijas",
-                "Zobu protezēšana"
-              ].map((service, i) => (
-                <li key={i} className="flex items-center gap-2 text-slate-700">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand shrink-0" />
-                  <span>{service}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <p className="text-slate-700 mt-4 leading-relaxed">
-            Plašs pakalpojumu klāsts ļauj nodrošināt, ka zobu ārstēšana tiek veikta secīgi, droši un vērsta uz ilgtermiņa rezultātu, nesūtot pacientu no vienas klīnikas uz otru.
-          </p>
-        </motion.section>
+                <div className="grid md:grid-cols-2 gap-5">
+                  <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                    <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Pieaugušo ārstēšana</h3>
+                    <div className="divide-y divide-slate-100">
+                      {[
+                        ['Plombēšana ar hēlija plombu', '70 – 90 €'],
+                        ['Plombēšana ar stikljonomēra plombu', '40 – 60 €'],
+                        ['Pagaidu plomba', 'no 40 €'],
+                        ['Anestēzija / Rentgena uzņēmums', 'pa 10 €'],
+                      ].map(([name, price], i) => (
+                        <div key={i} className="flex justify-between items-center py-2.5">
+                          <span className="text-slate-600 text-sm">{name}</span>
+                          <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
-        <motion.section id="ka-notiek" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Kā notiek zobu ārstēšana mūsu klīnikā?
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3">
-             <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
-              <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
-              <h3 className="font-bold text-darkblue-700 mb-2">Konsultācija un diagnostika</h3>
-              <p className="text-sm text-slate-600">Pārbaude, rentgena izmeklēšana, stāvokļa novērtēšana. Tiek sastādīts individuāls ārstēšanas plāns ar prioritātēm.</p>
-            </div>
-            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
-              <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
-              <h3 className="font-bold text-darkblue-700 mb-2">Ārstēšanas veikšana</h3>
-              <p className="text-sm text-slate-600">Tiek veiktas procedūras (plombēšana, kanālu ārstēšana u.c.), izmantojot anestēziju, nodrošinot komfortu.</p>
-            </div>
-            <div className="bg-brand-50 p-5 rounded-xl border border-slate-100 shadow-sm">
-              <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
-              <h3 className="font-bold text-darkblue-700 mb-2">Ieteikumi un kopšana</h3>
-              <p className="text-sm text-slate-600">Padomi par kopšanu mājās un nākamā vizīta plānošana ilgtermiņa rezultāta nodrošināšanai.</p>
-            </div>
-          </div>
-        </motion.section>
+                  <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
+                    <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Bērnu ārstēšana</h3>
+                    <div className="divide-y divide-slate-100">
+                      {[
+                        ['Piena zobu ārstēšana', 'no 50 €'],
+                        ['Stikljonomēra / kompomēra plomba', 'no 30 €'],
+                        ['Vizīte, kad bērns neļauj ārstēt (līdz 30 min.)', 'no 30 €'],
+                      ].map(([name, price], i) => (
+                        <div key={i} className="flex justify-between items-center py-2.5">
+                          <span className="text-slate-600 text-sm">{name}</span>
+                          <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
 
-        <motion.section id="profilakse" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-6">
-            Kāpēc svarīgas profilaktiskās pārbaudes?
-          </h2>
-          <div className="grid sm:grid-cols-3 gap-6">
-            <div className="rounded-2xl border border-brand bg-brand-50 shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
-              <ShieldCheckIcon />
-              <h3 className="font-semibold text-darkblue-700 mb-2">Agrīna diagnostika</h3>
-              <p className="text-sm text-slate-700 leading-relaxed">
-                Ļauj noteikt karieso vai iekaisumu jau sākotnējā stadijā, kad nav jūtamas sāpes.
+                <p className="text-slate-500 text-sm mt-6">
+                  Precīza zobu ārstniecības cena vienmēr tiek noteikta individuālas konsultācijas laikā, novērtējot konkrētu situāciju un ārstēšanas vajadzības. Skaidra un caurspīdīga cenu politika ļauj pacientiem un vecākiem justies pārliecināti, plānojot zobu ārstēšanu.
+                </p>
+              </div>
+            </motion.section>
+          </motion.header>
+
+          {/* DOCTOR CTA */}
+          <motion.div className="mt-8 mb-12" variants={item}>
+            <div className="bg-white rounded-[28px] border border-sky-200 shadow-soft overflow-hidden">
+              <div className="grid lg:grid-cols-[5fr_4fr] gap-0 items-stretch">
+                <div className="p-6 sm:p-8 lg:p-10">
+                  <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-darkblue-700 mb-4">
+                    Aicinām reģistrēties zobu ārstniecībai Bangų klīnikā
+                  </h2>
+                  <p className="text-slate-700 leading-relaxed mb-4">
+                    Ja jūtat zoba sāpes, pamanījāt diskomfortu vai vienkārši vēlaties veikt profilaktisku pārbaudi, aicinām reģistrēties konsultācijai Bangų zobārstniecības klīnikā. Laikus sākta zobu ārstēšana palīdz izvairīties no sarežģītākām procedūrām un saglabāt dabiskos zobus.
+                  </p>
+                  <p className="text-slate-700 leading-relaxed mb-6">
+                    Bangų zobārstniecības klīnikā Jūs sagaida profesionāla komanda, moderna diagnostika un individuāli pielāgoti risinājumi. Reģistrējieties vizītei un parūpējieties par savu mutes veselību pārliecināti — zobu labošana Klaipēdā var būt skaidrs, mierīgs un uzticams process.
+                  </p>
+                  <div className="bg-sky-50 rounded-xl p-5 border border-sky-200 mb-8">
+                    <p className="font-semibold text-darkblue-700 mb-3">Konsultācijas laikā:</p>
+                    <ul className="space-y-2 text-slate-700">
+                      {[
+                        'tiek veikts izsmeļošs klīniskais novērtējums',
+                        'tiek apspriestas iespējamās ārstēšanas metodes',
+                        'tiek izskaidroti procedūras posmi un termiņi',
+                        'tiek izveidots individuāls ārstēšanas plāns',
+                      ].map((t, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className="mt-1"><CheckIcon /></span>
+                          <span className="leading-relaxed">{t}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Link
+                    to="/lv/kontakti"
+                    className="btn-primary btn-glow rounded-full px-7 py-3 font-semibold text-base inline-block shadow-lg hover:shadow-xl transition"
+                  >
+                    Reģistrēties vizītei
+                  </Link>
+                </div>
+                <div className="relative aspect-[4/5] bg-sky-50">
+                  <div className="pt-[125%]" />
+                  <img
+                    src="/team/Odeta-light.jpg"
+                    alt="Bangų zobārstniecības klīnikas ārsts"
+                    className="absolute inset-0 w-full h-full object-contain"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* REVIEWS */}
+          <motion.div className="mb-10 no-x-scroll pan-y" variants={item}>
+            <ReviewsCarousel />
+          </motion.div>
+
+          {/* KAS IR ZOBU ĀRSTNIECĪBA */}
+          <motion.section id="kas-ir" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kas ir zobu ārstniecība?
+              </h2>
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Zobu ārstniecība ir dažādu zobārstniecības procedūru kopums, kas paredzēts mutes veselības uzturēšanai, bojāto zobu ārstēšanai un to funkcijas un estētikas atjaunošanai. Tā ietver gan profilaktiskās pārbaudes, kas ļauj agrīni pamanīt problēmas, gan aktīvu ārstēšanu, kad nepieciešams novērst bojājumus un atjaunot zobu struktūru.
+                </p>
+                <p>
+                  Zobu ārstniecības laikā tiek risinātas tādas problēmas kā zobu kariess, zoba sāpes, jutīgums, iekaisumu procesi vai mehāniski bojājumi. Atkarībā no situācijas, ārstēšana var ietvert plombēšanu, sakņu kanālu ārstēšanu, profesionālo mutes higiēnu vai citas procedūras. Šāda secīga un individuāli plānota pieeja ļauj nodrošināt, ka zobu labošana mūsu klīnikā ir ne tikai efektīva, bet arī orientēta uz ilgtermiņa rezultātu.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* KAD NEPIECIEŠAMA */}
+          <motion.section id="kad-nepieciesama" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kad nepieciešama zobu ārstniecība?
+              </h2>
+
+              <p className="text-slate-700 leading-relaxed max-w-4xl mb-6">
+                Zobu ārstniecība nepieciešama ne tikai tad, kad parādās stipras sāpes. Daudzas mutes problēmas attīstās pakāpeniski un ilgu laiku var neizraisīt izteiktus simptomus, tāpēc regulāras profilaktiskās pārbaudes ir īpaši svarīgas. Laikus pamanītas problēmas ļauj tās risināt vienkāršāk un izvairīties no sarežģītākas ārstēšanas nākotnē.
+              </p>
+
+              <div className={innerCard + ' mb-6'}>
+                <h3 className="font-semibold text-darkblue-700 mb-4">Pie zobārsta ieteicams vērsties, ja tiek pamanītas šīs pazīmes:</h3>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {[
+                    "Zoba sāpes vai smelgme (spontāni vai ēdot)",
+                    "Palielināts jutīgums pret aukstumu, karstumu vai saldu",
+                    "Atlūzis, ieplaisājis vai aptumšojies zobs",
+                    "Asiņojošas vai pietūkušas smaganas",
+                    "Nepatīkama mutes smaka (nepāriet tīrot)",
+                    "Nepieciešamība profilaktiskai pārbaudei"
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                      <span className="mt-1"><CheckIcon /></span>
+                      <span className="text-slate-700">{text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <p className="text-slate-700 leading-relaxed">
+                Regulāra un laikus veikta zobu labošana palīdz saglabāt zobu veselību, samazināt ārstēšanas apjomu un izmaksas un nodrošināt labu pašsajūtu ilgtermiņā.
               </p>
             </div>
-            <div className="rounded-2xl border border-brand bg-brand-50 shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
-              <ClipboardListIcon />
-              <h3 className="font-semibold text-darkblue-700 mb-2">Vienkāršāka ārstēšana</h3>
-              <p className="text-sm text-slate-700 leading-relaxed">
-                Savlaicīgi pamanītas problēmas prasa mazāku iejaukšanos, īsāku laiku un mazākas izmaksas.
+          </motion.section>
+
+          {/* KĀDUS PAKALPOJUMUS SNIEDZAM */}
+          <motion.section id="pakalpojumi" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kādus zobu ārstniecības pakalpojumus sniedzam?
+              </h2>
+
+              <p className="text-slate-700 mb-6 leading-relaxed">
+                Bangų zobārstniecības klīnikā tiek sniegti visi galvenie zobu ārstniecības pakalpojumi, kas ļauj pacientiem saņemt kompleksu palīdzību vienā vietā. Ņemot vērā individuālo situāciju, tiek izveidots skaidrs un secīgs ārstēšanas plāns.
+              </p>
+
+              <div className={innerCard + ' mb-6'}>
+                <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+                  {[
+                    "Konsultācijas un ārstēšanas plāna izveide",
+                    "Zoba plombēšana (hēlija/stikljonomēra)",
+                    "Dentālā rentgenogrāfija",
+                    "Profesionāla mutes higiēna",
+                    "Estētiskā zobu plombēšana",
+                    "Zobu sakņu kanālu ārstēšana",
+                    "Bērnu zobu ārstēšana",
+                    "Zobu izraušana",
+                    "Zobu implantācija",
+                    "Kaula augmentācijas operācijas",
+                    "Zobu protezēšana"
+                  ].map((service, i) => (
+                    <li key={i} className="flex items-center gap-2 text-slate-700">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand shrink-0" />
+                      <span>{service}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <p className="text-slate-700 leading-relaxed">
+                Plašais pakalpojumu klāsts ļauj nodrošināt, ka zobu labošana tiek veikta secīgi, droši un orientēti uz ilgtermiņa rezultātu, nesūtot pacientu no vienas klīnikas uz citu.
               </p>
             </div>
-            <div className="rounded-2xl border border-brand bg-brand-50 shadow-soft hover:shadow-md transition p-6 flex flex-col items-start">
-              <HeartPulseIcon />
-              <h3 className="font-semibold text-darkblue-700 mb-2">Ilgtermiņa veselība</h3>
-              <p className="text-sm text-slate-700 leading-relaxed">
-                Regulāri vizīti palīdz izvairīties no negaidītām sāpēm un saglabāt dabiskos zobus pēc iespējas ilgāk.
-              </p>
+          </motion.section>
+
+          {/* KĀ NOTIEK ĀRSTĒŠANA */}
+          <motion.section id="process" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kā notiek zobu ārstēšana mūsu klīnikā?
+              </h2>
+
+              <div className="grid gap-6 md:grid-cols-3">
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">01</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Konsultācija un diagnostika</h3>
+                  <p className="text-sm text-slate-600">Pārbaude, rentgena izmeklējumi, stāvokļa novērtējums. Tiek izveidots individuāls ārstēšanas plāns ar prioritātēm.</p>
+                </div>
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">02</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Ārstēšanas veikšana</h3>
+                  <p className="text-sm text-slate-600">Tiek veiktas procedūras (plombēšana, kanālu ārstēšana u.c.), izmantojot anestēziju un nodrošinot komfortu.</p>
+                </div>
+                <div className={innerCard}>
+                  <div className="text-4xl font-bold text-brand/20 mb-2">03</div>
+                  <h3 className="font-bold text-darkblue-700 mb-2">Ieteikumi un kopšana</h3>
+                  <p className="text-sm text-slate-600">Padomi par kopšanu mājās un nākamā vizītes plānošana ilgtermiņa rezultāta nodrošināšanai.</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </motion.section>
+          </motion.section>
 
-        <motion.section id="kapec-mes" className="mb-12 scroll-mt-36 2xl:scroll-mt-24" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-            Kāpēc vērts izvēlēties Bangų zobārstniecības klīniku Klaipēdā?
-          </h2>
-          <div className="space-y-4 text-slate-700 leading-relaxed">
-            <p>
-              Izvēloties zobu ārstēšanu, svarīgi ir ne tikai ātri novērst problēmu, bet arī nodrošināt ilgtermiņa rezultātu un drošu ārstēšanas procesu. Bangų zobārstniecības klīnikā zobu ārstēšana tiek veikta, vadoties pēc mūsdienu zobārstniecības standartiem, apvienojot pieredzi, modernās tehnoloģijas un individuālu pieeju katram pacientam.
-            </p>
-            <p>
-              Klīnikā strādājošie speciālisti īpašu uzmanību pievērš precīzai diagnostikai, skaidrai ārstēšanas plāna sastādīšanai un secīgai tā īstenošanai. Tas ļauj pacientiem saprast ārstēšanas gaitu, izvēlēties piemērotākos risinājumus un justies droši visa procesa laikā.
-            </p>
-            <p>
-              Pacienti novērtē mierīgu komunikāciju, caurspīdīgu cenu veidošanu un uzmanīgu pieeju, un pozitīvas atsauksmes bieži uzsver profesionalitāti, komfortu un uzticēšanos gala rezultātam.
-            </p>
-          </div>
-        </motion.section>
+          {/* PROFILAKSE */}
+          <motion.section id="profilakse" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kāpēc svarīgas profilaktiskās pārbaudes?
+              </h2>
 
-        <motion.div className="mt-8 mb-12 text-left" variants={item}>
-          <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-            Aicinām pierakstīties zobu ārstēšanai Bangų klīnikā
-          </h2>
-          <p className="text-slate-700 mb-8 max-w-3xl leading-relaxed">
-            Ja jūtat zobu sāpes, pamanījāt diskomfortu vai vienkārši vēlaties veikt profilaktisku pārbaudi, aicinām pierakstīties konsultācijai Bangų zobārstniecības klīnikā. Savlaicīgi uzsākta zobu ārstēšana palīdz izvairīties no sarežģītākām procedūrām un saglabāt dabiskos zobus.
-          </p>
-          <Link to="/lv/kontakti" className="btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1">
-            Pierakstīties vizītam
-          </Link>
-        </motion.div>
-          </div>
+              <div className="grid sm:grid-cols-3 gap-6">
+                <div className={innerCard}>
+                  <ShieldCheckIcon />
+                  <h3 className="font-semibold text-darkblue-700 mb-2">Agrīna diagnostika</h3>
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    Ļauj noteikt kariesu vai iekaisumu jau sākuma stadijā, kad sāpes vēl nav jūtamas.
+                  </p>
+                </div>
+                <div className={innerCard}>
+                  <ClipboardListIcon />
+                  <h3 className="font-semibold text-darkblue-700 mb-2">Vienkāršāka ārstēšana</h3>
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    Laikus pamanītas problēmas prasa mazāku iejaukšanos, īsāku laiku un mazākas izmaksas.
+                  </p>
+                </div>
+                <div className={innerCard}>
+                  <HeartPulseIcon />
+                  <h3 className="font-semibold text-darkblue-700 mb-2">Ilgtermiņa veselība</h3>
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    Regulāras vizītes palīdz izvairīties no negaidītām sāpēm un saglabāt dabiskos zobus pēc iespējas ilgāk.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* KĀPĒC MĒS */}
+          <motion.section id="kapec-mes" className={sectionWrap} variants={item}>
+            <div className={whiteCard}>
+              <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
+                Kāpēc izvēlēties Bangų zobārstniecības klīniku Klaipēdā?
+              </h2>
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Izvēloties zobu ārstniecību, svarīgi ir ne tikai ātri novērst problēmu, bet arī nodrošināt ilgtermiņa rezultātu un drošu ārstēšanas procesu. Bangų zobārstniecības klīnikā zobu labošana un ārstēšana tiek veikta, ievērojot mūsdienu zobārstniecības standartus, apvienojot pieredzi, modernas tehnoloģijas un individuālu pieeju katram pacientam.
+                </p>
+                <p>
+                  Klīnikā strādājošie speciālisti pievērš īpašu uzmanību precīzai diagnostikai, skaidrai ārstēšanas plāna izveidei un secīgai tā īstenošanai. Tas ļauj pacientiem saprast ārstēšanas gaitu, izvēlēties vispiemērotākos risinājumus un justies pārliecināti visa procesa laikā. Plašais pakalpojumu klāsts nodrošina, ka zobu labošana Klaipēdā tiek veikta vienā vietā — no profilakses līdz sarežģītākām ārstēšanas vai atjaunošanas procedūrām.
+                </p>
+                <p>
+                  Pacienti novērtē mierīgu komunikāciju, caurspīdīgu cenu politiku un uzmanīgu pieeju, un pozitīvās atsauksmes bieži uzsver profesionalitāti, komfortu un pārliecību par galīgo rezultātu. Tas ļauj Bangų zobārstniecības klīnikai kļūt par uzticamu izvēli, meklējot kvalitatīvu un atbildīgu zobu ārstēšanu.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+        </div>
       </motion.div>
     </AnimatedSection>
   )
