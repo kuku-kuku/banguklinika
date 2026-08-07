@@ -198,7 +198,7 @@ export default function EndodontijaLv() {
                 <div className="relative aspect-[4/5] bg-sky-50">
                   <div className="pt-[125%]" />
                   <img
-                    src="/team/Jonas-light.jpg"
+                    src="/team/Jonas-light%20LV.jpg"
                     alt="Bangų zobārstniecības klīnikas ārsts"
                     className="absolute inset-0 w-full h-full object-contain"
                   />

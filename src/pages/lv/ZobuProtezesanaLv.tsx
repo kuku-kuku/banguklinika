@@ -321,7 +321,7 @@ export default function ZobuProtezesanaLv() {
 
                 <div className="relative min-h-[320px] lg:min-h-0 bg-sky-50">
                   <img
-                    src="/team/Donatas_light.jpg"
+                    src="/team/Donatas_light%20LV.jpg"
                     alt="Donatas Bitinas — protezējošs ārsts Bangų klīnikā"
                     className="absolute inset-0 w-full h-full object-contain object-top"
                   />
