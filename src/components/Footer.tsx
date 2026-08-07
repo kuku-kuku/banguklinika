@@ -54,7 +54,6 @@ const SERVICE_GROUPS_LT: ServiceGroup[] = [
       { label: 'Dantų plombavimas', to: '/paslaugos/dantu-plombavimas' },
       { label: 'Estetinis plombavimas', to: '/paslaugos/estetinis-plombavimas' },
       { label: 'Endodontinis gydymas', to: '/paslaugos/endodontinis-gydymas' },
-      { label: 'Dantų taisymas / gydymas', to: '/paslaugos/dantu-taisymas-gydymas' },
     ],
   },
   {
@@ -70,6 +69,7 @@ const SERVICE_GROUPS_LT: ServiceGroup[] = [
     items: [
       { label: 'Dantų protezavimas', to: '/paslaugos/dantu-protezavimas' },
       { label: 'Dantų tiesinimas', to: '/paslaugos/dantu-tiesinimas' },
+      { label: 'Dantų taisymas / gydymas', to: '/paslaugos/dantu-taisymas-gydymas' },
     ],
   },
 ]
