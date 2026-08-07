@@ -344,11 +344,12 @@ export default function DantuImplantacija() {
                 </div>
 
                 {/* Right: Donatas photo */}
-                <div className="relative min-h-[320px] lg:min-h-0 bg-sky-50">
+                <div className="relative aspect-[4/5] lg:aspect-auto bg-sky-50">
+                  <div className="pt-[125%] lg:hidden" />
                   <img
                     src="/team/Donatas_light.jpg"
                     alt="Donatas Kubilius – implantologas Bangų klinikoje"
-                    className="absolute inset-0 w-full h-full object-contain object-top"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
                 </div>
