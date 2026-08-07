@@ -63,6 +63,11 @@ const SERVICE_GROUPS_LT: ServiceGroup[] = [
       { label: 'Burnos chirurgija', to: '/paslaugos/burnos-chirurgija' },
       { label: 'Dantų traukimas', to: '/paslaugos/dantu-traukimas' },
       { label: 'Dantų implantacija', to: '/paslaugos/dantu-implantacija' },
+    ],
+  },
+  {
+    heading: 'Protezavimas',
+    items: [
       { label: 'Dantų protezavimas', to: '/paslaugos/dantu-protezavimas' },
       { label: 'Dantų tiesinimas', to: '/paslaugos/dantu-tiesinimas' },
     ],
@@ -314,7 +319,7 @@ export default function Footer() {
           </div>
 
           {/* Desktop: category columns */}
-          <div className={`hidden md:grid ${isLv ? 'grid-cols-2 gap-x-5 gap-y-4' : 'grid-cols-[1fr_1fr_1.35fr] gap-x-5'}`}>
+          <div className="hidden md:grid grid-cols-2 gap-x-5 gap-y-4">
             {serviceGroups.map((group) => (
               <div key={group.heading}>
                 <p className="text-[10px] font-semibold text-white/40 uppercase tracking-widest mb-2.5 whitespace-nowrap">
