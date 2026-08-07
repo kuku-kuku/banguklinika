@@ -74,10 +74,8 @@ const SERVICE_GROUPS_LV: ServiceGroup[] = [
     heading: 'Profilaktika',
     items: [
       { label: 'Mutes higiēna',                to: '/lv/pakalpojumi/mutes-higiena' },
-      { label: 'Zobu fluorēšana',              to: '/lv/pakalpojumi/zobu-fluoresana' },
       { label: 'Zobu balināšana',              to: '/lv/pakalpojumi/zobu-balinesana' },
       { label: 'Bērnu zobārstniecība',         to: '/lv/pakalpojumi/bernu-odontologija' },
-      { label: 'Bērnu mutes higiēna',          to: '/lv/pakalpojumi/bernu-mutes-higiena' },
     ],
   },
   {
@@ -86,30 +84,16 @@ const SERVICE_GROUPS_LV: ServiceGroup[] = [
       { label: 'Zobu plombēšana',              to: '/lv/pakalpojumi/zobu-plombana' },
       { label: 'Estētiskā plombēšana',         to: '/lv/pakalpojumi/estetiska-plombana' },
       { label: 'Endodontija',                  to: '/lv/pakalpojumi/endodontija' },
-      { label: 'Terapeitiskā ārstēšana',       to: '/lv/pakalpojumi/terapeitiska-arstesana' },
-      { label: 'Smaganu iekaisums (gingivīts)',to: '/lv/pakalpojumi/smaganu-iekaisums-gingivits' },
-      { label: 'Neatliekamā palīdzība',        to: '/lv/pakalpojumi/neatliekama-palidziba' },
+      { label: 'Zobu ārstēšana',               to: '/lv/pakalpojumi/terapeitiska-arstesana' },
     ],
   },
   {
     heading: 'Ķirurģija un implantāti',
     items: [
-      { label: 'Zobu implantācija',            to: '/lv/pakalpojumi/zobu-implantacija' },
-      { label: 'Tūlītējā implantācija',        to: '/lv/pakalpojumi/tulitejas-implantacija' },
-      { label: 'STRAUMANN implanti',           to: '/lv/pakalpojumi/straumann-implanti' },
-      { label: 'Sinusa pacelšana',             to: '/lv/pakalpojumi/sinusa-pacelsana' },
       { label: 'Mutes ķirurģija',              to: '/lv/pakalpojumi/mutes-hirurgija' },
       { label: 'Zobu ekstrakcija',             to: '/lv/pakalpojumi/zobu-ekstrakcija' },
-    ],
-  },
-  {
-    heading: 'Protezēšana un estētika',
-    items: [
+      { label: 'Zobu implantācija',            to: '/lv/pakalpojumi/zobu-implantacija' },
       { label: 'Zobu protezēšana',             to: '/lv/pakalpojumi/zobu-protezesana' },
-      { label: 'Zobu kronīši',                 to: '/lv/pakalpojumi/zobu-kroniti' },
-      { label: 'Cirkonija kronītis',           to: '/lv/pakalpojumi/cirkonija-keramikas-kronitis' },
-      { label: 'Zobu tilti',                   to: '/lv/pakalpojumi/zobu-tilti' },
-      { label: 'Izņemamās protēzes',           to: '/lv/pakalpojumi/iznemamas-protezes' },
       { label: 'Zobu izlīdzināšana',           to: '/lv/pakalpojumi/zobu-izlinesana' },
     ],
   },
