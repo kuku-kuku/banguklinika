@@ -347,7 +347,7 @@ export default function DantuImplantacija() {
                 <div className="relative aspect-[4/5] lg:aspect-auto bg-sky-50">
                   <div className="pt-[125%] lg:hidden" />
                   <img
-                    src="/team/Donatas_light.jpg"
+                    src="/team/donataskubilius.jpg"
                     alt="Donatas Kubilius – implantologas Bangų klinikoje"
                     className="absolute inset-0 w-full h-full object-contain"
                   />
