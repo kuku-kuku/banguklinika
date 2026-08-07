@@ -18,10 +18,12 @@ export default function MobileStickyBar({
   const { pathname } = useLocation()
 
   const isLv = pathname.startsWith('/lv')
-  if (isLv) return null
 
   const telHref = `tel:${phone.replace(/\s+/g, '')}`
   const mailHref = `mailto:${email}`
+
+  const resolvedBooking = isLv ? '/lv/kontakti#registracija' : bookingHref
+  const resolvedHelp = isLv ? '/lv/pakalpojumi/neatliekama-palidziba' : helpHref
 
   return (
     <>
@@ -92,22 +94,22 @@ export default function MobileStickyBar({
               href={telHref}
               className="msb-btn"
               style={{ flex: 1, color: 'rgba(255,255,255,0.82)' }}
-              aria-label="Skambinti"
+              aria-label={isLv ? 'Zvanīt' : 'Skambinti'}
             >
               <span className="msb-icon">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/>
                 </svg>
               </span>
-              <span className="msb-label">Skambinti</span>
+              <span className="msb-label">{isLv ? 'Zvanīt' : 'Skambinti'}</span>
             </a>
 
             {/* Registration */}
             <a
-              href={bookingHref}
+              href={resolvedBooking}
               className="msb-btn"
               style={{ flex: 1, color: '#fff' }}
-              aria-label="Registruotis"
+              aria-label={isLv ? 'Reģistrācija' : 'Registruotis'}
             >
               <span className="msb-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
@@ -119,7 +121,7 @@ export default function MobileStickyBar({
                   <line x1="10" y1="16" x2="14" y2="16"/>
                 </svg>
               </span>
-              <span className="msb-label" style={{ fontWeight: 700 }}>Registracija</span>
+              <span className="msb-label" style={{ fontWeight: 700 }}>{isLv ? 'Reģistrācija' : 'Registracija'}</span>
             </a>
 
             {/* Email */}
@@ -127,7 +129,7 @@ export default function MobileStickyBar({
               href={mailHref}
               className="msb-btn"
               style={{ flex: 1, color: 'rgba(255,255,255,0.82)' }}
-              aria-label="El. paštas"
+              aria-label={isLv ? 'E-pasts' : 'El. paštas'}
             >
               <span className="msb-icon">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">
@@ -135,22 +137,22 @@ export default function MobileStickyBar({
                   <polyline points="22,6 12,13 2,6"/>
                 </svg>
               </span>
-              <span className="msb-label">El. paštas</span>
+              <span className="msb-label">{isLv ? 'E-pasts' : 'El. paštas'}</span>
             </a>
 
             {/* Urgent Help */}
             <a
-              href={helpHref}
+              href={resolvedHelp}
               className="msb-btn"
               style={{ flex: 1, color: 'rgba(255, 100, 100, 0.95)' }}
-              aria-label="Skubi pagalba"
+              aria-label={isLv ? 'Neatliekamā palīdzība' : 'Skubi pagalba'}
             >
               <span className="msb-icon" style={{ background: 'rgba(220, 38, 38, 0.2)' }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                 </svg>
               </span>
-              <span className="msb-label" style={{ fontWeight: 700 }}>Skubi pagalba</span>
+              <span className="msb-label" style={{ fontWeight: 700 }}>{isLv ? 'Palīdzība' : 'Skubi pagalba'}</span>
             </a>
           </div>
         </div>
