@@ -484,7 +484,7 @@ export default function Navbar() {
             className="md:hidden fixed inset-0 top-[72px] bg-white border-t border-gray-100 overflow-auto will-change-transform"
           >
             <div className="container-narrow py-2 grid gap-1.5">
-              {activeNav.map((n, idx) => {
+              {activeNav.filter(n => !['/straipsniai', '/draugai', '/lv/raksti'].includes(n.to)).map((n, idx) => {
                 const hasDrop = 'dropdown' in n && Array.isArray(n.dropdown)
 
                 // Paprastas linkas
