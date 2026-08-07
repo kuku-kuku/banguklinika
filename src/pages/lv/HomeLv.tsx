@@ -53,11 +53,11 @@ const POPULAR_SERVICES_LV = [
 ]
 
 const TEAM = [
-  { name: 'Donatas Bitinas',   role: 'Implantologs, zobārsts',                                img: '/team/Donatas_light.jpg' },
-  { name: 'Donatas Kubilius',  role: 'Sejas un žokļu ķirurgs',                                img: '/team/donataskubilius.jpg' },
-  { name: 'Jonas Sabulis',     role: 'Protezējošs zobārsts',                                  img: '/team/Jonas-light.jpg' },
-  { name: 'Odeta Venckutė',    role: 'Zobārste',                                              img: '/team/Odeta-light.jpg' },
-  { name: 'Rūta Garšvienė',   role: 'Mutes higiēniste, kapu izlīdzināšanas koordinatore',   img: '/team/Rūta_light.jpg' },
+  { name: 'Donatas Bitinas',   role: 'Implantologs, zobārsts',                                img: '/team/Donatas_light LV.jpg' },
+  { name: 'Donatas Kubilius',  role: 'Sejas un žokļu ķirurgs',                                img: '/team/Donatas_Kubliuslight LV.jpg' },
+  { name: 'Jonas Sabulis',     role: 'Protezējošs zobārsts',                                  img: '/team/Jonas-light LV.jpg' },
+  { name: 'Odeta Venckutė',    role: 'Zobārste',                                              img: '/team/Odeta-light LV.jpg' },
+  { name: 'Rūta Garšvienė',   role: 'Mutes higiēniste, kapu izlīdzināšanas koordinatore',   img: '/team/Rūta_light LV.jpg' },
 ]
 
 const WHY_IMAGES = ['/kodel-verta-1.webp', '/kodel-verta-2.webp', '/kodel-verta-3.webp']
