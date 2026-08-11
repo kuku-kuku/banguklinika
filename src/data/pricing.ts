@@ -184,10 +184,10 @@ export const PRICING: PriceGroup[] = [
       { name: "Vainiko atstatymas ant stiklo pluošto kaiščio su helio plomba (krūminis dantis)", from: 100, exact: true },
       { name: "Pilnas vainiko atstatymas ant stiklo pluošto kaiščio su helio plomba", from: 150, exact: true },
 
-      { name: "Kosmetinė plokštelė (plastmasinė, kieta)", from: 150, exact: true },
-      { name: "Kosmetinė plokštelė (termoplastinė, minkšta)", from: 260, exact: true },
-      { name: "Išimama pilna dantų plokštelė (plastmasinė)", from: 350, exact: true },
-      { name: "Išimama pilna dantų plokštelė (minkšta)", from: 600, exact: true },
+      { name: "Kosmetinė plokštelė (plastmasinė, kieta)", from: 210, exact: true },
+      { name: "Kosmetinė plokštelė (termoplastinė, minkšta)", from: 320, exact: true },
+      { name: "Išimama pilna dantų plokštelė (plastmasinė)", from: 400, exact: true },
+      { name: "Išimama pilna dantų plokštelė (minkšta)", from: 700, exact: true },
 
       { name: "Kietos plokštelės pataisa", from: 70, exact: true },
       { name: "Plokštelės perbazavimas", from: 80, exact: true },

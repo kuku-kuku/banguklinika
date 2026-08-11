@@ -225,10 +225,10 @@ export default function ZobuProtezesanaLv() {
                 <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Plāksnes, lāminas, kapas</h3>
                 <div className="divide-y divide-slate-100">
                   {[
-                    ['Kosmētiskā plāksne (plastmasas, cieta)',      '150 €'],
-                    ['Kosmētiskā plāksne (termoplastiska, mīksta)',  '260 €'],
-                    ['Izņemamā pilnā zobu plāksne (plastmasas)',   '350 €'],
-                    ['Izņemamā pilnā zobu plāksne (mīksta)',       '600 €'],
+                    ['Kosmētiskā plāksne (plastmasas, cieta)',      '210 €'],
+                    ['Kosmētiskā plāksne (termoplastiska, mīksta)',  '320 €'],
+                    ['Izņemamā pilnā zobu plāksne (plastmasas)',   '400 €'],
+                    ['Izņemamā pilnā zobu plāksne (mīksta)',       '700 €'],
                     ['Cietās plāksnes labošana',                     '70 €'],
                     ['Plāksnes pārbāzēšana',                       '80 €'],
                     ['Loka balsta protēze',                      '700 €'],

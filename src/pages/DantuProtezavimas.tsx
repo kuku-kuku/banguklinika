@@ -252,10 +252,10 @@ export default function DantuProtezavimas() {
                 <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Plokštelės, laminatės, kapai</h3>
                 <div className="divide-y divide-slate-100">
                   {[
-                    ['Kosmetinė plokštelė (plastmasinė, kieta)',      '150 €'],
-                    ['Kosmetinė plokštelė (termoplastinė, minkšta)',  '260 €'],
-                    ['Išimama pilna dantų plokštelė (plastmasinė)',   '350 €'],
-                    ['Išimama pilna dantų plokštelė (minkšta)',       '600 €'],
+                    ['Kosmetinė plokštelė (plastmasinė, kieta)',      '210 €'],
+                    ['Kosmetinė plokštelė (termoplastinė, minkšta)',  '320 €'],
+                    ['Išimama pilna dantų plokštelė (plastmasinė)',   '400 €'],
+                    ['Išimama pilna dantų plokštelė (minkšta)',       '700 €'],
                     ['Kietos plokštelės pataisa',                     '70 €'],
                     ['Plokštelės perbazavimas',                       '80 €'],
                     ['Lanko atraminis protezas',                      '700 €'],
