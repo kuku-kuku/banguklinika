@@ -217,10 +217,10 @@ export default function ZobuIzlinesanaLv() {
                     Reģistrēties vizītei
                   </Link>
                 </div>
-                <div className="relative aspect-[4/5] bg-sky-50">                  <img
+                <div className="relative bg-sky-50">                  <img
                     src="/team/Jonas-light%20LV.jpg"
                     alt="Bangų zobārstniecības klīnikas ārsts"
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="w-full lg:absolute lg:inset-0 lg:h-full object-contain"
                   loading="lazy"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)] hidden lg:block" />
