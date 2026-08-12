@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect, useRef } from 'react'
 import { PRICING, type PriceGroup, type PriceItem } from '../data/pricing'
+import { getLenis } from '../hooks/useLenis'
 import clsx from 'clsx'
 
 /* ========= Timings / Easing ========= */
@@ -349,6 +350,7 @@ export default function PricingCards() {
       }
     } finally {
       animatingRef.current = false
+      setTimeout(() => getLenis()?.resize(), OPEN_MS + 100)
     }
   }
 
