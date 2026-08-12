@@ -934,7 +934,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Kaulo priauginimas: ką būtina žinoti prieš operaciją?',
     date: '2026-07-15',
     category: 'Burnos chirurgija',
-    coverImage: '/blog/kaulo-priauginimas.jpg',
+    coverImage: '/blog/kaulo priauginimas ka butina zinoti pries operacija.jpg',
     readTime: 11,
     sections: [
       {
@@ -1197,7 +1197,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Kiek trunka burnos higiena?',
     date: '2026-07-08',
     category: 'Burnos higiena',
-    coverImage: 'https://images.unsplash.com/photo-1663755489920-5e09f66d011a?w=1200&q=80&fit=crop&auto=format',
+    coverImage: '/blog/kiek trunka burnos higiena.jpg',
     readTime: 10,
     sections: [
       {
@@ -1825,7 +1825,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'ar-skauda-kai-traukia-danti',
     title: 'Ar skauda, kai traukia dantį?',
-    coverImage : '/skauda-traukia.webp',
+    coverImage : '/blog/ar skauda kai traukia danti.jpg',
     date: '2026-05-20',
     category: 'Dantų chirurgija',
     readTime: 9,
