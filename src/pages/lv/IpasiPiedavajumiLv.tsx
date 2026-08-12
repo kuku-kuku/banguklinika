@@ -68,8 +68,8 @@ export default function IpasiPiedavajumiLv() {
     <AnimatedSection>
       <SEO
         lang="lv"
-        title="Īpašie piedāvājumi — Bangų zobārstniecības klīnika Klaipēdā"
-        description="Cirkonija keramikas kroņi, ALL-ON-4 implantācija un zobu balināšana ar īpašiem piedāvājumiem Klaipēdā. Bezmaksas konsultācija."
+        title="All-on-4 zobu implantācija Klaipēdā – īpašie piedāvājumi"
+        description="Pilna žokļa atjaunošana uz 4 implantiem Klaipēdā – tikai 1 dienā no 3800 €. Īpašie piedāvājumi zobu implantācijai. Bezmaksas konsultācija."
         canonical={`${SITE_URL}/lv/ipasi-piedavajumi`}
         alternates={[
           { lang: 'lt', url: `${SITE_URL}/ypatingi-pasiulymai` },
@@ -86,6 +86,9 @@ export default function IpasiPiedavajumiLv() {
         </motion.header>
 
         {offers.map((o, idx) => {
+          // TEMPORARILY DISABLED: Skip zirconium offer (first item)
+          if (idx === 0) return null
+
           const showPoster = o?.poster === true || o?.poster1 === true
           const posterSrc = o?.poster1 ? '/1.jpg' : '/poster.png'
           const gridColsClass = showPoster ? 'md:grid-cols-2' : 'md:grid-cols-1'
