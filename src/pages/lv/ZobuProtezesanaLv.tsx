@@ -319,11 +319,11 @@ export default function ZobuProtezesanaLv() {
                   </Link>
                 </div>
 
-                <div className="relative lg:aspect-auto bg-sky-50 min-h-[300px]">
+                <div className="relative aspect-[4/5] lg:aspect-auto bg-sky-50">
                   <img
                     src="/team/Donatas_light%20LV.jpg"
                     alt="Donatas Bitinas — protezējošs ārsts Bangų klīnikā"
-                    className="absolute inset-0 w-full h-full object-cover lg:object-contain"
+                    className="absolute inset-0 w-full h-full object-contain"
                   loading="lazy"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)] hidden lg:block" />
