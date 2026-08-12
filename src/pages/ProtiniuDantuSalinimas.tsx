@@ -194,11 +194,11 @@ export default function ProtiniuDantuSalinimas() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative lg:aspect-[4/5] bg-sky-50 min-h-[300px]">
+                <div className="relative aspect-[4/5] bg-sky-50">
                   <img
                     src="/team/Jonas-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-cover lg:object-contain"
+                    className="absolute inset-0 w-full h-full object-contain"
                   loading="lazy"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)] hidden lg:block" />
