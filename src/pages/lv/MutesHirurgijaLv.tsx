@@ -197,7 +197,7 @@ export default function MutesHirurgijaLv() {
                     Reģistrēties vizītei
                   </Link>
                 </div>
-                <div className="relative aspect-[4/5] bg-sky-50 min-h-[300px]">                  <img
+                <div className="relative lg:aspect-[4/5] bg-sky-50 min-h-[300px]">                  <img
                     src="/team/Donatas_Kubliuslight%20LV.jpg"
                     alt="Donatas Kubilius — mutes ķirurgs Bangų klīnikā"
                     className="absolute inset-0 w-full h-full object-cover lg:object-contain"

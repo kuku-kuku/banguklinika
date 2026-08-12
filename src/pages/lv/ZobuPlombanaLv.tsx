@@ -227,7 +227,7 @@ export default function ZobuPlombanaLv() {
                     Pierakstīties vizītam
                   </Link>
                 </div>
-                <div className="relative aspect-[4/5] bg-sky-50 min-h-[300px]">                  <img
+                <div className="relative lg:aspect-[4/5] bg-sky-50 min-h-[300px]">                  <img
                     src="/team/Odeta-light%20LV.jpg"
                     alt="Odeta Balsienė – zobārste Bangų klīnikā"
                     className="absolute inset-0 w-full h-full object-cover lg:object-contain"

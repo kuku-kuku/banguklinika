@@ -201,7 +201,7 @@ export default function EstetinisPlombavimas() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative aspect-[4/5] bg-sky-50 min-h-[300px]">
+                <div className="relative lg:aspect-[4/5] bg-sky-50 min-h-[300px]">
                   <img
                     src="/team/Odeta-light.jpg"
                     alt="Odeta Balsienė – odontologė Bangų klinikoje"
