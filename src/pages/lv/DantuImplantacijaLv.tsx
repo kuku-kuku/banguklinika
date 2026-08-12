@@ -345,11 +345,11 @@ export default function DantuImplantacijaLv() {
                   </Link>
                 </div>
 
-                <div className="relative aspect-[4/5] lg:aspect-auto bg-sky-50">
+                <div className="relative bg-sky-50">
                   <img
                     src="/team/Donatas_Kubliuslight%20LV.jpg"
                     alt="Donatas Kubilius – implantologs Bangų klīnikā"
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="w-full lg:absolute lg:inset-0 lg:h-full object-contain"
                   loading="lazy"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)] hidden lg:block" />
@@ -694,7 +694,7 @@ export default function DantuImplantacijaLv() {
                 <div className="relative aspect-[4/5] bg-brand-50">                  <img
                     src="/1.jpg"
                     alt="ALL-ON-4 implantācija"
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="w-full lg:absolute lg:inset-0 lg:h-full object-contain"
                   loading="lazy"
                   />
                 </div>
