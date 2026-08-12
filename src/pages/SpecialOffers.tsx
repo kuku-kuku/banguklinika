@@ -32,7 +32,7 @@ export default function SpecialOffers() {
           if (idx === 0) return null
           
           const showPoster = o?.poster === true || o?.poster1 === true
-          const posterSrc = o?.poster1 ? '/poster1.png' : '/poster.png'
+          const posterSrc = o?.poster1 ? '/1.jpg' : '/poster.png'
           const gridColsClass = showPoster ? 'md:grid-cols-2' : 'md:grid-cols-1'
 
           return (

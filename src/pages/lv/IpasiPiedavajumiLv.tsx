@@ -45,20 +45,6 @@ const offers = [
     ctaHref: '/lv/kontakti#registracija',
     poster1: true,
   },
-  {
-    label: 'Īpašais piedāvājums ideālam smaidam',
-    title: 'Pilna mutes higiēna + BEYOND® zobu balināšana',
-    bulletsTop: [
-      'Mutes higiēnu iesakām veikt pirms zobu balināšanas.',
-      'Zobu balināšanas procedūra – vienkārša, nesāpīga un ērta.',
-      'Ar BEYOND® sistēmu rezultāts redzams uzreiz – parasti pietiek ar vienu procedūru.',
-      'Balināšanas rezultāti parasti saglabājas pat līdz 2 gadiem.',
-    ],
-    priceNow: 280,
-    priceWas: 330,
-    ctaText: 'Uzzināt vairāk',
-    ctaHref: '/lv/kontakti#registracija',
-  },
 ]
 
 const general = {
@@ -101,7 +87,7 @@ export default function IpasiPiedavajumiLv() {
 
         {offers.map((o, idx) => {
           const showPoster = o?.poster === true || o?.poster1 === true
-          const posterSrc = o?.poster1 ? '/poster1.png' : '/poster.png'
+          const posterSrc = o?.poster1 ? '/1.jpg' : '/poster.png'
           const gridColsClass = showPoster ? 'md:grid-cols-2' : 'md:grid-cols-1'
 
           return (
