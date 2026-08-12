@@ -204,7 +204,7 @@ function GroupCard({
     <div
       id={id}
       className={clsx(
-        'group w-full rounded-2xl border transition-all duration-300 transform-gpu will-change-transform overflow-hidden',
+        'group w-full rounded-2xl border transition-all duration-300 transform-gpu will-change-transform overflow-clip',
         open
           ? 'bg-white border-primary-200 shadow-md ring-4 ring-primary-50'
           : 'bg-slate-50 border-transparent shadow-sm hover:bg-white hover:border-slate-200 hover:shadow-md hover:-translate-y-0.5',
