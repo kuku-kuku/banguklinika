@@ -200,7 +200,7 @@ export default function ZoklakaulaAugmentacijaLv() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative aspect-[4/5] bg-sky-50 min-h-[300px]">                  <img
+                <div className="relative lg:aspect-[4/5] bg-sky-50 min-h-[300px]">                  <img
                     src="/team/Jonas-light%20LV.jpg"
                     alt="Bangų zobārstniecības klīnikas ārsts"
                     className="absolute inset-0 w-full h-full object-cover lg:object-contain"

@@ -354,7 +354,7 @@ export default function DantuProtezavimas() {
                 </div>
 
                 {/* Right: Jonas photo with fade */}
-                <div className="relative aspect-[4/5] lg:aspect-auto bg-sky-50 min-h-[300px]">
+                <div className="relative lg:aspect-auto bg-sky-50 min-h-[300px]">
                   <img
                     src="/team/Donatas_light.jpg"
                     alt="Donatas Bitinas – protezuojantis gydytojas Bangų klinikoje"

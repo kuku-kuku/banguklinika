@@ -319,7 +319,7 @@ export default function ZobuProtezesanaLv() {
                   </Link>
                 </div>
 
-                <div className="relative aspect-[4/5] lg:aspect-auto bg-sky-50 min-h-[300px]">
+                <div className="relative lg:aspect-auto bg-sky-50 min-h-[300px]">
                   <img
                     src="/team/Donatas_light%20LV.jpg"
                     alt="Donatas Bitinas — protezējošs ārsts Bangų klīnikā"
