@@ -201,14 +201,13 @@ export default function AbscesaAtversanaLv() {
                     Pierakstīties vizītei
                   </Link>
                 </div>
-                <div className="relative aspect-[4/5] bg-sky-50">
-                  <div className="pt-[125%]" />
-                  <img
+                <div className="relative aspect-[4/5] bg-sky-50 min-h-[300px]">                  <img
                     src="/team/Jonas-light%20LV.jpg"
                     alt="Bangų zobārstniecības klīnikas ārsts"
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="absolute inset-0 w-full h-full object-cover lg:object-contain"
+                  loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)] hidden lg:block" />
                 </div>
               </div>
             </div>

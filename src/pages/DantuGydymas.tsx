@@ -87,7 +87,7 @@ export default function DantuGydymas() {
   return (
     <AnimatedSection>
       <SEO
-        title="Dantų gydymas, taisymas (tvarkymas) Klaipėdoje - Bangų klinika"
+        title="Dantų gydymas, taisymas (tvarkymas) Klaipėdoje nuo 40€"
         description="Dantų gydymas☑️tvarkymas☑️Klaipėdoje esant skausmui ar kitiems dantų pažeidimams. Laiku pašalinkite skausmą ir išsaugokite natūralius dantis. Registruokitės⏩Bangų klinikoje."
         keywords="dantu gydymas, dantu taisymas, skubi pagalba, eduonis, plombavimas, klaipeda"
         structuredData={structuredData}
@@ -233,14 +233,14 @@ export default function DantuGydymas() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative aspect-[4/5] bg-sky-50">
-                  <div className="pt-[125%]" />
+                <div className="relative aspect-[4/5] bg-sky-50 min-h-[300px]">
                   <img
                     src="/team/Odeta-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="absolute inset-0 w-full h-full object-cover lg:object-contain"
+                  loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)] hidden lg:block" />
                 </div>
               </div>
             </div>

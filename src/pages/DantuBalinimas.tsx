@@ -83,7 +83,7 @@ export default function DantuBalinimas() {
   return (
     <AnimatedSection>
       <SEO
-        title="Dantų balinimas Klaipėdoje | Kaina ir atsiliepimai - Bangų klinika"
+        title="Dantų balinimas Klaipėdoje 250€"
         description="Dantų balinimas Klaipėdoje už prieinamą kainą☑️– saugus ir efektyvus būdas pašviesinti dantis bei atkurti estetišką šypseną. Registruokitės⏩Bangų klinikoje jau dabar."
         keywords="dantu balinimas, beyond sistema, balinimo kapos, dantu estetika, klaipeda"
         structuredData={structuredData}
@@ -216,14 +216,14 @@ export default function DantuBalinimas() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative aspect-[4/5] bg-sky-50">
-                  <div className="pt-[125%]" />
+                <div className="relative aspect-[4/5] bg-sky-50 min-h-[300px]">
                   <img
                     src="/team/Rūta_light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="absolute inset-0 w-full h-full object-cover lg:object-contain"
+                  loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)] hidden lg:block" />
                 </div>
               </div>
             </div>

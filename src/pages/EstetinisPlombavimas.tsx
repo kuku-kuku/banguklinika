@@ -78,7 +78,7 @@ export default function EstetinisPlombavimas() {
   return (
     <AnimatedSection>
       <SEO
-        title="Estetinis dantų plombavimas Klaipėdoje - Bangų odontologijos klinika"
+        title="Estetinis dantų plombavimas Klaipėdoje nuo 150€"
         description="Netenkina dantų forma ar spalva?⏩Estetinis dantų plombavimas Klaipėdoje leidžia greitai ir estetiškai atkurti šypseną. Kreipkitės į Bangų kliniką jau šiandien."
         keywords="estetinis plombavimas, dantu restauracija, sypsenos korekcija, tarpai tarp dantu, klaipeda"
         structuredData={structuredData}
@@ -201,14 +201,14 @@ export default function EstetinisPlombavimas() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative aspect-[4/5] bg-sky-50">
-                  <div className="pt-[125%]" />
+                <div className="relative aspect-[4/5] bg-sky-50 min-h-[300px]">
                   <img
                     src="/team/Odeta-light.jpg"
                     alt="Odeta Balsienė – odontologė Bangų klinikoje"
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="absolute inset-0 w-full h-full object-cover lg:object-contain"
+                  loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)] hidden lg:block" />
                 </div>
               </div>
             </div>

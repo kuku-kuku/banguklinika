@@ -4,7 +4,7 @@ const SITE_NAME = "Bangų klinika";
 const SITE_URL = "https://banguklinika.lt";
 const DEFAULT_IMAGE = `${SITE_URL}/hero.jpg`;
 const TWITTER_HANDLE = "@banguklinika";
-const HOME_TITLE = "Odontologijos klinika (odontologai) Klaipėdoje";
+const HOME_TITLE = "Odontologijos klinika (stomatologijos) Klaipėdoje";
 
 const LANG_META: Record<string, { language: string; ogLocale: string }> = {
   lt: { language: "Lithuanian", ogLocale: "lt_LT" },

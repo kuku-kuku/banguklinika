@@ -86,7 +86,7 @@ export default function DantuPlombavimas() {
   return (
     <AnimatedSection>
       <SEO
-        title="Dantų plombavimas Klaipėdoje | Kaina - Bangų klinika"
+        title="Dantų plombavimas Klaipėdoje nuo 40€"
         description="Jautrus ar pažeistas dantis? Dantų plombavimas Klaipėdoje padeda atkurti danties funkciją☑️ir apsaugoti nuo tolimesnio gedimo☑️. Kreipkitės į⏩Bangų kliniką jau šiandien."
         keywords="dantu plombavimas, estetinis plombavimas, dantu gydymas, eduonis, klaipeda, odontologas"
         structuredData={structuredData}
@@ -232,14 +232,14 @@ export default function DantuPlombavimas() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative aspect-[4/5] bg-sky-50">
-                  <div className="pt-[125%]" />
+                <div className="relative aspect-[4/5] bg-sky-50 min-h-[300px]">
                   <img
                     src="/team/Odeta-light.jpg"
                     alt="Odeta Balsienė – odontologė Bangų klinikoje"
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="absolute inset-0 w-full h-full object-cover lg:object-contain"
+                  loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)] hidden lg:block" />
                 </div>
               </div>
             </div>

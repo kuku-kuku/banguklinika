@@ -271,7 +271,7 @@ export default function Home() {
     <>
       <SEO
         isHome
-        title="Odontologijos klinika Klaipėdoje | Bangų klinika"
+        title="Odontologijos klinika (stomatologijos) Klaipėdoje"
         description="Bangų klinika Klaipėdoje: visos dantų gydymo paslaugos – modernūs estetiniai sprendimai, individualūs gydymo planai. Nemokama pirminė konsultacija."
         keywords={home.seo?.keywords}
         image={home.seo?.image}

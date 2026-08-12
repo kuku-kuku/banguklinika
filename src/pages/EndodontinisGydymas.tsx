@@ -84,7 +84,7 @@ export default function EndodontinisGydymas() {
   return (
     <AnimatedSection>
       <SEO
-        title="Endodontinis (šaknų kanalų) gydymas Klaipėdoje - Bangų klinika"
+        title="Endodontinis (šaknų kanalų) gydymas Klaipėdoje nuo 70€"
         description="Pulsuojantis danties skausmas☑️ilgai trunkantis jautrumas☑️gali signalizuoti apie gilesnius pažeidimus. Kreipkitės dėl endodontinio gydymo⏩Bangų klinikoje."
         keywords="endodontinis gydymas, saknu kanalu gydymas, pirminė endodontinė pagalba, dantu skausmas, kanalai, klaipeda"
         structuredData={structuredData}
@@ -234,14 +234,14 @@ export default function EndodontinisGydymas() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative aspect-[4/5] bg-sky-50">
-                  <div className="pt-[125%]" />
+                <div className="relative aspect-[4/5] bg-sky-50 min-h-[300px]">
                   <img
                     src="/team/Jonas-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="absolute inset-0 w-full h-full object-cover lg:object-contain"
+                  loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)] hidden lg:block" />
                 </div>
               </div>
             </div>

@@ -210,7 +210,7 @@ function GroupCard({
           : 'bg-slate-50 border-transparent shadow-sm hover:bg-white hover:border-slate-200 hover:shadow-md hover:-translate-y-0.5',
         'scroll-mt-28 md:scroll-mt-32'
       )}
-      style={{ contain: 'layout paint', transform: 'translateZ(0)' }}
+      style={{ transform: 'translateZ(0)' }}
     >
       <button
         onClick={() => onToggle(!open)}
@@ -269,7 +269,7 @@ function GroupCard({
               transform: open ? 'scaleY(1) translateZ(0)' : 'scaleY(0.995) translateY(-1px) translateZ(0)',
               opacity: open ? 1 : 0.98,
               willChange: 'transform,opacity',
-              contain: 'content',
+              contain: 'paint',
             }}
           >
             <div className="rounded-xl bg-white border border-slate-100 shadow-sm overflow-hidden">

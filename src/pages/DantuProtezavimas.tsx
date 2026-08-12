@@ -92,7 +92,7 @@ export default function DantuProtezavimas() {
   return (
     <AnimatedSection>
       <SEO
-        title="Dantų protezavimas Klaipėdoje - Bangų klinika"
+        title="Dantų protezavimas Klaipėdoje - Dantų protezai nuo 350€"
         description="Dantų protezavimas Klaipėdoje – prieinama kaina☑️patikimi sprendimai☑️prarastiems ar pažeistiems dantims atkurti. Sužinokite gydymo galimybes⏩Bangų klinikoje jau dabar."
         keywords="dantu protezavimas, cerec, cirkonio keramika, protezai, klaipeda, implantai"
         structuredData={structuredData}
@@ -354,14 +354,14 @@ export default function DantuProtezavimas() {
                 </div>
 
                 {/* Right: Jonas photo with fade */}
-                <div className="relative aspect-[4/5] lg:aspect-auto bg-sky-50">
-                  <div className="pt-[125%] lg:hidden" />
+                <div className="relative aspect-[4/5] lg:aspect-auto bg-sky-50 min-h-[300px]">
                   <img
                     src="/team/Donatas_light.jpg"
                     alt="Donatas Bitinas – protezuojantis gydytojas Bangų klinikoje"
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="absolute inset-0 w-full h-full object-cover lg:object-contain"
+                  loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)] hidden lg:block" />
                 </div>
 
               </div>

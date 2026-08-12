@@ -84,7 +84,7 @@ export default function VaikuOdontologija() {
   return (
     <AnimatedSection>
       <SEO
-        title="Vaikų odontologija (stomatologija) Klaipėdoje - Bangų klinika"
+        title="Vaikų odontologija (stomatologija) Klaipėdoje nuo 50€"
         description="Ieškote vaikų odontologo Klaipėdoje?⏩Bangų klinikoje dirba patyrę specialistai, užtikrinantys švelnų☑️saugų☑️gydymą vaikams. Patogi registracija ir profesionali priežiūra."
         keywords="vaiku odontologas, pieniniu dantu gydymas, vaiku dantu prieziura, klaipeda, silantai, be baimes"
         structuredData={structuredData}
@@ -214,14 +214,14 @@ export default function VaikuOdontologija() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative aspect-[4/5] bg-sky-50">
-                  <div className="pt-[125%]" />
+                <div className="relative aspect-[4/5] bg-sky-50 min-h-[300px]">
                   <img
                     src="/team/Odeta-light.jpg"
                     alt="Odeta Balsienė – odontologė Bangų klinikoje"
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="absolute inset-0 w-full h-full object-cover lg:object-contain"
+                  loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)] hidden lg:block" />
                 </div>
               </div>
             </div>

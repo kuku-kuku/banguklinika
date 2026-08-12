@@ -67,7 +67,7 @@ export default function DantuTraukimas() {
   return (
     <AnimatedSection>
       <SEO
-        title="Dantų traukimas (rovimas) Klaipėdoje - Bangų klinika"
+        title="Dantų traukimas (rovimas) Klaipėdoje nuo 60€"
         description="Skaudantis ar stipriai pažeistas dantis? Dantų traukimas (rovimas) Klaipėdoje atliekamas profesionaliai☑️rūpestingai☑️Bangų klinikoje už gerą kainą.⏩Kreipkitės jau dabar."
         keywords="dantu traukimas, dantu salinimas, protiniai dantys, chirurginis traukimas, klaipeda, neskausmingai"
         structuredData={structuredData}
@@ -194,14 +194,14 @@ export default function DantuTraukimas() {
                   </Link>
                 </div>
                 {/* Right: doctor photo */}
-                <div className="relative aspect-[4/5] bg-sky-50">
-                  <div className="pt-[125%]" />
+                <div className="relative aspect-[4/5] bg-sky-50 min-h-[300px]">
                   <img
                     src="/team/Jonas-light.jpg"
                     alt="Bangų odontologijos klinikos gydytojas"
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="absolute inset-0 w-full h-full object-cover lg:object-contain"
+                  loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,white_0%,transparent_15%)] hidden lg:block" />
                 </div>
               </div>
             </div>
