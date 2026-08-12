@@ -73,7 +73,7 @@ function serviceSchema(name, serviceType, description, url) {
 const pages = [
   {
     route: "/",
-    title: "Odontologijos klinika (odontologai) Klaipėdoje",
+    title: "Odontologijos klinika (stomatologijos) Klaipėdoje",
     description: "Bangų Odontologijos Klinika – moderni odontologija Klaipėdos centre.",
     schema: DENTIST_SCHEMA,
   },

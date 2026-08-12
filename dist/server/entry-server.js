@@ -1977,7 +1977,7 @@ const SITE_NAME = "Bangų klinika";
 const SITE_URL = "https://banguklinika.lt";
 const DEFAULT_IMAGE = `${SITE_URL}/hero.jpg`;
 const TWITTER_HANDLE = "@banguklinika";
-const HOME_TITLE = "Odontologijos klinika (odontologai) Klaipėdoje";
+const HOME_TITLE = "Odontologijos klinika (stomatologijos) Klaipėdoje";
 const LANG_META = {
   lt: { language: "Lithuanian", ogLocale: "lt_LT" },
   lv: { language: "Latvian", ogLocale: "lv_LV" }
