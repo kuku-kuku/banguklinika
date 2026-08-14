@@ -288,10 +288,22 @@ const pages = [
     schema: serviceSchema("STRAUMANN dantų implantai Klaipėdoje", "STRAUMANN dantų implantai", "Dantų implantacija STRAUMANN implantų sistema Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/straumann-dantu-implantai/`),
   },
   {
+    route: "/paslaugos/visi-dantys-ant-4-implantu",
+    title: "Visi dantys ant 4 implantų (All-on-4 implantai) Klaipėdoje | Kaina nuo 3800€ | Bangų klinika",
+    description: "Visi dantys ant 4 implantų (All-on-4) Klaipėdoje – patikimas☑️modernus☑️sprendimas visam dantų lankui atkurti. Registruokitės konsultacijai⏩Bangų klinikoje.",
+    schema: serviceSchema("Visi dantys ant 4 implantų (All-on-4 implantai) Klaipėdoje", "All-on-4 implantacija", "Viso žandikaulio dantų lanko atkūrimas ant 4 implantų (All-on-4) Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/visi-dantys-ant-4-implantu/`),
+  },
+  {
     route: "/paslaugos/dantu-balinimo-kapos",
     title: "Dantų balinimo kapos Klaipėdoje - Bangų klinika",
     description: "Individualios dantų balinimo kapos Klaipėdoje – planuojamas namų balinimas Bangų odontologijos klinikoje. Kaina nuo 200€ (be balinimo gelio).⏩Registruokitės konsultacijai.",
     schema: serviceSchema("Dantų balinimo kapos Klaipėdoje", "Dantų balinimo kapos", "Individualių dantų balinimo kapų gamyba ir namų balinimo planavimas Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/dantu-balinimo-kapos/`),
+  },
+  {
+    route: "/paslaugos/dantu-balinimas-su-lempa",
+    title: "Dantų balinimas su lempa Klaipėdoje nuo 270€ | Bangų klinika",
+    description: "Dantų balinimas su lempa Klaipėdoje, tai efektyvus būdas pašviesinti dantis☑️ir susigrąžinti spindinčią šypseną☑️. Registruokitės procedūrai⏩Bangų klinikoje.",
+    schema: serviceSchema("Dantų balinimas su lempa Klaipėdoje", "Dantų balinimas su LED lempa", "Klinikoje atliekamas dantų balinimas su LED lempa Bangų odontologijos klinikoje Klaipėdoje.", `${SITE_ORIGIN}/paslaugos/dantu-balinimas-su-lempa/`),
   },
   {
     route: "/paslaugos/gydymas-icon-sistema",

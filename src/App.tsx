@@ -51,6 +51,8 @@ import TerapinisDantuGydymas from './pages/TerapinisDantuGydymas'
 import GydymasIconSistema from './pages/GydymasIconSistema'
 import DantuBalinimoKapos from './pages/DantuBalinimoKapos'
 import StraumannDantuImplantai from './pages/StraumannDantuImplantai'
+import VisiDantysAnt4Implantu from './pages/VisiDantysAnt4Implantu'
+import DantuBalinimasSuLempa from './pages/DantuBalinimasSuLempa'
 import DantuMikroprotezavimas from './pages/DantuMikroprotezavimas'
 import DantuUzklotai from './pages/DantuUzklotai'
 import IsimamiProtezai from './pages/IsimamiProtezai'
@@ -185,7 +187,9 @@ export default function App() {
           <Route path="/paslaugos/terapinis-dantu-gydymas" element={<TerapinisDantuGydymas />} />
           <Route path="/paslaugos/gydymas-icon-sistema" element={<GydymasIconSistema />} />
           <Route path="/paslaugos/dantu-balinimo-kapos" element={<DantuBalinimoKapos />} />
+          <Route path="/paslaugos/dantu-balinimas-su-lempa" element={<DantuBalinimasSuLempa />} />
           <Route path="/paslaugos/straumann-dantu-implantai" element={<StraumannDantuImplantai />} />
+          <Route path="/paslaugos/visi-dantys-ant-4-implantu" element={<VisiDantysAnt4Implantu />} />
           <Route path="/paslaugos/dantu-mikroprotezavimas" element={<DantuMikroprotezavimas />} />
           <Route path="/paslaugos/dantu-uzklotai" element={<DantuUzklotai />} />
           <Route path="/paslaugos/isimami-protezai" element={<IsimamiProtezai />} />
