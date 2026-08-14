@@ -419,8 +419,14 @@ export default function VisiDantysAnt4Implantu() {
                 <p>
                   Dantų atkūrimas 4 implantais leidžia atkurti ne pavienius dantis, o visą dantų lanką kaip
                   vientisą funkcinę sistemą. Tai padeda pagerinti kramtymą, kalbos aiškumą, veido atramą ir
-                  bendrą gyvenimo kokybę. Galutinis sprendimas visuomet priimamas individualiai, įvertinus
-                  kaulo kiekį, dantenų būklę, sąkandį, bendrą sveikatą ir paciento lūkesčius.
+                  bendrą gyvenimo kokybę. Svarbu suprasti, kad tai nėra vien greitas estetinis sprendimas –
+                  gydymas turi būti pagrįstas tikslia diagnostika, implantų stabilumo įvertinimu ir ilgalaikės
+                  priežiūros planu. Galutinis sprendimas visuomet priimamas individualiai, įvertinus kaulo
+                  kiekį, dantenų būklę, sąkandį, bendrą sveikatą ir paciento lūkesčius. Tokia analizė padeda
+                  pasirinkti saugiausią atkūrimo kelią ir užtikrinti, kad protezas būtų patogus, stabilus bei
+                  tinkamas kasdieniam naudojimui. Tai ypač svarbu pacientams, siekiantiems ne laikino
+                  kompromiso, o aiškaus, mediciniškai pagrįsto dantų atkūrimo sprendimo bei tikruosius
+                  ilgalaikius paciento poreikius.
                 </p>
               </div>
             </div>
@@ -454,7 +460,10 @@ export default function VisiDantysAnt4Implantu() {
                 <p>
                   Vis dėlto tinkamumas šiam metodui nustatomas tik individualiai. Gydytojas įvertina kaulo
                   tūrį, dantenų būklę, sąkandį, bendrą sveikatą, vartojamus vaistus, burnos higieną ir paciento
-                  galimybes laikytis pooperacinių rekomendacijų.
+                  galimybes laikytis pooperacinių rekomendacijų. Tik po tokio įvertinimo galima nuspręsti, ar
+                  ALL-ON-4 metodas suteiks saugų, stabilų ir ilgalaikį rezultatą. Jei šis sprendimas netinka,
+                  aptariamos kitos implantacijos ar protezavimo galimybės. Tokia eiga padeda išvengti
+                  nepagrįstų lūkesčių ir parinkti gydymą pagal realią burnos klinikinę situaciją bei prognozę.
                 </p>
               </div>
             </div>
@@ -487,8 +496,13 @@ export default function VisiDantysAnt4Implantu() {
                 </p>
                 <p>
                   Šio metodo sėkmė priklauso nuo diagnostikos, 3D planavimo ir individualaus protezavimo
-                  sprendimo. Prieš procedūrą vertinamas kaulo aukštis, plotis, minkštųjų audinių būklė,
-                  sąkandžio santykis ir bendra gydymo prognozė.
+                  sprendimo. Todėl prieš procedūrą vertinamas kaulo aukštis, plotis, minkštųjų audinių būklė,
+                  sąkandžio santykis ir bendra gydymo prognozė. Toks planavimas padeda numatyti, ar pacientui
+                  reikės papildomų procedūrų, ar implantus galima sriegti pasirinktu kampu, ir kaip laikinas
+                  protezas pereis į galutinį atkūrimą. Kiekvienas sprendimas priimamas pagal klinikinę
+                  situaciją, todėl metodas išlieka saugus, prognozuojamas ir pritaikytas ilgalaikiam
+                  naudojimui. Tai suteikia pacientui daugiau aiškumo prieš gydymą ir leidžia tiksliau
+                  suplanuoti visus etapus. Tai svarbu ilgalaikės burnos sveikatos požiūriu.
                 </p>
               </div>
             </div>
@@ -500,42 +514,35 @@ export default function VisiDantysAnt4Implantu() {
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
                 Kokie yra pagrindiniai dantų atkūrimo 4 implantais privalumai?
               </h2>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className={innerCard}>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Fiksuotas sprendimas</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Protezas tvirtinamas ant implantų, todėl nejuda valgant, kalbant ar šypsantis ir suteikia
-                    daugiau stabilumo nei išimami protezai.
-                  </p>
-                </div>
-                <div className={innerCard}>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Greitesnis funkcijos ir estetikos atkūrimas</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Daugeliu atvejų laikinas protezas gali būti pritvirtinamas netrukus po implantacijos, todėl
-                    pacientas nelieka be dantų gydymo proceso metu.
-                  </p>
-                </div>
-                <div className={innerCard}>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Mažesnis chirurginės intervencijos poreikis</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Naudojami keturi implantai, o dėl pasvirai sriegiamų galinių implantų kai kuriais atvejais
-                    pavyksta išvengti sudėtingesnio kaulo priauginimo.
-                  </p>
-                </div>
-                <div className={innerCard}>
-                  <h3 className="font-bold text-darkblue-700 mb-2">Grąžinta kramtymo funkcija ir estetika</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Atkuriama kramtymo funkcija, aiškesnė kalba, veido atrama ir natūralesnė šypsenos
-                    estetika, sumažėja išimamų protezų keliamas nepatogumas ir trynimas.
-                  </p>
-                </div>
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                  Dantų atkūrimas 4 implantais turi kelis svarbius privalumus, dėl kurių šis metodas dažnai
+                  pasirenkamas atkuriant visą viršutinio arba apatinio žandikaulio dantų lanką. Pirmiausia,
+                  tai fiksuotas sprendimas. Protezas tvirtinamas ant implantų, todėl nejuda valgant, kalbant
+                  ar šypsantis ir suteikia daugiau stabilumo nei išimami protezai.
+                </p>
+                <p>
+                  Kitas privalumas – greitesnis funkcijos ir estetikos atkūrimas. Daugeliu atvejų laikinas
+                  protezas gali būti pritvirtinamas netrukus po implantacijos, todėl pacientas nelieka be
+                  dantų gydymo proceso metu. Tai ypač svarbu psichologiniam komfortui, pasitikėjimui savimi
+                  ir kasdieniam bendravimui.
+                </p>
+                <p>
+                  Svarbus ir mažesnis chirurginės intervencijos poreikis. Naudojant keturis implantus, galima
+                  sumažinti implantų skaičių, o dėl pasvirai sriegiamų galinių implantų kai kuriais atvejais
+                  pavyksta išvengti sudėtingesnio kaulo priauginimo.
+                </p>
+                <p>
+                  Šis metodas taip pat padeda atkurti kramtymo funkciją, aiškesnę kalbą, veido atramą ir
+                  natūralesnę šypsenos estetiką. Vis dėlto didžiausias privalumas yra ne vien greitis, o
+                  individualiai suplanuotas, ilgalaikis sprendimas, pritaikytas konkretaus paciento kaulo
+                  būklei, sąkandžiui ir sveikatos situacijai. Tinkamai prižiūrimas protezas ant implantų gali
+                  padėti pacientui grįžti prie įprastos mitybos, aiškesnio tarimo ir laisvesnio bendravimo.
+                  Kartu sumažėja išimamų protezų keliamas nepatogumas, trynimas ar baimė, kad protezas
+                  pajudės netinkamu metu kasdien. Dėl to atkuriama ne tik dantų funkcija, bet ir bendras
+                  gyvenimo komfortas bei pasitikėjimas savimi kasdien.
+                </p>
               </div>
-              <p className="text-slate-700 leading-relaxed mt-6">
-                Didžiausias privalumas yra ne vien greitis, o individualiai suplanuotas, ilgalaikis
-                sprendimas, pritaikytas konkretaus paciento kaulo būklei, sąkandžiui ir sveikatos situacijai.
-                Tinkamai prižiūrimas protezas ant implantų gali padėti pacientui grįžti prie įprastos mitybos,
-                aiškesnio tarimo ir laisvesnio bendravimo.
-              </p>
             </div>
           </motion.section>
 
@@ -550,7 +557,8 @@ export default function VisiDantysAnt4Implantu() {
                 Nors dantų atkūrimas 4 implantais yra pažangus ir dažnai taikomas metodas, jis nėra
                 universalus sprendimas visiems pacientams. Tinkamumas priklauso nuo burnos būklės, kaulo
                 kiekio, bendros sveikatos, higienos įpročių ir paciento galimybių laikytis gydytojo
-                rekomendacijų po procedūros.
+                rekomendacijų po procedūros. Todėl prieš pasirenkant ALL-ON-4 būtina įvertinti ne tik norimą
+                rezultatą, bet ir realias medicinines sąlygas.
               </p>
 
               <h3 className="font-semibold text-darkblue-700 mb-4">ALL-ON-4 gali būti nerekomenduojamas, jei:</h3>
@@ -572,8 +580,15 @@ export default function VisiDantysAnt4Implantu() {
               <p className="text-slate-700 leading-relaxed mt-6">
                 Tokiais atvejais gydytojas pirmiausia gali rekomenduoti paruošiamąjį gydymą: infekcijų
                 suvaldymą, profesionalią burnos higieną, periodontologinį gydymą, kaulo priauginimą ar kitą
-                implantacijos planą. Galutinis tinkamumas nustatomas tik po konsultacijos, 3D tyrimo ir
-                individualios rizikų analizės.
+                implantacijos planą. Kartais vietoje keturių implantų gali būti siūlomas didesnis implantų
+                skaičius arba etapinis dantų atkūrimas.
+              </p>
+              <p className="text-slate-700 leading-relaxed mt-4">
+                Svarbiausia tai, kad sprendimas nėra priimamas pagal vieną požymį. Galutinis tinkamumas
+                nustatomas tik po konsultacijos, 3D tyrimo ir individualios rizikų analizės. Toks atsargus
+                vertinimas padeda pasirinkti saugiausią kelią, išvengti nepagrįstų lūkesčių ir užtikrinti
+                ilgalaikę gydymo prognozę konkrečiam pacientui. Jeigu rizikos yra koreguojamos, gydymas gali
+                būti planuojamas vėliau, kai burnos audiniai ir bendra sveikatos būklė tampa stabilesni.
               </p>
             </div>
           </motion.section>
@@ -644,7 +659,8 @@ export default function VisiDantysAnt4Implantu() {
                 Gijimo laikotarpiu rekomenduojama vengti kieto maisto, didelio fizinio krūvio, rūkymo ir
                 savavališko vaistų vartojimo. Reguliarūs kontroliniai vizitai leidžia įvertinti, ar implantai
                 gyja pagal planą, ar laikinas protezas tinkamai paskirsto apkrovą ir kada galima planuoti
-                galutinį protezą.
+                galutinį protezą. Tinkama priežiūra padeda sumažinti komplikacijų riziką ir sudaro geresnes
+                sąlygas ilgalaikiam rezultatui.
               </p>
             </div>
           </motion.section>
@@ -656,9 +672,10 @@ export default function VisiDantysAnt4Implantu() {
                 Mitai apie dantų atkūrimą 4 implantais
               </h2>
               <p className="text-slate-700 leading-relaxed mb-6">
-                Šis metodas vis dar apipintas įvairiais mitais, kurie pacientams gali kelti abejonių ar
-                nereikalingą nerimą. Šiuolaikinė implantologija remiasi tikslia diagnostika, individualiu
-                planavimu ir pažangiais gydymo metodais.
+                Dantų atkūrimas 4 implantais vis dar apipintas įvairiais mitais, kurie pacientams gali kelti
+                abejonių ar nereikalingą nerimą. Šiuolaikinė implantologija remiasi tikslia diagnostika,
+                individualiu planavimu ir pažangiais gydymo metodais, todėl daugelis senų įsitikinimų apie
+                ALL-ON-4 metodą šiandien nebeatitinka realybės.
               </p>
 
               <div className="grid gap-4 md:grid-cols-2">
@@ -713,14 +730,16 @@ export default function VisiDantysAnt4Implantu() {
                   Klinikoje didelis dėmesys skiriamas individualiam planavimui. Prieš pradedant gydymą
                   atliekama išsami diagnostika, padedanti tiksliai įvertinti, ar ALL-ON-4 metodas yra tinkamas
                   konkrečiu atveju, kokios implantų pozicijos būtų saugiausios, ar reikalingos papildomos
-                  procedūros ir kokio protezavimo sprendimo gali reikėti.
+                  procedūros ir kokio protezavimo sprendimo gali reikėti. Toks požiūris leidžia pacientui
+                  aiškiai suprasti gydymo eigą, galimus etapus, gijimo laikotarpį ir priimti informuotą
+                  sprendimą.
                 </p>
                 <p>
-                  Pacientui aiškiai paaiškinama, kaip vyksta dantų atkūrimas 4 implantais, kuo laikinas
-                  protezas skiriasi nuo galutinio ir ko tikėtis po implantacijos. Po gydymo suteikiamos
-                  rekomendacijos dėl gijimo, higienos, mitybos ir kontrolinių vizitų, kad būtų sudarytos kuo
-                  geresnės sąlygos implantų prigijimui, protezo stabilumui ir ilgalaikiam dantų atkūrimo
-                  rezultatui.
+                  Bangų odontologijos klinikoje pacientui aiškiai paaiškinama, kaip vyksta dantų atkūrimas 4
+                  implantais, kuo laikinas protezas skiriasi nuo galutinio ir ko tikėtis po implantacijos. Po
+                  gydymo suteikiamos rekomendacijos dėl gijimo, higienos, mitybos ir kontrolinių vizitų, kad
+                  būtų sudarytos kuo geresnės sąlygos implantų prigijimui, protezo stabilumui ir ilgalaikiam
+                  dantų atkūrimo rezultatui.
                 </p>
               </div>
             </div>
