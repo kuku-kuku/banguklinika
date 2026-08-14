@@ -407,6 +407,10 @@ export default function DantuBalinimasSuLempa() {
                   nuo individualių dantų savybių ir spalvos pokyčių priežasties.
                 </p>
                 <p>
+                  Dantų balinimo su LED lempa kaina priklauso nuo naudojamos sistemos, procedūros apimties ir
+                  prieš balinimą reikalingo paruošimo. Tiksli kaina nurodoma po burnos būklės įvertinimo.
+                </p>
+                <p>
                   Ieškantiems profesionalaus dantų balinimo su LED lempa Klaipėdoje, Bangų odontologijos
                   klinika siūlo atsakingai suplanuotą procedūrą, aiškias priežiūros rekomendacijas ir
                   individualia burnos būkle pagrįstą gydymo planą.
