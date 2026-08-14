@@ -91,6 +91,12 @@ export default function DantuBalinimasSuLempa() {
         description="Dantų balinimas su lempa Klaipėdoje, tai efektyvus būdas pašviesinti dantis☑️ir susigrąžinti spindinčią šypseną☑️. Registruokitės procedūrai⏩Bangų klinikoje."
         keywords="dantu balinimas su lempa, led balinimas, dantu balinimas klaipeda, kabinetinis balinimas, bangų klinika"
         structuredData={structuredData}
+        lang="lt"
+        alternates={[
+          { lang: 'lt', url: 'https://banguklinika.lt/paslaugos/dantu-balinimas-su-lempa' },
+          { lang: 'lv', url: 'https://banguklinika.lt/lv/pakalpojumi/zobu-balinesana-ar-lampu' },
+          { lang: 'x-default', url: 'https://banguklinika.lt/paslaugos/dantu-balinimas-su-lempa' },
+        ]}
       />
 
       <motion.div
