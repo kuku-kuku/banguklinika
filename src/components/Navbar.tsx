@@ -22,6 +22,7 @@ const nav: NavItem[] = [
         children: [
           { to: '/paslaugos/vienmomente-implantacija/', label: 'Vienmomentė implantacija' },
           { to: '/paslaugos/straumann-dantu-implantai/', label: 'STRAUMANN dantų implantai' },
+          { to: '/paslaugos/visi-dantys-ant-4-implantu/', label: 'Visi dantys ant 4 implantų (All-on-4)' },
         ],
       },
       {
@@ -56,6 +57,7 @@ const nav: NavItem[] = [
         to: '/paslaugos/dantu-balinimas/', label: 'Dantų balinimas',
         children: [
           { to: '/paslaugos/dantu-balinimo-kapos/', label: 'Dantų balinimo kapos' },
+          { to: '/paslaugos/dantu-balinimas-su-lempa/', label: 'Dantų balinimas su lempa' },
         ],
       },
       { to: '/paslaugos/estetinis-plombavimas/', label: 'Estetinis plombavimas' },

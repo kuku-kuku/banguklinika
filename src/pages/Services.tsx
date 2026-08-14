@@ -97,6 +97,11 @@ export default function Services() {
       to: '/paslaugos/straumann-dantu-implantai',
     },
     {
+      id: 'visi-dantys-ant-4-implantu',
+      title: 'Visi dantys ant 4 implantų (All-on-4)',
+      to: '/paslaugos/visi-dantys-ant-4-implantu',
+    },
+    {
       id: 'skubi-pagalba',
       title: 'Skubi pagalba',
       to: '/paslaugos/skubi-pagalba',
@@ -200,6 +205,11 @@ export default function Services() {
       id: 'dantu-balinimo-kapos',
       title: 'Dantų balinimo kapos',
       to: '/paslaugos/dantu-balinimo-kapos',
+    },
+    {
+      id: 'dantu-balinimas-su-lempa',
+      title: 'Dantų balinimas su lempa',
+      to: '/paslaugos/dantu-balinimas-su-lempa',
     },
     {
       id: 'estetinis-plombavimas',
