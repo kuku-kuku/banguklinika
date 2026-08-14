@@ -6,6 +6,8 @@ export const SITE_URL = 'https://banguklinika.lt'
 export const ROUTE_MAP_LT_TO_LV: Record<string, string> = {
   '/':                                   '/lv',
   '/paslaugos/dantu-implantacija':       '/lv/pakalpojumi/zobu-implantacija',
+  '/paslaugos/visi-dantys-ant-4-implantu': '/lv/pakalpojumi/visi-zobi-uz-4-implantiem',
+  '/paslaugos/dantu-balinimas-su-lempa':  '/lv/pakalpojumi/zobu-balinesana-ar-lampu',
   '/paslaugos/dantu-protezavimas':       '/lv/pakalpojumi/zobu-protezesana',
   '/paslaugos/dantu-taisymas-gydymas':   '/lv/pakalpojumi/zobu-arstnieciba',
   '/paslaugos/dantu-tiesinimas':         '/lv/pakalpojumi/zobu-izlinesana',
@@ -41,6 +43,7 @@ export const navLv = [
         children: [
           { to: '/lv/pakalpojumi/tulitejas-implantacija', label: 'Tūlītējā implantācija' },
           { to: '/lv/pakalpojumi/straumann-implanti',     label: 'STRAUMANN zobu implanti' },
+          { to: '/lv/pakalpojumi/visi-zobi-uz-4-implantiem', label: 'Visi zobi uz 4 implantiem (All-on-4)' },
         ],
       },
       {
@@ -75,6 +78,7 @@ export const navLv = [
         to: '/lv/pakalpojumi/zobu-balinesana', label: 'Zobu balināšana',
         children: [
           { to: '/lv/pakalpojumi/zobu-balinesanas-kapas', label: 'Zobu balināšanas kapas' },
+          { to: '/lv/pakalpojumi/zobu-balinesana-ar-lampu', label: 'Zobu balināšana ar lampu' },
         ],
       },
       { to: '/lv/pakalpojumi/estetiska-plombana', label: 'Estētiskā plombēšana' },

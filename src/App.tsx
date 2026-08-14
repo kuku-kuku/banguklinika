@@ -53,6 +53,8 @@ import DantuBalinimoKapos from './pages/DantuBalinimoKapos'
 import StraumannDantuImplantai from './pages/StraumannDantuImplantai'
 import VisiDantysAnt4Implantu from './pages/VisiDantysAnt4Implantu'
 import DantuBalinimasSuLempa from './pages/DantuBalinimasSuLempa'
+import VisiZobiUz4ImplantiemLv from './pages/lv/VisiZobiUz4ImplantiemLv'
+import ZobuBalinesanaArLampuLv from './pages/lv/ZobuBalinesanaArLampuLv'
 import DantuMikroprotezavimas from './pages/DantuMikroprotezavimas'
 import DantuUzklotai from './pages/DantuUzklotai'
 import IsimamiProtezai from './pages/IsimamiProtezai'
@@ -231,6 +233,7 @@ export default function App() {
             <Route path="pakalpojumi/gudribas-zobu-izvilksana" element={<GudribasZobuIzvilksanaLv />} />
             <Route path="pakalpojumi/abscesa-atversana" element={<AbscesaAtversanaLv />} />
             <Route path="pakalpojumi/tulitejas-implantacija" element={<TulitejasImplantacijaLv />} />
+            <Route path="pakalpojumi/visi-zobi-uz-4-implantiem" element={<VisiZobiUz4ImplantiemLv />} />
             {/* Pakalpojumi — batch 2 (protezēšana) */}
             <Route path="pakalpojumi/cirkonija-keramikas-kronitis" element={<CirkonijaKeramikasKronitisLv />} />
             <Route path="pakalpojumi/zobu-kroniti" element={<ZobuKronitiLv />} />
@@ -245,6 +248,7 @@ export default function App() {
             <Route path="pakalpojumi/smaganu-iekaisums-gingivits" element={<SmaganuIekaisumsGingivitsLv />} />
             <Route path="pakalpojumi/bruksisma-kapa" element={<BruksismaKapaLv />} />
             <Route path="pakalpojumi/zobu-balinesanas-kapas" element={<ZobuBalinesanasKapasLv />} />
+            <Route path="pakalpojumi/zobu-balinesana-ar-lampu" element={<ZobuBalinesanaArLampuLv />} />
             <Route path="pakalpojumi/zobu-fluoresana" element={<ZobuFluoresanaLv />} />
             {/* Pakalpojumi — batch 4 (bērniem + rentgens) */}
             <Route path="pakalpojumi/bernu-profilaktiska-parbaude" element={<BernuProfilaktiskaParbaudeLv />} />

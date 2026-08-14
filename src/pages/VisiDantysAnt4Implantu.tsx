@@ -226,6 +226,12 @@ export default function VisiDantysAnt4Implantu() {
         description="Visi dantys ant 4 implantų (All-on-4) Klaipėdoje – patikimas☑️modernus☑️sprendimas visam dantų lankui atkurti. Registruokitės konsultacijai⏩Bangų klinikoje."
         keywords="visi dantys ant 4 implantu, all-on-4, all on 4, dantu implantacija, straumann, neodent, klaipeda, bangų klinika"
         structuredData={structuredData}
+        lang="lt"
+        alternates={[
+          { lang: 'lt', url: 'https://banguklinika.lt/paslaugos/visi-dantys-ant-4-implantu' },
+          { lang: 'lv', url: 'https://banguklinika.lt/lv/pakalpojumi/visi-zobi-uz-4-implantiem' },
+          { lang: 'x-default', url: 'https://banguklinika.lt/paslaugos/visi-dantys-ant-4-implantu' },
+        ]}
       />
 
       <motion.div
