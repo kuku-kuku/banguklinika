@@ -119,7 +119,17 @@
   </url>
 
   <url>
+    <loc>https://banguklinika.lt/paslaugos/dantu-balinimas-su-lempa</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://banguklinika.lt/paslaugos/straumann-dantu-implantai</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://banguklinika.lt/paslaugos/visi-dantys-ant-4-implantu</loc>
     <priority>0.9</priority>
   </url>
 
@@ -407,6 +417,11 @@
   </url>
 
   <url>
+    <loc>https://banguklinika.lt/lv/pakalpojumi/visi-zobi-uz-4-implantiem</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://banguklinika.lt/lv/pakalpojumi/straumann-implanti</loc>
     <priority>0.8</priority>
   </url>
@@ -488,6 +503,11 @@
 
   <url>
     <loc>https://banguklinika.lt/lv/pakalpojumi/zobu-balinesanas-kapas</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://banguklinika.lt/lv/pakalpojumi/zobu-balinesana-ar-lampu</loc>
     <priority>0.8</priority>
   </url>
 

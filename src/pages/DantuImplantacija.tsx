@@ -222,51 +222,185 @@ export default function DantuImplantacija() {
             className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
             variants={item}
           >
-            <div className="rounded-3xl border border-sky-200/40 p-7 sm:p-10 lg:p-12" style={{ backgroundColor: SL }}>
-              <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-                <div>
-                  <h2 className="text-3xl font-extrabold tracking-tight mb-2" style={{ color: P }}>
-                    Dantų implantacijos kainos
-                  </h2>
-                  <p className="text-slate-600">
-                    Galutinė dantų implantacijos kaina priklauso nuo reikalingų implantų skaičiaus, pasirinkto implanto tipo, žandikaulio kaulo būklės ir papildomų procedūrų poreikio. Prieš pradedant gydymą visuomet atliekama išsami konsultacija ir diagnostika.
-                  </p>
+            <div className="rounded-3xl border border-sky-200/40 p-6 sm:p-8 lg:p-10" style={{ backgroundColor: SL }}>
+              <div className="mb-8">
+                <h2 className="text-3xl font-extrabold tracking-tight mb-2" style={{ color: P }}>
+                  Dantų implantacijos kainos
+                </h2>
+                <p className="text-slate-600">
+                  Galutinė dantų implantacijos kaina priklauso nuo reikalingų implantų skaičiaus, pasirinkto implanto tipo, žandikaulio kaulo būklės ir papildomų procedūrų poreikio. Prieš pradedant gydymą visuomet atliekama išsami konsultacija ir diagnostika.
+                </p>
+              </div>
+
+              {/* Vieno danties atkūrimo kaina — chirurginė dalis */}
+              <div className="mb-10">
+                <h3 className="text-xl sm:text-2xl font-bold mb-1" style={{ color: P }}>
+                  Vieno danties atkūrimo kaina
+                </h3>
+                <p className="text-slate-600 text-sm mb-5">
+                  Implanto įsukimas ir priedai (1 vnt., chirurginė dalis)
+                </p>
+                <div className="grid md:grid-cols-3 gap-5">
+                  {[
+                    { name: 'Neodent implantas', price: '500 €' },
+                    { name: 'Straumann SLA implantas', price: '650 €' },
+                    { name: 'Straumann SLA Active implantas', price: '790 €' },
+                  ].map((it, i) => (
+                    <div
+                      key={i}
+                      className="bg-white p-6 rounded-2xl border-2 shadow-sm hover:shadow-xl transition-all flex flex-col"
+                      style={{ borderColor: S }}
+                    >
+                      <h4 className="text-base font-extrabold mb-3 leading-snug" style={{ color: P }}>
+                        {it.name}
+                      </h4>
+                      <div className="text-3xl font-extrabold mt-auto" style={{ color: P }}>
+                        {it.price}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-slate-500 text-xs mt-4 leading-relaxed">
+                  * Chirurginių operacijų ir implantacijos metu gali prireikti dirbtinio kaulo ir/ar membranos (kaulo priauginimas), kaina priklauso nuo sunaudotų medžiagų kiekio. Chirurginių procedūrų kainos nurodytos su nuskausminimu, vienkartinėmis medžiagomis.
+                </p>
+              </div>
+
+              {/* Implanto vainikėlio protezavimas */}
+              <div className="mb-10">
+                <h3 className="text-xl sm:text-2xl font-bold mb-5" style={{ color: P }}>
+                  Implanto vainikėlio protezavimas
+                </h3>
+                <div className="grid md:grid-cols-2 gap-5">
+                  {[
+                    {
+                      brand: 'Neodent',
+                      items: [
+                        ['Neodent standartinė atrama', '100 €'],
+                        ['Neodent gijimo galvutė', '80 €'],
+                        ['Atspaudai', '150 €'],
+                        ['Cirkonio keramikos vainikėlis', '450 €'],
+                      ],
+                    },
+                    {
+                      brand: 'Straumann',
+                      items: [
+                        ['Straumann standartinė atrama', '200 €'],
+                        ['Straumann gijimo galvutė', '100 €'],
+                        ['Atspaudai', '150 €'],
+                        ['Cirkonio keramikos vainikėlis', '450 €'],
+                      ],
+                    },
+                  ].map((group, i) => (
+                    <div
+                      key={i}
+                      className="bg-white p-6 sm:p-7 rounded-2xl border-2 shadow-sm hover:shadow-xl transition-all"
+                      style={{ borderColor: S }}
+                    >
+                      <h4 className="text-lg font-extrabold mb-4" style={{ color: P }}>
+                        {group.brand} implanto vainikėlio protezavimas
+                      </h4>
+                      <div className="divide-y divide-slate-100">
+                        {group.items.map(([name, price], j) => (
+                          <div key={j} className="flex justify-between items-center py-2.5 gap-3">
+                            <span className="text-slate-700 text-sm">{name}</span>
+                            <span className="font-bold text-sm shrink-0" style={{ color: P }}>{price}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-5">
-                <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
-                  <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Naudojami dantų implantai</h3>
-                  <div className="divide-y divide-slate-100">
-                    {[
-                      ['Straumann® implantas', '650 €'],
-                      ['Neodent® implantas', '500 €'],
-                    ].map(([name, price], i) => (
-                      <div key={i} className="flex justify-between items-center py-2.5">
-                        <span className="text-slate-600 text-sm">{name}</span>
-                        <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
+              {/* Kompleksiniai sprendimai */}
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold mb-1" style={{ color: P }}>
+                  Kompleksiniai implantacijos sprendimai
+                </h3>
+                <p className="text-slate-600 text-sm mb-5">
+                  Į kiekvieną pasiūlymą įeina viskas, kas reikalinga rezultatui — nuo diagnostikos iki laikino protezo.
+                </p>
+                <div className="grid md:grid-cols-2 gap-5">
+                  {[
+                    {
+                      title: 'Vienmomentė implantacija Neodent',
+                      price: '1200 €',
+                      note: 'Pažeistas dantis pašalinamas ir į tą pačią vietą iš karto įsriegiamas implantas. Per 24–48 val. pritvirtinamas laikinas protezas.',
+                      bullets: [
+                        'Rovimas',
+                        'Kaulo priauginimas',
+                        'Implantas',
+                        'Individuali galvutė',
+                        'Atspaudai',
+                        'Atrama',
+                        'Cirkonio vainikėlis',
+                      ],
+                    },
+                    {
+                      title: 'ALL-ON-4 su „Straumann Group Neodent“ implantais',
+                      price: '3800 €',
+                      note: 'Vieno žandikaulio dantų atstatymas ALL-ON-4 sistema.',
+                      bullets: [
+                        '3D rentgeno nuotrauka',
+                        '4 „Straumann Group Neodent“ implantai',
+                        'Originalios protezavimo detalės',
+                        'Neišimamas laikinas protezas',
+                      ],
+                    },
+                    {
+                      title: 'ALL-ON-4 su „Straumann Group SLA“ implantais',
+                      price: '4900 €',
+                      note: 'Vieno žandikaulio dantų atstatymas ALL-ON-4 sistema.',
+                      bullets: [
+                        '3D rentgeno nuotrauka',
+                        '4 „Straumann Group SLA“ implantai',
+                        'Originalios protezavimo detalės',
+                        'Neišimamas laikinas protezas',
+                      ],
+                    },
+                    {
+                      title: 'ALL-ON-6 su „Straumann Group Neodent“ implantais',
+                      price: '5300 €',
+                      note: 'Visų dantų atkūrimas ant 6 implantų.',
+                      bullets: [
+                        '3D rentgeno nuotrauka',
+                        '6 „Straumann Group Neodent“ implantai',
+                        'Originalios protezavimo detalės',
+                        'Neišimamas laikinas protezas',
+                      ],
+                    },
+                  ].map((pkg, i) => (
+                    <div
+                      key={i}
+                      className="bg-white p-6 sm:p-7 rounded-2xl border-2 shadow-sm hover:shadow-xl transition-all flex flex-col"
+                      style={{ borderColor: S }}
+                    >
+                      <h4 className="text-base sm:text-lg font-extrabold mb-2 leading-snug" style={{ color: P }}>
+                        {pkg.title}
+                      </h4>
+                      <div className="text-3xl font-extrabold mb-3" style={{ color: P }}>
+                        {pkg.price}
                       </div>
-                    ))}
-                  </div>
+                      <p className="text-sm text-slate-600 mb-4 leading-relaxed">{pkg.note}</p>
+                      <p className="text-sm font-semibold text-darkblue-700 mb-2">Į pasiūlymą įeina:</p>
+                      <ul className="space-y-2 text-sm text-slate-700 flex-1">
+                        {pkg.bullets.map((b, j) => (
+                          <li key={j} className="flex items-start gap-2">
+                            <span className="mt-1"><CheckIcon /></span>
+                            <span>{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
-
-                <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
-                  <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Papildomos procedūros</h3>
-                  <div className="divide-y divide-slate-100">
-                    {[
-                      ['Sinuso pakėlimo operacija', '500–700 €'],
-                    ].map(([name, price], i) => (
-                      <div key={i} className="flex justify-between items-center py-2.5">
-                        <span className="text-slate-600 text-sm">{name}</span>
-                        <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <p className="text-slate-500 text-xs mt-4 leading-relaxed">
+                  Po „All-on-4“ / „All-on-6“ implantacijos iš karto pritvirtinami laikini protezai, kad pacientas galėtų normaliai šypsotis ir kramtyti gijimo laikotarpiu. Laikini protezai paprastai nešiojami apie 3–6 mėnesius, kol implantai pilnai prigyja kaule. Nuolatiniai protezai dažniausiai dedami praėjus maždaug 4 mėnesiams po implantacijos (priklausomai nuo individualaus gijimo).
+                </p>
               </div>
 
-              <p className="text-slate-500 text-sm mt-6">
-                Tiksli implantacijos kaina aptariama individualios konsultacijos metu, įvertinus paciento burnos būklę, diagnostinius duomenis ir planuojamą gydymo eigą. Skaidri kainodara ir pažangios technologijos leidžia Bangų odontologijos klinikoje pasiūlyti finansiškai prieinamus implantacijos sprendimus, neatsisakant kokybės ir ilgaamžiškumo.
+              <p className="text-slate-500 text-sm mt-8">
+                Tiksli implantacijos kaina aptariama individualios konsultacijos metu, įvertinus paciento burnos būklę, diagnostinius duomenis ir planuojamą gydymo eigą.
               </p>
             </div>
           </motion.section>

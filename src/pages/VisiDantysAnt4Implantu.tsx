@@ -72,16 +72,6 @@ const packages: Package[] = [
       'Neišimamas laikinas protezas',
     ],
   },
-  {
-    title: 'ALL-ON-6 su „Straumann Group Neodent“ implantais',
-    price: '5300 €',
-    bullets: [
-      '3D rentgeno nuotrauka',
-      '6 „Straumann Group Neodent“ implantai',
-      'Originalios protezavimo detalės',
-      'Neišimamas laikinas protezas',
-    ],
-  },
 ]
 
 const processSteps = [
@@ -302,7 +292,7 @@ export default function VisiDantysAnt4Implantu() {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-5">
+              <div className="grid md:grid-cols-2 gap-5">
                 {packages.map((p, i) => (
                   <div
                     key={i}
