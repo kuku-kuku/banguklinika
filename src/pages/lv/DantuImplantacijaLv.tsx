@@ -232,51 +232,185 @@ export default function DantuImplantacijaLv() {
             className="mb-12 scroll-mt-36 2xl:scroll-mt-24"
             variants={item}
           >
-            <div className="rounded-3xl border border-sky-200/40 p-7 sm:p-10 lg:p-12" style={{ backgroundColor: SL }}>
-              <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-                <div>
-                  <h2 className="text-3xl font-extrabold tracking-tight mb-2" style={{ color: P }}>
-                    Zobu implantācijas cenas
-                  </h2>
-                  <p className="text-slate-600">
-                    Galīgā zobu implantācijas cena ir atkarīga no nepieciešamo implantu skaita, izvēlētā implanta veida, žokļa kaula stāvokļa un papildu procedūru nepieciešamības. Pirms ārstēšanas vienmēr tiek veikta detalizēta konsultācija un diagnostika.
-                  </p>
+            <div className="rounded-3xl border border-sky-200/40 p-6 sm:p-8 lg:p-10" style={{ backgroundColor: SL }}>
+              <div className="mb-8">
+                <h2 className="text-3xl font-extrabold tracking-tight mb-2" style={{ color: P }}>
+                  Zobu implantācijas cenas
+                </h2>
+                <p className="text-slate-600">
+                  Galīgā zobu implantācijas cena ir atkarīga no nepieciešamo implantu skaita, izvēlētā implanta veida, žokļa kaula stāvokļa un papildu procedūru nepieciešamības. Pirms ārstēšanas vienmēr tiek veikta detalizēta konsultācija un diagnostika.
+                </p>
+              </div>
+
+              {/* Viena zoba atjaunošanas cena — ķirurģiskā daļa */}
+              <div className="mb-10">
+                <h3 className="text-xl sm:text-2xl font-bold mb-1" style={{ color: P }}>
+                  Viena zoba atjaunošanas cena
+                </h3>
+                <p className="text-slate-600 text-sm mb-5">
+                  Implanta ieskrūvēšana un piederumi (1 gab., ķirurģiskā daļa)
+                </p>
+                <div className="grid md:grid-cols-3 gap-5">
+                  {[
+                    { name: 'Neodent implants', price: '500 €' },
+                    { name: 'Straumann SLA implants', price: '650 €' },
+                    { name: 'Straumann SLA Active implants', price: '790 €' },
+                  ].map((it, i) => (
+                    <div
+                      key={i}
+                      className="bg-white p-6 rounded-2xl border-2 shadow-sm hover:shadow-xl transition-all flex flex-col"
+                      style={{ borderColor: S }}
+                    >
+                      <h4 className="text-base font-extrabold mb-3 leading-snug" style={{ color: P }}>
+                        {it.name}
+                      </h4>
+                      <div className="text-3xl font-extrabold mt-auto" style={{ color: P }}>
+                        {it.price}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-slate-500 text-xs mt-4 leading-relaxed">
+                  * Ķirurģisko operāciju un implantācijas laikā var būt nepieciešams mākslīgais kauls un/vai membrāna (kaula papildināšana), cena ir atkarīga no izmantoto materiālu daudzuma. Ķirurģisko procedūru cenas norādītas ar anestēziju un vienreizējiem materiāliem.
+                </p>
+              </div>
+
+              {/* Implanta kroņa protezēšana */}
+              <div className="mb-10">
+                <h3 className="text-xl sm:text-2xl font-bold mb-5" style={{ color: P }}>
+                  Implanta kroņa protezēšana
+                </h3>
+                <div className="grid md:grid-cols-2 gap-5">
+                  {[
+                    {
+                      brand: 'Neodent',
+                      items: [
+                        ['Neodent standarta balsts', '100 €'],
+                        ['Neodent dzīšanas galviņa', '80 €'],
+                        ['Nospiedumi', '150 €'],
+                        ['Cirkonija keramikas kronis', '450 €'],
+                      ],
+                    },
+                    {
+                      brand: 'Straumann',
+                      items: [
+                        ['Straumann standarta balsts', '200 €'],
+                        ['Straumann dzīšanas galviņa', '100 €'],
+                        ['Nospiedumi', '150 €'],
+                        ['Cirkonija keramikas kronis', '450 €'],
+                      ],
+                    },
+                  ].map((group, i) => (
+                    <div
+                      key={i}
+                      className="bg-white p-6 sm:p-7 rounded-2xl border-2 shadow-sm hover:shadow-xl transition-all"
+                      style={{ borderColor: S }}
+                    >
+                      <h4 className="text-lg font-extrabold mb-4" style={{ color: P }}>
+                        {group.brand} implanta kroņa protezēšana
+                      </h4>
+                      <div className="divide-y divide-slate-100">
+                        {group.items.map(([name, price], j) => (
+                          <div key={j} className="flex justify-between items-center py-2.5 gap-3">
+                            <span className="text-slate-700 text-sm">{name}</span>
+                            <span className="font-bold text-sm shrink-0" style={{ color: P }}>{price}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-5">
-                <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
-                  <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Izmantotie zobu implanti</h3>
-                  <div className="divide-y divide-slate-100">
-                    {[
-                      ['Straumann® implants', '650 €'],
-                      ['Neodent® implants', '500 €'],
-                    ].map(([name, price], i) => (
-                      <div key={i} className="flex justify-between items-center py-2.5">
-                        <span className="text-slate-600 text-sm">{name}</span>
-                        <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
+              {/* Kompleksie risinājumi */}
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold mb-1" style={{ color: P }}>
+                  Kompleksie implantācijas risinājumi
+                </h3>
+                <p className="text-slate-600 text-sm mb-5">
+                  Katrā piedāvājumā ietilpst viss nepieciešamais rezultātam — no diagnostikas līdz pagaidu protēzei.
+                </p>
+                <div className="grid md:grid-cols-2 gap-5">
+                  {[
+                    {
+                      title: 'Tūlītēja implantācija Neodent',
+                      price: '1200 €',
+                      note: 'Bojātais zobs tiek izņemts un tajā pašā vietā uzreiz tiek ieskrūvēts implants. 24–48 stundu laikā tiek nostiprināta pagaidu protēze.',
+                      bullets: [
+                        'Zoba izvilkšana',
+                        'Kaula papildināšana',
+                        'Implants',
+                        'Individuāla galviņa',
+                        'Nospiedumi',
+                        'Balsts',
+                        'Cirkonija kronis',
+                      ],
+                    },
+                    {
+                      title: 'ALL-ON-4 ar „Straumann Group Neodent" implantiem',
+                      price: '3800 €',
+                      note: 'Viena žokļa zobu atjaunošana ar ALL-ON-4 sistēmu.',
+                      bullets: [
+                        '3D rentgena uzņēmums',
+                        '4 „Straumann Group Neodent" implanti',
+                        'Oriģinālas protezēšanas detaļas',
+                        'Neizņemama pagaidu protēze',
+                      ],
+                    },
+                    {
+                      title: 'ALL-ON-4 ar „Straumann Group SLA" implantiem',
+                      price: '4900 €',
+                      note: 'Viena žokļa zobu atjaunošana ar ALL-ON-4 sistēmu.',
+                      bullets: [
+                        '3D rentgena uzņēmums',
+                        '4 „Straumann Group SLA" implanti',
+                        'Oriģinālas protezēšanas detaļas',
+                        'Neizņemama pagaidu protēze',
+                      ],
+                    },
+                    {
+                      title: 'ALL-ON-6 ar „Straumann Group Neodent" implantiem',
+                      price: '5300 €',
+                      note: 'Visu zobu atjaunošana uz 6 implantiem.',
+                      bullets: [
+                        '3D rentgena uzņēmums',
+                        '6 „Straumann Group Neodent" implanti',
+                        'Oriģinālas protezēšanas detaļas',
+                        'Neizņemama pagaidu protēze',
+                      ],
+                    },
+                  ].map((pkg, i) => (
+                    <div
+                      key={i}
+                      className="bg-white p-6 sm:p-7 rounded-2xl border-2 shadow-sm hover:shadow-xl transition-all flex flex-col"
+                      style={{ borderColor: S }}
+                    >
+                      <h4 className="text-base sm:text-lg font-extrabold mb-2 leading-snug" style={{ color: P }}>
+                        {pkg.title}
+                      </h4>
+                      <div className="text-3xl font-extrabold mb-3" style={{ color: P }}>
+                        {pkg.price}
                       </div>
-                    ))}
-                  </div>
+                      <p className="text-sm text-slate-600 mb-4 leading-relaxed">{pkg.note}</p>
+                      <p className="text-sm font-semibold text-darkblue-700 mb-2">Piedāvājumā ietilpst:</p>
+                      <ul className="space-y-2 text-sm text-slate-700 flex-1">
+                        {pkg.bullets.map((b, j) => (
+                          <li key={j} className="flex items-start gap-2">
+                            <span className="mt-1"><CheckIcon /></span>
+                            <span>{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
-
-                <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all" style={{ borderColor: S }}>
-                  <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Papildu procedūras</h3>
-                  <div className="divide-y divide-slate-100">
-                    {[
-                      ['Sinusa pacelšanas operācija', '500–700 €'],
-                    ].map(([name, price], i) => (
-                      <div key={i} className="flex justify-between items-center py-2.5">
-                        <span className="text-slate-600 text-sm">{name}</span>
-                        <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <p className="text-slate-500 text-xs mt-4 leading-relaxed">
+                  Pēc „All-on-4" / „All-on-6" implantācijas uzreiz tiek nostiprinātas pagaidu protēzes, lai pacients varētu normāli smaidīt un košļāt dzīšanas laikā. Pagaidu protēzes parasti tiek nēsātas apmēram 3–6 mēnešus, līdz implanti pilnībā integrējas kaulā. Pastāvīgās protēzes visbiežāk tiek uzstādītas aptuveni 4 mēnešus pēc implantācijas (atkarībā no individuālās dzīšanas).
+                </p>
               </div>
 
-              <p className="text-slate-500 text-sm mt-6">
-                Precīza implantācijas cena tiek noteikta individuālās konsultācijas laikā, izvērtējot pacienta mutes stāvokli, diagnostikas datus un plānoto ārstēšanas gaitu. Skaidra cenu politika un mūsdienīgas tehnoloģijas ļauj Bangų zobārstniecības klīnikā piedāvāt finansiāli pieejamus implantācijas risinājumus, neatkāpjoties no kvalitātes un ilgmūžības.
+              <p className="text-slate-500 text-sm mt-8">
+                Precīza implantācijas cena tiek noteikta individuālās konsultācijas laikā, izvērtējot pacienta mutes stāvokli, diagnostikas datus un plānoto ārstēšanas gaitu.
               </p>
             </div>
           </motion.section>

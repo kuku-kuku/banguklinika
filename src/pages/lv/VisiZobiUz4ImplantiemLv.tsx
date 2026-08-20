@@ -73,16 +73,6 @@ const packages: Package[] = [
       'Neizņemama pagaidu protēze',
     ],
   },
-  {
-    title: 'ALL-ON-6 ar „Straumann Group Neodent" implantiem',
-    price: '5300 €',
-    bullets: [
-      '3D rentgena uzņēmums',
-      '6 „Straumann Group Neodent" implanti',
-      'Oriģinālas protezēšanas detaļas',
-      'Neizņemama pagaidu protēze',
-    ],
-  },
 ]
 
 const processSteps = [
@@ -305,7 +295,7 @@ export default function VisiZobiUz4ImplantiemLv() {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-5">
+              <div className="grid md:grid-cols-2 gap-5">
                 {packages.map((p, i) => (
                   <div
                     key={i}
