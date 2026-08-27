@@ -118,18 +118,18 @@ export const PRICING: PriceGroup[] = [
       { name: "Pieninio danties rovimas su injekciniu nuskausminimu", from: 80, exact: true },
 
       { name: "Nuolatinio danties rovimas", from: 100, exact: true, note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota" },
-      { name: "Nuolatinio danties šaknies rovimas", from: 80, exact: true, note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota" },
-      { name: "Sudėtingas nuolatinio danties rovimas", from: 120, exact: true, note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota" },
+      { name: "Nuolatinio danties šaknies rovimas", from: 80, exact: true, note: "" },
+      { name: "Sudėtingas nuolatinio danties rovimas", from: 120, exact: true, note: "" },
       {
         name: "Sudėtingas nuolatinio danties šaknies rovimas",
         from: 90,
         exact: true,
-        note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota",
+        note: "",
       },
       {
         name: "Trečiųjų krūminių dantų rovimas (Protinių dantų rovimas)",
         from: 150,
-        note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota",
+        note: "",
       },
       {
         name: "Sudėtingas/komplikuotas trečiųjų krūminių dantų rovimas (Protinių dantų rovimas)",
@@ -170,12 +170,12 @@ export const PRICING: PriceGroup[] = [
       { name: "Konsultacija", from: 30, exact: true },
       { name: "Gydymo plano sudarymas", from: 50, exact: true, note: "Išsamus, individualus gydymo planas su gydymo kainomis" },
 
-      { name: "Laikinas plastmasinis vainikėlis (pagamintas kabinete)", from: 40, exact: true },
-      { name: "Laikinas plastmasinis vainikėlis (pagamintas laboratorijoje)", from: 80, exact: true },
+      { name: "Laikinas plastmasinis vainikėlis (pagamintas kabinete)", from: 50, exact: true },
+      { name: "Laikinas plastmasinis vainikėlis (pagamintas laboratorijoje)", from: 90, exact: true },
 
       { name: "Metalo keramikos vainikėlis", from: 350, exact: true },
-      { name: "Keramikos vainikėlis cirkonio oksido pagrindu (ant danties)", from: 400, exact: true },
-      { name: "Keramikos vainikėlis cirkonio oksido pagrindu (ant implanto)", from: 450, exact: true },
+      { name: "Keramikos vainikėlis cirkonio oksido pagrindu (ant danties)", from: 430, exact: true },
+      { name: "Keramikos vainikėlis cirkonio oksido pagrindu (ant implanto)", from: 480, exact: true },
       { name: "E-max presuotos bemetalės keramikos vainikėlis", from: 400, exact: true },
 
       { name: "Vainiko kulties šlifavimas / paruošimas", from: 50, exact: true },
