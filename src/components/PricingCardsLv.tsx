@@ -2,14 +2,7 @@ import { useMemo, useState, useEffect, useRef } from 'react'
 import { PRICING, type PriceGroup, type PriceItem } from '../data/pricing'
 import clsx from 'clsx'
 
-function renderName(name: string) {
-  const parts = name.split(/(\s\([^)]*\))/g).filter(Boolean)
-  return parts.map((part, i) =>
-    part.startsWith(' (')
-      ? <span key={i} className="whitespace-nowrap">{part}</span>
-      : <span key={i}>{part}</span>
-  )
-}
+import { wrapName as renderName } from '../utils/wrapName'
 
 /* ========= Timings / Easing ========= */
 const OPEN_MS = 320

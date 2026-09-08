@@ -15,18 +15,7 @@ const TEXT_DURATION = 800
 const PRICE_DELAY = 300
 
 /* ========= Utils ========= */
-/**
- * Render a name so parenthetical parts wrap as a single unit onto the next line
- * instead of breaking in the middle, e.g. "(1 vnt.)" or "(ant implantų)".
- */
-function renderName(name: string) {
-  const parts = name.split(/(\s\([^)]*\))/g).filter(Boolean)
-  return parts.map((part, i) =>
-    part.startsWith(' (')
-      ? <span key={i} className="whitespace-nowrap">{part}</span>
-      : <span key={i}>{part}</span>
-  )
-}
+import { wrapName as renderName } from '../utils/wrapName'
 
 function slugify(t: string) {
   return t

@@ -5,7 +5,7 @@ var _a, _b;
 import { jsxs, jsx, Fragment } from "react/jsx-runtime";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server.mjs";
-import React3, { Component, useState, useRef, useEffect, useLayoutEffect, useCallback, useMemo, useId, createContext } from "react";
+import React3, { Component, useState, useRef, useEffect, useLayoutEffect, useCallback, useMemo, Fragment as Fragment$1, useId, createContext } from "react";
 import fastCompare from "react-fast-compare";
 import invariant from "invariant";
 import shallowEqual from "shallowequal";
@@ -5814,6 +5814,16 @@ function useLenis() {
     };
   }, []);
 }
+const NOWRAP_MAX_LEN = 18;
+function wrapName(name) {
+  const parts = name.split(/(\s\([^)]*\))/g).filter(Boolean);
+  return parts.map((part, i) => {
+    if (part.startsWith(" (") && part.length - 1 <= NOWRAP_MAX_LEN) {
+      return /* @__PURE__ */ jsx("span", { className: "whitespace-nowrap", children: part }, i);
+    }
+    return /* @__PURE__ */ jsx(Fragment$1, { children: part }, i);
+  });
+}
 const OPEN_MS$1 = 320;
 const CLOSE_MS$1 = 260;
 const EASE$1 = "cubic-bezier(0.22, 1, 0.36, 1)";
@@ -5821,12 +5831,6 @@ const ROW_BASE_DELAY$1 = 200;
 const PER_ROW_DELAY$1 = 120;
 const TEXT_DURATION$1 = 800;
 const PRICE_DELAY$1 = 300;
-function renderName$1(name) {
-  const parts = name.split(/(\s\([^)]*\))/g).filter(Boolean);
-  return parts.map(
-    (part, i) => part.startsWith(" (") ? /* @__PURE__ */ jsx("span", { className: "whitespace-nowrap", children: part }, i) : /* @__PURE__ */ jsx("span", { children: part }, i)
-  );
-}
 function slugify$3(t) {
   return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\s-]/g, "").trim().replace(/\s+/g, "-");
 }
@@ -5945,7 +5949,7 @@ function GroupCard$1({
                 transform: "translateY(16px)",
                 animation: `fadeInUp ${TEXT_DURATION$1}ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay}ms forwards`
               } : void 0,
-              children: renderName$1(p.name)
+              children: wrapName(p.name)
             }
           ),
           p.note && /* @__PURE__ */ jsx(
@@ -6005,7 +6009,7 @@ function GroupCard$1({
                       "whitespace-normal break-words",
                       open ? "text-primary-600" : "text-slate-800 group-hover:text-primary-600"
                     ),
-                    children: renderName$1(group.title)
+                    children: wrapName(group.title)
                   }
                 ),
                 /* @__PURE__ */ jsxs("div", { className: "text-sm text-slate-500 font-medium mt-1", children: [
@@ -7155,7 +7159,7 @@ function BurnosHigiena() {
                       ["Pilna profesionali burnos higiena", "60 – 80 €"],
                       ["Pakartotinė burnos higiena (reguliariai lankantis)", "nuo 50 €"]
                     ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
-                      /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: name }),
+                      /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: wrapName(name) }),
                       /* @__PURE__ */ jsx("span", { className: "font-bold text-sm shrink-0 ml-3", style: { color: P$15 }, children: price })
                     ] }, i)) })
                   ] }),
@@ -7165,7 +7169,7 @@ function BurnosHigiena() {
                       ["Fluoro lako aplikacija", "nuo 20 €"],
                       ["ICON gydymas (fluorozės dėmėms)", "60 €"]
                     ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
-                      /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: name }),
+                      /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: wrapName(name) }),
                       /* @__PURE__ */ jsx("span", { className: "font-bold text-sm shrink-0 ml-3", style: { color: P$15 }, children: price })
                     ] }, i)) })
                   ] })
@@ -9264,7 +9268,7 @@ function DantuProtezavimas() {
                     ["Laikino vainikėlio cementavimas (ne gydymo metu)", "20 €"],
                     ["Nuolatinio vainikėlio cementavimas (ne gydymo metu)", "50 €"]
                   ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
-                    /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: name }),
+                    /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: wrapName(name) }),
                     /* @__PURE__ */ jsx("span", { className: "font-bold text-sm shrink-0 ml-3", style: { color: P$_ }, children: price })
                   ] }, i)) })
                 ] }),
@@ -9279,7 +9283,7 @@ function DantuProtezavimas() {
                     ["Štraumann standartinė atrama", "200 €"],
                     ["Individuali atrama", "200 €"]
                   ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
-                    /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: name }),
+                    /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: wrapName(name) }),
                     /* @__PURE__ */ jsx("span", { className: "font-bold text-sm shrink-0 ml-3", style: { color: P$_ }, children: price })
                   ] }, i)) })
                 ] }),
@@ -9300,7 +9304,7 @@ function DantuProtezavimas() {
                     ["Minkšta kapa nuo bruksizmo", "100 €"],
                     ["Kieta kapa nuo bruksizmo", "150 €"]
                   ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
-                    /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: name }),
+                    /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: wrapName(name) }),
                     /* @__PURE__ */ jsx("span", { className: "font-bold text-sm shrink-0 ml-3", style: { color: P$_ }, children: price })
                   ] }, i)) })
                 ] }),
@@ -9317,7 +9321,7 @@ function DantuProtezavimas() {
                     ["Metalinis KKĮ", "60 €"],
                     ["Sudėtinis KKĮ", "90 €"]
                   ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
-                    /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: name }),
+                    /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: wrapName(name) }),
                     /* @__PURE__ */ jsx("span", { className: "font-bold text-sm shrink-0 ml-3", style: { color: P$_ }, children: price })
                   ] }, i)) })
                 ] })
@@ -9623,7 +9627,7 @@ function DantuProtezavimas() {
                                 children: /* @__PURE__ */ jsx("svg", { viewBox: "0 0 24 24", className: "w-5 h-5", fill: "none", stroke: "currentColor", strokeWidth: "2", style: { color: S$_ }, children: /* @__PURE__ */ jsx("polygon", { points: "12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" }) })
                               }
                             ),
-                            "Bemetalė keramika – E-MAX (Ivoclar Vivadent)"
+                            wrapName("Bemetalė keramika – E-MAX (Ivoclar Vivadent)")
                           ]
                         }
                       ),
@@ -10534,7 +10538,7 @@ function EndodontinisGydymas() {
           /* @__PURE__ */ jsx(TableOfContents, { sections: tocSections$$, rootRef: pageRef, cta: { label: "Registruotis vizitui", to: "/kontaktai" } }),
           /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$11, children: [
-              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Endodontinis (šaknų kanalų) gydymas Klaipėdoje" }),
+              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: wrapName("Endodontinis (šaknų kanalų) gydymas Klaipėdoje") }),
               /* @__PURE__ */ jsx("div", { className: "mb-8", children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
                 /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Stiprus, pulsuojantis danties skausmas, ilgai nepraeinantis jautrumas karščiui ar šalčiui, patinimas ar nemalonus spaudimo pojūtis dažnai signalizuoja apie gilesnius danties pažeidimus. Tokiais atvejais įprasto plombavimo nepakanka, nes problema slypi ne danties paviršiuje, o jo viduje. Būtent tuomet prireikia endodontinio gydymo – šaknų kanalų gydymo, kurio tikslas yra pašalinti infekciją ir išsaugoti natūralų dantį." }),
                 /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Endodontinis gydymas yra svarbi šiuolaikinės odontologijos dalis, leidžianti išvengti danties šalinimo net ir sudėtingais atvejais. Laiku atliktas gydymas padeda sustabdyti infekcijos plitimą, sumažinti skausmą ir išsaugoti dantį tolimesniam funkcionavimui. Negydomi šaknų kanalų pažeidimai gali sukelti rimtas komplikacijas – nuo pūlinių iki žandikaulio kaulo pažeidimų, todėl ankstyvas reagavimas yra itin svarbus." }),
@@ -10619,7 +10623,7 @@ function EndodontinisGydymas() {
             ] }) }) }),
             /* @__PURE__ */ jsx(motion.div, { className: "mb-10 no-x-scroll pan-y", variants: item$11, children: /* @__PURE__ */ jsx(ReviewsCarousel, {}) }),
             /* @__PURE__ */ jsx(motion.section, { id: "kas-yra", className: sectionWrap$Z, variants: item$11, children: /* @__PURE__ */ jsxs("div", { className: whiteCard$Y, children: [
-              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: "Kas yra endodontinis (šaknų kanalų) gydymas?" }),
+              /* @__PURE__ */ jsx("h2", { className: "text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4", children: wrapName("Kas yra endodontinis (šaknų kanalų) gydymas?") }),
               /* @__PURE__ */ jsxs("div", { className: "space-y-4 text-slate-700 leading-relaxed", children: [
                 /* @__PURE__ */ jsx("p", { children: "Endodontinis gydymas – tai odontologinė procedūra, kurios metu gydomi danties šaknų kanalai. Šių kanalų viduje yra pulpa – minkštasis audinys, sudarytas iš nervų, kraujagyslių ir jungiamojo audinio. Pulpa atlieka svarbų vaidmenį danties vystymosi metu, tačiau suaugusio žmogaus dantyje jos pagrindinė funkcija yra jutiminė." }),
                 /* @__PURE__ */ jsx("p", { children: "Kai pulpa pažeidžiama dėl gilaus karieso, traumos, įtrūkimo ar bakterinės infekcijos, dantis tampa skausmingas, jautrus arba, priešingai, ilgą laiką gali nesukelti jokių simptomų, nors infekcija ir progresuoja. Endodontinio gydymo metu pažeisti audiniai iš šaknų kanalų pašalinami, kanalai kruopščiai išvalomi ir dezinfekuojami, siekiant pašalinti bakterijas ir sustabdyti uždegimą." }),
@@ -10693,7 +10697,7 @@ function EndodontinisGydymas() {
               ].map((s) => /* @__PURE__ */ jsxs("div", { className: innerCard$Y, children: [
                 /* @__PURE__ */ jsxs("h3", { className: "font-bold text-darkblue-700 mb-2 flex items-center", children: [
                   /* @__PURE__ */ jsx("span", { className: "bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm", children: s.n }),
-                  s.t
+                  wrapName(s.t)
                 ] }),
                 /* @__PURE__ */ jsx("p", { className: "text-slate-600 leading-relaxed", children: s.d })
               ] }, s.n)) })
@@ -11677,7 +11681,7 @@ function DantuImplantacija() {
                   ] }),
                   /* @__PURE__ */ jsxs("div", { className: "mb-10", children: [
                     /* @__PURE__ */ jsx("h3", { className: "text-xl sm:text-2xl font-bold mb-1", style: { color: P$W }, children: "Vieno danties atkūrimo kaina" }),
-                    /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm mb-5", children: "Implanto įsukimas ir priedai (1 vnt., chirurginė dalis)" }),
+                    /* @__PURE__ */ jsx("p", { className: "text-slate-600 text-sm mb-5", children: wrapName("Implanto įsukimas ir priedai (1 vnt., chirurginė dalis)") }),
                     /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-3 gap-5", children: [
                       { name: "Neodent implantas", price: "500 €" },
                       { name: "Straumann SLA implantas", price: "650 €" },
@@ -23830,12 +23834,6 @@ function KontaktiLv() {
     ] })
   ] });
 }
-function renderName(name) {
-  const parts = name.split(/(\s\([^)]*\))/g).filter(Boolean);
-  return parts.map(
-    (part, i) => part.startsWith(" (") ? /* @__PURE__ */ jsx("span", { className: "whitespace-nowrap", children: part }, i) : /* @__PURE__ */ jsx("span", { children: part }, i)
-  );
-}
 const OPEN_MS = 320;
 const CLOSE_MS = 260;
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
@@ -24136,7 +24134,7 @@ function GroupCard({
                   transform: "translateY(16px)",
                   animation: `fadeInUp ${TEXT_DURATION}ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay}ms forwards`
                 } : void 0,
-                children: renderName(p.name)
+                children: wrapName(p.name)
               }
             ),
             p.note && /* @__PURE__ */ jsx(
@@ -24197,7 +24195,7 @@ function GroupCard({
                       "whitespace-normal break-words",
                       open ? "text-primary-600" : "text-slate-800 group-hover:text-primary-600"
                     ),
-                    children: renderName(displayTitle)
+                    children: wrapName(displayTitle)
                   }
                 ),
                 /* @__PURE__ */ jsxs("div", { className: "text-sm text-slate-500 font-medium mt-1", children: [
