@@ -5,6 +5,7 @@ import SEO from "../components/SEO"
 import { TableOfContents } from "../components/TableOfContents"
 import { useRef } from "react"
 import ReviewsCarousel from "../components/ReviewsCarousel"
+import { wrapName } from "../utils/wrapName"
 
 // Animacijų nustatymai
 const container = {
@@ -103,7 +104,7 @@ export default function EndodontinisGydymas() {
           {/* HERO */}
           <motion.header className="mb-10 text-left" variants={item}>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
-              Endodontinis (šaknų kanalų) gydymas Klaipėdoje
+              {wrapName('Endodontinis (šaknų kanalų) gydymas Klaipėdoje')}
             </h1>
 
             <div className="mb-8">
@@ -258,7 +259,7 @@ export default function EndodontinisGydymas() {
           <motion.section id="kas-yra" className={sectionWrap} variants={item}>
             <div className={whiteCard}>
               <h2 className="text-xl sm:text-2xl font-semibold text-darkblue-700 mb-4">
-                Kas yra endodontinis (šaknų kanalų) gydymas?
+                {wrapName('Kas yra endodontinis (šaknų kanalų) gydymas?')}
               </h2>
 
               <div className="space-y-4 text-slate-700 leading-relaxed">
@@ -436,7 +437,7 @@ export default function EndodontinisGydymas() {
                       <span className="bg-brand/10 text-brand w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">
                         {s.n}
                       </span>
-                      {s.t}
+                      {wrapName(s.t)}
                     </h3>
                     <p className="text-slate-600 leading-relaxed">{s.d}</p>
                   </div>

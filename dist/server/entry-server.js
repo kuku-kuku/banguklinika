@@ -5643,18 +5643,18 @@ const PRICING = [
       { name: "Pieninio danties rovimas su aplikaciniu nuskausminimu", from: 60, exact: true },
       { name: "Pieninio danties rovimas su injekciniu nuskausminimu", from: 80, exact: true },
       { name: "Nuolatinio danties rovimas", from: 100, exact: true, note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota" },
-      { name: "Nuolatinio danties šaknies rovimas", from: 80, exact: true, note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota" },
-      { name: "Sudėtingas nuolatinio danties rovimas", from: 120, exact: true, note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota" },
+      { name: "Nuolatinio danties šaknies rovimas", from: 80, exact: true, note: "" },
+      { name: "Sudėtingas nuolatinio danties rovimas", from: 120, exact: true, note: "" },
       {
         name: "Sudėtingas nuolatinio danties šaknies rovimas",
         from: 90,
         exact: true,
-        note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota"
+        note: ""
       },
       {
         name: "Trečiųjų krūminių dantų rovimas (Protinių dantų rovimas)",
         from: 150,
-        note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota"
+        note: ""
       },
       {
         name: "Sudėtingas/komplikuotas trečiųjų krūminių dantų rovimas (Protinių dantų rovimas)",
@@ -5685,11 +5685,11 @@ const PRICING = [
     items: [
       { name: "Konsultacija", from: 30, exact: true },
       { name: "Gydymo plano sudarymas", from: 50, exact: true, note: "Išsamus, individualus gydymo planas su gydymo kainomis" },
-      { name: "Laikinas plastmasinis vainikėlis (pagamintas kabinete)", from: 40, exact: true },
-      { name: "Laikinas plastmasinis vainikėlis (pagamintas laboratorijoje)", from: 80, exact: true },
+      { name: "Laikinas plastmasinis vainikėlis (pagamintas kabinete)", from: 50, exact: true },
+      { name: "Laikinas plastmasinis vainikėlis (pagamintas laboratorijoje)", from: 90, exact: true },
       { name: "Metalo keramikos vainikėlis", from: 350, exact: true },
-      { name: "Keramikos vainikėlis cirkonio oksido pagrindu (ant danties)", from: 400, exact: true },
-      { name: "Keramikos vainikėlis cirkonio oksido pagrindu (ant implanto)", from: 450, exact: true },
+      { name: "Keramikos vainikėlis cirkonio oksido pagrindu (ant danties)", from: 430, exact: true },
+      { name: "Keramikos vainikėlis cirkonio oksido pagrindu (ant implanto)", from: 480, exact: true },
       { name: "E-max presuotos bemetalės keramikos vainikėlis", from: 400, exact: true },
       { name: "Vainiko kulties šlifavimas / paruošimas", from: 50, exact: true },
       { name: "Vainiko atstatymas ant stiklo pluošto kaiščio su helio plomba (priekinis dantis)", from: 70, exact: true },
@@ -5729,7 +5729,7 @@ const PRICING = [
       { name: "Atspaudai / skenavimas nuo implantų", from: 150, exact: true },
       { name: "Keramikos vainikėlis cirkonio oksido pagrindu", from: 450, exact: true },
       { name: "E-max presuotos bemetalės keramikos vainikėlis", from: 450, exact: true },
-      { name: "Neodent standartinė atrama", from: 100, exact: true },
+      { name: "Neodent standartinė atrama", from: 130, exact: true },
       { name: "Straumann standartinė atrama", from: 200, exact: true },
       { name: "Individuali atrama", from: 200, exact: true }
     ]
@@ -5821,6 +5821,12 @@ const ROW_BASE_DELAY$1 = 200;
 const PER_ROW_DELAY$1 = 120;
 const TEXT_DURATION$1 = 800;
 const PRICE_DELAY$1 = 300;
+function renderName$1(name) {
+  const parts = name.split(/(\s\([^)]*\))/g).filter(Boolean);
+  return parts.map(
+    (part, i) => part.startsWith(" (") ? /* @__PURE__ */ jsx("span", { className: "whitespace-nowrap", children: part }, i) : /* @__PURE__ */ jsx("span", { children: part }, i)
+  );
+}
 function slugify$3(t) {
   return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\s-]/g, "").trim().replace(/\s+/g, "-");
 }
@@ -5939,7 +5945,7 @@ function GroupCard$1({
                 transform: "translateY(16px)",
                 animation: `fadeInUp ${TEXT_DURATION$1}ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay}ms forwards`
               } : void 0,
-              children: p.name
+              children: renderName$1(p.name)
             }
           ),
           p.note && /* @__PURE__ */ jsx(
@@ -5999,7 +6005,7 @@ function GroupCard$1({
                       "whitespace-normal break-words",
                       open ? "text-primary-600" : "text-slate-800 group-hover:text-primary-600"
                     ),
-                    children: group.title
+                    children: renderName$1(group.title)
                   }
                 ),
                 /* @__PURE__ */ jsxs("div", { className: "text-sm text-slate-500 font-medium mt-1", children: [
@@ -9269,7 +9275,7 @@ function DantuProtezavimas() {
                     ["Atspaudai / skenavimas nuo implantų", "150 €"],
                     ["Keramikos vainikėlis cirkonio oksido pagrindu (ant implanto)", "450 €"],
                     ["E-max presuotos bemetalės keramikos vainikėlis", "450 €"],
-                    ["Neodent standartinė atrama", "100 €"],
+                    ["Neodent standartinė atrama", "130 €"],
                     ["Štraumann standartinė atrama", "200 €"],
                     ["Individuali atrama", "200 €"]
                   ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
@@ -11696,7 +11702,7 @@ function DantuImplantacija() {
                       {
                         brand: "Neodent",
                         items: [
-                          ["Neodent standartinė atrama", "100 €"],
+                          ["Neodent standartinė atrama", "130 €"],
                           ["Neodent gijimo galvutė", "80 €"],
                           ["Atspaudai", "150 €"],
                           ["Cirkonio keramikos vainikėlis", "450 €"]
@@ -23824,6 +23830,12 @@ function KontaktiLv() {
     ] })
   ] });
 }
+function renderName(name) {
+  const parts = name.split(/(\s\([^)]*\))/g).filter(Boolean);
+  return parts.map(
+    (part, i) => part.startsWith(" (") ? /* @__PURE__ */ jsx("span", { className: "whitespace-nowrap", children: part }, i) : /* @__PURE__ */ jsx("span", { children: part }, i)
+  );
+}
 const OPEN_MS = 320;
 const CLOSE_MS = 260;
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
@@ -24124,7 +24136,7 @@ function GroupCard({
                   transform: "translateY(16px)",
                   animation: `fadeInUp ${TEXT_DURATION}ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay}ms forwards`
                 } : void 0,
-                children: p.name
+                children: renderName(p.name)
               }
             ),
             p.note && /* @__PURE__ */ jsx(
@@ -24185,7 +24197,7 @@ function GroupCard({
                       "whitespace-normal break-words",
                       open ? "text-primary-600" : "text-slate-800 group-hover:text-primary-600"
                     ),
-                    children: displayTitle
+                    children: renderName(displayTitle)
                   }
                 ),
                 /* @__PURE__ */ jsxs("div", { className: "text-sm text-slate-500 font-medium mt-1", children: [
@@ -34608,29 +34620,47 @@ const cases$1 = [
   {
     num: "01",
     category: "All-on-4 Implantācija",
-    image: "/musu-darbai/06.jpg",
+    image: "/musu-darbai/256.jpg",
     alt: "All-on-4 implantācija — pirms un pēc"
   },
   {
     num: "02",
     category: "All-on-4 Implantācija",
-    image: "/musu-darbai/41.jpg",
+    image: "/musu-darbai/255.jpg",
     alt: "All-on-4 implantācija — pirms un pēc"
   },
   {
     num: "03",
     category: "All-on-4 Implantācija",
-    image: "/musu-darbai/20.jpg",
+    image: "/musu-darbai/254.jpg",
     alt: "All-on-4 implantācija — pirms un pēc"
   },
   {
     num: "04",
     category: "All-on-4 Implantācija",
-    image: "/1.jpg",
+    image: "/musu-darbai/06.jpg",
     alt: "All-on-4 implantācija — pirms un pēc"
   },
   {
     num: "05",
+    category: "All-on-4 Implantācija",
+    image: "/musu-darbai/41.jpg",
+    alt: "All-on-4 implantācija — pirms un pēc"
+  },
+  {
+    num: "06",
+    category: "All-on-4 Implantācija",
+    image: "/musu-darbai/20.jpg",
+    alt: "All-on-4 implantācija — pirms un pēc"
+  },
+  {
+    num: "07",
+    category: "All-on-4 Implantācija",
+    image: "/1.jpg",
+    alt: "All-on-4 implantācija — pirms un pēc"
+  },
+  {
+    num: "08",
     category: "All-on-4 Implantācija",
     image: "/2.jpg",
     alt: "All-on-4 implantācija — pirms un pēc"
@@ -35326,29 +35356,47 @@ const cases = [
   {
     num: "01",
     category: "All-on-4 Implantacija",
-    image: "/musu-darbai/06.jpg",
+    image: "/musu-darbai/256.jpg",
     alt: "All-on-4 implantacija — prieš ir po"
   },
   {
     num: "02",
     category: "All-on-4 Implantacija",
-    image: "/musu-darbai/41.jpg",
+    image: "/musu-darbai/255.jpg",
     alt: "All-on-4 implantacija — prieš ir po"
   },
   {
     num: "03",
     category: "All-on-4 Implantacija",
-    image: "/musu-darbai/20.jpg",
+    image: "/musu-darbai/254.jpg",
     alt: "All-on-4 implantacija — prieš ir po"
   },
   {
     num: "04",
     category: "All-on-4 Implantacija",
-    image: "/1.jpg",
+    image: "/musu-darbai/06.jpg",
     alt: "All-on-4 implantacija — prieš ir po"
   },
   {
     num: "05",
+    category: "All-on-4 Implantacija",
+    image: "/musu-darbai/41.jpg",
+    alt: "All-on-4 implantacija — prieš ir po"
+  },
+  {
+    num: "06",
+    category: "All-on-4 Implantacija",
+    image: "/musu-darbai/20.jpg",
+    alt: "All-on-4 implantacija — prieš ir po"
+  },
+  {
+    num: "07",
+    category: "All-on-4 Implantacija",
+    image: "/1.jpg",
+    alt: "All-on-4 implantacija — prieš ir po"
+  },
+  {
+    num: "08",
     category: "All-on-4 Implantacija",
     image: "/2.jpg",
     alt: "All-on-4 implantacija — prieš ir po"

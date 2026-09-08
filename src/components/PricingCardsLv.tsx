@@ -2,6 +2,15 @@ import { useMemo, useState, useEffect, useRef } from 'react'
 import { PRICING, type PriceGroup, type PriceItem } from '../data/pricing'
 import clsx from 'clsx'
 
+function renderName(name: string) {
+  const parts = name.split(/(\s\([^)]*\))/g).filter(Boolean)
+  return parts.map((part, i) =>
+    part.startsWith(' (')
+      ? <span key={i} className="whitespace-nowrap">{part}</span>
+      : <span key={i}>{part}</span>
+  )
+}
+
 /* ========= Timings / Easing ========= */
 const OPEN_MS = 320
 const CLOSE_MS = 260
@@ -352,7 +361,7 @@ function GroupCard({
                   : undefined
               }
             >
-              {p.name}
+              {renderName(p.name)}
             </span>
 
             {p.note && (
@@ -419,7 +428,7 @@ function GroupCard({
               open ? 'text-primary-600' : 'text-slate-800 group-hover:text-primary-600'
             )}
           >
-            {displayTitle}
+            {renderName(displayTitle)}
           </div>
 
           <div className="text-sm text-slate-500 font-medium mt-1">

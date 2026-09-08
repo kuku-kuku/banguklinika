@@ -6,6 +6,7 @@ import { TableOfContents } from '../components/TableOfContents'
 import ReviewsCarousel from '../components/ReviewsCarousel'
 import { useRef } from 'react'
 import BeforeAfterSlider from '../components/BeforeAfterSlider'
+import { wrapName } from '../utils/wrapName'
 
 const container = {
   hidden: { opacity: 0, y: 10 },
@@ -219,7 +220,7 @@ export default function DantuProtezavimas() {
                     ['Nuolatinio vainikėlio cementavimas (ne gydymo metu)', '50 €'],
                   ].map(([name, price], i) => (
                     <div key={i} className="flex justify-between items-center py-2.5">
-                      <span className="text-slate-600 text-sm">{name}</span>
+                      <span className="text-slate-600 text-sm">{wrapName(name as string)}</span>
                       <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                     </div>
                   ))}
@@ -235,12 +236,12 @@ export default function DantuProtezavimas() {
                     ['Atspaudai / skenavimas nuo implantų',           '150 €'],
                     ['Keramikos vainikėlis cirkonio oksido pagrindu (ant implanto)', '450 €'],
                     ['E-max presuotos bemetalės keramikos vainikėlis','450 €'],
-                    ['Neodent standartinė atrama',                    '100 €'],
+                    ['Neodent standartinė atrama',                    '130 €'],
                     ['Štraumann standartinė atrama',                  '200 €'],
                     ['Individuali atrama',                            '200 €'],
                   ].map(([name, price], i) => (
                     <div key={i} className="flex justify-between items-center py-2.5">
-                      <span className="text-slate-600 text-sm">{name}</span>
+                      <span className="text-slate-600 text-sm">{wrapName(name as string)}</span>
                       <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                     </div>
                   ))}
@@ -267,7 +268,7 @@ export default function DantuProtezavimas() {
                     ['Kieta kapa nuo bruksizmo',                      '150 €'],
                   ].map(([name, price], i) => (
                     <div key={i} className="flex justify-between items-center py-2.5">
-                      <span className="text-slate-600 text-sm">{name}</span>
+                      <span className="text-slate-600 text-sm">{wrapName(name as string)}</span>
                       <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                     </div>
                   ))}
@@ -290,7 +291,7 @@ export default function DantuProtezavimas() {
                     ['Sudėtinis KKĮ',                                 '90 €'],
                   ].map(([name, price], i) => (
                     <div key={i} className="flex justify-between items-center py-2.5">
-                      <span className="text-slate-600 text-sm">{name}</span>
+                      <span className="text-slate-600 text-sm">{wrapName(name as string)}</span>
                       <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                     </div>
                   ))}
@@ -682,7 +683,7 @@ export default function DantuProtezavimas() {
                       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                     </svg>
                   </span>
-                  Bemetalė keramika – E-MAX (Ivoclar Vivadent)
+                  {wrapName('Bemetalė keramika – E-MAX (Ivoclar Vivadent)')}
                 </h3>
                 <p className="text-slate-600 mb-5 leading-relaxed">
                   Bemetalė keramika E-MAX ypač vertinama dėl išskirtinės estetikos. Ši porceliano pagrindu sukurta medžiaga pasižymi puikiu šviesos pralaidumu, todėl protezuoti dantys atrodo itin natūraliai. Dėl šios priežasties E-MAX dažniausiai rekomenduojama priekinių, matomiausių dantų atkūrimui.

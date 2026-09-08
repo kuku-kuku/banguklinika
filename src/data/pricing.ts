@@ -230,7 +230,7 @@ export const PRICING: PriceGroup[] = [
       { name: "Keramikos vainikėlis cirkonio oksido pagrindu", from: 450, exact: true },
       { name: "E-max presuotos bemetalės keramikos vainikėlis", from: 450, exact: true },
 
-      { name: "Neodent standartinė atrama", from: 100, exact: true },
+      { name: "Neodent standartinė atrama", from: 130, exact: true },
       { name: "Straumann standartinė atrama", from: 200, exact: true },
       { name: "Individuali atrama", from: 200, exact: true },
     ],

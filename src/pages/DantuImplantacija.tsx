@@ -5,6 +5,7 @@ import SEO from "../components/SEO"
 import { TableOfContents } from "../components/TableOfContents"
 import ReviewsCarousel from "../components/ReviewsCarousel"
 import { useRef } from "react"
+import { wrapName } from "../utils/wrapName"
 
 const tocSections = [
   { id: "implantai-kainos", label: "Dantų implantacijos kainos" },
@@ -238,7 +239,7 @@ export default function DantuImplantacija() {
                   Vieno danties atkūrimo kaina
                 </h3>
                 <p className="text-slate-600 text-sm mb-5">
-                  Implanto įsukimas ir priedai (1 vnt., chirurginė dalis)
+                  {wrapName('Implanto įsukimas ir priedai (1 vnt., chirurginė dalis)')}
                 </p>
                 <div className="grid md:grid-cols-3 gap-5">
                   {[
@@ -275,7 +276,7 @@ export default function DantuImplantacija() {
                     {
                       brand: 'Neodent',
                       items: [
-                        ['Neodent standartinė atrama', '100 €'],
+                        ['Neodent standartinė atrama', '130 €'],
                         ['Neodent gijimo galvutė', '80 €'],
                         ['Atspaudai', '150 €'],
                         ['Cirkonio keramikos vainikėlis', '450 €'],

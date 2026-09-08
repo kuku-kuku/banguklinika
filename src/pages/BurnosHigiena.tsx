@@ -5,6 +5,7 @@ import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
 import { TableOfContents } from '../components/TableOfContents'
 import ReviewsCarousel from '../components/ReviewsCarousel'
+import { wrapName } from '../utils/wrapName'
 
 // Animacijų nustatymai
 const container = {
@@ -150,7 +151,7 @@ export default function BurnosHigiena() {
                         ['Pakartotinė burnos higiena (reguliariai lankantis)', 'nuo 50 €'],
                       ].map(([name, price], i) => (
                         <div key={i} className="flex justify-between items-center py-2.5">
-                          <span className="text-slate-600 text-sm">{name}</span>
+                          <span className="text-slate-600 text-sm">{wrapName(name as string)}</span>
                           <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                         </div>
                       ))}
@@ -165,7 +166,7 @@ export default function BurnosHigiena() {
                         ['ICON gydymas (fluorozės dėmėms)', '60 €'],
                       ].map(([name, price], i) => (
                         <div key={i} className="flex justify-between items-center py-2.5">
-                          <span className="text-slate-600 text-sm">{name}</span>
+                          <span className="text-slate-600 text-sm">{wrapName(name as string)}</span>
                           <span className="font-bold text-sm shrink-0 ml-3" style={{ color: P }}>{price}</span>
                         </div>
                       ))}

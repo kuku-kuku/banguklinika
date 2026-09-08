@@ -15,6 +15,19 @@ const TEXT_DURATION = 800
 const PRICE_DELAY = 300
 
 /* ========= Utils ========= */
+/**
+ * Render a name so parenthetical parts wrap as a single unit onto the next line
+ * instead of breaking in the middle, e.g. "(1 vnt.)" or "(ant implantų)".
+ */
+function renderName(name: string) {
+  const parts = name.split(/(\s\([^)]*\))/g).filter(Boolean)
+  return parts.map((part, i) =>
+    part.startsWith(' (')
+      ? <span key={i} className="whitespace-nowrap">{part}</span>
+      : <span key={i}>{part}</span>
+  )
+}
+
 function slugify(t: string) {
   return t
     .toLowerCase()
@@ -159,7 +172,7 @@ function GroupCard({
                   : undefined
               }
             >
-              {p.name}
+              {renderName(p.name)}
             </span>
 
             {p.note && (
@@ -227,7 +240,7 @@ function GroupCard({
               open ? 'text-primary-600' : 'text-slate-800 group-hover:text-primary-600'
             )}
           >
-            {group.title}
+            {renderName(group.title)}
           </div>
           <div className="text-sm text-slate-500 font-medium mt-1">
             {summary} <span className="opacity-60 font-normal ml-1">• {group.items.length} poz.</span>
