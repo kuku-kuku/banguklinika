@@ -6,6 +6,7 @@ import SEO from '../../components/SEO'
 import { TableOfContents } from '../../components/TableOfContents'
 import ReviewsCarousel from '../../components/ReviewsCarousel'
 import { SITE_URL } from '../../i18n/lv'
+import RelatedServices from '../../components/RelatedServices'
 
 const container = {
   hidden: { opacity: 0, y: 10 },
@@ -464,6 +465,11 @@ export default function MutesHigiennaLv() {
               </div>
             </div>
           </motion.section>
+
+          {/* ═══════════════════════════════════════════════════════════════
+              SAISTĪTIE / CITI PAKALPOJUMI
+          ══════════════════════════════════════════════════════════════════ */}
+          <RelatedServices />
 
         </div>
       </motion.div>

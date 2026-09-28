@@ -6,6 +6,7 @@ import SEO from '../components/SEO'
 import { TableOfContents } from '../components/TableOfContents'
 import ReviewsCarousel from '../components/ReviewsCarousel'
 import { wrapName } from '../utils/wrapName'
+import RelatedServices from '../components/RelatedServices'
 
 // Animacijų nustatymai
 const container = {
@@ -466,6 +467,11 @@ export default function BurnosHigiena() {
               </div>
             </div>
           </motion.section>
+
+          {/* ═══════════════════════════════════════════════════════════════
+              SUSIJUSIOS / KITOS PASLAUGOS
+          ══════════════════════════════════════════════════════════════════ */}
+          <RelatedServices />
 
         </div>
       </motion.div>

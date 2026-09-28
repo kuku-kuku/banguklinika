@@ -2,8 +2,9 @@ import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ROUTE_MAP_LT_TO_LV, ROUTE_MAP_LV_TO_LT, navLv } from '../i18n/lv'
+import { SERVICE_TREE, type ServiceNode } from '../data/serviceTree'
 
-type DropItem = { to?: string; label: string; children?: DropItem[] }
+type DropItem = ServiceNode
 type NavItem =
   | { to: string; label: string; dropdown?: undefined }
   | { to: string; label: string; dropdown: DropItem[] }
@@ -16,80 +17,7 @@ const nav: NavItem[] = [
     to: '/paslaugos',
     label: 'Paslaugos',
     dropdown: [
-      { to: '/paslaugos/skubi-pagalba/', label: 'Skubi pagalba' },
-      {
-        to: '/paslaugos/dantu-implantacija/', label: 'Dantų implantacija',
-        children: [
-          { to: '/paslaugos/vienmomente-implantacija/', label: 'Vienmomentė implantacija' },
-          { to: '/paslaugos/straumann-dantu-implantai/', label: 'STRAUMANN dantų implantai' },
-          { to: '/paslaugos/visi-dantys-ant-4-implantu/', label: 'Visi dantys ant 4 implantų (All-on-4)' },
-        ],
-      },
-      {
-        to: '/paslaugos/dantu-protezavimas/', label: 'Dantų protezavimas',
-        children: [
-          { to: '/paslaugos/dantu-karunieles/', label: 'Dantų karūnėlės (vainikėliai)' },
-          { to: '/paslaugos/cirkonio-keramikos-vainikelis/', label: 'Cirkonio keramikos vainikėlis' },
-          { to: '/paslaugos/dantu-tiltai/', label: 'Dantų tiltai' },
-          { to: '/paslaugos/dantu-mikroprotezavimas/', label: 'Dantų mikroprotezavimas' },
-          { to: '/paslaugos/dantu-uzklotai/', label: 'Dantų užklotai' },
-          { to: '/paslaugos/isimami-protezai/', label: 'Išimami protezai' },
-        ],
-      },
-      { to: '/paslaugos/kompensacija-protezavimui/', label: 'Kompensacija protezavimui' },
-      { to: '/paslaugos/dantu-taisymas-gydymas/', label: 'Dantų gydymas' },
-      { to: '/paslaugos/dantu-tiesinimas/', label: 'Dantų tiesinimas' },
-      {
-        to: '/paslaugos/burnos-higiena/', label: 'Burnos higiena',
-        children: [
-          { to: '/paslaugos/dantu-fluoravimas/', label: 'Dantų fluoravimas' },
-        ],
-      },
-      {
-        to: '/paslaugos/burnos-chirurgija/', label: 'Burnos chirurgija',
-        children: [
-          { to: '/paslaugos/sinuso-pakelimas/', label: 'Sinuso pakėlimas' },
-          { to: '/paslaugos/zandikaulio-kaulo-priauginimas/', label: 'Žandikaulio kaulo priauginimas' },
-          { to: '/paslaugos/pulinio-atverimas/', label: 'Pūlinio atvėrimas' },
-        ],
-      },
-      {
-        to: '/paslaugos/dantu-balinimas/', label: 'Dantų balinimas',
-        children: [
-          { to: '/paslaugos/dantu-balinimo-kapos/', label: 'Dantų balinimo kapos' },
-          { to: '/paslaugos/dantu-balinimas-su-lempa/', label: 'Dantų balinimas su lempa' },
-        ],
-      },
-      { to: '/paslaugos/estetinis-plombavimas/', label: 'Estetinis plombavimas' },
-      { to: '/paslaugos/dantu-plombavimas/', label: 'Dantų plombavimas' },
-      {
-        to: '/paslaugos/dantu-traukimas/', label: 'Dantų traukimas',
-        children: [
-          { to: '/paslaugos/protiniu-dantu-salinimas/', label: 'Protinių dantų šalinimas' },
-        ],
-      },
-      { to: '/paslaugos/endodontinis-gydymas/', label: 'Endodontinis Gydymas' },
-      {
-        to: '/paslaugos/vaiku-odontologija/', label: 'Vaikų Odontologija',
-        children: [
-          { to: '/paslaugos/vaiku-profilaktinis-patikrinimas/', label: 'Vaikų profilaktinis patikrinimas' },
-          { to: '/paslaugos/dantu-higiena-vaikams/', label: 'Dantų higiena vaikams' },
-        ],
-      },
-      {
-        to: '/paslaugos/terapinis-dantu-gydymas/', label: 'Terapinis dantų gydymas',
-        children: [
-          { to: '/paslaugos/gydymas-icon-sistema/', label: 'Gydymas „ICON“ sistema' },
-        ],
-      },
-      {
-        label: 'Kitos paslaugos',
-        children: [
-          { to: '/paslaugos/rentgenologiniai-tyrimai/', label: 'Rentgenologiniai tyrimai' },
-          { to: '/paslaugos/bruksizmo-dantu-kapa/', label: 'Bruksizmo dantų kapa' },
-          { to: '/paslaugos/dantenu-uzdegimas-gingivitas/', label: 'Dantenų uždegimas (gingivitas)' },
-        ],
-      },
+      ...SERVICE_TREE,
     ],
   },
   { to: '/kainos', label: 'Kainos' },

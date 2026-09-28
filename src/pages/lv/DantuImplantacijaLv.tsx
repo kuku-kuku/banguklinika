@@ -6,6 +6,7 @@ import { TableOfContents } from '../../components/TableOfContents'
 import { useRef } from 'react'
 import { SITE_URL } from '../../i18n/lv'
 import ReviewsCarousel from '../../components/ReviewsCarousel'
+import RelatedServices from '../../components/RelatedServices'
 
 const tocSections = [
   { id: 'cenas', label: 'Implanti un cenas' },
@@ -1250,6 +1251,11 @@ export default function DantuImplantacijaLv() {
               </div>
             </div>
           </motion.section>
+
+          {/* ═══════════════════════════════════════════════════════════════
+              SAISTĪTIE / CITI PAKALPOJUMI
+          ══════════════════════════════════════════════════════════════════ */}
+          <RelatedServices />
 
         </div>
       </motion.div>

@@ -7,6 +7,7 @@ import ReviewsCarousel from '../components/ReviewsCarousel'
 import { useRef } from 'react'
 import BeforeAfterSlider from '../components/BeforeAfterSlider'
 import { wrapName } from '../utils/wrapName'
+import RelatedServices from '../components/RelatedServices'
 
 const container = {
   hidden: { opacity: 0, y: 10 },
@@ -999,6 +1000,11 @@ export default function DantuProtezavimas() {
               </a>
             </div>
           </motion.section>
+
+          {/* ═══════════════════════════════════════════════════════════════
+              SUSIJUSIOS / KITOS PASLAUGOS
+          ══════════════════════════════════════════════════════════════════ */}
+          <RelatedServices />
 
         </div>
       </motion.div>

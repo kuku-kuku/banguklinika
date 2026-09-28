@@ -5,6 +5,7 @@ import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
 import { TableOfContents } from '../components/TableOfContents'
 import ReviewsCarousel from '../components/ReviewsCarousel'
+import RelatedServices from '../components/RelatedServices'
 
 const container = {
   hidden: { opacity: 0, y: 10 },
@@ -443,6 +444,11 @@ export default function DantuBalinimasSuLempa() {
               </Link>
             </div>
           </motion.div>
+          {/* ═══════════════════════════════════════════════════════════════
+              SUSIJUSIOS / KITOS PASLAUGOS
+          ══════════════════════════════════════════════════════════════════ */}
+          <RelatedServices />
+
         </div>
       </motion.div>
     </AnimatedSection>

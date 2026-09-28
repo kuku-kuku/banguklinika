@@ -6,6 +6,7 @@ import { TableOfContents } from '../../components/TableOfContents'
 import { useRef } from 'react'
 import ReviewsCarousel from '../../components/ReviewsCarousel'
 import { SITE_URL } from '../../i18n/lv'
+import RelatedServices from '../../components/RelatedServices'
 
 const container = {
   hidden: { opacity: 0, y: 10 },
@@ -518,6 +519,11 @@ export default function NeatliekamaPalidzibaLv() {
             </div>
           </motion.div>
 
+
+          {/* ═══════════════════════════════════════════════════════════════
+              SAISTĪTIE / CITI PAKALPOJUMI
+          ══════════════════════════════════════════════════════════════════ */}
+          <RelatedServices />
 
         </div>
       </motion.div>

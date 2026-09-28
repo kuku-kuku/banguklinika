@@ -5,6 +5,7 @@ import SEO from '../components/SEO'
 import { TableOfContents } from '../components/TableOfContents'
 import { useRef } from 'react'
 import ReviewsCarousel from '../components/ReviewsCarousel'
+import RelatedServices from '../components/RelatedServices'
 
 // Animacijų nustatymai
 const container = {
@@ -512,6 +513,11 @@ export default function RentgenologiniaiTyrimai() {
             </div>
           </motion.div>
 
+
+          {/* ═══════════════════════════════════════════════════════════════
+              SUSIJUSIOS / KITOS PASLAUGOS
+          ══════════════════════════════════════════════════════════════════ */}
+          <RelatedServices />
 
         </div>
       </motion.div>

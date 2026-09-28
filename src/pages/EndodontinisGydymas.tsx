@@ -6,6 +6,7 @@ import { TableOfContents } from "../components/TableOfContents"
 import { useRef } from "react"
 import ReviewsCarousel from "../components/ReviewsCarousel"
 import { wrapName } from "../utils/wrapName"
+import RelatedServices from '../components/RelatedServices'
 
 // Animacijų nustatymai
 const container = {
@@ -658,6 +659,11 @@ export default function EndodontinisGydymas() {
             </div>
           </motion.section>
 
+
+          {/* ═══════════════════════════════════════════════════════════════
+              SUSIJUSIOS / KITOS PASLAUGOS
+          ══════════════════════════════════════════════════════════════════ */}
+          <RelatedServices />
 
         </div>
       </motion.div>

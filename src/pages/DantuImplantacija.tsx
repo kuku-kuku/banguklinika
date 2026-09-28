@@ -6,6 +6,7 @@ import { TableOfContents } from "../components/TableOfContents"
 import ReviewsCarousel from "../components/ReviewsCarousel"
 import { useRef } from "react"
 import { wrapName } from "../utils/wrapName"
+import RelatedServices from '../components/RelatedServices'
 
 const tocSections = [
   { id: "implantai-kainos", label: "Dantų implantacijos kainos" },
@@ -1330,6 +1331,11 @@ export default function DantuImplantacija() {
               </div>
             </div>
           </motion.section>
+
+          {/* ═══════════════════════════════════════════════════════════════
+              SUSIJUSIOS / KITOS PASLAUGOS
+          ══════════════════════════════════════════════════════════════════ */}
+          <RelatedServices />
 
         </div>
       </motion.div>

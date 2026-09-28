@@ -817,6 +817,235 @@ var Helmet = (_b = class extends Component {
   encodeSpecialCharacters: true,
   prioritizeSeoTags: false
 }), _b);
+const SERVICE_TREE = [
+  { to: "/paslaugos/skubi-pagalba/", label: "Skubi pagalba" },
+  {
+    to: "/paslaugos/dantu-implantacija/",
+    label: "Dantų implantacija",
+    children: [
+      { to: "/paslaugos/vienmomente-implantacija/", label: "Vienmomentė implantacija" },
+      { to: "/paslaugos/straumann-dantu-implantai/", label: "STRAUMANN dantų implantai" },
+      { to: "/paslaugos/visi-dantys-ant-4-implantu/", label: "Visi dantys ant 4 implantų (All-on-4)" }
+    ]
+  },
+  {
+    to: "/paslaugos/dantu-protezavimas/",
+    label: "Dantų protezavimas",
+    children: [
+      { to: "/paslaugos/dantu-karunieles/", label: "Dantų karūnėlės (vainikėliai)" },
+      { to: "/paslaugos/cirkonio-keramikos-vainikelis/", label: "Cirkonio keramikos vainikėlis" },
+      { to: "/paslaugos/dantu-tiltai/", label: "Dantų tiltai" },
+      { to: "/paslaugos/dantu-mikroprotezavimas/", label: "Dantų mikroprotezavimas" },
+      { to: "/paslaugos/dantu-uzklotai/", label: "Dantų užklotai" },
+      { to: "/paslaugos/isimami-protezai/", label: "Išimami protezai" }
+    ]
+  },
+  { to: "/paslaugos/kompensacija-protezavimui/", label: "Kompensacija protezavimui" },
+  { to: "/paslaugos/dantu-taisymas-gydymas/", label: "Dantų gydymas" },
+  { to: "/paslaugos/dantu-tiesinimas/", label: "Dantų tiesinimas" },
+  {
+    to: "/paslaugos/burnos-higiena/",
+    label: "Burnos higiena",
+    children: [
+      { to: "/paslaugos/dantu-fluoravimas/", label: "Dantų fluoravimas" }
+    ]
+  },
+  {
+    to: "/paslaugos/burnos-chirurgija/",
+    label: "Burnos chirurgija",
+    children: [
+      { to: "/paslaugos/sinuso-pakelimas/", label: "Sinuso pakėlimas" },
+      { to: "/paslaugos/zandikaulio-kaulo-priauginimas/", label: "Žandikaulio kaulo priauginimas" },
+      { to: "/paslaugos/pulinio-atverimas/", label: "Pūlinio atvėrimas" }
+    ]
+  },
+  {
+    to: "/paslaugos/dantu-balinimas/",
+    label: "Dantų balinimas",
+    children: [
+      { to: "/paslaugos/dantu-balinimo-kapos/", label: "Dantų balinimo kapos" },
+      { to: "/paslaugos/dantu-balinimas-su-lempa/", label: "Dantų balinimas su lempa" }
+    ]
+  },
+  { to: "/paslaugos/estetinis-plombavimas/", label: "Estetinis plombavimas" },
+  { to: "/paslaugos/dantu-plombavimas/", label: "Dantų plombavimas" },
+  {
+    to: "/paslaugos/dantu-traukimas/",
+    label: "Dantų traukimas",
+    children: [
+      { to: "/paslaugos/protiniu-dantu-salinimas/", label: "Protinių dantų šalinimas" }
+    ]
+  },
+  { to: "/paslaugos/endodontinis-gydymas/", label: "Endodontinis Gydymas" },
+  {
+    to: "/paslaugos/vaiku-odontologija/",
+    label: "Vaikų Odontologija",
+    children: [
+      { to: "/paslaugos/vaiku-profilaktinis-patikrinimas/", label: "Vaikų profilaktinis patikrinimas" },
+      { to: "/paslaugos/dantu-higiena-vaikams/", label: "Dantų higiena vaikams" }
+    ]
+  },
+  {
+    to: "/paslaugos/terapinis-dantu-gydymas/",
+    label: "Terapinis dantų gydymas",
+    children: [
+      { to: "/paslaugos/gydymas-icon-sistema/", label: "Gydymas „ICON“ sistema" }
+    ]
+  },
+  {
+    label: "Kitos paslaugos",
+    children: [
+      { to: "/paslaugos/rentgenologiniai-tyrimai/", label: "Rentgenologiniai tyrimai" },
+      { to: "/paslaugos/bruksizmo-dantu-kapa/", label: "Bruksizmo dantų kapa" },
+      { to: "/paslaugos/dantenu-uzdegimas-gingivitas/", label: "Dantenų uždegimas (gingivitas)" }
+    ]
+  }
+];
+const SERVICE_TREE_LV = [
+  { to: "/lv/pakalpojumi/neatliekama-palidziba", label: "Neatliekamā palīdzība" },
+  {
+    to: "/lv/pakalpojumi/zobu-implantacija",
+    label: "Zobu implantācija",
+    children: [
+      { to: "/lv/pakalpojumi/tulitejas-implantacija", label: "Tūlītējā implantācija" },
+      { to: "/lv/pakalpojumi/straumann-implanti", label: "STRAUMANN zobu implanti" },
+      { to: "/lv/pakalpojumi/visi-zobi-uz-4-implantiem", label: "Visi zobi uz 4 implantiem (All-on-4)" }
+    ]
+  },
+  {
+    to: "/lv/pakalpojumi/zobu-protezesana",
+    label: "Zobu protezēšana",
+    children: [
+      { to: "/lv/pakalpojumi/zobu-kroniti", label: "Zobu kronīši" },
+      { to: "/lv/pakalpojumi/cirkonija-keramikas-kronitis", label: "Cirkonija keramikas kronītis" },
+      { to: "/lv/pakalpojumi/zobu-tilti", label: "Zobu tilti" },
+      { to: "/lv/pakalpojumi/mikroprotezesana", label: "Zobu mikroprotezēšana" },
+      { to: "/lv/pakalpojumi/zobu-uzlikas", label: "Zobu uzlikas" },
+      { to: "/lv/pakalpojumi/iznemamas-protezes", label: "Izņemamās protēzes" }
+    ]
+  },
+  { to: "/lv/pakalpojumi/protezesanas-kompensacija", label: "Protezēšanas kompensācija" },
+  { to: "/lv/pakalpojumi/zobu-arstnieciba", label: "Zobu ārstniecība" },
+  { to: "/lv/pakalpojumi/zobu-izlinesana", label: "Zobu izlīdzināšana" },
+  {
+    to: "/lv/pakalpojumi/mutes-higiena",
+    label: "Mutes higiēna",
+    children: [
+      { to: "/lv/pakalpojumi/zobu-fluoresana", label: "Zobu fluorēšana" }
+    ]
+  },
+  {
+    to: "/lv/pakalpojumi/mutes-hirurgija",
+    label: "Mutes ķirurģija",
+    children: [
+      { to: "/lv/pakalpojumi/sinusa-pacelsana", label: "Sinusa pacelšana" },
+      { to: "/lv/pakalpojumi/zoklakaula-augmentacija", label: "Žokļa kaula augmentācija" },
+      { to: "/lv/pakalpojumi/abscesa-atversana", label: "Abscesa atvēršana" }
+    ]
+  },
+  {
+    to: "/lv/pakalpojumi/zobu-balinesana",
+    label: "Zobu balināšana",
+    children: [
+      { to: "/lv/pakalpojumi/zobu-balinesanas-kapas", label: "Zobu balināšanas kapas" },
+      { to: "/lv/pakalpojumi/zobu-balinesana-ar-lampu", label: "Zobu balināšana ar lampu" }
+    ]
+  },
+  { to: "/lv/pakalpojumi/estetiska-plombana", label: "Estētiskā plombēšana" },
+  { to: "/lv/pakalpojumi/zobu-plombana", label: "Zobu plombēšana" },
+  {
+    to: "/lv/pakalpojumi/zobu-ekstrakcija",
+    label: "Zobu ekstrakcija",
+    children: [
+      { to: "/lv/pakalpojumi/gudribas-zobu-izvilksana", label: "Gudrības zobu izvilkšana" }
+    ]
+  },
+  { to: "/lv/pakalpojumi/endodontija", label: "Endodontija" },
+  {
+    to: "/lv/pakalpojumi/bernu-odontologija",
+    label: "Bērnu zobārstniecība",
+    children: [
+      { to: "/lv/pakalpojumi/bernu-profilaktiska-parbaude", label: "Bērnu profilaktiskā pārbaude" },
+      { to: "/lv/pakalpojumi/bernu-mutes-higiena", label: "Bērnu mutes higiēna" }
+    ]
+  },
+  {
+    to: "/lv/pakalpojumi/terapeitiska-arstesana",
+    label: "Terapeitiskā ārstēšana",
+    children: [
+      { to: "/lv/pakalpojumi/arstesana-icon-sistema", label: 'Ārstēšana ar „ICON" sistēmu' }
+    ]
+  },
+  {
+    label: "Citi pakalpojumi",
+    children: [
+      { to: "/lv/pakalpojumi/rentgena-izmeklejumi", label: "Rentgena izmeklējumi" },
+      { to: "/lv/pakalpojumi/bruksisma-kapa", label: "Bruksisma kapa" },
+      { to: "/lv/pakalpojumi/smaganu-iekaisums-gingivits", label: "Smaganu iekaisums (gingivīts)" }
+    ]
+  }
+];
+function langFromPath(path) {
+  return path === "/lv" || path.startsWith("/lv/") ? "lv" : "lt";
+}
+function getServiceTree(lang) {
+  return lang === "lv" ? SERVICE_TREE_LV : SERVICE_TREE;
+}
+function normalizeServicePath(path) {
+  const clean = path.split("?")[0].split("#")[0];
+  return clean.length > 1 ? clean.replace(/\/+$/, "") : clean;
+}
+function getMainServices(lang = "lt") {
+  const out = [];
+  for (const node of getServiceTree(lang)) {
+    if (node.to) {
+      out.push({ to: node.to, label: node.label });
+    } else {
+      for (const child of node.children ?? []) {
+        if (child.to) out.push({ to: child.to, label: child.label });
+      }
+    }
+  }
+  return out;
+}
+function getServiceContext(pathname) {
+  const current = normalizeServicePath(pathname);
+  const lang = langFromPath(current);
+  const mainServices = getMainServices(lang);
+  let parentNode = null;
+  let isMain = false;
+  for (const node of getServiceTree(lang)) {
+    if (node.to && normalizeServicePath(node.to) === current) {
+      parentNode = node;
+      isMain = true;
+      break;
+    }
+    const hit = (node.children ?? []).some((c) => c.to && normalizeServicePath(c.to) === current);
+    if (hit) {
+      parentNode = node;
+      break;
+    }
+  }
+  const related = [];
+  if (parentNode) {
+    if (!isMain && parentNode.to) related.push({ to: parentNode.to, label: parentNode.label });
+    for (const child of parentNode.children ?? []) {
+      if (child.to && normalizeServicePath(child.to) !== current) {
+        related.push({ to: child.to, label: child.label });
+      }
+    }
+  }
+  const shown = new Set(related.map((r) => normalizeServicePath(r.to)));
+  shown.add(current);
+  if (parentNode == null ? void 0 : parentNode.to) shown.add(normalizeServicePath(parentNode.to));
+  const otherMain = mainServices.filter((s) => !shown.has(normalizeServicePath(s.to)));
+  return {
+    parent: (parentNode == null ? void 0 : parentNode.to) ? { to: parentNode.to, label: parentNode.label } : null,
+    isMain,
+    related,
+    otherMain
+  };
+}
 const SITE_URL$1 = "https://banguklinika.lt";
 const ROUTE_MAP_LT_TO_LV = {
   "/": "/lv",
@@ -849,88 +1078,7 @@ const navLv = [
     to: "/lv/pakalpojumi",
     label: "Pakalpojumi",
     dropdown: [
-      { to: "/lv/pakalpojumi/neatliekama-palidziba", label: "Neatliekamā palīdzība" },
-      {
-        to: "/lv/pakalpojumi/zobu-implantacija",
-        label: "Zobu implantācija",
-        children: [
-          { to: "/lv/pakalpojumi/tulitejas-implantacija", label: "Tūlītējā implantācija" },
-          { to: "/lv/pakalpojumi/straumann-implanti", label: "STRAUMANN zobu implanti" },
-          { to: "/lv/pakalpojumi/visi-zobi-uz-4-implantiem", label: "Visi zobi uz 4 implantiem (All-on-4)" }
-        ]
-      },
-      {
-        to: "/lv/pakalpojumi/zobu-protezesana",
-        label: "Zobu protezēšana",
-        children: [
-          { to: "/lv/pakalpojumi/zobu-kroniti", label: "Zobu kronīši" },
-          { to: "/lv/pakalpojumi/cirkonija-keramikas-kronitis", label: "Cirkonija keramikas kronītis" },
-          { to: "/lv/pakalpojumi/zobu-tilti", label: "Zobu tilti" },
-          { to: "/lv/pakalpojumi/mikroprotezesana", label: "Zobu mikroprotezēšana" },
-          { to: "/lv/pakalpojumi/zobu-uzlikas", label: "Zobu uzlikas" },
-          { to: "/lv/pakalpojumi/iznemamas-protezes", label: "Izņemamās protēzes" }
-        ]
-      },
-      { to: "/lv/pakalpojumi/protezesanas-kompensacija", label: "Protezēšanas kompensācija" },
-      { to: "/lv/pakalpojumi/zobu-arstnieciba", label: "Zobu ārstniecība" },
-      { to: "/lv/pakalpojumi/zobu-izlinesana", label: "Zobu izlīdzināšana" },
-      {
-        to: "/lv/pakalpojumi/mutes-higiena",
-        label: "Mutes higiēna",
-        children: [
-          { to: "/lv/pakalpojumi/zobu-fluoresana", label: "Zobu fluorēšana" }
-        ]
-      },
-      {
-        to: "/lv/pakalpojumi/mutes-hirurgija",
-        label: "Mutes ķirurģija",
-        children: [
-          { to: "/lv/pakalpojumi/sinusa-pacelsana", label: "Sinusa pacelšana" },
-          { to: "/lv/pakalpojumi/zoklakaula-augmentacija", label: "Žokļa kaula augmentācija" },
-          { to: "/lv/pakalpojumi/abscesa-atversana", label: "Abscesa atvēršana" }
-        ]
-      },
-      {
-        to: "/lv/pakalpojumi/zobu-balinesana",
-        label: "Zobu balināšana",
-        children: [
-          { to: "/lv/pakalpojumi/zobu-balinesanas-kapas", label: "Zobu balināšanas kapas" },
-          { to: "/lv/pakalpojumi/zobu-balinesana-ar-lampu", label: "Zobu balināšana ar lampu" }
-        ]
-      },
-      { to: "/lv/pakalpojumi/estetiska-plombana", label: "Estētiskā plombēšana" },
-      { to: "/lv/pakalpojumi/zobu-plombana", label: "Zobu plombēšana" },
-      {
-        to: "/lv/pakalpojumi/zobu-ekstrakcija",
-        label: "Zobu ekstrakcija",
-        children: [
-          { to: "/lv/pakalpojumi/gudribas-zobu-izvilksana", label: "Gudrības zobu izvilkšana" }
-        ]
-      },
-      { to: "/lv/pakalpojumi/endodontija", label: "Endodontija" },
-      {
-        to: "/lv/pakalpojumi/bernu-odontologija",
-        label: "Bērnu zobārstniecība",
-        children: [
-          { to: "/lv/pakalpojumi/bernu-profilaktiska-parbaude", label: "Bērnu profilaktiskā pārbaude" },
-          { to: "/lv/pakalpojumi/bernu-mutes-higiena", label: "Bērnu mutes higiēna" }
-        ]
-      },
-      {
-        to: "/lv/pakalpojumi/terapeitiska-arstesana",
-        label: "Terapeitiskā ārstēšana",
-        children: [
-          { to: "/lv/pakalpojumi/arstesana-icon-sistema", label: 'Ārstēšana ar „ICON" sistēmu' }
-        ]
-      },
-      {
-        label: "Citi pakalpojumi",
-        children: [
-          { to: "/lv/pakalpojumi/rentgena-izmeklejumi", label: "Rentgena izmeklējumi" },
-          { to: "/lv/pakalpojumi/bruksisma-kapa", label: "Bruksisma kapa" },
-          { to: "/lv/pakalpojumi/smaganu-iekaisums-gingivits", label: "Smaganu iekaisums (gingivīts)" }
-        ]
-      }
+      ...SERVICE_TREE_LV
     ]
   },
   { to: "/lv/cenas", label: "Cenas" },
@@ -976,88 +1124,7 @@ const nav = [
     to: "/paslaugos",
     label: "Paslaugos",
     dropdown: [
-      { to: "/paslaugos/skubi-pagalba/", label: "Skubi pagalba" },
-      {
-        to: "/paslaugos/dantu-implantacija/",
-        label: "Dantų implantacija",
-        children: [
-          { to: "/paslaugos/vienmomente-implantacija/", label: "Vienmomentė implantacija" },
-          { to: "/paslaugos/straumann-dantu-implantai/", label: "STRAUMANN dantų implantai" },
-          { to: "/paslaugos/visi-dantys-ant-4-implantu/", label: "Visi dantys ant 4 implantų (All-on-4)" }
-        ]
-      },
-      {
-        to: "/paslaugos/dantu-protezavimas/",
-        label: "Dantų protezavimas",
-        children: [
-          { to: "/paslaugos/dantu-karunieles/", label: "Dantų karūnėlės (vainikėliai)" },
-          { to: "/paslaugos/cirkonio-keramikos-vainikelis/", label: "Cirkonio keramikos vainikėlis" },
-          { to: "/paslaugos/dantu-tiltai/", label: "Dantų tiltai" },
-          { to: "/paslaugos/dantu-mikroprotezavimas/", label: "Dantų mikroprotezavimas" },
-          { to: "/paslaugos/dantu-uzklotai/", label: "Dantų užklotai" },
-          { to: "/paslaugos/isimami-protezai/", label: "Išimami protezai" }
-        ]
-      },
-      { to: "/paslaugos/kompensacija-protezavimui/", label: "Kompensacija protezavimui" },
-      { to: "/paslaugos/dantu-taisymas-gydymas/", label: "Dantų gydymas" },
-      { to: "/paslaugos/dantu-tiesinimas/", label: "Dantų tiesinimas" },
-      {
-        to: "/paslaugos/burnos-higiena/",
-        label: "Burnos higiena",
-        children: [
-          { to: "/paslaugos/dantu-fluoravimas/", label: "Dantų fluoravimas" }
-        ]
-      },
-      {
-        to: "/paslaugos/burnos-chirurgija/",
-        label: "Burnos chirurgija",
-        children: [
-          { to: "/paslaugos/sinuso-pakelimas/", label: "Sinuso pakėlimas" },
-          { to: "/paslaugos/zandikaulio-kaulo-priauginimas/", label: "Žandikaulio kaulo priauginimas" },
-          { to: "/paslaugos/pulinio-atverimas/", label: "Pūlinio atvėrimas" }
-        ]
-      },
-      {
-        to: "/paslaugos/dantu-balinimas/",
-        label: "Dantų balinimas",
-        children: [
-          { to: "/paslaugos/dantu-balinimo-kapos/", label: "Dantų balinimo kapos" },
-          { to: "/paslaugos/dantu-balinimas-su-lempa/", label: "Dantų balinimas su lempa" }
-        ]
-      },
-      { to: "/paslaugos/estetinis-plombavimas/", label: "Estetinis plombavimas" },
-      { to: "/paslaugos/dantu-plombavimas/", label: "Dantų plombavimas" },
-      {
-        to: "/paslaugos/dantu-traukimas/",
-        label: "Dantų traukimas",
-        children: [
-          { to: "/paslaugos/protiniu-dantu-salinimas/", label: "Protinių dantų šalinimas" }
-        ]
-      },
-      { to: "/paslaugos/endodontinis-gydymas/", label: "Endodontinis Gydymas" },
-      {
-        to: "/paslaugos/vaiku-odontologija/",
-        label: "Vaikų Odontologija",
-        children: [
-          { to: "/paslaugos/vaiku-profilaktinis-patikrinimas/", label: "Vaikų profilaktinis patikrinimas" },
-          { to: "/paslaugos/dantu-higiena-vaikams/", label: "Dantų higiena vaikams" }
-        ]
-      },
-      {
-        to: "/paslaugos/terapinis-dantu-gydymas/",
-        label: "Terapinis dantų gydymas",
-        children: [
-          { to: "/paslaugos/gydymas-icon-sistema/", label: "Gydymas „ICON“ sistema" }
-        ]
-      },
-      {
-        label: "Kitos paslaugos",
-        children: [
-          { to: "/paslaugos/rentgenologiniai-tyrimai/", label: "Rentgenologiniai tyrimai" },
-          { to: "/paslaugos/bruksizmo-dantu-kapa/", label: "Bruksizmo dantų kapa" },
-          { to: "/paslaugos/dantenu-uzdegimas-gingivitas/", label: "Dantenų uždegimas (gingivitas)" }
-        ]
-      }
+      ...SERVICE_TREE
     ]
   },
   { to: "/kainos", label: "Kainos" },
@@ -7070,6 +7137,188 @@ function TableOfContents({ sections, title = "Turinys", rootRef, cta: cta2, mobi
     ] }) })
   ] });
 }
+function ArrowIcon({ className = "w-4 h-4" }) {
+  return /* @__PURE__ */ jsx(
+    "svg",
+    {
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "2.2",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      className,
+      "aria-hidden": true,
+      children: /* @__PURE__ */ jsx("path", { d: "M5 12h13M13 6l6 6-6 6" })
+    }
+  );
+}
+function RelatedCard({ to, label }) {
+  return /* @__PURE__ */ jsxs(
+    Link,
+    {
+      to,
+      className: "group relative flex h-full min-h-[92px] items-center justify-between gap-3 overflow-hidden rounded-2xl border border-[#043F42]/12 bg-white px-5 py-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#0ABBB5]/50 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0ABBB5]",
+      children: [
+        /* @__PURE__ */ jsx(
+          "img",
+          {
+            src: "/Asset 53@2x.png",
+            alt: "",
+            "aria-hidden": true,
+            draggable: false,
+            className: "pointer-events-none absolute -bottom-6 -right-6 h-24 w-24 select-none opacity-[0.08] transition-opacity duration-300 group-hover:opacity-[0.16]"
+          }
+        ),
+        /* @__PURE__ */ jsx("span", { className: "relative z-10 text-[15px] font-semibold leading-snug text-[#043F42] transition-colors duration-200 group-hover:text-[#0ABBB5]", children: label }),
+        /* @__PURE__ */ jsx("span", { className: "relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F4F5F4] text-[#043F42] transition-all duration-300 group-hover:bg-[#0ABBB5] group-hover:text-white", children: /* @__PURE__ */ jsx(ArrowIcon, {}) })
+      ]
+    }
+  );
+}
+function ServiceRow({ to, label }) {
+  return /* @__PURE__ */ jsxs(
+    Link,
+    {
+      to,
+      className: "group flex items-center justify-between gap-3 border-b border-[#043F42]/10 py-3 pr-1 text-[15px] font-medium text-[#043F42] transition-colors duration-200 hover:text-[#0ABBB5] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0ABBB5] sm:py-3.5",
+      children: [
+        /* @__PURE__ */ jsx("span", { className: "leading-snug", children: label }),
+        /* @__PURE__ */ jsx(ArrowIcon, { className: "h-4 w-4 shrink-0 text-[#043F42]/25 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-[#0ABBB5]" })
+      ]
+    }
+  );
+}
+const COPY = {
+  lt: {
+    related: "Susijusios paslaugos",
+    all: "Kitos odontologijos paslaugos",
+    category: "Kategorija:",
+    allLink: "Visos paslaugos",
+    allHref: "/paslaugos",
+    showAll: (n) => `Rodyti visas (+${n})`,
+    showLess: "Rodyti mažiau",
+    aria: "Kitos klinikos paslaugos"
+  },
+  lv: {
+    related: "Saistītie pakalpojumi",
+    all: "Citi zobārstniecības pakalpojumi",
+    category: "Kategorija:",
+    allLink: "Visi pakalpojumi",
+    allHref: "/lv/pakalpojumi",
+    showAll: (n) => `Rādīt visus (+${n})`,
+    showLess: "Rādīt mazāk",
+    aria: "Citi klīnikas pakalpojumi"
+  }
+};
+function RelatedServices({
+  relatedTitle,
+  allTitle,
+  mobilePreview = 6,
+  className = ""
+}) {
+  const { pathname } = useLocation();
+  const [expanded, setExpanded] = useState(false);
+  const t = COPY[langFromPath(pathname)];
+  const { parent, isMain, related, otherMain } = useMemo(
+    () => getServiceContext(pathname),
+    [pathname]
+  );
+  if (related.length === 0 && otherMain.length === 0) return null;
+  const hiddenCount = Math.max(0, otherMain.length - mobilePreview);
+  const previewList = otherMain.slice(0, mobilePreview);
+  const restList = otherMain.slice(mobilePreview);
+  return /* @__PURE__ */ jsxs("section", { className: `mt-14 mb-4 ${className}`, "aria-label": t.aria, children: [
+    related.length > 0 && /* @__PURE__ */ jsxs(
+      motion.div,
+      {
+        initial: { opacity: 0, y: 16 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-60px" },
+        transition: { duration: 0.45, ease: [0.4, 0, 0.2, 1] },
+        className: "rounded-3xl border border-[#043F42]/10 bg-[#F4F5F4] p-5 sm:p-7",
+        children: [
+          /* @__PURE__ */ jsxs("div", { className: "mb-5 flex flex-wrap items-baseline justify-between gap-2", children: [
+            /* @__PURE__ */ jsx("h2", { className: "text-xl font-bold tracking-tight text-[#043F42] sm:text-2xl", children: relatedTitle ?? t.related }),
+            parent && !isMain && /* @__PURE__ */ jsxs("p", { className: "text-sm text-slate-500", children: [
+              t.category,
+              " ",
+              /* @__PURE__ */ jsx("span", { className: "font-semibold text-[#043F42]", children: parent.label })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden", children: related.map((s) => /* @__PURE__ */ jsx("div", { className: "w-[78%] shrink-0 snap-start", children: /* @__PURE__ */ jsx(RelatedCard, { ...s }) }, s.to)) }),
+          /* @__PURE__ */ jsx("div", { className: "hidden gap-3 sm:grid sm:grid-cols-2 lg:grid-cols-3", children: related.map((s) => /* @__PURE__ */ jsx(RelatedCard, { ...s }, s.to)) })
+        ]
+      }
+    ),
+    otherMain.length > 0 && /* @__PURE__ */ jsxs(
+      motion.div,
+      {
+        initial: { opacity: 0, y: 16 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-60px" },
+        transition: { duration: 0.45, ease: [0.4, 0, 0.2, 1] },
+        className: `rounded-3xl border border-[#043F42]/10 bg-white p-5 sm:p-7 ${related.length > 0 ? "mt-4" : ""}`,
+        children: [
+          /* @__PURE__ */ jsxs("div", { className: "mb-5 flex flex-wrap items-baseline justify-between gap-2", children: [
+            /* @__PURE__ */ jsx("h2", { className: "text-xl font-bold tracking-tight text-[#043F42] sm:text-2xl", children: allTitle ?? t.all }),
+            /* @__PURE__ */ jsxs(
+              Link,
+              {
+                to: t.allHref,
+                className: "inline-flex items-center gap-1.5 text-sm font-semibold text-[#0ABBB5] hover:underline",
+                children: [
+                  t.allLink,
+                  /* @__PURE__ */ jsx(ArrowIcon, { className: "h-3.5 w-3.5" })
+                ]
+              }
+            )
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: "sm:columns-2 sm:gap-x-10 lg:columns-3", children: [
+            previewList.map((s) => /* @__PURE__ */ jsx("div", { className: "break-inside-avoid", children: /* @__PURE__ */ jsx(ServiceRow, { ...s }) }, s.to)),
+            restList.length > 0 && /* @__PURE__ */ jsx("div", { className: "hidden sm:block", children: restList.map((s) => /* @__PURE__ */ jsx("div", { className: "break-inside-avoid", children: /* @__PURE__ */ jsx(ServiceRow, { ...s }) }, s.to)) })
+          ] }),
+          restList.length > 0 && /* @__PURE__ */ jsx(AnimatePresence, { initial: false, children: expanded && /* @__PURE__ */ jsx(
+            motion.div,
+            {
+              initial: { height: 0, opacity: 0 },
+              animate: { height: "auto", opacity: 1 },
+              exit: { height: 0, opacity: 0 },
+              transition: { duration: 0.25, ease: [0.4, 0, 0.2, 1] },
+              className: "overflow-hidden sm:hidden",
+              children: restList.map((s) => /* @__PURE__ */ jsx(ServiceRow, { ...s }, s.to))
+            },
+            "rest"
+          ) }),
+          hiddenCount > 0 && /* @__PURE__ */ jsxs(
+            "button",
+            {
+              type: "button",
+              onClick: () => setExpanded((v) => !v),
+              className: "mt-4 inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-[#043F42]/15 px-4 py-2.5 text-sm font-semibold text-[#043F42] transition hover:border-[#0ABBB5] hover:text-[#0ABBB5] sm:hidden",
+              "aria-expanded": expanded,
+              children: [
+                expanded ? t.showLess : t.showAll(hiddenCount),
+                /* @__PURE__ */ jsx(
+                  "svg",
+                  {
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "2.5",
+                    className: `h-3.5 w-3.5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`,
+                    "aria-hidden": true,
+                    children: /* @__PURE__ */ jsx("path", { d: "M6 9l6 6 6-6" })
+                  }
+                )
+              ]
+            }
+          )
+        ]
+      }
+    )
+  ] });
+}
 const container$1b = {
   hidden: { opacity: 0, y: 10 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut", staggerChildren: 0.06 } }
@@ -7342,7 +7591,8 @@ function BurnosHigiena() {
                 /* @__PURE__ */ jsx("p", { children: "Svarbus klinikos privalumas – aiški komunikacija ir skaidrumas. Pacientai iš anksto supažindinami su procedūros eiga, galimais pojūčiais ir kainodara. Tai padeda jaustis saugiai, užtikrintai ir be nereikalingo streso." }),
                 /* @__PURE__ */ jsx("p", { children: "Pasirinkę Bangų odontologijos kliniką Klaipėdoje, pacientai renkasi ne tik profesionalią burnos higieną, bet ir patikimą partnerį ilgalaikei burnos sveikatai palaikyti." })
               ] })
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -7612,7 +7862,8 @@ function DantuPlombavimas() {
                 /* @__PURE__ */ jsx("p", { className: "text-slate-600 mb-6 max-w-2xl", children: "Bangų odontologijos klinikoje Jūsų laukia profesionali komanda, modernios technologijos ir individualus požiūris į kiekvieną pacientą. Užsiregistruokite vizitui ir pasirūpinkite savo dantų sveikata patikimai ir užtikrintai." }),
                 /* @__PURE__ */ jsx(Link, { to: "/kontaktai", className: "btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1", children: "Registruotis vizitui" })
               ] })
-            ] })
+            ] }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -7864,7 +8115,8 @@ function EstetinisPlombavimas() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -8133,7 +8385,8 @@ function BurnosChirurgija() {
                 /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje naudojami modernūs diagnostikos ir chirurginio gydymo metodai, užtikrinantys tikslumą ir minimalų audinių pažeidimą. Procedūros atliekamos taikant patikimus nuskausminimo sprendimus, todėl pacientų patirtis yra kiek įmanoma komfortiškesnė. Po chirurginio gydymo pacientams suteikiamos išsamios ir praktiškos rekomendacijos, padedančios užtikrinti sklandų gijimo procesą." }),
                 /* @__PURE__ */ jsx("p", { children: "Svarbus klinikos privalumas – aiški komunikacija ir skaidrumas. Pacientai iš anksto supažindinami su procedūros eiga, galimomis alternatyvomis ir tolimesniu gydymo planu. Toks požiūris leidžia kurti ilgalaikį pasitikėjimą ir bendradarbiavimą, orientuotą į ilgalaikę burnos sveikatą." })
               ] })
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -8440,7 +8693,8 @@ function DantuBalinimas() {
                 "Bangų odontologijos klinikoje Jūsų laukia modernios balinimo technologijos, patyrę specialistai ir individualūs sprendimai, pritaikyti kiekvienam pacientui. Registruokitės konsultacijai ir ženkite pirmą žingsnį link šviesesnės, pasitikėjimą suteikiančios šypsenos."
               ] }),
               /* @__PURE__ */ jsx(Link, { to: "/kontaktai", className: "btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1", children: "Registruotis vizitui" })
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -8697,7 +8951,8 @@ function DantuGydymas() {
                 /* @__PURE__ */ jsx("p", { children: "Klinikoje dirbantys specialistai skiria ypatingą dėmesį tiksliai diagnostikai, aiškiam gydymo plano sudarymui ir nuosekliam jo įgyvendinimui. Tai leidžia pacientams suprasti gydymo eigą, pasirinkti tinkamiausius sprendimus ir jaustis užtikrintai viso proceso metu. Platus paslaugų spektras užtikrina, kad dantų tvarkymas Klaipėdoje būtų atliekamas vienoje vietoje – nuo profilaktikos iki sudėtingesnių gydymo ar atkūrimo procedūrų." }),
                 /* @__PURE__ */ jsx("p", { children: "Pacientai vertina ramų bendravimą, skaidrią kainodarą ir dėmesingą požiūrį, o teigiami atsiliepimai dažnai pabrėžia profesionalumą, komfortą ir pasitikėjimą galutiniu rezultatu. Tai leidžia Bangų odontologijos klinikai tapti patikimu pasirinkimu ieškantiems kokybiško ir atsakingo dantų gydymo." })
               ] })
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -8984,7 +9239,8 @@ function VaikuOdontologija() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -9853,7 +10109,8 @@ function DantuProtezavimas() {
                   }
                 )
               ] })
-            ] })
+            ] }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -10145,7 +10402,8 @@ function DantuTraukimas() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -10463,7 +10721,8 @@ function DantuTiesinimas() {
                 /* @__PURE__ */ jsx("p", { children: "Klinikoje didelis dėmesys skiriamas individualiam planavimui. Prieš pradedant gydymą atliekama išsami diagnostika ir skaitmeninis gydymo planas, leidžiantis pacientui aiškiai suprasti visą procesą ir numatomą galutinį rezultatą. Toks požiūris padeda jaustis užtikrintai ir leidžia priimti informuotą sprendimą." }),
                 /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje dirbantys specialistai skiria laiko paciento klausimams, aiškiai paaiškina kiekvieną gydymo etapą ir užtikrina nuolatinę priežiūrą viso gydymo metu. Pacientai vertina profesionalų bendravimą, komfortą ir pasiektus rezultatus, kuriuos patvirtina jų teigiami atsiliepimai." })
               ] })
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -10771,7 +11030,8 @@ function EndodontinisGydymas() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -12346,7 +12606,8 @@ function DantuImplantacija() {
                   ] })
                 ]
               }
-            )
+            ),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -12670,7 +12931,8 @@ function SkubiPagalba() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -12926,7 +13188,8 @@ function ProtiniuDantuSalinimas() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -13201,7 +13464,8 @@ function RentgenologiniaiTyrimai() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -13432,7 +13696,8 @@ function VienmomeneImplantacija() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -13794,7 +14059,8 @@ function DantuKarunieles() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -14030,7 +14296,8 @@ function KompensacijaProtezavimui() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -14333,7 +14600,8 @@ function SinusoPakelimas() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -14649,7 +14917,8 @@ function ZandikaulioKauloPriauginimas() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -14942,7 +15211,8 @@ function DantuTiltai() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -15226,7 +15496,8 @@ function BruksizmoDantuKapa() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -15470,7 +15741,8 @@ function CirkonioKeramikosVainikelis() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -15697,7 +15969,8 @@ function VaikuProfilaktinisPatikrinimas() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -15928,7 +16201,8 @@ function DantuHigienaVaikams() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -16215,7 +16489,8 @@ function TerapinisDantuGydymas() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -16452,7 +16727,8 @@ function GydymasIconSistema() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -16686,7 +16962,8 @@ function DantuBalinimoKapos() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -16958,7 +17235,8 @@ function StraumannDantuImplantai() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -17387,7 +17665,8 @@ function VisiDantysAnt4Implantu() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -17642,7 +17921,8 @@ function DantuBalinimasSuLempa() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -18072,7 +18352,8 @@ function VisiZobiUz4ImplantiemLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -18328,7 +18609,8 @@ function ZobuBalinesanaArLampuLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -18574,7 +18856,8 @@ function DantuMikroprotezavimas() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -18811,7 +19094,8 @@ function DantuUzklotai() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -19066,7 +19350,8 @@ function IsimamiProtezai() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -19314,7 +19599,8 @@ function PulinioAtverimas() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -19600,7 +19886,8 @@ function DantenuUzdegimas() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -19836,7 +20123,8 @@ function DantuFluoravimas() {
                   children: "Registruotis vizitui"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -23494,7 +23782,8 @@ function DantuImplantacijaLv() {
                   ] })
                 ]
               }
-            )
+            ),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -25272,7 +25561,8 @@ function ZobuProtezesanaLv() {
                   }
                 )
               ] })
-            ] })
+            ] }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -25536,7 +25826,8 @@ function ZobuArstniecibaLv() {
                 /* @__PURE__ */ jsx("p", { children: "Klīnikā strādājošie speciālisti pievērš īpašu uzmanību precīzai diagnostikai, skaidrai ārstēšanas plāna izveidei un secīgai tā īstenošanai. Tas ļauj pacientiem saprast ārstēšanas gaitu, izvēlēties vispiemērotākos risinājumus un justies pārliecināti visa procesa laikā. Plašais pakalpojumu klāsts nodrošina, ka zobu labošana Klaipēdā tiek veikta vienā vietā — no profilakses līdz sarežģītākām ārstēšanas vai atjaunošanas procedūrām." }),
                 /* @__PURE__ */ jsx("p", { children: "Pacienti novērtē mierīgu komunikāciju, caurspīdīgu cenu politiku un uzmanīgu pieeju, un pozitīvās atsauksmes bieži uzsver profesionalitāti, komfortu un pārliecību par galīgo rezultātu. Tas ļauj Bangų zobārstniecības klīnikai kļūt par uzticamu izvēli, meklējot kvalitatīvu un atbildīgu zobu ārstēšanu." })
               ] })
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -25861,7 +26152,8 @@ function ZobuIzlinesanaLv() {
                 /* @__PURE__ */ jsx("p", { children: "Klīnikā liela uzmanība tiek pievērsta individuālai plānošanai. Pirms ārstēšanas sākuma tiek veikta izsmeļoša diagnostika un digitāls ārstēšanas plāns, kas ļauj pacientam skaidri saprast visu procesu un plānoto galīgo rezultātu. Šāda pieeja palīdz justies pārliecināti un ļauj pieņemt informētu lēmumu." }),
                 /* @__PURE__ */ jsx("p", { children: "Bangų zobārstniecības klīnikā strādājošie speciālisti velta laiku pacienta jautājumiem, skaidri izskaidro katru ārstēšanas posmu un nodrošina pastāvīgu aprūpi visas ārstēšanas laikā. Pacienti novērtē profesionālu komunikāciju, komfortu un sasniegtos rezultātus, ko apstiprina viņu pozitīvās atsauksmes." })
               ] })
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -26147,7 +26439,8 @@ function MutesHigiennaLv() {
                 /* @__PURE__ */ jsx("p", { children: "Svarīgs klīnikas priekšrocība — skaidra komunikācija un caurspīdība. Pacienti iepriekš tiek iepazīstināti ar procedūras gaitu, iespējamām sajūtām un cenu politiku. Tas palīdz justies droši, pārliecināti un bez lieka stresa." }),
                 /* @__PURE__ */ jsx("p", { children: "Izvēloties Bangų zobārstniecības klīniku Klaipēdā, pacienti izvēlas ne tikai profesionālu mutes higiēnu, bet arī uzticamu partneri ilgtermiņa mutes veselības uzturēšanai." })
               ] })
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -26423,7 +26716,8 @@ function MutesHirurgijaLv() {
                 /* @__PURE__ */ jsx("p", { children: "Bangų zobārstniecības klīnikā tiek izmantotas modernas diagnostikas un ķirurģiskās ārstēšanas metodes, kas nodrošina precizitāti un minimālu audu bojājumu. Procedūras tiek veiktas, izmantojot uzticamus anestēzijas risinājumus, tāpēc pacientu pieredze ir pēc iespējas ērtāka. Pēc ķirurģiskās ārstēšanas pacientiem tiek sniegti izsmeļoši un praktiski ieteikumi, kas palīdz nodrošināt raitu dzīšanas procesu." }),
                 /* @__PURE__ */ jsx("p", { children: "Svarīga klīnikas priekšrocība — skaidra komunikācija un caurspīdība. Pacienti iepriekš tiek iepazīstināti ar procedūras gaitu, iespējamām alternatīvām un turpmāko ārstēšanas plānu. Šāda pieeja ļauj veidot ilgtermiņa uzticību un sadarbību, kas orientēta uz ilgtermiņa mutes veselību." })
               ] })
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -26737,7 +27031,8 @@ function ZobuBalinesanaLv() {
                 "Bangų zobārstniecības klīnikā Jūs sagaida modernas balināšanas tehnoloģijas, pieredzējuši speciālisti un individuāli risinājumi, pielāgoti katram pacientam. Reģistrējieties konsultācijai un speriet pirmo soli uz gaišāku, pašpārliecinātību sniedzošu smaidu."
               ] }),
               /* @__PURE__ */ jsx(Link, { to: "/lv/kontakti", className: "btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1", children: "Reģistrēties vizītei" })
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -26996,7 +27291,8 @@ function EstetikaPlombanaLv() {
                   children: "Reģistrēties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -27266,7 +27562,8 @@ function ZobuPlombanaLv() {
             /* @__PURE__ */ jsx("p", { className: "text-slate-600 mb-6 max-w-2xl", children: "Bangų zobārstniecības klīnikā jūs gaida profesionāla komanda, modernas tehnoloģijas un individuāla pieeja katram pacientam. Pierakstieties vizītam un parūpējieties par savu zobu veselību droši un pārliecinoši." }),
             /* @__PURE__ */ jsx(Link, { to: "/lv/kontakti", className: "btn-primary btn-glow rounded-full px-8 py-4 font-semibold text-lg inline-block hover:shadow-xl transition transform hover:-translate-y-1", children: "Pierakstīties vizītam" })
           ] })
-        ] })
+        ] }),
+        /* @__PURE__ */ jsx(RelatedServices, {})
       ] })
     ] })
   ] });
@@ -27564,7 +27861,8 @@ function ZobuEkstrakcijaLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -27841,7 +28139,8 @@ function EndodontijaLv() {
               children: "Pierakstīties vizītei"
             }
           )
-        ] }) })
+        ] }) }),
+        /* @__PURE__ */ jsx(RelatedServices, {})
       ] })
     ] })
   ] });
@@ -28135,7 +28434,8 @@ function BernuOdontologijaLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -28640,7 +28940,8 @@ function NeatliekamaPalidzibaLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -28919,7 +29220,8 @@ function StraumannImplantiLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -29230,7 +29532,8 @@ function SinusaPacelsanaLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -29554,7 +29857,8 @@ function ZoklakaulaAugmentacijaLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -29818,7 +30122,8 @@ function GudribasZobuIzvilksanaLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -30073,7 +30378,8 @@ function AbscesaAtversanaLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -30312,7 +30618,8 @@ function TulitejasImplantacijaLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -30564,7 +30871,8 @@ function CirkonijaKeramikasKronitisLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -30934,7 +31242,8 @@ function ZobuKronitiLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -31235,7 +31544,8 @@ function ZobuTiltiLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -31488,7 +31798,8 @@ function MikroprotezesanaLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -31732,7 +32043,8 @@ function ZobuUzlikasLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -31994,7 +32306,8 @@ function IznemamasProtezesLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -32238,7 +32551,8 @@ function ProtezesanasKompensacijaLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -32533,7 +32847,8 @@ function TerapeitiskaArstesanaLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -32777,7 +33092,8 @@ function ArstesanaIconSistemaLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -33070,7 +33386,8 @@ function SmaganuIekaisumsGingivitsLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -33362,7 +33679,8 @@ function BruksismaKapaLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -33603,7 +33921,8 @@ function ZobuBalinesanasKapasLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -33846,7 +34165,8 @@ function ZobuFluoresanaLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -34081,7 +34401,8 @@ function BernuProfilaktiskaParbaudeLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -34320,7 +34641,8 @@ function BernuMutesHigienaLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }
@@ -34603,7 +34925,8 @@ function RentgenaIzmeklejumiLv() {
                   children: "Pierakstīties vizītei"
                 }
               )
-            ] }) })
+            ] }) }),
+            /* @__PURE__ */ jsx(RelatedServices, {})
           ] })
         ]
       }

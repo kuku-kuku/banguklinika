@@ -5,6 +5,7 @@ import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
 import { TableOfContents } from '../components/TableOfContents'
 import ReviewsCarousel from '../components/ReviewsCarousel'
+import RelatedServices from '../components/RelatedServices'
 
 // Animacijų nustatymai
 const container = {
@@ -459,6 +460,11 @@ export default function BurnosChirurgija() {
               </div>
             </div>
           </motion.section>
+
+          {/* ═══════════════════════════════════════════════════════════════
+              SUSIJUSIOS / KITOS PASLAUGOS
+          ══════════════════════════════════════════════════════════════════ */}
+          <RelatedServices />
 
         </div>
       </motion.div>

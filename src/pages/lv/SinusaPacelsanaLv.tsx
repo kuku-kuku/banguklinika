@@ -6,6 +6,7 @@ import { TableOfContents } from '../../components/TableOfContents'
 import { useRef } from 'react'
 import ReviewsCarousel from '../../components/ReviewsCarousel'
 import { SITE_URL } from '../../i18n/lv'
+import RelatedServices from '../../components/RelatedServices'
 
 // Animāciju iestatījumi
 const container = {
@@ -598,6 +599,11 @@ export default function SinusaPacelsanaLv() {
             </div>
           </motion.div>
 
+
+          {/* ═══════════════════════════════════════════════════════════════
+              SAISTĪTIE / CITI PAKALPOJUMI
+          ══════════════════════════════════════════════════════════════════ */}
+          <RelatedServices />
 
         </div>
       </motion.div>

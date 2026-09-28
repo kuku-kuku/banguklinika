@@ -5,6 +5,7 @@ import SEO from '../components/SEO'
 import { useRef } from 'react'
 import { TableOfContents } from '../components/TableOfContents'
 import ReviewsCarousel from '../components/ReviewsCarousel'
+import RelatedServices from '../components/RelatedServices'
 
 // Animacijų nustatymai
 const container = {
@@ -551,6 +552,11 @@ export default function DantuBalinimas() {
             </div>
           </motion.div>
 
+
+          {/* ═══════════════════════════════════════════════════════════════
+              SUSIJUSIOS / KITOS PASLAUGOS
+          ══════════════════════════════════════════════════════════════════ */}
+          <RelatedServices />
 
         </div>
       </motion.div>
