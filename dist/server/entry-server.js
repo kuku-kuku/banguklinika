@@ -17528,7 +17528,7 @@ function GroupCard$1({
                 /* @__PURE__ */ jsxs("div", { className: "text-sm text-slate-500 font-medium mt-1", children: [
                   summary,
                   " ",
-                  /* @__PURE__ */ jsxs("span", { className: "opacity-60 font-normal ml-1", children: [
+                  /* @__PURE__ */ jsxs("span", { className: "muted font-normal ml-1", children: [
                     "• ",
                     group.items.length,
                     " poz."
@@ -24066,7 +24066,7 @@ function GroupCard({
                 /* @__PURE__ */ jsxs("div", { className: "text-sm text-slate-500 font-medium mt-1", children: [
                   summary,
                   " ",
-                  /* @__PURE__ */ jsxs("span", { className: "opacity-60 font-normal ml-1", children: [
+                  /* @__PURE__ */ jsxs("span", { className: "muted font-normal ml-1", children: [
                     "• ",
                     items.length,
                     " poz."

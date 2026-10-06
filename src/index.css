@@ -117,7 +117,10 @@
 .container-narrow { @apply max-w-6xl mx-auto px-6; }
 
 .btn { @apply inline-flex items-center justify-center rounded-xl font-medium transition px-4 py-2; }
-.btn-primary { @apply btn bg-primary-600 text-white hover:bg-primary-700 shadow-soft; }
+/* White on primary-600 is 4.2:1 — fails AA. Charcoal/white is 15.67:1 and
+   matches .btn-ink, so the legacy and new buttons read as one system. */
+.btn-primary { @apply btn text-white shadow-soft; background: var(--ink); }
+.btn-primary:hover { background: #121618; color: #fff; }
 .btn-ghost { @apply btn bg-white text-primary-700 hover:bg-primary-50 border border-primary-100; }
 .btn-outline { @apply btn border border-gray-300 hover:bg-gray-50; }
 
@@ -467,3 +470,10 @@ html.js .reveal.is-in {
 .group:hover .nav-ind,
 .nav-ind--on,
 a[aria-current='page'] .nav-ind { transform: scaleX(1); }
+
+/* ---- Dark footer link colour -------------------------------------------
+   The base `a` colour is --tide-text, which is tuned for light surfaces and
+   drops to 3.25:1 on the charcoal footer. --tide-bright is 8.10:1 there. */
+.footer-dark a { color: var(--tide-bright); }
+.footer-dark a.footer-link { color: rgb(255 255 255 / 0.9); }
+.footer-dark a.footer-link:hover { color: #fff; }

@@ -232,7 +232,7 @@ function GroupCard({
             {renderName(group.title)}
           </div>
           <div className="text-sm text-slate-500 font-medium mt-1">
-            {summary} <span className="opacity-60 font-normal ml-1">• {group.items.length} poz.</span>
+            {summary} <span className="muted font-normal ml-1">• {group.items.length} poz.</span>
           </div>
         </div>
 
