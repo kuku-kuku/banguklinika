@@ -1,3 +1,4 @@
+@import './styles/tokens.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -47,15 +48,26 @@
   font-display: swap;
 }
 
-/* ====== CSS variables ====== */
+/* ---- Metric-compatible fallback -------------------------------------------
+   Tomato Grotesk: upm 2048, ascent 1946, descent -512, x-height 1057.
+   Arial's x-height ratio is 51.85% vs Tomato's 51.61%, so size-adjust is
+   99.5%. Overriding ascent/descent too means the fallback occupies the
+   exact same line box and font-display:swap causes no reflow. */
+@font-face {
+  font-family: 'Tomato Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Liberation Sans');
+  size-adjust: 99.5%;
+  ascent-override: 95.02%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
+
+/* ====== Legacy CSS variables ======
+   New tokens live in src/styles/tokens.css. These aliases stay so the
+   ~90 untouched service pages keep resolving. */
 :root {
-  --radius: 16px;
-  --brand-turquoise: #00B7C6;
-
-  /* navbar aukštis (pataikyk į savo realų) */
-  --nav-h: 72px;
-
-  /* (paliekam bendrus kintamuosius, bet bangų CSS nenaudojam) */
+  --radius: var(--r-card);
+  --brand-turquoise: var(--tide);
   --wave-width: 1440px;
   --wave-speed: 40s;
   --wave-bob: 6px;
@@ -66,23 +78,39 @@
   html, body { @apply h-full; }
 
   body {
-    @apply bg-gray-50 text-gray-900 antialiased font-sans;
+    background: var(--paper);
+    color: var(--text);
+    @apply antialiased font-sans;
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
     font-feature-settings: "liga" 1, "kern" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1 { @apply text-3xl md:text-4xl font-semibold tracking-tight text-gray-900; }
-  h2 { @apply text-2xl md:text-3xl font-semibold tracking-tight text-gray-900; }
-  h3 { @apply text-xl md:text-2xl font-semibold text-gray-900; }
+  /* Headings are restyled here, not retagged — the h1/h2/h3 hierarchy on
+     every page is unchanged. Display weight + negative tracking is what
+     separates headings from body, since there is only one typeface. */
+  h1 { font-size: var(--fs-h1); line-height: var(--lh-head); letter-spacing: var(--tr-head); font-weight: 900; color: var(--text); }
+  h2 { font-size: var(--fs-h2); line-height: var(--lh-head); letter-spacing: var(--tr-head); font-weight: 800; color: var(--text); }
+  h3 { font-size: var(--fs-h3); line-height: 1.25;           letter-spacing: var(--tr-head); font-weight: 700; color: var(--text); }
 
-  a { @apply text-primary-700 hover:text-primary-800; }
+  a { color: var(--tide-text); }
+  a:hover { color: var(--ink); }
   strong { @apply font-semibold; }
 
-  :is(a, button, input, select, textarea, [role="button"], [role="menuitem"]) {
-    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white;
-    border-radius: 12px;
+  /* Focus ring: colour switches per surface so it always clears 3.0.
+     No blanket border-radius here — that flattened every control to the
+     same shape and broke pill buttons. */
+  :is(a, button, input, select, textarea, summary, [role="button"], [role="menuitem"], [tabindex]):focus-visible {
+    outline: 2px solid var(--focus-light);
+    outline-offset: 2px;
+    border-radius: inherit;
   }
+  .on-ink :is(a, button, input, select, textarea, summary, [role="button"], [role="menuitem"], [tabindex]):focus-visible {
+    outline-color: var(--focus-dark);
+  }
+  :is(a, button, input, select, textarea, [role="button"]):focus { outline: none; }
 }
 
 /* ====== Components / Utilities ====== */
@@ -251,4 +279,152 @@
 @media (min-width: 768px) {
   .prose-article h2 { font-size: 1.5rem; }
   .prose-article p { font-size: 1.0625rem; }
+}
+/* ============================================================================
+   REDESIGN LAYER
+   ========================================================================= */
+
+/* ---- Tide drift: the one ambient animation on the site -------------------
+   Translates by exactly one wavelength (480 of 960 viewBox units = 50%) so
+   the loop is seamless. transform only — never touches layout. */
+@keyframes tide-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+/* ---- Masked line-by-line heading reveal ---------------------------------
+   Each line sits in an overflow-hidden block and slides up from beneath its
+   own mask. Pure CSS so it runs before any JS is parsed — the hero headline
+   animates even while the route chunk is still downloading. */
+.reveal-lines { --reveal-delay: 0ms; }
+.reveal-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;   /* room for descenders inside the mask */
+  margin-bottom: -0.08em;
+}
+.reveal-line > span {
+  display: block;
+  transform: translateY(105%);
+  animation: reveal-up var(--t-slow) var(--ease-out) forwards;
+  animation-delay: var(--reveal-delay);
+}
+@keyframes reveal-up {
+  to { transform: translateY(0); }
+}
+
+/* ---- Wave-clipped image mask --------------------------------------------
+   A curved bottom edge on image containers. clip-path is composited, so the
+   hover scale underneath stays cheap. */
+.wave-mask {
+  clip-path: ellipse(140% 92% at 50% 8%);
+}
+@supports not (clip-path: ellipse(140% 92% at 50% 8%)) {
+  .wave-mask { border-end-start-radius: var(--r-image); border-end-end-radius: var(--r-image); }
+}
+
+/* Image inside a mask scales on hover; the mask itself never moves. */
+.mask-zoom { overflow: hidden; }
+.mask-zoom > img,
+.mask-zoom > video {
+  transition: transform var(--t-slow) var(--ease-out);
+  will-change: auto;
+}
+@media (hover: hover) and (pointer: fine) {
+  .mask-zoom:hover > img,
+  .mask-zoom:hover > video,
+  .group:hover .mask-zoom > img { transform: scale(1.04); }
+}
+
+/* ---- Dark section -------------------------------------------------------
+   `.on-ink` also switches the focus-ring colour (see the base layer). */
+.on-ink {
+  background: var(--ink);
+  color: var(--text-on-ink);
+}
+.on-ink :is(h1, h2, h3) { color: var(--text-on-ink); }
+.on-ink .muted { color: var(--text-mute-on-ink); }
+.on-ink a { color: var(--tide-bright); }
+
+/* ---- Layout helpers ----------------------------------------------------- */
+.shell-bg { background: var(--shell); }
+.gutter-x { padding-inline: var(--gutter); }
+.measure  { max-width: var(--measure); }
+.muted    { color: var(--text-mute); }
+
+/* Editorial container: wider than the old 6xl, asymmetric grids need room. */
+.container-wide { max-width: 90rem; margin-inline: auto; padding-inline: var(--gutter); }
+.container-text { max-width: 48rem;  margin-inline: auto; padding-inline: var(--gutter); }
+
+/* Section rhythm. Uses the fluid token so mobile does not get desktop air. */
+.section-y       { padding-block: var(--section-y); }
+.section-y-tight { padding-block: var(--section-y-tight); }
+
+/* ---- Buttons -----------------------------------------------------------
+   Primary is charcoal, not turquoise: white-on-turquoise is 2.55:1 and fails
+   AA at any size. Turquoise stays a graphic accent. */
+.btn-ink {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.625rem;
+  background: var(--ink); color: #fff;
+  font-weight: 700; font-size: var(--fs-body);
+  padding: 0.9375rem 1.75rem; border-radius: var(--r-pill);
+  transition: background var(--t-fast) var(--ease-out), transform var(--t-fast) var(--ease-out);
+}
+.btn-ink:hover { background: #121618; color: #fff; }
+.btn-ink:active { transform: translateY(1px); }
+
+/* Secondary: charcoal hairline, fills turquoise on hover with charcoal text
+   (6.15:1), which is the accessible way to use the accent as a surface. */
+.btn-line {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.625rem;
+  background: transparent; color: var(--ink);
+  font-weight: 700; font-size: var(--fs-body);
+  padding: 0.875rem 1.6875rem; border-radius: var(--r-pill);
+  border: 1.5px solid var(--ink);
+  transition: background var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out);
+}
+.btn-line:hover { background: var(--tide); border-color: var(--tide); color: var(--ink); }
+
+/* Arrow that slides on hover, replacing the literal "→" glyph spans. */
+.btn-arrow { transition: transform var(--t-fast) var(--ease-out); }
+.group:hover .btn-arrow, a:hover > .btn-arrow, button:hover > .btn-arrow { transform: translateX(3px); }
+
+/* ---- Card: hairline, no drop shadow at rest --------------------------- */
+.card-flat {
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-card);
+  transition: border-color var(--t-mid) var(--ease-out), box-shadow var(--t-mid) var(--ease-out),
+              transform var(--t-mid) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .card-flat:hover { border-color: var(--hairline-strong); box-shadow: var(--shadow-lift); transform: translateY(-3px); }
+}
+
+/* ---- Reduced motion: strip ambient motion, keep state transitions ------ */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-line > span { animation: none; transform: none; }
+  [style*="tide-drift"], .tide-drift { animation: none !important; }
+  .mask-zoom:hover > img, .mask-zoom:hover > video { transform: none; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+}
+
+/* ---- Scroll reveal ------------------------------------------------------
+   Hidden state is scoped under html.js, which src/lib/reveal.ts sets only in
+   a live browser. Prerendered HTML and no-JS visitors therefore see content
+   at full opacity, and the style-stripping in scripts/prerender.mjs has
+   nothing to strip here. Transform + opacity only. */
+html.js .reveal {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+}
+html.js .reveal.is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--t-mid) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--t-mid) var(--ease-out) var(--reveal-delay, 0ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal { opacity: 1; transform: none; }
 }

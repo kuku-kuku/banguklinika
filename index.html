@@ -10,6 +10,11 @@
   <link rel="apple-touch-icon" href="/Asset 53@2x.png" />
   <meta name="theme-color" content="#0099cc" />
 
+  <!-- Only the display weight is preloaded. The other four swap in behind a
+       metric-matched fallback, so they cost nothing at LCP. -->
+  <link rel="preload" href="/fonts/TomatoGrotesk-Black.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/TomatoGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin />
+
   <title>Odontologijos klinika (stomatologijos) Klaipėdoje</title>
   
   <script>

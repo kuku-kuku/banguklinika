@@ -596,6 +596,57 @@ function upsertTag(html, regex, replacement) {
   return html.replace("</head>", `${replacement}\n</head>`);
 }
 
+
+/* ----------------------------------------------------------------------------
+ * Per-route chunk hints.
+ *
+ * The client build splits one chunk per page. Without a hint, the browser only
+ * discovers a route's chunk after the entry chunk has parsed — one extra round
+ * trip in front of first render. So each prerendered page gets:
+ *
+ *   - <link rel="modulepreload"> for its own chunk, fetched in parallel with
+ *     the entry chunk
+ *   - window.__ROUTE_MOD__, which main.tsx awaits before the first render so
+ *     the already-painted static HTML is never swapped for a loading state
+ *
+ * These are performance hints only. No meta tag, title, canonical, Open Graph
+ * or JSON-LD is touched here — injectHead() remains the sole owner of those.
+ * -------------------------------------------------------------------------- */
+function buildRouteChunkMap(ltRoutes, lvRoutes) {
+  const manifestPath = path.join(distDir, ".vite", "manifest.json");
+  if (!fs.existsSync(manifestPath)) {
+    console.warn("[prerender] no client manifest — skipping route chunk hints");
+    return new Map();
+  }
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+
+  // manifest keys are source-relative, e.g. "src/pages/Home.tsx"
+  const chunkFor = (mod) => {
+    const entry = manifest[`src/${mod}.tsx`];
+    return entry ? entry.file : null;
+  };
+
+  const map = new Map();
+  for (const r of ltRoutes) {
+    map.set(normalizeRoute(r.path), { mod: r.mod, file: chunkFor(r.mod) });
+  }
+  for (const r of lvRoutes) {
+    const full = r.path ? `/lv/${r.path}` : "/lv";
+    map.set(normalizeRoute(full), { mod: r.mod, file: chunkFor(r.mod) });
+  }
+  return map;
+}
+
+function injectRouteHints(html, hint) {
+  if (!hint || !hint.file) return html;
+  const tags =
+    `  <link rel="modulepreload" crossorigin href="/${hint.file}" />
+` +
+    `  <script>window.__ROUTE_MOD__=${JSON.stringify(hint.mod)}</script>
+`;
+  return html.replace("</head>", `${tags}</head>`);
+}
+
 function injectHead(html, { route, title, description, schema }) {
   const url = SITE_ORIGIN + normalizeRoute(route);
 
@@ -634,7 +685,8 @@ async function run() {
     throw new Error(`Nerandu ${serverEntryPath}. Pirma paleisk vite build --ssr.`);
   }
 
-  const { render } = await import(pathToFileURL(serverEntryPath).href);
+  const { render, LT_ROUTES, LV_ROUTES } = await import(pathToFileURL(serverEntryPath).href);
+  const routeChunks = buildRouteChunkMap(LT_ROUTES ?? [], LV_ROUTES ?? []);
 
   const template = fs.readFileSync(templatePath, "utf8");
 
@@ -666,6 +718,7 @@ async function run() {
       let output = template;
       output = output.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
       output = injectHead(output, page);
+      output = injectRouteHints(output, routeChunks.get(route));
 
       writeFileForRoute(page.route, output);
       console.log("[prerender] ✓", route);

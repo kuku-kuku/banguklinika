@@ -1,0 +1,110 @@
+/* ============================================================================
+   Bangų klinika — design tokens
+   ----------------------------------------------------------------------------
+   Every text/background pair below has been checked against WCAG AA.
+   Ratios are noted inline. Two rules that must not be broken:
+
+     1. --tide (#0FB5AE) is FILL AND GRAPHICS ONLY. It is 2.55:1 on white,
+        so it fails AA for text at any size and fails the 3.0 minimum for
+        meaning-bearing borders. Turquoise text on light uses --tide-text.
+     2. White text never sits on --tide or --tide-deep (2.55 / 4.21).
+        Charcoal on --tide is 6.15 and is the accessible way to get a
+        turquoise button.
+   ========================================================================= */
+
+:root {
+  /* ---- Surfaces ---------------------------------------------------------- */
+  --paper: #ffffff;
+  --shell: #f7fafa; /* alternating sections */
+  --ink: #1f2427; /* charcoal: body text + dark sections */
+
+  /* ---- Accent ------------------------------------------------------------ */
+  --tide: #0fb5ae; /* graphics/fills only — never text on light */
+  --tide-deep: #0b8a85; /* hover fill */
+  --tide-text: #097873; /* 5.32 on paper · 5.07 on shell — AA body PASS */
+  --tide-bright: #2acfc8; /* accent on charcoal — 8.10 on ink */
+
+  /* ---- Text -------------------------------------------------------------- */
+  --text: var(--ink); /* 15.67 on paper · 14.93 on shell */
+  --text-mute: #575f64; /* 6.51 on paper · 6.20 on shell — AA body PASS */
+  --text-on-ink: #ffffff; /* 15.67 on ink */
+  --text-mute-on-ink: #a8b2b6; /* 7.25 on ink — AA body PASS */
+
+  /* ---- Lines ------------------------------------------------------------- */
+  --hairline: #dde4e5; /* decorative only (1.29) — never a state border */
+  --hairline-strong: #cfd8da; /* decorative, heavier */
+  --border-ui: #575f64; /* state-bearing borders — 6.51, clears 3.0 */
+
+  /* ---- Focus ring — must clear 3.0 against its own background ----------- */
+  --focus-light: #097873; /* 5.32 on paper, 5.07 on shell */
+  --focus-dark: #0fb5ae; /* 6.15 on ink (tide-text is only 2.94 on ink) */
+
+  /* ---- Fluid type scale -------------------------------------------------
+     Tomato Grotesk only. Display vs body separation comes from scale,
+     weight and tracking contrast, not a second typeface.               */
+  --fs-display: clamp(2.75rem, 7vw, 5.5rem);
+  --fs-h1: clamp(2.25rem, 5vw, 3.75rem);
+  --fs-h2: clamp(1.75rem, 3.4vw, 2.75rem);
+  --fs-h3: clamp(1.125rem, 1.6vw, 1.5rem);
+  --fs-lead: clamp(1.0625rem, 1.5vw, 1.3125rem);
+  --fs-body: clamp(1rem, 1.05vw, 1.0625rem);
+  --fs-small: 0.875rem;
+  --fs-micro: 0.8125rem;
+
+  --lh-display: 0.94;
+  --lh-head: 1.08;
+  --lh-body: 1.65;
+
+  --tr-display: -0.035em;
+  --tr-head: -0.02em;
+  --tr-body: 0;
+
+  /* ---- Spacing scale (8px base, 4px half-step) -------------------------- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-6: 1.5rem;
+  --sp-8: 2rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --sp-24: 6rem;
+  --sp-32: 8rem;
+
+  /* Section rhythm — fluid so mobile doesn't get 8rem of air */
+  --section-y: clamp(3.5rem, 8vw, 7.5rem);
+  --section-y-tight: clamp(2.5rem, 5vw, 4.5rem);
+
+  /* ---- Radii — a hierarchy, not one value on everything ----------------- */
+  --r-image: 1.75rem; /* large curved image containers */
+  --r-card: 0.875rem;
+  --r-ctl: 0.625rem; /* inputs, small buttons */
+  --r-pill: 999px;
+
+  /* ---- Shadows — two only, and used sparingly -------------------------- */
+  --shadow-lift: 0 18px 40px -24px rgb(31 36 39 / 0.28);
+  --shadow-deep: 0 24px 60px -20px rgb(31 36 39 / 0.38);
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --t-fast: 180ms;
+  --t-mid: 380ms;
+  --t-slow: 700ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.25, 1);
+  --ease-inout: cubic-bezier(0.65, 0.05, 0.36, 1);
+
+  /* ---- Layout ----------------------------------------------------------- */
+  --nav-h: 72px;
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --measure: 68ch; /* body copy line length, under 80ch */
+}
+
+/* Reduced motion: collapse every duration to near-zero so transitions
+   resolve instantly rather than being removed (which breaks state changes
+   that rely on transitionend). Individual animations opt out separately. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: 1ms;
+    --t-mid: 1ms;
+    --t-slow: 1ms;
+  }
+}

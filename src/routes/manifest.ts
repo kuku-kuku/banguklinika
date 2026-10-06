@@ -1,0 +1,117 @@
+/* ----------------------------------------------------------------------------
+ * Route manifest — the single source of truth for routing.
+ *
+ * `mod` is a key into the page glob in ./resolve.lazy.tsx (client, one chunk
+ * per route) and ./resolve.eager.tsx (SSR/prerender, everything inlined so
+ * renderToString never sees an unresolved lazy component and crawlers always
+ * get complete HTML).
+ *
+ * Paths and slugs are unchanged from the previous App.tsx route table.
+ * -------------------------------------------------------------------------- */
+
+export type RouteDef = { path: string; mod: string }
+
+/** Lithuanian routes, mounted at the root. */
+export const LT_ROUTES: RouteDef[] = [
+  { path: '/',                                                       mod: 'pages/Home' },
+  { path: '/apie',                                                   mod: 'pages/About' },
+  { path: '/paslaugos',                                              mod: 'pages/Services' },
+  { path: '/kainos',                                                 mod: 'pages/Pricing' },
+  { path: '/kontaktai',                                              mod: 'pages/Contact' },
+  { path: '/paslaugos/burnos-higiena',                               mod: 'pages/BurnosHigiena' },
+  { path: '/paslaugos/dantu-plombavimas',                            mod: 'pages/DantuPlombavimas' },
+  { path: '/paslaugos/estetinis-plombavimas',                        mod: 'pages/EstetinisPlombavimas' },
+  { path: '/paslaugos/burnos-chirurgija',                            mod: 'pages/BurnosChirurgija' },
+  { path: '/paslaugos/dantu-balinimas',                              mod: 'pages/DantuBalinimas' },
+  { path: '/paslaugos/dantu-taisymas-gydymas',                       mod: 'pages/DantuGydymas' },
+  { path: '/paslaugos/vaiku-odontologija',                           mod: 'pages/VaikuOdontologija' },
+  { path: '/paslaugos/dantu-protezavimas',                           mod: 'pages/DantuProtezavimas' },
+  { path: '/paslaugos/dantu-traukimas',                              mod: 'pages/DantuTraukimas' },
+  { path: '/paslaugos/dantu-tiesinimas',                             mod: 'pages/DantuTiesinimas' },
+  { path: '/paslaugos/endodontinis-gydymas',                         mod: 'pages/EndodontinisGydymas' },
+  { path: '/paslaugos/dantu-implantacija',                           mod: 'pages/DantuImplantacija' },
+  { path: '/paslaugos/skubi-pagalba',                                mod: 'pages/SkubiPagalba' },
+  { path: '/paslaugos/protiniu-dantu-salinimas',                     mod: 'pages/ProtiniuDantuSalinimas' },
+  { path: '/paslaugos/rentgenologiniai-tyrimai',                     mod: 'pages/RentgenologiniaiTyrimai' },
+  { path: '/paslaugos/vienmomente-implantacija',                     mod: 'pages/VienmomeneImplantacija' },
+  { path: '/paslaugos/dantu-karunieles',                             mod: 'pages/DantuKarunieles' },
+  { path: '/paslaugos/kompensacija-protezavimui',                    mod: 'pages/KompensacijaProtezavimui' },
+  { path: '/paslaugos/sinuso-pakelimas',                             mod: 'pages/SinusoPakelimas' },
+  { path: '/paslaugos/zandikaulio-kaulo-priauginimas',               mod: 'pages/ZandikaulioKauloPriauginimas' },
+  { path: '/paslaugos/dantu-tiltai',                                 mod: 'pages/DantuTiltai' },
+  { path: '/paslaugos/bruksizmo-dantu-kapa',                         mod: 'pages/BruksizmoDantuKapa' },
+  { path: '/paslaugos/cirkonio-keramikos-vainikelis',                mod: 'pages/CirkonioKeramikosVainikelis' },
+  { path: '/paslaugos/vaiku-profilaktinis-patikrinimas',             mod: 'pages/VaikuProfilaktinisPatikrinimas' },
+  { path: '/paslaugos/dantu-higiena-vaikams',                        mod: 'pages/DantuHigienaVaikams' },
+  { path: '/paslaugos/terapinis-dantu-gydymas',                      mod: 'pages/TerapinisDantuGydymas' },
+  { path: '/paslaugos/gydymas-icon-sistema',                         mod: 'pages/GydymasIconSistema' },
+  { path: '/paslaugos/dantu-balinimo-kapos',                         mod: 'pages/DantuBalinimoKapos' },
+  { path: '/paslaugos/dantu-balinimas-su-lempa',                     mod: 'pages/DantuBalinimasSuLempa' },
+  { path: '/paslaugos/straumann-dantu-implantai',                    mod: 'pages/StraumannDantuImplantai' },
+  { path: '/paslaugos/visi-dantys-ant-4-implantu',                   mod: 'pages/VisiDantysAnt4Implantu' },
+  { path: '/paslaugos/dantu-mikroprotezavimas',                      mod: 'pages/DantuMikroprotezavimas' },
+  { path: '/paslaugos/dantu-uzklotai',                               mod: 'pages/DantuUzklotai' },
+  { path: '/paslaugos/isimami-protezai',                             mod: 'pages/IsimamiProtezai' },
+  { path: '/paslaugos/pulinio-atverimas',                            mod: 'pages/PulinioAtverimas' },
+  { path: '/paslaugos/dantenu-uzdegimas-gingivitas',                 mod: 'pages/DantenuUzdegimas' },
+  { path: '/paslaugos/dantu-fluoravimas',                            mod: 'pages/DantuFluoravimas' },
+  { path: '/draugai',                                                mod: 'pages/Draugai' },
+  { path: '/musu-darbai',                                            mod: 'pages/MusuDarbai' },
+  { path: '/straipsniai',                                            mod: 'pages/Straipsniai' },
+  { path: '/straipsniai/:slug',                                      mod: 'pages/StraipsnisPage' },
+  { path: '/ypatingi-pasiulymai',                                    mod: 'pages/SpecialOffers' },
+  { path: '/ypatingi-pasiulymai/cirkonio-keramikos-vainikeliai',     mod: 'pages/CirkonioOffer' },
+  { path: '/ypatingi-pasiulymai/pilnas-zandikaulio-atstatymas',      mod: 'pages/AllOn4Implants' },
+]
+
+/** Latvian routes, mounted under the /lv layout (paths are relative). */
+export const LV_ROUTES: RouteDef[] = [
+  { path: '',                                                        mod: 'pages/lv/HomeLv' },
+  { path: 'par-mums',                                                mod: 'pages/lv/ParMusLv' },
+  { path: 'kontakti',                                                mod: 'pages/lv/KontaktiLv' },
+  { path: 'cenas',                                                   mod: 'pages/lv/CenasLv' },
+  { path: 'pakalpojumi',                                             mod: 'pages/lv/PakalpojumiLv' },
+  { path: 'pakalpojumi/zobu-implantacija',                           mod: 'pages/lv/DantuImplantacijaLv' },
+  { path: 'pakalpojumi/zobu-protezesana',                            mod: 'pages/lv/ZobuProtezesanaLv' },
+  { path: 'pakalpojumi/zobu-arstnieciba',                            mod: 'pages/lv/ZobuArstniecibaLv' },
+  { path: 'pakalpojumi/zobu-izlinesana',                             mod: 'pages/lv/ZobuIzlinesanaLv' },
+  { path: 'pakalpojumi/mutes-higiena',                               mod: 'pages/lv/MutesHigiennaLv' },
+  { path: 'pakalpojumi/mutes-hirurgija',                             mod: 'pages/lv/MutesHirurgijaLv' },
+  { path: 'pakalpojumi/zobu-balinesana',                             mod: 'pages/lv/ZobuBalinesanaLv' },
+  { path: 'pakalpojumi/estetiska-plombana',                          mod: 'pages/lv/EstetikaPlombanaLv' },
+  { path: 'pakalpojumi/zobu-plombana',                               mod: 'pages/lv/ZobuPlombanaLv' },
+  { path: 'pakalpojumi/zobu-ekstrakcija',                            mod: 'pages/lv/ZobuEkstrakcijaLv' },
+  { path: 'pakalpojumi/endodontija',                                 mod: 'pages/lv/EndodontijaLv' },
+  { path: 'pakalpojumi/bernu-odontologija',                          mod: 'pages/lv/BernuOdontologijaLv' },
+  { path: 'pakalpojumi/neatliekama-palidziba',                       mod: 'pages/lv/NeatliekamaPalidzibaLv' },
+  { path: 'pakalpojumi/straumann-implanti',                          mod: 'pages/lv/StraumannImplantiLv' },
+  { path: 'pakalpojumi/sinusa-pacelsana',                            mod: 'pages/lv/SinusaPacelsanaLv' },
+  { path: 'pakalpojumi/zoklakaula-augmentacija',                     mod: 'pages/lv/ZoklakaulaAugmentacijaLv' },
+  { path: 'pakalpojumi/gudribas-zobu-izvilksana',                    mod: 'pages/lv/GudribasZobuIzvilksanaLv' },
+  { path: 'pakalpojumi/abscesa-atversana',                           mod: 'pages/lv/AbscesaAtversanaLv' },
+  { path: 'pakalpojumi/tulitejas-implantacija',                      mod: 'pages/lv/TulitejasImplantacijaLv' },
+  { path: 'pakalpojumi/visi-zobi-uz-4-implantiem',                   mod: 'pages/lv/VisiZobiUz4ImplantiemLv' },
+  { path: 'pakalpojumi/cirkonija-keramikas-kronitis',                mod: 'pages/lv/CirkonijaKeramikasKronitisLv' },
+  { path: 'pakalpojumi/zobu-kroniti',                                mod: 'pages/lv/ZobuKronitiLv' },
+  { path: 'pakalpojumi/zobu-tilti',                                  mod: 'pages/lv/ZobuTiltiLv' },
+  { path: 'pakalpojumi/mikroprotezesana',                            mod: 'pages/lv/MikroprotezesanaLv' },
+  { path: 'pakalpojumi/zobu-uzlikas',                                mod: 'pages/lv/ZobuUzlikasLv' },
+  { path: 'pakalpojumi/iznemamas-protezes',                          mod: 'pages/lv/IznemamasProtezesLv' },
+  { path: 'pakalpojumi/protezesanas-kompensacija',                   mod: 'pages/lv/ProtezesanasKompensacijaLv' },
+  { path: 'pakalpojumi/terapeitiska-arstesana',                      mod: 'pages/lv/TerapeitiskaArstesanaLv' },
+  { path: 'pakalpojumi/arstesana-icon-sistema',                      mod: 'pages/lv/ArstesanaIconSistemaLv' },
+  { path: 'pakalpojumi/smaganu-iekaisums-gingivits',                 mod: 'pages/lv/SmaganuIekaisumsGingivitsLv' },
+  { path: 'pakalpojumi/bruksisma-kapa',                              mod: 'pages/lv/BruksismaKapaLv' },
+  { path: 'pakalpojumi/zobu-balinesanas-kapas',                      mod: 'pages/lv/ZobuBalinesanasKapasLv' },
+  { path: 'pakalpojumi/zobu-balinesana-ar-lampu',                    mod: 'pages/lv/ZobuBalinesanaArLampuLv' },
+  { path: 'pakalpojumi/zobu-fluoresana',                             mod: 'pages/lv/ZobuFluoresanaLv' },
+  { path: 'pakalpojumi/bernu-profilaktiska-parbaude',                mod: 'pages/lv/BernuProfilaktiskaParbaudeLv' },
+  { path: 'pakalpojumi/bernu-mutes-higiena',                         mod: 'pages/lv/BernuMutesHigienaLv' },
+  { path: 'pakalpojumi/rentgena-izmeklejumi',                        mod: 'pages/lv/RentgenaIzmeklejumiLv' },
+  { path: 'musu-darbi',                                              mod: 'pages/lv/MusuDarbiLv' },
+  { path: 'ipasi-piedavajumi',                                       mod: 'pages/lv/IpasiPiedavajumiLv' },
+  { path: 'raksti',                                                  mod: 'pages/lv/RakstiLv' },
+  { path: 'raksti/:slug',                                            mod: 'pages/lv/RakstsLv' },
+]
+
+export const ALL_MODS = [...LT_ROUTES, ...LV_ROUTES].map((r) => r.mod)
