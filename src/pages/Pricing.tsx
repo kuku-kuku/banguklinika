@@ -1,7 +1,8 @@
 import SEO from '../components/SEO'
 import PricingCards from '../components/PricingCards'
-import AnimatedSection from '../components/AnimatedSection'
-import { motion } from 'framer-motion'
+import RevealLines from '../components/RevealLines'
+import TideLine from '../components/TideLine'
+import WaveDivider from '../components/WaveDivider'
 
 import pricing from '../content/pricing.json'
 
@@ -18,7 +19,7 @@ export default function Pricing() {
   }
 
   return (
-    <AnimatedSection>
+    <>
       <SEO
         title={pricing.seo?.title ?? 'Kainos'}
         description={pricing.seo?.description}
@@ -26,41 +27,31 @@ export default function Pricing() {
         structuredData={structuredData}
       />
 
-      <motion.div
-        className="container-narrow"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: 'easeOut' }}
-      >
-        <motion.h1
-          className="text-3xl font-bold mb-3 text-darkblue-700"
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.05 }}
-        >
-          {pricing.seo?.title ?? 'Kainos'}
-        </motion.h1>
+      {/* Hero. The page-load motion is the one orchestrated moment here:
+          the heading reveals from under its mask, everything else is static. */}
+      <section className="shell-bg">
+        <div className="container-wide py-section">
+          <div className="max-w-3xl">
+            <h1 className="text-display font-black">
+              <RevealLines lines={[pricing.seo?.title ?? 'Kainos']} />
+            </h1>
+            <p className="muted measure mt-6 text-lead leading-relaxed">
+              {pricing.intro ?? 'Žemiau rasite pagrindines kategorijas — spustelkite kortelę, kad peržiūrėtumėte konkrečias paslaugas ir kainas.'}
+            </p>
+          </div>
+          <TideLine className="mt-12 max-w-xl" />
+        </div>
+      </section>
 
-        <motion.p
-          className="text-gray-600 mb-8"
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-        >
-          {pricing.intro ?? 'Žemiau rasite pagrindines kategorijas — spustelkite kortelę, kad peržiūrėtumėte konkrečias paslaugas ir kainas.'}
-        </motion.p>
+      <WaveDivider from="var(--shell)" to="var(--paper)" />
 
+      <section className="container-wide pb-section pt-section-tight">
         <PricingCards />
 
-        <motion.p
-          className="text-xs text-gray-500 mt-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.25 }}
-        >
+        <p className="muted mt-8 text-micro">
           {pricing.footnote ?? '* Kainos – orientacinės. Tiksli kaina nustatoma konsultacijos metu.'}
-        </motion.p>
-      </motion.div>
-    </AnimatedSection>
+        </p>
+      </section>
+    </>
   )
 }

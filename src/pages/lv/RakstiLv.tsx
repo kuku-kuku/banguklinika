@@ -6,7 +6,7 @@ import { BLOG_POSTS_LV, formatDateLv } from '../../data/blogLv'
 import { SITE_URL } from '../../i18n/lv'
 
 const C = {
-  teal:     '#0ABBB5',
+  teal:     '#097873',  // AA-safe for text on white (5.32:1)
   deepTeal: '#043F42',
   charcoal: '#262626',
 }
@@ -98,7 +98,7 @@ export default function RakstiLv() {
                     </div>
 
                     <h2
-                      className="font-bold text-base lg:text-[17px] leading-snug mb-3 transition-colors duration-200 group-hover:text-[#0ABBB5]"
+                      className="font-bold text-base lg:text-[17px] leading-snug mb-3 transition-colors duration-200 group-hover:text-[#097873]"
                       style={{ color: C.deepTeal }}
                     >
                       {post.title}

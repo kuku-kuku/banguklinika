@@ -4,6 +4,7 @@ import { useState } from 'react'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
 import about from '../content/about.json'
+import Picture from '../components/Picture'
 
 const TEAM_WITH_PHOTO = new Set(['donatas', 'jonas', 'odeta', 'ruta'])
 
@@ -14,8 +15,11 @@ const normalizeFirstName = (name: string) =>
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
 
+/* Points at the cropped portraits (scripts/team-portraits.mjs), not the
+   branded marketing cards in public/team/ — same sources, name/role artwork
+   removed, and these are the ones the responsive pipeline has AVIF for. */
 const getPhotoPath = (name: string, photoFile?: string) =>
-  `/team/${photoFile ?? normalizeFirstName(name)}.jpg`
+  `/team-portrait/${photoFile ?? normalizeFirstName(name)}.jpg`
 const hasPhoto = (name: string, photoFile?: string) =>
   photoFile ? true : TEAM_WITH_PHOTO.has(normalizeFirstName(name))
 
@@ -49,25 +53,24 @@ function CheckIcon() {
 }
 
 function TeamPhoto({ name, photoFile }: { name: string; photoFile?: string }) {
-  const [missing, setMissing] = useState(false)
   const src = getPhotoPath(name, photoFile)
-  const photoOk = hasPhoto(name, photoFile) && !missing
+  const photoOk = hasPhoto(name, photoFile)
 
   return (
     <div
       className={[
-        'relative w-full aspect-[4/5] rounded-3xl overflow-hidden bg-white shadow-soft',
-        'ring-2',
-        photoOk ? 'ring-brand/50' : 'ring-slate-200',
+        'relative w-full aspect-[3/4] overflow-hidden bg-shell',
+        'wave-mask',
+        photoOk ? '' : 'ring-1 ring-hairline',
       ].join(' ')}
     >
-      {!missing ? (
-        <img
+      {photoOk ? (
+        <Picture
           src={src}
           alt={name}
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="lazy"
-          onError={() => setMissing(true)}
+          sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 30vw"
+          className="absolute inset-0 block h-full w-full"
+          imgClassName="h-full w-full object-cover"
         />
       ) : (
         <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
@@ -138,13 +141,13 @@ export default function About() {
       />
 
       <motion.div
-        className="max-w-[1600px] xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-12 py-12 lg:py-16"
+        className="container-wide py-section-tight"
         variants={container}
         initial="hidden"
         animate="visible"
       >
         <motion.header className="mb-12" variants={item}>
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-darkblue-700">
+          <h1 className="max-w-4xl text-h1 font-black">
             Odontologai Klaipėdos Bangų klinikoje
           </h1>
         </motion.header>
@@ -156,10 +159,10 @@ export default function About() {
                 <TeamPhoto name={m.name} photoFile={m.photoFile} />
 
                 <div className="pt-5 px-1">
-                  <h3 className="font-bold text-slate-900 text-2xl leading-tight mb-1">{m.name}</h3>
-                  <p className="text-lg text-brand font-semibold mb-4">{m.role}</p>
+                  <h3 className="text-h3 font-bold leading-tight">{m.name}</h3>
+                  <p className="mt-1 text-body font-semibold text-tide-text">{m.role}</p>
                   {m.license && (
-                    <div className="text-sm text-slate-500 pt-4 border-t border-slate-100 font-medium tracking-wide">
+                    <div className="muted mt-4 border-t border-hairline pt-4 text-micro font-medium">
                       Licencijos Nr. {m.license}
                     </div>
                   )}
@@ -170,26 +173,23 @@ export default function About() {
         </motion.section>
 
         <motion.section className="mb-20 space-y-8" variants={item}>
-          <div className="rounded-[32px] border border-sky-200 bg-white shadow-soft p-6 sm:p-8 lg:p-10">
-            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6">
+          <div className="grid gap-8 border-t border-hairline pt-12 lg:grid-cols-12 lg:gap-16">
+            <h2 className="text-h2 font-extrabold lg:col-span-5">
               {about.hero?.title ?? 'Moderni odontologijos klinika Klaipėdoje'}
             </h2>
-
-            <div className="max-w-none">
-              <p className="text-lg sm:text-xl text-slate-600 leading-relaxed">{about.intro}</p>
-            </div>
+            <p className="muted measure text-lead leading-relaxed lg:col-span-7">{about.intro}</p>
           </div>
 
-          <div className="rounded-[32px] border border-emerald-200 bg-gradient-to-br from-white to-emerald-50 shadow-soft p-6 sm:p-8 lg:p-10">
-            <h2 className="text-2xl sm:text-3xl font-semibold text-darkblue-700 mb-8">
+          <div className="shell-bg rounded-image p-7 sm:p-10 lg:p-14">
+            <h2 className="mb-8 text-h2 font-extrabold">
               {about.servicesTitle}
             </h2>
 
             <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
-              <div className="space-y-4 text-base sm:text-lg text-slate-700">
+              <div className="space-y-4 text-body">
                 {services.filter((_, i) => i % 2 === 0).map((s, i) => (
                   <div key={i} className="flex items-start gap-3">
-                    <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 ring-1 ring-emerald-200">
+                    <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-pill bg-tide text-ink">
                       <CheckIcon />
                     </span>
                     <span className="leading-relaxed">{s}</span>
@@ -197,10 +197,10 @@ export default function About() {
                 ))}
               </div>
 
-              <div className="space-y-4 text-base sm:text-lg text-slate-700">
+              <div className="space-y-4 text-body">
                 {services.filter((_, i) => i % 2 === 1).map((s, i) => (
                   <div key={i} className="flex items-start gap-3">
-                    <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 ring-1 ring-emerald-200">
+                    <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-pill bg-tide text-ink">
                       <CheckIcon />
                     </span>
                     <span className="leading-relaxed">{s}</span>
@@ -212,24 +212,24 @@ export default function About() {
         </motion.section>
 
         <motion.section
-          className="mb-16 rounded-3xl border border-brand bg-white shadow-soft p-8"
+          className="mb-16 border-t border-hairline pt-12"
           variants={item}
         >
-          <h2 className="text-2xl sm:text-3xl font-semibold text-darkblue-700 mb-4">
+          <h2 className="mb-6 text-h2 font-extrabold">
             {about.lab?.title}
           </h2>
 
-          <div className="text-slate-700 text-lg space-y-4">
-            <p>{about.lab?.p1}</p>
-            <p className="font-medium text-darkblue-600">{about.lab?.p2}</p>
+          <div className="measure space-y-4 text-body leading-relaxed">
+            <p className="muted">{about.lab?.p1}</p>
+            <p className="font-semibold">{about.lab?.p2}</p>
           </div>
         </motion.section>
 
         {about.cta?.href && (
-          <div className="mt-12 mb-20 text-center">
+          <div className="mb-20 mt-12">
             <Link
               to={about.cta.href}
-              className="btn-primary rounded-full px-12 py-5 font-bold text-xl inline-block shadow-lg"
+              className="btn-ink"
             >
               {about.cta.text}
             </Link>

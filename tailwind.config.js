@@ -12,6 +12,7 @@ export default {
         paper: "var(--paper)",
         shell: "var(--shell)",
         ink: "var(--ink)",
+        danger: "var(--danger)",
         tide: {
           DEFAULT: "var(--tide)",
           deep: "var(--tide-deep)",

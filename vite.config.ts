@@ -25,12 +25,16 @@ export default defineConfig(({ isSsrBuild }) => ({
     rollupOptions: {
       output: {
         manualChunks(id) {
+          /* Only the things every route genuinely shares are pinned here.
+             Framer Motion is deliberately NOT pinned: the shell uses the
+             light `m` component while the ~90 service pages use the full
+             `motion` component, and forcing both into one chunk dragged the
+             entire animation runtime into the initial payload. Left alone,
+             Rollup splits it so the heavy half loads only with those pages. */
           if (!id.includes('node_modules')) return
-          if (id.includes('framer-motion') || id.includes('motion-dom') || id.includes('motion-utils')) return 'motion'
           if (id.includes('react-router')) return 'router'
           if (id.includes('/react/') || id.includes('/react-dom/') || id.includes('scheduler')) return 'react'
           if (id.includes('lenis')) return 'lenis'
-          return 'vendor'
         },
       },
     },

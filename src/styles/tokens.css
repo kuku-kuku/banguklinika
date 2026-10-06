@@ -29,6 +29,7 @@
   --text-mute: #575f64; /* 6.51 on paper · 6.20 on shell — AA body PASS */
   --text-on-ink: #ffffff; /* 15.67 on ink */
   --text-mute-on-ink: #a8b2b6; /* 7.25 on ink — AA body PASS */
+  --danger: #a4221b; /* 7.44 on paper · 7.09 on shell — AA body PASS */
 
   /* ---- Lines ------------------------------------------------------------- */
   --hairline: #dde4e5; /* decorative only (1.29) — never a state border */

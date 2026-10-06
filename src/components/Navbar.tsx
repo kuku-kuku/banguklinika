@@ -1,6 +1,8 @@
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { preloadPage } from '../routes/resolve'
+import { LT_ROUTES, LV_ROUTES } from '../routes/manifest'
+import { AnimatePresence, m } from 'framer-motion'
 import { ROUTE_MAP_LT_TO_LV, ROUTE_MAP_LV_TO_LT, navLv } from '../i18n/lv'
 
 type DropItem = { to?: string; label: string; children?: DropItem[] }
@@ -109,6 +111,22 @@ function ChevronDown({ open }: { open: boolean }) {
       <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
     </svg>
   )
+}
+
+
+/* Map a nav href to its page module so hovering a link can warm that route's
+   chunk before the click lands. Built once; a miss is simply not prefetched. */
+const MOD_BY_PATH: Record<string, string> = (() => {
+  const m: Record<string, string> = {}
+  for (const r of LT_ROUTES) m[r.path] = r.mod
+  for (const r of LV_ROUTES) m[r.path ? `/lv/${r.path}` : '/lv'] = r.mod
+  return m
+})()
+
+function prefetchRoute(to: string) {
+  const path = to.split('#')[0].replace(/\/$/, '') || '/'
+  const mod = MOD_BY_PATH[path]
+  if (mod) preloadPage(mod)
 }
 
 export default function Navbar() {
@@ -293,24 +311,25 @@ export default function Navbar() {
                   end={n.to === '/' || n.to === '/lv'}
                   className={({ isActive }) =>
                     [
-                      'relative text-[15px] md:text-[16px] font-medium transition-colors',
-                      isActive ? 'text-primary-700' : 'text-gray-800 hover:text-primary-700',
+                      'relative text-[15px] md:text-[16px] font-semibold transition-colors duration-fast',
+                      isActive ? 'text-ink' : 'text-ink/70 hover:text-ink',
                       'py-2',
                     ].join(' ')
                   }
                   onClick={() => handleNavClick(n.to)}
+                  onPointerEnter={() => prefetchRoute(n.to)}
+                  onFocus={() => prefetchRoute(n.to)}
                   aria-haspopup={hasDrop ? true : undefined}
                   aria-expanded={hasDrop ? openIndex === idx : undefined}
                   aria-controls={menuId}
                 >
                   <span className="relative">
                     {n.label}
+                    {/* Indicator scales on the X axis from the left edge —
+                        transform only, so it never triggers layout. */}
                     <span
                       aria-hidden
-                      className={[
-                        'absolute left-0 -bottom-1 h-[2px] w-full rounded-full transition-all',
-                        openIndex === idx ? 'bg-primary-600' : '',
-                      ].join(' ')}
+                      className={`nav-ind${openIndex === idx ? ' nav-ind--on' : ''}`}
                     />
                   </span>
                 </NavLink>
@@ -382,7 +401,7 @@ export default function Navbar() {
 
                               <AnimatePresence initial={false}>
                                 {isSubOpen && (
-                                  <motion.div
+                                  <m.div
                                     initial={{ height: 0, opacity: 0 }}
                                     animate={{ height: 'auto', opacity: 1 }}
                                     exit={{ height: 0, opacity: 0 }}
@@ -401,7 +420,7 @@ export default function Navbar() {
                                         </NavLink>
                                       ))}
                                     </div>
-                                  </motion.div>
+                                  </m.div>
                                 )}
                               </AnimatePresence>
                             </div>
@@ -436,7 +455,7 @@ export default function Navbar() {
 
           <AnimatePresence>
             {langOpen && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: -4 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -4 }}
@@ -457,7 +476,7 @@ export default function Navbar() {
                 >
                   Latviešu
                 </Link>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         </div>
@@ -476,7 +495,7 @@ export default function Navbar() {
       {/* Mobile overlay menu */}
       <AnimatePresence initial={false}>
         {openMobile && (
-          <motion.div
+          <m.div
             key="mobile-menu"
             variants={mobileVariants}
             initial="hidden"
@@ -548,7 +567,7 @@ export default function Navbar() {
 
                     <AnimatePresence initial={false}>
                       {isOpen && (
-                        <motion.div
+                        <m.div
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
@@ -607,7 +626,7 @@ export default function Navbar() {
 
                                   <AnimatePresence initial={false}>
                                     {isSubOpen && (
-                                      <motion.div
+                                      <m.div
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: 'auto', opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
@@ -626,14 +645,14 @@ export default function Navbar() {
                                             </NavLink>
                                           ))}
                                         </div>
-                                      </motion.div>
+                                      </m.div>
                                     )}
                                   </AnimatePresence>
                                 </div>
                               )
                             })}
                           </div>
-                        </motion.div>
+                        </m.div>
                       )}
                     </AnimatePresence>
                   </div>
@@ -648,7 +667,7 @@ export default function Navbar() {
                   className={`flex items-center justify-between px-3 py-2 rounded-lg text-[15px] font-medium transition-colors ${!isLv ? 'text-primary-700 bg-primary-50 font-semibold' : 'text-gray-700 hover:bg-primary-50 hover:text-primary-700'}`}
                 >
                   Lietuvių
-                  {!isLv && <span className="text-xs text-primary-500">✓</span>}
+                  {!isLv && <span className="text-xs text-primary-700">✓</span>}
                 </Link>
                 <Link
                   to={isLv ? location.pathname : getAltPath()}
@@ -656,11 +675,11 @@ export default function Navbar() {
                   className={`flex items-center justify-between px-3 py-2 rounded-lg text-[15px] font-medium transition-colors ${isLv ? 'text-primary-700 bg-primary-50 font-semibold' : 'text-gray-700 hover:bg-primary-50 hover:text-primary-700'}`}
                 >
                   Latviešu
-                  {isLv && <span className="text-xs text-primary-500">✓</span>}
+                  {isLv && <span className="text-xs text-primary-700">✓</span>}
                 </Link>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </header>

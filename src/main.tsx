@@ -10,20 +10,37 @@ import App from './App'
 import { preloadPage } from './routes/resolve'
 import './index.css'
 
-/* Every route is prerendered to static HTML, and that markup is what paints
- * first — it is the LCP. The client then does a fresh createRoot render (not
- * hydration, because the prerender step rewrites inline styles and the two
- * trees would not match).
+/* Every route is prerendered to static HTML. The client then does a fresh
+ * createRoot render (not hydration — the prerender step rewrites inline styles
+ * and the two trees would not match).
  *
- * With per-route chunks that swap would briefly show a Suspense fallback and
- * replace the already-painted content. So each prerendered page declares its
- * own route module and we wait for that one chunk before the first render:
- * the static HTML stays on screen until the real page is ready to take over.
+ * Kick off the current route's chunk immediately, but do NOT await it before
+ * mounting. Awaiting let the static markup paint first and then get torn down
+ * and rebuilt by createRoot, and that swap measured as 0.21 CLS. Mounting
+ * straight away keeps the static paint and React's first commit in the same
+ * frame, which is what the pre-redesign build did (0.0004 CLS).
+ *
+ * The Suspense fallback is effectively never seen: scripts/prerender.mjs emits
+ * a modulepreload for this exact chunk, so it downloads in parallel with the
+ * entry chunk and its dynamic import resolves in a microtask.
  */
-const routeMod = (window as unknown as { __ROUTE_MOD__?: string }).__ROUTE_MOD__
+const w = window as unknown as { __ROUTE_MOD__?: string; __ROUTE_PATH__?: string }
+const routeMod = w.__ROUTE_MOD__
+const container = document.getElementById('root')!
 
-function mount() {
-  ReactDOM.createRoot(document.getElementById('root')!).render(
+/* Only hydrate when this document really was prerendered for the URL being
+   viewed. A route with no prerendered file is served dist/index.html by the
+   SPA fallback, which carries the home page's markup — hydrating that against
+   a different route would mismatch and React would throw the server HTML away
+   anyway. Normalise trailing slashes before comparing. */
+const norm = (p: string) => p.replace(/\/+$/, '') || '/'
+const prerendered =
+  container.childElementCount > 0 &&
+  !!w.__ROUTE_PATH__ &&
+  norm(w.__ROUTE_PATH__) === norm(location.pathname)
+
+function tree() {
+  return (
     <React.StrictMode>
       <HelmetProvider>
         <BrowserRouter>
@@ -34,10 +51,15 @@ function mount() {
   )
 }
 
-if (routeMod) {
-  /* Resolve the current route's chunk first; mount regardless if it fails so
-     a bad hint can never leave the page stuck on static markup. */
-  Promise.resolve(preloadPage(routeMod)).finally(mount)
+if (prerendered && routeMod) {
+  /* Hydrate the prerendered markup rather than replacing it. The route chunk
+     must be resolved first: hydrateRoot cannot hydrate a suspended boundary,
+     it would discard the server HTML and client-render instead. */
+  preloadPage(routeMod).then(
+    () => ReactDOM.hydrateRoot(container, tree()),
+    () => ReactDOM.createRoot(container).render(tree())
+  )
 } else {
-  mount()
+  if (routeMod) preloadPage(routeMod)
+  ReactDOM.createRoot(container).render(tree())
 }

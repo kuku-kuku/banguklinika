@@ -71,15 +71,15 @@ export default function KontaktiLv() {
               <h1 className="text-2xl font-bold text-darkblue-600 mb-4">Kontakti</h1>
               <ul className="space-y-2 text-gray-700 text-sm">
                 <li className="flex items-start gap-2">
-                  <MapPin size={18} className="text-primary-600 mt-0.5" />
+                  <MapPin size={18} className="text-primary-700 mt-0.5" />
                   <span>{CLINIC.address}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Phone size={18} className="text-primary-600 mt-0.5" />
+                  <Phone size={18} className="text-primary-700 mt-0.5" />
                   <a className="hover:text-primary-700" href={`tel:${CLINIC.phone}`}>{CLINIC.phone}</a>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Mail size={18} className="text-primary-600 mt-0.5" />
+                  <Mail size={18} className="text-primary-700 mt-0.5" />
                   <a className="hover:text-primary-700" href={`mailto:${CLINIC.email}`}>{CLINIC.email}</a>
                 </li>
               </ul>
@@ -93,7 +93,7 @@ export default function KontaktiLv() {
                     { day: "Se–Sv", time: "Slēgts" },
                   ].map(h => (
                     <li key={h.day} className="flex items-center gap-2">
-                      <Clock size={16} className="text-primary-600" />
+                      <Clock size={16} className="text-primary-700" />
                       <span className="inline-block w-28">{h.day}:</span>
                       <span>{h.time}</span>
                     </li>

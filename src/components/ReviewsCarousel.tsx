@@ -312,7 +312,7 @@ export default function ReviewsCarousel({ hideTitle }: { hideTitle?: boolean } =
                 href={reviewsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-darkblue-600 hover:text-primary-600 transition border border-primary-200 bg-white rounded-xl px-4 py-2"
+                className="inline-flex items-center gap-2 text-sm font-medium text-darkblue-600 hover:text-primary-700 transition border border-primary-200 bg-white rounded-xl px-4 py-2"
               >
                 <GoogleIcon />
                 Visi atsiliepimai

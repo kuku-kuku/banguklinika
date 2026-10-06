@@ -1,6 +1,9 @@
 import React, { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
+import RevealLines from '../components/RevealLines'
+import TideLine from '../components/TideLine'
+import WaveDivider from '../components/WaveDivider'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
@@ -12,33 +15,20 @@ type Svc = {
   expandable?: React.ReactNode
 }
 
-const WaveMark = ({ className }: { className?: string }) => (
-  <img
-    src="/Asset 53@2x.png"
-    alt=""
-    aria-hidden
-    className={className}
-    draggable={false}
-  />
-)
-
 function ServiceCard({ svc }: { svc: Svc }) {
   const [open, setOpen] = useState(false)
 
   const inner = (
-    <div className="relative overflow-hidden rounded-2xl bg-white border border-[#262626]/15 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-[#262626]/30 group h-full flex flex-col">
-      {/* Wave watermark — bottom right, visible */}
-      <WaveMark className="absolute -bottom-5 -right-5 w-32 h-32 opacity-[0.10] pointer-events-none select-none transition-opacity duration-300 group-hover:opacity-[0.18]" />
-
-      <div className="relative z-10 px-7 py-8 flex items-center justify-between gap-4 flex-1 min-h-[120px]">
-        <h3 className="text-[17px] font-bold text-[#043F42] group-hover:text-[#0ABBB5] transition-colors duration-200 leading-snug">
+    <div className="card-flat group relative flex h-full flex-col overflow-hidden">
+      <div className="relative z-10 flex flex-1 items-center justify-between gap-4 px-7 py-8 min-h-[120px]">
+        <h3 className="text-h3 font-bold leading-snug">
           {svc.title}
         </h3>
 
         {svc.expandable && (
           <button
             onClick={e => { e.preventDefault(); setOpen(v => !v) }}
-            className="shrink-0 w-9 h-9 rounded-full bg-[#F4F5F4] hover:bg-[#0ABBB5] flex items-center justify-center text-[#043F42] hover:text-white transition-all duration-300 focus:outline-none"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-pill bg-shell text-ink transition-colors duration-fast hover:bg-tide"
             aria-expanded={open}
           >
             <svg className={`w-4 h-4 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
@@ -279,64 +269,33 @@ export default function Services() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#F4F5F4]">
-        <div className="container-narrow py-16 md:py-24 relative z-10">
-          <div className="max-w-xl">
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-              className="text-sm font-semibold tracking-widest uppercase text-[#0ABBB5] mb-3"
-            >
+      <section className="shell-bg">
+        <div className="container-wide py-section">
+          <div className="max-w-3xl">
+            {/* Was an uppercase letter-spaced eyebrow; same words, now set as
+                ordinary text so it reads as a line of copy, not a template
+                label. */}
+            <p className="text-small font-semibold text-tide-text">
               Bangų klinika
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#043F42] leading-tight"
-            >
-              Paslaugos
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.22, ease: [0.4, 0, 0.2, 1] }}
-              className="mt-5 text-slate-500 text-lg leading-relaxed max-w-lg"
-            >
+            </p>
+            <h1 className="mt-4 text-display font-black">
+              <RevealLines lines={['Paslaugos']} />
+            </h1>
+            <p className="muted measure mt-6 text-lead leading-relaxed">
               Visapusiška odontologo pagalba – nuo profilaktikos iki implantų. Pasirinkite dominančią paslaugą.
-            </motion.p>
+            </p>
           </div>
+          <TideLine className="mt-12 max-w-xl" />
         </div>
-
-        {/* Decorative wave logo — right */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85, rotate: -15 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 1.1, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 pointer-events-none select-none"
-          aria-hidden
-        >
-          <img src="/Asset 53@2x.png" alt="" className="w-64 h-64 md:w-96 md:h-96 opacity-[0.13]" draggable={false} />
-        </motion.div>
-
-        {/* second smaller — bottom left */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.25, ease: [0.4, 0, 0.2, 1] }}
-          className="absolute -left-8 bottom-0 translate-y-1/3 pointer-events-none select-none"
-          aria-hidden
-        >
-          <img src="/Asset 53@2x.png" alt="" className="w-44 h-44 opacity-[0.06]" draggable={false} />
-        </motion.div>
       </section>
 
+      <WaveDivider from="var(--shell)" to="var(--paper)" />
+
       {/* Services grid */}
-      <div className="container-narrow pt-10 pb-16 md:pt-12 md:pb-24">
+      <div className="container-wide pb-section pt-section-tight">
         <motion.div
           ref={gridRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
         >
           {sections.map((s, i) => (
             <motion.div

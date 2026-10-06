@@ -11,7 +11,7 @@ import { homeLv, SITE_URL } from '../../i18n/lv'
 import { BLOG_POSTS_LV, formatDateLv } from '../../data/blogLv'
 
 const C = {
-  teal:      '#0ABBB5',
+  teal:      '#097873',  // AA-safe for text on white (5.32:1)
   deepTeal:  '#043F42',
   charcoal:  '#262626',
   soft:      '#F4F5F4',
@@ -421,7 +421,7 @@ export default function HomeLv() {
                       style={{ background: `linear-gradient(to top, ${C.deepTeal}70, transparent)` }} />
                   </div>
                   <div className="flex flex-col flex-1 p-5">
-                    <h3 className="font-bold text-[15px] mb-2 transition-colors duration-200 group-hover:text-[#0ABBB5]"
+                    <h3 className="font-bold text-[15px] mb-2 transition-colors duration-200 group-hover:text-[#097873]"
                       style={{ color: C.deepTeal }}>
                       {s.title}
                     </h3>
@@ -491,7 +491,7 @@ export default function HomeLv() {
                     <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${C.deepTeal}55, transparent)` }} />
                   </div>
                   <div className="p-6">
-                    <h3 className="font-bold text-base lg:text-lg mb-2 group-hover:text-[#0ABBB5] transition-colors duration-300" style={{ color: C.deepTeal }}>
+                    <h3 className="font-bold text-base lg:text-lg mb-2 group-hover:text-[#097873] transition-colors duration-300" style={{ color: C.deepTeal }}>
                       {f.t}
                     </h3>
                     <p className="text-sm leading-relaxed text-slate-500">{f.d}</p>
@@ -602,7 +602,7 @@ export default function HomeLv() {
                       <div className="flex flex-col flex-1 p-5">
                         <p className="text-xs text-slate-400 mb-2">{formatDateLv(post.date)}</p>
                         <h3
-                          className="font-bold text-[15px] leading-snug mb-2 transition-colors duration-200 group-hover:text-[#0ABBB5]"
+                          className="font-bold text-[15px] leading-snug mb-2 transition-colors duration-200 group-hover:text-[#097873]"
                           style={{ color: C.deepTeal }}
                         >
                           {post.title}

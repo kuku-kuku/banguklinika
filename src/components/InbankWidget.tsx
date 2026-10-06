@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { CLINIC } from '../data/clinic'
 
 const FEATURES = [
@@ -27,7 +27,7 @@ export default function InbankWidget() {
     >
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 10, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.97 }}
@@ -85,12 +85,12 @@ export default function InbankWidget() {
                 Apie Inbank →
               </a>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
       {/* Trigger */}
-      <motion.button
+      <m.button
         onClick={() => setOpen(o => !o)}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
@@ -99,7 +99,7 @@ export default function InbankWidget() {
         <InbankLogo className="h-4 w-auto" />
         <span className="text-slate-500 text-xs">|</span>
         <span className="text-slate-700 text-sm font-semibold whitespace-nowrap">Mokėkite dalimis</span>
-        <motion.svg
+        <m.svg
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.2 }}
           viewBox="0 0 16 16"
@@ -110,8 +110,8 @@ export default function InbankWidget() {
           strokeLinecap="round"
         >
           <path d="M3 6l5 5 5-5" />
-        </motion.svg>
-      </motion.button>
+        </m.svg>
+      </m.button>
     </div>
   )
 }

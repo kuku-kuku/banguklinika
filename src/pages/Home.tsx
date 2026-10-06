@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import SEO from '../components/SEO'
@@ -16,9 +16,11 @@ import MagneticLink from '../components/MagneticLink'
 import TideLine from '../components/TideLine'
 import WaveDivider from '../components/WaveDivider'
 
-/* The pinned horizontal track pulls in scroll hooks, so it loads on approach
-   rather than in the Home chunk. */
-const ServicesTrack = lazy(() => import('../components/home/ServicesTrack'))
+/* Imported statically, NOT lazily. renderToString does not wait on suspended
+   boundaries, so a lazy ServicesTrack prerendered as its fallback and the
+   section heading plus all six service titles were missing from the HTML
+   crawlers see. Caught by diffing heading counts against main. */
+import ServicesTrack from '../components/home/ServicesTrack'
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 type GoogleData = { rating: number | null; user_ratings_total: number | null; reviews_url: string | null }
@@ -331,8 +333,7 @@ export default function Home() {
 
       {/* ══ POPULAR SERVICES ══════════════════════════════════════════════ */}
       <section className="pb-section pt-section-tight">
-        <Suspense fallback={<div aria-hidden className="min-h-[24rem]" />}>
-          <ServicesTrack
+        <ServicesTrack
             items={POPULAR_SERVICES}
             readMoreLabel="Plačiau"
             heading={
@@ -340,8 +341,7 @@ export default function Home() {
                 Populiariausios paslaugos
               </h2>
             }
-          />
-        </Suspense>
+        />
 
         <div className="container-wide mt-14 flex justify-start">
           <MagneticLink to="/paslaugos" className="btn-ink">

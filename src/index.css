@@ -149,7 +149,7 @@
 .lead { @apply text-gray-600; }
 
 .list-check > li { @apply pl-6 relative; }
-.list-check > li::before { content: "✓"; @apply absolute left-0 top-0 text-primary-600; }
+.list-check > li::before { content: "✓"; @apply absolute left-0 top-0 text-primary-700; }
 
 .footer-dark { @apply bg-darkblue-600 text-white; }
 .footer-dark h3, .footer-dark h4 { @apply text-white; }
@@ -440,3 +440,23 @@ html.js .reveal.is-in {
 @media (prefers-reduced-motion: reduce) {
   html.js .reveal { opacity: 1; transform: none; }
 }
+
+/* ---- Nav indicator ------------------------------------------------------
+   Scales in from the left on hover, while a dropdown is open, and on the
+   current route. Driven by CSS rather than an inline style so all three
+   states compose instead of overriding each other. Transform only. */
+.nav-ind {
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+  height: 2px;
+  width: 100%;
+  border-radius: var(--r-pill);
+  background: var(--tide);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--t-fast) var(--ease-out);
+}
+.group:hover .nav-ind,
+.nav-ind--on,
+a[aria-current='page'] .nav-ind { transform: scaleX(1); }

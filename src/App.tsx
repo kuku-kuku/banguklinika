@@ -9,7 +9,7 @@ import TrailingSlashRedirect from './components/TrailingSlashRedirect'
 import BackToTop from './components/BackToTop'
 import MobileStickyBar from './components/MobileStickyBar'
 import InbankWidget from './components/InbankWidget'
-import TideLine from './components/TideLine'
+import WaveDivider from './components/WaveDivider'
 import RouteFallback from './components/RouteFallback'
 import MotionProvider from './components/MotionProvider'
 
@@ -62,7 +62,8 @@ export default function App() {
           </Suspense>
         </main>
 
-        <TideLine />
+        {/* Wave transition into the charcoal footer. */}
+        <WaveDivider from="var(--paper)" to="var(--ink)" crest />
         <Footer />
         <BackToTop />
 

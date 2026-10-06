@@ -31,7 +31,7 @@ function ServiceCard({ svc }: { svc: Svc }) {
       <WaveMark className="absolute -bottom-5 -right-5 w-32 h-32 opacity-[0.10] pointer-events-none select-none transition-opacity duration-300 group-hover:opacity-[0.18]" />
 
       <div className="relative z-10 px-7 py-8 flex items-center justify-between gap-4 flex-1 min-h-[120px]">
-        <h3 className="text-[17px] font-bold text-[#043F42] group-hover:text-[#0ABBB5] transition-colors duration-200 leading-snug">
+        <h3 className="text-[17px] font-bold text-[#043F42] group-hover:text-[#097873] transition-colors duration-200 leading-snug">
           {svc.title}
         </h3>
 
@@ -144,7 +144,7 @@ export default function PakalpojumiLv() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-              className="text-sm font-semibold tracking-widest uppercase text-[#0ABBB5] mb-3"
+              className="text-sm font-semibold tracking-widest uppercase text-[#097873] mb-3"
             >
               Bangų klīnika
             </motion.p>

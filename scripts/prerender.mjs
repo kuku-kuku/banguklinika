@@ -637,12 +637,18 @@ function buildRouteChunkMap(ltRoutes, lvRoutes) {
   return map;
 }
 
-function injectRouteHints(html, hint) {
+function injectRouteHints(html, hint, route) {
   if (!hint || !hint.file) return html;
+  /* __ROUTE_PATH__ records which URL this file was generated for. Routes that
+     are not prerendered fall back to dist/index.html via _redirects, and that
+     file carries the home page's markup and hints — hydrating it against a
+     different route would mismatch. main.tsx compares this to the live
+     pathname and only hydrates on an exact match. */
   const tags =
     `  <link rel="modulepreload" crossorigin href="/${hint.file}" />
 ` +
-    `  <script>window.__ROUTE_MOD__=${JSON.stringify(hint.mod)}</script>
+    `  <script>window.__ROUTE_MOD__=${JSON.stringify(hint.mod)};` +
+    `window.__ROUTE_PATH__=${JSON.stringify(route)}</script>
 `;
   return html.replace("</head>", `${tags}</head>`);
 }
@@ -718,7 +724,7 @@ async function run() {
       let output = template;
       output = output.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
       output = injectHead(output, page);
-      output = injectRouteHints(output, routeChunks.get(route));
+      output = injectRouteHints(output, routeChunks.get(route), route);
 
       writeFileForRoute(page.route, output);
       console.log("[prerender] ✓", route);

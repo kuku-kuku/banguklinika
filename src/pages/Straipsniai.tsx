@@ -5,7 +5,7 @@ import SEO from '../components/SEO'
 import { BLOG_POSTS, formatDate } from '../data/blog'
 
 const C = {
-  teal:     '#0ABBB5',
+  teal:     '#097873',  // AA-safe for text on white (5.32:1)
   deepTeal: '#043F42',
   charcoal: '#262626',
   soft:     '#F4F5F4',
@@ -96,7 +96,7 @@ export default function Straipsniai() {
                     </div>
 
                     <h2
-                      className="font-bold text-base lg:text-[17px] leading-snug mb-3 transition-colors duration-200 group-hover:text-[#0ABBB5]"
+                      className="font-bold text-base lg:text-[17px] leading-snug mb-3 transition-colors duration-200 group-hover:text-[#097873]"
                       style={{ color: C.deepTeal }}
                     >
                       {post.title}

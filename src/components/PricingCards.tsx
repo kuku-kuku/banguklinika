@@ -183,7 +183,7 @@ function GroupCard({
           </td>
 
           <td
-            className="p-4 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-primary-600"
+            className="p-4 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-primary-700"
             style={
               doAnimation
                 ? {
@@ -226,7 +226,7 @@ function GroupCard({
             className={clsx(
               'font-semibold text-[17px] sm:text-lg leading-snug transition-colors duration-300',
               'whitespace-normal break-words',
-              open ? 'text-primary-600' : 'text-slate-800 group-hover:text-primary-600'
+              open ? 'text-primary-700' : 'text-slate-800 group-hover:text-primary-700'
             )}
           >
             {renderName(group.title)}
@@ -238,8 +238,8 @@ function GroupCard({
 
         <span
           className={clsx(
-            'w-8 h-8 flex items-center justify-center transition-all text-slate-400 group-hover:text-primary-500 shrink-0 rounded-full',
-            open ? 'rotate-180 text-primary-500 bg-primary-50' : 'group-hover:bg-slate-100'
+            'w-8 h-8 flex items-center justify-center transition-all text-slate-400 group-hover:text-primary-700 shrink-0 rounded-full',
+            open ? 'rotate-180 text-primary-700 bg-primary-50' : 'group-hover:bg-slate-100'
           )}
           style={{ transitionDuration: `${OPEN_MS}ms` }}
         >

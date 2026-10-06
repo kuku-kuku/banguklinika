@@ -1,6 +1,6 @@
 // src/components/BackToTop.tsx
 import { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { createPortal } from 'react-dom'
 
 function getScrollY(): number {
@@ -133,7 +133,7 @@ export default function BackToTop() {
   return createPortal(
     <AnimatePresence>
       {visible && (
-        <motion.button
+        <m.button
           key="backtotop"
           type="button"
           onClick={scrollToTop}
@@ -154,7 +154,7 @@ export default function BackToTop() {
           <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
             <path d="M12 6l-6 7h4v5h4v-5h4z" fill="currentColor" />
           </svg>
-        </motion.button>
+        </m.button>
       )}
     </AnimatePresence>,
     document.body

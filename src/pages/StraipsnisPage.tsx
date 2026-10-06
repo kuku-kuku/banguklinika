@@ -8,7 +8,7 @@ import { BLOG_POSTS, getPost, formatDate } from '../data/blog'
 import { CLINIC } from '../data/clinic'
 
 const C = {
-  teal:     '#0ABBB5',
+  teal:     '#097873',  // AA-safe for text on white (5.32:1)
   deepTeal: '#043F42',
   charcoal: '#262626',
 }
@@ -57,7 +57,7 @@ function RelatedPosts({ currentSlug }: { currentSlug: string }) {
                 <div className="p-4">
                   <p className="text-xs text-slate-400 mb-1.5">{formatDate(post.date)}</p>
                   <h3
-                    className="font-bold text-sm leading-snug transition-colors group-hover:text-[#0ABBB5]"
+                    className="font-bold text-sm leading-snug transition-colors group-hover:text-[#097873]"
                     style={{ color: C.deepTeal }}
                   >
                     {post.title}
@@ -423,7 +423,7 @@ export default function StraipsnisPage() {
                           href={`#${id}`}
                           onClick={(e) => { e.preventDefault(); scrollTo(id) }}
                           className={`flex items-start gap-2 px-2 py-1.5 rounded-lg text-xs leading-snug transition-colors no-underline ${
-                            activeId === id ? 'text-[#0ABBB5] font-semibold bg-teal-50' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'
+                            activeId === id ? 'text-[#097873] font-semibold bg-teal-50' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'
                           }`}
                         >
                           <span className={`mt-px shrink-0 w-1 h-1 rounded-full self-center transition-all ${activeId === id ? 'bg-[#0ABBB5] scale-150' : 'bg-slate-300'}`} />
