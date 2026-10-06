@@ -1,0 +1,1840 @@
+{
+  "_AnimatedSection-B6BfU_z7.js": {
+    "file": "assets/AnimatedSection-B6BfU_z7.js",
+    "name": "AnimatedSection",
+    "imports": [
+      "_react-BvRp_hRD.js"
+    ]
+  },
+  "_BeforeAfterSlider-CYzuNk9-.js": {
+    "file": "assets/BeforeAfterSlider-CYzuNk9-.js",
+    "name": "BeforeAfterSlider",
+    "imports": [
+      "_react-BvRp_hRD.js"
+    ]
+  },
+  "_Map-DDmS5mbO.js": {
+    "file": "assets/Map-DDmS5mbO.js",
+    "name": "Map",
+    "imports": [
+      "index.html",
+      "_react-BvRp_hRD.js"
+    ]
+  },
+  "_Picture-DvqcqL12.js": {
+    "file": "assets/Picture-DvqcqL12.js",
+    "name": "Picture",
+    "imports": [
+      "_react-BvRp_hRD.js"
+    ]
+  },
+  "_RevealLines-B9ic7KRI.js": {
+    "file": "assets/RevealLines-B9ic7KRI.js",
+    "name": "RevealLines",
+    "imports": [
+      "_react-BvRp_hRD.js"
+    ]
+  },
+  "_ReviewsCarousel-B7VzYFSN.js": {
+    "file": "assets/ReviewsCarousel-B7VzYFSN.js",
+    "name": "ReviewsCarousel",
+    "imports": [
+      "_react-BvRp_hRD.js"
+    ]
+  },
+  "_SEO-ThlRPqc9.js": {
+    "file": "assets/SEO-ThlRPqc9.js",
+    "name": "SEO",
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "index.html"
+    ]
+  },
+  "_TableOfContents-Ci6SWIua.js": {
+    "file": "assets/TableOfContents-Ci6SWIua.js",
+    "name": "TableOfContents",
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js"
+    ]
+  },
+  "_TideLine-Dsp21nsm.js": {
+    "file": "assets/TideLine-Dsp21nsm.js",
+    "name": "TideLine",
+    "imports": [
+      "_react-BvRp_hRD.js"
+    ]
+  },
+  "_blog-BFK6PCr5.js": {
+    "file": "assets/blog-BFK6PCr5.js",
+    "name": "blog"
+  },
+  "_blogLv-Bizd9e2k.js": {
+    "file": "assets/blogLv-Bizd9e2k.js",
+    "name": "blogLv"
+  },
+  "_clsx-DFkjkEGX.js": {
+    "file": "assets/clsx-DFkjkEGX.js",
+    "name": "clsx"
+  },
+  "_lenis-CZHgqTAH.js": {
+    "file": "assets/lenis-CZHgqTAH.js",
+    "name": "lenis"
+  },
+  "_offers-DSINhbYh.js": {
+    "file": "assets/offers-DSINhbYh.js",
+    "name": "offers"
+  },
+  "_proxy-Dr_N2Bwd.js": {
+    "file": "assets/proxy-Dr_N2Bwd.js",
+    "name": "proxy",
+    "imports": [
+      "index.html",
+      "_react-BvRp_hRD.js"
+    ]
+  },
+  "_react-BvRp_hRD.js": {
+    "file": "assets/react-BvRp_hRD.js",
+    "name": "react"
+  },
+  "_router-DPWD8MGT.js": {
+    "file": "assets/router-DPWD8MGT.js",
+    "name": "router",
+    "imports": [
+      "_react-BvRp_hRD.js"
+    ]
+  },
+  "_use-in-view-U9w59Rv0.js": {
+    "file": "assets/use-in-view-U9w59Rv0.js",
+    "name": "use-in-view",
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "index.html"
+    ]
+  },
+  "_wrapName-DqO5zBwL.js": {
+    "file": "assets/wrapName-DqO5zBwL.js",
+    "name": "wrapName",
+    "imports": [
+      "_react-BvRp_hRD.js"
+    ]
+  },
+  "index.html": {
+    "file": "assets/index-CMfsSCYX.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_lenis-CZHgqTAH.js"
+    ],
+    "dynamicImports": [
+      "src/pages/About.tsx",
+      "src/pages/AllOn4Implants.tsx",
+      "src/pages/BruksizmoDantuKapa.tsx",
+      "src/pages/BurnosChirurgija.tsx",
+      "src/pages/BurnosHigiena.tsx",
+      "src/pages/CirkonioKeramikosVainikelis.tsx",
+      "src/pages/CirkonioOffer.tsx",
+      "src/pages/Contact.tsx",
+      "src/pages/DantenuUzdegimas.tsx",
+      "src/pages/DantuBalinimas.tsx",
+      "src/pages/DantuBalinimasSuLempa.tsx",
+      "src/pages/DantuBalinimoKapos.tsx",
+      "src/pages/DantuFluoravimas.tsx",
+      "src/pages/DantuGydymas.tsx",
+      "src/pages/DantuHigienaVaikams.tsx",
+      "src/pages/DantuImplantacija.tsx",
+      "src/pages/DantuKarunieles.tsx",
+      "src/pages/DantuMikroprotezavimas.tsx",
+      "src/pages/DantuPlombavimas.tsx",
+      "src/pages/DantuProtezavimas.tsx",
+      "src/pages/DantuTiesinimas.tsx",
+      "src/pages/DantuTiltai.tsx",
+      "src/pages/DantuTraukimas.tsx",
+      "src/pages/DantuUzklotai.tsx",
+      "src/pages/Draugai.tsx",
+      "src/pages/EndodontinisGydymas.tsx",
+      "src/pages/EstetinisPlombavimas.tsx",
+      "src/pages/GydymasIconSistema.tsx",
+      "src/pages/Home.tsx",
+      "src/pages/IsimamiProtezai.tsx",
+      "src/pages/KompensacijaProtezavimui.tsx",
+      "src/pages/MusuDarbai.tsx",
+      "src/pages/Pricing.tsx",
+      "src/pages/ProtiniuDantuSalinimas.tsx",
+      "src/pages/PulinioAtverimas.tsx",
+      "src/pages/RentgenologiniaiTyrimai.tsx",
+      "src/pages/Services.tsx",
+      "src/pages/SinusoPakelimas.tsx",
+      "src/pages/SkubiPagalba.tsx",
+      "src/pages/SpecialOffers.tsx",
+      "src/pages/Straipsniai.tsx",
+      "src/pages/StraipsnisPage.tsx",
+      "src/pages/StraumannDantuImplantai.tsx",
+      "src/pages/TerapinisDantuGydymas.tsx",
+      "src/pages/VaikuOdontologija.tsx",
+      "src/pages/VaikuProfilaktinisPatikrinimas.tsx",
+      "src/pages/VienmomeneImplantacija.tsx",
+      "src/pages/VisiDantysAnt4Implantu.tsx",
+      "src/pages/ZandikaulioKauloPriauginimas.tsx",
+      "src/pages/lv/AbscesaAtversanaLv.tsx",
+      "src/pages/lv/ArstesanaIconSistemaLv.tsx",
+      "src/pages/lv/BernuMutesHigienaLv.tsx",
+      "src/pages/lv/BernuOdontologijaLv.tsx",
+      "src/pages/lv/BernuProfilaktiskaParbaudeLv.tsx",
+      "src/pages/lv/BruksismaKapaLv.tsx",
+      "src/pages/lv/CenasLv.tsx",
+      "src/pages/lv/CirkonijaKeramikasKronitisLv.tsx",
+      "src/pages/lv/DantuImplantacijaLv.tsx",
+      "src/pages/lv/EndodontijaLv.tsx",
+      "src/pages/lv/EstetikaPlombanaLv.tsx",
+      "src/pages/lv/GudribasZobuIzvilksanaLv.tsx",
+      "src/pages/lv/HomeLv.tsx",
+      "src/pages/lv/IpasiPiedavajumiLv.tsx",
+      "src/pages/lv/IznemamasProtezesLv.tsx",
+      "src/pages/lv/KontaktiLv.tsx",
+      "src/pages/lv/MikroprotezesanaLv.tsx",
+      "src/pages/lv/MusuDarbiLv.tsx",
+      "src/pages/lv/MutesHigiennaLv.tsx",
+      "src/pages/lv/MutesHirurgijaLv.tsx",
+      "src/pages/lv/NeatliekamaPalidzibaLv.tsx",
+      "src/pages/lv/PakalpojumiLv.tsx",
+      "src/pages/lv/ParMusLv.tsx",
+      "src/pages/lv/ProtezesanasKompensacijaLv.tsx",
+      "src/pages/lv/RakstiLv.tsx",
+      "src/pages/lv/RakstsLv.tsx",
+      "src/pages/lv/RentgenaIzmeklejumiLv.tsx",
+      "src/pages/lv/SinusaPacelsanaLv.tsx",
+      "src/pages/lv/SmaganuIekaisumsGingivitsLv.tsx",
+      "src/pages/lv/StraumannImplantiLv.tsx",
+      "src/pages/lv/TerapeitiskaArstesanaLv.tsx",
+      "src/pages/lv/TulitejasImplantacijaLv.tsx",
+      "src/pages/lv/VisiZobiUz4ImplantiemLv.tsx",
+      "src/pages/lv/ZobuArstniecibaLv.tsx",
+      "src/pages/lv/ZobuBalinesanaArLampuLv.tsx",
+      "src/pages/lv/ZobuBalinesanaLv.tsx",
+      "src/pages/lv/ZobuBalinesanasKapasLv.tsx",
+      "src/pages/lv/ZobuEkstrakcijaLv.tsx",
+      "src/pages/lv/ZobuFluoresanaLv.tsx",
+      "src/pages/lv/ZobuIzlinesanaLv.tsx",
+      "src/pages/lv/ZobuKronitiLv.tsx",
+      "src/pages/lv/ZobuPlombanaLv.tsx",
+      "src/pages/lv/ZobuProtezesanaLv.tsx",
+      "src/pages/lv/ZobuTiltiLv.tsx",
+      "src/pages/lv/ZobuUzlikasLv.tsx",
+      "src/pages/lv/ZoklakaulaAugmentacijaLv.tsx"
+    ],
+    "css": [
+      "assets/index-X15YDqKE.css"
+    ]
+  },
+  "src/pages/About.tsx": {
+    "file": "assets/About-CPnYSJqm.js",
+    "name": "About",
+    "src": "src/pages/About.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_Picture-DvqcqL12.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/AllOn4Implants.tsx": {
+    "file": "assets/AllOn4Implants-BS8LcD_o.js",
+    "name": "AllOn4Implants",
+    "src": "src/pages/AllOn4Implants.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "index.html",
+      "_router-DPWD8MGT.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_offers-DSINhbYh.js",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/BruksizmoDantuKapa.tsx": {
+    "file": "assets/BruksizmoDantuKapa-oGFjsF-p.js",
+    "name": "BruksizmoDantuKapa",
+    "src": "src/pages/BruksizmoDantuKapa.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/BurnosChirurgija.tsx": {
+    "file": "assets/BurnosChirurgija-DNxKJNx7.js",
+    "name": "BurnosChirurgija",
+    "src": "src/pages/BurnosChirurgija.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/BurnosHigiena.tsx": {
+    "file": "assets/BurnosHigiena-BzDMVTlt.js",
+    "name": "BurnosHigiena",
+    "src": "src/pages/BurnosHigiena.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_wrapName-DqO5zBwL.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/CirkonioKeramikosVainikelis.tsx": {
+    "file": "assets/CirkonioKeramikosVainikelis-CJgrvxuM.js",
+    "name": "CirkonioKeramikosVainikelis",
+    "src": "src/pages/CirkonioKeramikosVainikelis.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/CirkonioOffer.tsx": {
+    "file": "assets/CirkonioOffer-BvKBR_zZ.js",
+    "name": "CirkonioOffer",
+    "src": "src/pages/CirkonioOffer.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "index.html",
+      "_router-DPWD8MGT.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_offers-DSINhbYh.js",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/Contact.tsx": {
+    "file": "assets/Contact-CBiOd-x2.js",
+    "name": "Contact",
+    "src": "src/pages/Contact.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_SEO-ThlRPqc9.js",
+      "index.html",
+      "_Map-DDmS5mbO.js",
+      "_RevealLines-B9ic7KRI.js",
+      "_router-DPWD8MGT.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantenuUzdegimas.tsx": {
+    "file": "assets/DantenuUzdegimas-CPC8S_Va.js",
+    "name": "DantenuUzdegimas",
+    "src": "src/pages/DantenuUzdegimas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantuBalinimas.tsx": {
+    "file": "assets/DantuBalinimas-D7-jyqmG.js",
+    "name": "DantuBalinimas",
+    "src": "src/pages/DantuBalinimas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantuBalinimasSuLempa.tsx": {
+    "file": "assets/DantuBalinimasSuLempa-Divl1Yfz.js",
+    "name": "DantuBalinimasSuLempa",
+    "src": "src/pages/DantuBalinimasSuLempa.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantuBalinimoKapos.tsx": {
+    "file": "assets/DantuBalinimoKapos-E4XkSYyH.js",
+    "name": "DantuBalinimoKapos",
+    "src": "src/pages/DantuBalinimoKapos.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantuFluoravimas.tsx": {
+    "file": "assets/DantuFluoravimas-Yuep8N9V.js",
+    "name": "DantuFluoravimas",
+    "src": "src/pages/DantuFluoravimas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantuGydymas.tsx": {
+    "file": "assets/DantuGydymas-D7Rkpde-.js",
+    "name": "DantuGydymas",
+    "src": "src/pages/DantuGydymas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantuHigienaVaikams.tsx": {
+    "file": "assets/DantuHigienaVaikams-veokao3M.js",
+    "name": "DantuHigienaVaikams",
+    "src": "src/pages/DantuHigienaVaikams.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantuImplantacija.tsx": {
+    "file": "assets/DantuImplantacija-C3OKjrag.js",
+    "name": "DantuImplantacija",
+    "src": "src/pages/DantuImplantacija.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_wrapName-DqO5zBwL.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantuKarunieles.tsx": {
+    "file": "assets/DantuKarunieles-BsCQlRMT.js",
+    "name": "DantuKarunieles",
+    "src": "src/pages/DantuKarunieles.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantuMikroprotezavimas.tsx": {
+    "file": "assets/DantuMikroprotezavimas-u5b5Stss.js",
+    "name": "DantuMikroprotezavimas",
+    "src": "src/pages/DantuMikroprotezavimas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantuPlombavimas.tsx": {
+    "file": "assets/DantuPlombavimas-DDvjzkSD.js",
+    "name": "DantuPlombavimas",
+    "src": "src/pages/DantuPlombavimas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantuProtezavimas.tsx": {
+    "file": "assets/DantuProtezavimas-CH48l-Uf.js",
+    "name": "DantuProtezavimas",
+    "src": "src/pages/DantuProtezavimas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_BeforeAfterSlider-CYzuNk9-.js",
+      "_wrapName-DqO5zBwL.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantuTiesinimas.tsx": {
+    "file": "assets/DantuTiesinimas-CcRmSXt_.js",
+    "name": "DantuTiesinimas",
+    "src": "src/pages/DantuTiesinimas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantuTiltai.tsx": {
+    "file": "assets/DantuTiltai-BsG8KbmU.js",
+    "name": "DantuTiltai",
+    "src": "src/pages/DantuTiltai.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantuTraukimas.tsx": {
+    "file": "assets/DantuTraukimas-D-_VJa6b.js",
+    "name": "DantuTraukimas",
+    "src": "src/pages/DantuTraukimas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/DantuUzklotai.tsx": {
+    "file": "assets/DantuUzklotai-BhmnOyyX.js",
+    "name": "DantuUzklotai",
+    "src": "src/pages/DantuUzklotai.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/Draugai.tsx": {
+    "file": "assets/Draugai-BOvQjVW0.js",
+    "name": "Draugai",
+    "src": "src/pages/Draugai.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/EndodontinisGydymas.tsx": {
+    "file": "assets/EndodontinisGydymas-ChY0_WNc.js",
+    "name": "EndodontinisGydymas",
+    "src": "src/pages/EndodontinisGydymas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_wrapName-DqO5zBwL.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/EstetinisPlombavimas.tsx": {
+    "file": "assets/EstetinisPlombavimas-B3h1vIJy.js",
+    "name": "EstetinisPlombavimas",
+    "src": "src/pages/EstetinisPlombavimas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/GydymasIconSistema.tsx": {
+    "file": "assets/GydymasIconSistema-BcEzTZ0r.js",
+    "name": "GydymasIconSistema",
+    "src": "src/pages/GydymasIconSistema.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/Home.tsx": {
+    "file": "assets/Home-CpeRuehu.js",
+    "name": "Home",
+    "src": "src/pages/Home.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_SEO-ThlRPqc9.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "index.html",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_blog-BFK6PCr5.js",
+      "_Picture-DvqcqL12.js",
+      "_RevealLines-B9ic7KRI.js",
+      "_TideLine-Dsp21nsm.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/IsimamiProtezai.tsx": {
+    "file": "assets/IsimamiProtezai-C6zD6HIt.js",
+    "name": "IsimamiProtezai",
+    "src": "src/pages/IsimamiProtezai.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/KompensacijaProtezavimui.tsx": {
+    "file": "assets/KompensacijaProtezavimui-CsIu6Rdn.js",
+    "name": "KompensacijaProtezavimui",
+    "src": "src/pages/KompensacijaProtezavimui.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/MusuDarbai.tsx": {
+    "file": "assets/MusuDarbai-DKx-4iKb.js",
+    "name": "MusuDarbai",
+    "src": "src/pages/MusuDarbai.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/Pricing.tsx": {
+    "file": "assets/Pricing-BFBO6HFB.js",
+    "name": "Pricing",
+    "src": "src/pages/Pricing.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_SEO-ThlRPqc9.js",
+      "_clsx-DFkjkEGX.js",
+      "index.html",
+      "_wrapName-DqO5zBwL.js",
+      "_RevealLines-B9ic7KRI.js",
+      "_TideLine-Dsp21nsm.js",
+      "_router-DPWD8MGT.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/ProtiniuDantuSalinimas.tsx": {
+    "file": "assets/ProtiniuDantuSalinimas-Cg9Tcgec.js",
+    "name": "ProtiniuDantuSalinimas",
+    "src": "src/pages/ProtiniuDantuSalinimas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/PulinioAtverimas.tsx": {
+    "file": "assets/PulinioAtverimas-CstMCV-I.js",
+    "name": "PulinioAtverimas",
+    "src": "src/pages/PulinioAtverimas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/RentgenologiniaiTyrimai.tsx": {
+    "file": "assets/RentgenologiniaiTyrimai-YUXx8pXj.js",
+    "name": "RentgenologiniaiTyrimai",
+    "src": "src/pages/RentgenologiniaiTyrimai.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/Services.tsx": {
+    "file": "assets/Services-Bl7o4cCe.js",
+    "name": "Services",
+    "src": "src/pages/Services.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_SEO-ThlRPqc9.js",
+      "_RevealLines-B9ic7KRI.js",
+      "_TideLine-Dsp21nsm.js",
+      "index.html",
+      "_use-in-view-U9w59Rv0.js",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/SinusoPakelimas.tsx": {
+    "file": "assets/SinusoPakelimas-BlrqI5cJ.js",
+    "name": "SinusoPakelimas",
+    "src": "src/pages/SinusoPakelimas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/SkubiPagalba.tsx": {
+    "file": "assets/SkubiPagalba-CmBwcdHG.js",
+    "name": "SkubiPagalba",
+    "src": "src/pages/SkubiPagalba.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/SpecialOffers.tsx": {
+    "file": "assets/SpecialOffers-BFaO34aU.js",
+    "name": "SpecialOffers",
+    "src": "src/pages/SpecialOffers.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "index.html",
+      "_router-DPWD8MGT.js",
+      "_offers-DSINhbYh.js",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/Straipsniai.tsx": {
+    "file": "assets/Straipsniai-w6eshYHA.js",
+    "name": "Straipsniai",
+    "src": "src/pages/Straipsniai.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_blog-BFK6PCr5.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/StraipsnisPage.tsx": {
+    "file": "assets/StraipsnisPage-DR48EXS0.js",
+    "name": "StraipsnisPage",
+    "src": "src/pages/StraipsnisPage.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_SEO-ThlRPqc9.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_blog-BFK6PCr5.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/StraumannDantuImplantai.tsx": {
+    "file": "assets/StraumannDantuImplantai-CIj_IGd0.js",
+    "name": "StraumannDantuImplantai",
+    "src": "src/pages/StraumannDantuImplantai.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/TerapinisDantuGydymas.tsx": {
+    "file": "assets/TerapinisDantuGydymas-DqAlDMSJ.js",
+    "name": "TerapinisDantuGydymas",
+    "src": "src/pages/TerapinisDantuGydymas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/VaikuOdontologija.tsx": {
+    "file": "assets/VaikuOdontologija-CPqs0CQl.js",
+    "name": "VaikuOdontologija",
+    "src": "src/pages/VaikuOdontologija.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/VaikuProfilaktinisPatikrinimas.tsx": {
+    "file": "assets/VaikuProfilaktinisPatikrinimas-BnINoaOP.js",
+    "name": "VaikuProfilaktinisPatikrinimas",
+    "src": "src/pages/VaikuProfilaktinisPatikrinimas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/VienmomeneImplantacija.tsx": {
+    "file": "assets/VienmomeneImplantacija-CJBoeJ6T.js",
+    "name": "VienmomeneImplantacija",
+    "src": "src/pages/VienmomeneImplantacija.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/VisiDantysAnt4Implantu.tsx": {
+    "file": "assets/VisiDantysAnt4Implantu-CttvWmAg.js",
+    "name": "VisiDantysAnt4Implantu",
+    "src": "src/pages/VisiDantysAnt4Implantu.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/ZandikaulioKauloPriauginimas.tsx": {
+    "file": "assets/ZandikaulioKauloPriauginimas-DgW2es-l.js",
+    "name": "ZandikaulioKauloPriauginimas",
+    "src": "src/pages/ZandikaulioKauloPriauginimas.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "index.html",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/AbscesaAtversanaLv.tsx": {
+    "file": "assets/AbscesaAtversanaLv-D0p6mrlR.js",
+    "name": "AbscesaAtversanaLv",
+    "src": "src/pages/lv/AbscesaAtversanaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ArstesanaIconSistemaLv.tsx": {
+    "file": "assets/ArstesanaIconSistemaLv-BawFE1I6.js",
+    "name": "ArstesanaIconSistemaLv",
+    "src": "src/pages/lv/ArstesanaIconSistemaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/BernuMutesHigienaLv.tsx": {
+    "file": "assets/BernuMutesHigienaLv-DkQ_o5c8.js",
+    "name": "BernuMutesHigienaLv",
+    "src": "src/pages/lv/BernuMutesHigienaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/BernuOdontologijaLv.tsx": {
+    "file": "assets/BernuOdontologijaLv-ejuYHQIM.js",
+    "name": "BernuOdontologijaLv",
+    "src": "src/pages/lv/BernuOdontologijaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "index.html",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/BernuProfilaktiskaParbaudeLv.tsx": {
+    "file": "assets/BernuProfilaktiskaParbaudeLv-CSXNyaIy.js",
+    "name": "BernuProfilaktiskaParbaudeLv",
+    "src": "src/pages/lv/BernuProfilaktiskaParbaudeLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/BruksismaKapaLv.tsx": {
+    "file": "assets/BruksismaKapaLv-BPr5vSxM.js",
+    "name": "BruksismaKapaLv",
+    "src": "src/pages/lv/BruksismaKapaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/CenasLv.tsx": {
+    "file": "assets/CenasLv-B2qo1Mfe.js",
+    "name": "CenasLv",
+    "src": "src/pages/lv/CenasLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_clsx-DFkjkEGX.js",
+      "_wrapName-DqO5zBwL.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_router-DPWD8MGT.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/CirkonijaKeramikasKronitisLv.tsx": {
+    "file": "assets/CirkonijaKeramikasKronitisLv-Cmb8UG0H.js",
+    "name": "CirkonijaKeramikasKronitisLv",
+    "src": "src/pages/lv/CirkonijaKeramikasKronitisLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/DantuImplantacijaLv.tsx": {
+    "file": "assets/DantuImplantacijaLv-DZvW2H3l.js",
+    "name": "DantuImplantacijaLv",
+    "src": "src/pages/lv/DantuImplantacijaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "index.html",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/EndodontijaLv.tsx": {
+    "file": "assets/EndodontijaLv-Cng84f9k.js",
+    "name": "EndodontijaLv",
+    "src": "src/pages/lv/EndodontijaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "index.html",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/EstetikaPlombanaLv.tsx": {
+    "file": "assets/EstetikaPlombanaLv-uNf8RIX6.js",
+    "name": "EstetikaPlombanaLv",
+    "src": "src/pages/lv/EstetikaPlombanaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/GudribasZobuIzvilksanaLv.tsx": {
+    "file": "assets/GudribasZobuIzvilksanaLv-Bui2vL4B.js",
+    "name": "GudribasZobuIzvilksanaLv",
+    "src": "src/pages/lv/GudribasZobuIzvilksanaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/HomeLv.tsx": {
+    "file": "assets/HomeLv-CeNgioZN.js",
+    "name": "HomeLv",
+    "src": "src/pages/lv/HomeLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_SEO-ThlRPqc9.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "index.html",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_blogLv-Bizd9e2k.js",
+      "_use-in-view-U9w59Rv0.js",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/IpasiPiedavajumiLv.tsx": {
+    "file": "assets/IpasiPiedavajumiLv-ZpglISBk.js",
+    "name": "IpasiPiedavajumiLv",
+    "src": "src/pages/lv/IpasiPiedavajumiLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "index.html",
+      "_router-DPWD8MGT.js",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/IznemamasProtezesLv.tsx": {
+    "file": "assets/IznemamasProtezesLv-DTJul6q4.js",
+    "name": "IznemamasProtezesLv",
+    "src": "src/pages/lv/IznemamasProtezesLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/KontaktiLv.tsx": {
+    "file": "assets/KontaktiLv-Ch4xv3Y5.js",
+    "name": "KontaktiLv",
+    "src": "src/pages/lv/KontaktiLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_Map-DDmS5mbO.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/MikroprotezesanaLv.tsx": {
+    "file": "assets/MikroprotezesanaLv-ZLaoY8SE.js",
+    "name": "MikroprotezesanaLv",
+    "src": "src/pages/lv/MikroprotezesanaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/MusuDarbiLv.tsx": {
+    "file": "assets/MusuDarbiLv-Bo0zpNaV.js",
+    "name": "MusuDarbiLv",
+    "src": "src/pages/lv/MusuDarbiLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/MutesHigiennaLv.tsx": {
+    "file": "assets/MutesHigiennaLv-CBGFaLU_.js",
+    "name": "MutesHigiennaLv",
+    "src": "src/pages/lv/MutesHigiennaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/MutesHirurgijaLv.tsx": {
+    "file": "assets/MutesHirurgijaLv-CRb_uZUn.js",
+    "name": "MutesHirurgijaLv",
+    "src": "src/pages/lv/MutesHirurgijaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/NeatliekamaPalidzibaLv.tsx": {
+    "file": "assets/NeatliekamaPalidzibaLv-CQ_P-KfL.js",
+    "name": "NeatliekamaPalidzibaLv",
+    "src": "src/pages/lv/NeatliekamaPalidzibaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/PakalpojumiLv.tsx": {
+    "file": "assets/PakalpojumiLv-DHwTf9jI.js",
+    "name": "PakalpojumiLv",
+    "src": "src/pages/lv/PakalpojumiLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_SEO-ThlRPqc9.js",
+      "index.html",
+      "_use-in-view-U9w59Rv0.js",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ParMusLv.tsx": {
+    "file": "assets/ParMusLv-DznV2SMO.js",
+    "name": "ParMusLv",
+    "src": "src/pages/lv/ParMusLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ProtezesanasKompensacijaLv.tsx": {
+    "file": "assets/ProtezesanasKompensacijaLv-YmLCpPNp.js",
+    "name": "ProtezesanasKompensacijaLv",
+    "src": "src/pages/lv/ProtezesanasKompensacijaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/RakstiLv.tsx": {
+    "file": "assets/RakstiLv-CLzAjd1V.js",
+    "name": "RakstiLv",
+    "src": "src/pages/lv/RakstiLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_blogLv-Bizd9e2k.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/RakstsLv.tsx": {
+    "file": "assets/RakstsLv-K8kg1N5q.js",
+    "name": "RakstsLv",
+    "src": "src/pages/lv/RakstsLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_SEO-ThlRPqc9.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_blogLv-Bizd9e2k.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/RentgenaIzmeklejumiLv.tsx": {
+    "file": "assets/RentgenaIzmeklejumiLv-B5y9Pm27.js",
+    "name": "RentgenaIzmeklejumiLv",
+    "src": "src/pages/lv/RentgenaIzmeklejumiLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/SinusaPacelsanaLv.tsx": {
+    "file": "assets/SinusaPacelsanaLv-DEU40aqt.js",
+    "name": "SinusaPacelsanaLv",
+    "src": "src/pages/lv/SinusaPacelsanaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/SmaganuIekaisumsGingivitsLv.tsx": {
+    "file": "assets/SmaganuIekaisumsGingivitsLv-WmMSjfYC.js",
+    "name": "SmaganuIekaisumsGingivitsLv",
+    "src": "src/pages/lv/SmaganuIekaisumsGingivitsLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/StraumannImplantiLv.tsx": {
+    "file": "assets/StraumannImplantiLv-Bn7WnniY.js",
+    "name": "StraumannImplantiLv",
+    "src": "src/pages/lv/StraumannImplantiLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/TerapeitiskaArstesanaLv.tsx": {
+    "file": "assets/TerapeitiskaArstesanaLv-2dVWRX8S.js",
+    "name": "TerapeitiskaArstesanaLv",
+    "src": "src/pages/lv/TerapeitiskaArstesanaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/TulitejasImplantacijaLv.tsx": {
+    "file": "assets/TulitejasImplantacijaLv-kutXjEIO.js",
+    "name": "TulitejasImplantacijaLv",
+    "src": "src/pages/lv/TulitejasImplantacijaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/VisiZobiUz4ImplantiemLv.tsx": {
+    "file": "assets/VisiZobiUz4ImplantiemLv-vtHmwm-0.js",
+    "name": "VisiZobiUz4ImplantiemLv",
+    "src": "src/pages/lv/VisiZobiUz4ImplantiemLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ZobuArstniecibaLv.tsx": {
+    "file": "assets/ZobuArstniecibaLv-JvTI3Yt1.js",
+    "name": "ZobuArstniecibaLv",
+    "src": "src/pages/lv/ZobuArstniecibaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ZobuBalinesanaArLampuLv.tsx": {
+    "file": "assets/ZobuBalinesanaArLampuLv-IFocxlkQ.js",
+    "name": "ZobuBalinesanaArLampuLv",
+    "src": "src/pages/lv/ZobuBalinesanaArLampuLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ZobuBalinesanaLv.tsx": {
+    "file": "assets/ZobuBalinesanaLv-CRtjuMFV.js",
+    "name": "ZobuBalinesanaLv",
+    "src": "src/pages/lv/ZobuBalinesanaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ZobuBalinesanasKapasLv.tsx": {
+    "file": "assets/ZobuBalinesanasKapasLv-gJxQL6kj.js",
+    "name": "ZobuBalinesanasKapasLv",
+    "src": "src/pages/lv/ZobuBalinesanasKapasLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ZobuEkstrakcijaLv.tsx": {
+    "file": "assets/ZobuEkstrakcijaLv-LthnGfH5.js",
+    "name": "ZobuEkstrakcijaLv",
+    "src": "src/pages/lv/ZobuEkstrakcijaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "index.html",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ZobuFluoresanaLv.tsx": {
+    "file": "assets/ZobuFluoresanaLv-CB8Df0Tq.js",
+    "name": "ZobuFluoresanaLv",
+    "src": "src/pages/lv/ZobuFluoresanaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ZobuIzlinesanaLv.tsx": {
+    "file": "assets/ZobuIzlinesanaLv-C_bjXuyd.js",
+    "name": "ZobuIzlinesanaLv",
+    "src": "src/pages/lv/ZobuIzlinesanaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ZobuKronitiLv.tsx": {
+    "file": "assets/ZobuKronitiLv-BQkfyvNu.js",
+    "name": "ZobuKronitiLv",
+    "src": "src/pages/lv/ZobuKronitiLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ZobuPlombanaLv.tsx": {
+    "file": "assets/ZobuPlombanaLv-IatBaSg-.js",
+    "name": "ZobuPlombanaLv",
+    "src": "src/pages/lv/ZobuPlombanaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "index.html",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ZobuProtezesanaLv.tsx": {
+    "file": "assets/ZobuProtezesanaLv-D5SoVosV.js",
+    "name": "ZobuProtezesanaLv",
+    "src": "src/pages/lv/ZobuProtezesanaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "_BeforeAfterSlider-CYzuNk9-.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ZobuTiltiLv.tsx": {
+    "file": "assets/ZobuTiltiLv-hwwdI5a7.js",
+    "name": "ZobuTiltiLv",
+    "src": "src/pages/lv/ZobuTiltiLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ZobuUzlikasLv.tsx": {
+    "file": "assets/ZobuUzlikasLv-7SP9-Ygy.js",
+    "name": "ZobuUzlikasLv",
+    "src": "src/pages/lv/ZobuUzlikasLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  },
+  "src/pages/lv/ZoklakaulaAugmentacijaLv.tsx": {
+    "file": "assets/ZoklakaulaAugmentacijaLv-B72zJPj4.js",
+    "name": "ZoklakaulaAugmentacijaLv",
+    "src": "src/pages/lv/ZoklakaulaAugmentacijaLv.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_react-BvRp_hRD.js",
+      "_router-DPWD8MGT.js",
+      "_AnimatedSection-B6BfU_z7.js",
+      "_SEO-ThlRPqc9.js",
+      "_TableOfContents-Ci6SWIua.js",
+      "_ReviewsCarousel-B7VzYFSN.js",
+      "index.html",
+      "_proxy-Dr_N2Bwd.js",
+      "_lenis-CZHgqTAH.js"
+    ]
+  }
+}

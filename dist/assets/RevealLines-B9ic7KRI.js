@@ -1,0 +1,1 @@
+import{j as e}from"./react-BvRp_hRD.js";function p({lines:a,startDelay:l=80,stagger:n=110,className:r}){return e.jsx("span",{className:`reveal-lines ${r??""}`,children:a.map((i,s)=>e.jsx("span",{className:"reveal-line",style:{"--reveal-delay":`${l+s*n}ms`},children:e.jsx("span",{children:i})},s))})}export{p as R};

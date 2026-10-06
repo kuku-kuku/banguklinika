@@ -153,7 +153,14 @@
 
 .footer-dark { @apply bg-darkblue-600 text-white; }
 .footer-dark h3, .footer-dark h4 { @apply text-white; }
-.footer-link { @apply text-white/90 hover:text-white; }
+.footer-link {
+  @apply text-white/90 hover:text-white;
+  /* WCAG 2.2 target size: these were 13-16px tall. Inline-block plus vertical
+     padding brings the hit area to 24px without changing the visual rhythm. */
+  display: inline-block;
+  padding-block: 0.25rem;
+  min-height: 24px;
+}
 .footer-meta { @apply text-white/70 text-sm; }
 .footer-pin { @apply inline-flex items-center gap-2 text-white/90; }
 

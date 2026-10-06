@@ -1,0 +1,1 @@
+import{j as t,r as n}from"./react-BvRp_hRD.js";const a=18;function p(e){return e.split(/(\s\([^)]*\))/g).filter(Boolean).map((s,r)=>s.startsWith(" (")&&s.length-1<=a?t.jsx("span",{className:"whitespace-nowrap",children:s},r):t.jsx(n.Fragment,{children:s},r))}export{p as w};

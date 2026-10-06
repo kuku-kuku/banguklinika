@@ -279,6 +279,8 @@ export default function Navbar() {
         >
           <img
             src="/Asset 63.svg"
+            width={862}
+            height={289}
             alt="Bangų klinika"
             className="h-10 md:h-11 w-auto object-contain select-none"
             draggable={false}
@@ -289,7 +291,7 @@ export default function Navbar() {
 
         {/* Desktop NAV */}
         <nav
-          className="hidden md:flex items-center gap-4 lg:gap-5 xl:gap-7 relative"
+          className="hidden lg:flex items-center gap-4 lg:gap-5 xl:gap-7 relative"
           onMouseLeave={scheduleClose}
           onMouseEnter={cancelClose}
         >
@@ -436,7 +438,7 @@ export default function Navbar() {
         </nav>
 
         {/* Language switcher — desktop */}
-        <div ref={langRef} className="hidden md:block relative">
+        <div ref={langRef} className="hidden lg:block relative">
           <button
             type="button"
             onClick={() => setLangOpen(v => !v)}
@@ -483,7 +485,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden btn-ghost text-[15px] font-medium"
+          className="lg:hidden btn-ghost text-[15px] font-medium"
           onClick={() => setOpenMobile((v) => !v)}
           aria-expanded={openMobile}
           aria-label="Meniu"
@@ -502,7 +504,7 @@ export default function Navbar() {
             animate="visible"
             exit="exit"
             transition={{ duration: 0.18, ease: 'easeOut' }}
-            className="md:hidden fixed inset-0 top-[72px] bg-white border-t border-gray-100 overflow-auto will-change-transform"
+            className="lg:hidden fixed inset-0 top-[72px] bg-white border-t border-gray-100 overflow-auto will-change-transform"
           >
             <div className="container-narrow py-2 grid gap-1.5">
               {activeNav.filter(n => !['/straipsniai', '/draugai', '/lv/raksti'].includes(n.to)).map((n, idx) => {
