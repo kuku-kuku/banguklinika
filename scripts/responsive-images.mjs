@@ -44,9 +44,6 @@ const SOURCES = [
      starts once it has loaded, so the handoff is invisible. */
   'hero-poster-source.png',
   'team/*.jpg',
-  /* Clean portraits cropped out of the branded team cards — see
-     scripts/team-portraits.mjs. These are what the home page renders. */
-  'team-portrait/*.jpg',
   'blog/*.{jpg,png,webp}',
   'musu-darbai/*.jpg',
 ]

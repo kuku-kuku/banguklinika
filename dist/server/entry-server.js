@@ -3941,151 +3941,6 @@ const manifest = {
       }
     ]
   },
-  "/team-portrait/donataskubilius.jpg": {
-    w: 900,
-    h: 1200,
-    ratio: 0.75,
-    avif: [
-      {
-        w: 400,
-        h: 533,
-        src: "/img/team-portrait__donataskubilius-400.avif"
-      },
-      {
-        w: 800,
-        h: 1067,
-        src: "/img/team-portrait__donataskubilius-800.avif"
-      }
-    ],
-    webp: [
-      {
-        w: 400,
-        h: 533,
-        src: "/img/team-portrait__donataskubilius-400.webp"
-      },
-      {
-        w: 800,
-        h: 1067,
-        src: "/img/team-portrait__donataskubilius-800.webp"
-      }
-    ]
-  },
-  "/team-portrait/Donatas_light.jpg": {
-    w: 900,
-    h: 1200,
-    ratio: 0.75,
-    avif: [
-      {
-        w: 400,
-        h: 533,
-        src: "/img/team-portrait__Donatas_light-400.avif"
-      },
-      {
-        w: 800,
-        h: 1067,
-        src: "/img/team-portrait__Donatas_light-800.avif"
-      }
-    ],
-    webp: [
-      {
-        w: 400,
-        h: 533,
-        src: "/img/team-portrait__Donatas_light-400.webp"
-      },
-      {
-        w: 800,
-        h: 1067,
-        src: "/img/team-portrait__Donatas_light-800.webp"
-      }
-    ]
-  },
-  "/team-portrait/Jonas-light.jpg": {
-    w: 900,
-    h: 1200,
-    ratio: 0.75,
-    avif: [
-      {
-        w: 400,
-        h: 533,
-        src: "/img/team-portrait__Jonas-light-400.avif"
-      },
-      {
-        w: 800,
-        h: 1067,
-        src: "/img/team-portrait__Jonas-light-800.avif"
-      }
-    ],
-    webp: [
-      {
-        w: 400,
-        h: 533,
-        src: "/img/team-portrait__Jonas-light-400.webp"
-      },
-      {
-        w: 800,
-        h: 1067,
-        src: "/img/team-portrait__Jonas-light-800.webp"
-      }
-    ]
-  },
-  "/team-portrait/Odeta-light.jpg": {
-    w: 900,
-    h: 1200,
-    ratio: 0.75,
-    avif: [
-      {
-        w: 400,
-        h: 533,
-        src: "/img/team-portrait__Odeta-light-400.avif"
-      },
-      {
-        w: 800,
-        h: 1067,
-        src: "/img/team-portrait__Odeta-light-800.avif"
-      }
-    ],
-    webp: [
-      {
-        w: 400,
-        h: 533,
-        src: "/img/team-portrait__Odeta-light-400.webp"
-      },
-      {
-        w: 800,
-        h: 1067,
-        src: "/img/team-portrait__Odeta-light-800.webp"
-      }
-    ]
-  },
-  "/team-portrait/Rūta_light.jpg": {
-    w: 900,
-    h: 1200,
-    ratio: 0.75,
-    avif: [
-      {
-        w: 400,
-        h: 533,
-        src: "/img/team-portrait__R-ta_light-400.avif"
-      },
-      {
-        w: 800,
-        h: 1067,
-        src: "/img/team-portrait__R-ta_light-800.avif"
-      }
-    ],
-    webp: [
-      {
-        w: 400,
-        h: 533,
-        src: "/img/team-portrait__R-ta_light-400.webp"
-      },
-      {
-        w: 800,
-        h: 1067,
-        src: "/img/team-portrait__R-ta_light-800.webp"
-      }
-    ]
-  },
   "/blog/ar skauda kai traukia danti.jpg": {
     w: 1500,
     h: 1e3,
@@ -4608,7 +4463,7 @@ function Picture({
 }
 const TEAM_WITH_PHOTO = /* @__PURE__ */ new Set(["donatas", "jonas", "odeta", "ruta"]);
 const normalizeFirstName$1 = (name) => name.split(" ")[0].toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-const getPhotoPath$1 = (name, photoFile) => `/team-portrait/${photoFile ?? normalizeFirstName$1(name)}.jpg`;
+const getPhotoPath$1 = (name, photoFile) => `/team/${photoFile ?? normalizeFirstName$1(name)}.jpg`;
 const hasPhoto$1 = (name, photoFile) => photoFile ? true : TEAM_WITH_PHOTO.has(normalizeFirstName$1(name));
 const container$1c = {
   hidden: { opacity: 0, y: 10 },
@@ -4642,7 +4497,7 @@ function TeamPhoto$1({ name, photoFile }) {
     "div",
     {
       className: [
-        "relative w-full aspect-[3/4] overflow-hidden bg-shell",
+        "relative w-full aspect-[4/5] overflow-hidden bg-paper",
         "wave-mask",
         photoOk ? "" : "ring-1 ring-hairline"
       ].join(" "),
@@ -4654,7 +4509,7 @@ function TeamPhoto$1({ name, photoFile }) {
             alt: name,
             sizes: "(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 30vw",
             className: "absolute inset-0 block h-full w-full",
-            imgClassName: "h-full w-full object-cover"
+            imgClassName: "h-full w-full object-contain"
           }
         ) : /* @__PURE__ */ jsx("div", { className: "absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100", children: /* @__PURE__ */ jsx("div", { className: "flex flex-col items-center gap-4", children: /* @__PURE__ */ jsx("div", { className: "w-32 h-32 rounded-3xl bg-white/90 backdrop-blur border border-slate-200 shadow-soft flex items-center justify-center", children: /* @__PURE__ */ jsx(
           "img",
@@ -16035,31 +15890,39 @@ function ServicesTrack({ items, readMoreLabel, heading }) {
     }
     const measure = () => {
       const track = trackRef.current;
-      const section = sectionRef.current;
-      if (!track || !section) return;
-      setShift(Math.max(0, track.scrollWidth - section.clientWidth));
+      if (!track) return;
+      const gutter = parseFloat(getComputedStyle(track).paddingRight) || 0;
+      const travel = track.scrollWidth + gutter - track.clientWidth;
+      setShift((prev) => {
+        const next = Math.max(0, Math.round(travel));
+        return Math.abs(next - prev) > 1 ? next : prev;
+      });
     };
     measure();
     const ro = new ResizeObserver(measure);
     if (trackRef.current) ro.observe(trackRef.current);
+    ro.observe(document.documentElement);
     window.addEventListener("resize", measure);
+    window.addEventListener("orientationchange", measure);
     return () => {
       ro.disconnect();
       window.removeEventListener("resize", measure);
+      window.removeEventListener("orientationchange", measure);
     };
-  }, [pinned, items.length]);
+  }, [pinned, items.length, shift > 0]);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"]
   });
-  const x = useTransform(scrollYProgress, [0, 0.08, 0.92, 1], [0, 0, -shift, -shift]);
-  if (!pinned) {
+  const x = useTransform(scrollYProgress, [0, 1], [0, -shift]);
+  if (!pinned || shift <= 0) {
     return /* @__PURE__ */ jsxs(Fragment, { children: [
       heading && /* @__PURE__ */ jsx("div", { className: "container-wide w-full pb-12", children: heading }),
       /* @__PURE__ */ jsxs(
         "div",
         {
-          className: "flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+          ref: trackRef,
+          className: "flex snap-x snap-mandatory gap-8 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
           style: { paddingInline: "var(--gutter)" },
           children: [
             items.map((item2) => /* @__PURE__ */ jsx(Card, { item: item2, readMoreLabel }, item2.id)),
@@ -16120,11 +15983,6 @@ function Check() {
     }
   );
 }
-const STATS = [
-  { value: "15+", label: "Metų patirtis" },
-  { value: "5K+", label: "Patenkintų pacientų" },
-  { value: "4.9★", label: "Google įvertinimas" }
-];
 const POPULAR_SERVICES = [
   { id: "dantu-implantacija", title: "Dantų implantacija", desc: "Saugus ir ilgaamžis prarastų dantų atkūrimas naudojant Straumann® / Neodent® sistemas.", image: "/implantacija.webp" },
   { id: "dantu-protezavimas", title: "Dantų protezavimas", desc: "Atstatome dantų formą ir funkciją pasitelkiant CEREC technologiją – vainikėlis per 1 vizitą.", image: "/protezavimas.webp" },
@@ -16134,27 +15992,148 @@ const POPULAR_SERVICES = [
   { id: "vaiku-odontologija", title: "Vaikų odontologija", desc: "Švelni priežiūra mažiesiems – draugiška aplinka be streso.", image: "/hero4.webp" }
 ];
 const TEAM$1 = [
-  { name: "Donatas Bitinas", role: "Implantuojantis gydytojas odontologas", img: "/team-portrait/Donatas_light.jpg" },
-  { name: "Donatas Kubilius", role: "Gydytojas, Veido ir Žandikaulių chirurgas", img: "/team-portrait/donataskubilius.jpg" },
-  { name: "Jonas Sabulis", role: "Protezuojantis gydytojas odontologas", img: "/team-portrait/Jonas-light.jpg" },
-  { name: "Odeta Venckutė", role: "Gydytoja odontologė", img: "/team-portrait/Odeta-light.jpg" },
-  { name: "Rūta Garšvienė", role: "Burnos higienistė, tiesinimo kapomis koordinatorė", img: "/team-portrait/Rūta_light.jpg" }
+  { name: "Donatas Bitinas", role: "Implantuojantis gydytojas odontologas", img: "/team/Donatas_light.jpg" },
+  { name: "Donatas Kubilius", role: "Gydytojas, Veido ir Žandikaulių chirurgas", img: "/team/donataskubilius.jpg" },
+  { name: "Jonas Sabulis", role: "Protezuojantis gydytojas odontologas", img: "/team/Jonas-light.jpg" },
+  { name: "Odeta Venckutė", role: "Gydytoja odontologė", img: "/team/Odeta-light.jpg" },
+  { name: "Rūta Garšvienė", role: "Burnos higienistė, tiesinimo kapomis koordinatorė", img: "/team/Rūta_light.jpg" }
 ];
-function TeamGrid() {
-  return /* @__PURE__ */ jsx("ul", { className: "grid list-none grid-cols-2 gap-x-5 gap-y-10 p-0 md:grid-cols-3 lg:grid-cols-5 lg:gap-x-6", children: TEAM$1.map((member, i) => /* @__PURE__ */ jsxs("li", { className: i % 2 === 1 ? "lg:translate-y-10" : void 0, children: [
-    /* @__PURE__ */ jsx("div", { className: "mask-zoom wave-mask relative aspect-[3/4] overflow-hidden bg-paper", children: /* @__PURE__ */ jsx(
-      Picture,
+function TeamCarousel$1() {
+  const [active, setActive] = useState(0);
+  const n = TEAM$1.length;
+  const intervalRef = useRef(null);
+  const stageRef = useRef(null);
+  const [inView, setInView] = useState(true);
+  const go = useCallback((dir) => {
+    setActive((prev) => (prev + dir + n) % n);
+  }, [n]);
+  useEffect(() => {
+    if (!stageRef.current) return;
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.15 });
+    io.observe(stageRef.current);
+    return () => io.disconnect();
+  }, []);
+  useEffect(() => {
+    if (!inView) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    intervalRef.current = setInterval(() => go(1), 4e3);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [go, inView]);
+  const resetTimer = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (!inView) return;
+    intervalRef.current = setInterval(() => go(1), 4e3);
+  };
+  const handleGo = (dir) => {
+    go(dir);
+    resetTimer();
+  };
+  const handleSelect = (i) => {
+    setActive(i);
+    resetTimer();
+  };
+  const getDist = (i) => {
+    let d = i - active;
+    if (d > n / 2) d -= n;
+    if (d < -n / 2) d += n;
+    return d;
+  };
+  return /* @__PURE__ */ jsxs("div", { className: "relative select-none", children: [
+    /* @__PURE__ */ jsx(
+      "div",
       {
-        src: member.img,
-        alt: member.name,
-        sizes: "(max-width: 767px) 44vw, (max-width: 1023px) 30vw, 17rem",
-        className: "block h-full w-full",
-        imgClassName: "h-full w-full object-cover"
+        ref: stageRef,
+        className: "relative flex h-[600px] items-center justify-center overflow-hidden sm:h-[720px]",
+        style: { perspective: "1100px" },
+        children: TEAM$1.map((member, i) => {
+          const d = getDist(i);
+          const abs = Math.abs(d);
+          if (abs > 2) return null;
+          const x = d * 300;
+          const scale = Math.max(0.65, 1 - abs * 0.17);
+          const z = 100 - abs * 35;
+          const opacity = Math.max(0.35, 1 - abs * 0.28);
+          const rotY = -d * 10;
+          return /* @__PURE__ */ jsx(
+            m.div,
+            {
+              className: "absolute",
+              style: { zIndex: z, cursor: abs > 0 ? "pointer" : "default" },
+              animate: { x, scale, opacity, rotateY: rotY },
+              transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
+              onClick: () => abs > 0 && handleSelect(i),
+              children: /* @__PURE__ */ jsx(
+                "div",
+                {
+                  className: "overflow-hidden rounded-card transition-shadow duration-mid",
+                  style: {
+                    width: "clamp(250px, 34vw, 400px)",
+                    boxShadow: abs === 0 ? "var(--shadow-deep)" : "var(--shadow-lift)",
+                    border: `1px solid ${abs === 0 ? "var(--tide)" : "var(--hairline)"}`
+                  },
+                  children: /* @__PURE__ */ jsxs("div", { className: "relative aspect-[4/5] bg-paper", children: [
+                    /* @__PURE__ */ jsx(
+                      Picture,
+                      {
+                        src: member.img,
+                        alt: member.name,
+                        sizes: "(max-width: 640px) 250px, 34vw",
+                        className: "block h-full w-full",
+                        imgClassName: "h-full w-full object-contain"
+                      }
+                    ),
+                    /* @__PURE__ */ jsxs("span", { className: "sr-only", children: [
+                      member.name,
+                      " — ",
+                      member.role
+                    ] })
+                  ] })
+                }
+              )
+            },
+            member.name
+          );
+        })
       }
-    ) }),
-    /* @__PURE__ */ jsx("p", { className: "mt-4 text-body font-bold leading-tight", children: member.name }),
-    /* @__PURE__ */ jsx("p", { className: "muted mt-1 text-micro leading-snug", children: member.role })
-  ] }, member.name)) });
+    ),
+    /* @__PURE__ */ jsxs("div", { className: "mt-4 flex items-center justify-center gap-6", children: [
+      /* @__PURE__ */ jsx(
+        "button",
+        {
+          onClick: () => handleGo(-1),
+          className: "flex h-11 w-11 items-center justify-center rounded-pill border border-hairline-strong text-ink transition-colors duration-fast hover:bg-shell",
+          "aria-label": "Ankstesnis",
+          children: /* @__PURE__ */ jsx("svg", { className: "h-4 w-4", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.5", "aria-hidden": true, children: /* @__PURE__ */ jsx("path", { d: "M15 18l-6-6 6-6" }) })
+        }
+      ),
+      /* @__PURE__ */ jsx("div", { className: "flex items-center gap-2", children: TEAM$1.map((member, i) => /* @__PURE__ */ jsx(
+        "button",
+        {
+          onClick: () => handleSelect(i),
+          className: "rounded-pill transition-all duration-mid",
+          style: {
+            width: i === active ? 20 : 7,
+            height: 7,
+            background: i === active ? "var(--tide)" : "var(--hairline-strong)"
+          },
+          "aria-label": member.name,
+          "aria-current": i === active
+        },
+        member.name
+      )) }),
+      /* @__PURE__ */ jsx(
+        "button",
+        {
+          onClick: () => handleGo(1),
+          className: "flex h-11 w-11 items-center justify-center rounded-pill border border-hairline-strong text-ink transition-colors duration-fast hover:bg-shell",
+          "aria-label": "Kitas",
+          children: /* @__PURE__ */ jsx("svg", { className: "h-4 w-4", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.5", "aria-hidden": true, children: /* @__PURE__ */ jsx("path", { d: "M9 18l6-6-6-6" }) })
+        }
+      )
+    ] })
+  ] });
 }
 function Home() {
   var _a2, _b2;
@@ -16166,9 +16145,6 @@ function Home() {
     });
   }, []);
   const WHY_IMAGES2 = ["/kodel-verta-1.webp", "/kodel-verta-2.webp", "/kodel-verta-3.webp"];
-  const stats = STATS.map(
-    (s) => s.label === "Google įvertinimas" && google.rating ? { ...s, value: `${google.rating.toFixed(1)}★` } : s
-  );
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx(
       SEO,
@@ -16284,21 +16260,13 @@ function Home() {
         /* @__PURE__ */ jsx(TideLine, { className: "mt-2" })
       ] })
     ] }),
-    /* @__PURE__ */ jsx("section", { className: "container-wide pb-section-tight", children: /* @__PURE__ */ jsx("dl", { className: "grid grid-cols-3 gap-6 border-y border-hairline py-8", children: stats.map((s) => (
-      /* flex-col-reverse shows the value above its label while keeping
-         dt before dd in the DOM, which is what assistive tech expects. */
-      /* @__PURE__ */ jsxs("div", { className: "flex flex-col-reverse gap-2", children: [
-        /* @__PURE__ */ jsx("dt", { className: "muted text-micro", children: s.label }),
-        /* @__PURE__ */ jsx("dd", { className: "m-0 text-h2 font-black leading-none", children: s.value })
-      ] }, s.label)
-    )) }) }),
     /* @__PURE__ */ jsx(WaveDivider, { from: "var(--paper)", to: "var(--shell)" }),
     /* @__PURE__ */ jsx("section", { className: "shell-bg pb-section", children: /* @__PURE__ */ jsxs("div", { className: "container-wide", children: [
       /* @__PURE__ */ jsxs(AnimatedSection, { as: "div", className: "max-w-2xl pb-12", children: [
         /* @__PURE__ */ jsx("h2", { className: "text-h2 font-extrabold", children: "Susipažinkite su mūsų gydytojais" }),
         /* @__PURE__ */ jsx("p", { className: "muted mt-4 text-body", children: "Patyrusi ir draugiška komanda, kuri rūpinasi kiekvieno paciento komfortu ir sveikata." })
       ] }),
-      /* @__PURE__ */ jsx(TeamGrid, {})
+      /* @__PURE__ */ jsx(TeamCarousel$1, {})
     ] }) }),
     /* @__PURE__ */ jsx(WaveDivider, { from: "var(--shell)", to: "var(--paper)", mirror: true }),
     /* @__PURE__ */ jsxs("section", { className: "pb-section pt-section-tight", children: [

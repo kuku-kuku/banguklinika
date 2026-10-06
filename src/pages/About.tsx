@@ -15,11 +15,10 @@ const normalizeFirstName = (name: string) =>
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
 
-/* Points at the cropped portraits (scripts/team-portraits.mjs), not the
-   branded marketing cards in public/team/ — same sources, name/role artwork
-   removed, and these are the ones the responsive pipeline has AVIF for. */
+/* The team photos are complete marketing cards — name, role and
+   specialisations are part of the artwork — so they are shown whole. */
 const getPhotoPath = (name: string, photoFile?: string) =>
-  `/team-portrait/${photoFile ?? normalizeFirstName(name)}.jpg`
+  `/team/${photoFile ?? normalizeFirstName(name)}.jpg`
 const hasPhoto = (name: string, photoFile?: string) =>
   photoFile ? true : TEAM_WITH_PHOTO.has(normalizeFirstName(name))
 
@@ -59,7 +58,7 @@ function TeamPhoto({ name, photoFile }: { name: string; photoFile?: string }) {
   return (
     <div
       className={[
-        'relative w-full aspect-[3/4] overflow-hidden bg-shell',
+        'relative w-full aspect-[4/5] overflow-hidden bg-paper',
         'wave-mask',
         photoOk ? '' : 'ring-1 ring-hairline',
       ].join(' ')}
@@ -70,7 +69,7 @@ function TeamPhoto({ name, photoFile }: { name: string; photoFile?: string }) {
           alt={name}
           sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 30vw"
           className="absolute inset-0 block h-full w-full"
-          imgClassName="h-full w-full object-cover"
+          imgClassName="h-full w-full object-contain"
         />
       ) : (
         <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">

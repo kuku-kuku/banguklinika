@@ -13,16 +13,16 @@
       "_react-BvRp_hRD.js"
     ]
   },
-  "_Map-CsfDrcnA.js": {
-    "file": "assets/Map-CsfDrcnA.js",
+  "_Map-DjDiOgzv.js": {
+    "file": "assets/Map-DjDiOgzv.js",
     "name": "Map",
     "imports": [
       "index.html",
       "_react-BvRp_hRD.js"
     ]
   },
-  "_Picture-DvqcqL12.js": {
-    "file": "assets/Picture-DvqcqL12.js",
+  "_Picture-C1-8EFPp.js": {
+    "file": "assets/Picture-C1-8EFPp.js",
     "name": "Picture",
     "imports": [
       "_react-BvRp_hRD.js"
@@ -42,22 +42,22 @@
       "_react-BvRp_hRD.js"
     ]
   },
-  "_SEO-BqAduOaS.js": {
-    "file": "assets/SEO-BqAduOaS.js",
+  "_SEO-B0naMs-N.js": {
+    "file": "assets/SEO-B0naMs-N.js",
     "name": "SEO",
     "imports": [
       "_react-BvRp_hRD.js",
       "index.html"
     ]
   },
-  "_TableOfContents-Cy0wxkQg.js": {
-    "file": "assets/TableOfContents-Cy0wxkQg.js",
+  "_TableOfContents-thTplXMK.js": {
+    "file": "assets/TableOfContents-thTplXMK.js",
     "name": "TableOfContents",
     "imports": [
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "index.html",
-      "_proxy-CfURn6SX.js"
+      "_proxy-DXu6EsKJ.js"
     ]
   },
   "_TideLine-Dsp21nsm.js": {
@@ -87,8 +87,8 @@
     "file": "assets/offers-DSINhbYh.js",
     "name": "offers"
   },
-  "_proxy-CfURn6SX.js": {
-    "file": "assets/proxy-CfURn6SX.js",
+  "_proxy-DXu6EsKJ.js": {
+    "file": "assets/proxy-DXu6EsKJ.js",
     "name": "proxy",
     "imports": [
       "index.html",
@@ -106,8 +106,8 @@
       "_react-BvRp_hRD.js"
     ]
   },
-  "_use-in-view-B4_6-VMD.js": {
-    "file": "assets/use-in-view-B4_6-VMD.js",
+  "_use-in-view-CcfRMVYM.js": {
+    "file": "assets/use-in-view-CcfRMVYM.js",
     "name": "use-in-view",
     "imports": [
       "_react-BvRp_hRD.js",
@@ -122,7 +122,7 @@
     ]
   },
   "index.html": {
-    "file": "assets/index-UnK5fc1B.js",
+    "file": "assets/index-Yo7W79Jo.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -229,11 +229,11 @@
       "src/pages/lv/ZoklakaulaAugmentacijaLv.tsx"
     ],
     "css": [
-      "assets/index-kDeEnst0.css"
+      "assets/index-DNcI7YnI.css"
     ]
   },
   "src/pages/About.tsx": {
-    "file": "assets/About-CdjYLn73.js",
+    "file": "assets/About-6sMVfWru.js",
     "name": "About",
     "src": "src/pages/About.tsx",
     "isDynamicEntry": true,
@@ -241,32 +241,32 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_Picture-DvqcqL12.js",
-      "_proxy-CfURn6SX.js",
+      "_SEO-B0naMs-N.js",
+      "_Picture-C1-8EFPp.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/AllOn4Implants.tsx": {
-    "file": "assets/AllOn4Implants-CqnUU45U.js",
+    "file": "assets/AllOn4Implants-BrCNGJzz.js",
     "name": "AllOn4Implants",
     "src": "src/pages/AllOn4Implants.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_react-BvRp_hRD.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "index.html",
       "_router-DPWD8MGT.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "_offers-DSINhbYh.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/BruksizmoDantuKapa.tsx": {
-    "file": "assets/BruksizmoDantuKapa-CgQXgr9f.js",
+    "file": "assets/BruksizmoDantuKapa-Cc1Vc3oF.js",
     "name": "BruksizmoDantuKapa",
     "src": "src/pages/BruksizmoDantuKapa.tsx",
     "isDynamicEntry": true,
@@ -274,16 +274,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/BurnosChirurgija.tsx": {
-    "file": "assets/BurnosChirurgija-BUOlfWeH.js",
+    "file": "assets/BurnosChirurgija-BqdzYryh.js",
     "name": "BurnosChirurgija",
     "src": "src/pages/BurnosChirurgija.tsx",
     "isDynamicEntry": true,
@@ -291,16 +291,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/BurnosHigiena.tsx": {
-    "file": "assets/BurnosHigiena-8KvXQaTV.js",
+    "file": "assets/BurnosHigiena-DzZRxDOe.js",
     "name": "BurnosHigiena",
     "src": "src/pages/BurnosHigiena.tsx",
     "isDynamicEntry": true,
@@ -308,17 +308,17 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "_wrapName-DqO5zBwL.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/CirkonioKeramikosVainikelis.tsx": {
-    "file": "assets/CirkonioKeramikosVainikelis-B3vc3R-c.js",
+    "file": "assets/CirkonioKeramikosVainikelis-2xW_9W3j.js",
     "name": "CirkonioKeramikosVainikelis",
     "src": "src/pages/CirkonioKeramikosVainikelis.tsx",
     "isDynamicEntry": true,
@@ -326,48 +326,48 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/CirkonioOffer.tsx": {
-    "file": "assets/CirkonioOffer-CGCnfSHr.js",
+    "file": "assets/CirkonioOffer-D0gI1eBa.js",
     "name": "CirkonioOffer",
     "src": "src/pages/CirkonioOffer.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_react-BvRp_hRD.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "index.html",
       "_router-DPWD8MGT.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "_offers-DSINhbYh.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/Contact.tsx": {
-    "file": "assets/Contact-C3IeVSxQ.js",
+    "file": "assets/Contact-H576SgZU.js",
     "name": "Contact",
     "src": "src/pages/Contact.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_react-BvRp_hRD.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "index.html",
-      "_Map-CsfDrcnA.js",
+      "_Map-DjDiOgzv.js",
       "_RevealLines-B9ic7KRI.js",
       "_router-DPWD8MGT.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantenuUzdegimas.tsx": {
-    "file": "assets/DantenuUzdegimas-BoT3cmIL.js",
+    "file": "assets/DantenuUzdegimas-CLBC8yvh.js",
     "name": "DantenuUzdegimas",
     "src": "src/pages/DantenuUzdegimas.tsx",
     "isDynamicEntry": true,
@@ -375,16 +375,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantuBalinimas.tsx": {
-    "file": "assets/DantuBalinimas-CCMUZrWW.js",
+    "file": "assets/DantuBalinimas-0ylgqvNX.js",
     "name": "DantuBalinimas",
     "src": "src/pages/DantuBalinimas.tsx",
     "isDynamicEntry": true,
@@ -392,16 +392,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantuBalinimasSuLempa.tsx": {
-    "file": "assets/DantuBalinimasSuLempa-QUCBl2lO.js",
+    "file": "assets/DantuBalinimasSuLempa-Ca0SSJEh.js",
     "name": "DantuBalinimasSuLempa",
     "src": "src/pages/DantuBalinimasSuLempa.tsx",
     "isDynamicEntry": true,
@@ -409,16 +409,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantuBalinimoKapos.tsx": {
-    "file": "assets/DantuBalinimoKapos-CdtB79Eb.js",
+    "file": "assets/DantuBalinimoKapos-DjC2CPGr.js",
     "name": "DantuBalinimoKapos",
     "src": "src/pages/DantuBalinimoKapos.tsx",
     "isDynamicEntry": true,
@@ -426,16 +426,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantuFluoravimas.tsx": {
-    "file": "assets/DantuFluoravimas-BVmybejC.js",
+    "file": "assets/DantuFluoravimas-DmXjg2Xd.js",
     "name": "DantuFluoravimas",
     "src": "src/pages/DantuFluoravimas.tsx",
     "isDynamicEntry": true,
@@ -443,16 +443,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantuGydymas.tsx": {
-    "file": "assets/DantuGydymas-CY0uWjjT.js",
+    "file": "assets/DantuGydymas-BixLEepy.js",
     "name": "DantuGydymas",
     "src": "src/pages/DantuGydymas.tsx",
     "isDynamicEntry": true,
@@ -460,16 +460,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantuHigienaVaikams.tsx": {
-    "file": "assets/DantuHigienaVaikams-DkdZM_e1.js",
+    "file": "assets/DantuHigienaVaikams-CQRt5AUS.js",
     "name": "DantuHigienaVaikams",
     "src": "src/pages/DantuHigienaVaikams.tsx",
     "isDynamicEntry": true,
@@ -477,16 +477,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantuImplantacija.tsx": {
-    "file": "assets/DantuImplantacija-yiVy_D86.js",
+    "file": "assets/DantuImplantacija-eJD-YYQr.js",
     "name": "DantuImplantacija",
     "src": "src/pages/DantuImplantacija.tsx",
     "isDynamicEntry": true,
@@ -494,17 +494,17 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "_wrapName-DqO5zBwL.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantuKarunieles.tsx": {
-    "file": "assets/DantuKarunieles-BvO7uYH8.js",
+    "file": "assets/DantuKarunieles-C5-hSQR5.js",
     "name": "DantuKarunieles",
     "src": "src/pages/DantuKarunieles.tsx",
     "isDynamicEntry": true,
@@ -512,16 +512,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantuMikroprotezavimas.tsx": {
-    "file": "assets/DantuMikroprotezavimas-4jhHf5my.js",
+    "file": "assets/DantuMikroprotezavimas-B3jNCjIO.js",
     "name": "DantuMikroprotezavimas",
     "src": "src/pages/DantuMikroprotezavimas.tsx",
     "isDynamicEntry": true,
@@ -529,16 +529,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantuPlombavimas.tsx": {
-    "file": "assets/DantuPlombavimas-D7ysZnql.js",
+    "file": "assets/DantuPlombavimas-MAKbgRy7.js",
     "name": "DantuPlombavimas",
     "src": "src/pages/DantuPlombavimas.tsx",
     "isDynamicEntry": true,
@@ -546,16 +546,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantuProtezavimas.tsx": {
-    "file": "assets/DantuProtezavimas-CGGxxaLZ.js",
+    "file": "assets/DantuProtezavimas-CJ1uXzrZ.js",
     "name": "DantuProtezavimas",
     "src": "src/pages/DantuProtezavimas.tsx",
     "isDynamicEntry": true,
@@ -563,18 +563,18 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "_BeforeAfterSlider-CYzuNk9-.js",
       "_wrapName-DqO5zBwL.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantuTiesinimas.tsx": {
-    "file": "assets/DantuTiesinimas-goJQlDHS.js",
+    "file": "assets/DantuTiesinimas-DPYNlPD9.js",
     "name": "DantuTiesinimas",
     "src": "src/pages/DantuTiesinimas.tsx",
     "isDynamicEntry": true,
@@ -582,16 +582,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantuTiltai.tsx": {
-    "file": "assets/DantuTiltai-C_Uqt3Io.js",
+    "file": "assets/DantuTiltai-CnAEKtAM.js",
     "name": "DantuTiltai",
     "src": "src/pages/DantuTiltai.tsx",
     "isDynamicEntry": true,
@@ -599,16 +599,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantuTraukimas.tsx": {
-    "file": "assets/DantuTraukimas-Dw-FJ4W7.js",
+    "file": "assets/DantuTraukimas-y2Ft-0W8.js",
     "name": "DantuTraukimas",
     "src": "src/pages/DantuTraukimas.tsx",
     "isDynamicEntry": true,
@@ -616,16 +616,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/DantuUzklotai.tsx": {
-    "file": "assets/DantuUzklotai-noKay64h.js",
+    "file": "assets/DantuUzklotai-B2g3-f7r.js",
     "name": "DantuUzklotai",
     "src": "src/pages/DantuUzklotai.tsx",
     "isDynamicEntry": true,
@@ -633,16 +633,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/Draugai.tsx": {
-    "file": "assets/Draugai-CyAj0UvW.js",
+    "file": "assets/Draugai-BlXXECGp.js",
     "name": "Draugai",
     "src": "src/pages/Draugai.tsx",
     "isDynamicEntry": true,
@@ -650,14 +650,14 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_proxy-CfURn6SX.js",
+      "_SEO-B0naMs-N.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/EndodontinisGydymas.tsx": {
-    "file": "assets/EndodontinisGydymas-DwI20Oc1.js",
+    "file": "assets/EndodontinisGydymas-DFwyRy05.js",
     "name": "EndodontinisGydymas",
     "src": "src/pages/EndodontinisGydymas.tsx",
     "isDynamicEntry": true,
@@ -665,17 +665,17 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "_wrapName-DqO5zBwL.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/EstetinisPlombavimas.tsx": {
-    "file": "assets/EstetinisPlombavimas-irpHRa4K.js",
+    "file": "assets/EstetinisPlombavimas-CIrKPzyN.js",
     "name": "EstetinisPlombavimas",
     "src": "src/pages/EstetinisPlombavimas.tsx",
     "isDynamicEntry": true,
@@ -683,16 +683,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/GydymasIconSistema.tsx": {
-    "file": "assets/GydymasIconSistema-np0hR1Su.js",
+    "file": "assets/GydymasIconSistema-DAcPIZr8.js",
     "name": "GydymasIconSistema",
     "src": "src/pages/GydymasIconSistema.tsx",
     "isDynamicEntry": true,
@@ -700,35 +700,35 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/Home.tsx": {
-    "file": "assets/Home-60mTTGNj.js",
+    "file": "assets/Home-DCbc096q.js",
     "name": "Home",
     "src": "src/pages/Home.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "_AnimatedSection-B6BfU_z7.js",
       "index.html",
       "_ReviewsCarousel-B7VzYFSN.js",
       "_blog-BFK6PCr5.js",
-      "_Picture-DvqcqL12.js",
+      "_Picture-C1-8EFPp.js",
       "_RevealLines-B9ic7KRI.js",
       "_TideLine-Dsp21nsm.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/IsimamiProtezai.tsx": {
-    "file": "assets/IsimamiProtezai-D2CN2QFw.js",
+    "file": "assets/IsimamiProtezai-B5gau4H5.js",
     "name": "IsimamiProtezai",
     "src": "src/pages/IsimamiProtezai.tsx",
     "isDynamicEntry": true,
@@ -736,16 +736,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/KompensacijaProtezavimui.tsx": {
-    "file": "assets/KompensacijaProtezavimui-CxROP7hJ.js",
+    "file": "assets/KompensacijaProtezavimui-BhoTH3tu.js",
     "name": "KompensacijaProtezavimui",
     "src": "src/pages/KompensacijaProtezavimui.tsx",
     "isDynamicEntry": true,
@@ -753,16 +753,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/MusuDarbai.tsx": {
-    "file": "assets/MusuDarbai-Cz-DD89F.js",
+    "file": "assets/MusuDarbai-CrCj_lVq.js",
     "name": "MusuDarbai",
     "src": "src/pages/MusuDarbai.tsx",
     "isDynamicEntry": true,
@@ -770,20 +770,20 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_proxy-CfURn6SX.js",
+      "_SEO-B0naMs-N.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/Pricing.tsx": {
-    "file": "assets/Pricing-CF_ZcXuE.js",
+    "file": "assets/Pricing-DW8PJ5VI.js",
     "name": "Pricing",
     "src": "src/pages/Pricing.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_react-BvRp_hRD.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "_clsx-DFkjkEGX.js",
       "index.html",
       "_wrapName-DqO5zBwL.js",
@@ -794,7 +794,7 @@
     ]
   },
   "src/pages/ProtiniuDantuSalinimas.tsx": {
-    "file": "assets/ProtiniuDantuSalinimas-GdimaXHs.js",
+    "file": "assets/ProtiniuDantuSalinimas-BSqJSLdh.js",
     "name": "ProtiniuDantuSalinimas",
     "src": "src/pages/ProtiniuDantuSalinimas.tsx",
     "isDynamicEntry": true,
@@ -802,16 +802,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/PulinioAtverimas.tsx": {
-    "file": "assets/PulinioAtverimas-yt24sX2d.js",
+    "file": "assets/PulinioAtverimas-DYPJTfkf.js",
     "name": "PulinioAtverimas",
     "src": "src/pages/PulinioAtverimas.tsx",
     "isDynamicEntry": true,
@@ -819,16 +819,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/RentgenologiniaiTyrimai.tsx": {
-    "file": "assets/RentgenologiniaiTyrimai-OMq1C4g0.js",
+    "file": "assets/RentgenologiniaiTyrimai-DuBgWNUY.js",
     "name": "RentgenologiniaiTyrimai",
     "src": "src/pages/RentgenologiniaiTyrimai.tsx",
     "isDynamicEntry": true,
@@ -836,33 +836,33 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/Services.tsx": {
-    "file": "assets/Services-BRXXYh4W.js",
+    "file": "assets/Services-um2bJy5p.js",
     "name": "Services",
     "src": "src/pages/Services.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "_RevealLines-B9ic7KRI.js",
       "_TideLine-Dsp21nsm.js",
       "index.html",
-      "_use-in-view-B4_6-VMD.js",
-      "_proxy-CfURn6SX.js",
+      "_use-in-view-CcfRMVYM.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/SinusoPakelimas.tsx": {
-    "file": "assets/SinusoPakelimas-Bcn7u6ZX.js",
+    "file": "assets/SinusoPakelimas-BboYb4yA.js",
     "name": "SinusoPakelimas",
     "src": "src/pages/SinusoPakelimas.tsx",
     "isDynamicEntry": true,
@@ -870,16 +870,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/SkubiPagalba.tsx": {
-    "file": "assets/SkubiPagalba-4Nbs9mhY.js",
+    "file": "assets/SkubiPagalba-DaDXSoZK.js",
     "name": "SkubiPagalba",
     "src": "src/pages/SkubiPagalba.tsx",
     "isDynamicEntry": true,
@@ -887,32 +887,32 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/SpecialOffers.tsx": {
-    "file": "assets/SpecialOffers-Cw1Sp2Qp.js",
+    "file": "assets/SpecialOffers-CeacpbqW.js",
     "name": "SpecialOffers",
     "src": "src/pages/SpecialOffers.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_react-BvRp_hRD.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "index.html",
       "_router-DPWD8MGT.js",
       "_offers-DSINhbYh.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/Straipsniai.tsx": {
-    "file": "assets/Straipsniai-CQVAkPL8.js",
+    "file": "assets/Straipsniai-C7MG6ajP.js",
     "name": "Straipsniai",
     "src": "src/pages/Straipsniai.tsx",
     "isDynamicEntry": true,
@@ -920,32 +920,32 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "_blog-BFK6PCr5.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/StraipsnisPage.tsx": {
-    "file": "assets/StraipsnisPage-BQ81hH8Z.js",
+    "file": "assets/StraipsnisPage-BBGTcsa_.js",
     "name": "StraipsnisPage",
     "src": "src/pages/StraipsnisPage.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_TableOfContents-thTplXMK.js",
       "_blog-BFK6PCr5.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/StraumannDantuImplantai.tsx": {
-    "file": "assets/StraumannDantuImplantai-Bhd64D9J.js",
+    "file": "assets/StraumannDantuImplantai-TAatNnTV.js",
     "name": "StraumannDantuImplantai",
     "src": "src/pages/StraumannDantuImplantai.tsx",
     "isDynamicEntry": true,
@@ -953,16 +953,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/TerapinisDantuGydymas.tsx": {
-    "file": "assets/TerapinisDantuGydymas-B-_4yfxT.js",
+    "file": "assets/TerapinisDantuGydymas-DY3hb7Gc.js",
     "name": "TerapinisDantuGydymas",
     "src": "src/pages/TerapinisDantuGydymas.tsx",
     "isDynamicEntry": true,
@@ -970,16 +970,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/VaikuOdontologija.tsx": {
-    "file": "assets/VaikuOdontologija-Ce2gFNcX.js",
+    "file": "assets/VaikuOdontologija-CaaGAoSw.js",
     "name": "VaikuOdontologija",
     "src": "src/pages/VaikuOdontologija.tsx",
     "isDynamicEntry": true,
@@ -987,16 +987,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/VaikuProfilaktinisPatikrinimas.tsx": {
-    "file": "assets/VaikuProfilaktinisPatikrinimas-CxnsC5XM.js",
+    "file": "assets/VaikuProfilaktinisPatikrinimas-CVyuplo3.js",
     "name": "VaikuProfilaktinisPatikrinimas",
     "src": "src/pages/VaikuProfilaktinisPatikrinimas.tsx",
     "isDynamicEntry": true,
@@ -1004,16 +1004,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/VienmomeneImplantacija.tsx": {
-    "file": "assets/VienmomeneImplantacija-DR4UHcM1.js",
+    "file": "assets/VienmomeneImplantacija-Cag3mrIe.js",
     "name": "VienmomeneImplantacija",
     "src": "src/pages/VienmomeneImplantacija.tsx",
     "isDynamicEntry": true,
@@ -1021,16 +1021,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/VisiDantysAnt4Implantu.tsx": {
-    "file": "assets/VisiDantysAnt4Implantu-BDQJeYn2.js",
+    "file": "assets/VisiDantysAnt4Implantu-Bby7GjHi.js",
     "name": "VisiDantysAnt4Implantu",
     "src": "src/pages/VisiDantysAnt4Implantu.tsx",
     "isDynamicEntry": true,
@@ -1038,16 +1038,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/ZandikaulioKauloPriauginimas.tsx": {
-    "file": "assets/ZandikaulioKauloPriauginimas-C4EeL_8w.js",
+    "file": "assets/ZandikaulioKauloPriauginimas-DQwxga7_.js",
     "name": "ZandikaulioKauloPriauginimas",
     "src": "src/pages/ZandikaulioKauloPriauginimas.tsx",
     "isDynamicEntry": true,
@@ -1055,16 +1055,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "index.html",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/AbscesaAtversanaLv.tsx": {
-    "file": "assets/AbscesaAtversanaLv-CXVx3ffZ.js",
+    "file": "assets/AbscesaAtversanaLv-C-e3_IZP.js",
     "name": "AbscesaAtversanaLv",
     "src": "src/pages/lv/AbscesaAtversanaLv.tsx",
     "isDynamicEntry": true,
@@ -1072,16 +1072,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ArstesanaIconSistemaLv.tsx": {
-    "file": "assets/ArstesanaIconSistemaLv-DKjzYEjF.js",
+    "file": "assets/ArstesanaIconSistemaLv-Cx9sv_RC.js",
     "name": "ArstesanaIconSistemaLv",
     "src": "src/pages/lv/ArstesanaIconSistemaLv.tsx",
     "isDynamicEntry": true,
@@ -1089,16 +1089,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/BernuMutesHigienaLv.tsx": {
-    "file": "assets/BernuMutesHigienaLv-N9tHEmFv.js",
+    "file": "assets/BernuMutesHigienaLv-COMIWkGU.js",
     "name": "BernuMutesHigienaLv",
     "src": "src/pages/lv/BernuMutesHigienaLv.tsx",
     "isDynamicEntry": true,
@@ -1106,16 +1106,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/BernuOdontologijaLv.tsx": {
-    "file": "assets/BernuOdontologijaLv-CSHkFrJL.js",
+    "file": "assets/BernuOdontologijaLv-DnKOaKEg.js",
     "name": "BernuOdontologijaLv",
     "src": "src/pages/lv/BernuOdontologijaLv.tsx",
     "isDynamicEntry": true,
@@ -1123,16 +1123,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "index.html",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/BernuProfilaktiskaParbaudeLv.tsx": {
-    "file": "assets/BernuProfilaktiskaParbaudeLv-C9MJkYm2.js",
+    "file": "assets/BernuProfilaktiskaParbaudeLv-C-ie4BEY.js",
     "name": "BernuProfilaktiskaParbaudeLv",
     "src": "src/pages/lv/BernuProfilaktiskaParbaudeLv.tsx",
     "isDynamicEntry": true,
@@ -1140,16 +1140,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/BruksismaKapaLv.tsx": {
-    "file": "assets/BruksismaKapaLv-HjxJFRiQ.js",
+    "file": "assets/BruksismaKapaLv-CmlzXQU8.js",
     "name": "BruksismaKapaLv",
     "src": "src/pages/lv/BruksismaKapaLv.tsx",
     "isDynamicEntry": true,
@@ -1157,33 +1157,33 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/CenasLv.tsx": {
-    "file": "assets/CenasLv-Hxps500I.js",
+    "file": "assets/CenasLv-BGvDhQ4V.js",
     "name": "CenasLv",
     "src": "src/pages/lv/CenasLv.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_react-BvRp_hRD.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "_clsx-DFkjkEGX.js",
       "_wrapName-DqO5zBwL.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_router-DPWD8MGT.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/CirkonijaKeramikasKronitisLv.tsx": {
-    "file": "assets/CirkonijaKeramikasKronitisLv-DkSliIcu.js",
+    "file": "assets/CirkonijaKeramikasKronitisLv-CeHTkMZN.js",
     "name": "CirkonijaKeramikasKronitisLv",
     "src": "src/pages/lv/CirkonijaKeramikasKronitisLv.tsx",
     "isDynamicEntry": true,
@@ -1191,16 +1191,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/DantuImplantacijaLv.tsx": {
-    "file": "assets/DantuImplantacijaLv-Ivh8PbZb.js",
+    "file": "assets/DantuImplantacijaLv-CU51h9bD.js",
     "name": "DantuImplantacijaLv",
     "src": "src/pages/lv/DantuImplantacijaLv.tsx",
     "isDynamicEntry": true,
@@ -1208,16 +1208,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "index.html",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/EndodontijaLv.tsx": {
-    "file": "assets/EndodontijaLv-D0_gQtHY.js",
+    "file": "assets/EndodontijaLv-B6_3PW0K.js",
     "name": "EndodontijaLv",
     "src": "src/pages/lv/EndodontijaLv.tsx",
     "isDynamicEntry": true,
@@ -1225,16 +1225,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "index.html",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/EstetikaPlombanaLv.tsx": {
-    "file": "assets/EstetikaPlombanaLv-Cg6ghvmL.js",
+    "file": "assets/EstetikaPlombanaLv-CXCZdXTF.js",
     "name": "EstetikaPlombanaLv",
     "src": "src/pages/lv/EstetikaPlombanaLv.tsx",
     "isDynamicEntry": true,
@@ -1242,16 +1242,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/GudribasZobuIzvilksanaLv.tsx": {
-    "file": "assets/GudribasZobuIzvilksanaLv-CXSLlrqG.js",
+    "file": "assets/GudribasZobuIzvilksanaLv-QBglIiIB.js",
     "name": "GudribasZobuIzvilksanaLv",
     "src": "src/pages/lv/GudribasZobuIzvilksanaLv.tsx",
     "isDynamicEntry": true,
@@ -1259,49 +1259,49 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/HomeLv.tsx": {
-    "file": "assets/HomeLv-DteWSdve.js",
+    "file": "assets/HomeLv-BLaUSdJA.js",
     "name": "HomeLv",
     "src": "src/pages/lv/HomeLv.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "_AnimatedSection-B6BfU_z7.js",
       "index.html",
       "_ReviewsCarousel-B7VzYFSN.js",
       "_blogLv-Bizd9e2k.js",
-      "_use-in-view-B4_6-VMD.js",
-      "_proxy-CfURn6SX.js",
+      "_use-in-view-CcfRMVYM.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/IpasiPiedavajumiLv.tsx": {
-    "file": "assets/IpasiPiedavajumiLv-CTOLt5kQ.js",
+    "file": "assets/IpasiPiedavajumiLv-D7xNT1Jo.js",
     "name": "IpasiPiedavajumiLv",
     "src": "src/pages/lv/IpasiPiedavajumiLv.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_react-BvRp_hRD.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "index.html",
       "_router-DPWD8MGT.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/IznemamasProtezesLv.tsx": {
-    "file": "assets/IznemamasProtezesLv-C20CI1Yq.js",
+    "file": "assets/IznemamasProtezesLv-CSyRdGkt.js",
     "name": "IznemamasProtezesLv",
     "src": "src/pages/lv/IznemamasProtezesLv.tsx",
     "isDynamicEntry": true,
@@ -1309,16 +1309,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/KontaktiLv.tsx": {
-    "file": "assets/KontaktiLv-C8YfrVoB.js",
+    "file": "assets/KontaktiLv-BRguVbG3.js",
     "name": "KontaktiLv",
     "src": "src/pages/lv/KontaktiLv.tsx",
     "isDynamicEntry": true,
@@ -1326,15 +1326,15 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_Map-CsfDrcnA.js",
+      "_SEO-B0naMs-N.js",
+      "_Map-DjDiOgzv.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/MikroprotezesanaLv.tsx": {
-    "file": "assets/MikroprotezesanaLv-Dqq3Lc7I.js",
+    "file": "assets/MikroprotezesanaLv-l9ftFKJK.js",
     "name": "MikroprotezesanaLv",
     "src": "src/pages/lv/MikroprotezesanaLv.tsx",
     "isDynamicEntry": true,
@@ -1342,16 +1342,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/MusuDarbiLv.tsx": {
-    "file": "assets/MusuDarbiLv-BIW_teLm.js",
+    "file": "assets/MusuDarbiLv-DIYHCLkQ.js",
     "name": "MusuDarbiLv",
     "src": "src/pages/lv/MusuDarbiLv.tsx",
     "isDynamicEntry": true,
@@ -1359,14 +1359,14 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/MutesHigiennaLv.tsx": {
-    "file": "assets/MutesHigiennaLv-DLw3DjZf.js",
+    "file": "assets/MutesHigiennaLv-DbIpfgNx.js",
     "name": "MutesHigiennaLv",
     "src": "src/pages/lv/MutesHigiennaLv.tsx",
     "isDynamicEntry": true,
@@ -1374,16 +1374,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/MutesHirurgijaLv.tsx": {
-    "file": "assets/MutesHirurgijaLv-BA4FN1J5.js",
+    "file": "assets/MutesHirurgijaLv-CiF7tlZw.js",
     "name": "MutesHirurgijaLv",
     "src": "src/pages/lv/MutesHirurgijaLv.tsx",
     "isDynamicEntry": true,
@@ -1391,16 +1391,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/NeatliekamaPalidzibaLv.tsx": {
-    "file": "assets/NeatliekamaPalidzibaLv-DN0qyicV.js",
+    "file": "assets/NeatliekamaPalidzibaLv-CgKjOX4I.js",
     "name": "NeatliekamaPalidzibaLv",
     "src": "src/pages/lv/NeatliekamaPalidzibaLv.tsx",
     "isDynamicEntry": true,
@@ -1408,31 +1408,31 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/PakalpojumiLv.tsx": {
-    "file": "assets/PakalpojumiLv-Cl8Rpsjn.js",
+    "file": "assets/PakalpojumiLv-ChDaYzGx.js",
     "name": "PakalpojumiLv",
     "src": "src/pages/lv/PakalpojumiLv.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "index.html",
-      "_use-in-view-B4_6-VMD.js",
-      "_proxy-CfURn6SX.js",
+      "_use-in-view-CcfRMVYM.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ParMusLv.tsx": {
-    "file": "assets/ParMusLv-D6Efnl63.js",
+    "file": "assets/ParMusLv-BO2d624Q.js",
     "name": "ParMusLv",
     "src": "src/pages/lv/ParMusLv.tsx",
     "isDynamicEntry": true,
@@ -1440,14 +1440,14 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ProtezesanasKompensacijaLv.tsx": {
-    "file": "assets/ProtezesanasKompensacijaLv-Bs3vXTAQ.js",
+    "file": "assets/ProtezesanasKompensacijaLv-Cb0B4hyI.js",
     "name": "ProtezesanasKompensacijaLv",
     "src": "src/pages/lv/ProtezesanasKompensacijaLv.tsx",
     "isDynamicEntry": true,
@@ -1455,16 +1455,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/RakstiLv.tsx": {
-    "file": "assets/RakstiLv-kra1KyvZ.js",
+    "file": "assets/RakstiLv-tLc6olpI.js",
     "name": "RakstiLv",
     "src": "src/pages/lv/RakstiLv.tsx",
     "isDynamicEntry": true,
@@ -1472,32 +1472,32 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "_blogLv-Bizd9e2k.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/RakstsLv.tsx": {
-    "file": "assets/RakstsLv-BerCk3Td.js",
+    "file": "assets/RakstsLv-D429ARxQ.js",
     "name": "RakstsLv",
     "src": "src/pages/lv/RakstsLv.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_TableOfContents-thTplXMK.js",
       "_blogLv-Bizd9e2k.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/RentgenaIzmeklejumiLv.tsx": {
-    "file": "assets/RentgenaIzmeklejumiLv-BMGG3zd_.js",
+    "file": "assets/RentgenaIzmeklejumiLv-MWb7rYCF.js",
     "name": "RentgenaIzmeklejumiLv",
     "src": "src/pages/lv/RentgenaIzmeklejumiLv.tsx",
     "isDynamicEntry": true,
@@ -1505,16 +1505,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/SinusaPacelsanaLv.tsx": {
-    "file": "assets/SinusaPacelsanaLv-DyEeNeen.js",
+    "file": "assets/SinusaPacelsanaLv-D5KJOzPY.js",
     "name": "SinusaPacelsanaLv",
     "src": "src/pages/lv/SinusaPacelsanaLv.tsx",
     "isDynamicEntry": true,
@@ -1522,16 +1522,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/SmaganuIekaisumsGingivitsLv.tsx": {
-    "file": "assets/SmaganuIekaisumsGingivitsLv-BCjQxVFN.js",
+    "file": "assets/SmaganuIekaisumsGingivitsLv-D2i55xgn.js",
     "name": "SmaganuIekaisumsGingivitsLv",
     "src": "src/pages/lv/SmaganuIekaisumsGingivitsLv.tsx",
     "isDynamicEntry": true,
@@ -1539,16 +1539,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/StraumannImplantiLv.tsx": {
-    "file": "assets/StraumannImplantiLv-C7mCLtB1.js",
+    "file": "assets/StraumannImplantiLv-Drb8pBZu.js",
     "name": "StraumannImplantiLv",
     "src": "src/pages/lv/StraumannImplantiLv.tsx",
     "isDynamicEntry": true,
@@ -1556,16 +1556,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/TerapeitiskaArstesanaLv.tsx": {
-    "file": "assets/TerapeitiskaArstesanaLv-B4oXgKoO.js",
+    "file": "assets/TerapeitiskaArstesanaLv-ZnvzFnwt.js",
     "name": "TerapeitiskaArstesanaLv",
     "src": "src/pages/lv/TerapeitiskaArstesanaLv.tsx",
     "isDynamicEntry": true,
@@ -1573,16 +1573,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/TulitejasImplantacijaLv.tsx": {
-    "file": "assets/TulitejasImplantacijaLv-DSDd-p1q.js",
+    "file": "assets/TulitejasImplantacijaLv-BuIrVgG7.js",
     "name": "TulitejasImplantacijaLv",
     "src": "src/pages/lv/TulitejasImplantacijaLv.tsx",
     "isDynamicEntry": true,
@@ -1590,16 +1590,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/VisiZobiUz4ImplantiemLv.tsx": {
-    "file": "assets/VisiZobiUz4ImplantiemLv-PJyCI4Qt.js",
+    "file": "assets/VisiZobiUz4ImplantiemLv-DRtj_aw0.js",
     "name": "VisiZobiUz4ImplantiemLv",
     "src": "src/pages/lv/VisiZobiUz4ImplantiemLv.tsx",
     "isDynamicEntry": true,
@@ -1607,16 +1607,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ZobuArstniecibaLv.tsx": {
-    "file": "assets/ZobuArstniecibaLv-CofvP1_6.js",
+    "file": "assets/ZobuArstniecibaLv-C1nGIoX8.js",
     "name": "ZobuArstniecibaLv",
     "src": "src/pages/lv/ZobuArstniecibaLv.tsx",
     "isDynamicEntry": true,
@@ -1624,16 +1624,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ZobuBalinesanaArLampuLv.tsx": {
-    "file": "assets/ZobuBalinesanaArLampuLv-B9Qo2hpU.js",
+    "file": "assets/ZobuBalinesanaArLampuLv-DnMEWiez.js",
     "name": "ZobuBalinesanaArLampuLv",
     "src": "src/pages/lv/ZobuBalinesanaArLampuLv.tsx",
     "isDynamicEntry": true,
@@ -1641,16 +1641,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ZobuBalinesanaLv.tsx": {
-    "file": "assets/ZobuBalinesanaLv-siOQHepJ.js",
+    "file": "assets/ZobuBalinesanaLv-CCWkuMV-.js",
     "name": "ZobuBalinesanaLv",
     "src": "src/pages/lv/ZobuBalinesanaLv.tsx",
     "isDynamicEntry": true,
@@ -1658,16 +1658,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ZobuBalinesanasKapasLv.tsx": {
-    "file": "assets/ZobuBalinesanasKapasLv-BcBYQOqs.js",
+    "file": "assets/ZobuBalinesanasKapasLv-By92LU4R.js",
     "name": "ZobuBalinesanasKapasLv",
     "src": "src/pages/lv/ZobuBalinesanasKapasLv.tsx",
     "isDynamicEntry": true,
@@ -1675,16 +1675,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ZobuEkstrakcijaLv.tsx": {
-    "file": "assets/ZobuEkstrakcijaLv-B5mibl_3.js",
+    "file": "assets/ZobuEkstrakcijaLv-DLX3Mo_7.js",
     "name": "ZobuEkstrakcijaLv",
     "src": "src/pages/lv/ZobuEkstrakcijaLv.tsx",
     "isDynamicEntry": true,
@@ -1692,16 +1692,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "index.html",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ZobuFluoresanaLv.tsx": {
-    "file": "assets/ZobuFluoresanaLv-TDGaqLfm.js",
+    "file": "assets/ZobuFluoresanaLv-w_cF4c5M.js",
     "name": "ZobuFluoresanaLv",
     "src": "src/pages/lv/ZobuFluoresanaLv.tsx",
     "isDynamicEntry": true,
@@ -1709,16 +1709,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ZobuIzlinesanaLv.tsx": {
-    "file": "assets/ZobuIzlinesanaLv-D3ez0twY.js",
+    "file": "assets/ZobuIzlinesanaLv-DXGmwIqW.js",
     "name": "ZobuIzlinesanaLv",
     "src": "src/pages/lv/ZobuIzlinesanaLv.tsx",
     "isDynamicEntry": true,
@@ -1726,16 +1726,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ZobuKronitiLv.tsx": {
-    "file": "assets/ZobuKronitiLv-Cfcg7zxp.js",
+    "file": "assets/ZobuKronitiLv-DbkWR0MB.js",
     "name": "ZobuKronitiLv",
     "src": "src/pages/lv/ZobuKronitiLv.tsx",
     "isDynamicEntry": true,
@@ -1743,16 +1743,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ZobuPlombanaLv.tsx": {
-    "file": "assets/ZobuPlombanaLv-bIxHM4Za.js",
+    "file": "assets/ZobuPlombanaLv-dmQkP6Kz.js",
     "name": "ZobuPlombanaLv",
     "src": "src/pages/lv/ZobuPlombanaLv.tsx",
     "isDynamicEntry": true,
@@ -1760,16 +1760,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
+      "_SEO-B0naMs-N.js",
       "index.html",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ZobuProtezesanaLv.tsx": {
-    "file": "assets/ZobuProtezesanaLv-DSJn-gFw.js",
+    "file": "assets/ZobuProtezesanaLv-iS_lAZEb.js",
     "name": "ZobuProtezesanaLv",
     "src": "src/pages/lv/ZobuProtezesanaLv.tsx",
     "isDynamicEntry": true,
@@ -1777,17 +1777,17 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "_BeforeAfterSlider-CYzuNk9-.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ZobuTiltiLv.tsx": {
-    "file": "assets/ZobuTiltiLv-CtL_owm9.js",
+    "file": "assets/ZobuTiltiLv-Dl1qm4nC.js",
     "name": "ZobuTiltiLv",
     "src": "src/pages/lv/ZobuTiltiLv.tsx",
     "isDynamicEntry": true,
@@ -1795,16 +1795,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ZobuUzlikasLv.tsx": {
-    "file": "assets/ZobuUzlikasLv-D0Gsc3zq.js",
+    "file": "assets/ZobuUzlikasLv-BuYAPst0.js",
     "name": "ZobuUzlikasLv",
     "src": "src/pages/lv/ZobuUzlikasLv.tsx",
     "isDynamicEntry": true,
@@ -1812,16 +1812,16 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   },
   "src/pages/lv/ZoklakaulaAugmentacijaLv.tsx": {
-    "file": "assets/ZoklakaulaAugmentacijaLv-Dbw8YAok.js",
+    "file": "assets/ZoklakaulaAugmentacijaLv-XmWTwrwH.js",
     "name": "ZoklakaulaAugmentacijaLv",
     "src": "src/pages/lv/ZoklakaulaAugmentacijaLv.tsx",
     "isDynamicEntry": true,
@@ -1829,11 +1829,11 @@
       "_react-BvRp_hRD.js",
       "_router-DPWD8MGT.js",
       "_AnimatedSection-B6BfU_z7.js",
-      "_SEO-BqAduOaS.js",
-      "_TableOfContents-Cy0wxkQg.js",
+      "_SEO-B0naMs-N.js",
+      "_TableOfContents-thTplXMK.js",
       "_ReviewsCarousel-B7VzYFSN.js",
       "index.html",
-      "_proxy-CfURn6SX.js",
+      "_proxy-DXu6EsKJ.js",
       "_lenis-CZHgqTAH.js"
     ]
   }

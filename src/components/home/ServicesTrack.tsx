@@ -97,46 +97,78 @@ export default function ServicesTrack({ items, readMoreLabel, heading }: Props) 
   const [shift, setShift] = useState(0)
 
   /* How far the row must travel so the last card ends flush with the right
-     gutter. Remeasured on resize and when the card count changes. */
+     gutter.
+
+     This has to stay correct for the life of the section, because the pinned
+     section's height is derived from it: if the two disagree, the row either
+     stops short or keeps travelling after the last card has arrived, which
+     feels like the page is stuck. An early version measured once at the
+     width the page happened to load at and never updated, so resizing left
+     ~300px of dead scroll at the end.
+
+     So the observer watches the document element as well as the track —
+     a viewport change resizes the former even when the latter's content is
+     unchanged — and the right gutter is added back, since scrollWidth
+     excludes trailing padding. */
   useEffect(() => {
     if (!pinned) {
       setShift(0)
       return
     }
+
     const measure = () => {
       const track = trackRef.current
-      const section = sectionRef.current
-      if (!track || !section) return
-      /* The track is a shrink-0 flex row, so its own clientWidth equals its
-         content width — measure the travel against the viewport-width section
-         instead, or the shift is always zero. */
-      setShift(Math.max(0, track.scrollWidth - section.clientWidth))
+      if (!track) return
+      const gutter = parseFloat(getComputedStyle(track).paddingRight) || 0
+      const travel = track.scrollWidth + gutter - track.clientWidth
+      setShift((prev) => {
+        const next = Math.max(0, Math.round(travel))
+        return Math.abs(next - prev) > 1 ? next : prev
+      })
     }
+
     measure()
+
     const ro = new ResizeObserver(measure)
     if (trackRef.current) ro.observe(trackRef.current)
+    ro.observe(document.documentElement)
+
     window.addEventListener('resize', measure)
+    window.addEventListener('orientationchange', measure)
     return () => {
       ro.disconnect()
       window.removeEventListener('resize', measure)
+      window.removeEventListener('orientationchange', measure)
     }
-  }, [pinned, items.length])
+  }, [pinned, items.length, shift > 0])
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end end'],
   })
 
-  /* Ease in and out of the horizontal run so the row is not already moving on
-     the frame the section pins. */
-  const x = useTransform(scrollYProgress, [0, 0.08, 0.92, 1], [0, 0, -shift, -shift])
+  /* Strictly linear, and exactly 1:1 with the scroll: the section is one
+     viewport tall plus `shift`, so progress 0->1 spans `shift` pixels of
+     scrolling and the row travels the same `shift` pixels sideways. One
+     wheel notch moves the cards by the same distance it would move the page.
 
-  if (!pinned) {
+     The previous mapping eased in and out over the first and last 8%, which
+     meant the row sat still while the page was already pinned, then sped up
+     to catch up, then stalled again before releasing. That is what read as
+     scrolling "from left to right or reverse" and as being stuck. */
+  const x = useTransform(scrollYProgress, [0, 1], [0, -shift])
+
+  /* Pin only once the travel distance is known. On the first frame after
+     mount `shift` is still 0, and pinning then produced a full viewport of
+     sticky scrolling where nothing moved at all, followed by a jump when the
+     measurement landed. Until it is measured, the plain snap row renders. */
+  if (!pinned || shift <= 0) {
     return (
       <>
         {heading && <div className="container-wide w-full pb-12">{heading}</div>}
         <div
-          className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          ref={trackRef}
+          className="flex snap-x snap-mandatory gap-8 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           style={{ paddingInline: 'var(--gutter)' }}
         >
           {items.map((item) => (

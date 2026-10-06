@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { AnimatePresence, m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 import SEO from '../components/SEO'
@@ -66,12 +67,6 @@ function Check() {
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
-const STATS = [
-  { value: '15+',  label: 'Metų patirtis' },
-  { value: '5K+',  label: 'Patenkintų pacientų' },
-  { value: '4.9★', label: 'Google įvertinimas' },
-]
-
 const FEATURES = [
   {
     n: '01',
@@ -99,43 +94,158 @@ const POPULAR_SERVICES = [
   { id: 'vaiku-odontologija',   title: 'Vaikų odontologija',    desc: 'Švelni priežiūra mažiesiems – draugiška aplinka be streso.', image: '/hero4.webp' },
 ]
 
-/* Portraits are cropped out of the branded cards in public/team/ by
-   scripts/team-portraits.mjs — those sources have the name, role and logo
-   baked into the artwork, in two different brand styles. Names and roles
-   below are unchanged and now render as real text. */
+/* These photos are complete marketing cards: the name, role and
+   specialisations are part of the artwork, so they are shown whole and
+   uncropped. The name/role below back them up for screen readers. */
 const TEAM = [
-  { name: 'Donatas Bitinas',   role: 'Implantuojantis gydytojas odontologas',              img: '/team-portrait/Donatas_light.jpg' },
-  { name: 'Donatas Kubilius',  role: 'Gydytojas, Veido ir Žandikaulių chirurgas',          img: '/team-portrait/donataskubilius.jpg' },
-  { name: 'Jonas Sabulis',     role: 'Protezuojantis gydytojas odontologas',               img: '/team-portrait/Jonas-light.jpg' },
-  { name: 'Odeta Venckutė',    role: 'Gydytoja odontologė',                                img: '/team-portrait/Odeta-light.jpg' },
-  { name: 'Rūta Garšvienė',   role: 'Burnos higienistė, tiesinimo kapomis koordinatorė', img: '/team-portrait/Rūta_light.jpg' },
+  { name: 'Donatas Bitinas',   role: 'Implantuojantis gydytojas odontologas',              img: '/team/Donatas_light.jpg' },
+  { name: 'Donatas Kubilius',  role: 'Gydytojas, Veido ir Žandikaulių chirurgas',          img: '/team/donataskubilius.jpg' },
+  { name: 'Jonas Sabulis',     role: 'Protezuojantis gydytojas odontologas',               img: '/team/Jonas-light.jpg' },
+  { name: 'Odeta Venckutė',    role: 'Gydytoja odontologė',                                img: '/team/Odeta-light.jpg' },
+  { name: 'Rūta Garšvienė',   role: 'Burnos higienistė, tiesinimo kapomis koordinatorė', img: '/team/Rūta_light.jpg' },
 ]
 
-/* ─── Team: editorial offset grid ─────────────────────────────────────────────
-   Replaces the coverflow carousel. A carousel hid four of five clinicians
-   behind a control; this shows all five at once and staggers their vertical
-   offset so the row reads as composed rather than as a strip of equal tiles.
-   Names and roles are always visible instead of appearing on hover, which
-   never worked on touch. */
-function TeamGrid() {
+/* ─── Team coverflow carousel ─────────────────────────────────────────────────
+   Restored from the previous design. The photos in public/team/ are complete
+   marketing cards — the name, role and specialisation list are part of the
+   artwork — so each one is shown whole at its native 4:5 ratio. Nothing is
+   cropped and nothing is laid over it.
+
+   Because the text lives in the image, the name and role are also rendered
+   for screen readers only: that information must reach assistive tech and
+   search engines, which cannot read pixels.                                  */
+function TeamCarousel() {
+  const [active, setActive] = useState(0)
+  const n = TEAM.length
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const stageRef = useRef<HTMLDivElement>(null)
+  const [inView, setInView] = useState(true)
+
+  const go = useCallback((dir: 1 | -1) => {
+    setActive(prev => (prev + dir + n) % n)
+  }, [n])
+
+  /* Pause auto-advance off-screen so the spring animations stop running rAF
+     while the visitor is scrolling through the rest of the page. */
+  useEffect(() => {
+    if (!stageRef.current) return
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.15 })
+    io.observe(stageRef.current)
+    return () => io.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!inView) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    intervalRef.current = setInterval(() => go(1), 4000)
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
+  }, [go, inView])
+
+  const resetTimer = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current)
+    if (!inView) return
+    intervalRef.current = setInterval(() => go(1), 4000)
+  }
+
+  const handleGo = (dir: 1 | -1) => { go(dir); resetTimer() }
+  const handleSelect = (i: number) => { setActive(i); resetTimer() }
+
+  // distance from active (wrap-aware)
+  const getDist = (i: number) => {
+    let d = i - active
+    if (d > n / 2) d -= n
+    if (d < -n / 2) d += n
+    return d
+  }
+
   return (
-    <ul className="grid list-none grid-cols-2 gap-x-5 gap-y-10 p-0 md:grid-cols-3 lg:grid-cols-5 lg:gap-x-6">
-      {TEAM.map((member, i) => (
-        <li key={member.name} className={i % 2 === 1 ? 'lg:translate-y-10' : undefined}>
-          <div className="mask-zoom wave-mask relative aspect-[3/4] overflow-hidden bg-paper">
-            <Picture
-              src={member.img}
-              alt={member.name}
-              sizes="(max-width: 767px) 44vw, (max-width: 1023px) 30vw, 17rem"
-              className="block h-full w-full"
-              imgClassName="h-full w-full object-cover"
+    <div className="relative select-none">
+      <div
+        ref={stageRef}
+        className="relative flex h-[600px] items-center justify-center overflow-hidden sm:h-[720px]"
+        style={{ perspective: '1100px' }}
+      >
+        {TEAM.map((member, i) => {
+          const d = getDist(i)
+          const abs = Math.abs(d)
+          if (abs > 2) return null
+
+          const x = d * 300
+          const scale = Math.max(0.65, 1 - abs * 0.17)
+          const z = 100 - abs * 35
+          const opacity = Math.max(0.35, 1 - abs * 0.28)
+          const rotY = -d * 10
+
+          return (
+            <m.div
+              key={member.name}
+              className="absolute"
+              style={{ zIndex: z, cursor: abs > 0 ? 'pointer' : 'default' }}
+              animate={{ x, scale, opacity, rotateY: rotY }}
+              transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+              onClick={() => abs > 0 && handleSelect(i)}
+            >
+              <div
+                className="overflow-hidden rounded-card transition-shadow duration-mid"
+                style={{
+                  width: 'clamp(250px, 34vw, 400px)',
+                  boxShadow: abs === 0 ? 'var(--shadow-deep)' : 'var(--shadow-lift)',
+                  border: `1px solid ${abs === 0 ? 'var(--tide)' : 'var(--hairline)'}`,
+                }}
+              >
+                {/* 4:5 is the photos' native ratio, so the whole card shows. */}
+                <div className="relative aspect-[4/5] bg-paper">
+                  <Picture
+                    src={member.img}
+                    alt={member.name}
+                    sizes="(max-width: 640px) 250px, 34vw"
+                    className="block h-full w-full"
+                    imgClassName="h-full w-full object-contain"
+                  />
+                  <span className="sr-only">{member.name} — {member.role}</span>
+                </div>
+              </div>
+            </m.div>
+          )
+        })}
+      </div>
+
+      {/* Controls */}
+      <div className="mt-4 flex items-center justify-center gap-6">
+        <button
+          onClick={() => handleGo(-1)}
+          className="flex h-11 w-11 items-center justify-center rounded-pill border border-hairline-strong text-ink transition-colors duration-fast hover:bg-shell"
+          aria-label="Ankstesnis"
+        >
+          <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+
+        <div className="flex items-center gap-2">
+          {TEAM.map((member, i) => (
+            <button
+              key={member.name}
+              onClick={() => handleSelect(i)}
+              className="rounded-pill transition-all duration-mid"
+              style={{
+                width: i === active ? 20 : 7,
+                height: 7,
+                background: i === active ? 'var(--tide)' : 'var(--hairline-strong)',
+              }}
+              aria-label={member.name}
+              aria-current={i === active}
             />
-          </div>
-          <p className="mt-4 text-body font-bold leading-tight">{member.name}</p>
-          <p className="muted mt-1 text-micro leading-snug">{member.role}</p>
-        </li>
-      ))}
-    </ul>
+          ))}
+        </div>
+
+        <button
+          onClick={() => handleGo(1)}
+          className="flex h-11 w-11 items-center justify-center rounded-pill border border-hairline-strong text-ink transition-colors duration-fast hover:bg-shell"
+          aria-label="Kitas"
+        >
+          <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
   )
 }
 
@@ -151,14 +261,6 @@ export default function Home() {
   }, [])
 
   const WHY_IMAGES = ['/kodel-verta-1.webp', '/kodel-verta-2.webp', '/kodel-verta-3.webp']
-
-  /* The Google figure comes from the live Places response; the other two are
-     the clinic's own existing claims. */
-  const stats = STATS.map((s) =>
-    s.label === 'Google įvertinimas' && google.rating
-      ? { ...s, value: `${google.rating.toFixed(1)}★` }
-      : s
-  )
 
   return (
     <>
@@ -298,20 +400,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══ STATS ═════════════════════════════════════════════════════════ */}
-      <section className="container-wide pb-section-tight">
-        <dl className="grid grid-cols-3 gap-6 border-y border-hairline py-8">
-          {stats.map((s) => (
-            /* flex-col-reverse shows the value above its label while keeping
-               dt before dd in the DOM, which is what assistive tech expects. */
-            <div key={s.label} className="flex flex-col-reverse gap-2">
-              <dt className="muted text-micro">{s.label}</dt>
-              <dd className="m-0 text-h2 font-black leading-none">{s.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
       <WaveDivider from="var(--paper)" to="var(--shell)" />
 
       {/* ══ TEAM ══════════════════════════════════════════════════════════ */}
@@ -325,7 +413,7 @@ export default function Home() {
               Patyrusi ir draugiška komanda, kuri rūpinasi kiekvieno paciento komfortu ir sveikata.
             </p>
           </AnimatedSection>
-          <TeamGrid />
+          <TeamCarousel />
         </div>
       </section>
 
