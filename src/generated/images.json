@@ -1,0 +1,1731 @@
+{
+  "/hero.webp": {
+    "w": 1600,
+    "h": 1067,
+    "ratio": 1.4995,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/hero-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/hero-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/hero-1200.avif"
+      },
+      {
+        "w": 1600,
+        "h": 1067,
+        "src": "/img/hero-1600.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/hero-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/hero-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/hero-1200.webp"
+      },
+      {
+        "w": 1600,
+        "h": 1067,
+        "src": "/img/hero-1600.webp"
+      }
+    ]
+  },
+  "/hero1.webp": {
+    "w": 1600,
+    "h": 1066,
+    "ratio": 1.5009,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/hero1-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/hero1-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/hero1-1200.avif"
+      },
+      {
+        "w": 1600,
+        "h": 1066,
+        "src": "/img/hero1-1600.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/hero1-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/hero1-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/hero1-1200.webp"
+      },
+      {
+        "w": 1600,
+        "h": 1066,
+        "src": "/img/hero1-1600.webp"
+      }
+    ]
+  },
+  "/hero2.webp": {
+    "w": 1600,
+    "h": 1067,
+    "ratio": 1.4995,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/hero2-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/hero2-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/hero2-1200.avif"
+      },
+      {
+        "w": 1600,
+        "h": 1067,
+        "src": "/img/hero2-1600.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/hero2-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/hero2-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/hero2-1200.webp"
+      },
+      {
+        "w": 1600,
+        "h": 1067,
+        "src": "/img/hero2-1600.webp"
+      }
+    ]
+  },
+  "/hero3.webp": {
+    "w": 1600,
+    "h": 1067,
+    "ratio": 1.4995,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/hero3-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/hero3-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/hero3-1200.avif"
+      },
+      {
+        "w": 1600,
+        "h": 1067,
+        "src": "/img/hero3-1600.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/hero3-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/hero3-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/hero3-1200.webp"
+      },
+      {
+        "w": 1600,
+        "h": 1067,
+        "src": "/img/hero3-1600.webp"
+      }
+    ]
+  },
+  "/hero4.webp": {
+    "w": 1600,
+    "h": 1067,
+    "ratio": 1.4995,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/hero4-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/hero4-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/hero4-1200.avif"
+      },
+      {
+        "w": 1600,
+        "h": 1067,
+        "src": "/img/hero4-1600.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/hero4-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/hero4-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/hero4-1200.webp"
+      },
+      {
+        "w": 1600,
+        "h": 1067,
+        "src": "/img/hero4-1600.webp"
+      }
+    ]
+  },
+  "/kodel-verta-1.webp": {
+    "w": 852,
+    "h": 568,
+    "ratio": 1.5,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/kodel-verta-1-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/kodel-verta-1-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/kodel-verta-1-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/kodel-verta-1-800.webp"
+      }
+    ]
+  },
+  "/kodel-verta-2.webp": {
+    "w": 852,
+    "h": 568,
+    "ratio": 1.5,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/kodel-verta-2-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/kodel-verta-2-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/kodel-verta-2-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/kodel-verta-2-800.webp"
+      }
+    ]
+  },
+  "/kodel-verta-3.webp": {
+    "w": 1400,
+    "h": 933,
+    "ratio": 1.5005,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/kodel-verta-3-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/kodel-verta-3-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/kodel-verta-3-1200.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/kodel-verta-3-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/kodel-verta-3-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/kodel-verta-3-1200.webp"
+      }
+    ]
+  },
+  "/implantacija.webp": {
+    "w": 1400,
+    "h": 933,
+    "ratio": 1.5005,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/implantacija-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/implantacija-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/implantacija-1200.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/implantacija-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/implantacija-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/implantacija-1200.webp"
+      }
+    ]
+  },
+  "/protezavimas.webp": {
+    "w": 1400,
+    "h": 1867,
+    "ratio": 0.7499,
+    "avif": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/protezavimas-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/protezavimas-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 1600,
+        "src": "/img/protezavimas-1200.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/protezavimas-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/protezavimas-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 1600,
+        "src": "/img/protezavimas-1200.webp"
+      }
+    ]
+  },
+  "/balinimas.webp": {
+    "w": 1400,
+    "h": 892,
+    "ratio": 1.5695,
+    "avif": [
+      {
+        "w": 400,
+        "h": 255,
+        "src": "/img/balinimas-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 510,
+        "src": "/img/balinimas-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 765,
+        "src": "/img/balinimas-1200.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 255,
+        "src": "/img/balinimas-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 510,
+        "src": "/img/balinimas-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 765,
+        "src": "/img/balinimas-1200.webp"
+      }
+    ]
+  },
+  "/higiena.webp": {
+    "w": 1400,
+    "h": 857,
+    "ratio": 1.6336,
+    "avif": [
+      {
+        "w": 400,
+        "h": 245,
+        "src": "/img/higiena-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 490,
+        "src": "/img/higiena-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 735,
+        "src": "/img/higiena-1200.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 245,
+        "src": "/img/higiena-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 490,
+        "src": "/img/higiena-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 735,
+        "src": "/img/higiena-1200.webp"
+      }
+    ]
+  },
+  "/plombavimas.webp": {
+    "w": 1400,
+    "h": 933,
+    "ratio": 1.5005,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/plombavimas-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/plombavimas-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/plombavimas-1200.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/plombavimas-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/plombavimas-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/plombavimas-1200.webp"
+      }
+    ]
+  },
+  "/poster.webp": {
+    "w": 1600,
+    "h": 2133,
+    "ratio": 0.7501,
+    "avif": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/poster-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/poster-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 1600,
+        "src": "/img/poster-1200.avif"
+      },
+      {
+        "w": 1600,
+        "h": 2133,
+        "src": "/img/poster-1600.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/poster-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/poster-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 1600,
+        "src": "/img/poster-1200.webp"
+      },
+      {
+        "w": 1600,
+        "h": 2133,
+        "src": "/img/poster-1600.webp"
+      }
+    ]
+  },
+  "/poster1.webp": {
+    "w": 1600,
+    "h": 2133,
+    "ratio": 0.7501,
+    "avif": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/poster1-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/poster1-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 1600,
+        "src": "/img/poster1-1200.avif"
+      },
+      {
+        "w": 1600,
+        "h": 2133,
+        "src": "/img/poster1-1600.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/poster1-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/poster1-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 1600,
+        "src": "/img/poster1-1200.webp"
+      },
+      {
+        "w": 1600,
+        "h": 2133,
+        "src": "/img/poster1-1600.webp"
+      }
+    ]
+  },
+  "/hero-poster-source.png": {
+    "w": 1920,
+    "h": 1106,
+    "ratio": 1.736,
+    "avif": [
+      {
+        "w": 400,
+        "h": 230,
+        "src": "/img/hero-poster-source-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 461,
+        "src": "/img/hero-poster-source-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 691,
+        "src": "/img/hero-poster-source-1200.avif"
+      },
+      {
+        "w": 1600,
+        "h": 922,
+        "src": "/img/hero-poster-source-1600.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 230,
+        "src": "/img/hero-poster-source-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 461,
+        "src": "/img/hero-poster-source-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 691,
+        "src": "/img/hero-poster-source-1200.webp"
+      },
+      {
+        "w": 1600,
+        "h": 922,
+        "src": "/img/hero-poster-source-1600.webp"
+      }
+    ]
+  },
+  "/team/donataskubilius.jpg": {
+    "w": 960,
+    "h": 1200,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__donataskubilius-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__donataskubilius-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__donataskubilius-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__donataskubilius-800.webp"
+      }
+    ]
+  },
+  "/team/Donatas_Kubliuslight LV.jpg": {
+    "w": 960,
+    "h": 1200,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Donatas_Kubliuslight-LV-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Donatas_Kubliuslight-LV-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Donatas_Kubliuslight-LV-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Donatas_Kubliuslight-LV-800.webp"
+      }
+    ]
+  },
+  "/team/Donatas_light LV.jpg": {
+    "w": 960,
+    "h": 1200,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Donatas_light-LV-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Donatas_light-LV-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Donatas_light-LV-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Donatas_light-LV-800.webp"
+      }
+    ]
+  },
+  "/team/Donatas_light.jpg": {
+    "w": 960,
+    "h": 1200,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Donatas_light-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Donatas_light-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Donatas_light-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Donatas_light-800.webp"
+      }
+    ]
+  },
+  "/team/Jonas-light LV.jpg": {
+    "w": 960,
+    "h": 1200,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Jonas-light-LV-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Jonas-light-LV-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Jonas-light-LV-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Jonas-light-LV-800.webp"
+      }
+    ]
+  },
+  "/team/Jonas-light.jpg": {
+    "w": 960,
+    "h": 1200,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Jonas-light-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Jonas-light-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Jonas-light-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Jonas-light-800.webp"
+      }
+    ]
+  },
+  "/team/jonas.jpg": {
+    "w": 960,
+    "h": 1199,
+    "ratio": 0.8007,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__jonas-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 999,
+        "src": "/img/team__jonas-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__jonas-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 999,
+        "src": "/img/team__jonas-800.webp"
+      }
+    ]
+  },
+  "/team/Odeta-light LV.jpg": {
+    "w": 960,
+    "h": 1200,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Odeta-light-LV-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Odeta-light-LV-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Odeta-light-LV-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Odeta-light-LV-800.webp"
+      }
+    ]
+  },
+  "/team/Odeta-light.jpg": {
+    "w": 960,
+    "h": 1200,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Odeta-light-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Odeta-light-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Odeta-light-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Odeta-light-800.webp"
+      }
+    ]
+  },
+  "/team/odeta.jpg": {
+    "w": 960,
+    "h": 1199,
+    "ratio": 0.8007,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__odeta-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 999,
+        "src": "/img/team__odeta-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__odeta-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 999,
+        "src": "/img/team__odeta-800.webp"
+      }
+    ]
+  },
+  "/team/Rugile-light LV.jpg": {
+    "w": 960,
+    "h": 1200,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Rugile-light-LV-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Rugile-light-LV-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Rugile-light-LV-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Rugile-light-LV-800.webp"
+      }
+    ]
+  },
+  "/team/Rugile-light.jpg": {
+    "w": 960,
+    "h": 1200,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Rugile-light-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Rugile-light-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Rugile-light-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Rugile-light-800.webp"
+      }
+    ]
+  },
+  "/team/ruta.jpg": {
+    "w": 960,
+    "h": 1197,
+    "ratio": 0.802,
+    "avif": [
+      {
+        "w": 400,
+        "h": 499,
+        "src": "/img/team__ruta-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 998,
+        "src": "/img/team__ruta-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 499,
+        "src": "/img/team__ruta-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 998,
+        "src": "/img/team__ruta-800.webp"
+      }
+    ]
+  },
+  "/team/Rūta_light LV.jpg": {
+    "w": 960,
+    "h": 1200,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__R-ta_light-LV-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__R-ta_light-LV-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__R-ta_light-LV-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__R-ta_light-LV-800.webp"
+      }
+    ]
+  },
+  "/team/Rūta_light.jpg": {
+    "w": 960,
+    "h": 1200,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__R-ta_light-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__R-ta_light-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__R-ta_light-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__R-ta_light-800.webp"
+      }
+    ]
+  },
+  "/team-portrait/donataskubilius.jpg": {
+    "w": 900,
+    "h": 1200,
+    "ratio": 0.75,
+    "avif": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/team-portrait__donataskubilius-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/team-portrait__donataskubilius-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/team-portrait__donataskubilius-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/team-portrait__donataskubilius-800.webp"
+      }
+    ]
+  },
+  "/team-portrait/Donatas_light.jpg": {
+    "w": 900,
+    "h": 1200,
+    "ratio": 0.75,
+    "avif": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/team-portrait__Donatas_light-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/team-portrait__Donatas_light-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/team-portrait__Donatas_light-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/team-portrait__Donatas_light-800.webp"
+      }
+    ]
+  },
+  "/team-portrait/Jonas-light.jpg": {
+    "w": 900,
+    "h": 1200,
+    "ratio": 0.75,
+    "avif": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/team-portrait__Jonas-light-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/team-portrait__Jonas-light-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/team-portrait__Jonas-light-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/team-portrait__Jonas-light-800.webp"
+      }
+    ]
+  },
+  "/team-portrait/Odeta-light.jpg": {
+    "w": 900,
+    "h": 1200,
+    "ratio": 0.75,
+    "avif": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/team-portrait__Odeta-light-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/team-portrait__Odeta-light-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/team-portrait__Odeta-light-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/team-portrait__Odeta-light-800.webp"
+      }
+    ]
+  },
+  "/team-portrait/Rūta_light.jpg": {
+    "w": 900,
+    "h": 1200,
+    "ratio": 0.75,
+    "avif": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/team-portrait__R-ta_light-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/team-portrait__R-ta_light-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 533,
+        "src": "/img/team-portrait__R-ta_light-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1067,
+        "src": "/img/team-portrait__R-ta_light-800.webp"
+      }
+    ]
+  },
+  "/blog/ar skauda kai traukia danti.jpg": {
+    "w": 1500,
+    "h": 1000,
+    "ratio": 1.5,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/blog__ar-skauda-kai-traukia-danti-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/blog__ar-skauda-kai-traukia-danti-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/blog__ar-skauda-kai-traukia-danti-1200.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/blog__ar-skauda-kai-traukia-danti-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/blog__ar-skauda-kai-traukia-danti-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/blog__ar-skauda-kai-traukia-danti-1200.webp"
+      }
+    ]
+  },
+  "/blog/kaip-pasalinti-dantu-akmenis.jpg": {
+    "w": 1000,
+    "h": 667,
+    "ratio": 1.4993,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/blog__kaip-pasalinti-dantu-akmenis-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/blog__kaip-pasalinti-dantu-akmenis-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/blog__kaip-pasalinti-dantu-akmenis-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/blog__kaip-pasalinti-dantu-akmenis-800.webp"
+      }
+    ]
+  },
+  "/blog/kaip-saugiai-balinti-dantis-namuose.jpg": {
+    "w": 1000,
+    "h": 667,
+    "ratio": 1.4993,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/blog__kaip-saugiai-balinti-dantis-namuose-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/blog__kaip-saugiai-balinti-dantis-namuose-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/blog__kaip-saugiai-balinti-dantis-namuose-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/blog__kaip-saugiai-balinti-dantis-namuose-800.webp"
+      }
+    ]
+  },
+  "/blog/kariesas-be-grezimo.jpg": {
+    "w": 1000,
+    "h": 665,
+    "ratio": 1.5038,
+    "avif": [
+      {
+        "w": 400,
+        "h": 266,
+        "src": "/img/blog__kariesas-be-grezimo-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 532,
+        "src": "/img/blog__kariesas-be-grezimo-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 266,
+        "src": "/img/blog__kariesas-be-grezimo-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 532,
+        "src": "/img/blog__kariesas-be-grezimo-800.webp"
+      }
+    ]
+  },
+  "/blog/kaulo priauginimas ka butina zinoti pries operacija.jpg": {
+    "w": 1500,
+    "h": 1000,
+    "ratio": 1.5,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/blog__kaulo-priauginimas-ka-butina-zinoti-pries-operacija-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/blog__kaulo-priauginimas-ka-butina-zinoti-pries-operacija-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/blog__kaulo-priauginimas-ka-butina-zinoti-pries-operacija-1200.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/blog__kaulo-priauginimas-ka-butina-zinoti-pries-operacija-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 533,
+        "src": "/img/blog__kaulo-priauginimas-ka-butina-zinoti-pries-operacija-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 800,
+        "src": "/img/blog__kaulo-priauginimas-ka-butina-zinoti-pries-operacija-1200.webp"
+      }
+    ]
+  },
+  "/blog/kaulo-priauginimas.jpg": {
+    "w": 1000,
+    "h": 667,
+    "ratio": 1.4993,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/blog__kaulo-priauginimas-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/blog__kaulo-priauginimas-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/blog__kaulo-priauginimas-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/blog__kaulo-priauginimas-800.webp"
+      }
+    ]
+  },
+  "/blog/kiek trunka burnos higiena.jpg": {
+    "w": 1500,
+    "h": 998,
+    "ratio": 1.503,
+    "avif": [
+      {
+        "w": 400,
+        "h": 266,
+        "src": "/img/blog__kiek-trunka-burnos-higiena-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 532,
+        "src": "/img/blog__kiek-trunka-burnos-higiena-800.avif"
+      },
+      {
+        "w": 1200,
+        "h": 798,
+        "src": "/img/blog__kiek-trunka-burnos-higiena-1200.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 266,
+        "src": "/img/blog__kiek-trunka-burnos-higiena-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 532,
+        "src": "/img/blog__kiek-trunka-burnos-higiena-800.webp"
+      },
+      {
+        "w": 1200,
+        "h": 798,
+        "src": "/img/blog__kiek-trunka-burnos-higiena-1200.webp"
+      }
+    ]
+  },
+  "/blog/kiek-laiko-skauda-danti-po-kanalu-valymo.jpg": {
+    "w": 1000,
+    "h": 667,
+    "ratio": 1.4993,
+    "avif": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/blog__kiek-laiko-skauda-danti-po-kanalu-valymo-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/blog__kiek-laiko-skauda-danti-po-kanalu-valymo-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 267,
+        "src": "/img/blog__kiek-laiko-skauda-danti-po-kanalu-valymo-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 534,
+        "src": "/img/blog__kiek-laiko-skauda-danti-po-kanalu-valymo-800.webp"
+      }
+    ]
+  },
+  "/blog/vaikui-skauda-danti.jpg": {
+    "w": 1000,
+    "h": 665,
+    "ratio": 1.5038,
+    "avif": [
+      {
+        "w": 400,
+        "h": 266,
+        "src": "/img/blog__vaikui-skauda-danti-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 532,
+        "src": "/img/blog__vaikui-skauda-danti-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 266,
+        "src": "/img/blog__vaikui-skauda-danti-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 532,
+        "src": "/img/blog__vaikui-skauda-danti-800.webp"
+      }
+    ]
+  },
+  "/musu-darbai/06.jpg": {
+    "w": 1080,
+    "h": 1350,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/musu-darbai__06-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/musu-darbai__06-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/musu-darbai__06-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/musu-darbai__06-800.webp"
+      }
+    ]
+  },
+  "/musu-darbai/20.jpg": {
+    "w": 1080,
+    "h": 1350,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/musu-darbai__20-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/musu-darbai__20-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/musu-darbai__20-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/musu-darbai__20-800.webp"
+      }
+    ]
+  },
+  "/musu-darbai/254.jpg": {
+    "w": 1080,
+    "h": 1350,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/musu-darbai__254-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/musu-darbai__254-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/musu-darbai__254-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/musu-darbai__254-800.webp"
+      }
+    ]
+  },
+  "/musu-darbai/255.jpg": {
+    "w": 1080,
+    "h": 1350,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/musu-darbai__255-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/musu-darbai__255-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/musu-darbai__255-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/musu-darbai__255-800.webp"
+      }
+    ]
+  },
+  "/musu-darbai/256.jpg": {
+    "w": 1080,
+    "h": 1350,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/musu-darbai__256-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/musu-darbai__256-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/musu-darbai__256-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/musu-darbai__256-800.webp"
+      }
+    ]
+  },
+  "/musu-darbai/41.jpg": {
+    "w": 1080,
+    "h": 1350,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/musu-darbai__41-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/musu-darbai__41-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/musu-darbai__41-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/musu-darbai__41-800.webp"
+      }
+    ]
+  }
+}

@@ -313,14 +313,26 @@
   to { transform: translateY(0); }
 }
 
-/* ---- Wave-clipped image mask --------------------------------------------
-   A curved bottom edge on image containers. clip-path is composited, so the
-   hover scale underneath stays cheap. */
+/* ---- Wave sweep on image containers -------------------------------------
+   An asymmetric corner sweep: one long crest at the bottom-left against
+   three quiet corners. It echoes the wave language that TideLine and
+   WaveDivider carry literally, without being a third literal wave, and it
+   breaks the "one border-radius on everything" look.
+
+   This deliberately replaced a clip-path ellipse. clip-path on a descendant
+   of a promoted (will-change / transformed) ancestor silently failed to
+   paint in the pinned services track, and its corner behaviour changed with
+   the container's aspect ratio. border-radius composites reliably and is
+   predictable at every size. */
 .wave-mask {
-  clip-path: ellipse(140% 92% at 50% 8%);
+  border-radius: var(--r-image) var(--r-image) var(--r-image) 5.5rem;
 }
-@supports not (clip-path: ellipse(140% 92% at 50% 8%)) {
-  .wave-mask { border-end-start-radius: var(--r-image); border-end-end-radius: var(--r-image); }
+.wave-mask-r {
+  border-radius: var(--r-image) var(--r-image) 5.5rem var(--r-image);
+}
+@media (max-width: 640px) {
+  .wave-mask   { border-end-start-radius: 3.25rem; }
+  .wave-mask-r { border-end-end-radius: 3.25rem; }
 }
 
 /* Image inside a mask scales on hover; the mask itself never moves. */
