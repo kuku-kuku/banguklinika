@@ -9,7 +9,7 @@ import React3, { Component, useState, useRef, useEffect, useLayoutEffect, create
 import fastCompare from "react-fast-compare";
 import invariant from "invariant";
 import shallowEqual from "shallowequal";
-import { AnimatePresence, m, useReducedMotion, LazyMotion, domAnimation, MotionConfig, motion, useScroll, useTransform, useInView } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion, LazyMotion, domAnimation, MotionConfig, motion, useInView } from "framer-motion";
 import { useLocation, useNavigate, Link, NavLink, useParams, Navigate, Routes, Route, Outlet } from "react-router-dom";
 import { MapPin, Phone, Mail, Clock, ChevronDown as ChevronDown$1, Navigation } from "lucide-react";
 import Lenis from "lenis";
@@ -15825,31 +15825,20 @@ function TideLine({ className = "", weight = 1.25, opacity = 0.55 }) {
     }
   );
 }
-function usePinnable() {
-  const reduced2 = useReducedMotion();
-  const [wide, setWide] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px) and (pointer: fine)");
-    setWide(mq.matches);
-    const on = () => setWide(mq.matches);
-    mq.addEventListener("change", on);
-    return () => mq.removeEventListener("change", on);
-  }, []);
-  return wide && !reduced2;
-}
 function Card({ item: item2, readMoreLabel }) {
   return /* @__PURE__ */ jsxs(
     Link,
     {
       to: `/paslaugos/${item2.id}`,
-      className: "group flex w-[78vw] shrink-0 snap-center flex-col sm:w-[52vw] lg:w-[26rem]",
+      className: "group flex w-[78vw] shrink-0 snap-start flex-col sm:w-[46vw] lg:w-[25rem]",
+      "data-service-card": true,
       children: [
         /* @__PURE__ */ jsx("div", { className: "mask-zoom wave-mask relative aspect-[4/3] overflow-hidden bg-shell", children: /* @__PURE__ */ jsx(
           Picture,
           {
             src: item2.image,
             alt: item2.title,
-            sizes: "(max-width: 640px) 78vw, (max-width: 1023px) 52vw, 26rem",
+            sizes: "(max-width: 640px) 78vw, (max-width: 1023px) 46vw, 25rem",
             className: "block h-full w-full",
             imgClassName: "h-full w-full object-cover"
           }
@@ -15857,7 +15846,7 @@ function Card({ item: item2, readMoreLabel }) {
         /* @__PURE__ */ jsxs("div", { className: "flex flex-1 flex-col pt-6", children: [
           /* @__PURE__ */ jsx("h3", { className: "text-h3 font-bold", children: item2.title }),
           /* @__PURE__ */ jsx("p", { className: "muted mt-2 text-small leading-relaxed", children: item2.desc }),
-          /* @__PURE__ */ jsxs("span", { className: "mt-5 inline-flex items-center gap-2 text-small font-bold text-tide-text", children: [
+          /* @__PURE__ */ jsxs("span", { className: "mt-5 inline-flex w-fit items-center gap-2 rounded-pill border border-hairline-strong px-4 py-2 text-small font-bold text-tide-text transition-colors duration-fast group-hover:border-tide group-hover:bg-shell", children: [
             readMoreLabel,
             /* @__PURE__ */ jsx(
               "svg",
@@ -15879,79 +15868,80 @@ function Card({ item: item2, readMoreLabel }) {
   );
 }
 function ServicesTrack({ items, readMoreLabel, heading }) {
-  const pinned = usePinnable();
-  const sectionRef = useRef(null);
-  const trackRef = useRef(null);
-  const [shift, setShift] = useState(0);
+  const railRef = useRef(null);
+  const [index, setIndex] = useState(0);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+  const step = useCallback(() => {
+    var _a2;
+    const rail = railRef.current;
+    if (!rail) return 0;
+    const cards = rail.querySelectorAll("[data-service-card]");
+    if (cards.length < 2) return ((_a2 = cards[0]) == null ? void 0 : _a2.offsetWidth) ?? 0;
+    return cards[1].offsetLeft - cards[0].offsetLeft;
+  }, []);
+  const sync = useCallback(() => {
+    const rail = railRef.current;
+    if (!rail) return;
+    const s = step();
+    setIndex(s ? Math.round(rail.scrollLeft / s) : 0);
+    setAtStart(rail.scrollLeft <= 2);
+    setAtEnd(rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 2);
+  }, [step]);
   useEffect(() => {
-    if (!pinned) {
-      setShift(0);
-      return;
-    }
-    const measure = () => {
-      const track = trackRef.current;
-      if (!track) return;
-      const gutter = parseFloat(getComputedStyle(track).paddingRight) || 0;
-      const travel = track.scrollWidth + gutter - track.clientWidth;
-      setShift((prev) => {
-        const next = Math.max(0, Math.round(travel));
-        return Math.abs(next - prev) > 1 ? next : prev;
-      });
-    };
-    measure();
-    const ro = new ResizeObserver(measure);
-    if (trackRef.current) ro.observe(trackRef.current);
-    ro.observe(document.documentElement);
-    window.addEventListener("resize", measure);
-    window.addEventListener("orientationchange", measure);
+    const rail = railRef.current;
+    if (!rail) return;
+    sync();
+    rail.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
     return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", measure);
-      window.removeEventListener("orientationchange", measure);
+      rail.removeEventListener("scroll", sync);
+      window.removeEventListener("resize", sync);
     };
-  }, [pinned, items.length, shift > 0]);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"]
-  });
-  const x = useTransform(scrollYProgress, [0, 1], [0, -shift]);
-  if (!pinned || shift <= 0) {
-    return /* @__PURE__ */ jsxs(Fragment, { children: [
-      heading && /* @__PURE__ */ jsx("div", { className: "container-wide w-full pb-12", children: heading }),
-      /* @__PURE__ */ jsxs(
-        "div",
-        {
-          ref: trackRef,
-          className: "flex snap-x snap-mandatory gap-8 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-          style: { paddingInline: "var(--gutter)" },
-          children: [
-            items.map((item2) => /* @__PURE__ */ jsx(Card, { item: item2, readMoreLabel }, item2.id)),
-            /* @__PURE__ */ jsx("div", { "aria-hidden": true, className: "w-[1px] shrink-0" })
-          ]
-        }
-      )
-    ] });
-  }
-  return /* @__PURE__ */ jsx(
-    "div",
-    {
-      ref: sectionRef,
-      style: { height: `calc(100vh + ${shift}px)` },
-      className: "relative",
-      children: /* @__PURE__ */ jsxs("div", { className: "sticky top-0 flex h-screen flex-col justify-center overflow-hidden", children: [
-        heading && /* @__PURE__ */ jsx("div", { className: "container-wide w-full pb-10", children: heading }),
-        /* @__PURE__ */ jsx(
-          m.div,
-          {
-            ref: trackRef,
-            style: { x, paddingInline: "var(--gutter)" },
-            className: "flex gap-8",
-            children: items.map((item2) => /* @__PURE__ */ jsx(Card, { item: item2, readMoreLabel }, item2.id))
-          }
-        )
+  }, [sync]);
+  const go = (dir) => {
+    var _a2;
+    (_a2 = railRef.current) == null ? void 0 : _a2.scrollBy({ left: dir * step(), behavior: "smooth" });
+  };
+  const toIndex = (i) => {
+    var _a2;
+    (_a2 = railRef.current) == null ? void 0 : _a2.scrollTo({ left: i * step(), behavior: "smooth" });
+  };
+  const arrowClass = "flex h-11 w-11 items-center justify-center rounded-pill border border-hairline-strong text-ink transition-colors duration-fast hover:bg-shell disabled:opacity-35 disabled:hover:bg-transparent";
+  return /* @__PURE__ */ jsxs(Fragment, { children: [
+    heading && /* @__PURE__ */ jsxs("div", { className: "container-wide flex flex-col gap-6 pb-10 sm:flex-row sm:items-end sm:justify-between", children: [
+      heading,
+      /* @__PURE__ */ jsxs("div", { className: "hidden shrink-0 gap-3 sm:flex", children: [
+        /* @__PURE__ */ jsx("button", { type: "button", onClick: () => go(-1), disabled: atStart, "aria-label": "Ankstesnė paslauga", className: arrowClass, children: /* @__PURE__ */ jsx("svg", { className: "h-4 w-4", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.5", "aria-hidden": true, children: /* @__PURE__ */ jsx("path", { d: "M15 18l-6-6 6-6" }) }) }),
+        /* @__PURE__ */ jsx("button", { type: "button", onClick: () => go(1), disabled: atEnd, "aria-label": "Kita paslauga", className: arrowClass, children: /* @__PURE__ */ jsx("svg", { className: "h-4 w-4", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.5", "aria-hidden": true, children: /* @__PURE__ */ jsx("path", { d: "M9 18l6-6-6-6" }) }) })
       ] })
-    }
-  );
+    ] }),
+    /* @__PURE__ */ jsx(
+      "div",
+      {
+        ref: railRef,
+        className: "flex snap-x snap-mandatory gap-8 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+        style: { paddingInline: "var(--gutter)", scrollPaddingInline: "var(--gutter)" },
+        children: items.map((item2) => /* @__PURE__ */ jsx(Card, { item: item2, readMoreLabel }, item2.id))
+      }
+    ),
+    /* @__PURE__ */ jsx("div", { className: "container-wide mt-7 flex items-center gap-2", children: items.map((item2, i) => /* @__PURE__ */ jsx(
+      "button",
+      {
+        type: "button",
+        onClick: () => toIndex(i),
+        className: "rounded-pill transition-all duration-mid",
+        style: {
+          width: i === index ? 20 : 7,
+          height: 7,
+          background: i === index ? "var(--tide)" : "var(--hairline-strong)"
+        },
+        "aria-label": item2.title,
+        "aria-current": i === index
+      },
+      item2.id
+    )) })
+  ] });
 }
 function Star$1({ className = "w-4 h-4" }) {
   return /* @__PURE__ */ jsx("svg", { viewBox: "0 0 24 24", className, "aria-hidden": true, fill: "currentColor", children: /* @__PURE__ */ jsx("path", { d: "M12 2.75l2.95 5.98 6.6.96-4.77 4.65 1.13 6.58L12 18.77 6.09 20.92l1.13-6.58L2.45 9.69l6.6-.96L12 2.75z" }) });
@@ -16278,7 +16268,7 @@ function Home() {
           heading: /* @__PURE__ */ jsx("h2", { className: "max-w-2xl text-h2 font-extrabold", children: "Populiariausios paslaugos" })
         }
       ),
-      /* @__PURE__ */ jsx("div", { className: "container-wide mt-14 flex justify-start", children: /* @__PURE__ */ jsxs(MagneticLink, { to: "/paslaugos", className: "btn-ink", children: [
+      /* @__PURE__ */ jsx("div", { className: "container-wide mt-8 flex justify-start", children: /* @__PURE__ */ jsxs(MagneticLink, { to: "/paslaugos", className: "btn-ink", children: [
         "Visos paslaugos",
         /* @__PURE__ */ jsx(Arrow, {})
       ] }) })

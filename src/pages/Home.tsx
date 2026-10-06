@@ -431,7 +431,7 @@ export default function Home() {
             }
         />
 
-        <div className="container-wide mt-14 flex justify-start">
+        <div className="container-wide mt-8 flex justify-start">
           <MagneticLink to="/paslaugos" className="btn-ink">
             Visos paslaugos
             <Arrow />
