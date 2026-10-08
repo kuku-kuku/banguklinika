@@ -4672,6 +4672,7 @@ const POPULAR_SERVICES = [
   { id: "vaiku-odontologija", title: "Vaikų odontologija", desc: "Švelni priežiūra mažiesiems – draugiška aplinka be streso.", image: "/hero4.webp" }
 ];
 const TEAM$1 = [
+  { name: "Agnė Jurkutė", role: "Protezuojanti gydytoja odontologė", img: "/team/Agnė_light LT.jpg" },
   { name: "Donatas Bitinas", role: "Implantuojantis gydytojas odontologas", img: "/team/Donatas_light.jpg" },
   { name: "Donatas Kubilius", role: "Gydytojas, Veido ir Žandikaulių chirurgas", img: "/team/donataskubilius.jpg" },
   { name: "Jonas Sabulis", role: "Protezuojantis gydytojas odontologas", img: "/team/Jonas-light.jpg" },
