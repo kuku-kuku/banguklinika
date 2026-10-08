@@ -6556,6 +6556,12 @@ const team$1 = [
     photoFile: "Jonas-light"
   },
   {
+    name: "Agnė Jurkutė",
+    role: "Protezuojanti gydytoja odontologė",
+    license: "OPL-05703",
+    photoFile: "Agnė_light LT"
+  },
+  {
     name: "Eglė Daknienė",
     role: "Dantų technikė",
     license: "BPL-04671"
