@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import RevealLines from '../components/RevealLines'
+import TideLine from '../components/TideLine'
+import WaveDivider from '../components/WaveDivider'
 import { CLINIC } from '../data/clinic'
 import { Link } from 'react-router-dom'
 
@@ -16,16 +19,31 @@ export default function SpecialOffers() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
   }
 
+  /* className="" drops AnimatedSection's default `section` class: .section is
+     py-12 md:py-20, and on a page root that padding sits above the hero's
+     shell band as a white strip under the navbar. */
   return (
-    <AnimatedSection>
+    <AnimatedSection className="">
       <SEO title={offers.seo?.title ?? 'Ypatingi pasiūlymai'} description={offers.seo?.description} />
 
-      <motion.div className="container-narrow relative z-10" variants={container} initial="hidden" animate="visible">
-        <motion.header className="mb-6" variants={item}>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700">
-            Ypatingi pasiūlymai
-          </h1>
-        </motion.header>
+      <section className="shell-bg">
+        <div className="container-wide py-section">
+          <div className="max-w-3xl">
+            <h1 className="text-display font-black">
+              <RevealLines lines={['Ypatingi pasiūlymai']} />
+            </h1>
+            <p className="muted measure mt-6 text-lead leading-relaxed">
+              Sezoniniai ir riboto laiko pasiūlymai – pilnam gydymo planui ir atskiroms
+              procedūroms.
+            </p>
+          </div>
+          <TideLine className="mt-12 max-w-xl" />
+        </div>
+      </section>
+
+      <WaveDivider from="var(--shell)" to="var(--paper)" />
+
+      <motion.div className="container-wide relative z-10 pb-section pt-section-tight" variants={container} initial="hidden" animate="visible">
 
         {(offers.offers as any[]).map((o, idx) => {
           // TEMPORARILY DISABLED: Skip zirconium offer (first item)

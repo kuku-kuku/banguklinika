@@ -549,6 +549,13 @@ const pages = [
     description: "Mūsų partneriai ir draugai – įmonės ir projektai, su kuriais džiaugiamės bendradarbiauti.",
   },
   {
+    /* Was missing from this list while /lv/musu-darbi was present, so the
+       Lithuanian page fell back to the empty shell for crawlers. */
+    route: "/musu-darbai",
+    title: "Mūsų darbai | Bangų klinika",
+    description: "Tikri Bangų klinikos pacientų atvejai Klaipėdoje – nuotraukos prieš procedūrą ir po jos.",
+  },
+  {
     route: "/ypatingi-pasiulymai",
     title: "Ypatingi pasiūlymai | Bangų klinika klaipėdoje",
     description: "Aktualūs Bangų klinikos pasiūlymai ir akcijos odontologijos paslaugoms.",

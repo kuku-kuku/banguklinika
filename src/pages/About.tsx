@@ -3,6 +3,9 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import RevealLines from '../components/RevealLines'
+import TideLine from '../components/TideLine'
+import WaveDivider from '../components/WaveDivider'
 import about from '../content/about.json'
 import Picture from '../components/Picture'
 
@@ -130,8 +133,11 @@ export default function About() {
     .slice()
     .sort((a, b) => Number(hasPhoto(b.name, b.photoFile)) - Number(hasPhoto(a.name, a.photoFile)) || a.name.localeCompare(b.name))
 
+  /* className="" drops AnimatedSection's default `section` class: .section is
+     py-12 md:py-20, and on a page root that padding sits above the hero's
+     shell band as a white strip under the navbar. */
   return (
-    <AnimatedSection>
+    <AnimatedSection className="">
       <SEO
         title={about.seo?.title}
         description={about.seo?.description}
@@ -139,17 +145,31 @@ export default function About() {
         structuredData={structuredData}
       />
 
+      {/* Hero — the shared pattern: shell band, masked heading reveal, a lead
+          line, then the tide rule, closed by the wave into the next section. */}
+      <section className="shell-bg">
+        <div className="container-wide py-section">
+          <div className="max-w-3xl">
+            <h1 className="text-display font-black">
+              <RevealLines lines={['Odontologai Klaipėdos', 'Bangų klinikoje']} />
+            </h1>
+            <p className="muted measure mt-6 text-lead leading-relaxed">
+              Gydytojai, higienistai ir technikai, dirbantys vienoje vietoje – susipažinkite su
+              komanda, kuri rūpinsis Jūsų šypsena.
+            </p>
+          </div>
+          <TideLine className="mt-12 max-w-xl" />
+        </div>
+      </section>
+
+      <WaveDivider from="var(--shell)" to="var(--paper)" />
+
       <motion.div
-        className="container-wide py-section-tight"
+        className="container-wide pb-section pt-section-tight"
         variants={container}
         initial="hidden"
         animate="visible"
       >
-        <motion.header className="mb-12" variants={item}>
-          <h1 className="max-w-4xl text-h1 font-black">
-            Odontologai Klaipėdos Bangų klinikoje
-          </h1>
-        </motion.header>
 
         <motion.section className="mb-20" variants={item}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">

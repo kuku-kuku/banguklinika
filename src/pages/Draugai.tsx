@@ -2,6 +2,9 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import RevealLines from '../components/RevealLines'
+import TideLine from '../components/TideLine'
+import WaveDivider from '../components/WaveDivider'
 
 const container = {
   hidden: { opacity: 0 },
@@ -67,20 +70,31 @@ function FriendSlot({ friend }: { friend: Friend }) {
 }
 
 export default function Draugai() {
+  /* className="" drops AnimatedSection's default `section` class: .section is
+     py-12 md:py-20, and on a page root that padding sits above the hero's
+     shell band as a white strip under the navbar. */
   return (
-    <AnimatedSection>
+    <AnimatedSection className="">
       <SEO title="Draugai | Bangų klinika" description="Mūsų partneriai ir draugai." />
 
-      <div className="container-narrow py-20 sm:py-32">
-        {/* Headeris su daugiau erdvės */}
-        <header className="mb-24 max-w-3xl">
-          <h1 className="text-4xl sm:text-5xl font-bold text-darkblue-700 tracking-tight mb-8">
-            Mūsų Draugai
-          </h1>
-          <p className="text-xl sm:text-2xl text-slate-500 font-light leading-relaxed">
-            Vertiname kokybę ir patikimumą, todėl džiaugiamės galėdami dirbti kartu su šiais projektais bei įmonėmis.
-          </p>
-        </header>
+      <section className="shell-bg">
+        <div className="container-wide py-section">
+          <div className="max-w-3xl">
+            <h1 className="text-display font-black">
+              <RevealLines lines={['Mūsų draugai']} />
+            </h1>
+            <p className="muted measure mt-6 text-lead leading-relaxed">
+              Vertiname kokybę ir patikimumą, todėl džiaugiamės galėdami dirbti kartu su šiais
+              projektais bei įmonėmis.
+            </p>
+          </div>
+          <TideLine className="mt-12 max-w-xl" />
+        </div>
+      </section>
+
+      <WaveDivider from="var(--shell)" to="var(--paper)" />
+
+      <div className="container-wide pb-section pt-section-tight">
 
         {/* Erdvesnis tinklelis: max 3 stulpeliai, kad kortelės būtų didelės */}
         <motion.div 

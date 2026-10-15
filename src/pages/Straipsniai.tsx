@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import RevealLines from '../components/RevealLines'
+import TideLine from '../components/TideLine'
+import WaveDivider from '../components/WaveDivider'
 import { BLOG_CARDS, formatDate } from '../data/blogMeta'
 
 const C = {
@@ -30,23 +33,22 @@ export default function Straipsniai() {
       />
 
       {/* Hero */}
-      <section className="py-16 md:py-20">
-        <div className={W}>
-          <AnimatedSection>
-            <div className="max-w-2xl">
-              <p className="text-xs font-bold tracking-[0.2em] uppercase mb-3" style={{ color: C.teal }}>
-                Bangų klinikos blogas
-              </p>
-              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1]" style={{ color: C.deepTeal }}>
-                Straipsniai apie<br />dantų sveikatą
-              </h1>
-              <p className="mt-5 text-lg text-slate-500 leading-relaxed max-w-xl">
-                Naudinga informacija, odontologų patarimai ir atsakymai į dažniausius klausimus apie dantų gydymą ir priežiūrą.
-              </p>
-            </div>
-          </AnimatedSection>
+      <section className="shell-bg">
+        <div className="container-wide py-section">
+          <div className="max-w-3xl">
+            <h1 className="text-display font-black">
+              <RevealLines lines={['Straipsniai apie', 'dantų sveikatą']} />
+            </h1>
+            <p className="muted measure mt-6 text-lead leading-relaxed">
+              Naudinga informacija, odontologų patarimai ir atsakymai į dažniausius klausimus
+              apie dantų gydymą ir priežiūrą.
+            </p>
+          </div>
+          <TideLine className="mt-12 max-w-xl" />
         </div>
       </section>
+
+      <WaveDivider from="var(--shell)" to="var(--paper)" />
 
       {/* Posts grid */}
       <section className="pb-20 md:pb-28">

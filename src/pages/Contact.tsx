@@ -3,6 +3,7 @@ import ContactForm from '../components/ContactForm'
 import Map from '../components/Map'
 import { CLINIC } from '../data/clinic'
 import RevealLines from '../components/RevealLines'
+import TideLine from '../components/TideLine'
 import WaveDivider from '../components/WaveDivider'
 import { MapPin, Phone, Mail, Clock, Navigation } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
@@ -43,9 +44,16 @@ export default function Contact() {
       <section className="shell-bg">
         <div className="container-wide pb-section-tight pt-section">
           <div id="kontaktai" className="scroll-mt-28 md:scroll-mt-32" aria-hidden />
-          <h1 className="max-w-3xl text-display font-black">
-            <RevealLines lines={[contact.headings?.contact ?? 'Kontaktai']} />
-          </h1>
+          <div className="max-w-3xl">
+            <h1 className="text-display font-black">
+              <RevealLines lines={[contact.headings?.contact ?? 'Kontaktai']} />
+            </h1>
+            <p className="muted measure mt-6 text-lead leading-relaxed">
+              Registruokitės vizitui telefonu, el. paštu arba užpildykite formą – susisieksime
+              artimiausiu metu.
+            </p>
+          </div>
+          <TideLine className="mt-12 max-w-xl" />
         </div>
 
         {/* Details + form. Asymmetric 5/7: the form is the task, so it gets

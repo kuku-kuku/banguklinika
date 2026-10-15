@@ -1728,13 +1728,13 @@ const CLINIC = {
     { day: "VI–VII", time: "Nedirbame" }
   ]
 };
-function getHeaderOffset$2() {
+function getHeaderOffset$1() {
   const sticky = document.querySelector("header.sticky");
   return sticky ? sticky.getBoundingClientRect().height : 0;
 }
 function scrollToWithOffset(el) {
   const rect = el.getBoundingClientRect();
-  const y = window.scrollY + rect.top - (getHeaderOffset$2() + 12);
+  const y = window.scrollY + rect.top - (getHeaderOffset$1() + 12);
   window.scrollTo({ top: y, behavior: "smooth" });
 }
 function findFormEl() {
@@ -2715,6 +2715,73 @@ function SEO({
     /* @__PURE__ */ jsx("meta", { name: "geo.region", content: "LT-KL" }),
     /* @__PURE__ */ jsx("meta", { name: "geo.placename", content: "Klaipėda" })
   ] });
+}
+function RevealLines({
+  lines,
+  startDelay = 80,
+  stagger = 110,
+  className
+}) {
+  return /* @__PURE__ */ jsx("span", { className: `reveal-lines ${className ?? ""}`, children: lines.map((line, i) => /* @__PURE__ */ jsx(
+    "span",
+    {
+      className: "reveal-line",
+      style: { ["--reveal-delay"]: `${startDelay + i * stagger}ms` },
+      children: /* @__PURE__ */ jsx("span", { children: line })
+    },
+    i
+  )) });
+}
+const WAVE = "M0 30 C 60 8, 118 6, 168 26 S 266 62, 322 46 S 420 10, 480 30";
+function TideLine({ className = "", weight = 1.25, opacity = 0.55 }) {
+  const ref = useRef(null);
+  const [active, setActive] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setActive(e.isIntersecting), {
+      rootMargin: "120px 0px"
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return /* @__PURE__ */ jsx(
+    "div",
+    {
+      ref,
+      "aria-hidden": true,
+      className: `pointer-events-none select-none overflow-hidden ${className}`,
+      style: { lineHeight: 0 },
+      children: /* @__PURE__ */ jsx(
+        "svg",
+        {
+          viewBox: "0 0 960 60",
+          preserveAspectRatio: "none",
+          className: "block w-full h-[clamp(28px,5vw,56px)]",
+          role: "presentation",
+          children: /* @__PURE__ */ jsxs(
+            "g",
+            {
+              fill: "none",
+              stroke: "var(--tide)",
+              strokeWidth: weight,
+              strokeLinecap: "round",
+              opacity,
+              style: {
+                animation: active ? "tide-drift 18s linear infinite" : "none",
+                willChange: active ? "transform" : "auto"
+              },
+              children: [
+                /* @__PURE__ */ jsx("path", { d: WAVE }),
+                /* @__PURE__ */ jsx("path", { d: WAVE, transform: "translate(480 0)" }),
+                /* @__PURE__ */ jsx("path", { d: WAVE, transform: "translate(960 0)" })
+              ]
+            }
+          )
+        }
+      )
+    }
+  );
 }
 const seo$4 = {
   title: "Odontologai Klaipėdoje | Bangų Klinika",
@@ -4593,7 +4660,7 @@ function About() {
     });
   }
   team2 = team2.slice().sort((a, b) => Number(hasPhoto$1(b.name, b.photoFile)) - Number(hasPhoto$1(a.name, a.photoFile)) || a.name.localeCompare(b.name));
-  return /* @__PURE__ */ jsxs(AnimatedSection, { children: [
+  return /* @__PURE__ */ jsxs(AnimatedSection, { className: "", children: [
     /* @__PURE__ */ jsx(
       SEO,
       {
@@ -4603,15 +4670,22 @@ function About() {
         structuredData
       }
     ),
+    /* @__PURE__ */ jsx("section", { className: "shell-bg", children: /* @__PURE__ */ jsxs("div", { className: "container-wide py-section", children: [
+      /* @__PURE__ */ jsxs("div", { className: "max-w-3xl", children: [
+        /* @__PURE__ */ jsx("h1", { className: "text-display font-black", children: /* @__PURE__ */ jsx(RevealLines, { lines: ["Odontologai Klaipėdos", "Bangų klinikoje"] }) }),
+        /* @__PURE__ */ jsx("p", { className: "muted measure mt-6 text-lead leading-relaxed", children: "Gydytojai, higienistai ir technikai, dirbantys vienoje vietoje – susipažinkite su komanda, kuri rūpinsis Jūsų šypsena." })
+      ] }),
+      /* @__PURE__ */ jsx(TideLine, { className: "mt-12 max-w-xl" })
+    ] }) }),
+    /* @__PURE__ */ jsx(WaveDivider, { from: "var(--shell)", to: "var(--paper)" }),
     /* @__PURE__ */ jsxs(
       motion.div,
       {
-        className: "container-wide py-section-tight",
+        className: "container-wide pb-section pt-section-tight",
         variants: container$1c,
         initial: "hidden",
         animate: "visible",
         children: [
-          /* @__PURE__ */ jsx(motion.header, { className: "mb-12", variants: item$1c, children: /* @__PURE__ */ jsx("h1", { className: "max-w-4xl text-h1 font-black", children: "Odontologai Klaipėdos Bangų klinikoje" }) }),
           /* @__PURE__ */ jsx(motion.section, { className: "mb-20", variants: item$1c, children: /* @__PURE__ */ jsx("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10", children: team2.map((m2) => /* @__PURE__ */ jsxs(motion.div, { variants: item$1c, className: "w-full", children: [
             /* @__PURE__ */ jsx(TeamPhoto$1, { name: m2.name, photoFile: m2.photoFile }),
             /* @__PURE__ */ jsxs("div", { className: "pt-5 px-1", children: [
@@ -6803,22 +6877,6 @@ function Map() {
     /* @__PURE__ */ jsx("p", { className: "muted relative text-micro", children: "Žemėlapis įkeliamas iš Google tik jį atvėrus." })
   ] }) });
 }
-function RevealLines({
-  lines,
-  startDelay = 80,
-  stagger = 110,
-  className
-}) {
-  return /* @__PURE__ */ jsx("span", { className: `reveal-lines ${className ?? ""}`, children: lines.map((line, i) => /* @__PURE__ */ jsx(
-    "span",
-    {
-      className: "reveal-line",
-      style: { ["--reveal-delay"]: `${startDelay + i * stagger}ms` },
-      children: /* @__PURE__ */ jsx("span", { children: line })
-    },
-    i
-  )) });
-}
 const seo$2 = {
   title: "Kontaktai",
   description: "Bangų odontologijos klinika Klaipėdoje. Kontaktai, darbo laikas, žemėlapis ir kontaktų forma.",
@@ -6866,7 +6924,11 @@ function Contact() {
     /* @__PURE__ */ jsxs("section", { className: "shell-bg", children: [
       /* @__PURE__ */ jsxs("div", { className: "container-wide pb-section-tight pt-section", children: [
         /* @__PURE__ */ jsx("div", { id: "kontaktai", className: "scroll-mt-28 md:scroll-mt-32", "aria-hidden": true }),
-        /* @__PURE__ */ jsx("h1", { className: "max-w-3xl text-display font-black", children: /* @__PURE__ */ jsx(RevealLines, { lines: [(_e = contact.headings) == null ? void 0 : _e.contact] }) })
+        /* @__PURE__ */ jsxs("div", { className: "max-w-3xl", children: [
+          /* @__PURE__ */ jsx("h1", { className: "text-display font-black", children: /* @__PURE__ */ jsx(RevealLines, { lines: [(_e = contact.headings) == null ? void 0 : _e.contact] }) }),
+          /* @__PURE__ */ jsx("p", { className: "muted measure mt-6 text-lead leading-relaxed", children: "Registruokitės vizitui telefonu, el. paštu arba užpildykite formą – susisieksime artimiausiu metu." })
+        ] }),
+        /* @__PURE__ */ jsx(TideLine, { className: "mt-12 max-w-xl" })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "container-wide grid gap-12 pb-section lg:grid-cols-12 lg:gap-16", children: [
         /* @__PURE__ */ jsxs("div", { className: "lg:col-span-5", children: [
@@ -12586,13 +12648,17 @@ function FriendSlot({ friend }) {
   );
 }
 function Draugai() {
-  return /* @__PURE__ */ jsxs(AnimatedSection, { children: [
+  return /* @__PURE__ */ jsxs(AnimatedSection, { className: "", children: [
     /* @__PURE__ */ jsx(SEO, { title: "Draugai | Bangų klinika", description: "Mūsų partneriai ir draugai." }),
-    /* @__PURE__ */ jsxs("div", { className: "container-narrow py-20 sm:py-32", children: [
-      /* @__PURE__ */ jsxs("header", { className: "mb-24 max-w-3xl", children: [
-        /* @__PURE__ */ jsx("h1", { className: "text-4xl sm:text-5xl font-bold text-darkblue-700 tracking-tight mb-8", children: "Mūsų Draugai" }),
-        /* @__PURE__ */ jsx("p", { className: "text-xl sm:text-2xl text-slate-500 font-light leading-relaxed", children: "Vertiname kokybę ir patikimumą, todėl džiaugiamės galėdami dirbti kartu su šiais projektais bei įmonėmis." })
+    /* @__PURE__ */ jsx("section", { className: "shell-bg", children: /* @__PURE__ */ jsxs("div", { className: "container-wide py-section", children: [
+      /* @__PURE__ */ jsxs("div", { className: "max-w-3xl", children: [
+        /* @__PURE__ */ jsx("h1", { className: "text-display font-black", children: /* @__PURE__ */ jsx(RevealLines, { lines: ["Mūsų draugai"] }) }),
+        /* @__PURE__ */ jsx("p", { className: "muted measure mt-6 text-lead leading-relaxed", children: "Vertiname kokybę ir patikimumą, todėl džiaugiamės galėdami dirbti kartu su šiais projektais bei įmonėmis." })
       ] }),
+      /* @__PURE__ */ jsx(TideLine, { className: "mt-12 max-w-xl" })
+    ] }) }),
+    /* @__PURE__ */ jsx(WaveDivider, { from: "var(--shell)", to: "var(--paper)" }),
+    /* @__PURE__ */ jsxs("div", { className: "container-wide pb-section pt-section-tight", children: [
       /* @__PURE__ */ jsx(
         motion.div,
         {
@@ -13826,57 +13892,6 @@ function MagneticLink({ children, className, to, href, ariaLabel }) {
     }
   );
 }
-const WAVE = "M0 30 C 60 8, 118 6, 168 26 S 266 62, 322 46 S 420 10, 480 30";
-function TideLine({ className = "", weight = 1.25, opacity = 0.55 }) {
-  const ref = useRef(null);
-  const [active, setActive] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(([e]) => setActive(e.isIntersecting), {
-      rootMargin: "120px 0px"
-    });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-  return /* @__PURE__ */ jsx(
-    "div",
-    {
-      ref,
-      "aria-hidden": true,
-      className: `pointer-events-none select-none overflow-hidden ${className}`,
-      style: { lineHeight: 0 },
-      children: /* @__PURE__ */ jsx(
-        "svg",
-        {
-          viewBox: "0 0 960 60",
-          preserveAspectRatio: "none",
-          className: "block w-full h-[clamp(28px,5vw,56px)]",
-          role: "presentation",
-          children: /* @__PURE__ */ jsxs(
-            "g",
-            {
-              fill: "none",
-              stroke: "var(--tide)",
-              strokeWidth: weight,
-              strokeLinecap: "round",
-              opacity,
-              style: {
-                animation: active ? "tide-drift 18s linear infinite" : "none",
-                willChange: active ? "transform" : "auto"
-              },
-              children: [
-                /* @__PURE__ */ jsx("path", { d: WAVE }),
-                /* @__PURE__ */ jsx("path", { d: WAVE, transform: "translate(480 0)" }),
-                /* @__PURE__ */ jsx("path", { d: WAVE, transform: "translate(960 0)" })
-              ]
-            }
-          )
-        }
-      )
-    }
-  );
-}
 function Card({ item: item2, readMoreLabel }) {
   return /* @__PURE__ */ jsxs(
     Link,
@@ -15052,7 +15067,7 @@ const cases$1 = [
   }
 ];
 function MusuDarbai() {
-  return /* @__PURE__ */ jsxs(AnimatedSection, { children: [
+  return /* @__PURE__ */ jsxs(AnimatedSection, { className: "", children: [
     /* @__PURE__ */ jsx(
       SEO,
       {
@@ -15061,21 +15076,14 @@ function MusuDarbai() {
         canonical: "/musu-darbai"
       }
     ),
-    /* @__PURE__ */ jsxs("div", { className: "container-narrow pt-16 pb-10 sm:pt-24 sm:pb-14", children: [
-      /* @__PURE__ */ jsxs(motion.div, { variants: fadeUp$1, initial: "hidden", animate: "visible", className: "max-w-xl", children: [
-        /* @__PURE__ */ jsx("h1", { className: "text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4", children: "Mūsų darbai" }),
-        /* @__PURE__ */ jsx("p", { className: "text-slate-500 text-base sm:text-lg leading-relaxed", children: "Tikri pacientų atvejai - nuotraukos prieš procedūrą ir po jos." })
+    /* @__PURE__ */ jsx("section", { className: "shell-bg", children: /* @__PURE__ */ jsxs("div", { className: "container-wide py-section", children: [
+      /* @__PURE__ */ jsxs("div", { className: "max-w-3xl", children: [
+        /* @__PURE__ */ jsx("h1", { className: "text-display font-black", children: /* @__PURE__ */ jsx(RevealLines, { lines: ["Mūsų darbai"] }) }),
+        /* @__PURE__ */ jsx("p", { className: "muted measure mt-6 text-lead leading-relaxed", children: "Tikri pacientų atvejai – nuotraukos prieš procedūrą ir po jos." })
       ] }),
-      /* @__PURE__ */ jsx(
-        motion.div,
-        {
-          initial: { scaleX: 0, originX: 0 },
-          animate: { scaleX: 1 },
-          transition: { delay: 0.3, duration: 0.8, ease: "easeOut" },
-          className: "mt-10 h-px bg-gradient-to-r from-slate-200 via-slate-100 to-transparent"
-        }
-      )
-    ] }),
+      /* @__PURE__ */ jsx(TideLine, { className: "mt-12 max-w-xl" })
+    ] }) }),
+    /* @__PURE__ */ jsx(WaveDivider, { from: "var(--shell)", to: "var(--paper)" }),
     /* @__PURE__ */ jsxs("div", { className: "container-narrow pb-20 sm:pb-28", children: [
       /* @__PURE__ */ jsx("div", { className: "space-y-20 sm:space-y-28", children: cases$1.map((c, i) => /* @__PURE__ */ jsxs(
         motion.div,
@@ -15182,7 +15190,7 @@ const PRICING = [
       { name: "Stiklo jonomerinis pamušalas", from: 10, exact: true },
       { name: "Laikina plomba (didelė)", from: 30, exact: true },
       { name: "Laikina plomba (maža)", from: 20, exact: true },
-      { name: "Estetinis plombavimas (1 danties)", from: 170, note: "Nuo" },
+      { name: "Estetinis plombavimas (1 danties)", from: 170 },
       { name: "Plombos pataisa", from: 60, exact: true },
       { name: "Biodentino uždėjimas (MTA)", from: 40, exact: true },
       { name: "Skubi pagalba, esant danties skausmui", from: 70, to: 120 },
@@ -15251,18 +15259,16 @@ const PRICING = [
       { name: "Pieninio danties rovimas su aplikaciniu nuskausminimu", from: 60, exact: true },
       { name: "Pieninio danties rovimas su injekciniu nuskausminimu", from: 80, exact: true },
       { name: "Nuolatinio danties rovimas", from: 100, exact: true, note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota" },
-      { name: "Nuolatinio danties šaknies rovimas", from: 80, exact: true, note: "" },
-      { name: "Sudėtingas nuolatinio danties rovimas", from: 120, exact: true, note: "" },
+      { name: "Nuolatinio danties šaknies rovimas", from: 80, exact: true },
+      { name: "Sudėtingas nuolatinio danties rovimas", from: 120, exact: true },
       {
         name: "Sudėtingas nuolatinio danties šaknies rovimas",
         from: 90,
-        exact: true,
-        note: ""
+        exact: true
       },
       {
         name: "Trečiųjų krūminių dantų rovimas (Protinių dantų rovimas)",
-        from: 150,
-        note: ""
+        from: 150
       },
       {
         name: "Sudėtingas/komplikuotas trečiųjų krūminių dantų rovimas (Protinių dantų rovimas)",
@@ -15281,7 +15287,7 @@ const PRICING = [
       { name: "Straumann gijimo galvutė", from: 100, exact: true },
       { name: "Sinuso dugno pakėlimo operacija uždaru būdu (per implanto ložę)", from: 200, exact: true },
       { name: "Sinuso dugno pakėlimo operacija atviru būdu (per sinuso langelį)", from: 600, exact: true },
-      { name: "Kaulo augmentacija nuosavu arba kaulo pakaitalu", from: 450, note: "Nuo" },
+      { name: "Kaulo augmentacija nuosavu arba kaulo pakaitalu", from: 450 },
       {
         name: "Pastaba dėl kaulo priauginimo medžiagų",
         note: "Chirurginių operacijų ir implantacijos metu gali prireikti dirbtinio kaulo ir/ar membranos (kaulo priauginimas) – kaina priklauso nuo sunaudotų medžiagų kiekio. Chirurginių procedūrų kainos nurodytos su nuskausminimu."
@@ -15373,15 +15379,12 @@ const PRICING = [
     ]
   }
 ];
-const OPEN_MS$1 = 320;
-const CLOSE_MS$1 = 260;
-const EASE$1 = "cubic-bezier(0.22, 1, 0.36, 1)";
-const ROW_BASE_DELAY$1 = 200;
-const PER_ROW_DELAY$1 = 120;
-const TEXT_DURATION$1 = 800;
-const PRICE_DELAY$1 = 300;
+const TWO_COL_MIN_ITEMS = 12;
 function slugify$3(t) {
-  return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\s-]/g, "").trim().replace(/\s+/g, "-");
+  return t.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9\s-]/g, "").trim().replace(/\s+/g, "-");
+}
+function fold(s) {
+  return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 }
 function fmtItem(p) {
   const { from, to, exact } = p;
@@ -15390,7 +15393,8 @@ function fmtItem(p) {
   return exact ? `€${from}` : `nuo €${from}`;
 }
 function groupRange$1(items) {
-  let min = Infinity, max = 0;
+  let min = Infinity;
+  let max = 0;
   for (const it of items) {
     if (typeof it.from === "number") min = Math.min(min, it.from);
     const upper = typeof it.to === "number" ? it.to : typeof it.from === "number" ? it.from : 0;
@@ -15399,321 +15403,114 @@ function groupRange$1(items) {
   if (!isFinite(min)) return null;
   return { min, max };
 }
-function useIsMobile$1() {
-  const [mobile, setMobile] = useState(
-    () => typeof window !== "undefined" ? window.matchMedia("(max-width: 767px)").matches : false
-  );
-  useEffect(() => {
-    var _a2;
-    if (typeof window === "undefined") return;
-    const mql = window.matchMedia("(max-width: 767px)");
-    const handler = () => setMobile(mql.matches);
-    handler();
-    (_a2 = mql.addEventListener) == null ? void 0 : _a2.call(mql, "change", handler);
-    return () => {
-      var _a3;
-      return (_a3 = mql.removeEventListener) == null ? void 0 : _a3.call(mql, "change", handler);
-    };
-  }, []);
-  return mobile;
+function rangeLabel(items) {
+  const r = groupRange$1(items);
+  if (!r) return "—";
+  return r.max > r.min ? `€${r.min}–${r.max}` : `€${r.min}`;
 }
-function usePrefersReducedMotion$1() {
-  const [reduced2, setReduced] = useState(false);
-  useEffect(() => {
-    var _a2;
-    if (typeof window === "undefined" || !window.matchMedia) return;
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const handler = () => setReduced(!!mq.matches);
-    handler();
-    (_a2 = mq.addEventListener) == null ? void 0 : _a2.call(mq, "change", handler);
-    return () => {
-      var _a3;
-      return (_a3 = mq.removeEventListener) == null ? void 0 : _a3.call(mq, "change", handler);
-    };
-  }, []);
-  return reduced2;
+function SearchIcon() {
+  return /* @__PURE__ */ jsxs("svg", { className: "h-4 w-4", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.2", "aria-hidden": true, children: [
+    /* @__PURE__ */ jsx("circle", { cx: "11", cy: "11", r: "7" }),
+    /* @__PURE__ */ jsx("path", { d: "M20 20l-3.5-3.5", strokeLinecap: "round" })
+  ] });
 }
-function getHeaderOffset$1() {
-  const sticky = document.querySelector("header.sticky");
-  return sticky ? sticky.getBoundingClientRect().height : 76;
-}
-function easeInOutCubic$1(t) {
-  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-}
-function smoothScrollTo$1(targetY, duration = 420) {
-  const startY = window.scrollY;
-  const diff = targetY - startY;
-  if (Math.abs(diff) < 2) return Promise.resolve();
-  return new Promise((resolve) => {
-    const start = performance.now();
-    const step = (now) => {
-      const p = Math.min(1, (now - start) / duration);
-      const y = startY + diff * easeInOutCubic$1(p);
-      window.scrollTo(0, y);
-      if (p < 1) requestAnimationFrame(step);
-      else resolve();
-    };
-    requestAnimationFrame(step);
-  });
-}
-async function smoothAlignToElement$1(id, offset = 16, ms = 320) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const rect = el.getBoundingClientRect();
-  const targetY = window.scrollY + rect.top - getHeaderOffset$1() - offset;
-  await smoothScrollTo$1(targetY, ms);
-}
-const TWO_COL_GROUP_SLUGS$1 = /* @__PURE__ */ new Set([
-  "dantu-gydymas-saugusiuju",
-  "burnos-chirurgijos-kainorastis",
-  "dantu-protezavimas-ant-dantu"
-]);
-function splitInTwo$1(items) {
-  const mid = Math.ceil(items.length / 2);
-  return [items.slice(0, mid), items.slice(mid)];
-}
-function GroupCard$1({
-  group,
-  open,
-  onToggle
-}) {
-  const id = slugify$3(group.title);
-  const range = useMemo(() => groupRange$1(group.items), [group.items]);
-  const summary = range ? range.max > range.min ? `€${range.min}–€${range.max}` : `nuo €${range.min}` : "—";
-  const reduceMotion = usePrefersReducedMotion$1();
-  const useTwoCols = TWO_COL_GROUP_SLUGS$1.has(id);
-  const renderRows = (items, baseIndexOffset = 0) => {
-    return items.map((p, i) => {
-      const globalIndex = baseIndexOffset + i;
-      const doAnimation = !!(open && !reduceMotion);
-      const rowDelay = doAnimation ? ROW_BASE_DELAY$1 + globalIndex * PER_ROW_DELAY$1 : 0;
-      return /* @__PURE__ */ jsxs("tr", { className: "hover:bg-slate-50/80 transition-colors border-b border-slate-50 last:border-0", children: [
-        /* @__PURE__ */ jsxs("td", { className: "p-4 align-top", children: [
-          /* @__PURE__ */ jsx(
-            "span",
-            {
-              className: "text-slate-800 font-medium inline-block",
-              style: doAnimation ? {
-                opacity: 0,
-                transform: "translateY(16px)",
-                animation: `fadeInUp ${TEXT_DURATION$1}ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay}ms forwards`
-              } : void 0,
-              children: wrapName(p.name)
-            }
-          ),
-          p.note && /* @__PURE__ */ jsx(
-            "span",
-            {
-              className: "block text-xs text-slate-500 mt-1",
-              style: doAnimation ? {
-                opacity: 0,
-                transform: "translateY(12px)",
-                animation: `fadeInUp 600ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay + TEXT_DURATION$1 - 200}ms forwards`
-              } : void 0,
-              children: p.note
-            }
-          )
-        ] }),
-        /* @__PURE__ */ jsx(
-          "td",
-          {
-            className: "p-4 w-28 sm:w-36 md:w-40 font-semibold text-right whitespace-nowrap text-primary-700",
-            style: doAnimation ? {
-              opacity: 0,
-              transform: "translateY(16px) scale(0.94)",
-              animation: `fadeInScale 700ms cubic-bezier(0.16, 1, 0.3, 1) ${rowDelay + PRICE_DELAY$1}ms forwards`
-            } : void 0,
-            children: fmtItem(p)
-          }
-        )
-      ] }, `${p.name}-${globalIndex}`);
-    });
-  };
-  const [left, right] = useMemo(() => splitInTwo$1(group.items), [group.items]);
+function Group$1({ group, items }) {
+  const twoCols = items.length >= TWO_COL_MIN_ITEMS;
   return /* @__PURE__ */ jsxs(
-    "div",
+    "section",
     {
-      id,
-      className: clsx(
-        "group w-full rounded-2xl border transition-all duration-300 transform-gpu will-change-transform overflow-clip",
-        open ? "bg-white border-primary-200 shadow-md ring-4 ring-primary-50" : "bg-slate-50 border-transparent shadow-sm hover:bg-white hover:border-slate-200 hover:shadow-md hover:-translate-y-0.5",
-        "scroll-mt-28 md:scroll-mt-32"
-      ),
-      style: { transform: "translateZ(0)" },
+      id: slugify$3(group.title),
+      className: "scroll-mt-36 2xl:scroll-mt-24",
       children: [
-        /* @__PURE__ */ jsxs(
-          "button",
-          {
-            onClick: () => onToggle(!open),
-            "aria-expanded": open,
-            "aria-controls": `${id}-panel`,
-            className: "w-full flex items-center justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5 text-left min-h-[92px] transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-50",
-            children: [
-              /* @__PURE__ */ jsxs("div", { className: "flex flex-col items-start min-w-0", children: [
-                /* @__PURE__ */ jsx(
-                  "div",
-                  {
-                    className: clsx(
-                      "font-semibold text-[17px] sm:text-lg leading-snug transition-colors duration-300",
-                      "whitespace-normal break-words",
-                      open ? "text-primary-700" : "text-slate-800 group-hover:text-primary-700"
-                    ),
-                    children: wrapName(group.title)
-                  }
-                ),
-                /* @__PURE__ */ jsxs("div", { className: "text-sm text-slate-500 font-medium mt-1", children: [
-                  summary,
-                  " ",
-                  /* @__PURE__ */ jsxs("span", { className: "muted font-normal ml-1", children: [
-                    "• ",
-                    group.items.length,
-                    " poz."
-                  ] })
-                ] })
-              ] }),
-              /* @__PURE__ */ jsx(
-                "span",
-                {
-                  className: clsx(
-                    "w-8 h-8 flex items-center justify-center transition-all text-slate-400 group-hover:text-primary-700 shrink-0 rounded-full",
-                    open ? "rotate-180 text-primary-700 bg-primary-50" : "group-hover:bg-slate-100"
-                  ),
-                  style: { transitionDuration: `${OPEN_MS$1}ms` },
-                  children: /* @__PURE__ */ jsx("svg", { className: "w-5 h-5", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", children: /* @__PURE__ */ jsx("path", { d: "M6 9l6 6 6-6" }) })
-                }
-              )
-            ]
-          }
-        ),
-        /* @__PURE__ */ jsx(
+        /* @__PURE__ */ jsxs("header", { className: "mb-4 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-hairline pb-3", children: [
+          /* @__PURE__ */ jsx("h2", { className: "text-h3 font-extrabold", children: wrapName(group.title) }),
+          /* @__PURE__ */ jsxs("p", { className: "muted shrink-0 text-micro", children: [
+            /* @__PURE__ */ jsx("span", { className: "font-bold tabular-nums text-tide-text", children: rangeLabel(items) }),
+            /* @__PURE__ */ jsxs("span", { className: "ml-2", children: [
+              items.length,
+              " kainos"
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("dl", { className: clsx("w-full", twoCols && "md:columns-2 md:gap-x-10"), children: items.map((p, i) => /* @__PURE__ */ jsxs(
           "div",
           {
-            id: `${id}-panel`,
-            role: "region",
-            "aria-labelledby": id,
-            className: "grid will-change-[grid-template-rows,opacity]",
-            style: {
-              gridTemplateRows: open ? "1fr" : "0fr",
-              opacity: open ? 1 : 0,
-              transition: `grid-template-rows ${open ? OPEN_MS$1 : CLOSE_MS$1}ms ${EASE$1}, opacity ${open ? OPEN_MS$1 : CLOSE_MS$1}ms ${EASE$1}`,
-              transform: "translateZ(0)"
-            },
-            children: /* @__PURE__ */ jsx("div", { className: "min-h-0 overflow-hidden", children: /* @__PURE__ */ jsx(
-              "div",
-              {
-                className: "px-4 pb-4 sm:px-5 sm:pb-5 pt-0",
-                style: {
-                  transition: `transform 160ms ${EASE$1}, opacity 160ms ${EASE$1}`,
-                  transformOrigin: "top left",
-                  transform: open ? "scaleY(1) translateZ(0)" : "scaleY(0.995) translateY(-1px) translateZ(0)",
-                  opacity: open ? 1 : 0.98,
-                  willChange: "transform,opacity",
-                  contain: "paint"
-                },
-                children: /* @__PURE__ */ jsx("div", { className: "rounded-xl bg-white border border-slate-100 shadow-sm overflow-hidden", children: !useTwoCols ? /* @__PURE__ */ jsx("table", { className: "w-full text-sm", children: /* @__PURE__ */ jsx("tbody", { children: renderRows(group.items, 0) }) }) : /* @__PURE__ */ jsxs("div", { className: "grid grid-cols-1 md:grid-cols-2 md:divide-x md:divide-slate-100", children: [
-                  /* @__PURE__ */ jsx("table", { className: "w-full text-sm", children: /* @__PURE__ */ jsx("tbody", { children: renderRows(left, 0) }) }),
-                  /* @__PURE__ */ jsx("table", { className: "w-full text-sm", children: /* @__PURE__ */ jsx("tbody", { children: renderRows(right, left.length) }) })
-                ] }) })
-              }
-            ) })
-          }
-        ),
-        /* @__PURE__ */ jsx(
-          "style",
-          {
-            dangerouslySetInnerHTML: {
-              __html: `
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(16px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInScale {
-          from { opacity: 0; transform: translateY(16px) scale(0.94); }
-          to   { opacity: 1; transform: translateY(0) scale(1); }
-        }
-      `
-            }
-          }
-        )
+            className: "flex break-inside-avoid items-start justify-between gap-4 rounded-ctl px-3 py-2.5 transition-colors duration-fast hover:bg-shell",
+            children: [
+              /* @__PURE__ */ jsxs("dt", { className: "min-w-0", children: [
+                /* @__PURE__ */ jsx("span", { className: "text-small font-medium leading-snug", children: wrapName(p.name) }),
+                p.note && /* @__PURE__ */ jsx("span", { className: "muted mt-1 block text-micro leading-relaxed", children: p.note })
+              ] }),
+              /* @__PURE__ */ jsx("dd", { className: "shrink-0 whitespace-nowrap text-small font-bold tabular-nums text-tide-text", children: fmtItem(p) })
+            ]
+          },
+          `${p.name}-${i}`
+        )) })
       ]
     }
   );
 }
 function PricingCards() {
-  const [hash, setHash] = useState("");
-  const mobile = useIsMobile$1();
-  const [openIds, setOpenIds] = useState(/* @__PURE__ */ new Set());
-  const animatingRef = useRef(false);
-  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
-  useEffect(() => {
-    if (typeof window !== "undefined") setHash(window.location.hash);
-  }, []);
-  const handleToggle = async (id, willOpen) => {
-    if (animatingRef.current) return;
-    animatingRef.current = true;
-    try {
-      if (!willOpen) {
-        setOpenIds((prev) => {
-          const next = new Set(prev);
-          next.delete(id);
-          return next;
-        });
-        await wait(CLOSE_MS$1 + 40);
-        return;
+  const pageRef = useRef(null);
+  const [query, setQuery] = useState("");
+  const groups = useMemo(() => {
+    const q = fold(query.trim());
+    if (!q) return PRICING.map((g) => ({ group: g, items: g.items }));
+    return PRICING.map((g) => {
+      const groupHit = fold(g.title).includes(q);
+      const items = groupHit ? g.items : g.items.filter((p) => fold(p.name).includes(q) || (p.note ? fold(p.note).includes(q) : false));
+      return { group: g, items };
+    }).filter((g) => g.items.length > 0);
+  }, [query]);
+  const matchCount = useMemo(() => groups.reduce((n, g) => n + g.items.length, 0), [groups]);
+  const sections = useMemo(
+    () => groups.map(({ group }) => ({ id: slugify$3(group.title), label: group.title })),
+    [groups]
+  );
+  return /* @__PURE__ */ jsxs("div", { ref: pageRef, className: "2xl:flex 2xl:items-start 2xl:gap-8", children: [
+    sections.length > 1 && /* @__PURE__ */ jsx(
+      TableOfContents,
+      {
+        sections,
+        title: "Kainoraštis",
+        rootRef: pageRef,
+        cta: { label: "Registruotis vizitui", to: "/kontaktai" }
       }
-      if (mobile) {
-        setOpenIds((prev) => new Set(prev).add(id));
-        await wait(32);
-        await smoothAlignToElement$1(id, 20, OPEN_MS$1);
-      } else {
-        setOpenIds(/* @__PURE__ */ new Set());
-        await wait(CLOSE_MS$1 + 40);
-        setOpenIds(/* @__PURE__ */ new Set([id]));
-        await wait(40);
-        await smoothAlignToElement$1(id, 16, OPEN_MS$1 - 40);
-      }
-    } finally {
-      animatingRef.current = false;
-      setTimeout(() => {
-        var _a2;
-        return (_a2 = getLenis()) == null ? void 0 : _a2.resize();
-      }, OPEN_MS$1 + 100);
-    }
-  };
-  useEffect(() => {
-    if (!hash) return;
-    const id = slugify$3(decodeURIComponent(hash.slice(1)));
-    if (!PRICING.some((g) => slugify$3(g.title) === id)) return;
-    let cancelled = false;
-    const run = async () => {
-      if (animatingRef.current) return;
-      animatingRef.current = true;
-      try {
-        if (mobile) {
-          setOpenIds((prev) => new Set(prev).add(id));
-          await wait(32);
-          if (!cancelled) await smoothAlignToElement$1(id, 20, OPEN_MS$1);
-        } else {
-          setOpenIds(/* @__PURE__ */ new Set());
-          await wait(CLOSE_MS$1 + 40);
-          setOpenIds(/* @__PURE__ */ new Set([id]));
-          await wait(40);
-          if (!cancelled) await smoothAlignToElement$1(id, 16, OPEN_MS$1 - 40);
-        }
-      } finally {
-        animatingRef.current = false;
-      }
-    };
-    run();
-    return () => {
-      cancelled = true;
-    };
-  }, [hash, mobile]);
-  return /* @__PURE__ */ jsx("div", { className: "w-full mx-auto max-w-5xl px-0 sm:px-2", children: /* @__PURE__ */ jsx("div", { className: "grid grid-cols-1 gap-4 sm:gap-5 items-start", children: PRICING.map((g) => {
-    const id = slugify$3(g.title);
-    const isOpen = openIds.has(id);
-    return /* @__PURE__ */ jsx("div", { className: "w-full will-change-transform", children: /* @__PURE__ */ jsx(GroupCard$1, { group: g, open: isOpen, onToggle: (willOpen) => handleToggle(id, willOpen) }) }, g.title);
-  }) }) });
+    ),
+    /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
+      /* @__PURE__ */ jsxs("div", { className: "mb-10", children: [
+        /* @__PURE__ */ jsxs("label", { className: "relative block", children: [
+          /* @__PURE__ */ jsx("span", { className: "sr-only", children: "Ieškoti paslaugos kainoraštyje" }),
+          /* @__PURE__ */ jsx("span", { className: "muted pointer-events-none absolute left-4 top-1/2 -translate-y-1/2", children: /* @__PURE__ */ jsx(SearchIcon, {}) }),
+          /* @__PURE__ */ jsx(
+            "input",
+            {
+              type: "search",
+              value: query,
+              onChange: (e) => setQuery(e.target.value),
+              placeholder: "Ieškokite paslaugos, pvz. „balinimas“",
+              className: "w-full rounded-pill border border-hairline bg-paper py-3.5 pl-11 pr-4 text-small outline-none transition-colors duration-fast placeholder:text-[var(--text-mute)] focus:border-tide"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "muted mt-3 text-micro", "aria-live": "polite", children: query.trim() ? matchCount > 0 ? `Rasta ${matchCount} kainų pagal „${query.trim()}“` : `Pagal „${query.trim()}“ nieko nerasta` : `Iš viso ${matchCount} kainų ${PRICING.length} grupėse` })
+      ] }),
+      groups.length === 0 ? /* @__PURE__ */ jsxs("p", { className: "muted text-body", children: [
+        "Pabandykite kitą žodį arba",
+        " ",
+        /* @__PURE__ */ jsx(
+          "button",
+          {
+            type: "button",
+            onClick: () => setQuery(""),
+            className: "font-bold text-tide-text underline underline-offset-2",
+            children: "peržiūrėkite visą kainoraštį"
+          }
+        ),
+        "."
+      ] }) : /* @__PURE__ */ jsx("div", { className: "space-y-14", children: groups.map(({ group, items }) => /* @__PURE__ */ jsx(Group$1, { group, items }, group.title)) })
+    ] })
+  ] });
 }
 const seo = {
   title: "Kainos",
@@ -17695,10 +17492,17 @@ function SpecialOffers() {
     hidden: { opacity: 0, y: 8 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
   };
-  return /* @__PURE__ */ jsxs(AnimatedSection, { children: [
+  return /* @__PURE__ */ jsxs(AnimatedSection, { className: "", children: [
     /* @__PURE__ */ jsx(SEO, { title: (_a2 = offers$2.seo) == null ? void 0 : _a2.title, description: (_b2 = offers$2.seo) == null ? void 0 : _b2.description }),
-    /* @__PURE__ */ jsxs(motion.div, { className: "container-narrow relative z-10", variants: container2, initial: "hidden", animate: "visible", children: [
-      /* @__PURE__ */ jsx(motion.header, { className: "mb-6", variants: item2, children: /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700", children: "Ypatingi pasiūlymai" }) }),
+    /* @__PURE__ */ jsx("section", { className: "shell-bg", children: /* @__PURE__ */ jsxs("div", { className: "container-wide py-section", children: [
+      /* @__PURE__ */ jsxs("div", { className: "max-w-3xl", children: [
+        /* @__PURE__ */ jsx("h1", { className: "text-display font-black", children: /* @__PURE__ */ jsx(RevealLines, { lines: ["Ypatingi pasiūlymai"] }) }),
+        /* @__PURE__ */ jsx("p", { className: "muted measure mt-6 text-lead leading-relaxed", children: "Sezoniniai ir riboto laiko pasiūlymai – pilnam gydymo planui ir atskiroms procedūroms." })
+      ] }),
+      /* @__PURE__ */ jsx(TideLine, { className: "mt-12 max-w-xl" })
+    ] }) }),
+    /* @__PURE__ */ jsx(WaveDivider, { from: "var(--shell)", to: "var(--paper)" }),
+    /* @__PURE__ */ jsxs(motion.div, { className: "container-wide relative z-10 pb-section pt-section-tight", variants: container2, initial: "hidden", animate: "visible", children: [
       offers$2.offers.map((o, idx) => {
         if (idx === 0) return null;
         const showPoster = (o == null ? void 0 : o.poster) === true || (o == null ? void 0 : o.poster1) === true;
@@ -17837,15 +17641,14 @@ function Straipsniai() {
         lang: "lt"
       }
     ),
-    /* @__PURE__ */ jsx("section", { className: "py-16 md:py-20", children: /* @__PURE__ */ jsx("div", { className: W$3, children: /* @__PURE__ */ jsx(AnimatedSection, { children: /* @__PURE__ */ jsxs("div", { className: "max-w-2xl", children: [
-      /* @__PURE__ */ jsx("p", { className: "text-xs font-bold tracking-[0.2em] uppercase mb-3", style: { color: C$4.teal }, children: "Bangų klinikos blogas" }),
-      /* @__PURE__ */ jsxs("h1", { className: "text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1]", style: { color: C$4.deepTeal }, children: [
-        "Straipsniai apie",
-        /* @__PURE__ */ jsx("br", {}),
-        "dantų sveikatą"
+    /* @__PURE__ */ jsx("section", { className: "shell-bg", children: /* @__PURE__ */ jsxs("div", { className: "container-wide py-section", children: [
+      /* @__PURE__ */ jsxs("div", { className: "max-w-3xl", children: [
+        /* @__PURE__ */ jsx("h1", { className: "text-display font-black", children: /* @__PURE__ */ jsx(RevealLines, { lines: ["Straipsniai apie", "dantų sveikatą"] }) }),
+        /* @__PURE__ */ jsx("p", { className: "muted measure mt-6 text-lead leading-relaxed", children: "Naudinga informacija, odontologų patarimai ir atsakymai į dažniausius klausimus apie dantų gydymą ir priežiūrą." })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "mt-5 text-lg text-slate-500 leading-relaxed max-w-xl", children: "Naudinga informacija, odontologų patarimai ir atsakymai į dažniausius klausimus apie dantų gydymą ir priežiūrą." })
-    ] }) }) }) }),
+      /* @__PURE__ */ jsx(TideLine, { className: "mt-12 max-w-xl" })
+    ] }) }),
+    /* @__PURE__ */ jsx(WaveDivider, { from: "var(--shell)", to: "var(--paper)" }),
     /* @__PURE__ */ jsx("section", { className: "pb-20 md:pb-28", children: /* @__PURE__ */ jsx("div", { className: W$3, children: /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8", children: BLOG_CARDS.map((post, i) => /* @__PURE__ */ jsx(
       motion.div,
       {

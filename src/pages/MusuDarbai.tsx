@@ -2,6 +2,9 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
+import RevealLines from '../components/RevealLines'
+import TideLine from '../components/TideLine'
+import WaveDivider from '../components/WaveDivider'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -60,8 +63,11 @@ const cases = [
 ]
 
 export default function MusuDarbai() {
+  /* className="" drops AnimatedSection's default `section` class: .section is
+     py-12 md:py-20, and on a page root that padding sits above the hero's
+     shell band as a white strip under the navbar. */
   return (
-    <AnimatedSection>
+    <AnimatedSection className="">
       <SEO
         title="Mūsų darbai | Bangų klinika"
         description="Realūs pacientų rezultatai — All-on-4 implantacija, dantų atstatymas. Prieš ir po nuotraukos."
@@ -69,22 +75,21 @@ export default function MusuDarbai() {
       />
 
       {/* Hero */}
-      <div className="container-narrow pt-16 pb-10 sm:pt-24 sm:pb-14">
-        <motion.div variants={fadeUp} initial="hidden" animate="visible" className="max-w-xl">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
-            Mūsų darbai
-          </h1>
-          <p className="text-slate-500 text-base sm:text-lg leading-relaxed">
-            Tikri pacientų atvejai - nuotraukos prieš procedūrą ir po jos.
-          </p>
-        </motion.div>
-        <motion.div
-          initial={{ scaleX: 0, originX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ delay: 0.3, duration: 0.8, ease: 'easeOut' }}
-          className="mt-10 h-px bg-gradient-to-r from-slate-200 via-slate-100 to-transparent"
-        />
-      </div>
+      <section className="shell-bg">
+        <div className="container-wide py-section">
+          <div className="max-w-3xl">
+            <h1 className="text-display font-black">
+              <RevealLines lines={['Mūsų darbai']} />
+            </h1>
+            <p className="muted measure mt-6 text-lead leading-relaxed">
+              Tikri pacientų atvejai – nuotraukos prieš procedūrą ir po jos.
+            </p>
+          </div>
+          <TideLine className="mt-12 max-w-xl" />
+        </div>
+      </section>
+
+      <WaveDivider from="var(--shell)" to="var(--paper)" />
 
       {/* Cases */}
       <div className="container-narrow pb-20 sm:pb-28">
