@@ -42,7 +42,7 @@ export const PRICING: PriceGroup[] = [
       { name: "Laikina plomba (didelė)", from: 30, exact: true },
       { name: "Laikina plomba (maža)", from: 20, exact: true },
 
-      { name: "Estetinis plombavimas (1 danties)", from: 170, note: "Nuo" },
+      { name: "Estetinis plombavimas (1 danties)", from: 170 },
       { name: "Plombos pataisa", from: 60, exact: true },
       { name: "Biodentino uždėjimas (MTA)", from: 40, exact: true },
       { name: "Skubi pagalba, esant danties skausmui", from: 70, to: 120 },
@@ -118,18 +118,16 @@ export const PRICING: PriceGroup[] = [
       { name: "Pieninio danties rovimas su injekciniu nuskausminimu", from: 80, exact: true },
 
       { name: "Nuolatinio danties rovimas", from: 100, exact: true, note: "Vienkartinės medžiagos ir nuskausminimas įskaičiuota" },
-      { name: "Nuolatinio danties šaknies rovimas", from: 80, exact: true, note: "" },
-      { name: "Sudėtingas nuolatinio danties rovimas", from: 120, exact: true, note: "" },
+      { name: "Nuolatinio danties šaknies rovimas", from: 80, exact: true },
+      { name: "Sudėtingas nuolatinio danties rovimas", from: 120, exact: true },
       {
         name: "Sudėtingas nuolatinio danties šaknies rovimas",
         from: 90,
         exact: true,
-        note: "",
       },
       {
         name: "Trečiųjų krūminių dantų rovimas (Protinių dantų rovimas)",
         from: 150,
-        note: "",
       },
       {
         name: "Sudėtingas/komplikuotas trečiųjų krūminių dantų rovimas (Protinių dantų rovimas)",
@@ -155,7 +153,7 @@ export const PRICING: PriceGroup[] = [
       { name: "Sinuso dugno pakėlimo operacija uždaru būdu (per implanto ložę)", from: 200, exact: true },
       { name: "Sinuso dugno pakėlimo operacija atviru būdu (per sinuso langelį)", from: 600, exact: true },
 
-      { name: "Kaulo augmentacija nuosavu arba kaulo pakaitalu", from: 450, note: "Nuo" },
+      { name: "Kaulo augmentacija nuosavu arba kaulo pakaitalu", from: 450 },
       {
         name: "Pastaba dėl kaulo priauginimo medžiagų",
         note:
