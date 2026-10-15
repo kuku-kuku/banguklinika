@@ -1,0 +1,185 @@
+export type Block =
+  | { type: 'p'; text: string }
+  | { type: 'ul'; items: string[] }
+  | { type: 'ol'; items: string[] }
+
+export type Section = {
+  h?: string
+  p: string[]
+  blocks?: Block[]
+  image?: string
+}
+
+export type FaqItem = { q: string; a: string; preImage?: string }
+
+export type Source = { label: string; url: string }
+
+export type BlogPost = {
+  slug: string
+  title: string
+  excerpt?: string
+  date: string
+  category: string
+  coverImage: string
+  readTime: number
+  sections: Section[]
+  faq?: FaqItem[]
+  sources?: Source[]
+}
+
+/** The fields a card needs — everything but the article body. Home and the
+    article index import only this module, so neither pulls the ~190 kB of
+    section/FAQ prose that lives in blog.ts. */
+export type BlogCard = Pick<BlogPost, 'slug' | 'title' | 'excerpt' | 'date' | 'category' | 'coverImage' | 'readTime'>
+
+export const BLOG_CARDS: BlogCard[] = [
+  {
+    slug: 'dantu-griezimas-nakti-kada-padeda-kapos',
+    title: 'Dantų griežimas naktį: kada padeda kapos?',
+    excerpt: 'Dantų bruksizmas dažnai lieka nepastebėtas, tačiau ilgainiui gali nudildyti emalį, pažeisti restauracijas ir sukelti žandikaulio raumenų skausmą. Kaip suprasti, ar Jums reikalinga apsauginė kapa?',
+    date: '2026-08-04',
+    category: 'Dantų gydymas',
+    coverImage: 'https://images.unsplash.com/photo-1777793636393-a0fec488f3fb?w=1200&q=80&fit=crop&auto=format',
+    readTime: 12,
+  },
+  {
+    slug: 'kaip-pasalinti-dantu-akmenis',
+    title: 'Kaip pašalinti dantų akmenis?',
+    excerpt: 'Dantų akmenys – apnašos, kurių šepetėliu ir pasta nebepavyksta nuvalyti. Kaip juos saugiai pašalina specialistai ir ką galima padaryti namuose, kad jie nesikauptų iš naujo?',
+    date: '2026-08-01',
+    category: 'Burnos higiena',
+    coverImage: '/blog/kaip-pasalinti-dantu-akmenis.jpg',
+    readTime: 12,
+  },
+  {
+    slug: 'kariesas-be-grezimo-ka-galima-atlikti-klinikoje-ir-namuose',
+    title: 'Kariesas be gręžimo: ką galima atlikti klinikoje ir namuose?',
+    excerpt: 'Kariesą be gręžimo sustabdyti įmanoma tik tam tikrose ligos stadijose. Kaip saugiai jį kontroliuoti ir kada danties be restauracijos išgelbėti nebepavyks?',
+    date: '2026-07-26',
+    category: 'Dantų gydymas',
+    coverImage: '/blog/kariesas-be-grezimo.jpg',
+    readTime: 13,
+  },
+  {
+    slug: 'kaip-saugiai-balinti-dantis-namuose',
+    title: 'Kaip saugiai balinti dantis namuose?',
+    excerpt: 'Dantų balinimas namuose gali pašviesinti natūralią dantų spalvą, tačiau ne visos priemonės vienodai veiksmingos ir saugios. Kurie būdai tikrai veikia ir ko verčiau vengti?',
+    date: '2026-07-24',
+    category: 'Dantų balinimas',
+    coverImage: '/blog/kaip-saugiai-balinti-dantis-namuose.jpg',
+    readTime: 12,
+  },
+  {
+    slug: 'ka-daryti-kai-susidaro-danties-pulinys',
+    title: 'Ką daryti, kai susidaro danties pūlinys?',
+    excerpt: 'Danties pūlinys – bakterinės infekcijos sukelta pūlių sankaupa, galinti sukelti pulsuojantį skausmą ir patinimą. Kodėl jo negalima atidėlioti ir kaip jį gydo odontologas?',
+    date: '2026-07-17',
+    category: 'Skubi pagalba',
+    coverImage: 'https://images.unsplash.com/photo-1664530837411-0c2e8a3d4dca?w=1200&q=80&fit=crop&auto=format',
+    readTime: 10,
+  },
+  {
+    slug: 'kaulo-priauginimas-ka-butina-zinoti-pries-operacija',
+    title: 'Kaulo priauginimas: ką būtina žinoti prieš operaciją?',
+    excerpt: 'Jei žandikaulyje implantui per mažai kaulo, prieš implantaciją gali prireikti kaulo priauginimo. Kaip vyksta procedūra ir kokie simptomai gali rodyti komplikaciją?',
+    date: '2026-07-15',
+    category: 'Burnos chirurgija',
+    coverImage: '/blog/kaulo priauginimas ka butina zinoti pries operacija.jpg',
+    readTime: 11,
+  },
+  {
+    slug: 'kam-kompensuojami-dantu-implantai',
+    title: 'Kam kompensuojami dantų implantai?',
+    excerpt: 'Dantų implantai Lietuvoje kompensuojami ne visiems pacientams. Kaip veikia dantų protezavimo kompensacija ir kada gali būti padengta dalis implantacijos išlaidų?',
+    date: '2026-07-11',
+    category: 'Dantų implantacija',
+    coverImage: 'https://images.unsplash.com/photo-1643386281892-f8417a49130e?w=1200&q=80&fit=crop&auto=format',
+    readTime: 11,
+  },
+  {
+    slug: 'kiek-trunka-burnos-higiena',
+    title: 'Kiek trunka burnos higiena?',
+    excerpt: 'Profesionali burnos higiena dažniausiai trunka 30–60 minučių. Kas gali pailginti procedūrą ir kada vieno vizito nepakanka?',
+    date: '2026-07-08',
+    category: 'Burnos higiena',
+    coverImage: '/blog/kiek trunka burnos higiena.jpg',
+    readTime: 10,
+  },
+  {
+    slug: 'kiek-laiko-skauda-danti-po-kanalu-valymo',
+    title: 'Kiek laiko skauda dantį po kanalų valymo?',
+    excerpt: 'Po kanalų valymo dantis kelias dienas gali būti jautrus, ypač kramtant ar sukandus. Kaip atskirti normalų gijimą nuo simptomų, kurių nederėtų ignoruoti?',
+    date: '2026-07-03',
+    category: 'Endodontinis gydymas',
+    coverImage: '/blog/kiek-laiko-skauda-danti-po-kanalu-valymo.jpg',
+    readTime: 9,
+  },
+  {
+    slug: 'ka-daryti-kai-vaikui-skauda-danti',
+    title: 'Ką daryti, kai vaikui skauda dantį?',
+    excerpt: 'Kai vaikui skauda dantį, tėvams būna sunku suprasti, kas nutiko ir kaip greitai kreiptis pagalbos. Ką daryti iki vizito pas odontologą ir kada reikia skubios pagalbos?',
+    date: '2026-07-03',
+    category: 'Vaikų odontologija',
+    coverImage: '/blog/vaikui-skauda-danti.jpg',
+    readTime: 9,
+  },
+  {
+    slug: 'kokie-yra-danties-implanto-atmetimo-pozymiai',
+    title: 'Kokie yra danties implanto atmetimo požymiai?',
+    excerpt: 'Dantų implantai dažniausiai prigyja sėkmingai, tačiau komplikacijų pasitaiko. Kaip atskirti normalų gijimą nuo požymių, rodančių uždegimą ar implanto neprigijimą?',
+    date: '2026-06-10',
+    category: 'Dantų implantacija',
+    coverImage: 'https://images.unsplash.com/photo-1664529845843-b4192b8246fa?w=1200&q=80&fit=crop&auto=format',
+    readTime: 7,
+  },
+  {
+    slug: 'ka-reikia-zinoti-po-danties-implantacijos',
+    title: 'Ką reikia žinoti po danties implantacijos?',
+    excerpt: 'Danties implantacija – chirurginė procedūra, todėl organizmui reikia laiko sugyti. Kaip prižiūrėti implantą pirmosiomis dienomis ir ilguoju laikotarpiu?',
+    date: '2026-06-03',
+    category: 'Dantų implantacija',
+    coverImage: 'https://images.unsplash.com/photo-1609918438269-9a4c5f8fe3a4?w=1200&q=80&fit=crop&auto=format',
+    readTime: 8,
+  },
+  {
+    slug: 'kodel-skauda-danti-po-plombavimo',
+    title: 'Kodėl skauda dantį po plombavimo?',
+    excerpt: 'Nedidelis jautrumas po plombavimo dažnai būna laikinas, tačiau skausmo ignoruoti nederėtų, jei jis stiprėja ar nepraeina. Kada kreiptis į odontologą?',
+    date: '2026-05-27',
+    category: 'Dantų gydymas',
+    coverImage: 'https://images.unsplash.com/photo-1592400400196-bf709e32aa88?w=1200&q=80&fit=crop&auto=format',
+    readTime: 8,
+  },
+  {
+    slug: 'ar-skauda-kai-traukia-danti',
+    title: 'Ar skauda, kai traukia dantį?',
+    excerpt: 'Danties traukimas daugeliui pacientų kelia nerimą. Ar procedūros metu skauda ir kiek laiko gali skaudėti pašalinus dantį?',
+    coverImage : '/blog/ar skauda kai traukia danti.jpg',
+    date: '2026-05-20',
+    category: 'Dantų chirurgija',
+    readTime: 9,
+  },
+  {
+    slug: 'ka-daryti-kai-skauda-protini-danti',
+    title: 'Ką daryti, kai skauda protinį dantį?',
+    excerpt: 'Protinio danties skausmas – viena dažniausių priežasčių, kodėl pacientai skuba pas odontologą. Kaip elgtis ir kada dantį reikia šalinti?',
+    date: '2026-05-13',
+    category: 'Dantų gydymas',
+    coverImage: '/protini-skauda.webp',
+    readTime: 12,
+  },
+  {
+    slug: 'ka-daryti-kai-skauda-danti',
+    title: 'Ką daryti, kai skauda dantį?',
+    excerpt: 'Dantų skausmas dažnai užklumpa netikėtai. Kaip elgtis, kai reikia skubios pagalbos, ir ką daryti, jei dantį skauda savaitgalį?',
+    date: '2026-05-06',
+    category: 'Skubi pagalba',
+    coverImage: 'https://images.unsplash.com/photo-1602932213623-cc17e9541bb4?w=1200&q=80&fit=crop&auto=format',
+    readTime: 10,
+  },
+]
+
+export function formatDate(dateStr: string): string {
+  const d = new Date(dateStr)
+  return d.toLocaleDateString('lt-LT', { year: 'numeric', month: 'long', day: 'numeric' })
+}

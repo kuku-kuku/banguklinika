@@ -1,40 +1,21 @@
-export type Block =
-  | { type: 'p'; text: string }
-  | { type: 'ul'; items: string[] }
-  | { type: 'ol'; items: string[] }
+/* ----------------------------------------------------------------------------
+ * Article bodies.
+ *
+ * Card metadata lives in ./blogMeta — it is the half that Home and the article
+ * index need, and it is tiny. This module holds the prose, keyed by slug, and
+ * joins the two back into BLOG_POSTS for the article page. Importing it pulls
+ * every article's full text, so import blogMeta instead wherever only cards
+ * are rendered.
+ * -------------------------------------------------------------------------- */
 
-export type Section = {
-  h?: string
-  p: string[]
-  blocks?: Block[]
-  image?: string
-}
+import { BLOG_CARDS, type BlogCard, type BlogPost } from './blogMeta'
 
-export type FaqItem = { q: string; a: string; preImage?: string }
+export * from './blogMeta'
 
-export type Source = { label: string; url: string }
+type PostBody = Pick<BlogPost, 'sections' | 'faq' | 'sources'>
 
-export type BlogPost = {
-  slug: string
-  title: string
-  excerpt?: string
-  date: string
-  category: string
-  coverImage: string
-  readTime: number
-  sections: Section[]
-  faq?: FaqItem[]
-  sources?: Source[]
-}
-
-export const BLOG_POSTS: BlogPost[] = [
-  {
-    slug: 'dantu-griezimas-nakti-kada-padeda-kapos',
-    title: 'Dantų griežimas naktį: kada padeda kapos?',
-    date: '2026-08-04',
-    category: 'Dantų gydymas',
-    coverImage: 'https://images.unsplash.com/photo-1777793636393-a0fec488f3fb?w=1200&q=80&fit=crop&auto=format',
-    readTime: 12,
+const BODIES: Record<string, PostBody> = {
+  'dantu-griezimas-nakti-kada-padeda-kapos': {
     sections: [
       {
         p: [
@@ -186,13 +167,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Sleep Bruxism May Not Be Associated With Obstructive Sleep Apnea: A Systematic Review and Meta-Analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/39182463/' },
     ],
   },
-  {
-    slug: 'kaip-pasalinti-dantu-akmenis',
-    title: 'Kaip pašalinti dantų akmenis?',
-    date: '2026-08-01',
-    category: 'Burnos higiena',
-    coverImage: '/blog/kaip-pasalinti-dantu-akmenis.jpg',
-    readTime: 12,
+  'kaip-pasalinti-dantu-akmenis': {
     sections: [
       {
         p: [
@@ -334,13 +309,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Efficacy of Power-Driven Interdental Cleaning Tools: A Systematic Review and Meta-Analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/36562267/' },
     ],
   },
-  {
-    slug: 'kariesas-be-grezimo-ka-galima-atlikti-klinikoje-ir-namuose',
-    title: 'Kariesas be gręžimo: ką galima atlikti klinikoje ir namuose?',
-    date: '2026-07-26',
-    category: 'Dantų gydymas',
-    coverImage: '/blog/kariesas-be-grezimo.jpg',
-    readTime: 13,
+  'kariesas-be-grezimo-ka-galima-atlikti-klinikoje-ir-namuose': {
     sections: [
       {
         p: [
@@ -586,13 +555,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'World Health Organization – Sugars and Dental Caries', url: 'https://www.who.int/news-room/fact-sheets/detail/sugars-and-dental-caries' },
     ],
   },
-  {
-    slug: 'kaip-saugiai-balinti-dantis-namuose',
-    title: 'Kaip saugiai balinti dantis namuose?',
-    date: '2026-07-24',
-    category: 'Dantų balinimas',
-    coverImage: '/blog/kaip-saugiai-balinti-dantis-namuose.jpg',
-    readTime: 12,
+  'kaip-saugiai-balinti-dantis-namuose': {
     sections: [
       {
         p: [
@@ -769,13 +732,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'At-home vs In-office Bleaching: A Systematic Review and Meta-analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/27045285/' },
     ],
   },
-  {
-    slug: 'ka-daryti-kai-susidaro-danties-pulinys',
-    title: 'Ką daryti, kai susidaro danties pūlinys?',
-    date: '2026-07-17',
-    category: 'Skubi pagalba',
-    coverImage: 'https://images.unsplash.com/photo-1664530837411-0c2e8a3d4dca?w=1200&q=80&fit=crop&auto=format',
-    readTime: 10,
+  'ka-daryti-kai-susidaro-danties-pulinys': {
     sections: [
       {
         p: [
@@ -929,13 +886,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Antibiotics for the Urgent Management of Pulpal and Periapical Dental Conditions: Systematic Review and Meta-Analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/31761029/' },
     ],
   },
-  {
-    slug: 'kaulo-priauginimas-ka-butina-zinoti-pries-operacija',
-    title: 'Kaulo priauginimas: ką būtina žinoti prieš operaciją?',
-    date: '2026-07-15',
-    category: 'Burnos chirurgija',
-    coverImage: '/blog/kaulo priauginimas ka butina zinoti pries operacija.jpg',
-    readTime: 11,
+  'kaulo-priauginimas-ka-butina-zinoti-pries-operacija': {
     sections: [
       {
         p: [
@@ -1055,13 +1006,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Smoking and dental implants: A systematic review and meta-analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/25778741/' },
     ],
   },
-  {
-    slug: 'kam-kompensuojami-dantu-implantai',
-    title: 'Kam kompensuojami dantų implantai?',
-    date: '2026-07-11',
-    category: 'Dantų implantacija',
-    coverImage: 'https://images.unsplash.com/photo-1643386281892-f8417a49130e?w=1200&q=80&fit=crop&auto=format',
-    readTime: 11,
+  'kam-kompensuojami-dantu-implantai': {
     sections: [
       {
         p: [
@@ -1192,13 +1137,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Dėl Dantų protezavimo paslaugų išlaidų kompensavimo iš Privalomojo sveikatos draudimo fondo biudžeto tvarkos aprašo pakeitimo', url: 'https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/53dadd725df111f1b20fcb7db81bf4bd' },
     ],
   },
-  {
-    slug: 'kiek-trunka-burnos-higiena',
-    title: 'Kiek trunka burnos higiena?',
-    date: '2026-07-08',
-    category: 'Burnos higiena',
-    coverImage: '/blog/kiek trunka burnos higiena.jpg',
-    readTime: 10,
+  'kiek-trunka-burnos-higiena': {
     sections: [
       {
         p: [
@@ -1300,13 +1239,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Effectiveness and Clinical Performance of Erythritol Air-Polishing in Non-Surgical Periodontal Therapy: A Systematic Review of Randomized Clinical Trials', url: 'https://pubmed.ncbi.nlm.nih.gov/35888585/' },
     ],
   },
-  {
-    slug: 'kiek-laiko-skauda-danti-po-kanalu-valymo',
-    title: 'Kiek laiko skauda dantį po kanalų valymo?',
-    date: '2026-07-03',
-    category: 'Endodontinis gydymas',
-    coverImage: '/blog/kiek-laiko-skauda-danti-po-kanalu-valymo.jpg',
-    readTime: 9,
+  'kiek-laiko-skauda-danti-po-kanalu-valymo': {
     sections: [
       {
         p: [
@@ -1418,13 +1351,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'The Effect of Antibiotic Use on Endodontic Post-Operative Pain and Flare-Up Rate: A Systematic Review With Meta-Analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/35165442/' },
     ],
   },
-  {
-    slug: 'ka-daryti-kai-vaikui-skauda-danti',
-    title: 'Ką daryti, kai vaikui skauda dantį?',
-    date: '2026-07-03',
-    category: 'Vaikų odontologija',
-    coverImage: '/blog/vaikui-skauda-danti.jpg',
-    readTime: 9,
+  'ka-daryti-kai-vaikui-skauda-danti': {
     sections: [
       {
         p: [
@@ -1529,13 +1456,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Ending Childhood Dental Caries: WHO Implementation Manual', url: 'https://www.who.int/publications/i/item/9789240000056' },
     ],
   },
-  {
-    slug: 'kokie-yra-danties-implanto-atmetimo-pozymiai',
-    title: 'Kokie yra danties implanto atmetimo požymiai?',
-    date: '2026-06-10',
-    category: 'Dantų implantacija',
-    coverImage: 'https://images.unsplash.com/photo-1664529845843-b4192b8246fa?w=1200&q=80&fit=crop&auto=format',
-    readTime: 7,
+  'kokie-yra-danties-implanto-atmetimo-pozymiai': {
     sections: [
       {
         p: [
@@ -1626,13 +1547,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'A Retrospective Analysis of Biological Complications of Dental Implants', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9391181/' },
     ],
   },
-  {
-    slug: 'ka-reikia-zinoti-po-danties-implantacijos',
-    title: 'Ką reikia žinoti po danties implantacijos?',
-    date: '2026-06-03',
-    category: 'Dantų implantacija',
-    coverImage: 'https://images.unsplash.com/photo-1609918438269-9a4c5f8fe3a4?w=1200&q=80&fit=crop&auto=format',
-    readTime: 8,
+  'ka-reikia-zinoti-po-danties-implantacijos': {
     sections: [
       {
         p: [
@@ -1727,13 +1642,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Smoking and Dental Implants: A Systematic Review and Meta-Analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/35056347/' },
     ],
   },
-  {
-    slug: 'kodel-skauda-danti-po-plombavimo',
-    title: 'Kodėl skauda dantį po plombavimo?',
-    date: '2026-05-27',
-    category: 'Dantų gydymas',
-    coverImage: 'https://images.unsplash.com/photo-1592400400196-bf709e32aa88?w=1200&q=80&fit=crop&auto=format',
-    readTime: 8,
+  'kodel-skauda-danti-po-plombavimo': {
     sections: [
       {
         p: [
@@ -1822,13 +1731,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Effect of different adhesive systems on postoperative sensitivity of composite resin restorations in adults: a systematic review and network meta-analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/37017757/' },
     ],
   },
-  {
-    slug: 'ar-skauda-kai-traukia-danti',
-    title: 'Ar skauda, kai traukia dantį?',
-    coverImage : '/blog/ar skauda kai traukia danti.jpg',
-    date: '2026-05-20',
-    category: 'Dantų chirurgija',
-    readTime: 9,
+  'ar-skauda-kai-traukia-danti': {
     sections: [
       {
         p: [
@@ -1923,13 +1826,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Local interventions for the management of alveolar osteitis, dry socket', url: 'https://pubmed.ncbi.nlm.nih.gov/36156769/' },
     ],
   },
-  {
-    slug: 'ka-daryti-kai-skauda-protini-danti',
-    title: 'Ką daryti, kai skauda protinį dantį?',
-    date: '2026-05-13',
-    category: 'Dantų gydymas',
-    coverImage: '/protini-skauda.webp',
-    readTime: 12,
+  'ka-daryti-kai-skauda-protini-danti': {
     sections: [
       {
         p: [
@@ -2049,13 +1946,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Prediction of postoperative facial swelling, pain and trismus following third molar surgery based on preoperative variables', url: 'https://pubmed.ncbi.nlm.nih.gov/23229245/' },
     ],
   },
-  {
-    slug: 'ka-daryti-kai-skauda-danti',
-    title: 'Ką daryti, kai skauda dantį?',
-    date: '2026-05-06',
-    category: 'Skubi pagalba',
-    coverImage: 'https://images.unsplash.com/photo-1602932213623-cc17e9541bb4?w=1200&q=80&fit=crop&auto=format',
-    readTime: 10,
+  'ka-daryti-kai-skauda-danti': {
     sections: [
       {
         p: [
@@ -2151,13 +2042,13 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Management of odontogenic infections and sepsis: an update', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7517749/' },
     ],
   },
-]
+}
+
+export const BLOG_POSTS: BlogPost[] = BLOG_CARDS.map((card: BlogCard) => ({
+  ...card,
+  ...BODIES[card.slug],
+}))
 
 export function getPost(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find(p => p.slug === slug)
-}
-
-export function formatDate(dateStr: string): string {
-  const d = new Date(dateStr)
-  return d.toLocaleDateString('lt-LT', { year: 'numeric', month: 'long', day: 'numeric' })
 }

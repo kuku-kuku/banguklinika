@@ -9,7 +9,7 @@ import React3, { Component, useState, useRef, useEffect, useLayoutEffect, create
 import fastCompare from "react-fast-compare";
 import invariant from "invariant";
 import shallowEqual from "shallowequal";
-import { AnimatePresence, m, useReducedMotion, LazyMotion, domAnimation, MotionConfig, motion, useInView } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion, LazyMotion, domAnimation, MotionConfig, motion, useMotionValue, useSpring, useInView } from "framer-motion";
 import { useLocation, useNavigate, Link, NavLink, useParams, Navigate, Routes, Route, Outlet } from "react-router-dom";
 import { MapPin, Phone, Mail, Clock, ChevronDown as ChevronDown$1, Navigation } from "lucide-react";
 import Lenis from "lenis";
@@ -2292,7 +2292,7 @@ function BackToTop() {
         transition: { duration: prefersReduced ? 0 : 0.2 },
         "aria-label": "Grįžti į viršų",
         title: "Grįžti į viršų",
-        className: "\n            btn-backtotop fixed right-4 md:right-6 z-[2147483647]\n            inline-flex items-center justify-center\n            h-11 w-11 rounded-full\n            bg-white border border-slate-200 shadow-lg hover:shadow-xl\n            text-[#10394F]\n          ",
+        className: "\r\n            btn-backtotop fixed right-4 md:right-6 z-[2147483647]\r\n            inline-flex items-center justify-center\r\n            h-11 w-11 rounded-full\r\n            bg-white border border-slate-200 shadow-lg hover:shadow-xl\r\n            text-[#10394F]\r\n          ",
         children: /* @__PURE__ */ jsx("svg", { viewBox: "0 0 24 24", className: "w-5 h-5", "aria-hidden": "true", children: /* @__PURE__ */ jsx("path", { d: "M12 6l-6 7h4v5h4v-5h4z", fill: "currentColor" }) })
       },
       "backtotop"
@@ -2770,6 +2770,12 @@ const team$1 = [
     role: "Protezuojantis gydytojas odontologas",
     license: "OPL-05936",
     photoFile: "Jonas-light"
+  },
+  {
+    name: "Agnė Jurkutė",
+    role: "Protezuojanti gydytoja odontologė",
+    license: "OPL-05703",
+    photoFile: "Agnė_light LT"
   },
   {
     name: "Eglė Daknienė",
@@ -3503,6 +3509,35 @@ const manifest = {
         w: 1600,
         h: 922,
         src: "/img/hero-poster-source-1600.webp"
+      }
+    ]
+  },
+  "/team/Agnė_light LT.jpg": {
+    w: 1080,
+    h: 1350,
+    ratio: 0.8,
+    avif: [
+      {
+        w: 400,
+        h: 500,
+        src: "/img/team__Agn-_light-LT-400.avif"
+      },
+      {
+        w: 800,
+        h: 1e3,
+        src: "/img/team__Agn-_light-LT-800.avif"
+      }
+    ],
+    webp: [
+      {
+        w: 400,
+        h: 500,
+        src: "/img/team__Agn-_light-LT-400.webp"
+      },
+      {
+        w: 800,
+        h: 1e3,
+        src: "/img/team__Agn-_light-LT-800.webp"
       }
     ]
   },
@@ -5182,7 +5217,7 @@ function TableOfContents({ sections, title = "Turinys", rootRef, cta: cta2, mobi
   const tocRef = useRef(null);
   useLayoutEffect(() => {
     var _a3;
-    const OFFSET = 160;
+    const OFFSET2 = 160;
     const first = ((_a3 = sections[0]) == null ? void 0 : _a3.id) ?? "";
     setActiveId(first);
     const getEl = (id) => {
@@ -5198,7 +5233,7 @@ function TableOfContents({ sections, title = "Turinys", rootRef, cta: cta2, mobi
         const el = getEl(id);
         if (!el) continue;
         const top = el.getBoundingClientRect().top;
-        if (top <= OFFSET) active = id;
+        if (top <= OFFSET2) active = id;
       }
       setActiveId(active);
     }
@@ -13509,2135 +13544,152 @@ const home = {
   hero,
   whyChoose
 };
-const BLOG_POSTS = [
+const BLOG_CARDS = [
   {
     slug: "dantu-griezimas-nakti-kada-padeda-kapos",
     title: "Dantų griežimas naktį: kada padeda kapos?",
+    excerpt: "Dantų bruksizmas dažnai lieka nepastebėtas, tačiau ilgainiui gali nudildyti emalį, pažeisti restauracijas ir sukelti žandikaulio raumenų skausmą. Kaip suprasti, ar Jums reikalinga apsauginė kapa?",
     date: "2026-08-04",
     category: "Dantų gydymas",
     coverImage: "https://images.unsplash.com/photo-1777793636393-a0fec488f3fb?w=1200&q=80&fit=crop&auto=format",
-    readTime: 12,
-    sections: [
-      {
-        p: [
-          "Dantų griežimas naktį dažnai ilgą laiką lieka nepastebėtas. Apie jį gali pasakyti šalia miegantis žmogus, o odontologas – pastebėti nudilusius, įskilusius ar jautresnius dantis. Kai kuriems pacientams rytais maudžia žandikaulio raumenis, smilkinius arba galvą, tačiau dalis žmonių aiškių simptomų nejaučia.",
-          "Dantų bruksizmas – tai pasikartojantis dantų sukandimas, griežimas arba žandikaulio įtempimas. Jis gali pasireikšti miegant arba būdraujant. Bruksizmas ne kiekvienam žmogui sukelia žalą, tačiau intensyvi ir ilgalaikė apkrova gali prisidėti prie dantų dilimo, įtrūkimų, restauracijų pažeidimų ir kramtomųjų raumenų skausmo.",
-          "Kai atsiranda dantų pažeidimų rizika, odontologas gali rekomenduoti apsauginę kapą. Dantų kapos miegui atskiria viršutinio ir apatinio žandikaulio dantis bei saugo jų paviršius nuo tiesioginio trynimosi. Vis dėlto kapa nebūtinai sustabdo pačią kramtomųjų raumenų veiklą, todėl prieš ją gaminant svarbu įvertinti dantų, dantenų, restauracijų ir žandikaulio sąnarių būklę."
-        ]
-      },
-      {
-        h: "Kas yra dantų bruksizmas ir kodėl žmonės griežia dantimis?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Miego ir būdravimo bruksizmas laikomi skirtingomis kramtomųjų raumenų veiklos formomis." },
-          { type: "p", text: "Dantų griežimas naktį, arba miego bruksizmas, pasireiškia miegant vykstančiu dantų sukandimu, žandikaulio judesiais ar dantų paviršių trynimu. Žmogus šių veiksmų nekontroliuoja ir dažniausiai jų neprisimena." },
-          { type: "p", text: "Būdravimo bruksizmas dažniau pasireiškia ilgalaikiu dantų sukandimu arba žandikaulio įtempimu. Tai gali vykti susikaupus, dirbant kompiuteriu, vairuojant, sportuojant ar patiriant emocinę įtampą." },
-          { type: "p", text: "Vienos visus bruksizmo atvejus paaiškinančios priežasties nėra. Jo pasireiškimą gali veikti:" },
-          { type: "ul", items: [
-            "emocinė įtampa ir nerimas;",
-            "miego kokybė bei dažni prabudimai;",
-            "alkoholio, nikotino ar didelio kofeino kiekio vartojimas;",
-            "kai kurie vaistai;",
-            "individuali nervų sistemos veikla;",
-            "genetiniai ir kiti asmeniniai veiksniai."
-          ] },
-          { type: "p", text: "Stresas gali sustiprinti bruksizmą, ypač būdravimo metu, tačiau jo nereikėtų laikyti vienintele priežastimi. Miego bruksizmas yra sudėtinga su miego ir nervų sistemos procesais susijusi raumenų veikla." },
-          { type: "p", text: "Dantų sąkandis anksčiau buvo laikomas viena pagrindinių bruksizmo priežasčių. Dabartinis mokslinis požiūris yra atsargesnis: vien dantų padėties, plombų ar sąkandžio koregavimas nėra universalus dantų griežimo gydymo būdas." }
-        ]
-      },
-      {
-        h: "Kaip atpažinti dantų griežimą naktį?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Dantų griežimą naktį neretai pirmasis pastebi šalia miegantis žmogus. Jis gali girdėti dantų girgždėjimą ar trynimą. Tačiau garsas nėra būtinas: dalis žmonių miegodami dantis stipriai sukanda, bet jais negriežia." },
-          { type: "p", text: "Galimi bruksizmo požymiai:" },
-          { type: "ul", items: [
-            "rytinis žandikaulio raumenų nuovargis ar maudimas;",
-            "skausmas smilkinių arba veido srityje;",
-            "rytinis galvos skausmas;",
-            "dantų jautrumas;",
-            "nudilę, suplokštėję ar nuskilę dantų kraštai;",
-            "dažnai pažeidžiamos plombos, vainikėliai ar kitos restauracijos;",
-            "žandų gleivinėje matomos sukandimo žymės;",
-            "sunkiau plačiai išsižioti;",
-            "žandikaulio sąnario skausmas ar strigimas."
-          ] },
-          { type: "p", text: "Nė vienas iš šių požymių atskirai nepatvirtina bruksizmo. Dantys gali dilti ne tik dėl mechaninio trynimosi, bet ir dėl rūgštinės erozijos, abrazyvaus valymo ar kelių priežasčių derinio. Galvos ir veido skausmas taip pat gali būti nesusijęs su dantų griežimu." },
-          { type: "p", text: "Odontologas įvertina dantų paviršius, restauracijas, dantenas, kramtomuosius raumenis ir žandikaulio sąnarius. Taip pat svarbu aptarti simptomų trukmę, miego kokybę, vartojamus vaistus ir artimųjų pastebėtus garsus." }
-        ]
-      },
-      {
-        h: "Kokias problemas gali sukelti ilgalaikis dantų griežimas?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Epizodinis bruksizmas ne visada sukelia žalą. Problemos dažniau atsiranda, kai apkrova yra intensyvi, ilgalaikė arba dantys ir restauracijos jau yra pažeidžiami." },
-          { type: "p", text: "Dantų griežimas gali prisidėti prie:" },
-          { type: "ul", items: [
-            "dantų emalio dilimo;",
-            "dantų kraštų trumpėjimo ir suplokštėjimo;",
-            "įtrūkimų ar nuskilimų;",
-            "padidėjusio jautrumo;",
-            "plombų, vainikėlių ir kitų restauracijų lūžių;",
-            "implantų ir protezinių konstrukcijų perkrovos;",
-            "kramtomųjų raumenų nuovargio ar skausmo;",
-            "smilkinių ir veido srities maudimo;",
-            "žandikaulio sąnario diskomforto."
-          ] },
-          { type: "p", text: "Dantų dilimas paprastai vyksta palaipsniui, todėl ilgą laiką gali likti nepastebėtas. Pažengusiais atvejais dantys atrodo trumpesni, pakinta jų forma, gali suprastėti kramtymo funkcija ir šypsenos estetika." },
-          { type: "p", text: "Dantų emalis savaime neatsinaujina. Kapa negali atkurti jau prarastų audinių, bet gali padėti apsaugoti dantis nuo tolesnio mechaninio pažeidimo. Jei dantys stipriai nudilę ar nuskilę, gali prireikti restauracinio gydymo." }
-        ]
-      },
-      {
-        h: "Kaip veikia dantų kapos miegui?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Dantų kapos miegui yra išimami aparatai, dažniausiai dėvimi ant viršutinio arba apatinio žandikaulio dantų. Bruksizmui skirtos kapos dar vadinamos apsauginėmis, okliuzinėmis arba stabilizacinėmis kapomis." },
-          { type: "p", text: "Pagrindinė kapos paskirtis – sukurti fizinį barjerą tarp abiejų žandikaulių dantų. Kai žmogus miegodamas griežia ar stipriai sukanda, dantų paviršiai tiesiogiai nesitrina vienas į kitą. Taip mažinama jų dilimo, įskilimo ir restauracijų pažeidimo rizika." },
-          { type: "p", text: "Tinkamai pritaikyta kapa gali:" },
-          { type: "ul", items: [
-            "apsaugoti dantų paviršius;",
-            "tolygiau paskirstyti sukandimo apkrovą;",
-            "saugoti plombas, vainikėlius ir kitas restauracijas;",
-            "padėti stebėti griežimo paliekamas nusidėvėjimo žymes;",
-            "kai kuriems pacientams sumažinti raumenų diskomfortą."
-          ] },
-          { type: "p", text: "Svarbu suprasti, kad kapa pirmiausia saugo nuo mechaninių bruksizmo pasekmių. Ji nebūtinai pašalina dantų griežimo priežastį ar sustabdo naktinę kramtomųjų raumenų veiklą. Todėl kapa neturėtų būti pristatoma kaip visiems tinkantis bruksizmo išgydymo būdas." }
-        ]
-      },
-      {
-        h: "Kuo individuali kapa skiriasi nuo vaistinėje įsigyjamos kapos?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Individuali kapa gaminama pagal konkretaus paciento dantų formą. Jos prigludimas, storis ir sukandimo kontaktai patikrinami bei, kai reikia, koreguojami odontologo." },
-          { type: "p", text: "Kapos gamyba paprastai vyksta keliais etapais:" },
-          { type: "ol", items: [
-            "Odontologas apžiūri dantis, dantenas, restauracijas ir įvertina sąkandį.",
-            "Atliekamas skaitmeninis dantų skenavimas arba imami atspaudai.",
-            "Laboratorijoje pagaminama individuali kapa.",
-            "Kito vizito metu patikrinamas jos prigludimas ir sukandimo kontaktai.",
-            "Jei reikia, kapa pakoreguojama."
-          ] },
-          { type: "p", text: "Individualiai pagaminta kapa paprastai stabiliau laikosi, mažiau juda miegant ir gali būti tiksliau pritaikyta ilgalaikiam dėvėjimui." },
-          { type: "p", text: "Vaistinėse ar internete parduodamos standartinės ir šiltame vandenyje formuojamos kapos yra lengviau prieinamos, tačiau jų prigludimas gali būti ne toks tikslus. Netinkamai pritaikytas aparatas gali spausti dantis, judėti, trukdyti miegoti arba nepakankamai apsaugoti dantų paviršius." },
-          { type: "p", text: "Odontologo įvertinimas ypač svarbus, jei pacientas turi:" },
-          { type: "ul", items: [
-            "paslankių ar stipriai nudilusių dantų;",
-            "vainikėlių, tiltų ar implantų;",
-            "aktyvią periodonto ligą;",
-            "žandikaulio sąnario skausmą;",
-            "nebaigtą ortodontinį ar restauracinį gydymą;",
-            "galimų miego kvėpavimo sutrikimų požymių."
-          ] },
-          { type: "p", text: "Bruksizmo kapa nėra tas pats, kas apatinį žandikaulį į priekį stumiantis aparatas, naudojamas kai kuriems obstrukcine miego apnėja sergantiems pacientams. Garsiai knarkiant ar pastebėjus kvėpavimo pauzes savarankiškai pasirinkta kapa neturėtų pakeisti medicininio ištyrimo." },
-          { type: "p", text: "Kapą reikia plauti vėsiu arba drungnu vandeniu ir laikyti vėdinamoje dėžutėje. Karštas vanduo gali deformuoti jos medžiagą. Jei kapa įtrūksta, pradeda klibėti, spausti ar pakeičia sukandimo pojūtį, ją turėtų patikrinti odontologas." }
-        ]
-      },
-      {
-        h: "Kada dėl dantų bruksizmo reikėtų kreiptis į odontologą?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Į odontologą verta kreiptis, jei artimieji reguliariai girdi dantų griežimą naktį arba pastebite dantų nudilimą, jautrumą, įtrūkimus ir dažnai pažeidžiamas restauracijas." },
-          { type: "p", text: "Apžiūra taip pat reikalinga, jei:" },
-          { type: "ul", items: [
-            "rytais dažnai maudžia žandikaulį ar smilkinius;",
-            "skausmas trukdo kramtyti arba išsižioti;",
-            "dantys atrodo trumpesni ar pakeitė formą;",
-            "nuskilo dantis, plomba ar vainikėlis;",
-            "žandikaulio sąnarys skausmingas ar stringa;",
-            "naudojama kapa spaudžia, kliba arba nebetinka;",
-            "dantų dilimas greitai progresuoja."
-          ] },
-          { type: "p", text: "Odontologas įvertins, ar reikalinga aktyvi dantų apsauga, ar pakanka stebėjimo ir įpročių korekcijos. Gydymas gali apimti individualią kapą, pažeistų dantų atkūrimą, raumenų ir sąnarių būklės priežiūrą bei nukreipimą pas kitą specialistą." },
-          { type: "p", text: "Būdravimo bruksizmo atveju svarbi savistaba. Ramybės metu viršutiniai ir apatiniai dantys neturėtų nuolat liestis. Lūpos gali būti lengvai suglaustos, o žandikaulio raumenys – atpalaiduoti. Dienos metu gali padėti priminimai patikrinti, ar dantys nėra sukąsti." },
-          { type: "p", text: "Jei pastebėjote dantų nudilimą, rytais jaučiate žandikaulio įtampą arba artimieji girdi, kad griežiate dantimis, registruokitės konsultacijai Bangų klinikoje Klaipėdoje. Mūsų specialistai įvertins simptomus, patikrins dantų būklę ir, jei reikia, pagamins individualiai pritaikytą apsauginę kapą." }
-        ]
-      }
-    ],
-    faq: [
-      { q: "Ar dantų kapa sustabdo griežimą naktį?", a: "Nebūtinai. Kapa pirmiausia saugo dantis ir restauracijas nuo tiesioginio trynimosi. Naktinė kramtomųjų raumenų veikla gali išlikti." },
-      { q: "Ar dantų kapos miegui tinka visiems?", a: "Ne visada. Prieš gaminant kapą reikia įvertinti dantis, dantenas, restauracijas ir žandikaulio sąnarius. Individualus įvertinimas ypač svarbus turint implantų, periodonto ligų ar stipriai nudilusių dantų." },
-      { q: "Kiek laiko tarnauja bruksizmo kapa?", a: "Vienodo termino nėra. Kapos tarnavimo laikas priklauso nuo jos medžiagos, griežimo intensyvumo, naudojimo dažnio ir priežiūros. Įtrūkusią, deformuotą ar klibančią kapą turi įvertinti odontologas." },
-      { q: "Ar kapą reikia nešioti visą gyvenimą?", a: "Nebūtinai. Dėvėjimo trukmė priklauso nuo simptomų, dantų pažeidimo rizikos ir gydymo eigos. Kapos poreikį verta periodiškai įvertinti iš naujo." },
-      { q: "Nuo ko priklauso dantų kapos kaina?", a: "Kaina priklauso nuo kapos tipo, medžiagos, gamybos būdo, diagnostikos ir reikalingų korekcijų. Tiksli kaina nustatoma įvertinus paciento dantų būklę." },
-      { q: "Ar stresas gali paskatinti dantų griežimą?", a: "Emocinė įtampa gali būti vienas iš bruksizmą lydinčių ar stiprinančių veiksnių, ypač būdravimo metu. Tačiau bruksizmo nereikėtų aiškinti vien stresu." }
-    ],
-    sources: [
-      { label: "International Consensus on the Assessment of Bruxism: Report of a Work in Progress", url: "https://pubmed.ncbi.nlm.nih.gov/29926505/" },
-      { label: "Standardised Tool for the Assessment of Bruxism", url: "https://pubmed.ncbi.nlm.nih.gov/36597658/" },
-      { label: "The Efficacy of Occlusal Splints in the Treatment of Bruxism: A Systematic Review", url: "https://pubmed.ncbi.nlm.nih.gov/33652054/" },
-      { label: "Sleep Bruxism May Not Be Associated With Obstructive Sleep Apnea: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/39182463/" }
-    ]
+    readTime: 12
   },
   {
     slug: "kaip-pasalinti-dantu-akmenis",
     title: "Kaip pašalinti dantų akmenis?",
+    excerpt: "Dantų akmenys – apnašos, kurių šepetėliu ir pasta nebepavyksta nuvalyti. Kaip juos saugiai pašalina specialistai ir ką galima padaryti namuose, kad jie nesikauptų iš naujo?",
     date: "2026-08-01",
     category: "Burnos higiena",
     coverImage: "/blog/kaip-pasalinti-dantu-akmenis.jpg",
-    readTime: 12,
-    sections: [
-      {
-        p: [
-          "Dantų akmenys dažniausiai pastebimi prie apatinių priekinių dantų, tarpdančiuose arba ties dantenų kraštu. Jie gali būti gelsvi, rusvi ar tamsesni, o liežuviu palietus danties paviršių dažnai jaučiamas šiurkštumas. Dalis akmenų kaupiasi po dantenomis, todėl veidrodyje jų nematyti.",
-          "Jei svarstote, kaip atsikratyti dantų akmenų, svarbiausia žinoti, kad sukietėjusių sankaupų dantų šepetėlis, pasta, siūlas ar irigatorius nepašalins. Jas saugiai nuvalo burnos higienistas arba odontologas profesionalios burnos higienos metu. Namuose galima pašalinti minkštąsias bakterines apnašas ir taip mažinti naujų akmenų susidarymą."
-        ]
-      },
-      {
-        h: "Kodėl ant dantų susidaro dantų akmenys?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Ant dantų nuolat formuojasi lipni bakterijų plėvelė, vadinama dantų apnašomis arba biofilmu. Ją galima pašalinti valant dantis ir tarpdančius. Jei apnašos lieka ant dantų paviršiaus, jose kaupiasi seilėse esantys mineralai, todėl ilgainiui jos sukietėja ir virsta dantų akmenimis. Jau mineralizuotų sankaupų įprastu dantų šepetėliu pašalinti nebegalima." },
-          { type: "p", text: "Dantų akmenys skirstomi į esančius virš dantenų ir po jomis. Virš dantenų susidariusios sankaupos paprastai lengviau pastebimos. Jos dažnai kaupiasi už apatinių priekinių dantų ir prie viršutinių krūminių dantų, netoli seilių liaukų latakų." },
-          { type: "p", text: "Po dantenomis esantys akmenys prisitvirtina prie danties šaknies paviršiaus. Jie gali būti tamsesni ir dažnai aptinkami tik profesionaliai apžiūrint dantenas, matuojant periodonto kišenes ar atliekant radiologinius tyrimus." },
-          { type: "p", text: "Akmenų susidarymo greitis skirtingiems žmonėms nevienodas. Jam įtakos gali turėti:" },
-          { type: "ul", items: [
-            "nepakankamai kruopštus dantų valymas;",
-            "nereguliarus tarpdančių valymas;",
-            "susigrūdę ir sunkiau pasiekiami dantys;",
-            "individuali seilių sudėtis ir jų tekėjimas;",
-            "rūkymas;",
-            "ortodontiniai aparatai;",
-            "implantai, tiltai ir kitos protezinės konstrukcijos;",
-            "anksčiau diagnozuotos dantenų ar periodonto ligos."
-          ] },
-          { type: "p", text: "Mineralizuotos apnašos gali kauptis ne tik ant natūralių dantų, bet ir aplink implantus, prie tiltų bei ant protezinių konstrukcijų. Šioms vietoms prižiūrėti gali būti reikalingi tinkamo dydžio tarpdančių šepetėliai, vieno danties šepetėlis ar kitos individualiai parinktos priemonės." }
-        ]
-      },
-      {
-        h: "Kaip atpažinti, kad ant dantų susikaupė akmenų?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Matomi dantų akmenys dažniausiai atrodo kaip kietas gelsvas, rusvas ar tamsus sluoksnis, kurio nepavyksta nuvalyti šepetėliu. Liežuviu galima jausti nelygų, šiurkštų paviršių, ypač už apatinių priekinių dantų." },
-          { type: "p", text: "Apnašų ir akmenų kaupimąsi taip pat gali lydėti:" },
-          { type: "ul", items: [
-            "dantenų kraujavimas valant dantis;",
-            "paraudusios, patinusios ar jautrios dantenos;",
-            "nemalonus burnos kvapas;",
-            "nemalonus skonis burnoje;",
-            "dantenų atsitraukimas;",
-            "dantų jautrumas;",
-            "didėjantys tarpai tarp dantų;",
-            "dantų paslankumas, jei periodonto liga pažengusi."
-          ] },
-          { type: "p", text: "Dantenų kraujavimas nėra ženklas, kad dantis reikia valyti rečiau. Jis dažnai susijęs su bakterinių apnašų sukeltu uždegimu. Gingivito metu uždegimas apsiriboja dantenomis ir, pašalinus apnašas bei pagerinus kasdienę higieną, paprastai gali būti suvaldytas." },
-          { type: "p", text: "Periodontito atveju pažeidžiami ne tik dantenų audiniai, bet ir dantis laikantis kaulas. Ši liga nėra grįžtama taip, kaip gingivitas, tačiau profesionaliai gydant ir reguliariai prižiūrint jos progresavimą galima sulėtinti bei kontroliuoti." },
-          { type: "p", text: "Ne visos tamsios ar šiurkščios vietos yra dantų akmenys. Panašiai gali atrodyti pigmentinės apnašos, ėduonis, restauracijos kraštas ar natūrali danties spalvos ypatybė. Tikslią priežastį nustato odontologas arba burnos higienistas." }
-        ]
-      },
-      {
-        h: "Ar galima dantų akmenis pašalinti namuose?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Minkštąsias apnašas namuose pašalinti būtina, tačiau jau susiformavusių akmenų saugiai nuvalyti nepavyks. Sukietėjusios sankaupos tvirtai prisitvirtina prie danties ar šaknies paviršiaus, todėl joms šalinti reikalingi profesionalūs instrumentai." },
-          { type: "p", text: "Savarankiškas akmenų grandymas gali:" },
-          { type: "ul", items: [
-            "sužaloti dantenas ir sukelti kraujavimą;",
-            "subraižyti emalį, restauracijas ar implantų paviršius;",
-            "padidinti dantų jautrumą;",
-            "palikti dalį sankaupų po dantenomis;",
-            "apsunkinti tolesnę profesionalią priežiūrą."
-          ] },
-          { type: "p", text: "Soda, rūgštūs produktai, peroksidas ir stipriai abrazyvios pastos nėra profesionalios higienos alternatyva. Jos gali pašalinti dalį paviršinių pigmentų, tačiau akmenų neištirpina ir, naudojamos agresyviai, gali pažeisti dantų ar burnos gleivinės paviršius." },
-          { type: "p", text: "Irigatorius pulsuojančia vandens srove gali padėti pašalinti maisto likučius ir prižiūrėti sunkiau pasiekiamas vietas, ypač aplink breketus, tiltus ar implantus. Vis dėlto jis nepašalina jau susiformavusių akmenų ir nėra universalus tarpdančių šepetėlių ar siūlo pakaitalas." }
-        ]
-      },
-      {
-        h: "Kaip profesionaliai pašalinami dantų akmenys?",
-        p: [
-          "Profesionalios burnos higienos pradžioje specialistas įvertina dantų, dantenų ir burnoje esančių konstrukcijų būklę. Apžiūrima, kur kaupiasi apnašos ir akmenys, ar dantenos kraujuoja, ar yra atsitraukusios ir ar matyti periodonto ligos požymių.",
-          "Dantų akmenys dažniausiai šalinami ultragarsiniu skaleriu ir rankiniais instrumentais. Ultragarsinio instrumento virpesiai padeda atskirti sukietėjusias sankaupas nuo danties paviršiaus, o vanduo aušina darbo sritį ir nuplauna pašalintas daleles.",
-          "Rankiniais instrumentais išvalomos sunkiau pasiekiamos vietos ir pašalinamos likusios sankaupos. Procedūros pabaigoje dantų paviršiai gali būti poliruojami. Pigmentinėms ir minkštosioms apnašoms valyti taip pat gali būti naudojamas kontroliuojamas oro, vandens ir specialių miltelių srautas.",
-          "Jei akmenys susikaupę giliai po dantenomis ir nustatomas periodontitas, įprastos profilaktinės higienos gali nepakakti. Tokiu atveju atliekamas gilesnis dantų ir šaknų paviršių valymas, dar vadinamas nechirurginiu periodontologiniu gydymu. Sudėtingesniais atvejais pacientas siunčiamas periodontologo konsultacijai.",
-          "Vizito metu burnos higienistas taip pat padeda nustatyti, kuriose vietose biofilmas kaupiasi dažniausiai, ir parenka tinkamas namų priežiūros priemones. Tai svarbu, nes vien akmenų pašalinimas, nepakeitus kasdienės higienos, neapsaugo nuo jų pakartotinio susidarymo."
-        ]
-      },
-      {
-        h: "Ar skauda šalinant dantų akmenis?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Daugeliui pacientų profesionali burnos higiena sukelia spaudimo, vibracijos ar trumpalaikio jautrumo pojūtį, o ne stiprų skausmą. Procedūros komfortas priklauso nuo akmenų kiekio, jų vietos, dantenų uždegimo ir individualaus jautrumo." },
-          { type: "p", text: "Nemalonesni pojūčiai galimi, kai:" },
-          { type: "ul", items: [
-            "dantenos stipriai uždegusios;",
-            "daug akmenų susikaupę po dantenomis;",
-            "atsidengusios dantų šaknys;",
-            "dantys jautrūs šalčiui;",
-            "reikalingas gilesnis periodontologinis valymas."
-          ] },
-          { type: "p", text: "Jei procedūros metu skauda, apie tai svarbu pasakyti specialistui. Higieną galima atlikti etapais, pritaikyti instrumentų nustatymus arba, kai reikia, taikyti vietinę nejautrą." },
-          { type: "p", text: "Po procedūros dantys trumpam gali tapti jautresni šalčiui, o uždegimo paveiktos dantenos – mausti ar nežymiai kraujuoti. Šie pojūčiai turėtų palaipsniui silpnėti. Jei skausmas stiprėja, didėja patinimas ar kraujavimas nesiliauja, reikėtų susisiekti su klinika." },
-          { type: "p", text: "Pašalinus dideles sankaupas kartais atrodo, kad tarp dantų atsirado tarpai. Iš tikrųjų akmenys anksčiau galėjo tas vietas užpildyti, o sumažėjus dantenų uždegimui ir patinimui jų kontūras tampa aiškesnis. Profesionalios higienos metu sveika danties dalis nėra pašalinama." }
-        ]
-      },
-      {
-        h: "Kas gali nutikti, jei dantų akmenys nepašalinami?",
-        p: [
-          "Dantų akmenų paviršius yra šiurkštus, todėl ant jo lengviau išlieka naujas bakterinis biofilmas. Dėl to kasdienė higiena tampa mažiau veiksminga, o dantenų uždegimas gali tęstis.",
-          "Pradinėje stadijoje dažniausiai vystosi gingivitas. Dantenos parausta, patinsta ir pradeda kraujuoti. Pašalinus apnašas bei akmenis ir pagerinus dantų valymą, ši būklė paprastai gali būti suvaldyta.",
-          "Negydomas uždegimas daliai pacientų gali progresuoti į periodontitą. Tuomet formuojasi gilesnės periodonto kišenės, pažeidžiami dantį laikantys audiniai ir nyksta kaulas. Ilgainiui dantys gali tapti paslankūs, pakisti jų padėtis ar padidėti netekimo rizika. Rūkymas, diabetas ir nepakankama burnos higiena siejami su didesne sunkios dantenų ligos rizika.",
-          "Akmenų ir apnašų sankaupos taip pat gali prisidėti prie nemalonaus burnos kvapo. Vis dėlto matomas akmenų kiekis ne visada parodo dantenų ligos sunkumą – reikšmingų sankaupų gali būti ir po dantenomis."
-        ]
-      },
-      {
-        h: "Kaip išvengti pakartotinio dantų akmenų susidarymo?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Apnašos formuojasi nuolat, todėl visiškai sustabdyti šio proceso neįmanoma. Profilaktikos tikslas – reguliariai pašalinti biofilmą, kol jis dar nėra mineralizavęsis." },
-          { type: "p", text: "Rekomenduojama:" },
-          { type: "ul", items: [
-            "du kartus per dieną valyti dantis fluoridų turinčia pasta;",
-            "kasdien išvalyti tarpdančius;",
-            "kruopščiai prižiūrėti dantenų kraštą;",
-            "valyti implantus, tiltus, protezus ir ortodontinius aparatus;",
-            "nerūkyti;",
-            "reguliariai tikrintis dantis ir dantenas;",
-            "profesionalią burnos higieną atlikti individualiai nustatytu dažniu."
-          ] },
-          { type: "p", text: "Tarpdančių šepetėliai, siūlas, irigatorius ar kitos priemonės nėra vienodai tinkamos visiems. Plačiuose tarpdančiuose dažnai patogesni tarpdančių šepetėliai, o ankštose vietose gali būti naudojamas siūlas. Priemonės dydį ir naudojimo techniką geriausia aptarti su burnos higienistu." },
-          { type: "p", text: "Apnašas nudažančios tabletės ar tirpalai gali padėti pamatyti nepakankamai išvalomas vietas. Jos apnašų nepašalina, tačiau gali būti naudinga mokomoji priemonė, padedanti patobulinti valymo techniką." },
-          { type: "p", text: "Burnos skalavimo skystis nepakeičia mechaninio dantų ir tarpdančių valymo. Gydytojas ar burnos higienistas gali rekomenduoti konkrečią priemonę tam tikram laikotarpiui, tačiau pagrindinė apnašų kontrolė atliekama šepetėliu ir tarpdančių priemonėmis." },
-          { type: "p", text: "Profesionalios higienos intervalo nereikėtų vienodai nustatyti visiems. Dažnesnės priežiūros gali reikėti pacientams, kuriems akmenys kaupiasi greitai, diagnozuotas periodontitas, yra implantų, ortodontinių aparatų arba sunkiau išvalomų protezinių konstrukcijų. Reguliarus dantų valymas, tarpdančių priežiūra ir profesionalūs vizitai padeda kontroliuoti gingivitą bei periodonto ligų riziką." },
-          { type: "p", text: "Jei pastebėjote kietų sankaupų, kraujuoja dantenos ar vargina nemalonus burnos kvapas, registruokitės profesionaliai burnos higienai Bangų klinikoje Klaipėdoje. Mūsų specialistai įvertins burnos būklę, saugiai pašalins apnašas bei akmenis ir padės pasirinkti tinkamas priežiūros priemones." }
-        ]
-      }
-    ],
-    faq: [
-      { q: "Ar dantų pasta gali pašalinti dantų akmenis?", a: "Ne. Dantų pasta padeda pašalinti minkštąsias apnašas, tačiau jau mineralizuotų dantų akmenų nenuvalo. Juos reikia pašalinti profesionaliais instrumentais." },
-      { q: "Ar irigatorius pašalina dantų akmenis?", a: "Ne. Irigatorius gali padėti prižiūrėti tarpdančius ir sunkiau pasiekiamas vietas, tačiau prie dantų prisitvirtinusių akmenų nepašalina." },
-      { q: "Ar galima dantų akmenis nugramdyti namuose?", a: "Nerekomenduojama. Aštrūs instrumentai gali pažeisti dantenas, dantų paviršius, restauracijas ar implantus, o po dantenomis esančios sankaupos vis tiek liks." },
-      { q: "Kaip dažnai reikia atlikti profesionalią burnos higieną?", a: "Vienodo intervalo visiems nėra. Jis nustatomas pagal akmenų kaupimosi greitį, dantenų būklę, periodonto ligų riziką ir burnoje esančias konstrukcijas." },
-      { q: "Kodėl po dantų akmenų šalinimo matomi didesni tarpai?", a: "Pašalinus akmenis pasimato anksčiau jų užpildytos vietos. Sumažėjus dantenų uždegimui ir patinimui jų kontūras taip pat gali atrodyti pasikeitęs." },
-      { q: "Ar kraujuojančias dantenas galima valyti?", a: "Taip. Kraujavimas dažnai susijęs su uždegimu, todėl apnašas reikia šalinti švelniai, bet reguliariai. Jei kraujavimas kartojasi, reikėtų kreiptis į odontologą ar burnos higienistą." }
-    ],
-    sources: [
-      { label: "About Periodontal (Gum) Disease", url: "https://www.cdc.gov/oral-health/about/gum-periodontal-disease.html" },
-      { label: "Oral Health Tips for Adults", url: "https://www.cdc.gov/oral-health/prevention/oral-health-tips-for-adults.html" },
-      { label: "Effects of Interdental Cleaning Devices in Preventing Dental Caries and Periodontal Diseases: A Scoping Review", url: "https://pubmed.ncbi.nlm.nih.gov/31556125/" },
-      { label: "Efficacy of Power-Driven Interdental Cleaning Tools: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/36562267/" }
-    ]
+    readTime: 12
   },
   {
     slug: "kariesas-be-grezimo-ka-galima-atlikti-klinikoje-ir-namuose",
     title: "Kariesas be gręžimo: ką galima atlikti klinikoje ir namuose?",
+    excerpt: "Kariesą be gręžimo sustabdyti įmanoma tik tam tikrose ligos stadijose. Kaip saugiai jį kontroliuoti ir kada danties be restauracijos išgelbėti nebepavyks?",
     date: "2026-07-26",
     category: "Dantų gydymas",
     coverImage: "/blog/kariesas-be-grezimo.jpg",
-    readTime: 13,
-    sections: [
-      {
-        p: [
-          "Karieso gydymas be gręžimo galimas tik tam tikrose ligos stadijose. Jei danties paviršius dar nėra suiręs ir matomas tik ankstyvas mineralų netekimas, pažeidimą kartais galima sustabdyti fluoridais, geresne burnos higiena, mitybos įpročių korekcija ar minimaliai invaziniais odontologiniais metodais.",
-          "Tačiau jau susidariusi skylė namuose neužgyja. Dantų pasta, skalavimo skystis, papildai ar liaudiškos priemonės negali atkurti prarasto emalio ir dentino. Kai danties paviršiuje atsiranda ertmė, dažniausiai reikia restauracinio gydymo.",
-          "Todėl karieso gydymas namuose reiškia ne savarankišką danties skylės taisymą, o odontologo nustatyto ankstyvo pažeidimo kontrolę. Kuo anksčiau kariesas pastebimas, tuo didesnė tikimybė išvengti gręžimo ir išsaugoti daugiau sveikų danties audinių."
-        ]
-      },
-      {
-        h: "Kas yra dantų kariesas ir kaip jis vystosi?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Dantų kariesas, arba ėduonis, yra procesas, kurio metu danties audiniai palaipsniui praranda mineralus. Burnos apnašose esančios bakterijos skaido cukrus ir kitus angliavandenius, o šio proceso metu susidaro rūgštys. Jos veikia emalį ir skatina jo demineralizaciją." },
-          { type: "p", text: "Po rūgštinio poveikio seilės padeda neutralizuoti burnos aplinką. Jose esantys kalcio ir fosfatų jonai gali grįžti į emalį, o fluoridai padeda šį procesą sustiprinti." },
-          { type: "p", text: "Kariesas vystosi tada, kai mineralų netekimas ilgainiui tampa didesnis už jų sugrįžimą. Riziką didina:" },
-          { type: "ul", items: [
-            "dažnas saldžių užkandžių ir gėrimų vartojimas;",
-            "ant dantų ilgai išliekantis bakterinis apnašas;",
-            "nepakankamas fluoridų poveikis;",
-            "sumažėjęs seilių kiekis;",
-            "sunkiai išvalomos dantų vagelės ir tarpdančiai;",
-            "ortodontiniai aparatai;",
-            "nesandarios plombos ar kitos restauracijos;",
-            "ankstesni dažni karieso pažeidimai."
-          ] },
-          { type: "p", text: "Svarbus ne tik bendras cukraus kiekis, bet ir jo vartojimo dažnis. Nuolat užkandžiaujant ar gurkšnojant saldžius gėrimus, dantys dažnai patiria rūgštinį poveikį ir turi mažiau laiko atsistatyti." },
-          { type: "p", text: "Kariesas gali būti aktyvus, lėtai progresuojantis arba sustojęs. Todėl gydymo sprendimas priklauso ne vien nuo dėmės spalvos ar dydžio, bet ir nuo pažeidimo gylio, paviršiaus būklės bei bendros paciento karieso rizikos." }
-        ]
-      },
-      {
-        h: "Kaip atpažinti ankstyvą kariesą, kol dar nėra skylės?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Ankstyvas kariesas dažniausiai neskauda. Pirmasis požymis gali būti matinė, kreidos baltumo dėmė, rodanti, kad emalis prarado dalį mineralų." },
-          { type: "p", text: "Tokie pokyčiai dažnai atsiranda:" },
-          { type: "ul", items: [
-            "prie dantenų krašto;",
-            "aplink breketus;",
-            "krūminių dantų vagelėse;",
-            "tarpdančiuose;",
-            "vietose, kuriose kaupiasi apnašos."
-          ] },
-          { type: "p", text: "Galimi požymiai:" },
-          { type: "ul", items: [
-            "balta ar kreminė matinė dėmė;",
-            "sumažėjęs emalio skaidrumas;",
-            "šiurkštesnis danties paviršius;",
-            "rusvas ar tamsesnis spalvos pokytis;",
-            "trumpalaikis jautrumas saldžiam, šaltam ar rūgščiam maistui."
-          ] },
-          { type: "p", text: "Ne kiekviena balta ar tamsi dėmė yra aktyvus kariesas. Panašiai gali atrodyti fluorozė, emalio vystymosi sutrikimai, pigmentai ar senas, jau sustojęs pažeidimas." },
-          { type: "p", text: "Vien pagal dėmės išvaizdą neįmanoma nuspręsti, ar kariesą dar galima gydyti be gręžimo. Odontologas turi įvertinti, ar danties paviršius išlikęs vientisas, koks pažeidimo gylis ir ar procesas vis dar aktyvus." },
-          { type: "p", text: "Tarpdančių kariesas dažnai ilgai nematomas. Jam nustatyti gali būti atliekamos rentgeno nuotraukos. Matoma skylė, nuolat stringantis maistas ar skausmas dažniausiai rodo, kad pažeidimas jau pažengęs." }
-        ]
-      },
-      {
-        h: "Ar įmanomas karieso gydymas namuose?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Karieso gydymas namuose gali padėti kontroliuoti tik labai ankstyvą pažeidimą, kai danties paviršius dar nėra suiręs. Tokiu atveju odontologas gali sudaryti planą, padedantį sumažinti rūgštinį poveikį ir skatinti emalio remineralizaciją." },
-          { type: "p", text: "Namų priežiūra gali apimti:" },
-          { type: "ul", items: [
-            "dantų valymą fluoridų turinčia pasta du kartus per dieną;",
-            "kasdienį tarpdančių valymą;",
-            "retesnį saldžių užkandžių ir gėrimų vartojimą;",
-            "vandens pasirinkimą tarp valgymų;",
-            "odontologo paskirtas papildomas fluoridų priemones;",
-            "burnos sausumo priežasčių kontrolę;",
-            "reguliarias pakartotines apžiūras."
-          ] },
-          { type: "p", text: "Šios priemonės padeda keisti sąlygas burnoje, kad ankstyvas pažeidimas nustotų progresuoti. Jos negali atkurti jau prarasto danties audinio." },
-          { type: "p", text: "Jei danties paviršius suiręs, ertmėje kaupiasi apnašos arba kariesas išplitęs į dentiną, vien namų priežiūros nepakanka." },
-          { type: "p", text: "Didesnės koncentracijos fluoridų pastos, geliai ar skalavimo skysčiai taip pat neturėtų būti pasirenkami savarankiškai. Jų poreikis priklauso nuo paciento amžiaus, burnos būklės ir karieso rizikos." }
-        ]
-      },
-      {
-        h: "Kada karieso gydymas be gręžimo gali būti veiksmingas?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Karieso gydymas be gręžimo dažniausiai svarstomas tuomet, kai pažeidimas yra ankstyvas, o danties paviršiuje dar nėra susidariusios skylės." },
-          { type: "p", text: "Odontologas vertina:" },
-          { type: "ul", items: [
-            "pažeidimo vietą ir gylį;",
-            "danties paviršiaus vientisumą;",
-            "ar pažeidimas aktyvus;",
-            "ar vietą galima tinkamai išvalyti;",
-            "kitų karieso židinių skaičių;",
-            "seilių kiekį;",
-            "mitybos ir burnos higienos įpročius;",
-            "paciento galimybę laikytis priežiūros plano."
-          ] },
-          { type: "p", text: "Gydymas be gręžimo nėra viena procedūra. Tai gali būti fluoridų naudojimas, silantai, dervos infiltracija arba aktyvus stebėjimas, kartu kontroliuojant rizikos veiksnius." },
-          { type: "p", text: "Svarbi gydymo dalis yra pakartotiniai patikrinimai. Jei pažeidimas progresuoja, planą reikia keisti. Vien tai, kad dantis neskauda, nereiškia, jog jį galima ilgai palikti be kontrolės." },
-          { type: "p", text: "Net ir sustabdžius kariesą, balta ar tamsi dėmė gali visiškai neišnykti. Pagrindinis gydymo tikslas yra sustabdyti audinių irimą, o ne būtinai visiškai atkurti ankstesnę emalio išvaizdą." }
-        ]
-      },
-      {
-        h: "Kaip fluoridai ir remineralizacija padeda sustabdyti ankstyvą kariesą?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Remineralizacija – tai procesas, kurio metu mineralai grįžta į ankstyvai pažeistą emalį. Seilės natūraliai dalyvauja šiame procese, o fluoridai padeda emaliui tapti atsparesniam rūgštims." },
-          { type: "p", text: "Pagrindinė kasdienė priemonė yra fluoridų turinti dantų pasta. Kad ji veiktų tinkamai, svarbu:" },
-          { type: "ul", items: [
-            "dantis valyti du kartus per dieną;",
-            "rinktis amžiui tinkamą pastą;",
-            "naudoti rekomenduojamą jos kiekį;",
-            "po valymo pastą išspjauti;",
-            "burnos intensyviai neskalauti dideliu kiekiu vandens;",
-            "kasdien išvalyti tarpdančius."
-          ] },
-          { type: "p", text: "Pacientams, kurių karieso rizika didesnė, odontologas gali rekomenduoti profesionalų fluoro laką ar didesnės koncentracijos pastą." },
-          { type: "p", text: "Fluoridai neužpildo skylės. Jie veiksmingiausi tada, kai danties paviršius dar yra vientisas ir gali vykti mineralų apykaita." },
-          { type: "p", text: "Remineralizacijai svarbus ir cukraus vartojimo dažnis. Net kruopščiai valant dantis, nuolatiniai saldūs užkandžiai ar gėrimai gali trukdyti ankstyvam pažeidimui stabilizuotis." }
-        ]
-      },
-      {
-        h: "Kaip kariesas gydomas dervos infiltracija?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Dervos infiltracija yra minimaliai invazinis metodas, skirtas atrinktiems ankstyviems karieso pažeidimams, kai dar nėra susidariusios ertmės. Jis dažnai taikomas pradiniams tarpdančių ar lygiųjų dantų paviršių pažeidimams." },
-          { type: "p", text: "Procedūros metu dantis izoliuojamas, o pažeistas emalio paviršius paruošiamas. Į porėtą pažeidimą įvedama labai skysta derva, kuri prasiskverbia į mikroskopines emalio poras. Vėliau ji sukietinama polimerizacine lempa." },
-          { type: "p", text: "Derva sudaro barjerą pažeidimo viduje ir padeda sumažinti tolesnį rūgščių poveikį. Taip siekiama pristabdyti karieso progresavimą, nešalinant didelės dalies danties audinių." },
-          { type: "p", text: "Dervos infiltracijos privalumai:" },
-          { type: "ul", items: [
-            "dažniausiai nereikia gręžimo;",
-            "išsaugoma daugiau natūralaus danties;",
-            "dažnai nereikia vietinės nejautros;",
-            "galima gydyti ankstyvus tarpdančių pažeidimus;",
-            "kai kurios baltos dėmės tampa mažiau pastebimos."
-          ] },
-          { type: "p", text: "Šis metodas netinka kiekvienai dėmei ar ertmei. Jei danties paviršius jau suiręs, pažeidimas gilus arba sunku tinkamai izoliuoti dantį, gali reikėti kito gydymo." },
-          { type: "p", text: "Po procedūros ir toliau būtina tinkama burnos higiena, fluoridų naudojimas, mitybos kontrolė ir reguliarus stebėjimas." }
-        ]
-      },
-      {
-        h: "Kokie kiti karieso gydymo be gręžimo metodai taikomi odontologijoje?",
-        p: []
-      },
-      {
-        h: "Dantų vagelių silantai",
-        p: [
-          "Silantai – tai plonas apsauginės medžiagos sluoksnis, kuriuo padengiamos gilios krūminių dantų vagelės. Jie trukdo apnašoms ir maisto likučiams kauptis sunkiai išvalomose vietose.",
-          "Silantai dažniausiai naudojami profilaktikai, tačiau atrinktais atvejais jais gali būti užsandarinami ir ankstyvi, ertmės dar neturintys kramtomųjų paviršių pažeidimai.",
-          "Silantų būklę reikia periodiškai tikrinti, nes nusidėvėjus ar atsiklijavus medžiagai apsauga sumažėja."
-        ]
-      },
-      {
-        h: "Profesionalios fluoridų aplikacijos",
-        p: [
-          "Odontologas ar burnos higienistas gali užtepti didesnės koncentracijos fluoro laką. Ši priemonė gali būti rekomenduojama, kai yra keli ankstyvi pažeidimai, sumažėjęs seilėtekis ar didelė karieso rizika."
-        ]
-      },
-      {
-        h: "Sidabro diamino fluoridas",
-        p: [
-          "Kai kuriose šalyse tam tikriems pacientams karieso aktyvumui mažinti naudojamas sidabro diamino fluoridas. Jis gali sustabdyti pažeidimą, tačiau karieso paveikta vieta patamsėja, o danties forma nėra atkuriama.",
-          "Šis metodas nėra vienodai taikomas visose klinikose ir dažniausiai pasirenkamas specifinėse situacijose."
-        ]
-      },
-      {
-        h: "Aktyvus stebėjimas",
-        p: [
-          "Kai kuriuos ankstyvus pažeidimus galima stebėti, jei kartu taikomas aiškus priežiūros planas. Tai nėra pasyvus laukimas. Reikia dokumentuoti pažeidimą, gerinti higieną, kontroliuoti mitybą ir nustatytu laiku kartoti apžiūrą.",
-          "Lazeris, oro abrazija ar cheminis pažeistų audinių minkštinimas kartais vadinami gydymu be gręžimo, tačiau taikant šiuos metodus vis tiek gali būti šalinami danties audiniai. Tai alternatyvūs ertmės paruošimo būdai, o ne ankstyvo karieso remineralizacija."
-        ]
-      },
-      {
-        h: "Kada karieso jau nebegalima gydyti be gręžimo?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Gydymo be gręžimo dažniausiai nepakanka, kai danties paviršius suiręs ir susidariusi ertmė. Tokioje vietoje lengvai kaupiasi apnašos ir maisto likučiai, o pacientas negali jos tinkamai išvalyti." },
-          { type: "p", text: "Restauracinio gydymo gali reikėti, kai:" },
-          { type: "ul", items: [
-            "matoma ar jaučiama skylė;",
-            "danties audiniai tapo minkšti ar trapūs;",
-            "pažeidimas progresuoja į dentiną;",
-            "tarp dantų nuolat stringa maistas;",
-            "dantis skauda kramtant;",
-            "jautrumas trunka ilgiau;",
-            "kariesas yra po sena nesandaria plomba;",
-            "dantis įskilo ar nulūžo;",
-            "pažeidimas priartėjo prie pulpos."
-          ] },
-          { type: "p", text: "Tokiu atveju odontologas pašalina negrįžtamai pažeistus audinius ir atkuria danties formą plomba ar kita restauracija. Šiuolaikinėje odontologijoje siekiama pašalinti tik tiek audinių, kiek būtina, ir išsaugoti kuo daugiau sveiko danties." },
-          { type: "p", text: "Jei kariesas pasiekė pulpą, gali prireikti šaknų kanalų gydymo. Atsiradus pūliniui, veido patinimui, karščiavimui ar rijimo sunkumui, reikalinga skubi pagalba." }
-        ]
-      },
-      {
-        h: "Kokių naminių karieso gydymo būdų reikėtų vengti?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Skylės dantyje negali išgydyti žolelės, propolis, česnakas, soda, aliejai ar maisto papildai. Šios priemonės neatkuria prarasto emalio ar dentino ir neuždaro ertmės." },
-          { type: "p", text: "Nereikėtų ant danties ar dantenų dėti:" },
-          { type: "ul", items: [
-            "česnako;",
-            "propolio tinktūros;",
-            "eterinių aliejų;",
-            "aspirino;",
-            "koncentruotų žolelių ekstraktų;",
-            "rūgščių ar stipriai abrazyvių medžiagų."
-          ] },
-          { type: "p", text: "Tokios priemonės gali sudirginti ar chemiškai pažeisti burnos gleivinę. Laikinas skausmo sumažėjimas taip pat nereiškia, kad kariesas sustojo." },
-          { type: "p", text: "Skalavimas druskos vandeniu, kokosų aliejumi ar žolelių nuovirais neužpildo ertmės ir nepakeičia dantų valymo fluoridų turinčia pasta." },
-          { type: "p", text: "Antibiotikai karieso taip pat negydo. Jie skiriami tik esant konkrečioms infekcijos plitimo indikacijoms, tačiau nepakeičia pažeisto danties gydymo." }
-        ]
-      },
-      {
-        h: "Kaip sumažinti naujų karieso pažeidimų riziką?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Ilgalaikė karieso prevencija remiasi nuoseklia kasdiene priežiūra ir individualiai suplanuotais patikrinimais." },
-          { type: "p", text: "Svarbiausi veiksmai:" },
-          { type: "ul", items: [
-            "valyti dantis fluoridų turinčia pasta du kartus per dieną;",
-            "kasdien valyti tarpdančius;",
-            "riboti saldžių užkandžių ir gėrimų vartojimo dažnį;",
-            "tarp valgymų rinktis vandenį;",
-            "prižiūrėti ortodontinius aparatus ir protezus;",
-            "laiku keisti nesandarias restauracijas;",
-            "kreiptis dėl burnos sausumo;",
-            "tikrintis dantis pagal individualią riziką."
-          ] },
-          { type: "p", text: "Profilaktinių vizitų dažnis neturėtų būti vienodas visiems. Žmogui, turinčiam mažą karieso riziką, gali pakakti retesnių patikrų, o pacientui, turinčiam aktyvių pažeidimų, sausą burną ar ortodontinį aparatą, gali reikėti dažnesnio stebėjimo." },
-          { type: "p", text: "Jei pastebėjote baltą ar tamsią dėmę, danties šiurkštumą, jautrumą ar matomą ertmę, registruokitės konsultacijai Bangų klinikoje Klaipėdoje. Mūsų specialistai įvertins pažeidimo gylį ir aktyvumą bei nustatys, ar jį dar galima kontroliuoti be gręžimo, ar jau reikalingas plombavimas." }
-        ]
-      }
-    ],
-    faq: [
-      { q: "Ar skylė dantyje gali užgyti pati?", a: "Ne. Susidarius ertmei prarasti danties audiniai savaime neatauga. Remineralizuoti galima tik ankstyvą pažeidimą, kai danties paviršius dar vientisas." },
-      { q: "Ar balta dėmė ant danties visada reiškia kariesą?", a: "Ne. Ji gali būti susijusi su ankstyvu kariesu, fluoroze ar emalio vystymosi pokyčiais. Priežastį turi įvertinti odontologas." },
-      { q: "Ar fluoridų pasta gali išgydyti kariesą?", a: "Ji gali padėti sustabdyti ar remineralizuoti ankstyvą pažeidimą, tačiau negali užpildyti jau susidariusios skylės." },
-      { q: "Ar dervos infiltracija tinka visiems karieso pažeidimams?", a: "Ne. Ji dažniausiai taikoma ankstyviems pažeidimams, kai danties paviršius dar nesuiręs. Gilioms ertmėms paprastai reikia restauracinio gydymo." },
-      { q: "Ar kariesą galima gydyti soda, propoliu arba kokosų aliejumi?", a: "Ne. Šios priemonės neatkuria emalio ar dentino ir neuždaro ertmės. Kai kurios jų gali pažeisti burnos gleivinę." },
-      { q: "Ar karieso gydymas be gręžimo tinka vaikams?", a: "Taip, atrinktais atvejais vaikams gali būti taikomi fluoridai, silantai ar kiti neinvaziniai metodai. Sprendimas priklauso nuo pažeidimo stadijos ir vaiko karieso rizikos." }
-    ],
-    sources: [
-      { label: "American Dental Association – Caries Management Clinical Practice Guidelines", url: "https://www.ada.org/resources/research/science/evidence-based-dental-research/caries-management-clinical-practice-guidelines" },
-      { label: "Evidence-based Clinical Practice Guideline on Nonrestorative Treatments for Carious Lesions", url: "https://pubmed.ncbi.nlm.nih.gov/30261951/" },
-      { label: "Efficacy of Resin Infiltrate in Noncavitated Proximal Carious Lesions: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/31198691/" },
-      { label: "Efficacy of the Resin Infiltration Technique in Preventing Initial Caries Progression: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/30992105/" },
-      { label: "Fluoride Varnishes for Preventing Dental Caries in Children and Adolescents", url: "https://pubmed.ncbi.nlm.nih.gov/23846772/" },
-      { label: "Pit and Fissure Sealant Versus Fluoride Varnish for the Prevention of Dental Caries: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/36263239/" },
-      { label: "World Health Organization – Sugars and Dental Caries", url: "https://www.who.int/news-room/fact-sheets/detail/sugars-and-dental-caries" }
-    ]
+    readTime: 13
   },
   {
     slug: "kaip-saugiai-balinti-dantis-namuose",
     title: "Kaip saugiai balinti dantis namuose?",
+    excerpt: "Dantų balinimas namuose gali pašviesinti natūralią dantų spalvą, tačiau ne visos priemonės vienodai veiksmingos ir saugios. Kurie būdai tikrai veikia ir ko verčiau vengti?",
     date: "2026-07-24",
     category: "Dantų balinimas",
     coverImage: "/blog/kaip-saugiai-balinti-dantis-namuose.jpg",
-    readTime: 12,
-    sections: [
-      {
-        p: [
-          "Dantų balinimas namuose gali padėti pašviesinti natūralią dantų spalvą, tačiau ne visos priemonės yra vienodai veiksmingos ir saugios. Patikimiausią rezultatą paprastai suteikia peroksido turinčios balinimo priemonės, o geriausiai kontroliuojamas namų metodas – individualios kapos, naudojamos pagal odontologo rekomendacijas.",
-          "Balinamosios dantų pastos dažniausiai tik pašalina paviršines dėmes. Citrinų sultys, actas, aktyvinta anglis, grynas vandenilio peroksidas ir savarankiškai paruošti mišiniai gali ne tik nepadėti, bet ir pažeisti dantų paviršių ar sudirginti dantenas.",
-          "Prieš pradedant balinti svarbu įvertinti burnos būklę. Patamsėjusius dantis gali lemti ne tik pigmentai, bet ir ėduonis, trauma, pulpos pažeidimas, emalio nusidėvėjimas ar senos restauracijos. Be to, plombos, vainikėliai ir laminatės nebąla, todėl po procedūros jų spalva gali nebesutapti su natūraliais dantimis."
-        ]
-      },
-      {
-        h: "Kodėl keičiasi dantų spalva ir ar visus dantis galima išbalinti?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Natūrali dantų spalva nėra visiškai balta. Jai įtakos turi emalio storis, po juo esančio dentino atspalvis, amžius ir paveldimos savybės. Dėl to vienų žmonių dantys natūraliai yra šviesesni, kitų – gelsvesni ar pilkšvesni." },
-          { type: "p", text: "Dantų spalvos pokyčiai skirstomi į išorinius ir vidinius." },
-          { type: "p", text: "Išorinės dėmės susidaro ant dantų paviršiaus. Jas dažniausiai skatina:" },
-          { type: "ul", items: [
-            "kava ir arbata;",
-            "raudonasis vynas;",
-            "tabakas;",
-            "tamsios uogos ir pigmentuoti maisto produktai;",
-            "apnašos ir nepakankama burnos higiena."
-          ] },
-          { type: "p", text: "Dalį šių dėmių galima pašalinti profesionalios burnos higienos metu arba naudojant tinkamą dantų pastą. Tokiu atveju dantims dažniausiai grąžinama natūralesnė spalva, tačiau jie nėra chemiškai išbalinami." },
-          { type: "p", text: "Vidiniai spalvos pokyčiai formuojasi danties audiniuose. Juos gali lemti amžius, danties trauma, žuvusi pulpa, vystymosi sutrikimai ar tam tikri vaikystėje vartoti vaistai. Vieno patamsėjusio danties gydymas gali skirtis nuo visos šypsenos balinimo, todėl pirmiausia reikia nustatyti spalvos pokyčio priežastį." },
-          { type: "p", text: "Balinamosios medžiagos veikia natūralius danties audinius, tačiau nekeičia plombų, vainikėlių, laminačių, tiltų ar implantų protezinių dalių spalvos. Jei priekiniai dantys restauruoti, po balinimo gali išryškėti atspalvių skirtumas. Tokiu atveju balinimą verta suplanuoti prieš galutinį estetinį plombavimą ar protezavimą." }
-        ]
-      },
-      {
-        h: "Kokie dantų balinimo namuose būdai iš tiesų veikia?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Tikras cheminis dantų balinimas paprastai atliekamas naudojant vandenilio arba karbamido peroksido turinčias priemones. Jos veikia danties audiniuose esančius pigmentus ir gali pašviesinti natūralią dantų spalvą." },
-          { type: "p", text: "Dažniausiai naudojami metodai:" },
-          { type: "ul", items: [
-            "individualios balinimo kapos su geliu;",
-            "nereceptinės balinamosios juostelės;",
-            "universalios kapos ir balinimo rinkiniai;",
-            "balinamieji pieštukai;",
-            "balinamosios dantų pastos;",
-            "balinamieji skalavimo skysčiai."
-          ] },
-          { type: "p", text: "Jų poveikis skiriasi." },
-          { type: "p", text: "Individualios kapos leidžia tiksliau paskirstyti balinamąjį gelį ir pritaikyti procedūrą pagal paciento dantų būklę." },
-          { type: "p", text: "Balinamosios juostelės gali chemiškai pašviesinti dantis, tačiau ne visada tolygiai priglunda prie visų paviršių." },
-          { type: "p", text: "Universalios kapos gali būti nepakankamai tikslios, todėl gelis kartais patenka ant dantenų arba dantys balinami netolygiai." },
-          { type: "p", text: "Balinamosios pastos dažniausiai šalina paviršines dėmes, bet reikšmingai nekeičia natūralios dentino spalvos." },
-          { type: "p", text: "Skalavimo skysčių ir pieštukų kontakto su dantimis dažnai nepakanka ryškiam rezultatui, todėl jie labiau tinka kaip papildomos, o ne pagrindinės priemonės." },
-          { type: "p", text: "Balinimo rezultatas priklauso nuo pradinės dantų spalvos, spalvos pokyčio priežasties, naudojamos medžiagos ir procedūros trukmės. Didesnis gelio kiekis, dažnesnis naudojimas ar ilgesnis laikymas nebūtinai suteikia geresnį rezultatą, tačiau gali padidinti jautrumo ir dantenų dirginimo riziką." }
-        ]
-      },
-      {
-        h: "Kaip atliekamas dantų balinimas namuose individualiomis kapomis?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Balinimas individualiomis kapomis atliekamas namuose, tačiau jį suplanuoja odontologas. Pirmiausia patikrinami dantys, dantenos, esamos restauracijos ir įvertinamas galimas rezultatas." },
-          { type: "p", text: "Kapos gamyba paprastai vyksta keliais etapais:" },
-          { type: "ol", items: [
-            "Atliekama burnos būklės apžiūra.",
-            "Dantys nuskenuojami arba paimami jų atspaudai.",
-            "Pagaminamos individualios, prie dantų priglundančios kapos.",
-            "Parenkamas balinamasis gelis ir jo naudojimo režimas.",
-            "Pacientui paaiškinama kapų priežiūra ir veiksmai atsiradus jautrumui."
-          ] },
-          { type: "p", text: "Į kapą dedamas nedidelis balinamojo gelio kiekis. Per daug gelio gali ištekėti už kapos kraštų ir sudirginti dantenas, todėl jo kiekio savarankiškai didinti nereikėtų." },
-          { type: "p", text: "Balinimo trukmė priklauso nuo naudojamos sistemos ir veikliosios medžiagos koncentracijos. Vienos kapos dėvimos trumpiau dienos metu, kitos – ilgiau arba naktį. Reikia laikytis konkretaus specialisto nurodyto režimo, o ne universalių internete rastų rekomendacijų." },
-          { type: "p", text: "Individualios kapos taip pat gali būti naudojamos palaikomajam balinimui, tačiau tik gavus odontologo rekomendaciją. Savarankiškai kartoti kursą dažnai ar naudoti likusį seną gelį nereikėtų." }
-        ]
-      },
-      {
-        h: "Ar balinamosios juostelės ir dantų pastos yra veiksmingos?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Balinamosios juostelės paprastai padengtos peroksido turinčiu geliu. Tinkamai naudojamas patikimas produktas gali pašviesinti natūralius dantis, tačiau rezultatas priklauso nuo juostelės prigludimo ir veikliosios medžiagos." },
-          { type: "p", text: "Juostelės gali nepasiekti tarpdančių, kreiviau išsidėsčiusių dantų ar jų šoninių paviršių. Dėl to spalva kartais pakinta netolygiai. Gelis taip pat gali patekti ant dantenų ir jas sudirginti." },
-          { type: "p", text: "Naudojant juosteles svarbu:" },
-          { type: "ul", items: [
-            "laikytis gamintojo instrukcijų;",
-            "neviršyti rekomenduojamo laiko;",
-            "nenaudoti kelių balinimo sistemų kartu;",
-            "nedėti juostelių ant sudirgusių ar kraujuojančių dantenų;",
-            "nutraukti naudojimą, jei atsiranda stiprus skausmas."
-          ] },
-          { type: "p", text: "Balinamosios dantų pastos veikia kitaip. Dauguma jų turi abrazyvinių dalelių, fermentų ar kitų medžiagų, padedančių sumažinti paviršinius pigmentus. Jos gali būti naudingos palaikant švaresnę ir vizualiai šviesesnę dantų išvaizdą, tačiau dažniausiai nepakeičia natūralios danties spalvos taip, kaip cheminis balinimas." },
-          { type: "p", text: "Per daug abrazyvią pastą naudojant ilgai ir stipriai spaudžiant šepetėlį galima skatinti dantų paviršiaus ar atsidengusių šaknų dilimą. Todėl pastą geriausia rinktis pagal individualią dantų būklę, o ne vien pagal balinamąjį pažadą ant pakuotės." }
-        ]
-      },
-      {
-        h: "Kokių dantų balinimo priemonių namuose reikėtų vengti?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Internete dažnai siūlomi „natūralūs“ metodai nėra lygiaverčiai profesionalioms balinimo priemonėms. Kai kurie jų dantis tik mechaniškai nutrina arba veikia rūgštimis." },
-          { type: "p", text: "Dantų nereikėtų trinti ar skalauti:" },
-          { type: "ul", items: [
-            "citrinų sultimis;",
-            "obuolių actu;",
-            "rūgščių vaisių minkštimu;",
-            "grynu vandenilio peroksidu;",
-            "aktyvintos anglies milteliais;",
-            "eteriniais aliejais;",
-            "savarankiškai paruoštais sodos mišiniais."
-          ] },
-          { type: "p", text: "Citrinų sultys, actas ir kiti rūgštūs produktai gali prisidėti prie emalio erozijos. Emaliui plonėjant ryškiau matomas gelsvesnis dentinas, todėl ilgainiui dantys gali atrodyti dar tamsesni ir tapti jautresni." },
-          { type: "p", text: "Soda ir aktyvinta anglis dantų chemiškai nebalina. Jos gali mechaniškai pašalinti dalį paviršinių dėmių, tačiau per intensyvus ar dažnas trynimas didina paviršiaus dilimo riziką. Apie aktyvintos anglies priemonių ilgalaikį saugumą ir veiksmingumą patikimų įrodymų nepakanka." },
-          { type: "p", text: "Grynas vandenilio peroksidas taip pat neturėtų būti naudojamas savarankiškai. Netinkama koncentracija ar per ilgas kontaktas gali sukelti dantenų sudirginimą, cheminį gleivinės pažeidimą ir ryškų dantų jautrumą." },
-          { type: "p", text: "Kokosų aliejaus skalavimas nėra patikimai įrodytas dantų spalvos keitimo metodas. Jis taip pat nepakeičia dantų valymo fluoridų turinčia pasta ir kasdienės tarpdančių priežiūros." }
-        ]
-      },
-      {
-        h: "Kada dantų balinimas namuose netinka arba jį reikia atidėti?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Prieš balinimą reikėtų išgydyti aktyvų ėduonį, įvertinti nesandarias plombas, dantų įtrūkimus ir dantenų būklę. Balinamoji medžiaga, patekusi į pažeistas vietas, gali sukelti stipresnį jautrumą ar skausmą." },
-          { type: "p", text: "Balinimą reikėtų atidėti arba aptarti su odontologu, jei:" },
-          { type: "ul", items: [
-            "yra negydytų ėduonies pažeidimų;",
-            "dantenos kraujuoja, yra patinusios ar atsitraukusios;",
-            "dantys labai jautrūs;",
-            "yra įtrūkimų ar stipriai nudilęs emalis;",
-            "priekinėje srityje yra daug restauracijų;",
-            "vienas dantis staiga patamsėjo;",
-            "pacientė yra nėščia arba maitina krūtimi;",
-            "balinti ketinama vaikų ar paauglių dantis."
-          ] },
-          { type: "p", text: "Vieno danties patamsėjimas po traumos gali rodyti pulpos pažeidimą. Tokiu atveju įprastas balinimas kapomis ar juostelėmis problemos neišsprendžia." },
-          { type: "p", text: "Jei dantų spalvą keičia apnašos ir pigmentai, prieš balinimą gali būti rekomenduojama profesionali burnos higiena. Kartais vien pašalinus apnašas dantys atrodo pastebimai šviesesni, todėl papildomas cheminis balinimas gali būti nereikalingas." }
-        ]
-      },
-      {
-        h: "Kaip sumažinti dantų jautrumą ir ilgiau išlaikyti rezultatą?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Laikinas dantų jautrumas ir dantenų sudirginimas yra dažniausi balinimo šalutiniai poveikiai. Jautrumas gali pasireikšti trumpu skausmu reaguojant į šaltį, karštį, orą ar saldų maistą." },
-          { type: "p", text: "Jei dantys tapo jautrūs, galima:" },
-          { type: "ul", items: [
-            "padaryti odontologo rekomenduotą pertrauką;",
-            "naudoti jautriems dantims skirtą pastą;",
-            "laikinai vengti labai šalto ir karšto maisto;",
-            "neilginti balinimo priemonės laikymo laiko;",
-            "informuoti odontologą, jei pojūčiai stiprėja."
-          ] },
-          { type: "p", text: "Stiprus, savaiminis arba tik viename dantyje jaučiamas skausmas nėra įprastas balinimo pojūtis. Tokiu atveju procedūrą reikia nutraukti ir patikrinti dantį." },
-          { type: "p", text: "Dantų balinimo rezultatas nėra nuolatinis. Jį ilgiau išlaikyti padeda:" },
-          { type: "ul", items: [
-            "kruopštus dantų ir tarpdančių valymas;",
-            "burnos praskalavimas vandeniu po kavos, arbatos ar vyno;",
-            "tabako atsisakymas;",
-            "reguliari profesionali burnos higiena;",
-            "palaikomasis balinimas tik pagal odontologo rekomendacijas."
-          ] },
-          { type: "p", text: "Nebūtina visiškai atsisakyti visų pigmentuotų produktų, tačiau dažnas jų vartojimas gali paspartinti pakartotinį dėmių kaupimąsi." }
-        ]
-      },
-      {
-        h: "Saugus dantų balinimas prasideda nuo odontologo įvertinimo",
-        p: [
-          "Dantų balinimas namuose gali būti veiksmingas, kai naudojamos patikimos priemonės, laikomasi instrukcijų ir prieš procedūrą įvertinama burnos sveikata. Individualios kapos leidžia balinimą pritaikyti konkrečiam pacientui, tačiau ir jas naudojant gali pasireikšti laikinas jautrumas.",
-          "Balinamosios pastos daugiausia šalina paviršines dėmes, o rūgštys, aktyvinta anglis, grynas vandenilio peroksidas ir savarankiškai paruošti mišiniai gali būti neveiksmingi arba žalingi. Taip pat svarbu prisiminti, kad plombos, vainikėliai ir laminatės nebąla.",
-          "Jei svarstote apie dantų balinimą namuose, registruokitės konsultacijai Bangų klinikoje Klaipėdoje. Mūsų specialistai įvertins dantų ir dantenų būklę, aptars galimą rezultatą ir, jei šis metodas jums tinkamas, pagamins individualias kapas bei paaiškins, kaip saugiai jas naudoti."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Ar galima saugiai balinti dantis soda?", a: "Savarankiškai trinti dantų soda nerekomenduojama. Ji gali pašalinti dalį paviršinių dėmių, tačiau dantų spalvos chemiškai nekeičia, o per dažnai naudojama gali skatinti paviršiaus dilimą." },
-      { q: "Ar dantų balinimas namuose pažeidžia emalį?", a: "Pagal instrukcijas naudojamos patikimos priemonės paprastai laikomos saugesnėmis. Vis dėlto gali pasireikšti laikinas dantų jautrumas ar dantenų dirginimas, ypač viršijant naudojimo laiką." },
-      { q: "Ar balinant pašviesėja plombos ir vainikėliai?", a: "Ne. Balinamosios medžiagos nekeičia plombų, vainikėlių, laminačių ir kitų restauracijų spalvos." },
-      { q: "Per kiek laiko matomas dantų balinimo namuose rezultatas?", a: "Tai priklauso nuo pasirinkto metodo, dantų spalvos ir naudojamos priemonės. Pirmieji pokyčiai gali būti pastebimi procedūrų kurso metu, tačiau tikslus laikas kiekvienam pacientui skiriasi." },
-      { q: "Ką daryti, jei balinant dantys tapo jautrūs?", a: "Padarykite odontologo rekomenduotą pertrauką ir neilginkite priemonės laikymo laiko. Jei jautrumas stiprus, užsitęsia ar skauda vieną konkretų dantį, reikalinga odontologo apžiūra." }
-    ],
-    sources: [
-      { label: "American Dental Association – Whitening", url: "https://www.ada.org/resources/ada-library/oral-health-topics/whitening" },
-      { label: "At-home vs In-office Bleaching: An Updated Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/40485133/" },
-      { label: "Effect of Bleaching Gel Concentration on Tooth Color and Sensitivity: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/32396502/" },
-      { label: "Tooth Sensitivity During and After Vital Tooth Bleaching: A Systematic Review", url: "https://pubmed.ncbi.nlm.nih.gov/26396993/" },
-      { label: "At-home vs In-office Bleaching: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/27045285/" }
-    ]
+    readTime: 12
   },
   {
     slug: "ka-daryti-kai-susidaro-danties-pulinys",
     title: "Ką daryti, kai susidaro danties pūlinys?",
+    excerpt: "Danties pūlinys – bakterinės infekcijos sukelta pūlių sankaupa, galinti sukelti pulsuojantį skausmą ir patinimą. Kodėl jo negalima atidėlioti ir kaip jį gydo odontologas?",
     date: "2026-07-17",
     category: "Skubi pagalba",
     coverImage: "https://images.unsplash.com/photo-1664530837411-0c2e8a3d4dca?w=1200&q=80&fit=crop&auto=format",
-    readTime: 10,
-    sections: [
-      {
-        p: [
-          "Danties pūlinys – tai dėl bakterinės infekcijos dantyje, aplink jo šaknį arba dantenose susikaupę pūliai. Jis gali sukelti pulsuojantį skausmą, patinimą, nemalonų skonį burnoje ir bendros savijautos pablogėjimą.",
-          "Svarstant, ar įmanomas danties pūlinio gydymas namuose, svarbu žinoti: namų priemonės gali tik laikinai sumažinti skausmą ir diskomfortą. Jos nepašalina infekcijos priežasties, todėl pūlinį turi kuo greičiau įvertinti odontologas. Danties pūlinys savaime neišgyja.",
-          "Net jei pūlinukas pratrūko, ištekėjo dalis pūlių ir skausmas sumažėjo, infekcijos židinys gali likti danties viduje ar aplink jo šaknį. Gydymo atidėlioti nereikėtų ir tuomet, kai ant dantenų esantis pūlinukas beveik neskauda."
-        ]
-      },
-      {
-        h: "Kas yra danties pūlinys ir kodėl jis susidaro?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Pūlinys susiformuoja bakterijoms patekus į danties vidų arba aplinkinius audinius. Organizmui reaguojant į infekciją, pažeistoje vietoje kaupiasi pūliai." },
-          { type: "p", text: "Pagal infekcijos vietą dažniausiai išskiriamos kelios pūlinio formos:" },
-          { type: "ul", items: [
-            "Pūlinys ties danties šaknies viršūne paprastai susidaro infekcijai iš danties pulpos išplitus šaknų kanalais.",
-            "Periodonto pūlinys formuojasi šalia danties šaknies, dažnai gilioje periodonto kišenėje.",
-            "Dantenų pūlinys susidaro paviršiniuose minkštuosiuose audiniuose."
-          ] },
-          { type: "p", text: "Ant dantenų matomas baltas ar gelsvas pūlinukas gali būti kanalas, kuriuo iš giliau esančio infekcijos židinio nuteka pūliai. Todėl jo pradūrimas ar išspaudimas neišgydo pažeisto danties." },
-          { type: "p", text: "Dažniausios pūlinio priežastys yra gilus negydytas ėduonis, danties įskilimas ar trauma, žuvusi pulpa, periodonto liga arba pakartotinė infekcija anksčiau gydyto danties srityje." }
-        ]
-      },
-      {
-        h: "Kaip atpažinti danties pūlinio simptomus?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Simptomai priklauso nuo infekcijos vietos ir išplitimo. Vieniems pacientams pūlinys sukelia stiprų skausmą, o kiti gali kurį laiką jausti tik nedidelį diskomfortą." },
-          { type: "p", text: "Galimi danties pūlinio požymiai:" },
-          { type: "ul", items: [
-            "stiprus, maudžiantis ar pulsuojantis skausmas;",
-            "skausmas sukandus arba kramtant;",
-            "jautrumas karštam ir šaltam maistui;",
-            "paraudusios, jautrios ar patinusios dantenos;",
-            "ant dantenų atsiradęs pūlinukas;",
-            "pūlių tekėjimas ir nemalonus skonis burnoje;",
-            "skausmo plitimas į ausį, žandikaulį ar kaklą;",
-            "patinęs skruostas ar žandikaulio sritis;",
-            "sunkumas išsižioti;",
-            "karščiavimas, silpnumas ir bloga savijauta."
-          ] },
-          { type: "p", text: "Pūlinukui atsivėrus gali sumažėti spaudimas, todėl skausmas susilpnėja. Skausmas taip pat gali išnykti žuvus danties pulpai. Abiem atvejais infekcija gali išlikti ir toliau plisti." },
-          { type: "p", text: "Odontologas diagnozę nustato įvertinęs simptomus, danties ir dantenų būklę bei tyrimų rezultatus. Dažnai atliekama rentgeno nuotrauka, padedanti įvertinti danties šaknis ir aplinkinį kaulą." }
-        ]
-      },
-      {
-        h: "Ar įmanomas danties pūlinio gydymas namuose?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Visiškai išgydyti danties pūlinio namuose negalima. Skalavimai, kompresai ir vaistai nuo skausmo neišvalo infekuotų šaknų kanalų ir nepašalina giliai esančio infekcijos židinio." },
-          { type: "p", text: "Nereikėtų:" },
-          { type: "ul", items: [
-            "spausti ar pradurti pūlinuko;",
-            "bandyti jį atverti adata ar kitu įrankiu;",
-            "dėti aspirino ar kitų vaistų tiesiai ant dantenų;",
-            "šildyti patinusios vietos;",
-            "ant gleivinės laikyti česnako ar kitų dirginančių produktų;",
-            "savarankiškai vartoti likusių antibiotikų;",
-            "atidėti vizito, nes skausmas sumažėjo."
-          ] },
-          { type: "p", text: "Bandant pūlinį pradurti galima sužaloti audinius, sukelti kraujavimą ir paskatinti infekcijos plitimą. Tiesiai ant dantenų dedami vaistai ar koncentruotos medžiagos gali pažeisti burnos gleivinę." },
-          { type: "p", text: "Antibiotikai taip pat nėra universalus danties pūlinio gydymas. Amerikos odontologų asociacija rekomenduoja daugeliu lokalizuoto skausmo ir patinimo atvejų pirmiausia gydyti infekcijos šaltinį. Antibiotikų dažniau reikia tuomet, kai infekcija plinta, pacientas karščiuoja ar blogėja jo bendra savijauta." }
-        ]
-      },
-      {
-        h: "Kaip saugiai palengvinti skausmą iki vizito pas odontologą?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Kol laukiate skubaus odontologo vizito, galima imtis laikinų priemonių simptomams sumažinti:" },
-          { type: "ul", items: [
-            "rinkitės minkštą, ne per karštą ir ne per šaltą maistą;",
-            "kramtykite priešinga burnos puse;",
-            "dantis valykite švelniai, minkštu šepetėliu;",
-            "prie išorinės skruosto pusės trumpam pridėkite vėsų kompresą;",
-            "gerkite pakankamai skysčių;",
-            "miegodami galvą laikykite šiek tiek aukščiau."
-          ] },
-          { type: "p", text: "Burną galima atsargiai praskalauti drungnu vandeniu. Skalavimas gali padėti palaikyti burnos švarą, tačiau jis neišgydo infekcijos. Patinusios vietos nereikėtų stipriai spausti ar intensyviai skalauti." },
-          { type: "p", text: "Vaistus nuo skausmo vartokite tik pagal informacinį lapelį, neviršydami nurodytos dozės. Jų tinkamumas priklauso nuo žmogaus amžiaus, nėštumo, turimų ligų ir kitų vartojamų vaistų. Kilus abejonių pasitarkite su gydytoju arba vaistininku." }
-        ]
-      },
-      {
-        h: "Kaip odontologas gydo danties pūlinį?",
-        p: [
-          "Gydymo tikslas – pašalinti infekcijos šaltinį, sudaryti sąlygas pūliams nutekėti ir, kai įmanoma, išsaugoti dantį. Procedūros paprastai atliekamos taikant vietinę nejautrą."
-        ]
-      },
-      {
-        h: "Pūlinio drenavimas",
-        p: [
-          "Jei audiniuose susikaupę pūlių, odontologas gali atlikti nedidelį pjūvį ir sudaryti sąlygas jiems nutekėti. Tai sumažina spaudimą, tačiau vien drenavimo gali nepakakti, jei infekcija prasidėjo danties viduje."
-        ]
-      },
-      {
-        h: "Šaknų kanalų gydymas",
-        p: [
-          "Kai infekcijos šaltinis yra danties pulpoje, atliekamas šaknų kanalų gydymas. Jo metu pašalinami infekuoti audiniai, kanalai išvalomi, dezinfekuojami ir užpildomi. Vėliau dantis atkuriamas plomba arba kita restauracija. Toks gydymas dažnai leidžia išsaugoti natūralų dantį."
-        ]
-      },
-      {
-        h: "Danties pašalinimas",
-        p: [
-          "Jeigu dantis smarkiai suiręs, skilęs ar jo patikimai atkurti neįmanoma, gali būti rekomenduojama jį pašalinti. Taip pašalinamas pagrindinis infekcijos šaltinis.",
-          "Jei pūlinys susijęs su gilia periodonto kišene, gali būti valomi danties ir šaknies paviršiai bei gydomi aplinkiniai periodonto audiniai.",
-          "Antibiotikai skiriami tik individualiai įvertinus situaciją. Net ir juos paskyrus dažniausiai vis tiek reikia odontologiškai gydyti infekcijos šaltinį."
-        ]
-      },
-      {
-        h: "Kada danties pūlinys reikalauja skubios pagalbos?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Į odontologą reikėtų kreiptis kuo greičiau, nelaukiant, kol pūlinys praeis savaime. Ypač svarbu nedelsti, jei skausmas stiprėja, tinsta skruostas ar blogėja bendra savijauta." },
-          { type: "p", text: "Skubios medicinos pagalbos reikia, jei:" },
-          { type: "ul", items: [
-            "sunku kvėpuoti, ryti arba kalbėti;",
-            "sparčiai didėja burnos, veido ar kaklo patinimas;",
-            "patinimas plinta akies link;",
-            "skauda ar tinsta akis, sutrinka regėjimas;",
-            "labai sunku išsižioti;",
-            "pakyla aukšta temperatūra ir ryškiai blogėja savijauta;",
-            "atsiranda sumišimas ar didelis silpnumas."
-          ] },
-          { type: "p", text: "Kvėpavimo, kalbėjimo ar rijimo sutrikimai bei didelis burnos patinimas gali rodyti į pavojingas sritis plintančią infekciją. Tokiais atvejais nereikėtų laukti odontologijos klinikos darbo laiko." }
-        ]
-      },
-      {
-        h: "Kaip sumažinti danties pūlinio riziką?",
-        p: [
-          "Pūlinio riziką padeda mažinti reguliarus dantų valymas fluoridų turinčia pasta, kasdienė tarpdančių priežiūra ir ankstyvas ėduonies gydymas. Taip pat svarbu kreiptis dėl įskilusių ar traumuotų dantų, kontroliuoti periodonto ligas ir reguliariai tikrintis dantis.",
-          "Atsiradus danties skausmui, jautrumui sukandus, dantenų patinimui ar pūlinukui, vizito nereikėtų atidėti. Anksti pradėtas gydymas paprastai yra paprastesnis ir padidina galimybę išsaugoti dantį."
-        ]
-      },
-      {
-        h: "Danties pūlinio gydymo nereikėtų atidėlioti",
-        p: [
-          "Danties pūlinio gydymas namuose nėra įmanomas, nes namų priemonės nepašalina bakterinės infekcijos šaltinio. Jos gali tik laikinai sumažinti skausmą ir patinimą iki profesionalios pagalbos.",
-          "Gydymas gali apimti pūlinio drenavimą, šaknų kanalų gydymą, periodonto audinių valymą arba nebeatkuriamo danties pašalinimą. Antibiotikai skiriami tik esant klinikinėms indikacijoms ir nepakeičia odontologinio gydymo.",
-          "Jei skauda dantį, patino dantenos ar veidas, atsirado pūlinukas arba nemalonus skonis burnoje, kreipkitės į Bangų kliniką Klaipėdoje. Mūsų specialistai nustatys infekcijos priežastį ir parinks tinkamą gydymą."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Ar danties pūlinys gali praeiti savaime?", a: "Ne. Skausmas gali sumažėti pūliniui pratrūkus arba žuvus danties pulpai, tačiau infekcijos židinys paprastai išlieka." },
-      { q: "Ar galima danties pūlinį pradurti namuose?", a: "Ne. Taip galima pažeisti audinius, sukelti kraujavimą ir paskatinti infekcijos plitimą." },
-      { q: "Ar antibiotikai išgydo danties pūlinį?", a: "Ne visada. Antibiotikų gali reikėti plintančiai infekcijai, tačiau dažniausiai būtina odontologiškai pašalinti jos šaltinį." },
-      { q: "Ką daryti, jei nuo danties ištino žandas?", a: "Kuo greičiau kreipkitės į odontologą. Jei patinimas sparčiai didėja, plinta į kaklą ar akies sritį arba sunku ryti ar kvėpuoti, būtina skubi medicinos pagalba." },
-      { q: "Ką reiškia neskausmingas pūlinukas ant dantenų?", a: "Tai gali būti kanalas, kuriuo iš gilesnio infekcijos židinio nuteka pūliai. Net jei neskauda, reikalinga odontologo apžiūra." }
-    ],
-    sources: [
-      { label: "Antibiotics for Dental Pain and Swelling Guideline", url: "https://www.ada.org/resources/research/science/evidence-based-dental-research/antibiotics-for-dental-pain-and-swelling" },
-      { label: "Evidence-Based Clinical Practice Guideline on Antibiotic Use for Dental Pain and Intraoral Swelling", url: "https://pubmed.ncbi.nlm.nih.gov/31668170/" },
-      { label: "Antibiotics for the Urgent Management of Pulpal and Periapical Dental Conditions: Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/31761029/" }
-    ]
+    readTime: 10
   },
   {
     slug: "kaulo-priauginimas-ka-butina-zinoti-pries-operacija",
     title: "Kaulo priauginimas: ką būtina žinoti prieš operaciją?",
+    excerpt: "Jei žandikaulyje implantui per mažai kaulo, prieš implantaciją gali prireikti kaulo priauginimo. Kaip vyksta procedūra ir kokie simptomai gali rodyti komplikaciją?",
     date: "2026-07-15",
     category: "Burnos chirurgija",
     coverImage: "/blog/kaulo priauginimas ka butina zinoti pries operacija.jpg",
-    readTime: 11,
-    sections: [
-      {
-        p: [
-          "Jei žandikaulyje nepakanka kaulo danties implantui stabiliai įsriegti, prieš implantaciją arba kartu su ja gali būti atliekamas kaulo priauginimas. Pacientams dažnai kyla klausimų, kaip vyksta kaulo priauginimas, kiek laiko gyja operuota vieta ir kokie simptomai gali rodyti komplikaciją.",
-          "Kaulo priauginimas, dar vadinamas kaulo augmentacija, yra chirurginė procedūra, kurios metu atkuriamas trūkstamas žandikaulio kaulo tūris. Tam gali būti naudojamas paties paciento kaulas, specialiai paruošta žmogaus ar gyvūninės kilmės medžiaga, sintetinis kaulo pakaitalas arba kelių medžiagų derinys.",
-          "Po kaulo priauginimo operacijos nedidelis maudimas, patinimas, tempimo pojūtis ar nežymus kraujavimas pirmomis dienomis gali būti įprasta gijimo dalis. Tačiau savijauta turėtų palaipsniui gerėti. Stiprėjantis skausmas, pūliavimas, karščiavimas, didėjantis patinimas ar prasiskyrusi žaizda gali rodyti kaulo priauginimo komplikacijas."
-        ]
-      },
-      {
-        h: "Kada prieš dantų implantaciją gali prireikti kaulo priauginimo?",
-        p: [
-          "Danties implantui reikalingas pakankamo aukščio ir pločio žandikaulio kaulas. Jei kaulas yra per siauras, per žemas arba jo forma neleidžia implantui suteikti tinkamo stabilumo, gydytojas gali rekomenduoti augmentaciją.",
-          "Kaulo gali sumažėti dėl ilgą laiką neatkurto prarasto danties, periodonto ligų, infekcijos, traumos, ankstesnių chirurginių procedūrų ar individualių anatominių savybių.",
-          "Prieš gydymą atliekama burnos apžiūra ir radiologiniai tyrimai. Dažnai reikalinga trimatė kompiuterinė tomografija, padedanti įvertinti kaulo aukštį, plotį ir santykį su nervais, sinusu bei kitomis anatominėmis struktūromis. Tik po ištyrimo galima nuspręsti, ar implantą galima sriegti iš karto, ar pirmiausia reikia atkurti kaulo tūrį."
-        ]
-      },
-      {
-        h: "Kokie kaulo priauginimo metodai gali būti taikomi?",
-        p: [
-          "Kaulo priauginimo metodas parenkamas pagal defekto vietą, dydį ir planuojamą implantaciją.",
-          "Alveolės išsaugojimas gali būti atliekamas iš karto po danties pašalinimo. Į likusią vietą įdedama kaulinė medžiaga, siekiant išsaugoti palankesnį žandikaulio kontūrą būsimai implantacijai.",
-          "Žandikaulio keteros priauginimas taikomas, kai kaulas yra per siauras ar per žemas. Priklausomai nuo situacijos, gali būti didinamas jo plotis, aukštis arba abu matmenys.",
-          "Sinuso dugno pakėlimas atliekamas galinėje viršutinio žandikaulio srityje, kai tarp žandikaulio keteros ir sinuso ertmės nepakanka kaulo implantui įsriegti.",
-          "Nedidelės apimties augmentacija kartais atliekama kartu su implantacija. Esant didesniam kaulo trūkumui, pirmiausia priauginamas kaulas, o implantas sriegiamas tik sugijus operuotai sričiai."
-        ]
-      },
-      {
-        h: "Kaip vyksta kaulo priauginimo operacija?",
-        p: [
-          "Kaulo priauginimas paprastai atliekamas taikant vietinę nejautrą, todėl procedūros metu pacientas neturėtų jausti aštraus skausmo. Galima jausti spaudimą, judesį ar vibraciją. Jei jaučiamas skausmas, apie tai svarbu iš karto pasakyti gydytojui, kad nejautra būtų papildyta.",
-          "Pirmiausia atveriamos dantenos ir pasiekiama vieta, kurioje trūksta kaulo. Ji paruošiama, o į defekto sritį įdedama pasirinkta kaulinė medžiaga. Kaulo pakaitalas dažnai veikia kaip pagrindas, į kurį gijimo metu palaipsniui įauga naujas paciento kaulas.",
-          "Priauginta vieta gali būti uždengiama specialia membrana. Ji atskiria kaulo regeneracijos sritį nuo greičiau augančių minkštųjų audinių ir padeda išlaikyti kaulinei medžiagai reikalingą erdvę. Prireikus transplantatas ar membrana stabilizuojami, o operacijos vieta užsiuvama.",
-          "Procedūros sudėtingumas priklauso nuo kaulo defekto dydžio. Nedidelės apimties priauginimas paprastai yra paprastesnis nei didelio horizontalaus ar vertikalaus defekto atkūrimas.",
-          "Naudojant paties paciento kaulą, gali reikėti papildomos vietos jam paimti. Kitos kilmės kaulo pakaitalai leidžia sumažinti papildomos chirurginės vietos poreikį. Tinkamiausią medžiagą gydytojas parenka individualiai."
-        ]
-      },
-      {
-        h: "Kokia savijauta po kaulo priauginimo operacijos yra normali?",
-        p: [
-          "Po kaulo priauginimo operacijos audiniams reikia laiko gyti. Pirmomis dienomis operuota vieta gali mausti, būti jautri ar įsitempusi. Taip pat gali atsirasti patinimas, nedidelė kraujosruva, sunkesnis išsižiojimas ar diskomfortas kramtant.",
-          "Pirmomis valandomis galimas nežymus kraujavimas arba kraujo priemaiša seilėse. Patinimas nebūtinai būna didžiausias iš karto, tačiau vėliau jis turėtų pradėti mažėti.",
-          "Svarbiausias normalios gijimo eigos požymis – palaipsnis savijautos gerėjimas. Skausmas turėtų silpnėti, patinimas slūgti, o žaizdos kraštai išlikti uždari.",
-          "Minkštųjų audinių gijimas ir priauginto kaulo integracija nėra tas pats. Dantenos gali nurimti per kelias savaites, tačiau naujo kaulo formavimasis ir kaulinės medžiagos integracija trunka kelis mėnesius. Todėl net ir nebejaučiant skausmo negalima spręsti, kad sritis jau pasiruošusi implantacijai.",
-          "Kada galima sriegti implantą, gydytojas nustato pagal klinikinę apžiūrą ir, jei reikia, radiologinius tyrimus."
-        ]
-      },
-      {
-        h: "Kaip prižiūrėti operuotą vietą?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Po procedūros svarbiausia laikytis gydytojo rekomendacijų. Dažniausiai patariama:" },
-          { type: "ul", items: [
-            "pirmąją parą intensyviai neskalauti burnos ir nespjaudyti;",
-            "neliesti žaizdos pirštais, liežuviu ar kitais daiktais;",
-            "rinktis minkštą, nekarštą maistą;",
-            "kramtyti kita burnos puse;",
-            "vengti intensyvaus fizinio krūvio;",
-            "nerūkyti ir nevartoti alkoholio;",
-            "paskirtus vaistus vartoti tiksliai taip, kaip nurodyta;",
-            "nepraleisti kontrolinių vizitų."
-          ] },
-          { type: "p", text: "Dantis reikia valyti reguliariai, tačiau operuotą vietą pirmomis dienomis būtina saugoti nuo tiesioginio dirginimo. Jei paskirtas specialus skalavimo skystis ar kita priemonė, ją reikėtų naudoti pagal gydytojo nurodymus." }
-        ]
-      },
-      {
-        h: "Kokios yra dažniausios kaulo priauginimo komplikacijos?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Kaulo priauginimo komplikacijos nėra įprasta gijimo dalis, tačiau jų gali pasitaikyti po bet kurios chirurginės procedūros. Rizika priklauso nuo defekto dydžio, pasirinkto metodo, minkštųjų audinių būklės, burnos higienos, bendros sveikatos ir pooperacinių rekomendacijų laikymosi." },
-          { type: "p", text: "Viena galimų komplikacijų – infekcija. Ji gali pasireikšti stiprėjančiu skausmu, didėjančiu patinimu, paraudimu, pūliavimu, blogu kvapu, nemaloniu skoniu burnoje ar karščiavimu. Infekcija gali sutrikdyti žaizdos gijimą ir priaugintos medžiagos integraciją." },
-          { type: "p", text: "Kita svarbi komplikacija – žaizdos kraštų prasiskyrimas ir membranos ar kaulinės medžiagos atsidengimas. Membranos ekspozicija gali sudaryti sąlygas bakterijoms patekti į operuotą sritį ir sumažinti pasiektą kaulo prieaugį." },
-          { type: "p", text: "Kartais per prasiskyrusią žaizdą gali pasišalinti pavienių kaulinės medžiagos dalelių. Tai nebūtinai reiškia, kad visa procedūra buvo nesėkminga, tačiau apie tokią situaciją reikia pranešti gydytojui. Žaizdos negalima spausti, krapštyti ar savarankiškai šalinti matomų medžiagų." },
-          { type: "p", text: "Galimos ir kitos problemos:" },
-          { type: "ul", items: [
-            "užsitęsęs ar gausus kraujavimas;",
-            "stiprus, nemažėjantis skausmas;",
-            "hematoma;",
-            "laikini arba užsitęsę jutimo pokyčiai;",
-            "dalinis kaulinės medžiagos praradimas;",
-            "mažesnis nei planuota kaulo prieaugis;",
-            "poreikis koreguoti ar pakartoti procedūrą."
-          ] },
-          { type: "p", text: "Komplikacija ne visada reiškia, kad visas gydymas nepavyko. Anksti pastebėjus problemą gydytojas gali parinkti tinkamą priežiūrą ir koreguoti tolesnį gydymo planą." },
-          { type: "p", text: "Komplikacijų riziką gali didinti rūkymas, nepakankama burnos higiena, nekontroliuojamos gijimą veikiančios ligos, operuotos vietos traumavimas, per ankstyva mechaninė apkrova ir kontrolinių vizitų praleidimas." }
-        ]
-      },
-      {
-        h: "Kada po kaulo priauginimo būtina kreiptis į gydytoją?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Nedidelis maudimas ar patinimas pirmomis dienomis gali būti normalūs, jei savijauta palaipsniui gerėja. Jei simptomai stiprėja arba atsiranda naujų požymių, reikėtų susisiekti su operavusiu gydytoju." },
-          { type: "p", text: "Nedelskite kreiptis, jei:" },
-          { type: "ul", items: [
-            "skausmas tampa stiprus, pulsuojantis ar didėja;",
-            "patinimas po kelių dienų nemažėja arba plinta;",
-            "atsiranda pūlių, blogas kvapas ar nemalonus skonis;",
-            "pakyla temperatūra ar blogėja bendra savijauta;",
-            "kraujavimas nesustoja;",
-            "prasiskiria žaizdos kraštai;",
-            "matoma membrana ar pasišalina daugiau kaulinės medžiagos;",
-            "atsiranda arba stiprėja nejautra."
-          ] },
-          { type: "p", text: "Jei patinimas greitai didėja, pasunkėja rijimas ar kvėpavimas, reikalinga skubi medicininė pagalba. Savarankiškai vartoti antibiotikų, atverti žaizdos ar bandyti pašalinti membraną negalima." }
-        ]
-      }
-    ],
-    faq: [
-      { q: "Ar skauda, kai atliekamas kaulo priauginimas?", a: "Procedūra paprastai atliekama taikant vietinę nejautrą, todėl aštraus skausmo pacientas neturėtų jausti. Pasibaigus nejautros poveikiui gali atsirasti maudimas, jautrumas ir patinimas." },
-      { q: "Kiek laiko gyja kaulas po priauginimo?", a: "Minkštieji audiniai gali nurimti per kelias savaites, tačiau priaugintos srities integracija trunka kelis mėnesius. Tiksli gijimo trukmė priklauso nuo procedūros apimties, naudotos medžiagos ir individualios gijimo eigos." },
-      { q: "Ar patinimas po kaulo priauginimo yra normalus?", a: "Nedidelis ar vidutinis patinimas pirmomis dienomis gali būti normalus. Jei jis ryškėja arba atsiranda karščiavimas, pūliavimas ir stiprus skausmas, reikia kreiptis į gydytoją." },
-      { q: "Ar kaulo priauginimas gali nepavykti?", a: "Kai kuriais atvejais kaulinė medžiaga gali nevisiškai integruotis arba gali susiformuoti mažiau kaulo, nei planuota. Tam įtakos gali turėti infekcija, žaizdos prasiskyrimas, rūkymas ir kiti gijimą veikiantys veiksniai." }
-    ],
-    sources: [
-      { label: "Effect of membrane exposure on guided bone regeneration: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/29368353/" },
-      { label: "Wound Healing Complications Following Guided Bone Regeneration for Ridge Augmentation: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/28938030/" },
-      { label: "Comparative evidence of different surgical techniques for the management of vertical alveolar ridge defects in terms of complications and efficacy: A systematic review and network meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/37495541/" },
-      { label: "Smoking and dental implants: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/25778741/" }
-    ]
+    readTime: 11
   },
   {
     slug: "kam-kompensuojami-dantu-implantai",
     title: "Kam kompensuojami dantų implantai?",
+    excerpt: "Dantų implantai Lietuvoje kompensuojami ne visiems pacientams. Kaip veikia dantų protezavimo kompensacija ir kada gali būti padengta dalis implantacijos išlaidų?",
     date: "2026-07-11",
     category: "Dantų implantacija",
     coverImage: "https://images.unsplash.com/photo-1643386281892-f8417a49130e?w=1200&q=80&fit=crop&auto=format",
-    readTime: 11,
-    sections: [
-      {
-        p: [
-          "Netekus vieno ar kelių dantų pacientams dažnai kyla klausimas, ar kompensuojami dantų implantai ir kokią gydymo išlaidų dalį gali padengti ligonių kasa. Informacija apie kompensavimą kartais suprantama netiksliai, nes dantų implantacija ir protezavimas yra susiję, tačiau tai nėra tapačios paslaugos.",
-          "Įprasta dantų implantacija Lietuvoje nėra automatiškai kompensuojama kiekvienam pacientui. Privalomojo sveikatos draudimo fondo lėšomis nustatytoms gyventojų grupėms kompensuojamos dantų protezavimo paslaugų išlaidos iki nustatytos sumos. Tam tikrais sudėtingesniais klinikiniais atvejais į protezavimo planą gali būti įtrauktas ir implantais paremtas sprendimas, tačiau tai vertinama individualiai.",
-          "Jeigu pasirinkto gydymo kaina viršija pacientui priklausančią kompensuojamąją sumą, skirtumą reikia sumokėti savo lėšomis. Todėl prieš pradedant gydymą svarbu gauti aiškų planą, kuriame būtų nurodyta bendra kaina, ligonių kasos apmokama dalis ir pacientui tenkanti priemoka."
-        ]
-      },
-      {
-        h: "Ar dantų implantai Lietuvoje yra kompensuojami?",
-        p: [
-          "Atsakant į klausimą, ar kompensuojami dantų implantai, pirmiausia reikia atskirti implantą nuo visos dantų protezavimo paslaugos. Ligonių kasa paprastai neskiria atskiros išmokos konkrečiam implantui įsigyti. Ji kompensuoja dantų protezavimo išlaidas, kurių tikslas – atkurti prarastą kramtymo funkciją.",
-          "Dantų implantas yra į žandikaulio kaulą įsriegiamas dirbtinis danties šaknies pakaitalas. Ant jo gali būti tvirtinamas vainikėlis, tiltas arba didesnės apimties protezas. Vis dėlto implantavimas apima ne tik patį implantą. Gali būti reikalingi radiologiniai tyrimai, chirurginė procedūra, gijimo laikotarpis, protezinė dalis, o kartais ir kaulo priauginimas ar kitas papildomas gydymas.",
-          "Ligonių kasos kompensacija nėra susieta su paciento pageidaujamu implantų skaičiumi, jų gamintoju ar konkrečia implantavimo metodika. Odontologas, įvertinęs burnos būklę, pasiūlo mediciniškai tinkamus dantų atkūrimo būdus.",
-          "Vienam pacientui gali būti tinkamas išimamas protezas, kitam – tiltas, o tam tikrais atvejais gali būti svarstomas implantais paremtas protezas. Sprendimas priklauso nuo likusių dantų, dantenų ir žandikaulio kaulo būklės, bendros sveikatos, vartojamų vaistų bei kitų individualių veiksnių.",
-          "Todėl tiksliausia sakyti, kad nustatytoms pacientų grupėms kompensuojamos dantų protezavimo išlaidos, o ne automatiškai visi dantų implantai."
-        ]
-      },
-      {
-        h: "Kam priklauso kompensacija už dantų protezavimą?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Kompensuojamas dantų protezavimas priklauso ne visiems gyventojams. Teisę į šias paslaugas turi privalomuoju sveikatos draudimu apdrausti žmonės, priklausantys teisės aktuose nustatytoms grupėms:" },
-          { type: "ul", items: [
-            "senatvės pensijos amžiaus sulaukę asmenys;",
-            "vaikai iki 18 metų;",
-            "žmonės su negalia;",
-            "pacientai, kuriems buvo taikytas gydymas dėl burnos, veido ar žandikaulių onkologinės ligos."
-          ] },
-          { type: "p", text: "Vien priklausymo vienai iš šių grupių ne visada pakanka. Gydytojas odontologas turi įvertinti burnos būklę, protezavimo poreikį ir nustatyti, ar paciento situacija atitinka galiojančius klinikinius kriterijus." }
-        ]
-      },
-      {
-        h: "Kada gali būti skiriama didesnė kompensacija?",
-        p: [
-          "Kompensuojamoji suma priklauso nuo paciento grupės ir klinikinės būklės. 2026 metų liepos mėnesį įprastais atvejais senatvės pensijos amžiaus sulaukusiems žmonėms ir nustatytas negalios sąlygas atitinkantiems pacientams kompensuojama iki 670,39 euro.",
-          "Sudėtingesniais atvejais kompensacija gali siekti iki 2 062,70 euro. Pavyzdžiui, didesnė suma gali būti skiriama, kai visiškai bedančio apatinio žandikaulio aukštis tam tikroje srityje yra mažesnis nei 12 milimetrų. Tokį poreikį turi patvirtinti gydytojų konsiliumas.",
-          "Vaikams, kurių kramtymo sistema dar vystosi ir kuriems reikalingi laikini protezavimo sprendimai, kompensuojama iki 342,13 euro. Kitais teisės aktuose nustatytais vaikų ar onkologinėmis ligomis gydytų pacientų atvejais gali būti taikoma didesnė suma.",
-          "Svarbu suprasti, kad didesnė kompensacija nėra skiriama vien todėl, kad pacientas pageidauja implantų. Ji priklauso nuo konkrečių klinikinių kriterijų ir negarantuoja, kad visas implantais paremto gydymo planas bus nemokamas."
-        ]
-      },
-      {
-        h: "Kokios dantų gydymo išlaidos gali būti kompensuojamos?",
-        p: [
-          "Paieškos frazė „kompensacija už dantų gydymą“ gali reikšti tiek įprastą odontologinį gydymą, tiek dantų protezavimą. Šioms paslaugoms taikomos skirtingos apmokėjimo sąlygos.",
-          "Privalomuoju sveikatos draudimu apdraustiems pacientams pirminė odontologinė pagalba teikiama gydymo įstaigoje, prie kurios jie yra prisirašę, arba kitoje įstaigoje, su kuria sudaryta atitinkama sutartis. Jai gali būti priskiriamas dantų ėduonies, pulpito ir kai kurių periodontito formų gydymas, dantų akmenų šalinimas, dantų ar jų šaknų traukimas bei kitos nustatytos paslaugos.",
-          "Suaugusiems pacientams PSDF paprastai apmoka gydytojo odontologo darbą, tačiau už plombines ir kitas odontologines medžiagas, vaistus bei vienkartines priemones dažniausiai reikia susimokėti. Tam tikroms pacientų grupėms taikomos išimtys.",
-          "Dantų protezavimo kompensacija veikia kitaip. Ligonių kasa apmoka faktines protezavimo išlaidas, bet ne daugiau nei pacientui nustatyta maksimali suma. Jei gydymas kainuoja mažiau, apmokamos faktinės išlaidos. Jei kainuoja daugiau, skirtumą sumoka pacientas."
-        ]
-      },
-      {
-        h: "Ar gavus kompensaciją galima rinktis dantų implantus?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Teisė į kompensuojamą protezavimą savaime nereiškia, kad pacientui bus atliekama implantacija. Pirmiausia turi būti nustatyta, ar implantais paremtas gydymas yra mediciniškai pagrįstas ir saugus." },
-          { type: "p", text: "Planuojant implantaciją vertinama:" },
-          { type: "ul", items: [
-            "žandikaulio kaulo kiekis ir kokybė;",
-            "dantenų bei periodonto būklė;",
-            "bendra paciento sveikata;",
-            "vartojami vaistai;",
-            "rūkymas ir kiti rizikos veiksniai;",
-            "būsima protezinė konstrukcija;",
-            "paciento galimybės prižiūrėti implantus."
-          ] },
-          { type: "p", text: "Jeigu implantais paremtas protezavimas pacientui tinka, jis gali būti įtrauktas į gydymo planą. Tačiau kompensacija padengs išlaidas tik iki nustatytos ribos. Likusią implantavimo, protezavimo ar papildomų procedūrų kainos dalį reikės sumokėti pacientui." },
-          { type: "p", text: "Prieš pradedant gydymą verta paprašyti rašytinio plano. Jame turėtų būti nurodyta, kiek implantų planuojama sriegti, kokia protezinė konstrukcija bus gaminama, kokių papildomų procedūrų gali prireikti, kokia yra bendra kaina ir kokią jos dalį padengs ligonių kasa." }
-        ]
-      },
-      {
-        h: "Kaip gauti kompensaciją už dantų protezavimą?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Norint pasinaudoti kompensacija, pirmiausia reikia kreiptis į gydytoją odontologą. Atskiro prašymo ligonių kasai pacientui paprastai teikti nereikia." },
-          { type: "p", text: "Procesas dažniausiai vyksta taip:" },
-          { type: "ol", items: [
-            "Kreipiamasi į odontologą. Gydytojas įvertina burnos būklę ir protezavimo poreikį.",
-            "Nustatoma teisė į kompensaciją. Patikrinama, ar pacientas priklauso nustatytai grupei ir atitinka klinikinius kriterijus.",
-            "Paruošiama burna protezavimui. Atliekamas reikalingas gydymas ir pašalinami protezavimui trukdantys uždegimai.",
-            "Duomenys užregistruojami elektroninėje sistemoje.",
-            "Pasirenkama gydymo įstaiga. Ji turi turėti sutartį su ligonių kasa dėl kompensuojamų dantų protezavimo paslaugų.",
-            "Sudaromas gydymo ir išlaidų planas. Pacientui paaiškinama bendra kaina, kompensuojama dalis ir galima priemoka."
-          ] },
-          { type: "p", text: "Pagal 2026 metų liepą galiojančią tvarką kompensuojamo dantų protezavimo paslaugomis reikia pasinaudoti per trejus metus nuo teisės užregistravimo sistemoje." },
-          { type: "p", text: "Kompensacija galima pasinaudoti ir privačioje klinikoje, tačiau tik tuomet, jei pasirinkta įstaiga turi sutartį su ligonių kasa dėl šių paslaugų. Vien to, kad klinika atlieka implantaciją ar protezavimą, nepakanka." },
-          { type: "p", text: "Kompensuojamoji suma paprastai nėra pervedama pacientui į asmeninę sąskaitą. Už suteiktas paslaugas ligonių kasa atsiskaito su sutartį turinčia gydymo įstaiga." }
-        ]
-      },
-      {
-        h: "Kada už implantus ar protezavimą reikia primokėti?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Priemoka reikalinga tada, kai pasirinkto gydymo kaina viršija pacientui nustatytą kompensuojamąją sumą. Taip dažnai nutinka pasirinkus implantais paremtą protezavimą, sudėtingesnes konstrukcijas ar brangesnes medžiagas." },
-          { type: "p", text: "Papildomai mokėti gali tekti už:" },
-          { type: "ul", items: [
-            "implantų sriegimą ir jų komponentus;",
-            "ant implantų tvirtinamus vainikėlius ar tiltus;",
-            "kaulo priauginimą;",
-            "sinuso dugno pakėlimą;",
-            "papildomus radiologinius tyrimus;",
-            "brangesnes protezines medžiagas;",
-            "į kompensuojamą planą neįtrauktas procedūras."
-          ] },
-          { type: "p", text: "Pacientui turi būti aiškiai paaiškinta, už ką ir kiek reikės mokėti. Jei siūlomi keli gydymo variantai, verta palyginti ne tik jų kainą, bet ir gydymo trukmę, priežiūrą, galimas rizikas bei tikėtiną rezultatą." }
-        ]
-      },
-      {
-        h: "Kompensacija priklauso nuo paciento būklės ir gydymo plano",
-        p: [
-          "Į klausimą, ar kompensuojami dantų implantai, tiksliausia atsakyti taip: įprasta implantacija nėra automatiškai apmokama visiems pacientams. Nustatytoms gyventojų grupėms kompensuojamos dantų protezavimo išlaidos iki galiojančios sumos, o implantais paremtas gydymas gali būti įtrauktas į individualų planą.",
-          "Didesnė kompensacija skiriama tik teisės aktuose numatytais sudėtingesniais atvejais ir, kai reikalaujama, gavus gydytojų konsiliumo patvirtinimą. Net ir tokiu atveju visa implantavimo kaina nebūtinai bus padengta.",
-          "Jei svarstote dantų implantaciją ir norite sužinoti, ar jums gali būti pritaikyta kompensacija už dantų gydymą ar protezavimą, registruokitės konsultacijai Bangų klinikoje Klaipėdoje. Mūsų specialistai įvertins burnos būklę, paaiškins galimus dantų atkūrimo būdus ir pateiks individualų gydymo bei išlaidų planą.",
-          "Straipsnyje pateiktos sumos ir sąlygos aktualios 2026 metų liepos mėnesį. Nuo 2026 metų lapkričio 1 dienos įsigalios patikslinta dantų protezavimo paslaugų kompensavimo tvarka, todėl prieš pradedant gydymą rekomenduojama patikrinti tuo metu galiojančią informaciją."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Ar pensininkams kompensuojami dantų implantai?", a: "Senatvės pensijos amžiaus sulaukę žmonės gali turėti teisę į kompensuojamą dantų protezavimą, jei jų burnos būklė atitinka nustatytus kriterijus. Tačiau tai nereiškia, kad ligonių kasa visada visiškai apmokės implantus." },
-      { q: "Kokia yra dantų protezavimo kompensacija?", a: "2026 metų liepos mėnesį dažniausiai taikoma suma siekia iki 670,39 euro. Vaikams, kurių kramtymo sistema dar vystosi, kompensuojama iki 342,13 euro. Nustatytais sudėtingesniais atvejais suma gali siekti iki 2 062,70 euro." },
-      { q: "Ar kompensaciją galima panaudoti dantų implantams?", a: "Kompensacija nėra skiriama konkrečiam implantui įsigyti. Ji taikoma patvirtinto dantų protezavimo plano išlaidoms. Jei jame numatomas implantais paremtas gydymas, kompensacija gali padengti dalį bendros kainos." },
-      { q: "Ar kompensacija galima pasinaudoti privačioje klinikoje?", a: "Taip, jeigu privati klinika turi sutartį su ligonių kasa dėl kompensuojamų dantų protezavimo paslaugų. Prieš pradedant gydymą tai būtina patikrinti." },
-      { q: "Ar kompensuojamas visas dantų gydymas?", a: "Ne visas. Pirminės odontologinės pagalbos atveju gali būti apmokamas gydytojo darbas, tačiau suaugusiesiems dažniausiai reikia mokėti už odontologines medžiagas, vaistus ir vienkartines priemones. Dantų protezavimui taikoma atskira kompensavimo tvarka." }
-    ],
-    sources: [
-      { label: "Dantų protezavimo kompensuojamoji suma", url: "https://ligoniukasa.lrv.lt/lt/veiklos-sritys/informacija-gyventojams/gydymo-ir-sveikatos-prieziuros-paslaugos/odontologines-paslaugos/dantu-protezavimas/dantu-protezavimo-kompensuojamoji-suma/" },
-      { label: "Dantų gydymas be papildomų išlaidų: kas gali gauti kompensuojamas paslaugas?", url: "https://ligoniukasa.lrv.lt/lt/naujienos/dantu-gydymas-be-papildomu-islaidu-kas-gali-gauti-kompensuojamas-paslaugas/" },
-      { label: "Patikslinta dantų protezavimo paslaugų kompensavimo tvarka", url: "https://ligoniukasa.lrv.lt/lt/naujienos/patikslinta-dantu-protezavimo-paslaugu-kompensavimo-tvarka-aRE/" },
-      { label: "Dėl Dantų protezavimo paslaugų išlaidų kompensavimo iš Privalomojo sveikatos draudimo fondo biudžeto tvarkos aprašo pakeitimo", url: "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/53dadd725df111f1b20fcb7db81bf4bd" }
-    ]
+    readTime: 11
   },
   {
     slug: "kiek-trunka-burnos-higiena",
     title: "Kiek trunka burnos higiena?",
+    excerpt: "Profesionali burnos higiena dažniausiai trunka 30–60 minučių. Kas gali pailginti procedūrą ir kada vieno vizito nepakanka?",
     date: "2026-07-08",
     category: "Burnos higiena",
     coverImage: "/blog/kiek trunka burnos higiena.jpg",
-    readTime: 10,
-    sections: [
-      {
-        p: [
-          "Profesionali burnos higiena – tai procedūra, kurios metu nuo dantų paviršių ir sunkiau pasiekiamų burnos vietų pašalinamos minkštosios bakterinės apnašos, sukietėję dantų akmenys ir išorinės pigmentinės dėmės. Planuojant vizitą pacientams dažnai kyla praktinis klausimas: kiek trunka burnos higiena ir kiek laiko jai reikėtų skirti?",
-          "Dažniausiai profesionali burnos higiena trunka apie 30–60 minučių. Jei procedūra atliekama reguliariai, dantų akmenų nėra daug, o dantenų būklė gera, vizitas gali būti trumpesnis. Kai apnašų susikaupę daugiau, dantenos yra jautrios ar kraujuojančios, burnoje yra implantų, protezų arba ortodontinių aparatų, higienai gali prireikti valandos ar ilgesnio vizito."
-        ]
-      },
-      {
-        h: "Kiek trunka profesionali burnos higiena?",
-        p: [
-          "Įprastai profesionaliai burnos higienai reikėtų numatyti 30–60 minučių. Per šį laiką burnos higienistas įvertina dantų bei dantenų būklę, pašalina kietąsias ir minkštąsias apnašas, nuvalo pigmentines dėmes bei pateikia individualias kasdienės burnos priežiūros rekomendacijas.",
-          "Kai profesionali burnos higiena atliekama reguliariai, o pacientas tinkamai prižiūri dantis ir tarpdančius namuose, sukietėjusių apnašų dažniausiai būna mažiau. Tokiu atveju valymas gali užtrukti trumpesnę numatyto vizito dalį.",
-          "Jei nuo paskutinės burnos higienos praėjo daug laiko, dantų akmenų susikaupę gausiai arba jie yra sunkiai pasiekiamose vietose, procedūra gali trukti ilgiau. Papildomo laiko gali reikėti ir tada, kai dantenos yra jautrios, patinusios ar kraujuoja, todėl specialistas turi dirbti lėčiau.",
-          "Profesionali burnos higiena nėra vien matomų dėmių nuvalymas ar dantų nupoliravimas. Dantų akmenys gali kauptis tarpdančiuose, ties dantenų kraštu ir po juo. Kiekvieną sritį reikia tinkamai pasiekti ir patikrinti, todėl procedūros greitis neturėtų būti svarbesnis už jos kokybę."
-        ]
-      },
-      {
-        h: "Kas gali pailginti procedūros laiką?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Pagrindinis veiksnys, nuo kurio priklauso burnos higienos trukmė, yra susikaupusių dantų akmenų ir minkštųjų apnašų kiekis. Kuo jų daugiau, tuo ilgiau trunka kruopštus skirtingų dantų paviršių, tarpdančių ir dantenų krašto valymas." },
-          { type: "p", text: "Svarbi ne tik apnašų gausa, bet ir jų vieta. Virš dantenų esančius dantų akmenis dažnai galima aiškiai pastebėti apžiūros metu. Tačiau dalis sukietėjusių apnašų gali būti susikaupusi po dantenų kraštu, kur jas pasiekti ir pašalinti sudėtingiau." },
-          { type: "p", text: "Procedūra gali trukti ilgiau, kai dantenos yra:" },
-          { type: "ul", items: [
-            "jautrios ar skausmingos;",
-            "paraudusios ir patinusios;",
-            "linkusios kraujuoti;",
-            "atsitraukusios nuo dantų;",
-            "paveiktos uždegimo."
-          ] },
-          { type: "p", text: "Tokiu atveju burnos higienistas gali dirbti mažesniais etapais, naudoti skirtingus instrumentus ar daryti trumpas pertraukas. Jei procedūros metu jaučiamas stiprus jautrumas arba skausmas, apie tai svarbu iš karto pasakyti specialistui." },
-          { type: "p", text: "Daugiau laiko gali prireikti pacientams, turintiems implantų, vainikėlių, tiltų, protezų ar ortodontinių breketų. Aplink šias konstrukcijas atsiranda daugiau sunkiai pasiekiamų vietų, kuriose gali kauptis bakterinės apnašos. Jas reikia išvalyti kruopščiai ir konkrečiai konstrukcijai tinkamomis priemonėmis." },
-          { type: "p", text: "Burnos higienos trukmei įtakos gali turėti ir susigrūdę dantys, individualus apnašų kaupimosi greitis, rūkymas bei dažnas pigmentuojančių produktų vartojimas. Vis dėlto tiksliausiai procedūros apimtį galima įvertinti tik apžiūrėjus paciento burną." }
-        ]
-      },
-      {
-        h: "Kaip pasiskirsto burnos higienos procedūros laikas?",
-        p: [
-          "Profesionali burnos higiena atliekama keliais nuosekliais etapais. Jų trukmė nėra vienoda kiekvienam pacientui, nes specialistas procedūrą pritaiko pagal individualią dantų ir dantenų būklę.",
-          "Pirmiausia apžiūrima burna. Burnos higienistas įvertina, kur ir kiek susikaupė dantų akmenų, ar dantenos kraujuoja, kuriose vietose dantys yra jautresni ir ar burnoje yra implantų, protezinių konstrukcijų arba ortodontinių aparatų. Taip pat svarbu žinoti, kada paskutinį kartą buvo atlikta profesionali burnos higiena.",
-          "Daugiausia vizito laiko paprastai skiriama dantų akmenims šalinti. Atsižvelgiant į jų vietą ir kiekį, gali būti naudojamas ultragarsinis aparatas bei rankiniai instrumentai. Ultragarsinio instrumento vibracijos padeda suardyti sukietėjusias apnašas, o vandens srovė vėsina valomą paviršių ir nuplauna pašalintas daleles.",
-          "Pašalinus dantų akmenis valomos minkštosios bakterinės ir pigmentinės apnašos. Tam gali būti naudojamas AIRFLOW metodas, poliravimo pasta, specialūs šepetėliai ar guminės taurelės. Ne kiekvienam pacientui reikia visiškai vienodo procedūros etapų derinio – jis parenkamas pagal burnoje esančias apnašas.",
-          "Vizito pabaigoje burnos higienistas gali parodyti, kaip tinkamai valyti tarpdančius, parinkti tinkamo dydžio tarpdančių šepetėlius ir paaiškinti, kaip prižiūrėti implantus, protezus ar breketus. Šiai daliai taip pat reikia skirti laiko, nes profesionaliai pašalintos apnašos pradės kauptis iš naujo, jei kasdienė burnos priežiūra liks nepakankama."
-        ]
-      },
-      {
-        h: "Kiek laiko reikia, kai dantų akmenų susikaupę daugiau?",
-        p: [
-          "Kai dantų akmenų nėra daug, o profesionali higiena atliekama reguliariai, procedūra dažniausiai telpa į vieną įprastą vizitą. Tačiau jei apnašos kaupėsi ilgą laiką, dengia didesnę dantų paviršių dalį ar yra po dantenų kraštu, jų šalinimui gali prireikti daugiau nei valandos.",
-          "Ilgą laiką besikaupę dantų akmenys gali būti kieti ir tvirtai prikibę prie danties paviršiaus. Jų negalima šalinti skubant. Reikia pasiekti skirtingas kiekvieno danties puses, išvalyti tarpdančius ir patikrinti, ar neliko apnašų sunkiau matomose vietose.",
-          "Kai dantenos kartu yra stipriai sudirgusios ar kraujuoja, procedūra gali būti atliekama lėčiau. Kai kuriems pacientams patogiau valymą padalyti į kelis vizitus, kad vieno apsilankymo metu nereikėtų ilgai laikyti burnos atvertos ir būtų galima kruopščiai išvalyti atskiras burnos sritis.",
-          "Svarbu atskirti įprastą profilaktinę burnos higieną nuo periodontologinio gydymo. Jei nustatomos gilios periodonto kišenės, dantį laikančių audinių pažeidimas ar žandikaulio kaulo nykimas, vien standartinės burnos higienos gali nepakakti. Tokiais atvejais gali būti reikalingas išsamesnis podanteninis valymas, odontologo ar periodontologo konsultacija ir keliais etapais atliekamas gydymas.",
-          "Todėl ilgesnė procedūros trukmė ne visada reiškia tik gausesnį paviršinių apnašų kiekį. Kartais ji susijusi su sudėtingesne dantenų ir periodonto audinių būkle, kurią reikia įvertinti individualiai."
-        ]
-      },
-      {
-        h: "Ar burnos higienai visada pakanka vieno vizito?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Daugeliu atvejų profesionali burnos higiena atliekama per vieną 30–60 minučių vizitą. Vieno apsilankymo paprastai pakanka, kai dantų akmenų nėra labai daug, dantenos nėra stipriai uždegiminės, o pacientas gali patogiai išbūti visos procedūros metu." },
-          { type: "p", text: "Kelių vizitų gali prireikti, jei:" },
-          { type: "ul", items: [
-            "dantų akmenų yra labai daug;",
-            "apnašos susikaupusios po dantenų kraštu;",
-            "dantenos yra itin jautrios ar stipriai kraujuoja;",
-            "pacientui sunku ilgai laikyti burną atvertą;",
-            "nustatomi galimi periodonto ligos požymiai;",
-            "reikalingas išsamesnis podanteninis valymas."
-          ] },
-          { type: "p", text: "Procedūros padalijimas į kelis apsilankymus nereiškia, kad burnos higiena atliekama neefektyviai. Atskirais atvejais tai leidžia daugiau dėmesio skirti kiekvienai burnos sričiai ir sumažinti paciento diskomfortą." },
-          { type: "p", text: "Po įprastos profesionalios burnos higienos dažniausiai galima iš karto grįžti prie kasdienės veiklos. Dantys trumpą laiką gali būti jautresni šalčiui, o sudirgusios dantenos gali nežymiai kraujuoti. Šie pojūčiai turėtų palaipsniui mažėti." },
-          { type: "p", text: "Jei po procedūros atsiranda stiprus arba didėjantis skausmas, ryškus patinimas ar nesiliaujantis kraujavimas, reikėtų susisiekti su procedūrą atlikusiu specialistu. Tokie simptomai nėra įprasto trumpalaikio jautrumo dalis ir turi būti įvertinti individualiai." }
-        ]
-      },
-      {
-        h: "Kruopštus valymas svarbiau už kuo trumpesnį vizitą",
-        p: [
-          "Atsakant į klausimą, kiek trunka burnos higiena, dažniausiai galima orientuotis į 30–60 minučių vizitą. Procedūra gali būti trumpesnė, jei ji atliekama reguliariai ir apnašų nėra daug. Kai susikaupę gausūs dantų akmenys, dantenos jautrios arba reikia išvalyti vietas aplink implantus, protezus ar breketus, gali prireikti ilgesnio apsilankymo.",
-          "Svarbiausia, kad procedūra būtų atliekama kruopščiai, o ne skubant. Burnos higienistas turi pašalinti ne tik gerai matomas apnašas, bet ir patikrinti tarpdančius, dantenų kraštą bei kitas sunkiau pasiekiamas vietas. Vizito metu taip pat įvertinama dantenų būklė ir pateikiamos individualios priežiūros rekomendacijos.",
-          "Jei burnoje yra labai daug dantų akmenų arba pastebimi galimi periodonto ligos požymiai, vieno įprasto vizito gali nepakakti. Tokiais atvejais specialistas paaiškina, ar valymą tikslinga padalyti į kelis etapus ir ar reikalingas papildomas periodontologinis ištyrimas.",
-          "Jei nežinote, kiek laiko profesionali burnos higiena gali trukti jūsų atveju, registruokitės vizitui Bangų klinikoje Klaipėdoje. Mūsų specialistai įvertins dantų bei dantenų būklę, parinks tinkamus valymo metodus ir pateiks individualias burnos priežiūros rekomendacijas."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Kiek vidutiniškai trunka profesionali burnos higiena?", a: "Dažniausiai profesionali burnos higiena trunka apie 30–60 minučių. Tikslus laikas priklauso nuo dantų akmenų bei minkštųjų apnašų kiekio, dantenų būklės, dantų jautrumo ir burnoje esančių implantų, protezų ar ortodontinių aparatų." },
-      { q: "Ar burnos higieną galima atlikti per 30 minučių?", a: "Kai procedūra atliekama reguliariai, apnašų nėra daug, o dantenų būklė gera, burnos higienai gali pakakti maždaug 30 minučių. Vis dėlto tikslų laiką specialistas gali įvertinti tik apžiūrėjęs burną." },
-      { q: "Kodėl burnos higiena kartais trunka ilgiau nei valandą?", a: "Ilgesnio vizito gali reikėti dėl gausių ar sunkiai pašalinamų dantų akmenų, jautrių ir kraujuojančių dantenų, apnašų po dantenų kraštu, implantų, protezų arba breketų. Jei nustatomi periodonto pažeidimai, gali būti reikalingas išsamesnis gydymas." },
-      { q: "Ar pirmoji burnos higiena trunka ilgiau?", a: "Pirmoji profesionali burnos higiena gali trukti ilgiau, jei anksčiau procedūra nebuvo atliekama arba nuo paskutinio vizito praėjo daug laiko. Papildomai įvertinama burnos būklė ir skiriama laiko individualioms priežiūros rekomendacijoms." },
-      { q: "Kiek trunka burnos higiena su AIRFLOW?", a: "Bendra profesionalios burnos higienos su AIRFLOW trukmė dažniausiai siekia apie 30–60 minučių. AIRFLOW yra vienas procedūros etapų, todėl vizito laikas priklauso ir nuo to, ar reikia papildomai šalinti sukietėjusius dantų akmenis." },
-      { q: "Ar burnos higiena visada atliekama per vieną vizitą?", a: "Dažniausiai pakanka vieno vizito. Tačiau jei apnašų ir dantų akmenų labai daug, dantenos yra itin jautrios arba reikalingas periodontologinis gydymas, procedūra gali būti padalyta į kelis apsilankymus." }
-    ],
-    sources: [
-      { label: "Professional mechanical plaque removal for prevention of periodontal diseases in adults – systematic review update", url: "https://pubmed.ncbi.nlm.nih.gov/25495962/" },
-      { label: "The efficacy of air polishing devices in supportive periodontal therapy: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/29700503/" },
-      { label: "A systematic review on the patient perception of periodontal treatment using air polishing devices", url: "https://pubmed.ncbi.nlm.nih.gov/25619863/" },
-      { label: "Efficacy of erythritol powder air-polishing in active and supportive periodontal therapy: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/34318577/" },
-      { label: "Efficacy of air polishing in comparison with hand instruments and/or power-driven instruments in supportive periodontal therapy and implant maintenance: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35321688/" },
-      { label: "Effectiveness and Clinical Performance of Erythritol Air-Polishing in Non-Surgical Periodontal Therapy: A Systematic Review of Randomized Clinical Trials", url: "https://pubmed.ncbi.nlm.nih.gov/35888585/" }
-    ]
+    readTime: 10
   },
   {
     slug: "kiek-laiko-skauda-danti-po-kanalu-valymo",
     title: "Kiek laiko skauda dantį po kanalų valymo?",
+    excerpt: "Po kanalų valymo dantis kelias dienas gali būti jautrus, ypač kramtant ar sukandus. Kaip atskirti normalų gijimą nuo simptomų, kurių nederėtų ignoruoti?",
     date: "2026-07-03",
     category: "Endodontinis gydymas",
     coverImage: "/blog/kiek-laiko-skauda-danti-po-kanalu-valymo.jpg",
-    readTime: 9,
-    sections: [
-      {
-        p: [
-          "Po šaknų kanalų valymo dantis kelias dienas gali būti jautrus, ypač kramtant ar sukandus. Tai nebūtinai reiškia, kad gydymas atliktas netinkamai. Nors danties viduje buvę pažeisti audiniai pašalinami, aplink šaknį išlieka gyvi audiniai, kurie po procedūros gali būti sudirgę.",
-          "Dažniausiai dantis būna jautriausias pirmąsias 2–3 dienas. Nestiprus jautrumas sukandus gali tęstis iki savaitės ar šiek tiek ilgiau, tačiau jis turi aiškiai mažėti. Jei skausmas stiprėja, po pagerėjimo sugrįžta arba atsiranda patinimas, reikėtų kreiptis į gydymą atlikusį odontologą.",
-          "Atsakant į klausimą, kiek laiko skauda dantį po kanalų valymo, svarbu vertinti ne tik dienų skaičių. Daug pasako skausmo eiga: palaipsniui silpnėjantis jautrumas dažniausiai atitinka gijimą, o didėjantis ar kasdienei veiklai trukdantis skausmas reikalauja papildomo įvertinimo."
-        ]
-      },
-      {
-        h: "Kodėl po kanalų valymo gali skaudėti dantį?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Šaknų kanalų gydymo metu iš danties vidaus pašalinami infekcijos ar uždegimo pažeisti pulpos audiniai. Kanalai išvalomi, dezinfekuojami, suformuojami ir užpildomi specialia medžiaga, kad būtų sumažinta pakartotinio užkrėtimo rizika." },
-          { type: "p", text: "Pacientai šią procedūrą kartais vadina „nervo išėmimu“, todėl gali kilti klausimas, kodėl gydytas dantis vis dar skauda. Pašalinus pulpą, aplink danties šaknį lieka gyvi raiščio, kaulo ir dantenų audiniai. Jie gali būti jautrūs dėl prieš gydymą buvusio uždegimo ir procedūros metu patirto sudirginimo." },
-          { type: "p", text: "Pirmomis dienomis gali būti juntamas:" },
-          { type: "ul", items: [
-            "nestiprus ar vidutinio stiprumo maudimas;",
-            "jautrumas sukandus arba kramtant;",
-            "spaudimo pojūtis aplink gydytą dantį;",
-            "žandikaulio raumenų maudimas po ilgiau laikytos pravertos burnos."
-          ] },
-          { type: "p", text: "Skausmo intensyvumui įtakos gali turėti danties būklė prieš gydymą, aplink šaknį buvusio uždegimo apimtis, kanalų anatomija ir procedūros sudėtingumas. Mokslinių tyrimų duomenimis, pooperacinis skausmas dažniausiai būna ryškesnis per pirmąsias 48–72 valandas ir vėliau mažėja." },
-          { type: "p", text: "Kartais pacientui atrodo, kad gydytas dantis yra „aukštesnis“ ir sukandus pirmas susiliečia su priešingo žandikaulio dantimi. Tokį pojūtį gali sukelti jautrūs audiniai aplink šaknį, tačiau priežastis gali būti ir per aukšta laikina plomba ar galutinė restauracija. Jei pojūtis nepraeina, odontologas turėtų patikrinti sąkandį." }
-        ]
-      },
-      {
-        h: "Kiek laiko skauda dantį po kanalų valymo?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Vienodo termino visiems pacientams nėra, tačiau galima išskirti orientacinę gijimo eigą:" },
-          { type: "ul", items: [
-            "Pirmosios 24–72 valandos. Galimas maudimas, spaudimas ir jautrumas sukandus.",
-            "Po 3–7 dienų. Simptomai turėtų būti pastebimai silpnesni ir mažiau trukdyti kasdienei veiklai.",
-            "Po savaitės. Nedidelis jautrumas kartais dar gali išlikti, tačiau turi būti aiški gerėjimo tendencija."
-          ] },
-          { type: "p", text: "Šie terminai yra orientaciniai. Gijimas priklauso nuo pradinės danties būklės, gydymo apimties ir individualios audinių reakcijos. Jei po savaitės nejaučiate jokio pagerėjimo, verta susisiekti su gydymą atlikusiu odontologu. Stipraus ar didėjančio skausmo nereikėtų kentėti laukiant kelias savaites." },
-          { type: "p", text: "Kanalų gydymas gali būti atliekamas per vieną arba kelis vizitus. Po pirmojo kanalų valymo etapo dantis gali būti uždarytas laikina plomba, todėl jautrumas galimas ir tarp procedūrų. Tokiu atveju svarbu saugoti laikiną plombą, nekramtyti labai kieto maisto ir nepraleisti paskirto kito vizito." },
-          { type: "p", text: "Net jei tarp vizitų skausmas visiškai išnyko, gydymo nutraukti negalima. Neužbaigus kanalų gydymo ir galutinai neatkūrus danties, padidėja pakartotinio užkrėtimo ir danties lūžio rizika." }
-        ]
-      },
-      {
-        h: "Koks skausmas po kanalų gydymo laikomas normaliu?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Normaliai gijimo eigai būdingas nestiprus arba vidutinio stiprumo jautrumas, kuris kasdien mažėja. Dantį gali mausti sukandus ar kramtant, tačiau diskomfortas neturėtų nuolat stiprėti." },
-          { type: "p", text: "Tikėtina, kad gijimas vyksta sklandžiai, jei:" },
-          { type: "ul", items: [
-            "skausmas palaipsniui silpnėja;",
-            "jį padeda kontroliuoti gydytojo rekomenduoti vaistai;",
-            "nėra didėjančio dantenų ar veido patinimo;",
-            "neatsiranda karščiavimo, pūliavimo ar ryškaus bendros savijautos pablogėjimo;",
-            "gydytas dantis nėra akivaizdžiai pirmas kontaktas sukandus."
-          ] },
-          { type: "p", text: "Stiprus, pulsuojantis, miegoti neleidžiantis ar kasdien didėjantis skausmas nelaikomas įprasta gijimo eiga. Susisiekti su gydytoju taip pat reikėtų, jei skausmas iš pradžių mažėjo, bet po kelių dienų vėl sustiprėjo." },
-          { type: "p", text: "Retais atvejais gali pasireikšti ūmus paūmėjimas – stiprus skausmas, patinimas arba abu simptomai, dėl kurių prireikia neplanuoto odontologo vizito. Tai nėra tas pats, kas nestiprus pirmųjų dienų jautrumas." }
-        ]
-      },
-      {
-        h: "Kaip sumažinti skausmą ir prižiūrėti dantį po procedūros?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Po kanalų valymo pirmiausia reikėtų vadovautis individualiomis odontologo rekomendacijomis. Skausmą malšinančius vaistus vartokite tik pagal gydytojo nurodymą arba preparato informacinį lapelį, neviršydami rekomenduojamos dozės. Konkretūs vaistai tinka ne visiems pacientams, todėl būtina atsižvelgti į turimas ligas, alergijas ir kitus vartojamus preparatus." },
-          { type: "p", text: "Po procedūros rekomenduojama:" },
-          { type: "ul", items: [
-            "nevalgyti, kol visiškai nepraėjo vietinės nejautros poveikis;",
-            "pirmomis dienomis vengti labai kieto ir lipnaus maisto;",
-            "laikinai mažiau kramtyti gydyto danties puse;",
-            "reguliariai valyti dantis, jautrią vietą prižiūrint švelniai;",
-            "saugoti laikiną plombą nuo didelės apkrovos;",
-            "nepraleisti kontrolinio ar kito gydymo vizito;",
-            "gydytojo nurodytu laiku galutinai atkurti dantį."
-          ] },
-          { type: "p", text: "Jei laikina plomba visiškai iškrenta arba gydytas dantis nuskilo, reikėtų susisiekti su klinika ir nelaukti kito suplanuoto vizito." },
-          { type: "p", text: "Antibiotikų nereikėtų pradėti vartoti savarankiškai. Vien skausmas po kanalų valymo nėra pakankama priežastis antibakteriniam gydymui. Sisteminės mokslinių tyrimų apžvalgos nepatvirtina, kad antibiotikai įprastai sumažintų pooperacinį skausmą ar apsaugotų nuo paūmėjimo. Juos gydytojas skiria tik esant konkrečioms indikacijoms." }
-        ]
-      },
-      {
-        h: "Kada skausmas po kanalų valymo gali rodyti komplikaciją?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Į odontologą reikėtų kreiptis, jei:" },
-          { type: "ul", items: [
-            "skausmas stiprėja arba po kelių dienų nemažėja;",
-            "po savaitės nėra aiškaus pagerėjimo;",
-            "patinsta dantenos, skruostas ar veidas;",
-            "ant dantenų atsiranda pūlinukas;",
-            "juntamas nemalonus skonis ar pastebima pūlių;",
-            "pakyla temperatūra arba blogėja bendra savijauta;",
-            "gydytas dantis pirmas susiliečia sukandus;",
-            "visiškai iškrenta laikina plomba ar vainikėlis;",
-            "po pagerėjimo grįžta iki gydymo buvę simptomai."
-          ] },
-          { type: "p", text: "Greitai didėjantis veido ar kaklo patinimas, pasunkėjęs rijimas arba kvėpavimas reikalauja skubios medicininės pagalbos." },
-          { type: "p", text: "Užsitęsęs skausmas nebūtinai reiškia, kad dantį reikės pašalinti. Kartais pakanka pakoreguoti per aukštą restauraciją. Kitais atvejais gali reikėti įvertinti danties įskilimą, kanalų anatomiją, uždegimą aplink šaknį ar restauracijos sandarumą." },
-          { type: "p", text: "Jei infekcija išlieka arba po kurio laiko atsinaujina, gali būti rekomenduojamas pakartotinis kanalų gydymas. Tačiau pirmomis dienomis jaučiamas ir palaipsniui silpnėjantis jautrumas savaime nėra pergydymo požymis." }
-        ]
-      }
-    ],
-    faq: [
-      { q: "Ar normalu, jei po kanalų valymo skauda sukandus?", a: "Nestiprus ir palaipsniui mažėjantis jautrumas pirmomis dienomis gali būti normalus. Jei dantis atrodo aukštesnis už kitus, skausmas stiprus arba nemažėja, reikėtų kreiptis į odontologą." },
-      { q: "Kiek laiko skauda dantį po kanalų valymo?", a: "Dažniausiai ryškiausias jautrumas juntamas pirmąsias 2–3 dienas. Per savaitę jis turėtų pastebimai sumažėti. Jei pagerėjimo nėra, rekomenduojama gydytojo apžiūra." },
-      { q: "Ar gali skaudėti dantį tarp kanalų gydymo vizitų?", a: "Taip, nestiprus jautrumas galimas ir po pirmojo gydymo etapo. Svarbu saugoti laikiną plombą, laikytis rekomendacijų ir nepraleisti kito vizito." },
-      { q: "Ar skausmas reiškia, kad kanalų gydymas nepavyko?", a: "Nebūtinai. Pirmomis dienomis jautrumą gali sukelti aplink šaknį esančių audinių reakcija. Apie problemą labiau signalizuoja stiprėjantis skausmas, patinimas, pagerėjimo nebuvimas ar simptomų sugrįžimas." }
-    ],
-    sources: [
-      { label: "Root Canal Explained", url: "https://www.aae.org/patients/root-canal-treatment/what-is-a-root-canal/root-canal-explained/" },
-      { label: "Root Canal Post Treatment Care", url: "https://www.aae.org/patients/your-office-visit/post-treatment-care/" },
-      { label: "Pain Prevalence and Severity Before, During, and After Root Canal Treatment: A Systematic Review", url: "https://pubmed.ncbi.nlm.nih.gov/21419285/" },
-      { label: "The Effect of Antibiotic Use on Endodontic Post-Operative Pain and Flare-Up Rate: A Systematic Review With Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35165442/" }
-    ]
+    readTime: 9
   },
   {
     slug: "ka-daryti-kai-vaikui-skauda-danti",
     title: "Ką daryti, kai vaikui skauda dantį?",
+    excerpt: "Kai vaikui skauda dantį, tėvams būna sunku suprasti, kas nutiko ir kaip greitai kreiptis pagalbos. Ką daryti iki vizito pas odontologą ir kada reikia skubios pagalbos?",
     date: "2026-07-03",
     category: "Vaikų odontologija",
     coverImage: "/blog/vaikui-skauda-danti.jpg",
-    readTime: 9,
-    sections: [
-      {
-        p: [
-          "Kai vaikui skauda dantį, tėvams gali būti sunku suprasti, kas nutiko ir kaip greitai reikia kreiptis pagalbos. Mažesnis vaikas ne visada geba tiksliai parodyti skaudamą vietą, todėl apie problemą gali išduoti nenoras valgyti, prastas miegas, irzlumas ar vienos burnos pusės saugojimas.",
-          "Dažna vaikų dantų skausmo priežastis yra ėduonis, tačiau nemalonius pojūčius gali sukelti ir danties trauma, dantenų uždegimas, tarp dantų įstrigęs maistas, dygstantis dantis ar burnos gleivinės pažeidimas. Negydomas ėduonis gali progresuoti, sukelti skausmą, infekciją ir trukdyti vaikui valgyti ar miegoti.",
-          "Jei vaikui skauda dantį, namuose galima tik laikinai palengvinti savijautą. Skausmo priežastį turi nustatyti odontologas. Vizito nereikėtų atidėti vien todėl, kad skauda pieninį dantį – laiku suteikta pagalba padeda išvengti sudėtingesnio gydymo."
-        ]
-      },
-      {
-        h: "Kodėl vaikui gali skaudėti dantį?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Dantų ėduonis vystosi, kai apnašose esančios bakterijos skaido su maistu ir gėrimais gaunamus cukrus. Susidariusios rūgštys palaipsniui pažeidžia danties emalį ir gilesnius audinius. Riziką didina dažnas saldžių užkandžių bei gėrimų vartojimas, nepakankamas apnašų pašalinimas ir per mažas fluoridų poveikis." },
-          { type: "p", text: "Pradinis ėduonis gali nesukelti jokių pojūčių. Pažeidimui gilėjant dantis gali tapti jautrus saldžiam, šaltam ar karštam maistui. Vėliau skausmas gali atsirasti savaime, sustiprėti vakare arba pažadinti vaiką naktį." },
-          { type: "p", text: "Jei 3 metų vaikui jau sugedę keli dantys, vizito pas odontologą nereikėtų atidėti. Ankstyvosios vaikystės ėduonis gali prasidėti vos išdygus pirmiesiems pieniniams dantims ir progresuoti gana nepastebimai. Laiku įvertinus burnos būklę galima sustabdyti tolesnį pažeidimų gilėjimą ir sudaryti vaikui tinkamą gydymo bei profilaktikos planą." },
-          { type: "p", text: "Tačiau vaikas žodžiais „skauda dantį“ gali apibūdinti ir kitą burnos problemą. Nemalonius pojūčius taip pat gali sukelti:" },
-          { type: "ul", items: [
-            "tarp dantų įstrigęs maistas;",
-            "paraudusios ar patinusios dantenos;",
-            "afta arba kita gleivinės žaizdelė;",
-            "įkąstas skruostas ar liežuvis;",
-            "nuskilęs arba po traumos pažeistas dantis;",
-            "dygstantis ar klibantis dantis;",
-            "danties šaknies srities infekcija."
-          ] },
-          { type: "p", text: "Tikslią priežastį galima nustatyti tik apžiūrėjus vaiką. Prireikus odontologas atlieka radiologinį tyrimą, kad įvertintų tarpdančius, danties šaknis ir aplinkinius audinius." }
-        ]
-      },
-      {
-        h: "Kaip suprasti, kuris dantis vaikui skauda?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Vyresnis vaikas dažniausiai gali parodyti skaudamą vietą, tačiau jo nurodytas dantis ne visada yra tikrasis skausmo šaltinis. Skausmas gali būti juntamas ir gretimuose dantyse, žandikaulyje ar ausies srityje." },
-          { type: "p", text: "Ramiai paklauskite vaiko:" },
-          { type: "ul", items: [
-            "kurioje vietoje skauda labiausiai;",
-            "ar skauda nuolat, ar tik valgant;",
-            "ar skausmą sukelia šaltas, šiltas arba saldus maistas;",
-            "ar skauda sukandus;",
-            "ar skausmas trukdo miegoti;",
-            "ar vaikas neseniai nebuvo susitrenkęs."
-          ] },
-          { type: "p", text: "Mažesniam vaikui skausmo stiprumą galima padėti įvertinti naudojant paprastą veidukų skalę." },
-          { type: "p", text: "Prieš apžiūrėdami burną nusiplaukite rankas ir pasirinkite gerai apšviestą vietą. Patikrinkite, ar nematyti danties patamsėjimo, ertmės, nuskilusio danties, įstrigusio maisto, paraudusių dantenų, pūlinuko, gleivinės žaizdelės ar veido patinimo." },
-          { type: "p", text: "Nespauskite skaudamo danties ar dantenų ir nebandykite patys nustatyti diagnozės. Net jei aiškaus pažeidimo nematyti, ėduonis gali būti tarp dantų, o infekcija – danties viduje ar šaknies srityje." }
-        ]
-      },
-      {
-        h: "Ką daryti iki vizito pas odontologą?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Kai vaikui skauda dantį, ką daryti pirmiausia, priklauso nuo jo savijautos ir papildomų simptomų. Susisiekite su odontologijos klinika ir pasakykite, kiek laiko skauda, ar yra patinimas, karščiavimas, trauma ir ar skausmas trukdo vaikui valgyti arba miegoti." },
-          { type: "p", text: "Iki vizito rekomenduojama:" },
-          { type: "ol", items: [
-            "Atsargiai išvalyti dantis. Naudokite minkštą šepetėlį, tačiau visiškai neatsisakykite burnos higienos.",
-            "Patikrinti tarpdančius. Jei vaikas leidžia, dantų siūlu atsargiai pašalinkite įstrigusį maistą.",
-            "Rinktis švelnų maistą. Duokite minkšto, nekaršto maisto ir vandens.",
-            "Vengti dirgiklių. Nesiūlykite labai šaltų, karštų, saldžių ar kietų produktų.",
-            "Prireikus malšinti skausmą. Vaistą vaikui galima skirti tik pagal jo amžių, svorį, preparato instrukciją arba gydytojo nurodymą.",
-            "Stebėti būklę. Atkreipkite dėmesį, ar neatsiranda patinimo, karščiavimo, pūliavimo ar vangumo."
-          ] },
-          { type: "p", text: "Vaikams negalima duoti aspirino. Skausmą malšinančių tablečių, alkoholio, eterinių aliejų ar kitų medžiagų negalima dėti tiesiai ant danties ar dantenų, nes jos gali pažeisti burnos gleivinę." },
-          { type: "p", text: "Antibiotikų negalima pradėti vartoti savarankiškai. Jie neišgydo ėduonies ir nepakeičia odontologinio gydymo. Net jei skausmas sumažėjo, vizito atšaukti nereikėtų – laikinas pagerėjimas nereiškia, kad dantis pasveiko." }
-        ]
-      },
-      {
-        h: "Kada vaiko danties skausmas reikalauja skubios pagalbos?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Kuo greičiau kreipkitės į odontologą, jei skausmas stiprus, nepraeina, pažadina vaiką naktį ar trukdo valgyti. Skubiau įvertinti vaiką reikia ir tuomet, kai atsiranda dantenų, skruosto ar žandikaulio patinimas, karščiavimas, pūlių, blogas skonis burnoje arba skausmas sukandus. Vaikų odontologinėms skubioms būklėms priskiriamas skausmas, infekcija, veido patinimas, nekontroliuojamas kraujavimas ir burnos ar veido trauma." },
-          { type: "p", text: "Nedelsiant reikia medicininės pagalbos, jei:" },
-          { type: "ul", items: [
-            "patinimas greitai didėja ar plinta;",
-            "tinsta sritis aplink akį arba kaklą;",
-            "vaikui sunku ryti, kalbėti ar kvėpuoti;",
-            "vaikas tampa vangus, o jo būklė ryškiai blogėja;",
-            "po traumos gausiai kraujuoja;",
-            "įtariamas žandikaulio ar kitas rimtas sužalojimas."
-          ] },
-          { type: "p", text: "Veido ar kaklo patinimas kartu su apsunkintu rijimu ar kvėpavimu gali rodyti plintančią infekciją. Tokiu atveju nereikėtų laukti planinio vizito." }
-        ]
-      },
-      {
-        h: "Ar būtina gydyti sugedusius pieninius dantis?",
-        p: [
-          "Pieniniai dantys padeda vaikui kramtyti, kalbėti ir išlaikyti vietą nuolatiniams dantims. Negydomas jų ėduonis gali sukelti skausmą, infekciją, apsunkinti valgymą ir sutrikdyti miegą. Odontologinis gydymas vaikams laikomas būtinu siekiant pašalinti burnos ligą, infekciją ir skausmą bei atkurti dantų funkciją.",
-          "Gydymo būdas priklauso nuo pažeidimo gylio, danties būklės, vaiko amžiaus ir gebėjimo bendradarbiauti. Ankstyvą pažeidimą kartais galima stabdyti profilaktinėmis ar minimaliai invazinėmis priemonėmis. Susidariusi ertmė gali būti plombuojama, o stipriai pažeistam dančiui gali reikėti pulpos gydymo, vainikėlio arba pašalinimo.",
-          "Jei vaikui skauda dantį arba pastebėjote pakitusį pieninį dantį, registruokitės konsultacijai Bangų klinikoje Klaipėdoje. Mūsų specialistai įvertins vaiko burnos būklę, paaiškins gydymo galimybes ir padės pasirinkti jo amžiui tinkamą sprendimą."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Vaikui skauda dantį – ką daryti, jei pas odontologą pateksime tik po kelių dienų?", a: "Susisiekite su klinika ir apibūdinkite simptomus, nes gali reikėti ankstesnio vizito. Iki konsultacijos palaikykite burnos higieną, venkite temperatūrinių dirgiklių ir prireikus skirkite vaikui tinkamą skausmą malšinantį vaistą pagal preparato instrukciją. Atsiradus patinimui, karščiavimui ar blogėjant savijautai, pagalbos reikia greičiau." },
-      { q: "Ar danties skausmas gali praeiti savaime?", a: "Skausmas gali laikinai susilpnėti, tačiau tai nereiškia, kad priežastis išnyko. Skaudantį arba pažeistą dantį vis tiek turi apžiūrėti odontologas." },
-      { q: "Ką daryti, jei 3 metų vaikui sugedę keli dantys?", a: "Registruokite vaiką odontologo apžiūrai. Gydytojas įvertins pažeidimų gylį, vaiko ėduonies riziką ir sudarys gydymo bei profilaktikos planą." },
-      { q: "Ar galima skaudantį pieninį dantį iš karto pašalinti?", a: "Šalinimas nėra automatinis sprendimas. Jei dantį galima patikimai išgydyti ir išsaugoti, tai dažnai yra naudinga. Gydymas parenkamas pagal danties būklę, vaiko amžių ir nuolatinio danties vystymąsi." }
-    ],
-    sources: [
-      { label: "Policy on Early Childhood Caries: Consequences and Preventive Strategies", url: "https://www.aapd.org/research/oral-health-policies--recommendations/early-childhood-caries-classifications-consequences-and-preventive-strategies/" },
-      { label: "Policy on Early Childhood Caries: Unique Challenges and Management Considerations", url: "https://www.aapd.org/research/oral-health-policies--recommendations/early-childhood-caries-unique-challenges-and-treatment-options/" },
-      { label: "Policy on Emergency Oral Care", url: "https://www.aapd.org/research/oral-health-policies--recommendations/emergency-oral-care-for-infants-children-adolescents-and-individuals-with-special-health-care-needs/" },
-      { label: "Ending Childhood Dental Caries: WHO Implementation Manual", url: "https://www.who.int/publications/i/item/9789240000056" }
-    ]
+    readTime: 9
   },
   {
     slug: "kokie-yra-danties-implanto-atmetimo-pozymiai",
     title: "Kokie yra danties implanto atmetimo požymiai?",
+    excerpt: "Dantų implantai dažniausiai prigyja sėkmingai, tačiau komplikacijų pasitaiko. Kaip atskirti normalų gijimą nuo požymių, rodančių uždegimą ar implanto neprigijimą?",
     date: "2026-06-10",
     category: "Dantų implantacija",
     coverImage: "https://images.unsplash.com/photo-1664529845843-b4192b8246fa?w=1200&q=80&fit=crop&auto=format",
-    readTime: 7,
-    sections: [
-      {
-        p: [
-          "Dantų implantai dažniausiai sėkmingai prigyja ir tampa patikimu sprendimu netekus danties. Vis dėlto, kaip ir po bet kurios chirurginės procedūros, komplikacijų po dantų implantavimo pasitaikyti gali. Pacientai dažnai tai vadina „implanto atmetimu“, tačiau dažniausiai kalbama ne apie tikrą alerginę reakciją, o apie implanto neprigijimą, uždegimą, infekciją ar aplinkinių audinių problemas.",
-          "Svarbiausia – mokėti atskirti normalią gijimo eigą nuo simptomų, kurių nereikėtų ignoruoti. Nedidelis maudimas ar patinimas pirmomis dienomis gali būti įprastas, tačiau stiprėjantis skausmas, pūliavimas, blogas kvapas, karščiavimas ar implanto judėjimas yra ženklai, kad reikia kreiptis į gydytoją. Kuo anksčiau įvertinama situacija, tuo didesnė tikimybė išvengti rimtesnių komplikacijų."
-        ]
-      },
-      {
-        h: "Normalūs pojūčiai po implantacijos ir pavojingi simptomai",
-        p: [
-          "Po implantacijos organizmui reikia laiko gyti, todėl tam tikri pojūčiai pirmomis dienomis yra normalūs. Gali būti jaučiamas lengvas maudimas, tempimas, jautrumas ar nedidelis patinimas aplink operuotą vietą. Pirmomis valandomis galimas ir nežymus kraujavimas. Įprastai šie simptomai turėtų palaipsniui mažėti.",
-          "Sunerimti reikėtų tada, jei savijauta ne gerėja, o blogėja. Pavojingi požymiai yra stiprėjantis skausmas, didėjantis patinimas, pūliavimas, blogas kvapas ar nemalonus skonis burnoje, karščiavimas, kraujavimas, kuris nesustoja, arba jausmas, kad implantas juda. Tokie simptomai gali rodyti infekciją, uždegimą ar kitą komplikaciją.",
-          "Svarbu vertinti ne tik patį simptomą, bet ir jo eigą. Jei po kelių dienų maudimas mažėja, tai dažniausiai atitinka įprastą gijimą. Jei skausmas stiprėja, atsiranda naujų simptomų ar bendra savijauta blogėja, reikėtų susisiekti su implantavusiu gydytoju."
-        ]
-      },
-      {
-        h: "Dažniausi danties implanto atmetimo arba neprigijimo požymiai",
-        p: [
-          "Vienas svarbiausių požymių, kad implantas gali neprigyti arba vystosi komplikacija, yra skausmas, kuris ne mažėja, o stiprėja. Pirmomis dienomis po implantacijos maudimas gali būti normalus, tačiau stiprus, pulsuojantis ar ilgai nepraeinantis skausmas turėtų būti įvertintas gydytojo.",
-          "Kitas nerimą keliantis simptomas – didėjantis patinimas. Nedidelis patinimas po procedūros yra įprastas, tačiau jei jis po kelių dienų stiprėja, plinta į veidą ar kartu atsiranda temperatūra, tai gali rodyti uždegimą ar infekciją. Dantenos aplink implantą taip pat gali parausti, tapti jautrios, kraujuoti ar pūliuoti.",
-          "Blogas kvapas, nemalonus skonis burnoje ar pūliai aplink implantą yra požymiai, kurių nereikėtų ignoruoti. Jie gali būti susiję su bakterine infekcija arba uždegimu aplink implantą. Taip pat labai svarbus simptomas yra implanto, gijimo galvutės ar laikino protezo judėjimas. Implantas turi būti stabilus, todėl bet koks judėjimo pojūtis turėtų būti kuo greičiau įvertintas.",
-          "Vėlesniu laikotarpiu apie problemą gali įspėti dantenų atsitraukimas, matomas implanto sriegis, skausmas kandant ar spaudžiant. Tokiais atvejais būtina odontologo apžiūra, nes laiku pastebėtas problemas dažnai galima suvaldyti greičiau."
-        ]
-      },
-      {
-        h: "Danties implanto uždegimas: kaip jis pasireiškia?",
-        image: "/implanto-uzdegimas.webp",
-        p: [
-          "Danties implanto uždegimas gali pažeisti dantenas ir audinius aplink implantą. Iš pradžių simptomai kartais būna nestiprūs, todėl pacientas gali manyti, kad tai tik įprastas jautrumas po procedūros. Tačiau uždegimas aplink implantą neturėtų būti ignoruojamas, nes laiku negydomas jis gali progresuoti.",
-          "Ankstyvi uždegimo požymiai gali būti paraudusios, patinusios ar jautrios dantenos aplink implantą. Valant dantis ar liečiant dantenas gali atsirasti kraujavimas. Kartais jaučiamas spaudimas, maudimas arba skausmas kandant. Jei atsiranda pūliavimas, blogas kvapas ar nemalonus skonis burnoje, tai gali rodyti aktyvesnį uždegimą ar infekciją.",
-          "Pažengęs uždegimas gali paveikti ne tik dantenas, bet ir kaulą aplink implantą. Tokiu atveju gali atsirasti dantenų atsitraukimas, matomas implanto paviršius ar net implanto judėjimas. Danties implanto uždegimą turi įvertinti gydytojas – savarankiškas gydymas ar antibiotikų vartojimas be paskyrimo problemos neišsprendžia."
-        ]
-      },
-      {
-        h: "Kodėl gali kilti komplikacijos po dantų implantavimo?",
-        p: [
-          "Komplikacijos po dantų implantavimo gali atsirasti dėl skirtingų priežasčių. Kartais jos susijusios su individualia paciento gijimo reakcija, bendra sveikatos būkle ar kaulo kokybe, o kartais – su priežiūra po procedūros. Svarbu suprasti, kad komplikacijos nebūtinai reiškia paciento ar gydytojo klaidą, tačiau jas būtina laiku pastebėti.",
-          "Viena dažniausių rizikos priežasčių yra nepakankama burnos higiena. Jei aplink implantą kaupiasi apnašos ir bakterijos, didėja dantenų uždegimo rizika. Rūkymas taip pat gali bloginti audinių kraujotaką, lėtinti gijimą ir didinti komplikacijų tikimybę. Riziką gali didinti ir nekontroliuojamos bendros ligos, per ankstyvas implanto apkrovimas ar neatvykimas į kontrolinius vizitus.",
-          "Kartais įtakos turi dantų griežimas, stiprus sukandimas ar per didelė kramtymo apkrova. Todėl po implantacijos svarbu laikytis gydytojo rekomendacijų, reguliariai tikrintis ir pranešti apie bet kokius neįprastus pojūčius."
-        ]
-      },
-      {
-        h: "Kada simptomai gali atsirasti?",
-        p: [
-          "Galimi implanto neprigijimo ar uždegimo simptomai gali atsirasti skirtingu metu. Ankstyvos komplikacijos dažniausiai pasireiškia pirmomis dienomis ar savaitėmis po implantacijos. Jos gali būti susijusios su gijimu, infekcija, kraujavimu, stiprėjančiu skausmu, didėjančiu patinimu ar operuotos vietos dirginimu.",
-          "Vėlyvos komplikacijos gali atsirasti po kelių mėnesių ar net metų. Dažniausiai jos susijusios su uždegimu aplink implantą, nepakankama burnos higiena, rūkymu, per didele apkrova, protezavimo problemomis ar reguliarių patikrų trūkumu. Tokiais atvejais pacientas gali pastebėti kraujavimą valant, nemalonų skonį, dantenų atsitraukimą, skausmą kandant ar implanto judėjimą.",
-          "Dėl šios priežasties svarbios ne tik pirmosios dienos po implantacijos, bet ir ilgalaikė implantų priežiūra. Net jei implantas ilgą laiką nekėlė problemų, bet atsirado naujų simptomų, reikėtų kreiptis į odontologą."
-        ]
-      },
-      {
-        h: "Ką daryti pastebėjus galimus implanto atmetimo požymius?",
-        p: [
-          "Jei pastebėjote simptomus, kurie gali rodyti implanto neprigijimą ar uždegimą, svarbiausia nedelsti ir susisiekti su implantavusiu gydytoju. Nereikėtų laukti, kol skausmas ar patinimas praeis savaime, ypač jei simptomai stiprėja arba atsiranda pūliavimas, blogas kvapas, karščiavimas ar implanto judėjimas.",
-          "Kol laukiate vizito, nejudinkite implanto, nespauskite dantenų ir nekrapštykite operuotos vietos. Burnos higieną palaikykite atsargiai – valykite švelniai, nepažeisdami sudirgusių audinių. Nevartokite antibiotikų ar kitų vaistų savarankiškai, jei jų nepaskyrė gydytojas.",
-          "Vizito metu gydytojas įvertins dantenas, implanto stabilumą, aplinkinius audinius ir, jei reikės, atliks rentgeno tyrimą. Gydymas priklauso nuo problemos priežasties: kartais pakanka uždegimo kontrolės ir higienos korekcijos, o kartais reikalingas sudėtingesnis gydymas.",
-          ""
-        ]
-      },
-      {
-        h: "Ar galima išvengti implanto komplikacijų?",
-        image: "https://images.unsplash.com/photo-1593022356769-11f762e25ed9?w=1200&q=80&fit=crop&auto=format",
-        p: [
-          "Ne visų komplikacijų galima visiškai išvengti, tačiau riziką galima gerokai sumažinti. Pirmiausia svarbu laikytis gydytojo rekomendacijų po implantacijos: saugoti operuotą vietą, nevarginti jos per anksti, vartoti paskirtus vaistus ir atvykti į kontrolinius vizitus.",
-          "Labai svarbi kasdienė burnos higiena. Aplink implantą, kaip ir aplink natūralius dantis, gali kauptis apnašos ir bakterijos, todėl dantis reikia valyti kruopščiai, bet neagresyviai. Gydytojas ar burnos higienistas gali rekomenduoti tinkamas priemones implantų priežiūrai.",
-          "Rūkymas, prasta higiena, nekontroliuojamos ligos, dantų griežimas ir praleistos patikros gali didinti komplikacijų riziką. Todėl verta iš anksto informuoti gydytoją apie savo sveikatos būklę, vartojamus vaistus ir įpročius. Reguliari profesionali burnos higiena ir profilaktinės apžiūros padeda laiku pastebėti pokyčius aplink implantą."
-        ]
-      },
-      {
-        h: "Danties implanto atmetimo požymių nereikėtų ignoruoti",
-        p: [
-          "Ne kiekvienas skausmas ar maudimas po implantacijos reiškia, kad implantas neprigijo. Pirmomis dienomis lengvas jautrumas, patinimas ar diskomfortas gali būti normali gijimo dalis. Vis dėlto svarbu stebėti, ar simptomai palaipsniui mažėja.",
-          "Pavojingi požymiai yra stiprėjantis skausmas, didėjantis patinimas, pūliavimas, blogas kvapas, nemalonus skonis, karščiavimas, kraujavimas ar implanto judėjimas. Tokiais atvejais reikėtų kuo greičiau kreiptis į gydytoją. Laiku įvertinus situaciją, dalį komplikacijų galima suvaldyti ir apsaugoti implantą bei aplinkinius audinius.",
-          "Jei įtariate danties implanto uždegimą ar pastebite neįprastus simptomus po implantacijos, registruokitės konsultacijai Bangų klinikoje Klaipėdoje."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Kokie yra danties implanto atmetimo požymiai?", a: "Dažniausi požymiai yra stiprėjantis skausmas, didėjantis patinimas, pūliavimas, blogas kvapas, nemalonus skonis burnoje, karščiavimas, nesustojantis kraujavimas ir implanto judėjimas." },
-      { q: "Ar skausmas po implantacijos reiškia, kad implantas neprigijo?", a: "Ne visada. Nedidelis maudimas ar jautrumas pirmomis dienomis po implantacijos gali būti normalus. Nerimą kelia skausmas, kuris stiprėja, nepraeina arba atsiranda kartu su kitais simptomais." },
-      { q: "Kaip pasireiškia danties implanto uždegimas?", a: "Danties implanto uždegimas gali pasireikšti paraudusiomis, patinusiomis ar kraujuojančiomis dantenomis, jautrumu, pūliavimu, blogu kvapu, nemaloniu skoniu burnoje, skausmu kandant ar implanto judėjimu." },
-      { q: "Kada po implantacijos reikia kreiptis į gydytoją?", a: "Į gydytoją reikėtų kreiptis, jei skausmas stiprėja, patinimas didėja, atsiranda pūliavimas, karščiavimas, blogas kvapas, kraujavimas ar implantas, gijimo galvutė arba laikinas protezas juda." },
-      { q: "Ar danties implanto uždegimą galima gydyti namuose?", a: "Ne. Namuose galima palaikyti švelnią burnos higieną, tačiau uždegimą aplink implantą turi įvertinti gydytojas. Savarankiškas antibiotikų vartojimas ar gydymas be apžiūros gali pabloginti situaciją." },
-      { q: "Ar galima išvengti komplikacijų po dantų implantavimo?", a: "Riziką galima sumažinti laikantis gydytojo rekomendacijų, palaikant gerą burnos higieną, nerūkant, vengiant per ankstyvos apkrovos ir reguliariai lankantis kontroliniuose vizituose." }
-    ],
-    sources: [
-      { label: "Peri-implant diseases and conditions: Consensus report of Workgroup 4 of the 2017 World Workshop on the Classification of Periodontal and Peri-Implant Diseases and Conditions", url: "https://pubmed.ncbi.nlm.nih.gov/29926491/" },
-      { label: "Smoking and Dental Implants: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35056347/" },
-      { label: "A Retrospective Analysis of Biological Complications of Dental Implants", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9391181/" }
-    ]
+    readTime: 7
   },
   {
     slug: "ka-reikia-zinoti-po-danties-implantacijos",
     title: "Ką reikia žinoti po danties implantacijos?",
+    excerpt: "Danties implantacija – chirurginė procedūra, todėl organizmui reikia laiko sugyti. Kaip prižiūrėti implantą pirmosiomis dienomis ir ilguoju laikotarpiu?",
     date: "2026-06-03",
     category: "Dantų implantacija",
     coverImage: "https://images.unsplash.com/photo-1609918438269-9a4c5f8fe3a4?w=1200&q=80&fit=crop&auto=format",
-    readTime: 8,
-    sections: [
-      {
-        p: [
-          "Danties implantacija – tai chirurginė procedūra, todėl po jos organizmui reikia laiko gyti. Nors pati implantacija atliekama kontroliuojamomis sąlygomis, galutiniam rezultatui labai svarbu ir tai, kaip pacientas elgiasi po procedūros. Tinkama priežiūra pirmosiomis dienomis padeda sumažinti komplikacijų riziką, palengvina gijimą ir sudaro geresnes sąlygas implantui prigyti.",
-          "Po danties implantavimo svarbu laikytis gydytojo rekomendacijų, saugoti operuotą vietą ir stebėti savo savijautą. Nedidelis maudimas, patinimas ar jautrumas gali būti normali gijimo dalis, tačiau simptomai turėtų palaipsniui mažėti. Jei skausmas stiprėja, atsiranda pūliavimas, karščiavimas ar didėjantis patinimas, būtina kreiptis į gydytoją."
-        ]
-      },
-      {
-        h: "Kokia savijauta po danties implantavimo yra normali?",
-        p: [
-          "Savijauta po danties implantavimo gali skirtis priklausomai nuo procedūros sudėtingumo, implanto vietos, paciento sveikatos būklės ir to, ar buvo atliktos papildomos procedūros, pavyzdžiui, kaulo priauginimas. Vis dėlto tam tikri pojūčiai po implantacijos yra įprasti ir dažniausiai neturėtų kelti nerimo.",
-          "Pirmomis dienomis galite jausti maudimą, tempimą ar jautrumą operuotoje vietoje. Taip pat gali atsirasti nedidelis patinimas, dantenų jautrumas ar sunkesnis kramtymas ta puse, kurioje buvo įsuktas implantas. Pirmomis valandomis po procedūros galimas nežymus kraujavimas. Kai kuriems pacientams po chirurginės procedūros jaučiamas lengvas nuovargis.",
-          "Svarbiausia stebėti, ar savijauta gerėja. Normalu, jei diskomfortas palaipsniui mažėja, o patinimas po kelių dienų pradeda slūgti. Tačiau jei skausmas stiprėja, patinimas didėja, atsiranda blogas kvapas, nemalonus skonis burnoje, pūliavimas ar temperatūra, reikėtų nedelsti ir susisiekti su gydytoju."
-        ]
-      },
-      {
-        h: "Pirmosios valandos po danties implantavimo",
-        p: [
-          "Pirmosios valandos po danties implantavimo yra ypač svarbios, nes tuo metu pradeda formuotis pirminis gijimo procesas. Jei gydytojas uždėjo tamponą, jį reikėtų laikyti tiek laiko, kiek buvo nurodyta. Nereikėtų jo keisti be reikalo ar nuolat tikrinti žaizdos, nes taip galima sudirginti operuotą vietą",
-          "Kol veikia nejautra, geriau nevalgyti. Aptirpusi burnos sritis gali lemti, kad netyčia įsikąsite į skruostą, lūpą ar liežuvį. Pirmąją dieną venkite karšto maisto ir gėrimų, intensyvaus burnos skalavimo, spjaudymo ir gėrimo per šiaudelį. Šie veiksmai gali sutrikdyti kraujo krešulio susidarymą ir sulėtinti gijimą",
-          "Operuotos vietos nelieskite liežuviu, pirštais ar daiktais. Po procedūros rekomenduojama ilsėtis ir vengti intensyvaus fizinio krūvio. Jei gydytojas paskyrė vaistus ar pateikė individualias rekomendacijas, jų reikėtų laikytis tiksliai taip, kaip nurodyta."
-        ]
-      },
-      {
-        h: "Gijimas po dantų implantacijos: ko tikėtis?",
-        p: [
-          "Gijimas po dantų implantacijos vyksta etapais. Pirmiausia gyja dantenos ir minkštieji audiniai aplink implantą. Pirmomis dienomis gali būti jaučiamas maudimas, jautrumas ar tempimas, o patinimas dažniausiai būna ryškiausias antrą ar trečią dieną po procedūros. Vėliau šie pojūčiai turėtų palaipsniui mažėti.",
-          "Svarbu suprasti, kad iš išorės dantenos gali atrodyti sugijusios gana greitai, tačiau pats implantas dar turi integruotis į kaulą. Šis procesas vadinamas osteointegracija ir trunka ilgiau nei pirminis minkštųjų audinių gijimas. Todėl net jei skausmo nebėra, nereikėtų savarankiškai apkrauti implanto ar praleisti kontrolinių vizitų.",
-          "Gijimo trukmė priklauso nuo daugelio veiksnių: paciento sveikatos būklės, kaulo kokybės, implanto vietos, implantų skaičiaus, burnos higienos ir to, ar buvo atliktos papildomos procedūros, pavyzdžiui, kaulo priauginimas. Gydytojas įvertina gijimo eigą kontrolinių vizitų metu ir nusprendžia, kada galima pereiti prie tolimesnio protezavimo etapo."
-        ]
-      },
-      {
-        h: "Kaip prižiūrėti burną po implantacijos?",
-        p: [
-          "Po implantacijos burnos higiena turi būti atsargi, bet nuosekli. Pirmąją dieną nerekomenduojama intensyviai skalauti burnos, nes stiprus skalavimas gali sutrikdyti žaizdos gijimą. Tačiau tai nereiškia, kad burnos švaros galima nepaisyti. Dantis reikia valyti, tik operuotą vietą pirmomis dienomis saugoti nuo tiesioginio dirginimo.",
-          "Valykite dantis švelniai, naudodami minkštą dantų šepetėlį. Venkite stipriai spausti šepetėliu operuotą vietą, nekrapštykite žaizdos ir nelieskite jos pirštais ar liežuviu. Jei gydytojas paskyrė specialų skalavimo skystį ar kitas priemones, jas naudokite tiksliai taip, kaip nurodyta.",
-          "Švara yra svarbi, nes apnašos ir bakterijos gali didinti uždegimo riziką. Vėliau, kai audiniai sugis, implantą reikės prižiūrėti taip pat atsakingai kaip ir natūralius dantis. Reguliari burnos higiena ir profilaktiniai vizitai padeda palaikyti gerą implanto bei aplinkinių audinių būklę."
-        ]
-      },
-      {
-        h: "Ką galima valgyti po danties implantavimo?",
-        p: [
-          "Po danties implantavimo pirmomis valandomis geriausia nevalgyti, kol visiškai nepraeina nejautra. Jei valgysite, kol burna aptirpusi, galite netyčia įsikąsti į lūpą, skruostą ar liežuvį. Kai nejautra praeina, rinkitės minkštą, nekarštą maistą, kuris nedirgina operuotos vietos.",
-          "Pirmomis dienomis tinka košės, jogurtas, sriubos, minkšti troškiniai, trintas ar lengvai kramtomas maistas. Reikėtų vengti kieto, traškaus, aštraus, labai karšto ar lipnaus maisto. Taip pat geriau vengti sėklų, riešutų, trupinių ir kitų smulkių produktų, kurie gali patekti į žaizdos vietą.",
-          "Kramtykite kita burnos puse ir stenkitės neapkrauti implanto srities. Gerkite pakankamai vandens, tačiau pirmąją parą venkite gerti per šiaudelį. Alkoholio taip pat reikėtų vengti, ypač jei vartojate gydytojo paskirtus vaistus. Mityba po procedūros turėtų padėti gijimui, o ne papildomai dirginti operuotą vietą."
-        ]
-      },
-      {
-        h: "Ko negalima daryti po danties implantacijos?",
-        image: "https://images.unsplash.com/photo-1468493858157-0da44aaf1d13?w=1200&q=80&fit=crop&auto=format",
-        p: [
-          "Po danties implantacijos svarbu vengti veiksmų, kurie gali sutrikdyti gijimą arba padidinti komplikacijų riziką. Pirmąją parą nereikėtų intensyviai skalauti burnos, spjaudyti ar gerti per šiaudelį. Tokie veiksmai gali trikdyti kraujo krešulio formavimąsi ir dirginti operuotą vietą.",
-          "Pirmomis dienomis nerekomenduojama rūkyti ir vartoti alkoholio. Rūkymas blogina audinių kraujotaką, lėtina gijimą ir gali didinti uždegimo riziką. Alkoholio reikėtų vengti ypač tada, jei vartojate gydytojo paskirtus vaistus. Taip pat nešildykite operuotos vietos, nes šiluma gali paskatinti patinimą ar kraujavimą.",
-          "Venkite intensyvaus sporto, sunkaus fizinio krūvio ir pirties pirmomis dienomis po procedūros. Nekrapštykite žaizdos, nelieskite jos pirštais ar liežuviu, nebandykite savarankiškai vertinti implanto vietos. Taip pat nepraleiskite kontrolinių vizitų – jie svarbūs norint įsitikinti, kad gijimas po dantų implantacijos vyksta sklandžiai."
-        ]
-      },
-      {
-        h: "Kada reikėtų sunerimti ir kreiptis į gydytoją?",
-        p: [
-          "Nedidelis maudimas, patinimas ar jautrumas pirmomis dienomis po implantacijos gali būti normalūs. Tačiau simptomai turėtų palaipsniui mažėti. Jei skausmas ne silpnėja, o stiprėja, reikėtų susisiekti su gydytoju. Ypač svarbu kreiptis, jei skausmas tampa pulsuojantis, trukdo miegoti ar nepraeina vartojant gydytojo rekomenduotas priemones.",
-          "Nerimą turėtų kelti didėjantis patinimas po kelių dienų, pūliavimas, nemalonus kvapas ar skonis burnoje, karščiavimas, nesustojantis kraujavimas ar stiprus skausmas kandant. Taip pat būtina kreiptis, jei atrodo, kad implantas, gijimo galvutė ar laikinas protezas juda.",
-          "Jei stipriai tinsta veidas, tampa sunku ryti, kvėpuoti ar atsiranda bendra bloga savijauta, reikalinga skubi medicininė pagalba. Tokiais atvejais nereikėtų laukti kontrolinio vizito – kuo anksčiau gydytojas įvertina situaciją, tuo greičiau galima išvengti rimtesnių komplikacijų"
-        ]
-      },
-      {
-        h: "Kiek laiko trunka gijimas po dantų implantacijos?",
-        p: [
-          "Gijimas po dantų implantacijos vyksta ne vienu metu. Pirmiausia gyja dantenos ir minkštieji audiniai. Pirminis diskomfortas, maudimas ar patinimas dažniausiai pradeda mažėti per kelias dienas. Per pirmąsias savaites operuota vieta gali atrodyti gerokai nurimusi, tačiau tai dar nereiškia, kad visas gijimo procesas baigtas.",
-          "Svarbiausias etapas – implanto suaugimas su kaulu. Šis procesas trunka ilgiau ir dažnai užima kelis mėnesius. Tik tada, kai gydytojas įvertina, kad implantas stabilus ir gijimas vyksta tinkamai, galima pereiti prie tolimesnio protezavimo etapo.",
-          "Tiksli gijimo trukmė priklauso nuo individualios situacijos: kaulo būklės, implantų skaičiaus, paciento sveikatos, burnos higienos, rūkymo, papildomų procedūrų ir gydytojo rekomendacijų laikymosi. Todėl labai svarbu nepraleisti suplanuotų kontrolinių vizitų."
-        ]
-      },
-      {
-        h: "Sėkmingam rezultatui svarbios pirmosios dienos ir ilgalaikė priežiūra",
-        p: [
-          "Po danties implantavimo svarbiausia laikytis gydytojo rekomendacijų, saugoti operuotą vietą ir stebėti savo savijautą. Nedidelis maudimas, patinimas ar jautrumas gali būti normali gijimo dalis, tačiau šie simptomai turėtų palaipsniui mažėti.",
-          "Gijimas po dantų implantacijos vyksta etapais: pirmiausia gyja dantenos, vėliau implantas integruojasi kaule. Tinkama burnos higiena, atsargumas pirmomis dienomis ir reguliarūs kontroliniai vizitai padeda užtikrinti geresnį rezultatą. Jei planuojate danties implantaciją arba turite klausimų po procedūros, registruokitės konsultacijai Bangų klinikoje Klaipėdoje."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Kokia savijauta po danties implantavimo yra normali?", a: "Normalu jausti nedidelį maudimą, jautrumą, tempimą ar patinimą operuotoje vietoje. Pirmomis valandomis gali būti nežymus kraujavimas. Svarbiausia, kad šie simptomai palaipsniui mažėtų." },
-      { q: "Kiek trunka gijimas po dantų implantacijos?", a: "Pirminis diskomfortas dažniausiai sumažėja per kelias dienas, tačiau implanto suaugimas su kaulu trunka ilgiau – dažnai kelis mėnesius. Tiksli trukmė priklauso nuo individualios situacijos." },
-      { q: "Ką galima valgyti po danties implantavimo?", a: "Pirmomis dienomis rekomenduojamas minkštas, nekarštas maistas. Reikėtų vengti kieto, traškaus, aštraus, labai karšto ar smulkių trupinių turinčio maisto, kuris gali dirginti operuotą vietą." },
-      { q: "Ar galima skalauti burną po implantacijos?", a: "Pirmą parą nereikėtų intensyviai skalauti burnos, nes tai gali sutrikdyti gijimą. Vėliau burnos priežiūra atliekama pagal gydytojo rekomendacijas." },
-      { q: "Ar galima rūkyti po danties implantacijos?", a: "Rūkyti nerekomenduojama, nes rūkymas gali lėtinti gijimą, bloginti audinių kraujotaką ir didinti komplikacijų riziką." },
-      { q: "Kada kreiptis į gydytoją po implantacijos?", a: "Į gydytoją reikėtų kreiptis, jei skausmas stiprėja, didėja patinimas, atsiranda pūliavimas, karščiavimas, blogas kvapas, nesustoja kraujavimas arba implantas ar laikinas protezas juda." }
-    ],
-    sources: [
-      { label: "Growth factors and osseointegration in dental implants — A review", url: "https://pubmed.ncbi.nlm.nih.gov/41393465/" },
-      { label: "Post-operative pain management using two drugs following dental implant surgery", url: "https://pubmed.ncbi.nlm.nih.gov/37822832/" },
-      { label: "Smoking and Dental Implants: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35056347/" }
-    ]
+    readTime: 8
   },
   {
     slug: "kodel-skauda-danti-po-plombavimo",
     title: "Kodėl skauda dantį po plombavimo?",
+    excerpt: "Nedidelis jautrumas po plombavimo dažnai būna laikinas, tačiau skausmo ignoruoti nederėtų, jei jis stiprėja ar nepraeina. Kada kreiptis į odontologą?",
     date: "2026-05-27",
     category: "Dantų gydymas",
     coverImage: "https://images.unsplash.com/photo-1592400400196-bf709e32aa88?w=1200&q=80&fit=crop&auto=format",
-    readTime: 8,
-    sections: [
-      {
-        p: [
-          "Po plombavimo pacientai kartais pastebi, kad dantis tapo jautresnis nei prieš procedūrą. Jis gali sureaguoti į šaltą ar karštą gėrimą, saldų maistą, kramtymą arba sukandimą. Dėl to natūraliai kyla klausimas: ar normalu, kad skauda užplombuotą dantį?",
-          "Nedidelis jautrumas po plombavimo dažnai yra laikinas. Procedūros metu pašalinamas ėduonis, dantis išvalomas, paruošiamas ir atkuriamas plomba, todėl danties audiniai bei nervas gali kurį laiką reaguoti jautriau. Tai ypač dažna, jei ertmė buvo gilesnė arba dantis jau buvo jautrus prieš gydymą.",
-          "Vis dėlto skausmo nereikėtų ignoruoti, jei jis stiprėja, tampa pulsuojantis, trukdo kramtyti ar nepraeina ilgesnį laiką. Tokiais atvejais būtina išsiaiškinti priežastį, nes kartais gali reikėti plombos korekcijos ar papildomo gydymo."
-        ]
-      },
-      {
-        h: "Kodėl po plombavimo dantis tampa jautrus?",
-        p: [
-          "Plombavimo metu odontologas pašalina pažeistus danties audinius ir atkuria danties formą plombine medžiaga. Nors procedūra atliekama siekiant sustabdyti ėduonies plitimą ir apsaugoti dantį, pats gydymo procesas gali laikinai sudirginti danties audinius. Dėl to po procedūros gali atsirasti jautrumas šalčiui, karščiui, saldžiam ar rūgščiam maistui.",
-          "Jei ėduonis buvo negilis, jautrumas dažniausiai būna nedidelis ir greitai mažėja. Tačiau jei ertmė buvo gili ir plomba yra arčiau danties nervo, dantis gali reaguoti stipriau. Tokiu atveju pacientas gali jausti maudimą, trumpą skausmą į šaltį ar diskomfortą kramtant.",
-          "Svarbu stebėti, ar pojūčiai silpnėja. Lengvas jautrumas, kuris kasdien mažėja, dažniausiai nėra pavojingas. Tačiau jei skauda užplombuotą dantį vis stipriau arba skausmas išlieka ilgai, reikėtų kreiptis į odontologą pakartotinei apžiūrai."
-        ]
-      },
-      {
-        h: "Dažniausios priežastys, kodėl skauda užplombuotą dantį",
-        p: [
-          "Viena dažniausių priežasčių – laikinas danties nervo sudirgimas. Tai gali nutikti po bet kokio plombavimo, ypač jei gydyta ertmė buvo gilesnė. Tokiu atveju dantis gali būti jautrus temperatūros pokyčiams, tačiau jautrumas turėtų palaipsniui mažėti.",
-          "Kita dažna priežastis – per aukšta plomba. Jei po plombavimo dantis sukandus pirmas susiliečia su priešingu dantimi, jam tenka per didelis krūvis. Tuomet gali skaudėti kramtant, sukandus ar net lengvai palietus dantį. Tokia situacija dažniausiai išsprendžiama plombos aukščio korekcija.",
-          "Skausmą taip pat gali sukelti labai gili plomba, kai ėduonis buvo arti nervo. Tokiais atvejais dantis kurį laiką gali būti jautrus, tačiau jei skausmas tampa pulsuojantis, ilgai nepraeina arba pažadina naktį, gali būti prasidėjęs nervo uždegimas.",
-          "Kartais po plombavimo išryškėja ir kitos problemos: mikroįtrūkimas, papildomas danties pažeidimas, dantų griežimas ar netaisyklingas sukandimas. Todėl tikslią priežastį geriausiai gali nustatyti odontologas apžiūros metu."
-        ]
-      },
-      {
-        h: "Kada skausmas po plombavimo yra normalus?",
-        image: "/skausmas-plombavimo.webp",
-        p: [
-          "Nedidelis skausmas ar jautrumas po plombavimo ne visada reiškia, kad kažkas atlikta netinkamai. Dantis buvo gydomas, todėl jo audiniai gali kurį laiką reaguoti jautriau. Dažniausiai normalu, jei dantis trumpai sureaguoja į šaltą, karštą, saldų ar rūgštų maistą, bet skausmas greitai praeina pašalinus dirgiklį.",
-          "Po gilios plombos jautrumas gali būti ryškesnis, nes gydyta vieta yra arčiau danties nervo. Tokiu atveju gali būti jaučiamas lengvas maudimas ar diskomfortas kramtant, tačiau svarbiausia, kad šie pojūčiai palaipsniui mažėtų.",
-          "Jei kasdien jaučiate mažesnį jautrumą, dažniausiai galima stebėti situaciją. Tačiau jei skausmas stiprėja, tampa pulsuojantis, ilgai nepraeina po dirgiklio arba pradeda trukdyti valgyti, reikėtų kreiptis į odontologą."
-        ]
-      },
-      {
-        h: "Kiek laiko gali skaudėti dantį po plombavimo?",
-        p: [
-          "Kiek laiko skauda dantį po plombavimo, priklauso nuo to, kokio gylio buvo ėduonis, kokio dydžio plomba įdėta ir kaip jautriai reaguoja pats dantis. Dažniausiai lengvas jautrumas sumažėja per kelias dienas. Pacientas gali pastebėti, kad kiekvieną dieną dantis reaguoja vis silpniau.",
-          "Jei plomba buvo gili, jautrumas gali trukti ilgiau – kartais kelias savaites. Tai gali būti normali reakcija, jei skausmas nėra stiprus ir palaipsniui mažėja. Vis dėlto ilgai trunkantis ar nekintantis skausmas neturėtų būti ignoruojamas.",
-          "Jei po 2–4 savaičių vis dar skauda užplombuotą dantį, jautrumas nemažėja arba situacija blogėja, reikėtų užsiregistruoti pakartotinei odontologo apžiūrai. Greičiau kreiptis reikėtų tada, jei skausmas stiprus nuo pat pradžių, trukdo miegoti, yra pulsuojantis arba dantis labai skauda sukandus."
-        ]
-      },
-      {
-        h: "Skauda dantį sukandus ar kramtant – ką tai reiškia?",
-        p: [
-          "Jei po plombavimo skauda dantį sukandus ar kramtant, viena dažniausių priežasčių gali būti per aukšta plomba. Net labai nedidelis plombos aukščio skirtumas gali lemti, kad užplombuotas dantis pirmas susiliečia su priešingu dantimi ir gauna per didelį kramtymo krūvį.",
-          'Tokiu atveju pacientas dažnai jaučia, kad „kažkas trukdo", dantis atrodo per aukštas arba skausmas atsiranda tik sukandus. Kartais maudimas gali stiprėti, nes dantis nuolat apkraunamas kiekvieno sukandimo metu.',
-          "Šios problemos nereikėtų kentėti tikintis, kad ji visada praeis savaime. Odontologas gali greitai įvertinti sukandimą ir, jei reikia, pakoreguoti plombos aukštį. Po korekcijos dantis dažnai nurimsta, tačiau jei skausmas buvo užsitęsęs, jam gali prireikti šiek tiek laiko visiškai atsistatyti."
-        ]
-      },
-      {
-        h: "Kada reikėtų kreiptis į odontologą?",
-        p: [
-          "Jei po plombavimo jaučiamas tik lengvas jautrumas, kuris palaipsniui mažėja, dažniausiai pakanka stebėti situaciją. Tačiau yra požymių, kurių nereikėtų ignoruoti. Į odontologą reikėtų kreiptis, jei skausmas stiprėja, tampa pulsuojantis, pažadina naktį arba nepraeina net pašalinus dirgiklį.",
-          "Pakartotinė apžiūra taip pat reikalinga, jei skauda dantį sukandus, kramtant ar atrodo, kad plomba yra per aukšta. Tokiu atveju gali reikėti tik nedidelės korekcijos, tačiau delsiant dantis gali būti papildomai dirginamas.",
-          "Nedelskite, jei atsiranda patinimas, pūlinys, nemalonus skonis burnoje, temperatūra ar skausmas plinta į žandikaulį, ausį ar smilkinį. Tokie simptomai gali rodyti uždegimą, kuriam reikalingas papildomas gydymas."
-        ]
-      },
-      {
-        h: "Ką galima daryti namuose, kol laukiate vizito?",
-        p: [
-          "Jei skauda užplombuotą dantį, pirmiausia stenkitės jo papildomai nedirginti. Laikinai venkite labai šalto, karšto, saldaus, rūgštaus ar kieto maisto. Jei skauda kramtant, nekramtykite ta burnos puse, kurioje buvo plombuotas dantis.",
-          "Dantis reikėtų valyti reguliariai, bet švelniai. Burnos higiena svarbi, nes apnašos ir maisto likučiai gali dar labiau dirginti dantenas ar plombos kraštus. Jei dantis jautrus šalčiui, galima rinktis jautriems dantims skirtą pastą, tačiau ji nepašalins problemos, jei priežastis yra per aukšta plomba ar uždegimas.",
-          "Nereikėtų krapštyti plombos, spausti danties ar bandyti savarankiškai koreguoti sukandimo. Taip pat venkite agresyvių naminių priemonių, kurios gali pažeisti dantenas. Jei skausmas didėja ar nepraeina, geriausias sprendimas – odontologo apžiūra."
-        ]
-      },
-      {
-        h: "Skausmas po plombavimo dažnai laikinas, bet jį verta stebėti",
-        p: [
-          "Lengvas jautrumas po plombavimo dažnai yra normali danties reakcija į gydymą. Dantis gali trumpai reaguoti į temperatūros pokyčius, saldų maistą ar kramtymą, ypač jei plomba buvo gili. Svarbiausia, kad šie pojūčiai palaipsniui mažėtų.",
-          "Jei skauda užplombuotą dantį sukandus, skausmas stiprėja, nepraeina kelias savaites ar tampa pulsuojantis, reikėtų kreiptis į odontologą. Kartais pakanka nedidelės plombos korekcijos, o kartais reikia išsamesnės diagnostikos. Jei jaučiate diskomfortą ir nesate tikri, ar tai normalu, registruokitės konsultacijai Bangų klinikoje Klaipėdoje."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Ar normalu, kad skauda dantį po plombavimo?", preImage: "https://images.unsplash.com/photo-1684607633138-6cc13613369b?w=1200&q=80&fit=crop&auto=format", a: "Lengvas jautrumas ar maudimas po plombavimo gali būti normalus, ypač pirmomis dienomis. Tačiau skausmas turėtų palaipsniui mažėti. Jei jis stiprėja arba nepraeina ilgą laiką, reikėtų kreiptis į odontologą." },
-      { q: "Kodėl skauda užplombuotą dantį?", a: "Dažniausios priežastys – laikinas nervo sudirgimas, gili plomba, per aukšta plomba, netaisyklingas sukandimas arba uždegimas, jei ėduonis buvo labai gilus." },
-      { q: "Kiek laiko gali skaudėti dantį po plombavimo?", a: "Dažniausiai jautrumas sumažėja per kelias dienas. Po gilios plombos jis gali trukti kelias savaites. Jei po 2–4 savaičių skausmas nemažėja arba stiprėja, reikėtų pakartotinės apžiūros." },
-      { q: "Kodėl skauda dantį sukandus po plombavimo?", a: "Dažnai taip nutinka, kai plomba yra šiek tiek per aukšta. Tuomet dantis gauna per didelį krūvį kiekvieno sukandimo metu. Odontologas gali pakoreguoti plombos aukštį." },
-      { q: "Ką daryti, jei skauda užplombuotą dantį?", a: "Stebėkite, ar skausmas mažėja, venkite dirginančio maisto ir nekramtykite ta puse, jei skauda sukandus. Jei skausmas stiprėja, nepraeina ar trukdo kramtyti, kreipkitės į odontologą." },
-      { q: "Kada skausmas po plombavimo nėra normalus?", a: "Nenormalu, jei skausmas stiprėja, yra pulsuojantis, pažadina naktį, plinta į kitas sritis, atsiranda patinimas, pūlinys ar temperatūra. Tokiais atvejais reikalinga odontologo apžiūra." }
-    ],
-    sources: [
-      { label: "Postoperative Hypersensitivity in Class I Resin-based Composite Restorations in General Practice", url: "https://pubmed.ncbi.nlm.nih.gov/19715013/" },
-      { label: "A Randomised Controlled Trial of Postoperative Sensitivity after Class II Restorations with Bulk-fill or Conventional Composite", url: "https://pubmed.ncbi.nlm.nih.gov/38373222/" },
-      { label: "Effect of different adhesive systems on postoperative sensitivity of composite resin restorations in adults: a systematic review and network meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/37017757/" }
-    ]
+    readTime: 8
   },
   {
     slug: "ar-skauda-kai-traukia-danti",
     title: "Ar skauda, kai traukia dantį?",
+    excerpt: "Danties traukimas daugeliui pacientų kelia nerimą. Ar procedūros metu skauda ir kiek laiko gali skaudėti pašalinus dantį?",
     coverImage: "/blog/ar skauda kai traukia danti.jpg",
     date: "2026-05-20",
     category: "Dantų chirurgija",
-    readTime: 9,
-    sections: [
-      {
-        p: [
-          "Danties rovimas daugeliui pacientų kelia nerimą. Dažniausiai bijoma ne tik pačios procedūros, bet ir nežinojimo, ko tikėtis: ar skaudės, kiek laiko truks, ką bus galima jausti ir kaip jausitės po to. Vis dėlto šiuolaikinėje odontologijoje danties traukimas atliekamas taikant nuskausminimą, todėl procedūros metu aštraus skausmo pacientas neturėtų jausti.",
-          "Svarbu suprasti, kad skausmas ir spaudimas nėra tas pats. Kai traukia dantį, galima jausti tempimą, judinimą ar spaudimą žandikaulyje, tačiau tai neturėtų būti skausminga. Šiame įraše aptarsime, kada gali prireikti šalinti dantį, ką galima jausti, kai rauna dantį, ir kiek laiko skauda ištraukus dantį."
-        ]
-      },
-      {
-        h: "Kada gali prireikti traukti dantį?",
-        p: [
-          "Danties šalinimas dažniausiai nėra pirmas odontologo pasirinkimas. Kai tik įmanoma, siekiama dantį išsaugoti gydant ėduonį, atkuriant danties vainiką, gydant šaknų kanalus ar taikant kitus sprendimus. Tačiau tam tikrais atvejais danties išsaugoti nepavyksta arba jo palikimas gali kelti didesnę riziką sveikatai.",
-          "Dantį gali prireikti traukti tada, kai jis yra stipriai pažeistas ėduonies, nulūžęs, skilęs ar nebetinkamas atkurti plomba ar vainikėliu. Rovimas taip pat gali būti reikalingas, jei susiformavo uždegimas, pūlinys, šaknies lūžis arba dantis labai paslankus dėl periodonto ligų.",
-          "Dažna danties šalinimo priežastis – problemiški protiniai dantys. Jei jie dygsta netaisyklingai, spaudžia kitus dantis, sukelia skausmą ar pasikartojantį uždegimą, odontologas gali rekomenduoti šalinimą. Kai kuriais atvejais dantis traukiamas ir ruošiantis ortodontiniam gydymui."
-        ]
-      },
-      {
-        h: "Ar skauda, kai traukia dantį?",
-        p: [
-          "Dažniausias pacientų klausimas – ar skauda, kai traukia dantį. Įprastai procedūros metu taikoma vietinė nejautra, todėl skausmo neturėtų būti. Gydytojas pradeda danties šalinimą tik tada, kai sritis aplink dantį yra pakankamai nuskausminta.",
-          "Vis dėlto pacientas gali jausti tam tikrus pojūčius. Kai traukia dantį, dažnai jaučiamas spaudimas, tempimas, danties judinimas ar vibracija. Šie pojūčiai gali būti nemalonūs, ypač jei žmogus jaudinasi, tačiau jie nėra tas pats, kas aštrus skausmas. Spaudimas atsiranda todėl, kad gydytojas turi atlaisvinti dantį iš jo vietos, tačiau nuskausminimas blokuoja skausmo pojūtį.",
-          "Jei procedūros metu vis dėlto jaučiate skausmą, svarbu iš karto apie tai pasakyti gydytojui. Nejautrą galima papildyti, o procedūrą trumpam pristabdyti. Pacientas neturėtų kentėti skausmo tylėdamas – bendravimas su gydytoju padeda užtikrinti saugesnę ir ramesnę procedūrą."
-        ]
-      },
-      {
-        h: "Ką galima jausti, kai rauna dantį?",
-        p: [
-          "Kai rauna dantį, pacientai dažnai tikisi skausmo, tačiau dažniausiai jaučia ne skausmą, o spaudimą. Tai normalu, nes nejautra panaikina skausmo pojūtį, bet ne visus prisilietimo ar judesio pojūčius. Todėl procedūros metu galite jausti, kad dantis yra judinamas, spaudžiamas ar tempiamas.",
-          "Kartais pacientus išgąsdina ir procedūros garsai. Jie gali atrodyti nemalonūs, tačiau nebūtinai reiškia, kad kažkas vyksta blogai. Taip pat gali būti nepatogu laikyti burną plačiai atvertą, ypač jei šalinamas krūminis ar protinis dantis. Gydytojas visos procedūros metu stebi paciento reakciją, todėl jei jaučiate skausmą, įtampą ar norite trumpai sustoti, verta apie tai pasakyti."
-        ]
-      },
-      {
-        h: "Nuo ko priklauso, ar danties traukimas bus sudėtingas?",
-        p: [
-          "Danties traukimo sudėtingumas priklauso nuo kelių veiksnių. Vienas svarbiausių – danties vieta burnoje. Priekiniai dantys dažnai šalinami paprasčiau, o krūminiai ar protiniai dantys gali būti sudėtingesni dėl šaknų formos, jų skaičiaus ir sunkesnio priėjimo.",
-          "Svarbu ir tai, ar dantis yra pilnai išdygęs, ar dalinai pasislėpęs po dantenomis ar kaule. Jei dantis nulūžęs, stipriai pažeistas ėduonies, turi lenktas šaknis ar aplink jį yra uždegimas, procedūra gali užtrukti ilgiau. Kartais tokiais atvejais reikalingas chirurginis šalinimas.",
-          "Vis dėlto net ir sudėtingesnis danties rovimas atliekamas taikant nuskausminimą. Tai reiškia, kad procedūra gali būti ilgesnė ar techniškai sudėtingesnė, tačiau pacientas neturėtų jausti aštraus skausmo."
-        ]
-      },
-      {
-        h: "Ar skauda po danties rovimo?",
-        image: "https://images.unsplash.com/photo-1606811951341-756fdd437682?w=1200&q=80&fit=crop&auto=format",
-        p: [
-          "Pasibaigus nejautros poveikiui, po danties rovimo gali atsirasti maudimas, jautrumas ar nedidelis patinimas. Tai dažniausiai yra normali gijimo proceso dalis. Organizmas pradeda formuoti kraujo krešulį rovimo vietoje, audiniai gyja, todėl pirmomis dienomis gali būti jaučiamas diskomfortas.",
-          "Po paprasto rovimo skausmas dažniausiai būna lengvesnis ir gana greitai mažėja. Po sudėtingesnio ar chirurginio šalinimo, ypač jei buvo rautas protinis dantis, maudimas ir patinimas gali būti ryškesni. Skausmo stiprumas priklauso nuo danties vietos, procedūros sudėtingumo, uždegimo buvimo ir individualios gijimo reakcijos.",
-          "Gydytojas po procedūros pateikia rekomendacijas, kaip prižiūrėti žaizdą ir kontroliuoti skausmą. Svarbu jų laikytis, nes tinkama priežiūra padeda sumažinti komplikacijų riziką ir užtikrina sklandesnį gijimą."
-        ]
-      },
-      {
-        h: "Kiek laiko skauda ištraukus dantį?",
-        p: [
-          "Kiek laiko skauda ištraukus dantį, priklauso nuo procedūros sudėtingumo, danties vietos ir individualaus gijimo. Dažniausiai diskomfortas jaučiamas pirmas kelias dienas. Pirmą parą skausmas gali būti ryškesnis, ypač tada, kai visiškai praeina nejautros poveikis.",
-          "Įprastai per 2–3 dienas skausmas turėtų po truputį mažėti. Po paprasto danties rovimo pacientai dažnai jaučia tik lengvą maudimą ar jautrumą. Po sudėtingesnio šalinimo, pavyzdžiui, protinio danties rovimo, diskomfortas gali išlikti ilgiau, o patinimas gali būti labiau pastebimas.",
-          "Svarbu stebėti, ar būklė gerėja. Jei skausmas po kelių dienų ne mažėja, o stiprėja, atsiranda blogas kvapas, nemalonus skonis burnoje, karščiavimas, didėjantis patinimas ar gausus kraujavimas, reikėtų kreiptis į odontologą."
-        ]
-      },
-      {
-        h: "Kaip elgtis po danties traukimo?",
-        p: [
-          "Po danties traukimo labai svarbu saugoti žaizdą ir leisti jai gyti. Gydytojas po procedūros uždeda tamponą, kurį reikia laikyti tiek, kiek nurodyta. Pirmą parą nereikėtų intensyviai skalauti burnos, spjaudyti ar gerti per šiaudelį, nes tai gali išjudinti kraujo krešulį, kuris būtinas gijimui.",
-          "Taip pat reikėtų vengti karšto maisto ir gėrimų. Geriau rinktis minkštą, nekarštą maistą ir kramtyti kita burnos puse. Žaizdos negalima krapštyti liežuviu, pirštais ar daiktais, nes taip galima sutrikdyti gijimą ir padidinti infekcijos riziką.",
-          "Pirmomis dienomis rekomenduojama nerūkyti, nevartoti alkoholio ir vengti intensyvaus fizinio krūvio. Dantis valyti reikia, tačiau atsargiai, saugant rovimo vietą. Jei gydytojas paskyrė vaistus ar pateikė papildomas rekomendacijas, jų būtina laikytis."
-        ]
-      },
-      {
-        h: "Kada kreiptis į odontologą po rovimo?",
-        p: [
-          "Nedidelis maudimas, jautrumas ar patinimas po danties rovimo yra normalu. Tačiau kai kurie simptomai gali rodyti komplikacijas. Į odontologą reikėtų kreiptis, jei skausmas stiprėja praėjus 2–4 dienoms po procedūros, o ne palaipsniui mažėja.",
-          "Taip pat svarbu susisiekti su gydytoju, jei atsiranda blogas kvapas, nemalonus skonis burnoje, pūliavimas, karščiavimas, didėjantis patinimas ar gausus kraujavimas. Nerimą turėtų kelti ir skausmas, kuris plinta į ausį, smilkinį ar žandikaulį.",
-          "Tokiais atvejais nereikėtų bandyti gydytis savarankiškai. Odontologas įvertins žaizdą, nustatys priežastį ir paskirs tinkamą gydymą."
-        ]
-      },
-      {
-        h: "Danties traukimas neturėtų būti skausminga procedūra",
-        image: "https://images.unsplash.com/photo-1663182245833-7dd667277043?w=1200&q=80&fit=crop&auto=format",
-        p: [
-          "Kai traukia dantį, procedūros metu taikoma nejautra, todėl aštraus skausmo pacientas neturėtų jausti. Spaudimas, tempimas ar danties judinimas yra įprasti pojūčiai, tačiau jie nėra tas pats, kas skausmas.",
-          "Ištraukus dantį, kelias dienas gali būti maudimas, jautrumas ar patinimas. Dažniausiai šie pojūčiai palaipsniui mažėja, ypač jei laikomasi gydytojo rekomendacijų. Jei jums skauda dantį ar gydytojas rekomendavo šalinimą, registruokitės konsultacijai Bangų klinikoje Klaipėdoje."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Ar skauda, kai traukia dantį?", a: "Dažniausiai ne, nes prieš procedūrą taikoma vietinė nejautra. Galima jausti spaudimą, tempimą ar danties judinimą, bet ne aštrų skausmą." },
-      { q: "Ką jaučia pacientas, kai rauna dantį?", a: "Kai rauna dantį, dažniausiai jaučiamas spaudimas, judesys, tempimas ar vibracija. Šie pojūčiai gali būti nemalonūs, bet jie nėra tolygūs skausmui." },
-      { q: "Kiek laiko skauda ištraukus dantį?", a: "Dažniausiai diskomfortas jaučiamas kelias dienas ir palaipsniui mažėja. Po sudėtingesnio rovimo maudimas gali išlikti ilgiau. Jei skausmas stiprėja po kelių dienų, reikia kreiptis į odontologą." },
-      { q: "Ar galima papildomai nuskausminti, jei procedūros metu skauda?", a: "Taip. Jei procedūros metu jaučiate skausmą, būtina iš karto pasakyti gydytojui. Nejautra gali būti papildyta, o procedūra trumpam pristabdyta." },
-      { q: "Ko negalima daryti po danties rovimo?", a: "Po rovimo nereikėtų intensyviai skalauti burnos, spjaudyti, gerti per šiaudelį, valgyti karšto maisto, rūkyti, vartoti alkoholio ar krapštyti žaizdos." },
-      { q: "Kada po rovimo reikia kreiptis į gydytoją?", a: "Į gydytoją reikia kreiptis, jei skausmas stiprėja, atsiranda blogas kvapas, nemalonus skonis, pūliavimas, karščiavimas, didėjantis patinimas ar gausus kraujavimas." }
-    ],
-    sources: [
-      { label: "Evidence-based clinical practice guideline for the pharmacologic management of acute dental pain in children, adolescents, and adults", url: "https://pubmed.ncbi.nlm.nih.gov/37634915/" },
-      { label: "Acute Postoperative Pain Due to Dental Extraction in the Adult Population: A Systematic Review and Network Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/36631957/" },
-      { label: "Local interventions for the management of alveolar osteitis, dry socket", url: "https://pubmed.ncbi.nlm.nih.gov/36156769/" }
-    ]
+    readTime: 9
   },
   {
     slug: "ka-daryti-kai-skauda-protini-danti",
     title: "Ką daryti, kai skauda protinį dantį?",
+    excerpt: "Protinio danties skausmas – viena dažniausių priežasčių, kodėl pacientai skuba pas odontologą. Kaip elgtis ir kada dantį reikia šalinti?",
     date: "2026-05-13",
     category: "Dantų gydymas",
     coverImage: "/protini-skauda.webp",
-    readTime: 12,
-    sections: [
-      {
-        p: [
-          "Protinių dantų skausmas – viena dažniausių priežasčių, dėl kurios pacientai kreipiasi į odontologą skubiau nei planavo. Šie dantys dygsta vėliausiai, dažniausiai jau suaugus, kai žandikaulyje ne visada lieka pakankamai vietos. Dėl to protinis dantis gali dygti netaisyklingai, spausti šalia esančius dantis, likti dalinai prasikalęs arba sukelti dantenų uždegimą.",
-          "Jei skauda protinį dantį, svarbu suprasti, kad skausmo priežastys gali būti skirtingos. Kartais tai tik laikinas dygimo diskomfortas, tačiau kitais atvejais skausmas rodo uždegimą, infekciją, ėduonį ar įstrigusį dantį. Todėl nereikėtų ilgai laukti ir tikėtis, kad problema praeis savaime.",
-          "Šiame įraše aptarsime, ką daryti, kai skauda protinį dantį, kada būtina kreiptis į odontologą, ar skauda, kai rauna protinį dantį, ir ko tikėtis po rovimo."
-        ]
-      },
-      {
-        h: "Kodėl skauda protinį dantį?",
-        p: [
-          "Protinis dantis gali skaudėti dėl kelių priežasčių. Viena dažniausių – dygimas. Kai dantis bando prasikalti pro dantenas, aplinkiniai audiniai gali tapti jautrūs, patinę ir skausmingi. Jei žandikaulyje vietos pakanka, šis procesas gali praeiti be didesnių problemų. Tačiau dažnai protiniams dantims vietos būna per mažai.",
-          "Kai protinis dantis neturi pakankamai vietos, jis gali dygti kreivai, remtis į gretimą dantį arba likti dalinai įstrigęs kaule ar po dantenomis. Tokia padėtis gali sukelti spaudimą, maudimą, skausmą kramtant ar net žandikaulio įtampą. Kartais skausmas plinta į ausį, smilkinį ar visą žandikaulio pusę.",
-          'Dar viena dažna priežastis – dantenų uždegimas aplink dalinai prasikalusį protinį dantį. Kai virš danties lieka dantenų „gaubtas", po juo gali kauptis maisto likučiai ir bakterijos. Šią vietą sunku gerai išvalyti, todėl dantenos parausta, patinsta, tampa skausmingos, gali atsirasti nemalonus skonis ar kvapas burnoje.',
-          "Protinius dantis taip pat dažnai pažeidžia ėduonis, nes jie yra pačiame burnos gale ir juos sunkiau pasiekti šepetėliu. Net nedidelis pažeidimas gali greitai sukelti jautrumą, o vėliau – stipresnį skausmą ar nervo uždegimą."
-        ]
-      },
-      {
-        h: "Kaip atpažinti, kad skauda būtent protinį dantį?",
-        p: [
-          "Ne visada lengva tiksliai suprasti, kuris dantis sukelia skausmą. Protinio danties skausmas dažniausiai jaučiamas pačiame žandikaulio gale, už paskutinio krūminio danties. Skausmas gali būti maudžiantis, pulsuojantis arba sustiprėti kramtant, plačiau išsižiojant ar liečiant dantenas toje vietoje.",
-          "Dažnas požymis – patinusios ar jautrios dantenos aplink protinį dantį. Jei dantis prasikalęs tik iš dalies, gali atrodyti, kad dalį jo dengia dantenos. Šioje vietoje gali kauptis maistas, todėl atsiranda blogas burnos kvapas, nemalonus skonis ar jausmas, kad dantenos yra sudirgusios.",
-          "Kartais protinio danties problema pasireiškia ne tik vietiniu skausmu. Skausmas gali plisti į ausį, smilkinį, gerklę ar visą žandikaulio pusę. Kai kuriems pacientams tampa sunkiau pilnai išsižioti, kramtyti ar valyti dantis toje pusėje. Jei yra uždegimas, gali atsirasti patinimas, bendras silpnumas ar pakilti temperatūra.",
-          "Vis dėlto vien pagal simptomus ne visada įmanoma tiksliai nustatyti, ar problemą sukelia protinis dantis. Panašiai gali skaudėti ir dėl kitų dantų ėduonies, dantenų uždegimo ar žandikaulio sąnario problemų. Todėl, jei skausmas kartojasi, stiprėja ar nepraeina, reikalinga odontologo apžiūra."
-        ]
-      },
-      {
-        h: "Skauda protinį dantį – ką daryti pirmiausia?",
-        p: [
-          "Kai skauda protinį dantį, pirmiausia reikėtų įvertinti, ar skausmas yra lengvas ir laikinas, ar stiprus, didėjantis ir lydimas kitų simptomų. Jeigu jaučiamas tik nedidelis maudimas dygstančio danties srityje, galima pradėti nuo švelnios burnos higienos ir skaudamos vietos stebėjimo. Vis dėlto, jei skausmas stiprėja, atsiranda patinimas ar sunku išsižioti, reikėtų neatidėlioti vizito pas odontologą.",
-          "Pirmas žingsnis – atsargiai išsivalyti dantis, ypač sritį aplink protinį dantį. Kadangi šie dantys yra pačiame žandikaulio gale, aplink juos dažnai kaupiasi maisto likučiai ir apnašos. Jei dantis prasikalęs tik iš dalies, po dantenų kraštu gali patekti bakterijų, kurios sukelia uždegimą ir skausmą. Valyti reikėtų švelniai, nenaudojant jėgos, kad dar labiau nesudirgintumėte dantenų.",
-          "Burną galima praskalauti drungnu vandeniu. Reikėtų vengti labai karšto, šalto, aštraus, kieto ar lipnaus maisto, nes jis gali sustiprinti skausmą arba papildomai traumuoti jautrią vietą. Jei yra patinimas, prie išorinės skruosto pusės galima trumpais intervalais pridėti šaltą kompresą. Jo nereikėtų dėti tiesiai ant odos – geriau įvynioti į rankšluostį.",
-          "Svarbu nekrapštyti dantenų aštriais daiktais, nebandyti pradurti patinusios vietos ir nedėti vaistų tiesiai ant dantenų. Tokie veiksmai gali pažeisti gleivinę ir pabloginti būklę. Namų priemonės gali tik laikinai palengvinti simptomus, tačiau jos nepašalina priežasties. Todėl, jei skauda protinį dantį ir nežinote, ką daryti, saugiausias sprendimas – registruotis odontologo apžiūrai."
-        ]
-      },
-      {
-        h: "Kada būtina kreiptis į odontologą?",
-        image: "https://images.unsplash.com/photo-1684607633217-462056580c3c?w=1200&q=80&fit=crop&auto=format",
-        p: [
-          "Į odontologą reikėtų kreiptis tada, kai protinio danties skausmas nepraeina, kartojasi arba stiprėja. Net jei skausmas kuriam laikui sumažėja, tai nebūtinai reiškia, kad problema išnyko. Uždegimas aplink protinį dantį gali atsinaujinti, o negydomas ilgainiui sukelti didesnį patinimą, infekciją ar pažeisti šalia esančius dantis.",
-          "Skubi odontologo apžiūra reikalinga, jei skausmas yra stiprus, pulsuojantis, trukdo miegoti, valgyti ar normaliai išsižioti. Taip pat nereikėtų delsti, jei patino dantenos, žandas ar veidas, atsirado pūlinys, blogas skonis burnoje, nemalonus kvapas ar pakilo temperatūra. Šie simptomai gali rodyti infekciją, kuriai reikalingas profesionalus gydymas.",
-          "Svarbu kreiptis ir tuomet, kai skausmas plinta į ausį, smilkinį, gerklę ar visą žandikaulio pusę. Tokiais atvejais žmogui gali atrodyti, kad skauda ne vieną konkretų dantį, o visą pusę burnos ar veido. Odontologas apžiūros metu gali nustatyti, ar skausmą iš tiesų sukelia protinis dantis, ar kita problema.",
-          "Dažnai protinio danties būklei įvertinti reikalinga rentgeno nuotrauka. Ji padeda pamatyti, kaip dantis išsidėstęs kaule, ar jis spaudžia gretimą dantį, ar yra pakankamai vietos dygimui, kokia šaknų padėtis ir ar nėra uždegimo požymių. Tik įvertinus situaciją galima nuspręsti, ar dantį reikia stebėti, gydyti, ar šalinti."
-        ]
-      },
-      {
-        h: "Ar visada reikia rauti protinį dantį?",
-        p: [
-          "Ne, protinį dantį ne visada reikia rauti. Jei dantis išdygęs taisyklingai, nespaudžia kitų dantų, nesukelia uždegimo ir jį galima kokybiškai išvalyti, jis gali likti burnoje. Tokiu atveju svarbiausia reguliari priežiūra, gera burnos higiena ir profilaktinės odontologo apžiūros.",
-          "Tačiau protiniai dantys dažnai kelia problemų dėl savo padėties. Kadangi jie yra pačiame žandikaulio gale, juos sunkiau pasiekti šepetėliu ir tarpdančių priemonėmis. Dėl to aplink juos greičiau kaupiasi apnašos, vystosi ėduonis arba kartojasi dantenų uždegimas. Jei dantis pažeistas taip, kad jo kokybiškai gydyti neįmanoma, gali būti rekomenduojamas šalinimas.",
-          "Rovimas taip pat svarstomas, kai protinis dantis dygsta kreivai, remiasi į gretimą dantį, sukelia spaudimą, skausmą ar pažeidžia šalia esančius audinius. Jei dantis prasikalęs tik iš dalies, aplink jį gali nuolat kartotis uždegimai. Tokiais atvejais vien laikinas simptomų sumažinimas problemos neišsprendžia.",
-          "Sprendimas dėl rovimo priimamas individualiai. Odontologas įvertina paciento nusiskundimus, danties padėtį, rentgeno nuotrauką, uždegimo riziką ir galimybes dantį prižiūrėti ar gydyti. Todėl nereikėtų iš anksto manyti, kad skaudant protinį dantį jį būtinai reikės šalinti. Pirmiausia svarbu tiksliai nustatyti skausmo priežastį."
-        ]
-      },
-      {
-        h: "Kaip odontologas nustato protinio danties problemą?",
-        p: [
-          "Protinio danties problemos ne visada matomos vien apžiūrint burną. Kartais dantis būna prasikalęs tik iš dalies, o kartais jis gali būti visiškai pasislėpęs po dantenomis ar kaule. Todėl odontologas pirmiausia įvertina paciento simptomus: kada prasidėjo skausmas, ar jis stiprėja, ar yra patinimas, ar sunku kramtyti, išsižioti, ryti, ar skausmas plinta į ausį, smilkinį ar žandikaulį.",
-          "Po pokalbio atliekama burnos apžiūra. Gydytojas įvertina dantenų būklę aplink protinį dantį, ar nėra paraudimo, patinimo, pūliavimo, maisto likučių susikaupimo ar ėduonies požymių. Taip pat apžiūrimi šalia esantys dantys, nes protinis dantis gali spausti gretimą krūminį dantį arba prisidėti prie jo pažeidimo.",
-          "Dažnai reikalinga rentgeno nuotrauka arba panoraminė rentgeno nuotrauka. Ji padeda pamatyti protinio danties padėtį, šaknų formą, santykį su šalia esančiais dantimis ir aplinkiniais audiniais. Pagal šią informaciją odontologas gali nuspręsti, ar dantį galima stebėti, ar reikia gydyti uždegimą, ar geriausias sprendimas būtų protinio danties šalinimas."
-        ]
-      },
-      {
-        h: "Ar skauda, kai rauna protinį dantį?",
-        p: [
-          "Vienas dažniausių pacientų klausimų – ar skauda, kai rauna protinį dantį. Dažniausiai pati procedūra atliekama taikant vietinę nejautrą, todėl aštraus skausmo pacientas neturėtų jausti. Prieš pradedant rovimo procedūrą, gydytojas pasirūpina, kad danties ir aplinkinių audinių sritis būtų nuskausminta.",
-          "Procedūros metu galima jausti spaudimą, tempimą, judesį ar vibraciją, tačiau tai nėra tas pats, kas skausmas. Šie pojūčiai atsiranda todėl, kad gydytojas dirba su dantimi ir aplinkiniais audiniais, tačiau nejautra blokuoja skausmo pojūtį. Jei pacientas vis dėlto jaučia skausmą, svarbu iš karto pasakyti gydytojui – nejautrą galima papildyti.",
-          "Tai, kiek sudėtinga bus pašalinti protinį dantį, priklauso nuo jo padėties. Jei dantis visiškai išdygęs ir šaknys nėra sudėtingos, rovimas dažnai būna paprastesnis. Jei protinis dantis įstrigęs, dygsta kreivai, yra po dantenomis ar kaule, gali prireikti chirurginio šalinimo. Tokiu atveju procedūra gali užtrukti ilgiau, tačiau ji taip pat atliekama nuskausminus.",
-          "Svarbiausia suprasti, kad šiuolaikinėje odontologijoje protinio danties rovimas neturėtų būti skausminga procedūra. Pacientui gali būti nemalonu dėl spaudimo ar nerimo, tačiau gydytojas kontroliuoja nuskausminimą ir procedūros eigą."
-        ]
-      },
-      {
-        h: "Ar skauda išrovus protinį dantį?",
-        p: [
-          "Po protinio danties rovimo, pasibaigus nejautros poveikiui, gali atsirasti maudimas, jautrumas, patinimas ar tempimo pojūtis. Tai yra normali gijimo proceso dalis, ypač jei dantis buvo šalinamas sudėtingiau arba reikėjo chirurginės intervencijos. Dažniausiai didesnis diskomfortas jaučiamas pirmomis dienomis po procedūros.",
-          "Kiek skauda išrovus protinį dantį, priklauso nuo kelių dalykų: danties padėties, šaknų formos, rovimo sudėtingumo, uždegimo buvimo ir individualios gijimo reakcijos. Vieniems pacientams pakanka lengvo maudimo, kitiems kelias dienas gali būti sunkiau plačiai išsižioti ar kramtyti toje pusėje. Gydytojas po procedūros pateikia rekomendacijas, kaip kontroliuoti skausmą ir prižiūrėti žaizdą",
-          "Po rovimo gali būti nedidelis kraujavimas, patinimas, jautrumas ir ribotas išsižiojimas. Tačiau svarbu stebėti, ar simptomai neblogėja. Jei po kelių dienų skausmas stiprėja, atsiranda blogas kvapas, nemalonus skonis burnoje, karščiavimas, gausus kraujavimas ar didėjantis patinimas, reikėtų kreiptis į odontologą.",
-          "Tinkama priežiūra po procedūros padeda sumažinti komplikacijų riziką ir užtikrinti sklandesnį gijimą. Todėl labai svarbu laikytis gydytojo nurodymų, nevarginti žaizdos ir neatidėlioti pakartotinio vizito, jei atsiranda neįprastų simptomų."
-        ]
-      },
-      {
-        h: "Kaip prižiūrėti burną po protinio danties rovimo?",
-        image: "https://images.unsplash.com/photo-1676897288522-e8a081e71430?w=1200&q=80&fit=crop&auto=format",
-        p: [
-          "Po protinio danties rovimo labai svarbu laikytis gydytojo rekomendacijų, nes pirmosios valandos ir dienos turi didelę įtaką gijimui. Iš karto po procedūros žaizdos vietoje susiformuoja kraujo krešulys, kuris saugo žaizdą ir padeda jai gyti. Todėl svarbu jo nepažeisti.",
-          "Pirmą parą nereikėtų intensyviai skalauti burnos, spjaudyti ar gerti per šiaudelį. Tokie veiksmai gali išjudinti krešulį ir sulėtinti gijimą. Taip pat reikėtų vengti karšto maisto ir gėrimų, nes šiluma gali paskatinti kraujavimą. Geriausia rinktis minkštą, nekarštą maistą ir kramtyti kita burnos puse.",
-          "Pirmomis dienomis nerekomenduojama rūkyti, vartoti alkoholio ar intensyviai sportuoti. Rūkymas gali trikdyti gijimą, o fizinis krūvis gali padidinti kraujavimo ir patinimo riziką. Žaizdos nereikėtų liesti pirštais, liežuviu ar krapštyti maisto likučių aštriais daiktais.",
-          "Dantis valyti reikia, tačiau atsargiai. Šalia rovimo vietos reikėtų valyti švelniai, kad nebūtų pažeista gyjanti sritis. Jei gydytojas paskyrė vaistus ar specialias priežiūros priemones, jas būtina vartoti taip, kaip nurodyta. Jeigu skausmas, patinimas ar kraujavimas didėja, reikėtų kreiptis į odontologą."
-        ]
-      },
-      {
-        h: "Ko nedaryti, kai skauda protinį dantį?",
-        p: [
-          "Kai skauda protinį dantį, svarbu ne tik žinoti, ką daryti, bet ir ko vengti. Viena dažniausių klaidų – bandymas skausmą malšinti dedant vaistus tiesiai ant dantenų ar danties. Aspirinas, spiritas, česnakas ar kitos dirginančios medžiagos gali pažeisti burnos gleivinę, sukelti nudegimą ir dar labiau sustiprinti diskomfortą.",
-          "Taip pat nereikėtų šildyti patinusios vietos. Jei skausmą sukelia uždegimas ar pūlinys, šiluma gali pabloginti situaciją ir paskatinti infekcijos plitimą. Tokiais atvejais saugiau naudoti šaltą kompresą iš išorinės skruosto pusės, tačiau tai tik laikina priemonė iki odontologo apžiūros.",
-          "Nereikėtų bandyti pradurti pūlinio, spausti patinusių dantenų ar krapštyti srities aplink protinį dantį aštriais daiktais. Taip galima pažeisti audinius ir įnešti dar daugiau bakterijų. Taip pat nerekomenduojama savarankiškai vartoti antibiotikų be gydytojo paskyrimo. Antibiotikai reikalingi ne visada, o netinkamas jų vartojimas gali būti žalingas.",
-          "Svarbiausia – neatidėlioti vizito, jei skausmas stiprėja, kartojasi, atsiranda patinimas, temperatūra ar sunku išsižioti. Pasikartojantis protinio danties uždegimas dažniausiai neišnyksta savaime, todėl jį turi įvertinti odontologas."
-        ]
-      },
-      {
-        h: "Protinio danties skausmo nereikėtų ignoruoti",
-        p: [
-          "Jei skauda protinį dantį, svarbiausia nustatyti tikrąją skausmo priežastį. Nors kartais diskomfortas gali būti susijęs su dygimu, dažnai skausmą sukelia dantenų uždegimas, vietos trūkumas, netaisyklinga danties padėtis, ėduonis ar infekcija. Tokiais atvejais vien laikinos namų priemonės problemos neišsprendžia.",
-          "Laiku atlikta odontologo apžiūra padeda suprasti, ar protinį dantį galima stebėti, gydyti, ar vis dėlto reikalingas jo šalinimas. Kuo anksčiau kreipiamasi, tuo lengviau suvaldyti uždegimą, sumažinti skausmą ir išvengti sudėtingesnių komplikacijų.",
-          "Jei protinis dantis sukelia skausmą, patinimą, nemalonų skonį burnoje ar skausmas kartojasi, nelaukite, kol problema paūmės. Registruokitės konsultacijai Bangų klinikoje Klaipėdoje – gydytojas įvertins situaciją ir pasiūlys tinkamiausią gydymo sprendimą."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Ką daryti, jei skauda protinį dantį?", a: "Jei skauda protinį dantį, pirmiausia švelniai išsivalykite dantis, praskalaukite burną drungnu vandeniu ir venkite kieto, karšto, šalto ar aštraus maisto. Jei yra patinimas, prie skruosto iš išorės galima trumpam pridėti šaltą kompresą. Tačiau jei skausmas stiprus, kartojasi ar atsiranda papildomų simptomų, reikėtų kreiptis į odontologą." },
-      { q: "Kiek laiko skauda po protinio danties rovimo?", a: "Diskomfortas po protinio danties rovimo dažniausiai jaučiamas kelias dienas. Trukmė priklauso nuo danties padėties, procedūros sudėtingumo, uždegimo buvimo ir individualaus gijimo. Jei skausmas ne mažėja, o stiprėja, reikėtų pasitarti su odontologu." },
-      { q: "Ko negalima daryti po protinio danties rovimo?", a: "Po rovimo pirmą parą nereikėtų intensyviai skalauti burnos, spjaudyti, gerti per šiaudelį, valgyti karšto maisto ar sportuoti. Pirmomis dienomis taip pat reikėtų vengti rūkymo ir alkoholio. Žaizdos negalima krapštyti ar liesti pirštais, nes tai gali sutrikdyti gijimą." }
-    ],
-    sources: [
-      { label: "Patterns of Third-Molar-Pericoronitis-Related Pain: A Morphometrical Observational Study", url: "https://pubmed.ncbi.nlm.nih.gov/37444724/" },
-      { label: "Surgical removal versus retention for the management of asymptomatic disease-free impacted wisdom teeth", url: "https://pubmed.ncbi.nlm.nih.gov/32368796/" },
-      { label: "Prediction of postoperative facial swelling, pain and trismus following third molar surgery based on preoperative variables", url: "https://pubmed.ncbi.nlm.nih.gov/23229245/" }
-    ]
+    readTime: 12
   },
   {
     slug: "ka-daryti-kai-skauda-danti",
     title: "Ką daryti, kai skauda dantį?",
+    excerpt: "Dantų skausmas dažnai užklumpa netikėtai. Kaip elgtis, kai reikia skubios pagalbos, ir ką daryti, jei dantį skauda savaitgalį?",
     date: "2026-05-06",
     category: "Skubi pagalba",
     coverImage: "https://images.unsplash.com/photo-1602932213623-cc17e9541bb4?w=1200&q=80&fit=crop&auto=format",
-    readTime: 10,
-    sections: [
-      {
-        p: [
-          "Danties skausmas dažnai užklumpa netikėtai: vakare, darbe, kelionėje ar savaitgalį, kai ne visada aišku, ką daryti ir kur kreiptis. Kartais skausmas būna trumpalaikis, pavyzdžiui, dėl jautrumo šalčiui ar maisto likučių tarpdančiuose. Tačiau stiprus, pulsuojantis ar ilgiau nepraeinantis skausmas gali signalizuoti apie rimtesnę problemą – ėduonį, danties nervo uždegimą, infekciją, pūlinį, traumą ar iškritusią plombą.",
-          "Svarbiausia – neignoruoti skausmo ir nebandyti jo ilgai slopinti vien namų priemonėmis. Laikinas palengvėjimas dar nereiškia, kad problema išnyko. Kuo anksčiau nustatoma skausmo priežastis, tuo paprastesnis ir greitesnis gali būti gydymas."
-        ]
-      },
-      {
-        h: "Pirmi veiksmai, kai pradeda skaudėti dantį",
-        p: [
-          "Kai pradeda skaudėti dantį, pirmiausia reikėtų įvertinti, ar skausmą galėjo sukelti maisto likučiai, įstrigę tarp dantų ar prie dantenų. Atsargiai išsivalykite dantis minkštu šepetėliu ir naudokite tarpdančių siūlą arba tarpdančių šepetėlius. Svarbu tai daryti švelniai, kad papildomai nesudirgintumėte dantenų.",
-          "Burną galite praskalauti drungnu vandeniu. Venkite labai karšto, šalto, saldaus ar kieto maisto, nes jis gali sustiprinti jautrumą ir skausmą. Jei pastebite žando ar dantenų patinimą, prie išorinės skruosto pusės galima trumpam pridėti šaltą kompresą. Jo nereikėtų dėti tiesiai ant odos – geriau įvynioti į rankšluostį.",
-          "Kai skauda dantį ir nėra vaistų, šie veiksmai gali padėti laikinai sumažinti diskomfortą, tačiau jie nepašalina skausmo priežasties. Jeigu skausmas stiprėja, kartojasi arba atsiranda papildomų simptomų, būtina registruotis odontologo apžiūrai."
-        ]
-      },
-      {
-        h: "Jei labai skauda dantį – kada tai skubi situacija?",
-        p: [
-          "Jei labai skauda dantį, ypač kai skausmas yra pulsuojantis, stiprėja naktį ar trukdo miegoti, tai gali būti ženklas, kad problema yra rimtesnė nei paprastas jautrumas. Skubi odontologo apžiūra reikalinga tada, kai skausmas nepraeina kelias valandas, plinta į žandikaulį, ausį, smilkinį ar galvą, taip pat kai kartu atsiranda dantenų, žando ar veido patinimas.",
-          "Nereikėtų delsti ir tais atvejais, kai burnoje matomas pūlinys, jaučiamas nemalonus skonis, pakyla temperatūra, sunku išsižioti ar kramtyti. Skubi pagalba taip pat reikalinga po danties traumos – jei dantis nuskilo, lūžo, buvo išmuštas, iškrito plomba ar karūnėlė ir dantis tapo labai jautrus.",
-          "Tokiose situacijose skausmo malšinimas namuose gali būti tik laikinas sprendimas. Tik odontologas gali nustatyti tikslią priežastį ir parinkti tinkamą gydymą, kad būtų sustabdytas uždegimas, sumažintas skausmas ir išvengta komplikacijų."
-        ]
-      },
-      {
-        h: "Ką daryti, kai skauda dantį ir nėra vaistų?",
-        p: [
-          "Kai skauda dantį ir nėra vaistų, svarbiausia nepanikuoti ir vengti veiksmų, kurie gali pabloginti situaciją. Pirmiausia švelniai išsivalykite dantis, pašalinkite maisto likučius iš tarpdančių ir praskalaukite burną drungnu vandeniu. Tai gali padėti, jei skausmą sustiprino įstrigęs maistas ar sudirgintos dantenos.",
-          "Jeigu yra patinimas, prie skruosto iš išorės galima pridėti šaltą kompresą. Jį laikykite trumpais intervalais ir nedėkite ledo tiesiai ant odos. Svarbu vengti karštų kompresų, nes šiluma gali paskatinti uždegimo plitimą, ypač jei susiformavęs pūlinys.",
-          "Nereikėtų dėti aspirino, česnako, spirito ar kitų dirginančių medžiagų tiesiai ant dantenų ar danties. Tokie metodai gali nudeginti gleivinę ir sukelti dar didesnį skausmą. Namų priemonės gali tik laikinai sumažinti diskomfortą, tačiau jos neišsprendžia pagrindinės problemos. Jei skausmas stiprus, kartojasi ar atsiranda patinimas, būtina kreiptis į odontologą."
-        ]
-      },
-      {
-        h: "Kur kreiptis, kai skauda dantį?",
-        p: [
-          "Kai skauda dantį, svarbu įvertinti skausmo stiprumą ir kitus simptomus. Jei skausmas nestiprus, pasireiškia tik valgant ar geriant šaltus gėrimus, galima registruotis į įprastą odontologo konsultaciją artimiausiu metu. Tačiau jei skausmas stiprus, pulsuojantis, trukdo miegoti, kartu atsiranda patinimas, pūlinys, kraujavimas ar danties trauma, reikalinga skubi odontologinė pagalba.",
-          "Tokiais atvejais geriausia kreiptis į odontologijos kliniką, kuri teikia skubią pagalbą. Vizito metu gydytojas įvertina danties būklę, nustato skausmo priežastį ir parenka tinkamiausią sprendimą. Kartais pakanka pašalinti dirgiklį ar laikinai sumažinti uždegimą, tačiau kitais atvejais gali prireikti endodontinio gydymo, plombavimo, pūlinio gydymo ar kitos procedūros.",
-          "Bangų klinikoje Klaipėdoje teikiama skubi odontologinė pagalba pacientams, kuriuos vargina stiprus danties skausmas, patinimas, danties trauma, iškritusi plomba ar kitos ūmios problemos. Laiku kreipiantis pagalbos galima greičiau numalšinti skausmą ir sumažinti komplikacijų riziką."
-        ]
-      },
-      {
-        h: "Skauda dantį savaitgalį – ką daryti?",
-        p: [
-          "Jeigu skauda dantį savaitgalį, pirmiausia įvertinkite, ar situacija gali palaukti iki artimiausio odontologo vizito. Jei skausmas nestiprus, nėra patinimo, karščiavimo, pūlinio ar traumos požymių, laikinai venkite kieto, karšto, šalto ir saldaus maisto, palaikykite burnos higieną ir registruokitės vizitui artimiausiu metu.",
-          "Tačiau jei skausmas labai stiprus, pulsuojantis, nepraeina, trukdo miegoti, patino žandas ar dantenos, atsirado pūlinys, temperatūra ar sunku išsižioti, delsti nereikėtų. Tokie simptomai gali rodyti infekciją ar ūmų uždegimą, kuriam reikalinga skubi pagalba.",
-          "Jei savaitgalį jūsų pasirinkta klinika nedirba, o simptomai yra pavojingi, reikėtų kreiptis į budinčią skubios pagalbos įstaigą. Jei būklė nėra ūmi, verta kuo anksčiau registruotis artimiausiam odontologo vizitui. Bangų klinikos darbo laikas nurodomas klinikos svetainėje, todėl prieš vykstant visada rekomenduojama pasitikrinti aktualią informaciją ir susisiekti dėl registracijos."
-        ]
-      },
-      {
-        h: "Dažniausios danties skausmo priežastys",
-        image: "https://images.unsplash.com/photo-1592400400196-bf709e32aa88?w=1200&q=80&fit=crop&auto=format",
-        p: [
-          "Danties skausmas gali atsirasti dėl skirtingų priežasčių, todėl vien pagal pojūtį ne visada lengva suprasti, kas tiksliai nutiko. Viena dažniausių priežasčių – ėduonis. Iš pradžių jis gali sukelti tik jautrumą saldžiam, šaltam ar karštam maistui, tačiau pažeidimui gilėjant skausmas tampa stipresnis ir dažnesnis.",
-          "Kita dažna priežastis – danties nervo uždegimas. Tokiu atveju skausmas dažnai būna pulsuojantis, stipresnis vakare ar naktį, gali plisti į žandikaulį, ausį ar smilkinį. Skausmą taip pat gali sukelti dantenų uždegimas, pūlinys, protinių dantų dygimas, danties trauma, nuskilimas ar lūžis.",
-          "Kartais skausmas atsiranda iškritus plombai ar karūnėlei, kai dantis tampa jautrus temperatūros pokyčiams ir kramtymui. Kadangi priežasčių gali būti daug, tiksliausiai jas nustato odontologas apžiūros metu."
-        ]
-      },
-      {
-        h: "Kaip vyksta skubus vizitas pas odontologą?",
-        p: [
-          "Skubaus vizito metu odontologas pirmiausia išklauso paciento nusiskundimus: kada prasidėjo skausmas, koks jo pobūdis, ar yra patinimas, trauma, jautrumas, karščiavimas ar kiti simptomai. Tuomet atliekama burnos apžiūra, įvertinama dantų, dantenų ir aplinkinių audinių būklė.",
-          "Jei vien apžiūros nepakanka, gali būti atliekamas rentgeno tyrimas. Jis padeda tiksliau nustatyti, ar yra gilus ėduonis, uždegimas šaknų srityje, pūlinys, danties lūžis ar kita problema, kurios plika akimi nematyti.",
-          "Pagrindinis skubaus vizito tikslas – sumažinti skausmą, suvaldyti ūmią būklę ir nuspręsti, koks gydymas reikalingas toliau. Kartais problema išsprendžiama to paties vizito metu, o kartais atliekamas laikinas gydymas ir sudaromas tolimesnis gydymo planas. Svarbiausia, kad pacientas negyventų su neaiškia ir tik blogėjančia situacija..."
-        ]
-      },
-      {
-        h: "Kada nebegalima laukti?",
-        p: [
-          "Laukti nereikėtų, jei danties skausmas yra labai stiprus, pulsuojantis arba nepraeina net kelias valandas. Ypač svarbu nedelsti, jei kartu patino žandas, dantenos ar veidas, atsirado pūlinys, nemalonus skonis burnoje, karščiavimas ar bendras silpnumas. Tokie simptomai gali rodyti infekciją, kuri negydoma gali plisti.",
-          "Skubi pagalba reikalinga ir po traumos: jei dantis nuskilo, lūžo, buvo išmuštas, pradėjo kraujuoti dantenos ar tapo sunku sukąsti. Taip pat nereikėtų laukti, jei iškrito plomba ar karūnėlė, o dantis tapo labai jautrus ir skausmingas.",
-          "Net jei skausmas trumpam sumažėja, tai nebūtinai reiškia, kad problema išnyko. Kartais ūmus skausmas aprimsta, tačiau uždegimas toliau progresuoja. Todėl esant stipriems ar pasikartojantiems simptomams geriausia kuo greičiau kreiptis į odontologą."
-        ]
-      },
-      {
-        h: "Greita reakcija padeda išvengti sudėtingesnio gydymo",
-        p: [
-          "Danties skausmas – tai signalas, kad burnoje vyksta pokyčiai, kurių nereikėtų ignoruoti. Net jei skausmas atrodo pakenčiamas arba trumpam sumažėja, jo priežastis gali išlikti. Laiku kreipiantis į odontologą, dažnai galima greičiau sustabdyti uždegimą, sumažinti skausmą ir išvengti sudėtingesnio gydymo ateityje.",
-          "Namų priemonės gali padėti tik laikinai palengvinti būklę, tačiau jos nepakeičia profesionalios apžiūros. Ypač svarbu nedelsti, jei skausmas stiprus, pulsuojantis, atsirado patinimas, pūlinys, karščiavimas ar dantis buvo pažeistas traumos metu.",
-          "Jei skauda dantį, registruokitės konsultacijai Bangų klinikoje Klaipėdoje. Gydytojas įvertins situaciją, nustatys skausmo priežastį ir pasiūlys tinkamiausią gydymo sprendimą."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Ką daryti, jei labai skauda dantį?", a: "Jei labai skauda dantį, pirmiausia švelniai išsivalykite dantis, praskalaukite burną drungnu vandeniu ir venkite karšto, šalto, saldaus ar kieto maisto. Jei yra patinimas, prie skruosto iš išorės galima pridėti šaltą kompresą. Tačiau stiprus, pulsuojantis ar ilgai nepraeinantis skausmas yra ženklas, kad reikalinga odontologo apžiūra. Tokiu atveju nereikėtų laukti, kol skausmas praeis savaime." },
-      { q: "Ką daryti, kai skauda dantį ir nėra vaistų?", a: "Kai skauda dantį ir nėra vaistų, svarbiausia vengti dirginančių ar pavojingų priemonių. Nedėkite vaistų, spirito, česnako ar kitų medžiagų tiesiai ant dantenų, nes jos gali pažeisti gleivinę. Laikinai gali padėti burnos skalavimas drungnu vandeniu, švelni burnos higiena ir šaltas kompresas, jei yra patinimas. Vis dėlto tokios priemonės tik palengvina simptomus, bet nepašalina skausmo priežasties." },
-      { q: "Ar danties skausmas gali praeiti savaime?", a: "Kartais danties skausmas gali trumpam sumažėti, tačiau tai nebūtinai reiškia, kad problema išnyko. Pavyzdžiui, uždegimas ar infekcija gali toliau progresuoti net tada, kai skausmas tampa silpnesnis. Jei skausmas kartojasi, stiprėja, atsiranda jautrumas kramtant, patinimas ar kiti simptomai, reikėtų kreiptis į odontologą." },
-      { q: "Kur kreiptis, kai skauda dantį?", preImage: "https://images.unsplash.com/photo-1681939278218-a755fb2bf2d3?w=1200&q=80&fit=crop&auto=format", a: "Jei skauda dantį savaitgalį, įvertinkite simptomų rimtumą. Jei skausmas nestiprus, nėra patinimo, karščiavimo ar pūlinio, stenkitės nedirginti skaudamos vietos ir registruokitės vizitui artimiausiu metu. Jei skausmas labai stiprus, patino veidas ar dantenos, atsirado pūlinys, temperatūra ar sunku išsižioti, reikėtų kreiptis į skubią pagalbą nedelsiant." },
-      { q: "Ką daryti, jei dantį skauda savaitgalį?", a: "Įvertinkite simptomų rimtumą. Jei skausmas nestiprus, nėra patinimo ar pūlinio – registruokitės vizitui artimiausiu metu. Jei skausmas labai stiprus, patino veidas ar atsiranda pūlinys ir temperatūra – kreipkitės į skubią pagalbą." },
-      { q: "Ar galima šildyti skaudamą dantį?", a: "Šildyti skaudamos vietos nerekomenduojama, ypač jei yra patinimas ar įtariamas pūlinys. Šiluma gali paskatinti uždegimo plitimą ir pabloginti būklę. Jei yra patinimas, saugesnis pasirinkimas – trumpais intervalais naudojamas šaltas kompresas iš išorinės skruosto pusės." }
-    ],
-    sources: [
-      { label: "Acute Dental Pain Management Guideline — American Dental Association", url: "https://www.ada.org/resources/research/science/evidence-based-dental-research/pain-management-guideline" },
-      { label: "Evidence-based clinical practice guideline for the pharmacologic management of acute dental pain", url: "https://jada.ada.org/article/S0002-8177(23)00672-4/fulltext" },
-      { label: "Management of odontogenic infections and sepsis: an update", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7517749/" }
-    ]
+    readTime: 10
   }
 ];
-function getPost(slug) {
-  return BLOG_POSTS.find((p) => p.slug === slug);
-}
 function formatDate(dateStr) {
   const d = new Date(dateStr);
   return d.toLocaleDateString("lt-LT", { year: "numeric", month: "long", day: "numeric" });
@@ -15946,7 +13998,7 @@ function ServicesTrack({ items, readMoreLabel, heading }) {
 function Star$1({ className = "w-4 h-4" }) {
   return /* @__PURE__ */ jsx("svg", { viewBox: "0 0 24 24", className, "aria-hidden": true, fill: "currentColor", children: /* @__PURE__ */ jsx("path", { d: "M12 2.75l2.95 5.98 6.6.96-4.77 4.65 1.13 6.58L12 18.77 6.09 20.92l1.13-6.58L2.45 9.69l6.6-.96L12 2.75z" }) });
 }
-function Arrow({ className = "h-3.5 w-3.5" }) {
+function Arrow$1({ className = "h-3.5 w-3.5" }) {
   return /* @__PURE__ */ jsx(
     "svg",
     {
@@ -15985,6 +14037,7 @@ const TEAM$1 = [
   { name: "Donatas Bitinas", role: "Implantuojantis gydytojas odontologas", img: "/team/Donatas_light.jpg" },
   { name: "Donatas Kubilius", role: "Gydytojas, Veido ir Žandikaulių chirurgas", img: "/team/donataskubilius.jpg" },
   { name: "Jonas Sabulis", role: "Protezuojantis gydytojas odontologas", img: "/team/Jonas-light.jpg" },
+  { name: "Agnė Jurkutė", role: "Protezuojanti gydytoja odontologė", img: "/team/Agnė_light LT.jpg" },
   { name: "Odeta Venckutė", role: "Gydytoja odontologė", img: "/team/Odeta-light.jpg" },
   { name: "Rūta Garšvienė", role: "Burnos higienistė, tiesinimo kapomis koordinatorė", img: "/team/Rūta_light.jpg" }
 ];
@@ -16040,7 +14093,13 @@ function TeamCarousel$1() {
         children: TEAM$1.map((member, i) => {
           const d = getDist(i);
           const abs = Math.abs(d);
-          if (abs > 2) return null;
+          if (abs > 2) {
+            return /* @__PURE__ */ jsxs("span", { className: "sr-only", children: [
+              member.name,
+              " — ",
+              member.role
+            ] }, member.name);
+          }
           const x = d * 300;
           const scale = Math.max(0.65, 1 - abs * 0.17);
           const z = 100 - abs * 35;
@@ -16124,6 +14183,57 @@ function TeamCarousel$1() {
       )
     ] })
   ] });
+}
+function PostCard({
+  post,
+  featured = false
+}) {
+  return /* @__PURE__ */ jsxs(
+    Link,
+    {
+      to: `/straipsniai/${post.slug}`,
+      className: "card-flat group flex h-full flex-col p-3 sm:p-4",
+      children: [
+        /* @__PURE__ */ jsx(
+          "div",
+          {
+            className: `mask-zoom wave-mask overflow-hidden bg-shell ${featured ? (
+              /* On lg the featured card is as tall as the stacked pair beside
+                 it. Letting the photo take the slack keeps the extra height out
+                 of the text block, which otherwise opened a dead gap above the
+                 CTA. Below lg nothing forces the height, so the ratio rules. */
+              "aspect-[16/10] lg:aspect-auto lg:min-h-0 lg:flex-1"
+            ) : "shrink-0 aspect-[16/9]"}`,
+            children: /* @__PURE__ */ jsx(
+              Picture,
+              {
+                src: post.coverImage,
+                alt: post.title,
+                sizes: "(max-width: 1023px) 100vw, (max-width: 1400px) 50vw, 44rem",
+                className: "block h-full w-full",
+                imgClassName: "h-full w-full object-cover"
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ jsxs("div", { className: `flex flex-col px-1 pt-5 sm:px-2 ${featured ? "shrink-0" : "flex-1"}`, children: [
+          /* @__PURE__ */ jsx("p", { className: "muted text-micro", children: formatDate(post.date) }),
+          /* @__PURE__ */ jsx("h3", { className: `mt-2 font-bold leading-snug ${featured ? "text-h2" : "text-h3"}`, children: post.title }),
+          /* @__PURE__ */ jsx(
+            "p",
+            {
+              className: `muted measure mb-5 mt-2 text-small leading-relaxed ${featured ? "clamp-3" : "clamp-2"}`,
+              children: post.excerpt
+            }
+          ),
+          /* @__PURE__ */ jsxs("span", { className: "mt-auto flex items-center gap-2 border-t border-hairline pt-4 text-small font-bold text-tide-text", children: [
+            "Skaityti daugiau",
+            /* @__PURE__ */ jsx(Arrow$1, {})
+          ] })
+        ] })
+      ]
+    }
+  );
 }
 function Home() {
   var _a2, _b2;
@@ -16270,7 +14380,7 @@ function Home() {
       ),
       /* @__PURE__ */ jsx("div", { className: "container-wide mt-8 flex justify-start", children: /* @__PURE__ */ jsxs(MagneticLink, { to: "/paslaugos", className: "btn-ink", children: [
         "Visos paslaugos",
-        /* @__PURE__ */ jsx(Arrow, {})
+        /* @__PURE__ */ jsx(Arrow$1, {})
       ] }) })
     ] }),
     /* @__PURE__ */ jsxs("section", { className: "on-ink py-section", children: [
@@ -16347,7 +14457,7 @@ function Home() {
             className: "inline-flex items-center justify-center gap-2.5 rounded-pill bg-paper px-8 py-4 text-body font-bold text-ink transition-colors duration-fast hover:bg-tide",
             children: [
               "Registruotis dabar",
-              /* @__PURE__ */ jsx(Arrow, {})
+              /* @__PURE__ */ jsx(Arrow$1, {})
             ]
           }
         ) })
@@ -16362,48 +14472,16 @@ function Home() {
         ] }),
         /* @__PURE__ */ jsxs(Link, { to: "/straipsniai", className: "inline-flex shrink-0 items-center gap-2 text-small font-bold text-tide-text", children: [
           "Žiūrėti visus",
-          /* @__PURE__ */ jsx(Arrow, {})
+          /* @__PURE__ */ jsx(Arrow$1, {})
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: "grid gap-8 lg:grid-cols-12", children: BLOG_POSTS.slice(0, 3).map((post, i) => /* @__PURE__ */ jsx(
-        AnimatedSection,
-        {
-          as: "div",
-          delay: i * 0.08,
-          className: i === 0 ? "lg:col-span-7" : "lg:col-span-5",
-          children: /* @__PURE__ */ jsxs(Link, { to: `/straipsniai/${post.slug}`, className: "group flex h-full flex-col", children: [
-            /* @__PURE__ */ jsx(
-              "div",
-              {
-                className: `mask-zoom wave-mask overflow-hidden bg-paper ${i === 0 ? "aspect-[16/10]" : "aspect-[16/9]"}`,
-                children: /* @__PURE__ */ jsx(
-                  Picture,
-                  {
-                    src: post.coverImage,
-                    alt: post.title,
-                    sizes: "(max-width: 1023px) 100vw, (max-width: 1400px) 50vw, 44rem",
-                    className: "block h-full w-full",
-                    imgClassName: "h-full w-full object-cover"
-                  }
-                )
-              }
-            ),
-            /* @__PURE__ */ jsxs("div", { className: "flex flex-1 flex-col pt-5", children: [
-              /* @__PURE__ */ jsx("p", { className: "muted text-micro", children: formatDate(post.date) }),
-              /* @__PURE__ */ jsx("h3", { className: `mt-2 font-bold leading-snug ${i === 0 ? "text-h2" : "text-h3"}`, children: post.title }),
-              /* @__PURE__ */ jsx("p", { className: "muted measure clamp-2 mt-2 flex-1 text-small leading-relaxed", children: post.excerpt }),
-              /* @__PURE__ */ jsxs("span", { className: "mt-5 inline-flex items-center gap-2 text-small font-bold text-tide-text", children: [
-                "Skaityti daugiau",
-                /* @__PURE__ */ jsx(Arrow, {})
-              ] })
-            ] })
-          ] })
-        },
-        post.slug
-      )) }),
+      /* @__PURE__ */ jsxs("div", { className: "grid gap-6 lg:grid-cols-12 lg:gap-8", children: [
+        /* @__PURE__ */ jsx(AnimatedSection, { as: "div", className: "lg:col-span-7", children: /* @__PURE__ */ jsx(PostCard, { post: BLOG_CARDS[0], featured: true }) }),
+        /* @__PURE__ */ jsx("div", { className: "grid gap-6 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1 lg:grid-rows-2 lg:gap-8", children: BLOG_CARDS.slice(1, 3).map((post, i) => /* @__PURE__ */ jsx(AnimatedSection, { as: "div", delay: (i + 1) * 0.08, className: "min-h-0", children: /* @__PURE__ */ jsx(PostCard, { post }) }, post.slug)) })
+      ] }),
       /* @__PURE__ */ jsx("div", { className: "mt-14", children: /* @__PURE__ */ jsxs(Link, { to: "/straipsniai", className: "btn-line", children: [
         "Žiūrėti visus straipsnius",
-        /* @__PURE__ */ jsx(Arrow, {})
+        /* @__PURE__ */ jsx(Arrow$1, {})
       ] }) })
     ] }) }),
     /* @__PURE__ */ jsx(WaveDivider, { from: "var(--shell)", to: "var(--paper)", mirror: true }),
@@ -18479,231 +16557,450 @@ const __vite_glob_0_35 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
   __proto__: null,
   default: RentgenologiniaiTyrimai
 }, Symbol.toStringTag, { value: "Module" }));
-function ServiceCard$1({ svc }) {
-  const [open, setOpen] = useState(false);
-  const inner = /* @__PURE__ */ jsxs("div", { className: "card-flat group relative flex h-full flex-col overflow-hidden", children: [
-    /* @__PURE__ */ jsxs("div", { className: "relative z-10 flex flex-1 items-center justify-between gap-4 px-7 py-8 min-h-[120px]", children: [
-      /* @__PURE__ */ jsx("h3", { className: "text-h3 font-bold leading-snug", children: svc.title }),
-      svc.expandable && /* @__PURE__ */ jsx(
-        "button",
-        {
-          onClick: (e) => {
-            e.preventDefault();
-            setOpen((v) => !v);
+const W$4 = 300;
+const H = 330;
+const OFFSET = 28;
+function useFinePointer() {
+  const [fine, setFine] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const sync = () => setFine(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+  return fine;
+}
+function ServicePreview({ item: item2 }) {
+  const fine = useFinePointer();
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const sx = useSpring(x, { stiffness: 320, damping: 32, mass: 0.6 });
+  const sy = useSpring(y, { stiffness: 320, damping: 32, mass: 0.6 });
+  useEffect(() => {
+    if (!fine) return;
+    const onMove = (e) => {
+      const flipX = e.clientX + OFFSET + W$4 > window.innerWidth;
+      const flipY = e.clientY + OFFSET + H > window.innerHeight;
+      x.set(flipX ? e.clientX - OFFSET - W$4 : e.clientX + OFFSET);
+      y.set(flipY ? e.clientY - OFFSET - H : e.clientY + OFFSET);
+    };
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => window.removeEventListener("mousemove", onMove);
+  }, [fine, x, y]);
+  if (!fine) return null;
+  return /* @__PURE__ */ jsx(AnimatePresence, { children: item2 && /* @__PURE__ */ jsx(
+    motion.div,
+    {
+      "aria-hidden": true,
+      className: "pointer-events-none fixed left-0 top-0 z-40 hidden lg:block",
+      style: { x: sx, y: sy, width: W$4 },
+      initial: { opacity: 0, scale: 0.94 },
+      animate: { opacity: 1, scale: 1 },
+      exit: { opacity: 0, scale: 0.96, transition: { duration: 0.14 } },
+      transition: { type: "spring", stiffness: 420, damping: 30, mass: 0.5 },
+      children: /* @__PURE__ */ jsxs("div", { className: "overflow-hidden rounded-card border border-hairline bg-paper shadow-deep", children: [
+        /* @__PURE__ */ jsx("div", { className: "wave-mask relative m-2 overflow-hidden bg-shell", style: { height: 190 }, children: /* @__PURE__ */ jsx(AnimatePresence, { mode: "wait", children: /* @__PURE__ */ jsx(
+          motion.div,
+          {
+            className: "absolute inset-0",
+            initial: { opacity: 0, scale: 1.06 },
+            animate: { opacity: 1, scale: 1 },
+            exit: { opacity: 0 },
+            transition: { duration: 0.28, ease: [0.4, 0, 0.2, 1] },
+            children: /* @__PURE__ */ jsx(
+              Picture,
+              {
+                src: item2.image,
+                alt: "",
+                sizes: "300px",
+                className: "block h-full w-full",
+                imgClassName: "h-full w-full object-cover"
+              }
+            )
           },
-          className: "flex h-10 w-10 shrink-0 items-center justify-center rounded-pill bg-shell text-ink transition-colors duration-fast hover:bg-tide",
-          "aria-expanded": open,
-          children: /* @__PURE__ */ jsx("svg", { className: `w-4 h-4 transition-transform duration-300 ${open ? "rotate-180" : ""}`, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.5", "aria-hidden": true, children: /* @__PURE__ */ jsx("path", { d: "M6 9l6 6 6-6" }) })
-        }
-      )
-    ] }),
-    svc.expandable && /* @__PURE__ */ jsx(AnimatePresence, { initial: false, children: open && /* @__PURE__ */ jsx(
-      motion.div,
+          item2.image
+        ) }) }),
+        /* @__PURE__ */ jsxs("div", { className: "px-4 pb-4 pt-1", children: [
+          /* @__PURE__ */ jsx("p", { className: "text-small font-bold leading-snug", children: item2.title }),
+          /* @__PURE__ */ jsx("p", { className: "muted mt-1.5 text-micro leading-relaxed", children: item2.summary })
+        ] })
+      ] })
+    },
+    "service-preview"
+  ) });
+}
+const SERVICE_GROUPS = [
+  {
+    id: "implantai",
+    title: "Dantų implantai",
+    blurb: "Prarastų dantų atkūrimas nuo vieno danties iki viso žandikaulio.",
+    image: "/implantacija.webp",
+    services: [
       {
-        initial: { height: 0, opacity: 0 },
-        animate: { height: "auto", opacity: 1, transition: { height: { duration: 0.28 }, opacity: { duration: 0.2, delay: 0.05 } } },
-        exit: { height: 0, opacity: 0, transition: { height: { duration: 0.22 }, opacity: { duration: 0.15 } } },
-        className: "overflow-hidden",
-        children: /* @__PURE__ */ jsx("div", { className: "relative z-10 px-6 pb-6 pt-0 text-sm text-slate-500 leading-relaxed border-t border-slate-100", children: /* @__PURE__ */ jsx("div", { className: "pt-4", children: svc.expandable }) })
+        id: "dantu-implantacija",
+        title: "Dantų implantacija",
+        summary: "Prarasto danties šaknies atkūrimas titano implantu su 3D planavimu.",
+        to: "/paslaugos/dantu-implantacija"
       },
-      "content"
-    ) })
-  ] });
-  if (svc.to) {
-    return /* @__PURE__ */ jsx(Link, { to: svc.to, className: "block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0ABBB5] rounded-2xl", children: inner });
+      {
+        id: "vienmomente-implantacija",
+        title: "Vienmomentė implantacija",
+        summary: "Implantas įsriegiamas tą patį vizitą, kai pašalinamas dantis.",
+        to: "/paslaugos/vienmomente-implantacija"
+      },
+      {
+        id: "straumann-dantu-implantai",
+        title: "STRAUMANN dantų implantai",
+        summary: "Šveicariška sistema su ilgalaike gamintojo garantija.",
+        to: "/paslaugos/straumann-dantu-implantai"
+      },
+      {
+        id: "visi-dantys-ant-4-implantu",
+        title: "Visi dantys ant 4 implantų (All-on-4)",
+        summary: "Visas žandikaulis atkuriamas remiantis į keturis implantus.",
+        to: "/paslaugos/visi-dantys-ant-4-implantu"
+      }
+    ]
+  },
+  {
+    id: "protezavimas",
+    title: "Dantų protezavimas",
+    blurb: "Pažeistų ar prarastų dantų formos, funkcijos ir estetikos atkūrimas.",
+    image: "/protezavimas.webp",
+    services: [
+      {
+        id: "dantu-protezavimas",
+        title: "Dantų protezavimas",
+        summary: "Pažeistų ar prarastų dantų atkūrimas vainikėliais ir protezais.",
+        to: "/paslaugos/dantu-protezavimas"
+      },
+      {
+        id: "dantu-karunieles",
+        title: "Dantų karūnėlės (vainikėliai)",
+        summary: "Smarkiai pažeisto danties apsauga ir formos atkūrimas.",
+        to: "/paslaugos/dantu-karunieles"
+      },
+      {
+        id: "cirkonio-keramikos-vainikelis",
+        title: "Cirkonio keramikos vainikėlis",
+        summary: "Tvirtas ir natūraliai atrodantis vainikėlis be metalo karkaso.",
+        to: "/paslaugos/cirkonio-keramikos-vainikelis"
+      },
+      {
+        id: "dantu-tiltai",
+        title: "Dantų tiltai",
+        summary: "Kelių gretimų dantų atkūrimas remiantis į kaimyninius dantis.",
+        to: "/paslaugos/dantu-tiltai"
+      },
+      {
+        id: "dantu-mikroprotezavimas",
+        title: "Dantų mikroprotezavimas",
+        summary: "Įklotai ir užklotai tada, kai plombos nebepakanka.",
+        to: "/paslaugos/dantu-mikroprotezavimas"
+      },
+      {
+        id: "dantu-uzklotai",
+        title: "Dantų užklotai",
+        summary: "Priekinių dantų formos ir spalvos korekcija plonomis laminatėmis.",
+        to: "/paslaugos/dantu-uzklotai"
+      },
+      {
+        id: "isimami-protezai",
+        title: "Išimami protezai",
+        summary: "Netekus daugelio dantų – lengvi, individualiai pritaikyti protezai.",
+        to: "/paslaugos/isimami-protezai"
+      },
+      {
+        id: "kompensacija-protezavimui",
+        title: "Kompensacija protezavimui",
+        summary: "Padedame sutvarkyti valstybės kompensuojamo protezavimo dokumentus.",
+        to: "/paslaugos/kompensacija-protezavimui"
+      }
+    ]
+  },
+  {
+    id: "gydymas",
+    title: "Dantų gydymas",
+    blurb: "Ėduonies, kanalų ir danties audinių gydymas išsaugant savo dantį.",
+    image: "/plombavimas.webp",
+    services: [
+      {
+        id: "dantu-gydymas",
+        title: "Dantų gydymas",
+        summary: "Ėduonies ir kitų danties pažeidimų gydymas.",
+        to: "/paslaugos/dantu-taisymas-gydymas"
+      },
+      {
+        id: "terapinis-dantu-gydymas",
+        title: "Terapinis dantų gydymas",
+        summary: "Gydymas išsaugant kuo daugiau sveikų danties audinių.",
+        to: "/paslaugos/terapinis-dantu-gydymas"
+      },
+      {
+        id: "gydymas-icon-sistema",
+        title: "Gydymas „ICON“ sistema",
+        summary: "Ankstyvo ėduonies stabdymas visai be gręžimo.",
+        to: "/paslaugos/gydymas-icon-sistema"
+      },
+      {
+        id: "endodontinis-gydymas",
+        title: "Endodontinis gydymas",
+        summary: "Danties kanalų valymas ir užpildymas, kad dantis išliktų.",
+        to: "/paslaugos/endodontinis-gydymas"
+      },
+      {
+        id: "dantu-plombavimas",
+        title: "Dantų plombavimas",
+        summary: "Pažeisto danties atkūrimas ilgaamže plomba.",
+        to: "/paslaugos/dantu-plombavimas"
+      },
+      {
+        id: "bruksizmo-dantu-kapa",
+        title: "Bruksizmo dantų kapa",
+        summary: "Individuali kapa, sauganti dantis nuo naktinio griežimo.",
+        to: "/paslaugos/bruksizmo-dantu-kapa"
+      }
+    ]
+  },
+  {
+    id: "higiena",
+    title: "Burnos higiena ir profilaktika",
+    blurb: "Reguliari priežiūra, kuri pigiausiai sprendžia būsimas problemas.",
+    image: "/higiena.webp",
+    services: [
+      {
+        id: "burnos-higiena",
+        title: "Burnos higiena",
+        summary: "Profesionalus apnašų ir dantų akmenų šalinimas.",
+        to: "/paslaugos/burnos-higiena"
+      },
+      {
+        id: "dantu-fluoravimas",
+        title: "Dantų fluoravimas",
+        summary: "Emalio stiprinimas ir dantų jautrumo mažinimas.",
+        to: "/paslaugos/dantu-fluoravimas"
+      },
+      {
+        id: "dantenu-uzdegimas-gingivitas",
+        title: "Dantenų uždegimas (gingivitas)",
+        summary: "Kraujuojančių ir uždegusių dantenų gydymas.",
+        to: "/paslaugos/dantenu-uzdegimas-gingivitas"
+      }
+    ]
+  },
+  {
+    id: "estetika",
+    title: "Estetinė odontologija",
+    blurb: "Dantų spalva, forma ir eilė – matomas šypsenos rezultatas.",
+    image: "/balinimas.webp",
+    services: [
+      {
+        id: "dantu-balinimas",
+        title: "Dantų balinimas",
+        summary: "Natūralios dantų spalvos pašviesinimas klinikoje.",
+        to: "/paslaugos/dantu-balinimas"
+      },
+      {
+        id: "dantu-balinimo-kapos",
+        title: "Dantų balinimo kapos",
+        summary: "Individualios kapos balinimui namuose savo tempu.",
+        to: "/paslaugos/dantu-balinimo-kapos"
+      },
+      {
+        id: "dantu-balinimas-su-lempa",
+        title: "Dantų balinimas su lempa",
+        summary: "Greitas balinimas, aktyvuojamas šviesos vieno vizito metu.",
+        to: "/paslaugos/dantu-balinimas-su-lempa"
+      },
+      {
+        id: "estetinis-plombavimas",
+        title: "Estetinis plombavimas",
+        summary: "Nematomos plombos, atkuriančios natūralią danties formą.",
+        to: "/paslaugos/estetinis-plombavimas"
+      },
+      {
+        id: "dantu-tiesinimas",
+        title: "Dantų tiesinimas",
+        summary: "Dantų eilės taisymas skaidriomis kapomis.",
+        to: "/paslaugos/dantu-tiesinimas"
+      }
+    ]
+  },
+  {
+    id: "chirurgija",
+    title: "Burnos chirurgija",
+    blurb: "Chirurginės procedūros burnoje taikant vietinį nuskausminimą.",
+    image: "/blog/kaulo-priauginimas.jpg",
+    services: [
+      {
+        id: "burnos-chirurgija",
+        title: "Burnos chirurgija",
+        summary: "Chirurginės procedūros burnoje su patyrusiu chirurgu.",
+        to: "/paslaugos/burnos-chirurgija"
+      },
+      {
+        id: "sinuso-pakelimas",
+        title: "Sinuso pakėlimas",
+        summary: "Kaulo paruošimas implantui viršutiniame žandikaulyje.",
+        to: "/paslaugos/sinuso-pakelimas"
+      },
+      {
+        id: "zandikaulio-kaulo-priauginimas",
+        title: "Žandikaulio kaulo priauginimas",
+        summary: "Kaulo tūrio atkūrimas, kai jo nepakanka implantui.",
+        to: "/paslaugos/zandikaulio-kaulo-priauginimas"
+      },
+      {
+        id: "pulinio-atverimas",
+        title: "Pūlinio atvėrimas",
+        summary: "Skubus pūlinio atvėrimas ir uždegimo nuslopinimas.",
+        to: "/paslaugos/pulinio-atverimas"
+      },
+      {
+        id: "dantu-traukimas",
+        title: "Dantų traukimas",
+        summary: "Nebegydomo danties šalinimas taikant nuskausminimą.",
+        to: "/paslaugos/dantu-traukimas"
+      },
+      {
+        id: "protiniu-dantu-salinimas",
+        title: "Protinių dantų šalinimas",
+        summary: "Netinkamai dygstančių aštuntukų pašalinimas.",
+        to: "/paslaugos/protiniu-dantu-salinimas"
+      }
+    ]
+  },
+  {
+    id: "vaikams",
+    title: "Vaikų odontologija",
+    blurb: "Pirmieji vizitai be baimės ir priežiūra, kol dantys dar keičiasi.",
+    image: "/blog/vaikui-skauda-danti.jpg",
+    services: [
+      {
+        id: "vaiku-odontologija",
+        title: "Vaikų odontologija",
+        summary: "Draugiškas gydymas, pritaikytas mažiesiems pacientams.",
+        to: "/paslaugos/vaiku-odontologija"
+      },
+      {
+        id: "vaiku-profilaktinis-patikrinimas",
+        title: "Vaikų profilaktinis patikrinimas",
+        summary: "Reguliarus patikrinimas, kad ėduonis būtų pastebėtas anksti.",
+        to: "/paslaugos/vaiku-profilaktinis-patikrinimas"
+      },
+      {
+        id: "dantu-higiena-vaikams",
+        title: "Dantų higiena vaikams",
+        summary: "Švelni profesionali higiena ir valymosi įgūdžių mokymas.",
+        to: "/paslaugos/dantu-higiena-vaikams"
+      }
+    ]
+  },
+  {
+    id: "skubi-pagalba",
+    title: "Skubi pagalba ir diagnostika",
+    blurb: "Kai skauda dabar, ir tyrimai, nuo kurių prasideda gydymo planas.",
+    image: "/blog/kiek-laiko-skauda-danti-po-kanalu-valymo.jpg",
+    services: [
+      {
+        id: "skubi-pagalba",
+        title: "Skubi pagalba",
+        summary: "Ūmus dantų skausmas, patinimas ar trauma – priimame skubiai.",
+        to: "/paslaugos/skubi-pagalba"
+      },
+      {
+        id: "rentgenologiniai-tyrimai",
+        title: "Rentgenologiniai tyrimai",
+        summary: "Skaitmeninės nuotraukos ir 3D vaizdas tiksliam gydymo planui.",
+        to: "/paslaugos/rentgenologiniai-tyrimai"
+      }
+    ]
   }
-  return /* @__PURE__ */ jsx("div", { className: "h-full", children: inner });
+];
+SERVICE_GROUPS.flatMap((g) => g.services);
+function Arrow({ className = "h-3.5 w-3.5" }) {
+  return /* @__PURE__ */ jsx("svg", { className: `btn-arrow ${className}`, viewBox: "0 0 24 24", fill: "none", "aria-hidden": true, children: /* @__PURE__ */ jsx(
+    "path",
+    {
+      d: "M5 12h14M13 6l6 6-6 6",
+      stroke: "currentColor",
+      strokeWidth: "2.4",
+      strokeLinecap: "round",
+      strokeLinejoin: "round"
+    }
+  ) });
+}
+function ServiceCard$1({
+  svc,
+  onEnter,
+  onLeave
+}) {
+  return /* @__PURE__ */ jsxs(
+    Link,
+    {
+      to: svc.to,
+      onMouseEnter: onEnter,
+      onMouseLeave: onLeave,
+      onFocus: onEnter,
+      onBlur: onLeave,
+      className: "card-flat group relative flex h-full flex-col overflow-hidden p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-tide-text",
+      children: [
+        /* @__PURE__ */ jsx(
+          "span",
+          {
+            "aria-hidden": true,
+            className: "pointer-events-none absolute -bottom-px -left-px h-20 w-20 origin-bottom-left scale-0 rounded-bl-card bg-tide/10 transition-transform duration-mid ease-out-soft group-hover:scale-100"
+          }
+        ),
+        /* @__PURE__ */ jsxs("div", { className: "relative z-10 flex h-full flex-col", children: [
+          /* @__PURE__ */ jsx("h3", { className: "text-body font-bold leading-snug transition-colors duration-fast group-hover:text-tide-text", children: svc.title }),
+          /* @__PURE__ */ jsx("p", { className: "muted mb-5 mt-2 text-micro leading-relaxed", children: svc.summary }),
+          /* @__PURE__ */ jsxs("span", { className: "mt-auto inline-flex items-center gap-2 text-micro font-bold text-tide-text", children: [
+            "Sužinoti daugiau",
+            /* @__PURE__ */ jsx(Arrow, { className: "h-3 w-3" })
+          ] })
+        ] })
+      ]
+    }
+  );
+}
+function Group({
+  group,
+  onEnter,
+  onLeave
+}) {
+  return /* @__PURE__ */ jsxs("section", { className: "scroll-mt-28", id: group.id, children: [
+    /* @__PURE__ */ jsxs("header", { className: "mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between", children: [
+      /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsx("h2", { className: "text-h3 font-extrabold", children: group.title }),
+        /* @__PURE__ */ jsx("p", { className: "muted measure mt-1.5 text-small leading-relaxed", children: group.blurb })
+      ] }),
+      /* @__PURE__ */ jsxs("span", { className: "muted shrink-0 text-micro font-semibold", children: [
+        group.services.length,
+        " paslaugos"
+      ] })
+    ] }),
+    /* @__PURE__ */ jsx("div", { className: "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4", children: group.services.map((s, i) => (
+      /* AnimatedSection, not a motion component: it shares the one
+         observer in src/lib/reveal.ts, where per-group useInView would
+         have added eight more, and keeps the grid off the framer-motion
+         runtime. The hidden state is CSS scoped under html.js, so it is
+         also correct without JS — not merely stripped by the prerenderer
+         the way an inline opacity:0 is. */
+      /* @__PURE__ */ jsx(AnimatedSection, { as: "div", delay: Math.min(i, 7) * 0.05, className: "h-full", children: /* @__PURE__ */ jsx(
+        ServiceCard$1,
+        {
+          svc: s,
+          onEnter: () => onEnter({ title: s.title, summary: s.summary, image: group.image }),
+          onLeave
+        }
+      ) }, s.id)
+    )) })
+  ] });
 }
 function Services() {
-  const sections = useMemo(() => [
-    {
-      id: "dantu-implantacija",
-      title: "Dantų implantacija",
-      to: "/paslaugos/dantu-implantacija"
-    },
-    {
-      id: "vienmomente-implantacija",
-      title: "Vienmomentė implantacija",
-      to: "/paslaugos/vienmomente-implantacija"
-    },
-    {
-      id: "straumann-dantu-implantai",
-      title: "STRAUMANN dantų implantai",
-      to: "/paslaugos/straumann-dantu-implantai"
-    },
-    {
-      id: "visi-dantys-ant-4-implantu",
-      title: "Visi dantys ant 4 implantų (All-on-4)",
-      to: "/paslaugos/visi-dantys-ant-4-implantu"
-    },
-    {
-      id: "skubi-pagalba",
-      title: "Skubi pagalba",
-      to: "/paslaugos/skubi-pagalba"
-    },
-    {
-      id: "dantu-protezavimas",
-      title: "Dantų protezavimas",
-      to: "/paslaugos/dantu-protezavimas"
-    },
-    {
-      id: "dantu-karunieles",
-      title: "Dantų karūnėlės (vainikėliai)",
-      to: "/paslaugos/dantu-karunieles"
-    },
-    {
-      id: "cirkonio-keramikos-vainikelis",
-      title: "Cirkonio keramikos vainikėlis",
-      to: "/paslaugos/cirkonio-keramikos-vainikelis"
-    },
-    {
-      id: "dantu-tiltai",
-      title: "Dantų tiltai",
-      to: "/paslaugos/dantu-tiltai"
-    },
-    {
-      id: "dantu-mikroprotezavimas",
-      title: "Dantų mikroprotezavimas",
-      to: "/paslaugos/dantu-mikroprotezavimas"
-    },
-    {
-      id: "dantu-uzklotai",
-      title: "Dantų užklotai",
-      to: "/paslaugos/dantu-uzklotai"
-    },
-    {
-      id: "isimami-protezai",
-      title: "Išimami protezai",
-      to: "/paslaugos/isimami-protezai"
-    },
-    {
-      id: "kompensacija-protezavimui",
-      title: "Kompensacija protezavimui",
-      to: "/paslaugos/kompensacija-protezavimui"
-    },
-    {
-      id: "dantu-gydymas",
-      title: "Dantų gydymas",
-      to: "/paslaugos/dantu-taisymas-gydymas"
-    },
-    {
-      id: "terapinis-dantu-gydymas",
-      title: "Terapinis dantų gydymas",
-      to: "/paslaugos/terapinis-dantu-gydymas"
-    },
-    {
-      id: "gydymas-icon-sistema",
-      title: "Gydymas „ICON“ sistema",
-      to: "/paslaugos/gydymas-icon-sistema"
-    },
-    {
-      id: "dantu-tiesinimas",
-      title: "Dantų tiesinimas",
-      to: "/paslaugos/dantu-tiesinimas"
-    },
-    {
-      id: "burnos-higiena",
-      title: "Burnos higiena",
-      to: "/paslaugos/burnos-higiena"
-    },
-    {
-      id: "dantu-fluoravimas",
-      title: "Dantų fluoravimas",
-      to: "/paslaugos/dantu-fluoravimas"
-    },
-    {
-      id: "burnos-chirurgija",
-      title: "Burnos chirurgija",
-      to: "/paslaugos/burnos-chirurgija"
-    },
-    {
-      id: "sinuso-pakelimas",
-      title: "Sinuso pakėlimas",
-      to: "/paslaugos/sinuso-pakelimas"
-    },
-    {
-      id: "zandikaulio-kaulo-priauginimas",
-      title: "Žandikaulio kaulo priauginimas",
-      to: "/paslaugos/zandikaulio-kaulo-priauginimas"
-    },
-    {
-      id: "pulinio-atverimas",
-      title: "Pūlinio atvėrimas",
-      to: "/paslaugos/pulinio-atverimas"
-    },
-    {
-      id: "dantu-balinimas",
-      title: "Dantų balinimas",
-      to: "/paslaugos/dantu-balinimas"
-    },
-    {
-      id: "dantu-balinimo-kapos",
-      title: "Dantų balinimo kapos",
-      to: "/paslaugos/dantu-balinimo-kapos"
-    },
-    {
-      id: "dantu-balinimas-su-lempa",
-      title: "Dantų balinimas su lempa",
-      to: "/paslaugos/dantu-balinimas-su-lempa"
-    },
-    {
-      id: "estetinis-plombavimas",
-      title: "Estetinis plombavimas",
-      to: "/paslaugos/estetinis-plombavimas"
-    },
-    {
-      id: "dantu-plombavimas",
-      title: "Dantų plombavimas",
-      to: "/paslaugos/dantu-plombavimas"
-    },
-    {
-      id: "dantu-traukimas",
-      title: "Dantų traukimas",
-      to: "/paslaugos/dantu-traukimas"
-    },
-    {
-      id: "protiniu-dantu-salinimas",
-      title: "Protinių dantų šalinimas",
-      to: "/paslaugos/protiniu-dantu-salinimas"
-    },
-    {
-      id: "endodontinis-gydymas",
-      title: "Endodontinis gydymas",
-      to: "/paslaugos/endodontinis-gydymas"
-    },
-    {
-      id: "vaiku-odontologija",
-      title: "Vaikų odontologija",
-      to: "/paslaugos/vaiku-odontologija"
-    },
-    {
-      id: "vaiku-profilaktinis-patikrinimas",
-      title: "Vaikų profilaktinis patikrinimas",
-      to: "/paslaugos/vaiku-profilaktinis-patikrinimas"
-    },
-    {
-      id: "dantu-higiena-vaikams",
-      title: "Dantų higiena vaikams",
-      to: "/paslaugos/dantu-higiena-vaikams"
-    },
-    {
-      id: "rentgenologiniai-tyrimai",
-      title: "Rentgenologiniai tyrimai",
-      to: "/paslaugos/rentgenologiniai-tyrimai"
-    },
-    {
-      id: "bruksizmo-dantu-kapa",
-      title: "Bruksizmo dantų kapa",
-      to: "/paslaugos/bruksizmo-dantu-kapa"
-    },
-    {
-      id: "dantenu-uzdegimas-gingivitas",
-      title: "Dantenų uždegimas (gingivitas)",
-      to: "/paslaugos/dantenu-uzdegimas-gingivitas"
-    }
-  ], []);
-  const gridRef = useRef(null);
-  const gridInView = useInView(gridRef, { once: true, margin: "-80px" });
+  const [preview, setPreview] = useState(null);
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx(
       SEO,
@@ -18712,36 +17009,41 @@ function Services() {
         description: "Skubi pagalba, dantų protezavimas, kompensuojamas protezavimas, dantų gydymas, implantai, tiesinimas, higiena, chirurgija, balinimas, plombavimas, traukimas, endodontija, vaikų odontologija."
       }
     ),
-    /* @__PURE__ */ jsx("section", { className: "shell-bg", children: /* @__PURE__ */ jsxs("div", { className: "container-wide py-section", children: [
-      /* @__PURE__ */ jsxs("div", { className: "max-w-3xl", children: [
-        /* @__PURE__ */ jsx("p", { className: "text-small font-semibold text-tide-text", children: "Bangų klinika" }),
-        /* @__PURE__ */ jsx("h1", { className: "mt-4 text-display font-black", children: /* @__PURE__ */ jsx(RevealLines, { lines: ["Paslaugos"] }) }),
-        /* @__PURE__ */ jsx("p", { className: "muted measure mt-6 text-lead leading-relaxed", children: "Visapusiška odontologo pagalba – nuo profilaktikos iki implantų. Pasirinkite dominančią paslaugą." })
+    /* @__PURE__ */ jsx(ServicePreview, { item: preview }),
+    /* @__PURE__ */ jsxs("section", { className: "shell-bg relative overflow-hidden", children: [
+      /* @__PURE__ */ jsxs("div", { "aria-hidden": true, className: "pointer-events-none absolute inset-x-0 bottom-0 top-16", children: [
+        /* @__PURE__ */ jsx(TideLine, { className: "absolute inset-x-0 top-[12%]", weight: 1, opacity: 0.2 }),
+        /* @__PURE__ */ jsx(TideLine, { className: "absolute inset-x-0 top-[46%]", weight: 1.5, opacity: 0.14 }),
+        /* @__PURE__ */ jsx(TideLine, { className: "absolute inset-x-0 top-[78%]", weight: 1, opacity: 0.22 })
       ] }),
-      /* @__PURE__ */ jsx(TideLine, { className: "mt-12 max-w-xl" })
-    ] }) }),
-    /* @__PURE__ */ jsx(WaveDivider, { from: "var(--shell)", to: "var(--paper)" }),
-    /* @__PURE__ */ jsx("div", { className: "container-wide pb-section pt-section-tight", children: /* @__PURE__ */ jsx(
-      motion.div,
-      {
-        ref: gridRef,
-        className: "grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3",
-        children: sections.map((s, i) => /* @__PURE__ */ jsx(
-          motion.div,
+      /* @__PURE__ */ jsxs("div", { className: "container-wide relative z-10 py-section", children: [
+        /* @__PURE__ */ jsxs("div", { className: "max-w-3xl", children: [
+          /* @__PURE__ */ jsx("p", { className: "text-small font-semibold text-tide-text", children: "Bangų klinika" }),
+          /* @__PURE__ */ jsx("h1", { className: "mt-4 text-display font-black", children: /* @__PURE__ */ jsx(RevealLines, { lines: ["Paslaugos"] }) }),
+          /* @__PURE__ */ jsx("p", { className: "muted measure mt-6 text-lead leading-relaxed", children: "Visapusiška odontologo pagalba – nuo profilaktikos iki implantų. Pasirinkite dominančią paslaugą." })
+        ] }),
+        /* @__PURE__ */ jsx("nav", { "aria-label": "Paslaugų grupės", className: "mt-10 flex flex-wrap gap-2", children: SERVICE_GROUPS.map((g) => /* @__PURE__ */ jsx(
+          "a",
           {
-            initial: { opacity: 0, y: 28 },
-            animate: gridInView ? { opacity: 1, y: 0 } : {},
-            transition: {
-              duration: 0.45,
-              delay: i * 0.07,
-              ease: [0.4, 0, 0.2, 1]
-            },
-            children: /* @__PURE__ */ jsx(ServiceCard$1, { svc: s })
+            href: `#${g.id}`,
+            className: "rounded-pill border border-hairline bg-paper px-4 py-2 text-micro font-semibold transition-colors duration-fast hover:border-tide hover:bg-tide/10",
+            children: g.title
           },
-          s.id
-        ))
-      }
-    ) })
+          g.id
+        )) })
+      ] }),
+      /* @__PURE__ */ jsx(TideLine, { className: "relative z-10 -mt-2", weight: 1.75, opacity: 0.75 })
+    ] }),
+    /* @__PURE__ */ jsx(WaveDivider, { from: "var(--shell)", to: "var(--paper)" }),
+    /* @__PURE__ */ jsx("div", { className: "container-wide space-y-16 pb-section pt-section-tight sm:space-y-20", children: SERVICE_GROUPS.map((g) => /* @__PURE__ */ jsx(
+      Group,
+      {
+        group: g,
+        onEnter: setPreview,
+        onLeave: () => setPreview(null)
+      },
+      g.id
+    )) })
   ] });
 }
 const __vite_glob_0_36 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
@@ -19544,7 +17846,7 @@ function Straipsniai() {
       ] }),
       /* @__PURE__ */ jsx("p", { className: "mt-5 text-lg text-slate-500 leading-relaxed max-w-xl", children: "Naudinga informacija, odontologų patarimai ir atsakymai į dažniausius klausimus apie dantų gydymą ir priežiūrą." })
     ] }) }) }) }),
-    /* @__PURE__ */ jsx("section", { className: "pb-20 md:pb-28", children: /* @__PURE__ */ jsx("div", { className: W$3, children: /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8", children: BLOG_POSTS.map((post, i) => /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("section", { className: "pb-20 md:pb-28", children: /* @__PURE__ */ jsx("div", { className: W$3, children: /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8", children: BLOG_CARDS.map((post, i) => /* @__PURE__ */ jsx(
       motion.div,
       {
         initial: { opacity: 0, y: 28 },
@@ -19625,6 +17927,2043 @@ const __vite_glob_0_40 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
   __proto__: null,
   default: Straipsniai
 }, Symbol.toStringTag, { value: "Module" }));
+const BODIES$1 = {
+  "dantu-griezimas-nakti-kada-padeda-kapos": {
+    sections: [
+      {
+        p: [
+          "Dantų griežimas naktį dažnai ilgą laiką lieka nepastebėtas. Apie jį gali pasakyti šalia miegantis žmogus, o odontologas – pastebėti nudilusius, įskilusius ar jautresnius dantis. Kai kuriems pacientams rytais maudžia žandikaulio raumenis, smilkinius arba galvą, tačiau dalis žmonių aiškių simptomų nejaučia.",
+          "Dantų bruksizmas – tai pasikartojantis dantų sukandimas, griežimas arba žandikaulio įtempimas. Jis gali pasireikšti miegant arba būdraujant. Bruksizmas ne kiekvienam žmogui sukelia žalą, tačiau intensyvi ir ilgalaikė apkrova gali prisidėti prie dantų dilimo, įtrūkimų, restauracijų pažeidimų ir kramtomųjų raumenų skausmo.",
+          "Kai atsiranda dantų pažeidimų rizika, odontologas gali rekomenduoti apsauginę kapą. Dantų kapos miegui atskiria viršutinio ir apatinio žandikaulio dantis bei saugo jų paviršius nuo tiesioginio trynimosi. Vis dėlto kapa nebūtinai sustabdo pačią kramtomųjų raumenų veiklą, todėl prieš ją gaminant svarbu įvertinti dantų, dantenų, restauracijų ir žandikaulio sąnarių būklę."
+        ]
+      },
+      {
+        h: "Kas yra dantų bruksizmas ir kodėl žmonės griežia dantimis?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Miego ir būdravimo bruksizmas laikomi skirtingomis kramtomųjų raumenų veiklos formomis." },
+          { type: "p", text: "Dantų griežimas naktį, arba miego bruksizmas, pasireiškia miegant vykstančiu dantų sukandimu, žandikaulio judesiais ar dantų paviršių trynimu. Žmogus šių veiksmų nekontroliuoja ir dažniausiai jų neprisimena." },
+          { type: "p", text: "Būdravimo bruksizmas dažniau pasireiškia ilgalaikiu dantų sukandimu arba žandikaulio įtempimu. Tai gali vykti susikaupus, dirbant kompiuteriu, vairuojant, sportuojant ar patiriant emocinę įtampą." },
+          { type: "p", text: "Vienos visus bruksizmo atvejus paaiškinančios priežasties nėra. Jo pasireiškimą gali veikti:" },
+          { type: "ul", items: [
+            "emocinė įtampa ir nerimas;",
+            "miego kokybė bei dažni prabudimai;",
+            "alkoholio, nikotino ar didelio kofeino kiekio vartojimas;",
+            "kai kurie vaistai;",
+            "individuali nervų sistemos veikla;",
+            "genetiniai ir kiti asmeniniai veiksniai."
+          ] },
+          { type: "p", text: "Stresas gali sustiprinti bruksizmą, ypač būdravimo metu, tačiau jo nereikėtų laikyti vienintele priežastimi. Miego bruksizmas yra sudėtinga su miego ir nervų sistemos procesais susijusi raumenų veikla." },
+          { type: "p", text: "Dantų sąkandis anksčiau buvo laikomas viena pagrindinių bruksizmo priežasčių. Dabartinis mokslinis požiūris yra atsargesnis: vien dantų padėties, plombų ar sąkandžio koregavimas nėra universalus dantų griežimo gydymo būdas." }
+        ]
+      },
+      {
+        h: "Kaip atpažinti dantų griežimą naktį?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Dantų griežimą naktį neretai pirmasis pastebi šalia miegantis žmogus. Jis gali girdėti dantų girgždėjimą ar trynimą. Tačiau garsas nėra būtinas: dalis žmonių miegodami dantis stipriai sukanda, bet jais negriežia." },
+          { type: "p", text: "Galimi bruksizmo požymiai:" },
+          { type: "ul", items: [
+            "rytinis žandikaulio raumenų nuovargis ar maudimas;",
+            "skausmas smilkinių arba veido srityje;",
+            "rytinis galvos skausmas;",
+            "dantų jautrumas;",
+            "nudilę, suplokštėję ar nuskilę dantų kraštai;",
+            "dažnai pažeidžiamos plombos, vainikėliai ar kitos restauracijos;",
+            "žandų gleivinėje matomos sukandimo žymės;",
+            "sunkiau plačiai išsižioti;",
+            "žandikaulio sąnario skausmas ar strigimas."
+          ] },
+          { type: "p", text: "Nė vienas iš šių požymių atskirai nepatvirtina bruksizmo. Dantys gali dilti ne tik dėl mechaninio trynimosi, bet ir dėl rūgštinės erozijos, abrazyvaus valymo ar kelių priežasčių derinio. Galvos ir veido skausmas taip pat gali būti nesusijęs su dantų griežimu." },
+          { type: "p", text: "Odontologas įvertina dantų paviršius, restauracijas, dantenas, kramtomuosius raumenis ir žandikaulio sąnarius. Taip pat svarbu aptarti simptomų trukmę, miego kokybę, vartojamus vaistus ir artimųjų pastebėtus garsus." }
+        ]
+      },
+      {
+        h: "Kokias problemas gali sukelti ilgalaikis dantų griežimas?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Epizodinis bruksizmas ne visada sukelia žalą. Problemos dažniau atsiranda, kai apkrova yra intensyvi, ilgalaikė arba dantys ir restauracijos jau yra pažeidžiami." },
+          { type: "p", text: "Dantų griežimas gali prisidėti prie:" },
+          { type: "ul", items: [
+            "dantų emalio dilimo;",
+            "dantų kraštų trumpėjimo ir suplokštėjimo;",
+            "įtrūkimų ar nuskilimų;",
+            "padidėjusio jautrumo;",
+            "plombų, vainikėlių ir kitų restauracijų lūžių;",
+            "implantų ir protezinių konstrukcijų perkrovos;",
+            "kramtomųjų raumenų nuovargio ar skausmo;",
+            "smilkinių ir veido srities maudimo;",
+            "žandikaulio sąnario diskomforto."
+          ] },
+          { type: "p", text: "Dantų dilimas paprastai vyksta palaipsniui, todėl ilgą laiką gali likti nepastebėtas. Pažengusiais atvejais dantys atrodo trumpesni, pakinta jų forma, gali suprastėti kramtymo funkcija ir šypsenos estetika." },
+          { type: "p", text: "Dantų emalis savaime neatsinaujina. Kapa negali atkurti jau prarastų audinių, bet gali padėti apsaugoti dantis nuo tolesnio mechaninio pažeidimo. Jei dantys stipriai nudilę ar nuskilę, gali prireikti restauracinio gydymo." }
+        ]
+      },
+      {
+        h: "Kaip veikia dantų kapos miegui?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Dantų kapos miegui yra išimami aparatai, dažniausiai dėvimi ant viršutinio arba apatinio žandikaulio dantų. Bruksizmui skirtos kapos dar vadinamos apsauginėmis, okliuzinėmis arba stabilizacinėmis kapomis." },
+          { type: "p", text: "Pagrindinė kapos paskirtis – sukurti fizinį barjerą tarp abiejų žandikaulių dantų. Kai žmogus miegodamas griežia ar stipriai sukanda, dantų paviršiai tiesiogiai nesitrina vienas į kitą. Taip mažinama jų dilimo, įskilimo ir restauracijų pažeidimo rizika." },
+          { type: "p", text: "Tinkamai pritaikyta kapa gali:" },
+          { type: "ul", items: [
+            "apsaugoti dantų paviršius;",
+            "tolygiau paskirstyti sukandimo apkrovą;",
+            "saugoti plombas, vainikėlius ir kitas restauracijas;",
+            "padėti stebėti griežimo paliekamas nusidėvėjimo žymes;",
+            "kai kuriems pacientams sumažinti raumenų diskomfortą."
+          ] },
+          { type: "p", text: "Svarbu suprasti, kad kapa pirmiausia saugo nuo mechaninių bruksizmo pasekmių. Ji nebūtinai pašalina dantų griežimo priežastį ar sustabdo naktinę kramtomųjų raumenų veiklą. Todėl kapa neturėtų būti pristatoma kaip visiems tinkantis bruksizmo išgydymo būdas." }
+        ]
+      },
+      {
+        h: "Kuo individuali kapa skiriasi nuo vaistinėje įsigyjamos kapos?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Individuali kapa gaminama pagal konkretaus paciento dantų formą. Jos prigludimas, storis ir sukandimo kontaktai patikrinami bei, kai reikia, koreguojami odontologo." },
+          { type: "p", text: "Kapos gamyba paprastai vyksta keliais etapais:" },
+          { type: "ol", items: [
+            "Odontologas apžiūri dantis, dantenas, restauracijas ir įvertina sąkandį.",
+            "Atliekamas skaitmeninis dantų skenavimas arba imami atspaudai.",
+            "Laboratorijoje pagaminama individuali kapa.",
+            "Kito vizito metu patikrinamas jos prigludimas ir sukandimo kontaktai.",
+            "Jei reikia, kapa pakoreguojama."
+          ] },
+          { type: "p", text: "Individualiai pagaminta kapa paprastai stabiliau laikosi, mažiau juda miegant ir gali būti tiksliau pritaikyta ilgalaikiam dėvėjimui." },
+          { type: "p", text: "Vaistinėse ar internete parduodamos standartinės ir šiltame vandenyje formuojamos kapos yra lengviau prieinamos, tačiau jų prigludimas gali būti ne toks tikslus. Netinkamai pritaikytas aparatas gali spausti dantis, judėti, trukdyti miegoti arba nepakankamai apsaugoti dantų paviršius." },
+          { type: "p", text: "Odontologo įvertinimas ypač svarbus, jei pacientas turi:" },
+          { type: "ul", items: [
+            "paslankių ar stipriai nudilusių dantų;",
+            "vainikėlių, tiltų ar implantų;",
+            "aktyvią periodonto ligą;",
+            "žandikaulio sąnario skausmą;",
+            "nebaigtą ortodontinį ar restauracinį gydymą;",
+            "galimų miego kvėpavimo sutrikimų požymių."
+          ] },
+          { type: "p", text: "Bruksizmo kapa nėra tas pats, kas apatinį žandikaulį į priekį stumiantis aparatas, naudojamas kai kuriems obstrukcine miego apnėja sergantiems pacientams. Garsiai knarkiant ar pastebėjus kvėpavimo pauzes savarankiškai pasirinkta kapa neturėtų pakeisti medicininio ištyrimo." },
+          { type: "p", text: "Kapą reikia plauti vėsiu arba drungnu vandeniu ir laikyti vėdinamoje dėžutėje. Karštas vanduo gali deformuoti jos medžiagą. Jei kapa įtrūksta, pradeda klibėti, spausti ar pakeičia sukandimo pojūtį, ją turėtų patikrinti odontologas." }
+        ]
+      },
+      {
+        h: "Kada dėl dantų bruksizmo reikėtų kreiptis į odontologą?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Į odontologą verta kreiptis, jei artimieji reguliariai girdi dantų griežimą naktį arba pastebite dantų nudilimą, jautrumą, įtrūkimus ir dažnai pažeidžiamas restauracijas." },
+          { type: "p", text: "Apžiūra taip pat reikalinga, jei:" },
+          { type: "ul", items: [
+            "rytais dažnai maudžia žandikaulį ar smilkinius;",
+            "skausmas trukdo kramtyti arba išsižioti;",
+            "dantys atrodo trumpesni ar pakeitė formą;",
+            "nuskilo dantis, plomba ar vainikėlis;",
+            "žandikaulio sąnarys skausmingas ar stringa;",
+            "naudojama kapa spaudžia, kliba arba nebetinka;",
+            "dantų dilimas greitai progresuoja."
+          ] },
+          { type: "p", text: "Odontologas įvertins, ar reikalinga aktyvi dantų apsauga, ar pakanka stebėjimo ir įpročių korekcijos. Gydymas gali apimti individualią kapą, pažeistų dantų atkūrimą, raumenų ir sąnarių būklės priežiūrą bei nukreipimą pas kitą specialistą." },
+          { type: "p", text: "Būdravimo bruksizmo atveju svarbi savistaba. Ramybės metu viršutiniai ir apatiniai dantys neturėtų nuolat liestis. Lūpos gali būti lengvai suglaustos, o žandikaulio raumenys – atpalaiduoti. Dienos metu gali padėti priminimai patikrinti, ar dantys nėra sukąsti." },
+          { type: "p", text: "Jei pastebėjote dantų nudilimą, rytais jaučiate žandikaulio įtampą arba artimieji girdi, kad griežiate dantimis, registruokitės konsultacijai Bangų klinikoje Klaipėdoje. Mūsų specialistai įvertins simptomus, patikrins dantų būklę ir, jei reikia, pagamins individualiai pritaikytą apsauginę kapą." }
+        ]
+      }
+    ],
+    faq: [
+      { q: "Ar dantų kapa sustabdo griežimą naktį?", a: "Nebūtinai. Kapa pirmiausia saugo dantis ir restauracijas nuo tiesioginio trynimosi. Naktinė kramtomųjų raumenų veikla gali išlikti." },
+      { q: "Ar dantų kapos miegui tinka visiems?", a: "Ne visada. Prieš gaminant kapą reikia įvertinti dantis, dantenas, restauracijas ir žandikaulio sąnarius. Individualus įvertinimas ypač svarbus turint implantų, periodonto ligų ar stipriai nudilusių dantų." },
+      { q: "Kiek laiko tarnauja bruksizmo kapa?", a: "Vienodo termino nėra. Kapos tarnavimo laikas priklauso nuo jos medžiagos, griežimo intensyvumo, naudojimo dažnio ir priežiūros. Įtrūkusią, deformuotą ar klibančią kapą turi įvertinti odontologas." },
+      { q: "Ar kapą reikia nešioti visą gyvenimą?", a: "Nebūtinai. Dėvėjimo trukmė priklauso nuo simptomų, dantų pažeidimo rizikos ir gydymo eigos. Kapos poreikį verta periodiškai įvertinti iš naujo." },
+      { q: "Nuo ko priklauso dantų kapos kaina?", a: "Kaina priklauso nuo kapos tipo, medžiagos, gamybos būdo, diagnostikos ir reikalingų korekcijų. Tiksli kaina nustatoma įvertinus paciento dantų būklę." },
+      { q: "Ar stresas gali paskatinti dantų griežimą?", a: "Emocinė įtampa gali būti vienas iš bruksizmą lydinčių ar stiprinančių veiksnių, ypač būdravimo metu. Tačiau bruksizmo nereikėtų aiškinti vien stresu." }
+    ],
+    sources: [
+      { label: "International Consensus on the Assessment of Bruxism: Report of a Work in Progress", url: "https://pubmed.ncbi.nlm.nih.gov/29926505/" },
+      { label: "Standardised Tool for the Assessment of Bruxism", url: "https://pubmed.ncbi.nlm.nih.gov/36597658/" },
+      { label: "The Efficacy of Occlusal Splints in the Treatment of Bruxism: A Systematic Review", url: "https://pubmed.ncbi.nlm.nih.gov/33652054/" },
+      { label: "Sleep Bruxism May Not Be Associated With Obstructive Sleep Apnea: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/39182463/" }
+    ]
+  },
+  "kaip-pasalinti-dantu-akmenis": {
+    sections: [
+      {
+        p: [
+          "Dantų akmenys dažniausiai pastebimi prie apatinių priekinių dantų, tarpdančiuose arba ties dantenų kraštu. Jie gali būti gelsvi, rusvi ar tamsesni, o liežuviu palietus danties paviršių dažnai jaučiamas šiurkštumas. Dalis akmenų kaupiasi po dantenomis, todėl veidrodyje jų nematyti.",
+          "Jei svarstote, kaip atsikratyti dantų akmenų, svarbiausia žinoti, kad sukietėjusių sankaupų dantų šepetėlis, pasta, siūlas ar irigatorius nepašalins. Jas saugiai nuvalo burnos higienistas arba odontologas profesionalios burnos higienos metu. Namuose galima pašalinti minkštąsias bakterines apnašas ir taip mažinti naujų akmenų susidarymą."
+        ]
+      },
+      {
+        h: "Kodėl ant dantų susidaro dantų akmenys?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Ant dantų nuolat formuojasi lipni bakterijų plėvelė, vadinama dantų apnašomis arba biofilmu. Ją galima pašalinti valant dantis ir tarpdančius. Jei apnašos lieka ant dantų paviršiaus, jose kaupiasi seilėse esantys mineralai, todėl ilgainiui jos sukietėja ir virsta dantų akmenimis. Jau mineralizuotų sankaupų įprastu dantų šepetėliu pašalinti nebegalima." },
+          { type: "p", text: "Dantų akmenys skirstomi į esančius virš dantenų ir po jomis. Virš dantenų susidariusios sankaupos paprastai lengviau pastebimos. Jos dažnai kaupiasi už apatinių priekinių dantų ir prie viršutinių krūminių dantų, netoli seilių liaukų latakų." },
+          { type: "p", text: "Po dantenomis esantys akmenys prisitvirtina prie danties šaknies paviršiaus. Jie gali būti tamsesni ir dažnai aptinkami tik profesionaliai apžiūrint dantenas, matuojant periodonto kišenes ar atliekant radiologinius tyrimus." },
+          { type: "p", text: "Akmenų susidarymo greitis skirtingiems žmonėms nevienodas. Jam įtakos gali turėti:" },
+          { type: "ul", items: [
+            "nepakankamai kruopštus dantų valymas;",
+            "nereguliarus tarpdančių valymas;",
+            "susigrūdę ir sunkiau pasiekiami dantys;",
+            "individuali seilių sudėtis ir jų tekėjimas;",
+            "rūkymas;",
+            "ortodontiniai aparatai;",
+            "implantai, tiltai ir kitos protezinės konstrukcijos;",
+            "anksčiau diagnozuotos dantenų ar periodonto ligos."
+          ] },
+          { type: "p", text: "Mineralizuotos apnašos gali kauptis ne tik ant natūralių dantų, bet ir aplink implantus, prie tiltų bei ant protezinių konstrukcijų. Šioms vietoms prižiūrėti gali būti reikalingi tinkamo dydžio tarpdančių šepetėliai, vieno danties šepetėlis ar kitos individualiai parinktos priemonės." }
+        ]
+      },
+      {
+        h: "Kaip atpažinti, kad ant dantų susikaupė akmenų?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Matomi dantų akmenys dažniausiai atrodo kaip kietas gelsvas, rusvas ar tamsus sluoksnis, kurio nepavyksta nuvalyti šepetėliu. Liežuviu galima jausti nelygų, šiurkštų paviršių, ypač už apatinių priekinių dantų." },
+          { type: "p", text: "Apnašų ir akmenų kaupimąsi taip pat gali lydėti:" },
+          { type: "ul", items: [
+            "dantenų kraujavimas valant dantis;",
+            "paraudusios, patinusios ar jautrios dantenos;",
+            "nemalonus burnos kvapas;",
+            "nemalonus skonis burnoje;",
+            "dantenų atsitraukimas;",
+            "dantų jautrumas;",
+            "didėjantys tarpai tarp dantų;",
+            "dantų paslankumas, jei periodonto liga pažengusi."
+          ] },
+          { type: "p", text: "Dantenų kraujavimas nėra ženklas, kad dantis reikia valyti rečiau. Jis dažnai susijęs su bakterinių apnašų sukeltu uždegimu. Gingivito metu uždegimas apsiriboja dantenomis ir, pašalinus apnašas bei pagerinus kasdienę higieną, paprastai gali būti suvaldytas." },
+          { type: "p", text: "Periodontito atveju pažeidžiami ne tik dantenų audiniai, bet ir dantis laikantis kaulas. Ši liga nėra grįžtama taip, kaip gingivitas, tačiau profesionaliai gydant ir reguliariai prižiūrint jos progresavimą galima sulėtinti bei kontroliuoti." },
+          { type: "p", text: "Ne visos tamsios ar šiurkščios vietos yra dantų akmenys. Panašiai gali atrodyti pigmentinės apnašos, ėduonis, restauracijos kraštas ar natūrali danties spalvos ypatybė. Tikslią priežastį nustato odontologas arba burnos higienistas." }
+        ]
+      },
+      {
+        h: "Ar galima dantų akmenis pašalinti namuose?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Minkštąsias apnašas namuose pašalinti būtina, tačiau jau susiformavusių akmenų saugiai nuvalyti nepavyks. Sukietėjusios sankaupos tvirtai prisitvirtina prie danties ar šaknies paviršiaus, todėl joms šalinti reikalingi profesionalūs instrumentai." },
+          { type: "p", text: "Savarankiškas akmenų grandymas gali:" },
+          { type: "ul", items: [
+            "sužaloti dantenas ir sukelti kraujavimą;",
+            "subraižyti emalį, restauracijas ar implantų paviršius;",
+            "padidinti dantų jautrumą;",
+            "palikti dalį sankaupų po dantenomis;",
+            "apsunkinti tolesnę profesionalią priežiūrą."
+          ] },
+          { type: "p", text: "Soda, rūgštūs produktai, peroksidas ir stipriai abrazyvios pastos nėra profesionalios higienos alternatyva. Jos gali pašalinti dalį paviršinių pigmentų, tačiau akmenų neištirpina ir, naudojamos agresyviai, gali pažeisti dantų ar burnos gleivinės paviršius." },
+          { type: "p", text: "Irigatorius pulsuojančia vandens srove gali padėti pašalinti maisto likučius ir prižiūrėti sunkiau pasiekiamas vietas, ypač aplink breketus, tiltus ar implantus. Vis dėlto jis nepašalina jau susiformavusių akmenų ir nėra universalus tarpdančių šepetėlių ar siūlo pakaitalas." }
+        ]
+      },
+      {
+        h: "Kaip profesionaliai pašalinami dantų akmenys?",
+        p: [
+          "Profesionalios burnos higienos pradžioje specialistas įvertina dantų, dantenų ir burnoje esančių konstrukcijų būklę. Apžiūrima, kur kaupiasi apnašos ir akmenys, ar dantenos kraujuoja, ar yra atsitraukusios ir ar matyti periodonto ligos požymių.",
+          "Dantų akmenys dažniausiai šalinami ultragarsiniu skaleriu ir rankiniais instrumentais. Ultragarsinio instrumento virpesiai padeda atskirti sukietėjusias sankaupas nuo danties paviršiaus, o vanduo aušina darbo sritį ir nuplauna pašalintas daleles.",
+          "Rankiniais instrumentais išvalomos sunkiau pasiekiamos vietos ir pašalinamos likusios sankaupos. Procedūros pabaigoje dantų paviršiai gali būti poliruojami. Pigmentinėms ir minkštosioms apnašoms valyti taip pat gali būti naudojamas kontroliuojamas oro, vandens ir specialių miltelių srautas.",
+          "Jei akmenys susikaupę giliai po dantenomis ir nustatomas periodontitas, įprastos profilaktinės higienos gali nepakakti. Tokiu atveju atliekamas gilesnis dantų ir šaknų paviršių valymas, dar vadinamas nechirurginiu periodontologiniu gydymu. Sudėtingesniais atvejais pacientas siunčiamas periodontologo konsultacijai.",
+          "Vizito metu burnos higienistas taip pat padeda nustatyti, kuriose vietose biofilmas kaupiasi dažniausiai, ir parenka tinkamas namų priežiūros priemones. Tai svarbu, nes vien akmenų pašalinimas, nepakeitus kasdienės higienos, neapsaugo nuo jų pakartotinio susidarymo."
+        ]
+      },
+      {
+        h: "Ar skauda šalinant dantų akmenis?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Daugeliui pacientų profesionali burnos higiena sukelia spaudimo, vibracijos ar trumpalaikio jautrumo pojūtį, o ne stiprų skausmą. Procedūros komfortas priklauso nuo akmenų kiekio, jų vietos, dantenų uždegimo ir individualaus jautrumo." },
+          { type: "p", text: "Nemalonesni pojūčiai galimi, kai:" },
+          { type: "ul", items: [
+            "dantenos stipriai uždegusios;",
+            "daug akmenų susikaupę po dantenomis;",
+            "atsidengusios dantų šaknys;",
+            "dantys jautrūs šalčiui;",
+            "reikalingas gilesnis periodontologinis valymas."
+          ] },
+          { type: "p", text: "Jei procedūros metu skauda, apie tai svarbu pasakyti specialistui. Higieną galima atlikti etapais, pritaikyti instrumentų nustatymus arba, kai reikia, taikyti vietinę nejautrą." },
+          { type: "p", text: "Po procedūros dantys trumpam gali tapti jautresni šalčiui, o uždegimo paveiktos dantenos – mausti ar nežymiai kraujuoti. Šie pojūčiai turėtų palaipsniui silpnėti. Jei skausmas stiprėja, didėja patinimas ar kraujavimas nesiliauja, reikėtų susisiekti su klinika." },
+          { type: "p", text: "Pašalinus dideles sankaupas kartais atrodo, kad tarp dantų atsirado tarpai. Iš tikrųjų akmenys anksčiau galėjo tas vietas užpildyti, o sumažėjus dantenų uždegimui ir patinimui jų kontūras tampa aiškesnis. Profesionalios higienos metu sveika danties dalis nėra pašalinama." }
+        ]
+      },
+      {
+        h: "Kas gali nutikti, jei dantų akmenys nepašalinami?",
+        p: [
+          "Dantų akmenų paviršius yra šiurkštus, todėl ant jo lengviau išlieka naujas bakterinis biofilmas. Dėl to kasdienė higiena tampa mažiau veiksminga, o dantenų uždegimas gali tęstis.",
+          "Pradinėje stadijoje dažniausiai vystosi gingivitas. Dantenos parausta, patinsta ir pradeda kraujuoti. Pašalinus apnašas bei akmenis ir pagerinus dantų valymą, ši būklė paprastai gali būti suvaldyta.",
+          "Negydomas uždegimas daliai pacientų gali progresuoti į periodontitą. Tuomet formuojasi gilesnės periodonto kišenės, pažeidžiami dantį laikantys audiniai ir nyksta kaulas. Ilgainiui dantys gali tapti paslankūs, pakisti jų padėtis ar padidėti netekimo rizika. Rūkymas, diabetas ir nepakankama burnos higiena siejami su didesne sunkios dantenų ligos rizika.",
+          "Akmenų ir apnašų sankaupos taip pat gali prisidėti prie nemalonaus burnos kvapo. Vis dėlto matomas akmenų kiekis ne visada parodo dantenų ligos sunkumą – reikšmingų sankaupų gali būti ir po dantenomis."
+        ]
+      },
+      {
+        h: "Kaip išvengti pakartotinio dantų akmenų susidarymo?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Apnašos formuojasi nuolat, todėl visiškai sustabdyti šio proceso neįmanoma. Profilaktikos tikslas – reguliariai pašalinti biofilmą, kol jis dar nėra mineralizavęsis." },
+          { type: "p", text: "Rekomenduojama:" },
+          { type: "ul", items: [
+            "du kartus per dieną valyti dantis fluoridų turinčia pasta;",
+            "kasdien išvalyti tarpdančius;",
+            "kruopščiai prižiūrėti dantenų kraštą;",
+            "valyti implantus, tiltus, protezus ir ortodontinius aparatus;",
+            "nerūkyti;",
+            "reguliariai tikrintis dantis ir dantenas;",
+            "profesionalią burnos higieną atlikti individualiai nustatytu dažniu."
+          ] },
+          { type: "p", text: "Tarpdančių šepetėliai, siūlas, irigatorius ar kitos priemonės nėra vienodai tinkamos visiems. Plačiuose tarpdančiuose dažnai patogesni tarpdančių šepetėliai, o ankštose vietose gali būti naudojamas siūlas. Priemonės dydį ir naudojimo techniką geriausia aptarti su burnos higienistu." },
+          { type: "p", text: "Apnašas nudažančios tabletės ar tirpalai gali padėti pamatyti nepakankamai išvalomas vietas. Jos apnašų nepašalina, tačiau gali būti naudinga mokomoji priemonė, padedanti patobulinti valymo techniką." },
+          { type: "p", text: "Burnos skalavimo skystis nepakeičia mechaninio dantų ir tarpdančių valymo. Gydytojas ar burnos higienistas gali rekomenduoti konkrečią priemonę tam tikram laikotarpiui, tačiau pagrindinė apnašų kontrolė atliekama šepetėliu ir tarpdančių priemonėmis." },
+          { type: "p", text: "Profesionalios higienos intervalo nereikėtų vienodai nustatyti visiems. Dažnesnės priežiūros gali reikėti pacientams, kuriems akmenys kaupiasi greitai, diagnozuotas periodontitas, yra implantų, ortodontinių aparatų arba sunkiau išvalomų protezinių konstrukcijų. Reguliarus dantų valymas, tarpdančių priežiūra ir profesionalūs vizitai padeda kontroliuoti gingivitą bei periodonto ligų riziką." },
+          { type: "p", text: "Jei pastebėjote kietų sankaupų, kraujuoja dantenos ar vargina nemalonus burnos kvapas, registruokitės profesionaliai burnos higienai Bangų klinikoje Klaipėdoje. Mūsų specialistai įvertins burnos būklę, saugiai pašalins apnašas bei akmenis ir padės pasirinkti tinkamas priežiūros priemones." }
+        ]
+      }
+    ],
+    faq: [
+      { q: "Ar dantų pasta gali pašalinti dantų akmenis?", a: "Ne. Dantų pasta padeda pašalinti minkštąsias apnašas, tačiau jau mineralizuotų dantų akmenų nenuvalo. Juos reikia pašalinti profesionaliais instrumentais." },
+      { q: "Ar irigatorius pašalina dantų akmenis?", a: "Ne. Irigatorius gali padėti prižiūrėti tarpdančius ir sunkiau pasiekiamas vietas, tačiau prie dantų prisitvirtinusių akmenų nepašalina." },
+      { q: "Ar galima dantų akmenis nugramdyti namuose?", a: "Nerekomenduojama. Aštrūs instrumentai gali pažeisti dantenas, dantų paviršius, restauracijas ar implantus, o po dantenomis esančios sankaupos vis tiek liks." },
+      { q: "Kaip dažnai reikia atlikti profesionalią burnos higieną?", a: "Vienodo intervalo visiems nėra. Jis nustatomas pagal akmenų kaupimosi greitį, dantenų būklę, periodonto ligų riziką ir burnoje esančias konstrukcijas." },
+      { q: "Kodėl po dantų akmenų šalinimo matomi didesni tarpai?", a: "Pašalinus akmenis pasimato anksčiau jų užpildytos vietos. Sumažėjus dantenų uždegimui ir patinimui jų kontūras taip pat gali atrodyti pasikeitęs." },
+      { q: "Ar kraujuojančias dantenas galima valyti?", a: "Taip. Kraujavimas dažnai susijęs su uždegimu, todėl apnašas reikia šalinti švelniai, bet reguliariai. Jei kraujavimas kartojasi, reikėtų kreiptis į odontologą ar burnos higienistą." }
+    ],
+    sources: [
+      { label: "About Periodontal (Gum) Disease", url: "https://www.cdc.gov/oral-health/about/gum-periodontal-disease.html" },
+      { label: "Oral Health Tips for Adults", url: "https://www.cdc.gov/oral-health/prevention/oral-health-tips-for-adults.html" },
+      { label: "Effects of Interdental Cleaning Devices in Preventing Dental Caries and Periodontal Diseases: A Scoping Review", url: "https://pubmed.ncbi.nlm.nih.gov/31556125/" },
+      { label: "Efficacy of Power-Driven Interdental Cleaning Tools: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/36562267/" }
+    ]
+  },
+  "kariesas-be-grezimo-ka-galima-atlikti-klinikoje-ir-namuose": {
+    sections: [
+      {
+        p: [
+          "Karieso gydymas be gręžimo galimas tik tam tikrose ligos stadijose. Jei danties paviršius dar nėra suiręs ir matomas tik ankstyvas mineralų netekimas, pažeidimą kartais galima sustabdyti fluoridais, geresne burnos higiena, mitybos įpročių korekcija ar minimaliai invaziniais odontologiniais metodais.",
+          "Tačiau jau susidariusi skylė namuose neužgyja. Dantų pasta, skalavimo skystis, papildai ar liaudiškos priemonės negali atkurti prarasto emalio ir dentino. Kai danties paviršiuje atsiranda ertmė, dažniausiai reikia restauracinio gydymo.",
+          "Todėl karieso gydymas namuose reiškia ne savarankišką danties skylės taisymą, o odontologo nustatyto ankstyvo pažeidimo kontrolę. Kuo anksčiau kariesas pastebimas, tuo didesnė tikimybė išvengti gręžimo ir išsaugoti daugiau sveikų danties audinių."
+        ]
+      },
+      {
+        h: "Kas yra dantų kariesas ir kaip jis vystosi?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Dantų kariesas, arba ėduonis, yra procesas, kurio metu danties audiniai palaipsniui praranda mineralus. Burnos apnašose esančios bakterijos skaido cukrus ir kitus angliavandenius, o šio proceso metu susidaro rūgštys. Jos veikia emalį ir skatina jo demineralizaciją." },
+          { type: "p", text: "Po rūgštinio poveikio seilės padeda neutralizuoti burnos aplinką. Jose esantys kalcio ir fosfatų jonai gali grįžti į emalį, o fluoridai padeda šį procesą sustiprinti." },
+          { type: "p", text: "Kariesas vystosi tada, kai mineralų netekimas ilgainiui tampa didesnis už jų sugrįžimą. Riziką didina:" },
+          { type: "ul", items: [
+            "dažnas saldžių užkandžių ir gėrimų vartojimas;",
+            "ant dantų ilgai išliekantis bakterinis apnašas;",
+            "nepakankamas fluoridų poveikis;",
+            "sumažėjęs seilių kiekis;",
+            "sunkiai išvalomos dantų vagelės ir tarpdančiai;",
+            "ortodontiniai aparatai;",
+            "nesandarios plombos ar kitos restauracijos;",
+            "ankstesni dažni karieso pažeidimai."
+          ] },
+          { type: "p", text: "Svarbus ne tik bendras cukraus kiekis, bet ir jo vartojimo dažnis. Nuolat užkandžiaujant ar gurkšnojant saldžius gėrimus, dantys dažnai patiria rūgštinį poveikį ir turi mažiau laiko atsistatyti." },
+          { type: "p", text: "Kariesas gali būti aktyvus, lėtai progresuojantis arba sustojęs. Todėl gydymo sprendimas priklauso ne vien nuo dėmės spalvos ar dydžio, bet ir nuo pažeidimo gylio, paviršiaus būklės bei bendros paciento karieso rizikos." }
+        ]
+      },
+      {
+        h: "Kaip atpažinti ankstyvą kariesą, kol dar nėra skylės?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Ankstyvas kariesas dažniausiai neskauda. Pirmasis požymis gali būti matinė, kreidos baltumo dėmė, rodanti, kad emalis prarado dalį mineralų." },
+          { type: "p", text: "Tokie pokyčiai dažnai atsiranda:" },
+          { type: "ul", items: [
+            "prie dantenų krašto;",
+            "aplink breketus;",
+            "krūminių dantų vagelėse;",
+            "tarpdančiuose;",
+            "vietose, kuriose kaupiasi apnašos."
+          ] },
+          { type: "p", text: "Galimi požymiai:" },
+          { type: "ul", items: [
+            "balta ar kreminė matinė dėmė;",
+            "sumažėjęs emalio skaidrumas;",
+            "šiurkštesnis danties paviršius;",
+            "rusvas ar tamsesnis spalvos pokytis;",
+            "trumpalaikis jautrumas saldžiam, šaltam ar rūgščiam maistui."
+          ] },
+          { type: "p", text: "Ne kiekviena balta ar tamsi dėmė yra aktyvus kariesas. Panašiai gali atrodyti fluorozė, emalio vystymosi sutrikimai, pigmentai ar senas, jau sustojęs pažeidimas." },
+          { type: "p", text: "Vien pagal dėmės išvaizdą neįmanoma nuspręsti, ar kariesą dar galima gydyti be gręžimo. Odontologas turi įvertinti, ar danties paviršius išlikęs vientisas, koks pažeidimo gylis ir ar procesas vis dar aktyvus." },
+          { type: "p", text: "Tarpdančių kariesas dažnai ilgai nematomas. Jam nustatyti gali būti atliekamos rentgeno nuotraukos. Matoma skylė, nuolat stringantis maistas ar skausmas dažniausiai rodo, kad pažeidimas jau pažengęs." }
+        ]
+      },
+      {
+        h: "Ar įmanomas karieso gydymas namuose?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Karieso gydymas namuose gali padėti kontroliuoti tik labai ankstyvą pažeidimą, kai danties paviršius dar nėra suiręs. Tokiu atveju odontologas gali sudaryti planą, padedantį sumažinti rūgštinį poveikį ir skatinti emalio remineralizaciją." },
+          { type: "p", text: "Namų priežiūra gali apimti:" },
+          { type: "ul", items: [
+            "dantų valymą fluoridų turinčia pasta du kartus per dieną;",
+            "kasdienį tarpdančių valymą;",
+            "retesnį saldžių užkandžių ir gėrimų vartojimą;",
+            "vandens pasirinkimą tarp valgymų;",
+            "odontologo paskirtas papildomas fluoridų priemones;",
+            "burnos sausumo priežasčių kontrolę;",
+            "reguliarias pakartotines apžiūras."
+          ] },
+          { type: "p", text: "Šios priemonės padeda keisti sąlygas burnoje, kad ankstyvas pažeidimas nustotų progresuoti. Jos negali atkurti jau prarasto danties audinio." },
+          { type: "p", text: "Jei danties paviršius suiręs, ertmėje kaupiasi apnašos arba kariesas išplitęs į dentiną, vien namų priežiūros nepakanka." },
+          { type: "p", text: "Didesnės koncentracijos fluoridų pastos, geliai ar skalavimo skysčiai taip pat neturėtų būti pasirenkami savarankiškai. Jų poreikis priklauso nuo paciento amžiaus, burnos būklės ir karieso rizikos." }
+        ]
+      },
+      {
+        h: "Kada karieso gydymas be gręžimo gali būti veiksmingas?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Karieso gydymas be gręžimo dažniausiai svarstomas tuomet, kai pažeidimas yra ankstyvas, o danties paviršiuje dar nėra susidariusios skylės." },
+          { type: "p", text: "Odontologas vertina:" },
+          { type: "ul", items: [
+            "pažeidimo vietą ir gylį;",
+            "danties paviršiaus vientisumą;",
+            "ar pažeidimas aktyvus;",
+            "ar vietą galima tinkamai išvalyti;",
+            "kitų karieso židinių skaičių;",
+            "seilių kiekį;",
+            "mitybos ir burnos higienos įpročius;",
+            "paciento galimybę laikytis priežiūros plano."
+          ] },
+          { type: "p", text: "Gydymas be gręžimo nėra viena procedūra. Tai gali būti fluoridų naudojimas, silantai, dervos infiltracija arba aktyvus stebėjimas, kartu kontroliuojant rizikos veiksnius." },
+          { type: "p", text: "Svarbi gydymo dalis yra pakartotiniai patikrinimai. Jei pažeidimas progresuoja, planą reikia keisti. Vien tai, kad dantis neskauda, nereiškia, jog jį galima ilgai palikti be kontrolės." },
+          { type: "p", text: "Net ir sustabdžius kariesą, balta ar tamsi dėmė gali visiškai neišnykti. Pagrindinis gydymo tikslas yra sustabdyti audinių irimą, o ne būtinai visiškai atkurti ankstesnę emalio išvaizdą." }
+        ]
+      },
+      {
+        h: "Kaip fluoridai ir remineralizacija padeda sustabdyti ankstyvą kariesą?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Remineralizacija – tai procesas, kurio metu mineralai grįžta į ankstyvai pažeistą emalį. Seilės natūraliai dalyvauja šiame procese, o fluoridai padeda emaliui tapti atsparesniam rūgštims." },
+          { type: "p", text: "Pagrindinė kasdienė priemonė yra fluoridų turinti dantų pasta. Kad ji veiktų tinkamai, svarbu:" },
+          { type: "ul", items: [
+            "dantis valyti du kartus per dieną;",
+            "rinktis amžiui tinkamą pastą;",
+            "naudoti rekomenduojamą jos kiekį;",
+            "po valymo pastą išspjauti;",
+            "burnos intensyviai neskalauti dideliu kiekiu vandens;",
+            "kasdien išvalyti tarpdančius."
+          ] },
+          { type: "p", text: "Pacientams, kurių karieso rizika didesnė, odontologas gali rekomenduoti profesionalų fluoro laką ar didesnės koncentracijos pastą." },
+          { type: "p", text: "Fluoridai neužpildo skylės. Jie veiksmingiausi tada, kai danties paviršius dar yra vientisas ir gali vykti mineralų apykaita." },
+          { type: "p", text: "Remineralizacijai svarbus ir cukraus vartojimo dažnis. Net kruopščiai valant dantis, nuolatiniai saldūs užkandžiai ar gėrimai gali trukdyti ankstyvam pažeidimui stabilizuotis." }
+        ]
+      },
+      {
+        h: "Kaip kariesas gydomas dervos infiltracija?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Dervos infiltracija yra minimaliai invazinis metodas, skirtas atrinktiems ankstyviems karieso pažeidimams, kai dar nėra susidariusios ertmės. Jis dažnai taikomas pradiniams tarpdančių ar lygiųjų dantų paviršių pažeidimams." },
+          { type: "p", text: "Procedūros metu dantis izoliuojamas, o pažeistas emalio paviršius paruošiamas. Į porėtą pažeidimą įvedama labai skysta derva, kuri prasiskverbia į mikroskopines emalio poras. Vėliau ji sukietinama polimerizacine lempa." },
+          { type: "p", text: "Derva sudaro barjerą pažeidimo viduje ir padeda sumažinti tolesnį rūgščių poveikį. Taip siekiama pristabdyti karieso progresavimą, nešalinant didelės dalies danties audinių." },
+          { type: "p", text: "Dervos infiltracijos privalumai:" },
+          { type: "ul", items: [
+            "dažniausiai nereikia gręžimo;",
+            "išsaugoma daugiau natūralaus danties;",
+            "dažnai nereikia vietinės nejautros;",
+            "galima gydyti ankstyvus tarpdančių pažeidimus;",
+            "kai kurios baltos dėmės tampa mažiau pastebimos."
+          ] },
+          { type: "p", text: "Šis metodas netinka kiekvienai dėmei ar ertmei. Jei danties paviršius jau suiręs, pažeidimas gilus arba sunku tinkamai izoliuoti dantį, gali reikėti kito gydymo." },
+          { type: "p", text: "Po procedūros ir toliau būtina tinkama burnos higiena, fluoridų naudojimas, mitybos kontrolė ir reguliarus stebėjimas." }
+        ]
+      },
+      {
+        h: "Kokie kiti karieso gydymo be gręžimo metodai taikomi odontologijoje?",
+        p: []
+      },
+      {
+        h: "Dantų vagelių silantai",
+        p: [
+          "Silantai – tai plonas apsauginės medžiagos sluoksnis, kuriuo padengiamos gilios krūminių dantų vagelės. Jie trukdo apnašoms ir maisto likučiams kauptis sunkiai išvalomose vietose.",
+          "Silantai dažniausiai naudojami profilaktikai, tačiau atrinktais atvejais jais gali būti užsandarinami ir ankstyvi, ertmės dar neturintys kramtomųjų paviršių pažeidimai.",
+          "Silantų būklę reikia periodiškai tikrinti, nes nusidėvėjus ar atsiklijavus medžiagai apsauga sumažėja."
+        ]
+      },
+      {
+        h: "Profesionalios fluoridų aplikacijos",
+        p: [
+          "Odontologas ar burnos higienistas gali užtepti didesnės koncentracijos fluoro laką. Ši priemonė gali būti rekomenduojama, kai yra keli ankstyvi pažeidimai, sumažėjęs seilėtekis ar didelė karieso rizika."
+        ]
+      },
+      {
+        h: "Sidabro diamino fluoridas",
+        p: [
+          "Kai kuriose šalyse tam tikriems pacientams karieso aktyvumui mažinti naudojamas sidabro diamino fluoridas. Jis gali sustabdyti pažeidimą, tačiau karieso paveikta vieta patamsėja, o danties forma nėra atkuriama.",
+          "Šis metodas nėra vienodai taikomas visose klinikose ir dažniausiai pasirenkamas specifinėse situacijose."
+        ]
+      },
+      {
+        h: "Aktyvus stebėjimas",
+        p: [
+          "Kai kuriuos ankstyvus pažeidimus galima stebėti, jei kartu taikomas aiškus priežiūros planas. Tai nėra pasyvus laukimas. Reikia dokumentuoti pažeidimą, gerinti higieną, kontroliuoti mitybą ir nustatytu laiku kartoti apžiūrą.",
+          "Lazeris, oro abrazija ar cheminis pažeistų audinių minkštinimas kartais vadinami gydymu be gręžimo, tačiau taikant šiuos metodus vis tiek gali būti šalinami danties audiniai. Tai alternatyvūs ertmės paruošimo būdai, o ne ankstyvo karieso remineralizacija."
+        ]
+      },
+      {
+        h: "Kada karieso jau nebegalima gydyti be gręžimo?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Gydymo be gręžimo dažniausiai nepakanka, kai danties paviršius suiręs ir susidariusi ertmė. Tokioje vietoje lengvai kaupiasi apnašos ir maisto likučiai, o pacientas negali jos tinkamai išvalyti." },
+          { type: "p", text: "Restauracinio gydymo gali reikėti, kai:" },
+          { type: "ul", items: [
+            "matoma ar jaučiama skylė;",
+            "danties audiniai tapo minkšti ar trapūs;",
+            "pažeidimas progresuoja į dentiną;",
+            "tarp dantų nuolat stringa maistas;",
+            "dantis skauda kramtant;",
+            "jautrumas trunka ilgiau;",
+            "kariesas yra po sena nesandaria plomba;",
+            "dantis įskilo ar nulūžo;",
+            "pažeidimas priartėjo prie pulpos."
+          ] },
+          { type: "p", text: "Tokiu atveju odontologas pašalina negrįžtamai pažeistus audinius ir atkuria danties formą plomba ar kita restauracija. Šiuolaikinėje odontologijoje siekiama pašalinti tik tiek audinių, kiek būtina, ir išsaugoti kuo daugiau sveiko danties." },
+          { type: "p", text: "Jei kariesas pasiekė pulpą, gali prireikti šaknų kanalų gydymo. Atsiradus pūliniui, veido patinimui, karščiavimui ar rijimo sunkumui, reikalinga skubi pagalba." }
+        ]
+      },
+      {
+        h: "Kokių naminių karieso gydymo būdų reikėtų vengti?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Skylės dantyje negali išgydyti žolelės, propolis, česnakas, soda, aliejai ar maisto papildai. Šios priemonės neatkuria prarasto emalio ar dentino ir neuždaro ertmės." },
+          { type: "p", text: "Nereikėtų ant danties ar dantenų dėti:" },
+          { type: "ul", items: [
+            "česnako;",
+            "propolio tinktūros;",
+            "eterinių aliejų;",
+            "aspirino;",
+            "koncentruotų žolelių ekstraktų;",
+            "rūgščių ar stipriai abrazyvių medžiagų."
+          ] },
+          { type: "p", text: "Tokios priemonės gali sudirginti ar chemiškai pažeisti burnos gleivinę. Laikinas skausmo sumažėjimas taip pat nereiškia, kad kariesas sustojo." },
+          { type: "p", text: "Skalavimas druskos vandeniu, kokosų aliejumi ar žolelių nuovirais neužpildo ertmės ir nepakeičia dantų valymo fluoridų turinčia pasta." },
+          { type: "p", text: "Antibiotikai karieso taip pat negydo. Jie skiriami tik esant konkrečioms infekcijos plitimo indikacijoms, tačiau nepakeičia pažeisto danties gydymo." }
+        ]
+      },
+      {
+        h: "Kaip sumažinti naujų karieso pažeidimų riziką?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Ilgalaikė karieso prevencija remiasi nuoseklia kasdiene priežiūra ir individualiai suplanuotais patikrinimais." },
+          { type: "p", text: "Svarbiausi veiksmai:" },
+          { type: "ul", items: [
+            "valyti dantis fluoridų turinčia pasta du kartus per dieną;",
+            "kasdien valyti tarpdančius;",
+            "riboti saldžių užkandžių ir gėrimų vartojimo dažnį;",
+            "tarp valgymų rinktis vandenį;",
+            "prižiūrėti ortodontinius aparatus ir protezus;",
+            "laiku keisti nesandarias restauracijas;",
+            "kreiptis dėl burnos sausumo;",
+            "tikrintis dantis pagal individualią riziką."
+          ] },
+          { type: "p", text: "Profilaktinių vizitų dažnis neturėtų būti vienodas visiems. Žmogui, turinčiam mažą karieso riziką, gali pakakti retesnių patikrų, o pacientui, turinčiam aktyvių pažeidimų, sausą burną ar ortodontinį aparatą, gali reikėti dažnesnio stebėjimo." },
+          { type: "p", text: "Jei pastebėjote baltą ar tamsią dėmę, danties šiurkštumą, jautrumą ar matomą ertmę, registruokitės konsultacijai Bangų klinikoje Klaipėdoje. Mūsų specialistai įvertins pažeidimo gylį ir aktyvumą bei nustatys, ar jį dar galima kontroliuoti be gręžimo, ar jau reikalingas plombavimas." }
+        ]
+      }
+    ],
+    faq: [
+      { q: "Ar skylė dantyje gali užgyti pati?", a: "Ne. Susidarius ertmei prarasti danties audiniai savaime neatauga. Remineralizuoti galima tik ankstyvą pažeidimą, kai danties paviršius dar vientisas." },
+      { q: "Ar balta dėmė ant danties visada reiškia kariesą?", a: "Ne. Ji gali būti susijusi su ankstyvu kariesu, fluoroze ar emalio vystymosi pokyčiais. Priežastį turi įvertinti odontologas." },
+      { q: "Ar fluoridų pasta gali išgydyti kariesą?", a: "Ji gali padėti sustabdyti ar remineralizuoti ankstyvą pažeidimą, tačiau negali užpildyti jau susidariusios skylės." },
+      { q: "Ar dervos infiltracija tinka visiems karieso pažeidimams?", a: "Ne. Ji dažniausiai taikoma ankstyviems pažeidimams, kai danties paviršius dar nesuiręs. Gilioms ertmėms paprastai reikia restauracinio gydymo." },
+      { q: "Ar kariesą galima gydyti soda, propoliu arba kokosų aliejumi?", a: "Ne. Šios priemonės neatkuria emalio ar dentino ir neuždaro ertmės. Kai kurios jų gali pažeisti burnos gleivinę." },
+      { q: "Ar karieso gydymas be gręžimo tinka vaikams?", a: "Taip, atrinktais atvejais vaikams gali būti taikomi fluoridai, silantai ar kiti neinvaziniai metodai. Sprendimas priklauso nuo pažeidimo stadijos ir vaiko karieso rizikos." }
+    ],
+    sources: [
+      { label: "American Dental Association – Caries Management Clinical Practice Guidelines", url: "https://www.ada.org/resources/research/science/evidence-based-dental-research/caries-management-clinical-practice-guidelines" },
+      { label: "Evidence-based Clinical Practice Guideline on Nonrestorative Treatments for Carious Lesions", url: "https://pubmed.ncbi.nlm.nih.gov/30261951/" },
+      { label: "Efficacy of Resin Infiltrate in Noncavitated Proximal Carious Lesions: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/31198691/" },
+      { label: "Efficacy of the Resin Infiltration Technique in Preventing Initial Caries Progression: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/30992105/" },
+      { label: "Fluoride Varnishes for Preventing Dental Caries in Children and Adolescents", url: "https://pubmed.ncbi.nlm.nih.gov/23846772/" },
+      { label: "Pit and Fissure Sealant Versus Fluoride Varnish for the Prevention of Dental Caries: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/36263239/" },
+      { label: "World Health Organization – Sugars and Dental Caries", url: "https://www.who.int/news-room/fact-sheets/detail/sugars-and-dental-caries" }
+    ]
+  },
+  "kaip-saugiai-balinti-dantis-namuose": {
+    sections: [
+      {
+        p: [
+          "Dantų balinimas namuose gali padėti pašviesinti natūralią dantų spalvą, tačiau ne visos priemonės yra vienodai veiksmingos ir saugios. Patikimiausią rezultatą paprastai suteikia peroksido turinčios balinimo priemonės, o geriausiai kontroliuojamas namų metodas – individualios kapos, naudojamos pagal odontologo rekomendacijas.",
+          "Balinamosios dantų pastos dažniausiai tik pašalina paviršines dėmes. Citrinų sultys, actas, aktyvinta anglis, grynas vandenilio peroksidas ir savarankiškai paruošti mišiniai gali ne tik nepadėti, bet ir pažeisti dantų paviršių ar sudirginti dantenas.",
+          "Prieš pradedant balinti svarbu įvertinti burnos būklę. Patamsėjusius dantis gali lemti ne tik pigmentai, bet ir ėduonis, trauma, pulpos pažeidimas, emalio nusidėvėjimas ar senos restauracijos. Be to, plombos, vainikėliai ir laminatės nebąla, todėl po procedūros jų spalva gali nebesutapti su natūraliais dantimis."
+        ]
+      },
+      {
+        h: "Kodėl keičiasi dantų spalva ir ar visus dantis galima išbalinti?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Natūrali dantų spalva nėra visiškai balta. Jai įtakos turi emalio storis, po juo esančio dentino atspalvis, amžius ir paveldimos savybės. Dėl to vienų žmonių dantys natūraliai yra šviesesni, kitų – gelsvesni ar pilkšvesni." },
+          { type: "p", text: "Dantų spalvos pokyčiai skirstomi į išorinius ir vidinius." },
+          { type: "p", text: "Išorinės dėmės susidaro ant dantų paviršiaus. Jas dažniausiai skatina:" },
+          { type: "ul", items: [
+            "kava ir arbata;",
+            "raudonasis vynas;",
+            "tabakas;",
+            "tamsios uogos ir pigmentuoti maisto produktai;",
+            "apnašos ir nepakankama burnos higiena."
+          ] },
+          { type: "p", text: "Dalį šių dėmių galima pašalinti profesionalios burnos higienos metu arba naudojant tinkamą dantų pastą. Tokiu atveju dantims dažniausiai grąžinama natūralesnė spalva, tačiau jie nėra chemiškai išbalinami." },
+          { type: "p", text: "Vidiniai spalvos pokyčiai formuojasi danties audiniuose. Juos gali lemti amžius, danties trauma, žuvusi pulpa, vystymosi sutrikimai ar tam tikri vaikystėje vartoti vaistai. Vieno patamsėjusio danties gydymas gali skirtis nuo visos šypsenos balinimo, todėl pirmiausia reikia nustatyti spalvos pokyčio priežastį." },
+          { type: "p", text: "Balinamosios medžiagos veikia natūralius danties audinius, tačiau nekeičia plombų, vainikėlių, laminačių, tiltų ar implantų protezinių dalių spalvos. Jei priekiniai dantys restauruoti, po balinimo gali išryškėti atspalvių skirtumas. Tokiu atveju balinimą verta suplanuoti prieš galutinį estetinį plombavimą ar protezavimą." }
+        ]
+      },
+      {
+        h: "Kokie dantų balinimo namuose būdai iš tiesų veikia?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Tikras cheminis dantų balinimas paprastai atliekamas naudojant vandenilio arba karbamido peroksido turinčias priemones. Jos veikia danties audiniuose esančius pigmentus ir gali pašviesinti natūralią dantų spalvą." },
+          { type: "p", text: "Dažniausiai naudojami metodai:" },
+          { type: "ul", items: [
+            "individualios balinimo kapos su geliu;",
+            "nereceptinės balinamosios juostelės;",
+            "universalios kapos ir balinimo rinkiniai;",
+            "balinamieji pieštukai;",
+            "balinamosios dantų pastos;",
+            "balinamieji skalavimo skysčiai."
+          ] },
+          { type: "p", text: "Jų poveikis skiriasi." },
+          { type: "p", text: "Individualios kapos leidžia tiksliau paskirstyti balinamąjį gelį ir pritaikyti procedūrą pagal paciento dantų būklę." },
+          { type: "p", text: "Balinamosios juostelės gali chemiškai pašviesinti dantis, tačiau ne visada tolygiai priglunda prie visų paviršių." },
+          { type: "p", text: "Universalios kapos gali būti nepakankamai tikslios, todėl gelis kartais patenka ant dantenų arba dantys balinami netolygiai." },
+          { type: "p", text: "Balinamosios pastos dažniausiai šalina paviršines dėmes, bet reikšmingai nekeičia natūralios dentino spalvos." },
+          { type: "p", text: "Skalavimo skysčių ir pieštukų kontakto su dantimis dažnai nepakanka ryškiam rezultatui, todėl jie labiau tinka kaip papildomos, o ne pagrindinės priemonės." },
+          { type: "p", text: "Balinimo rezultatas priklauso nuo pradinės dantų spalvos, spalvos pokyčio priežasties, naudojamos medžiagos ir procedūros trukmės. Didesnis gelio kiekis, dažnesnis naudojimas ar ilgesnis laikymas nebūtinai suteikia geresnį rezultatą, tačiau gali padidinti jautrumo ir dantenų dirginimo riziką." }
+        ]
+      },
+      {
+        h: "Kaip atliekamas dantų balinimas namuose individualiomis kapomis?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Balinimas individualiomis kapomis atliekamas namuose, tačiau jį suplanuoja odontologas. Pirmiausia patikrinami dantys, dantenos, esamos restauracijos ir įvertinamas galimas rezultatas." },
+          { type: "p", text: "Kapos gamyba paprastai vyksta keliais etapais:" },
+          { type: "ol", items: [
+            "Atliekama burnos būklės apžiūra.",
+            "Dantys nuskenuojami arba paimami jų atspaudai.",
+            "Pagaminamos individualios, prie dantų priglundančios kapos.",
+            "Parenkamas balinamasis gelis ir jo naudojimo režimas.",
+            "Pacientui paaiškinama kapų priežiūra ir veiksmai atsiradus jautrumui."
+          ] },
+          { type: "p", text: "Į kapą dedamas nedidelis balinamojo gelio kiekis. Per daug gelio gali ištekėti už kapos kraštų ir sudirginti dantenas, todėl jo kiekio savarankiškai didinti nereikėtų." },
+          { type: "p", text: "Balinimo trukmė priklauso nuo naudojamos sistemos ir veikliosios medžiagos koncentracijos. Vienos kapos dėvimos trumpiau dienos metu, kitos – ilgiau arba naktį. Reikia laikytis konkretaus specialisto nurodyto režimo, o ne universalių internete rastų rekomendacijų." },
+          { type: "p", text: "Individualios kapos taip pat gali būti naudojamos palaikomajam balinimui, tačiau tik gavus odontologo rekomendaciją. Savarankiškai kartoti kursą dažnai ar naudoti likusį seną gelį nereikėtų." }
+        ]
+      },
+      {
+        h: "Ar balinamosios juostelės ir dantų pastos yra veiksmingos?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Balinamosios juostelės paprastai padengtos peroksido turinčiu geliu. Tinkamai naudojamas patikimas produktas gali pašviesinti natūralius dantis, tačiau rezultatas priklauso nuo juostelės prigludimo ir veikliosios medžiagos." },
+          { type: "p", text: "Juostelės gali nepasiekti tarpdančių, kreiviau išsidėsčiusių dantų ar jų šoninių paviršių. Dėl to spalva kartais pakinta netolygiai. Gelis taip pat gali patekti ant dantenų ir jas sudirginti." },
+          { type: "p", text: "Naudojant juosteles svarbu:" },
+          { type: "ul", items: [
+            "laikytis gamintojo instrukcijų;",
+            "neviršyti rekomenduojamo laiko;",
+            "nenaudoti kelių balinimo sistemų kartu;",
+            "nedėti juostelių ant sudirgusių ar kraujuojančių dantenų;",
+            "nutraukti naudojimą, jei atsiranda stiprus skausmas."
+          ] },
+          { type: "p", text: "Balinamosios dantų pastos veikia kitaip. Dauguma jų turi abrazyvinių dalelių, fermentų ar kitų medžiagų, padedančių sumažinti paviršinius pigmentus. Jos gali būti naudingos palaikant švaresnę ir vizualiai šviesesnę dantų išvaizdą, tačiau dažniausiai nepakeičia natūralios danties spalvos taip, kaip cheminis balinimas." },
+          { type: "p", text: "Per daug abrazyvią pastą naudojant ilgai ir stipriai spaudžiant šepetėlį galima skatinti dantų paviršiaus ar atsidengusių šaknų dilimą. Todėl pastą geriausia rinktis pagal individualią dantų būklę, o ne vien pagal balinamąjį pažadą ant pakuotės." }
+        ]
+      },
+      {
+        h: "Kokių dantų balinimo priemonių namuose reikėtų vengti?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Internete dažnai siūlomi „natūralūs“ metodai nėra lygiaverčiai profesionalioms balinimo priemonėms. Kai kurie jų dantis tik mechaniškai nutrina arba veikia rūgštimis." },
+          { type: "p", text: "Dantų nereikėtų trinti ar skalauti:" },
+          { type: "ul", items: [
+            "citrinų sultimis;",
+            "obuolių actu;",
+            "rūgščių vaisių minkštimu;",
+            "grynu vandenilio peroksidu;",
+            "aktyvintos anglies milteliais;",
+            "eteriniais aliejais;",
+            "savarankiškai paruoštais sodos mišiniais."
+          ] },
+          { type: "p", text: "Citrinų sultys, actas ir kiti rūgštūs produktai gali prisidėti prie emalio erozijos. Emaliui plonėjant ryškiau matomas gelsvesnis dentinas, todėl ilgainiui dantys gali atrodyti dar tamsesni ir tapti jautresni." },
+          { type: "p", text: "Soda ir aktyvinta anglis dantų chemiškai nebalina. Jos gali mechaniškai pašalinti dalį paviršinių dėmių, tačiau per intensyvus ar dažnas trynimas didina paviršiaus dilimo riziką. Apie aktyvintos anglies priemonių ilgalaikį saugumą ir veiksmingumą patikimų įrodymų nepakanka." },
+          { type: "p", text: "Grynas vandenilio peroksidas taip pat neturėtų būti naudojamas savarankiškai. Netinkama koncentracija ar per ilgas kontaktas gali sukelti dantenų sudirginimą, cheminį gleivinės pažeidimą ir ryškų dantų jautrumą." },
+          { type: "p", text: "Kokosų aliejaus skalavimas nėra patikimai įrodytas dantų spalvos keitimo metodas. Jis taip pat nepakeičia dantų valymo fluoridų turinčia pasta ir kasdienės tarpdančių priežiūros." }
+        ]
+      },
+      {
+        h: "Kada dantų balinimas namuose netinka arba jį reikia atidėti?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Prieš balinimą reikėtų išgydyti aktyvų ėduonį, įvertinti nesandarias plombas, dantų įtrūkimus ir dantenų būklę. Balinamoji medžiaga, patekusi į pažeistas vietas, gali sukelti stipresnį jautrumą ar skausmą." },
+          { type: "p", text: "Balinimą reikėtų atidėti arba aptarti su odontologu, jei:" },
+          { type: "ul", items: [
+            "yra negydytų ėduonies pažeidimų;",
+            "dantenos kraujuoja, yra patinusios ar atsitraukusios;",
+            "dantys labai jautrūs;",
+            "yra įtrūkimų ar stipriai nudilęs emalis;",
+            "priekinėje srityje yra daug restauracijų;",
+            "vienas dantis staiga patamsėjo;",
+            "pacientė yra nėščia arba maitina krūtimi;",
+            "balinti ketinama vaikų ar paauglių dantis."
+          ] },
+          { type: "p", text: "Vieno danties patamsėjimas po traumos gali rodyti pulpos pažeidimą. Tokiu atveju įprastas balinimas kapomis ar juostelėmis problemos neišsprendžia." },
+          { type: "p", text: "Jei dantų spalvą keičia apnašos ir pigmentai, prieš balinimą gali būti rekomenduojama profesionali burnos higiena. Kartais vien pašalinus apnašas dantys atrodo pastebimai šviesesni, todėl papildomas cheminis balinimas gali būti nereikalingas." }
+        ]
+      },
+      {
+        h: "Kaip sumažinti dantų jautrumą ir ilgiau išlaikyti rezultatą?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Laikinas dantų jautrumas ir dantenų sudirginimas yra dažniausi balinimo šalutiniai poveikiai. Jautrumas gali pasireikšti trumpu skausmu reaguojant į šaltį, karštį, orą ar saldų maistą." },
+          { type: "p", text: "Jei dantys tapo jautrūs, galima:" },
+          { type: "ul", items: [
+            "padaryti odontologo rekomenduotą pertrauką;",
+            "naudoti jautriems dantims skirtą pastą;",
+            "laikinai vengti labai šalto ir karšto maisto;",
+            "neilginti balinimo priemonės laikymo laiko;",
+            "informuoti odontologą, jei pojūčiai stiprėja."
+          ] },
+          { type: "p", text: "Stiprus, savaiminis arba tik viename dantyje jaučiamas skausmas nėra įprastas balinimo pojūtis. Tokiu atveju procedūrą reikia nutraukti ir patikrinti dantį." },
+          { type: "p", text: "Dantų balinimo rezultatas nėra nuolatinis. Jį ilgiau išlaikyti padeda:" },
+          { type: "ul", items: [
+            "kruopštus dantų ir tarpdančių valymas;",
+            "burnos praskalavimas vandeniu po kavos, arbatos ar vyno;",
+            "tabako atsisakymas;",
+            "reguliari profesionali burnos higiena;",
+            "palaikomasis balinimas tik pagal odontologo rekomendacijas."
+          ] },
+          { type: "p", text: "Nebūtina visiškai atsisakyti visų pigmentuotų produktų, tačiau dažnas jų vartojimas gali paspartinti pakartotinį dėmių kaupimąsi." }
+        ]
+      },
+      {
+        h: "Saugus dantų balinimas prasideda nuo odontologo įvertinimo",
+        p: [
+          "Dantų balinimas namuose gali būti veiksmingas, kai naudojamos patikimos priemonės, laikomasi instrukcijų ir prieš procedūrą įvertinama burnos sveikata. Individualios kapos leidžia balinimą pritaikyti konkrečiam pacientui, tačiau ir jas naudojant gali pasireikšti laikinas jautrumas.",
+          "Balinamosios pastos daugiausia šalina paviršines dėmes, o rūgštys, aktyvinta anglis, grynas vandenilio peroksidas ir savarankiškai paruošti mišiniai gali būti neveiksmingi arba žalingi. Taip pat svarbu prisiminti, kad plombos, vainikėliai ir laminatės nebąla.",
+          "Jei svarstote apie dantų balinimą namuose, registruokitės konsultacijai Bangų klinikoje Klaipėdoje. Mūsų specialistai įvertins dantų ir dantenų būklę, aptars galimą rezultatą ir, jei šis metodas jums tinkamas, pagamins individualias kapas bei paaiškins, kaip saugiai jas naudoti."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Ar galima saugiai balinti dantis soda?", a: "Savarankiškai trinti dantų soda nerekomenduojama. Ji gali pašalinti dalį paviršinių dėmių, tačiau dantų spalvos chemiškai nekeičia, o per dažnai naudojama gali skatinti paviršiaus dilimą." },
+      { q: "Ar dantų balinimas namuose pažeidžia emalį?", a: "Pagal instrukcijas naudojamos patikimos priemonės paprastai laikomos saugesnėmis. Vis dėlto gali pasireikšti laikinas dantų jautrumas ar dantenų dirginimas, ypač viršijant naudojimo laiką." },
+      { q: "Ar balinant pašviesėja plombos ir vainikėliai?", a: "Ne. Balinamosios medžiagos nekeičia plombų, vainikėlių, laminačių ir kitų restauracijų spalvos." },
+      { q: "Per kiek laiko matomas dantų balinimo namuose rezultatas?", a: "Tai priklauso nuo pasirinkto metodo, dantų spalvos ir naudojamos priemonės. Pirmieji pokyčiai gali būti pastebimi procedūrų kurso metu, tačiau tikslus laikas kiekvienam pacientui skiriasi." },
+      { q: "Ką daryti, jei balinant dantys tapo jautrūs?", a: "Padarykite odontologo rekomenduotą pertrauką ir neilginkite priemonės laikymo laiko. Jei jautrumas stiprus, užsitęsia ar skauda vieną konkretų dantį, reikalinga odontologo apžiūra." }
+    ],
+    sources: [
+      { label: "American Dental Association – Whitening", url: "https://www.ada.org/resources/ada-library/oral-health-topics/whitening" },
+      { label: "At-home vs In-office Bleaching: An Updated Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/40485133/" },
+      { label: "Effect of Bleaching Gel Concentration on Tooth Color and Sensitivity: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/32396502/" },
+      { label: "Tooth Sensitivity During and After Vital Tooth Bleaching: A Systematic Review", url: "https://pubmed.ncbi.nlm.nih.gov/26396993/" },
+      { label: "At-home vs In-office Bleaching: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/27045285/" }
+    ]
+  },
+  "ka-daryti-kai-susidaro-danties-pulinys": {
+    sections: [
+      {
+        p: [
+          "Danties pūlinys – tai dėl bakterinės infekcijos dantyje, aplink jo šaknį arba dantenose susikaupę pūliai. Jis gali sukelti pulsuojantį skausmą, patinimą, nemalonų skonį burnoje ir bendros savijautos pablogėjimą.",
+          "Svarstant, ar įmanomas danties pūlinio gydymas namuose, svarbu žinoti: namų priemonės gali tik laikinai sumažinti skausmą ir diskomfortą. Jos nepašalina infekcijos priežasties, todėl pūlinį turi kuo greičiau įvertinti odontologas. Danties pūlinys savaime neišgyja.",
+          "Net jei pūlinukas pratrūko, ištekėjo dalis pūlių ir skausmas sumažėjo, infekcijos židinys gali likti danties viduje ar aplink jo šaknį. Gydymo atidėlioti nereikėtų ir tuomet, kai ant dantenų esantis pūlinukas beveik neskauda."
+        ]
+      },
+      {
+        h: "Kas yra danties pūlinys ir kodėl jis susidaro?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Pūlinys susiformuoja bakterijoms patekus į danties vidų arba aplinkinius audinius. Organizmui reaguojant į infekciją, pažeistoje vietoje kaupiasi pūliai." },
+          { type: "p", text: "Pagal infekcijos vietą dažniausiai išskiriamos kelios pūlinio formos:" },
+          { type: "ul", items: [
+            "Pūlinys ties danties šaknies viršūne paprastai susidaro infekcijai iš danties pulpos išplitus šaknų kanalais.",
+            "Periodonto pūlinys formuojasi šalia danties šaknies, dažnai gilioje periodonto kišenėje.",
+            "Dantenų pūlinys susidaro paviršiniuose minkštuosiuose audiniuose."
+          ] },
+          { type: "p", text: "Ant dantenų matomas baltas ar gelsvas pūlinukas gali būti kanalas, kuriuo iš giliau esančio infekcijos židinio nuteka pūliai. Todėl jo pradūrimas ar išspaudimas neišgydo pažeisto danties." },
+          { type: "p", text: "Dažniausios pūlinio priežastys yra gilus negydytas ėduonis, danties įskilimas ar trauma, žuvusi pulpa, periodonto liga arba pakartotinė infekcija anksčiau gydyto danties srityje." }
+        ]
+      },
+      {
+        h: "Kaip atpažinti danties pūlinio simptomus?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Simptomai priklauso nuo infekcijos vietos ir išplitimo. Vieniems pacientams pūlinys sukelia stiprų skausmą, o kiti gali kurį laiką jausti tik nedidelį diskomfortą." },
+          { type: "p", text: "Galimi danties pūlinio požymiai:" },
+          { type: "ul", items: [
+            "stiprus, maudžiantis ar pulsuojantis skausmas;",
+            "skausmas sukandus arba kramtant;",
+            "jautrumas karštam ir šaltam maistui;",
+            "paraudusios, jautrios ar patinusios dantenos;",
+            "ant dantenų atsiradęs pūlinukas;",
+            "pūlių tekėjimas ir nemalonus skonis burnoje;",
+            "skausmo plitimas į ausį, žandikaulį ar kaklą;",
+            "patinęs skruostas ar žandikaulio sritis;",
+            "sunkumas išsižioti;",
+            "karščiavimas, silpnumas ir bloga savijauta."
+          ] },
+          { type: "p", text: "Pūlinukui atsivėrus gali sumažėti spaudimas, todėl skausmas susilpnėja. Skausmas taip pat gali išnykti žuvus danties pulpai. Abiem atvejais infekcija gali išlikti ir toliau plisti." },
+          { type: "p", text: "Odontologas diagnozę nustato įvertinęs simptomus, danties ir dantenų būklę bei tyrimų rezultatus. Dažnai atliekama rentgeno nuotrauka, padedanti įvertinti danties šaknis ir aplinkinį kaulą." }
+        ]
+      },
+      {
+        h: "Ar įmanomas danties pūlinio gydymas namuose?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Visiškai išgydyti danties pūlinio namuose negalima. Skalavimai, kompresai ir vaistai nuo skausmo neišvalo infekuotų šaknų kanalų ir nepašalina giliai esančio infekcijos židinio." },
+          { type: "p", text: "Nereikėtų:" },
+          { type: "ul", items: [
+            "spausti ar pradurti pūlinuko;",
+            "bandyti jį atverti adata ar kitu įrankiu;",
+            "dėti aspirino ar kitų vaistų tiesiai ant dantenų;",
+            "šildyti patinusios vietos;",
+            "ant gleivinės laikyti česnako ar kitų dirginančių produktų;",
+            "savarankiškai vartoti likusių antibiotikų;",
+            "atidėti vizito, nes skausmas sumažėjo."
+          ] },
+          { type: "p", text: "Bandant pūlinį pradurti galima sužaloti audinius, sukelti kraujavimą ir paskatinti infekcijos plitimą. Tiesiai ant dantenų dedami vaistai ar koncentruotos medžiagos gali pažeisti burnos gleivinę." },
+          { type: "p", text: "Antibiotikai taip pat nėra universalus danties pūlinio gydymas. Amerikos odontologų asociacija rekomenduoja daugeliu lokalizuoto skausmo ir patinimo atvejų pirmiausia gydyti infekcijos šaltinį. Antibiotikų dažniau reikia tuomet, kai infekcija plinta, pacientas karščiuoja ar blogėja jo bendra savijauta." }
+        ]
+      },
+      {
+        h: "Kaip saugiai palengvinti skausmą iki vizito pas odontologą?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Kol laukiate skubaus odontologo vizito, galima imtis laikinų priemonių simptomams sumažinti:" },
+          { type: "ul", items: [
+            "rinkitės minkštą, ne per karštą ir ne per šaltą maistą;",
+            "kramtykite priešinga burnos puse;",
+            "dantis valykite švelniai, minkštu šepetėliu;",
+            "prie išorinės skruosto pusės trumpam pridėkite vėsų kompresą;",
+            "gerkite pakankamai skysčių;",
+            "miegodami galvą laikykite šiek tiek aukščiau."
+          ] },
+          { type: "p", text: "Burną galima atsargiai praskalauti drungnu vandeniu. Skalavimas gali padėti palaikyti burnos švarą, tačiau jis neišgydo infekcijos. Patinusios vietos nereikėtų stipriai spausti ar intensyviai skalauti." },
+          { type: "p", text: "Vaistus nuo skausmo vartokite tik pagal informacinį lapelį, neviršydami nurodytos dozės. Jų tinkamumas priklauso nuo žmogaus amžiaus, nėštumo, turimų ligų ir kitų vartojamų vaistų. Kilus abejonių pasitarkite su gydytoju arba vaistininku." }
+        ]
+      },
+      {
+        h: "Kaip odontologas gydo danties pūlinį?",
+        p: [
+          "Gydymo tikslas – pašalinti infekcijos šaltinį, sudaryti sąlygas pūliams nutekėti ir, kai įmanoma, išsaugoti dantį. Procedūros paprastai atliekamos taikant vietinę nejautrą."
+        ]
+      },
+      {
+        h: "Pūlinio drenavimas",
+        p: [
+          "Jei audiniuose susikaupę pūlių, odontologas gali atlikti nedidelį pjūvį ir sudaryti sąlygas jiems nutekėti. Tai sumažina spaudimą, tačiau vien drenavimo gali nepakakti, jei infekcija prasidėjo danties viduje."
+        ]
+      },
+      {
+        h: "Šaknų kanalų gydymas",
+        p: [
+          "Kai infekcijos šaltinis yra danties pulpoje, atliekamas šaknų kanalų gydymas. Jo metu pašalinami infekuoti audiniai, kanalai išvalomi, dezinfekuojami ir užpildomi. Vėliau dantis atkuriamas plomba arba kita restauracija. Toks gydymas dažnai leidžia išsaugoti natūralų dantį."
+        ]
+      },
+      {
+        h: "Danties pašalinimas",
+        p: [
+          "Jeigu dantis smarkiai suiręs, skilęs ar jo patikimai atkurti neįmanoma, gali būti rekomenduojama jį pašalinti. Taip pašalinamas pagrindinis infekcijos šaltinis.",
+          "Jei pūlinys susijęs su gilia periodonto kišene, gali būti valomi danties ir šaknies paviršiai bei gydomi aplinkiniai periodonto audiniai.",
+          "Antibiotikai skiriami tik individualiai įvertinus situaciją. Net ir juos paskyrus dažniausiai vis tiek reikia odontologiškai gydyti infekcijos šaltinį."
+        ]
+      },
+      {
+        h: "Kada danties pūlinys reikalauja skubios pagalbos?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Į odontologą reikėtų kreiptis kuo greičiau, nelaukiant, kol pūlinys praeis savaime. Ypač svarbu nedelsti, jei skausmas stiprėja, tinsta skruostas ar blogėja bendra savijauta." },
+          { type: "p", text: "Skubios medicinos pagalbos reikia, jei:" },
+          { type: "ul", items: [
+            "sunku kvėpuoti, ryti arba kalbėti;",
+            "sparčiai didėja burnos, veido ar kaklo patinimas;",
+            "patinimas plinta akies link;",
+            "skauda ar tinsta akis, sutrinka regėjimas;",
+            "labai sunku išsižioti;",
+            "pakyla aukšta temperatūra ir ryškiai blogėja savijauta;",
+            "atsiranda sumišimas ar didelis silpnumas."
+          ] },
+          { type: "p", text: "Kvėpavimo, kalbėjimo ar rijimo sutrikimai bei didelis burnos patinimas gali rodyti į pavojingas sritis plintančią infekciją. Tokiais atvejais nereikėtų laukti odontologijos klinikos darbo laiko." }
+        ]
+      },
+      {
+        h: "Kaip sumažinti danties pūlinio riziką?",
+        p: [
+          "Pūlinio riziką padeda mažinti reguliarus dantų valymas fluoridų turinčia pasta, kasdienė tarpdančių priežiūra ir ankstyvas ėduonies gydymas. Taip pat svarbu kreiptis dėl įskilusių ar traumuotų dantų, kontroliuoti periodonto ligas ir reguliariai tikrintis dantis.",
+          "Atsiradus danties skausmui, jautrumui sukandus, dantenų patinimui ar pūlinukui, vizito nereikėtų atidėti. Anksti pradėtas gydymas paprastai yra paprastesnis ir padidina galimybę išsaugoti dantį."
+        ]
+      },
+      {
+        h: "Danties pūlinio gydymo nereikėtų atidėlioti",
+        p: [
+          "Danties pūlinio gydymas namuose nėra įmanomas, nes namų priemonės nepašalina bakterinės infekcijos šaltinio. Jos gali tik laikinai sumažinti skausmą ir patinimą iki profesionalios pagalbos.",
+          "Gydymas gali apimti pūlinio drenavimą, šaknų kanalų gydymą, periodonto audinių valymą arba nebeatkuriamo danties pašalinimą. Antibiotikai skiriami tik esant klinikinėms indikacijoms ir nepakeičia odontologinio gydymo.",
+          "Jei skauda dantį, patino dantenos ar veidas, atsirado pūlinukas arba nemalonus skonis burnoje, kreipkitės į Bangų kliniką Klaipėdoje. Mūsų specialistai nustatys infekcijos priežastį ir parinks tinkamą gydymą."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Ar danties pūlinys gali praeiti savaime?", a: "Ne. Skausmas gali sumažėti pūliniui pratrūkus arba žuvus danties pulpai, tačiau infekcijos židinys paprastai išlieka." },
+      { q: "Ar galima danties pūlinį pradurti namuose?", a: "Ne. Taip galima pažeisti audinius, sukelti kraujavimą ir paskatinti infekcijos plitimą." },
+      { q: "Ar antibiotikai išgydo danties pūlinį?", a: "Ne visada. Antibiotikų gali reikėti plintančiai infekcijai, tačiau dažniausiai būtina odontologiškai pašalinti jos šaltinį." },
+      { q: "Ką daryti, jei nuo danties ištino žandas?", a: "Kuo greičiau kreipkitės į odontologą. Jei patinimas sparčiai didėja, plinta į kaklą ar akies sritį arba sunku ryti ar kvėpuoti, būtina skubi medicinos pagalba." },
+      { q: "Ką reiškia neskausmingas pūlinukas ant dantenų?", a: "Tai gali būti kanalas, kuriuo iš gilesnio infekcijos židinio nuteka pūliai. Net jei neskauda, reikalinga odontologo apžiūra." }
+    ],
+    sources: [
+      { label: "Antibiotics for Dental Pain and Swelling Guideline", url: "https://www.ada.org/resources/research/science/evidence-based-dental-research/antibiotics-for-dental-pain-and-swelling" },
+      { label: "Evidence-Based Clinical Practice Guideline on Antibiotic Use for Dental Pain and Intraoral Swelling", url: "https://pubmed.ncbi.nlm.nih.gov/31668170/" },
+      { label: "Antibiotics for the Urgent Management of Pulpal and Periapical Dental Conditions: Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/31761029/" }
+    ]
+  },
+  "kaulo-priauginimas-ka-butina-zinoti-pries-operacija": {
+    sections: [
+      {
+        p: [
+          "Jei žandikaulyje nepakanka kaulo danties implantui stabiliai įsriegti, prieš implantaciją arba kartu su ja gali būti atliekamas kaulo priauginimas. Pacientams dažnai kyla klausimų, kaip vyksta kaulo priauginimas, kiek laiko gyja operuota vieta ir kokie simptomai gali rodyti komplikaciją.",
+          "Kaulo priauginimas, dar vadinamas kaulo augmentacija, yra chirurginė procedūra, kurios metu atkuriamas trūkstamas žandikaulio kaulo tūris. Tam gali būti naudojamas paties paciento kaulas, specialiai paruošta žmogaus ar gyvūninės kilmės medžiaga, sintetinis kaulo pakaitalas arba kelių medžiagų derinys.",
+          "Po kaulo priauginimo operacijos nedidelis maudimas, patinimas, tempimo pojūtis ar nežymus kraujavimas pirmomis dienomis gali būti įprasta gijimo dalis. Tačiau savijauta turėtų palaipsniui gerėti. Stiprėjantis skausmas, pūliavimas, karščiavimas, didėjantis patinimas ar prasiskyrusi žaizda gali rodyti kaulo priauginimo komplikacijas."
+        ]
+      },
+      {
+        h: "Kada prieš dantų implantaciją gali prireikti kaulo priauginimo?",
+        p: [
+          "Danties implantui reikalingas pakankamo aukščio ir pločio žandikaulio kaulas. Jei kaulas yra per siauras, per žemas arba jo forma neleidžia implantui suteikti tinkamo stabilumo, gydytojas gali rekomenduoti augmentaciją.",
+          "Kaulo gali sumažėti dėl ilgą laiką neatkurto prarasto danties, periodonto ligų, infekcijos, traumos, ankstesnių chirurginių procedūrų ar individualių anatominių savybių.",
+          "Prieš gydymą atliekama burnos apžiūra ir radiologiniai tyrimai. Dažnai reikalinga trimatė kompiuterinė tomografija, padedanti įvertinti kaulo aukštį, plotį ir santykį su nervais, sinusu bei kitomis anatominėmis struktūromis. Tik po ištyrimo galima nuspręsti, ar implantą galima sriegti iš karto, ar pirmiausia reikia atkurti kaulo tūrį."
+        ]
+      },
+      {
+        h: "Kokie kaulo priauginimo metodai gali būti taikomi?",
+        p: [
+          "Kaulo priauginimo metodas parenkamas pagal defekto vietą, dydį ir planuojamą implantaciją.",
+          "Alveolės išsaugojimas gali būti atliekamas iš karto po danties pašalinimo. Į likusią vietą įdedama kaulinė medžiaga, siekiant išsaugoti palankesnį žandikaulio kontūrą būsimai implantacijai.",
+          "Žandikaulio keteros priauginimas taikomas, kai kaulas yra per siauras ar per žemas. Priklausomai nuo situacijos, gali būti didinamas jo plotis, aukštis arba abu matmenys.",
+          "Sinuso dugno pakėlimas atliekamas galinėje viršutinio žandikaulio srityje, kai tarp žandikaulio keteros ir sinuso ertmės nepakanka kaulo implantui įsriegti.",
+          "Nedidelės apimties augmentacija kartais atliekama kartu su implantacija. Esant didesniam kaulo trūkumui, pirmiausia priauginamas kaulas, o implantas sriegiamas tik sugijus operuotai sričiai."
+        ]
+      },
+      {
+        h: "Kaip vyksta kaulo priauginimo operacija?",
+        p: [
+          "Kaulo priauginimas paprastai atliekamas taikant vietinę nejautrą, todėl procedūros metu pacientas neturėtų jausti aštraus skausmo. Galima jausti spaudimą, judesį ar vibraciją. Jei jaučiamas skausmas, apie tai svarbu iš karto pasakyti gydytojui, kad nejautra būtų papildyta.",
+          "Pirmiausia atveriamos dantenos ir pasiekiama vieta, kurioje trūksta kaulo. Ji paruošiama, o į defekto sritį įdedama pasirinkta kaulinė medžiaga. Kaulo pakaitalas dažnai veikia kaip pagrindas, į kurį gijimo metu palaipsniui įauga naujas paciento kaulas.",
+          "Priauginta vieta gali būti uždengiama specialia membrana. Ji atskiria kaulo regeneracijos sritį nuo greičiau augančių minkštųjų audinių ir padeda išlaikyti kaulinei medžiagai reikalingą erdvę. Prireikus transplantatas ar membrana stabilizuojami, o operacijos vieta užsiuvama.",
+          "Procedūros sudėtingumas priklauso nuo kaulo defekto dydžio. Nedidelės apimties priauginimas paprastai yra paprastesnis nei didelio horizontalaus ar vertikalaus defekto atkūrimas.",
+          "Naudojant paties paciento kaulą, gali reikėti papildomos vietos jam paimti. Kitos kilmės kaulo pakaitalai leidžia sumažinti papildomos chirurginės vietos poreikį. Tinkamiausią medžiagą gydytojas parenka individualiai."
+        ]
+      },
+      {
+        h: "Kokia savijauta po kaulo priauginimo operacijos yra normali?",
+        p: [
+          "Po kaulo priauginimo operacijos audiniams reikia laiko gyti. Pirmomis dienomis operuota vieta gali mausti, būti jautri ar įsitempusi. Taip pat gali atsirasti patinimas, nedidelė kraujosruva, sunkesnis išsižiojimas ar diskomfortas kramtant.",
+          "Pirmomis valandomis galimas nežymus kraujavimas arba kraujo priemaiša seilėse. Patinimas nebūtinai būna didžiausias iš karto, tačiau vėliau jis turėtų pradėti mažėti.",
+          "Svarbiausias normalios gijimo eigos požymis – palaipsnis savijautos gerėjimas. Skausmas turėtų silpnėti, patinimas slūgti, o žaizdos kraštai išlikti uždari.",
+          "Minkštųjų audinių gijimas ir priauginto kaulo integracija nėra tas pats. Dantenos gali nurimti per kelias savaites, tačiau naujo kaulo formavimasis ir kaulinės medžiagos integracija trunka kelis mėnesius. Todėl net ir nebejaučiant skausmo negalima spręsti, kad sritis jau pasiruošusi implantacijai.",
+          "Kada galima sriegti implantą, gydytojas nustato pagal klinikinę apžiūrą ir, jei reikia, radiologinius tyrimus."
+        ]
+      },
+      {
+        h: "Kaip prižiūrėti operuotą vietą?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Po procedūros svarbiausia laikytis gydytojo rekomendacijų. Dažniausiai patariama:" },
+          { type: "ul", items: [
+            "pirmąją parą intensyviai neskalauti burnos ir nespjaudyti;",
+            "neliesti žaizdos pirštais, liežuviu ar kitais daiktais;",
+            "rinktis minkštą, nekarštą maistą;",
+            "kramtyti kita burnos puse;",
+            "vengti intensyvaus fizinio krūvio;",
+            "nerūkyti ir nevartoti alkoholio;",
+            "paskirtus vaistus vartoti tiksliai taip, kaip nurodyta;",
+            "nepraleisti kontrolinių vizitų."
+          ] },
+          { type: "p", text: "Dantis reikia valyti reguliariai, tačiau operuotą vietą pirmomis dienomis būtina saugoti nuo tiesioginio dirginimo. Jei paskirtas specialus skalavimo skystis ar kita priemonė, ją reikėtų naudoti pagal gydytojo nurodymus." }
+        ]
+      },
+      {
+        h: "Kokios yra dažniausios kaulo priauginimo komplikacijos?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Kaulo priauginimo komplikacijos nėra įprasta gijimo dalis, tačiau jų gali pasitaikyti po bet kurios chirurginės procedūros. Rizika priklauso nuo defekto dydžio, pasirinkto metodo, minkštųjų audinių būklės, burnos higienos, bendros sveikatos ir pooperacinių rekomendacijų laikymosi." },
+          { type: "p", text: "Viena galimų komplikacijų – infekcija. Ji gali pasireikšti stiprėjančiu skausmu, didėjančiu patinimu, paraudimu, pūliavimu, blogu kvapu, nemaloniu skoniu burnoje ar karščiavimu. Infekcija gali sutrikdyti žaizdos gijimą ir priaugintos medžiagos integraciją." },
+          { type: "p", text: "Kita svarbi komplikacija – žaizdos kraštų prasiskyrimas ir membranos ar kaulinės medžiagos atsidengimas. Membranos ekspozicija gali sudaryti sąlygas bakterijoms patekti į operuotą sritį ir sumažinti pasiektą kaulo prieaugį." },
+          { type: "p", text: "Kartais per prasiskyrusią žaizdą gali pasišalinti pavienių kaulinės medžiagos dalelių. Tai nebūtinai reiškia, kad visa procedūra buvo nesėkminga, tačiau apie tokią situaciją reikia pranešti gydytojui. Žaizdos negalima spausti, krapštyti ar savarankiškai šalinti matomų medžiagų." },
+          { type: "p", text: "Galimos ir kitos problemos:" },
+          { type: "ul", items: [
+            "užsitęsęs ar gausus kraujavimas;",
+            "stiprus, nemažėjantis skausmas;",
+            "hematoma;",
+            "laikini arba užsitęsę jutimo pokyčiai;",
+            "dalinis kaulinės medžiagos praradimas;",
+            "mažesnis nei planuota kaulo prieaugis;",
+            "poreikis koreguoti ar pakartoti procedūrą."
+          ] },
+          { type: "p", text: "Komplikacija ne visada reiškia, kad visas gydymas nepavyko. Anksti pastebėjus problemą gydytojas gali parinkti tinkamą priežiūrą ir koreguoti tolesnį gydymo planą." },
+          { type: "p", text: "Komplikacijų riziką gali didinti rūkymas, nepakankama burnos higiena, nekontroliuojamos gijimą veikiančios ligos, operuotos vietos traumavimas, per ankstyva mechaninė apkrova ir kontrolinių vizitų praleidimas." }
+        ]
+      },
+      {
+        h: "Kada po kaulo priauginimo būtina kreiptis į gydytoją?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Nedidelis maudimas ar patinimas pirmomis dienomis gali būti normalūs, jei savijauta palaipsniui gerėja. Jei simptomai stiprėja arba atsiranda naujų požymių, reikėtų susisiekti su operavusiu gydytoju." },
+          { type: "p", text: "Nedelskite kreiptis, jei:" },
+          { type: "ul", items: [
+            "skausmas tampa stiprus, pulsuojantis ar didėja;",
+            "patinimas po kelių dienų nemažėja arba plinta;",
+            "atsiranda pūlių, blogas kvapas ar nemalonus skonis;",
+            "pakyla temperatūra ar blogėja bendra savijauta;",
+            "kraujavimas nesustoja;",
+            "prasiskiria žaizdos kraštai;",
+            "matoma membrana ar pasišalina daugiau kaulinės medžiagos;",
+            "atsiranda arba stiprėja nejautra."
+          ] },
+          { type: "p", text: "Jei patinimas greitai didėja, pasunkėja rijimas ar kvėpavimas, reikalinga skubi medicininė pagalba. Savarankiškai vartoti antibiotikų, atverti žaizdos ar bandyti pašalinti membraną negalima." }
+        ]
+      }
+    ],
+    faq: [
+      { q: "Ar skauda, kai atliekamas kaulo priauginimas?", a: "Procedūra paprastai atliekama taikant vietinę nejautrą, todėl aštraus skausmo pacientas neturėtų jausti. Pasibaigus nejautros poveikiui gali atsirasti maudimas, jautrumas ir patinimas." },
+      { q: "Kiek laiko gyja kaulas po priauginimo?", a: "Minkštieji audiniai gali nurimti per kelias savaites, tačiau priaugintos srities integracija trunka kelis mėnesius. Tiksli gijimo trukmė priklauso nuo procedūros apimties, naudotos medžiagos ir individualios gijimo eigos." },
+      { q: "Ar patinimas po kaulo priauginimo yra normalus?", a: "Nedidelis ar vidutinis patinimas pirmomis dienomis gali būti normalus. Jei jis ryškėja arba atsiranda karščiavimas, pūliavimas ir stiprus skausmas, reikia kreiptis į gydytoją." },
+      { q: "Ar kaulo priauginimas gali nepavykti?", a: "Kai kuriais atvejais kaulinė medžiaga gali nevisiškai integruotis arba gali susiformuoti mažiau kaulo, nei planuota. Tam įtakos gali turėti infekcija, žaizdos prasiskyrimas, rūkymas ir kiti gijimą veikiantys veiksniai." }
+    ],
+    sources: [
+      { label: "Effect of membrane exposure on guided bone regeneration: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/29368353/" },
+      { label: "Wound Healing Complications Following Guided Bone Regeneration for Ridge Augmentation: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/28938030/" },
+      { label: "Comparative evidence of different surgical techniques for the management of vertical alveolar ridge defects in terms of complications and efficacy: A systematic review and network meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/37495541/" },
+      { label: "Smoking and dental implants: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/25778741/" }
+    ]
+  },
+  "kam-kompensuojami-dantu-implantai": {
+    sections: [
+      {
+        p: [
+          "Netekus vieno ar kelių dantų pacientams dažnai kyla klausimas, ar kompensuojami dantų implantai ir kokią gydymo išlaidų dalį gali padengti ligonių kasa. Informacija apie kompensavimą kartais suprantama netiksliai, nes dantų implantacija ir protezavimas yra susiję, tačiau tai nėra tapačios paslaugos.",
+          "Įprasta dantų implantacija Lietuvoje nėra automatiškai kompensuojama kiekvienam pacientui. Privalomojo sveikatos draudimo fondo lėšomis nustatytoms gyventojų grupėms kompensuojamos dantų protezavimo paslaugų išlaidos iki nustatytos sumos. Tam tikrais sudėtingesniais klinikiniais atvejais į protezavimo planą gali būti įtrauktas ir implantais paremtas sprendimas, tačiau tai vertinama individualiai.",
+          "Jeigu pasirinkto gydymo kaina viršija pacientui priklausančią kompensuojamąją sumą, skirtumą reikia sumokėti savo lėšomis. Todėl prieš pradedant gydymą svarbu gauti aiškų planą, kuriame būtų nurodyta bendra kaina, ligonių kasos apmokama dalis ir pacientui tenkanti priemoka."
+        ]
+      },
+      {
+        h: "Ar dantų implantai Lietuvoje yra kompensuojami?",
+        p: [
+          "Atsakant į klausimą, ar kompensuojami dantų implantai, pirmiausia reikia atskirti implantą nuo visos dantų protezavimo paslaugos. Ligonių kasa paprastai neskiria atskiros išmokos konkrečiam implantui įsigyti. Ji kompensuoja dantų protezavimo išlaidas, kurių tikslas – atkurti prarastą kramtymo funkciją.",
+          "Dantų implantas yra į žandikaulio kaulą įsriegiamas dirbtinis danties šaknies pakaitalas. Ant jo gali būti tvirtinamas vainikėlis, tiltas arba didesnės apimties protezas. Vis dėlto implantavimas apima ne tik patį implantą. Gali būti reikalingi radiologiniai tyrimai, chirurginė procedūra, gijimo laikotarpis, protezinė dalis, o kartais ir kaulo priauginimas ar kitas papildomas gydymas.",
+          "Ligonių kasos kompensacija nėra susieta su paciento pageidaujamu implantų skaičiumi, jų gamintoju ar konkrečia implantavimo metodika. Odontologas, įvertinęs burnos būklę, pasiūlo mediciniškai tinkamus dantų atkūrimo būdus.",
+          "Vienam pacientui gali būti tinkamas išimamas protezas, kitam – tiltas, o tam tikrais atvejais gali būti svarstomas implantais paremtas protezas. Sprendimas priklauso nuo likusių dantų, dantenų ir žandikaulio kaulo būklės, bendros sveikatos, vartojamų vaistų bei kitų individualių veiksnių.",
+          "Todėl tiksliausia sakyti, kad nustatytoms pacientų grupėms kompensuojamos dantų protezavimo išlaidos, o ne automatiškai visi dantų implantai."
+        ]
+      },
+      {
+        h: "Kam priklauso kompensacija už dantų protezavimą?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Kompensuojamas dantų protezavimas priklauso ne visiems gyventojams. Teisę į šias paslaugas turi privalomuoju sveikatos draudimu apdrausti žmonės, priklausantys teisės aktuose nustatytoms grupėms:" },
+          { type: "ul", items: [
+            "senatvės pensijos amžiaus sulaukę asmenys;",
+            "vaikai iki 18 metų;",
+            "žmonės su negalia;",
+            "pacientai, kuriems buvo taikytas gydymas dėl burnos, veido ar žandikaulių onkologinės ligos."
+          ] },
+          { type: "p", text: "Vien priklausymo vienai iš šių grupių ne visada pakanka. Gydytojas odontologas turi įvertinti burnos būklę, protezavimo poreikį ir nustatyti, ar paciento situacija atitinka galiojančius klinikinius kriterijus." }
+        ]
+      },
+      {
+        h: "Kada gali būti skiriama didesnė kompensacija?",
+        p: [
+          "Kompensuojamoji suma priklauso nuo paciento grupės ir klinikinės būklės. 2026 metų liepos mėnesį įprastais atvejais senatvės pensijos amžiaus sulaukusiems žmonėms ir nustatytas negalios sąlygas atitinkantiems pacientams kompensuojama iki 670,39 euro.",
+          "Sudėtingesniais atvejais kompensacija gali siekti iki 2 062,70 euro. Pavyzdžiui, didesnė suma gali būti skiriama, kai visiškai bedančio apatinio žandikaulio aukštis tam tikroje srityje yra mažesnis nei 12 milimetrų. Tokį poreikį turi patvirtinti gydytojų konsiliumas.",
+          "Vaikams, kurių kramtymo sistema dar vystosi ir kuriems reikalingi laikini protezavimo sprendimai, kompensuojama iki 342,13 euro. Kitais teisės aktuose nustatytais vaikų ar onkologinėmis ligomis gydytų pacientų atvejais gali būti taikoma didesnė suma.",
+          "Svarbu suprasti, kad didesnė kompensacija nėra skiriama vien todėl, kad pacientas pageidauja implantų. Ji priklauso nuo konkrečių klinikinių kriterijų ir negarantuoja, kad visas implantais paremto gydymo planas bus nemokamas."
+        ]
+      },
+      {
+        h: "Kokios dantų gydymo išlaidos gali būti kompensuojamos?",
+        p: [
+          "Paieškos frazė „kompensacija už dantų gydymą“ gali reikšti tiek įprastą odontologinį gydymą, tiek dantų protezavimą. Šioms paslaugoms taikomos skirtingos apmokėjimo sąlygos.",
+          "Privalomuoju sveikatos draudimu apdraustiems pacientams pirminė odontologinė pagalba teikiama gydymo įstaigoje, prie kurios jie yra prisirašę, arba kitoje įstaigoje, su kuria sudaryta atitinkama sutartis. Jai gali būti priskiriamas dantų ėduonies, pulpito ir kai kurių periodontito formų gydymas, dantų akmenų šalinimas, dantų ar jų šaknų traukimas bei kitos nustatytos paslaugos.",
+          "Suaugusiems pacientams PSDF paprastai apmoka gydytojo odontologo darbą, tačiau už plombines ir kitas odontologines medžiagas, vaistus bei vienkartines priemones dažniausiai reikia susimokėti. Tam tikroms pacientų grupėms taikomos išimtys.",
+          "Dantų protezavimo kompensacija veikia kitaip. Ligonių kasa apmoka faktines protezavimo išlaidas, bet ne daugiau nei pacientui nustatyta maksimali suma. Jei gydymas kainuoja mažiau, apmokamos faktinės išlaidos. Jei kainuoja daugiau, skirtumą sumoka pacientas."
+        ]
+      },
+      {
+        h: "Ar gavus kompensaciją galima rinktis dantų implantus?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Teisė į kompensuojamą protezavimą savaime nereiškia, kad pacientui bus atliekama implantacija. Pirmiausia turi būti nustatyta, ar implantais paremtas gydymas yra mediciniškai pagrįstas ir saugus." },
+          { type: "p", text: "Planuojant implantaciją vertinama:" },
+          { type: "ul", items: [
+            "žandikaulio kaulo kiekis ir kokybė;",
+            "dantenų bei periodonto būklė;",
+            "bendra paciento sveikata;",
+            "vartojami vaistai;",
+            "rūkymas ir kiti rizikos veiksniai;",
+            "būsima protezinė konstrukcija;",
+            "paciento galimybės prižiūrėti implantus."
+          ] },
+          { type: "p", text: "Jeigu implantais paremtas protezavimas pacientui tinka, jis gali būti įtrauktas į gydymo planą. Tačiau kompensacija padengs išlaidas tik iki nustatytos ribos. Likusią implantavimo, protezavimo ar papildomų procedūrų kainos dalį reikės sumokėti pacientui." },
+          { type: "p", text: "Prieš pradedant gydymą verta paprašyti rašytinio plano. Jame turėtų būti nurodyta, kiek implantų planuojama sriegti, kokia protezinė konstrukcija bus gaminama, kokių papildomų procedūrų gali prireikti, kokia yra bendra kaina ir kokią jos dalį padengs ligonių kasa." }
+        ]
+      },
+      {
+        h: "Kaip gauti kompensaciją už dantų protezavimą?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Norint pasinaudoti kompensacija, pirmiausia reikia kreiptis į gydytoją odontologą. Atskiro prašymo ligonių kasai pacientui paprastai teikti nereikia." },
+          { type: "p", text: "Procesas dažniausiai vyksta taip:" },
+          { type: "ol", items: [
+            "Kreipiamasi į odontologą. Gydytojas įvertina burnos būklę ir protezavimo poreikį.",
+            "Nustatoma teisė į kompensaciją. Patikrinama, ar pacientas priklauso nustatytai grupei ir atitinka klinikinius kriterijus.",
+            "Paruošiama burna protezavimui. Atliekamas reikalingas gydymas ir pašalinami protezavimui trukdantys uždegimai.",
+            "Duomenys užregistruojami elektroninėje sistemoje.",
+            "Pasirenkama gydymo įstaiga. Ji turi turėti sutartį su ligonių kasa dėl kompensuojamų dantų protezavimo paslaugų.",
+            "Sudaromas gydymo ir išlaidų planas. Pacientui paaiškinama bendra kaina, kompensuojama dalis ir galima priemoka."
+          ] },
+          { type: "p", text: "Pagal 2026 metų liepą galiojančią tvarką kompensuojamo dantų protezavimo paslaugomis reikia pasinaudoti per trejus metus nuo teisės užregistravimo sistemoje." },
+          { type: "p", text: "Kompensacija galima pasinaudoti ir privačioje klinikoje, tačiau tik tuomet, jei pasirinkta įstaiga turi sutartį su ligonių kasa dėl šių paslaugų. Vien to, kad klinika atlieka implantaciją ar protezavimą, nepakanka." },
+          { type: "p", text: "Kompensuojamoji suma paprastai nėra pervedama pacientui į asmeninę sąskaitą. Už suteiktas paslaugas ligonių kasa atsiskaito su sutartį turinčia gydymo įstaiga." }
+        ]
+      },
+      {
+        h: "Kada už implantus ar protezavimą reikia primokėti?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Priemoka reikalinga tada, kai pasirinkto gydymo kaina viršija pacientui nustatytą kompensuojamąją sumą. Taip dažnai nutinka pasirinkus implantais paremtą protezavimą, sudėtingesnes konstrukcijas ar brangesnes medžiagas." },
+          { type: "p", text: "Papildomai mokėti gali tekti už:" },
+          { type: "ul", items: [
+            "implantų sriegimą ir jų komponentus;",
+            "ant implantų tvirtinamus vainikėlius ar tiltus;",
+            "kaulo priauginimą;",
+            "sinuso dugno pakėlimą;",
+            "papildomus radiologinius tyrimus;",
+            "brangesnes protezines medžiagas;",
+            "į kompensuojamą planą neįtrauktas procedūras."
+          ] },
+          { type: "p", text: "Pacientui turi būti aiškiai paaiškinta, už ką ir kiek reikės mokėti. Jei siūlomi keli gydymo variantai, verta palyginti ne tik jų kainą, bet ir gydymo trukmę, priežiūrą, galimas rizikas bei tikėtiną rezultatą." }
+        ]
+      },
+      {
+        h: "Kompensacija priklauso nuo paciento būklės ir gydymo plano",
+        p: [
+          "Į klausimą, ar kompensuojami dantų implantai, tiksliausia atsakyti taip: įprasta implantacija nėra automatiškai apmokama visiems pacientams. Nustatytoms gyventojų grupėms kompensuojamos dantų protezavimo išlaidos iki galiojančios sumos, o implantais paremtas gydymas gali būti įtrauktas į individualų planą.",
+          "Didesnė kompensacija skiriama tik teisės aktuose numatytais sudėtingesniais atvejais ir, kai reikalaujama, gavus gydytojų konsiliumo patvirtinimą. Net ir tokiu atveju visa implantavimo kaina nebūtinai bus padengta.",
+          "Jei svarstote dantų implantaciją ir norite sužinoti, ar jums gali būti pritaikyta kompensacija už dantų gydymą ar protezavimą, registruokitės konsultacijai Bangų klinikoje Klaipėdoje. Mūsų specialistai įvertins burnos būklę, paaiškins galimus dantų atkūrimo būdus ir pateiks individualų gydymo bei išlaidų planą.",
+          "Straipsnyje pateiktos sumos ir sąlygos aktualios 2026 metų liepos mėnesį. Nuo 2026 metų lapkričio 1 dienos įsigalios patikslinta dantų protezavimo paslaugų kompensavimo tvarka, todėl prieš pradedant gydymą rekomenduojama patikrinti tuo metu galiojančią informaciją."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Ar pensininkams kompensuojami dantų implantai?", a: "Senatvės pensijos amžiaus sulaukę žmonės gali turėti teisę į kompensuojamą dantų protezavimą, jei jų burnos būklė atitinka nustatytus kriterijus. Tačiau tai nereiškia, kad ligonių kasa visada visiškai apmokės implantus." },
+      { q: "Kokia yra dantų protezavimo kompensacija?", a: "2026 metų liepos mėnesį dažniausiai taikoma suma siekia iki 670,39 euro. Vaikams, kurių kramtymo sistema dar vystosi, kompensuojama iki 342,13 euro. Nustatytais sudėtingesniais atvejais suma gali siekti iki 2 062,70 euro." },
+      { q: "Ar kompensaciją galima panaudoti dantų implantams?", a: "Kompensacija nėra skiriama konkrečiam implantui įsigyti. Ji taikoma patvirtinto dantų protezavimo plano išlaidoms. Jei jame numatomas implantais paremtas gydymas, kompensacija gali padengti dalį bendros kainos." },
+      { q: "Ar kompensacija galima pasinaudoti privačioje klinikoje?", a: "Taip, jeigu privati klinika turi sutartį su ligonių kasa dėl kompensuojamų dantų protezavimo paslaugų. Prieš pradedant gydymą tai būtina patikrinti." },
+      { q: "Ar kompensuojamas visas dantų gydymas?", a: "Ne visas. Pirminės odontologinės pagalbos atveju gali būti apmokamas gydytojo darbas, tačiau suaugusiesiems dažniausiai reikia mokėti už odontologines medžiagas, vaistus ir vienkartines priemones. Dantų protezavimui taikoma atskira kompensavimo tvarka." }
+    ],
+    sources: [
+      { label: "Dantų protezavimo kompensuojamoji suma", url: "https://ligoniukasa.lrv.lt/lt/veiklos-sritys/informacija-gyventojams/gydymo-ir-sveikatos-prieziuros-paslaugos/odontologines-paslaugos/dantu-protezavimas/dantu-protezavimo-kompensuojamoji-suma/" },
+      { label: "Dantų gydymas be papildomų išlaidų: kas gali gauti kompensuojamas paslaugas?", url: "https://ligoniukasa.lrv.lt/lt/naujienos/dantu-gydymas-be-papildomu-islaidu-kas-gali-gauti-kompensuojamas-paslaugas/" },
+      { label: "Patikslinta dantų protezavimo paslaugų kompensavimo tvarka", url: "https://ligoniukasa.lrv.lt/lt/naujienos/patikslinta-dantu-protezavimo-paslaugu-kompensavimo-tvarka-aRE/" },
+      { label: "Dėl Dantų protezavimo paslaugų išlaidų kompensavimo iš Privalomojo sveikatos draudimo fondo biudžeto tvarkos aprašo pakeitimo", url: "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/53dadd725df111f1b20fcb7db81bf4bd" }
+    ]
+  },
+  "kiek-trunka-burnos-higiena": {
+    sections: [
+      {
+        p: [
+          "Profesionali burnos higiena – tai procedūra, kurios metu nuo dantų paviršių ir sunkiau pasiekiamų burnos vietų pašalinamos minkštosios bakterinės apnašos, sukietėję dantų akmenys ir išorinės pigmentinės dėmės. Planuojant vizitą pacientams dažnai kyla praktinis klausimas: kiek trunka burnos higiena ir kiek laiko jai reikėtų skirti?",
+          "Dažniausiai profesionali burnos higiena trunka apie 30–60 minučių. Jei procedūra atliekama reguliariai, dantų akmenų nėra daug, o dantenų būklė gera, vizitas gali būti trumpesnis. Kai apnašų susikaupę daugiau, dantenos yra jautrios ar kraujuojančios, burnoje yra implantų, protezų arba ortodontinių aparatų, higienai gali prireikti valandos ar ilgesnio vizito."
+        ]
+      },
+      {
+        h: "Kiek trunka profesionali burnos higiena?",
+        p: [
+          "Įprastai profesionaliai burnos higienai reikėtų numatyti 30–60 minučių. Per šį laiką burnos higienistas įvertina dantų bei dantenų būklę, pašalina kietąsias ir minkštąsias apnašas, nuvalo pigmentines dėmes bei pateikia individualias kasdienės burnos priežiūros rekomendacijas.",
+          "Kai profesionali burnos higiena atliekama reguliariai, o pacientas tinkamai prižiūri dantis ir tarpdančius namuose, sukietėjusių apnašų dažniausiai būna mažiau. Tokiu atveju valymas gali užtrukti trumpesnę numatyto vizito dalį.",
+          "Jei nuo paskutinės burnos higienos praėjo daug laiko, dantų akmenų susikaupę gausiai arba jie yra sunkiai pasiekiamose vietose, procedūra gali trukti ilgiau. Papildomo laiko gali reikėti ir tada, kai dantenos yra jautrios, patinusios ar kraujuoja, todėl specialistas turi dirbti lėčiau.",
+          "Profesionali burnos higiena nėra vien matomų dėmių nuvalymas ar dantų nupoliravimas. Dantų akmenys gali kauptis tarpdančiuose, ties dantenų kraštu ir po juo. Kiekvieną sritį reikia tinkamai pasiekti ir patikrinti, todėl procedūros greitis neturėtų būti svarbesnis už jos kokybę."
+        ]
+      },
+      {
+        h: "Kas gali pailginti procedūros laiką?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Pagrindinis veiksnys, nuo kurio priklauso burnos higienos trukmė, yra susikaupusių dantų akmenų ir minkštųjų apnašų kiekis. Kuo jų daugiau, tuo ilgiau trunka kruopštus skirtingų dantų paviršių, tarpdančių ir dantenų krašto valymas." },
+          { type: "p", text: "Svarbi ne tik apnašų gausa, bet ir jų vieta. Virš dantenų esančius dantų akmenis dažnai galima aiškiai pastebėti apžiūros metu. Tačiau dalis sukietėjusių apnašų gali būti susikaupusi po dantenų kraštu, kur jas pasiekti ir pašalinti sudėtingiau." },
+          { type: "p", text: "Procedūra gali trukti ilgiau, kai dantenos yra:" },
+          { type: "ul", items: [
+            "jautrios ar skausmingos;",
+            "paraudusios ir patinusios;",
+            "linkusios kraujuoti;",
+            "atsitraukusios nuo dantų;",
+            "paveiktos uždegimo."
+          ] },
+          { type: "p", text: "Tokiu atveju burnos higienistas gali dirbti mažesniais etapais, naudoti skirtingus instrumentus ar daryti trumpas pertraukas. Jei procedūros metu jaučiamas stiprus jautrumas arba skausmas, apie tai svarbu iš karto pasakyti specialistui." },
+          { type: "p", text: "Daugiau laiko gali prireikti pacientams, turintiems implantų, vainikėlių, tiltų, protezų ar ortodontinių breketų. Aplink šias konstrukcijas atsiranda daugiau sunkiai pasiekiamų vietų, kuriose gali kauptis bakterinės apnašos. Jas reikia išvalyti kruopščiai ir konkrečiai konstrukcijai tinkamomis priemonėmis." },
+          { type: "p", text: "Burnos higienos trukmei įtakos gali turėti ir susigrūdę dantys, individualus apnašų kaupimosi greitis, rūkymas bei dažnas pigmentuojančių produktų vartojimas. Vis dėlto tiksliausiai procedūros apimtį galima įvertinti tik apžiūrėjus paciento burną." }
+        ]
+      },
+      {
+        h: "Kaip pasiskirsto burnos higienos procedūros laikas?",
+        p: [
+          "Profesionali burnos higiena atliekama keliais nuosekliais etapais. Jų trukmė nėra vienoda kiekvienam pacientui, nes specialistas procedūrą pritaiko pagal individualią dantų ir dantenų būklę.",
+          "Pirmiausia apžiūrima burna. Burnos higienistas įvertina, kur ir kiek susikaupė dantų akmenų, ar dantenos kraujuoja, kuriose vietose dantys yra jautresni ir ar burnoje yra implantų, protezinių konstrukcijų arba ortodontinių aparatų. Taip pat svarbu žinoti, kada paskutinį kartą buvo atlikta profesionali burnos higiena.",
+          "Daugiausia vizito laiko paprastai skiriama dantų akmenims šalinti. Atsižvelgiant į jų vietą ir kiekį, gali būti naudojamas ultragarsinis aparatas bei rankiniai instrumentai. Ultragarsinio instrumento vibracijos padeda suardyti sukietėjusias apnašas, o vandens srovė vėsina valomą paviršių ir nuplauna pašalintas daleles.",
+          "Pašalinus dantų akmenis valomos minkštosios bakterinės ir pigmentinės apnašos. Tam gali būti naudojamas AIRFLOW metodas, poliravimo pasta, specialūs šepetėliai ar guminės taurelės. Ne kiekvienam pacientui reikia visiškai vienodo procedūros etapų derinio – jis parenkamas pagal burnoje esančias apnašas.",
+          "Vizito pabaigoje burnos higienistas gali parodyti, kaip tinkamai valyti tarpdančius, parinkti tinkamo dydžio tarpdančių šepetėlius ir paaiškinti, kaip prižiūrėti implantus, protezus ar breketus. Šiai daliai taip pat reikia skirti laiko, nes profesionaliai pašalintos apnašos pradės kauptis iš naujo, jei kasdienė burnos priežiūra liks nepakankama."
+        ]
+      },
+      {
+        h: "Kiek laiko reikia, kai dantų akmenų susikaupę daugiau?",
+        p: [
+          "Kai dantų akmenų nėra daug, o profesionali higiena atliekama reguliariai, procedūra dažniausiai telpa į vieną įprastą vizitą. Tačiau jei apnašos kaupėsi ilgą laiką, dengia didesnę dantų paviršių dalį ar yra po dantenų kraštu, jų šalinimui gali prireikti daugiau nei valandos.",
+          "Ilgą laiką besikaupę dantų akmenys gali būti kieti ir tvirtai prikibę prie danties paviršiaus. Jų negalima šalinti skubant. Reikia pasiekti skirtingas kiekvieno danties puses, išvalyti tarpdančius ir patikrinti, ar neliko apnašų sunkiau matomose vietose.",
+          "Kai dantenos kartu yra stipriai sudirgusios ar kraujuoja, procedūra gali būti atliekama lėčiau. Kai kuriems pacientams patogiau valymą padalyti į kelis vizitus, kad vieno apsilankymo metu nereikėtų ilgai laikyti burnos atvertos ir būtų galima kruopščiai išvalyti atskiras burnos sritis.",
+          "Svarbu atskirti įprastą profilaktinę burnos higieną nuo periodontologinio gydymo. Jei nustatomos gilios periodonto kišenės, dantį laikančių audinių pažeidimas ar žandikaulio kaulo nykimas, vien standartinės burnos higienos gali nepakakti. Tokiais atvejais gali būti reikalingas išsamesnis podanteninis valymas, odontologo ar periodontologo konsultacija ir keliais etapais atliekamas gydymas.",
+          "Todėl ilgesnė procedūros trukmė ne visada reiškia tik gausesnį paviršinių apnašų kiekį. Kartais ji susijusi su sudėtingesne dantenų ir periodonto audinių būkle, kurią reikia įvertinti individualiai."
+        ]
+      },
+      {
+        h: "Ar burnos higienai visada pakanka vieno vizito?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Daugeliu atvejų profesionali burnos higiena atliekama per vieną 30–60 minučių vizitą. Vieno apsilankymo paprastai pakanka, kai dantų akmenų nėra labai daug, dantenos nėra stipriai uždegiminės, o pacientas gali patogiai išbūti visos procedūros metu." },
+          { type: "p", text: "Kelių vizitų gali prireikti, jei:" },
+          { type: "ul", items: [
+            "dantų akmenų yra labai daug;",
+            "apnašos susikaupusios po dantenų kraštu;",
+            "dantenos yra itin jautrios ar stipriai kraujuoja;",
+            "pacientui sunku ilgai laikyti burną atvertą;",
+            "nustatomi galimi periodonto ligos požymiai;",
+            "reikalingas išsamesnis podanteninis valymas."
+          ] },
+          { type: "p", text: "Procedūros padalijimas į kelis apsilankymus nereiškia, kad burnos higiena atliekama neefektyviai. Atskirais atvejais tai leidžia daugiau dėmesio skirti kiekvienai burnos sričiai ir sumažinti paciento diskomfortą." },
+          { type: "p", text: "Po įprastos profesionalios burnos higienos dažniausiai galima iš karto grįžti prie kasdienės veiklos. Dantys trumpą laiką gali būti jautresni šalčiui, o sudirgusios dantenos gali nežymiai kraujuoti. Šie pojūčiai turėtų palaipsniui mažėti." },
+          { type: "p", text: "Jei po procedūros atsiranda stiprus arba didėjantis skausmas, ryškus patinimas ar nesiliaujantis kraujavimas, reikėtų susisiekti su procedūrą atlikusiu specialistu. Tokie simptomai nėra įprasto trumpalaikio jautrumo dalis ir turi būti įvertinti individualiai." }
+        ]
+      },
+      {
+        h: "Kruopštus valymas svarbiau už kuo trumpesnį vizitą",
+        p: [
+          "Atsakant į klausimą, kiek trunka burnos higiena, dažniausiai galima orientuotis į 30–60 minučių vizitą. Procedūra gali būti trumpesnė, jei ji atliekama reguliariai ir apnašų nėra daug. Kai susikaupę gausūs dantų akmenys, dantenos jautrios arba reikia išvalyti vietas aplink implantus, protezus ar breketus, gali prireikti ilgesnio apsilankymo.",
+          "Svarbiausia, kad procedūra būtų atliekama kruopščiai, o ne skubant. Burnos higienistas turi pašalinti ne tik gerai matomas apnašas, bet ir patikrinti tarpdančius, dantenų kraštą bei kitas sunkiau pasiekiamas vietas. Vizito metu taip pat įvertinama dantenų būklė ir pateikiamos individualios priežiūros rekomendacijos.",
+          "Jei burnoje yra labai daug dantų akmenų arba pastebimi galimi periodonto ligos požymiai, vieno įprasto vizito gali nepakakti. Tokiais atvejais specialistas paaiškina, ar valymą tikslinga padalyti į kelis etapus ir ar reikalingas papildomas periodontologinis ištyrimas.",
+          "Jei nežinote, kiek laiko profesionali burnos higiena gali trukti jūsų atveju, registruokitės vizitui Bangų klinikoje Klaipėdoje. Mūsų specialistai įvertins dantų bei dantenų būklę, parinks tinkamus valymo metodus ir pateiks individualias burnos priežiūros rekomendacijas."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Kiek vidutiniškai trunka profesionali burnos higiena?", a: "Dažniausiai profesionali burnos higiena trunka apie 30–60 minučių. Tikslus laikas priklauso nuo dantų akmenų bei minkštųjų apnašų kiekio, dantenų būklės, dantų jautrumo ir burnoje esančių implantų, protezų ar ortodontinių aparatų." },
+      { q: "Ar burnos higieną galima atlikti per 30 minučių?", a: "Kai procedūra atliekama reguliariai, apnašų nėra daug, o dantenų būklė gera, burnos higienai gali pakakti maždaug 30 minučių. Vis dėlto tikslų laiką specialistas gali įvertinti tik apžiūrėjęs burną." },
+      { q: "Kodėl burnos higiena kartais trunka ilgiau nei valandą?", a: "Ilgesnio vizito gali reikėti dėl gausių ar sunkiai pašalinamų dantų akmenų, jautrių ir kraujuojančių dantenų, apnašų po dantenų kraštu, implantų, protezų arba breketų. Jei nustatomi periodonto pažeidimai, gali būti reikalingas išsamesnis gydymas." },
+      { q: "Ar pirmoji burnos higiena trunka ilgiau?", a: "Pirmoji profesionali burnos higiena gali trukti ilgiau, jei anksčiau procedūra nebuvo atliekama arba nuo paskutinio vizito praėjo daug laiko. Papildomai įvertinama burnos būklė ir skiriama laiko individualioms priežiūros rekomendacijoms." },
+      { q: "Kiek trunka burnos higiena su AIRFLOW?", a: "Bendra profesionalios burnos higienos su AIRFLOW trukmė dažniausiai siekia apie 30–60 minučių. AIRFLOW yra vienas procedūros etapų, todėl vizito laikas priklauso ir nuo to, ar reikia papildomai šalinti sukietėjusius dantų akmenis." },
+      { q: "Ar burnos higiena visada atliekama per vieną vizitą?", a: "Dažniausiai pakanka vieno vizito. Tačiau jei apnašų ir dantų akmenų labai daug, dantenos yra itin jautrios arba reikalingas periodontologinis gydymas, procedūra gali būti padalyta į kelis apsilankymus." }
+    ],
+    sources: [
+      { label: "Professional mechanical plaque removal for prevention of periodontal diseases in adults – systematic review update", url: "https://pubmed.ncbi.nlm.nih.gov/25495962/" },
+      { label: "The efficacy of air polishing devices in supportive periodontal therapy: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/29700503/" },
+      { label: "A systematic review on the patient perception of periodontal treatment using air polishing devices", url: "https://pubmed.ncbi.nlm.nih.gov/25619863/" },
+      { label: "Efficacy of erythritol powder air-polishing in active and supportive periodontal therapy: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/34318577/" },
+      { label: "Efficacy of air polishing in comparison with hand instruments and/or power-driven instruments in supportive periodontal therapy and implant maintenance: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35321688/" },
+      { label: "Effectiveness and Clinical Performance of Erythritol Air-Polishing in Non-Surgical Periodontal Therapy: A Systematic Review of Randomized Clinical Trials", url: "https://pubmed.ncbi.nlm.nih.gov/35888585/" }
+    ]
+  },
+  "kiek-laiko-skauda-danti-po-kanalu-valymo": {
+    sections: [
+      {
+        p: [
+          "Po šaknų kanalų valymo dantis kelias dienas gali būti jautrus, ypač kramtant ar sukandus. Tai nebūtinai reiškia, kad gydymas atliktas netinkamai. Nors danties viduje buvę pažeisti audiniai pašalinami, aplink šaknį išlieka gyvi audiniai, kurie po procedūros gali būti sudirgę.",
+          "Dažniausiai dantis būna jautriausias pirmąsias 2–3 dienas. Nestiprus jautrumas sukandus gali tęstis iki savaitės ar šiek tiek ilgiau, tačiau jis turi aiškiai mažėti. Jei skausmas stiprėja, po pagerėjimo sugrįžta arba atsiranda patinimas, reikėtų kreiptis į gydymą atlikusį odontologą.",
+          "Atsakant į klausimą, kiek laiko skauda dantį po kanalų valymo, svarbu vertinti ne tik dienų skaičių. Daug pasako skausmo eiga: palaipsniui silpnėjantis jautrumas dažniausiai atitinka gijimą, o didėjantis ar kasdienei veiklai trukdantis skausmas reikalauja papildomo įvertinimo."
+        ]
+      },
+      {
+        h: "Kodėl po kanalų valymo gali skaudėti dantį?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Šaknų kanalų gydymo metu iš danties vidaus pašalinami infekcijos ar uždegimo pažeisti pulpos audiniai. Kanalai išvalomi, dezinfekuojami, suformuojami ir užpildomi specialia medžiaga, kad būtų sumažinta pakartotinio užkrėtimo rizika." },
+          { type: "p", text: "Pacientai šią procedūrą kartais vadina „nervo išėmimu“, todėl gali kilti klausimas, kodėl gydytas dantis vis dar skauda. Pašalinus pulpą, aplink danties šaknį lieka gyvi raiščio, kaulo ir dantenų audiniai. Jie gali būti jautrūs dėl prieš gydymą buvusio uždegimo ir procedūros metu patirto sudirginimo." },
+          { type: "p", text: "Pirmomis dienomis gali būti juntamas:" },
+          { type: "ul", items: [
+            "nestiprus ar vidutinio stiprumo maudimas;",
+            "jautrumas sukandus arba kramtant;",
+            "spaudimo pojūtis aplink gydytą dantį;",
+            "žandikaulio raumenų maudimas po ilgiau laikytos pravertos burnos."
+          ] },
+          { type: "p", text: "Skausmo intensyvumui įtakos gali turėti danties būklė prieš gydymą, aplink šaknį buvusio uždegimo apimtis, kanalų anatomija ir procedūros sudėtingumas. Mokslinių tyrimų duomenimis, pooperacinis skausmas dažniausiai būna ryškesnis per pirmąsias 48–72 valandas ir vėliau mažėja." },
+          { type: "p", text: "Kartais pacientui atrodo, kad gydytas dantis yra „aukštesnis“ ir sukandus pirmas susiliečia su priešingo žandikaulio dantimi. Tokį pojūtį gali sukelti jautrūs audiniai aplink šaknį, tačiau priežastis gali būti ir per aukšta laikina plomba ar galutinė restauracija. Jei pojūtis nepraeina, odontologas turėtų patikrinti sąkandį." }
+        ]
+      },
+      {
+        h: "Kiek laiko skauda dantį po kanalų valymo?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Vienodo termino visiems pacientams nėra, tačiau galima išskirti orientacinę gijimo eigą:" },
+          { type: "ul", items: [
+            "Pirmosios 24–72 valandos. Galimas maudimas, spaudimas ir jautrumas sukandus.",
+            "Po 3–7 dienų. Simptomai turėtų būti pastebimai silpnesni ir mažiau trukdyti kasdienei veiklai.",
+            "Po savaitės. Nedidelis jautrumas kartais dar gali išlikti, tačiau turi būti aiški gerėjimo tendencija."
+          ] },
+          { type: "p", text: "Šie terminai yra orientaciniai. Gijimas priklauso nuo pradinės danties būklės, gydymo apimties ir individualios audinių reakcijos. Jei po savaitės nejaučiate jokio pagerėjimo, verta susisiekti su gydymą atlikusiu odontologu. Stipraus ar didėjančio skausmo nereikėtų kentėti laukiant kelias savaites." },
+          { type: "p", text: "Kanalų gydymas gali būti atliekamas per vieną arba kelis vizitus. Po pirmojo kanalų valymo etapo dantis gali būti uždarytas laikina plomba, todėl jautrumas galimas ir tarp procedūrų. Tokiu atveju svarbu saugoti laikiną plombą, nekramtyti labai kieto maisto ir nepraleisti paskirto kito vizito." },
+          { type: "p", text: "Net jei tarp vizitų skausmas visiškai išnyko, gydymo nutraukti negalima. Neužbaigus kanalų gydymo ir galutinai neatkūrus danties, padidėja pakartotinio užkrėtimo ir danties lūžio rizika." }
+        ]
+      },
+      {
+        h: "Koks skausmas po kanalų gydymo laikomas normaliu?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Normaliai gijimo eigai būdingas nestiprus arba vidutinio stiprumo jautrumas, kuris kasdien mažėja. Dantį gali mausti sukandus ar kramtant, tačiau diskomfortas neturėtų nuolat stiprėti." },
+          { type: "p", text: "Tikėtina, kad gijimas vyksta sklandžiai, jei:" },
+          { type: "ul", items: [
+            "skausmas palaipsniui silpnėja;",
+            "jį padeda kontroliuoti gydytojo rekomenduoti vaistai;",
+            "nėra didėjančio dantenų ar veido patinimo;",
+            "neatsiranda karščiavimo, pūliavimo ar ryškaus bendros savijautos pablogėjimo;",
+            "gydytas dantis nėra akivaizdžiai pirmas kontaktas sukandus."
+          ] },
+          { type: "p", text: "Stiprus, pulsuojantis, miegoti neleidžiantis ar kasdien didėjantis skausmas nelaikomas įprasta gijimo eiga. Susisiekti su gydytoju taip pat reikėtų, jei skausmas iš pradžių mažėjo, bet po kelių dienų vėl sustiprėjo." },
+          { type: "p", text: "Retais atvejais gali pasireikšti ūmus paūmėjimas – stiprus skausmas, patinimas arba abu simptomai, dėl kurių prireikia neplanuoto odontologo vizito. Tai nėra tas pats, kas nestiprus pirmųjų dienų jautrumas." }
+        ]
+      },
+      {
+        h: "Kaip sumažinti skausmą ir prižiūrėti dantį po procedūros?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Po kanalų valymo pirmiausia reikėtų vadovautis individualiomis odontologo rekomendacijomis. Skausmą malšinančius vaistus vartokite tik pagal gydytojo nurodymą arba preparato informacinį lapelį, neviršydami rekomenduojamos dozės. Konkretūs vaistai tinka ne visiems pacientams, todėl būtina atsižvelgti į turimas ligas, alergijas ir kitus vartojamus preparatus." },
+          { type: "p", text: "Po procedūros rekomenduojama:" },
+          { type: "ul", items: [
+            "nevalgyti, kol visiškai nepraėjo vietinės nejautros poveikis;",
+            "pirmomis dienomis vengti labai kieto ir lipnaus maisto;",
+            "laikinai mažiau kramtyti gydyto danties puse;",
+            "reguliariai valyti dantis, jautrią vietą prižiūrint švelniai;",
+            "saugoti laikiną plombą nuo didelės apkrovos;",
+            "nepraleisti kontrolinio ar kito gydymo vizito;",
+            "gydytojo nurodytu laiku galutinai atkurti dantį."
+          ] },
+          { type: "p", text: "Jei laikina plomba visiškai iškrenta arba gydytas dantis nuskilo, reikėtų susisiekti su klinika ir nelaukti kito suplanuoto vizito." },
+          { type: "p", text: "Antibiotikų nereikėtų pradėti vartoti savarankiškai. Vien skausmas po kanalų valymo nėra pakankama priežastis antibakteriniam gydymui. Sisteminės mokslinių tyrimų apžvalgos nepatvirtina, kad antibiotikai įprastai sumažintų pooperacinį skausmą ar apsaugotų nuo paūmėjimo. Juos gydytojas skiria tik esant konkrečioms indikacijoms." }
+        ]
+      },
+      {
+        h: "Kada skausmas po kanalų valymo gali rodyti komplikaciją?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Į odontologą reikėtų kreiptis, jei:" },
+          { type: "ul", items: [
+            "skausmas stiprėja arba po kelių dienų nemažėja;",
+            "po savaitės nėra aiškaus pagerėjimo;",
+            "patinsta dantenos, skruostas ar veidas;",
+            "ant dantenų atsiranda pūlinukas;",
+            "juntamas nemalonus skonis ar pastebima pūlių;",
+            "pakyla temperatūra arba blogėja bendra savijauta;",
+            "gydytas dantis pirmas susiliečia sukandus;",
+            "visiškai iškrenta laikina plomba ar vainikėlis;",
+            "po pagerėjimo grįžta iki gydymo buvę simptomai."
+          ] },
+          { type: "p", text: "Greitai didėjantis veido ar kaklo patinimas, pasunkėjęs rijimas arba kvėpavimas reikalauja skubios medicininės pagalbos." },
+          { type: "p", text: "Užsitęsęs skausmas nebūtinai reiškia, kad dantį reikės pašalinti. Kartais pakanka pakoreguoti per aukštą restauraciją. Kitais atvejais gali reikėti įvertinti danties įskilimą, kanalų anatomiją, uždegimą aplink šaknį ar restauracijos sandarumą." },
+          { type: "p", text: "Jei infekcija išlieka arba po kurio laiko atsinaujina, gali būti rekomenduojamas pakartotinis kanalų gydymas. Tačiau pirmomis dienomis jaučiamas ir palaipsniui silpnėjantis jautrumas savaime nėra pergydymo požymis." }
+        ]
+      }
+    ],
+    faq: [
+      { q: "Ar normalu, jei po kanalų valymo skauda sukandus?", a: "Nestiprus ir palaipsniui mažėjantis jautrumas pirmomis dienomis gali būti normalus. Jei dantis atrodo aukštesnis už kitus, skausmas stiprus arba nemažėja, reikėtų kreiptis į odontologą." },
+      { q: "Kiek laiko skauda dantį po kanalų valymo?", a: "Dažniausiai ryškiausias jautrumas juntamas pirmąsias 2–3 dienas. Per savaitę jis turėtų pastebimai sumažėti. Jei pagerėjimo nėra, rekomenduojama gydytojo apžiūra." },
+      { q: "Ar gali skaudėti dantį tarp kanalų gydymo vizitų?", a: "Taip, nestiprus jautrumas galimas ir po pirmojo gydymo etapo. Svarbu saugoti laikiną plombą, laikytis rekomendacijų ir nepraleisti kito vizito." },
+      { q: "Ar skausmas reiškia, kad kanalų gydymas nepavyko?", a: "Nebūtinai. Pirmomis dienomis jautrumą gali sukelti aplink šaknį esančių audinių reakcija. Apie problemą labiau signalizuoja stiprėjantis skausmas, patinimas, pagerėjimo nebuvimas ar simptomų sugrįžimas." }
+    ],
+    sources: [
+      { label: "Root Canal Explained", url: "https://www.aae.org/patients/root-canal-treatment/what-is-a-root-canal/root-canal-explained/" },
+      { label: "Root Canal Post Treatment Care", url: "https://www.aae.org/patients/your-office-visit/post-treatment-care/" },
+      { label: "Pain Prevalence and Severity Before, During, and After Root Canal Treatment: A Systematic Review", url: "https://pubmed.ncbi.nlm.nih.gov/21419285/" },
+      { label: "The Effect of Antibiotic Use on Endodontic Post-Operative Pain and Flare-Up Rate: A Systematic Review With Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35165442/" }
+    ]
+  },
+  "ka-daryti-kai-vaikui-skauda-danti": {
+    sections: [
+      {
+        p: [
+          "Kai vaikui skauda dantį, tėvams gali būti sunku suprasti, kas nutiko ir kaip greitai reikia kreiptis pagalbos. Mažesnis vaikas ne visada geba tiksliai parodyti skaudamą vietą, todėl apie problemą gali išduoti nenoras valgyti, prastas miegas, irzlumas ar vienos burnos pusės saugojimas.",
+          "Dažna vaikų dantų skausmo priežastis yra ėduonis, tačiau nemalonius pojūčius gali sukelti ir danties trauma, dantenų uždegimas, tarp dantų įstrigęs maistas, dygstantis dantis ar burnos gleivinės pažeidimas. Negydomas ėduonis gali progresuoti, sukelti skausmą, infekciją ir trukdyti vaikui valgyti ar miegoti.",
+          "Jei vaikui skauda dantį, namuose galima tik laikinai palengvinti savijautą. Skausmo priežastį turi nustatyti odontologas. Vizito nereikėtų atidėti vien todėl, kad skauda pieninį dantį – laiku suteikta pagalba padeda išvengti sudėtingesnio gydymo."
+        ]
+      },
+      {
+        h: "Kodėl vaikui gali skaudėti dantį?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Dantų ėduonis vystosi, kai apnašose esančios bakterijos skaido su maistu ir gėrimais gaunamus cukrus. Susidariusios rūgštys palaipsniui pažeidžia danties emalį ir gilesnius audinius. Riziką didina dažnas saldžių užkandžių bei gėrimų vartojimas, nepakankamas apnašų pašalinimas ir per mažas fluoridų poveikis." },
+          { type: "p", text: "Pradinis ėduonis gali nesukelti jokių pojūčių. Pažeidimui gilėjant dantis gali tapti jautrus saldžiam, šaltam ar karštam maistui. Vėliau skausmas gali atsirasti savaime, sustiprėti vakare arba pažadinti vaiką naktį." },
+          { type: "p", text: "Jei 3 metų vaikui jau sugedę keli dantys, vizito pas odontologą nereikėtų atidėti. Ankstyvosios vaikystės ėduonis gali prasidėti vos išdygus pirmiesiems pieniniams dantims ir progresuoti gana nepastebimai. Laiku įvertinus burnos būklę galima sustabdyti tolesnį pažeidimų gilėjimą ir sudaryti vaikui tinkamą gydymo bei profilaktikos planą." },
+          { type: "p", text: "Tačiau vaikas žodžiais „skauda dantį“ gali apibūdinti ir kitą burnos problemą. Nemalonius pojūčius taip pat gali sukelti:" },
+          { type: "ul", items: [
+            "tarp dantų įstrigęs maistas;",
+            "paraudusios ar patinusios dantenos;",
+            "afta arba kita gleivinės žaizdelė;",
+            "įkąstas skruostas ar liežuvis;",
+            "nuskilęs arba po traumos pažeistas dantis;",
+            "dygstantis ar klibantis dantis;",
+            "danties šaknies srities infekcija."
+          ] },
+          { type: "p", text: "Tikslią priežastį galima nustatyti tik apžiūrėjus vaiką. Prireikus odontologas atlieka radiologinį tyrimą, kad įvertintų tarpdančius, danties šaknis ir aplinkinius audinius." }
+        ]
+      },
+      {
+        h: "Kaip suprasti, kuris dantis vaikui skauda?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Vyresnis vaikas dažniausiai gali parodyti skaudamą vietą, tačiau jo nurodytas dantis ne visada yra tikrasis skausmo šaltinis. Skausmas gali būti juntamas ir gretimuose dantyse, žandikaulyje ar ausies srityje." },
+          { type: "p", text: "Ramiai paklauskite vaiko:" },
+          { type: "ul", items: [
+            "kurioje vietoje skauda labiausiai;",
+            "ar skauda nuolat, ar tik valgant;",
+            "ar skausmą sukelia šaltas, šiltas arba saldus maistas;",
+            "ar skauda sukandus;",
+            "ar skausmas trukdo miegoti;",
+            "ar vaikas neseniai nebuvo susitrenkęs."
+          ] },
+          { type: "p", text: "Mažesniam vaikui skausmo stiprumą galima padėti įvertinti naudojant paprastą veidukų skalę." },
+          { type: "p", text: "Prieš apžiūrėdami burną nusiplaukite rankas ir pasirinkite gerai apšviestą vietą. Patikrinkite, ar nematyti danties patamsėjimo, ertmės, nuskilusio danties, įstrigusio maisto, paraudusių dantenų, pūlinuko, gleivinės žaizdelės ar veido patinimo." },
+          { type: "p", text: "Nespauskite skaudamo danties ar dantenų ir nebandykite patys nustatyti diagnozės. Net jei aiškaus pažeidimo nematyti, ėduonis gali būti tarp dantų, o infekcija – danties viduje ar šaknies srityje." }
+        ]
+      },
+      {
+        h: "Ką daryti iki vizito pas odontologą?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Kai vaikui skauda dantį, ką daryti pirmiausia, priklauso nuo jo savijautos ir papildomų simptomų. Susisiekite su odontologijos klinika ir pasakykite, kiek laiko skauda, ar yra patinimas, karščiavimas, trauma ir ar skausmas trukdo vaikui valgyti arba miegoti." },
+          { type: "p", text: "Iki vizito rekomenduojama:" },
+          { type: "ol", items: [
+            "Atsargiai išvalyti dantis. Naudokite minkštą šepetėlį, tačiau visiškai neatsisakykite burnos higienos.",
+            "Patikrinti tarpdančius. Jei vaikas leidžia, dantų siūlu atsargiai pašalinkite įstrigusį maistą.",
+            "Rinktis švelnų maistą. Duokite minkšto, nekaršto maisto ir vandens.",
+            "Vengti dirgiklių. Nesiūlykite labai šaltų, karštų, saldžių ar kietų produktų.",
+            "Prireikus malšinti skausmą. Vaistą vaikui galima skirti tik pagal jo amžių, svorį, preparato instrukciją arba gydytojo nurodymą.",
+            "Stebėti būklę. Atkreipkite dėmesį, ar neatsiranda patinimo, karščiavimo, pūliavimo ar vangumo."
+          ] },
+          { type: "p", text: "Vaikams negalima duoti aspirino. Skausmą malšinančių tablečių, alkoholio, eterinių aliejų ar kitų medžiagų negalima dėti tiesiai ant danties ar dantenų, nes jos gali pažeisti burnos gleivinę." },
+          { type: "p", text: "Antibiotikų negalima pradėti vartoti savarankiškai. Jie neišgydo ėduonies ir nepakeičia odontologinio gydymo. Net jei skausmas sumažėjo, vizito atšaukti nereikėtų – laikinas pagerėjimas nereiškia, kad dantis pasveiko." }
+        ]
+      },
+      {
+        h: "Kada vaiko danties skausmas reikalauja skubios pagalbos?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Kuo greičiau kreipkitės į odontologą, jei skausmas stiprus, nepraeina, pažadina vaiką naktį ar trukdo valgyti. Skubiau įvertinti vaiką reikia ir tuomet, kai atsiranda dantenų, skruosto ar žandikaulio patinimas, karščiavimas, pūlių, blogas skonis burnoje arba skausmas sukandus. Vaikų odontologinėms skubioms būklėms priskiriamas skausmas, infekcija, veido patinimas, nekontroliuojamas kraujavimas ir burnos ar veido trauma." },
+          { type: "p", text: "Nedelsiant reikia medicininės pagalbos, jei:" },
+          { type: "ul", items: [
+            "patinimas greitai didėja ar plinta;",
+            "tinsta sritis aplink akį arba kaklą;",
+            "vaikui sunku ryti, kalbėti ar kvėpuoti;",
+            "vaikas tampa vangus, o jo būklė ryškiai blogėja;",
+            "po traumos gausiai kraujuoja;",
+            "įtariamas žandikaulio ar kitas rimtas sužalojimas."
+          ] },
+          { type: "p", text: "Veido ar kaklo patinimas kartu su apsunkintu rijimu ar kvėpavimu gali rodyti plintančią infekciją. Tokiu atveju nereikėtų laukti planinio vizito." }
+        ]
+      },
+      {
+        h: "Ar būtina gydyti sugedusius pieninius dantis?",
+        p: [
+          "Pieniniai dantys padeda vaikui kramtyti, kalbėti ir išlaikyti vietą nuolatiniams dantims. Negydomas jų ėduonis gali sukelti skausmą, infekciją, apsunkinti valgymą ir sutrikdyti miegą. Odontologinis gydymas vaikams laikomas būtinu siekiant pašalinti burnos ligą, infekciją ir skausmą bei atkurti dantų funkciją.",
+          "Gydymo būdas priklauso nuo pažeidimo gylio, danties būklės, vaiko amžiaus ir gebėjimo bendradarbiauti. Ankstyvą pažeidimą kartais galima stabdyti profilaktinėmis ar minimaliai invazinėmis priemonėmis. Susidariusi ertmė gali būti plombuojama, o stipriai pažeistam dančiui gali reikėti pulpos gydymo, vainikėlio arba pašalinimo.",
+          "Jei vaikui skauda dantį arba pastebėjote pakitusį pieninį dantį, registruokitės konsultacijai Bangų klinikoje Klaipėdoje. Mūsų specialistai įvertins vaiko burnos būklę, paaiškins gydymo galimybes ir padės pasirinkti jo amžiui tinkamą sprendimą."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Vaikui skauda dantį – ką daryti, jei pas odontologą pateksime tik po kelių dienų?", a: "Susisiekite su klinika ir apibūdinkite simptomus, nes gali reikėti ankstesnio vizito. Iki konsultacijos palaikykite burnos higieną, venkite temperatūrinių dirgiklių ir prireikus skirkite vaikui tinkamą skausmą malšinantį vaistą pagal preparato instrukciją. Atsiradus patinimui, karščiavimui ar blogėjant savijautai, pagalbos reikia greičiau." },
+      { q: "Ar danties skausmas gali praeiti savaime?", a: "Skausmas gali laikinai susilpnėti, tačiau tai nereiškia, kad priežastis išnyko. Skaudantį arba pažeistą dantį vis tiek turi apžiūrėti odontologas." },
+      { q: "Ką daryti, jei 3 metų vaikui sugedę keli dantys?", a: "Registruokite vaiką odontologo apžiūrai. Gydytojas įvertins pažeidimų gylį, vaiko ėduonies riziką ir sudarys gydymo bei profilaktikos planą." },
+      { q: "Ar galima skaudantį pieninį dantį iš karto pašalinti?", a: "Šalinimas nėra automatinis sprendimas. Jei dantį galima patikimai išgydyti ir išsaugoti, tai dažnai yra naudinga. Gydymas parenkamas pagal danties būklę, vaiko amžių ir nuolatinio danties vystymąsi." }
+    ],
+    sources: [
+      { label: "Policy on Early Childhood Caries: Consequences and Preventive Strategies", url: "https://www.aapd.org/research/oral-health-policies--recommendations/early-childhood-caries-classifications-consequences-and-preventive-strategies/" },
+      { label: "Policy on Early Childhood Caries: Unique Challenges and Management Considerations", url: "https://www.aapd.org/research/oral-health-policies--recommendations/early-childhood-caries-unique-challenges-and-treatment-options/" },
+      { label: "Policy on Emergency Oral Care", url: "https://www.aapd.org/research/oral-health-policies--recommendations/emergency-oral-care-for-infants-children-adolescents-and-individuals-with-special-health-care-needs/" },
+      { label: "Ending Childhood Dental Caries: WHO Implementation Manual", url: "https://www.who.int/publications/i/item/9789240000056" }
+    ]
+  },
+  "kokie-yra-danties-implanto-atmetimo-pozymiai": {
+    sections: [
+      {
+        p: [
+          "Dantų implantai dažniausiai sėkmingai prigyja ir tampa patikimu sprendimu netekus danties. Vis dėlto, kaip ir po bet kurios chirurginės procedūros, komplikacijų po dantų implantavimo pasitaikyti gali. Pacientai dažnai tai vadina „implanto atmetimu“, tačiau dažniausiai kalbama ne apie tikrą alerginę reakciją, o apie implanto neprigijimą, uždegimą, infekciją ar aplinkinių audinių problemas.",
+          "Svarbiausia – mokėti atskirti normalią gijimo eigą nuo simptomų, kurių nereikėtų ignoruoti. Nedidelis maudimas ar patinimas pirmomis dienomis gali būti įprastas, tačiau stiprėjantis skausmas, pūliavimas, blogas kvapas, karščiavimas ar implanto judėjimas yra ženklai, kad reikia kreiptis į gydytoją. Kuo anksčiau įvertinama situacija, tuo didesnė tikimybė išvengti rimtesnių komplikacijų."
+        ]
+      },
+      {
+        h: "Normalūs pojūčiai po implantacijos ir pavojingi simptomai",
+        p: [
+          "Po implantacijos organizmui reikia laiko gyti, todėl tam tikri pojūčiai pirmomis dienomis yra normalūs. Gali būti jaučiamas lengvas maudimas, tempimas, jautrumas ar nedidelis patinimas aplink operuotą vietą. Pirmomis valandomis galimas ir nežymus kraujavimas. Įprastai šie simptomai turėtų palaipsniui mažėti.",
+          "Sunerimti reikėtų tada, jei savijauta ne gerėja, o blogėja. Pavojingi požymiai yra stiprėjantis skausmas, didėjantis patinimas, pūliavimas, blogas kvapas ar nemalonus skonis burnoje, karščiavimas, kraujavimas, kuris nesustoja, arba jausmas, kad implantas juda. Tokie simptomai gali rodyti infekciją, uždegimą ar kitą komplikaciją.",
+          "Svarbu vertinti ne tik patį simptomą, bet ir jo eigą. Jei po kelių dienų maudimas mažėja, tai dažniausiai atitinka įprastą gijimą. Jei skausmas stiprėja, atsiranda naujų simptomų ar bendra savijauta blogėja, reikėtų susisiekti su implantavusiu gydytoju."
+        ]
+      },
+      {
+        h: "Dažniausi danties implanto atmetimo arba neprigijimo požymiai",
+        p: [
+          "Vienas svarbiausių požymių, kad implantas gali neprigyti arba vystosi komplikacija, yra skausmas, kuris ne mažėja, o stiprėja. Pirmomis dienomis po implantacijos maudimas gali būti normalus, tačiau stiprus, pulsuojantis ar ilgai nepraeinantis skausmas turėtų būti įvertintas gydytojo.",
+          "Kitas nerimą keliantis simptomas – didėjantis patinimas. Nedidelis patinimas po procedūros yra įprastas, tačiau jei jis po kelių dienų stiprėja, plinta į veidą ar kartu atsiranda temperatūra, tai gali rodyti uždegimą ar infekciją. Dantenos aplink implantą taip pat gali parausti, tapti jautrios, kraujuoti ar pūliuoti.",
+          "Blogas kvapas, nemalonus skonis burnoje ar pūliai aplink implantą yra požymiai, kurių nereikėtų ignoruoti. Jie gali būti susiję su bakterine infekcija arba uždegimu aplink implantą. Taip pat labai svarbus simptomas yra implanto, gijimo galvutės ar laikino protezo judėjimas. Implantas turi būti stabilus, todėl bet koks judėjimo pojūtis turėtų būti kuo greičiau įvertintas.",
+          "Vėlesniu laikotarpiu apie problemą gali įspėti dantenų atsitraukimas, matomas implanto sriegis, skausmas kandant ar spaudžiant. Tokiais atvejais būtina odontologo apžiūra, nes laiku pastebėtas problemas dažnai galima suvaldyti greičiau."
+        ]
+      },
+      {
+        h: "Danties implanto uždegimas: kaip jis pasireiškia?",
+        image: "/implanto-uzdegimas.webp",
+        p: [
+          "Danties implanto uždegimas gali pažeisti dantenas ir audinius aplink implantą. Iš pradžių simptomai kartais būna nestiprūs, todėl pacientas gali manyti, kad tai tik įprastas jautrumas po procedūros. Tačiau uždegimas aplink implantą neturėtų būti ignoruojamas, nes laiku negydomas jis gali progresuoti.",
+          "Ankstyvi uždegimo požymiai gali būti paraudusios, patinusios ar jautrios dantenos aplink implantą. Valant dantis ar liečiant dantenas gali atsirasti kraujavimas. Kartais jaučiamas spaudimas, maudimas arba skausmas kandant. Jei atsiranda pūliavimas, blogas kvapas ar nemalonus skonis burnoje, tai gali rodyti aktyvesnį uždegimą ar infekciją.",
+          "Pažengęs uždegimas gali paveikti ne tik dantenas, bet ir kaulą aplink implantą. Tokiu atveju gali atsirasti dantenų atsitraukimas, matomas implanto paviršius ar net implanto judėjimas. Danties implanto uždegimą turi įvertinti gydytojas – savarankiškas gydymas ar antibiotikų vartojimas be paskyrimo problemos neišsprendžia."
+        ]
+      },
+      {
+        h: "Kodėl gali kilti komplikacijos po dantų implantavimo?",
+        p: [
+          "Komplikacijos po dantų implantavimo gali atsirasti dėl skirtingų priežasčių. Kartais jos susijusios su individualia paciento gijimo reakcija, bendra sveikatos būkle ar kaulo kokybe, o kartais – su priežiūra po procedūros. Svarbu suprasti, kad komplikacijos nebūtinai reiškia paciento ar gydytojo klaidą, tačiau jas būtina laiku pastebėti.",
+          "Viena dažniausių rizikos priežasčių yra nepakankama burnos higiena. Jei aplink implantą kaupiasi apnašos ir bakterijos, didėja dantenų uždegimo rizika. Rūkymas taip pat gali bloginti audinių kraujotaką, lėtinti gijimą ir didinti komplikacijų tikimybę. Riziką gali didinti ir nekontroliuojamos bendros ligos, per ankstyvas implanto apkrovimas ar neatvykimas į kontrolinius vizitus.",
+          "Kartais įtakos turi dantų griežimas, stiprus sukandimas ar per didelė kramtymo apkrova. Todėl po implantacijos svarbu laikytis gydytojo rekomendacijų, reguliariai tikrintis ir pranešti apie bet kokius neįprastus pojūčius."
+        ]
+      },
+      {
+        h: "Kada simptomai gali atsirasti?",
+        p: [
+          "Galimi implanto neprigijimo ar uždegimo simptomai gali atsirasti skirtingu metu. Ankstyvos komplikacijos dažniausiai pasireiškia pirmomis dienomis ar savaitėmis po implantacijos. Jos gali būti susijusios su gijimu, infekcija, kraujavimu, stiprėjančiu skausmu, didėjančiu patinimu ar operuotos vietos dirginimu.",
+          "Vėlyvos komplikacijos gali atsirasti po kelių mėnesių ar net metų. Dažniausiai jos susijusios su uždegimu aplink implantą, nepakankama burnos higiena, rūkymu, per didele apkrova, protezavimo problemomis ar reguliarių patikrų trūkumu. Tokiais atvejais pacientas gali pastebėti kraujavimą valant, nemalonų skonį, dantenų atsitraukimą, skausmą kandant ar implanto judėjimą.",
+          "Dėl šios priežasties svarbios ne tik pirmosios dienos po implantacijos, bet ir ilgalaikė implantų priežiūra. Net jei implantas ilgą laiką nekėlė problemų, bet atsirado naujų simptomų, reikėtų kreiptis į odontologą."
+        ]
+      },
+      {
+        h: "Ką daryti pastebėjus galimus implanto atmetimo požymius?",
+        p: [
+          "Jei pastebėjote simptomus, kurie gali rodyti implanto neprigijimą ar uždegimą, svarbiausia nedelsti ir susisiekti su implantavusiu gydytoju. Nereikėtų laukti, kol skausmas ar patinimas praeis savaime, ypač jei simptomai stiprėja arba atsiranda pūliavimas, blogas kvapas, karščiavimas ar implanto judėjimas.",
+          "Kol laukiate vizito, nejudinkite implanto, nespauskite dantenų ir nekrapštykite operuotos vietos. Burnos higieną palaikykite atsargiai – valykite švelniai, nepažeisdami sudirgusių audinių. Nevartokite antibiotikų ar kitų vaistų savarankiškai, jei jų nepaskyrė gydytojas.",
+          "Vizito metu gydytojas įvertins dantenas, implanto stabilumą, aplinkinius audinius ir, jei reikės, atliks rentgeno tyrimą. Gydymas priklauso nuo problemos priežasties: kartais pakanka uždegimo kontrolės ir higienos korekcijos, o kartais reikalingas sudėtingesnis gydymas.",
+          ""
+        ]
+      },
+      {
+        h: "Ar galima išvengti implanto komplikacijų?",
+        image: "https://images.unsplash.com/photo-1593022356769-11f762e25ed9?w=1200&q=80&fit=crop&auto=format",
+        p: [
+          "Ne visų komplikacijų galima visiškai išvengti, tačiau riziką galima gerokai sumažinti. Pirmiausia svarbu laikytis gydytojo rekomendacijų po implantacijos: saugoti operuotą vietą, nevarginti jos per anksti, vartoti paskirtus vaistus ir atvykti į kontrolinius vizitus.",
+          "Labai svarbi kasdienė burnos higiena. Aplink implantą, kaip ir aplink natūralius dantis, gali kauptis apnašos ir bakterijos, todėl dantis reikia valyti kruopščiai, bet neagresyviai. Gydytojas ar burnos higienistas gali rekomenduoti tinkamas priemones implantų priežiūrai.",
+          "Rūkymas, prasta higiena, nekontroliuojamos ligos, dantų griežimas ir praleistos patikros gali didinti komplikacijų riziką. Todėl verta iš anksto informuoti gydytoją apie savo sveikatos būklę, vartojamus vaistus ir įpročius. Reguliari profesionali burnos higiena ir profilaktinės apžiūros padeda laiku pastebėti pokyčius aplink implantą."
+        ]
+      },
+      {
+        h: "Danties implanto atmetimo požymių nereikėtų ignoruoti",
+        p: [
+          "Ne kiekvienas skausmas ar maudimas po implantacijos reiškia, kad implantas neprigijo. Pirmomis dienomis lengvas jautrumas, patinimas ar diskomfortas gali būti normali gijimo dalis. Vis dėlto svarbu stebėti, ar simptomai palaipsniui mažėja.",
+          "Pavojingi požymiai yra stiprėjantis skausmas, didėjantis patinimas, pūliavimas, blogas kvapas, nemalonus skonis, karščiavimas, kraujavimas ar implanto judėjimas. Tokiais atvejais reikėtų kuo greičiau kreiptis į gydytoją. Laiku įvertinus situaciją, dalį komplikacijų galima suvaldyti ir apsaugoti implantą bei aplinkinius audinius.",
+          "Jei įtariate danties implanto uždegimą ar pastebite neįprastus simptomus po implantacijos, registruokitės konsultacijai Bangų klinikoje Klaipėdoje."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Kokie yra danties implanto atmetimo požymiai?", a: "Dažniausi požymiai yra stiprėjantis skausmas, didėjantis patinimas, pūliavimas, blogas kvapas, nemalonus skonis burnoje, karščiavimas, nesustojantis kraujavimas ir implanto judėjimas." },
+      { q: "Ar skausmas po implantacijos reiškia, kad implantas neprigijo?", a: "Ne visada. Nedidelis maudimas ar jautrumas pirmomis dienomis po implantacijos gali būti normalus. Nerimą kelia skausmas, kuris stiprėja, nepraeina arba atsiranda kartu su kitais simptomais." },
+      { q: "Kaip pasireiškia danties implanto uždegimas?", a: "Danties implanto uždegimas gali pasireikšti paraudusiomis, patinusiomis ar kraujuojančiomis dantenomis, jautrumu, pūliavimu, blogu kvapu, nemaloniu skoniu burnoje, skausmu kandant ar implanto judėjimu." },
+      { q: "Kada po implantacijos reikia kreiptis į gydytoją?", a: "Į gydytoją reikėtų kreiptis, jei skausmas stiprėja, patinimas didėja, atsiranda pūliavimas, karščiavimas, blogas kvapas, kraujavimas ar implantas, gijimo galvutė arba laikinas protezas juda." },
+      { q: "Ar danties implanto uždegimą galima gydyti namuose?", a: "Ne. Namuose galima palaikyti švelnią burnos higieną, tačiau uždegimą aplink implantą turi įvertinti gydytojas. Savarankiškas antibiotikų vartojimas ar gydymas be apžiūros gali pabloginti situaciją." },
+      { q: "Ar galima išvengti komplikacijų po dantų implantavimo?", a: "Riziką galima sumažinti laikantis gydytojo rekomendacijų, palaikant gerą burnos higieną, nerūkant, vengiant per ankstyvos apkrovos ir reguliariai lankantis kontroliniuose vizituose." }
+    ],
+    sources: [
+      { label: "Peri-implant diseases and conditions: Consensus report of Workgroup 4 of the 2017 World Workshop on the Classification of Periodontal and Peri-Implant Diseases and Conditions", url: "https://pubmed.ncbi.nlm.nih.gov/29926491/" },
+      { label: "Smoking and Dental Implants: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35056347/" },
+      { label: "A Retrospective Analysis of Biological Complications of Dental Implants", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9391181/" }
+    ]
+  },
+  "ka-reikia-zinoti-po-danties-implantacijos": {
+    sections: [
+      {
+        p: [
+          "Danties implantacija – tai chirurginė procedūra, todėl po jos organizmui reikia laiko gyti. Nors pati implantacija atliekama kontroliuojamomis sąlygomis, galutiniam rezultatui labai svarbu ir tai, kaip pacientas elgiasi po procedūros. Tinkama priežiūra pirmosiomis dienomis padeda sumažinti komplikacijų riziką, palengvina gijimą ir sudaro geresnes sąlygas implantui prigyti.",
+          "Po danties implantavimo svarbu laikytis gydytojo rekomendacijų, saugoti operuotą vietą ir stebėti savo savijautą. Nedidelis maudimas, patinimas ar jautrumas gali būti normali gijimo dalis, tačiau simptomai turėtų palaipsniui mažėti. Jei skausmas stiprėja, atsiranda pūliavimas, karščiavimas ar didėjantis patinimas, būtina kreiptis į gydytoją."
+        ]
+      },
+      {
+        h: "Kokia savijauta po danties implantavimo yra normali?",
+        p: [
+          "Savijauta po danties implantavimo gali skirtis priklausomai nuo procedūros sudėtingumo, implanto vietos, paciento sveikatos būklės ir to, ar buvo atliktos papildomos procedūros, pavyzdžiui, kaulo priauginimas. Vis dėlto tam tikri pojūčiai po implantacijos yra įprasti ir dažniausiai neturėtų kelti nerimo.",
+          "Pirmomis dienomis galite jausti maudimą, tempimą ar jautrumą operuotoje vietoje. Taip pat gali atsirasti nedidelis patinimas, dantenų jautrumas ar sunkesnis kramtymas ta puse, kurioje buvo įsuktas implantas. Pirmomis valandomis po procedūros galimas nežymus kraujavimas. Kai kuriems pacientams po chirurginės procedūros jaučiamas lengvas nuovargis.",
+          "Svarbiausia stebėti, ar savijauta gerėja. Normalu, jei diskomfortas palaipsniui mažėja, o patinimas po kelių dienų pradeda slūgti. Tačiau jei skausmas stiprėja, patinimas didėja, atsiranda blogas kvapas, nemalonus skonis burnoje, pūliavimas ar temperatūra, reikėtų nedelsti ir susisiekti su gydytoju."
+        ]
+      },
+      {
+        h: "Pirmosios valandos po danties implantavimo",
+        p: [
+          "Pirmosios valandos po danties implantavimo yra ypač svarbios, nes tuo metu pradeda formuotis pirminis gijimo procesas. Jei gydytojas uždėjo tamponą, jį reikėtų laikyti tiek laiko, kiek buvo nurodyta. Nereikėtų jo keisti be reikalo ar nuolat tikrinti žaizdos, nes taip galima sudirginti operuotą vietą",
+          "Kol veikia nejautra, geriau nevalgyti. Aptirpusi burnos sritis gali lemti, kad netyčia įsikąsite į skruostą, lūpą ar liežuvį. Pirmąją dieną venkite karšto maisto ir gėrimų, intensyvaus burnos skalavimo, spjaudymo ir gėrimo per šiaudelį. Šie veiksmai gali sutrikdyti kraujo krešulio susidarymą ir sulėtinti gijimą",
+          "Operuotos vietos nelieskite liežuviu, pirštais ar daiktais. Po procedūros rekomenduojama ilsėtis ir vengti intensyvaus fizinio krūvio. Jei gydytojas paskyrė vaistus ar pateikė individualias rekomendacijas, jų reikėtų laikytis tiksliai taip, kaip nurodyta."
+        ]
+      },
+      {
+        h: "Gijimas po dantų implantacijos: ko tikėtis?",
+        p: [
+          "Gijimas po dantų implantacijos vyksta etapais. Pirmiausia gyja dantenos ir minkštieji audiniai aplink implantą. Pirmomis dienomis gali būti jaučiamas maudimas, jautrumas ar tempimas, o patinimas dažniausiai būna ryškiausias antrą ar trečią dieną po procedūros. Vėliau šie pojūčiai turėtų palaipsniui mažėti.",
+          "Svarbu suprasti, kad iš išorės dantenos gali atrodyti sugijusios gana greitai, tačiau pats implantas dar turi integruotis į kaulą. Šis procesas vadinamas osteointegracija ir trunka ilgiau nei pirminis minkštųjų audinių gijimas. Todėl net jei skausmo nebėra, nereikėtų savarankiškai apkrauti implanto ar praleisti kontrolinių vizitų.",
+          "Gijimo trukmė priklauso nuo daugelio veiksnių: paciento sveikatos būklės, kaulo kokybės, implanto vietos, implantų skaičiaus, burnos higienos ir to, ar buvo atliktos papildomos procedūros, pavyzdžiui, kaulo priauginimas. Gydytojas įvertina gijimo eigą kontrolinių vizitų metu ir nusprendžia, kada galima pereiti prie tolimesnio protezavimo etapo."
+        ]
+      },
+      {
+        h: "Kaip prižiūrėti burną po implantacijos?",
+        p: [
+          "Po implantacijos burnos higiena turi būti atsargi, bet nuosekli. Pirmąją dieną nerekomenduojama intensyviai skalauti burnos, nes stiprus skalavimas gali sutrikdyti žaizdos gijimą. Tačiau tai nereiškia, kad burnos švaros galima nepaisyti. Dantis reikia valyti, tik operuotą vietą pirmomis dienomis saugoti nuo tiesioginio dirginimo.",
+          "Valykite dantis švelniai, naudodami minkštą dantų šepetėlį. Venkite stipriai spausti šepetėliu operuotą vietą, nekrapštykite žaizdos ir nelieskite jos pirštais ar liežuviu. Jei gydytojas paskyrė specialų skalavimo skystį ar kitas priemones, jas naudokite tiksliai taip, kaip nurodyta.",
+          "Švara yra svarbi, nes apnašos ir bakterijos gali didinti uždegimo riziką. Vėliau, kai audiniai sugis, implantą reikės prižiūrėti taip pat atsakingai kaip ir natūralius dantis. Reguliari burnos higiena ir profilaktiniai vizitai padeda palaikyti gerą implanto bei aplinkinių audinių būklę."
+        ]
+      },
+      {
+        h: "Ką galima valgyti po danties implantavimo?",
+        p: [
+          "Po danties implantavimo pirmomis valandomis geriausia nevalgyti, kol visiškai nepraeina nejautra. Jei valgysite, kol burna aptirpusi, galite netyčia įsikąsti į lūpą, skruostą ar liežuvį. Kai nejautra praeina, rinkitės minkštą, nekarštą maistą, kuris nedirgina operuotos vietos.",
+          "Pirmomis dienomis tinka košės, jogurtas, sriubos, minkšti troškiniai, trintas ar lengvai kramtomas maistas. Reikėtų vengti kieto, traškaus, aštraus, labai karšto ar lipnaus maisto. Taip pat geriau vengti sėklų, riešutų, trupinių ir kitų smulkių produktų, kurie gali patekti į žaizdos vietą.",
+          "Kramtykite kita burnos puse ir stenkitės neapkrauti implanto srities. Gerkite pakankamai vandens, tačiau pirmąją parą venkite gerti per šiaudelį. Alkoholio taip pat reikėtų vengti, ypač jei vartojate gydytojo paskirtus vaistus. Mityba po procedūros turėtų padėti gijimui, o ne papildomai dirginti operuotą vietą."
+        ]
+      },
+      {
+        h: "Ko negalima daryti po danties implantacijos?",
+        image: "https://images.unsplash.com/photo-1468493858157-0da44aaf1d13?w=1200&q=80&fit=crop&auto=format",
+        p: [
+          "Po danties implantacijos svarbu vengti veiksmų, kurie gali sutrikdyti gijimą arba padidinti komplikacijų riziką. Pirmąją parą nereikėtų intensyviai skalauti burnos, spjaudyti ar gerti per šiaudelį. Tokie veiksmai gali trikdyti kraujo krešulio formavimąsi ir dirginti operuotą vietą.",
+          "Pirmomis dienomis nerekomenduojama rūkyti ir vartoti alkoholio. Rūkymas blogina audinių kraujotaką, lėtina gijimą ir gali didinti uždegimo riziką. Alkoholio reikėtų vengti ypač tada, jei vartojate gydytojo paskirtus vaistus. Taip pat nešildykite operuotos vietos, nes šiluma gali paskatinti patinimą ar kraujavimą.",
+          "Venkite intensyvaus sporto, sunkaus fizinio krūvio ir pirties pirmomis dienomis po procedūros. Nekrapštykite žaizdos, nelieskite jos pirštais ar liežuviu, nebandykite savarankiškai vertinti implanto vietos. Taip pat nepraleiskite kontrolinių vizitų – jie svarbūs norint įsitikinti, kad gijimas po dantų implantacijos vyksta sklandžiai."
+        ]
+      },
+      {
+        h: "Kada reikėtų sunerimti ir kreiptis į gydytoją?",
+        p: [
+          "Nedidelis maudimas, patinimas ar jautrumas pirmomis dienomis po implantacijos gali būti normalūs. Tačiau simptomai turėtų palaipsniui mažėti. Jei skausmas ne silpnėja, o stiprėja, reikėtų susisiekti su gydytoju. Ypač svarbu kreiptis, jei skausmas tampa pulsuojantis, trukdo miegoti ar nepraeina vartojant gydytojo rekomenduotas priemones.",
+          "Nerimą turėtų kelti didėjantis patinimas po kelių dienų, pūliavimas, nemalonus kvapas ar skonis burnoje, karščiavimas, nesustojantis kraujavimas ar stiprus skausmas kandant. Taip pat būtina kreiptis, jei atrodo, kad implantas, gijimo galvutė ar laikinas protezas juda.",
+          "Jei stipriai tinsta veidas, tampa sunku ryti, kvėpuoti ar atsiranda bendra bloga savijauta, reikalinga skubi medicininė pagalba. Tokiais atvejais nereikėtų laukti kontrolinio vizito – kuo anksčiau gydytojas įvertina situaciją, tuo greičiau galima išvengti rimtesnių komplikacijų"
+        ]
+      },
+      {
+        h: "Kiek laiko trunka gijimas po dantų implantacijos?",
+        p: [
+          "Gijimas po dantų implantacijos vyksta ne vienu metu. Pirmiausia gyja dantenos ir minkštieji audiniai. Pirminis diskomfortas, maudimas ar patinimas dažniausiai pradeda mažėti per kelias dienas. Per pirmąsias savaites operuota vieta gali atrodyti gerokai nurimusi, tačiau tai dar nereiškia, kad visas gijimo procesas baigtas.",
+          "Svarbiausias etapas – implanto suaugimas su kaulu. Šis procesas trunka ilgiau ir dažnai užima kelis mėnesius. Tik tada, kai gydytojas įvertina, kad implantas stabilus ir gijimas vyksta tinkamai, galima pereiti prie tolimesnio protezavimo etapo.",
+          "Tiksli gijimo trukmė priklauso nuo individualios situacijos: kaulo būklės, implantų skaičiaus, paciento sveikatos, burnos higienos, rūkymo, papildomų procedūrų ir gydytojo rekomendacijų laikymosi. Todėl labai svarbu nepraleisti suplanuotų kontrolinių vizitų."
+        ]
+      },
+      {
+        h: "Sėkmingam rezultatui svarbios pirmosios dienos ir ilgalaikė priežiūra",
+        p: [
+          "Po danties implantavimo svarbiausia laikytis gydytojo rekomendacijų, saugoti operuotą vietą ir stebėti savo savijautą. Nedidelis maudimas, patinimas ar jautrumas gali būti normali gijimo dalis, tačiau šie simptomai turėtų palaipsniui mažėti.",
+          "Gijimas po dantų implantacijos vyksta etapais: pirmiausia gyja dantenos, vėliau implantas integruojasi kaule. Tinkama burnos higiena, atsargumas pirmomis dienomis ir reguliarūs kontroliniai vizitai padeda užtikrinti geresnį rezultatą. Jei planuojate danties implantaciją arba turite klausimų po procedūros, registruokitės konsultacijai Bangų klinikoje Klaipėdoje."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Kokia savijauta po danties implantavimo yra normali?", a: "Normalu jausti nedidelį maudimą, jautrumą, tempimą ar patinimą operuotoje vietoje. Pirmomis valandomis gali būti nežymus kraujavimas. Svarbiausia, kad šie simptomai palaipsniui mažėtų." },
+      { q: "Kiek trunka gijimas po dantų implantacijos?", a: "Pirminis diskomfortas dažniausiai sumažėja per kelias dienas, tačiau implanto suaugimas su kaulu trunka ilgiau – dažnai kelis mėnesius. Tiksli trukmė priklauso nuo individualios situacijos." },
+      { q: "Ką galima valgyti po danties implantavimo?", a: "Pirmomis dienomis rekomenduojamas minkštas, nekarštas maistas. Reikėtų vengti kieto, traškaus, aštraus, labai karšto ar smulkių trupinių turinčio maisto, kuris gali dirginti operuotą vietą." },
+      { q: "Ar galima skalauti burną po implantacijos?", a: "Pirmą parą nereikėtų intensyviai skalauti burnos, nes tai gali sutrikdyti gijimą. Vėliau burnos priežiūra atliekama pagal gydytojo rekomendacijas." },
+      { q: "Ar galima rūkyti po danties implantacijos?", a: "Rūkyti nerekomenduojama, nes rūkymas gali lėtinti gijimą, bloginti audinių kraujotaką ir didinti komplikacijų riziką." },
+      { q: "Kada kreiptis į gydytoją po implantacijos?", a: "Į gydytoją reikėtų kreiptis, jei skausmas stiprėja, didėja patinimas, atsiranda pūliavimas, karščiavimas, blogas kvapas, nesustoja kraujavimas arba implantas ar laikinas protezas juda." }
+    ],
+    sources: [
+      { label: "Growth factors and osseointegration in dental implants — A review", url: "https://pubmed.ncbi.nlm.nih.gov/41393465/" },
+      { label: "Post-operative pain management using two drugs following dental implant surgery", url: "https://pubmed.ncbi.nlm.nih.gov/37822832/" },
+      { label: "Smoking and Dental Implants: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35056347/" }
+    ]
+  },
+  "kodel-skauda-danti-po-plombavimo": {
+    sections: [
+      {
+        p: [
+          "Po plombavimo pacientai kartais pastebi, kad dantis tapo jautresnis nei prieš procedūrą. Jis gali sureaguoti į šaltą ar karštą gėrimą, saldų maistą, kramtymą arba sukandimą. Dėl to natūraliai kyla klausimas: ar normalu, kad skauda užplombuotą dantį?",
+          "Nedidelis jautrumas po plombavimo dažnai yra laikinas. Procedūros metu pašalinamas ėduonis, dantis išvalomas, paruošiamas ir atkuriamas plomba, todėl danties audiniai bei nervas gali kurį laiką reaguoti jautriau. Tai ypač dažna, jei ertmė buvo gilesnė arba dantis jau buvo jautrus prieš gydymą.",
+          "Vis dėlto skausmo nereikėtų ignoruoti, jei jis stiprėja, tampa pulsuojantis, trukdo kramtyti ar nepraeina ilgesnį laiką. Tokiais atvejais būtina išsiaiškinti priežastį, nes kartais gali reikėti plombos korekcijos ar papildomo gydymo."
+        ]
+      },
+      {
+        h: "Kodėl po plombavimo dantis tampa jautrus?",
+        p: [
+          "Plombavimo metu odontologas pašalina pažeistus danties audinius ir atkuria danties formą plombine medžiaga. Nors procedūra atliekama siekiant sustabdyti ėduonies plitimą ir apsaugoti dantį, pats gydymo procesas gali laikinai sudirginti danties audinius. Dėl to po procedūros gali atsirasti jautrumas šalčiui, karščiui, saldžiam ar rūgščiam maistui.",
+          "Jei ėduonis buvo negilis, jautrumas dažniausiai būna nedidelis ir greitai mažėja. Tačiau jei ertmė buvo gili ir plomba yra arčiau danties nervo, dantis gali reaguoti stipriau. Tokiu atveju pacientas gali jausti maudimą, trumpą skausmą į šaltį ar diskomfortą kramtant.",
+          "Svarbu stebėti, ar pojūčiai silpnėja. Lengvas jautrumas, kuris kasdien mažėja, dažniausiai nėra pavojingas. Tačiau jei skauda užplombuotą dantį vis stipriau arba skausmas išlieka ilgai, reikėtų kreiptis į odontologą pakartotinei apžiūrai."
+        ]
+      },
+      {
+        h: "Dažniausios priežastys, kodėl skauda užplombuotą dantį",
+        p: [
+          "Viena dažniausių priežasčių – laikinas danties nervo sudirgimas. Tai gali nutikti po bet kokio plombavimo, ypač jei gydyta ertmė buvo gilesnė. Tokiu atveju dantis gali būti jautrus temperatūros pokyčiams, tačiau jautrumas turėtų palaipsniui mažėti.",
+          "Kita dažna priežastis – per aukšta plomba. Jei po plombavimo dantis sukandus pirmas susiliečia su priešingu dantimi, jam tenka per didelis krūvis. Tuomet gali skaudėti kramtant, sukandus ar net lengvai palietus dantį. Tokia situacija dažniausiai išsprendžiama plombos aukščio korekcija.",
+          "Skausmą taip pat gali sukelti labai gili plomba, kai ėduonis buvo arti nervo. Tokiais atvejais dantis kurį laiką gali būti jautrus, tačiau jei skausmas tampa pulsuojantis, ilgai nepraeina arba pažadina naktį, gali būti prasidėjęs nervo uždegimas.",
+          "Kartais po plombavimo išryškėja ir kitos problemos: mikroįtrūkimas, papildomas danties pažeidimas, dantų griežimas ar netaisyklingas sukandimas. Todėl tikslią priežastį geriausiai gali nustatyti odontologas apžiūros metu."
+        ]
+      },
+      {
+        h: "Kada skausmas po plombavimo yra normalus?",
+        image: "/skausmas-plombavimo.webp",
+        p: [
+          "Nedidelis skausmas ar jautrumas po plombavimo ne visada reiškia, kad kažkas atlikta netinkamai. Dantis buvo gydomas, todėl jo audiniai gali kurį laiką reaguoti jautriau. Dažniausiai normalu, jei dantis trumpai sureaguoja į šaltą, karštą, saldų ar rūgštų maistą, bet skausmas greitai praeina pašalinus dirgiklį.",
+          "Po gilios plombos jautrumas gali būti ryškesnis, nes gydyta vieta yra arčiau danties nervo. Tokiu atveju gali būti jaučiamas lengvas maudimas ar diskomfortas kramtant, tačiau svarbiausia, kad šie pojūčiai palaipsniui mažėtų.",
+          "Jei kasdien jaučiate mažesnį jautrumą, dažniausiai galima stebėti situaciją. Tačiau jei skausmas stiprėja, tampa pulsuojantis, ilgai nepraeina po dirgiklio arba pradeda trukdyti valgyti, reikėtų kreiptis į odontologą."
+        ]
+      },
+      {
+        h: "Kiek laiko gali skaudėti dantį po plombavimo?",
+        p: [
+          "Kiek laiko skauda dantį po plombavimo, priklauso nuo to, kokio gylio buvo ėduonis, kokio dydžio plomba įdėta ir kaip jautriai reaguoja pats dantis. Dažniausiai lengvas jautrumas sumažėja per kelias dienas. Pacientas gali pastebėti, kad kiekvieną dieną dantis reaguoja vis silpniau.",
+          "Jei plomba buvo gili, jautrumas gali trukti ilgiau – kartais kelias savaites. Tai gali būti normali reakcija, jei skausmas nėra stiprus ir palaipsniui mažėja. Vis dėlto ilgai trunkantis ar nekintantis skausmas neturėtų būti ignoruojamas.",
+          "Jei po 2–4 savaičių vis dar skauda užplombuotą dantį, jautrumas nemažėja arba situacija blogėja, reikėtų užsiregistruoti pakartotinei odontologo apžiūrai. Greičiau kreiptis reikėtų tada, jei skausmas stiprus nuo pat pradžių, trukdo miegoti, yra pulsuojantis arba dantis labai skauda sukandus."
+        ]
+      },
+      {
+        h: "Skauda dantį sukandus ar kramtant – ką tai reiškia?",
+        p: [
+          "Jei po plombavimo skauda dantį sukandus ar kramtant, viena dažniausių priežasčių gali būti per aukšta plomba. Net labai nedidelis plombos aukščio skirtumas gali lemti, kad užplombuotas dantis pirmas susiliečia su priešingu dantimi ir gauna per didelį kramtymo krūvį.",
+          'Tokiu atveju pacientas dažnai jaučia, kad „kažkas trukdo", dantis atrodo per aukštas arba skausmas atsiranda tik sukandus. Kartais maudimas gali stiprėti, nes dantis nuolat apkraunamas kiekvieno sukandimo metu.',
+          "Šios problemos nereikėtų kentėti tikintis, kad ji visada praeis savaime. Odontologas gali greitai įvertinti sukandimą ir, jei reikia, pakoreguoti plombos aukštį. Po korekcijos dantis dažnai nurimsta, tačiau jei skausmas buvo užsitęsęs, jam gali prireikti šiek tiek laiko visiškai atsistatyti."
+        ]
+      },
+      {
+        h: "Kada reikėtų kreiptis į odontologą?",
+        p: [
+          "Jei po plombavimo jaučiamas tik lengvas jautrumas, kuris palaipsniui mažėja, dažniausiai pakanka stebėti situaciją. Tačiau yra požymių, kurių nereikėtų ignoruoti. Į odontologą reikėtų kreiptis, jei skausmas stiprėja, tampa pulsuojantis, pažadina naktį arba nepraeina net pašalinus dirgiklį.",
+          "Pakartotinė apžiūra taip pat reikalinga, jei skauda dantį sukandus, kramtant ar atrodo, kad plomba yra per aukšta. Tokiu atveju gali reikėti tik nedidelės korekcijos, tačiau delsiant dantis gali būti papildomai dirginamas.",
+          "Nedelskite, jei atsiranda patinimas, pūlinys, nemalonus skonis burnoje, temperatūra ar skausmas plinta į žandikaulį, ausį ar smilkinį. Tokie simptomai gali rodyti uždegimą, kuriam reikalingas papildomas gydymas."
+        ]
+      },
+      {
+        h: "Ką galima daryti namuose, kol laukiate vizito?",
+        p: [
+          "Jei skauda užplombuotą dantį, pirmiausia stenkitės jo papildomai nedirginti. Laikinai venkite labai šalto, karšto, saldaus, rūgštaus ar kieto maisto. Jei skauda kramtant, nekramtykite ta burnos puse, kurioje buvo plombuotas dantis.",
+          "Dantis reikėtų valyti reguliariai, bet švelniai. Burnos higiena svarbi, nes apnašos ir maisto likučiai gali dar labiau dirginti dantenas ar plombos kraštus. Jei dantis jautrus šalčiui, galima rinktis jautriems dantims skirtą pastą, tačiau ji nepašalins problemos, jei priežastis yra per aukšta plomba ar uždegimas.",
+          "Nereikėtų krapštyti plombos, spausti danties ar bandyti savarankiškai koreguoti sukandimo. Taip pat venkite agresyvių naminių priemonių, kurios gali pažeisti dantenas. Jei skausmas didėja ar nepraeina, geriausias sprendimas – odontologo apžiūra."
+        ]
+      },
+      {
+        h: "Skausmas po plombavimo dažnai laikinas, bet jį verta stebėti",
+        p: [
+          "Lengvas jautrumas po plombavimo dažnai yra normali danties reakcija į gydymą. Dantis gali trumpai reaguoti į temperatūros pokyčius, saldų maistą ar kramtymą, ypač jei plomba buvo gili. Svarbiausia, kad šie pojūčiai palaipsniui mažėtų.",
+          "Jei skauda užplombuotą dantį sukandus, skausmas stiprėja, nepraeina kelias savaites ar tampa pulsuojantis, reikėtų kreiptis į odontologą. Kartais pakanka nedidelės plombos korekcijos, o kartais reikia išsamesnės diagnostikos. Jei jaučiate diskomfortą ir nesate tikri, ar tai normalu, registruokitės konsultacijai Bangų klinikoje Klaipėdoje."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Ar normalu, kad skauda dantį po plombavimo?", preImage: "https://images.unsplash.com/photo-1684607633138-6cc13613369b?w=1200&q=80&fit=crop&auto=format", a: "Lengvas jautrumas ar maudimas po plombavimo gali būti normalus, ypač pirmomis dienomis. Tačiau skausmas turėtų palaipsniui mažėti. Jei jis stiprėja arba nepraeina ilgą laiką, reikėtų kreiptis į odontologą." },
+      { q: "Kodėl skauda užplombuotą dantį?", a: "Dažniausios priežastys – laikinas nervo sudirgimas, gili plomba, per aukšta plomba, netaisyklingas sukandimas arba uždegimas, jei ėduonis buvo labai gilus." },
+      { q: "Kiek laiko gali skaudėti dantį po plombavimo?", a: "Dažniausiai jautrumas sumažėja per kelias dienas. Po gilios plombos jis gali trukti kelias savaites. Jei po 2–4 savaičių skausmas nemažėja arba stiprėja, reikėtų pakartotinės apžiūros." },
+      { q: "Kodėl skauda dantį sukandus po plombavimo?", a: "Dažnai taip nutinka, kai plomba yra šiek tiek per aukšta. Tuomet dantis gauna per didelį krūvį kiekvieno sukandimo metu. Odontologas gali pakoreguoti plombos aukštį." },
+      { q: "Ką daryti, jei skauda užplombuotą dantį?", a: "Stebėkite, ar skausmas mažėja, venkite dirginančio maisto ir nekramtykite ta puse, jei skauda sukandus. Jei skausmas stiprėja, nepraeina ar trukdo kramtyti, kreipkitės į odontologą." },
+      { q: "Kada skausmas po plombavimo nėra normalus?", a: "Nenormalu, jei skausmas stiprėja, yra pulsuojantis, pažadina naktį, plinta į kitas sritis, atsiranda patinimas, pūlinys ar temperatūra. Tokiais atvejais reikalinga odontologo apžiūra." }
+    ],
+    sources: [
+      { label: "Postoperative Hypersensitivity in Class I Resin-based Composite Restorations in General Practice", url: "https://pubmed.ncbi.nlm.nih.gov/19715013/" },
+      { label: "A Randomised Controlled Trial of Postoperative Sensitivity after Class II Restorations with Bulk-fill or Conventional Composite", url: "https://pubmed.ncbi.nlm.nih.gov/38373222/" },
+      { label: "Effect of different adhesive systems on postoperative sensitivity of composite resin restorations in adults: a systematic review and network meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/37017757/" }
+    ]
+  },
+  "ar-skauda-kai-traukia-danti": {
+    sections: [
+      {
+        p: [
+          "Danties rovimas daugeliui pacientų kelia nerimą. Dažniausiai bijoma ne tik pačios procedūros, bet ir nežinojimo, ko tikėtis: ar skaudės, kiek laiko truks, ką bus galima jausti ir kaip jausitės po to. Vis dėlto šiuolaikinėje odontologijoje danties traukimas atliekamas taikant nuskausminimą, todėl procedūros metu aštraus skausmo pacientas neturėtų jausti.",
+          "Svarbu suprasti, kad skausmas ir spaudimas nėra tas pats. Kai traukia dantį, galima jausti tempimą, judinimą ar spaudimą žandikaulyje, tačiau tai neturėtų būti skausminga. Šiame įraše aptarsime, kada gali prireikti šalinti dantį, ką galima jausti, kai rauna dantį, ir kiek laiko skauda ištraukus dantį."
+        ]
+      },
+      {
+        h: "Kada gali prireikti traukti dantį?",
+        p: [
+          "Danties šalinimas dažniausiai nėra pirmas odontologo pasirinkimas. Kai tik įmanoma, siekiama dantį išsaugoti gydant ėduonį, atkuriant danties vainiką, gydant šaknų kanalus ar taikant kitus sprendimus. Tačiau tam tikrais atvejais danties išsaugoti nepavyksta arba jo palikimas gali kelti didesnę riziką sveikatai.",
+          "Dantį gali prireikti traukti tada, kai jis yra stipriai pažeistas ėduonies, nulūžęs, skilęs ar nebetinkamas atkurti plomba ar vainikėliu. Rovimas taip pat gali būti reikalingas, jei susiformavo uždegimas, pūlinys, šaknies lūžis arba dantis labai paslankus dėl periodonto ligų.",
+          "Dažna danties šalinimo priežastis – problemiški protiniai dantys. Jei jie dygsta netaisyklingai, spaudžia kitus dantis, sukelia skausmą ar pasikartojantį uždegimą, odontologas gali rekomenduoti šalinimą. Kai kuriais atvejais dantis traukiamas ir ruošiantis ortodontiniam gydymui."
+        ]
+      },
+      {
+        h: "Ar skauda, kai traukia dantį?",
+        p: [
+          "Dažniausias pacientų klausimas – ar skauda, kai traukia dantį. Įprastai procedūros metu taikoma vietinė nejautra, todėl skausmo neturėtų būti. Gydytojas pradeda danties šalinimą tik tada, kai sritis aplink dantį yra pakankamai nuskausminta.",
+          "Vis dėlto pacientas gali jausti tam tikrus pojūčius. Kai traukia dantį, dažnai jaučiamas spaudimas, tempimas, danties judinimas ar vibracija. Šie pojūčiai gali būti nemalonūs, ypač jei žmogus jaudinasi, tačiau jie nėra tas pats, kas aštrus skausmas. Spaudimas atsiranda todėl, kad gydytojas turi atlaisvinti dantį iš jo vietos, tačiau nuskausminimas blokuoja skausmo pojūtį.",
+          "Jei procedūros metu vis dėlto jaučiate skausmą, svarbu iš karto apie tai pasakyti gydytojui. Nejautrą galima papildyti, o procedūrą trumpam pristabdyti. Pacientas neturėtų kentėti skausmo tylėdamas – bendravimas su gydytoju padeda užtikrinti saugesnę ir ramesnę procedūrą."
+        ]
+      },
+      {
+        h: "Ką galima jausti, kai rauna dantį?",
+        p: [
+          "Kai rauna dantį, pacientai dažnai tikisi skausmo, tačiau dažniausiai jaučia ne skausmą, o spaudimą. Tai normalu, nes nejautra panaikina skausmo pojūtį, bet ne visus prisilietimo ar judesio pojūčius. Todėl procedūros metu galite jausti, kad dantis yra judinamas, spaudžiamas ar tempiamas.",
+          "Kartais pacientus išgąsdina ir procedūros garsai. Jie gali atrodyti nemalonūs, tačiau nebūtinai reiškia, kad kažkas vyksta blogai. Taip pat gali būti nepatogu laikyti burną plačiai atvertą, ypač jei šalinamas krūminis ar protinis dantis. Gydytojas visos procedūros metu stebi paciento reakciją, todėl jei jaučiate skausmą, įtampą ar norite trumpai sustoti, verta apie tai pasakyti."
+        ]
+      },
+      {
+        h: "Nuo ko priklauso, ar danties traukimas bus sudėtingas?",
+        p: [
+          "Danties traukimo sudėtingumas priklauso nuo kelių veiksnių. Vienas svarbiausių – danties vieta burnoje. Priekiniai dantys dažnai šalinami paprasčiau, o krūminiai ar protiniai dantys gali būti sudėtingesni dėl šaknų formos, jų skaičiaus ir sunkesnio priėjimo.",
+          "Svarbu ir tai, ar dantis yra pilnai išdygęs, ar dalinai pasislėpęs po dantenomis ar kaule. Jei dantis nulūžęs, stipriai pažeistas ėduonies, turi lenktas šaknis ar aplink jį yra uždegimas, procedūra gali užtrukti ilgiau. Kartais tokiais atvejais reikalingas chirurginis šalinimas.",
+          "Vis dėlto net ir sudėtingesnis danties rovimas atliekamas taikant nuskausminimą. Tai reiškia, kad procedūra gali būti ilgesnė ar techniškai sudėtingesnė, tačiau pacientas neturėtų jausti aštraus skausmo."
+        ]
+      },
+      {
+        h: "Ar skauda po danties rovimo?",
+        image: "https://images.unsplash.com/photo-1606811951341-756fdd437682?w=1200&q=80&fit=crop&auto=format",
+        p: [
+          "Pasibaigus nejautros poveikiui, po danties rovimo gali atsirasti maudimas, jautrumas ar nedidelis patinimas. Tai dažniausiai yra normali gijimo proceso dalis. Organizmas pradeda formuoti kraujo krešulį rovimo vietoje, audiniai gyja, todėl pirmomis dienomis gali būti jaučiamas diskomfortas.",
+          "Po paprasto rovimo skausmas dažniausiai būna lengvesnis ir gana greitai mažėja. Po sudėtingesnio ar chirurginio šalinimo, ypač jei buvo rautas protinis dantis, maudimas ir patinimas gali būti ryškesni. Skausmo stiprumas priklauso nuo danties vietos, procedūros sudėtingumo, uždegimo buvimo ir individualios gijimo reakcijos.",
+          "Gydytojas po procedūros pateikia rekomendacijas, kaip prižiūrėti žaizdą ir kontroliuoti skausmą. Svarbu jų laikytis, nes tinkama priežiūra padeda sumažinti komplikacijų riziką ir užtikrina sklandesnį gijimą."
+        ]
+      },
+      {
+        h: "Kiek laiko skauda ištraukus dantį?",
+        p: [
+          "Kiek laiko skauda ištraukus dantį, priklauso nuo procedūros sudėtingumo, danties vietos ir individualaus gijimo. Dažniausiai diskomfortas jaučiamas pirmas kelias dienas. Pirmą parą skausmas gali būti ryškesnis, ypač tada, kai visiškai praeina nejautros poveikis.",
+          "Įprastai per 2–3 dienas skausmas turėtų po truputį mažėti. Po paprasto danties rovimo pacientai dažnai jaučia tik lengvą maudimą ar jautrumą. Po sudėtingesnio šalinimo, pavyzdžiui, protinio danties rovimo, diskomfortas gali išlikti ilgiau, o patinimas gali būti labiau pastebimas.",
+          "Svarbu stebėti, ar būklė gerėja. Jei skausmas po kelių dienų ne mažėja, o stiprėja, atsiranda blogas kvapas, nemalonus skonis burnoje, karščiavimas, didėjantis patinimas ar gausus kraujavimas, reikėtų kreiptis į odontologą."
+        ]
+      },
+      {
+        h: "Kaip elgtis po danties traukimo?",
+        p: [
+          "Po danties traukimo labai svarbu saugoti žaizdą ir leisti jai gyti. Gydytojas po procedūros uždeda tamponą, kurį reikia laikyti tiek, kiek nurodyta. Pirmą parą nereikėtų intensyviai skalauti burnos, spjaudyti ar gerti per šiaudelį, nes tai gali išjudinti kraujo krešulį, kuris būtinas gijimui.",
+          "Taip pat reikėtų vengti karšto maisto ir gėrimų. Geriau rinktis minkštą, nekarštą maistą ir kramtyti kita burnos puse. Žaizdos negalima krapštyti liežuviu, pirštais ar daiktais, nes taip galima sutrikdyti gijimą ir padidinti infekcijos riziką.",
+          "Pirmomis dienomis rekomenduojama nerūkyti, nevartoti alkoholio ir vengti intensyvaus fizinio krūvio. Dantis valyti reikia, tačiau atsargiai, saugant rovimo vietą. Jei gydytojas paskyrė vaistus ar pateikė papildomas rekomendacijas, jų būtina laikytis."
+        ]
+      },
+      {
+        h: "Kada kreiptis į odontologą po rovimo?",
+        p: [
+          "Nedidelis maudimas, jautrumas ar patinimas po danties rovimo yra normalu. Tačiau kai kurie simptomai gali rodyti komplikacijas. Į odontologą reikėtų kreiptis, jei skausmas stiprėja praėjus 2–4 dienoms po procedūros, o ne palaipsniui mažėja.",
+          "Taip pat svarbu susisiekti su gydytoju, jei atsiranda blogas kvapas, nemalonus skonis burnoje, pūliavimas, karščiavimas, didėjantis patinimas ar gausus kraujavimas. Nerimą turėtų kelti ir skausmas, kuris plinta į ausį, smilkinį ar žandikaulį.",
+          "Tokiais atvejais nereikėtų bandyti gydytis savarankiškai. Odontologas įvertins žaizdą, nustatys priežastį ir paskirs tinkamą gydymą."
+        ]
+      },
+      {
+        h: "Danties traukimas neturėtų būti skausminga procedūra",
+        image: "https://images.unsplash.com/photo-1663182245833-7dd667277043?w=1200&q=80&fit=crop&auto=format",
+        p: [
+          "Kai traukia dantį, procedūros metu taikoma nejautra, todėl aštraus skausmo pacientas neturėtų jausti. Spaudimas, tempimas ar danties judinimas yra įprasti pojūčiai, tačiau jie nėra tas pats, kas skausmas.",
+          "Ištraukus dantį, kelias dienas gali būti maudimas, jautrumas ar patinimas. Dažniausiai šie pojūčiai palaipsniui mažėja, ypač jei laikomasi gydytojo rekomendacijų. Jei jums skauda dantį ar gydytojas rekomendavo šalinimą, registruokitės konsultacijai Bangų klinikoje Klaipėdoje."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Ar skauda, kai traukia dantį?", a: "Dažniausiai ne, nes prieš procedūrą taikoma vietinė nejautra. Galima jausti spaudimą, tempimą ar danties judinimą, bet ne aštrų skausmą." },
+      { q: "Ką jaučia pacientas, kai rauna dantį?", a: "Kai rauna dantį, dažniausiai jaučiamas spaudimas, judesys, tempimas ar vibracija. Šie pojūčiai gali būti nemalonūs, bet jie nėra tolygūs skausmui." },
+      { q: "Kiek laiko skauda ištraukus dantį?", a: "Dažniausiai diskomfortas jaučiamas kelias dienas ir palaipsniui mažėja. Po sudėtingesnio rovimo maudimas gali išlikti ilgiau. Jei skausmas stiprėja po kelių dienų, reikia kreiptis į odontologą." },
+      { q: "Ar galima papildomai nuskausminti, jei procedūros metu skauda?", a: "Taip. Jei procedūros metu jaučiate skausmą, būtina iš karto pasakyti gydytojui. Nejautra gali būti papildyta, o procedūra trumpam pristabdyta." },
+      { q: "Ko negalima daryti po danties rovimo?", a: "Po rovimo nereikėtų intensyviai skalauti burnos, spjaudyti, gerti per šiaudelį, valgyti karšto maisto, rūkyti, vartoti alkoholio ar krapštyti žaizdos." },
+      { q: "Kada po rovimo reikia kreiptis į gydytoją?", a: "Į gydytoją reikia kreiptis, jei skausmas stiprėja, atsiranda blogas kvapas, nemalonus skonis, pūliavimas, karščiavimas, didėjantis patinimas ar gausus kraujavimas." }
+    ],
+    sources: [
+      { label: "Evidence-based clinical practice guideline for the pharmacologic management of acute dental pain in children, adolescents, and adults", url: "https://pubmed.ncbi.nlm.nih.gov/37634915/" },
+      { label: "Acute Postoperative Pain Due to Dental Extraction in the Adult Population: A Systematic Review and Network Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/36631957/" },
+      { label: "Local interventions for the management of alveolar osteitis, dry socket", url: "https://pubmed.ncbi.nlm.nih.gov/36156769/" }
+    ]
+  },
+  "ka-daryti-kai-skauda-protini-danti": {
+    sections: [
+      {
+        p: [
+          "Protinių dantų skausmas – viena dažniausių priežasčių, dėl kurios pacientai kreipiasi į odontologą skubiau nei planavo. Šie dantys dygsta vėliausiai, dažniausiai jau suaugus, kai žandikaulyje ne visada lieka pakankamai vietos. Dėl to protinis dantis gali dygti netaisyklingai, spausti šalia esančius dantis, likti dalinai prasikalęs arba sukelti dantenų uždegimą.",
+          "Jei skauda protinį dantį, svarbu suprasti, kad skausmo priežastys gali būti skirtingos. Kartais tai tik laikinas dygimo diskomfortas, tačiau kitais atvejais skausmas rodo uždegimą, infekciją, ėduonį ar įstrigusį dantį. Todėl nereikėtų ilgai laukti ir tikėtis, kad problema praeis savaime.",
+          "Šiame įraše aptarsime, ką daryti, kai skauda protinį dantį, kada būtina kreiptis į odontologą, ar skauda, kai rauna protinį dantį, ir ko tikėtis po rovimo."
+        ]
+      },
+      {
+        h: "Kodėl skauda protinį dantį?",
+        p: [
+          "Protinis dantis gali skaudėti dėl kelių priežasčių. Viena dažniausių – dygimas. Kai dantis bando prasikalti pro dantenas, aplinkiniai audiniai gali tapti jautrūs, patinę ir skausmingi. Jei žandikaulyje vietos pakanka, šis procesas gali praeiti be didesnių problemų. Tačiau dažnai protiniams dantims vietos būna per mažai.",
+          "Kai protinis dantis neturi pakankamai vietos, jis gali dygti kreivai, remtis į gretimą dantį arba likti dalinai įstrigęs kaule ar po dantenomis. Tokia padėtis gali sukelti spaudimą, maudimą, skausmą kramtant ar net žandikaulio įtampą. Kartais skausmas plinta į ausį, smilkinį ar visą žandikaulio pusę.",
+          'Dar viena dažna priežastis – dantenų uždegimas aplink dalinai prasikalusį protinį dantį. Kai virš danties lieka dantenų „gaubtas", po juo gali kauptis maisto likučiai ir bakterijos. Šią vietą sunku gerai išvalyti, todėl dantenos parausta, patinsta, tampa skausmingos, gali atsirasti nemalonus skonis ar kvapas burnoje.',
+          "Protinius dantis taip pat dažnai pažeidžia ėduonis, nes jie yra pačiame burnos gale ir juos sunkiau pasiekti šepetėliu. Net nedidelis pažeidimas gali greitai sukelti jautrumą, o vėliau – stipresnį skausmą ar nervo uždegimą."
+        ]
+      },
+      {
+        h: "Kaip atpažinti, kad skauda būtent protinį dantį?",
+        p: [
+          "Ne visada lengva tiksliai suprasti, kuris dantis sukelia skausmą. Protinio danties skausmas dažniausiai jaučiamas pačiame žandikaulio gale, už paskutinio krūminio danties. Skausmas gali būti maudžiantis, pulsuojantis arba sustiprėti kramtant, plačiau išsižiojant ar liečiant dantenas toje vietoje.",
+          "Dažnas požymis – patinusios ar jautrios dantenos aplink protinį dantį. Jei dantis prasikalęs tik iš dalies, gali atrodyti, kad dalį jo dengia dantenos. Šioje vietoje gali kauptis maistas, todėl atsiranda blogas burnos kvapas, nemalonus skonis ar jausmas, kad dantenos yra sudirgusios.",
+          "Kartais protinio danties problema pasireiškia ne tik vietiniu skausmu. Skausmas gali plisti į ausį, smilkinį, gerklę ar visą žandikaulio pusę. Kai kuriems pacientams tampa sunkiau pilnai išsižioti, kramtyti ar valyti dantis toje pusėje. Jei yra uždegimas, gali atsirasti patinimas, bendras silpnumas ar pakilti temperatūra.",
+          "Vis dėlto vien pagal simptomus ne visada įmanoma tiksliai nustatyti, ar problemą sukelia protinis dantis. Panašiai gali skaudėti ir dėl kitų dantų ėduonies, dantenų uždegimo ar žandikaulio sąnario problemų. Todėl, jei skausmas kartojasi, stiprėja ar nepraeina, reikalinga odontologo apžiūra."
+        ]
+      },
+      {
+        h: "Skauda protinį dantį – ką daryti pirmiausia?",
+        p: [
+          "Kai skauda protinį dantį, pirmiausia reikėtų įvertinti, ar skausmas yra lengvas ir laikinas, ar stiprus, didėjantis ir lydimas kitų simptomų. Jeigu jaučiamas tik nedidelis maudimas dygstančio danties srityje, galima pradėti nuo švelnios burnos higienos ir skaudamos vietos stebėjimo. Vis dėlto, jei skausmas stiprėja, atsiranda patinimas ar sunku išsižioti, reikėtų neatidėlioti vizito pas odontologą.",
+          "Pirmas žingsnis – atsargiai išsivalyti dantis, ypač sritį aplink protinį dantį. Kadangi šie dantys yra pačiame žandikaulio gale, aplink juos dažnai kaupiasi maisto likučiai ir apnašos. Jei dantis prasikalęs tik iš dalies, po dantenų kraštu gali patekti bakterijų, kurios sukelia uždegimą ir skausmą. Valyti reikėtų švelniai, nenaudojant jėgos, kad dar labiau nesudirgintumėte dantenų.",
+          "Burną galima praskalauti drungnu vandeniu. Reikėtų vengti labai karšto, šalto, aštraus, kieto ar lipnaus maisto, nes jis gali sustiprinti skausmą arba papildomai traumuoti jautrią vietą. Jei yra patinimas, prie išorinės skruosto pusės galima trumpais intervalais pridėti šaltą kompresą. Jo nereikėtų dėti tiesiai ant odos – geriau įvynioti į rankšluostį.",
+          "Svarbu nekrapštyti dantenų aštriais daiktais, nebandyti pradurti patinusios vietos ir nedėti vaistų tiesiai ant dantenų. Tokie veiksmai gali pažeisti gleivinę ir pabloginti būklę. Namų priemonės gali tik laikinai palengvinti simptomus, tačiau jos nepašalina priežasties. Todėl, jei skauda protinį dantį ir nežinote, ką daryti, saugiausias sprendimas – registruotis odontologo apžiūrai."
+        ]
+      },
+      {
+        h: "Kada būtina kreiptis į odontologą?",
+        image: "https://images.unsplash.com/photo-1684607633217-462056580c3c?w=1200&q=80&fit=crop&auto=format",
+        p: [
+          "Į odontologą reikėtų kreiptis tada, kai protinio danties skausmas nepraeina, kartojasi arba stiprėja. Net jei skausmas kuriam laikui sumažėja, tai nebūtinai reiškia, kad problema išnyko. Uždegimas aplink protinį dantį gali atsinaujinti, o negydomas ilgainiui sukelti didesnį patinimą, infekciją ar pažeisti šalia esančius dantis.",
+          "Skubi odontologo apžiūra reikalinga, jei skausmas yra stiprus, pulsuojantis, trukdo miegoti, valgyti ar normaliai išsižioti. Taip pat nereikėtų delsti, jei patino dantenos, žandas ar veidas, atsirado pūlinys, blogas skonis burnoje, nemalonus kvapas ar pakilo temperatūra. Šie simptomai gali rodyti infekciją, kuriai reikalingas profesionalus gydymas.",
+          "Svarbu kreiptis ir tuomet, kai skausmas plinta į ausį, smilkinį, gerklę ar visą žandikaulio pusę. Tokiais atvejais žmogui gali atrodyti, kad skauda ne vieną konkretų dantį, o visą pusę burnos ar veido. Odontologas apžiūros metu gali nustatyti, ar skausmą iš tiesų sukelia protinis dantis, ar kita problema.",
+          "Dažnai protinio danties būklei įvertinti reikalinga rentgeno nuotrauka. Ji padeda pamatyti, kaip dantis išsidėstęs kaule, ar jis spaudžia gretimą dantį, ar yra pakankamai vietos dygimui, kokia šaknų padėtis ir ar nėra uždegimo požymių. Tik įvertinus situaciją galima nuspręsti, ar dantį reikia stebėti, gydyti, ar šalinti."
+        ]
+      },
+      {
+        h: "Ar visada reikia rauti protinį dantį?",
+        p: [
+          "Ne, protinį dantį ne visada reikia rauti. Jei dantis išdygęs taisyklingai, nespaudžia kitų dantų, nesukelia uždegimo ir jį galima kokybiškai išvalyti, jis gali likti burnoje. Tokiu atveju svarbiausia reguliari priežiūra, gera burnos higiena ir profilaktinės odontologo apžiūros.",
+          "Tačiau protiniai dantys dažnai kelia problemų dėl savo padėties. Kadangi jie yra pačiame žandikaulio gale, juos sunkiau pasiekti šepetėliu ir tarpdančių priemonėmis. Dėl to aplink juos greičiau kaupiasi apnašos, vystosi ėduonis arba kartojasi dantenų uždegimas. Jei dantis pažeistas taip, kad jo kokybiškai gydyti neįmanoma, gali būti rekomenduojamas šalinimas.",
+          "Rovimas taip pat svarstomas, kai protinis dantis dygsta kreivai, remiasi į gretimą dantį, sukelia spaudimą, skausmą ar pažeidžia šalia esančius audinius. Jei dantis prasikalęs tik iš dalies, aplink jį gali nuolat kartotis uždegimai. Tokiais atvejais vien laikinas simptomų sumažinimas problemos neišsprendžia.",
+          "Sprendimas dėl rovimo priimamas individualiai. Odontologas įvertina paciento nusiskundimus, danties padėtį, rentgeno nuotrauką, uždegimo riziką ir galimybes dantį prižiūrėti ar gydyti. Todėl nereikėtų iš anksto manyti, kad skaudant protinį dantį jį būtinai reikės šalinti. Pirmiausia svarbu tiksliai nustatyti skausmo priežastį."
+        ]
+      },
+      {
+        h: "Kaip odontologas nustato protinio danties problemą?",
+        p: [
+          "Protinio danties problemos ne visada matomos vien apžiūrint burną. Kartais dantis būna prasikalęs tik iš dalies, o kartais jis gali būti visiškai pasislėpęs po dantenomis ar kaule. Todėl odontologas pirmiausia įvertina paciento simptomus: kada prasidėjo skausmas, ar jis stiprėja, ar yra patinimas, ar sunku kramtyti, išsižioti, ryti, ar skausmas plinta į ausį, smilkinį ar žandikaulį.",
+          "Po pokalbio atliekama burnos apžiūra. Gydytojas įvertina dantenų būklę aplink protinį dantį, ar nėra paraudimo, patinimo, pūliavimo, maisto likučių susikaupimo ar ėduonies požymių. Taip pat apžiūrimi šalia esantys dantys, nes protinis dantis gali spausti gretimą krūminį dantį arba prisidėti prie jo pažeidimo.",
+          "Dažnai reikalinga rentgeno nuotrauka arba panoraminė rentgeno nuotrauka. Ji padeda pamatyti protinio danties padėtį, šaknų formą, santykį su šalia esančiais dantimis ir aplinkiniais audiniais. Pagal šią informaciją odontologas gali nuspręsti, ar dantį galima stebėti, ar reikia gydyti uždegimą, ar geriausias sprendimas būtų protinio danties šalinimas."
+        ]
+      },
+      {
+        h: "Ar skauda, kai rauna protinį dantį?",
+        p: [
+          "Vienas dažniausių pacientų klausimų – ar skauda, kai rauna protinį dantį. Dažniausiai pati procedūra atliekama taikant vietinę nejautrą, todėl aštraus skausmo pacientas neturėtų jausti. Prieš pradedant rovimo procedūrą, gydytojas pasirūpina, kad danties ir aplinkinių audinių sritis būtų nuskausminta.",
+          "Procedūros metu galima jausti spaudimą, tempimą, judesį ar vibraciją, tačiau tai nėra tas pats, kas skausmas. Šie pojūčiai atsiranda todėl, kad gydytojas dirba su dantimi ir aplinkiniais audiniais, tačiau nejautra blokuoja skausmo pojūtį. Jei pacientas vis dėlto jaučia skausmą, svarbu iš karto pasakyti gydytojui – nejautrą galima papildyti.",
+          "Tai, kiek sudėtinga bus pašalinti protinį dantį, priklauso nuo jo padėties. Jei dantis visiškai išdygęs ir šaknys nėra sudėtingos, rovimas dažnai būna paprastesnis. Jei protinis dantis įstrigęs, dygsta kreivai, yra po dantenomis ar kaule, gali prireikti chirurginio šalinimo. Tokiu atveju procedūra gali užtrukti ilgiau, tačiau ji taip pat atliekama nuskausminus.",
+          "Svarbiausia suprasti, kad šiuolaikinėje odontologijoje protinio danties rovimas neturėtų būti skausminga procedūra. Pacientui gali būti nemalonu dėl spaudimo ar nerimo, tačiau gydytojas kontroliuoja nuskausminimą ir procedūros eigą."
+        ]
+      },
+      {
+        h: "Ar skauda išrovus protinį dantį?",
+        p: [
+          "Po protinio danties rovimo, pasibaigus nejautros poveikiui, gali atsirasti maudimas, jautrumas, patinimas ar tempimo pojūtis. Tai yra normali gijimo proceso dalis, ypač jei dantis buvo šalinamas sudėtingiau arba reikėjo chirurginės intervencijos. Dažniausiai didesnis diskomfortas jaučiamas pirmomis dienomis po procedūros.",
+          "Kiek skauda išrovus protinį dantį, priklauso nuo kelių dalykų: danties padėties, šaknų formos, rovimo sudėtingumo, uždegimo buvimo ir individualios gijimo reakcijos. Vieniems pacientams pakanka lengvo maudimo, kitiems kelias dienas gali būti sunkiau plačiai išsižioti ar kramtyti toje pusėje. Gydytojas po procedūros pateikia rekomendacijas, kaip kontroliuoti skausmą ir prižiūrėti žaizdą",
+          "Po rovimo gali būti nedidelis kraujavimas, patinimas, jautrumas ir ribotas išsižiojimas. Tačiau svarbu stebėti, ar simptomai neblogėja. Jei po kelių dienų skausmas stiprėja, atsiranda blogas kvapas, nemalonus skonis burnoje, karščiavimas, gausus kraujavimas ar didėjantis patinimas, reikėtų kreiptis į odontologą.",
+          "Tinkama priežiūra po procedūros padeda sumažinti komplikacijų riziką ir užtikrinti sklandesnį gijimą. Todėl labai svarbu laikytis gydytojo nurodymų, nevarginti žaizdos ir neatidėlioti pakartotinio vizito, jei atsiranda neįprastų simptomų."
+        ]
+      },
+      {
+        h: "Kaip prižiūrėti burną po protinio danties rovimo?",
+        image: "https://images.unsplash.com/photo-1676897288522-e8a081e71430?w=1200&q=80&fit=crop&auto=format",
+        p: [
+          "Po protinio danties rovimo labai svarbu laikytis gydytojo rekomendacijų, nes pirmosios valandos ir dienos turi didelę įtaką gijimui. Iš karto po procedūros žaizdos vietoje susiformuoja kraujo krešulys, kuris saugo žaizdą ir padeda jai gyti. Todėl svarbu jo nepažeisti.",
+          "Pirmą parą nereikėtų intensyviai skalauti burnos, spjaudyti ar gerti per šiaudelį. Tokie veiksmai gali išjudinti krešulį ir sulėtinti gijimą. Taip pat reikėtų vengti karšto maisto ir gėrimų, nes šiluma gali paskatinti kraujavimą. Geriausia rinktis minkštą, nekarštą maistą ir kramtyti kita burnos puse.",
+          "Pirmomis dienomis nerekomenduojama rūkyti, vartoti alkoholio ar intensyviai sportuoti. Rūkymas gali trikdyti gijimą, o fizinis krūvis gali padidinti kraujavimo ir patinimo riziką. Žaizdos nereikėtų liesti pirštais, liežuviu ar krapštyti maisto likučių aštriais daiktais.",
+          "Dantis valyti reikia, tačiau atsargiai. Šalia rovimo vietos reikėtų valyti švelniai, kad nebūtų pažeista gyjanti sritis. Jei gydytojas paskyrė vaistus ar specialias priežiūros priemones, jas būtina vartoti taip, kaip nurodyta. Jeigu skausmas, patinimas ar kraujavimas didėja, reikėtų kreiptis į odontologą."
+        ]
+      },
+      {
+        h: "Ko nedaryti, kai skauda protinį dantį?",
+        p: [
+          "Kai skauda protinį dantį, svarbu ne tik žinoti, ką daryti, bet ir ko vengti. Viena dažniausių klaidų – bandymas skausmą malšinti dedant vaistus tiesiai ant dantenų ar danties. Aspirinas, spiritas, česnakas ar kitos dirginančios medžiagos gali pažeisti burnos gleivinę, sukelti nudegimą ir dar labiau sustiprinti diskomfortą.",
+          "Taip pat nereikėtų šildyti patinusios vietos. Jei skausmą sukelia uždegimas ar pūlinys, šiluma gali pabloginti situaciją ir paskatinti infekcijos plitimą. Tokiais atvejais saugiau naudoti šaltą kompresą iš išorinės skruosto pusės, tačiau tai tik laikina priemonė iki odontologo apžiūros.",
+          "Nereikėtų bandyti pradurti pūlinio, spausti patinusių dantenų ar krapštyti srities aplink protinį dantį aštriais daiktais. Taip galima pažeisti audinius ir įnešti dar daugiau bakterijų. Taip pat nerekomenduojama savarankiškai vartoti antibiotikų be gydytojo paskyrimo. Antibiotikai reikalingi ne visada, o netinkamas jų vartojimas gali būti žalingas.",
+          "Svarbiausia – neatidėlioti vizito, jei skausmas stiprėja, kartojasi, atsiranda patinimas, temperatūra ar sunku išsižioti. Pasikartojantis protinio danties uždegimas dažniausiai neišnyksta savaime, todėl jį turi įvertinti odontologas."
+        ]
+      },
+      {
+        h: "Protinio danties skausmo nereikėtų ignoruoti",
+        p: [
+          "Jei skauda protinį dantį, svarbiausia nustatyti tikrąją skausmo priežastį. Nors kartais diskomfortas gali būti susijęs su dygimu, dažnai skausmą sukelia dantenų uždegimas, vietos trūkumas, netaisyklinga danties padėtis, ėduonis ar infekcija. Tokiais atvejais vien laikinos namų priemonės problemos neišsprendžia.",
+          "Laiku atlikta odontologo apžiūra padeda suprasti, ar protinį dantį galima stebėti, gydyti, ar vis dėlto reikalingas jo šalinimas. Kuo anksčiau kreipiamasi, tuo lengviau suvaldyti uždegimą, sumažinti skausmą ir išvengti sudėtingesnių komplikacijų.",
+          "Jei protinis dantis sukelia skausmą, patinimą, nemalonų skonį burnoje ar skausmas kartojasi, nelaukite, kol problema paūmės. Registruokitės konsultacijai Bangų klinikoje Klaipėdoje – gydytojas įvertins situaciją ir pasiūlys tinkamiausią gydymo sprendimą."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Ką daryti, jei skauda protinį dantį?", a: "Jei skauda protinį dantį, pirmiausia švelniai išsivalykite dantis, praskalaukite burną drungnu vandeniu ir venkite kieto, karšto, šalto ar aštraus maisto. Jei yra patinimas, prie skruosto iš išorės galima trumpam pridėti šaltą kompresą. Tačiau jei skausmas stiprus, kartojasi ar atsiranda papildomų simptomų, reikėtų kreiptis į odontologą." },
+      { q: "Kiek laiko skauda po protinio danties rovimo?", a: "Diskomfortas po protinio danties rovimo dažniausiai jaučiamas kelias dienas. Trukmė priklauso nuo danties padėties, procedūros sudėtingumo, uždegimo buvimo ir individualaus gijimo. Jei skausmas ne mažėja, o stiprėja, reikėtų pasitarti su odontologu." },
+      { q: "Ko negalima daryti po protinio danties rovimo?", a: "Po rovimo pirmą parą nereikėtų intensyviai skalauti burnos, spjaudyti, gerti per šiaudelį, valgyti karšto maisto ar sportuoti. Pirmomis dienomis taip pat reikėtų vengti rūkymo ir alkoholio. Žaizdos negalima krapštyti ar liesti pirštais, nes tai gali sutrikdyti gijimą." }
+    ],
+    sources: [
+      { label: "Patterns of Third-Molar-Pericoronitis-Related Pain: A Morphometrical Observational Study", url: "https://pubmed.ncbi.nlm.nih.gov/37444724/" },
+      { label: "Surgical removal versus retention for the management of asymptomatic disease-free impacted wisdom teeth", url: "https://pubmed.ncbi.nlm.nih.gov/32368796/" },
+      { label: "Prediction of postoperative facial swelling, pain and trismus following third molar surgery based on preoperative variables", url: "https://pubmed.ncbi.nlm.nih.gov/23229245/" }
+    ]
+  },
+  "ka-daryti-kai-skauda-danti": {
+    sections: [
+      {
+        p: [
+          "Danties skausmas dažnai užklumpa netikėtai: vakare, darbe, kelionėje ar savaitgalį, kai ne visada aišku, ką daryti ir kur kreiptis. Kartais skausmas būna trumpalaikis, pavyzdžiui, dėl jautrumo šalčiui ar maisto likučių tarpdančiuose. Tačiau stiprus, pulsuojantis ar ilgiau nepraeinantis skausmas gali signalizuoti apie rimtesnę problemą – ėduonį, danties nervo uždegimą, infekciją, pūlinį, traumą ar iškritusią plombą.",
+          "Svarbiausia – neignoruoti skausmo ir nebandyti jo ilgai slopinti vien namų priemonėmis. Laikinas palengvėjimas dar nereiškia, kad problema išnyko. Kuo anksčiau nustatoma skausmo priežastis, tuo paprastesnis ir greitesnis gali būti gydymas."
+        ]
+      },
+      {
+        h: "Pirmi veiksmai, kai pradeda skaudėti dantį",
+        p: [
+          "Kai pradeda skaudėti dantį, pirmiausia reikėtų įvertinti, ar skausmą galėjo sukelti maisto likučiai, įstrigę tarp dantų ar prie dantenų. Atsargiai išsivalykite dantis minkštu šepetėliu ir naudokite tarpdančių siūlą arba tarpdančių šepetėlius. Svarbu tai daryti švelniai, kad papildomai nesudirgintumėte dantenų.",
+          "Burną galite praskalauti drungnu vandeniu. Venkite labai karšto, šalto, saldaus ar kieto maisto, nes jis gali sustiprinti jautrumą ir skausmą. Jei pastebite žando ar dantenų patinimą, prie išorinės skruosto pusės galima trumpam pridėti šaltą kompresą. Jo nereikėtų dėti tiesiai ant odos – geriau įvynioti į rankšluostį.",
+          "Kai skauda dantį ir nėra vaistų, šie veiksmai gali padėti laikinai sumažinti diskomfortą, tačiau jie nepašalina skausmo priežasties. Jeigu skausmas stiprėja, kartojasi arba atsiranda papildomų simptomų, būtina registruotis odontologo apžiūrai."
+        ]
+      },
+      {
+        h: "Jei labai skauda dantį – kada tai skubi situacija?",
+        p: [
+          "Jei labai skauda dantį, ypač kai skausmas yra pulsuojantis, stiprėja naktį ar trukdo miegoti, tai gali būti ženklas, kad problema yra rimtesnė nei paprastas jautrumas. Skubi odontologo apžiūra reikalinga tada, kai skausmas nepraeina kelias valandas, plinta į žandikaulį, ausį, smilkinį ar galvą, taip pat kai kartu atsiranda dantenų, žando ar veido patinimas.",
+          "Nereikėtų delsti ir tais atvejais, kai burnoje matomas pūlinys, jaučiamas nemalonus skonis, pakyla temperatūra, sunku išsižioti ar kramtyti. Skubi pagalba taip pat reikalinga po danties traumos – jei dantis nuskilo, lūžo, buvo išmuštas, iškrito plomba ar karūnėlė ir dantis tapo labai jautrus.",
+          "Tokiose situacijose skausmo malšinimas namuose gali būti tik laikinas sprendimas. Tik odontologas gali nustatyti tikslią priežastį ir parinkti tinkamą gydymą, kad būtų sustabdytas uždegimas, sumažintas skausmas ir išvengta komplikacijų."
+        ]
+      },
+      {
+        h: "Ką daryti, kai skauda dantį ir nėra vaistų?",
+        p: [
+          "Kai skauda dantį ir nėra vaistų, svarbiausia nepanikuoti ir vengti veiksmų, kurie gali pabloginti situaciją. Pirmiausia švelniai išsivalykite dantis, pašalinkite maisto likučius iš tarpdančių ir praskalaukite burną drungnu vandeniu. Tai gali padėti, jei skausmą sustiprino įstrigęs maistas ar sudirgintos dantenos.",
+          "Jeigu yra patinimas, prie skruosto iš išorės galima pridėti šaltą kompresą. Jį laikykite trumpais intervalais ir nedėkite ledo tiesiai ant odos. Svarbu vengti karštų kompresų, nes šiluma gali paskatinti uždegimo plitimą, ypač jei susiformavęs pūlinys.",
+          "Nereikėtų dėti aspirino, česnako, spirito ar kitų dirginančių medžiagų tiesiai ant dantenų ar danties. Tokie metodai gali nudeginti gleivinę ir sukelti dar didesnį skausmą. Namų priemonės gali tik laikinai sumažinti diskomfortą, tačiau jos neišsprendžia pagrindinės problemos. Jei skausmas stiprus, kartojasi ar atsiranda patinimas, būtina kreiptis į odontologą."
+        ]
+      },
+      {
+        h: "Kur kreiptis, kai skauda dantį?",
+        p: [
+          "Kai skauda dantį, svarbu įvertinti skausmo stiprumą ir kitus simptomus. Jei skausmas nestiprus, pasireiškia tik valgant ar geriant šaltus gėrimus, galima registruotis į įprastą odontologo konsultaciją artimiausiu metu. Tačiau jei skausmas stiprus, pulsuojantis, trukdo miegoti, kartu atsiranda patinimas, pūlinys, kraujavimas ar danties trauma, reikalinga skubi odontologinė pagalba.",
+          "Tokiais atvejais geriausia kreiptis į odontologijos kliniką, kuri teikia skubią pagalbą. Vizito metu gydytojas įvertina danties būklę, nustato skausmo priežastį ir parenka tinkamiausią sprendimą. Kartais pakanka pašalinti dirgiklį ar laikinai sumažinti uždegimą, tačiau kitais atvejais gali prireikti endodontinio gydymo, plombavimo, pūlinio gydymo ar kitos procedūros.",
+          "Bangų klinikoje Klaipėdoje teikiama skubi odontologinė pagalba pacientams, kuriuos vargina stiprus danties skausmas, patinimas, danties trauma, iškritusi plomba ar kitos ūmios problemos. Laiku kreipiantis pagalbos galima greičiau numalšinti skausmą ir sumažinti komplikacijų riziką."
+        ]
+      },
+      {
+        h: "Skauda dantį savaitgalį – ką daryti?",
+        p: [
+          "Jeigu skauda dantį savaitgalį, pirmiausia įvertinkite, ar situacija gali palaukti iki artimiausio odontologo vizito. Jei skausmas nestiprus, nėra patinimo, karščiavimo, pūlinio ar traumos požymių, laikinai venkite kieto, karšto, šalto ir saldaus maisto, palaikykite burnos higieną ir registruokitės vizitui artimiausiu metu.",
+          "Tačiau jei skausmas labai stiprus, pulsuojantis, nepraeina, trukdo miegoti, patino žandas ar dantenos, atsirado pūlinys, temperatūra ar sunku išsižioti, delsti nereikėtų. Tokie simptomai gali rodyti infekciją ar ūmų uždegimą, kuriam reikalinga skubi pagalba.",
+          "Jei savaitgalį jūsų pasirinkta klinika nedirba, o simptomai yra pavojingi, reikėtų kreiptis į budinčią skubios pagalbos įstaigą. Jei būklė nėra ūmi, verta kuo anksčiau registruotis artimiausiam odontologo vizitui. Bangų klinikos darbo laikas nurodomas klinikos svetainėje, todėl prieš vykstant visada rekomenduojama pasitikrinti aktualią informaciją ir susisiekti dėl registracijos."
+        ]
+      },
+      {
+        h: "Dažniausios danties skausmo priežastys",
+        image: "https://images.unsplash.com/photo-1592400400196-bf709e32aa88?w=1200&q=80&fit=crop&auto=format",
+        p: [
+          "Danties skausmas gali atsirasti dėl skirtingų priežasčių, todėl vien pagal pojūtį ne visada lengva suprasti, kas tiksliai nutiko. Viena dažniausių priežasčių – ėduonis. Iš pradžių jis gali sukelti tik jautrumą saldžiam, šaltam ar karštam maistui, tačiau pažeidimui gilėjant skausmas tampa stipresnis ir dažnesnis.",
+          "Kita dažna priežastis – danties nervo uždegimas. Tokiu atveju skausmas dažnai būna pulsuojantis, stipresnis vakare ar naktį, gali plisti į žandikaulį, ausį ar smilkinį. Skausmą taip pat gali sukelti dantenų uždegimas, pūlinys, protinių dantų dygimas, danties trauma, nuskilimas ar lūžis.",
+          "Kartais skausmas atsiranda iškritus plombai ar karūnėlei, kai dantis tampa jautrus temperatūros pokyčiams ir kramtymui. Kadangi priežasčių gali būti daug, tiksliausiai jas nustato odontologas apžiūros metu."
+        ]
+      },
+      {
+        h: "Kaip vyksta skubus vizitas pas odontologą?",
+        p: [
+          "Skubaus vizito metu odontologas pirmiausia išklauso paciento nusiskundimus: kada prasidėjo skausmas, koks jo pobūdis, ar yra patinimas, trauma, jautrumas, karščiavimas ar kiti simptomai. Tuomet atliekama burnos apžiūra, įvertinama dantų, dantenų ir aplinkinių audinių būklė.",
+          "Jei vien apžiūros nepakanka, gali būti atliekamas rentgeno tyrimas. Jis padeda tiksliau nustatyti, ar yra gilus ėduonis, uždegimas šaknų srityje, pūlinys, danties lūžis ar kita problema, kurios plika akimi nematyti.",
+          "Pagrindinis skubaus vizito tikslas – sumažinti skausmą, suvaldyti ūmią būklę ir nuspręsti, koks gydymas reikalingas toliau. Kartais problema išsprendžiama to paties vizito metu, o kartais atliekamas laikinas gydymas ir sudaromas tolimesnis gydymo planas. Svarbiausia, kad pacientas negyventų su neaiškia ir tik blogėjančia situacija..."
+        ]
+      },
+      {
+        h: "Kada nebegalima laukti?",
+        p: [
+          "Laukti nereikėtų, jei danties skausmas yra labai stiprus, pulsuojantis arba nepraeina net kelias valandas. Ypač svarbu nedelsti, jei kartu patino žandas, dantenos ar veidas, atsirado pūlinys, nemalonus skonis burnoje, karščiavimas ar bendras silpnumas. Tokie simptomai gali rodyti infekciją, kuri negydoma gali plisti.",
+          "Skubi pagalba reikalinga ir po traumos: jei dantis nuskilo, lūžo, buvo išmuštas, pradėjo kraujuoti dantenos ar tapo sunku sukąsti. Taip pat nereikėtų laukti, jei iškrito plomba ar karūnėlė, o dantis tapo labai jautrus ir skausmingas.",
+          "Net jei skausmas trumpam sumažėja, tai nebūtinai reiškia, kad problema išnyko. Kartais ūmus skausmas aprimsta, tačiau uždegimas toliau progresuoja. Todėl esant stipriems ar pasikartojantiems simptomams geriausia kuo greičiau kreiptis į odontologą."
+        ]
+      },
+      {
+        h: "Greita reakcija padeda išvengti sudėtingesnio gydymo",
+        p: [
+          "Danties skausmas – tai signalas, kad burnoje vyksta pokyčiai, kurių nereikėtų ignoruoti. Net jei skausmas atrodo pakenčiamas arba trumpam sumažėja, jo priežastis gali išlikti. Laiku kreipiantis į odontologą, dažnai galima greičiau sustabdyti uždegimą, sumažinti skausmą ir išvengti sudėtingesnio gydymo ateityje.",
+          "Namų priemonės gali padėti tik laikinai palengvinti būklę, tačiau jos nepakeičia profesionalios apžiūros. Ypač svarbu nedelsti, jei skausmas stiprus, pulsuojantis, atsirado patinimas, pūlinys, karščiavimas ar dantis buvo pažeistas traumos metu.",
+          "Jei skauda dantį, registruokitės konsultacijai Bangų klinikoje Klaipėdoje. Gydytojas įvertins situaciją, nustatys skausmo priežastį ir pasiūlys tinkamiausią gydymo sprendimą."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Ką daryti, jei labai skauda dantį?", a: "Jei labai skauda dantį, pirmiausia švelniai išsivalykite dantis, praskalaukite burną drungnu vandeniu ir venkite karšto, šalto, saldaus ar kieto maisto. Jei yra patinimas, prie skruosto iš išorės galima pridėti šaltą kompresą. Tačiau stiprus, pulsuojantis ar ilgai nepraeinantis skausmas yra ženklas, kad reikalinga odontologo apžiūra. Tokiu atveju nereikėtų laukti, kol skausmas praeis savaime." },
+      { q: "Ką daryti, kai skauda dantį ir nėra vaistų?", a: "Kai skauda dantį ir nėra vaistų, svarbiausia vengti dirginančių ar pavojingų priemonių. Nedėkite vaistų, spirito, česnako ar kitų medžiagų tiesiai ant dantenų, nes jos gali pažeisti gleivinę. Laikinai gali padėti burnos skalavimas drungnu vandeniu, švelni burnos higiena ir šaltas kompresas, jei yra patinimas. Vis dėlto tokios priemonės tik palengvina simptomus, bet nepašalina skausmo priežasties." },
+      { q: "Ar danties skausmas gali praeiti savaime?", a: "Kartais danties skausmas gali trumpam sumažėti, tačiau tai nebūtinai reiškia, kad problema išnyko. Pavyzdžiui, uždegimas ar infekcija gali toliau progresuoti net tada, kai skausmas tampa silpnesnis. Jei skausmas kartojasi, stiprėja, atsiranda jautrumas kramtant, patinimas ar kiti simptomai, reikėtų kreiptis į odontologą." },
+      { q: "Kur kreiptis, kai skauda dantį?", preImage: "https://images.unsplash.com/photo-1681939278218-a755fb2bf2d3?w=1200&q=80&fit=crop&auto=format", a: "Jei skauda dantį savaitgalį, įvertinkite simptomų rimtumą. Jei skausmas nestiprus, nėra patinimo, karščiavimo ar pūlinio, stenkitės nedirginti skaudamos vietos ir registruokitės vizitui artimiausiu metu. Jei skausmas labai stiprus, patino veidas ar dantenos, atsirado pūlinys, temperatūra ar sunku išsižioti, reikėtų kreiptis į skubią pagalbą nedelsiant." },
+      { q: "Ką daryti, jei dantį skauda savaitgalį?", a: "Įvertinkite simptomų rimtumą. Jei skausmas nestiprus, nėra patinimo ar pūlinio – registruokitės vizitui artimiausiu metu. Jei skausmas labai stiprus, patino veidas ar atsiranda pūlinys ir temperatūra – kreipkitės į skubią pagalbą." },
+      { q: "Ar galima šildyti skaudamą dantį?", a: "Šildyti skaudamos vietos nerekomenduojama, ypač jei yra patinimas ar įtariamas pūlinys. Šiluma gali paskatinti uždegimo plitimą ir pabloginti būklę. Jei yra patinimas, saugesnis pasirinkimas – trumpais intervalais naudojamas šaltas kompresas iš išorinės skruosto pusės." }
+    ],
+    sources: [
+      { label: "Acute Dental Pain Management Guideline — American Dental Association", url: "https://www.ada.org/resources/research/science/evidence-based-dental-research/pain-management-guideline" },
+      { label: "Evidence-based clinical practice guideline for the pharmacologic management of acute dental pain", url: "https://jada.ada.org/article/S0002-8177(23)00672-4/fulltext" },
+      { label: "Management of odontogenic infections and sepsis: an update", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7517749/" }
+    ]
+  }
+};
+const BLOG_POSTS = BLOG_CARDS.map((card) => ({
+  ...card,
+  ...BODIES$1[card.slug]
+}));
+function getPost(slug) {
+  return BLOG_POSTS.find((p) => p.slug === slug);
+}
 const C$3 = {
   teal: "#097873",
   // AA-safe for text on white (5.32:1)
@@ -26248,7 +26587,7 @@ function Row({ q, a }) {
     )
   ] });
 }
-const BLOG_POSTS_LV = [
+const BLOG_CARDS_LV = [
   {
     slug: "zobu-griesana-nakti-kad-palidz-kapa",
     title: "Zobu griešana naktī: kad palīdz kapa?",
@@ -26256,157 +26595,7 @@ const BLOG_POSTS_LV = [
     date: "2026-08-04",
     category: "Zobu ārstniecība",
     coverImage: "https://images.unsplash.com/photo-1777793636393-a0fec488f3fb?w=1200&q=80&fit=crop&auto=format",
-    readTime: 12,
-    sections: [
-      {
-        p: [
-          "Zobu griešana naktī bieži ilgu laiku paliek nepamanīta. Par to var pastāstīt blakus guļošais cilvēks, bet zobārsts — pamanīt nodilušus, ieplaisājušus vai jutīgākus zobus. Dažiem pacientiem no rīta sāp žokļa muskuļi, deniņi vai galva, taču daļa cilvēku skaidrus simptomus nejūt.",
-          "Zobu bruksisms ir atkārtota zobu sakodiena, griešana vai žokļa saspringums. Tas var izpausties gan miega, gan nomoda laikā. Bruksisms ne visiem cilvēkiem rada bojājumus, taču intensīva un ilgstoša slodze var veicināt zobu nodilumu, plaisas, restaurāciju bojājumus un košļājamo muskuļu sāpes.",
-          "Kad rodas zobu bojājumu risks, zobārsts var ieteikt aizsargkapu. Miega kapas atdala augšējā un apakšējā žokļa zobus un pasargā to virsmas no tiešas berzes. Tomēr kapa ne vienmēr aptur pašu košļājamo muskuļu darbību, tāpēc pirms tās izgatavošanas svarīgi novērtēt zobu, smaganu, restaurāciju un žokļa locītavu stāvokli."
-        ]
-      },
-      {
-        h: "Kas ir zobu bruksisms un kāpēc cilvēki griež zobus?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Miega un nomoda bruksisms tiek uzskatīti par atšķirīgām košļājamo muskuļu darbības formām." },
-          { type: "p", text: "Zobu griešana naktī jeb miega bruksisms izpaužas kā miegā notiekoša zobu sakodiena, žokļa kustības vai zobu virsmu berzēšana. Cilvēks šīs darbības nekontrolē un visbiežāk tās neatceras." },
-          { type: "p", text: "Nomoda bruksisms biežāk izpaužas kā ilgstoša zobu sakodiena vai žokļa saspringums. Tas var notikt koncentrēšanās brīžos, strādājot pie datora, vadot auto, sportojot vai emocionāla saspringuma laikā." },
-          { type: "p", text: "Vienas visus bruksisma gadījumus izskaidrojošas cēloņa nav. Tā izpausmi var ietekmēt:" },
-          { type: "ul", items: [
-            "emocionāls saspringums un trauksme;",
-            "miega kvalitāte un biežas nomodas;",
-            "alkohola, nikotīna vai liela kofeīna daudzuma lietošana;",
-            "atsevišķi medikamenti;",
-            "individuāla nervu sistēmas darbība;",
-            "ģenētiski un citi personiski faktori."
-          ] },
-          { type: "p", text: "Stress var pastiprināt bruksismu, īpaši nomoda laikā, taču to nevajadzētu uzskatīt par vienīgo cēloni. Miega bruksisms ir sarežģīta ar miega un nervu sistēmas procesiem saistīta muskuļu darbība." },
-          { type: "p", text: "Zobu sakodiens agrāk tika uzskatīts par vienu no galvenajiem bruksisma cēloņiem. Šodienas zinātniskais viedoklis ir piesardzīgāks: tikai zobu stāvokļa, plombu vai sakodiena koriģēšana nav universāls zobu griešanas ārstēšanas veids." }
-        ]
-      },
-      {
-        h: "Kā atpazīt zobu griešanu naktī?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Zobu griešanu naktī bieži pirmais pamana blakus guļošais cilvēks. Viņš var dzirdēt zobu čīkstēšanu vai berzēšanu. Tomēr skaņa nav obligāta: daļa cilvēku miegā stipri sakož zobus, bet ar tiem negriež." },
-          { type: "p", text: "Iespējamās bruksisma pazīmes:" },
-          { type: "ul", items: [
-            "no rīta žokļa muskuļu nogurums vai sāpes;",
-            "sāpes deniņu vai sejas rajonā;",
-            "rīta galvassāpes;",
-            "zobu jutīgums;",
-            "nodiluši, saplakuši vai atlūzuši zobu galiņi;",
-            "bieži bojātas plombas, kroņi vai citas restaurācijas;",
-            "vaigu gļotādā redzamas sakodiena pēdas;",
-            "grūti plaši atvērt muti;",
-            "žokļa locītavas sāpes vai iestrēgšana."
-          ] },
-          { type: "p", text: "Neviena no šīm pazīmēm atsevišķi neapstiprina bruksismu. Zobi var nodilt ne tikai mehāniskās berzes dēļ, bet arī skābes erozijas, abrazīvas tīrīšanas vai vairāku cēloņu kombinācijas dēļ. Galvas un sejas sāpes arī var nebūt saistītas ar zobu griešanu." },
-          { type: "p", text: "Zobārsts novērtē zobu virsmas, restaurācijas, smaganas, košļājamos muskuļus un žokļa locītavas. Svarīgi arī apspriest simptomu ilgumu, miega kvalitāti, lietotos medikamentus un tuvinieku pamanītās skaņas." }
-        ]
-      },
-      {
-        h: "Kādas problēmas var radīt ilgstoša zobu griešana?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Epizodisks bruksisms ne vienmēr rada bojājumus. Problēmas biežāk parādās, kad slodze ir intensīva, ilgstoša vai zobi un restaurācijas jau ir ievainojami." },
-          { type: "p", text: "Zobu griešana var veicināt:" },
-          { type: "ul", items: [
-            "zobu emaljas nodilšanu;",
-            "zobu galiņu saīsināšanos un saplakšanu;",
-            "plaisas vai atlūzumus;",
-            "palielinātu jutīgumu;",
-            "plombu, kroņu un citu restaurāciju lūzumus;",
-            "implantu un protēžu konstrukciju pārslodzi;",
-            "košļājamo muskuļu nogurumu vai sāpes;",
-            "deniņu un sejas rajona sāpes;",
-            "žokļa locītavas diskomfortu."
-          ] },
-          { type: "p", text: "Zobu nodilums parasti notiek pakāpeniski, tāpēc ilgu laiku var palikt nepamanīts. Progresējošos gadījumos zobi izskatās īsāki, mainās to forma, var pasliktināties košļāšanas funkcija un smaida estētika." },
-          { type: "p", text: "Zobu emalja pati par sevi neatjaunojas. Kapa nevar atjaunot jau zaudētos audus, bet var palīdzēt pasargāt zobus no turpmākiem mehāniskiem bojājumiem. Ja zobi ir stipri nodiluši vai atlūzuši, var būt nepieciešama restauratīvā ārstēšana." }
-        ]
-      },
-      {
-        h: "Kā darbojas miega kapas?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Miega kapas ir izņemami aparāti, kurus visbiežāk valkā uz augšējā vai apakšējā žokļa zobiem. Bruksismam paredzētās kapas sauc arī par aizsargkapām, okluzālām vai stabilizācijas kapām." },
-          { type: "p", text: "Galvenais kapas uzdevums — radīt fizisku barjeru starp abu žokļu zobiem. Kad cilvēks miegā griež vai stipri sakož, zobu virsmas tieši viena otrā neberzējas. Tā tiek samazināts to nodiluma, ieplaisāšanas un restaurāciju bojājumu risks." },
-          { type: "p", text: "Pareizi piemērota kapa var:" },
-          { type: "ul", items: [
-            "pasargāt zobu virsmas;",
-            "vienmērīgāk sadalīt sakodiena slodzi;",
-            "aizsargāt plombas, kroņus un citas restaurācijas;",
-            "palīdzēt novērot griešanas atstātās nolietojuma pēdas;",
-            "dažiem pacientiem samazināt muskuļu diskomfortu."
-          ] },
-          { type: "p", text: "Svarīgi saprast, ka kapa galvenokārt pasargā no bruksisma mehāniskajām sekām. Tā ne vienmēr novērš zobu griešanas cēloni vai aptur nakts košļājamo muskuļu darbību. Tāpēc kapu nevajadzētu pasniegt kā visiem piemērotu bruksisma dziedināšanas veidu." }
-        ]
-      },
-      {
-        h: "Ar ko individuāla kapa atšķiras no aptiekā iegādājamas kapas?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Individuāla kapa tiek izgatavota atbilstoši konkrētā pacienta zobu formai. Tās piegulšanu, biezumu un sakodiena kontaktus pārbauda un, ja nepieciešams, koriģē zobārsts." },
-          { type: "p", text: "Kapas izgatavošana parasti notiek vairākos posmos:" },
-          { type: "ol", items: [
-            "Zobārsts apskata zobus, smaganas, restaurācijas un novērtē sakodienu.",
-            "Tiek veikta digitāla zobu skenēšana vai ņemti nospiedumi.",
-            "Laboratorijā tiek izgatavota individuāla kapa.",
-            "Nākamā vizītes laikā tiek pārbaudīta tās piegulšana un sakodiena kontakti.",
-            "Ja nepieciešams, kapa tiek koriģēta."
-          ] },
-          { type: "p", text: "Individuāli izgatavota kapa parasti stabilāk turas, mazāk kustas miegā un var būt precīzāk piemērota ilglaicīgai valkāšanai." },
-          { type: "p", text: "Aptiekās vai internetā pārdotās standarta un siltā ūdenī formējamās kapas ir vieglāk pieejamas, taču to piegulšana var nebūt tik precīza. Nepareizi piemērots aparāts var spiest zobus, kustēties, traucēt miegu vai nepietiekami aizsargāt zobu virsmas." },
-          { type: "p", text: "Zobārsta novērtējums ir īpaši svarīgs, ja pacientam ir:" },
-          { type: "ul", items: [
-            "kustīgi vai stipri nodiluši zobi;",
-            "kroņi, tilti vai implanti;",
-            "aktīva periodonta slimība;",
-            "žokļa locītavas sāpes;",
-            "nepabeigta ortodontiskā vai restauratīvā ārstēšana;",
-            "iespējamas miega elpošanas traucējumu pazīmes."
-          ] },
-          { type: "p", text: "Bruksisma kapa nav tas pats, kas apakšējo žokli uz priekšu stumjošs aparāts, ko lieto dažiem pacientiem ar obstruktīvu miega apnoju. Skaļi krākjot vai pamanot elpošanas pauzes, patstāvīgi izvēlēta kapa nedrīkstētu aizstāt medicīnisko izmeklēšanu." },
-          { type: "p", text: "Kapa jāmazgā ar vēsu vai remdenu ūdeni un jāglabā vēdināmā futrālī. Karsts ūdens var deformēt tās materiālu. Ja kapa ieplaisā, sāk kustēties, spiež vai maina sakodiena sajūtu, to jāpārbauda zobārstam." }
-        ]
-      },
-      {
-        h: "Kad zobu bruksisma dēļ jāvēršas pie zobārsta?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Pie zobārsta ir vērts vērsties, ja tuvinieki regulāri dzird zobu griešanu naktī vai pamanāt zobu nodilumu, jutīgumu, plaisas un bieži bojātas restaurācijas." },
-          { type: "p", text: "Apskate arī nepieciešama, ja:" },
-          { type: "ul", items: [
-            "no rīta bieži sāp žoklis vai deniņi;",
-            "sāpes traucē košļāt vai atvērt muti;",
-            "zobi izskatās īsāki vai mainīja formu;",
-            "atlūzis zobs, plomba vai kronis;",
-            "žokļa locītava ir sāpīga vai iestrēgst;",
-            "lietotā kapa spiež, kustas vai vairs nederēs;",
-            "zobu nodilums strauji progresē."
-          ] },
-          { type: "p", text: "Zobārsts novērtēs, vai nepieciešama aktīva zobu aizsardzība, vai pietiek ar novērošanu un ieradumu korekciju. Ārstēšana var ietvert individuālu kapu, bojāto zobu atjaunošanu, muskuļu un locītavu stāvokļa aprūpi un nosūtījumu pie cita speciālista." },
-          { type: "p", text: "Nomoda bruksisma gadījumā svarīga pašapziņa. Miera brīžos augšējiem un apakšējiem zobiem nevajadzētu pastāvīgi saskarties. Lūpas var būt viegli sakļautas, bet žokļa muskuļi — atslābināti. Dienas laikā var palīdzēt atgādinājumi pārbaudīt, vai zobi nav sakosti." },
-          { type: "p", text: "Ja pamanījāt zobu nodilumu, no rīta jūtat žokļa saspringumu vai tuvinieki dzird, ka griežat zobus, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā. Mūsu speciālisti novērtēs simptomus, pārbaudīs zobu stāvokli un, ja nepieciešams, izgatavos individuāli piemērotu aizsargkapu." }
-        ]
-      }
-    ],
-    faq: [
-      { q: "Vai zobu kapa aptur griešanu naktī?", a: "Ne vienmēr. Kapa galvenokārt pasargā zobus un restaurācijas no tiešas berzes. Nakts košļājamo muskuļu darbība var saglabāties." },
-      { q: "Vai miega kapas ir piemērotas visiem?", a: "Ne vienmēr. Pirms kapas izgatavošanas jānovērtē zobi, smaganas, restaurācijas un žokļa locītavas. Individuāls novērtējums īpaši svarīgs, ja ir implanti, periodonta slimības vai stipri nodiluši zobi." },
-      { q: "Cik ilgi kalpo bruksisma kapa?", a: "Vienota termiņa nav. Kapas kalpošanas laiks atkarīgs no tās materiāla, griešanas intensitātes, lietošanas biežuma un kopšanas. Ieplaisājušu, deformētu vai kustīgu kapu jānovērtē zobārstam." },
-      { q: "Vai kapa jāvalkā visu mūžu?", a: "Ne vienmēr. Valkāšanas ilgums atkarīgs no simptomiem, zobu bojājumu riska un ārstēšanas gaitas. Kapas nepieciešamību ir vērts periodiski pārvērtēt." },
-      { q: "No kā atkarīga zobu kapas cena?", a: "Cena atkarīga no kapas tipa, materiāla, izgatavošanas veida, diagnostikas un nepieciešamām korekcijām. Precīzu cenu nosaka, novērtējot pacienta zobu stāvokli." },
-      { q: "Vai stress var veicināt zobu griešanu?", a: "Emocionāls saspringums var būt viens no bruksismu pavadošiem vai pastiprinošiem faktoriem, īpaši nomoda laikā. Tomēr bruksismu nevajadzētu skaidrot tikai ar stresu." }
-    ],
-    sources: [
-      { label: "International Consensus on the Assessment of Bruxism: Report of a Work in Progress", url: "https://pubmed.ncbi.nlm.nih.gov/29926505/" },
-      { label: "Standardised Tool for the Assessment of Bruxism", url: "https://pubmed.ncbi.nlm.nih.gov/36597658/" },
-      { label: "The Efficacy of Occlusal Splints in the Treatment of Bruxism: A Systematic Review", url: "https://pubmed.ncbi.nlm.nih.gov/33652054/" },
-      { label: "Sleep Bruxism May Not Be Associated With Obstructive Sleep Apnea: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/39182463/" }
-    ]
+    readTime: 12
   },
   {
     slug: "ka-notirit-zobakmens",
@@ -26415,147 +26604,7 @@ const BLOG_POSTS_LV = [
     date: "2026-08-01",
     category: "Mutes higiēna",
     coverImage: "/blog/kaip-pasalinti-dantu-akmenis.jpg",
-    readTime: 12,
-    sections: [
-      {
-        p: [
-          "Zobakmens visbiežāk pamanāms pie apakšējiem priekšējiem zobiem, starpzobu telpās vai pie smaganas malas. Tie var būt dzeltenīgi, brūnīgi vai tumšāki, un ar mēli pieskaroties zoba virsmai bieži jūtama raupjums. Daļa zobakmeņu uzkrājas zem smaganām, tāpēc spogulī tos nevar redzēt.",
-          "Ja domājat, kā atbrīvoties no zobakmeņiem, svarīgi zināt, ka sacietējušas nogulsnes zobu suka, pasta, diegs vai irigators nenoņems. Tos droši notīra mutes higiēnists vai zobārsts profesionālās mutes higiēnas laikā. Mājās var noņemt mīkstos bakteriālos aplikumus un tā samazināt jaunu zobakmeņu veidošanos."
-        ]
-      },
-      {
-        h: "Kāpēc uz zobiem veidojas zobakmens?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Uz zobiem pastāvīgi veidojas lipīga baktēriju kārtiņa, ko sauc par zobu aplikumu vai biofilmu. To var noņemt, tīrot zobus un starpzobu telpas. Ja aplikumi paliek uz zoba virsmas, tajos uzkrājas siekalās esošie minerāli, tāpēc ar laiku tie sacietē un pārtop zobakmenī. Jau mineralizētās nogulsnes ar parastu zobu suku vairs nav iespējams noņemt." },
-          { type: "p", text: "Zobakmeņus iedala virs smaganām un zem tām esošos. Virs smaganām izveidojušās nogulsnes parasti ir vieglāk pamanāmas. Tās bieži uzkrājas aiz apakšējiem priekšējiem zobiem un pie augšējiem molāriem, netālu no siekalu dziedzeru izvadiem." },
-          { type: "p", text: "Zem smaganām esošie zobakmeņi piestiprinās zoba saknes virsmai. Tie var būt tumšāki un bieži tiek atklāti tikai profesionāli izmeklējot smaganas, mērot periodonta kabatas vai veicot radioloģiskos izmeklējumus." },
-          { type: "p", text: "Zobakmeņu veidošanās ātrums dažādiem cilvēkiem ir atšķirīgs. To var ietekmēt:" },
-          { type: "ul", items: [
-            "nepietiekami rūpīga zobu tīrīšana;",
-            "neregulāra starpzobu telpu tīrīšana;",
-            "sablīvēti un grūtāk sasniedzami zobi;",
-            "individuālais siekalu sastāvs un to plūsma;",
-            "smēķēšana;",
-            "ortodontiskās ierīces;",
-            "implanti, tilti un citas protēzes konstrukcijas;",
-            "iepriekš diagnosticētas smaganu vai periodonta slimības."
-          ] },
-          { type: "p", text: "Mineralizētie aplikumi var uzkrāties ne tikai uz dabīgajiem zobiem, bet arī ap implantiem, pie tiltiem un uz protēžu konstrukcijām. Šo vietu kopšanai var būt nepieciešamas piemērota izmēra starpzobu sukas, vienzoba suka vai citas individuāli izvēlētas ierīces." }
-        ]
-      },
-      {
-        h: "Kā atpazīt, ka uz zobiem uzkrājies zobakmens?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Redzamais zobakmens visbiežāk izskatās kā ciets dzeltenīgs, brūnīgs vai tumšs slānis, ko nevar notīrīt ar suku. Ar mēli var sajust nelīdzenu, raupju virsmu, īpaši aiz apakšējiem priekšējiem zobiem." },
-          { type: "p", text: "Aplikumu un zobakmeņu uzkrāšanos var pavadīt arī:" },
-          { type: "ul", items: [
-            "smaganu asiņošana zobu tīrīšanas laikā;",
-            "apsārtušas, pietūkušas vai jutīgas smaganas;",
-            "nepatīkama elpa;",
-            "nepatīkama garša mutē;",
-            "smaganu atkāpšanās;",
-            "zobu jutīgums;",
-            "palielinošās atstarpes starp zobiem;",
-            "zobu kustīgums, ja periodonta slimība ir progresējusi."
-          ] },
-          { type: "p", text: "Smaganu asiņošana nav zīme, ka zobi jātīra retāk. Tā bieži saistīta ar bakteriālu aplikumu izraisītu iekaisumu. Gingivīta gadījumā iekaisums aprobežojas ar smaganām un, noņemot aplikumus un uzlabojot ikdienas higiēnu, parasti to var kontrolēt." },
-          { type: "p", text: "Periodontīta gadījumā tiek bojāti ne tikai smaganu audi, bet arī zobu balstošais kauls. Šī slimība nav atgriezeniska tāpat kā gingivīts, taču ar profesionālu ārstniecību un regulāru kopšanu tās progresēšanu var palēnināt un kontrolēt." },
-          { type: "p", text: "Ne visas tumšās vai raupjās vietas ir zobakmens. Līdzīgi var izskatīties pigmentu aplikumi, kariess, restaurācijas mala vai dabīga zoba krāsas īpatnība. Precīzu cēloni nosaka zobārsts vai mutes higiēnists." }
-        ]
-      },
-      {
-        h: "Vai zobakmens iespējams noņemt mājās?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Mīkstos aplikumus mājās noņemt ir nepieciešams, taču jau izveidojušos zobakmeņus droši notīrīt neizdosies. Sacietējušās nogulsnes cieši piestiprinās zoba vai saknes virsmai, tāpēc to noņemšanai nepieciešami profesionāli instrumenti." },
-          { type: "p", text: "Patstāvīga zobakmeņu kasīšana var:" },
-          { type: "ul", items: [
-            "ievainot smaganas un izraisīt asiņošanu;",
-            "saskrāpēt emalju, restaurācijas vai implantu virsmas;",
-            "palielināt zobu jutīgumu;",
-            "atstāt daļu nogulšņu zem smaganām;",
-            "apgrūtināt turpmāko profesionālo kopšanu."
-          ] },
-          { type: "p", text: "Soda, skābi produkti, peroksīds un stipri abrazīvās pastas nav profesionālas higiēnas alternatīva. Tās var noņemt daļu virsmas pigmentu, taču zobakmeņus neizšķīdina un agresīvi lietojot var bojāt zobu vai mutes gļotādas virsmu." },
-          { type: "p", text: "Irigators ar pulsējošu ūdens strūklu var palīdzēt noņemt pārtikas atliekas un kopt grūtāk sasniedzamas vietas, īpaši ap breketēm, tiltiem vai implantiem. Tomēr tas nenoņem jau izveidojušos zobakmeņus un nav universāls starpzobu suku vai diega aizstājējs." }
-        ]
-      },
-      {
-        h: "Kā profesionāli tiek noņemts zobakmens?",
-        p: [
-          "Profesionālās mutes higiēnas sākumā speciālists novērtē zobu, smaganu un mutē esošo konstrukciju stāvokli. Tiek pārbaudīts, kur uzkrājas aplikumi un zobakmeņi, vai smaganas asiņo, vai ir atkāpušās un vai redzamas periodonta slimības pazīmes.",
-          "Zobakmeņus visbiežāk noņem ar ultraskaņas skaleru un rokas instrumentiem. Ultraskaņas instrumenta vibrācijas palīdz atdalīt sacietējušās nogulsnes no zoba virsmas, un ūdens dzesē darba zonu un noskalo noņemtās daļiņas.",
-          "Ar rokas instrumentiem tiek iztīrītas grūtāk sasniedzamās vietas un noņemtas atlikušās nogulsnes. Procedūras beigās zobu virsmas var tikt pulētas. Pigmentētiem un mīkstiem aplikumiem tīrīt var tikt izmantota arī kontrolēta gaisa, ūdens un speciālu pulveru strūkla.",
-          "Ja zobakmeņi ir uzkrājušies dziļi zem smaganām un tiek konstatēts periodontīts, parastas profilaktiskas higiēnas var nepietikt. Šādā gadījumā tiek veikta dziļāka zobu un sakņu virsmu tīrīšana, ko sauc arī par neķirurģisku periodontoloģisku ārstniecību. Sarežģītākos gadījumos pacients tiek nosūtīts pie periodontologa.",
-          "Vizītes laikā mutes higiēnists palīdz noteikt, kurās vietās biofilms uzkrājas visbiežāk, un izvēlas piemērotās mājas kopšanas ierīces. Tas ir svarīgi, jo tikai zobakmeņu noņemšana bez ikdienas higiēnas maiņas nepasargā no to atkārtotas veidošanās."
-        ]
-      },
-      {
-        h: "Vai sāp, noņemot zobakmens?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Vairumam pacientu profesionālā mutes higiēna izraisa spiediena, vibrācijas vai īslaicīga jutīguma sajūtu, nevis stipras sāpes. Procedūras komforts atkarīgs no zobakmeņu daudzuma, to atrašanās vietas, smaganu iekaisuma un individuālā jutīguma." },
-          { type: "p", text: "Nepatīkamākas sajūtas iespējamas, kad:" },
-          { type: "ul", items: [
-            "smaganas ir stipri iekaisušas;",
-            "daudz zobakmeņu uzkrājies zem smaganām;",
-            "atsegtas zobu saknes;",
-            "zobi jutīgi pret aukstumu;",
-            "nepieciešama dziļāka periodontoloģiska tīrīšana."
-          ] },
-          { type: "p", text: "Ja procedūras laikā sāp, par to svarīgi pastāstīt speciālistam. Higiēnu var veikt pa posmiem, pielāgot instrumentu iestatījumus vai, ja nepieciešams, izmantot vietējo anestēziju." },
-          { type: "p", text: "Pēc procedūras zobi uz īsu brīdi var kļūt jutīgāki pret aukstumu, un iekaisuma skartās smaganas — sāpēt vai nedaudz asiņot. Šīs sajūtas pakāpeniski pavājinās. Ja sāpes pastiprinās, palielinās pietūkums vai neapstājas asiņošana, jāsazinās ar klīniku." },
-          { type: "p", text: "Pēc lielu nogulšņu noņemšanas dažreiz šķiet, ka starp zobiem parādījušās atstarpes. Patiesībā zobakmeņi iepriekš tās varēja aizpildīt, un, samazinoties smaganu iekaisumam un pietūkumam, to kontūra kļūst skaidrāka. Profesionālās higiēnas laikā vesela zoba daļa netiek noņemta." }
-        ]
-      },
-      {
-        h: "Kas var notikt, ja zobakmens netiek noņemts?",
-        p: [
-          "Zobakmens virsma ir raupja, tāpēc uz tās vieglāk saglabājas jauns bakteriālais biofilms. Tā dēļ ikdienas higiēna kļūst mazāk efektīva, un smaganu iekaisums var turpināties.",
-          "Sākuma stadijā visbiežāk attīstās gingivīts. Smaganas apsārst, pietūkst un sāk asiņot. Noņemot aplikumus un zobakmeņus un uzlabojot zobu tīrīšanu, šo stāvokli parasti var kontrolēt.",
-          "Neārstēts iekaisums daļai pacientu var progresēt par periodontītu. Tad veidojas dziļākas periodonta kabatas, tiek bojāti zobu balstošie audi un iznīkst kauls. Ar laiku zobi var kļūt kustīgi, mainīties to stāvoklis vai palielināties zaudēšanas risks. Smēķēšana, diabēts un nepietiekama mutes higiēna saistās ar lielāku smagas smaganu slimības risku.",
-          "Zobakmeņu un aplikumu nogulsnes var arī veicināt nepatīkamu elpu. Tomēr redzamais zobakmeņu daudzums ne vienmēr atspoguļo smaganu slimības smagumu — nozīmīgas nogulsnes var būt arī zem smaganām."
-        ]
-      },
-      {
-        h: "Kā izvairīties no atkārtotas zobakmens veidošanās?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Aplikumi veidojas nepārtraukti, tāpēc pilnībā apturēt šo procesu nav iespējams. Profilakses mērķis ir regulāri noņemt biofilmu, kamēr tas vēl nav mineralizējies." },
-          { type: "p", text: "Ieteicams:" },
-          { type: "ul", items: [
-            "divas reizes dienā tīrīt zobus ar fluorīdu saturošu pastu;",
-            "katru dienu iztīrīt starpzobu telpas;",
-            "rūpīgi kopt smaganas malu;",
-            "tīrīt implantus, tiltus, protēzes un ortodontiskās ierīces;",
-            "nesmēķēt;",
-            "regulāri pārbaudīt zobus un smaganas;",
-            "profesionālo mutes higiēnu veikt individuāli noteiktā biežumā."
-          ] },
-          { type: "p", text: "Starpzobu sukas, diegs, irigators vai citas ierīces nav vienādi piemērotas visiem. Plašākās starpzobu telpās bieži ērtākas ir starpzobu sukas, bet šaurās vietās var lietot diegu. Ierīces izmēru un lietošanas tehniku vislabāk apspriest ar mutes higiēnistu." },
-          { type: "p", text: "Aplikumus iekrāsojošas tabletes vai šķīdumi var palīdzēt saskatīt nepietiekami iztīrītās vietas. Tie aplikumus nenoņem, taču var būt noderīga mācību ierīce, kas palīdz uzlabot tīrīšanas tehniku." },
-          { type: "p", text: "Mutes skalošanas šķidrums neaizstāj mehānisku zobu un starpzobu telpu tīrīšanu. Ārsts vai mutes higiēnists var ieteikt konkrētu ierīci noteiktam laikam, taču galvenā aplikumu kontrole notiek ar suku un starpzobu ierīcēm." },
-          { type: "p", text: "Profesionālās higiēnas intervāls nedrīkstētu būt vienāds visiem. Biežāka aprūpe var būt vajadzīga pacientiem, kuriem zobakmeņi uzkrājas ātri, ir diagnosticēts periodontīts, ir implanti, ortodontiskas ierīces vai grūtāk tīrāmas protēzes. Regulāra zobu tīrīšana, starpzobu telpu kopšana un profesionāli vizīti palīdz kontrolēt gingivīta un periodonta slimību risku." },
-          { type: "p", text: "Ja pamanījāt cietas nogulsnes, asiņo smaganas vai nogurdina nepatīkama elpa, reģistrējieties profesionālai mutes higiēnai Bangų klīnikā Klaipēdā. Mūsu speciālisti novērtēs mutes stāvokli, droši noņems aplikumus un zobakmeņus un palīdzēs izvēlēties piemērotās kopšanas ierīces." }
-        ]
-      }
-    ],
-    faq: [
-      { q: "Vai zobu pasta var noņemt zobakmeni?", a: "Nē. Zobu pasta palīdz noņemt mīkstos aplikumus, taču jau mineralizētu zobakmeni netīra. Tas jānoņem ar profesionāliem instrumentiem." },
-      { q: "Vai irigators noņem zobakmeni?", a: "Nē. Irigators var palīdzēt kopt starpzobu telpas un grūtāk sasniedzamas vietas, taču pie zobiem piestiprinājušos zobakmeņus nenoņem." },
-      { q: "Vai zobakmeni var nokasīt mājās?", a: "Nav ieteicams. Asi instrumenti var bojāt smaganas, zobu virsmas, restaurācijas vai implantus, un zem smaganām esošās nogulsnes tik un tā paliks." },
-      { q: "Cik bieži jāveic profesionālā mutes higiēna?", a: "Vienota intervāla visiem nav. To nosaka pēc zobakmeņu uzkrāšanās ātruma, smaganu stāvokļa, periodonta slimību riska un mutē esošajām konstrukcijām." },
-      { q: "Kāpēc pēc zobakmeņu noņemšanas redzamas lielākas atstarpes?", a: "Noņemot zobakmeņus, atklājas iepriekš to aizpildītās vietas. Samazinoties smaganu iekaisumam un pietūkumam, to kontūra arī var izskatīties izmainījusies." },
-      { q: "Vai asiņojošas smaganas var tīrīt?", a: "Jā. Asiņošana bieži saistīta ar iekaisumu, tāpēc aplikumi jānoņem maigi, bet regulāri. Ja asiņošana atkārtojas, jāvēršas pie zobārsta vai mutes higiēnista." }
-    ],
-    sources: [
-      { label: "About Periodontal (Gum) Disease", url: "https://www.cdc.gov/oral-health/about/gum-periodontal-disease.html" },
-      { label: "Oral Health Tips for Adults", url: "https://www.cdc.gov/oral-health/prevention/oral-health-tips-for-adults.html" },
-      { label: "Effects of Interdental Cleaning Devices in Preventing Dental Caries and Periodontal Diseases: A Scoping Review", url: "https://pubmed.ncbi.nlm.nih.gov/31556125/" },
-      { label: "Efficacy of Power-Driven Interdental Cleaning Tools: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/36562267/" }
-    ]
+    readTime: 12
   },
   {
     slug: "kariess-bez-urbsanas-ko-var-darit-klinika-un-majas",
@@ -26564,251 +26613,7 @@ const BLOG_POSTS_LV = [
     date: "2026-07-26",
     category: "Zobu ārstniecība",
     coverImage: "/blog/kariesas-be-grezimo.jpg",
-    readTime: 13,
-    sections: [
-      {
-        p: [
-          "Kariesa ārstniecība bez urbšanas iespējama tikai noteiktās slimības stadijās. Ja zoba virsma vēl nav sabrukusi un redzams tikai agrīns minerālvielu zudums, bojājumu dažkārt var apturēt ar fluorīdiem, labāku mutes higiēnu, ēšanas ieradumu korekciju vai minimāli invazīvām zobārstniecības metodēm.",
-          "Tomēr jau izveidojies caurums mājās nesadzīst. Zobu pasta, mutes skalošanas šķidrums, uztura bagātinātāji vai tautas līdzekļi nespēj atjaunot zaudēto emalju un dentīnu. Kad zoba virsmā parādās dobums, visbiežāk nepieciešama restauratīva ārstniecība.",
-          "Tāpēc kariesa ārstniecība mājās nozīmē nevis pašam zoba cauruma labošanu, bet zobārsta noteikta agrīnā bojājuma kontroli. Jo agrāk kariess tiek pamanīts, jo lielāka iespēja izvairīties no urbšanas un saglabāt vairāk veselu zoba audu."
-        ]
-      },
-      {
-        h: "Kas ir zobu kariess un kā tas attīstās?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Zobu kariess ir process, kura laikā zoba audi pakāpeniski zaudē minerālvielas. Mutes aplikumos esošās baktērijas sadala cukurus un citus ogļhidrātus, un šī procesa laikā veidojas skābes. Tās iedarbojas uz emalju un veicina tās demineralizāciju." },
-          { type: "p", text: "Pēc skābes iedarbības siekalas palīdz neitralizēt mutes vidi. Tajās esošie kalcija un fosfātu joni var atgriezties emaljā, un fluorīdi palīdz šo procesu pastiprināt." },
-          { type: "p", text: "Kariess attīstās tad, kad minerālvielu zudums laika gaitā kļūst lielāks par to atgriešanos. Risku palielina:" },
-          { type: "ul", items: [
-            "bieža saldu uzkodu un dzērienu lietošana;",
-            "uz zobiem ilgi saglabājošies bakteriālie aplikumi;",
-            "nepietiekama fluorīdu iedarbība;",
-            "samazināts siekalu daudzums;",
-            "grūti tīrāmas zoba gropes un starpzobu telpas;",
-            "ortodontiskās ierīces;",
-            "necaurlaidīgas plombas vai citas restaurācijas;",
-            "iepriekšēji biežie kariesa bojājumi."
-          ] },
-          { type: "p", text: "Svarīgs ir ne tikai kopējais cukura daudzums, bet arī tā lietošanas biežums. Pastāvīgi uzkožot vai malkot saldus dzērienus, zobi bieži pakļauti skābes iedarbībai un tiem ir mazāk laika atjaunoties." },
-          { type: "p", text: "Kariess var būt aktīvs, lēni progresējošs vai apturēts. Tāpēc ārstniecības lēmums atkarīgs ne tikai no plankuma krāsas vai izmēra, bet arī no bojājuma dziļuma, virsmas stāvokļa un pacienta kopējā kariesa riska." }
-        ]
-      },
-      {
-        h: "Kā atpazīt agrīnu kariesu, kamēr vēl nav cauruma?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Agrīns kariess visbiežāk nesāp. Pirmā pazīme var būt matēts, krīta baltuma plankums, kas norāda, ka emalja zaudējusi daļu minerālvielu." },
-          { type: "p", text: "Šādas izmaiņas bieži parādās:" },
-          { type: "ul", items: [
-            "pie smaganas malas;",
-            "ap breketēm;",
-            "molāro zobu gropēs;",
-            "starpzobu telpās;",
-            "vietās, kur uzkrājas aplikumi."
-          ] },
-          { type: "p", text: "Iespējamās pazīmes:" },
-          { type: "ul", items: [
-            "balts vai krēmīgs matēts plankums;",
-            "samazināta emaljas caurspīdība;",
-            "raupjāka zoba virsma;",
-            "brūnīgs vai tumšāks krāsas mainījums;",
-            "īslaicīgs jutīgums pret saldu, aukstu vai skābu ēdienu."
-          ] },
-          { type: "p", text: "Ne katrs balts vai tumšs plankums ir aktīvs kariess. Līdzīgi var izskatīties fluoroze, emaljas attīstības traucējumi, pigmenti vai vecs, jau apturēts bojājums." },
-          { type: "p", text: "Tikai pēc plankuma izskata nav iespējams izlemt, vai kariesu vēl var ārstēt bez urbšanas. Zobārstam jānovērtē, vai zoba virsma ir palikusi vesela, kāds ir bojājuma dziļums un vai process joprojām ir aktīvs." },
-          { type: "p", text: "Starpzobu telpu kariess bieži ilgi nav redzams. Tā noteikšanai var tikt veikti rentgena uzņēmumi. Redzams caurums, pastāvīgi iestrēgstoša barība vai sāpes visbiežāk norāda, ka bojājums jau ir progresējis." }
-        ]
-      },
-      {
-        h: "Vai iespējama kariesa ārstniecība mājās?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Kariesa ārstniecība mājās var palīdzēt kontrolēt tikai ļoti agrīnu bojājumu, kad zoba virsma vēl nav sabrukusi. Šādā gadījumā zobārsts var izveidot plānu, kas palīdz samazināt skābes iedarbību un veicināt emaljas remineralizāciju." },
-          { type: "p", text: "Mājas aprūpe var ietvert:" },
-          { type: "ul", items: [
-            "zobu tīrīšanu ar fluorīdu saturošu pastu divas reizes dienā;",
-            "ikdienas starpzobu telpu tīrīšanu;",
-            "retāku saldu uzkodu un dzērienu lietošanu;",
-            "ūdens izvēli starp ēdienreizēm;",
-            "zobārsta nozīmētas papildu fluorīdu ierīces;",
-            "mutes sausuma iemeslu kontroli;",
-            "regulārus atkārtotus izmeklējumus."
-          ] },
-          { type: "p", text: "Šie pasākumi palīdz mainīt apstākļus mutē, lai agrīnais bojājums pārstātu progresēt. Tie nevar atjaunot jau zaudētos zoba audus." },
-          { type: "p", text: "Ja zoba virsma ir sabrukusi, dobumā uzkrājas aplikumi vai kariess izplatījies dentīnā, tikai mājas aprūpes nepietiek." },
-          { type: "p", text: "Lielākas koncentrācijas fluorīdu pastas, geli vai skalošanas šķidrumi arī nedrīkstētu būt izvēlēti patstāvīgi. To nepieciešamība atkarīga no pacienta vecuma, mutes stāvokļa un kariesa riska." }
-        ]
-      },
-      {
-        h: "Kad kariesa ārstniecība bez urbšanas var būt efektīva?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Kariesa ārstniecība bez urbšanas visbiežāk tiek apsvērta tad, kad bojājums ir agrīns, un zoba virsmā vēl nav izveidojies caurums." },
-          { type: "p", text: "Zobārsts novērtē:" },
-          { type: "ul", items: [
-            "bojājuma atrašanās vietu un dziļumu;",
-            "zoba virsmas veselumu;",
-            "vai bojājums ir aktīvs;",
-            "vai vietu var pareizi iztīrīt;",
-            "citu kariesa perēkļu skaitu;",
-            "siekalu daudzumu;",
-            "ēšanas un mutes higiēnas ieradumus;",
-            "pacienta iespēju ievērot aprūpes plānu."
-          ] },
-          { type: "p", text: "Ārstniecība bez urbšanas nav viena procedūra. Tā var būt fluorīdu lietošana, silanti, sveķu infiltrācija vai aktīva novērošana, vienlaikus kontrolējot riska faktorus." },
-          { type: "p", text: "Svarīga ārstniecības daļa ir atkārtoti izmeklējumi. Ja bojājums progresē, plāns jāmaina. Tikai tas, ka zobs nesāp, nenozīmē, ka to var ilgi atstāt bez kontroles." },
-          { type: "p", text: "Pat apturot kariesu, balts vai tumšs plankums var pilnīgi neizzust. Galvenais ārstniecības mērķis ir apturēt audu bojāšanos, nevis obligāti pilnīgi atjaunot iepriekšējo emaljas izskatu." }
-        ]
-      },
-      {
-        h: "Kā fluorīdi un remineralizācija palīdz apturēt agrīnu kariesu?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Remineralizācija ir process, kura laikā minerālvielas atgriežas agrīni bojātā emaljā. Siekalas dabiski piedalās šajā procesā, un fluorīdi palīdz emaljai kļūt izturīgākai pret skābēm." },
-          { type: "p", text: "Galvenais ikdienas līdzeklis ir fluorīdu saturoša zobu pasta. Lai tā darbotos pareizi, svarīgi:" },
-          { type: "ul", items: [
-            "zobus tīrīt divas reizes dienā;",
-            "izvēlēties vecumam piemērotu pastu;",
-            "lietot ieteikto tās daudzumu;",
-            "pēc tīrīšanas pastu izspļaut;",
-            "muti intensīvi neskalot ar lielu ūdens daudzumu;",
-            "katru dienu tīrīt starpzobu telpas."
-          ] },
-          { type: "p", text: "Pacientiem, kuru kariesa risks ir lielāks, zobārsts var ieteikt profesionālu fluora laku vai lielākas koncentrācijas pastu." },
-          { type: "p", text: "Fluorīdi neaizpilda caurumu. Tie visefektīvākie ir tad, kad zoba virsma vēl ir vesela un var notikt minerālvielu apmaiņa." },
-          { type: "p", text: "Remineralizācijai svarīgs arī cukura lietošanas biežums. Pat rūpīgi tīrot zobus, pastāvīgas saldas uzkodas vai dzērieni var traucēt agrīnajam bojājumam stabilizēties." }
-        ]
-      },
-      {
-        h: "Kā kariesu ārstē ar sveķu infiltrāciju?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Sveķu infiltrācija ir minimāli invazīva metode, kas paredzēta atlasītiem agrīniem kariesa bojājumiem, kad vēl nav izveidojies dobums. Tā bieži tiek lietota sākotnējiem starpzobu telpu vai gludo zoba virsmu bojājumiem." },
-          { type: "p", text: "Procedūras laikā zobs tiek izolēts, un bojātā emaljas virsma tiek sagatavota. Poru bojājumā tiek ievadīti ļoti šķidri sveķi, kas iesūcas mikroskopiskās emaljas porās. Vēlāk tie tiek sacietēti ar polimerizācijas lampu." },
-          { type: "p", text: "Sveķi izveido barjeru bojājuma iekšpusē un palīdz samazināt turpmāko skābes iedarbību. Tā tiek panākts kariesa progresēšanas pārtraukums, nenoņemot lielu daļu zoba audu." },
-          { type: "p", text: "Sveķu infiltrācijas priekšrocības:" },
-          { type: "ul", items: [
-            "visbiežāk nav nepieciešama urbšana;",
-            "tiek saglabāts vairāk dabīga zoba;",
-            "bieži nav nepieciešama vietējā anestēzija;",
-            "var ārstēt agrīnus starpzobu telpu bojājumus;",
-            "daži baltie plankumi kļūst mazāk pamanāmi."
-          ] },
-          { type: "p", text: "Šī metode nav piemērota katram plankumam vai dobumam. Ja zoba virsma jau ir sabrukusi, bojājums dziļš vai grūti pareizi izolēt zobu, var būt vajadzīga cita ārstniecība." },
-          { type: "p", text: "Pēc procedūras joprojām nepieciešama pareiza mutes higiēna, fluorīdu lietošana, ēšanas kontrole un regulāra novērošana." }
-        ]
-      },
-      {
-        h: "Kādas citas kariesa ārstniecības bez urbšanas metodes tiek izmantotas zobārstniecībā?",
-        p: []
-      },
-      {
-        h: "Zobu gropu silanti",
-        p: [
-          "Silanti ir plāns aizsargmateriāla slānis, ar kuru pārklāj dziļas molāro zobu gropes. Tie traucē aplikumiem un pārtikas atliekām uzkrāties grūti tīrāmās vietās.",
-          "Silanti visbiežāk tiek izmantoti profilaksei, taču atlasītos gadījumos ar tiem var arī hermetizēt agrīnus, dobumu vēl neveidojušus košļājamo virsmu bojājumus.",
-          "Silantu stāvoklis periodiski jāpārbauda, jo, materiālam nolietojoties vai atlīmējoties, aizsardzība samazinās."
-        ]
-      },
-      {
-        h: "Profesionālās fluorīdu aplikācijas",
-        p: [
-          "Zobārsts vai mutes higiēnists var uzklāt lielākas koncentrācijas fluora laku. Šī procedūra var būt ieteicama, kad ir vairāki agrīni bojājumi, samazināta siekalošanās vai liels kariesa risks."
-        ]
-      },
-      {
-        h: "Sudraba diamīna fluorīds",
-        p: [
-          "Dažās valstīs noteiktiem pacientiem kariesa aktivitātes samazināšanai tiek lietots sudraba diamīna fluorīds. Tas var apturēt bojājumu, taču kariesa skartā vieta paliek tumšāka, un zoba forma netiek atjaunota.",
-          "Šī metode nav vienādi izmantota visās klīnikās un visbiežāk tiek izvēlēta specifiskās situācijās."
-        ]
-      },
-      {
-        h: "Aktīva novērošana",
-        p: [
-          "Dažus agrīnus bojājumus var novērot, ja vienlaikus tiek piemērots skaidrs aprūpes plāns. Tā nav pasīva gaidīšana. Jādokumentē bojājums, jāuzlabo higiēna, jākontrolē ēdiens un noteiktā laikā atkārtoti jāveic izmeklējumi.",
-          "Lāzers, gaisa abrāzija vai bojāto audu ķīmiska mīkstināšana dažreiz tiek saukti par ārstniecību bez urbšanas, taču, lietojot šīs metodes, zoba audi joprojām var tikt noņemti. Tie ir alternatīvi dobuma sagatavošanas veidi, nevis agrīnā kariesa remineralizācija."
-        ]
-      },
-      {
-        h: "Kad kariesu vairs nevar ārstēt bez urbšanas?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Ārstniecība bez urbšanas visbiežāk nav pietiekama, kad zoba virsma sabrukusi un izveidojies dobums. Šādā vietā viegli uzkrājas aplikumi un pārtikas atliekas, un pacients nespēj to pareizi iztīrīt." },
-          { type: "p", text: "Restauratīva ārstniecība var būt nepieciešama, kad:" },
-          { type: "ul", items: [
-            "redzams vai sajūtams caurums;",
-            "zoba audi kļuvuši mīksti vai trausli;",
-            "bojājums progresē dentīnā;",
-            "starp zobiem pastāvīgi iestrēgst pārtika;",
-            "zobs sāp košļājot;",
-            "jutīgums ilgst ilgāk;",
-            "kariess ir zem vecas necaurlaidīgas plombas;",
-            "zobs ieplaisājis vai atlūzis;",
-            "bojājums pietuvojies pulpai."
-          ] },
-          { type: "p", text: "Šādā gadījumā zobārsts noņem neatgriezeniski bojātos audus un atjauno zoba formu ar plombu vai citu restaurāciju. Mūsdienu zobārstniecībā tiek meklēts noņemt tikai tik daudz audu, cik nepieciešams, un saglabāt pēc iespējas vairāk vesela zoba." },
-          { type: "p", text: "Ja kariess sasniedzis pulpu, var būt nepieciešama sakņu kanālu ārstniecība. Ja parādās abscess, sejas pietūkums, drudzis vai rīšanas grūtības, nepieciešama neatliekamā palīdzība." }
-        ]
-      },
-      {
-        h: "Kādām mājas kariesa ārstniecības metodēm vajadzētu izvairīties?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Caurumu zobā nevar sadziedēt zāles, propoliss, ķiploks, soda, eļļas vai uztura bagātinātāji. Šie līdzekļi neatjauno zaudēto emalju vai dentīnu un neaizver dobumu." },
-          { type: "p", text: "Uz zoba vai smaganām nevajadzētu likt:" },
-          { type: "ul", items: [
-            "ķiploku;",
-            "propolisa tinktūru;",
-            "ēteriskās eļļas;",
-            "aspirīnu;",
-            "koncentrētus zāļu ekstraktus;",
-            "skābes vai stipri abrazīvās vielas."
-          ] },
-          { type: "p", text: "Šādas ierīces var kairināt vai ķīmiski bojāt mutes gļotādu. Īslaicīga sāpju samazināšanās arī nenozīmē, ka kariess ir apturēts." },
-          { type: "p", text: "Skalošana ar sāls ūdeni, kokosriekstu eļļu vai zāļu novārījumiem neaizpilda dobumu un neaizvieto zobu tīrīšanu ar fluorīdu saturošu pastu." },
-          { type: "p", text: "Antibiotikas kariesu arī neārstē. Tās tiek nozīmētas tikai konkrētu infekcijas izplatības indikāciju gadījumā, taču neaizstāj bojātā zoba ārstniecību." }
-        ]
-      },
-      {
-        h: "Kā samazināt jaunu kariesa bojājumu risku?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Ilgtermiņa kariesa profilakse balstās uz konsekventu ikdienas aprūpi un individuāli plānotiem izmeklējumiem." },
-          { type: "p", text: "Svarīgākās darbības:" },
-          { type: "ul", items: [
-            "tīrīt zobus ar fluorīdu saturošu pastu divas reizes dienā;",
-            "katru dienu tīrīt starpzobu telpas;",
-            "ierobežot saldu uzkodu un dzērienu lietošanas biežumu;",
-            "starp ēdienreizēm izvēlēties ūdeni;",
-            "kopt ortodontiskās ierīces un protēzes;",
-            "laikus mainīt necaurlaidīgas restaurācijas;",
-            "vērsties par mutes sausumu;",
-            "pārbaudīt zobus atbilstoši individuālajam riskam."
-          ] },
-          { type: "p", text: "Profilaktisko vizītu biežums nedrīkstētu būt vienāds visiem. Cilvēkam ar mazu kariesa risku var pietikt ar retākām pārbaudēm, bet pacientam ar aktīviem bojājumiem, sausu muti vai ortodontisku ierīci var būt nepieciešama biežāka novērošana." },
-          { type: "p", text: "Ja pamanījāt baltu vai tumšu plankumu, zoba raupjumu, jutīgumu vai redzamu dobumu, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā. Mūsu speciālisti novērtēs bojājuma dziļumu un aktivitāti un noteiks, vai to vēl var kontrolēt bez urbšanas, vai jau nepieciešama plombēšana." }
-        ]
-      }
-    ],
-    faq: [
-      { q: "Vai caurums zobā var sadzīt pats?", a: "Nē. Izveidojoties dobumam, zaudētie zoba audi paši neataug. Remineralizēt var tikai agrīnu bojājumu, kad zoba virsma vēl ir vesela." },
-      { q: "Vai balts plankums uz zoba vienmēr nozīmē kariesu?", a: "Nē. Tas var būt saistīts ar agrīnu kariesu, fluorozi vai emaljas attīstības izmaiņām. Iemeslu jānovērtē zobārstam." },
-      { q: "Vai fluorīdu pasta var izārstēt kariesu?", a: "Tā var palīdzēt apturēt vai remineralizēt agrīnu bojājumu, taču nevar aizpildīt jau izveidojušos caurumu." },
-      { q: "Vai sveķu infiltrācija piemērota visiem kariesa bojājumiem?", a: "Nē. Tā visbiežāk tiek izmantota agrīniem bojājumiem, kad zoba virsma vēl nav sabrukusi. Dziļiem dobumiem parasti nepieciešama restauratīva ārstniecība." },
-      { q: "Vai kariesu var ārstēt ar sodu, propolisu vai kokosriekstu eļļu?", a: "Nē. Šie līdzekļi neatjauno emalju vai dentīnu un neaizver dobumu. Daži no tiem var bojāt mutes gļotādu." },
-      { q: "Vai kariesa ārstniecība bez urbšanas piemērota bērniem?", a: "Jā, atlasītos gadījumos bērniem var tikt izmantoti fluorīdi, silanti vai citas neinvazīvas metodes. Lēmums atkarīgs no bojājuma stadijas un bērna kariesa riska." }
-    ],
-    sources: [
-      { label: "American Dental Association – Caries Management Clinical Practice Guidelines", url: "https://www.ada.org/resources/research/science/evidence-based-dental-research/caries-management-clinical-practice-guidelines" },
-      { label: "Evidence-based Clinical Practice Guideline on Nonrestorative Treatments for Carious Lesions", url: "https://pubmed.ncbi.nlm.nih.gov/30261951/" },
-      { label: "Efficacy of Resin Infiltrate in Noncavitated Proximal Carious Lesions: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/31198691/" },
-      { label: "Efficacy of the Resin Infiltration Technique in Preventing Initial Caries Progression: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/30992105/" },
-      { label: "Fluoride Varnishes for Preventing Dental Caries in Children and Adolescents", url: "https://pubmed.ncbi.nlm.nih.gov/23846772/" },
-      { label: "Pit and Fissure Sealant Versus Fluoride Varnish for the Prevention of Dental Caries: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/36263239/" },
-      { label: "World Health Organization – Sugars and Dental Caries", url: "https://www.who.int/news-room/fact-sheets/detail/sugars-and-dental-caries" }
-    ]
+    readTime: 13
   },
   {
     slug: "ka-drosi-balinat-zobus-majas",
@@ -26817,182 +26622,7 @@ const BLOG_POSTS_LV = [
     date: "2026-07-24",
     category: "Zobu balināšana",
     coverImage: "/blog/kaip-saugiai-balinti-dantis-namuose.jpg",
-    readTime: 12,
-    sections: [
-      {
-        p: [
-          "Zobu balināšana mājās var palīdzēt paspilgtināt dabīgo zobu krāsu, taču ne visi līdzekļi ir vienlīdz efektīvi un droši. Uzticamāko rezultātu parasti sniedz peroksīdu saturoši balināšanas līdzekļi, un vislabāk kontrolētā mājas metode ir individuālās kapas, kas tiek lietotas saskaņā ar zobārsta ieteikumiem.",
-          "Balinošās zobu pastas visbiežāk tikai noņem virsmas pigmentus. Citronu sula, etiķis, aktivētā ogle, tīrs ūdeņraža peroksīds un patstāvīgi sagatavoti maisījumi var ne tikai nepalīdzēt, bet arī bojāt zobu virsmu vai kairināt smaganas.",
-          "Pirms balināšanas sākšanas svarīgi novērtēt mutes stāvokli. Aptumšotos zobus var izraisīt ne tikai pigmenti, bet arī kariess, trauma, pulpas bojājums, emaljas nolietojums vai vecās restaurācijas. Turklāt plombas, kroņi un lāminas nebalinās, tāpēc pēc procedūras to krāsa var vairs nesakrist ar dabīgajiem zobiem."
-        ]
-      },
-      {
-        h: "Kāpēc mainās zobu krāsa un vai visus zobus var balināt?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Dabīgā zobu krāsa nav pilnīgi balta. To ietekmē emaljas biezums, zem tās esošā dentīna nokrāsa, vecums un iedzimtās īpašības. Tāpēc vieniem cilvēkiem zobi dabīgi ir gaišāki, citiem — dzeltenīgāki vai pelēcīgāki." },
-          { type: "p", text: "Zobu krāsas izmaiņas iedala ārējās un iekšējās." },
-          { type: "p", text: "Ārējie plankumi veidojas uz zoba virsmas. Tos visbiežāk veicina:" },
-          { type: "ul", items: [
-            "kafija un tēja;",
-            "sarkanvīns;",
-            "tabaka;",
-            "tumšās ogas un pigmentēti pārtikas produkti;",
-            "aplikumi un nepietiekama mutes higiēna."
-          ] },
-          { type: "p", text: "Daļu šo plankumu var noņemt profesionālās mutes higiēnas laikā vai lietojot piemērotu zobu pastu. Šādā gadījumā zobiem visbiežāk atgriež dabiskāku krāsu, taču tie ķīmiski netiek balināti." },
-          { type: "p", text: "Iekšējās krāsas izmaiņas veidojas zoba audos. Tās var izraisīt vecums, zoba trauma, mirusi pulpa, attīstības traucējumi vai atsevišķas bērnībā lietotās zāles. Viena aptumšotā zoba ārstniecība var atšķirties no visas smaida balināšanas, tāpēc vispirms jānosaka krāsas izmaiņu iemesls." },
-          { type: "p", text: "Balinošie līdzekļi iedarbojas uz dabīgajiem zoba audiem, taču nemaina plombu, kroņu, lāminu, tiltu vai implantu protēžu daļu krāsu. Ja priekšējie zobi ir restaurēti, pēc balināšanas var izcelties nokrāsu atšķirības. Šādā gadījumā balināšanu ir vērts plānot pirms galīgās estētiskās plombēšanas vai protezēšanas." }
-        ]
-      },
-      {
-        h: "Kādas zobu balināšanas mājās metodes patiešām darbojas?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Īsta ķīmiskā zobu balināšana parasti tiek veikta, izmantojot ūdeņraža vai karbamīda peroksīdu saturošus līdzekļus. Tie iedarbojas uz zoba audos esošajiem pigmentiem un var paspilgtināt dabīgo zobu krāsu." },
-          { type: "p", text: "Visbiežāk izmantotās metodes:" },
-          { type: "ul", items: [
-            "individuālās balināšanas kapas ar gelu;",
-            "bezrecepšu balinošās sloksnes;",
-            "universālās kapas un balināšanas komplekti;",
-            "balinošie zīmuļi;",
-            "balinošās zobu pastas;",
-            "balinošie skalošanas šķidrumi."
-          ] },
-          { type: "p", text: "To iedarbība atšķiras." },
-          { type: "p", text: "Individuālās kapas ļauj precīzāk sadalīt balinošo gelu un pielāgot procedūru atbilstoši pacienta zobu stāvoklim." },
-          { type: "p", text: "Balinošās sloksnes var ķīmiski paspilgtināt zobus, taču ne vienmēr vienmērīgi piegulst visām virsmām." },
-          { type: "p", text: "Universālās kapas var būt nepietiekami precīzas, tāpēc gels reizēm nokļūst uz smaganām vai zobi tiek balināti nevienmērīgi." },
-          { type: "p", text: "Balinošās pastas visbiežāk noņem virsmas pigmentus, bet nemaina dabīgo dentīna krāsu." },
-          { type: "p", text: "Skalošanas šķidrumu un zīmuļu kontakts ar zobiem bieži nav pietiekams izteiktam rezultātam, tāpēc tie vairāk piemēroti kā papildu, nevis pamata ierīces." },
-          { type: "p", text: "Balināšanas rezultāts atkarīgs no zobu sākotnējās krāsas, krāsas izmaiņu iemesla, izmantotā materiāla un procedūras ilguma. Lielāks gela daudzums, biežāka lietošana vai ilgāka turēšana neobligāti sniedz labāku rezultātu, taču var palielināt jutīguma un smaganu kairinājuma risku." }
-        ]
-      },
-      {
-        h: "Kā tiek veikta zobu balināšana mājās ar individuālajām kapām?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Balināšanu ar individuālajām kapām veic mājās, taču to plāno zobārsts. Vispirms tiek pārbaudīti zobi, smaganas, esošās restaurācijas un novērtēts iespējamais rezultāts." },
-          { type: "p", text: "Kapu izgatavošana parasti notiek vairākos posmos:" },
-          { type: "ol", items: [
-            "Tiek veikta mutes stāvokļa apskate.",
-            "Zobi tiek noskenēti vai tiek ņemti to nospiedumi.",
-            "Tiek izgatavotas individuālas, zobiem cieši piegulošas kapas.",
-            "Tiek izvēlēts balinošais gels un tā lietošanas režīms.",
-            "Pacientam tiek izskaidrota kapu kopšana un darbības, ja parādās jutīgums."
-          ] },
-          { type: "p", text: "Kapā ievieto nelielu balinošā gela daudzumu. Pārāk daudz gela var izplūst pāri kapas malām un kairināt smaganas, tāpēc tā daudzumu patstāvīgi palielināt nevajadzētu." },
-          { type: "p", text: "Balināšanas ilgums atkarīgs no izmantotās sistēmas un aktīvās vielas koncentrācijas. Vienas kapas tiek valkātas īsāk dienas laikā, citas — ilgāk vai naktī. Jāievēro konkrēta speciālista noteikts režīms, nevis universāli interneta ieteikumi." },
-          { type: "p", text: "Individuālās kapas var tikt izmantotas arī atbalsta balināšanai, taču tikai saņemot zobārsta ieteikumu. Patstāvīgi atkārtot kursu bieži vai lietot atlikušo veco gelu nevajadzētu." }
-        ]
-      },
-      {
-        h: "Vai balinošās sloksnes un zobu pastas ir efektīvas?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Balinošās sloksnes parasti pārklātas ar peroksīdu saturošu gelu. Pareizi lietots uzticams produkts var paspilgtināt dabīgos zobus, taču rezultāts atkarīgs no sloksnes piegulšanas un aktīvās vielas." },
-          { type: "p", text: "Sloksnes var nesasniegt starpzobu telpas, greizāk izvietotus zobus vai to sānu virsmas. Tāpēc krāsa reizēm mainās nevienmērīgi. Gels arī var nokļūt uz smaganām un tās kairināt." },
-          { type: "p", text: "Lietojot sloksnes, svarīgi:" },
-          { type: "ul", items: [
-            "ievērot ražotāja instrukcijas;",
-            "nepārsniegt ieteikto laiku;",
-            "nelietot vairākas balināšanas sistēmas kopā;",
-            "nelikt sloksnes uz kairinātām vai asiņojošām smaganām;",
-            "pārtraukt lietošanu, ja parādās stipras sāpes."
-          ] },
-          { type: "p", text: "Balinošās zobu pastas darbojas citādi. Vairums no tām satur abrazīvas daļiņas, fermentus vai citas vielas, kas palīdz samazināt virsmas pigmentus. Tās var būt noderīgas, uzturot tīrāku un vizuāli gaišāku zobu izskatu, taču visbiežāk nemaina dabīgo zoba krāsu tā, kā ķīmiskā balināšana." },
-          { type: "p", text: "Pārāk abrazīvu pastu lietojot ilgi un stipri spiežot suku, var veicināt zoba virsmas vai atsegto sakņu nolietojumu. Tāpēc pastu vislabāk izvēlēties atbilstoši individuālajam zobu stāvoklim, nevis tikai pēc balinošā solījuma uz iepakojuma." }
-        ]
-      },
-      {
-        h: "No kādām zobu balināšanas mājās ierīcēm vajadzētu izvairīties?",
-        p: [],
-        blocks: [
-          { type: "p", text: 'Internetā bieži piedāvātās „dabīgās" metodes nav līdzvērtīgas profesionālajiem balināšanas līdzekļiem. Dažas no tām zobus tikai mehāniski beržot vai iedarbojas ar skābēm.' },
-          { type: "p", text: "Zobus nevajadzētu berzt vai skalot ar:" },
-          { type: "ul", items: [
-            "citronu sulu;",
-            "ābolu etiķi;",
-            "skābu augļu mīkstumu;",
-            "tīru ūdeņraža peroksīdu;",
-            "aktivētās ogles pulveri;",
-            "ēteriskajām eļļām;",
-            "patstāvīgi sagatavotiem sodas maisījumiem."
-          ] },
-          { type: "p", text: "Citronu sula, etiķis un citi skābi produkti var veicināt emaljas eroziju. Emaljai plānoties, izteiktāk redzams dzeltenīgais dentīns, tāpēc ar laiku zobi var izskatīties vēl tumšāki un kļūt jutīgāki." },
-          { type: "p", text: "Soda un aktivētā ogle zobus ķīmiski nebalinā. Tās var mehāniski noņemt daļu virsmas pigmentu, taču pārāk intensīva vai bieža beršana palielina virsmas nolietojuma risku. Par aktivētās ogles ierīču ilgtermiņa drošību un efektivitāti uzticamu pierādījumu nepietiek." },
-          { type: "p", text: "Tīrs ūdeņraža peroksīds arī nedrīkstētu tikt lietots patstāvīgi. Nepiemērota koncentrācija vai pārāk ilgs kontakts var izraisīt smaganu kairinājumu, ķīmisku gļotādas bojājumu un izteiktu zobu jutīgumu." },
-          { type: "p", text: "Kokosriekstu eļļas skalošana nav uzticami pierādīta zobu krāsas maiņas metode. Tā arī neaizvieto zobu tīrīšanu ar fluorīdu saturošu pastu un ikdienas starpzobu telpu kopšanu." }
-        ]
-      },
-      {
-        h: "Kad zobu balināšana mājās nav piemērota vai jāatliek?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Pirms balināšanas jāizārstē aktīvais kariess, jānovērtē necaurlaidīgas plombas, zobu plaisas un smaganu stāvoklis. Balinošais materiāls, nokļūstot bojātās vietās, var izraisīt stiprāku jutīgumu vai sāpes." },
-          { type: "p", text: "Balināšanu vajadzētu atlikt vai apspriest ar zobārstu, ja:" },
-          { type: "ul", items: [
-            "ir neizārstēti kariesa bojājumi;",
-            "smaganas asiņo, ir pietūkušas vai atkāpušās;",
-            "zobi ļoti jutīgi;",
-            "ir plaisas vai stipri nodilusi emalja;",
-            "priekšējā zonā ir daudz restaurāciju;",
-            "viens zobs pēkšņi aptumšojies;",
-            "paciente ir grūtniecības vai zīdīšanas periodā;",
-            "balināt paredzēts bērnu vai pusaudžu zobus."
-          ] },
-          { type: "p", text: "Viena zoba aptumšošanās pēc traumas var norādīt uz pulpas bojājumu. Šādā gadījumā parastā balināšana ar kapām vai sloksnēm problēmu neatrisina." },
-          { type: "p", text: "Ja zobu krāsu maina aplikumi un pigmenti, pirms balināšanas var tikt ieteikta profesionālā mutes higiēna. Reizēm tikai noņemot aplikumus zobi izskatās manāmi gaišāki, tāpēc papildu ķīmiskā balināšana var nebūt nepieciešama." }
-        ]
-      },
-      {
-        h: "Kā samazināt zobu jutīgumu un ilgāk saglabāt rezultātu?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Īslaicīgs zobu jutīgums un smaganu kairinājums ir biežākās balināšanas blakusparādības. Jutīgums var izpausties ar īsu sāpi reaģējot uz aukstumu, karstumu, gaisu vai saldu ēdienu." },
-          { type: "p", text: "Ja zobi kļuva jutīgi, var:" },
-          { type: "ul", items: [
-            "ieturēt zobārsta ieteikto pauzi;",
-            "lietot jutīgiem zobiem paredzētu pastu;",
-            "īslaicīgi izvairīties no ļoti auksta un karsta ēdiena;",
-            "nepagarināt balināšanas līdzekļa turēšanas laiku;",
-            "informēt zobārstu, ja sajūtas pastiprinās."
-          ] },
-          { type: "p", text: "Stipras, pēkšņas vai tikai vienā zobā sajūtamās sāpes nav parasta balināšanas sajūta. Šādā gadījumā procedūra jāpārtrauc un jāpārbauda zobs." },
-          { type: "p", text: "Zobu balināšanas rezultāts nav pastāvīgs. To ilgāk saglabāt palīdz:" },
-          { type: "ul", items: [
-            "rūpīga zobu un starpzobu telpu tīrīšana;",
-            "mutes skalošana ar ūdeni pēc kafijas, tējas vai vīna;",
-            "atteikšanās no tabakas;",
-            "regulāra profesionāla mutes higiēna;",
-            "atbalsta balināšana tikai pēc zobārsta ieteikumiem."
-          ] },
-          { type: "p", text: "Nav obligāti pilnīgi atteikties no visiem pigmentētajiem produktiem, taču bieža to lietošana var paātrināt atkārtotu plankumu uzkrāšanos." }
-        ]
-      },
-      {
-        h: "Droša zobu balināšana sākas ar zobārsta novērtējumu",
-        p: [
-          "Zobu balināšana mājās var būt efektīva, kad tiek lietoti uzticami līdzekļi, tiek ievērotas instrukcijas un pirms procedūras tiek novērtēta mutes veselība. Individuālās kapas ļauj balināšanu pielāgot konkrētam pacientam, taču arī tās lietojot var parādīties īslaicīgs jutīgums.",
-          "Balinošās pastas galvenokārt noņem virsmas pigmentus, savukārt skābes, aktivētā ogle, tīrs ūdeņraža peroksīds un patstāvīgi sagatavoti maisījumi var būt neefektīvi vai kaitīgi. Arī svarīgi atcerēties, ka plombas, kroņi un lāminas nebalinās.",
-          "Ja apsverat zobu balināšanu mājās, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā. Mūsu speciālisti novērtēs zobu un smaganu stāvokli, apspriedīs iespējamo rezultātu un, ja šī metode jums piemērota, izgatavos individuālas kapas un izskaidros, kā droši tās lietot."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Vai var droši balināt zobus ar sodu?", a: "Patstāvīgi berzt zobus ar sodu nav ieteicams. Tā var noņemt daļu virsmas pigmentu, taču zobu krāsu ķīmiski nemaina, un pārāk bieži lietota var veicināt virsmas nolietojumu." },
-      { q: "Vai zobu balināšana mājās bojā emalju?", a: "Saskaņā ar instrukcijām lietoti uzticami līdzekļi parasti tiek uzskatīti par drošākiem. Tomēr var parādīties īslaicīgs zobu jutīgums vai smaganu kairinājums, īpaši pārsniedzot lietošanas laiku." },
-      { q: "Vai balinot paspilgtinās plombas un kroņi?", a: "Nē. Balinošie materiāli nemaina plombu, kroņu, lāminu un citu restaurāciju krāsu." },
-      { q: "Cik ātri redzams zobu balināšanas mājās rezultāts?", a: "Tas atkarīgs no izvēlētās metodes, zobu krāsas un izmantotā līdzekļa. Pirmās izmaiņas var būt pamanāmas procedūru kursa laikā, taču precīzs laiks katram pacientam atšķiras." },
-      { q: "Ko darīt, ja balinot zobi kļuva jutīgi?", a: "Ieturiet zobārsta ieteikto pauzi un nepagariniet līdzekļa turēšanas laiku. Ja jutīgums stiprs, ilgst vai sāp viens konkrēts zobs, nepieciešama zobārsta apskate." }
-    ],
-    sources: [
-      { label: "American Dental Association – Whitening", url: "https://www.ada.org/resources/ada-library/oral-health-topics/whitening" },
-      { label: "At-home vs In-office Bleaching: An Updated Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/40485133/" },
-      { label: "Effect of Bleaching Gel Concentration on Tooth Color and Sensitivity: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/32396502/" },
-      { label: "Tooth Sensitivity During and After Vital Tooth Bleaching: A Systematic Review", url: "https://pubmed.ncbi.nlm.nih.gov/26396993/" },
-      { label: "At-home vs In-office Bleaching: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/27045285/" }
-    ]
+    readTime: 12
   },
   {
     slug: "ko-darit-kad-veidojas-zoba-abscess",
@@ -27001,160 +26631,7 @@ const BLOG_POSTS_LV = [
     date: "2026-07-17",
     category: "Neatliekamā palīdzība",
     coverImage: "https://images.unsplash.com/photo-1664530837411-0c2e8a3d4dca?w=1200&q=80&fit=crop&auto=format",
-    readTime: 10,
-    sections: [
-      {
-        p: [
-          "Zoba abscess ir bakteriālas infekcijas izraisīts strutu uzkrājums zobā, ap tā sakni vai smaganās. Tas var izraisīt pulsējošas sāpes, pietūkumu, nepatīkamu garšu mutē un vispārējās pašsajūtas pasliktināšanos.",
-          "Apsverot, vai iespējama zoba absceса ārstniecība mājās, svarīgi zināt: mājas līdzekļi var tikai īslaicīgi samazināt sāpes un diskomfortu. Tie nenovērš infekcijas cēloni, tāpēc abscesu pēc iespējas ātrāk jānovērtē zobārstam. Zoba abscess pats no sevis nesadzīst.",
-          "Pat ja abscess pārplīsa, iztecēja daļa strutu un sāpes samazinājās, infekcijas perēklis var palikt zoba iekšpusē vai ap tā sakni. Ārstniecību nedrīkstētu atlikt arī tad, kad uz smaganām esošais abscess gandrīz nesāp."
-        ]
-      },
-      {
-        h: "Kas ir zoba abscess un kāpēc tas veidojas?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Abscess veidojas, baktērijām nokļūstot zoba iekšpusē vai apkārtējos audos. Organismam reaģējot uz infekciju, bojātajā vietā uzkrājas struti." },
-          { type: "p", text: "Atbilstoši infekcijas atrašanās vietai visbiežāk izšķir vairākus abscesa veidus:" },
-          { type: "ul", items: [
-            "Abscess pie zoba saknes gala parasti veidojas, infekcijai no zoba pulpas izplatoties pa sakņu kanāliem.",
-            "Periodonta abscess veidojas pie zoba saknes, bieži dziļā periodonta kabatā.",
-            "Smaganu abscess veidojas virsējos mīkstos audos."
-          ] },
-          { type: "p", text: "Uz smaganām redzams balts vai dzeltenīgs abscess var būt kanāls, pa kuru no dziļāk esošā infekcijas perēkļa iztek struti. Tāpēc tā pārduršana vai izspiešana neizārstē bojāto zobu." },
-          { type: "p", text: "Biežākie abscesa cēloņi ir dziļš neizārstēts kariess, zoba plaisa vai trauma, mirusi pulpa, periodonta slimība vai atkārtota infekcija iepriekš ārstēta zoba rajonā." }
-        ]
-      },
-      {
-        h: "Kā atpazīt zoba abscesa simptomus?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Simptomi atkarīgi no infekcijas atrašanās vietas un izplatīšanās. Vieniem pacientiem abscess izraisa stipras sāpes, citi kādu laiku var just tikai nelielu diskomfortu." },
-          { type: "p", text: "Iespējamās zoba abscesa pazīmes:" },
-          { type: "ul", items: [
-            "stipras, smeldzošas vai pulsējošas sāpes;",
-            "sāpes sakožot vai košļājot;",
-            "jutīgums pret karstu un aukstu ēdienu;",
-            "apsārtušas, jutīgas vai pietūkušas smaganas;",
-            "uz smaganām parādījies abscess;",
-            "strutu plūsma un nepatīkama garša mutē;",
-            "sāpju izplatīšanās uz ausi, žokli vai kaklu;",
-            "pietūcis vaigs vai žokļa apvidus;",
-            "grūtības atvērt muti;",
-            "drudzis, vājums un slikta pašsajūta."
-          ] },
-          { type: "p", text: "Abscesam atveroties, var samazināties spiediens, tāpēc sāpes vājinās. Sāpes arī var izzust, mirstot zoba pulpai. Abos gadījumos infekcija var saglabāties un turpināt izplatīties." },
-          { type: "p", text: "Zobārsts diagnozi nosaka, novērtējot simptomus, zoba un smaganu stāvokli un izmeklējumu rezultātus. Bieži tiek veikta rentgena uzņēmums, kas palīdz novērtēt zoba saknes un apkārtējo kaulu." }
-        ]
-      },
-      {
-        h: "Vai iespējama zoba abscesa ārstniecība mājās?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Pilnīgi izārstēt zoba abscesu mājās nav iespējams. Skalošanas, kompreses un pretsāpju līdzekļi neiztīra infikētos sakņu kanālus un nenovērš dziļi esošo infekcijas perēkli." },
-          { type: "p", text: "Nevajadzētu:" },
-          { type: "ul", items: [
-            "spiest vai pārdurt abscesu;",
-            "mēģināt to atvērt ar adatu vai citu instrumentu;",
-            "likt aspirīnu vai citas zāles tieši uz smaganām;",
-            "sildīt pietūkušo vietu;",
-            "uz gļotādas turēt ķiploku vai citus kairinošus produktus;",
-            "patstāvīgi lietot atlikušās antibiotikas;",
-            "atlikt vizīti, jo sāpes samazinājās."
-          ] },
-          { type: "p", text: "Mēģinot pārdurt abscesu, var ievainot audus, izraisīt asiņošanu un veicināt infekcijas izplatīšanos. Tieši uz smaganām liktas zāles vai koncentrētas vielas var bojāt mutes gļotādu." },
-          { type: "p", text: "Antibiotikas arī nav universāla zoba abscesa ārstniecība. Amerikas Zobārstu asociācija iesaka daudzos lokalizētu sāpju un pietūkuma gadījumos vispirms ārstēt infekcijas avotu. Antibiotikas biežāk vajadzīgas tad, kad infekcija izplatās, pacientam ir drudzis vai pasliktinās vispārējā pašsajūta." }
-        ]
-      },
-      {
-        h: "Kā droši atvieglot sāpes līdz vizītei pie zobārsta?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Kamēr gaidāt neatliekamu zobārsta vizīti, var veikt īslaicīgus pasākumus simptomu mazināšanai:" },
-          { type: "ul", items: [
-            "izvēlieties mīkstu, ne pārāk karstu un ne pārāk aukstu ēdienu;",
-            "košļājiet ar pretējo mutes pusi;",
-            "zobus tīriet maigi, ar mīkstu suku;",
-            "pie ārējās vaiga puses uz īsu brīdi pielieciet vēsu kompresi;",
-            "dzeriet pietiekami daudz šķidruma;",
-            "gulējot turiet galvu nedaudz augstāk."
-          ] },
-          { type: "p", text: "Muti var uzmanīgi izskalot ar remdenu ūdeni. Skalošana var palīdzēt uzturēt mutes tīrību, taču tā neizārstē infekciju. Pietūkušo vietu nevajadzētu stipri spiest vai intensīvi skalot." },
-          { type: "p", text: "Pretsāpju līdzekļus lietojiet tikai saskaņā ar informācijas lapiņu, nepārsniedzot norādīto devu. To piemērotība atkarīga no cilvēka vecuma, grūtniecības, esošajām slimībām un citiem lietotajiem medikamentiem. Šaubu gadījumā konsultējieties ar ārstu vai farmaceitu." }
-        ]
-      },
-      {
-        h: "Kā zobārsts ārstē zoba abscesu?",
-        p: [
-          "Ārstniecības mērķis ir novērst infekcijas avotu, radīt apstākļus strutu izplūšanai un, ja iespējams, saglabāt zobu. Procedūras parasti tiek veiktas ar vietējo anestēziju."
-        ]
-      },
-      {
-        h: "Abscesa drenāža",
-        p: [
-          "Ja audos uzkrājušies struti, zobārsts var veikt nelielu iegriezumu un radīt apstākļus to izplūšanai. Tas samazina spiedienu, taču tikai drenāža var nebūt pietiekama, ja infekcija sākās zoba iekšpusē."
-        ]
-      },
-      {
-        h: "Sakņu kanālu ārstniecība",
-        p: [
-          "Kad infekcijas avots atrodas zoba pulpā, tiek veikta sakņu kanālu ārstniecība. Tās laikā tiek noņemti infekētie audi, kanāli tiek iztīrīti, dezinficēti un aizpildīti. Vēlāk zobs tiek atjaunots ar plombu vai citu restaurāciju. Šāda ārstniecība bieži ļauj saglabāt dabīgo zobu."
-        ]
-      },
-      {
-        h: "Zoba izraušana",
-        p: [
-          "Ja zobs ir stipri sabrukis, ieplaisājis vai to uzticami atjaunot nav iespējams, var tikt ieteikts to izraut. Tā tiek novērsts galvenais infekcijas avots.",
-          "Ja abscess saistīts ar dziļu periodonta kabatu, var tikt tīrīti zoba un saknes virsmas un ārstēti apkārtējie periodonta audi.",
-          "Antibiotikas tiek nozīmētas tikai, individuāli novērtējot situāciju. Pat tās nozīmējot, visbiežāk tik un tā jāārstē infekcijas avots zobārstniecībā."
-        ]
-      },
-      {
-        h: "Kad zoba abscess prasa neatliekamo palīdzību?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Pie zobārsta jāvēršas pēc iespējas ātrāk, negaidot, kad abscess pāries pats. Īpaši svarīgi nevilcināties, ja sāpes pastiprinās, pietūkst vaigs vai pasliktinās vispārējā pašsajūta." },
-          { type: "p", text: "Neatliekamā medicīniskā palīdzība nepieciešama, ja:" },
-          { type: "ul", items: [
-            "grūti elpot, rīt vai runāt;",
-            "strauji palielinās mutes, sejas vai kakla pietūkums;",
-            "pietūkums izplatās uz acs pusi;",
-            "sāp vai pietūkst acs, traucēta redze;",
-            "ļoti grūti atvērt muti;",
-            "paceļas augsta temperatūra un ievērojami pasliktinās pašsajūta;",
-            "parādās apjukums vai liels vājums."
-          ] },
-          { type: "p", text: "Elpošanas, runāšanas vai rīšanas traucējumi un liels mutes pietūkums var norādīt uz infekciju, kas izplatās uz bīstamiem apvidiem. Šādos gadījumos nevajadzētu gaidīt zobārstniecības klīnikas darba laiku." }
-        ]
-      },
-      {
-        h: "Kā samazināt zoba abscesa risku?",
-        p: [
-          "Abscesa risku palīdz mazināt regulāra zobu tīrīšana ar fluorīdu saturošu pastu, ikdienas starpzobu telpu kopšana un agrīnā kariesa ārstniecība. Arī svarīgi vērsties par ieplaisājušiem vai traumētiem zobiem, kontrolēt periodonta slimības un regulāri pārbaudīt zobus.",
-          "Parādoties zoba sāpēm, jutīgumam sakožot, smaganu pietūkumam vai abscesam, vizīti nedrīkstētu atlikt. Agrīni sākta ārstniecība parasti ir vienkāršāka un palielina iespēju saglabāt zobu."
-        ]
-      },
-      {
-        h: "Zoba abscesa ārstniecību nedrīkst atlikt",
-        p: [
-          "Zoba abscesa ārstniecība mājās nav iespējama, jo mājas līdzekļi nenovērš bakteriālas infekcijas avotu. Tie var tikai īslaicīgi samazināt sāpes un pietūkumu līdz profesionālai palīdzībai.",
-          "Ārstniecība var ietvert abscesa drenāžu, sakņu kanālu ārstniecību, periodonta audu tīrīšanu vai neatjaunojama zoba izraušanu. Antibiotikas tiek nozīmētas tikai pēc klīniskām indikācijām un neaizvieto zobārstniecības ārstniecību.",
-          "Ja sāp zobs, pietūka smaganas vai seja, parādījās abscess vai nepatīkama garša mutē, vērsieties Bangų klīnikā Klaipēdā. Mūsu speciālisti noteiks infekcijas cēloni un izvēlēsies piemērotu ārstniecību."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Vai zoba abscess var pāriet pats?", a: "Nē. Sāpes var samazināties, abscesam pārplīstot vai mirstot zoba pulpai, taču infekcijas perēklis parasti saglabājas." },
-      { q: "Vai zoba abscesu var pārdurt mājās?", a: "Nē. Tā var bojāt audus, izraisīt asiņošanu un veicināt infekcijas izplatīšanos." },
-      { q: "Vai antibiotikas izārstē zoba abscesu?", a: "Ne vienmēr. Antibiotikas var būt vajadzīgas izplatošai infekcijai, taču visbiežāk nepieciešams zobārstniecībā novērst tās avotu." },
-      { q: "Ko darīt, ja no zoba pietūka vaigs?", a: "Pēc iespējas ātrāk vērsieties pie zobārsta. Ja pietūkums strauji palielinās, izplatās uz kaklu vai acs zonu vai grūti rīt vai elpot, nepieciešama neatliekamā medicīniskā palīdzība." },
-      { q: "Ko nozīmē nesāpīgs abscess uz smaganām?", a: "Tas var būt kanāls, pa kuru no dziļāka infekcijas perēkļa iztek struti. Pat ja nesāp, nepieciešama zobārsta apskate." }
-    ],
-    sources: [
-      { label: "Antibiotics for Dental Pain and Swelling Guideline", url: "https://www.ada.org/resources/research/science/evidence-based-dental-research/antibiotics-for-dental-pain-and-swelling" },
-      { label: "Evidence-Based Clinical Practice Guideline on Antibiotic Use for Dental Pain and Intraoral Swelling", url: "https://pubmed.ncbi.nlm.nih.gov/31668170/" },
-      { label: "Antibiotics for the Urgent Management of Pulpal and Periapical Dental Conditions: Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/31761029/" }
-    ]
+    readTime: 10
   },
   {
     slug: "kaula-augmentacija-kas-jazina-pirms-operacijas",
@@ -27163,125 +26640,7 @@ const BLOG_POSTS_LV = [
     date: "2026-07-15",
     category: "Mutes ķirurģija",
     coverImage: "/blog/kaulo-priauginimas.jpg",
-    readTime: 11,
-    sections: [
-      {
-        p: [
-          "Ja žokļa kaulā nepietiek kaula zoba implanta stabilai ieskrūvēšanai, pirms implantācijas vai kopā ar to var tikt veikta kaula augmentācija. Pacientiem bieži rodas jautājumi, kā notiek kaula augmentācija, cik ilgi dzīst operētā vieta un kādi simptomi var norādīt uz komplikāciju.",
-          "Kaula augmentācija ir ķirurģiska procedūra, kuras laikā tiek atjaunots trūkstošais žokļa kaula tilpums. Tam var tikt izmantots paša pacienta kauls, speciāli sagatavota cilvēka vai dzīvnieku izcelsmes viela, sintētisks kaula aizvietotājs vai vairāku materiālu kombinācija.",
-          "Pēc kaula augmentācijas operācijas neliela smelgme, pietūkums, spriedzes sajūta vai neliela asiņošana pirmajās dienās var būt parasta dzīšanas daļa. Tomēr pašsajūtai vajadzētu pakāpeniski uzlaboties. Pastiprinošas sāpes, strutošana, drudzis, palielinošs pietūkums vai atvērusies brūce var norādīt uz kaula augmentācijas komplikācijām."
-        ]
-      },
-      {
-        h: "Kad pirms zobu implantācijas var būt vajadzīga kaula augmentācija?",
-        p: [
-          "Zoba implantam nepieciešams pietiekama augstuma un platuma žokļa kauls. Ja kauls ir pārāk šaurs, pārāk zems vai tā forma neļauj implantam nodrošināt pareizu stabilitāti, ārsts var ieteikt augmentāciju.",
-          "Kaula daudzums var samazināties ilgi neatjaunota zaudēta zoba, periodonta slimību, infekcijas, traumas, iepriekšējo ķirurģisko procedūru vai individuālu anatomisku īpašību dēļ.",
-          "Pirms ārstniecības tiek veikta mutes apskate un radioloģiski izmeklējumi. Bieži nepieciešama trīsdimensiju datortomogrāfija, kas palīdz novērtēt kaula augstumu, platumu un attiecību ar nerviem, sinusu un citām anatomiskām struktūrām. Tikai pēc izmeklēšanas var izlemt, vai implantu var ieskrūvēt uzreiz, vai vispirms jāatjauno kaula tilpums."
-        ]
-      },
-      {
-        h: "Kādas kaula augmentācijas metodes var tikt izmantotas?",
-        p: [
-          "Kaula augmentācijas metode tiek izvēlēta atbilstoši defekta atrašanās vietai, izmēram un plānotai implantācijai.",
-          "Alveolas saglabāšana var tikt veikta uzreiz pēc zoba izraušanas. Atlikušajā vietā tiek ielikts kaula materiāls, lai saglabātu labvēlīgāku žokļa kontūru turpmākai implantācijai.",
-          "Žokļa ķeres augmentācija tiek izmantota, kad kauls ir pārāk šaurs vai pārāk zems. Atkarībā no situācijas var tikt palielināts tā platums, augstums vai abas dimensijas.",
-          "Sinusa dibena pacelšana tiek veikta aizmugurē augšējā žokļa apvidū, kad starp žokļa ķeri un sinusa dobumu nepietiek kaula implanta ieskrūvēšanai.",
-          "Neliela apjoma augmentācija dažkārt tiek veikta kopā ar implantāciju. Ja kaula trūkums lielāks, vispirms tiek augmentēts kauls, un implants tiek ieskrūvēts tikai, sadzīstot operētajai zonai."
-        ]
-      },
-      {
-        h: "Kā notiek kaula augmentācijas operācija?",
-        p: [
-          "Kaula augmentācija parasti tiek veikta ar vietējo anestēziju, tāpēc procedūras laikā pacientam nevajadzētu sajust asas sāpes. Var just spiedienu, kustību vai vibrāciju. Ja tiek sajustas sāpes, par to svarīgi uzreiz pastāstīt ārstam, lai anestēzija tiktu papildināta.",
-          "Vispirms tiek atvērtas smaganas un sasniegta vieta, kur trūkst kaula. Tā tiek sagatavota, un defekta zonā tiek ielikts izvēlētais kaula materiāls. Kaula aizvietotājs bieži darbojas kā pamats, kurā dzīšanas laikā pakāpeniski ieaug jauns pacienta kauls.",
-          "Augmentētā vieta var tikt pārklāta ar speciālu membrānu. Tā nodala kaula reģenerācijas zonu no ātrāk augošiem mīkstiem audiem un palīdz saglabāt kaula materiālam vajadzīgo telpu. Ja nepieciešams, transplantāts vai membrāna tiek stabilizēti, un operācijas vieta tiek sašūta.",
-          "Procedūras sarežģītība atkarīga no kaula defekta lieluma. Neliela apjoma augmentācija parasti ir vienkāršāka nekā liela horizontāla vai vertikāla defekta atjaunošana.",
-          "Izmantojot paša pacienta kaulu, var būt vajadzīga papildu vieta tā ņemšanai. Cita izcelsmes kaula aizvietotāji ļauj samazināt papildu ķirurģiskās vietas nepieciešamību. Piemērotāko materiālu ārsts izvēlas individuāli."
-        ]
-      },
-      {
-        h: "Kāda pašsajūta pēc kaula augmentācijas operācijas ir normāla?",
-        p: [
-          "Pēc kaula augmentācijas operācijas audiem nepieciešams laiks, lai sadzīstu. Pirmajās dienās operētā vieta var smeldzēt, būt jutīga vai spriegta. Arī var parādīties pietūkums, neliels asinsizplūdums, grūtāka mutes atvēršana vai diskomforts košļājot.",
-          "Pirmajās stundās iespējama neliela asiņošana vai asins piemaisījums siekalās. Pietūkums neobligāti ir vislielākais uzreiz, taču vēlāk tam vajadzētu sākt samazināties.",
-          "Vissvarīgākā normālas dzīšanas gaitas pazīme — pakāpeniska pašsajūtas uzlabošanās. Sāpēm vajadzētu vājināties, pietūkumam mazināties, un brūces malām — palikt aizvērtām.",
-          "Mīksto audu dzīšana un augmentētā kaula integrācija nav viens un tas pats. Smaganas var nomierināties dažās nedēļās, taču jauna kaula veidošanās un kaula materiāla integrācija ilgst vairākus mēnešus. Tāpēc pat vairs nesajūtot sāpes nevar izlemt, ka zona jau ir gatava implantācijai.",
-          "Kad var ieskrūvēt implantu, ārsts nosaka pēc klīniskās apskates un, ja nepieciešams, radioloģiskiem izmeklējumiem."
-        ]
-      },
-      {
-        h: "Kā kopt operēto vietu?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Pēc procedūras svarīgākais ir ievērot ārsta ieteikumus. Visbiežāk ieteicams:" },
-          { type: "ul", items: [
-            "pirmajā diennaktī intensīvi neskalot muti un nespļaut;",
-            "nepieskarties brūcei ar pirkstiem, mēli vai citiem priekšmetiem;",
-            "izvēlēties mīkstu, ne karstu ēdienu;",
-            "košļāt ar otru mutes pusi;",
-            "izvairīties no intensīvas fiziskās slodzes;",
-            "nesmēķēt un nelietot alkoholu;",
-            "nozīmētās zāles lietot tieši, kā norādīts;",
-            "nekavēt kontroles vizītes."
-          ] },
-          { type: "p", text: "Zobi jātīra regulāri, taču operētā vieta pirmajās dienās jāsargā no tiešas kairināšanas. Ja nozīmēts speciāls skalošanas šķidrums vai cita ierīce, tā jālieto saskaņā ar ārsta norādījumiem." }
-        ]
-      },
-      {
-        h: "Kādas ir biežākās kaula augmentācijas komplikācijas?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Kaula augmentācijas komplikācijas nav parasta dzīšanas daļa, taču tās var rasties pēc jebkuras ķirurģiskās procedūras. Risks atkarīgs no defekta lieluma, izvēlētās metodes, mīksto audu stāvokļa, mutes higiēnas, vispārējās veselības un pēcoperācijas ieteikumu ievērošanas." },
-          { type: "p", text: "Viena no iespējamām komplikācijām — infekcija. Tā var izpausties ar pastiprinošām sāpēm, palielinošu pietūkumu, apsārtumu, strutošanu, sliktu smaku, nepatīkamu garšu mutē vai drudzi. Infekcija var traucēt brūces dzīšanai un augmentētā materiāla integrācijai." },
-          { type: "p", text: "Cita svarīga komplikācija — brūces malu atvēršanās un membrānas vai kaula materiāla atsegšana. Membrānas ekspozīcija var radīt apstākļus baktērijām nokļūt operētajā zonā un samazināt sasniegto kaula pieaugumu." },
-          { type: "p", text: "Reizēm caur atvērušos brūci var izdalīties atsevišķas kaula materiāla daļiņas. Tas neobligāti nozīmē, ka visa procedūra bija neveiksmīga, taču par šādu situāciju jāziņo ārstam. Brūci nedrīkst spiest, kasīt vai patstāvīgi noņemt redzamas vielas." },
-          { type: "p", text: "Iespējamas arī citas problēmas:" },
-          { type: "ul", items: [
-            "ieilgusi vai spēcīga asiņošana;",
-            "stipras, neatslābstošas sāpes;",
-            "hematoma;",
-            "īslaicīgi vai ilgstoši jušanas izmaiņas;",
-            "daļējs kaula materiāla zaudējums;",
-            "mazāks nekā plānots kaula pieaugums;",
-            "nepieciešamība koriģēt vai atkārtot procedūru."
-          ] },
-          { type: "p", text: "Komplikācija ne vienmēr nozīmē, ka visa ārstniecība neizdevās. Agrīni pamanot problēmu, ārsts var izvēlēties piemērotu aprūpi un koriģēt tālāko ārstniecības plānu." },
-          { type: "p", text: "Komplikāciju risku var palielināt smēķēšana, nepietiekama mutes higiēna, nekontrolētas dzīšanu ietekmējošas slimības, operētās vietas traumēšana, pārāk agrīna mehāniska slodze un kontroles vizīšu nokavēšana." }
-        ]
-      },
-      {
-        h: "Kad pēc kaula augmentācijas jāvēršas pie ārsta?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Neliela smelgme vai pietūkums pirmajās dienās var būt normāls, ja pašsajūta pakāpeniski uzlabojas. Ja simptomi pastiprinās vai parādās jaunas pazīmes, jāsazinās ar operējošo ārstu." },
-          { type: "p", text: "Nevilcinieties vērsties, ja:" },
-          { type: "ul", items: [
-            "sāpes kļūst stipras, pulsējošas vai palielinās;",
-            "pietūkums pēc dažām dienām nesamazinās vai izplatās;",
-            "parādās struti, slikta smaka vai nepatīkama garša;",
-            "paceļas temperatūra vai pasliktinās vispārējā pašsajūta;",
-            "asiņošana neapstājas;",
-            "atveras brūces malas;",
-            "redzama membrāna vai izdalās vairāk kaula materiāla;",
-            "parādās vai pastiprinās jušanas trūkums."
-          ] },
-          { type: "p", text: "Ja pietūkums strauji palielinās, apgrūtinās rīšana vai elpošana, nepieciešama neatliekamā medicīniskā palīdzība. Patstāvīgi lietot antibiotikas, atvērt brūci vai mēģināt noņemt membrānu nedrīkst." }
-        ]
-      }
-    ],
-    faq: [
-      { q: "Vai sāp, veicot kaula augmentāciju?", a: "Procedūra parasti tiek veikta ar vietējo anestēziju, tāpēc asas sāpes pacientam nevajadzētu sajust. Anestēzijas iedarbībai beidzoties, var parādīties smelgme, jutīgums un pietūkums." },
-      { q: "Cik ilgi dzīst kauls pēc augmentācijas?", a: "Mīkstie audi var nomierināties dažās nedēļās, taču augmentētās zonas integrācija ilgst vairākus mēnešus. Precīzs dzīšanas ilgums atkarīgs no procedūras apjoma, izmantotā materiāla un individuālās dzīšanas gaitas." },
-      { q: "Vai pietūkums pēc kaula augmentācijas ir normāls?", a: "Neliels vai vidējs pietūkums pirmajās dienās var būt normāls. Ja tas pastiprinās vai parādās drudzis, strutošana un stipras sāpes, jāvēršas pie ārsta." },
-      { q: "Vai kaula augmentācija var neizdoties?", a: "Dažos gadījumos kaula materiāls var nevis pilnīgi integrēties vai var izveidoties mazāk kaula, nekā plānots. To var ietekmēt infekcija, brūces atvēršanās, smēķēšana un citi dzīšanu ietekmējoši faktori." }
-    ],
-    sources: [
-      { label: "Effect of membrane exposure on guided bone regeneration: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/29368353/" },
-      { label: "Wound Healing Complications Following Guided Bone Regeneration for Ridge Augmentation: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/28938030/" },
-      { label: "Comparative evidence of different surgical techniques for the management of vertical alveolar ridge defects in terms of complications and efficacy: A systematic review and network meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/37495541/" },
-      { label: "Smoking and dental implants: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/25778741/" }
-    ]
+    readTime: 11
   },
   {
     slug: "kam-tiek-kompenseti-zobu-implanti",
@@ -27290,135 +26649,7 @@ const BLOG_POSTS_LV = [
     date: "2026-07-11",
     category: "Zobu implantācija",
     coverImage: "https://images.unsplash.com/photo-1643386281892-f8417a49130e?w=1200&q=80&fit=crop&auto=format",
-    readTime: 11,
-    sections: [
-      {
-        p: [
-          "Zaudējot vienu vai vairākus zobus, pacientiem bieži rodas jautājums, vai tiek kompensēti zobu implanti un kādu ārstniecības izmaksu daļu var segt slimokase. Informācija par kompensāciju reizēm tiek saprasta neprecīzi, jo zobu implantācija un protezēšana ir saistītas, taču nav identiskas paslaugas.",
-          "Ierastā zobu implantācija Lietuvā nav automātiski kompensēta katram pacientam. No Obligātās veselības apdrošināšanas fonda līdzekļiem noteiktām iedzīvotāju grupām tiek kompensētas zobu protezēšanas paslaugu izmaksas līdz noteiktai summai. Atsevišķos sarežģītākos klīniskos gadījumos protezēšanas plānā var tikt iekļauts arī uz implantiem balstīts risinājums, taču tas tiek vērtēts individuāli.",
-          "Ja izvēlētās ārstniecības cena pārsniedz pacientam pienākošos kompensējamo summu, starpība jāapmaksā no saviem līdzekļiem. Tāpēc pirms ārstniecības sākšanas svarīgi saņemt skaidru plānu, kurā būtu norādīta kopējā cena, slimokases apmaksātā daļa un pacientam piekrītošais piemaksājums."
-        ]
-      },
-      {
-        h: "Vai zobu implanti Lietuvā tiek kompensēti?",
-        p: [
-          "Atbildot uz jautājumu, vai tiek kompensēti zobu implanti, vispirms jānošķir implants no visas zobu protezēšanas paslaugas. Slimokase parasti neatvēl atsevišķu maksājumu konkrēta implanta iegādei. Tā kompensē zobu protezēšanas izmaksas, kuru mērķis ir atjaunot zaudēto košļāšanas funkciju.",
-          "Zoba implants ir žokļa kaulā ieskrūvējams mākslīgs zoba saknes aizvietotājs. Uz tā var tikt piestiprināts kronītis, tilts vai lielāka apjoma protēze. Tomēr implantēšana ietver ne tikai pašu implantu. Var būt nepieciešami radioloģiski izmeklējumi, ķirurģiska procedūra, dzīšanas periods, protēzes daļa un dažreiz arī kaula augmentācija vai cita papildu ārstniecība.",
-          "Slimokases kompensācija nav saistīta ar pacienta vēlamo implantu skaitu, to ražotāju vai konkrētu implantēšanas metodiku. Zobārsts, novērtējot mutes stāvokli, piedāvā medicīniski piemērotus zobu atjaunošanas veidus.",
-          "Vienam pacientam var būt piemērota izņemamā protēze, citam — tilts, un atsevišķos gadījumos var tikt apsvērta uz implantiem balstīta protēze. Lēmums atkarīgs no atlikušo zobu, smaganu un žokļa kaula stāvokļa, vispārējās veselības, lietotajām zālēm un citiem individuāliem faktoriem.",
-          "Tāpēc precīzāk teikt, ka noteiktām pacientu grupām tiek kompensētas zobu protezēšanas izmaksas, nevis automātiski visi zobu implanti."
-        ]
-      },
-      {
-        h: "Kam pienākas kompensācija par zobu protezēšanu?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Kompensēta zobu protezēšana pienākas ne visiem iedzīvotājiem. Tiesības uz šīm paslaugām ir ar obligāto veselības apdrošināšanu apdrošinātiem cilvēkiem, kas pieder tiesību aktos noteiktām grupām:" },
-          { type: "ul", items: [
-            "vecuma pensijas gadus sasniegušas personas;",
-            "bērni līdz 18 gadu vecumam;",
-            "cilvēki ar invaliditāti;",
-            "pacienti, kuriem tika piemērota ārstniecība mutes, sejas vai žokļu onkoloģiskās slimības dēļ."
-          ] },
-          { type: "p", text: "Tikai piederība vienai no šīm grupām ne vienmēr ir pietiekama. Ārsts zobārsts novērtē mutes stāvokli, protezēšanas nepieciešamību un nosaka, vai pacienta situācija atbilst spēkā esošajiem klīniskajiem kritērijiem." }
-        ]
-      },
-      {
-        h: "Kad var tikt piešķirta lielāka kompensācija?",
-        p: [
-          "Kompensējamā summa atkarīga no pacienta grupas un klīniskā stāvokļa. 2026. gada jūlijā ierastajos gadījumos vecuma pensijas gadus sasniegušiem cilvēkiem un noteiktos invaliditātes nosacījumus atbilstošiem pacientiem tiek kompensēts līdz 670,39 eiro.",
-          "Sarežģītākos gadījumos kompensācija var sasniegt līdz 2062,70 eiro. Piemēram, lielāka summa var tikt piešķirta, kad pilnīgi bezzoba apakšējā žokļa augstums noteiktā zonā ir mazāks par 12 milimetriem. Šādu nepieciešamību jāapstiprina ārstu konsīlijam.",
-          "Bērniem, kuru košļāšanas sistēma vēl attīstās un kuriem nepieciešami pagaidu protezēšanas risinājumi, tiek kompensēts līdz 342,13 eiro. Citos tiesību aktos noteiktos bērnu vai onkoloģiskajām slimībām ārstētu pacientu gadījumos var tikt piemērota lielāka summa.",
-          "Svarīgi saprast, ka lielāka kompensācija netiek piešķirta tikai tāpēc, ka pacients vēlas implantus. Tā atkarīga no konkrētiem klīniskiem kritērijiem un negarantē, ka viss uz implantiem balstītas ārstniecības plāns būs bezmaksas."
-        ]
-      },
-      {
-        h: "Kādas zobārstniecības izmaksas var tikt kompensētas?",
-        p: [
-          'Meklēšanas frāze „kompensācija par zobārstniecību" var nozīmēt gan ierasto zobārstniecību, gan zobu protezēšanu. Šīm paslaugām tiek piemēroti dažādi apmaksas nosacījumi.',
-          "Ar obligāto veselības apdrošināšanu apdrošinātiem pacientiem sākotnējā zobārstniecības palīdzība tiek sniegta ārstniecības iestādē, pie kuras viņi ir pierakstīti, vai citā iestādē, ar kuru noslēgts atbilstošs līgums. Tai var būt piederoša zobu kariesa, pulpīta un dažu periodontīta formu ārstniecība, zobakmens noņemšana, zobu vai to sakņu izraušana un citas noteiktas paslaugas.",
-          "Pieaugušiem pacientiem OVA fonds parasti apmaksā ārsta zobārsta darbu, taču par plombes un citiem zobārstniecības materiāliem, zālēm un vienreizējām ierīcēm visbiežāk jāmaksā. Noteiktām pacientu grupām tiek piemēroti izņēmumi.",
-          "Zobu protezēšanas kompensācija darbojas citādi. Slimokase apmaksā faktiskās protezēšanas izmaksas, bet ne vairāk par pacientam noteikto maksimālo summu. Ja ārstniecība maksā mazāk, tiek apmaksātas faktiskās izmaksas. Ja maksā vairāk, starpību apmaksā pacients."
-        ]
-      },
-      {
-        h: "Vai saņemot kompensāciju var izvēlēties zobu implantus?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Tiesības uz kompensētu protezēšanu pašas par sevi nenozīmē, ka pacientam tiks veikta implantācija. Vispirms jānosaka, vai uz implantiem balstīta ārstniecība ir medicīniski pamatota un droša." },
-          { type: "p", text: "Plānojot implantāciju, tiek vērtēts:" },
-          { type: "ul", items: [
-            "žokļa kaula daudzums un kvalitāte;",
-            "smaganu un periodonta stāvoklis;",
-            "pacienta vispārējā veselība;",
-            "lietotās zāles;",
-            "smēķēšana un citi riska faktori;",
-            "nākamā protēzes konstrukcija;",
-            "pacienta iespējas kopt implantus."
-          ] },
-          { type: "p", text: "Ja uz implantiem balstīta protezēšana pacientam piemērota, tā var tikt iekļauta ārstniecības plānā. Tomēr kompensācija segs izmaksas tikai līdz noteiktai robežai. Atlikušo implantēšanas, protezēšanas vai papildu procedūru cenas daļu būs jāapmaksā pacientam." },
-          { type: "p", text: "Pirms ārstniecības sākšanas ir vērts palūgt rakstisku plānu. Tajā vajadzētu būt norādītam, cik implantu plānots ieskrūvēt, kāda protēzes konstrukcija tiks izgatavota, kādas papildu procedūras var būt nepieciešamas, kāda ir kopējā cena un kādu tās daļu segs slimokase." }
-        ]
-      },
-      {
-        h: "Kā saņemt kompensāciju par zobu protezēšanu?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Lai izmantotu kompensāciju, vispirms jāvēršas pie ārsta zobārsta. Atsevišķu pieteikumu slimokasei pacientam parasti sniegt nav nepieciešams." },
-          { type: "p", text: "Process visbiežāk notiek šādi:" },
-          { type: "ol", items: [
-            "Vēršas pie zobārsta. Ārsts novērtē mutes stāvokli un protezēšanas nepieciešamību.",
-            "Nosaka tiesības uz kompensāciju. Tiek pārbaudīts, vai pacients pieder noteiktai grupai un atbilst klīniskiem kritērijiem.",
-            "Sagatavo muti protezēšanai. Tiek veikta nepieciešamā ārstniecība un novērsti protezēšanai traucējošie iekaisumi.",
-            "Dati tiek reģistrēti elektroniskajā sistēmā.",
-            "Tiek izvēlēta ārstniecības iestāde. Tai jābūt līgumam ar slimokasi par kompensētajām zobu protezēšanas paslaugām.",
-            "Tiek izveidots ārstniecības un izmaksu plāns. Pacientam tiek izskaidrota kopējā cena, kompensētā daļa un iespējamais piemaksājums."
-          ] },
-          { type: "p", text: "Saskaņā ar 2026. gada jūlijā spēkā esošu kārtību kompensēto zobu protezēšanas paslaugas jāizmanto trīs gadu laikā no tiesību reģistrēšanas sistēmā." },
-          { type: "p", text: "Kompensāciju var izmantot arī privātā klīnikā, taču tikai tad, ja izvēlētā iestāde ir noslēgusi līgumu ar slimokasi par šīm paslaugām. Tikai tas, ka klīnika veic implantāciju vai protezēšanu, nav pietiekami." },
-          { type: "p", text: "Kompensējamā summa parasti netiek pārskaitīta pacientam uz personīgo kontu. Par sniegtajām paslaugām slimokase norēķinās ar līgumu noslēgušo ārstniecības iestādi." }
-        ]
-      },
-      {
-        h: "Kad par implantiem vai protezēšanu jāpiemaksā?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Piemaksa nepieciešama tad, kad izvēlētās ārstniecības cena pārsniedz pacientam noteikto kompensējamo summu. Tā bieži notiek, izvēloties uz implantiem balstītu protezēšanu, sarežģītākas konstrukcijas vai dārgākus materiālus." },
-          { type: "p", text: "Papildu maksāt var būt nepieciešams par:" },
-          { type: "ul", items: [
-            "implantu ieskrūvēšanu un to komponentiem;",
-            "uz implantiem stiprināmiem kroņiem vai tiltiem;",
-            "kaula augmentāciju;",
-            "sinusa dibena pacelšanu;",
-            "papildu radioloģiskiem izmeklējumiem;",
-            "dārgākiem protēžu materiāliem;",
-            "kompensēto plānā neiekļautām procedūrām."
-          ] },
-          { type: "p", text: "Pacientam skaidri jāizskaidro, par ko un cik daudz būs jāmaksā. Ja tiek piedāvāti vairāki ārstniecības varianti, ir vērts salīdzināt ne tikai to cenu, bet arī ārstniecības ilgumu, kopšanu, iespējamos riskus un gaidāmo rezultātu." }
-        ]
-      },
-      {
-        h: "Kompensācija atkarīga no pacienta stāvokļa un ārstniecības plāna",
-        p: [
-          "Uz jautājumu, vai tiek kompensēti zobu implanti, precīzāk atbildēt šādi: ierastā implantācija netiek automātiski apmaksāta visiem pacientiem. Noteiktām iedzīvotāju grupām tiek kompensētas zobu protezēšanas izmaksas līdz spēkā esošajai summai, un uz implantiem balstīta ārstniecība var tikt iekļauta individuālajā plānā.",
-          "Lielāka kompensācija tiek piešķirta tikai tiesību aktos paredzētos sarežģītākos gadījumos un, kad tas tiek prasīts, saņemot ārstu konsīlija apstiprinājumu. Pat šādā gadījumā visa implantēšanas cena neobligāti tiks segta.",
-          "Ja apsverat zobu implantāciju un vēlaties uzzināt, vai jums var tikt piemērota kompensācija par zobārstniecību vai protezēšanu, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā. Mūsu speciālisti novērtēs mutes stāvokli, izskaidros iespējamos zobu atjaunošanas veidus un sniegs individuālu ārstniecības un izmaksu plānu.",
-          "Rakstā sniegtās summas un nosacījumi ir aktuāli 2026. gada jūlijā. No 2026. gada 1. novembra stājas spēkā precizēta zobu protezēšanas paslaugu kompensēšanas kārtība, tāpēc pirms ārstniecības sākšanas ieteicams pārbaudīt tolaik spēkā esošo informāciju."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Vai pensionāriem tiek kompensēti zobu implanti?", a: "Vecuma pensijas gadus sasniegušiem cilvēkiem var būt tiesības uz kompensētu zobu protezēšanu, ja to mutes stāvoklis atbilst noteiktiem kritērijiem. Tomēr tas nenozīmē, ka slimokase vienmēr pilnīgi apmaksās implantus." },
-      { q: "Kāda ir zobu protezēšanas kompensācija?", a: "2026. gada jūlijā visbiežāk piemērotā summa sasniedz līdz 670,39 eiro. Bērniem, kuru košļāšanas sistēma vēl attīstās, tiek kompensēts līdz 342,13 eiro. Noteiktos sarežģītākos gadījumos summa var sasniegt līdz 2062,70 eiro." },
-      { q: "Vai kompensāciju var izmantot zobu implantiem?", a: "Kompensācija netiek piešķirta konkrēta implanta iegādei. Tā tiek piemērota apstiprinātā zobu protezēšanas plāna izmaksām. Ja tajā paredzēta uz implantiem balstīta ārstniecība, kompensācija var segt daļu no kopējās cenas." },
-      { q: "Vai kompensāciju var izmantot privātā klīnikā?", a: "Jā, ja privātai klīnikai ir līgums ar slimokasi par kompensētajām zobu protezēšanas paslaugām. Pirms ārstniecības sākšanas tas jāpārbauda." },
-      { q: "Vai tiek kompensēta visa zobārstniecība?", a: "Ne visa. Sākotnējās zobārstniecības palīdzības gadījumā var tikt apmaksāts ārsta darbs, taču pieaugušajiem visbiežāk jāmaksā par zobārstniecības materiāliem, zālēm un vienreizējām ierīcēm. Zobu protezēšanai tiek piemērota atsevišķa kompensēšanas kārtība." }
-    ],
-    sources: [
-      { label: "Dantų protezavimo kompensuojamoji suma", url: "https://ligoniukasa.lrv.lt/lt/veiklos-sritys/informacija-gyventojams/gydymo-ir-sveikatos-prieziuros-paslaugos/odontologines-paslaugos/dantu-protezavimas/dantu-protezavimo-kompensuojamoji-suma/" },
-      { label: "Dantų gydymas be papildomų išlaidų: kas gali gauti kompensuojamas paslaugas?", url: "https://ligoniukasa.lrv.lt/lt/naujienos/dantu-gydymas-be-papildomu-islaidu-kas-gali-gauti-kompensuojamas-paslaugas/" },
-      { label: "Patikslinta dantų protezavimo paslaugų kompensavimo tvarka", url: "https://ligoniukasa.lrv.lt/lt/naujienos/patikslinta-dantu-protezavimo-paslaugu-kompensavimo-tvarka-aRE/" }
-    ]
+    readTime: 11
   },
   {
     slug: "cik-ilgi-notiek-mutes-higiena",
@@ -27427,107 +26658,7 @@ const BLOG_POSTS_LV = [
     date: "2026-07-08",
     category: "Mutes higiēna",
     coverImage: "https://images.unsplash.com/photo-1663755489920-5e09f66d011a?w=1200&q=80&fit=crop&auto=format",
-    readTime: 10,
-    sections: [
-      {
-        p: [
-          "Profesionālā mutes higiēna ir procedūra, kuras laikā no zobu virsmām un grūtāk sasniedzamajām mutes vietām tiek noņemti mīkstie bakteriālie aplikumi, sacietējušie zobakmeņi un ārējie pigmentu plankumi. Plānojot vizīti, pacientiem bieži rodas praktisks jautājums: cik ilgi notiek mutes higiēna un cik laika tai vajadzētu veltīt?",
-          "Visbiežāk profesionālā mutes higiēna ilgst apmēram 30–60 minūtes. Ja procedūra tiek veikta regulāri, zobakmeņu nav daudz, un smaganu stāvoklis ir labs, vizīte var būt īsāka. Kad aplikumu uzkrājies vairāk, smaganas ir jutīgas vai asiņojošas, mutē ir implanti, protēzes vai ortodontiskās ierīces, higiēnai var būt nepieciešama stunda vai ilgāka vizīte."
-        ]
-      },
-      {
-        h: "Cik ilgi notiek profesionālā mutes higiēna?",
-        p: [
-          "Parasti profesionālai mutes higiēnai vajadzētu paredzēt 30–60 minūtes. Šajā laikā mutes higiēnists novērtē zobu un smaganu stāvokli, noņem cietos un mīkstos aplikumus, notīra pigmentu plankumus un sniedz individuālus ikdienas mutes kopšanas ieteikumus.",
-          "Kad profesionālā mutes higiēna tiek veikta regulāri, un pacients pareizi kopj zobus un starpzobu telpas mājās, sacietējušu aplikumu visbiežāk ir mazāk. Šādā gadījumā tīrīšana var aizņemt īsāku paredzētās vizītes daļu.",
-          "Ja no pēdējās mutes higiēnas pagājis daudz laika, zobakmeņu uzkrājies daudz vai tie atrodas grūti sasniedzamās vietās, procedūra var ilgt ilgāk. Papildu laiks var būt vajadzīgs arī tad, kad smaganas ir jutīgas, pietūkušas vai asiņo, tāpēc speciālistam jāstrādā lēnāk.",
-          "Profesionālā mutes higiēna nav tikai redzamu plankumu notīrīšana vai zobu pulēšana. Zobakmeņi var uzkrāties starpzobu telpās, pie smaganas malas un zem tās. Katra zona pareizi jāsasniedz un jāpārbauda, tāpēc procedūras ātrums nedrīkstētu būt svarīgāks par tās kvalitāti."
-        ]
-      },
-      {
-        h: "Kas var pagarināt procedūras laiku?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Galvenais faktors, no kā atkarīgs mutes higiēnas ilgums, ir uzkrājušos zobakmeņu un mīksto aplikumu daudzums. Jo to vairāk, jo ilgāk ilgst rūpīga dažādu zobu virsmu, starpzobu telpu un smaganas malas tīrīšana." },
-          { type: "p", text: "Svarīgs ne tikai aplikumu daudzums, bet arī to atrašanās vieta. Virs smaganām esošos zobakmeņus bieži var skaidri saskatīt apskates laikā. Taču daļa sacietējušo aplikumu var būt uzkrājušies zem smaganas malas, kur tos sasniegt un noņemt ir sarežģītāk." },
-          { type: "p", text: "Procedūra var ilgt ilgāk, kad smaganas ir:" },
-          { type: "ul", items: [
-            "jutīgas vai sāpīgas;",
-            "apsārtušas un pietūkušas;",
-            "tendētas asiņot;",
-            "atkāpušās no zobiem;",
-            "iekaisuma skartas."
-          ] },
-          { type: "p", text: "Šādā gadījumā mutes higiēnists var strādāt mazākos posmos, izmantot dažādus instrumentus vai izdarīt īsas pauzes. Ja procedūras laikā tiek sajusts stiprs jutīgums vai sāpes, par to svarīgi uzreiz pastāstīt speciālistam." },
-          { type: "p", text: "Vairāk laika var būt vajadzīgs pacientiem, kuriem ir implanti, kroņi, tilti, protēzes vai ortodontiskās breketes. Ap šīm konstrukcijām parādās vairāk grūti sasniedzamu vietu, kurās var uzkrāties bakteriālie aplikumi. Tās jāiztīra rūpīgi un ar konkrētai konstrukcijai piemērotām ierīcēm." },
-          { type: "p", text: "Mutes higiēnas ilgumu var ietekmēt arī sablīvēti zobi, individuālais aplikumu uzkrāšanās ātrums, smēķēšana un bieža pigmentētu produktu lietošana. Tomēr precīzāk procedūras apjomu var novērtēt tikai, apskatot pacienta muti." }
-        ]
-      },
-      {
-        h: "Kā sadalās mutes higiēnas procedūras laiks?",
-        p: [
-          "Profesionālā mutes higiēna tiek veikta vairākos secīgos posmos. To ilgums nav vienāds katram pacientam, jo speciālists procedūru pielāgo atbilstoši individuālam zobu un smaganu stāvoklim.",
-          "Vispirms tiek apskatīta mute. Mutes higiēnists novērtē, kur un cik daudz uzkrājušos zobakmeņu, vai smaganas asiņo, kurās vietās zobi ir jutīgāki un vai mutē ir implanti, protēzes vai ortodontiskās ierīces. Arī svarīgi zināt, kad pēdējo reizi tika veikta profesionālā mutes higiēna.",
-          "Visvairāk vizītes laika parasti tiek atvēlēts zobakmeņu noņemšanai. Atkarībā no to atrašanās vietas un daudzuma, var tikt izmantots ultraskaņas aparāts un rokas instrumenti. Ultraskaņas instrumenta vibrācijas palīdz sadalīt sacietējušos aplikumus, un ūdens strūkla dzesē tīrāmo virsmu un noskalo noņemtās daļiņas.",
-          "Noņemot zobakmeņus, tiek tīrīti mīkstie bakteriālie un pigmentu aplikumi. Tam var tikt izmantota AIRFLOW metode, pulēšanas pasta, speciālas sukas vai gumijas tasītes. Ne katram pacientam nepieciešams pilnīgi vienāds procedūras posmu apvienojums — tas tiek izvēlēts atbilstoši mutē esošajiem aplikumiem.",
-          "Vizītes beigās mutes higiēnists var parādīt, kā pareizi tīrīt starpzobu telpas, izvēlēties piemērota izmēra starpzobu sukas un izskaidrot, kā kopt implantus, protēzes vai breketes. Šai daļai arī jāatvēl laiks, jo profesionāli noņemtie aplikumi sāks uzkrāties no jauna, ja ikdienas mutes kopšana paliks nepietiekama."
-        ]
-      },
-      {
-        h: "Cik laika nepieciešams, ja zobakmeņu uzkrājies vairāk?",
-        p: [
-          "Kad zobakmeņu nav daudz, un profesionālā higiēna tiek veikta regulāri, procedūra visbiežāk iekļaujas vienā ierastā vizītē. Tomēr, ja aplikumi uzkrājās ilgu laiku, sedz lielāku zobu virsmu daļu vai atrodas zem smaganas malas, to noņemšanai var būt nepieciešamas vairāk nekā stunda.",
-          "Ilgu laiku uzkrājušies zobakmeņi var būt cieti un stipri piestiprinājušies zoba virsmai. Tos nevar noņemt steidzoties. Jāsasniedz katra zoba dažādās puses, jāiztīra starpzobu telpas un jāpārbauda, vai nav palikuši aplikumi grūtāk redzamās vietās.",
-          "Kad smaganas kopā ir stipri kairinātas vai asiņo, procedūra var tikt veikta lēnāk. Dažiem pacientiem ērtāk tīrīšanu sadalīt vairākās vizītēs, lai vienas apmeklējuma laikā nebūtu ilgi jātur mute atvērta un varētu rūpīgi iztīrīt atsevišķas mutes zonas.",
-          "Svarīgi nošķirt ierasto profilaktisko mutes higiēnu no periodontoloģiskās ārstniecības. Ja tiek konstatētas dziļas periodonta kabatas, zobu balstošo audu bojājums vai žokļa kaula noārdīšanās, tikai standarta mutes higiēnas var nepietikt. Šādos gadījumos var būt nepieciešama izsmeļošāka zemsmaganu tīrīšana, zobārsta vai periodontologa konsultācija un vairākos posmos veikta ārstniecība.",
-          "Tāpēc ilgāks procedūras ilgums ne vienmēr nozīmē tikai lielāku virsmas aplikumu daudzumu. Reizēm tas saistīts ar sarežģītāku smaganu un periodonta audu stāvokli, kas jānovērtē individuāli."
-        ]
-      },
-      {
-        h: "Vai mutes higiēnai vienmēr pietiek vienas vizītes?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Vairumā gadījumu profesionālā mutes higiēna tiek veikta vienā 30–60 minūšu vizītē. Vienas apmeklējuma parasti pietiek, kad zobakmeņu nav ļoti daudz, smaganas nav stipri iekaisušas, un pacients var ērti izturēt visas procedūras laiku." },
-          { type: "p", text: "Vairākas vizītes var būt vajadzīgas, ja:" },
-          { type: "ul", items: [
-            "zobakmeņu ir ļoti daudz;",
-            "aplikumi uzkrājušies zem smaganas malas;",
-            "smaganas ir īpaši jutīgas vai stipri asiņo;",
-            "pacientam grūti ilgi turēt muti atvērtu;",
-            "tiek konstatētas iespējamās periodonta slimības pazīmes;",
-            "nepieciešama izsmeļošāka zemsmaganu tīrīšana."
-          ] },
-          { type: "p", text: "Procedūras sadalīšana vairākās vizītēs nenozīmē, ka mutes higiēna tiek veikta neefektīvi. Atsevišķos gadījumos tas ļauj vairāk uzmanības veltīt katrai mutes zonai un samazināt pacienta diskomfortu." },
-          { type: "p", text: "Pēc ierastas profesionālas mutes higiēnas visbiežāk uzreiz var atgriezties pie ikdienas darbībām. Zobi īsu laiku var būt jutīgāki pret aukstumu, un kairinātās smaganas var nedaudz asiņot. Šīs sajūtas pakāpeniski samazinās." },
-          { type: "p", text: "Ja pēc procedūras parādās stipras vai palielinošas sāpes, izteikts pietūkums vai neatslābstoša asiņošana, jāsazinās ar procedūru veikušo speciālistu. Šādi simptomi nav ierastā īslaicīgā jutīguma daļa un jānovērtē individuāli." }
-        ]
-      },
-      {
-        h: "Rūpīga tīrīšana ir svarīgāka par pēc iespējas īsāku vizīti",
-        p: [
-          "Atbildot uz jautājumu, cik ilgi notiek mutes higiēna, visbiežāk var orientēties uz 30–60 minūšu vizīti. Procedūra var būt īsāka, ja tā tiek veikta regulāri un aplikumu nav daudz. Kad uzkrājušies bagātīgi zobakmeņi, smaganas jutīgas vai jāiztīra vietas ap implantiem, protēzēm vai breketēm, var būt nepieciešams ilgāks apmeklējums.",
-          "Vissvarīgākais, lai procedūra tiktu veikta rūpīgi, nevis steidzoties. Mutes higiēnistam jānoņem ne tikai labi redzamie aplikumi, bet arī jāpārbauda starpzobu telpas, smaganas mala un citas grūtāk sasniedzamās vietas. Vizītes laikā arī tiek novērtēts smaganu stāvoklis un sniegti individuāli kopšanas ieteikumi.",
-          "Ja mutē ir ļoti daudz zobakmeņu vai tiek pamanītas iespējamās periodonta slimības pazīmes, vienas ierastas vizītes var nepietikt. Šādos gadījumos speciālists izskaidros, vai tīrīšanu ir lietderīgi sadalīt vairākos posmos un vai nepieciešama papildu periodontoloģiska izmeklēšana.",
-          "Ja nezināt, cik laika profesionālā mutes higiēna var ilgt jūsu gadījumā, reģistrējieties vizītei Bangų klīnikā Klaipēdā. Mūsu speciālisti novērtēs zobu un smaganu stāvokli, izvēlēsies piemērotās tīrīšanas metodes un sniegs individuālus mutes kopšanas ieteikumus."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Cik vidēji ilgi ilgst profesionālā mutes higiēna?", a: "Visbiežāk profesionālā mutes higiēna ilgst apmēram 30–60 minūtes. Precīzs laiks atkarīgs no zobakmeņu un mīksto aplikumu daudzuma, smaganu stāvokļa, zobu jutīguma un mutē esošajiem implantiem, protēzēm vai ortodontiskajām ierīcēm." },
-      { q: "Vai mutes higiēnu var veikt 30 minūtēs?", a: "Kad procedūra tiek veikta regulāri, aplikumu nav daudz, un smaganu stāvoklis ir labs, mutes higiēnai var pietikt apmēram 30 minūšu. Tomēr precīzu laiku speciālists var novērtēt tikai, apskatot muti." },
-      { q: "Kāpēc mutes higiēna reizēm ilgst ilgāk par stundu?", a: "Ilgāka vizīte var būt vajadzīga bagātīgu vai grūti noņemamu zobakmeņu, jutīgu un asiņojošu smaganu, aplikumu zem smaganas malas, implantu, protēžu vai breketu dēļ. Ja tiek konstatēti periodonta bojājumi, var būt nepieciešama izsmeļošāka ārstniecība." },
-      { q: "Vai pirmā mutes higiēna ilgst ilgāk?", a: "Pirmā profesionālā mutes higiēna var ilgt ilgāk, ja iepriekš procedūra nav tikusi veikta vai no pēdējās vizītes pagājis daudz laika. Papildus tiek novērtēts mutes stāvoklis un atvēlēts laiks individuāliem kopšanas ieteikumiem." },
-      { q: "Cik ilgi notiek mutes higiēna ar AIRFLOW?", a: "Kopējais profesionālas mutes higiēnas ar AIRFLOW ilgums visbiežāk sasniedz apmēram 30–60 minūtes. AIRFLOW ir viens no procedūras posmiem, tāpēc vizītes laiks atkarīgs arī no tā, vai papildus jānoņem sacietējušie zobakmeņi." },
-      { q: "Vai mutes higiēna vienmēr tiek veikta vienā vizītē?", a: "Visbiežāk pietiek vienas vizītes. Tomēr, ja aplikumu un zobakmeņu ir ļoti daudz, smaganas ir īpaši jutīgas vai nepieciešama periodontoloģiska ārstniecība, procedūra var tikt sadalīta vairākās vizītēs." }
-    ],
-    sources: [
-      { label: "Professional mechanical plaque removal for prevention of periodontal diseases in adults – systematic review update", url: "https://pubmed.ncbi.nlm.nih.gov/25495962/" },
-      { label: "The efficacy of air polishing devices in supportive periodontal therapy: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/29700503/" },
-      { label: "A systematic review on the patient perception of periodontal treatment using air polishing devices", url: "https://pubmed.ncbi.nlm.nih.gov/25619863/" },
-      { label: "Efficacy of erythritol powder air-polishing in active and supportive periodontal therapy: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/34318577/" },
-      { label: "Efficacy of air polishing in comparison with hand instruments and/or power-driven instruments in supportive periodontal therapy and implant maintenance: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35321688/" },
-      { label: "Effectiveness and Clinical Performance of Erythritol Air-Polishing in Non-Surgical Periodontal Therapy: A Systematic Review of Randomized Clinical Trials", url: "https://pubmed.ncbi.nlm.nih.gov/35888585/" }
-    ]
+    readTime: 10
   },
   {
     slug: "cik-ilgi-sap-zobs-pec-kanalu-tirisanas",
@@ -27536,117 +26667,7 @@ const BLOG_POSTS_LV = [
     date: "2026-07-03",
     category: "Endodontija",
     coverImage: "/blog/kiek-laiko-skauda-danti-po-kanalu-valymo.jpg",
-    readTime: 9,
-    sections: [
-      {
-        p: [
-          "Pēc sakņu kanālu tīrīšanas zobs var būt jutīgs dažas dienas, īpaši košļājot vai sakožot. Tas neobligāti nozīmē, ka ārstniecība veikta nepareizi. Lai gan zoba iekšpusē bijušie bojātie audi tiek noņemti, ap sakni saglabājas dzīvi audi, kas pēc procedūras var būt kairināti.",
-          "Visbiežāk zobs ir visjutīgākais pirmās 2–3 dienas. Neliels jutīgums sakožot var ilgt līdz nedēļai vai nedaudz ilgāk, taču tam skaidri jāsamazinās. Ja sāpes pastiprinās, pēc uzlabošanās atgriežas vai parādās pietūkums, jāvēršas pie ārstniecību veikušā zobārsta.",
-          "Atbildot uz jautājumu, cik ilgi sāp zobs pēc kanālu tīrīšanas, svarīgi vērtēt ne tikai dienu skaitu. Daudz pasaka sāpju gaita: pakāpeniski vājinošs jutīgums visbiežāk atbilst dzīšanai, savukārt palielinošas vai ikdienas darbībām traucējošas sāpes prasa papildu novērtējumu."
-        ]
-      },
-      {
-        h: "Kāpēc pēc kanālu tīrīšanas var sāpēt zobs?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Sakņu kanālu ārstniecības laikā no zoba iekšpuses tiek noņemti infekcijas vai iekaisuma bojātie pulpas audi. Kanāli tiek iztīrīti, dezinficēti, formēti un aizpildīti ar speciālu materiālu, lai samazinātu atkārtotas infekcijas risku." },
-          { type: "p", text: 'Pacienti šo procedūru reizēm sauc par „nerva izņemšanu", tāpēc var rasties jautājums, kāpēc ārstētais zobs joprojām sāp. Noņemot pulpu, ap zoba sakni paliek dzīvi saites, kaula un smaganu audi. Tie var būt jutīgi pirms ārstniecības bijušā iekaisuma un procedūras laikā piedzīvotā kairinājuma dēļ.' },
-          { type: "p", text: "Pirmajās dienās var būt jūtama:" },
-          { type: "ul", items: [
-            "neliela vai vidēja stipruma smelgme;",
-            "jutīgums sakožot vai košļājot;",
-            "spiediena sajūta ap ārstēto zobu;",
-            "žokļa muskuļu smelgme pēc ilgāk turētas atvērtas mutes."
-          ] },
-          { type: "p", text: "Sāpju intensitāti var ietekmēt zoba stāvoklis pirms ārstniecības, ap sakni bijušā iekaisuma apjoms, kanālu anatomija un procedūras sarežģītība. Zinātnisko pētījumu dati liecina, ka pēcoperācijas sāpes visbiežāk ir izteiktākas pirmajās 48–72 stundās un vēlāk samazinās." },
-          { type: "p", text: 'Reizēm pacientam šķiet, ka ārstētais zobs ir „augstāks" un sakožot pirmais saskaras ar pretējā žokļa zobu. Šādu sajūtu var izraisīt jutīgie audi ap sakni, taču iemesls var būt arī pārāk augsta pagaidu plomba vai galīgā restaurācija. Ja sajūta nepāriet, zobārstam jāpārbauda sakodiens.' }
-        ]
-      },
-      {
-        h: "Cik ilgi sāp zobs pēc kanālu tīrīšanas?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Vienāda termiņa visiem pacientiem nav, taču var izšķirt orientējošu dzīšanas gaitu:" },
-          { type: "ul", items: [
-            "Pirmās 24–72 stundas. Iespējama smelgme, spiediens un jutīgums sakožot.",
-            "Pēc 3–7 dienām. Simptomiem jābūt manāmi vājākiem un mazāk traucējošiem ikdienas darbībām.",
-            "Pēc nedēļas. Neliels jutīgums reizēm vēl var saglabāties, taču jābūt skaidrai uzlabošanās tendencei."
-          ] },
-          { type: "p", text: "Šie termiņi ir orientējoši. Dzīšana atkarīga no zoba sākotnējā stāvokļa, ārstniecības apjoma un individuālas audu reakcijas. Ja pēc nedēļas nejūtat nekādu uzlabošanos, ir vērts sazināties ar ārstniecību veikušo zobārstu. Stipras vai palielinošas sāpes nevajadzētu paciest, gaidot vairākas nedēļas." },
-          { type: "p", text: "Kanālu ārstniecība var tikt veikta vienā vai vairākās vizītēs. Pēc pirmā kanālu tīrīšanas posma zobs var tikt aizvērts ar pagaidu plombu, tāpēc jutīgums iespējams arī starp procedūrām. Šādā gadījumā svarīgi saudzēt pagaidu plombu, nekošļāt ļoti cietu ēdienu un nenokavēt nozīmēto nākamo vizīti." },
-          { type: "p", text: "Pat ja starp vizītēm sāpes pilnīgi izzuda, ārstniecību pārtraukt nedrīkst. Nepabeidzot kanālu ārstniecību un galīgi neatjaunojot zobu, palielinās atkārtotas infekcijas un zoba lūzuma risks." }
-        ]
-      },
-      {
-        h: "Kādas sāpes pēc kanālu ārstniecības tiek uzskatītas par normālām?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Normālai dzīšanas gaitai raksturīgs neliels vai vidējs jutīgums, kas katru dienu samazinās. Zobs var smelgt sakožot vai košļājot, taču diskomfortam nevajadzētu pastāvīgi pastiprināties." },
-          { type: "p", text: "Iespējams, ka dzīšana notiek raiti, ja:" },
-          { type: "ul", items: [
-            "sāpes pakāpeniski vājinās;",
-            "tās palīdz kontrolēt ārsta ieteiktās zāles;",
-            "nav palielinoša smaganu vai sejas pietūkuma;",
-            "neparādās drudzis, strutošana vai izteikts vispārējās pašsajūtas pasliktinājums;",
-            "ārstētais zobs nav acīmredzami pirmais kontakts sakožot."
-          ] },
-          { type: "p", text: "Stipras, pulsējošas, gulēt neļaujošas vai katru dienu palielinošas sāpes netiek uzskatītas par ierasto dzīšanas gaitu. Sazināties ar ārstu arī jāvēršas, ja sāpes sākumā samazinājās, bet pēc dažām dienām atkal pastiprinājās." },
-          { type: "p", text: "Retos gadījumos var izpausties akūts saasinājums — stipras sāpes, pietūkums vai abi simptomi, kuru dēļ nepieciešama neplānota zobārsta vizīte. Tas nav tas pats, kas neliels pirmo dienu jutīgums." }
-        ]
-      },
-      {
-        h: "Kā samazināt sāpes un kopt zobu pēc procedūras?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Pēc kanālu tīrīšanas vispirms jārīkojas saskaņā ar individuāliem zobārsta ieteikumiem. Sāpes mazinošos līdzekļus lietojiet tikai saskaņā ar ārsta norādījumu vai preparāta informācijas lapiņu, nepārsniedzot ieteikto devu. Konkrētas zāles nav piemērotas visiem pacientiem, tāpēc jāņem vērā esošās slimības, alerģijas un citi lietotie preparāti." },
-          { type: "p", text: "Pēc procedūras ieteicams:" },
-          { type: "ul", items: [
-            "neēst, kamēr pilnīgi nav pārgājis vietējās anestēzijas iedarbība;",
-            "pirmajās dienās izvairīties no ļoti cieta un lipīga ēdiena;",
-            "īslaicīgi mazāk košļāt ar ārstētā zoba pusi;",
-            "regulāri tīrīt zobus, jutīgo vietu kopjot maigi;",
-            "saudzēt pagaidu plombu no lielas slodzes;",
-            "nenokavēt kontroles vai nākamo ārstniecības vizīti;",
-            "ārsta norādītajā laikā galīgi atjaunot zobu."
-          ] },
-          { type: "p", text: "Ja pagaidu plomba pilnīgi izkrīt vai ārstētais zobs atlūzt, jāsazinās ar klīniku un negaidiet nākamo plānoto vizīti." },
-          { type: "p", text: "Antibiotikas nedrīkst sākt lietot patstāvīgi. Tikai sāpes pēc kanālu tīrīšanas nav pietiekams iemesls antibakteriālai ārstniecībai. Sistēmiski zinātnisko pētījumu pārskati neapstiprina, ka antibiotikas parasti samazinātu pēcoperācijas sāpes vai pasargātu no saasinājuma. Tās ārsts nozīmē tikai pēc konkrētām indikācijām." }
-        ]
-      },
-      {
-        h: "Kad sāpes pēc kanālu tīrīšanas var norādīt uz komplikāciju?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Pie zobārsta jāvēršas, ja:" },
-          { type: "ul", items: [
-            "sāpes pastiprinās vai pēc dažām dienām nesamazinās;",
-            "pēc nedēļas nav skaidras uzlabošanās;",
-            "pietūkst smaganas, vaigs vai seja;",
-            "uz smaganām parādās abscess;",
-            "sajūtama nepatīkama garša vai pamanāmas struti;",
-            "paceļas temperatūra vai pasliktinās vispārējā pašsajūta;",
-            "ārstētais zobs pirmais saskaras sakožot;",
-            "pilnīgi izkrīt pagaidu plomba vai kronis;",
-            "pēc uzlabošanās atgriežas pirms ārstniecības bijušie simptomi."
-          ] },
-          { type: "p", text: "Strauji palielinošs sejas vai kakla pietūkums, apgrūtināta rīšana vai elpošana prasa neatliekamu medicīnisko palīdzību." },
-          { type: "p", text: "Ilgstošas sāpes neobligāti nozīmē, ka zobs būs jāizrauj. Reizēm pietiek koriģēt pārāk augstu restaurāciju. Citos gadījumos var būt jānovērtē zoba plaisa, kanālu anatomija, iekaisums ap sakni vai restaurācijas hermetiskums." },
-          { type: "p", text: "Ja infekcija saglabājas vai pēc kāda laika atjaunojas, var tikt ieteikta atkārtota kanālu ārstniecība. Tomēr pirmajās dienās sajūtams un pakāpeniski vājinošs jutīgums pats par sevi nav pārārstēšanas pazīme." }
-        ]
-      }
-    ],
-    faq: [
-      { q: "Vai normāli, ja pēc kanālu tīrīšanas sāp sakožot?", a: "Neliels un pakāpeniski samazinošs jutīgums pirmajās dienās var būt normāls. Ja zobs izskatās augstāks par citiem, sāpes stipras vai nesamazinās, jāvēršas pie zobārsta." },
-      { q: "Cik ilgi sāp zobs pēc kanālu tīrīšanas?", a: "Visbiežāk izteiktākais jutīgums sajūtams pirmās 2–3 dienas. Nedēļas laikā tam vajadzētu manāmi samazināties. Ja uzlabošanās nav, ieteicama ārsta apskate." },
-      { q: "Vai var sāpēt zobs starp kanālu ārstniecības vizītēm?", a: "Jā, neliels jutīgums iespējams arī pēc pirmā ārstniecības posma. Svarīgi saudzēt pagaidu plombu, ievērot ieteikumus un nenokavēt nākamo vizīti." },
-      { q: "Vai sāpes nozīmē, ka kanālu ārstniecība neizdevās?", a: "Ne vienmēr. Pirmajās dienās jutīgumu var izraisīt ap sakni esošo audu reakcija. Par problēmu vairāk liecina pastiprinošas sāpes, pietūkums, uzlabošanās trūkums vai simptomu atgriešanās." }
-    ],
-    sources: [
-      { label: "Root Canal Explained", url: "https://www.aae.org/patients/root-canal-treatment/what-is-a-root-canal/root-canal-explained/" },
-      { label: "Root Canal Post Treatment Care", url: "https://www.aae.org/patients/your-office-visit/post-treatment-care/" },
-      { label: "Pain Prevalence and Severity Before, During, and After Root Canal Treatment: A Systematic Review", url: "https://pubmed.ncbi.nlm.nih.gov/21419285/" },
-      { label: "The Effect of Antibiotic Use on Endodontic Post-Operative Pain and Flare-Up Rate: A Systematic Review With Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35165442/" }
-    ]
+    readTime: 9
   },
   {
     slug: "ko-darit-kad-bernam-sap-zobs",
@@ -27655,110 +26676,7 @@ const BLOG_POSTS_LV = [
     date: "2026-07-03",
     category: "Bērnu zobārstniecība",
     coverImage: "/blog/vaikui-skauda-danti.jpg",
-    readTime: 9,
-    sections: [
-      {
-        p: [
-          "Kad bērnam sāp zobs, vecākiem var būt grūti saprast, kas noticis un cik ātri jāvēršas pēc palīdzības. Mazāks bērns ne vienmēr spēj precīzi parādīt sāpošo vietu, tāpēc par problēmu var liecināt nevēlēšanās ēst, slikts miegs, aizkaitināmība vai vienas mutes puses saudzēšana.",
-          "Bieža bērnu zobu sāpju iemesls ir kariess, taču nepatīkamas sajūtas var izraisīt arī zoba trauma, smaganu iekaisums, starp zobiem iestrēdzis ēdiens, augošs zobs vai mutes gļotādas bojājums. Neārstēts kariess var progresēt, izraisīt sāpes, infekciju un traucēt bērnam ēst vai gulēt.",
-          "Ja bērnam sāp zobs, mājās var tikai īslaicīgi atvieglot pašsajūtu. Sāpju cēloni jānosaka zobārstam. Vizīti nedrīkstētu atlikt tikai tāpēc, ka sāp piena zobs — laikus sniegta palīdzība palīdz izvairīties no sarežģītākas ārstniecības."
-        ]
-      },
-      {
-        h: "Kāpēc bērnam var sāpēt zobs?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Zobu kariess attīstās, kad aplikumos esošās baktērijas sadala ar pārtiku un dzērieniem uzņemtos cukurus. Radušās skābes pakāpeniski bojā zoba emalju un dziļākos audus. Risku palielina bieža saldu uzkodu un dzērienu lietošana, nepietiekama aplikumu noņemšana un pārāk maza fluorīdu iedarbība." },
-          { type: "p", text: "Sākotnējais kariess var neizraisīt nekādas sajūtas. Bojājumam padziļinoties zobs var kļūt jutīgs pret saldu, aukstu vai karstu ēdienu. Vēlāk sāpes var parādīties pašas no sevis, pastiprināties vakarā vai pamodināt bērnu naktī." },
-          { type: "p", text: "Ja 3 gadus vecam bērnam jau sabojāti vairāki zobi, vizīti pie zobārsta nedrīkstētu atlikt. Agrīnās bērnības kariess var sākties tikko izaugot pirmajiem piena zobiem un progresēt diezgan nepamanāmi. Laikus novērtējot mutes stāvokli, var apturēt turpmāko bojājumu padziļināšanos un izveidot bērnam piemērotu ārstniecības un profilakses plānu." },
-          { type: "p", text: 'Tomēr bērns ar vārdiem „sāp zobs" var aprakstīt arī citu mutes problēmu. Nepatīkamas sajūtas var izraisīt arī:' },
-          { type: "ul", items: [
-            "starp zobiem iestrēdzis ēdiens;",
-            "apsārtušas vai pietūkušas smaganas;",
-            "afta vai cita gļotādas čūliņa;",
-            "iekosts vaigs vai mēle;",
-            "atlūzis vai pēc traumas bojāts zobs;",
-            "augošs vai kustīgs zobs;",
-            "zoba saknes zonas infekcija."
-          ] },
-          { type: "p", text: "Precīzu iemeslu var noteikt tikai apskatot bērnu. Ja nepieciešams, zobārsts veic radioloģisku izmeklējumu, lai novērtētu starpzobu telpas, zoba saknes un apkārtējos audus." }
-        ]
-      },
-      {
-        h: "Kā saprast, kurš zobs bērnam sāp?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Vecāks bērns visbiežāk var parādīt sāpošo vietu, taču viņa norādītais zobs ne vienmēr ir īstais sāpju avots. Sāpes var būt jūtamas arī blakus zobos, žoklī vai auss zonā." },
-          { type: "p", text: "Mierīgi pajautājiet bērnam:" },
-          { type: "ul", items: [
-            "kurā vietā sāp visvairāk;",
-            "vai sāp pastāvīgi vai tikai ēdot;",
-            "vai sāpes izraisa auksts, silts vai salds ēdiens;",
-            "vai sāp sakožot;",
-            "vai sāpes traucē gulēt;",
-            "vai bērns pēdējā laikā nav sitis."
-          ] },
-          { type: "p", text: "Mazākam bērnam sāpju stiprumu var palīdzēt novērtēt, izmantojot vienkāršu sejiņu skalu." },
-          { type: "p", text: "Pirms apskatot muti nomazgājiet rokas un izvēlieties labi apgaismotu vietu. Pārbaudiet, vai neredzat zoba aptumšošanos, dobumu, atlūzušu zobu, iestrēdzušu ēdienu, apsārtušas smaganas, abscesu, gļotādas čūliņu vai sejas pietūkumu." },
-          { type: "p", text: "Nespiediet sāpošo zobu vai smaganas un nemēģiniet paši noteikt diagnozi. Pat ja skaidra bojājuma neredzat, kariess var būt starp zobiem, savukārt infekcija — zoba iekšpusē vai saknes zonā." }
-        ]
-      },
-      {
-        h: "Ko darīt līdz vizītei pie zobārsta?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Kad bērnam sāp zobs, ko darīt vispirms, atkarīgs no viņa pašsajūtas un papildu simptomiem. Sazinieties ar zobārstniecības klīniku un pastāstiet, cik ilgi sāp, vai ir pietūkums, drudzis, trauma un vai sāpes traucē bērnam ēst vai gulēt." },
-          { type: "p", text: "Līdz vizītei ieteicams:" },
-          { type: "ol", items: [
-            "Uzmanīgi iztīrīt zobus. Izmantojiet mīkstu suku, taču pilnīgi neatteicieties no mutes higiēnas.",
-            "Pārbaudīt starpzobu telpas. Ja bērns atļauj, ar zobu diegu uzmanīgi izņemiet iestrēdzušo ēdienu.",
-            "Izvēlēties maigu ēdienu. Dodiet mīkstu, nekarstu ēdienu un ūdeni.",
-            "Izvairīties no kairinātājiem. Nepiedāvājiet ļoti aukstus, karstus, saldus vai cietus produktus.",
-            "Ja nepieciešams, mazināt sāpes. Zāles bērnam var dot tikai atbilstoši viņa vecumam, svaram, preparāta instrukcijai vai ārsta norādījumam.",
-            "Novērot stāvokli. Pievērsiet uzmanību, vai neparādās pietūkums, drudzis, strutošana vai vājums."
-          ] },
-          { type: "p", text: "Bērniem nedrīkst dot aspirīnu. Sāpes mazinošas tabletes, alkoholu, ēteriskās eļļas vai citas vielas nedrīkst likt tieši uz zoba vai smaganām, jo tās var bojāt mutes gļotādu." },
-          { type: "p", text: "Antibiotikas nedrīkst sākt lietot patstāvīgi. Tās neizārstē kariesu un neaizvieto zobārstniecības ārstniecību. Pat ja sāpes samazinājās, vizīti atcelt nedrīkstētu — īslaicīga uzlabošanās nenozīmē, ka zobs izveseļojās." }
-        ]
-      },
-      {
-        h: "Kad bērna zoba sāpes prasa neatliekamo palīdzību?",
-        p: [],
-        blocks: [
-          { type: "p", text: "Pēc iespējas ātrāk vērsieties pie zobārsta, ja sāpes stipras, nepāriet, pamodina bērnu naktī vai traucē ēst. Steidzīgāk novērtēt bērnu vajag arī tad, kad parādās smaganu, vaiga vai žokļa pietūkums, drudzis, struti, slikta garša mutē vai sāpes sakožot. Bērnu zobārstniecības neatliekamiem stāvokļiem pieskaitāmas sāpes, infekcija, sejas pietūkums, nekontrolēta asiņošana un mutes vai sejas trauma." },
-          { type: "p", text: "Nekavējoties nepieciešama medicīniskā palīdzība, ja:" },
-          { type: "ul", items: [
-            "pietūkums strauji palielinās vai izplatās;",
-            "pietūkst apvidus ap aci vai kaklu;",
-            "bērnam grūti rīt, runāt vai elpot;",
-            "bērns kļūst gauss, un viņa stāvoklis ievērojami pasliktinās;",
-            "pēc traumas bagātīgi asiņo;",
-            "aizdomas par žokļa vai citu nopietnu bojājumu."
-          ] },
-          { type: "p", text: "Sejas vai kakla pietūkums kopā ar apgrūtinātu rīšanu vai elpošanu var norādīt uz izplatītu infekciju. Šādā gadījumā nevajadzētu gaidīt plānoto vizīti." }
-        ]
-      },
-      {
-        h: "Vai jāārstē sabojātie piena zobi?",
-        p: [
-          "Piena zobi palīdz bērnam košļāt, runāt un saglabāt vietu pastāvīgajiem zobiem. Neārstēts to kariess var izraisīt sāpes, infekciju, apgrūtināt ēšanu un traucēt miegu. Zobārstniecības ārstniecība bērniem tiek uzskatīta par nepieciešamu, lai novērstu mutes slimību, infekciju un sāpes un atjaunotu zobu funkciju.",
-          "Ārstniecības veids atkarīgs no bojājuma dziļuma, zoba stāvokļa, bērna vecuma un spējas sadarboties. Agrīnu bojājumu reizēm var apturēt ar profilaktiskām vai minimāli invazīvām ierīcēm. Izveidojies dobums var tikt plombēts, savukārt stipri bojātam zobam var būt nepieciešama pulpas ārstniecība, kronis vai izraušana.",
-          "Ja bērnam sāp zobs vai pamanījāt izmainījušos piena zobu, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā. Mūsu speciālisti novērtēs bērna mutes stāvokli, izskaidros ārstniecības iespējas un palīdzēs izvēlēties viņa vecumam piemērotu risinājumu."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Bērnam sāp zobs — ko darīt, ja pie zobārsta tiksim tikai pēc dažām dienām?", a: "Sazinieties ar klīniku un aprakstiet simptomus, jo var būt nepieciešama agrāka vizīte. Līdz konsultācijai uzturiet mutes higiēnu, izvairieties no temperatūras kairinātājiem un, ja nepieciešams, dodiet bērnam piemērotu sāpes mazinošu līdzekli atbilstoši preparāta instrukcijai. Parādoties pietūkumam, drudzim vai pasliktinoties pašsajūtai, palīdzība nepieciešama ātrāk." },
-      { q: "Vai zoba sāpes var pāriet pašas?", a: "Sāpes var īslaicīgi vājināties, taču tas nenozīmē, ka iemesls izzuda. Sāpošo vai bojāto zobu tik un tā jāapskata zobārstam." },
-      { q: "Ko darīt, ja 3 gadus vecam bērnam sabojāti vairāki zobi?", a: "Reģistrējiet bērnu zobārsta apskatei. Ārsts novērtēs bojājumu dziļumu, bērna kariesa risku un izveidos ārstniecības un profilakses plānu." },
-      { q: "Vai sāpošu piena zobu var uzreiz izraut?", a: "Izraušana nav automātisks risinājums. Ja zobu var uzticami izārstēt un saglabāt, tas bieži ir noderīgi. Ārstniecība tiek izvēlēta atbilstoši zoba stāvoklim, bērna vecumam un pastāvīgā zoba attīstībai." }
-    ],
-    sources: [
-      { label: "Policy on Early Childhood Caries: Consequences and Preventive Strategies", url: "https://www.aapd.org/research/oral-health-policies--recommendations/early-childhood-caries-classifications-consequences-and-preventive-strategies/" },
-      { label: "Policy on Early Childhood Caries: Unique Challenges and Management Considerations", url: "https://www.aapd.org/research/oral-health-policies--recommendations/early-childhood-caries-unique-challenges-and-treatment-options/" },
-      { label: "Policy on Emergency Oral Care", url: "https://www.aapd.org/research/oral-health-policies--recommendations/emergency-oral-care-for-infants-children-adolescents-and-individuals-with-special-health-care-needs/" },
-      { label: "Ending Childhood Dental Caries: WHO Implementation Manual", url: "https://www.who.int/publications/i/item/9789240000056" }
-    ]
+    readTime: 9
   },
   {
     slug: "zoba-implanta-noraidisanas-pazimes",
@@ -27767,95 +26685,7 @@ const BLOG_POSTS_LV = [
     date: "2026-06-10",
     category: "Zobu implantācija",
     coverImage: "https://images.unsplash.com/photo-1664529845843-b4192b8246fa?w=1200&q=80&fit=crop&auto=format",
-    readTime: 7,
-    sections: [
-      {
-        p: [
-          'Zobu implanti visbiežāk veiksmīgi ieaug un kļūst par uzticamu risinājumu, zaudējot zobu. Tomēr, tāpat kā pēc jebkuras ķirurģiskās procedūras, komplikācijas pēc zobu implantēšanas var rasties. Pacienti bieži to sauc par „implanta noraidīšanu", taču visbiežāk runa nav par īstu alerģisku reakciju, bet par implanta neieaugšanu, iekaisumu, infekciju vai apkārtējo audu problēmām.',
-          "Vissvarīgākais — prast atšķirt normālu dzīšanas gaitu no simptomiem, kurus nevajadzētu ignorēt. Neliela smelgme vai pietūkums pirmajās dienās var būt ierasts, taču pastiprinošas sāpes, strutošana, slikta smaka, drudzis vai implanta kustība ir zīmes, ka jāvēršas pie ārsta. Jo agrāk situācija tiek novērtēta, jo lielāka iespēja izvairīties no nopietnākām komplikācijām."
-        ]
-      },
-      {
-        h: "Normālas sajūtas pēc implantācijas un bīstamie simptomi",
-        p: [
-          "Pēc implantācijas organismam nepieciešams laiks, lai sadzīstu, tāpēc noteiktas sajūtas pirmajās dienās ir normālas. Var būt jūtama viegla smelgme, spriegums, jutīgums vai neliels pietūkums ap operēto vietu. Pirmajās stundās iespējama arī neliela asiņošana. Parasti šiem simptomiem vajadzētu pakāpeniski samazināties.",
-          "Sabažīties vajadzētu tad, ja pašsajūta nevis uzlabojas, bet pasliktinās. Bīstamas pazīmes ir pastiprinošas sāpes, palielinošs pietūkums, strutošana, slikta smaka vai nepatīkama garša mutē, drudzis, asiņošana, kas neapstājas, vai sajūta, ka implants kustas. Šādi simptomi var norādīt uz infekciju, iekaisumu vai citu komplikāciju.",
-          "Svarīgi vērtēt ne tikai pašu simptomu, bet arī tā gaitu. Ja pēc dažām dienām smelgme samazinās, tas visbiežāk atbilst ierastai dzīšanai. Ja sāpes pastiprinās, parādās jauni simptomi vai vispārējā pašsajūta pasliktinās, jāsazinās ar implantējošo ārstu."
-        ]
-      },
-      {
-        h: "Biežākās zoba implanta noraidīšanas vai neieaugšanas pazīmes",
-        p: [
-          "Viena no svarīgākajām pazīmēm, ka implants var neieaugt vai attīstās komplikācija, ir sāpes, kas nevis samazinās, bet pastiprinās. Pirmajās dienās pēc implantācijas smelgme var būt normāla, taču stipras, pulsējošas vai ilgi nepārejošas sāpes jānovērtē ārstam.",
-          "Cits satraucošs simptoms — palielinošs pietūkums. Neliels pietūkums pēc procedūras ir ierasts, taču, ja pēc dažām dienām tas pastiprinās, izplatās uz seju vai kopā parādās temperatūra, tas var norādīt uz iekaisumu vai infekciju. Smaganas ap implantu arī var apsārtīt, kļūt jutīgas, asiņot vai strutot.",
-          "Slikta smaka, nepatīkama garša mutē vai struti ap implantu ir pazīmes, kuras nevajadzētu ignorēt. Tās var būt saistītas ar bakteriālu infekciju vai iekaisumu ap implantu. Arī ļoti svarīgs simptoms ir implanta, dzīšanas galviņas vai pagaidu protēzes kustība. Implantam jābūt stabilam, tāpēc jebkura kustības sajūta jānovērtē pēc iespējas ātrāk.",
-          "Vēlākā periodā par problēmu var brīdināt smaganu atkāpšanās, redzama implanta vītne, sāpes kožot vai spiežot. Šādos gadījumos nepieciešama zobārsta apskate, jo laikus pamanītas problēmas bieži var kontrolēt ātrāk."
-        ]
-      },
-      {
-        h: "Zoba implanta iekaisums: kā tas izpaužas?",
-        image: "/implanto-uzdegimas.webp",
-        p: [
-          "Zoba implanta iekaisums var bojāt smaganas un audus ap implantu. Sākumā simptomi reizēm ir neizteikti, tāpēc pacients var domāt, ka tas ir tikai ierasts jutīgums pēc procedūras. Tomēr iekaisumu ap implantu nedrīkstētu ignorēt, jo laikus neārstēts tas var progresēt.",
-          "Agrīnās iekaisuma pazīmes var būt apsārtušas, pietūkušas vai jutīgas smaganas ap implantu. Tīrot zobus vai pieskaroties smaganām var parādīties asiņošana. Reizēm sajūtams spiediens, smelgme vai sāpes kožot. Ja parādās strutošana, slikta smaka vai nepatīkama garša mutē, tas var norādīt uz aktīvāku iekaisumu vai infekciju.",
-          "Progresējošs iekaisums var ietekmēt ne tikai smaganas, bet arī kaulu ap implantu. Šādā gadījumā var parādīties smaganu atkāpšanās, redzama implanta virsma vai pat implanta kustība. Zoba implanta iekaisumu jānovērtē ārstam — patstāvīga ārstniecība vai antibiotiku lietošana bez nozīmējuma problēmu neatrisina."
-        ]
-      },
-      {
-        h: "Kāpēc var rasties komplikācijas pēc zobu implantēšanas?",
-        p: [
-          "Komplikācijas pēc zobu implantēšanas var rasties dažādu iemeslu dēļ. Reizēm tās saistītas ar individuālo pacienta dzīšanas reakciju, vispārējo veselības stāvokli vai kaula kvalitāti, un reizēm — ar kopšanu pēc procedūras. Svarīgi saprast, ka komplikācijas neobligāti nozīmē pacienta vai ārsta kļūdu, taču tās laikus jāpamana.",
-          "Viens no biežākajiem riska cēloņiem ir nepietiekama mutes higiēna. Ja ap implantu uzkrājas aplikumi un baktērijas, palielinās smaganu iekaisuma risks. Smēķēšana arī var pasliktināt audu asinsriti, palēnināt dzīšanu un palielināt komplikāciju iespējamību. Risku var palielināt arī nekontrolētas vispārējās slimības, pārāk agrīna implanta noslogošana vai neierašanās kontroles vizītēs.",
-          "Reizēm ietekmi rada zobu griešana, spēcīga sakodiena vai pārāk liela košļāšanas slodze. Tāpēc pēc implantācijas svarīgi ievērot ārsta ieteikumus, regulāri pārbaudīties un ziņot par jebkurām neparastām sajūtām."
-        ]
-      },
-      {
-        h: "Kad simptomi var parādīties?",
-        p: [
-          "Iespējamie implanta neieaugšanas vai iekaisuma simptomi var parādīties dažādos laikos. Agrīnas komplikācijas visbiežāk izpaužas pirmajās dienās vai nedēļās pēc implantācijas. Tās var būt saistītas ar dzīšanu, infekciju, asiņošanu, pastiprinošām sāpēm, palielinošu pietūkumu vai operētās vietas kairinājumu.",
-          "Vēlīnas komplikācijas var parādīties pēc dažiem mēnešiem vai pat gadiem. Visbiežāk tās saistītas ar iekaisumu ap implantu, nepietiekamu mutes higiēnu, smēķēšanu, pārāk lielu slodzi, protezēšanas problēmām vai regulāro pārbaužu trūkumu. Šādos gadījumos pacients var pamanīt asiņošanu tīrot, nepatīkamu garšu, smaganu atkāpšanos, sāpes kožot vai implanta kustību.",
-          "Šī iemesla dēļ svarīgas ne tikai pirmās dienas pēc implantācijas, bet arī ilgtermiņa implantu kopšana. Pat ja implants ilgu laiku neradīja problēmas, bet parādījās jauni simptomi, jāvēršas pie zobārsta."
-        ]
-      },
-      {
-        h: "Ko darīt, pamanot iespējamas implanta noraidīšanas pazīmes?",
-        p: [
-          "Ja pamanījāt simptomus, kas var norādīt uz implanta neieaugšanu vai iekaisumu, vissvarīgākais ir nekavēties un sazināties ar implantējošo ārstu. Nevajadzētu gaidīt, kad sāpes vai pietūkums pāriet paši, īpaši, ja simptomi pastiprinās vai parādās strutošana, slikta smaka, drudzis vai implanta kustība.",
-          "Kamēr gaidāt vizīti, nekustiniet implantu, nespiediet smaganas un neaiztieciet operēto vietu. Mutes higiēnu uzturiet uzmanīgi — tīriet maigi, nebojājot kairinātos audus. Nelietojiet antibiotikas vai citas zāles patstāvīgi, ja tās nav nozīmējis ārsts.",
-          "Vizītes laikā ārsts novērtēs smaganas, implanta stabilitāti, apkārtējos audus un, ja nepieciešams, veiks rentgena izmeklējumu. Ārstniecība atkarīga no problēmas cēloņa: reizēm pietiek ar iekaisuma kontroli un higiēnas korekciju, un reizēm nepieciešama sarežģītāka ārstniecība."
-        ]
-      },
-      {
-        h: "Vai var izvairīties no implanta komplikācijām?",
-        image: "https://images.unsplash.com/photo-1593022356769-11f762e25ed9?w=1200&q=80&fit=crop&auto=format",
-        p: [
-          "No visām komplikācijām nevar pilnīgi izvairīties, taču risku var ievērojami samazināt. Vispirms svarīgi ievērot ārsta ieteikumus pēc implantācijas: saudzēt operēto vietu, nenoslogot to pārāk agri, lietot nozīmētās zāles un ierasties kontroles vizītēs.",
-          "Ļoti svarīga ir ikdienas mutes higiēna. Ap implantu, tāpat kā ap dabīgajiem zobiem, var uzkrāties aplikumi un baktērijas, tāpēc zobi jātīra rūpīgi, bet neagresīvi. Ārsts vai mutes higiēnists var ieteikt piemērotas ierīces implantu kopšanai.",
-          "Smēķēšana, slikta higiēna, nekontrolētas slimības, zobu griešana un nokavētas pārbaudes var palielināt komplikāciju risku. Tāpēc iepriekš ir vērts informēt ārstu par savu veselības stāvokli, lietotajām zālēm un ieradumiem. Regulāra profesionālā mutes higiēna un profilaktiskās apskates palīdz laikus pamanīt izmaiņas ap implantu."
-        ]
-      },
-      {
-        h: "Zoba implanta noraidīšanas pazīmes nevajadzētu ignorēt",
-        p: [
-          "Ne katras sāpes vai smelgme pēc implantācijas nozīmē, ka implants neieauga. Pirmajās dienās viegls jutīgums, pietūkums vai diskomforts var būt normāla dzīšanas daļa. Tomēr svarīgi novērot, vai simptomi pakāpeniski samazinās.",
-          "Bīstamas pazīmes ir pastiprinošas sāpes, palielinošs pietūkums, strutošana, slikta smaka, nepatīkama garša, drudzis, asiņošana vai implanta kustība. Šādos gadījumos pēc iespējas ātrāk jāvēršas pie ārsta. Laikus novērtējot situāciju, daļu komplikāciju var kontrolēt un pasargāt implantu un apkārtējos audus.",
-          "Ja iedomājaties zoba implanta iekaisumu vai pamanāt neparastus simptomus pēc implantācijas, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Kādas ir zoba implanta noraidīšanas pazīmes?", a: "Biežākās pazīmes ir pastiprinošas sāpes, palielinošs pietūkums, strutošana, slikta smaka, nepatīkama garša mutē, drudzis, neatslābstoša asiņošana un implanta kustība." },
-      { q: "Vai sāpes pēc implantācijas nozīmē, ka implants neieauga?", a: "Ne vienmēr. Neliela smelgme vai jutīgums pirmajās dienās pēc implantācijas var būt normāls. Nemieru rada sāpes, kas pastiprinās, nepāriet vai parādās kopā ar citiem simptomiem." },
-      { q: "Kā izpaužas zoba implanta iekaisums?", a: "Zoba implanta iekaisums var izpausties ar apsārtušām, pietūkušām vai asiņojošām smaganām, jutīgumu, strutošanu, sliktu smaku, nepatīkamu garšu mutē, sāpēm kožot vai implanta kustību." },
-      { q: "Kad pēc implantācijas jāvēršas pie ārsta?", a: "Pie ārsta jāvēršas, ja sāpes pastiprinās, pietūkums palielinās, parādās strutošana, drudzis, slikta smaka, asiņošana vai implants, dzīšanas galviņa vai pagaidu protēze kustas." },
-      { q: "Vai zoba implanta iekaisumu var ārstēt mājās?", a: "Nē. Mājās var uzturēt maigu mutes higiēnu, taču iekaisumu ap implantu jānovērtē ārstam. Patstāvīga antibiotiku lietošana vai ārstniecība bez apskates var pasliktināt situāciju." },
-      { q: "Vai var izvairīties no komplikācijām pēc zobu implantēšanas?", a: "Risku var samazināt, ievērojot ārsta ieteikumus, uzturot labu mutes higiēnu, nesmēķējot, izvairoties no pārāk agrīnas slodzes un regulāri apmeklējot kontroles vizītes." }
-    ],
-    sources: [
-      { label: "Peri-implant diseases and conditions: Consensus report of Workgroup 4 of the 2017 World Workshop on the Classification of Periodontal and Peri-Implant Diseases and Conditions", url: "https://pubmed.ncbi.nlm.nih.gov/29926491/" },
-      { label: "Smoking and Dental Implants: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35056347/" },
-      { label: "A Retrospective Analysis of Biological Complications of Dental Implants", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9391181/" }
-    ]
+    readTime: 7
   },
   {
     slug: "kas-jazina-pec-zoba-implantacijas",
@@ -27864,100 +26694,7 @@ const BLOG_POSTS_LV = [
     date: "2026-06-03",
     category: "Zobu implantācija",
     coverImage: "https://images.unsplash.com/photo-1609918438269-9a4c5f8fe3a4?w=1200&q=80&fit=crop&auto=format",
-    readTime: 8,
-    sections: [
-      {
-        p: [
-          "Zoba implantācija ir ķirurģiska procedūra, tāpēc pēc tās organismam nepieciešams laiks, lai sadzīstu. Lai gan pati implantācija tiek veikta kontrolētos apstākļos, galīgajam rezultātam ļoti svarīgi arī tas, kā pacients rīkojas pēc procedūras. Pareiza kopšana pirmajās dienās palīdz samazināt komplikāciju risku, atvieglo dzīšanu un rada labākus apstākļus implantam ieaugt.",
-          "Pēc zoba implantēšanas svarīgi ievērot ārsta ieteikumus, saudzēt operēto vietu un novērot savu pašsajūtu. Neliela smelgme, pietūkums vai jutīgums var būt normāla dzīšanas daļa, taču simptomiem vajadzētu pakāpeniski samazināties. Ja sāpes pastiprinās, parādās strutošana, drudzis vai palielinošs pietūkums, jāvēršas pie ārsta."
-        ]
-      },
-      {
-        h: "Kāda pašsajūta pēc zoba implantēšanas ir normāla?",
-        p: [
-          "Pašsajūta pēc zoba implantēšanas var atšķirties atkarībā no procedūras sarežģītības, implanta atrašanās vietas, pacienta veselības stāvokļa un tā, vai bija veiktas papildu procedūras, piemēram, kaula augmentācija. Tomēr noteiktas sajūtas pēc implantācijas ir ierastas un visbiežāk nevajadzētu satraukt.",
-          "Pirmajās dienās varat sajust smelgmi, spriedzi vai jutīgumu operētajā vietā. Arī var parādīties neliels pietūkums, smaganu jutīgums vai grūtāka košļāšana ar to pusi, kurā tika ieskrūvēts implants. Pirmajās stundās pēc procedūras iespējama neliela asiņošana. Daži pacienti pēc ķirurģiskās procedūras sajūt vieglu nogurumu.",
-          "Vissvarīgākais novērot, vai pašsajūta uzlabojas. Normāli, ja diskomforts pakāpeniski samazinās, un pietūkums pēc dažām dienām sāk mazināties. Tomēr, ja sāpes pastiprinās, pietūkums palielinās, parādās slikta smaka, nepatīkama garša mutē, strutošana vai temperatūra, jānekavējas un jāsazinās ar ārstu."
-        ]
-      },
-      {
-        h: "Pirmās stundas pēc zoba implantēšanas",
-        p: [
-          "Pirmās stundas pēc zoba implantēšanas ir īpaši svarīgas, jo tajā laikā sāk veidoties primārais dzīšanas process. Ja ārsts uzlika tamponu, to vajadzētu turēt tik daudz laika, cik bija norādīts. Nevajadzētu to mainīt bez vajadzības vai pastāvīgi pārbaudīt brūci, jo tā var kairināt operēto vietu.",
-          "Kamēr darbojas anestēzija, labāk neēst. Notirpusi mutes zona var izraisīt, ka netīši iekožat vaigā, lūpā vai mēlē. Pirmajā dienā izvairieties no karsta ēdiena un dzērieniem, intensīvas mutes skalošanas, spļaušanas un dzeršanas caur salmiņu. Šīs darbības var traucēt asins recekļa veidošanos un palēnināt dzīšanu.",
-          "Operēto vietu neaiztieciet ar mēli, pirkstiem vai priekšmetiem. Pēc procedūras ieteicams atpūsties un izvairīties no intensīvas fiziskās slodzes. Ja ārsts nozīmēja zāles vai sniedza individuālus ieteikumus, tie jāievēro tieši tā, kā norādīts."
-        ]
-      },
-      {
-        h: "Dzīšana pēc zobu implantācijas: kas jāsagaida?",
-        p: [
-          "Dzīšana pēc zobu implantācijas notiek posmos. Vispirms dzīst smaganas un mīkstie audi ap implantu. Pirmajās dienās var būt jūtama smelgme, jutīgums vai spriedze, un pietūkums visbiežāk ir visizteiktākais otrajā vai trešajā dienā pēc procedūras. Vēlāk šīm sajūtām vajadzētu pakāpeniski samazināties.",
-          "Svarīgi saprast, ka no ārpuses smaganas var izskatīties diezgan ātri sadzijušas, taču pats implants vēl jāintegrējas kaulā. Šis process saukts par osteointegrāciju un ilgst ilgāk par primāro mīksto audu dzīšanu. Tāpēc pat ja sāpju vairs nav, nevajadzētu patstāvīgi noslogot implantu vai nokavēt kontroles vizītes.",
-          "Dzīšanas ilgums atkarīgs no daudziem faktoriem: pacienta veselības stāvokļa, kaula kvalitātes, implanta atrašanās vietas, implantu skaita, mutes higiēnas un tā, vai bija veiktas papildu procedūras, piemēram, kaula augmentācija. Ārsts novērtē dzīšanas gaitu kontroles vizīšu laikā un nolemj, kad var pāriet uz nākamo protezēšanas posmu."
-        ]
-      },
-      {
-        h: "Kā kopt muti pēc implantācijas?",
-        p: [
-          "Pēc implantācijas mutes higiēnai jābūt uzmanīgai, bet konsekventai. Pirmajā dienā nav ieteicams intensīvi skalot muti, jo spēcīga skalošana var traucēt brūces dzīšanai. Tomēr tas nenozīmē, ka mutes tīrību var nepievērst uzmanību. Zobi jātīra, tikai operētā vieta pirmajās dienās jāsargā no tiešas kairinājuma.",
-          "Tīriet zobus maigi, izmantojot mīkstu zobu suku. Izvairieties stipri spiest suku uz operētās vietas, nekasiet brūci un neaizskariet to ar pirkstiem vai mēli. Ja ārsts nozīmēja speciālu skalošanas šķidrumu vai citas ierīces, tos lietojiet tieši tā, kā norādīts.",
-          "Tīrība ir svarīga, jo aplikumi un baktērijas var palielināt iekaisuma risku. Vēlāk, kad audi sadzīs, implants jākopj tikpat atbildīgi kā dabīgie zobi. Regulāra mutes higiēna un profilaktiskās vizītes palīdz uzturēt labu implanta un apkārtējo audu stāvokli."
-        ]
-      },
-      {
-        h: "Ko var ēst pēc zoba implantēšanas?",
-        p: [
-          "Pēc zoba implantēšanas pirmajās stundās vislabāk neēst, kamēr pilnīgi nepāriet anestēzija. Ja ēdīsiet, kamēr mute notirpusi, varat netīši iekost lūpā, vaigā vai mēlē. Kad anestēzija pāriet, izvēlieties mīkstu, nekarstu ēdienu, kas nekairina operēto vietu.",
-          "Pirmajās dienās piemērotas ir putras, jogurts, zupas, mīkstie sautējumi, trīts vai viegli košļājams ēdiens. Vajadzētu izvairīties no cieta, kraukšķīga, ass, ļoti karsta vai lipīga ēdiena. Arī labāk izvairīties no sēklām, riekstiem, drupatām un citiem sīkiem produktiem, kas var nokļūt brūces vietā.",
-          "Košļājiet ar otru mutes pusi un centieties nenoslogot implanta zonu. Dzeriet pietiekami daudz ūdens, taču pirmajā diennaktī izvairieties no dzeršanas caur salmiņu. Alkohola arī vajadzētu izvairīties, īpaši ja lietojat ārsta nozīmētas zāles. Ēdienam pēc procedūras vajadzētu palīdzēt dzīšanai, nevis papildus kairināt operēto vietu."
-        ]
-      },
-      {
-        h: "Ko nedrīkst darīt pēc zoba implantācijas?",
-        image: "https://images.unsplash.com/photo-1468493858157-0da44aaf1d13?w=1200&q=80&fit=crop&auto=format",
-        p: [
-          "Pēc zoba implantācijas svarīgi izvairīties no darbībām, kas var traucēt dzīšanu vai palielināt komplikāciju risku. Pirmajā diennaktī nevajadzētu intensīvi skalot muti, spļaut vai dzert caur salmiņu. Šādas darbības var traucēt asins recekļa veidošanos un kairināt operēto vietu.",
-          "Pirmajās dienās nav ieteicams smēķēt un lietot alkoholu. Smēķēšana pasliktina audu asinsriti, palēnina dzīšanu un var palielināt iekaisuma risku. Alkoholu vajadzētu izvairīties īpaši tad, ja lietojat ārsta nozīmētas zāles. Arī nesildiet operēto vietu, jo siltums var veicināt pietūkumu vai asiņošanu.",
-          "Izvairieties no intensīva sporta, smagas fiziskās slodzes un pirts pirmajās dienās pēc procedūras. Nekasiet brūci, neaiztieciet to ar pirkstiem vai mēli, nemēģiniet patstāvīgi novērtēt implanta vietu. Arī nenokavējiet kontroles vizītes — tās svarīgas, lai pārliecinātos, ka dzīšana pēc zobu implantācijas notiek raiti."
-        ]
-      },
-      {
-        h: "Kad vajadzētu sabažīties un vērsties pie ārsta?",
-        p: [
-          "Neliela smelgme, pietūkums vai jutīgums pirmajās dienās pēc implantācijas var būt normāls. Tomēr simptomiem vajadzētu pakāpeniski samazināties. Ja sāpes nevis vājinās, bet pastiprinās, jāsazinās ar ārstu. Īpaši svarīgi vērsties, ja sāpes kļūst pulsējošas, traucē gulēt vai nepāriet, lietojot ārsta ieteiktās ierīces.",
-          "Satraukt vajadzētu palielinošu pietūkumu pēc dažām dienām, strutošanu, nepatīkamu smaku vai garšu mutē, drudzi, neatslābstošu asiņošanu vai stipras sāpes kožot. Arī jāvēršas, ja šķiet, ka implants, dzīšanas galviņa vai pagaidu protēze kustas.",
-          "Ja stipri pietūkst seja, kļūst grūti rīt, elpot vai parādās vispārējā slikta pašsajūta, nepieciešama neatliekamā medicīniskā palīdzība. Šādos gadījumos nevajadzētu gaidīt kontroles vizīti — jo agrāk ārsts novērtē situāciju, jo ātrāk var izvairīties no nopietnākām komplikācijām."
-        ]
-      },
-      {
-        h: "Cik ilgi notiek dzīšana pēc zobu implantācijas?",
-        p: [
-          "Dzīšana pēc zobu implantācijas nenotiek vienlaikus. Vispirms dzīst smaganas un mīkstie audi. Sākotnējais diskomforts, smelgme vai pietūkums visbiežāk sāk samazināties dažās dienās. Pirmo nedēļu laikā operētā vieta var izskatīties diezgan nomierinājusies, taču tas vēl nenozīmē, ka viss dzīšanas process ir pabeigts.",
-          "Vissvarīgākais posms — implanta saaugšana ar kaulu. Šis process ilgst ilgāk un bieži aizņem vairākus mēnešus. Tikai tad, kad ārsts novērtē, ka implants stabils un dzīšana notiek pareizi, var pāriet uz nākamo protezēšanas posmu.",
-          "Precīzs dzīšanas ilgums atkarīgs no individuālas situācijas: kaula stāvokļa, implantu skaita, pacienta veselības, mutes higiēnas, smēķēšanas, papildu procedūrām un ārsta ieteikumu ievērošanas. Tāpēc ļoti svarīgi nenokavēt plānotās kontroles vizītes."
-        ]
-      },
-      {
-        h: "Veiksmīgam rezultātam svarīgas pirmās dienas un ilgtermiņa kopšana",
-        p: [
-          "Pēc zoba implantēšanas vissvarīgākais ievērot ārsta ieteikumus, saudzēt operēto vietu un novērot savu pašsajūtu. Neliela smelgme, pietūkums vai jutīgums var būt normāla dzīšanas daļa, taču šiem simptomiem vajadzētu pakāpeniski samazināties.",
-          "Dzīšana pēc zobu implantācijas notiek posmos: vispirms dzīst smaganas, vēlāk implants integrējas kaulā. Pareiza mutes higiēna, piesardzība pirmajās dienās un regulāras kontroles vizītes palīdz nodrošināt labāku rezultātu. Ja plānojat zoba implantāciju vai jums ir jautājumi pēc procedūras, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Kāda pašsajūta pēc zoba implantēšanas ir normāla?", a: "Normāli just nelielu smelgmi, jutīgumu, spriedzi vai pietūkumu operētajā vietā. Pirmajās stundās var būt neliela asiņošana. Vissvarīgākais, lai šie simptomi pakāpeniski samazinātos." },
-      { q: "Cik ilgi notiek dzīšana pēc zobu implantācijas?", a: "Sākotnējais diskomforts visbiežāk samazinās dažās dienās, taču implanta saaugšana ar kaulu ilgst ilgāk — bieži vairākus mēnešus. Precīzs ilgums atkarīgs no individuālas situācijas." },
-      { q: "Ko var ēst pēc zoba implantēšanas?", a: "Pirmajās dienās ieteicams mīksts, nekarsts ēdiens. Vajadzētu izvairīties no cieta, kraukšķīga, ass, ļoti karsta vai sīkas drupatas saturošas ēdiena, kas var kairināt operēto vietu." },
-      { q: "Vai var skalot muti pēc implantācijas?", a: "Pirmo diennakti nevajadzētu intensīvi skalot muti, jo tas var traucēt dzīšanu. Vēlāk mutes kopšana tiek veikta saskaņā ar ārsta ieteikumiem." },
-      { q: "Vai var smēķēt pēc zoba implantācijas?", a: "Smēķēt nav ieteicams, jo smēķēšana var palēnināt dzīšanu, pasliktināt audu asinsriti un palielināt komplikāciju risku." },
-      { q: "Kad vērsties pie ārsta pēc implantācijas?", a: "Pie ārsta jāvēršas, ja sāpes pastiprinās, palielinās pietūkums, parādās strutošana, drudzis, slikta smaka, neapstājas asiņošana vai implants vai pagaidu protēze kustas." }
-    ],
-    sources: [
-      { label: "Growth factors and osseointegration in dental implants — A review", url: "https://pubmed.ncbi.nlm.nih.gov/41393465/" },
-      { label: "Post-operative pain management using two drugs following dental implant surgery", url: "https://pubmed.ncbi.nlm.nih.gov/37822832/" },
-      { label: "Smoking and Dental Implants: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35056347/" }
-    ]
+    readTime: 8
   },
   {
     slug: "kapec-sap-zobs-pec-plombesanas",
@@ -27966,94 +26703,7 @@ const BLOG_POSTS_LV = [
     date: "2026-05-27",
     category: "Zobu ārstniecība",
     coverImage: "https://images.unsplash.com/photo-1592400400196-bf709e32aa88?w=1200&q=80&fit=crop&auto=format",
-    readTime: 8,
-    sections: [
-      {
-        p: [
-          "Pēc plombēšanas pacienti reizēm pamana, ka zobs kļuvis jutīgāks nekā pirms procedūras. Tas var reaģēt uz aukstu vai karstu dzērienu, saldu ēdienu, košļāšanu vai sakodienu. Tāpēc dabiski rodas jautājums: vai normāli, ka sāp plombētais zobs?",
-          "Neliels jutīgums pēc plombēšanas bieži ir īslaicīgs. Procedūras laikā tiek noņemts kariess, zobs tiek iztīrīts, sagatavots un atjaunots ar plombu, tāpēc zoba audi un nervs var kādu laiku reaģēt jutīgāk. Tas īpaši bieži notiek, ja dobums bija dziļāks vai zobs jau bija jutīgs pirms ārstniecības.",
-          "Tomēr sāpes nedrīkstētu ignorēt, ja tās pastiprinās, kļūst pulsējošas, traucē košļāt vai nepāriet ilgāku laiku. Šādos gadījumos jānoskaidro iemesls, jo reizēm var būt nepieciešama plombas korekcija vai papildu ārstniecība."
-        ]
-      },
-      {
-        h: "Kāpēc pēc plombēšanas zobs kļūst jutīgs?",
-        p: [
-          "Plombēšanas laikā zobārsts noņem bojātos zoba audus un atjauno zoba formu ar plombes materiālu. Lai gan procedūra tiek veikta, lai apturētu kariesa izplatīšanos un pasargātu zobu, pats ārstniecības process var īslaicīgi kairināt zoba audus. Tāpēc pēc procedūras var parādīties jutīgums pret aukstumu, karstumu, saldu vai skābu ēdienu.",
-          "Ja kariess bija seklas, jutīgums visbiežāk ir neliels un ātri samazinās. Tomēr, ja dobums bija dziļš un plomba atrodas tuvāk zoba nervam, zobs var reaģēt spēcīgāk. Šādā gadījumā pacients var sajust smelgmi, īsu sāpi pret aukstumu vai diskomfortu košļājot.",
-          "Svarīgi novērot, vai sajūtas vājinās. Viegls jutīgums, kas katru dienu samazinās, visbiežāk nav bīstams. Tomēr, ja sāp plombētais zobs arvien stiprāk vai sāpes saglabājas ilgi, jāvēršas pie zobārsta atkārtotai apskatei."
-        ]
-      },
-      {
-        h: "Biežākie iemesli, kāpēc sāp plombētais zobs",
-        p: [
-          "Viens no biežākajiem iemesliem — īslaicīgs zoba nerva kairinājums. Tas var notikt pēc jebkuras plombēšanas, īpaši ja ārstētais dobums bija dziļāks. Šādā gadījumā zobs var būt jutīgs pret temperatūras izmaiņām, taču jutīgumam vajadzētu pakāpeniski samazināties.",
-          "Cits biežs iemesls — pārāk augsta plomba. Ja pēc plombēšanas zobs sakožot pirmais saskaras ar pretējo zobu, tam tiek uzliekta pārāk liela slodze. Tad var sāpēt košļājot, sakožot vai pat viegli pieskaroties zobam. Šī situācija visbiežāk tiek atrisināta ar plombas augstuma korekciju.",
-          "Sāpes var izraisīt arī ļoti dziļa plomba, kad kariess bija tuvu nervam. Šādos gadījumos zobs kādu laiku var būt jutīgs, taču, ja sāpes kļūst pulsējošas, ilgi nepāriet vai pamodina naktī, iespējams sācies nerva iekaisums.",
-          "Reizēm pēc plombēšanas izceļas arī citas problēmas: mikroplaisa, papildu zoba bojājums, zobu griešana vai nepareizs sakodiens. Tāpēc precīzu iemeslu vislabāk var noteikt zobārsts apskates laikā."
-        ]
-      },
-      {
-        h: "Kad sāpes pēc plombēšanas ir normālas?",
-        image: "/skausmas-plombavimo.webp",
-        p: [
-          "Nelielas sāpes vai jutīgums pēc plombēšanas ne vienmēr nozīmē, ka kaut kas veikts nepareizi. Zobs bija ārstēts, tāpēc tā audi var kādu laiku reaģēt jutīgāk. Visbiežāk normāli, ja zobs īsi reaģē uz aukstu, karstu, saldu vai skābu ēdienu, bet sāpes ātri pāriet, noņemot kairinātāju.",
-          "Pēc dziļas plombas jutīgums var būt izteiktāks, jo ārstētā vieta atrodas tuvāk zoba nervam. Šādā gadījumā var būt jūtama viegla smelgme vai diskomforts košļājot, taču vissvarīgākais, lai šīs sajūtas pakāpeniski samazinātos.",
-          "Ja katru dienu jūtat mazāku jutīgumu, visbiežāk situāciju var novērot. Tomēr, ja sāpes pastiprinās, kļūst pulsējošas, ilgi nepāriet pēc kairinātāja vai sāk traucēt ēst, jāvēršas pie zobārsta."
-        ]
-      },
-      {
-        h: "Cik ilgi var sāpēt zobs pēc plombēšanas?",
-        p: [
-          "Cik ilgi sāp zobs pēc plombēšanas, atkarīgs no tā, cik dziļš bija kariess, cik liela plomba tika ielikta un cik jutīgi reaģē pats zobs. Visbiežāk viegls jutīgums samazinās dažās dienās. Pacients var pamanīt, ka katru dienu zobs reaģē arvien vājāk.",
-          "Ja plomba bija dziļa, jutīgums var ilgt ilgāk — reizēm vairākas nedēļas. Tā var būt normāla reakcija, ja sāpes nav stipras un pakāpeniski samazinās. Tomēr ilgstošas vai nemainīgas sāpes nevajadzētu ignorēt.",
-          "Ja pēc 2–4 nedēļām joprojām sāp plombētais zobs, jutīgums nesamazinās vai situācija pasliktinās, jāreģistrējas atkārtotai zobārsta apskatei. Ātrāk jāvēršas tad, ja sāpes stipras jau no paša sākuma, traucē gulēt, ir pulsējošas vai zobs ļoti sāp sakožot."
-        ]
-      },
-      {
-        h: "Sāp zobs sakožot vai košļājot — ko tas nozīmē?",
-        p: [
-          "Ja pēc plombēšanas sāp zobs sakožot vai košļājot, viens no biežākajiem iemesliem var būt pārāk augsta plomba. Pat ļoti neliela plombas augstuma atšķirība var novest pie tā, ka plombētais zobs pirmais saskaras ar pretējo zobu un saņem pārāk lielu košļāšanas slodzi.",
-          'Šādā gadījumā pacients bieži jūt, ka „kaut kas traucē", zobs izskatās pārāk augsts vai sāpes parādās tikai sakožot. Reizēm smelgme var pastiprināties, jo zobs pastāvīgi tiek noslogots katra sakodiena laikā.',
-          "Šīs problēmas nevajadzētu paciest, cerot, ka tā vienmēr pāries pati. Zobārsts var ātri novērtēt sakodienu un, ja nepieciešams, koriģēt plombas augstumu. Pēc korekcijas zobs bieži nomierinās, taču, ja sāpes bija ilgstošas, tam var būt nepieciešams nedaudz laika pilnīgi atgūties."
-        ]
-      },
-      {
-        h: "Kad jāvēršas pie zobārsta?",
-        p: [
-          "Ja pēc plombēšanas ir jūtams tikai viegls jutīgums, kas pakāpeniski samazinās, visbiežāk pietiek novērot situāciju. Tomēr ir pazīmes, kuras nevajadzētu ignorēt. Pie zobārsta jāvēršas, ja sāpes pastiprinās, kļūst pulsējošas, pamodina naktī vai nepāriet pat noņemot kairinātāju.",
-          "Atkārtota apskate arī nepieciešama, ja sāp zobs sakožot, košļājot vai šķiet, ka plomba ir pārāk augsta. Šādā gadījumā var būt nepieciešama tikai neliela korekcija, taču kavējot zobs var tikt papildus kairināts.",
-          "Nevilcinieties, ja parādās pietūkums, abscess, nepatīkama garša mutē, temperatūra vai sāpes izplatās uz žokli, ausi vai deniņiem. Šādi simptomi var norādīt uz iekaisumu, kuram nepieciešama papildu ārstniecība."
-        ]
-      },
-      {
-        h: "Ko var darīt mājās, kamēr gaidāt vizīti?",
-        p: [
-          "Ja sāp plombētais zobs, vispirms centieties to papildus nekairinat. Īslaicīgi izvairieties no ļoti auksta, karsta, salda, skāba vai cieta ēdiena. Ja sāp košļājot, nekošļājiet ar to mutes pusi, kurā tika plombēts zobs.",
-          "Zobus vajadzētu tīrīt regulāri, bet maigi. Mutes higiēna ir svarīga, jo aplikumi un pārtikas atliekas var vēl vairāk kairināt smaganas vai plombas malas. Ja zobs jutīgs pret aukstumu, var izvēlēties jutīgiem zobiem paredzētu pastu, taču tā neatrisinās problēmu, ja iemesls ir pārāk augsta plomba vai iekaisums.",
-          "Nevajadzētu kasīt plombu, spiest zobu vai mēģināt patstāvīgi koriģēt sakodienu. Arī izvairieties no agresīvām mājas ierīcēm, kas var bojāt smaganas. Ja sāpes palielinās vai nepāriet, labākais risinājums — zobārsta apskate."
-        ]
-      },
-      {
-        h: "Sāpes pēc plombēšanas bieži ir īslaicīgas, bet tās ir vērts novērot",
-        p: [
-          "Viegls jutīgums pēc plombēšanas bieži ir normāla zoba reakcija uz ārstniecību. Zobs var īsi reaģēt uz temperatūras izmaiņām, saldu ēdienu vai košļāšanu, īpaši ja plomba bija dziļa. Vissvarīgākais, lai šīs sajūtas pakāpeniski samazinātos.",
-          "Ja sāp plombētais zobs sakožot, sāpes pastiprinās, nepāriet vairākas nedēļas vai kļūst pulsējošas, jāvēršas pie zobārsta. Reizēm pietiek ar nelielu plombas korekciju, un reizēm nepieciešama izsmeļošāka diagnostika. Ja jūtat diskomfortu un neesat pārliecināti, vai tas ir normāli, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Vai normāli, ka sāp zobs pēc plombēšanas?", preImage: "https://images.unsplash.com/photo-1684607633138-6cc13613369b?w=1200&q=80&fit=crop&auto=format", a: "Viegls jutīgums vai smelgme pēc plombēšanas var būt normāls, īpaši pirmajās dienās. Tomēr sāpēm vajadzētu pakāpeniski samazināties. Ja tās pastiprinās vai nepāriet ilgu laiku, jāvēršas pie zobārsta." },
-      { q: "Kāpēc sāp plombētais zobs?", a: "Biežākie iemesli — īslaicīgs nerva kairinājums, dziļa plomba, pārāk augsta plomba, nepareizs sakodiens vai iekaisums, ja kariess bija ļoti dziļš." },
-      { q: "Cik ilgi var sāpēt zobs pēc plombēšanas?", a: "Visbiežāk jutīgums samazinās dažās dienās. Pēc dziļas plombas tas var ilgt vairākas nedēļas. Ja pēc 2–4 nedēļām sāpes nesamazinās vai pastiprinās, nepieciešama atkārtota apskate." },
-      { q: "Kāpēc sāp zobs sakožot pēc plombēšanas?", a: "Bieži tā notiek, kad plomba ir nedaudz pārāk augsta. Tad zobs saņem pārāk lielu slodzi katra sakodiena laikā. Zobārsts var koriģēt plombas augstumu." },
-      { q: "Ko darīt, ja sāp plombētais zobs?", a: "Novērojiet, vai sāpes samazinās, izvairieties no kairinoša ēdiena un nekošļājiet ar to pusi, ja sāp sakožot. Ja sāpes pastiprinās, nepāriet vai traucē košļāt, vērsieties pie zobārsta." },
-      { q: "Kad sāpes pēc plombēšanas nav normālas?", a: "Nav normāli, ja sāpes pastiprinās, ir pulsējošas, pamodina naktī, izplatās citās zonās, parādās pietūkums, abscess vai temperatūra. Šādos gadījumos nepieciešama zobārsta apskate." }
-    ],
-    sources: [
-      { label: "Postoperative Hypersensitivity in Class I Resin-based Composite Restorations in General Practice", url: "https://pubmed.ncbi.nlm.nih.gov/19715013/" },
-      { label: "A Randomised Controlled Trial of Postoperative Sensitivity after Class II Restorations with Bulk-fill or Conventional Composite", url: "https://pubmed.ncbi.nlm.nih.gov/38373222/" },
-      { label: "Effect of different adhesive systems on postoperative sensitivity of composite resin restorations in adults: a systematic review and network meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/37017757/" }
-    ]
+    readTime: 8
   },
   {
     slug: "vai-sap-kad-izrauj-zobu",
@@ -28062,100 +26712,7 @@ const BLOG_POSTS_LV = [
     coverImage: "/skauda-traukia.webp",
     date: "2026-05-20",
     category: "Mutes ķirurģija",
-    readTime: 9,
-    sections: [
-      {
-        p: [
-          "Zoba izraušana daudziem pacientiem rada satraukumu. Visbiežāk baidās ne tikai no pašas procedūras, bet arī no nezināšanas, ko sagaidīt: vai sāpēs, cik ilgi ilgs, ko varēs sajust un kā jutīsieties pēc tam. Tomēr mūsdienu zobārstniecībā zoba izraušana tiek veikta ar anestēziju, tāpēc procedūras laikā asas sāpes pacientam nevajadzētu sajust.",
-          "Svarīgi saprast, ka sāpes un spiediens nav viens un tas pats. Kad izrauj zobu, var sajust spriedzi, kustību vai spiedienu žoklī, taču tam nevajadzētu būt sāpīgam. Šajā rakstā apspriedīsim, kad var būt nepieciešama zoba izraušana, ko var sajust, kad rauj zobu, un cik ilgi sāp pēc zoba izraušanas."
-        ]
-      },
-      {
-        h: "Kad var būt nepieciešama zoba izraušana?",
-        p: [
-          "Zoba izraušana visbiežāk nav zobārsta pirmā izvēle. Kad vien iespējams, tiek meklēts saglabāt zobu, ārstējot kariesu, atjaunojot zoba vainagu, ārstējot sakņu kanālus vai piemērojot citus risinājumus. Tomēr atsevišķos gadījumos zobu saglabāt neizdodas vai tā atstāšana var radīt lielāku risku veselībai.",
-          "Zobu var būt nepieciešams izraut tad, kad tas ir stipri bojāts ar kariesu, atlūzis, ieplaisājis vai vairs nav piemērots atjaunošanai ar plombu vai kroni. Izraušana var būt nepieciešama arī tad, ja izveidojies iekaisums, abscess, saknes lūzums vai zobs ļoti kustīgs periodonta slimību dēļ.",
-          "Bieža zoba izraušanas iemesls — problemātiski gudrības zobi. Ja tie aug nepareizi, spiež citus zobus, izraisa sāpes vai atkārtotu iekaisumu, zobārsts var ieteikt izraušanu. Dažos gadījumos zobs tiek izrauts, gatavojoties ortodontiskajai ārstniecībai."
-        ]
-      },
-      {
-        h: "Vai sāp, kad izrauj zobu?",
-        p: [
-          "Visbiežākais pacientu jautājums — vai sāp, kad izrauj zobu. Parasti procedūras laikā tiek izmantota vietējā anestēzija, tāpēc sāpēm nevajadzētu būt. Ārsts sāk zoba izraušanu tikai tad, kad zona ap zobu ir pietiekami sāpes mazināta.",
-          "Tomēr pacients var sajust noteiktas sajūtas. Kad izrauj zobu, bieži tiek sajusts spiediens, spriedze, zoba kustība vai vibrācija. Šīs sajūtas var būt nepatīkamas, īpaši ja cilvēks satraucas, taču tās nav tas pats, kas asas sāpes. Spiediens rodas tāpēc, ka ārstam jāatbrīvo zobs no tā vietas, taču anestēzija bloķē sāpju sajūtu.",
-          "Ja procedūras laikā tomēr sajūtat sāpes, svarīgi uzreiz par to pastāstīt ārstam. Anestēziju var papildināt, un procedūru uz brīdi apstādināt. Pacientam nevajadzētu paciest sāpes klusējot — saziņa ar ārstu palīdz nodrošināt drošāku un mierīgāku procedūru."
-        ]
-      },
-      {
-        h: "Ko var sajust, kad rauj zobu?",
-        p: [
-          "Kad rauj zobu, pacienti bieži gaida sāpes, taču visbiežāk sajūt nevis sāpes, bet gan spiedienu. Tas ir normāli, jo anestēzija novērš sāpju sajūtu, bet ne visas pieskāriena vai kustības sajūtas. Tāpēc procedūras laikā varat sajust, ka zobs tiek kustināts, spiests vai vilkts.",
-          "Reizēm pacientus biedē arī procedūras skaņas. Tās var izskatīties nepatīkamas, taču neobligāti nozīmē, ka kaut kas notiek slikti. Arī var būt neērti turēt muti plaši atvērtu, īpaši ja tiek raustīts molārs vai gudrības zobs. Ārsts visas procedūras laikā novēro pacienta reakciju, tāpēc, ja sajūtat sāpes, spriedzi vai vēlaties īsi apstāties, par to ir vērts pastāstīt."
-        ]
-      },
-      {
-        h: "No kā atkarīgs, vai zoba izraušana būs sarežģīta?",
-        p: [
-          "Zoba izraušanas sarežģītība atkarīga no vairākiem faktoriem. Viens no svarīgākajiem — zoba atrašanās vieta mutē. Priekšējie zobi bieži tiek izrauti vienkāršāk, savukārt molāri vai gudrības zobi var būt sarežģītāki sakņu formas, to skaita un grūtākas piekļuves dēļ.",
-          "Svarīgi arī tas, vai zobs ir pilnīgi izaudzis vai daļēji paslēpts zem smaganām vai kaulā. Ja zobs ir atlūzis, stipri bojāts ar kariesu, ir liektas saknes vai ap to ir iekaisums, procedūra var ilgt ilgāk. Reizēm šādos gadījumos nepieciešama ķirurģiska izraušana.",
-          "Tomēr pat sarežģītāka zoba izraušana tiek veikta ar anestēziju. Tas nozīmē, ka procedūra var būt ilgāka vai tehniski sarežģītāka, taču pacientam nevajadzētu sajust asas sāpes."
-        ]
-      },
-      {
-        h: "Vai sāp pēc zoba izraušanas?",
-        image: "https://images.unsplash.com/photo-1606811951341-756fdd437682?w=1200&q=80&fit=crop&auto=format",
-        p: [
-          "Beidzoties anestēzijas iedarbībai, pēc zoba izraušanas var parādīties smelgme, jutīgums vai neliels pietūkums. Tā visbiežāk ir normāla dzīšanas procesa daļa. Organisms sāk veidot asins recekli izraušanas vietā, audi dzīst, tāpēc pirmajās dienās var būt jūtams diskomforts.",
-          "Pēc vienkāršas izraušanas sāpes visbiežāk ir vieglākas un diezgan ātri samazinās. Pēc sarežģītākas vai ķirurģiskās izraušanas, īpaši ja tika izrauts gudrības zobs, smelgme un pietūkums var būt izteiktāki. Sāpju stiprums atkarīgs no zoba atrašanās vietas, procedūras sarežģītības, iekaisuma esamības un individuālas dzīšanas reakcijas.",
-          "Ārsts pēc procedūras sniedz ieteikumus, kā kopt brūci un kontrolēt sāpes. Svarīgi tos ievērot, jo pareiza kopšana palīdz samazināt komplikāciju risku un nodrošina raitāku dzīšanu."
-        ]
-      },
-      {
-        h: "Cik ilgi sāp pēc zoba izraušanas?",
-        p: [
-          "Cik ilgi sāp pēc zoba izraušanas, atkarīgs no procedūras sarežģītības, zoba atrašanās vietas un individuālas dzīšanas. Visbiežāk diskomforts tiek sajusts pirmās dažas dienas. Pirmajā diennaktī sāpes var būt izteiktākas, īpaši tad, kad pilnīgi pāriet anestēzijas iedarbība.",
-          "Parasti 2–3 dienās sāpēm vajadzētu pamazām samazināties. Pēc vienkāršas zoba izraušanas pacienti bieži jūt tikai vieglu smelgmi vai jutīgumu. Pēc sarežģītākas izraušanas, piemēram, gudrības zoba, diskomforts var saglabāties ilgāk, un pietūkums var būt vairāk pamanāms.",
-          "Svarīgi novērot, vai stāvoklis uzlabojas. Ja sāpes pēc dažām dienām nevis samazinās, bet pastiprinās, parādās slikta smaka, nepatīkama garša mutē, drudzis, palielinošs pietūkums vai bagātīga asiņošana, jāvēršas pie zobārsta."
-        ]
-      },
-      {
-        h: "Kā rīkoties pēc zoba izraušanas?",
-        p: [
-          "Pēc zoba izraušanas ļoti svarīgi saudzēt brūci un ļaut tai dzīst. Ārsts pēc procedūras uzliek tamponu, kas jātur tik ilgi, cik norādīts. Pirmajā diennaktī nevajadzētu intensīvi skalot muti, spļaut vai dzert caur salmiņu, jo tas var izkustināt asins recekli, kas nepieciešams dzīšanai.",
-          "Arī vajadzētu izvairīties no karsta ēdiena un dzērieniem. Labāk izvēlēties mīkstu, nekarstu ēdienu un košļāt ar otru mutes pusi. Brūci nedrīkst kasīt ar mēli, pirkstiem vai priekšmetiem, jo tā var traucēt dzīšanai un palielināt infekcijas risku.",
-          "Pirmajās dienās nav ieteicams smēķēt, lietot alkoholu un izvairīties no intensīvas fiziskās slodzes. Zobus tīrīt jāturpina, taču uzmanīgi, saudzējot izraušanas vietu. Ja ārsts nozīmēja zāles vai sniedza papildu ieteikumus, tie noteikti jāievēro."
-        ]
-      },
-      {
-        h: "Kad jāvēršas pie zobārsta pēc izraušanas?",
-        p: [
-          "Neliela smelgme, jutīgums vai pietūkums pēc zoba izraušanas ir normāli. Tomēr daži simptomi var norādīt uz komplikācijām. Pie zobārsta jāvēršas, ja sāpes pastiprinās, pagājot 2–4 dienām pēc procedūras, nevis pakāpeniski samazinās.",
-          "Arī svarīgi sazināties ar ārstu, ja parādās slikta smaka, nepatīkama garša mutē, strutošana, drudzis, palielinošs pietūkums vai bagātīga asiņošana. Satraukt vajadzētu arī sāpēm, kas izplatās uz ausi, deniņiem vai žokli.",
-          "Šādos gadījumos nevajadzētu mēģināt ārstēties patstāvīgi. Zobārsts novērtēs brūci, noteiks iemeslu un nozīmēs piemērotu ārstniecību."
-        ]
-      },
-      {
-        h: "Zoba izraušana nedrīkstētu būt sāpīga procedūra",
-        image: "https://images.unsplash.com/photo-1663182245833-7dd667277043?w=1200&q=80&fit=crop&auto=format",
-        p: [
-          "Kad izrauj zobu, procedūras laikā tiek izmantota anestēzija, tāpēc asas sāpes pacientam nevajadzētu sajust. Spiediens, spriedze vai zoba kustība ir ierastas sajūtas, taču tās nav tas pats, kas sāpes.",
-          "Pēc zoba izraušanas dažas dienas var būt smelgme, jutīgums vai pietūkums. Visbiežāk šīs sajūtas pakāpeniski samazinās, īpaši ja tiek ievēroti ārsta ieteikumi. Ja jums sāp zobs vai ārsts ieteica izraušanu, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Vai sāp, kad izrauj zobu?", a: "Visbiežāk nē, jo pirms procedūras tiek izmantota vietējā anestēzija. Var sajust spiedienu, spriedzi vai zoba kustību, bet ne asas sāpes." },
-      { q: "Ko sajūt pacients, kad rauj zobu?", a: "Kad rauj zobu, visbiežāk tiek sajusts spiediens, kustība, spriedze vai vibrācija. Šīs sajūtas var būt nepatīkamas, bet tās nav līdzīgas sāpēm." },
-      { q: "Cik ilgi sāp pēc zoba izraušanas?", a: "Visbiežāk diskomforts tiek sajusts dažas dienas un pakāpeniski samazinās. Pēc sarežģītākas izraušanas smelgme var saglabāties ilgāk. Ja sāpes pastiprinās pēc dažām dienām, jāvēršas pie zobārsta." },
-      { q: "Vai var papildus mazināt sāpes, ja procedūras laikā sāp?", a: "Jā. Ja procedūras laikā sajūtat sāpes, noteikti uzreiz jāpastāsta ārstam. Anestēziju var papildināt, un procedūru uz brīdi apstādināt." },
-      { q: "Ko nedrīkst darīt pēc zoba izraušanas?", a: "Pēc izraušanas nevajadzētu intensīvi skalot muti, spļaut, dzert caur salmiņu, ēst karstu ēdienu, smēķēt, lietot alkoholu vai kasīt brūci." },
-      { q: "Kad pēc izraušanas jāvēršas pie ārsta?", a: "Pie ārsta jāvēršas, ja sāpes pastiprinās, parādās slikta smaka, nepatīkama garša, strutošana, drudzis, palielinošs pietūkums vai bagātīga asiņošana." }
-    ],
-    sources: [
-      { label: "Evidence-based clinical practice guideline for the pharmacologic management of acute dental pain in children, adolescents, and adults", url: "https://pubmed.ncbi.nlm.nih.gov/37634915/" },
-      { label: "Acute Postoperative Pain Due to Dental Extraction in the Adult Population: A Systematic Review and Network Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/36631957/" },
-      { label: "Local interventions for the management of alveolar osteitis, dry socket", url: "https://pubmed.ncbi.nlm.nih.gov/36156769/" }
-    ]
+    readTime: 9
   },
   {
     slug: "ko-darit-kad-sap-gudribas-zobs",
@@ -28164,125 +26721,7 @@ const BLOG_POSTS_LV = [
     date: "2026-05-13",
     category: "Zobu ārstniecība",
     coverImage: "/protini-skauda.webp",
-    readTime: 12,
-    sections: [
-      {
-        p: [
-          "Gudrības zobu sāpes ir viens no biežākajiem iemesliem, kāpēc pacienti pie zobārsta vēršas steidzīgāk, nekā plānoja. Šie zobi aug vēlāk visiem, visbiežāk jau pieaugušajam vecumam, kad žoklī ne vienmēr paliek pietiekami vietas. Tāpēc gudrības zobs var augt nepareizi, spiest blakus esošos zobus, palikt daļēji izaudzis vai izraisīt smaganu iekaisumu.",
-          "Ja sāp gudrības zobs, svarīgi saprast, ka sāpju iemesli var būt dažādi. Reizēm tas ir tikai īslaicīgs augšanas diskomforts, taču citos gadījumos sāpes norāda uz iekaisumu, infekciju, kariesu vai iestrēdzušu zobu. Tāpēc nevajadzētu ilgi gaidīt, cerot, ka problēma pāries pati.",
-          "Šajā rakstā apspriedīsim, ko darīt, kad sāp gudrības zobs, kad noteikti jāvēršas pie zobārsta, vai sāp, kad rauj gudrības zobu, un ko sagaidīt pēc izraušanas."
-        ]
-      },
-      {
-        h: "Kāpēc sāp gudrības zobs?",
-        p: [
-          "Gudrības zobs var sāpēt vairāku iemeslu dēļ. Viens no biežākajiem — augšana. Kad zobs cenšas izlauzties cauri smaganām, apkārtējie audi var kļūt jutīgi, pietūkuši un sāpīgi. Ja žoklī pietiek vietas, šis process var noritēt bez lielākām problēmām. Tomēr gudrības zobiem vietas bieži ir par maz.",
-          "Kad gudrības zobam nav pietiekami vietas, tas var augt greizi, atbalstīties uz blakus esošo zobu vai palikt daļēji iestrēdzis kaulā vai zem smaganām. Šāda pozīcija var izraisīt spiedienu, smelgmi, sāpes košļājot vai pat žokļa spriedzi. Reizēm sāpes izplatās uz ausi, deniņiem vai visu žokļa pusi.",
-          'Vēl viens biežs iemesls — smaganu iekaisums ap daļēji izaugušu gudrības zobu. Kad virs zoba paliek smaganu „vāciņš", zem tā var uzkrāties pārtikas atliekas un baktērijas. Šo vietu ir grūti labi iztīrīt, tāpēc smaganas apsārst, pietūkst, kļūst sāpīgas, var parādīties nepatīkama garša vai smaka mutē.',
-          "Gudrības zobus arī bieži bojā kariess, jo tie atrodas pašā mutes aizmugurē un tos ir grūtāk sasniegt ar suku. Pat neliels bojājums var ātri izraisīt jutīgumu, un vēlāk — stiprākas sāpes vai nerva iekaisumu."
-        ]
-      },
-      {
-        h: "Kā atpazīt, ka sāp tieši gudrības zobs?",
-        p: [
-          "Ne vienmēr viegli precīzi saprast, kurš zobs izraisa sāpes. Gudrības zoba sāpes visbiežāk tiek sajustas pašā žokļa aizmugurē, aiz pēdējā molāra. Sāpes var būt smeldzošas, pulsējošas vai pastiprināties košļājot, plašāk atverot muti vai pieskaroties smaganām tajā vietā.",
-          "Bieža pazīme — pietūkušas vai jutīgas smaganas ap gudrības zobu. Ja zobs izaudzis tikai daļēji, var izskatīties, ka daļu no tā sedz smaganas. Šajā vietā var uzkrāties ēdiens, tāpēc parādās slikta mutes smaka, nepatīkama garša vai sajūta, ka smaganas ir kairinātas.",
-          "Reizēm gudrības zoba problēma izpaužas ne tikai ar lokālām sāpēm. Sāpes var izplatīties uz ausi, deniņiem, rīkli vai visu žokļa pusi. Dažiem pacientiem kļūst grūtāk pilnīgi atvērt muti, košļāt vai tīrīt zobus tajā pusē. Ja ir iekaisums, var parādīties pietūkums, vispārējs vājums vai pacelties temperatūra.",
-          "Tomēr tikai pēc simptomiem ne vienmēr iespējams precīzi noteikt, vai problēmu izraisa gudrības zobs. Līdzīgi var sāpēt arī citu zobu kariesa, smaganu iekaisuma vai žokļa locītavas problēmu dēļ. Tāpēc, ja sāpes atkārtojas, pastiprinās vai nepāriet, nepieciešama zobārsta apskate."
-        ]
-      },
-      {
-        h: "Sāp gudrības zobs — ko darīt vispirms?",
-        p: [
-          "Kad sāp gudrības zobs, vispirms vajadzētu novērtēt, vai sāpes ir vieglas un īslaicīgas, vai stipras, palielinošas un pavadītas ar citiem simptomiem. Ja tiek sajusta tikai neliela smelgme augošā zoba zonā, var sākt ar maigu mutes higiēnu un sāpošās vietas novērošanu. Tomēr, ja sāpes pastiprinās, parādās pietūkums vai grūti atvērt muti, nevajadzētu atlikt vizīti pie zobārsta.",
-          "Pirmais solis — uzmanīgi iztīrīt zobus, īpaši zonu ap gudrības zobu. Tā kā šie zobi atrodas pašā žokļa aizmugurē, ap tiem bieži uzkrājas pārtikas atliekas un aplikumi. Ja zobs izaudzis tikai daļēji, zem smaganas malas var nokļūt baktērijas, kas izraisa iekaisumu un sāpes. Tīrīt jāizdara maigi, neizmantojot spēku, lai vēl vairāk nekairinat smaganas.",
-          "Muti var izskalot ar remdenu ūdeni. Vajadzētu izvairīties no ļoti karsta, auksta, asa, cieta vai lipīga ēdiena, jo tas var pastiprināt sāpes vai papildus traumēt jutīgo vietu. Ja ir pietūkums, pie ārējās vaiga puses uz īsiem brīžiem var pielikt aukstu kompresi. To nevajadzētu likt tieši uz ādas — labāk ietīt dvielī.",
-          "Svarīgi nekasīt smaganas ar asiem priekšmetiem, nemēģināt pārdurt pietūkušu vietu un nelikt zāles tieši uz smaganām. Šādas darbības var bojāt gļotādu un pasliktināt stāvokli. Mājas ierīces var tikai īslaicīgi atvieglot simptomus, taču tās nenovērš iemeslu. Tāpēc, ja sāp gudrības zobs un nezināt, ko darīt, drošākais risinājums — reģistrēties zobārsta apskatei."
-        ]
-      },
-      {
-        h: "Kad noteikti jāvēršas pie zobārsta?",
-        image: "https://images.unsplash.com/photo-1684607633217-462056580c3c?w=1200&q=80&fit=crop&auto=format",
-        p: [
-          "Pie zobārsta vajadzētu vērsties tad, kad gudrības zoba sāpes nepāriet, atkārtojas vai pastiprinās. Pat ja sāpes uz kādu laiku samazinās, tas neobligāti nozīmē, ka problēma izzuda. Iekaisums ap gudrības zobu var atjaunoties, un neārstēts laika gaitā izraisīt lielāku pietūkumu, infekciju vai bojāt blakus esošos zobus.",
-          "Neatliekama zobārsta apskate nepieciešama, ja sāpes ir stipras, pulsējošas, traucē gulēt, ēst vai normāli atvērt muti. Arī nevajadzētu kavēt, ja pietūkušas smaganas, vaigs vai seja, parādījās abscess, slikta garša mutē, nepatīkama smaka vai pacēlās temperatūra. Šie simptomi var norādīt uz infekciju, kurai nepieciešama profesionāla ārstniecība.",
-          "Svarīgi vērsties arī tad, kad sāpes izplatās uz ausi, deniņiem, rīkli vai visu žokļa pusi. Šādos gadījumos cilvēkam var izskatīties, ka sāp nevis viens konkrēts zobs, bet visa mutes vai sejas puse. Zobārsts apskates laikā var noteikt, vai sāpes patiešām izraisa gudrības zobs, vai cita problēma.",
-          "Bieži gudrības zoba stāvokļa novērtēšanai nepieciešams rentgena uzņēmums. Tas palīdz redzēt, kā zobs izvietots kaulā, vai tas spiež blakus zobu, vai ir pietiekami vietas augšanai, kāda ir sakņu pozīcija un vai nav iekaisuma pazīmju. Tikai novērtējot situāciju, var izlemt, vai zobs jānovēro, jāārstē vai jāizrauj."
-        ]
-      },
-      {
-        h: "Vai vienmēr jāizrauj gudrības zobs?",
-        p: [
-          "Nē, gudrības zobu ne vienmēr jāizrauj. Ja zobs izaudzis pareizi, nespiež citus zobus, neizraisa iekaisumu un to var kvalitatīvi iztīrīt, tas var palikt mutē. Šādā gadījumā vissvarīgākais — regulāra kopšana, laba mutes higiēna un profilaktiskās zobārsta apskates.",
-          "Tomēr gudrības zobi bieži rada problēmas savas pozīcijas dēļ. Tā kā tie atrodas pašā žokļa aizmugurē, tos ir grūtāk sasniegt ar suku un starpzobu ierīcēm. Tāpēc ap tiem ātrāk uzkrājas aplikumi, attīstās kariess vai atkārtojas smaganu iekaisums. Ja zobs bojāts tā, ka to kvalitatīvi ārstēt nav iespējams, var tikt ieteikta izraušana.",
-          "Izraušana arī tiek apsvērta, kad gudrības zobs aug greizi, atbalstās uz blakus zobu, izraisa spiedienu, sāpes vai bojā blakus esošos audus. Ja zobs izaudzis tikai daļēji, ap to var pastāvīgi atkārtoties iekaisumi. Šādos gadījumos tikai īslaicīga simptomu mazināšana problēmu neatrisina.",
-          "Lēmums par izraušanu tiek pieņemts individuāli. Zobārsts novērtē pacienta sūdzības, zoba pozīciju, rentgena uzņēmumu, iekaisuma risku un iespējas zobu kopt vai ārstēt. Tāpēc iepriekš nevajadzētu domāt, ka sāpošajam gudrības zobam noteikti būs nepieciešama izraušana. Vispirms svarīgi precīzi noteikt sāpju iemeslu."
-        ]
-      },
-      {
-        h: "Kā zobārsts nosaka gudrības zoba problēmu?",
-        p: [
-          "Gudrības zoba problēmas ne vienmēr redzamas tikai apskatot muti. Reizēm zobs ir izaudzis tikai daļēji, un reizēm tas var būt pilnīgi paslēpts zem smaganām vai kaulā. Tāpēc zobārsts vispirms novērtē pacienta simptomus: kad sākās sāpes, vai tās pastiprinās, vai ir pietūkums, vai grūti košļāt, atvērt muti, rīt, vai sāpes izplatās uz ausi, deniņiem vai žokli.",
-          "Pēc sarunas tiek veikta mutes apskate. Ārsts novērtē smaganu stāvokli ap gudrības zobu, vai nav apsārtuma, pietūkuma, strutošanas, pārtikas atlieku uzkrāšanās vai kariesa pazīmju. Arī tiek apskatīti blakus esošie zobi, jo gudrības zobs var spiest blakus molāru vai piedalīties tā bojāšanā.",
-          "Bieži nepieciešams rentgena uzņēmums vai panorāmas rentgens. Tas palīdz redzēt gudrības zoba pozīciju, sakņu formu, attiecību ar blakus esošajiem zobiem un apkārtējiem audiem. Pēc šīs informācijas zobārsts var izlemt, vai zobu var novērot, vai jāārstē iekaisums, vai labākais risinājums būtu gudrības zoba izraušana."
-        ]
-      },
-      {
-        h: "Vai sāp, kad rauj gudrības zobu?",
-        p: [
-          "Viens no biežākajiem pacientu jautājumiem — vai sāp, kad rauj gudrības zobu. Visbiežāk pati procedūra tiek veikta ar vietējo anestēziju, tāpēc asas sāpes pacientam nevajadzētu sajust. Pirms izraušanas procedūras uzsākšanas ārsts nodrošina, ka zoba un apkārtējo audu zona ir sāpes mazināta.",
-          "Procedūras laikā var sajust spiedienu, spriedzi, kustību vai vibrāciju, taču tas nav tas pats, kas sāpes. Šīs sajūtas rodas tāpēc, ka ārsts strādā ar zobu un apkārtējiem audiem, taču anestēzija bloķē sāpju sajūtu. Ja pacients tomēr sajūt sāpes, svarīgi uzreiz pastāstīt ārstam — anestēziju var papildināt.",
-          "Cik sarežģīti būs izraut gudrības zobu, atkarīgs no tā pozīcijas. Ja zobs pilnīgi izaudzis un saknes nav sarežģītas, izraušana bieži ir vienkāršāka. Ja gudrības zobs iestrēdzis, aug greizi, ir zem smaganām vai kaulā, var būt nepieciešama ķirurģiska izraušana. Šādā gadījumā procedūra var ilgt ilgāk, taču arī tiek veikta ar anestēziju.",
-          "Vissvarīgākais saprast, ka mūsdienu zobārstniecībā gudrības zoba izraušana nedrīkstētu būt sāpīga procedūra. Pacientam var būt nepatīkami spiediena vai satraukuma dēļ, taču ārsts kontrolē anestēziju un procedūras gaitu."
-        ]
-      },
-      {
-        h: "Vai sāp pēc gudrības zoba izraušanas?",
-        p: [
-          "Pēc gudrības zoba izraušanas, beidzoties anestēzijas iedarbībai, var parādīties smelgme, jutīgums, pietūkums vai spriedzes sajūta. Tā ir normāla dzīšanas procesa daļa, īpaši ja zobs tika izrauts sarežģītāk vai nepieciešama ķirurģiska iejaukšanās. Visbiežāk lielāks diskomforts sajūtams pirmajās dienās pēc procedūras.",
-          "Cik sāp pēc gudrības zoba izraušanas, atkarīgs no vairākiem faktoriem: zoba pozīcijas, sakņu formas, izraušanas sarežģītības, iekaisuma esamības un individuālas dzīšanas reakcijas. Vieniem pacientiem pietiek ar vieglu smelgmi, citiem dažas dienas var būt grūtāk plaši atvērt muti vai košļāt tajā pusē. Ārsts pēc procedūras sniedz ieteikumus, kā kontrolēt sāpes un kopt brūci.",
-          "Pēc izraušanas var būt neliela asiņošana, pietūkums, jutīgums un ierobežota mutes atvēršana. Tomēr svarīgi novērot, vai simptomi nepasliktinās. Ja pēc dažām dienām sāpes pastiprinās, parādās slikta smaka, nepatīkama garša mutē, drudzis, bagātīga asiņošana vai palielinošs pietūkums, jāvēršas pie zobārsta.",
-          "Pareiza kopšana pēc procedūras palīdz samazināt komplikāciju risku un nodrošina raitāku dzīšanu. Tāpēc ļoti svarīgi ievērot ārsta norādījumus, netraucēt brūci un neatlikt atkārtoto vizīti, ja parādās neparasti simptomi."
-        ]
-      },
-      {
-        h: "Kā kopt muti pēc gudrības zoba izraušanas?",
-        image: "https://images.unsplash.com/photo-1676897288522-e8a081e71430?w=1200&q=80&fit=crop&auto=format",
-        p: [
-          "Pēc gudrības zoba izraušanas ļoti svarīgi ievērot ārsta ieteikumus, jo pirmās stundas un dienas ir ļoti nozīmīgas dzīšanai. Uzreiz pēc procedūras brūces vietā veidojas asins receklis, kas saudzē brūci un palīdz tai dzīst. Tāpēc svarīgi to nebojāt.",
-          "Pirmajā diennaktī nevajadzētu intensīvi skalot muti, spļaut vai dzert caur salmiņu. Šādas darbības var izkustināt recekli un palēnināt dzīšanu. Arī vajadzētu izvairīties no karsta ēdiena un dzērieniem, jo siltums var veicināt asiņošanu. Labāk izvēlēties mīkstu, nekarstu ēdienu un košļāt ar otru mutes pusi.",
-          "Pirmajās dienās nav ieteicams smēķēt, lietot alkoholu vai intensīvi sportot. Smēķēšana var traucēt dzīšanu, un fiziskā slodze var palielināt asiņošanas un pietūkuma risku. Brūci nevajadzētu pieskarties ar pirkstiem, mēli vai kasīt pārtikas atliekas ar asiem priekšmetiem.",
-          "Zobus tīrīt jāturpina, taču uzmanīgi. Blakus izraušanas vietai jātīra maigi, lai netiktu bojāta dzīstoša zona. Ja ārsts nozīmēja zāles vai speciālas kopšanas ierīces, tās noteikti jālieto, kā norādīts. Ja sāpes, pietūkums vai asiņošana palielinās, jāvēršas pie zobārsta."
-        ]
-      },
-      {
-        h: "Ko nedarīt, kad sāp gudrības zobs?",
-        p: [
-          "Kad sāp gudrības zobs, svarīgi ne tikai zināt, ko darīt, bet arī no kā izvairīties. Viena no biežākajām kļūdām — mēģinājums mazināt sāpes, liekot zāles tieši uz smaganām vai zoba. Aspirīns, spirts, ķiploks vai citas kairinošas vielas var bojāt mutes gļotādu, izraisīt apdegumu un vēl vairāk pastiprināt diskomfortu.",
-          "Arī nevajadzētu sildīt pietūkušo vietu. Ja sāpes izraisa iekaisums vai abscess, siltums var pasliktināt situāciju un veicināt infekcijas izplatīšanos. Šādos gadījumos drošāk lietot aukstu kompresi no ārējās vaiga puses, taču tā ir tikai īslaicīga ierīce līdz zobārsta apskatei.",
-          "Nevajadzētu mēģināt pārdurt abscesu, spiest pietūkušas smaganas vai kasīt zonu ap gudrības zobu ar asiem priekšmetiem. Tā var bojāt audus un ienest vēl vairāk baktēriju. Arī nav ieteicams patstāvīgi lietot antibiotikas bez ārsta nozīmējuma. Antibiotikas nav vajadzīgas vienmēr, un nepareiza to lietošana var būt kaitīga.",
-          "Vissvarīgākais — neatlikt vizīti, ja sāpes pastiprinās, atkārtojas, parādās pietūkums, temperatūra vai grūti atvērt muti. Atkārtots gudrības zoba iekaisums visbiežāk pats no sevis neizzūd, tāpēc to jānovērtē zobārstam."
-        ]
-      },
-      {
-        h: "Gudrības zoba sāpes nevajadzētu ignorēt",
-        p: [
-          "Ja sāp gudrības zobs, vissvarīgākais noteikt patieso sāpju iemeslu. Lai gan reizēm diskomforts var būt saistīts ar augšanu, bieži sāpes izraisa smaganu iekaisums, vietas trūkums, nepareiza zoba pozīcija, kariess vai infekcija. Šādos gadījumos tikai īslaicīgas mājas ierīces problēmu neatrisina.",
-          "Laikus veikta zobārsta apskate palīdz saprast, vai gudrības zobu var novērot, ārstēt vai tomēr nepieciešama izraušana. Jo agrāk tiek vērsts, jo vieglāk kontrolēt iekaisumu, samazināt sāpes un izvairīties no sarežģītākām komplikācijām.",
-          "Ja gudrības zobs izraisa sāpes, pietūkumu, nepatīkamu garšu mutē vai sāpes atkārtojas, negaidiet, kad problēma paasināsies. Reģistrējieties konsultācijai Bangų klīnikā Klaipēdā — ārsts novērtēs situāciju un piedāvās piemērotāko ārstniecības risinājumu."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Ko darīt, ja sāp gudrības zobs?", a: "Ja sāp gudrības zobs, vispirms maigi iztīriet zobus, izskalojiet muti ar remdenu ūdeni un izvairieties no cieta, karsta, auksta vai asa ēdiena. Ja ir pietūkums, pie vaiga no ārpuses uz īsu brīdi var pielikt aukstu kompresi. Tomēr, ja sāpes stipras, atkārtojas vai parādās papildu simptomi, jāvēršas pie zobārsta." },
-      { q: "Cik ilgi sāp pēc gudrības zoba izraušanas?", a: "Diskomforts pēc gudrības zoba izraušanas visbiežāk tiek sajusts dažas dienas. Ilgums atkarīgs no zoba pozīcijas, procedūras sarežģītības, iekaisuma esamības un individuālas dzīšanas. Ja sāpes nevis samazinās, bet pastiprinās, jākonsultējas ar zobārstu." },
-      { q: "Ko nedrīkst darīt pēc gudrības zoba izraušanas?", a: "Pēc izraušanas pirmajā diennaktī nevajadzētu intensīvi skalot muti, spļaut, dzert caur salmiņu, ēst karstu ēdienu vai sportot. Pirmajās dienās arī vajadzētu izvairīties no smēķēšanas un alkohola. Brūci nedrīkst kasīt vai aiztikt ar pirkstiem, jo tas var traucēt dzīšanai." }
-    ],
-    sources: [
-      { label: "Patterns of Third-Molar-Pericoronitis-Related Pain: A Morphometrical Observational Study", url: "https://pubmed.ncbi.nlm.nih.gov/37444724/" },
-      { label: "Surgical removal versus retention for the management of asymptomatic disease-free impacted wisdom teeth", url: "https://pubmed.ncbi.nlm.nih.gov/32368796/" },
-      { label: "Prediction of postoperative facial swelling, pain and trismus following third molar surgery based on preoperative variables", url: "https://pubmed.ncbi.nlm.nih.gov/23229245/" }
-    ]
+    readTime: 12
   },
   {
     slug: "ko-darit-kad-sap-zobs",
@@ -28291,106 +26730,9 @@ const BLOG_POSTS_LV = [
     date: "2026-05-06",
     category: "Neatliekamā palīdzība",
     coverImage: "https://images.unsplash.com/photo-1602932213623-cc17e9541bb4?w=1200&q=80&fit=crop&auto=format",
-    readTime: 10,
-    sections: [
-      {
-        p: [
-          "Zoba sāpes bieži pārsteidz negaidīti: vakarā, darbā, ceļojumā vai nedēļas nogalē, kad ne vienmēr skaidrs, ko darīt un kur vērsties. Reizēm sāpes ir īslaicīgas, piemēram, jutīguma pret aukstumu vai pārtikas atlieku starpzobu telpās dēļ. Tomēr stipras, pulsējošas vai ilgāk nepārejošas sāpes var signalizēt par nopietnāku problēmu — kariesu, zoba nerva iekaisumu, infekciju, abscesu, traumu vai izkritušu plombu.",
-          "Vissvarīgākais — neignorēt sāpes un nemēģināt tās ilgi apslāpēt tikai ar mājas līdzekļiem. Īslaicīga atvieglošana vēl nenozīmē, ka problēma izzuda. Jo agrāk tiek noteikts sāpju iemesls, jo vienkāršāka un ātrāka var būt ārstniecība."
-        ]
-      },
-      {
-        h: "Pirmie soļi, kad sāk sāpēt zobs",
-        p: [
-          "Kad sāk sāpēt zobs, vispirms vajadzētu novērtēt, vai sāpes varēja izraisīt pārtikas atliekas, iestrēgušas starp zobiem vai pie smaganām. Uzmanīgi iztīriet zobus ar mīkstu suku un lietojiet starpzobu diegu vai starpzobu sukas. Svarīgi to darīt maigi, lai papildus nekairinat smaganas.",
-          "Muti varat izskalot ar remdenu ūdeni. Izvairieties no ļoti karsta, auksta, salda vai cieta ēdiena, jo tas var pastiprināt jutīgumu un sāpes. Ja pamanāt vaiga vai smaganu pietūkumu, pie ārējās vaiga puses uz īsu brīdi var pielikt aukstu kompresi. To nevajadzētu likt tieši uz ādas — labāk ietīt dvielī.",
-          "Kad sāp zobs un nav zāļu, šīs darbības var palīdzēt īslaicīgi samazināt diskomfortu, taču tās nenovērš sāpju iemeslu. Ja sāpes pastiprinās, atkārtojas vai parādās papildu simptomi, noteikti jāreģistrējas zobārsta apskatei."
-        ]
-      },
-      {
-        h: "Ja ļoti sāp zobs — kad tā ir neatliekamā situācija?",
-        p: [
-          "Ja ļoti sāp zobs, īpaši kad sāpes ir pulsējošas, pastiprinās naktī vai traucē gulēt, tas var būt zīme, ka problēma ir nopietnāka nekā vienkāršs jutīgums. Neatliekama zobārsta apskate nepieciešama tad, kad sāpes nepāriet dažas stundas, izplatās uz žokli, ausi, deniņiem vai galvu, un arī kad kopā parādās smaganu, vaiga vai sejas pietūkums.",
-          "Nevajadzētu kavēt arī tajos gadījumos, kad mutē redzams abscess, tiek sajusta nepatīkama garša, paceļas temperatūra, grūti atvērt muti vai košļāt. Neatliekamā palīdzība arī nepieciešama pēc zoba traumas — ja zobs atlūzis, salauzies, izsists, izkrita plomba vai kronis un zobs kļuva ļoti jutīgs.",
-          "Šādās situācijās sāpju mazināšana mājās var būt tikai īslaicīgs risinājums. Tikai zobārsts var noteikt precīzu iemeslu un izvēlēties piemērotu ārstniecību, lai tiktu apturēts iekaisums, samazinātas sāpes un izvairīts no komplikācijām."
-        ]
-      },
-      {
-        h: "Ko darīt, kad sāp zobs un nav zāļu?",
-        p: [
-          "Kad sāp zobs un nav zāļu, vissvarīgākais nepanikot un izvairīties no darbībām, kas var pasliktināt situāciju. Vispirms maigi iztīriet zobus, izņemiet pārtikas atliekas no starpzobu telpām un izskalojiet muti ar remdenu ūdeni. Tas var palīdzēt, ja sāpes pastiprināja iestrēdzis ēdiens vai kairinātās smaganas.",
-          "Ja ir pietūkums, pie vaiga no ārpuses var pielikt aukstu kompresi. Turiet to īsos intervālos un nelieciet ledu tieši uz ādas. Svarīgi izvairīties no karstas kompreses, jo siltums var veicināt iekaisuma izplatīšanos, īpaši ja izveidojies abscess.",
-          "Nevajadzētu likt aspirīnu, ķiploku, spirtu vai citas kairinošas vielas tieši uz smaganām vai zoba. Šādas metodes var apdedzināt gļotādu un izraisīt vēl lielākas sāpes. Mājas ierīces var tikai īslaicīgi samazināt diskomfortu, taču tās neatrisina galveno problēmu. Ja sāpes stipras, atkārtojas vai parādās pietūkums, noteikti jāvēršas pie zobārsta."
-        ]
-      },
-      {
-        h: "Kur vērsties, kad sāp zobs?",
-        p: [
-          "Kad sāp zobs, svarīgi novērtēt sāpju stiprumu un citus simptomus. Ja sāpes nav stipras, izpaužas tikai ēdot vai dzerot aukstus dzērienus, var reģistrēties ierastai zobārsta konsultācijai tuvākajā laikā. Tomēr, ja sāpes stipras, pulsējošas, traucē gulēt, kopā parādās pietūkums, abscess, asiņošana vai zoba trauma, nepieciešama neatliekamā zobārstniecības palīdzība.",
-          "Šādos gadījumos vislabāk vērsties zobārstniecības klīnikā, kas sniedz neatliekamo palīdzību. Vizītes laikā ārsts novērtē zoba stāvokli, nosaka sāpju iemeslu un izvēlas piemērotāko risinājumu. Reizēm pietiek noņemt kairinātāju vai īslaicīgi samazināt iekaisumu, taču citos gadījumos var būt nepieciešama endodontiska ārstniecība, plombēšana, abscesa ārstniecība vai cita procedūra.",
-          "Bangų klīnikā Klaipēdā tiek sniegta neatliekama zobārstniecības palīdzība pacientiem, kurus nogurdina stipras zoba sāpes, pietūkums, zoba trauma, izkritusi plomba vai citas akūtas problēmas. Laikus vēršoties pēc palīdzības, var ātrāk mazināt sāpes un samazināt komplikāciju risku."
-        ]
-      },
-      {
-        h: "Sāp zobs nedēļas nogalē — ko darīt?",
-        p: [
-          "Ja sāp zobs nedēļas nogalē, vispirms novērtējiet, vai situācija var pagaidīt līdz tuvākajai zobārsta vizītei. Ja sāpes nav stipras, nav pietūkuma, drudža, abscesa vai traumas pazīmju, īslaicīgi izvairieties no cieta, karsta, auksta un salda ēdiena, uzturiet mutes higiēnu un reģistrējieties vizītei tuvākajā laikā.",
-          "Tomēr, ja sāpes ļoti stipras, pulsējošas, nepāriet, traucē gulēt, pietūcis vaigs vai smaganas, parādījās abscess, temperatūra vai grūti atvērt muti, nevajadzētu kavēt. Šādi simptomi var norādīt uz infekciju vai akūtu iekaisumu, kuram nepieciešama neatliekamā palīdzība.",
-          "Ja nedēļas nogalē jūsu izvēlētā klīnika nestrādā, un simptomi ir bīstami, jāvēršas dežurējošā neatliekamās palīdzības iestādē. Ja stāvoklis nav akūts, ir vērts pēc iespējas agrāk reģistrēties tuvākajai zobārsta vizītei. Bangų klīnikas darba laiks tiek norādīts klīnikas mājaslapā, tāpēc pirms brauciena vienmēr ieteicams pārbaudīt aktuālo informāciju un sazināties par reģistrāciju."
-        ]
-      },
-      {
-        h: "Biežākie zoba sāpju iemesli",
-        image: "https://images.unsplash.com/photo-1592400400196-bf709e32aa88?w=1200&q=80&fit=crop&auto=format",
-        p: [
-          "Zoba sāpes var parādīties dažādu iemeslu dēļ, tāpēc tikai pēc sajūtas ne vienmēr viegli saprast, kas tieši noticis. Viens no biežākajiem iemesliem — kariess. Sākumā tas var izraisīt tikai jutīgumu pret saldu, aukstu vai karstu ēdienu, taču bojājumam padziļinoties sāpes kļūst stiprākas un biežākas.",
-          "Cits biežs iemesls — zoba nerva iekaisums. Šādā gadījumā sāpes bieži ir pulsējošas, stiprākas vakarā vai naktī, var izplatīties uz žokli, ausi vai deniņiem. Sāpes arī var izraisīt smaganu iekaisums, abscess, gudrības zobu augšana, zoba trauma, atlūzums vai lūzums.",
-          "Reizēm sāpes parādās, izkrītot plombai vai kronim, kad zobs kļūst jutīgs pret temperatūras izmaiņām un košļāšanu. Tā kā iemeslu var būt daudz, precīzāk tos nosaka zobārsts apskates laikā."
-        ]
-      },
-      {
-        h: "Kā notiek neatliekamā vizīte pie zobārsta?",
-        p: [
-          "Neatliekamās vizītes laikā zobārsts vispirms uzklausa pacienta sūdzības: kad sākās sāpes, kāds to raksturs, vai ir pietūkums, trauma, jutīgums, drudzis vai citi simptomi. Tad tiek veikta mutes apskate, novērtēts zobu, smaganu un apkārtējo audu stāvoklis.",
-          "Ja tikai apskates nepietiek, var tikt veikts rentgena izmeklējums. Tas palīdz precīzāk noteikt, vai ir dziļš kariess, iekaisums sakņu zonā, abscess, zoba lūzums vai cita problēma, kuru ar plikām acīm neredz.",
-          "Galvenais neatliekamās vizītes mērķis — samazināt sāpes, kontrolēt akūto stāvokli un izlemt, kāda ārstniecība nepieciešama tālāk. Reizēm problēma tiek atrisināta tās pašas vizītes laikā, un reizēm tiek veikta īslaicīga ārstniecība un izveidots tālākais ārstniecības plāns. Vissvarīgākais, lai pacients nedzīvotu ar neskaidru un tikai pasliktinošu situāciju."
-        ]
-      },
-      {
-        h: "Kad vairs nevar gaidīt?",
-        p: [
-          "Gaidīt nevajadzētu, ja zoba sāpes ir ļoti stipras, pulsējošas vai nepāriet pat vairākas stundas. Īpaši svarīgi nekavēt, ja kopā pietūkusi vaiga, smaganu vai sejas zona, parādījās abscess, nepatīkama garša mutē, drudzis vai vispārējs vājums. Šādi simptomi var norādīt uz infekciju, kas neārstēta var izplatīties.",
-          "Neatliekamā palīdzība arī nepieciešama pēc traumas: ja zobs atlūzis, salauzies, izsists, sāka asiņot smaganas vai kļuva grūti sakoss. Arī nevajadzētu gaidīt, ja izkrita plomba vai kronis, un zobs kļuva ļoti jutīgs un sāpīgs.",
-          "Pat ja sāpes uz brīdi samazinās, tas neobligāti nozīmē, ka problēma izzuda. Reizēm akūtas sāpes nomierinās, taču iekaisums turpina progresēt. Tāpēc pastāvot stipriem vai atkārtotiem simptomiem vislabāk pēc iespējas ātrāk vērsties pie zobārsta."
-        ]
-      },
-      {
-        h: "Ātra reakcija palīdz izvairīties no sarežģītākas ārstniecības",
-        p: [
-          "Zoba sāpes ir signāls, ka mutē notiek izmaiņas, kuras nevajadzētu ignorēt. Pat ja sāpes izskatās paciešamas vai īsu brīdi samazinās, to iemesls var saglabāties. Laikus vēršoties pie zobārsta, bieži var ātrāk apturēt iekaisumu, samazināt sāpes un izvairīties no sarežģītākas ārstniecības nākotnē.",
-          "Mājas ierīces var palīdzēt tikai īslaicīgi atvieglot stāvokli, taču tās neaizvieto profesionālu apskati. Īpaši svarīgi nekavēt, ja sāpes stipras, pulsējošas, parādījās pietūkums, abscess, drudzis vai zobs bija bojāts traumas laikā.",
-          "Ja sāp zobs, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā. Ārsts novērtēs situāciju, noteiks sāpju iemeslu un piedāvās piemērotāko ārstniecības risinājumu."
-        ]
-      }
-    ],
-    faq: [
-      { q: "Ko darīt, ja ļoti sāp zobs?", a: "Ja ļoti sāp zobs, vispirms maigi iztīriet zobus, izskalojiet muti ar remdenu ūdeni un izvairieties no karsta, auksta, salda vai cieta ēdiena. Ja ir pietūkums, pie vaiga no ārpuses var pielikt aukstu kompresi. Tomēr stipras, pulsējošas vai ilgi nepārejošas sāpes ir zīme, ka nepieciešama zobārsta apskate. Šādā gadījumā nevajadzētu gaidīt, kad sāpes pāries pašas." },
-      { q: "Ko darīt, kad sāp zobs un nav zāļu?", a: "Kad sāp zobs un nav zāļu, vissvarīgākais izvairīties no kairinošām vai bīstamām ierīcēm. Nelieciet zāles, spirtu, ķiploku vai citas vielas tieši uz smaganām, jo tās var bojāt gļotādu. Īslaicīgi var palīdzēt mutes skalošana ar remdenu ūdeni, maiga mutes higiēna un auksta komprese, ja ir pietūkums. Tomēr šādas ierīces tikai atvieglo simptomus, bet nenovērš sāpju iemeslu." },
-      { q: "Vai zoba sāpes var pāriet pašas?", a: "Reizēm zoba sāpes var uz brīdi samazināties, taču tas neobligāti nozīmē, ka problēma izzuda. Piemēram, iekaisums vai infekcija var turpināt progresēt pat tad, kad sāpes kļūst vājākas. Ja sāpes atkārtojas, pastiprinās, parādās jutīgums košļājot, pietūkums vai citi simptomi, jāvēršas pie zobārsta." },
-      { q: "Kur vērsties, kad sāp zobs?", preImage: "https://images.unsplash.com/photo-1681939278218-a755fb2bf2d3?w=1200&q=80&fit=crop&auto=format", a: "Ja sāp zobs nedēļas nogalē, novērtējiet simptomu nopietnību. Ja sāpes nav stipras, nav pietūkuma, drudža vai abscesa, centieties nekairinat sāpošo vietu un reģistrējieties vizītei tuvākajā laikā. Ja sāpes ļoti stipras, pietūka seja vai smaganas, parādījās abscess, temperatūra vai grūti atvērt muti, jāvēršas pie neatliekamās palīdzības nekavējoties." },
-      { q: "Ko darīt, ja sāp zobs nedēļas nogalē?", a: "Novērtējiet simptomu nopietnību. Ja sāpes nav stipras, nav pietūkuma vai abscesa — reģistrējieties vizītei tuvākajā laikā. Ja sāpes ļoti stipras, pietūka seja vai parādās abscess un temperatūra — vērsieties pie neatliekamās palīdzības." },
-      { q: "Vai var sildīt sāpošo zobu?", a: "Sildīt sāpošo vietu nav ieteicams, īpaši ja ir pietūkums vai aizdomas par abscesu. Siltums var veicināt iekaisuma izplatīšanos un pasliktināt stāvokli. Ja ir pietūkums, drošāka izvēle ir īsos intervālos lietota auksta komprese no ārējās vaiga puses." }
-    ],
-    sources: [
-      { label: "Acute Dental Pain Management Guideline — American Dental Association", url: "https://www.ada.org/resources/research/science/evidence-based-dental-research/pain-management-guideline" },
-      { label: "Evidence-based clinical practice guideline for the pharmacologic management of acute dental pain", url: "https://jada.ada.org/article/S0002-8177(23)00672-4/fulltext" },
-      { label: "Management of odontogenic infections and sepsis: an update", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7517749/" }
-    ]
+    readTime: 10
   }
 ];
-function getPostLv(slug) {
-  return BLOG_POSTS_LV.find((p) => p.slug === slug);
-}
 function formatDateLv(dateStr) {
   const d = new Date(dateStr);
   return d.toLocaleDateString("lv-LV", { year: "numeric", month: "long", day: "numeric" });
@@ -28900,7 +27242,7 @@ function HomeLv() {
       ] })
     ] }) }) }) }),
     /* @__PURE__ */ jsx(SectionDivider, {}),
-    BLOG_POSTS_LV.length > 0 && /* @__PURE__ */ jsxs(Fragment, { children: [
+    BLOG_CARDS_LV.length > 0 && /* @__PURE__ */ jsxs(Fragment, { children: [
       /* @__PURE__ */ jsx("section", { className: "py-2 pb-8 md:pb-12 cv-auto", children: /* @__PURE__ */ jsxs("div", { className: W2, children: [
         /* @__PURE__ */ jsx(AnimatedSection, { children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6", children: [
           /* @__PURE__ */ jsxs("div", { children: [
@@ -28917,7 +27259,7 @@ function HomeLv() {
             }
           )
         ] }) }),
-        /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-3 gap-5", children: BLOG_POSTS_LV.slice(0, 3).map((post, i) => /* @__PURE__ */ jsx(
+        /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-3 gap-5", children: BLOG_CARDS_LV.slice(0, 3).map((post, i) => /* @__PURE__ */ jsx(
           motion.div,
           {
             initial: { opacity: 0, y: 24 },
@@ -31585,7 +29927,7 @@ function RakstiLv() {
       ] }),
       /* @__PURE__ */ jsx("p", { className: "mt-5 text-lg text-slate-500 leading-relaxed max-w-xl", children: "Noderīga informācija, zobārstu padomi un atbildes uz biežāk uzdotajiem jautājumiem par zobu ārstniecību un aprūpi." })
     ] }) }) }) }),
-    /* @__PURE__ */ jsx("section", { className: "pb-20 md:pb-28", children: /* @__PURE__ */ jsx("div", { className: W$1, children: /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8", children: BLOG_POSTS_LV.map((post, i) => /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("section", { className: "pb-20 md:pb-28", children: /* @__PURE__ */ jsx("div", { className: W$1, children: /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8", children: BLOG_CARDS_LV.map((post, i) => /* @__PURE__ */ jsx(
       motion.div,
       {
         initial: { opacity: 0, y: 28 },
@@ -31666,6 +30008,2041 @@ const __vite_glob_0_73 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
   __proto__: null,
   default: RakstiLv
 }, Symbol.toStringTag, { value: "Module" }));
+const BODIES = {
+  "zobu-griesana-nakti-kad-palidz-kapa": {
+    sections: [
+      {
+        p: [
+          "Zobu griešana naktī bieži ilgu laiku paliek nepamanīta. Par to var pastāstīt blakus guļošais cilvēks, bet zobārsts — pamanīt nodilušus, ieplaisājušus vai jutīgākus zobus. Dažiem pacientiem no rīta sāp žokļa muskuļi, deniņi vai galva, taču daļa cilvēku skaidrus simptomus nejūt.",
+          "Zobu bruksisms ir atkārtota zobu sakodiena, griešana vai žokļa saspringums. Tas var izpausties gan miega, gan nomoda laikā. Bruksisms ne visiem cilvēkiem rada bojājumus, taču intensīva un ilgstoša slodze var veicināt zobu nodilumu, plaisas, restaurāciju bojājumus un košļājamo muskuļu sāpes.",
+          "Kad rodas zobu bojājumu risks, zobārsts var ieteikt aizsargkapu. Miega kapas atdala augšējā un apakšējā žokļa zobus un pasargā to virsmas no tiešas berzes. Tomēr kapa ne vienmēr aptur pašu košļājamo muskuļu darbību, tāpēc pirms tās izgatavošanas svarīgi novērtēt zobu, smaganu, restaurāciju un žokļa locītavu stāvokli."
+        ]
+      },
+      {
+        h: "Kas ir zobu bruksisms un kāpēc cilvēki griež zobus?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Miega un nomoda bruksisms tiek uzskatīti par atšķirīgām košļājamo muskuļu darbības formām." },
+          { type: "p", text: "Zobu griešana naktī jeb miega bruksisms izpaužas kā miegā notiekoša zobu sakodiena, žokļa kustības vai zobu virsmu berzēšana. Cilvēks šīs darbības nekontrolē un visbiežāk tās neatceras." },
+          { type: "p", text: "Nomoda bruksisms biežāk izpaužas kā ilgstoša zobu sakodiena vai žokļa saspringums. Tas var notikt koncentrēšanās brīžos, strādājot pie datora, vadot auto, sportojot vai emocionāla saspringuma laikā." },
+          { type: "p", text: "Vienas visus bruksisma gadījumus izskaidrojošas cēloņa nav. Tā izpausmi var ietekmēt:" },
+          { type: "ul", items: [
+            "emocionāls saspringums un trauksme;",
+            "miega kvalitāte un biežas nomodas;",
+            "alkohola, nikotīna vai liela kofeīna daudzuma lietošana;",
+            "atsevišķi medikamenti;",
+            "individuāla nervu sistēmas darbība;",
+            "ģenētiski un citi personiski faktori."
+          ] },
+          { type: "p", text: "Stress var pastiprināt bruksismu, īpaši nomoda laikā, taču to nevajadzētu uzskatīt par vienīgo cēloni. Miega bruksisms ir sarežģīta ar miega un nervu sistēmas procesiem saistīta muskuļu darbība." },
+          { type: "p", text: "Zobu sakodiens agrāk tika uzskatīts par vienu no galvenajiem bruksisma cēloņiem. Šodienas zinātniskais viedoklis ir piesardzīgāks: tikai zobu stāvokļa, plombu vai sakodiena koriģēšana nav universāls zobu griešanas ārstēšanas veids." }
+        ]
+      },
+      {
+        h: "Kā atpazīt zobu griešanu naktī?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Zobu griešanu naktī bieži pirmais pamana blakus guļošais cilvēks. Viņš var dzirdēt zobu čīkstēšanu vai berzēšanu. Tomēr skaņa nav obligāta: daļa cilvēku miegā stipri sakož zobus, bet ar tiem negriež." },
+          { type: "p", text: "Iespējamās bruksisma pazīmes:" },
+          { type: "ul", items: [
+            "no rīta žokļa muskuļu nogurums vai sāpes;",
+            "sāpes deniņu vai sejas rajonā;",
+            "rīta galvassāpes;",
+            "zobu jutīgums;",
+            "nodiluši, saplakuši vai atlūzuši zobu galiņi;",
+            "bieži bojātas plombas, kroņi vai citas restaurācijas;",
+            "vaigu gļotādā redzamas sakodiena pēdas;",
+            "grūti plaši atvērt muti;",
+            "žokļa locītavas sāpes vai iestrēgšana."
+          ] },
+          { type: "p", text: "Neviena no šīm pazīmēm atsevišķi neapstiprina bruksismu. Zobi var nodilt ne tikai mehāniskās berzes dēļ, bet arī skābes erozijas, abrazīvas tīrīšanas vai vairāku cēloņu kombinācijas dēļ. Galvas un sejas sāpes arī var nebūt saistītas ar zobu griešanu." },
+          { type: "p", text: "Zobārsts novērtē zobu virsmas, restaurācijas, smaganas, košļājamos muskuļus un žokļa locītavas. Svarīgi arī apspriest simptomu ilgumu, miega kvalitāti, lietotos medikamentus un tuvinieku pamanītās skaņas." }
+        ]
+      },
+      {
+        h: "Kādas problēmas var radīt ilgstoša zobu griešana?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Epizodisks bruksisms ne vienmēr rada bojājumus. Problēmas biežāk parādās, kad slodze ir intensīva, ilgstoša vai zobi un restaurācijas jau ir ievainojami." },
+          { type: "p", text: "Zobu griešana var veicināt:" },
+          { type: "ul", items: [
+            "zobu emaljas nodilšanu;",
+            "zobu galiņu saīsināšanos un saplakšanu;",
+            "plaisas vai atlūzumus;",
+            "palielinātu jutīgumu;",
+            "plombu, kroņu un citu restaurāciju lūzumus;",
+            "implantu un protēžu konstrukciju pārslodzi;",
+            "košļājamo muskuļu nogurumu vai sāpes;",
+            "deniņu un sejas rajona sāpes;",
+            "žokļa locītavas diskomfortu."
+          ] },
+          { type: "p", text: "Zobu nodilums parasti notiek pakāpeniski, tāpēc ilgu laiku var palikt nepamanīts. Progresējošos gadījumos zobi izskatās īsāki, mainās to forma, var pasliktināties košļāšanas funkcija un smaida estētika." },
+          { type: "p", text: "Zobu emalja pati par sevi neatjaunojas. Kapa nevar atjaunot jau zaudētos audus, bet var palīdzēt pasargāt zobus no turpmākiem mehāniskiem bojājumiem. Ja zobi ir stipri nodiluši vai atlūzuši, var būt nepieciešama restauratīvā ārstēšana." }
+        ]
+      },
+      {
+        h: "Kā darbojas miega kapas?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Miega kapas ir izņemami aparāti, kurus visbiežāk valkā uz augšējā vai apakšējā žokļa zobiem. Bruksismam paredzētās kapas sauc arī par aizsargkapām, okluzālām vai stabilizācijas kapām." },
+          { type: "p", text: "Galvenais kapas uzdevums — radīt fizisku barjeru starp abu žokļu zobiem. Kad cilvēks miegā griež vai stipri sakož, zobu virsmas tieši viena otrā neberzējas. Tā tiek samazināts to nodiluma, ieplaisāšanas un restaurāciju bojājumu risks." },
+          { type: "p", text: "Pareizi piemērota kapa var:" },
+          { type: "ul", items: [
+            "pasargāt zobu virsmas;",
+            "vienmērīgāk sadalīt sakodiena slodzi;",
+            "aizsargāt plombas, kroņus un citas restaurācijas;",
+            "palīdzēt novērot griešanas atstātās nolietojuma pēdas;",
+            "dažiem pacientiem samazināt muskuļu diskomfortu."
+          ] },
+          { type: "p", text: "Svarīgi saprast, ka kapa galvenokārt pasargā no bruksisma mehāniskajām sekām. Tā ne vienmēr novērš zobu griešanas cēloni vai aptur nakts košļājamo muskuļu darbību. Tāpēc kapu nevajadzētu pasniegt kā visiem piemērotu bruksisma dziedināšanas veidu." }
+        ]
+      },
+      {
+        h: "Ar ko individuāla kapa atšķiras no aptiekā iegādājamas kapas?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Individuāla kapa tiek izgatavota atbilstoši konkrētā pacienta zobu formai. Tās piegulšanu, biezumu un sakodiena kontaktus pārbauda un, ja nepieciešams, koriģē zobārsts." },
+          { type: "p", text: "Kapas izgatavošana parasti notiek vairākos posmos:" },
+          { type: "ol", items: [
+            "Zobārsts apskata zobus, smaganas, restaurācijas un novērtē sakodienu.",
+            "Tiek veikta digitāla zobu skenēšana vai ņemti nospiedumi.",
+            "Laboratorijā tiek izgatavota individuāla kapa.",
+            "Nākamā vizītes laikā tiek pārbaudīta tās piegulšana un sakodiena kontakti.",
+            "Ja nepieciešams, kapa tiek koriģēta."
+          ] },
+          { type: "p", text: "Individuāli izgatavota kapa parasti stabilāk turas, mazāk kustas miegā un var būt precīzāk piemērota ilglaicīgai valkāšanai." },
+          { type: "p", text: "Aptiekās vai internetā pārdotās standarta un siltā ūdenī formējamās kapas ir vieglāk pieejamas, taču to piegulšana var nebūt tik precīza. Nepareizi piemērots aparāts var spiest zobus, kustēties, traucēt miegu vai nepietiekami aizsargāt zobu virsmas." },
+          { type: "p", text: "Zobārsta novērtējums ir īpaši svarīgs, ja pacientam ir:" },
+          { type: "ul", items: [
+            "kustīgi vai stipri nodiluši zobi;",
+            "kroņi, tilti vai implanti;",
+            "aktīva periodonta slimība;",
+            "žokļa locītavas sāpes;",
+            "nepabeigta ortodontiskā vai restauratīvā ārstēšana;",
+            "iespējamas miega elpošanas traucējumu pazīmes."
+          ] },
+          { type: "p", text: "Bruksisma kapa nav tas pats, kas apakšējo žokli uz priekšu stumjošs aparāts, ko lieto dažiem pacientiem ar obstruktīvu miega apnoju. Skaļi krākjot vai pamanot elpošanas pauzes, patstāvīgi izvēlēta kapa nedrīkstētu aizstāt medicīnisko izmeklēšanu." },
+          { type: "p", text: "Kapa jāmazgā ar vēsu vai remdenu ūdeni un jāglabā vēdināmā futrālī. Karsts ūdens var deformēt tās materiālu. Ja kapa ieplaisā, sāk kustēties, spiež vai maina sakodiena sajūtu, to jāpārbauda zobārstam." }
+        ]
+      },
+      {
+        h: "Kad zobu bruksisma dēļ jāvēršas pie zobārsta?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Pie zobārsta ir vērts vērsties, ja tuvinieki regulāri dzird zobu griešanu naktī vai pamanāt zobu nodilumu, jutīgumu, plaisas un bieži bojātas restaurācijas." },
+          { type: "p", text: "Apskate arī nepieciešama, ja:" },
+          { type: "ul", items: [
+            "no rīta bieži sāp žoklis vai deniņi;",
+            "sāpes traucē košļāt vai atvērt muti;",
+            "zobi izskatās īsāki vai mainīja formu;",
+            "atlūzis zobs, plomba vai kronis;",
+            "žokļa locītava ir sāpīga vai iestrēgst;",
+            "lietotā kapa spiež, kustas vai vairs nederēs;",
+            "zobu nodilums strauji progresē."
+          ] },
+          { type: "p", text: "Zobārsts novērtēs, vai nepieciešama aktīva zobu aizsardzība, vai pietiek ar novērošanu un ieradumu korekciju. Ārstēšana var ietvert individuālu kapu, bojāto zobu atjaunošanu, muskuļu un locītavu stāvokļa aprūpi un nosūtījumu pie cita speciālista." },
+          { type: "p", text: "Nomoda bruksisma gadījumā svarīga pašapziņa. Miera brīžos augšējiem un apakšējiem zobiem nevajadzētu pastāvīgi saskarties. Lūpas var būt viegli sakļautas, bet žokļa muskuļi — atslābināti. Dienas laikā var palīdzēt atgādinājumi pārbaudīt, vai zobi nav sakosti." },
+          { type: "p", text: "Ja pamanījāt zobu nodilumu, no rīta jūtat žokļa saspringumu vai tuvinieki dzird, ka griežat zobus, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā. Mūsu speciālisti novērtēs simptomus, pārbaudīs zobu stāvokli un, ja nepieciešams, izgatavos individuāli piemērotu aizsargkapu." }
+        ]
+      }
+    ],
+    faq: [
+      { q: "Vai zobu kapa aptur griešanu naktī?", a: "Ne vienmēr. Kapa galvenokārt pasargā zobus un restaurācijas no tiešas berzes. Nakts košļājamo muskuļu darbība var saglabāties." },
+      { q: "Vai miega kapas ir piemērotas visiem?", a: "Ne vienmēr. Pirms kapas izgatavošanas jānovērtē zobi, smaganas, restaurācijas un žokļa locītavas. Individuāls novērtējums īpaši svarīgs, ja ir implanti, periodonta slimības vai stipri nodiluši zobi." },
+      { q: "Cik ilgi kalpo bruksisma kapa?", a: "Vienota termiņa nav. Kapas kalpošanas laiks atkarīgs no tās materiāla, griešanas intensitātes, lietošanas biežuma un kopšanas. Ieplaisājušu, deformētu vai kustīgu kapu jānovērtē zobārstam." },
+      { q: "Vai kapa jāvalkā visu mūžu?", a: "Ne vienmēr. Valkāšanas ilgums atkarīgs no simptomiem, zobu bojājumu riska un ārstēšanas gaitas. Kapas nepieciešamību ir vērts periodiski pārvērtēt." },
+      { q: "No kā atkarīga zobu kapas cena?", a: "Cena atkarīga no kapas tipa, materiāla, izgatavošanas veida, diagnostikas un nepieciešamām korekcijām. Precīzu cenu nosaka, novērtējot pacienta zobu stāvokli." },
+      { q: "Vai stress var veicināt zobu griešanu?", a: "Emocionāls saspringums var būt viens no bruksismu pavadošiem vai pastiprinošiem faktoriem, īpaši nomoda laikā. Tomēr bruksismu nevajadzētu skaidrot tikai ar stresu." }
+    ],
+    sources: [
+      { label: "International Consensus on the Assessment of Bruxism: Report of a Work in Progress", url: "https://pubmed.ncbi.nlm.nih.gov/29926505/" },
+      { label: "Standardised Tool for the Assessment of Bruxism", url: "https://pubmed.ncbi.nlm.nih.gov/36597658/" },
+      { label: "The Efficacy of Occlusal Splints in the Treatment of Bruxism: A Systematic Review", url: "https://pubmed.ncbi.nlm.nih.gov/33652054/" },
+      { label: "Sleep Bruxism May Not Be Associated With Obstructive Sleep Apnea: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/39182463/" }
+    ]
+  },
+  "ka-notirit-zobakmens": {
+    sections: [
+      {
+        p: [
+          "Zobakmens visbiežāk pamanāms pie apakšējiem priekšējiem zobiem, starpzobu telpās vai pie smaganas malas. Tie var būt dzeltenīgi, brūnīgi vai tumšāki, un ar mēli pieskaroties zoba virsmai bieži jūtama raupjums. Daļa zobakmeņu uzkrājas zem smaganām, tāpēc spogulī tos nevar redzēt.",
+          "Ja domājat, kā atbrīvoties no zobakmeņiem, svarīgi zināt, ka sacietējušas nogulsnes zobu suka, pasta, diegs vai irigators nenoņems. Tos droši notīra mutes higiēnists vai zobārsts profesionālās mutes higiēnas laikā. Mājās var noņemt mīkstos bakteriālos aplikumus un tā samazināt jaunu zobakmeņu veidošanos."
+        ]
+      },
+      {
+        h: "Kāpēc uz zobiem veidojas zobakmens?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Uz zobiem pastāvīgi veidojas lipīga baktēriju kārtiņa, ko sauc par zobu aplikumu vai biofilmu. To var noņemt, tīrot zobus un starpzobu telpas. Ja aplikumi paliek uz zoba virsmas, tajos uzkrājas siekalās esošie minerāli, tāpēc ar laiku tie sacietē un pārtop zobakmenī. Jau mineralizētās nogulsnes ar parastu zobu suku vairs nav iespējams noņemt." },
+          { type: "p", text: "Zobakmeņus iedala virs smaganām un zem tām esošos. Virs smaganām izveidojušās nogulsnes parasti ir vieglāk pamanāmas. Tās bieži uzkrājas aiz apakšējiem priekšējiem zobiem un pie augšējiem molāriem, netālu no siekalu dziedzeru izvadiem." },
+          { type: "p", text: "Zem smaganām esošie zobakmeņi piestiprinās zoba saknes virsmai. Tie var būt tumšāki un bieži tiek atklāti tikai profesionāli izmeklējot smaganas, mērot periodonta kabatas vai veicot radioloģiskos izmeklējumus." },
+          { type: "p", text: "Zobakmeņu veidošanās ātrums dažādiem cilvēkiem ir atšķirīgs. To var ietekmēt:" },
+          { type: "ul", items: [
+            "nepietiekami rūpīga zobu tīrīšana;",
+            "neregulāra starpzobu telpu tīrīšana;",
+            "sablīvēti un grūtāk sasniedzami zobi;",
+            "individuālais siekalu sastāvs un to plūsma;",
+            "smēķēšana;",
+            "ortodontiskās ierīces;",
+            "implanti, tilti un citas protēzes konstrukcijas;",
+            "iepriekš diagnosticētas smaganu vai periodonta slimības."
+          ] },
+          { type: "p", text: "Mineralizētie aplikumi var uzkrāties ne tikai uz dabīgajiem zobiem, bet arī ap implantiem, pie tiltiem un uz protēžu konstrukcijām. Šo vietu kopšanai var būt nepieciešamas piemērota izmēra starpzobu sukas, vienzoba suka vai citas individuāli izvēlētas ierīces." }
+        ]
+      },
+      {
+        h: "Kā atpazīt, ka uz zobiem uzkrājies zobakmens?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Redzamais zobakmens visbiežāk izskatās kā ciets dzeltenīgs, brūnīgs vai tumšs slānis, ko nevar notīrīt ar suku. Ar mēli var sajust nelīdzenu, raupju virsmu, īpaši aiz apakšējiem priekšējiem zobiem." },
+          { type: "p", text: "Aplikumu un zobakmeņu uzkrāšanos var pavadīt arī:" },
+          { type: "ul", items: [
+            "smaganu asiņošana zobu tīrīšanas laikā;",
+            "apsārtušas, pietūkušas vai jutīgas smaganas;",
+            "nepatīkama elpa;",
+            "nepatīkama garša mutē;",
+            "smaganu atkāpšanās;",
+            "zobu jutīgums;",
+            "palielinošās atstarpes starp zobiem;",
+            "zobu kustīgums, ja periodonta slimība ir progresējusi."
+          ] },
+          { type: "p", text: "Smaganu asiņošana nav zīme, ka zobi jātīra retāk. Tā bieži saistīta ar bakteriālu aplikumu izraisītu iekaisumu. Gingivīta gadījumā iekaisums aprobežojas ar smaganām un, noņemot aplikumus un uzlabojot ikdienas higiēnu, parasti to var kontrolēt." },
+          { type: "p", text: "Periodontīta gadījumā tiek bojāti ne tikai smaganu audi, bet arī zobu balstošais kauls. Šī slimība nav atgriezeniska tāpat kā gingivīts, taču ar profesionālu ārstniecību un regulāru kopšanu tās progresēšanu var palēnināt un kontrolēt." },
+          { type: "p", text: "Ne visas tumšās vai raupjās vietas ir zobakmens. Līdzīgi var izskatīties pigmentu aplikumi, kariess, restaurācijas mala vai dabīga zoba krāsas īpatnība. Precīzu cēloni nosaka zobārsts vai mutes higiēnists." }
+        ]
+      },
+      {
+        h: "Vai zobakmens iespējams noņemt mājās?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Mīkstos aplikumus mājās noņemt ir nepieciešams, taču jau izveidojušos zobakmeņus droši notīrīt neizdosies. Sacietējušās nogulsnes cieši piestiprinās zoba vai saknes virsmai, tāpēc to noņemšanai nepieciešami profesionāli instrumenti." },
+          { type: "p", text: "Patstāvīga zobakmeņu kasīšana var:" },
+          { type: "ul", items: [
+            "ievainot smaganas un izraisīt asiņošanu;",
+            "saskrāpēt emalju, restaurācijas vai implantu virsmas;",
+            "palielināt zobu jutīgumu;",
+            "atstāt daļu nogulšņu zem smaganām;",
+            "apgrūtināt turpmāko profesionālo kopšanu."
+          ] },
+          { type: "p", text: "Soda, skābi produkti, peroksīds un stipri abrazīvās pastas nav profesionālas higiēnas alternatīva. Tās var noņemt daļu virsmas pigmentu, taču zobakmeņus neizšķīdina un agresīvi lietojot var bojāt zobu vai mutes gļotādas virsmu." },
+          { type: "p", text: "Irigators ar pulsējošu ūdens strūklu var palīdzēt noņemt pārtikas atliekas un kopt grūtāk sasniedzamas vietas, īpaši ap breketēm, tiltiem vai implantiem. Tomēr tas nenoņem jau izveidojušos zobakmeņus un nav universāls starpzobu suku vai diega aizstājējs." }
+        ]
+      },
+      {
+        h: "Kā profesionāli tiek noņemts zobakmens?",
+        p: [
+          "Profesionālās mutes higiēnas sākumā speciālists novērtē zobu, smaganu un mutē esošo konstrukciju stāvokli. Tiek pārbaudīts, kur uzkrājas aplikumi un zobakmeņi, vai smaganas asiņo, vai ir atkāpušās un vai redzamas periodonta slimības pazīmes.",
+          "Zobakmeņus visbiežāk noņem ar ultraskaņas skaleru un rokas instrumentiem. Ultraskaņas instrumenta vibrācijas palīdz atdalīt sacietējušās nogulsnes no zoba virsmas, un ūdens dzesē darba zonu un noskalo noņemtās daļiņas.",
+          "Ar rokas instrumentiem tiek iztīrītas grūtāk sasniedzamās vietas un noņemtas atlikušās nogulsnes. Procedūras beigās zobu virsmas var tikt pulētas. Pigmentētiem un mīkstiem aplikumiem tīrīt var tikt izmantota arī kontrolēta gaisa, ūdens un speciālu pulveru strūkla.",
+          "Ja zobakmeņi ir uzkrājušies dziļi zem smaganām un tiek konstatēts periodontīts, parastas profilaktiskas higiēnas var nepietikt. Šādā gadījumā tiek veikta dziļāka zobu un sakņu virsmu tīrīšana, ko sauc arī par neķirurģisku periodontoloģisku ārstniecību. Sarežģītākos gadījumos pacients tiek nosūtīts pie periodontologa.",
+          "Vizītes laikā mutes higiēnists palīdz noteikt, kurās vietās biofilms uzkrājas visbiežāk, un izvēlas piemērotās mājas kopšanas ierīces. Tas ir svarīgi, jo tikai zobakmeņu noņemšana bez ikdienas higiēnas maiņas nepasargā no to atkārtotas veidošanās."
+        ]
+      },
+      {
+        h: "Vai sāp, noņemot zobakmens?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Vairumam pacientu profesionālā mutes higiēna izraisa spiediena, vibrācijas vai īslaicīga jutīguma sajūtu, nevis stipras sāpes. Procedūras komforts atkarīgs no zobakmeņu daudzuma, to atrašanās vietas, smaganu iekaisuma un individuālā jutīguma." },
+          { type: "p", text: "Nepatīkamākas sajūtas iespējamas, kad:" },
+          { type: "ul", items: [
+            "smaganas ir stipri iekaisušas;",
+            "daudz zobakmeņu uzkrājies zem smaganām;",
+            "atsegtas zobu saknes;",
+            "zobi jutīgi pret aukstumu;",
+            "nepieciešama dziļāka periodontoloģiska tīrīšana."
+          ] },
+          { type: "p", text: "Ja procedūras laikā sāp, par to svarīgi pastāstīt speciālistam. Higiēnu var veikt pa posmiem, pielāgot instrumentu iestatījumus vai, ja nepieciešams, izmantot vietējo anestēziju." },
+          { type: "p", text: "Pēc procedūras zobi uz īsu brīdi var kļūt jutīgāki pret aukstumu, un iekaisuma skartās smaganas — sāpēt vai nedaudz asiņot. Šīs sajūtas pakāpeniski pavājinās. Ja sāpes pastiprinās, palielinās pietūkums vai neapstājas asiņošana, jāsazinās ar klīniku." },
+          { type: "p", text: "Pēc lielu nogulšņu noņemšanas dažreiz šķiet, ka starp zobiem parādījušās atstarpes. Patiesībā zobakmeņi iepriekš tās varēja aizpildīt, un, samazinoties smaganu iekaisumam un pietūkumam, to kontūra kļūst skaidrāka. Profesionālās higiēnas laikā vesela zoba daļa netiek noņemta." }
+        ]
+      },
+      {
+        h: "Kas var notikt, ja zobakmens netiek noņemts?",
+        p: [
+          "Zobakmens virsma ir raupja, tāpēc uz tās vieglāk saglabājas jauns bakteriālais biofilms. Tā dēļ ikdienas higiēna kļūst mazāk efektīva, un smaganu iekaisums var turpināties.",
+          "Sākuma stadijā visbiežāk attīstās gingivīts. Smaganas apsārst, pietūkst un sāk asiņot. Noņemot aplikumus un zobakmeņus un uzlabojot zobu tīrīšanu, šo stāvokli parasti var kontrolēt.",
+          "Neārstēts iekaisums daļai pacientu var progresēt par periodontītu. Tad veidojas dziļākas periodonta kabatas, tiek bojāti zobu balstošie audi un iznīkst kauls. Ar laiku zobi var kļūt kustīgi, mainīties to stāvoklis vai palielināties zaudēšanas risks. Smēķēšana, diabēts un nepietiekama mutes higiēna saistās ar lielāku smagas smaganu slimības risku.",
+          "Zobakmeņu un aplikumu nogulsnes var arī veicināt nepatīkamu elpu. Tomēr redzamais zobakmeņu daudzums ne vienmēr atspoguļo smaganu slimības smagumu — nozīmīgas nogulsnes var būt arī zem smaganām."
+        ]
+      },
+      {
+        h: "Kā izvairīties no atkārtotas zobakmens veidošanās?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Aplikumi veidojas nepārtraukti, tāpēc pilnībā apturēt šo procesu nav iespējams. Profilakses mērķis ir regulāri noņemt biofilmu, kamēr tas vēl nav mineralizējies." },
+          { type: "p", text: "Ieteicams:" },
+          { type: "ul", items: [
+            "divas reizes dienā tīrīt zobus ar fluorīdu saturošu pastu;",
+            "katru dienu iztīrīt starpzobu telpas;",
+            "rūpīgi kopt smaganas malu;",
+            "tīrīt implantus, tiltus, protēzes un ortodontiskās ierīces;",
+            "nesmēķēt;",
+            "regulāri pārbaudīt zobus un smaganas;",
+            "profesionālo mutes higiēnu veikt individuāli noteiktā biežumā."
+          ] },
+          { type: "p", text: "Starpzobu sukas, diegs, irigators vai citas ierīces nav vienādi piemērotas visiem. Plašākās starpzobu telpās bieži ērtākas ir starpzobu sukas, bet šaurās vietās var lietot diegu. Ierīces izmēru un lietošanas tehniku vislabāk apspriest ar mutes higiēnistu." },
+          { type: "p", text: "Aplikumus iekrāsojošas tabletes vai šķīdumi var palīdzēt saskatīt nepietiekami iztīrītās vietas. Tie aplikumus nenoņem, taču var būt noderīga mācību ierīce, kas palīdz uzlabot tīrīšanas tehniku." },
+          { type: "p", text: "Mutes skalošanas šķidrums neaizstāj mehānisku zobu un starpzobu telpu tīrīšanu. Ārsts vai mutes higiēnists var ieteikt konkrētu ierīci noteiktam laikam, taču galvenā aplikumu kontrole notiek ar suku un starpzobu ierīcēm." },
+          { type: "p", text: "Profesionālās higiēnas intervāls nedrīkstētu būt vienāds visiem. Biežāka aprūpe var būt vajadzīga pacientiem, kuriem zobakmeņi uzkrājas ātri, ir diagnosticēts periodontīts, ir implanti, ortodontiskas ierīces vai grūtāk tīrāmas protēzes. Regulāra zobu tīrīšana, starpzobu telpu kopšana un profesionāli vizīti palīdz kontrolēt gingivīta un periodonta slimību risku." },
+          { type: "p", text: "Ja pamanījāt cietas nogulsnes, asiņo smaganas vai nogurdina nepatīkama elpa, reģistrējieties profesionālai mutes higiēnai Bangų klīnikā Klaipēdā. Mūsu speciālisti novērtēs mutes stāvokli, droši noņems aplikumus un zobakmeņus un palīdzēs izvēlēties piemērotās kopšanas ierīces." }
+        ]
+      }
+    ],
+    faq: [
+      { q: "Vai zobu pasta var noņemt zobakmeni?", a: "Nē. Zobu pasta palīdz noņemt mīkstos aplikumus, taču jau mineralizētu zobakmeni netīra. Tas jānoņem ar profesionāliem instrumentiem." },
+      { q: "Vai irigators noņem zobakmeni?", a: "Nē. Irigators var palīdzēt kopt starpzobu telpas un grūtāk sasniedzamas vietas, taču pie zobiem piestiprinājušos zobakmeņus nenoņem." },
+      { q: "Vai zobakmeni var nokasīt mājās?", a: "Nav ieteicams. Asi instrumenti var bojāt smaganas, zobu virsmas, restaurācijas vai implantus, un zem smaganām esošās nogulsnes tik un tā paliks." },
+      { q: "Cik bieži jāveic profesionālā mutes higiēna?", a: "Vienota intervāla visiem nav. To nosaka pēc zobakmeņu uzkrāšanās ātruma, smaganu stāvokļa, periodonta slimību riska un mutē esošajām konstrukcijām." },
+      { q: "Kāpēc pēc zobakmeņu noņemšanas redzamas lielākas atstarpes?", a: "Noņemot zobakmeņus, atklājas iepriekš to aizpildītās vietas. Samazinoties smaganu iekaisumam un pietūkumam, to kontūra arī var izskatīties izmainījusies." },
+      { q: "Vai asiņojošas smaganas var tīrīt?", a: "Jā. Asiņošana bieži saistīta ar iekaisumu, tāpēc aplikumi jānoņem maigi, bet regulāri. Ja asiņošana atkārtojas, jāvēršas pie zobārsta vai mutes higiēnista." }
+    ],
+    sources: [
+      { label: "About Periodontal (Gum) Disease", url: "https://www.cdc.gov/oral-health/about/gum-periodontal-disease.html" },
+      { label: "Oral Health Tips for Adults", url: "https://www.cdc.gov/oral-health/prevention/oral-health-tips-for-adults.html" },
+      { label: "Effects of Interdental Cleaning Devices in Preventing Dental Caries and Periodontal Diseases: A Scoping Review", url: "https://pubmed.ncbi.nlm.nih.gov/31556125/" },
+      { label: "Efficacy of Power-Driven Interdental Cleaning Tools: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/36562267/" }
+    ]
+  },
+  "kariess-bez-urbsanas-ko-var-darit-klinika-un-majas": {
+    sections: [
+      {
+        p: [
+          "Kariesa ārstniecība bez urbšanas iespējama tikai noteiktās slimības stadijās. Ja zoba virsma vēl nav sabrukusi un redzams tikai agrīns minerālvielu zudums, bojājumu dažkārt var apturēt ar fluorīdiem, labāku mutes higiēnu, ēšanas ieradumu korekciju vai minimāli invazīvām zobārstniecības metodēm.",
+          "Tomēr jau izveidojies caurums mājās nesadzīst. Zobu pasta, mutes skalošanas šķidrums, uztura bagātinātāji vai tautas līdzekļi nespēj atjaunot zaudēto emalju un dentīnu. Kad zoba virsmā parādās dobums, visbiežāk nepieciešama restauratīva ārstniecība.",
+          "Tāpēc kariesa ārstniecība mājās nozīmē nevis pašam zoba cauruma labošanu, bet zobārsta noteikta agrīnā bojājuma kontroli. Jo agrāk kariess tiek pamanīts, jo lielāka iespēja izvairīties no urbšanas un saglabāt vairāk veselu zoba audu."
+        ]
+      },
+      {
+        h: "Kas ir zobu kariess un kā tas attīstās?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Zobu kariess ir process, kura laikā zoba audi pakāpeniski zaudē minerālvielas. Mutes aplikumos esošās baktērijas sadala cukurus un citus ogļhidrātus, un šī procesa laikā veidojas skābes. Tās iedarbojas uz emalju un veicina tās demineralizāciju." },
+          { type: "p", text: "Pēc skābes iedarbības siekalas palīdz neitralizēt mutes vidi. Tajās esošie kalcija un fosfātu joni var atgriezties emaljā, un fluorīdi palīdz šo procesu pastiprināt." },
+          { type: "p", text: "Kariess attīstās tad, kad minerālvielu zudums laika gaitā kļūst lielāks par to atgriešanos. Risku palielina:" },
+          { type: "ul", items: [
+            "bieža saldu uzkodu un dzērienu lietošana;",
+            "uz zobiem ilgi saglabājošies bakteriālie aplikumi;",
+            "nepietiekama fluorīdu iedarbība;",
+            "samazināts siekalu daudzums;",
+            "grūti tīrāmas zoba gropes un starpzobu telpas;",
+            "ortodontiskās ierīces;",
+            "necaurlaidīgas plombas vai citas restaurācijas;",
+            "iepriekšēji biežie kariesa bojājumi."
+          ] },
+          { type: "p", text: "Svarīgs ir ne tikai kopējais cukura daudzums, bet arī tā lietošanas biežums. Pastāvīgi uzkožot vai malkot saldus dzērienus, zobi bieži pakļauti skābes iedarbībai un tiem ir mazāk laika atjaunoties." },
+          { type: "p", text: "Kariess var būt aktīvs, lēni progresējošs vai apturēts. Tāpēc ārstniecības lēmums atkarīgs ne tikai no plankuma krāsas vai izmēra, bet arī no bojājuma dziļuma, virsmas stāvokļa un pacienta kopējā kariesa riska." }
+        ]
+      },
+      {
+        h: "Kā atpazīt agrīnu kariesu, kamēr vēl nav cauruma?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Agrīns kariess visbiežāk nesāp. Pirmā pazīme var būt matēts, krīta baltuma plankums, kas norāda, ka emalja zaudējusi daļu minerālvielu." },
+          { type: "p", text: "Šādas izmaiņas bieži parādās:" },
+          { type: "ul", items: [
+            "pie smaganas malas;",
+            "ap breketēm;",
+            "molāro zobu gropēs;",
+            "starpzobu telpās;",
+            "vietās, kur uzkrājas aplikumi."
+          ] },
+          { type: "p", text: "Iespējamās pazīmes:" },
+          { type: "ul", items: [
+            "balts vai krēmīgs matēts plankums;",
+            "samazināta emaljas caurspīdība;",
+            "raupjāka zoba virsma;",
+            "brūnīgs vai tumšāks krāsas mainījums;",
+            "īslaicīgs jutīgums pret saldu, aukstu vai skābu ēdienu."
+          ] },
+          { type: "p", text: "Ne katrs balts vai tumšs plankums ir aktīvs kariess. Līdzīgi var izskatīties fluoroze, emaljas attīstības traucējumi, pigmenti vai vecs, jau apturēts bojājums." },
+          { type: "p", text: "Tikai pēc plankuma izskata nav iespējams izlemt, vai kariesu vēl var ārstēt bez urbšanas. Zobārstam jānovērtē, vai zoba virsma ir palikusi vesela, kāds ir bojājuma dziļums un vai process joprojām ir aktīvs." },
+          { type: "p", text: "Starpzobu telpu kariess bieži ilgi nav redzams. Tā noteikšanai var tikt veikti rentgena uzņēmumi. Redzams caurums, pastāvīgi iestrēgstoša barība vai sāpes visbiežāk norāda, ka bojājums jau ir progresējis." }
+        ]
+      },
+      {
+        h: "Vai iespējama kariesa ārstniecība mājās?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Kariesa ārstniecība mājās var palīdzēt kontrolēt tikai ļoti agrīnu bojājumu, kad zoba virsma vēl nav sabrukusi. Šādā gadījumā zobārsts var izveidot plānu, kas palīdz samazināt skābes iedarbību un veicināt emaljas remineralizāciju." },
+          { type: "p", text: "Mājas aprūpe var ietvert:" },
+          { type: "ul", items: [
+            "zobu tīrīšanu ar fluorīdu saturošu pastu divas reizes dienā;",
+            "ikdienas starpzobu telpu tīrīšanu;",
+            "retāku saldu uzkodu un dzērienu lietošanu;",
+            "ūdens izvēli starp ēdienreizēm;",
+            "zobārsta nozīmētas papildu fluorīdu ierīces;",
+            "mutes sausuma iemeslu kontroli;",
+            "regulārus atkārtotus izmeklējumus."
+          ] },
+          { type: "p", text: "Šie pasākumi palīdz mainīt apstākļus mutē, lai agrīnais bojājums pārstātu progresēt. Tie nevar atjaunot jau zaudētos zoba audus." },
+          { type: "p", text: "Ja zoba virsma ir sabrukusi, dobumā uzkrājas aplikumi vai kariess izplatījies dentīnā, tikai mājas aprūpes nepietiek." },
+          { type: "p", text: "Lielākas koncentrācijas fluorīdu pastas, geli vai skalošanas šķidrumi arī nedrīkstētu būt izvēlēti patstāvīgi. To nepieciešamība atkarīga no pacienta vecuma, mutes stāvokļa un kariesa riska." }
+        ]
+      },
+      {
+        h: "Kad kariesa ārstniecība bez urbšanas var būt efektīva?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Kariesa ārstniecība bez urbšanas visbiežāk tiek apsvērta tad, kad bojājums ir agrīns, un zoba virsmā vēl nav izveidojies caurums." },
+          { type: "p", text: "Zobārsts novērtē:" },
+          { type: "ul", items: [
+            "bojājuma atrašanās vietu un dziļumu;",
+            "zoba virsmas veselumu;",
+            "vai bojājums ir aktīvs;",
+            "vai vietu var pareizi iztīrīt;",
+            "citu kariesa perēkļu skaitu;",
+            "siekalu daudzumu;",
+            "ēšanas un mutes higiēnas ieradumus;",
+            "pacienta iespēju ievērot aprūpes plānu."
+          ] },
+          { type: "p", text: "Ārstniecība bez urbšanas nav viena procedūra. Tā var būt fluorīdu lietošana, silanti, sveķu infiltrācija vai aktīva novērošana, vienlaikus kontrolējot riska faktorus." },
+          { type: "p", text: "Svarīga ārstniecības daļa ir atkārtoti izmeklējumi. Ja bojājums progresē, plāns jāmaina. Tikai tas, ka zobs nesāp, nenozīmē, ka to var ilgi atstāt bez kontroles." },
+          { type: "p", text: "Pat apturot kariesu, balts vai tumšs plankums var pilnīgi neizzust. Galvenais ārstniecības mērķis ir apturēt audu bojāšanos, nevis obligāti pilnīgi atjaunot iepriekšējo emaljas izskatu." }
+        ]
+      },
+      {
+        h: "Kā fluorīdi un remineralizācija palīdz apturēt agrīnu kariesu?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Remineralizācija ir process, kura laikā minerālvielas atgriežas agrīni bojātā emaljā. Siekalas dabiski piedalās šajā procesā, un fluorīdi palīdz emaljai kļūt izturīgākai pret skābēm." },
+          { type: "p", text: "Galvenais ikdienas līdzeklis ir fluorīdu saturoša zobu pasta. Lai tā darbotos pareizi, svarīgi:" },
+          { type: "ul", items: [
+            "zobus tīrīt divas reizes dienā;",
+            "izvēlēties vecumam piemērotu pastu;",
+            "lietot ieteikto tās daudzumu;",
+            "pēc tīrīšanas pastu izspļaut;",
+            "muti intensīvi neskalot ar lielu ūdens daudzumu;",
+            "katru dienu tīrīt starpzobu telpas."
+          ] },
+          { type: "p", text: "Pacientiem, kuru kariesa risks ir lielāks, zobārsts var ieteikt profesionālu fluora laku vai lielākas koncentrācijas pastu." },
+          { type: "p", text: "Fluorīdi neaizpilda caurumu. Tie visefektīvākie ir tad, kad zoba virsma vēl ir vesela un var notikt minerālvielu apmaiņa." },
+          { type: "p", text: "Remineralizācijai svarīgs arī cukura lietošanas biežums. Pat rūpīgi tīrot zobus, pastāvīgas saldas uzkodas vai dzērieni var traucēt agrīnajam bojājumam stabilizēties." }
+        ]
+      },
+      {
+        h: "Kā kariesu ārstē ar sveķu infiltrāciju?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Sveķu infiltrācija ir minimāli invazīva metode, kas paredzēta atlasītiem agrīniem kariesa bojājumiem, kad vēl nav izveidojies dobums. Tā bieži tiek lietota sākotnējiem starpzobu telpu vai gludo zoba virsmu bojājumiem." },
+          { type: "p", text: "Procedūras laikā zobs tiek izolēts, un bojātā emaljas virsma tiek sagatavota. Poru bojājumā tiek ievadīti ļoti šķidri sveķi, kas iesūcas mikroskopiskās emaljas porās. Vēlāk tie tiek sacietēti ar polimerizācijas lampu." },
+          { type: "p", text: "Sveķi izveido barjeru bojājuma iekšpusē un palīdz samazināt turpmāko skābes iedarbību. Tā tiek panākts kariesa progresēšanas pārtraukums, nenoņemot lielu daļu zoba audu." },
+          { type: "p", text: "Sveķu infiltrācijas priekšrocības:" },
+          { type: "ul", items: [
+            "visbiežāk nav nepieciešama urbšana;",
+            "tiek saglabāts vairāk dabīga zoba;",
+            "bieži nav nepieciešama vietējā anestēzija;",
+            "var ārstēt agrīnus starpzobu telpu bojājumus;",
+            "daži baltie plankumi kļūst mazāk pamanāmi."
+          ] },
+          { type: "p", text: "Šī metode nav piemērota katram plankumam vai dobumam. Ja zoba virsma jau ir sabrukusi, bojājums dziļš vai grūti pareizi izolēt zobu, var būt vajadzīga cita ārstniecība." },
+          { type: "p", text: "Pēc procedūras joprojām nepieciešama pareiza mutes higiēna, fluorīdu lietošana, ēšanas kontrole un regulāra novērošana." }
+        ]
+      },
+      {
+        h: "Kādas citas kariesa ārstniecības bez urbšanas metodes tiek izmantotas zobārstniecībā?",
+        p: []
+      },
+      {
+        h: "Zobu gropu silanti",
+        p: [
+          "Silanti ir plāns aizsargmateriāla slānis, ar kuru pārklāj dziļas molāro zobu gropes. Tie traucē aplikumiem un pārtikas atliekām uzkrāties grūti tīrāmās vietās.",
+          "Silanti visbiežāk tiek izmantoti profilaksei, taču atlasītos gadījumos ar tiem var arī hermetizēt agrīnus, dobumu vēl neveidojušus košļājamo virsmu bojājumus.",
+          "Silantu stāvoklis periodiski jāpārbauda, jo, materiālam nolietojoties vai atlīmējoties, aizsardzība samazinās."
+        ]
+      },
+      {
+        h: "Profesionālās fluorīdu aplikācijas",
+        p: [
+          "Zobārsts vai mutes higiēnists var uzklāt lielākas koncentrācijas fluora laku. Šī procedūra var būt ieteicama, kad ir vairāki agrīni bojājumi, samazināta siekalošanās vai liels kariesa risks."
+        ]
+      },
+      {
+        h: "Sudraba diamīna fluorīds",
+        p: [
+          "Dažās valstīs noteiktiem pacientiem kariesa aktivitātes samazināšanai tiek lietots sudraba diamīna fluorīds. Tas var apturēt bojājumu, taču kariesa skartā vieta paliek tumšāka, un zoba forma netiek atjaunota.",
+          "Šī metode nav vienādi izmantota visās klīnikās un visbiežāk tiek izvēlēta specifiskās situācijās."
+        ]
+      },
+      {
+        h: "Aktīva novērošana",
+        p: [
+          "Dažus agrīnus bojājumus var novērot, ja vienlaikus tiek piemērots skaidrs aprūpes plāns. Tā nav pasīva gaidīšana. Jādokumentē bojājums, jāuzlabo higiēna, jākontrolē ēdiens un noteiktā laikā atkārtoti jāveic izmeklējumi.",
+          "Lāzers, gaisa abrāzija vai bojāto audu ķīmiska mīkstināšana dažreiz tiek saukti par ārstniecību bez urbšanas, taču, lietojot šīs metodes, zoba audi joprojām var tikt noņemti. Tie ir alternatīvi dobuma sagatavošanas veidi, nevis agrīnā kariesa remineralizācija."
+        ]
+      },
+      {
+        h: "Kad kariesu vairs nevar ārstēt bez urbšanas?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Ārstniecība bez urbšanas visbiežāk nav pietiekama, kad zoba virsma sabrukusi un izveidojies dobums. Šādā vietā viegli uzkrājas aplikumi un pārtikas atliekas, un pacients nespēj to pareizi iztīrīt." },
+          { type: "p", text: "Restauratīva ārstniecība var būt nepieciešama, kad:" },
+          { type: "ul", items: [
+            "redzams vai sajūtams caurums;",
+            "zoba audi kļuvuši mīksti vai trausli;",
+            "bojājums progresē dentīnā;",
+            "starp zobiem pastāvīgi iestrēgst pārtika;",
+            "zobs sāp košļājot;",
+            "jutīgums ilgst ilgāk;",
+            "kariess ir zem vecas necaurlaidīgas plombas;",
+            "zobs ieplaisājis vai atlūzis;",
+            "bojājums pietuvojies pulpai."
+          ] },
+          { type: "p", text: "Šādā gadījumā zobārsts noņem neatgriezeniski bojātos audus un atjauno zoba formu ar plombu vai citu restaurāciju. Mūsdienu zobārstniecībā tiek meklēts noņemt tikai tik daudz audu, cik nepieciešams, un saglabāt pēc iespējas vairāk vesela zoba." },
+          { type: "p", text: "Ja kariess sasniedzis pulpu, var būt nepieciešama sakņu kanālu ārstniecība. Ja parādās abscess, sejas pietūkums, drudzis vai rīšanas grūtības, nepieciešama neatliekamā palīdzība." }
+        ]
+      },
+      {
+        h: "Kādām mājas kariesa ārstniecības metodēm vajadzētu izvairīties?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Caurumu zobā nevar sadziedēt zāles, propoliss, ķiploks, soda, eļļas vai uztura bagātinātāji. Šie līdzekļi neatjauno zaudēto emalju vai dentīnu un neaizver dobumu." },
+          { type: "p", text: "Uz zoba vai smaganām nevajadzētu likt:" },
+          { type: "ul", items: [
+            "ķiploku;",
+            "propolisa tinktūru;",
+            "ēteriskās eļļas;",
+            "aspirīnu;",
+            "koncentrētus zāļu ekstraktus;",
+            "skābes vai stipri abrazīvās vielas."
+          ] },
+          { type: "p", text: "Šādas ierīces var kairināt vai ķīmiski bojāt mutes gļotādu. Īslaicīga sāpju samazināšanās arī nenozīmē, ka kariess ir apturēts." },
+          { type: "p", text: "Skalošana ar sāls ūdeni, kokosriekstu eļļu vai zāļu novārījumiem neaizpilda dobumu un neaizvieto zobu tīrīšanu ar fluorīdu saturošu pastu." },
+          { type: "p", text: "Antibiotikas kariesu arī neārstē. Tās tiek nozīmētas tikai konkrētu infekcijas izplatības indikāciju gadījumā, taču neaizstāj bojātā zoba ārstniecību." }
+        ]
+      },
+      {
+        h: "Kā samazināt jaunu kariesa bojājumu risku?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Ilgtermiņa kariesa profilakse balstās uz konsekventu ikdienas aprūpi un individuāli plānotiem izmeklējumiem." },
+          { type: "p", text: "Svarīgākās darbības:" },
+          { type: "ul", items: [
+            "tīrīt zobus ar fluorīdu saturošu pastu divas reizes dienā;",
+            "katru dienu tīrīt starpzobu telpas;",
+            "ierobežot saldu uzkodu un dzērienu lietošanas biežumu;",
+            "starp ēdienreizēm izvēlēties ūdeni;",
+            "kopt ortodontiskās ierīces un protēzes;",
+            "laikus mainīt necaurlaidīgas restaurācijas;",
+            "vērsties par mutes sausumu;",
+            "pārbaudīt zobus atbilstoši individuālajam riskam."
+          ] },
+          { type: "p", text: "Profilaktisko vizītu biežums nedrīkstētu būt vienāds visiem. Cilvēkam ar mazu kariesa risku var pietikt ar retākām pārbaudēm, bet pacientam ar aktīviem bojājumiem, sausu muti vai ortodontisku ierīci var būt nepieciešama biežāka novērošana." },
+          { type: "p", text: "Ja pamanījāt baltu vai tumšu plankumu, zoba raupjumu, jutīgumu vai redzamu dobumu, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā. Mūsu speciālisti novērtēs bojājuma dziļumu un aktivitāti un noteiks, vai to vēl var kontrolēt bez urbšanas, vai jau nepieciešama plombēšana." }
+        ]
+      }
+    ],
+    faq: [
+      { q: "Vai caurums zobā var sadzīt pats?", a: "Nē. Izveidojoties dobumam, zaudētie zoba audi paši neataug. Remineralizēt var tikai agrīnu bojājumu, kad zoba virsma vēl ir vesela." },
+      { q: "Vai balts plankums uz zoba vienmēr nozīmē kariesu?", a: "Nē. Tas var būt saistīts ar agrīnu kariesu, fluorozi vai emaljas attīstības izmaiņām. Iemeslu jānovērtē zobārstam." },
+      { q: "Vai fluorīdu pasta var izārstēt kariesu?", a: "Tā var palīdzēt apturēt vai remineralizēt agrīnu bojājumu, taču nevar aizpildīt jau izveidojušos caurumu." },
+      { q: "Vai sveķu infiltrācija piemērota visiem kariesa bojājumiem?", a: "Nē. Tā visbiežāk tiek izmantota agrīniem bojājumiem, kad zoba virsma vēl nav sabrukusi. Dziļiem dobumiem parasti nepieciešama restauratīva ārstniecība." },
+      { q: "Vai kariesu var ārstēt ar sodu, propolisu vai kokosriekstu eļļu?", a: "Nē. Šie līdzekļi neatjauno emalju vai dentīnu un neaizver dobumu. Daži no tiem var bojāt mutes gļotādu." },
+      { q: "Vai kariesa ārstniecība bez urbšanas piemērota bērniem?", a: "Jā, atlasītos gadījumos bērniem var tikt izmantoti fluorīdi, silanti vai citas neinvazīvas metodes. Lēmums atkarīgs no bojājuma stadijas un bērna kariesa riska." }
+    ],
+    sources: [
+      { label: "American Dental Association – Caries Management Clinical Practice Guidelines", url: "https://www.ada.org/resources/research/science/evidence-based-dental-research/caries-management-clinical-practice-guidelines" },
+      { label: "Evidence-based Clinical Practice Guideline on Nonrestorative Treatments for Carious Lesions", url: "https://pubmed.ncbi.nlm.nih.gov/30261951/" },
+      { label: "Efficacy of Resin Infiltrate in Noncavitated Proximal Carious Lesions: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/31198691/" },
+      { label: "Efficacy of the Resin Infiltration Technique in Preventing Initial Caries Progression: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/30992105/" },
+      { label: "Fluoride Varnishes for Preventing Dental Caries in Children and Adolescents", url: "https://pubmed.ncbi.nlm.nih.gov/23846772/" },
+      { label: "Pit and Fissure Sealant Versus Fluoride Varnish for the Prevention of Dental Caries: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/36263239/" },
+      { label: "World Health Organization – Sugars and Dental Caries", url: "https://www.who.int/news-room/fact-sheets/detail/sugars-and-dental-caries" }
+    ]
+  },
+  "ka-drosi-balinat-zobus-majas": {
+    sections: [
+      {
+        p: [
+          "Zobu balināšana mājās var palīdzēt paspilgtināt dabīgo zobu krāsu, taču ne visi līdzekļi ir vienlīdz efektīvi un droši. Uzticamāko rezultātu parasti sniedz peroksīdu saturoši balināšanas līdzekļi, un vislabāk kontrolētā mājas metode ir individuālās kapas, kas tiek lietotas saskaņā ar zobārsta ieteikumiem.",
+          "Balinošās zobu pastas visbiežāk tikai noņem virsmas pigmentus. Citronu sula, etiķis, aktivētā ogle, tīrs ūdeņraža peroksīds un patstāvīgi sagatavoti maisījumi var ne tikai nepalīdzēt, bet arī bojāt zobu virsmu vai kairināt smaganas.",
+          "Pirms balināšanas sākšanas svarīgi novērtēt mutes stāvokli. Aptumšotos zobus var izraisīt ne tikai pigmenti, bet arī kariess, trauma, pulpas bojājums, emaljas nolietojums vai vecās restaurācijas. Turklāt plombas, kroņi un lāminas nebalinās, tāpēc pēc procedūras to krāsa var vairs nesakrist ar dabīgajiem zobiem."
+        ]
+      },
+      {
+        h: "Kāpēc mainās zobu krāsa un vai visus zobus var balināt?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Dabīgā zobu krāsa nav pilnīgi balta. To ietekmē emaljas biezums, zem tās esošā dentīna nokrāsa, vecums un iedzimtās īpašības. Tāpēc vieniem cilvēkiem zobi dabīgi ir gaišāki, citiem — dzeltenīgāki vai pelēcīgāki." },
+          { type: "p", text: "Zobu krāsas izmaiņas iedala ārējās un iekšējās." },
+          { type: "p", text: "Ārējie plankumi veidojas uz zoba virsmas. Tos visbiežāk veicina:" },
+          { type: "ul", items: [
+            "kafija un tēja;",
+            "sarkanvīns;",
+            "tabaka;",
+            "tumšās ogas un pigmentēti pārtikas produkti;",
+            "aplikumi un nepietiekama mutes higiēna."
+          ] },
+          { type: "p", text: "Daļu šo plankumu var noņemt profesionālās mutes higiēnas laikā vai lietojot piemērotu zobu pastu. Šādā gadījumā zobiem visbiežāk atgriež dabiskāku krāsu, taču tie ķīmiski netiek balināti." },
+          { type: "p", text: "Iekšējās krāsas izmaiņas veidojas zoba audos. Tās var izraisīt vecums, zoba trauma, mirusi pulpa, attīstības traucējumi vai atsevišķas bērnībā lietotās zāles. Viena aptumšotā zoba ārstniecība var atšķirties no visas smaida balināšanas, tāpēc vispirms jānosaka krāsas izmaiņu iemesls." },
+          { type: "p", text: "Balinošie līdzekļi iedarbojas uz dabīgajiem zoba audiem, taču nemaina plombu, kroņu, lāminu, tiltu vai implantu protēžu daļu krāsu. Ja priekšējie zobi ir restaurēti, pēc balināšanas var izcelties nokrāsu atšķirības. Šādā gadījumā balināšanu ir vērts plānot pirms galīgās estētiskās plombēšanas vai protezēšanas." }
+        ]
+      },
+      {
+        h: "Kādas zobu balināšanas mājās metodes patiešām darbojas?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Īsta ķīmiskā zobu balināšana parasti tiek veikta, izmantojot ūdeņraža vai karbamīda peroksīdu saturošus līdzekļus. Tie iedarbojas uz zoba audos esošajiem pigmentiem un var paspilgtināt dabīgo zobu krāsu." },
+          { type: "p", text: "Visbiežāk izmantotās metodes:" },
+          { type: "ul", items: [
+            "individuālās balināšanas kapas ar gelu;",
+            "bezrecepšu balinošās sloksnes;",
+            "universālās kapas un balināšanas komplekti;",
+            "balinošie zīmuļi;",
+            "balinošās zobu pastas;",
+            "balinošie skalošanas šķidrumi."
+          ] },
+          { type: "p", text: "To iedarbība atšķiras." },
+          { type: "p", text: "Individuālās kapas ļauj precīzāk sadalīt balinošo gelu un pielāgot procedūru atbilstoši pacienta zobu stāvoklim." },
+          { type: "p", text: "Balinošās sloksnes var ķīmiski paspilgtināt zobus, taču ne vienmēr vienmērīgi piegulst visām virsmām." },
+          { type: "p", text: "Universālās kapas var būt nepietiekami precīzas, tāpēc gels reizēm nokļūst uz smaganām vai zobi tiek balināti nevienmērīgi." },
+          { type: "p", text: "Balinošās pastas visbiežāk noņem virsmas pigmentus, bet nemaina dabīgo dentīna krāsu." },
+          { type: "p", text: "Skalošanas šķidrumu un zīmuļu kontakts ar zobiem bieži nav pietiekams izteiktam rezultātam, tāpēc tie vairāk piemēroti kā papildu, nevis pamata ierīces." },
+          { type: "p", text: "Balināšanas rezultāts atkarīgs no zobu sākotnējās krāsas, krāsas izmaiņu iemesla, izmantotā materiāla un procedūras ilguma. Lielāks gela daudzums, biežāka lietošana vai ilgāka turēšana neobligāti sniedz labāku rezultātu, taču var palielināt jutīguma un smaganu kairinājuma risku." }
+        ]
+      },
+      {
+        h: "Kā tiek veikta zobu balināšana mājās ar individuālajām kapām?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Balināšanu ar individuālajām kapām veic mājās, taču to plāno zobārsts. Vispirms tiek pārbaudīti zobi, smaganas, esošās restaurācijas un novērtēts iespējamais rezultāts." },
+          { type: "p", text: "Kapu izgatavošana parasti notiek vairākos posmos:" },
+          { type: "ol", items: [
+            "Tiek veikta mutes stāvokļa apskate.",
+            "Zobi tiek noskenēti vai tiek ņemti to nospiedumi.",
+            "Tiek izgatavotas individuālas, zobiem cieši piegulošas kapas.",
+            "Tiek izvēlēts balinošais gels un tā lietošanas režīms.",
+            "Pacientam tiek izskaidrota kapu kopšana un darbības, ja parādās jutīgums."
+          ] },
+          { type: "p", text: "Kapā ievieto nelielu balinošā gela daudzumu. Pārāk daudz gela var izplūst pāri kapas malām un kairināt smaganas, tāpēc tā daudzumu patstāvīgi palielināt nevajadzētu." },
+          { type: "p", text: "Balināšanas ilgums atkarīgs no izmantotās sistēmas un aktīvās vielas koncentrācijas. Vienas kapas tiek valkātas īsāk dienas laikā, citas — ilgāk vai naktī. Jāievēro konkrēta speciālista noteikts režīms, nevis universāli interneta ieteikumi." },
+          { type: "p", text: "Individuālās kapas var tikt izmantotas arī atbalsta balināšanai, taču tikai saņemot zobārsta ieteikumu. Patstāvīgi atkārtot kursu bieži vai lietot atlikušo veco gelu nevajadzētu." }
+        ]
+      },
+      {
+        h: "Vai balinošās sloksnes un zobu pastas ir efektīvas?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Balinošās sloksnes parasti pārklātas ar peroksīdu saturošu gelu. Pareizi lietots uzticams produkts var paspilgtināt dabīgos zobus, taču rezultāts atkarīgs no sloksnes piegulšanas un aktīvās vielas." },
+          { type: "p", text: "Sloksnes var nesasniegt starpzobu telpas, greizāk izvietotus zobus vai to sānu virsmas. Tāpēc krāsa reizēm mainās nevienmērīgi. Gels arī var nokļūt uz smaganām un tās kairināt." },
+          { type: "p", text: "Lietojot sloksnes, svarīgi:" },
+          { type: "ul", items: [
+            "ievērot ražotāja instrukcijas;",
+            "nepārsniegt ieteikto laiku;",
+            "nelietot vairākas balināšanas sistēmas kopā;",
+            "nelikt sloksnes uz kairinātām vai asiņojošām smaganām;",
+            "pārtraukt lietošanu, ja parādās stipras sāpes."
+          ] },
+          { type: "p", text: "Balinošās zobu pastas darbojas citādi. Vairums no tām satur abrazīvas daļiņas, fermentus vai citas vielas, kas palīdz samazināt virsmas pigmentus. Tās var būt noderīgas, uzturot tīrāku un vizuāli gaišāku zobu izskatu, taču visbiežāk nemaina dabīgo zoba krāsu tā, kā ķīmiskā balināšana." },
+          { type: "p", text: "Pārāk abrazīvu pastu lietojot ilgi un stipri spiežot suku, var veicināt zoba virsmas vai atsegto sakņu nolietojumu. Tāpēc pastu vislabāk izvēlēties atbilstoši individuālajam zobu stāvoklim, nevis tikai pēc balinošā solījuma uz iepakojuma." }
+        ]
+      },
+      {
+        h: "No kādām zobu balināšanas mājās ierīcēm vajadzētu izvairīties?",
+        p: [],
+        blocks: [
+          { type: "p", text: 'Internetā bieži piedāvātās „dabīgās" metodes nav līdzvērtīgas profesionālajiem balināšanas līdzekļiem. Dažas no tām zobus tikai mehāniski beržot vai iedarbojas ar skābēm.' },
+          { type: "p", text: "Zobus nevajadzētu berzt vai skalot ar:" },
+          { type: "ul", items: [
+            "citronu sulu;",
+            "ābolu etiķi;",
+            "skābu augļu mīkstumu;",
+            "tīru ūdeņraža peroksīdu;",
+            "aktivētās ogles pulveri;",
+            "ēteriskajām eļļām;",
+            "patstāvīgi sagatavotiem sodas maisījumiem."
+          ] },
+          { type: "p", text: "Citronu sula, etiķis un citi skābi produkti var veicināt emaljas eroziju. Emaljai plānoties, izteiktāk redzams dzeltenīgais dentīns, tāpēc ar laiku zobi var izskatīties vēl tumšāki un kļūt jutīgāki." },
+          { type: "p", text: "Soda un aktivētā ogle zobus ķīmiski nebalinā. Tās var mehāniski noņemt daļu virsmas pigmentu, taču pārāk intensīva vai bieža beršana palielina virsmas nolietojuma risku. Par aktivētās ogles ierīču ilgtermiņa drošību un efektivitāti uzticamu pierādījumu nepietiek." },
+          { type: "p", text: "Tīrs ūdeņraža peroksīds arī nedrīkstētu tikt lietots patstāvīgi. Nepiemērota koncentrācija vai pārāk ilgs kontakts var izraisīt smaganu kairinājumu, ķīmisku gļotādas bojājumu un izteiktu zobu jutīgumu." },
+          { type: "p", text: "Kokosriekstu eļļas skalošana nav uzticami pierādīta zobu krāsas maiņas metode. Tā arī neaizvieto zobu tīrīšanu ar fluorīdu saturošu pastu un ikdienas starpzobu telpu kopšanu." }
+        ]
+      },
+      {
+        h: "Kad zobu balināšana mājās nav piemērota vai jāatliek?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Pirms balināšanas jāizārstē aktīvais kariess, jānovērtē necaurlaidīgas plombas, zobu plaisas un smaganu stāvoklis. Balinošais materiāls, nokļūstot bojātās vietās, var izraisīt stiprāku jutīgumu vai sāpes." },
+          { type: "p", text: "Balināšanu vajadzētu atlikt vai apspriest ar zobārstu, ja:" },
+          { type: "ul", items: [
+            "ir neizārstēti kariesa bojājumi;",
+            "smaganas asiņo, ir pietūkušas vai atkāpušās;",
+            "zobi ļoti jutīgi;",
+            "ir plaisas vai stipri nodilusi emalja;",
+            "priekšējā zonā ir daudz restaurāciju;",
+            "viens zobs pēkšņi aptumšojies;",
+            "paciente ir grūtniecības vai zīdīšanas periodā;",
+            "balināt paredzēts bērnu vai pusaudžu zobus."
+          ] },
+          { type: "p", text: "Viena zoba aptumšošanās pēc traumas var norādīt uz pulpas bojājumu. Šādā gadījumā parastā balināšana ar kapām vai sloksnēm problēmu neatrisina." },
+          { type: "p", text: "Ja zobu krāsu maina aplikumi un pigmenti, pirms balināšanas var tikt ieteikta profesionālā mutes higiēna. Reizēm tikai noņemot aplikumus zobi izskatās manāmi gaišāki, tāpēc papildu ķīmiskā balināšana var nebūt nepieciešama." }
+        ]
+      },
+      {
+        h: "Kā samazināt zobu jutīgumu un ilgāk saglabāt rezultātu?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Īslaicīgs zobu jutīgums un smaganu kairinājums ir biežākās balināšanas blakusparādības. Jutīgums var izpausties ar īsu sāpi reaģējot uz aukstumu, karstumu, gaisu vai saldu ēdienu." },
+          { type: "p", text: "Ja zobi kļuva jutīgi, var:" },
+          { type: "ul", items: [
+            "ieturēt zobārsta ieteikto pauzi;",
+            "lietot jutīgiem zobiem paredzētu pastu;",
+            "īslaicīgi izvairīties no ļoti auksta un karsta ēdiena;",
+            "nepagarināt balināšanas līdzekļa turēšanas laiku;",
+            "informēt zobārstu, ja sajūtas pastiprinās."
+          ] },
+          { type: "p", text: "Stipras, pēkšņas vai tikai vienā zobā sajūtamās sāpes nav parasta balināšanas sajūta. Šādā gadījumā procedūra jāpārtrauc un jāpārbauda zobs." },
+          { type: "p", text: "Zobu balināšanas rezultāts nav pastāvīgs. To ilgāk saglabāt palīdz:" },
+          { type: "ul", items: [
+            "rūpīga zobu un starpzobu telpu tīrīšana;",
+            "mutes skalošana ar ūdeni pēc kafijas, tējas vai vīna;",
+            "atteikšanās no tabakas;",
+            "regulāra profesionāla mutes higiēna;",
+            "atbalsta balināšana tikai pēc zobārsta ieteikumiem."
+          ] },
+          { type: "p", text: "Nav obligāti pilnīgi atteikties no visiem pigmentētajiem produktiem, taču bieža to lietošana var paātrināt atkārtotu plankumu uzkrāšanos." }
+        ]
+      },
+      {
+        h: "Droša zobu balināšana sākas ar zobārsta novērtējumu",
+        p: [
+          "Zobu balināšana mājās var būt efektīva, kad tiek lietoti uzticami līdzekļi, tiek ievērotas instrukcijas un pirms procedūras tiek novērtēta mutes veselība. Individuālās kapas ļauj balināšanu pielāgot konkrētam pacientam, taču arī tās lietojot var parādīties īslaicīgs jutīgums.",
+          "Balinošās pastas galvenokārt noņem virsmas pigmentus, savukārt skābes, aktivētā ogle, tīrs ūdeņraža peroksīds un patstāvīgi sagatavoti maisījumi var būt neefektīvi vai kaitīgi. Arī svarīgi atcerēties, ka plombas, kroņi un lāminas nebalinās.",
+          "Ja apsverat zobu balināšanu mājās, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā. Mūsu speciālisti novērtēs zobu un smaganu stāvokli, apspriedīs iespējamo rezultātu un, ja šī metode jums piemērota, izgatavos individuālas kapas un izskaidros, kā droši tās lietot."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Vai var droši balināt zobus ar sodu?", a: "Patstāvīgi berzt zobus ar sodu nav ieteicams. Tā var noņemt daļu virsmas pigmentu, taču zobu krāsu ķīmiski nemaina, un pārāk bieži lietota var veicināt virsmas nolietojumu." },
+      { q: "Vai zobu balināšana mājās bojā emalju?", a: "Saskaņā ar instrukcijām lietoti uzticami līdzekļi parasti tiek uzskatīti par drošākiem. Tomēr var parādīties īslaicīgs zobu jutīgums vai smaganu kairinājums, īpaši pārsniedzot lietošanas laiku." },
+      { q: "Vai balinot paspilgtinās plombas un kroņi?", a: "Nē. Balinošie materiāli nemaina plombu, kroņu, lāminu un citu restaurāciju krāsu." },
+      { q: "Cik ātri redzams zobu balināšanas mājās rezultāts?", a: "Tas atkarīgs no izvēlētās metodes, zobu krāsas un izmantotā līdzekļa. Pirmās izmaiņas var būt pamanāmas procedūru kursa laikā, taču precīzs laiks katram pacientam atšķiras." },
+      { q: "Ko darīt, ja balinot zobi kļuva jutīgi?", a: "Ieturiet zobārsta ieteikto pauzi un nepagariniet līdzekļa turēšanas laiku. Ja jutīgums stiprs, ilgst vai sāp viens konkrēts zobs, nepieciešama zobārsta apskate." }
+    ],
+    sources: [
+      { label: "American Dental Association – Whitening", url: "https://www.ada.org/resources/ada-library/oral-health-topics/whitening" },
+      { label: "At-home vs In-office Bleaching: An Updated Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/40485133/" },
+      { label: "Effect of Bleaching Gel Concentration on Tooth Color and Sensitivity: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/32396502/" },
+      { label: "Tooth Sensitivity During and After Vital Tooth Bleaching: A Systematic Review", url: "https://pubmed.ncbi.nlm.nih.gov/26396993/" },
+      { label: "At-home vs In-office Bleaching: A Systematic Review and Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/27045285/" }
+    ]
+  },
+  "ko-darit-kad-veidojas-zoba-abscess": {
+    sections: [
+      {
+        p: [
+          "Zoba abscess ir bakteriālas infekcijas izraisīts strutu uzkrājums zobā, ap tā sakni vai smaganās. Tas var izraisīt pulsējošas sāpes, pietūkumu, nepatīkamu garšu mutē un vispārējās pašsajūtas pasliktināšanos.",
+          "Apsverot, vai iespējama zoba absceса ārstniecība mājās, svarīgi zināt: mājas līdzekļi var tikai īslaicīgi samazināt sāpes un diskomfortu. Tie nenovērš infekcijas cēloni, tāpēc abscesu pēc iespējas ātrāk jānovērtē zobārstam. Zoba abscess pats no sevis nesadzīst.",
+          "Pat ja abscess pārplīsa, iztecēja daļa strutu un sāpes samazinājās, infekcijas perēklis var palikt zoba iekšpusē vai ap tā sakni. Ārstniecību nedrīkstētu atlikt arī tad, kad uz smaganām esošais abscess gandrīz nesāp."
+        ]
+      },
+      {
+        h: "Kas ir zoba abscess un kāpēc tas veidojas?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Abscess veidojas, baktērijām nokļūstot zoba iekšpusē vai apkārtējos audos. Organismam reaģējot uz infekciju, bojātajā vietā uzkrājas struti." },
+          { type: "p", text: "Atbilstoši infekcijas atrašanās vietai visbiežāk izšķir vairākus abscesa veidus:" },
+          { type: "ul", items: [
+            "Abscess pie zoba saknes gala parasti veidojas, infekcijai no zoba pulpas izplatoties pa sakņu kanāliem.",
+            "Periodonta abscess veidojas pie zoba saknes, bieži dziļā periodonta kabatā.",
+            "Smaganu abscess veidojas virsējos mīkstos audos."
+          ] },
+          { type: "p", text: "Uz smaganām redzams balts vai dzeltenīgs abscess var būt kanāls, pa kuru no dziļāk esošā infekcijas perēkļa iztek struti. Tāpēc tā pārduršana vai izspiešana neizārstē bojāto zobu." },
+          { type: "p", text: "Biežākie abscesa cēloņi ir dziļš neizārstēts kariess, zoba plaisa vai trauma, mirusi pulpa, periodonta slimība vai atkārtota infekcija iepriekš ārstēta zoba rajonā." }
+        ]
+      },
+      {
+        h: "Kā atpazīt zoba abscesa simptomus?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Simptomi atkarīgi no infekcijas atrašanās vietas un izplatīšanās. Vieniem pacientiem abscess izraisa stipras sāpes, citi kādu laiku var just tikai nelielu diskomfortu." },
+          { type: "p", text: "Iespējamās zoba abscesa pazīmes:" },
+          { type: "ul", items: [
+            "stipras, smeldzošas vai pulsējošas sāpes;",
+            "sāpes sakožot vai košļājot;",
+            "jutīgums pret karstu un aukstu ēdienu;",
+            "apsārtušas, jutīgas vai pietūkušas smaganas;",
+            "uz smaganām parādījies abscess;",
+            "strutu plūsma un nepatīkama garša mutē;",
+            "sāpju izplatīšanās uz ausi, žokli vai kaklu;",
+            "pietūcis vaigs vai žokļa apvidus;",
+            "grūtības atvērt muti;",
+            "drudzis, vājums un slikta pašsajūta."
+          ] },
+          { type: "p", text: "Abscesam atveroties, var samazināties spiediens, tāpēc sāpes vājinās. Sāpes arī var izzust, mirstot zoba pulpai. Abos gadījumos infekcija var saglabāties un turpināt izplatīties." },
+          { type: "p", text: "Zobārsts diagnozi nosaka, novērtējot simptomus, zoba un smaganu stāvokli un izmeklējumu rezultātus. Bieži tiek veikta rentgena uzņēmums, kas palīdz novērtēt zoba saknes un apkārtējo kaulu." }
+        ]
+      },
+      {
+        h: "Vai iespējama zoba abscesa ārstniecība mājās?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Pilnīgi izārstēt zoba abscesu mājās nav iespējams. Skalošanas, kompreses un pretsāpju līdzekļi neiztīra infikētos sakņu kanālus un nenovērš dziļi esošo infekcijas perēkli." },
+          { type: "p", text: "Nevajadzētu:" },
+          { type: "ul", items: [
+            "spiest vai pārdurt abscesu;",
+            "mēģināt to atvērt ar adatu vai citu instrumentu;",
+            "likt aspirīnu vai citas zāles tieši uz smaganām;",
+            "sildīt pietūkušo vietu;",
+            "uz gļotādas turēt ķiploku vai citus kairinošus produktus;",
+            "patstāvīgi lietot atlikušās antibiotikas;",
+            "atlikt vizīti, jo sāpes samazinājās."
+          ] },
+          { type: "p", text: "Mēģinot pārdurt abscesu, var ievainot audus, izraisīt asiņošanu un veicināt infekcijas izplatīšanos. Tieši uz smaganām liktas zāles vai koncentrētas vielas var bojāt mutes gļotādu." },
+          { type: "p", text: "Antibiotikas arī nav universāla zoba abscesa ārstniecība. Amerikas Zobārstu asociācija iesaka daudzos lokalizētu sāpju un pietūkuma gadījumos vispirms ārstēt infekcijas avotu. Antibiotikas biežāk vajadzīgas tad, kad infekcija izplatās, pacientam ir drudzis vai pasliktinās vispārējā pašsajūta." }
+        ]
+      },
+      {
+        h: "Kā droši atvieglot sāpes līdz vizītei pie zobārsta?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Kamēr gaidāt neatliekamu zobārsta vizīti, var veikt īslaicīgus pasākumus simptomu mazināšanai:" },
+          { type: "ul", items: [
+            "izvēlieties mīkstu, ne pārāk karstu un ne pārāk aukstu ēdienu;",
+            "košļājiet ar pretējo mutes pusi;",
+            "zobus tīriet maigi, ar mīkstu suku;",
+            "pie ārējās vaiga puses uz īsu brīdi pielieciet vēsu kompresi;",
+            "dzeriet pietiekami daudz šķidruma;",
+            "gulējot turiet galvu nedaudz augstāk."
+          ] },
+          { type: "p", text: "Muti var uzmanīgi izskalot ar remdenu ūdeni. Skalošana var palīdzēt uzturēt mutes tīrību, taču tā neizārstē infekciju. Pietūkušo vietu nevajadzētu stipri spiest vai intensīvi skalot." },
+          { type: "p", text: "Pretsāpju līdzekļus lietojiet tikai saskaņā ar informācijas lapiņu, nepārsniedzot norādīto devu. To piemērotība atkarīga no cilvēka vecuma, grūtniecības, esošajām slimībām un citiem lietotajiem medikamentiem. Šaubu gadījumā konsultējieties ar ārstu vai farmaceitu." }
+        ]
+      },
+      {
+        h: "Kā zobārsts ārstē zoba abscesu?",
+        p: [
+          "Ārstniecības mērķis ir novērst infekcijas avotu, radīt apstākļus strutu izplūšanai un, ja iespējams, saglabāt zobu. Procedūras parasti tiek veiktas ar vietējo anestēziju."
+        ]
+      },
+      {
+        h: "Abscesa drenāža",
+        p: [
+          "Ja audos uzkrājušies struti, zobārsts var veikt nelielu iegriezumu un radīt apstākļus to izplūšanai. Tas samazina spiedienu, taču tikai drenāža var nebūt pietiekama, ja infekcija sākās zoba iekšpusē."
+        ]
+      },
+      {
+        h: "Sakņu kanālu ārstniecība",
+        p: [
+          "Kad infekcijas avots atrodas zoba pulpā, tiek veikta sakņu kanālu ārstniecība. Tās laikā tiek noņemti infekētie audi, kanāli tiek iztīrīti, dezinficēti un aizpildīti. Vēlāk zobs tiek atjaunots ar plombu vai citu restaurāciju. Šāda ārstniecība bieži ļauj saglabāt dabīgo zobu."
+        ]
+      },
+      {
+        h: "Zoba izraušana",
+        p: [
+          "Ja zobs ir stipri sabrukis, ieplaisājis vai to uzticami atjaunot nav iespējams, var tikt ieteikts to izraut. Tā tiek novērsts galvenais infekcijas avots.",
+          "Ja abscess saistīts ar dziļu periodonta kabatu, var tikt tīrīti zoba un saknes virsmas un ārstēti apkārtējie periodonta audi.",
+          "Antibiotikas tiek nozīmētas tikai, individuāli novērtējot situāciju. Pat tās nozīmējot, visbiežāk tik un tā jāārstē infekcijas avots zobārstniecībā."
+        ]
+      },
+      {
+        h: "Kad zoba abscess prasa neatliekamo palīdzību?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Pie zobārsta jāvēršas pēc iespējas ātrāk, negaidot, kad abscess pāries pats. Īpaši svarīgi nevilcināties, ja sāpes pastiprinās, pietūkst vaigs vai pasliktinās vispārējā pašsajūta." },
+          { type: "p", text: "Neatliekamā medicīniskā palīdzība nepieciešama, ja:" },
+          { type: "ul", items: [
+            "grūti elpot, rīt vai runāt;",
+            "strauji palielinās mutes, sejas vai kakla pietūkums;",
+            "pietūkums izplatās uz acs pusi;",
+            "sāp vai pietūkst acs, traucēta redze;",
+            "ļoti grūti atvērt muti;",
+            "paceļas augsta temperatūra un ievērojami pasliktinās pašsajūta;",
+            "parādās apjukums vai liels vājums."
+          ] },
+          { type: "p", text: "Elpošanas, runāšanas vai rīšanas traucējumi un liels mutes pietūkums var norādīt uz infekciju, kas izplatās uz bīstamiem apvidiem. Šādos gadījumos nevajadzētu gaidīt zobārstniecības klīnikas darba laiku." }
+        ]
+      },
+      {
+        h: "Kā samazināt zoba abscesa risku?",
+        p: [
+          "Abscesa risku palīdz mazināt regulāra zobu tīrīšana ar fluorīdu saturošu pastu, ikdienas starpzobu telpu kopšana un agrīnā kariesa ārstniecība. Arī svarīgi vērsties par ieplaisājušiem vai traumētiem zobiem, kontrolēt periodonta slimības un regulāri pārbaudīt zobus.",
+          "Parādoties zoba sāpēm, jutīgumam sakožot, smaganu pietūkumam vai abscesam, vizīti nedrīkstētu atlikt. Agrīni sākta ārstniecība parasti ir vienkāršāka un palielina iespēju saglabāt zobu."
+        ]
+      },
+      {
+        h: "Zoba abscesa ārstniecību nedrīkst atlikt",
+        p: [
+          "Zoba abscesa ārstniecība mājās nav iespējama, jo mājas līdzekļi nenovērš bakteriālas infekcijas avotu. Tie var tikai īslaicīgi samazināt sāpes un pietūkumu līdz profesionālai palīdzībai.",
+          "Ārstniecība var ietvert abscesa drenāžu, sakņu kanālu ārstniecību, periodonta audu tīrīšanu vai neatjaunojama zoba izraušanu. Antibiotikas tiek nozīmētas tikai pēc klīniskām indikācijām un neaizvieto zobārstniecības ārstniecību.",
+          "Ja sāp zobs, pietūka smaganas vai seja, parādījās abscess vai nepatīkama garša mutē, vērsieties Bangų klīnikā Klaipēdā. Mūsu speciālisti noteiks infekcijas cēloni un izvēlēsies piemērotu ārstniecību."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Vai zoba abscess var pāriet pats?", a: "Nē. Sāpes var samazināties, abscesam pārplīstot vai mirstot zoba pulpai, taču infekcijas perēklis parasti saglabājas." },
+      { q: "Vai zoba abscesu var pārdurt mājās?", a: "Nē. Tā var bojāt audus, izraisīt asiņošanu un veicināt infekcijas izplatīšanos." },
+      { q: "Vai antibiotikas izārstē zoba abscesu?", a: "Ne vienmēr. Antibiotikas var būt vajadzīgas izplatošai infekcijai, taču visbiežāk nepieciešams zobārstniecībā novērst tās avotu." },
+      { q: "Ko darīt, ja no zoba pietūka vaigs?", a: "Pēc iespējas ātrāk vērsieties pie zobārsta. Ja pietūkums strauji palielinās, izplatās uz kaklu vai acs zonu vai grūti rīt vai elpot, nepieciešama neatliekamā medicīniskā palīdzība." },
+      { q: "Ko nozīmē nesāpīgs abscess uz smaganām?", a: "Tas var būt kanāls, pa kuru no dziļāka infekcijas perēkļa iztek struti. Pat ja nesāp, nepieciešama zobārsta apskate." }
+    ],
+    sources: [
+      { label: "Antibiotics for Dental Pain and Swelling Guideline", url: "https://www.ada.org/resources/research/science/evidence-based-dental-research/antibiotics-for-dental-pain-and-swelling" },
+      { label: "Evidence-Based Clinical Practice Guideline on Antibiotic Use for Dental Pain and Intraoral Swelling", url: "https://pubmed.ncbi.nlm.nih.gov/31668170/" },
+      { label: "Antibiotics for the Urgent Management of Pulpal and Periapical Dental Conditions: Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/31761029/" }
+    ]
+  },
+  "kaula-augmentacija-kas-jazina-pirms-operacijas": {
+    sections: [
+      {
+        p: [
+          "Ja žokļa kaulā nepietiek kaula zoba implanta stabilai ieskrūvēšanai, pirms implantācijas vai kopā ar to var tikt veikta kaula augmentācija. Pacientiem bieži rodas jautājumi, kā notiek kaula augmentācija, cik ilgi dzīst operētā vieta un kādi simptomi var norādīt uz komplikāciju.",
+          "Kaula augmentācija ir ķirurģiska procedūra, kuras laikā tiek atjaunots trūkstošais žokļa kaula tilpums. Tam var tikt izmantots paša pacienta kauls, speciāli sagatavota cilvēka vai dzīvnieku izcelsmes viela, sintētisks kaula aizvietotājs vai vairāku materiālu kombinācija.",
+          "Pēc kaula augmentācijas operācijas neliela smelgme, pietūkums, spriedzes sajūta vai neliela asiņošana pirmajās dienās var būt parasta dzīšanas daļa. Tomēr pašsajūtai vajadzētu pakāpeniski uzlaboties. Pastiprinošas sāpes, strutošana, drudzis, palielinošs pietūkums vai atvērusies brūce var norādīt uz kaula augmentācijas komplikācijām."
+        ]
+      },
+      {
+        h: "Kad pirms zobu implantācijas var būt vajadzīga kaula augmentācija?",
+        p: [
+          "Zoba implantam nepieciešams pietiekama augstuma un platuma žokļa kauls. Ja kauls ir pārāk šaurs, pārāk zems vai tā forma neļauj implantam nodrošināt pareizu stabilitāti, ārsts var ieteikt augmentāciju.",
+          "Kaula daudzums var samazināties ilgi neatjaunota zaudēta zoba, periodonta slimību, infekcijas, traumas, iepriekšējo ķirurģisko procedūru vai individuālu anatomisku īpašību dēļ.",
+          "Pirms ārstniecības tiek veikta mutes apskate un radioloģiski izmeklējumi. Bieži nepieciešama trīsdimensiju datortomogrāfija, kas palīdz novērtēt kaula augstumu, platumu un attiecību ar nerviem, sinusu un citām anatomiskām struktūrām. Tikai pēc izmeklēšanas var izlemt, vai implantu var ieskrūvēt uzreiz, vai vispirms jāatjauno kaula tilpums."
+        ]
+      },
+      {
+        h: "Kādas kaula augmentācijas metodes var tikt izmantotas?",
+        p: [
+          "Kaula augmentācijas metode tiek izvēlēta atbilstoši defekta atrašanās vietai, izmēram un plānotai implantācijai.",
+          "Alveolas saglabāšana var tikt veikta uzreiz pēc zoba izraušanas. Atlikušajā vietā tiek ielikts kaula materiāls, lai saglabātu labvēlīgāku žokļa kontūru turpmākai implantācijai.",
+          "Žokļa ķeres augmentācija tiek izmantota, kad kauls ir pārāk šaurs vai pārāk zems. Atkarībā no situācijas var tikt palielināts tā platums, augstums vai abas dimensijas.",
+          "Sinusa dibena pacelšana tiek veikta aizmugurē augšējā žokļa apvidū, kad starp žokļa ķeri un sinusa dobumu nepietiek kaula implanta ieskrūvēšanai.",
+          "Neliela apjoma augmentācija dažkārt tiek veikta kopā ar implantāciju. Ja kaula trūkums lielāks, vispirms tiek augmentēts kauls, un implants tiek ieskrūvēts tikai, sadzīstot operētajai zonai."
+        ]
+      },
+      {
+        h: "Kā notiek kaula augmentācijas operācija?",
+        p: [
+          "Kaula augmentācija parasti tiek veikta ar vietējo anestēziju, tāpēc procedūras laikā pacientam nevajadzētu sajust asas sāpes. Var just spiedienu, kustību vai vibrāciju. Ja tiek sajustas sāpes, par to svarīgi uzreiz pastāstīt ārstam, lai anestēzija tiktu papildināta.",
+          "Vispirms tiek atvērtas smaganas un sasniegta vieta, kur trūkst kaula. Tā tiek sagatavota, un defekta zonā tiek ielikts izvēlētais kaula materiāls. Kaula aizvietotājs bieži darbojas kā pamats, kurā dzīšanas laikā pakāpeniski ieaug jauns pacienta kauls.",
+          "Augmentētā vieta var tikt pārklāta ar speciālu membrānu. Tā nodala kaula reģenerācijas zonu no ātrāk augošiem mīkstiem audiem un palīdz saglabāt kaula materiālam vajadzīgo telpu. Ja nepieciešams, transplantāts vai membrāna tiek stabilizēti, un operācijas vieta tiek sašūta.",
+          "Procedūras sarežģītība atkarīga no kaula defekta lieluma. Neliela apjoma augmentācija parasti ir vienkāršāka nekā liela horizontāla vai vertikāla defekta atjaunošana.",
+          "Izmantojot paša pacienta kaulu, var būt vajadzīga papildu vieta tā ņemšanai. Cita izcelsmes kaula aizvietotāji ļauj samazināt papildu ķirurģiskās vietas nepieciešamību. Piemērotāko materiālu ārsts izvēlas individuāli."
+        ]
+      },
+      {
+        h: "Kāda pašsajūta pēc kaula augmentācijas operācijas ir normāla?",
+        p: [
+          "Pēc kaula augmentācijas operācijas audiem nepieciešams laiks, lai sadzīstu. Pirmajās dienās operētā vieta var smeldzēt, būt jutīga vai spriegta. Arī var parādīties pietūkums, neliels asinsizplūdums, grūtāka mutes atvēršana vai diskomforts košļājot.",
+          "Pirmajās stundās iespējama neliela asiņošana vai asins piemaisījums siekalās. Pietūkums neobligāti ir vislielākais uzreiz, taču vēlāk tam vajadzētu sākt samazināties.",
+          "Vissvarīgākā normālas dzīšanas gaitas pazīme — pakāpeniska pašsajūtas uzlabošanās. Sāpēm vajadzētu vājināties, pietūkumam mazināties, un brūces malām — palikt aizvērtām.",
+          "Mīksto audu dzīšana un augmentētā kaula integrācija nav viens un tas pats. Smaganas var nomierināties dažās nedēļās, taču jauna kaula veidošanās un kaula materiāla integrācija ilgst vairākus mēnešus. Tāpēc pat vairs nesajūtot sāpes nevar izlemt, ka zona jau ir gatava implantācijai.",
+          "Kad var ieskrūvēt implantu, ārsts nosaka pēc klīniskās apskates un, ja nepieciešams, radioloģiskiem izmeklējumiem."
+        ]
+      },
+      {
+        h: "Kā kopt operēto vietu?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Pēc procedūras svarīgākais ir ievērot ārsta ieteikumus. Visbiežāk ieteicams:" },
+          { type: "ul", items: [
+            "pirmajā diennaktī intensīvi neskalot muti un nespļaut;",
+            "nepieskarties brūcei ar pirkstiem, mēli vai citiem priekšmetiem;",
+            "izvēlēties mīkstu, ne karstu ēdienu;",
+            "košļāt ar otru mutes pusi;",
+            "izvairīties no intensīvas fiziskās slodzes;",
+            "nesmēķēt un nelietot alkoholu;",
+            "nozīmētās zāles lietot tieši, kā norādīts;",
+            "nekavēt kontroles vizītes."
+          ] },
+          { type: "p", text: "Zobi jātīra regulāri, taču operētā vieta pirmajās dienās jāsargā no tiešas kairināšanas. Ja nozīmēts speciāls skalošanas šķidrums vai cita ierīce, tā jālieto saskaņā ar ārsta norādījumiem." }
+        ]
+      },
+      {
+        h: "Kādas ir biežākās kaula augmentācijas komplikācijas?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Kaula augmentācijas komplikācijas nav parasta dzīšanas daļa, taču tās var rasties pēc jebkuras ķirurģiskās procedūras. Risks atkarīgs no defekta lieluma, izvēlētās metodes, mīksto audu stāvokļa, mutes higiēnas, vispārējās veselības un pēcoperācijas ieteikumu ievērošanas." },
+          { type: "p", text: "Viena no iespējamām komplikācijām — infekcija. Tā var izpausties ar pastiprinošām sāpēm, palielinošu pietūkumu, apsārtumu, strutošanu, sliktu smaku, nepatīkamu garšu mutē vai drudzi. Infekcija var traucēt brūces dzīšanai un augmentētā materiāla integrācijai." },
+          { type: "p", text: "Cita svarīga komplikācija — brūces malu atvēršanās un membrānas vai kaula materiāla atsegšana. Membrānas ekspozīcija var radīt apstākļus baktērijām nokļūt operētajā zonā un samazināt sasniegto kaula pieaugumu." },
+          { type: "p", text: "Reizēm caur atvērušos brūci var izdalīties atsevišķas kaula materiāla daļiņas. Tas neobligāti nozīmē, ka visa procedūra bija neveiksmīga, taču par šādu situāciju jāziņo ārstam. Brūci nedrīkst spiest, kasīt vai patstāvīgi noņemt redzamas vielas." },
+          { type: "p", text: "Iespējamas arī citas problēmas:" },
+          { type: "ul", items: [
+            "ieilgusi vai spēcīga asiņošana;",
+            "stipras, neatslābstošas sāpes;",
+            "hematoma;",
+            "īslaicīgi vai ilgstoši jušanas izmaiņas;",
+            "daļējs kaula materiāla zaudējums;",
+            "mazāks nekā plānots kaula pieaugums;",
+            "nepieciešamība koriģēt vai atkārtot procedūru."
+          ] },
+          { type: "p", text: "Komplikācija ne vienmēr nozīmē, ka visa ārstniecība neizdevās. Agrīni pamanot problēmu, ārsts var izvēlēties piemērotu aprūpi un koriģēt tālāko ārstniecības plānu." },
+          { type: "p", text: "Komplikāciju risku var palielināt smēķēšana, nepietiekama mutes higiēna, nekontrolētas dzīšanu ietekmējošas slimības, operētās vietas traumēšana, pārāk agrīna mehāniska slodze un kontroles vizīšu nokavēšana." }
+        ]
+      },
+      {
+        h: "Kad pēc kaula augmentācijas jāvēršas pie ārsta?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Neliela smelgme vai pietūkums pirmajās dienās var būt normāls, ja pašsajūta pakāpeniski uzlabojas. Ja simptomi pastiprinās vai parādās jaunas pazīmes, jāsazinās ar operējošo ārstu." },
+          { type: "p", text: "Nevilcinieties vērsties, ja:" },
+          { type: "ul", items: [
+            "sāpes kļūst stipras, pulsējošas vai palielinās;",
+            "pietūkums pēc dažām dienām nesamazinās vai izplatās;",
+            "parādās struti, slikta smaka vai nepatīkama garša;",
+            "paceļas temperatūra vai pasliktinās vispārējā pašsajūta;",
+            "asiņošana neapstājas;",
+            "atveras brūces malas;",
+            "redzama membrāna vai izdalās vairāk kaula materiāla;",
+            "parādās vai pastiprinās jušanas trūkums."
+          ] },
+          { type: "p", text: "Ja pietūkums strauji palielinās, apgrūtinās rīšana vai elpošana, nepieciešama neatliekamā medicīniskā palīdzība. Patstāvīgi lietot antibiotikas, atvērt brūci vai mēģināt noņemt membrānu nedrīkst." }
+        ]
+      }
+    ],
+    faq: [
+      { q: "Vai sāp, veicot kaula augmentāciju?", a: "Procedūra parasti tiek veikta ar vietējo anestēziju, tāpēc asas sāpes pacientam nevajadzētu sajust. Anestēzijas iedarbībai beidzoties, var parādīties smelgme, jutīgums un pietūkums." },
+      { q: "Cik ilgi dzīst kauls pēc augmentācijas?", a: "Mīkstie audi var nomierināties dažās nedēļās, taču augmentētās zonas integrācija ilgst vairākus mēnešus. Precīzs dzīšanas ilgums atkarīgs no procedūras apjoma, izmantotā materiāla un individuālās dzīšanas gaitas." },
+      { q: "Vai pietūkums pēc kaula augmentācijas ir normāls?", a: "Neliels vai vidējs pietūkums pirmajās dienās var būt normāls. Ja tas pastiprinās vai parādās drudzis, strutošana un stipras sāpes, jāvēršas pie ārsta." },
+      { q: "Vai kaula augmentācija var neizdoties?", a: "Dažos gadījumos kaula materiāls var nevis pilnīgi integrēties vai var izveidoties mazāk kaula, nekā plānots. To var ietekmēt infekcija, brūces atvēršanās, smēķēšana un citi dzīšanu ietekmējoši faktori." }
+    ],
+    sources: [
+      { label: "Effect of membrane exposure on guided bone regeneration: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/29368353/" },
+      { label: "Wound Healing Complications Following Guided Bone Regeneration for Ridge Augmentation: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/28938030/" },
+      { label: "Comparative evidence of different surgical techniques for the management of vertical alveolar ridge defects in terms of complications and efficacy: A systematic review and network meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/37495541/" },
+      { label: "Smoking and dental implants: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/25778741/" }
+    ]
+  },
+  "kam-tiek-kompenseti-zobu-implanti": {
+    sections: [
+      {
+        p: [
+          "Zaudējot vienu vai vairākus zobus, pacientiem bieži rodas jautājums, vai tiek kompensēti zobu implanti un kādu ārstniecības izmaksu daļu var segt slimokase. Informācija par kompensāciju reizēm tiek saprasta neprecīzi, jo zobu implantācija un protezēšana ir saistītas, taču nav identiskas paslaugas.",
+          "Ierastā zobu implantācija Lietuvā nav automātiski kompensēta katram pacientam. No Obligātās veselības apdrošināšanas fonda līdzekļiem noteiktām iedzīvotāju grupām tiek kompensētas zobu protezēšanas paslaugu izmaksas līdz noteiktai summai. Atsevišķos sarežģītākos klīniskos gadījumos protezēšanas plānā var tikt iekļauts arī uz implantiem balstīts risinājums, taču tas tiek vērtēts individuāli.",
+          "Ja izvēlētās ārstniecības cena pārsniedz pacientam pienākošos kompensējamo summu, starpība jāapmaksā no saviem līdzekļiem. Tāpēc pirms ārstniecības sākšanas svarīgi saņemt skaidru plānu, kurā būtu norādīta kopējā cena, slimokases apmaksātā daļa un pacientam piekrītošais piemaksājums."
+        ]
+      },
+      {
+        h: "Vai zobu implanti Lietuvā tiek kompensēti?",
+        p: [
+          "Atbildot uz jautājumu, vai tiek kompensēti zobu implanti, vispirms jānošķir implants no visas zobu protezēšanas paslaugas. Slimokase parasti neatvēl atsevišķu maksājumu konkrēta implanta iegādei. Tā kompensē zobu protezēšanas izmaksas, kuru mērķis ir atjaunot zaudēto košļāšanas funkciju.",
+          "Zoba implants ir žokļa kaulā ieskrūvējams mākslīgs zoba saknes aizvietotājs. Uz tā var tikt piestiprināts kronītis, tilts vai lielāka apjoma protēze. Tomēr implantēšana ietver ne tikai pašu implantu. Var būt nepieciešami radioloģiski izmeklējumi, ķirurģiska procedūra, dzīšanas periods, protēzes daļa un dažreiz arī kaula augmentācija vai cita papildu ārstniecība.",
+          "Slimokases kompensācija nav saistīta ar pacienta vēlamo implantu skaitu, to ražotāju vai konkrētu implantēšanas metodiku. Zobārsts, novērtējot mutes stāvokli, piedāvā medicīniski piemērotus zobu atjaunošanas veidus.",
+          "Vienam pacientam var būt piemērota izņemamā protēze, citam — tilts, un atsevišķos gadījumos var tikt apsvērta uz implantiem balstīta protēze. Lēmums atkarīgs no atlikušo zobu, smaganu un žokļa kaula stāvokļa, vispārējās veselības, lietotajām zālēm un citiem individuāliem faktoriem.",
+          "Tāpēc precīzāk teikt, ka noteiktām pacientu grupām tiek kompensētas zobu protezēšanas izmaksas, nevis automātiski visi zobu implanti."
+        ]
+      },
+      {
+        h: "Kam pienākas kompensācija par zobu protezēšanu?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Kompensēta zobu protezēšana pienākas ne visiem iedzīvotājiem. Tiesības uz šīm paslaugām ir ar obligāto veselības apdrošināšanu apdrošinātiem cilvēkiem, kas pieder tiesību aktos noteiktām grupām:" },
+          { type: "ul", items: [
+            "vecuma pensijas gadus sasniegušas personas;",
+            "bērni līdz 18 gadu vecumam;",
+            "cilvēki ar invaliditāti;",
+            "pacienti, kuriem tika piemērota ārstniecība mutes, sejas vai žokļu onkoloģiskās slimības dēļ."
+          ] },
+          { type: "p", text: "Tikai piederība vienai no šīm grupām ne vienmēr ir pietiekama. Ārsts zobārsts novērtē mutes stāvokli, protezēšanas nepieciešamību un nosaka, vai pacienta situācija atbilst spēkā esošajiem klīniskajiem kritērijiem." }
+        ]
+      },
+      {
+        h: "Kad var tikt piešķirta lielāka kompensācija?",
+        p: [
+          "Kompensējamā summa atkarīga no pacienta grupas un klīniskā stāvokļa. 2026. gada jūlijā ierastajos gadījumos vecuma pensijas gadus sasniegušiem cilvēkiem un noteiktos invaliditātes nosacījumus atbilstošiem pacientiem tiek kompensēts līdz 670,39 eiro.",
+          "Sarežģītākos gadījumos kompensācija var sasniegt līdz 2062,70 eiro. Piemēram, lielāka summa var tikt piešķirta, kad pilnīgi bezzoba apakšējā žokļa augstums noteiktā zonā ir mazāks par 12 milimetriem. Šādu nepieciešamību jāapstiprina ārstu konsīlijam.",
+          "Bērniem, kuru košļāšanas sistēma vēl attīstās un kuriem nepieciešami pagaidu protezēšanas risinājumi, tiek kompensēts līdz 342,13 eiro. Citos tiesību aktos noteiktos bērnu vai onkoloģiskajām slimībām ārstētu pacientu gadījumos var tikt piemērota lielāka summa.",
+          "Svarīgi saprast, ka lielāka kompensācija netiek piešķirta tikai tāpēc, ka pacients vēlas implantus. Tā atkarīga no konkrētiem klīniskiem kritērijiem un negarantē, ka viss uz implantiem balstītas ārstniecības plāns būs bezmaksas."
+        ]
+      },
+      {
+        h: "Kādas zobārstniecības izmaksas var tikt kompensētas?",
+        p: [
+          'Meklēšanas frāze „kompensācija par zobārstniecību" var nozīmēt gan ierasto zobārstniecību, gan zobu protezēšanu. Šīm paslaugām tiek piemēroti dažādi apmaksas nosacījumi.',
+          "Ar obligāto veselības apdrošināšanu apdrošinātiem pacientiem sākotnējā zobārstniecības palīdzība tiek sniegta ārstniecības iestādē, pie kuras viņi ir pierakstīti, vai citā iestādē, ar kuru noslēgts atbilstošs līgums. Tai var būt piederoša zobu kariesa, pulpīta un dažu periodontīta formu ārstniecība, zobakmens noņemšana, zobu vai to sakņu izraušana un citas noteiktas paslaugas.",
+          "Pieaugušiem pacientiem OVA fonds parasti apmaksā ārsta zobārsta darbu, taču par plombes un citiem zobārstniecības materiāliem, zālēm un vienreizējām ierīcēm visbiežāk jāmaksā. Noteiktām pacientu grupām tiek piemēroti izņēmumi.",
+          "Zobu protezēšanas kompensācija darbojas citādi. Slimokase apmaksā faktiskās protezēšanas izmaksas, bet ne vairāk par pacientam noteikto maksimālo summu. Ja ārstniecība maksā mazāk, tiek apmaksātas faktiskās izmaksas. Ja maksā vairāk, starpību apmaksā pacients."
+        ]
+      },
+      {
+        h: "Vai saņemot kompensāciju var izvēlēties zobu implantus?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Tiesības uz kompensētu protezēšanu pašas par sevi nenozīmē, ka pacientam tiks veikta implantācija. Vispirms jānosaka, vai uz implantiem balstīta ārstniecība ir medicīniski pamatota un droša." },
+          { type: "p", text: "Plānojot implantāciju, tiek vērtēts:" },
+          { type: "ul", items: [
+            "žokļa kaula daudzums un kvalitāte;",
+            "smaganu un periodonta stāvoklis;",
+            "pacienta vispārējā veselība;",
+            "lietotās zāles;",
+            "smēķēšana un citi riska faktori;",
+            "nākamā protēzes konstrukcija;",
+            "pacienta iespējas kopt implantus."
+          ] },
+          { type: "p", text: "Ja uz implantiem balstīta protezēšana pacientam piemērota, tā var tikt iekļauta ārstniecības plānā. Tomēr kompensācija segs izmaksas tikai līdz noteiktai robežai. Atlikušo implantēšanas, protezēšanas vai papildu procedūru cenas daļu būs jāapmaksā pacientam." },
+          { type: "p", text: "Pirms ārstniecības sākšanas ir vērts palūgt rakstisku plānu. Tajā vajadzētu būt norādītam, cik implantu plānots ieskrūvēt, kāda protēzes konstrukcija tiks izgatavota, kādas papildu procedūras var būt nepieciešamas, kāda ir kopējā cena un kādu tās daļu segs slimokase." }
+        ]
+      },
+      {
+        h: "Kā saņemt kompensāciju par zobu protezēšanu?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Lai izmantotu kompensāciju, vispirms jāvēršas pie ārsta zobārsta. Atsevišķu pieteikumu slimokasei pacientam parasti sniegt nav nepieciešams." },
+          { type: "p", text: "Process visbiežāk notiek šādi:" },
+          { type: "ol", items: [
+            "Vēršas pie zobārsta. Ārsts novērtē mutes stāvokli un protezēšanas nepieciešamību.",
+            "Nosaka tiesības uz kompensāciju. Tiek pārbaudīts, vai pacients pieder noteiktai grupai un atbilst klīniskiem kritērijiem.",
+            "Sagatavo muti protezēšanai. Tiek veikta nepieciešamā ārstniecība un novērsti protezēšanai traucējošie iekaisumi.",
+            "Dati tiek reģistrēti elektroniskajā sistēmā.",
+            "Tiek izvēlēta ārstniecības iestāde. Tai jābūt līgumam ar slimokasi par kompensētajām zobu protezēšanas paslaugām.",
+            "Tiek izveidots ārstniecības un izmaksu plāns. Pacientam tiek izskaidrota kopējā cena, kompensētā daļa un iespējamais piemaksājums."
+          ] },
+          { type: "p", text: "Saskaņā ar 2026. gada jūlijā spēkā esošu kārtību kompensēto zobu protezēšanas paslaugas jāizmanto trīs gadu laikā no tiesību reģistrēšanas sistēmā." },
+          { type: "p", text: "Kompensāciju var izmantot arī privātā klīnikā, taču tikai tad, ja izvēlētā iestāde ir noslēgusi līgumu ar slimokasi par šīm paslaugām. Tikai tas, ka klīnika veic implantāciju vai protezēšanu, nav pietiekami." },
+          { type: "p", text: "Kompensējamā summa parasti netiek pārskaitīta pacientam uz personīgo kontu. Par sniegtajām paslaugām slimokase norēķinās ar līgumu noslēgušo ārstniecības iestādi." }
+        ]
+      },
+      {
+        h: "Kad par implantiem vai protezēšanu jāpiemaksā?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Piemaksa nepieciešama tad, kad izvēlētās ārstniecības cena pārsniedz pacientam noteikto kompensējamo summu. Tā bieži notiek, izvēloties uz implantiem balstītu protezēšanu, sarežģītākas konstrukcijas vai dārgākus materiālus." },
+          { type: "p", text: "Papildu maksāt var būt nepieciešams par:" },
+          { type: "ul", items: [
+            "implantu ieskrūvēšanu un to komponentiem;",
+            "uz implantiem stiprināmiem kroņiem vai tiltiem;",
+            "kaula augmentāciju;",
+            "sinusa dibena pacelšanu;",
+            "papildu radioloģiskiem izmeklējumiem;",
+            "dārgākiem protēžu materiāliem;",
+            "kompensēto plānā neiekļautām procedūrām."
+          ] },
+          { type: "p", text: "Pacientam skaidri jāizskaidro, par ko un cik daudz būs jāmaksā. Ja tiek piedāvāti vairāki ārstniecības varianti, ir vērts salīdzināt ne tikai to cenu, bet arī ārstniecības ilgumu, kopšanu, iespējamos riskus un gaidāmo rezultātu." }
+        ]
+      },
+      {
+        h: "Kompensācija atkarīga no pacienta stāvokļa un ārstniecības plāna",
+        p: [
+          "Uz jautājumu, vai tiek kompensēti zobu implanti, precīzāk atbildēt šādi: ierastā implantācija netiek automātiski apmaksāta visiem pacientiem. Noteiktām iedzīvotāju grupām tiek kompensētas zobu protezēšanas izmaksas līdz spēkā esošajai summai, un uz implantiem balstīta ārstniecība var tikt iekļauta individuālajā plānā.",
+          "Lielāka kompensācija tiek piešķirta tikai tiesību aktos paredzētos sarežģītākos gadījumos un, kad tas tiek prasīts, saņemot ārstu konsīlija apstiprinājumu. Pat šādā gadījumā visa implantēšanas cena neobligāti tiks segta.",
+          "Ja apsverat zobu implantāciju un vēlaties uzzināt, vai jums var tikt piemērota kompensācija par zobārstniecību vai protezēšanu, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā. Mūsu speciālisti novērtēs mutes stāvokli, izskaidros iespējamos zobu atjaunošanas veidus un sniegs individuālu ārstniecības un izmaksu plānu.",
+          "Rakstā sniegtās summas un nosacījumi ir aktuāli 2026. gada jūlijā. No 2026. gada 1. novembra stājas spēkā precizēta zobu protezēšanas paslaugu kompensēšanas kārtība, tāpēc pirms ārstniecības sākšanas ieteicams pārbaudīt tolaik spēkā esošo informāciju."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Vai pensionāriem tiek kompensēti zobu implanti?", a: "Vecuma pensijas gadus sasniegušiem cilvēkiem var būt tiesības uz kompensētu zobu protezēšanu, ja to mutes stāvoklis atbilst noteiktiem kritērijiem. Tomēr tas nenozīmē, ka slimokase vienmēr pilnīgi apmaksās implantus." },
+      { q: "Kāda ir zobu protezēšanas kompensācija?", a: "2026. gada jūlijā visbiežāk piemērotā summa sasniedz līdz 670,39 eiro. Bērniem, kuru košļāšanas sistēma vēl attīstās, tiek kompensēts līdz 342,13 eiro. Noteiktos sarežģītākos gadījumos summa var sasniegt līdz 2062,70 eiro." },
+      { q: "Vai kompensāciju var izmantot zobu implantiem?", a: "Kompensācija netiek piešķirta konkrēta implanta iegādei. Tā tiek piemērota apstiprinātā zobu protezēšanas plāna izmaksām. Ja tajā paredzēta uz implantiem balstīta ārstniecība, kompensācija var segt daļu no kopējās cenas." },
+      { q: "Vai kompensāciju var izmantot privātā klīnikā?", a: "Jā, ja privātai klīnikai ir līgums ar slimokasi par kompensētajām zobu protezēšanas paslaugām. Pirms ārstniecības sākšanas tas jāpārbauda." },
+      { q: "Vai tiek kompensēta visa zobārstniecība?", a: "Ne visa. Sākotnējās zobārstniecības palīdzības gadījumā var tikt apmaksāts ārsta darbs, taču pieaugušajiem visbiežāk jāmaksā par zobārstniecības materiāliem, zālēm un vienreizējām ierīcēm. Zobu protezēšanai tiek piemērota atsevišķa kompensēšanas kārtība." }
+    ],
+    sources: [
+      { label: "Dantų protezavimo kompensuojamoji suma", url: "https://ligoniukasa.lrv.lt/lt/veiklos-sritys/informacija-gyventojams/gydymo-ir-sveikatos-prieziuros-paslaugos/odontologines-paslaugos/dantu-protezavimas/dantu-protezavimo-kompensuojamoji-suma/" },
+      { label: "Dantų gydymas be papildomų išlaidų: kas gali gauti kompensuojamas paslaugas?", url: "https://ligoniukasa.lrv.lt/lt/naujienos/dantu-gydymas-be-papildomu-islaidu-kas-gali-gauti-kompensuojamas-paslaugas/" },
+      { label: "Patikslinta dantų protezavimo paslaugų kompensavimo tvarka", url: "https://ligoniukasa.lrv.lt/lt/naujienos/patikslinta-dantu-protezavimo-paslaugu-kompensavimo-tvarka-aRE/" }
+    ]
+  },
+  "cik-ilgi-notiek-mutes-higiena": {
+    sections: [
+      {
+        p: [
+          "Profesionālā mutes higiēna ir procedūra, kuras laikā no zobu virsmām un grūtāk sasniedzamajām mutes vietām tiek noņemti mīkstie bakteriālie aplikumi, sacietējušie zobakmeņi un ārējie pigmentu plankumi. Plānojot vizīti, pacientiem bieži rodas praktisks jautājums: cik ilgi notiek mutes higiēna un cik laika tai vajadzētu veltīt?",
+          "Visbiežāk profesionālā mutes higiēna ilgst apmēram 30–60 minūtes. Ja procedūra tiek veikta regulāri, zobakmeņu nav daudz, un smaganu stāvoklis ir labs, vizīte var būt īsāka. Kad aplikumu uzkrājies vairāk, smaganas ir jutīgas vai asiņojošas, mutē ir implanti, protēzes vai ortodontiskās ierīces, higiēnai var būt nepieciešama stunda vai ilgāka vizīte."
+        ]
+      },
+      {
+        h: "Cik ilgi notiek profesionālā mutes higiēna?",
+        p: [
+          "Parasti profesionālai mutes higiēnai vajadzētu paredzēt 30–60 minūtes. Šajā laikā mutes higiēnists novērtē zobu un smaganu stāvokli, noņem cietos un mīkstos aplikumus, notīra pigmentu plankumus un sniedz individuālus ikdienas mutes kopšanas ieteikumus.",
+          "Kad profesionālā mutes higiēna tiek veikta regulāri, un pacients pareizi kopj zobus un starpzobu telpas mājās, sacietējušu aplikumu visbiežāk ir mazāk. Šādā gadījumā tīrīšana var aizņemt īsāku paredzētās vizītes daļu.",
+          "Ja no pēdējās mutes higiēnas pagājis daudz laika, zobakmeņu uzkrājies daudz vai tie atrodas grūti sasniedzamās vietās, procedūra var ilgt ilgāk. Papildu laiks var būt vajadzīgs arī tad, kad smaganas ir jutīgas, pietūkušas vai asiņo, tāpēc speciālistam jāstrādā lēnāk.",
+          "Profesionālā mutes higiēna nav tikai redzamu plankumu notīrīšana vai zobu pulēšana. Zobakmeņi var uzkrāties starpzobu telpās, pie smaganas malas un zem tās. Katra zona pareizi jāsasniedz un jāpārbauda, tāpēc procedūras ātrums nedrīkstētu būt svarīgāks par tās kvalitāti."
+        ]
+      },
+      {
+        h: "Kas var pagarināt procedūras laiku?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Galvenais faktors, no kā atkarīgs mutes higiēnas ilgums, ir uzkrājušos zobakmeņu un mīksto aplikumu daudzums. Jo to vairāk, jo ilgāk ilgst rūpīga dažādu zobu virsmu, starpzobu telpu un smaganas malas tīrīšana." },
+          { type: "p", text: "Svarīgs ne tikai aplikumu daudzums, bet arī to atrašanās vieta. Virs smaganām esošos zobakmeņus bieži var skaidri saskatīt apskates laikā. Taču daļa sacietējušo aplikumu var būt uzkrājušies zem smaganas malas, kur tos sasniegt un noņemt ir sarežģītāk." },
+          { type: "p", text: "Procedūra var ilgt ilgāk, kad smaganas ir:" },
+          { type: "ul", items: [
+            "jutīgas vai sāpīgas;",
+            "apsārtušas un pietūkušas;",
+            "tendētas asiņot;",
+            "atkāpušās no zobiem;",
+            "iekaisuma skartas."
+          ] },
+          { type: "p", text: "Šādā gadījumā mutes higiēnists var strādāt mazākos posmos, izmantot dažādus instrumentus vai izdarīt īsas pauzes. Ja procedūras laikā tiek sajusts stiprs jutīgums vai sāpes, par to svarīgi uzreiz pastāstīt speciālistam." },
+          { type: "p", text: "Vairāk laika var būt vajadzīgs pacientiem, kuriem ir implanti, kroņi, tilti, protēzes vai ortodontiskās breketes. Ap šīm konstrukcijām parādās vairāk grūti sasniedzamu vietu, kurās var uzkrāties bakteriālie aplikumi. Tās jāiztīra rūpīgi un ar konkrētai konstrukcijai piemērotām ierīcēm." },
+          { type: "p", text: "Mutes higiēnas ilgumu var ietekmēt arī sablīvēti zobi, individuālais aplikumu uzkrāšanās ātrums, smēķēšana un bieža pigmentētu produktu lietošana. Tomēr precīzāk procedūras apjomu var novērtēt tikai, apskatot pacienta muti." }
+        ]
+      },
+      {
+        h: "Kā sadalās mutes higiēnas procedūras laiks?",
+        p: [
+          "Profesionālā mutes higiēna tiek veikta vairākos secīgos posmos. To ilgums nav vienāds katram pacientam, jo speciālists procedūru pielāgo atbilstoši individuālam zobu un smaganu stāvoklim.",
+          "Vispirms tiek apskatīta mute. Mutes higiēnists novērtē, kur un cik daudz uzkrājušos zobakmeņu, vai smaganas asiņo, kurās vietās zobi ir jutīgāki un vai mutē ir implanti, protēzes vai ortodontiskās ierīces. Arī svarīgi zināt, kad pēdējo reizi tika veikta profesionālā mutes higiēna.",
+          "Visvairāk vizītes laika parasti tiek atvēlēts zobakmeņu noņemšanai. Atkarībā no to atrašanās vietas un daudzuma, var tikt izmantots ultraskaņas aparāts un rokas instrumenti. Ultraskaņas instrumenta vibrācijas palīdz sadalīt sacietējušos aplikumus, un ūdens strūkla dzesē tīrāmo virsmu un noskalo noņemtās daļiņas.",
+          "Noņemot zobakmeņus, tiek tīrīti mīkstie bakteriālie un pigmentu aplikumi. Tam var tikt izmantota AIRFLOW metode, pulēšanas pasta, speciālas sukas vai gumijas tasītes. Ne katram pacientam nepieciešams pilnīgi vienāds procedūras posmu apvienojums — tas tiek izvēlēts atbilstoši mutē esošajiem aplikumiem.",
+          "Vizītes beigās mutes higiēnists var parādīt, kā pareizi tīrīt starpzobu telpas, izvēlēties piemērota izmēra starpzobu sukas un izskaidrot, kā kopt implantus, protēzes vai breketes. Šai daļai arī jāatvēl laiks, jo profesionāli noņemtie aplikumi sāks uzkrāties no jauna, ja ikdienas mutes kopšana paliks nepietiekama."
+        ]
+      },
+      {
+        h: "Cik laika nepieciešams, ja zobakmeņu uzkrājies vairāk?",
+        p: [
+          "Kad zobakmeņu nav daudz, un profesionālā higiēna tiek veikta regulāri, procedūra visbiežāk iekļaujas vienā ierastā vizītē. Tomēr, ja aplikumi uzkrājās ilgu laiku, sedz lielāku zobu virsmu daļu vai atrodas zem smaganas malas, to noņemšanai var būt nepieciešamas vairāk nekā stunda.",
+          "Ilgu laiku uzkrājušies zobakmeņi var būt cieti un stipri piestiprinājušies zoba virsmai. Tos nevar noņemt steidzoties. Jāsasniedz katra zoba dažādās puses, jāiztīra starpzobu telpas un jāpārbauda, vai nav palikuši aplikumi grūtāk redzamās vietās.",
+          "Kad smaganas kopā ir stipri kairinātas vai asiņo, procedūra var tikt veikta lēnāk. Dažiem pacientiem ērtāk tīrīšanu sadalīt vairākās vizītēs, lai vienas apmeklējuma laikā nebūtu ilgi jātur mute atvērta un varētu rūpīgi iztīrīt atsevišķas mutes zonas.",
+          "Svarīgi nošķirt ierasto profilaktisko mutes higiēnu no periodontoloģiskās ārstniecības. Ja tiek konstatētas dziļas periodonta kabatas, zobu balstošo audu bojājums vai žokļa kaula noārdīšanās, tikai standarta mutes higiēnas var nepietikt. Šādos gadījumos var būt nepieciešama izsmeļošāka zemsmaganu tīrīšana, zobārsta vai periodontologa konsultācija un vairākos posmos veikta ārstniecība.",
+          "Tāpēc ilgāks procedūras ilgums ne vienmēr nozīmē tikai lielāku virsmas aplikumu daudzumu. Reizēm tas saistīts ar sarežģītāku smaganu un periodonta audu stāvokli, kas jānovērtē individuāli."
+        ]
+      },
+      {
+        h: "Vai mutes higiēnai vienmēr pietiek vienas vizītes?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Vairumā gadījumu profesionālā mutes higiēna tiek veikta vienā 30–60 minūšu vizītē. Vienas apmeklējuma parasti pietiek, kad zobakmeņu nav ļoti daudz, smaganas nav stipri iekaisušas, un pacients var ērti izturēt visas procedūras laiku." },
+          { type: "p", text: "Vairākas vizītes var būt vajadzīgas, ja:" },
+          { type: "ul", items: [
+            "zobakmeņu ir ļoti daudz;",
+            "aplikumi uzkrājušies zem smaganas malas;",
+            "smaganas ir īpaši jutīgas vai stipri asiņo;",
+            "pacientam grūti ilgi turēt muti atvērtu;",
+            "tiek konstatētas iespējamās periodonta slimības pazīmes;",
+            "nepieciešama izsmeļošāka zemsmaganu tīrīšana."
+          ] },
+          { type: "p", text: "Procedūras sadalīšana vairākās vizītēs nenozīmē, ka mutes higiēna tiek veikta neefektīvi. Atsevišķos gadījumos tas ļauj vairāk uzmanības veltīt katrai mutes zonai un samazināt pacienta diskomfortu." },
+          { type: "p", text: "Pēc ierastas profesionālas mutes higiēnas visbiežāk uzreiz var atgriezties pie ikdienas darbībām. Zobi īsu laiku var būt jutīgāki pret aukstumu, un kairinātās smaganas var nedaudz asiņot. Šīs sajūtas pakāpeniski samazinās." },
+          { type: "p", text: "Ja pēc procedūras parādās stipras vai palielinošas sāpes, izteikts pietūkums vai neatslābstoša asiņošana, jāsazinās ar procedūru veikušo speciālistu. Šādi simptomi nav ierastā īslaicīgā jutīguma daļa un jānovērtē individuāli." }
+        ]
+      },
+      {
+        h: "Rūpīga tīrīšana ir svarīgāka par pēc iespējas īsāku vizīti",
+        p: [
+          "Atbildot uz jautājumu, cik ilgi notiek mutes higiēna, visbiežāk var orientēties uz 30–60 minūšu vizīti. Procedūra var būt īsāka, ja tā tiek veikta regulāri un aplikumu nav daudz. Kad uzkrājušies bagātīgi zobakmeņi, smaganas jutīgas vai jāiztīra vietas ap implantiem, protēzēm vai breketēm, var būt nepieciešams ilgāks apmeklējums.",
+          "Vissvarīgākais, lai procedūra tiktu veikta rūpīgi, nevis steidzoties. Mutes higiēnistam jānoņem ne tikai labi redzamie aplikumi, bet arī jāpārbauda starpzobu telpas, smaganas mala un citas grūtāk sasniedzamās vietas. Vizītes laikā arī tiek novērtēts smaganu stāvoklis un sniegti individuāli kopšanas ieteikumi.",
+          "Ja mutē ir ļoti daudz zobakmeņu vai tiek pamanītas iespējamās periodonta slimības pazīmes, vienas ierastas vizītes var nepietikt. Šādos gadījumos speciālists izskaidros, vai tīrīšanu ir lietderīgi sadalīt vairākos posmos un vai nepieciešama papildu periodontoloģiska izmeklēšana.",
+          "Ja nezināt, cik laika profesionālā mutes higiēna var ilgt jūsu gadījumā, reģistrējieties vizītei Bangų klīnikā Klaipēdā. Mūsu speciālisti novērtēs zobu un smaganu stāvokli, izvēlēsies piemērotās tīrīšanas metodes un sniegs individuālus mutes kopšanas ieteikumus."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Cik vidēji ilgi ilgst profesionālā mutes higiēna?", a: "Visbiežāk profesionālā mutes higiēna ilgst apmēram 30–60 minūtes. Precīzs laiks atkarīgs no zobakmeņu un mīksto aplikumu daudzuma, smaganu stāvokļa, zobu jutīguma un mutē esošajiem implantiem, protēzēm vai ortodontiskajām ierīcēm." },
+      { q: "Vai mutes higiēnu var veikt 30 minūtēs?", a: "Kad procedūra tiek veikta regulāri, aplikumu nav daudz, un smaganu stāvoklis ir labs, mutes higiēnai var pietikt apmēram 30 minūšu. Tomēr precīzu laiku speciālists var novērtēt tikai, apskatot muti." },
+      { q: "Kāpēc mutes higiēna reizēm ilgst ilgāk par stundu?", a: "Ilgāka vizīte var būt vajadzīga bagātīgu vai grūti noņemamu zobakmeņu, jutīgu un asiņojošu smaganu, aplikumu zem smaganas malas, implantu, protēžu vai breketu dēļ. Ja tiek konstatēti periodonta bojājumi, var būt nepieciešama izsmeļošāka ārstniecība." },
+      { q: "Vai pirmā mutes higiēna ilgst ilgāk?", a: "Pirmā profesionālā mutes higiēna var ilgt ilgāk, ja iepriekš procedūra nav tikusi veikta vai no pēdējās vizītes pagājis daudz laika. Papildus tiek novērtēts mutes stāvoklis un atvēlēts laiks individuāliem kopšanas ieteikumiem." },
+      { q: "Cik ilgi notiek mutes higiēna ar AIRFLOW?", a: "Kopējais profesionālas mutes higiēnas ar AIRFLOW ilgums visbiežāk sasniedz apmēram 30–60 minūtes. AIRFLOW ir viens no procedūras posmiem, tāpēc vizītes laiks atkarīgs arī no tā, vai papildus jānoņem sacietējušie zobakmeņi." },
+      { q: "Vai mutes higiēna vienmēr tiek veikta vienā vizītē?", a: "Visbiežāk pietiek vienas vizītes. Tomēr, ja aplikumu un zobakmeņu ir ļoti daudz, smaganas ir īpaši jutīgas vai nepieciešama periodontoloģiska ārstniecība, procedūra var tikt sadalīta vairākās vizītēs." }
+    ],
+    sources: [
+      { label: "Professional mechanical plaque removal for prevention of periodontal diseases in adults – systematic review update", url: "https://pubmed.ncbi.nlm.nih.gov/25495962/" },
+      { label: "The efficacy of air polishing devices in supportive periodontal therapy: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/29700503/" },
+      { label: "A systematic review on the patient perception of periodontal treatment using air polishing devices", url: "https://pubmed.ncbi.nlm.nih.gov/25619863/" },
+      { label: "Efficacy of erythritol powder air-polishing in active and supportive periodontal therapy: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/34318577/" },
+      { label: "Efficacy of air polishing in comparison with hand instruments and/or power-driven instruments in supportive periodontal therapy and implant maintenance: A systematic review and meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35321688/" },
+      { label: "Effectiveness and Clinical Performance of Erythritol Air-Polishing in Non-Surgical Periodontal Therapy: A Systematic Review of Randomized Clinical Trials", url: "https://pubmed.ncbi.nlm.nih.gov/35888585/" }
+    ]
+  },
+  "cik-ilgi-sap-zobs-pec-kanalu-tirisanas": {
+    sections: [
+      {
+        p: [
+          "Pēc sakņu kanālu tīrīšanas zobs var būt jutīgs dažas dienas, īpaši košļājot vai sakožot. Tas neobligāti nozīmē, ka ārstniecība veikta nepareizi. Lai gan zoba iekšpusē bijušie bojātie audi tiek noņemti, ap sakni saglabājas dzīvi audi, kas pēc procedūras var būt kairināti.",
+          "Visbiežāk zobs ir visjutīgākais pirmās 2–3 dienas. Neliels jutīgums sakožot var ilgt līdz nedēļai vai nedaudz ilgāk, taču tam skaidri jāsamazinās. Ja sāpes pastiprinās, pēc uzlabošanās atgriežas vai parādās pietūkums, jāvēršas pie ārstniecību veikušā zobārsta.",
+          "Atbildot uz jautājumu, cik ilgi sāp zobs pēc kanālu tīrīšanas, svarīgi vērtēt ne tikai dienu skaitu. Daudz pasaka sāpju gaita: pakāpeniski vājinošs jutīgums visbiežāk atbilst dzīšanai, savukārt palielinošas vai ikdienas darbībām traucējošas sāpes prasa papildu novērtējumu."
+        ]
+      },
+      {
+        h: "Kāpēc pēc kanālu tīrīšanas var sāpēt zobs?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Sakņu kanālu ārstniecības laikā no zoba iekšpuses tiek noņemti infekcijas vai iekaisuma bojātie pulpas audi. Kanāli tiek iztīrīti, dezinficēti, formēti un aizpildīti ar speciālu materiālu, lai samazinātu atkārtotas infekcijas risku." },
+          { type: "p", text: 'Pacienti šo procedūru reizēm sauc par „nerva izņemšanu", tāpēc var rasties jautājums, kāpēc ārstētais zobs joprojām sāp. Noņemot pulpu, ap zoba sakni paliek dzīvi saites, kaula un smaganu audi. Tie var būt jutīgi pirms ārstniecības bijušā iekaisuma un procedūras laikā piedzīvotā kairinājuma dēļ.' },
+          { type: "p", text: "Pirmajās dienās var būt jūtama:" },
+          { type: "ul", items: [
+            "neliela vai vidēja stipruma smelgme;",
+            "jutīgums sakožot vai košļājot;",
+            "spiediena sajūta ap ārstēto zobu;",
+            "žokļa muskuļu smelgme pēc ilgāk turētas atvērtas mutes."
+          ] },
+          { type: "p", text: "Sāpju intensitāti var ietekmēt zoba stāvoklis pirms ārstniecības, ap sakni bijušā iekaisuma apjoms, kanālu anatomija un procedūras sarežģītība. Zinātnisko pētījumu dati liecina, ka pēcoperācijas sāpes visbiežāk ir izteiktākas pirmajās 48–72 stundās un vēlāk samazinās." },
+          { type: "p", text: 'Reizēm pacientam šķiet, ka ārstētais zobs ir „augstāks" un sakožot pirmais saskaras ar pretējā žokļa zobu. Šādu sajūtu var izraisīt jutīgie audi ap sakni, taču iemesls var būt arī pārāk augsta pagaidu plomba vai galīgā restaurācija. Ja sajūta nepāriet, zobārstam jāpārbauda sakodiens.' }
+        ]
+      },
+      {
+        h: "Cik ilgi sāp zobs pēc kanālu tīrīšanas?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Vienāda termiņa visiem pacientiem nav, taču var izšķirt orientējošu dzīšanas gaitu:" },
+          { type: "ul", items: [
+            "Pirmās 24–72 stundas. Iespējama smelgme, spiediens un jutīgums sakožot.",
+            "Pēc 3–7 dienām. Simptomiem jābūt manāmi vājākiem un mazāk traucējošiem ikdienas darbībām.",
+            "Pēc nedēļas. Neliels jutīgums reizēm vēl var saglabāties, taču jābūt skaidrai uzlabošanās tendencei."
+          ] },
+          { type: "p", text: "Šie termiņi ir orientējoši. Dzīšana atkarīga no zoba sākotnējā stāvokļa, ārstniecības apjoma un individuālas audu reakcijas. Ja pēc nedēļas nejūtat nekādu uzlabošanos, ir vērts sazināties ar ārstniecību veikušo zobārstu. Stipras vai palielinošas sāpes nevajadzētu paciest, gaidot vairākas nedēļas." },
+          { type: "p", text: "Kanālu ārstniecība var tikt veikta vienā vai vairākās vizītēs. Pēc pirmā kanālu tīrīšanas posma zobs var tikt aizvērts ar pagaidu plombu, tāpēc jutīgums iespējams arī starp procedūrām. Šādā gadījumā svarīgi saudzēt pagaidu plombu, nekošļāt ļoti cietu ēdienu un nenokavēt nozīmēto nākamo vizīti." },
+          { type: "p", text: "Pat ja starp vizītēm sāpes pilnīgi izzuda, ārstniecību pārtraukt nedrīkst. Nepabeidzot kanālu ārstniecību un galīgi neatjaunojot zobu, palielinās atkārtotas infekcijas un zoba lūzuma risks." }
+        ]
+      },
+      {
+        h: "Kādas sāpes pēc kanālu ārstniecības tiek uzskatītas par normālām?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Normālai dzīšanas gaitai raksturīgs neliels vai vidējs jutīgums, kas katru dienu samazinās. Zobs var smelgt sakožot vai košļājot, taču diskomfortam nevajadzētu pastāvīgi pastiprināties." },
+          { type: "p", text: "Iespējams, ka dzīšana notiek raiti, ja:" },
+          { type: "ul", items: [
+            "sāpes pakāpeniski vājinās;",
+            "tās palīdz kontrolēt ārsta ieteiktās zāles;",
+            "nav palielinoša smaganu vai sejas pietūkuma;",
+            "neparādās drudzis, strutošana vai izteikts vispārējās pašsajūtas pasliktinājums;",
+            "ārstētais zobs nav acīmredzami pirmais kontakts sakožot."
+          ] },
+          { type: "p", text: "Stipras, pulsējošas, gulēt neļaujošas vai katru dienu palielinošas sāpes netiek uzskatītas par ierasto dzīšanas gaitu. Sazināties ar ārstu arī jāvēršas, ja sāpes sākumā samazinājās, bet pēc dažām dienām atkal pastiprinājās." },
+          { type: "p", text: "Retos gadījumos var izpausties akūts saasinājums — stipras sāpes, pietūkums vai abi simptomi, kuru dēļ nepieciešama neplānota zobārsta vizīte. Tas nav tas pats, kas neliels pirmo dienu jutīgums." }
+        ]
+      },
+      {
+        h: "Kā samazināt sāpes un kopt zobu pēc procedūras?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Pēc kanālu tīrīšanas vispirms jārīkojas saskaņā ar individuāliem zobārsta ieteikumiem. Sāpes mazinošos līdzekļus lietojiet tikai saskaņā ar ārsta norādījumu vai preparāta informācijas lapiņu, nepārsniedzot ieteikto devu. Konkrētas zāles nav piemērotas visiem pacientiem, tāpēc jāņem vērā esošās slimības, alerģijas un citi lietotie preparāti." },
+          { type: "p", text: "Pēc procedūras ieteicams:" },
+          { type: "ul", items: [
+            "neēst, kamēr pilnīgi nav pārgājis vietējās anestēzijas iedarbība;",
+            "pirmajās dienās izvairīties no ļoti cieta un lipīga ēdiena;",
+            "īslaicīgi mazāk košļāt ar ārstētā zoba pusi;",
+            "regulāri tīrīt zobus, jutīgo vietu kopjot maigi;",
+            "saudzēt pagaidu plombu no lielas slodzes;",
+            "nenokavēt kontroles vai nākamo ārstniecības vizīti;",
+            "ārsta norādītajā laikā galīgi atjaunot zobu."
+          ] },
+          { type: "p", text: "Ja pagaidu plomba pilnīgi izkrīt vai ārstētais zobs atlūzt, jāsazinās ar klīniku un negaidiet nākamo plānoto vizīti." },
+          { type: "p", text: "Antibiotikas nedrīkst sākt lietot patstāvīgi. Tikai sāpes pēc kanālu tīrīšanas nav pietiekams iemesls antibakteriālai ārstniecībai. Sistēmiski zinātnisko pētījumu pārskati neapstiprina, ka antibiotikas parasti samazinātu pēcoperācijas sāpes vai pasargātu no saasinājuma. Tās ārsts nozīmē tikai pēc konkrētām indikācijām." }
+        ]
+      },
+      {
+        h: "Kad sāpes pēc kanālu tīrīšanas var norādīt uz komplikāciju?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Pie zobārsta jāvēršas, ja:" },
+          { type: "ul", items: [
+            "sāpes pastiprinās vai pēc dažām dienām nesamazinās;",
+            "pēc nedēļas nav skaidras uzlabošanās;",
+            "pietūkst smaganas, vaigs vai seja;",
+            "uz smaganām parādās abscess;",
+            "sajūtama nepatīkama garša vai pamanāmas struti;",
+            "paceļas temperatūra vai pasliktinās vispārējā pašsajūta;",
+            "ārstētais zobs pirmais saskaras sakožot;",
+            "pilnīgi izkrīt pagaidu plomba vai kronis;",
+            "pēc uzlabošanās atgriežas pirms ārstniecības bijušie simptomi."
+          ] },
+          { type: "p", text: "Strauji palielinošs sejas vai kakla pietūkums, apgrūtināta rīšana vai elpošana prasa neatliekamu medicīnisko palīdzību." },
+          { type: "p", text: "Ilgstošas sāpes neobligāti nozīmē, ka zobs būs jāizrauj. Reizēm pietiek koriģēt pārāk augstu restaurāciju. Citos gadījumos var būt jānovērtē zoba plaisa, kanālu anatomija, iekaisums ap sakni vai restaurācijas hermetiskums." },
+          { type: "p", text: "Ja infekcija saglabājas vai pēc kāda laika atjaunojas, var tikt ieteikta atkārtota kanālu ārstniecība. Tomēr pirmajās dienās sajūtams un pakāpeniski vājinošs jutīgums pats par sevi nav pārārstēšanas pazīme." }
+        ]
+      }
+    ],
+    faq: [
+      { q: "Vai normāli, ja pēc kanālu tīrīšanas sāp sakožot?", a: "Neliels un pakāpeniski samazinošs jutīgums pirmajās dienās var būt normāls. Ja zobs izskatās augstāks par citiem, sāpes stipras vai nesamazinās, jāvēršas pie zobārsta." },
+      { q: "Cik ilgi sāp zobs pēc kanālu tīrīšanas?", a: "Visbiežāk izteiktākais jutīgums sajūtams pirmās 2–3 dienas. Nedēļas laikā tam vajadzētu manāmi samazināties. Ja uzlabošanās nav, ieteicama ārsta apskate." },
+      { q: "Vai var sāpēt zobs starp kanālu ārstniecības vizītēm?", a: "Jā, neliels jutīgums iespējams arī pēc pirmā ārstniecības posma. Svarīgi saudzēt pagaidu plombu, ievērot ieteikumus un nenokavēt nākamo vizīti." },
+      { q: "Vai sāpes nozīmē, ka kanālu ārstniecība neizdevās?", a: "Ne vienmēr. Pirmajās dienās jutīgumu var izraisīt ap sakni esošo audu reakcija. Par problēmu vairāk liecina pastiprinošas sāpes, pietūkums, uzlabošanās trūkums vai simptomu atgriešanās." }
+    ],
+    sources: [
+      { label: "Root Canal Explained", url: "https://www.aae.org/patients/root-canal-treatment/what-is-a-root-canal/root-canal-explained/" },
+      { label: "Root Canal Post Treatment Care", url: "https://www.aae.org/patients/your-office-visit/post-treatment-care/" },
+      { label: "Pain Prevalence and Severity Before, During, and After Root Canal Treatment: A Systematic Review", url: "https://pubmed.ncbi.nlm.nih.gov/21419285/" },
+      { label: "The Effect of Antibiotic Use on Endodontic Post-Operative Pain and Flare-Up Rate: A Systematic Review With Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35165442/" }
+    ]
+  },
+  "ko-darit-kad-bernam-sap-zobs": {
+    sections: [
+      {
+        p: [
+          "Kad bērnam sāp zobs, vecākiem var būt grūti saprast, kas noticis un cik ātri jāvēršas pēc palīdzības. Mazāks bērns ne vienmēr spēj precīzi parādīt sāpošo vietu, tāpēc par problēmu var liecināt nevēlēšanās ēst, slikts miegs, aizkaitināmība vai vienas mutes puses saudzēšana.",
+          "Bieža bērnu zobu sāpju iemesls ir kariess, taču nepatīkamas sajūtas var izraisīt arī zoba trauma, smaganu iekaisums, starp zobiem iestrēdzis ēdiens, augošs zobs vai mutes gļotādas bojājums. Neārstēts kariess var progresēt, izraisīt sāpes, infekciju un traucēt bērnam ēst vai gulēt.",
+          "Ja bērnam sāp zobs, mājās var tikai īslaicīgi atvieglot pašsajūtu. Sāpju cēloni jānosaka zobārstam. Vizīti nedrīkstētu atlikt tikai tāpēc, ka sāp piena zobs — laikus sniegta palīdzība palīdz izvairīties no sarežģītākas ārstniecības."
+        ]
+      },
+      {
+        h: "Kāpēc bērnam var sāpēt zobs?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Zobu kariess attīstās, kad aplikumos esošās baktērijas sadala ar pārtiku un dzērieniem uzņemtos cukurus. Radušās skābes pakāpeniski bojā zoba emalju un dziļākos audus. Risku palielina bieža saldu uzkodu un dzērienu lietošana, nepietiekama aplikumu noņemšana un pārāk maza fluorīdu iedarbība." },
+          { type: "p", text: "Sākotnējais kariess var neizraisīt nekādas sajūtas. Bojājumam padziļinoties zobs var kļūt jutīgs pret saldu, aukstu vai karstu ēdienu. Vēlāk sāpes var parādīties pašas no sevis, pastiprināties vakarā vai pamodināt bērnu naktī." },
+          { type: "p", text: "Ja 3 gadus vecam bērnam jau sabojāti vairāki zobi, vizīti pie zobārsta nedrīkstētu atlikt. Agrīnās bērnības kariess var sākties tikko izaugot pirmajiem piena zobiem un progresēt diezgan nepamanāmi. Laikus novērtējot mutes stāvokli, var apturēt turpmāko bojājumu padziļināšanos un izveidot bērnam piemērotu ārstniecības un profilakses plānu." },
+          { type: "p", text: 'Tomēr bērns ar vārdiem „sāp zobs" var aprakstīt arī citu mutes problēmu. Nepatīkamas sajūtas var izraisīt arī:' },
+          { type: "ul", items: [
+            "starp zobiem iestrēdzis ēdiens;",
+            "apsārtušas vai pietūkušas smaganas;",
+            "afta vai cita gļotādas čūliņa;",
+            "iekosts vaigs vai mēle;",
+            "atlūzis vai pēc traumas bojāts zobs;",
+            "augošs vai kustīgs zobs;",
+            "zoba saknes zonas infekcija."
+          ] },
+          { type: "p", text: "Precīzu iemeslu var noteikt tikai apskatot bērnu. Ja nepieciešams, zobārsts veic radioloģisku izmeklējumu, lai novērtētu starpzobu telpas, zoba saknes un apkārtējos audus." }
+        ]
+      },
+      {
+        h: "Kā saprast, kurš zobs bērnam sāp?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Vecāks bērns visbiežāk var parādīt sāpošo vietu, taču viņa norādītais zobs ne vienmēr ir īstais sāpju avots. Sāpes var būt jūtamas arī blakus zobos, žoklī vai auss zonā." },
+          { type: "p", text: "Mierīgi pajautājiet bērnam:" },
+          { type: "ul", items: [
+            "kurā vietā sāp visvairāk;",
+            "vai sāp pastāvīgi vai tikai ēdot;",
+            "vai sāpes izraisa auksts, silts vai salds ēdiens;",
+            "vai sāp sakožot;",
+            "vai sāpes traucē gulēt;",
+            "vai bērns pēdējā laikā nav sitis."
+          ] },
+          { type: "p", text: "Mazākam bērnam sāpju stiprumu var palīdzēt novērtēt, izmantojot vienkāršu sejiņu skalu." },
+          { type: "p", text: "Pirms apskatot muti nomazgājiet rokas un izvēlieties labi apgaismotu vietu. Pārbaudiet, vai neredzat zoba aptumšošanos, dobumu, atlūzušu zobu, iestrēdzušu ēdienu, apsārtušas smaganas, abscesu, gļotādas čūliņu vai sejas pietūkumu." },
+          { type: "p", text: "Nespiediet sāpošo zobu vai smaganas un nemēģiniet paši noteikt diagnozi. Pat ja skaidra bojājuma neredzat, kariess var būt starp zobiem, savukārt infekcija — zoba iekšpusē vai saknes zonā." }
+        ]
+      },
+      {
+        h: "Ko darīt līdz vizītei pie zobārsta?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Kad bērnam sāp zobs, ko darīt vispirms, atkarīgs no viņa pašsajūtas un papildu simptomiem. Sazinieties ar zobārstniecības klīniku un pastāstiet, cik ilgi sāp, vai ir pietūkums, drudzis, trauma un vai sāpes traucē bērnam ēst vai gulēt." },
+          { type: "p", text: "Līdz vizītei ieteicams:" },
+          { type: "ol", items: [
+            "Uzmanīgi iztīrīt zobus. Izmantojiet mīkstu suku, taču pilnīgi neatteicieties no mutes higiēnas.",
+            "Pārbaudīt starpzobu telpas. Ja bērns atļauj, ar zobu diegu uzmanīgi izņemiet iestrēdzušo ēdienu.",
+            "Izvēlēties maigu ēdienu. Dodiet mīkstu, nekarstu ēdienu un ūdeni.",
+            "Izvairīties no kairinātājiem. Nepiedāvājiet ļoti aukstus, karstus, saldus vai cietus produktus.",
+            "Ja nepieciešams, mazināt sāpes. Zāles bērnam var dot tikai atbilstoši viņa vecumam, svaram, preparāta instrukcijai vai ārsta norādījumam.",
+            "Novērot stāvokli. Pievērsiet uzmanību, vai neparādās pietūkums, drudzis, strutošana vai vājums."
+          ] },
+          { type: "p", text: "Bērniem nedrīkst dot aspirīnu. Sāpes mazinošas tabletes, alkoholu, ēteriskās eļļas vai citas vielas nedrīkst likt tieši uz zoba vai smaganām, jo tās var bojāt mutes gļotādu." },
+          { type: "p", text: "Antibiotikas nedrīkst sākt lietot patstāvīgi. Tās neizārstē kariesu un neaizvieto zobārstniecības ārstniecību. Pat ja sāpes samazinājās, vizīti atcelt nedrīkstētu — īslaicīga uzlabošanās nenozīmē, ka zobs izveseļojās." }
+        ]
+      },
+      {
+        h: "Kad bērna zoba sāpes prasa neatliekamo palīdzību?",
+        p: [],
+        blocks: [
+          { type: "p", text: "Pēc iespējas ātrāk vērsieties pie zobārsta, ja sāpes stipras, nepāriet, pamodina bērnu naktī vai traucē ēst. Steidzīgāk novērtēt bērnu vajag arī tad, kad parādās smaganu, vaiga vai žokļa pietūkums, drudzis, struti, slikta garša mutē vai sāpes sakožot. Bērnu zobārstniecības neatliekamiem stāvokļiem pieskaitāmas sāpes, infekcija, sejas pietūkums, nekontrolēta asiņošana un mutes vai sejas trauma." },
+          { type: "p", text: "Nekavējoties nepieciešama medicīniskā palīdzība, ja:" },
+          { type: "ul", items: [
+            "pietūkums strauji palielinās vai izplatās;",
+            "pietūkst apvidus ap aci vai kaklu;",
+            "bērnam grūti rīt, runāt vai elpot;",
+            "bērns kļūst gauss, un viņa stāvoklis ievērojami pasliktinās;",
+            "pēc traumas bagātīgi asiņo;",
+            "aizdomas par žokļa vai citu nopietnu bojājumu."
+          ] },
+          { type: "p", text: "Sejas vai kakla pietūkums kopā ar apgrūtinātu rīšanu vai elpošanu var norādīt uz izplatītu infekciju. Šādā gadījumā nevajadzētu gaidīt plānoto vizīti." }
+        ]
+      },
+      {
+        h: "Vai jāārstē sabojātie piena zobi?",
+        p: [
+          "Piena zobi palīdz bērnam košļāt, runāt un saglabāt vietu pastāvīgajiem zobiem. Neārstēts to kariess var izraisīt sāpes, infekciju, apgrūtināt ēšanu un traucēt miegu. Zobārstniecības ārstniecība bērniem tiek uzskatīta par nepieciešamu, lai novērstu mutes slimību, infekciju un sāpes un atjaunotu zobu funkciju.",
+          "Ārstniecības veids atkarīgs no bojājuma dziļuma, zoba stāvokļa, bērna vecuma un spējas sadarboties. Agrīnu bojājumu reizēm var apturēt ar profilaktiskām vai minimāli invazīvām ierīcēm. Izveidojies dobums var tikt plombēts, savukārt stipri bojātam zobam var būt nepieciešama pulpas ārstniecība, kronis vai izraušana.",
+          "Ja bērnam sāp zobs vai pamanījāt izmainījušos piena zobu, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā. Mūsu speciālisti novērtēs bērna mutes stāvokli, izskaidros ārstniecības iespējas un palīdzēs izvēlēties viņa vecumam piemērotu risinājumu."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Bērnam sāp zobs — ko darīt, ja pie zobārsta tiksim tikai pēc dažām dienām?", a: "Sazinieties ar klīniku un aprakstiet simptomus, jo var būt nepieciešama agrāka vizīte. Līdz konsultācijai uzturiet mutes higiēnu, izvairieties no temperatūras kairinātājiem un, ja nepieciešams, dodiet bērnam piemērotu sāpes mazinošu līdzekli atbilstoši preparāta instrukcijai. Parādoties pietūkumam, drudzim vai pasliktinoties pašsajūtai, palīdzība nepieciešama ātrāk." },
+      { q: "Vai zoba sāpes var pāriet pašas?", a: "Sāpes var īslaicīgi vājināties, taču tas nenozīmē, ka iemesls izzuda. Sāpošo vai bojāto zobu tik un tā jāapskata zobārstam." },
+      { q: "Ko darīt, ja 3 gadus vecam bērnam sabojāti vairāki zobi?", a: "Reģistrējiet bērnu zobārsta apskatei. Ārsts novērtēs bojājumu dziļumu, bērna kariesa risku un izveidos ārstniecības un profilakses plānu." },
+      { q: "Vai sāpošu piena zobu var uzreiz izraut?", a: "Izraušana nav automātisks risinājums. Ja zobu var uzticami izārstēt un saglabāt, tas bieži ir noderīgi. Ārstniecība tiek izvēlēta atbilstoši zoba stāvoklim, bērna vecumam un pastāvīgā zoba attīstībai." }
+    ],
+    sources: [
+      { label: "Policy on Early Childhood Caries: Consequences and Preventive Strategies", url: "https://www.aapd.org/research/oral-health-policies--recommendations/early-childhood-caries-classifications-consequences-and-preventive-strategies/" },
+      { label: "Policy on Early Childhood Caries: Unique Challenges and Management Considerations", url: "https://www.aapd.org/research/oral-health-policies--recommendations/early-childhood-caries-unique-challenges-and-treatment-options/" },
+      { label: "Policy on Emergency Oral Care", url: "https://www.aapd.org/research/oral-health-policies--recommendations/emergency-oral-care-for-infants-children-adolescents-and-individuals-with-special-health-care-needs/" },
+      { label: "Ending Childhood Dental Caries: WHO Implementation Manual", url: "https://www.who.int/publications/i/item/9789240000056" }
+    ]
+  },
+  "zoba-implanta-noraidisanas-pazimes": {
+    sections: [
+      {
+        p: [
+          'Zobu implanti visbiežāk veiksmīgi ieaug un kļūst par uzticamu risinājumu, zaudējot zobu. Tomēr, tāpat kā pēc jebkuras ķirurģiskās procedūras, komplikācijas pēc zobu implantēšanas var rasties. Pacienti bieži to sauc par „implanta noraidīšanu", taču visbiežāk runa nav par īstu alerģisku reakciju, bet par implanta neieaugšanu, iekaisumu, infekciju vai apkārtējo audu problēmām.',
+          "Vissvarīgākais — prast atšķirt normālu dzīšanas gaitu no simptomiem, kurus nevajadzētu ignorēt. Neliela smelgme vai pietūkums pirmajās dienās var būt ierasts, taču pastiprinošas sāpes, strutošana, slikta smaka, drudzis vai implanta kustība ir zīmes, ka jāvēršas pie ārsta. Jo agrāk situācija tiek novērtēta, jo lielāka iespēja izvairīties no nopietnākām komplikācijām."
+        ]
+      },
+      {
+        h: "Normālas sajūtas pēc implantācijas un bīstamie simptomi",
+        p: [
+          "Pēc implantācijas organismam nepieciešams laiks, lai sadzīstu, tāpēc noteiktas sajūtas pirmajās dienās ir normālas. Var būt jūtama viegla smelgme, spriegums, jutīgums vai neliels pietūkums ap operēto vietu. Pirmajās stundās iespējama arī neliela asiņošana. Parasti šiem simptomiem vajadzētu pakāpeniski samazināties.",
+          "Sabažīties vajadzētu tad, ja pašsajūta nevis uzlabojas, bet pasliktinās. Bīstamas pazīmes ir pastiprinošas sāpes, palielinošs pietūkums, strutošana, slikta smaka vai nepatīkama garša mutē, drudzis, asiņošana, kas neapstājas, vai sajūta, ka implants kustas. Šādi simptomi var norādīt uz infekciju, iekaisumu vai citu komplikāciju.",
+          "Svarīgi vērtēt ne tikai pašu simptomu, bet arī tā gaitu. Ja pēc dažām dienām smelgme samazinās, tas visbiežāk atbilst ierastai dzīšanai. Ja sāpes pastiprinās, parādās jauni simptomi vai vispārējā pašsajūta pasliktinās, jāsazinās ar implantējošo ārstu."
+        ]
+      },
+      {
+        h: "Biežākās zoba implanta noraidīšanas vai neieaugšanas pazīmes",
+        p: [
+          "Viena no svarīgākajām pazīmēm, ka implants var neieaugt vai attīstās komplikācija, ir sāpes, kas nevis samazinās, bet pastiprinās. Pirmajās dienās pēc implantācijas smelgme var būt normāla, taču stipras, pulsējošas vai ilgi nepārejošas sāpes jānovērtē ārstam.",
+          "Cits satraucošs simptoms — palielinošs pietūkums. Neliels pietūkums pēc procedūras ir ierasts, taču, ja pēc dažām dienām tas pastiprinās, izplatās uz seju vai kopā parādās temperatūra, tas var norādīt uz iekaisumu vai infekciju. Smaganas ap implantu arī var apsārtīt, kļūt jutīgas, asiņot vai strutot.",
+          "Slikta smaka, nepatīkama garša mutē vai struti ap implantu ir pazīmes, kuras nevajadzētu ignorēt. Tās var būt saistītas ar bakteriālu infekciju vai iekaisumu ap implantu. Arī ļoti svarīgs simptoms ir implanta, dzīšanas galviņas vai pagaidu protēzes kustība. Implantam jābūt stabilam, tāpēc jebkura kustības sajūta jānovērtē pēc iespējas ātrāk.",
+          "Vēlākā periodā par problēmu var brīdināt smaganu atkāpšanās, redzama implanta vītne, sāpes kožot vai spiežot. Šādos gadījumos nepieciešama zobārsta apskate, jo laikus pamanītas problēmas bieži var kontrolēt ātrāk."
+        ]
+      },
+      {
+        h: "Zoba implanta iekaisums: kā tas izpaužas?",
+        image: "/implanto-uzdegimas.webp",
+        p: [
+          "Zoba implanta iekaisums var bojāt smaganas un audus ap implantu. Sākumā simptomi reizēm ir neizteikti, tāpēc pacients var domāt, ka tas ir tikai ierasts jutīgums pēc procedūras. Tomēr iekaisumu ap implantu nedrīkstētu ignorēt, jo laikus neārstēts tas var progresēt.",
+          "Agrīnās iekaisuma pazīmes var būt apsārtušas, pietūkušas vai jutīgas smaganas ap implantu. Tīrot zobus vai pieskaroties smaganām var parādīties asiņošana. Reizēm sajūtams spiediens, smelgme vai sāpes kožot. Ja parādās strutošana, slikta smaka vai nepatīkama garša mutē, tas var norādīt uz aktīvāku iekaisumu vai infekciju.",
+          "Progresējošs iekaisums var ietekmēt ne tikai smaganas, bet arī kaulu ap implantu. Šādā gadījumā var parādīties smaganu atkāpšanās, redzama implanta virsma vai pat implanta kustība. Zoba implanta iekaisumu jānovērtē ārstam — patstāvīga ārstniecība vai antibiotiku lietošana bez nozīmējuma problēmu neatrisina."
+        ]
+      },
+      {
+        h: "Kāpēc var rasties komplikācijas pēc zobu implantēšanas?",
+        p: [
+          "Komplikācijas pēc zobu implantēšanas var rasties dažādu iemeslu dēļ. Reizēm tās saistītas ar individuālo pacienta dzīšanas reakciju, vispārējo veselības stāvokli vai kaula kvalitāti, un reizēm — ar kopšanu pēc procedūras. Svarīgi saprast, ka komplikācijas neobligāti nozīmē pacienta vai ārsta kļūdu, taču tās laikus jāpamana.",
+          "Viens no biežākajiem riska cēloņiem ir nepietiekama mutes higiēna. Ja ap implantu uzkrājas aplikumi un baktērijas, palielinās smaganu iekaisuma risks. Smēķēšana arī var pasliktināt audu asinsriti, palēnināt dzīšanu un palielināt komplikāciju iespējamību. Risku var palielināt arī nekontrolētas vispārējās slimības, pārāk agrīna implanta noslogošana vai neierašanās kontroles vizītēs.",
+          "Reizēm ietekmi rada zobu griešana, spēcīga sakodiena vai pārāk liela košļāšanas slodze. Tāpēc pēc implantācijas svarīgi ievērot ārsta ieteikumus, regulāri pārbaudīties un ziņot par jebkurām neparastām sajūtām."
+        ]
+      },
+      {
+        h: "Kad simptomi var parādīties?",
+        p: [
+          "Iespējamie implanta neieaugšanas vai iekaisuma simptomi var parādīties dažādos laikos. Agrīnas komplikācijas visbiežāk izpaužas pirmajās dienās vai nedēļās pēc implantācijas. Tās var būt saistītas ar dzīšanu, infekciju, asiņošanu, pastiprinošām sāpēm, palielinošu pietūkumu vai operētās vietas kairinājumu.",
+          "Vēlīnas komplikācijas var parādīties pēc dažiem mēnešiem vai pat gadiem. Visbiežāk tās saistītas ar iekaisumu ap implantu, nepietiekamu mutes higiēnu, smēķēšanu, pārāk lielu slodzi, protezēšanas problēmām vai regulāro pārbaužu trūkumu. Šādos gadījumos pacients var pamanīt asiņošanu tīrot, nepatīkamu garšu, smaganu atkāpšanos, sāpes kožot vai implanta kustību.",
+          "Šī iemesla dēļ svarīgas ne tikai pirmās dienas pēc implantācijas, bet arī ilgtermiņa implantu kopšana. Pat ja implants ilgu laiku neradīja problēmas, bet parādījās jauni simptomi, jāvēršas pie zobārsta."
+        ]
+      },
+      {
+        h: "Ko darīt, pamanot iespējamas implanta noraidīšanas pazīmes?",
+        p: [
+          "Ja pamanījāt simptomus, kas var norādīt uz implanta neieaugšanu vai iekaisumu, vissvarīgākais ir nekavēties un sazināties ar implantējošo ārstu. Nevajadzētu gaidīt, kad sāpes vai pietūkums pāriet paši, īpaši, ja simptomi pastiprinās vai parādās strutošana, slikta smaka, drudzis vai implanta kustība.",
+          "Kamēr gaidāt vizīti, nekustiniet implantu, nespiediet smaganas un neaiztieciet operēto vietu. Mutes higiēnu uzturiet uzmanīgi — tīriet maigi, nebojājot kairinātos audus. Nelietojiet antibiotikas vai citas zāles patstāvīgi, ja tās nav nozīmējis ārsts.",
+          "Vizītes laikā ārsts novērtēs smaganas, implanta stabilitāti, apkārtējos audus un, ja nepieciešams, veiks rentgena izmeklējumu. Ārstniecība atkarīga no problēmas cēloņa: reizēm pietiek ar iekaisuma kontroli un higiēnas korekciju, un reizēm nepieciešama sarežģītāka ārstniecība."
+        ]
+      },
+      {
+        h: "Vai var izvairīties no implanta komplikācijām?",
+        image: "https://images.unsplash.com/photo-1593022356769-11f762e25ed9?w=1200&q=80&fit=crop&auto=format",
+        p: [
+          "No visām komplikācijām nevar pilnīgi izvairīties, taču risku var ievērojami samazināt. Vispirms svarīgi ievērot ārsta ieteikumus pēc implantācijas: saudzēt operēto vietu, nenoslogot to pārāk agri, lietot nozīmētās zāles un ierasties kontroles vizītēs.",
+          "Ļoti svarīga ir ikdienas mutes higiēna. Ap implantu, tāpat kā ap dabīgajiem zobiem, var uzkrāties aplikumi un baktērijas, tāpēc zobi jātīra rūpīgi, bet neagresīvi. Ārsts vai mutes higiēnists var ieteikt piemērotas ierīces implantu kopšanai.",
+          "Smēķēšana, slikta higiēna, nekontrolētas slimības, zobu griešana un nokavētas pārbaudes var palielināt komplikāciju risku. Tāpēc iepriekš ir vērts informēt ārstu par savu veselības stāvokli, lietotajām zālēm un ieradumiem. Regulāra profesionālā mutes higiēna un profilaktiskās apskates palīdz laikus pamanīt izmaiņas ap implantu."
+        ]
+      },
+      {
+        h: "Zoba implanta noraidīšanas pazīmes nevajadzētu ignorēt",
+        p: [
+          "Ne katras sāpes vai smelgme pēc implantācijas nozīmē, ka implants neieauga. Pirmajās dienās viegls jutīgums, pietūkums vai diskomforts var būt normāla dzīšanas daļa. Tomēr svarīgi novērot, vai simptomi pakāpeniski samazinās.",
+          "Bīstamas pazīmes ir pastiprinošas sāpes, palielinošs pietūkums, strutošana, slikta smaka, nepatīkama garša, drudzis, asiņošana vai implanta kustība. Šādos gadījumos pēc iespējas ātrāk jāvēršas pie ārsta. Laikus novērtējot situāciju, daļu komplikāciju var kontrolēt un pasargāt implantu un apkārtējos audus.",
+          "Ja iedomājaties zoba implanta iekaisumu vai pamanāt neparastus simptomus pēc implantācijas, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Kādas ir zoba implanta noraidīšanas pazīmes?", a: "Biežākās pazīmes ir pastiprinošas sāpes, palielinošs pietūkums, strutošana, slikta smaka, nepatīkama garša mutē, drudzis, neatslābstoša asiņošana un implanta kustība." },
+      { q: "Vai sāpes pēc implantācijas nozīmē, ka implants neieauga?", a: "Ne vienmēr. Neliela smelgme vai jutīgums pirmajās dienās pēc implantācijas var būt normāls. Nemieru rada sāpes, kas pastiprinās, nepāriet vai parādās kopā ar citiem simptomiem." },
+      { q: "Kā izpaužas zoba implanta iekaisums?", a: "Zoba implanta iekaisums var izpausties ar apsārtušām, pietūkušām vai asiņojošām smaganām, jutīgumu, strutošanu, sliktu smaku, nepatīkamu garšu mutē, sāpēm kožot vai implanta kustību." },
+      { q: "Kad pēc implantācijas jāvēršas pie ārsta?", a: "Pie ārsta jāvēršas, ja sāpes pastiprinās, pietūkums palielinās, parādās strutošana, drudzis, slikta smaka, asiņošana vai implants, dzīšanas galviņa vai pagaidu protēze kustas." },
+      { q: "Vai zoba implanta iekaisumu var ārstēt mājās?", a: "Nē. Mājās var uzturēt maigu mutes higiēnu, taču iekaisumu ap implantu jānovērtē ārstam. Patstāvīga antibiotiku lietošana vai ārstniecība bez apskates var pasliktināt situāciju." },
+      { q: "Vai var izvairīties no komplikācijām pēc zobu implantēšanas?", a: "Risku var samazināt, ievērojot ārsta ieteikumus, uzturot labu mutes higiēnu, nesmēķējot, izvairoties no pārāk agrīnas slodzes un regulāri apmeklējot kontroles vizītes." }
+    ],
+    sources: [
+      { label: "Peri-implant diseases and conditions: Consensus report of Workgroup 4 of the 2017 World Workshop on the Classification of Periodontal and Peri-Implant Diseases and Conditions", url: "https://pubmed.ncbi.nlm.nih.gov/29926491/" },
+      { label: "Smoking and Dental Implants: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35056347/" },
+      { label: "A Retrospective Analysis of Biological Complications of Dental Implants", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9391181/" }
+    ]
+  },
+  "kas-jazina-pec-zoba-implantacijas": {
+    sections: [
+      {
+        p: [
+          "Zoba implantācija ir ķirurģiska procedūra, tāpēc pēc tās organismam nepieciešams laiks, lai sadzīstu. Lai gan pati implantācija tiek veikta kontrolētos apstākļos, galīgajam rezultātam ļoti svarīgi arī tas, kā pacients rīkojas pēc procedūras. Pareiza kopšana pirmajās dienās palīdz samazināt komplikāciju risku, atvieglo dzīšanu un rada labākus apstākļus implantam ieaugt.",
+          "Pēc zoba implantēšanas svarīgi ievērot ārsta ieteikumus, saudzēt operēto vietu un novērot savu pašsajūtu. Neliela smelgme, pietūkums vai jutīgums var būt normāla dzīšanas daļa, taču simptomiem vajadzētu pakāpeniski samazināties. Ja sāpes pastiprinās, parādās strutošana, drudzis vai palielinošs pietūkums, jāvēršas pie ārsta."
+        ]
+      },
+      {
+        h: "Kāda pašsajūta pēc zoba implantēšanas ir normāla?",
+        p: [
+          "Pašsajūta pēc zoba implantēšanas var atšķirties atkarībā no procedūras sarežģītības, implanta atrašanās vietas, pacienta veselības stāvokļa un tā, vai bija veiktas papildu procedūras, piemēram, kaula augmentācija. Tomēr noteiktas sajūtas pēc implantācijas ir ierastas un visbiežāk nevajadzētu satraukt.",
+          "Pirmajās dienās varat sajust smelgmi, spriedzi vai jutīgumu operētajā vietā. Arī var parādīties neliels pietūkums, smaganu jutīgums vai grūtāka košļāšana ar to pusi, kurā tika ieskrūvēts implants. Pirmajās stundās pēc procedūras iespējama neliela asiņošana. Daži pacienti pēc ķirurģiskās procedūras sajūt vieglu nogurumu.",
+          "Vissvarīgākais novērot, vai pašsajūta uzlabojas. Normāli, ja diskomforts pakāpeniski samazinās, un pietūkums pēc dažām dienām sāk mazināties. Tomēr, ja sāpes pastiprinās, pietūkums palielinās, parādās slikta smaka, nepatīkama garša mutē, strutošana vai temperatūra, jānekavējas un jāsazinās ar ārstu."
+        ]
+      },
+      {
+        h: "Pirmās stundas pēc zoba implantēšanas",
+        p: [
+          "Pirmās stundas pēc zoba implantēšanas ir īpaši svarīgas, jo tajā laikā sāk veidoties primārais dzīšanas process. Ja ārsts uzlika tamponu, to vajadzētu turēt tik daudz laika, cik bija norādīts. Nevajadzētu to mainīt bez vajadzības vai pastāvīgi pārbaudīt brūci, jo tā var kairināt operēto vietu.",
+          "Kamēr darbojas anestēzija, labāk neēst. Notirpusi mutes zona var izraisīt, ka netīši iekožat vaigā, lūpā vai mēlē. Pirmajā dienā izvairieties no karsta ēdiena un dzērieniem, intensīvas mutes skalošanas, spļaušanas un dzeršanas caur salmiņu. Šīs darbības var traucēt asins recekļa veidošanos un palēnināt dzīšanu.",
+          "Operēto vietu neaiztieciet ar mēli, pirkstiem vai priekšmetiem. Pēc procedūras ieteicams atpūsties un izvairīties no intensīvas fiziskās slodzes. Ja ārsts nozīmēja zāles vai sniedza individuālus ieteikumus, tie jāievēro tieši tā, kā norādīts."
+        ]
+      },
+      {
+        h: "Dzīšana pēc zobu implantācijas: kas jāsagaida?",
+        p: [
+          "Dzīšana pēc zobu implantācijas notiek posmos. Vispirms dzīst smaganas un mīkstie audi ap implantu. Pirmajās dienās var būt jūtama smelgme, jutīgums vai spriedze, un pietūkums visbiežāk ir visizteiktākais otrajā vai trešajā dienā pēc procedūras. Vēlāk šīm sajūtām vajadzētu pakāpeniski samazināties.",
+          "Svarīgi saprast, ka no ārpuses smaganas var izskatīties diezgan ātri sadzijušas, taču pats implants vēl jāintegrējas kaulā. Šis process saukts par osteointegrāciju un ilgst ilgāk par primāro mīksto audu dzīšanu. Tāpēc pat ja sāpju vairs nav, nevajadzētu patstāvīgi noslogot implantu vai nokavēt kontroles vizītes.",
+          "Dzīšanas ilgums atkarīgs no daudziem faktoriem: pacienta veselības stāvokļa, kaula kvalitātes, implanta atrašanās vietas, implantu skaita, mutes higiēnas un tā, vai bija veiktas papildu procedūras, piemēram, kaula augmentācija. Ārsts novērtē dzīšanas gaitu kontroles vizīšu laikā un nolemj, kad var pāriet uz nākamo protezēšanas posmu."
+        ]
+      },
+      {
+        h: "Kā kopt muti pēc implantācijas?",
+        p: [
+          "Pēc implantācijas mutes higiēnai jābūt uzmanīgai, bet konsekventai. Pirmajā dienā nav ieteicams intensīvi skalot muti, jo spēcīga skalošana var traucēt brūces dzīšanai. Tomēr tas nenozīmē, ka mutes tīrību var nepievērst uzmanību. Zobi jātīra, tikai operētā vieta pirmajās dienās jāsargā no tiešas kairinājuma.",
+          "Tīriet zobus maigi, izmantojot mīkstu zobu suku. Izvairieties stipri spiest suku uz operētās vietas, nekasiet brūci un neaizskariet to ar pirkstiem vai mēli. Ja ārsts nozīmēja speciālu skalošanas šķidrumu vai citas ierīces, tos lietojiet tieši tā, kā norādīts.",
+          "Tīrība ir svarīga, jo aplikumi un baktērijas var palielināt iekaisuma risku. Vēlāk, kad audi sadzīs, implants jākopj tikpat atbildīgi kā dabīgie zobi. Regulāra mutes higiēna un profilaktiskās vizītes palīdz uzturēt labu implanta un apkārtējo audu stāvokli."
+        ]
+      },
+      {
+        h: "Ko var ēst pēc zoba implantēšanas?",
+        p: [
+          "Pēc zoba implantēšanas pirmajās stundās vislabāk neēst, kamēr pilnīgi nepāriet anestēzija. Ja ēdīsiet, kamēr mute notirpusi, varat netīši iekost lūpā, vaigā vai mēlē. Kad anestēzija pāriet, izvēlieties mīkstu, nekarstu ēdienu, kas nekairina operēto vietu.",
+          "Pirmajās dienās piemērotas ir putras, jogurts, zupas, mīkstie sautējumi, trīts vai viegli košļājams ēdiens. Vajadzētu izvairīties no cieta, kraukšķīga, ass, ļoti karsta vai lipīga ēdiena. Arī labāk izvairīties no sēklām, riekstiem, drupatām un citiem sīkiem produktiem, kas var nokļūt brūces vietā.",
+          "Košļājiet ar otru mutes pusi un centieties nenoslogot implanta zonu. Dzeriet pietiekami daudz ūdens, taču pirmajā diennaktī izvairieties no dzeršanas caur salmiņu. Alkohola arī vajadzētu izvairīties, īpaši ja lietojat ārsta nozīmētas zāles. Ēdienam pēc procedūras vajadzētu palīdzēt dzīšanai, nevis papildus kairināt operēto vietu."
+        ]
+      },
+      {
+        h: "Ko nedrīkst darīt pēc zoba implantācijas?",
+        image: "https://images.unsplash.com/photo-1468493858157-0da44aaf1d13?w=1200&q=80&fit=crop&auto=format",
+        p: [
+          "Pēc zoba implantācijas svarīgi izvairīties no darbībām, kas var traucēt dzīšanu vai palielināt komplikāciju risku. Pirmajā diennaktī nevajadzētu intensīvi skalot muti, spļaut vai dzert caur salmiņu. Šādas darbības var traucēt asins recekļa veidošanos un kairināt operēto vietu.",
+          "Pirmajās dienās nav ieteicams smēķēt un lietot alkoholu. Smēķēšana pasliktina audu asinsriti, palēnina dzīšanu un var palielināt iekaisuma risku. Alkoholu vajadzētu izvairīties īpaši tad, ja lietojat ārsta nozīmētas zāles. Arī nesildiet operēto vietu, jo siltums var veicināt pietūkumu vai asiņošanu.",
+          "Izvairieties no intensīva sporta, smagas fiziskās slodzes un pirts pirmajās dienās pēc procedūras. Nekasiet brūci, neaiztieciet to ar pirkstiem vai mēli, nemēģiniet patstāvīgi novērtēt implanta vietu. Arī nenokavējiet kontroles vizītes — tās svarīgas, lai pārliecinātos, ka dzīšana pēc zobu implantācijas notiek raiti."
+        ]
+      },
+      {
+        h: "Kad vajadzētu sabažīties un vērsties pie ārsta?",
+        p: [
+          "Neliela smelgme, pietūkums vai jutīgums pirmajās dienās pēc implantācijas var būt normāls. Tomēr simptomiem vajadzētu pakāpeniski samazināties. Ja sāpes nevis vājinās, bet pastiprinās, jāsazinās ar ārstu. Īpaši svarīgi vērsties, ja sāpes kļūst pulsējošas, traucē gulēt vai nepāriet, lietojot ārsta ieteiktās ierīces.",
+          "Satraukt vajadzētu palielinošu pietūkumu pēc dažām dienām, strutošanu, nepatīkamu smaku vai garšu mutē, drudzi, neatslābstošu asiņošanu vai stipras sāpes kožot. Arī jāvēršas, ja šķiet, ka implants, dzīšanas galviņa vai pagaidu protēze kustas.",
+          "Ja stipri pietūkst seja, kļūst grūti rīt, elpot vai parādās vispārējā slikta pašsajūta, nepieciešama neatliekamā medicīniskā palīdzība. Šādos gadījumos nevajadzētu gaidīt kontroles vizīti — jo agrāk ārsts novērtē situāciju, jo ātrāk var izvairīties no nopietnākām komplikācijām."
+        ]
+      },
+      {
+        h: "Cik ilgi notiek dzīšana pēc zobu implantācijas?",
+        p: [
+          "Dzīšana pēc zobu implantācijas nenotiek vienlaikus. Vispirms dzīst smaganas un mīkstie audi. Sākotnējais diskomforts, smelgme vai pietūkums visbiežāk sāk samazināties dažās dienās. Pirmo nedēļu laikā operētā vieta var izskatīties diezgan nomierinājusies, taču tas vēl nenozīmē, ka viss dzīšanas process ir pabeigts.",
+          "Vissvarīgākais posms — implanta saaugšana ar kaulu. Šis process ilgst ilgāk un bieži aizņem vairākus mēnešus. Tikai tad, kad ārsts novērtē, ka implants stabils un dzīšana notiek pareizi, var pāriet uz nākamo protezēšanas posmu.",
+          "Precīzs dzīšanas ilgums atkarīgs no individuālas situācijas: kaula stāvokļa, implantu skaita, pacienta veselības, mutes higiēnas, smēķēšanas, papildu procedūrām un ārsta ieteikumu ievērošanas. Tāpēc ļoti svarīgi nenokavēt plānotās kontroles vizītes."
+        ]
+      },
+      {
+        h: "Veiksmīgam rezultātam svarīgas pirmās dienas un ilgtermiņa kopšana",
+        p: [
+          "Pēc zoba implantēšanas vissvarīgākais ievērot ārsta ieteikumus, saudzēt operēto vietu un novērot savu pašsajūtu. Neliela smelgme, pietūkums vai jutīgums var būt normāla dzīšanas daļa, taču šiem simptomiem vajadzētu pakāpeniski samazināties.",
+          "Dzīšana pēc zobu implantācijas notiek posmos: vispirms dzīst smaganas, vēlāk implants integrējas kaulā. Pareiza mutes higiēna, piesardzība pirmajās dienās un regulāras kontroles vizītes palīdz nodrošināt labāku rezultātu. Ja plānojat zoba implantāciju vai jums ir jautājumi pēc procedūras, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Kāda pašsajūta pēc zoba implantēšanas ir normāla?", a: "Normāli just nelielu smelgmi, jutīgumu, spriedzi vai pietūkumu operētajā vietā. Pirmajās stundās var būt neliela asiņošana. Vissvarīgākais, lai šie simptomi pakāpeniski samazinātos." },
+      { q: "Cik ilgi notiek dzīšana pēc zobu implantācijas?", a: "Sākotnējais diskomforts visbiežāk samazinās dažās dienās, taču implanta saaugšana ar kaulu ilgst ilgāk — bieži vairākus mēnešus. Precīzs ilgums atkarīgs no individuālas situācijas." },
+      { q: "Ko var ēst pēc zoba implantēšanas?", a: "Pirmajās dienās ieteicams mīksts, nekarsts ēdiens. Vajadzētu izvairīties no cieta, kraukšķīga, ass, ļoti karsta vai sīkas drupatas saturošas ēdiena, kas var kairināt operēto vietu." },
+      { q: "Vai var skalot muti pēc implantācijas?", a: "Pirmo diennakti nevajadzētu intensīvi skalot muti, jo tas var traucēt dzīšanu. Vēlāk mutes kopšana tiek veikta saskaņā ar ārsta ieteikumiem." },
+      { q: "Vai var smēķēt pēc zoba implantācijas?", a: "Smēķēt nav ieteicams, jo smēķēšana var palēnināt dzīšanu, pasliktināt audu asinsriti un palielināt komplikāciju risku." },
+      { q: "Kad vērsties pie ārsta pēc implantācijas?", a: "Pie ārsta jāvēršas, ja sāpes pastiprinās, palielinās pietūkums, parādās strutošana, drudzis, slikta smaka, neapstājas asiņošana vai implants vai pagaidu protēze kustas." }
+    ],
+    sources: [
+      { label: "Growth factors and osseointegration in dental implants — A review", url: "https://pubmed.ncbi.nlm.nih.gov/41393465/" },
+      { label: "Post-operative pain management using two drugs following dental implant surgery", url: "https://pubmed.ncbi.nlm.nih.gov/37822832/" },
+      { label: "Smoking and Dental Implants: A Systematic Review and Meta-Analysis", url: "https://pubmed.ncbi.nlm.nih.gov/35056347/" }
+    ]
+  },
+  "kapec-sap-zobs-pec-plombesanas": {
+    sections: [
+      {
+        p: [
+          "Pēc plombēšanas pacienti reizēm pamana, ka zobs kļuvis jutīgāks nekā pirms procedūras. Tas var reaģēt uz aukstu vai karstu dzērienu, saldu ēdienu, košļāšanu vai sakodienu. Tāpēc dabiski rodas jautājums: vai normāli, ka sāp plombētais zobs?",
+          "Neliels jutīgums pēc plombēšanas bieži ir īslaicīgs. Procedūras laikā tiek noņemts kariess, zobs tiek iztīrīts, sagatavots un atjaunots ar plombu, tāpēc zoba audi un nervs var kādu laiku reaģēt jutīgāk. Tas īpaši bieži notiek, ja dobums bija dziļāks vai zobs jau bija jutīgs pirms ārstniecības.",
+          "Tomēr sāpes nedrīkstētu ignorēt, ja tās pastiprinās, kļūst pulsējošas, traucē košļāt vai nepāriet ilgāku laiku. Šādos gadījumos jānoskaidro iemesls, jo reizēm var būt nepieciešama plombas korekcija vai papildu ārstniecība."
+        ]
+      },
+      {
+        h: "Kāpēc pēc plombēšanas zobs kļūst jutīgs?",
+        p: [
+          "Plombēšanas laikā zobārsts noņem bojātos zoba audus un atjauno zoba formu ar plombes materiālu. Lai gan procedūra tiek veikta, lai apturētu kariesa izplatīšanos un pasargātu zobu, pats ārstniecības process var īslaicīgi kairināt zoba audus. Tāpēc pēc procedūras var parādīties jutīgums pret aukstumu, karstumu, saldu vai skābu ēdienu.",
+          "Ja kariess bija seklas, jutīgums visbiežāk ir neliels un ātri samazinās. Tomēr, ja dobums bija dziļš un plomba atrodas tuvāk zoba nervam, zobs var reaģēt spēcīgāk. Šādā gadījumā pacients var sajust smelgmi, īsu sāpi pret aukstumu vai diskomfortu košļājot.",
+          "Svarīgi novērot, vai sajūtas vājinās. Viegls jutīgums, kas katru dienu samazinās, visbiežāk nav bīstams. Tomēr, ja sāp plombētais zobs arvien stiprāk vai sāpes saglabājas ilgi, jāvēršas pie zobārsta atkārtotai apskatei."
+        ]
+      },
+      {
+        h: "Biežākie iemesli, kāpēc sāp plombētais zobs",
+        p: [
+          "Viens no biežākajiem iemesliem — īslaicīgs zoba nerva kairinājums. Tas var notikt pēc jebkuras plombēšanas, īpaši ja ārstētais dobums bija dziļāks. Šādā gadījumā zobs var būt jutīgs pret temperatūras izmaiņām, taču jutīgumam vajadzētu pakāpeniski samazināties.",
+          "Cits biežs iemesls — pārāk augsta plomba. Ja pēc plombēšanas zobs sakožot pirmais saskaras ar pretējo zobu, tam tiek uzliekta pārāk liela slodze. Tad var sāpēt košļājot, sakožot vai pat viegli pieskaroties zobam. Šī situācija visbiežāk tiek atrisināta ar plombas augstuma korekciju.",
+          "Sāpes var izraisīt arī ļoti dziļa plomba, kad kariess bija tuvu nervam. Šādos gadījumos zobs kādu laiku var būt jutīgs, taču, ja sāpes kļūst pulsējošas, ilgi nepāriet vai pamodina naktī, iespējams sācies nerva iekaisums.",
+          "Reizēm pēc plombēšanas izceļas arī citas problēmas: mikroplaisa, papildu zoba bojājums, zobu griešana vai nepareizs sakodiens. Tāpēc precīzu iemeslu vislabāk var noteikt zobārsts apskates laikā."
+        ]
+      },
+      {
+        h: "Kad sāpes pēc plombēšanas ir normālas?",
+        image: "/skausmas-plombavimo.webp",
+        p: [
+          "Nelielas sāpes vai jutīgums pēc plombēšanas ne vienmēr nozīmē, ka kaut kas veikts nepareizi. Zobs bija ārstēts, tāpēc tā audi var kādu laiku reaģēt jutīgāk. Visbiežāk normāli, ja zobs īsi reaģē uz aukstu, karstu, saldu vai skābu ēdienu, bet sāpes ātri pāriet, noņemot kairinātāju.",
+          "Pēc dziļas plombas jutīgums var būt izteiktāks, jo ārstētā vieta atrodas tuvāk zoba nervam. Šādā gadījumā var būt jūtama viegla smelgme vai diskomforts košļājot, taču vissvarīgākais, lai šīs sajūtas pakāpeniski samazinātos.",
+          "Ja katru dienu jūtat mazāku jutīgumu, visbiežāk situāciju var novērot. Tomēr, ja sāpes pastiprinās, kļūst pulsējošas, ilgi nepāriet pēc kairinātāja vai sāk traucēt ēst, jāvēršas pie zobārsta."
+        ]
+      },
+      {
+        h: "Cik ilgi var sāpēt zobs pēc plombēšanas?",
+        p: [
+          "Cik ilgi sāp zobs pēc plombēšanas, atkarīgs no tā, cik dziļš bija kariess, cik liela plomba tika ielikta un cik jutīgi reaģē pats zobs. Visbiežāk viegls jutīgums samazinās dažās dienās. Pacients var pamanīt, ka katru dienu zobs reaģē arvien vājāk.",
+          "Ja plomba bija dziļa, jutīgums var ilgt ilgāk — reizēm vairākas nedēļas. Tā var būt normāla reakcija, ja sāpes nav stipras un pakāpeniski samazinās. Tomēr ilgstošas vai nemainīgas sāpes nevajadzētu ignorēt.",
+          "Ja pēc 2–4 nedēļām joprojām sāp plombētais zobs, jutīgums nesamazinās vai situācija pasliktinās, jāreģistrējas atkārtotai zobārsta apskatei. Ātrāk jāvēršas tad, ja sāpes stipras jau no paša sākuma, traucē gulēt, ir pulsējošas vai zobs ļoti sāp sakožot."
+        ]
+      },
+      {
+        h: "Sāp zobs sakožot vai košļājot — ko tas nozīmē?",
+        p: [
+          "Ja pēc plombēšanas sāp zobs sakožot vai košļājot, viens no biežākajiem iemesliem var būt pārāk augsta plomba. Pat ļoti neliela plombas augstuma atšķirība var novest pie tā, ka plombētais zobs pirmais saskaras ar pretējo zobu un saņem pārāk lielu košļāšanas slodzi.",
+          'Šādā gadījumā pacients bieži jūt, ka „kaut kas traucē", zobs izskatās pārāk augsts vai sāpes parādās tikai sakožot. Reizēm smelgme var pastiprināties, jo zobs pastāvīgi tiek noslogots katra sakodiena laikā.',
+          "Šīs problēmas nevajadzētu paciest, cerot, ka tā vienmēr pāries pati. Zobārsts var ātri novērtēt sakodienu un, ja nepieciešams, koriģēt plombas augstumu. Pēc korekcijas zobs bieži nomierinās, taču, ja sāpes bija ilgstošas, tam var būt nepieciešams nedaudz laika pilnīgi atgūties."
+        ]
+      },
+      {
+        h: "Kad jāvēršas pie zobārsta?",
+        p: [
+          "Ja pēc plombēšanas ir jūtams tikai viegls jutīgums, kas pakāpeniski samazinās, visbiežāk pietiek novērot situāciju. Tomēr ir pazīmes, kuras nevajadzētu ignorēt. Pie zobārsta jāvēršas, ja sāpes pastiprinās, kļūst pulsējošas, pamodina naktī vai nepāriet pat noņemot kairinātāju.",
+          "Atkārtota apskate arī nepieciešama, ja sāp zobs sakožot, košļājot vai šķiet, ka plomba ir pārāk augsta. Šādā gadījumā var būt nepieciešama tikai neliela korekcija, taču kavējot zobs var tikt papildus kairināts.",
+          "Nevilcinieties, ja parādās pietūkums, abscess, nepatīkama garša mutē, temperatūra vai sāpes izplatās uz žokli, ausi vai deniņiem. Šādi simptomi var norādīt uz iekaisumu, kuram nepieciešama papildu ārstniecība."
+        ]
+      },
+      {
+        h: "Ko var darīt mājās, kamēr gaidāt vizīti?",
+        p: [
+          "Ja sāp plombētais zobs, vispirms centieties to papildus nekairinat. Īslaicīgi izvairieties no ļoti auksta, karsta, salda, skāba vai cieta ēdiena. Ja sāp košļājot, nekošļājiet ar to mutes pusi, kurā tika plombēts zobs.",
+          "Zobus vajadzētu tīrīt regulāri, bet maigi. Mutes higiēna ir svarīga, jo aplikumi un pārtikas atliekas var vēl vairāk kairināt smaganas vai plombas malas. Ja zobs jutīgs pret aukstumu, var izvēlēties jutīgiem zobiem paredzētu pastu, taču tā neatrisinās problēmu, ja iemesls ir pārāk augsta plomba vai iekaisums.",
+          "Nevajadzētu kasīt plombu, spiest zobu vai mēģināt patstāvīgi koriģēt sakodienu. Arī izvairieties no agresīvām mājas ierīcēm, kas var bojāt smaganas. Ja sāpes palielinās vai nepāriet, labākais risinājums — zobārsta apskate."
+        ]
+      },
+      {
+        h: "Sāpes pēc plombēšanas bieži ir īslaicīgas, bet tās ir vērts novērot",
+        p: [
+          "Viegls jutīgums pēc plombēšanas bieži ir normāla zoba reakcija uz ārstniecību. Zobs var īsi reaģēt uz temperatūras izmaiņām, saldu ēdienu vai košļāšanu, īpaši ja plomba bija dziļa. Vissvarīgākais, lai šīs sajūtas pakāpeniski samazinātos.",
+          "Ja sāp plombētais zobs sakožot, sāpes pastiprinās, nepāriet vairākas nedēļas vai kļūst pulsējošas, jāvēršas pie zobārsta. Reizēm pietiek ar nelielu plombas korekciju, un reizēm nepieciešama izsmeļošāka diagnostika. Ja jūtat diskomfortu un neesat pārliecināti, vai tas ir normāli, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Vai normāli, ka sāp zobs pēc plombēšanas?", preImage: "https://images.unsplash.com/photo-1684607633138-6cc13613369b?w=1200&q=80&fit=crop&auto=format", a: "Viegls jutīgums vai smelgme pēc plombēšanas var būt normāls, īpaši pirmajās dienās. Tomēr sāpēm vajadzētu pakāpeniski samazināties. Ja tās pastiprinās vai nepāriet ilgu laiku, jāvēršas pie zobārsta." },
+      { q: "Kāpēc sāp plombētais zobs?", a: "Biežākie iemesli — īslaicīgs nerva kairinājums, dziļa plomba, pārāk augsta plomba, nepareizs sakodiens vai iekaisums, ja kariess bija ļoti dziļš." },
+      { q: "Cik ilgi var sāpēt zobs pēc plombēšanas?", a: "Visbiežāk jutīgums samazinās dažās dienās. Pēc dziļas plombas tas var ilgt vairākas nedēļas. Ja pēc 2–4 nedēļām sāpes nesamazinās vai pastiprinās, nepieciešama atkārtota apskate." },
+      { q: "Kāpēc sāp zobs sakožot pēc plombēšanas?", a: "Bieži tā notiek, kad plomba ir nedaudz pārāk augsta. Tad zobs saņem pārāk lielu slodzi katra sakodiena laikā. Zobārsts var koriģēt plombas augstumu." },
+      { q: "Ko darīt, ja sāp plombētais zobs?", a: "Novērojiet, vai sāpes samazinās, izvairieties no kairinoša ēdiena un nekošļājiet ar to pusi, ja sāp sakožot. Ja sāpes pastiprinās, nepāriet vai traucē košļāt, vērsieties pie zobārsta." },
+      { q: "Kad sāpes pēc plombēšanas nav normālas?", a: "Nav normāli, ja sāpes pastiprinās, ir pulsējošas, pamodina naktī, izplatās citās zonās, parādās pietūkums, abscess vai temperatūra. Šādos gadījumos nepieciešama zobārsta apskate." }
+    ],
+    sources: [
+      { label: "Postoperative Hypersensitivity in Class I Resin-based Composite Restorations in General Practice", url: "https://pubmed.ncbi.nlm.nih.gov/19715013/" },
+      { label: "A Randomised Controlled Trial of Postoperative Sensitivity after Class II Restorations with Bulk-fill or Conventional Composite", url: "https://pubmed.ncbi.nlm.nih.gov/38373222/" },
+      { label: "Effect of different adhesive systems on postoperative sensitivity of composite resin restorations in adults: a systematic review and network meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/37017757/" }
+    ]
+  },
+  "vai-sap-kad-izrauj-zobu": {
+    sections: [
+      {
+        p: [
+          "Zoba izraušana daudziem pacientiem rada satraukumu. Visbiežāk baidās ne tikai no pašas procedūras, bet arī no nezināšanas, ko sagaidīt: vai sāpēs, cik ilgi ilgs, ko varēs sajust un kā jutīsieties pēc tam. Tomēr mūsdienu zobārstniecībā zoba izraušana tiek veikta ar anestēziju, tāpēc procedūras laikā asas sāpes pacientam nevajadzētu sajust.",
+          "Svarīgi saprast, ka sāpes un spiediens nav viens un tas pats. Kad izrauj zobu, var sajust spriedzi, kustību vai spiedienu žoklī, taču tam nevajadzētu būt sāpīgam. Šajā rakstā apspriedīsim, kad var būt nepieciešama zoba izraušana, ko var sajust, kad rauj zobu, un cik ilgi sāp pēc zoba izraušanas."
+        ]
+      },
+      {
+        h: "Kad var būt nepieciešama zoba izraušana?",
+        p: [
+          "Zoba izraušana visbiežāk nav zobārsta pirmā izvēle. Kad vien iespējams, tiek meklēts saglabāt zobu, ārstējot kariesu, atjaunojot zoba vainagu, ārstējot sakņu kanālus vai piemērojot citus risinājumus. Tomēr atsevišķos gadījumos zobu saglabāt neizdodas vai tā atstāšana var radīt lielāku risku veselībai.",
+          "Zobu var būt nepieciešams izraut tad, kad tas ir stipri bojāts ar kariesu, atlūzis, ieplaisājis vai vairs nav piemērots atjaunošanai ar plombu vai kroni. Izraušana var būt nepieciešama arī tad, ja izveidojies iekaisums, abscess, saknes lūzums vai zobs ļoti kustīgs periodonta slimību dēļ.",
+          "Bieža zoba izraušanas iemesls — problemātiski gudrības zobi. Ja tie aug nepareizi, spiež citus zobus, izraisa sāpes vai atkārtotu iekaisumu, zobārsts var ieteikt izraušanu. Dažos gadījumos zobs tiek izrauts, gatavojoties ortodontiskajai ārstniecībai."
+        ]
+      },
+      {
+        h: "Vai sāp, kad izrauj zobu?",
+        p: [
+          "Visbiežākais pacientu jautājums — vai sāp, kad izrauj zobu. Parasti procedūras laikā tiek izmantota vietējā anestēzija, tāpēc sāpēm nevajadzētu būt. Ārsts sāk zoba izraušanu tikai tad, kad zona ap zobu ir pietiekami sāpes mazināta.",
+          "Tomēr pacients var sajust noteiktas sajūtas. Kad izrauj zobu, bieži tiek sajusts spiediens, spriedze, zoba kustība vai vibrācija. Šīs sajūtas var būt nepatīkamas, īpaši ja cilvēks satraucas, taču tās nav tas pats, kas asas sāpes. Spiediens rodas tāpēc, ka ārstam jāatbrīvo zobs no tā vietas, taču anestēzija bloķē sāpju sajūtu.",
+          "Ja procedūras laikā tomēr sajūtat sāpes, svarīgi uzreiz par to pastāstīt ārstam. Anestēziju var papildināt, un procedūru uz brīdi apstādināt. Pacientam nevajadzētu paciest sāpes klusējot — saziņa ar ārstu palīdz nodrošināt drošāku un mierīgāku procedūru."
+        ]
+      },
+      {
+        h: "Ko var sajust, kad rauj zobu?",
+        p: [
+          "Kad rauj zobu, pacienti bieži gaida sāpes, taču visbiežāk sajūt nevis sāpes, bet gan spiedienu. Tas ir normāli, jo anestēzija novērš sāpju sajūtu, bet ne visas pieskāriena vai kustības sajūtas. Tāpēc procedūras laikā varat sajust, ka zobs tiek kustināts, spiests vai vilkts.",
+          "Reizēm pacientus biedē arī procedūras skaņas. Tās var izskatīties nepatīkamas, taču neobligāti nozīmē, ka kaut kas notiek slikti. Arī var būt neērti turēt muti plaši atvērtu, īpaši ja tiek raustīts molārs vai gudrības zobs. Ārsts visas procedūras laikā novēro pacienta reakciju, tāpēc, ja sajūtat sāpes, spriedzi vai vēlaties īsi apstāties, par to ir vērts pastāstīt."
+        ]
+      },
+      {
+        h: "No kā atkarīgs, vai zoba izraušana būs sarežģīta?",
+        p: [
+          "Zoba izraušanas sarežģītība atkarīga no vairākiem faktoriem. Viens no svarīgākajiem — zoba atrašanās vieta mutē. Priekšējie zobi bieži tiek izrauti vienkāršāk, savukārt molāri vai gudrības zobi var būt sarežģītāki sakņu formas, to skaita un grūtākas piekļuves dēļ.",
+          "Svarīgi arī tas, vai zobs ir pilnīgi izaudzis vai daļēji paslēpts zem smaganām vai kaulā. Ja zobs ir atlūzis, stipri bojāts ar kariesu, ir liektas saknes vai ap to ir iekaisums, procedūra var ilgt ilgāk. Reizēm šādos gadījumos nepieciešama ķirurģiska izraušana.",
+          "Tomēr pat sarežģītāka zoba izraušana tiek veikta ar anestēziju. Tas nozīmē, ka procedūra var būt ilgāka vai tehniski sarežģītāka, taču pacientam nevajadzētu sajust asas sāpes."
+        ]
+      },
+      {
+        h: "Vai sāp pēc zoba izraušanas?",
+        image: "https://images.unsplash.com/photo-1606811951341-756fdd437682?w=1200&q=80&fit=crop&auto=format",
+        p: [
+          "Beidzoties anestēzijas iedarbībai, pēc zoba izraušanas var parādīties smelgme, jutīgums vai neliels pietūkums. Tā visbiežāk ir normāla dzīšanas procesa daļa. Organisms sāk veidot asins recekli izraušanas vietā, audi dzīst, tāpēc pirmajās dienās var būt jūtams diskomforts.",
+          "Pēc vienkāršas izraušanas sāpes visbiežāk ir vieglākas un diezgan ātri samazinās. Pēc sarežģītākas vai ķirurģiskās izraušanas, īpaši ja tika izrauts gudrības zobs, smelgme un pietūkums var būt izteiktāki. Sāpju stiprums atkarīgs no zoba atrašanās vietas, procedūras sarežģītības, iekaisuma esamības un individuālas dzīšanas reakcijas.",
+          "Ārsts pēc procedūras sniedz ieteikumus, kā kopt brūci un kontrolēt sāpes. Svarīgi tos ievērot, jo pareiza kopšana palīdz samazināt komplikāciju risku un nodrošina raitāku dzīšanu."
+        ]
+      },
+      {
+        h: "Cik ilgi sāp pēc zoba izraušanas?",
+        p: [
+          "Cik ilgi sāp pēc zoba izraušanas, atkarīgs no procedūras sarežģītības, zoba atrašanās vietas un individuālas dzīšanas. Visbiežāk diskomforts tiek sajusts pirmās dažas dienas. Pirmajā diennaktī sāpes var būt izteiktākas, īpaši tad, kad pilnīgi pāriet anestēzijas iedarbība.",
+          "Parasti 2–3 dienās sāpēm vajadzētu pamazām samazināties. Pēc vienkāršas zoba izraušanas pacienti bieži jūt tikai vieglu smelgmi vai jutīgumu. Pēc sarežģītākas izraušanas, piemēram, gudrības zoba, diskomforts var saglabāties ilgāk, un pietūkums var būt vairāk pamanāms.",
+          "Svarīgi novērot, vai stāvoklis uzlabojas. Ja sāpes pēc dažām dienām nevis samazinās, bet pastiprinās, parādās slikta smaka, nepatīkama garša mutē, drudzis, palielinošs pietūkums vai bagātīga asiņošana, jāvēršas pie zobārsta."
+        ]
+      },
+      {
+        h: "Kā rīkoties pēc zoba izraušanas?",
+        p: [
+          "Pēc zoba izraušanas ļoti svarīgi saudzēt brūci un ļaut tai dzīst. Ārsts pēc procedūras uzliek tamponu, kas jātur tik ilgi, cik norādīts. Pirmajā diennaktī nevajadzētu intensīvi skalot muti, spļaut vai dzert caur salmiņu, jo tas var izkustināt asins recekli, kas nepieciešams dzīšanai.",
+          "Arī vajadzētu izvairīties no karsta ēdiena un dzērieniem. Labāk izvēlēties mīkstu, nekarstu ēdienu un košļāt ar otru mutes pusi. Brūci nedrīkst kasīt ar mēli, pirkstiem vai priekšmetiem, jo tā var traucēt dzīšanai un palielināt infekcijas risku.",
+          "Pirmajās dienās nav ieteicams smēķēt, lietot alkoholu un izvairīties no intensīvas fiziskās slodzes. Zobus tīrīt jāturpina, taču uzmanīgi, saudzējot izraušanas vietu. Ja ārsts nozīmēja zāles vai sniedza papildu ieteikumus, tie noteikti jāievēro."
+        ]
+      },
+      {
+        h: "Kad jāvēršas pie zobārsta pēc izraušanas?",
+        p: [
+          "Neliela smelgme, jutīgums vai pietūkums pēc zoba izraušanas ir normāli. Tomēr daži simptomi var norādīt uz komplikācijām. Pie zobārsta jāvēršas, ja sāpes pastiprinās, pagājot 2–4 dienām pēc procedūras, nevis pakāpeniski samazinās.",
+          "Arī svarīgi sazināties ar ārstu, ja parādās slikta smaka, nepatīkama garša mutē, strutošana, drudzis, palielinošs pietūkums vai bagātīga asiņošana. Satraukt vajadzētu arī sāpēm, kas izplatās uz ausi, deniņiem vai žokli.",
+          "Šādos gadījumos nevajadzētu mēģināt ārstēties patstāvīgi. Zobārsts novērtēs brūci, noteiks iemeslu un nozīmēs piemērotu ārstniecību."
+        ]
+      },
+      {
+        h: "Zoba izraušana nedrīkstētu būt sāpīga procedūra",
+        image: "https://images.unsplash.com/photo-1663182245833-7dd667277043?w=1200&q=80&fit=crop&auto=format",
+        p: [
+          "Kad izrauj zobu, procedūras laikā tiek izmantota anestēzija, tāpēc asas sāpes pacientam nevajadzētu sajust. Spiediens, spriedze vai zoba kustība ir ierastas sajūtas, taču tās nav tas pats, kas sāpes.",
+          "Pēc zoba izraušanas dažas dienas var būt smelgme, jutīgums vai pietūkums. Visbiežāk šīs sajūtas pakāpeniski samazinās, īpaši ja tiek ievēroti ārsta ieteikumi. Ja jums sāp zobs vai ārsts ieteica izraušanu, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Vai sāp, kad izrauj zobu?", a: "Visbiežāk nē, jo pirms procedūras tiek izmantota vietējā anestēzija. Var sajust spiedienu, spriedzi vai zoba kustību, bet ne asas sāpes." },
+      { q: "Ko sajūt pacients, kad rauj zobu?", a: "Kad rauj zobu, visbiežāk tiek sajusts spiediens, kustība, spriedze vai vibrācija. Šīs sajūtas var būt nepatīkamas, bet tās nav līdzīgas sāpēm." },
+      { q: "Cik ilgi sāp pēc zoba izraušanas?", a: "Visbiežāk diskomforts tiek sajusts dažas dienas un pakāpeniski samazinās. Pēc sarežģītākas izraušanas smelgme var saglabāties ilgāk. Ja sāpes pastiprinās pēc dažām dienām, jāvēršas pie zobārsta." },
+      { q: "Vai var papildus mazināt sāpes, ja procedūras laikā sāp?", a: "Jā. Ja procedūras laikā sajūtat sāpes, noteikti uzreiz jāpastāsta ārstam. Anestēziju var papildināt, un procedūru uz brīdi apstādināt." },
+      { q: "Ko nedrīkst darīt pēc zoba izraušanas?", a: "Pēc izraušanas nevajadzētu intensīvi skalot muti, spļaut, dzert caur salmiņu, ēst karstu ēdienu, smēķēt, lietot alkoholu vai kasīt brūci." },
+      { q: "Kad pēc izraušanas jāvēršas pie ārsta?", a: "Pie ārsta jāvēršas, ja sāpes pastiprinās, parādās slikta smaka, nepatīkama garša, strutošana, drudzis, palielinošs pietūkums vai bagātīga asiņošana." }
+    ],
+    sources: [
+      { label: "Evidence-based clinical practice guideline for the pharmacologic management of acute dental pain in children, adolescents, and adults", url: "https://pubmed.ncbi.nlm.nih.gov/37634915/" },
+      { label: "Acute Postoperative Pain Due to Dental Extraction in the Adult Population: A Systematic Review and Network Meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/36631957/" },
+      { label: "Local interventions for the management of alveolar osteitis, dry socket", url: "https://pubmed.ncbi.nlm.nih.gov/36156769/" }
+    ]
+  },
+  "ko-darit-kad-sap-gudribas-zobs": {
+    sections: [
+      {
+        p: [
+          "Gudrības zobu sāpes ir viens no biežākajiem iemesliem, kāpēc pacienti pie zobārsta vēršas steidzīgāk, nekā plānoja. Šie zobi aug vēlāk visiem, visbiežāk jau pieaugušajam vecumam, kad žoklī ne vienmēr paliek pietiekami vietas. Tāpēc gudrības zobs var augt nepareizi, spiest blakus esošos zobus, palikt daļēji izaudzis vai izraisīt smaganu iekaisumu.",
+          "Ja sāp gudrības zobs, svarīgi saprast, ka sāpju iemesli var būt dažādi. Reizēm tas ir tikai īslaicīgs augšanas diskomforts, taču citos gadījumos sāpes norāda uz iekaisumu, infekciju, kariesu vai iestrēdzušu zobu. Tāpēc nevajadzētu ilgi gaidīt, cerot, ka problēma pāries pati.",
+          "Šajā rakstā apspriedīsim, ko darīt, kad sāp gudrības zobs, kad noteikti jāvēršas pie zobārsta, vai sāp, kad rauj gudrības zobu, un ko sagaidīt pēc izraušanas."
+        ]
+      },
+      {
+        h: "Kāpēc sāp gudrības zobs?",
+        p: [
+          "Gudrības zobs var sāpēt vairāku iemeslu dēļ. Viens no biežākajiem — augšana. Kad zobs cenšas izlauzties cauri smaganām, apkārtējie audi var kļūt jutīgi, pietūkuši un sāpīgi. Ja žoklī pietiek vietas, šis process var noritēt bez lielākām problēmām. Tomēr gudrības zobiem vietas bieži ir par maz.",
+          "Kad gudrības zobam nav pietiekami vietas, tas var augt greizi, atbalstīties uz blakus esošo zobu vai palikt daļēji iestrēdzis kaulā vai zem smaganām. Šāda pozīcija var izraisīt spiedienu, smelgmi, sāpes košļājot vai pat žokļa spriedzi. Reizēm sāpes izplatās uz ausi, deniņiem vai visu žokļa pusi.",
+          'Vēl viens biežs iemesls — smaganu iekaisums ap daļēji izaugušu gudrības zobu. Kad virs zoba paliek smaganu „vāciņš", zem tā var uzkrāties pārtikas atliekas un baktērijas. Šo vietu ir grūti labi iztīrīt, tāpēc smaganas apsārst, pietūkst, kļūst sāpīgas, var parādīties nepatīkama garša vai smaka mutē.',
+          "Gudrības zobus arī bieži bojā kariess, jo tie atrodas pašā mutes aizmugurē un tos ir grūtāk sasniegt ar suku. Pat neliels bojājums var ātri izraisīt jutīgumu, un vēlāk — stiprākas sāpes vai nerva iekaisumu."
+        ]
+      },
+      {
+        h: "Kā atpazīt, ka sāp tieši gudrības zobs?",
+        p: [
+          "Ne vienmēr viegli precīzi saprast, kurš zobs izraisa sāpes. Gudrības zoba sāpes visbiežāk tiek sajustas pašā žokļa aizmugurē, aiz pēdējā molāra. Sāpes var būt smeldzošas, pulsējošas vai pastiprināties košļājot, plašāk atverot muti vai pieskaroties smaganām tajā vietā.",
+          "Bieža pazīme — pietūkušas vai jutīgas smaganas ap gudrības zobu. Ja zobs izaudzis tikai daļēji, var izskatīties, ka daļu no tā sedz smaganas. Šajā vietā var uzkrāties ēdiens, tāpēc parādās slikta mutes smaka, nepatīkama garša vai sajūta, ka smaganas ir kairinātas.",
+          "Reizēm gudrības zoba problēma izpaužas ne tikai ar lokālām sāpēm. Sāpes var izplatīties uz ausi, deniņiem, rīkli vai visu žokļa pusi. Dažiem pacientiem kļūst grūtāk pilnīgi atvērt muti, košļāt vai tīrīt zobus tajā pusē. Ja ir iekaisums, var parādīties pietūkums, vispārējs vājums vai pacelties temperatūra.",
+          "Tomēr tikai pēc simptomiem ne vienmēr iespējams precīzi noteikt, vai problēmu izraisa gudrības zobs. Līdzīgi var sāpēt arī citu zobu kariesa, smaganu iekaisuma vai žokļa locītavas problēmu dēļ. Tāpēc, ja sāpes atkārtojas, pastiprinās vai nepāriet, nepieciešama zobārsta apskate."
+        ]
+      },
+      {
+        h: "Sāp gudrības zobs — ko darīt vispirms?",
+        p: [
+          "Kad sāp gudrības zobs, vispirms vajadzētu novērtēt, vai sāpes ir vieglas un īslaicīgas, vai stipras, palielinošas un pavadītas ar citiem simptomiem. Ja tiek sajusta tikai neliela smelgme augošā zoba zonā, var sākt ar maigu mutes higiēnu un sāpošās vietas novērošanu. Tomēr, ja sāpes pastiprinās, parādās pietūkums vai grūti atvērt muti, nevajadzētu atlikt vizīti pie zobārsta.",
+          "Pirmais solis — uzmanīgi iztīrīt zobus, īpaši zonu ap gudrības zobu. Tā kā šie zobi atrodas pašā žokļa aizmugurē, ap tiem bieži uzkrājas pārtikas atliekas un aplikumi. Ja zobs izaudzis tikai daļēji, zem smaganas malas var nokļūt baktērijas, kas izraisa iekaisumu un sāpes. Tīrīt jāizdara maigi, neizmantojot spēku, lai vēl vairāk nekairinat smaganas.",
+          "Muti var izskalot ar remdenu ūdeni. Vajadzētu izvairīties no ļoti karsta, auksta, asa, cieta vai lipīga ēdiena, jo tas var pastiprināt sāpes vai papildus traumēt jutīgo vietu. Ja ir pietūkums, pie ārējās vaiga puses uz īsiem brīžiem var pielikt aukstu kompresi. To nevajadzētu likt tieši uz ādas — labāk ietīt dvielī.",
+          "Svarīgi nekasīt smaganas ar asiem priekšmetiem, nemēģināt pārdurt pietūkušu vietu un nelikt zāles tieši uz smaganām. Šādas darbības var bojāt gļotādu un pasliktināt stāvokli. Mājas ierīces var tikai īslaicīgi atvieglot simptomus, taču tās nenovērš iemeslu. Tāpēc, ja sāp gudrības zobs un nezināt, ko darīt, drošākais risinājums — reģistrēties zobārsta apskatei."
+        ]
+      },
+      {
+        h: "Kad noteikti jāvēršas pie zobārsta?",
+        image: "https://images.unsplash.com/photo-1684607633217-462056580c3c?w=1200&q=80&fit=crop&auto=format",
+        p: [
+          "Pie zobārsta vajadzētu vērsties tad, kad gudrības zoba sāpes nepāriet, atkārtojas vai pastiprinās. Pat ja sāpes uz kādu laiku samazinās, tas neobligāti nozīmē, ka problēma izzuda. Iekaisums ap gudrības zobu var atjaunoties, un neārstēts laika gaitā izraisīt lielāku pietūkumu, infekciju vai bojāt blakus esošos zobus.",
+          "Neatliekama zobārsta apskate nepieciešama, ja sāpes ir stipras, pulsējošas, traucē gulēt, ēst vai normāli atvērt muti. Arī nevajadzētu kavēt, ja pietūkušas smaganas, vaigs vai seja, parādījās abscess, slikta garša mutē, nepatīkama smaka vai pacēlās temperatūra. Šie simptomi var norādīt uz infekciju, kurai nepieciešama profesionāla ārstniecība.",
+          "Svarīgi vērsties arī tad, kad sāpes izplatās uz ausi, deniņiem, rīkli vai visu žokļa pusi. Šādos gadījumos cilvēkam var izskatīties, ka sāp nevis viens konkrēts zobs, bet visa mutes vai sejas puse. Zobārsts apskates laikā var noteikt, vai sāpes patiešām izraisa gudrības zobs, vai cita problēma.",
+          "Bieži gudrības zoba stāvokļa novērtēšanai nepieciešams rentgena uzņēmums. Tas palīdz redzēt, kā zobs izvietots kaulā, vai tas spiež blakus zobu, vai ir pietiekami vietas augšanai, kāda ir sakņu pozīcija un vai nav iekaisuma pazīmju. Tikai novērtējot situāciju, var izlemt, vai zobs jānovēro, jāārstē vai jāizrauj."
+        ]
+      },
+      {
+        h: "Vai vienmēr jāizrauj gudrības zobs?",
+        p: [
+          "Nē, gudrības zobu ne vienmēr jāizrauj. Ja zobs izaudzis pareizi, nespiež citus zobus, neizraisa iekaisumu un to var kvalitatīvi iztīrīt, tas var palikt mutē. Šādā gadījumā vissvarīgākais — regulāra kopšana, laba mutes higiēna un profilaktiskās zobārsta apskates.",
+          "Tomēr gudrības zobi bieži rada problēmas savas pozīcijas dēļ. Tā kā tie atrodas pašā žokļa aizmugurē, tos ir grūtāk sasniegt ar suku un starpzobu ierīcēm. Tāpēc ap tiem ātrāk uzkrājas aplikumi, attīstās kariess vai atkārtojas smaganu iekaisums. Ja zobs bojāts tā, ka to kvalitatīvi ārstēt nav iespējams, var tikt ieteikta izraušana.",
+          "Izraušana arī tiek apsvērta, kad gudrības zobs aug greizi, atbalstās uz blakus zobu, izraisa spiedienu, sāpes vai bojā blakus esošos audus. Ja zobs izaudzis tikai daļēji, ap to var pastāvīgi atkārtoties iekaisumi. Šādos gadījumos tikai īslaicīga simptomu mazināšana problēmu neatrisina.",
+          "Lēmums par izraušanu tiek pieņemts individuāli. Zobārsts novērtē pacienta sūdzības, zoba pozīciju, rentgena uzņēmumu, iekaisuma risku un iespējas zobu kopt vai ārstēt. Tāpēc iepriekš nevajadzētu domāt, ka sāpošajam gudrības zobam noteikti būs nepieciešama izraušana. Vispirms svarīgi precīzi noteikt sāpju iemeslu."
+        ]
+      },
+      {
+        h: "Kā zobārsts nosaka gudrības zoba problēmu?",
+        p: [
+          "Gudrības zoba problēmas ne vienmēr redzamas tikai apskatot muti. Reizēm zobs ir izaudzis tikai daļēji, un reizēm tas var būt pilnīgi paslēpts zem smaganām vai kaulā. Tāpēc zobārsts vispirms novērtē pacienta simptomus: kad sākās sāpes, vai tās pastiprinās, vai ir pietūkums, vai grūti košļāt, atvērt muti, rīt, vai sāpes izplatās uz ausi, deniņiem vai žokli.",
+          "Pēc sarunas tiek veikta mutes apskate. Ārsts novērtē smaganu stāvokli ap gudrības zobu, vai nav apsārtuma, pietūkuma, strutošanas, pārtikas atlieku uzkrāšanās vai kariesa pazīmju. Arī tiek apskatīti blakus esošie zobi, jo gudrības zobs var spiest blakus molāru vai piedalīties tā bojāšanā.",
+          "Bieži nepieciešams rentgena uzņēmums vai panorāmas rentgens. Tas palīdz redzēt gudrības zoba pozīciju, sakņu formu, attiecību ar blakus esošajiem zobiem un apkārtējiem audiem. Pēc šīs informācijas zobārsts var izlemt, vai zobu var novērot, vai jāārstē iekaisums, vai labākais risinājums būtu gudrības zoba izraušana."
+        ]
+      },
+      {
+        h: "Vai sāp, kad rauj gudrības zobu?",
+        p: [
+          "Viens no biežākajiem pacientu jautājumiem — vai sāp, kad rauj gudrības zobu. Visbiežāk pati procedūra tiek veikta ar vietējo anestēziju, tāpēc asas sāpes pacientam nevajadzētu sajust. Pirms izraušanas procedūras uzsākšanas ārsts nodrošina, ka zoba un apkārtējo audu zona ir sāpes mazināta.",
+          "Procedūras laikā var sajust spiedienu, spriedzi, kustību vai vibrāciju, taču tas nav tas pats, kas sāpes. Šīs sajūtas rodas tāpēc, ka ārsts strādā ar zobu un apkārtējiem audiem, taču anestēzija bloķē sāpju sajūtu. Ja pacients tomēr sajūt sāpes, svarīgi uzreiz pastāstīt ārstam — anestēziju var papildināt.",
+          "Cik sarežģīti būs izraut gudrības zobu, atkarīgs no tā pozīcijas. Ja zobs pilnīgi izaudzis un saknes nav sarežģītas, izraušana bieži ir vienkāršāka. Ja gudrības zobs iestrēdzis, aug greizi, ir zem smaganām vai kaulā, var būt nepieciešama ķirurģiska izraušana. Šādā gadījumā procedūra var ilgt ilgāk, taču arī tiek veikta ar anestēziju.",
+          "Vissvarīgākais saprast, ka mūsdienu zobārstniecībā gudrības zoba izraušana nedrīkstētu būt sāpīga procedūra. Pacientam var būt nepatīkami spiediena vai satraukuma dēļ, taču ārsts kontrolē anestēziju un procedūras gaitu."
+        ]
+      },
+      {
+        h: "Vai sāp pēc gudrības zoba izraušanas?",
+        p: [
+          "Pēc gudrības zoba izraušanas, beidzoties anestēzijas iedarbībai, var parādīties smelgme, jutīgums, pietūkums vai spriedzes sajūta. Tā ir normāla dzīšanas procesa daļa, īpaši ja zobs tika izrauts sarežģītāk vai nepieciešama ķirurģiska iejaukšanās. Visbiežāk lielāks diskomforts sajūtams pirmajās dienās pēc procedūras.",
+          "Cik sāp pēc gudrības zoba izraušanas, atkarīgs no vairākiem faktoriem: zoba pozīcijas, sakņu formas, izraušanas sarežģītības, iekaisuma esamības un individuālas dzīšanas reakcijas. Vieniem pacientiem pietiek ar vieglu smelgmi, citiem dažas dienas var būt grūtāk plaši atvērt muti vai košļāt tajā pusē. Ārsts pēc procedūras sniedz ieteikumus, kā kontrolēt sāpes un kopt brūci.",
+          "Pēc izraušanas var būt neliela asiņošana, pietūkums, jutīgums un ierobežota mutes atvēršana. Tomēr svarīgi novērot, vai simptomi nepasliktinās. Ja pēc dažām dienām sāpes pastiprinās, parādās slikta smaka, nepatīkama garša mutē, drudzis, bagātīga asiņošana vai palielinošs pietūkums, jāvēršas pie zobārsta.",
+          "Pareiza kopšana pēc procedūras palīdz samazināt komplikāciju risku un nodrošina raitāku dzīšanu. Tāpēc ļoti svarīgi ievērot ārsta norādījumus, netraucēt brūci un neatlikt atkārtoto vizīti, ja parādās neparasti simptomi."
+        ]
+      },
+      {
+        h: "Kā kopt muti pēc gudrības zoba izraušanas?",
+        image: "https://images.unsplash.com/photo-1676897288522-e8a081e71430?w=1200&q=80&fit=crop&auto=format",
+        p: [
+          "Pēc gudrības zoba izraušanas ļoti svarīgi ievērot ārsta ieteikumus, jo pirmās stundas un dienas ir ļoti nozīmīgas dzīšanai. Uzreiz pēc procedūras brūces vietā veidojas asins receklis, kas saudzē brūci un palīdz tai dzīst. Tāpēc svarīgi to nebojāt.",
+          "Pirmajā diennaktī nevajadzētu intensīvi skalot muti, spļaut vai dzert caur salmiņu. Šādas darbības var izkustināt recekli un palēnināt dzīšanu. Arī vajadzētu izvairīties no karsta ēdiena un dzērieniem, jo siltums var veicināt asiņošanu. Labāk izvēlēties mīkstu, nekarstu ēdienu un košļāt ar otru mutes pusi.",
+          "Pirmajās dienās nav ieteicams smēķēt, lietot alkoholu vai intensīvi sportot. Smēķēšana var traucēt dzīšanu, un fiziskā slodze var palielināt asiņošanas un pietūkuma risku. Brūci nevajadzētu pieskarties ar pirkstiem, mēli vai kasīt pārtikas atliekas ar asiem priekšmetiem.",
+          "Zobus tīrīt jāturpina, taču uzmanīgi. Blakus izraušanas vietai jātīra maigi, lai netiktu bojāta dzīstoša zona. Ja ārsts nozīmēja zāles vai speciālas kopšanas ierīces, tās noteikti jālieto, kā norādīts. Ja sāpes, pietūkums vai asiņošana palielinās, jāvēršas pie zobārsta."
+        ]
+      },
+      {
+        h: "Ko nedarīt, kad sāp gudrības zobs?",
+        p: [
+          "Kad sāp gudrības zobs, svarīgi ne tikai zināt, ko darīt, bet arī no kā izvairīties. Viena no biežākajām kļūdām — mēģinājums mazināt sāpes, liekot zāles tieši uz smaganām vai zoba. Aspirīns, spirts, ķiploks vai citas kairinošas vielas var bojāt mutes gļotādu, izraisīt apdegumu un vēl vairāk pastiprināt diskomfortu.",
+          "Arī nevajadzētu sildīt pietūkušo vietu. Ja sāpes izraisa iekaisums vai abscess, siltums var pasliktināt situāciju un veicināt infekcijas izplatīšanos. Šādos gadījumos drošāk lietot aukstu kompresi no ārējās vaiga puses, taču tā ir tikai īslaicīga ierīce līdz zobārsta apskatei.",
+          "Nevajadzētu mēģināt pārdurt abscesu, spiest pietūkušas smaganas vai kasīt zonu ap gudrības zobu ar asiem priekšmetiem. Tā var bojāt audus un ienest vēl vairāk baktēriju. Arī nav ieteicams patstāvīgi lietot antibiotikas bez ārsta nozīmējuma. Antibiotikas nav vajadzīgas vienmēr, un nepareiza to lietošana var būt kaitīga.",
+          "Vissvarīgākais — neatlikt vizīti, ja sāpes pastiprinās, atkārtojas, parādās pietūkums, temperatūra vai grūti atvērt muti. Atkārtots gudrības zoba iekaisums visbiežāk pats no sevis neizzūd, tāpēc to jānovērtē zobārstam."
+        ]
+      },
+      {
+        h: "Gudrības zoba sāpes nevajadzētu ignorēt",
+        p: [
+          "Ja sāp gudrības zobs, vissvarīgākais noteikt patieso sāpju iemeslu. Lai gan reizēm diskomforts var būt saistīts ar augšanu, bieži sāpes izraisa smaganu iekaisums, vietas trūkums, nepareiza zoba pozīcija, kariess vai infekcija. Šādos gadījumos tikai īslaicīgas mājas ierīces problēmu neatrisina.",
+          "Laikus veikta zobārsta apskate palīdz saprast, vai gudrības zobu var novērot, ārstēt vai tomēr nepieciešama izraušana. Jo agrāk tiek vērsts, jo vieglāk kontrolēt iekaisumu, samazināt sāpes un izvairīties no sarežģītākām komplikācijām.",
+          "Ja gudrības zobs izraisa sāpes, pietūkumu, nepatīkamu garšu mutē vai sāpes atkārtojas, negaidiet, kad problēma paasināsies. Reģistrējieties konsultācijai Bangų klīnikā Klaipēdā — ārsts novērtēs situāciju un piedāvās piemērotāko ārstniecības risinājumu."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Ko darīt, ja sāp gudrības zobs?", a: "Ja sāp gudrības zobs, vispirms maigi iztīriet zobus, izskalojiet muti ar remdenu ūdeni un izvairieties no cieta, karsta, auksta vai asa ēdiena. Ja ir pietūkums, pie vaiga no ārpuses uz īsu brīdi var pielikt aukstu kompresi. Tomēr, ja sāpes stipras, atkārtojas vai parādās papildu simptomi, jāvēršas pie zobārsta." },
+      { q: "Cik ilgi sāp pēc gudrības zoba izraušanas?", a: "Diskomforts pēc gudrības zoba izraušanas visbiežāk tiek sajusts dažas dienas. Ilgums atkarīgs no zoba pozīcijas, procedūras sarežģītības, iekaisuma esamības un individuālas dzīšanas. Ja sāpes nevis samazinās, bet pastiprinās, jākonsultējas ar zobārstu." },
+      { q: "Ko nedrīkst darīt pēc gudrības zoba izraušanas?", a: "Pēc izraušanas pirmajā diennaktī nevajadzētu intensīvi skalot muti, spļaut, dzert caur salmiņu, ēst karstu ēdienu vai sportot. Pirmajās dienās arī vajadzētu izvairīties no smēķēšanas un alkohola. Brūci nedrīkst kasīt vai aiztikt ar pirkstiem, jo tas var traucēt dzīšanai." }
+    ],
+    sources: [
+      { label: "Patterns of Third-Molar-Pericoronitis-Related Pain: A Morphometrical Observational Study", url: "https://pubmed.ncbi.nlm.nih.gov/37444724/" },
+      { label: "Surgical removal versus retention for the management of asymptomatic disease-free impacted wisdom teeth", url: "https://pubmed.ncbi.nlm.nih.gov/32368796/" },
+      { label: "Prediction of postoperative facial swelling, pain and trismus following third molar surgery based on preoperative variables", url: "https://pubmed.ncbi.nlm.nih.gov/23229245/" }
+    ]
+  },
+  "ko-darit-kad-sap-zobs": {
+    sections: [
+      {
+        p: [
+          "Zoba sāpes bieži pārsteidz negaidīti: vakarā, darbā, ceļojumā vai nedēļas nogalē, kad ne vienmēr skaidrs, ko darīt un kur vērsties. Reizēm sāpes ir īslaicīgas, piemēram, jutīguma pret aukstumu vai pārtikas atlieku starpzobu telpās dēļ. Tomēr stipras, pulsējošas vai ilgāk nepārejošas sāpes var signalizēt par nopietnāku problēmu — kariesu, zoba nerva iekaisumu, infekciju, abscesu, traumu vai izkritušu plombu.",
+          "Vissvarīgākais — neignorēt sāpes un nemēģināt tās ilgi apslāpēt tikai ar mājas līdzekļiem. Īslaicīga atvieglošana vēl nenozīmē, ka problēma izzuda. Jo agrāk tiek noteikts sāpju iemesls, jo vienkāršāka un ātrāka var būt ārstniecība."
+        ]
+      },
+      {
+        h: "Pirmie soļi, kad sāk sāpēt zobs",
+        p: [
+          "Kad sāk sāpēt zobs, vispirms vajadzētu novērtēt, vai sāpes varēja izraisīt pārtikas atliekas, iestrēgušas starp zobiem vai pie smaganām. Uzmanīgi iztīriet zobus ar mīkstu suku un lietojiet starpzobu diegu vai starpzobu sukas. Svarīgi to darīt maigi, lai papildus nekairinat smaganas.",
+          "Muti varat izskalot ar remdenu ūdeni. Izvairieties no ļoti karsta, auksta, salda vai cieta ēdiena, jo tas var pastiprināt jutīgumu un sāpes. Ja pamanāt vaiga vai smaganu pietūkumu, pie ārējās vaiga puses uz īsu brīdi var pielikt aukstu kompresi. To nevajadzētu likt tieši uz ādas — labāk ietīt dvielī.",
+          "Kad sāp zobs un nav zāļu, šīs darbības var palīdzēt īslaicīgi samazināt diskomfortu, taču tās nenovērš sāpju iemeslu. Ja sāpes pastiprinās, atkārtojas vai parādās papildu simptomi, noteikti jāreģistrējas zobārsta apskatei."
+        ]
+      },
+      {
+        h: "Ja ļoti sāp zobs — kad tā ir neatliekamā situācija?",
+        p: [
+          "Ja ļoti sāp zobs, īpaši kad sāpes ir pulsējošas, pastiprinās naktī vai traucē gulēt, tas var būt zīme, ka problēma ir nopietnāka nekā vienkāršs jutīgums. Neatliekama zobārsta apskate nepieciešama tad, kad sāpes nepāriet dažas stundas, izplatās uz žokli, ausi, deniņiem vai galvu, un arī kad kopā parādās smaganu, vaiga vai sejas pietūkums.",
+          "Nevajadzētu kavēt arī tajos gadījumos, kad mutē redzams abscess, tiek sajusta nepatīkama garša, paceļas temperatūra, grūti atvērt muti vai košļāt. Neatliekamā palīdzība arī nepieciešama pēc zoba traumas — ja zobs atlūzis, salauzies, izsists, izkrita plomba vai kronis un zobs kļuva ļoti jutīgs.",
+          "Šādās situācijās sāpju mazināšana mājās var būt tikai īslaicīgs risinājums. Tikai zobārsts var noteikt precīzu iemeslu un izvēlēties piemērotu ārstniecību, lai tiktu apturēts iekaisums, samazinātas sāpes un izvairīts no komplikācijām."
+        ]
+      },
+      {
+        h: "Ko darīt, kad sāp zobs un nav zāļu?",
+        p: [
+          "Kad sāp zobs un nav zāļu, vissvarīgākais nepanikot un izvairīties no darbībām, kas var pasliktināt situāciju. Vispirms maigi iztīriet zobus, izņemiet pārtikas atliekas no starpzobu telpām un izskalojiet muti ar remdenu ūdeni. Tas var palīdzēt, ja sāpes pastiprināja iestrēdzis ēdiens vai kairinātās smaganas.",
+          "Ja ir pietūkums, pie vaiga no ārpuses var pielikt aukstu kompresi. Turiet to īsos intervālos un nelieciet ledu tieši uz ādas. Svarīgi izvairīties no karstas kompreses, jo siltums var veicināt iekaisuma izplatīšanos, īpaši ja izveidojies abscess.",
+          "Nevajadzētu likt aspirīnu, ķiploku, spirtu vai citas kairinošas vielas tieši uz smaganām vai zoba. Šādas metodes var apdedzināt gļotādu un izraisīt vēl lielākas sāpes. Mājas ierīces var tikai īslaicīgi samazināt diskomfortu, taču tās neatrisina galveno problēmu. Ja sāpes stipras, atkārtojas vai parādās pietūkums, noteikti jāvēršas pie zobārsta."
+        ]
+      },
+      {
+        h: "Kur vērsties, kad sāp zobs?",
+        p: [
+          "Kad sāp zobs, svarīgi novērtēt sāpju stiprumu un citus simptomus. Ja sāpes nav stipras, izpaužas tikai ēdot vai dzerot aukstus dzērienus, var reģistrēties ierastai zobārsta konsultācijai tuvākajā laikā. Tomēr, ja sāpes stipras, pulsējošas, traucē gulēt, kopā parādās pietūkums, abscess, asiņošana vai zoba trauma, nepieciešama neatliekamā zobārstniecības palīdzība.",
+          "Šādos gadījumos vislabāk vērsties zobārstniecības klīnikā, kas sniedz neatliekamo palīdzību. Vizītes laikā ārsts novērtē zoba stāvokli, nosaka sāpju iemeslu un izvēlas piemērotāko risinājumu. Reizēm pietiek noņemt kairinātāju vai īslaicīgi samazināt iekaisumu, taču citos gadījumos var būt nepieciešama endodontiska ārstniecība, plombēšana, abscesa ārstniecība vai cita procedūra.",
+          "Bangų klīnikā Klaipēdā tiek sniegta neatliekama zobārstniecības palīdzība pacientiem, kurus nogurdina stipras zoba sāpes, pietūkums, zoba trauma, izkritusi plomba vai citas akūtas problēmas. Laikus vēršoties pēc palīdzības, var ātrāk mazināt sāpes un samazināt komplikāciju risku."
+        ]
+      },
+      {
+        h: "Sāp zobs nedēļas nogalē — ko darīt?",
+        p: [
+          "Ja sāp zobs nedēļas nogalē, vispirms novērtējiet, vai situācija var pagaidīt līdz tuvākajai zobārsta vizītei. Ja sāpes nav stipras, nav pietūkuma, drudža, abscesa vai traumas pazīmju, īslaicīgi izvairieties no cieta, karsta, auksta un salda ēdiena, uzturiet mutes higiēnu un reģistrējieties vizītei tuvākajā laikā.",
+          "Tomēr, ja sāpes ļoti stipras, pulsējošas, nepāriet, traucē gulēt, pietūcis vaigs vai smaganas, parādījās abscess, temperatūra vai grūti atvērt muti, nevajadzētu kavēt. Šādi simptomi var norādīt uz infekciju vai akūtu iekaisumu, kuram nepieciešama neatliekamā palīdzība.",
+          "Ja nedēļas nogalē jūsu izvēlētā klīnika nestrādā, un simptomi ir bīstami, jāvēršas dežurējošā neatliekamās palīdzības iestādē. Ja stāvoklis nav akūts, ir vērts pēc iespējas agrāk reģistrēties tuvākajai zobārsta vizītei. Bangų klīnikas darba laiks tiek norādīts klīnikas mājaslapā, tāpēc pirms brauciena vienmēr ieteicams pārbaudīt aktuālo informāciju un sazināties par reģistrāciju."
+        ]
+      },
+      {
+        h: "Biežākie zoba sāpju iemesli",
+        image: "https://images.unsplash.com/photo-1592400400196-bf709e32aa88?w=1200&q=80&fit=crop&auto=format",
+        p: [
+          "Zoba sāpes var parādīties dažādu iemeslu dēļ, tāpēc tikai pēc sajūtas ne vienmēr viegli saprast, kas tieši noticis. Viens no biežākajiem iemesliem — kariess. Sākumā tas var izraisīt tikai jutīgumu pret saldu, aukstu vai karstu ēdienu, taču bojājumam padziļinoties sāpes kļūst stiprākas un biežākas.",
+          "Cits biežs iemesls — zoba nerva iekaisums. Šādā gadījumā sāpes bieži ir pulsējošas, stiprākas vakarā vai naktī, var izplatīties uz žokli, ausi vai deniņiem. Sāpes arī var izraisīt smaganu iekaisums, abscess, gudrības zobu augšana, zoba trauma, atlūzums vai lūzums.",
+          "Reizēm sāpes parādās, izkrītot plombai vai kronim, kad zobs kļūst jutīgs pret temperatūras izmaiņām un košļāšanu. Tā kā iemeslu var būt daudz, precīzāk tos nosaka zobārsts apskates laikā."
+        ]
+      },
+      {
+        h: "Kā notiek neatliekamā vizīte pie zobārsta?",
+        p: [
+          "Neatliekamās vizītes laikā zobārsts vispirms uzklausa pacienta sūdzības: kad sākās sāpes, kāds to raksturs, vai ir pietūkums, trauma, jutīgums, drudzis vai citi simptomi. Tad tiek veikta mutes apskate, novērtēts zobu, smaganu un apkārtējo audu stāvoklis.",
+          "Ja tikai apskates nepietiek, var tikt veikts rentgena izmeklējums. Tas palīdz precīzāk noteikt, vai ir dziļš kariess, iekaisums sakņu zonā, abscess, zoba lūzums vai cita problēma, kuru ar plikām acīm neredz.",
+          "Galvenais neatliekamās vizītes mērķis — samazināt sāpes, kontrolēt akūto stāvokli un izlemt, kāda ārstniecība nepieciešama tālāk. Reizēm problēma tiek atrisināta tās pašas vizītes laikā, un reizēm tiek veikta īslaicīga ārstniecība un izveidots tālākais ārstniecības plāns. Vissvarīgākais, lai pacients nedzīvotu ar neskaidru un tikai pasliktinošu situāciju."
+        ]
+      },
+      {
+        h: "Kad vairs nevar gaidīt?",
+        p: [
+          "Gaidīt nevajadzētu, ja zoba sāpes ir ļoti stipras, pulsējošas vai nepāriet pat vairākas stundas. Īpaši svarīgi nekavēt, ja kopā pietūkusi vaiga, smaganu vai sejas zona, parādījās abscess, nepatīkama garša mutē, drudzis vai vispārējs vājums. Šādi simptomi var norādīt uz infekciju, kas neārstēta var izplatīties.",
+          "Neatliekamā palīdzība arī nepieciešama pēc traumas: ja zobs atlūzis, salauzies, izsists, sāka asiņot smaganas vai kļuva grūti sakoss. Arī nevajadzētu gaidīt, ja izkrita plomba vai kronis, un zobs kļuva ļoti jutīgs un sāpīgs.",
+          "Pat ja sāpes uz brīdi samazinās, tas neobligāti nozīmē, ka problēma izzuda. Reizēm akūtas sāpes nomierinās, taču iekaisums turpina progresēt. Tāpēc pastāvot stipriem vai atkārtotiem simptomiem vislabāk pēc iespējas ātrāk vērsties pie zobārsta."
+        ]
+      },
+      {
+        h: "Ātra reakcija palīdz izvairīties no sarežģītākas ārstniecības",
+        p: [
+          "Zoba sāpes ir signāls, ka mutē notiek izmaiņas, kuras nevajadzētu ignorēt. Pat ja sāpes izskatās paciešamas vai īsu brīdi samazinās, to iemesls var saglabāties. Laikus vēršoties pie zobārsta, bieži var ātrāk apturēt iekaisumu, samazināt sāpes un izvairīties no sarežģītākas ārstniecības nākotnē.",
+          "Mājas ierīces var palīdzēt tikai īslaicīgi atvieglot stāvokli, taču tās neaizvieto profesionālu apskati. Īpaši svarīgi nekavēt, ja sāpes stipras, pulsējošas, parādījās pietūkums, abscess, drudzis vai zobs bija bojāts traumas laikā.",
+          "Ja sāp zobs, reģistrējieties konsultācijai Bangų klīnikā Klaipēdā. Ārsts novērtēs situāciju, noteiks sāpju iemeslu un piedāvās piemērotāko ārstniecības risinājumu."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Ko darīt, ja ļoti sāp zobs?", a: "Ja ļoti sāp zobs, vispirms maigi iztīriet zobus, izskalojiet muti ar remdenu ūdeni un izvairieties no karsta, auksta, salda vai cieta ēdiena. Ja ir pietūkums, pie vaiga no ārpuses var pielikt aukstu kompresi. Tomēr stipras, pulsējošas vai ilgi nepārejošas sāpes ir zīme, ka nepieciešama zobārsta apskate. Šādā gadījumā nevajadzētu gaidīt, kad sāpes pāries pašas." },
+      { q: "Ko darīt, kad sāp zobs un nav zāļu?", a: "Kad sāp zobs un nav zāļu, vissvarīgākais izvairīties no kairinošām vai bīstamām ierīcēm. Nelieciet zāles, spirtu, ķiploku vai citas vielas tieši uz smaganām, jo tās var bojāt gļotādu. Īslaicīgi var palīdzēt mutes skalošana ar remdenu ūdeni, maiga mutes higiēna un auksta komprese, ja ir pietūkums. Tomēr šādas ierīces tikai atvieglo simptomus, bet nenovērš sāpju iemeslu." },
+      { q: "Vai zoba sāpes var pāriet pašas?", a: "Reizēm zoba sāpes var uz brīdi samazināties, taču tas neobligāti nozīmē, ka problēma izzuda. Piemēram, iekaisums vai infekcija var turpināt progresēt pat tad, kad sāpes kļūst vājākas. Ja sāpes atkārtojas, pastiprinās, parādās jutīgums košļājot, pietūkums vai citi simptomi, jāvēršas pie zobārsta." },
+      { q: "Kur vērsties, kad sāp zobs?", preImage: "https://images.unsplash.com/photo-1681939278218-a755fb2bf2d3?w=1200&q=80&fit=crop&auto=format", a: "Ja sāp zobs nedēļas nogalē, novērtējiet simptomu nopietnību. Ja sāpes nav stipras, nav pietūkuma, drudža vai abscesa, centieties nekairinat sāpošo vietu un reģistrējieties vizītei tuvākajā laikā. Ja sāpes ļoti stipras, pietūka seja vai smaganas, parādījās abscess, temperatūra vai grūti atvērt muti, jāvēršas pie neatliekamās palīdzības nekavējoties." },
+      { q: "Ko darīt, ja sāp zobs nedēļas nogalē?", a: "Novērtējiet simptomu nopietnību. Ja sāpes nav stipras, nav pietūkuma vai abscesa — reģistrējieties vizītei tuvākajā laikā. Ja sāpes ļoti stipras, pietūka seja vai parādās abscess un temperatūra — vērsieties pie neatliekamās palīdzības." },
+      { q: "Vai var sildīt sāpošo zobu?", a: "Sildīt sāpošo vietu nav ieteicams, īpaši ja ir pietūkums vai aizdomas par abscesu. Siltums var veicināt iekaisuma izplatīšanos un pasliktināt stāvokli. Ja ir pietūkums, drošāka izvēle ir īsos intervālos lietota auksta komprese no ārējās vaiga puses." }
+    ],
+    sources: [
+      { label: "Acute Dental Pain Management Guideline — American Dental Association", url: "https://www.ada.org/resources/research/science/evidence-based-dental-research/pain-management-guideline" },
+      { label: "Evidence-based clinical practice guideline for the pharmacologic management of acute dental pain", url: "https://jada.ada.org/article/S0002-8177(23)00672-4/fulltext" },
+      { label: "Management of odontogenic infections and sepsis: an update", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7517749/" }
+    ]
+  }
+};
+const BLOG_POSTS_LV = BLOG_CARDS_LV.map((card) => ({
+  ...card,
+  ...BODIES[card.slug]
+}));
+function getPostLv(slug) {
+  return BLOG_POSTS_LV.find((p) => p.slug === slug);
+}
 const C = {
   teal: "#097873",
   // AA-safe for text on white (5.32:1)

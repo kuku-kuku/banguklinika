@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
-import { BLOG_POSTS, formatDate } from '../data/blog'
+import { BLOG_CARDS, formatDate } from '../data/blogMeta'
 
 const C = {
   teal:     '#097873',  // AA-safe for text on white (5.32:1)
@@ -52,7 +52,7 @@ export default function Straipsniai() {
       <section className="pb-20 md:pb-28">
         <div className={W}>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {BLOG_POSTS.map((post, i) => (
+            {BLOG_CARDS.map((post, i) => (
               <motion.div
                 key={post.slug}
                 initial={{ opacity: 0, y: 28 }}

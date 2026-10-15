@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../../components/AnimatedSection'
 import SEO from '../../components/SEO'
-import { BLOG_POSTS_LV, formatDateLv } from '../../data/blogLv'
+import { BLOG_CARDS_LV, formatDateLv } from '../../data/blogLvMeta'
 import { SITE_URL } from '../../i18n/lv'
 
 const C = {
@@ -57,7 +57,7 @@ export default function RakstiLv() {
       <section className="pb-20 md:pb-28">
         <div className={W}>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {BLOG_POSTS_LV.map((post, i) => (
+            {BLOG_CARDS_LV.map((post, i) => (
               <motion.div
                 key={post.slug}
                 initial={{ opacity: 0, y: 28 }}

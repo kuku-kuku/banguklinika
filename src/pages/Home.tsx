@@ -8,7 +8,7 @@ import AnimatedSection from '../components/AnimatedSection'
 import { CLINIC } from '../data/clinic'
 import ReviewsCarousel from '../components/ReviewsCarousel'
 import home from '../content/home.json'
-import { BLOG_POSTS, formatDate } from '../data/blog'
+import { BLOG_CARDS, formatDate } from '../data/blogMeta'
 
 import Picture from '../components/Picture'
 import HeroMedia from '../components/HeroMedia'
@@ -101,6 +101,7 @@ const TEAM = [
   { name: 'Donatas Bitinas',   role: 'Implantuojantis gydytojas odontologas',              img: '/team/Donatas_light.jpg' },
   { name: 'Donatas Kubilius',  role: 'Gydytojas, Veido ir Žandikaulių chirurgas',          img: '/team/donataskubilius.jpg' },
   { name: 'Jonas Sabulis',     role: 'Protezuojantis gydytojas odontologas',               img: '/team/Jonas-light.jpg' },
+  { name: 'Agnė Jurkutė',     role: 'Protezuojanti gydytoja odontologė',                  img: '/team/Agnė_light LT.jpg' },
   { name: 'Odeta Venckutė',    role: 'Gydytoja odontologė',                                img: '/team/Odeta-light.jpg' },
   { name: 'Rūta Garšvienė',   role: 'Burnos higienistė, tiesinimo kapomis koordinatorė', img: '/team/Rūta_light.jpg' },
 ]
@@ -168,7 +169,19 @@ function TeamCarousel() {
         {TEAM.map((member, i) => {
           const d = getDist(i)
           const abs = Math.abs(d)
-          if (abs > 2) return null
+
+          /* Outside the visible ±2 band the card is not drawn — but the team
+             grew past five, so from any resting position one member would
+             otherwise be missing from the markup entirely. Their name and role
+             still have to reach assistive tech and crawlers (see above), so
+             the slide degrades to its screen-reader text rather than to null. */
+          if (abs > 2) {
+            return (
+              <span key={member.name} className="sr-only">
+                {member.name} — {member.role}
+              </span>
+            )
+          }
 
           const x = d * 300
           const scale = Math.max(0.65, 1 - abs * 0.17)
@@ -246,6 +259,64 @@ function TeamCarousel() {
         </button>
       </div>
     </div>
+  )
+}
+
+/* ─── Blog card ───────────────────────────────────────────────────────────────
+   A real surface instead of bare text on the shell background: white paper,
+   hairline edge, the cover photo inset so the wave-mask corner still reads.
+   The CTA is pushed to the bottom with mt-auto and sits above a hairline rule,
+   so it lines up card-to-card however long the title or excerpt runs. */
+function PostCard({
+  post,
+  featured = false,
+}: {
+  post: (typeof BLOG_CARDS)[number]
+  featured?: boolean
+}) {
+  return (
+    <Link
+      to={`/straipsniai/${post.slug}`}
+      className="card-flat group flex h-full flex-col p-3 sm:p-4"
+    >
+      <div
+        className={`mask-zoom wave-mask overflow-hidden bg-shell ${
+          featured
+            ? /* On lg the featured card is as tall as the stacked pair beside
+                 it. Letting the photo take the slack keeps the extra height out
+                 of the text block, which otherwise opened a dead gap above the
+                 CTA. Below lg nothing forces the height, so the ratio rules. */
+              'aspect-[16/10] lg:aspect-auto lg:min-h-0 lg:flex-1'
+            : 'shrink-0 aspect-[16/9]'
+        }`}
+      >
+        <Picture
+          src={post.coverImage}
+          alt={post.title}
+          sizes="(max-width: 1023px) 100vw, (max-width: 1400px) 50vw, 44rem"
+          className="block h-full w-full"
+          imgClassName="h-full w-full object-cover"
+        />
+      </div>
+
+      <div className={`flex flex-col px-1 pt-5 sm:px-2 ${featured ? 'shrink-0' : 'flex-1'}`}>
+        <p className="muted text-micro">{formatDate(post.date)}</p>
+        <h3 className={`mt-2 font-bold leading-snug ${featured ? 'text-h2' : 'text-h3'}`}>
+          {post.title}
+        </h3>
+        <p
+          className={`muted measure mb-5 mt-2 text-small leading-relaxed ${
+            featured ? 'clamp-3' : 'clamp-2'
+          }`}
+        >
+          {post.excerpt}
+        </p>
+        <span className="mt-auto flex items-center gap-2 border-t border-hairline pt-4 text-small font-bold text-tide-text">
+          Skaityti daugiau
+          <Arrow />
+        </span>
+      </div>
+    </Link>
   )
 }
 
@@ -563,44 +634,22 @@ export default function Home() {
             </Link>
           </AnimatedSection>
 
-          <div className="grid gap-8 lg:grid-cols-12">
-            {BLOG_POSTS.slice(0, 3).map((post, i) => (
-              <AnimatedSection
-                as="div"
-                key={post.slug}
-                delay={i * 0.08}
-                className={i === 0 ? 'lg:col-span-7' : 'lg:col-span-5'}
-              >
-                <Link to={`/straipsniai/${post.slug}`} className="group flex h-full flex-col">
-                  <div
-                    className={`mask-zoom wave-mask overflow-hidden bg-paper ${
-                      i === 0 ? 'aspect-[16/10]' : 'aspect-[16/9]'
-                    }`}
-                  >
-                    <Picture
-                      src={post.coverImage}
-                      alt={post.title}
-                      sizes="(max-width: 1023px) 100vw, (max-width: 1400px) 50vw, 44rem"
-                      className="block h-full w-full"
-                      imgClassName="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col pt-5">
-                    <p className="muted text-micro">{formatDate(post.date)}</p>
-                    <h3 className={`mt-2 font-bold leading-snug ${i === 0 ? 'text-h2' : 'text-h3'}`}>
-                      {post.title}
-                    </h3>
-                    <p className="muted measure clamp-2 mt-2 flex-1 text-small leading-relaxed">
-                      {post.excerpt}
-                    </p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-small font-bold text-tide-text">
-                      Skaityti daugiau
-                      <Arrow />
-                    </span>
-                  </div>
-                </Link>
-              </AnimatedSection>
-            ))}
+          {/* 7/5 split: the featured post beside a stacked pair. The pair's
+              column is grid-rows-2 so both halves add up to exactly the
+              featured card's height and every "Skaityti daugiau" rule lands
+              on a shared baseline. */}
+          <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
+            <AnimatedSection as="div" className="lg:col-span-7">
+              <PostCard post={BLOG_CARDS[0]} featured />
+            </AnimatedSection>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1 lg:grid-rows-2 lg:gap-8">
+              {BLOG_CARDS.slice(1, 3).map((post, i) => (
+                <AnimatedSection as="div" key={post.slug} delay={(i + 1) * 0.08} className="min-h-0">
+                  <PostCard post={post} />
+                </AnimatedSection>
+              ))}
+            </div>
           </div>
 
           <div className="mt-14">

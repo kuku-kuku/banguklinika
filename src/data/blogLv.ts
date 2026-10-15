@@ -1,14 +1,14 @@
-import type { BlogPost } from './blog'
+/* Latvian article bodies — see ./blog.ts for the split rationale. */
 
-export const BLOG_POSTS_LV: BlogPost[] = [
-  {
-    slug: 'zobu-griesana-nakti-kad-palidz-kapa',
-    title: 'Zobu griešana naktī: kad palīdz kapa?',
-    excerpt: 'Zobu bruksisms bieži paliek nepamanīts, taču ilgtermiņā tas var bojāt zobu emalju, restaurācijas un radīt žokļa muskuļu sāpes. Kā zināt, vai jums ir vajadzīga aizsargkapa?',
-    date: '2026-08-04',
-    category: 'Zobu ārstniecība',
-    coverImage: 'https://images.unsplash.com/photo-1777793636393-a0fec488f3fb?w=1200&q=80&fit=crop&auto=format',
-    readTime: 12,
+import type { BlogPost } from './blogMeta'
+import { BLOG_CARDS_LV, type BlogCard } from './blogLvMeta'
+
+export * from './blogLvMeta'
+
+type PostBody = Pick<BlogPost, 'sections' | 'faq' | 'sources'>
+
+const BODIES: Record<string, PostBody> = {
+  'zobu-griesana-nakti-kad-palidz-kapa': {
     sections: [
       {
         p: [
@@ -160,14 +160,7 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'Sleep Bruxism May Not Be Associated With Obstructive Sleep Apnea: A Systematic Review and Meta-Analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/39182463/' },
     ],
   },
-  {
-    slug: 'ka-notirit-zobakmens',
-    title: 'Kā notīrīt zobakmens?',
-    excerpt: 'Zobakmens ir nogulsnes, kuras zobu suka un pasta vairs nespēj noņemt. Kā tos droši notīra profesionāli un ko var izdarīt mājās, lai novērstu to atkārtotu veidošanos?',
-    date: '2026-08-01',
-    category: 'Mutes higiēna',
-    coverImage: '/blog/kaip-pasalinti-dantu-akmenis.jpg',
-    readTime: 12,
+  'ka-notirit-zobakmens': {
     sections: [
       {
         p: [
@@ -309,14 +302,7 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'Efficacy of Power-Driven Interdental Cleaning Tools: A Systematic Review and Meta-Analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/36562267/' },
     ],
   },
-  {
-    slug: 'kariess-bez-urbsanas-ko-var-darit-klinika-un-majas',
-    title: 'Kariess bez urbšanas: ko var darīt klīnikā un mājās?',
-    excerpt: 'Kariess bez urbšanas iespējams tikai noteiktās slimības stadijās. Kā to droši kontrolēt un kad zobs vairs nav glābjams bez restaurācijas?',
-    date: '2026-07-26',
-    category: 'Zobu ārstniecība',
-    coverImage: '/blog/kariesas-be-grezimo.jpg',
-    readTime: 13,
+  'kariess-bez-urbsanas-ko-var-darit-klinika-un-majas': {
     sections: [
       {
         p: [
@@ -562,14 +548,7 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'World Health Organization – Sugars and Dental Caries', url: 'https://www.who.int/news-room/fact-sheets/detail/sugars-and-dental-caries' },
     ],
   },
-  {
-    slug: 'ka-drosi-balinat-zobus-majas',
-    title: 'Kā droši balināt zobus mājās?',
-    excerpt: 'Zobu balināšana mājās var palīdzēt paspilgtināt dabīgo zobu krāsu, taču ne visi līdzekļi ir vienlīdz efektīvi un droši. Kuras metodes patiešām darbojas un no kā izvairīties?',
-    date: '2026-07-24',
-    category: 'Zobu balināšana',
-    coverImage: '/blog/kaip-saugiai-balinti-dantis-namuose.jpg',
-    readTime: 12,
+  'ka-drosi-balinat-zobus-majas': {
     sections: [
       {
         p: [
@@ -746,14 +725,7 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'At-home vs In-office Bleaching: A Systematic Review and Meta-analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/27045285/' },
     ],
   },
-  {
-    slug: 'ko-darit-kad-veidojas-zoba-abscess',
-    title: 'Ko darīt, kad veidojas zoba abscess?',
-    excerpt: 'Zoba abscess ir bakteriālas infekcijas izraisīts strutu uzkrājums, kas var izraisīt pulsējošas sāpes un pietūkumu. Kāpēc to nedrīkst atlikt un kā zobārsts to ārstē?',
-    date: '2026-07-17',
-    category: 'Neatliekamā palīdzība',
-    coverImage: 'https://images.unsplash.com/photo-1664530837411-0c2e8a3d4dca?w=1200&q=80&fit=crop&auto=format',
-    readTime: 10,
+  'ko-darit-kad-veidojas-zoba-abscess': {
     sections: [
       {
         p: [
@@ -908,14 +880,7 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'Antibiotics for the Urgent Management of Pulpal and Periapical Dental Conditions: Systematic Review and Meta-Analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/31761029/' },
     ],
   },
-  {
-    slug: 'kaula-augmentacija-kas-jazina-pirms-operacijas',
-    title: 'Kaula augmentācija: kas jāzina pirms operācijas?',
-    excerpt: 'Ja žoklī nepietiek kaula zoba implantam, pirms implantācijas var būt nepieciešama kaula augmentācija. Kā notiek procedūra un kādi simptomi var norādīt uz komplikāciju?',
-    date: '2026-07-15',
-    category: 'Mutes ķirurģija',
-    coverImage: '/blog/kaulo-priauginimas.jpg',
-    readTime: 11,
+  'kaula-augmentacija-kas-jazina-pirms-operacijas': {
     sections: [
       {
         p: [
@@ -1035,14 +1000,7 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'Smoking and dental implants: A systematic review and meta-analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/25778741/' },
     ],
   },
-  {
-    slug: 'kam-tiek-kompenseti-zobu-implanti',
-    title: 'Kam tiek kompensēti zobu implanti?',
-    excerpt: 'Ierastie zobu implanti Lietuvā nav automātiski kompensēti visiem pacientiem. Kā darbojas zobu protezēšanas kompensācija un kad varētu tikt segta daļa implantācijas izmaksu?',
-    date: '2026-07-11',
-    category: 'Zobu implantācija',
-    coverImage: 'https://images.unsplash.com/photo-1643386281892-f8417a49130e?w=1200&q=80&fit=crop&auto=format',
-    readTime: 11,
+  'kam-tiek-kompenseti-zobu-implanti': {
     sections: [
       {
         p: [
@@ -1172,14 +1130,7 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'Patikslinta dantų protezavimo paslaugų kompensavimo tvarka', url: 'https://ligoniukasa.lrv.lt/lt/naujienos/patikslinta-dantu-protezavimo-paslaugu-kompensavimo-tvarka-aRE/' },
     ],
   },
-  {
-    slug: 'cik-ilgi-notiek-mutes-higiena',
-    title: 'Cik ilgi notiek mutes higiēna?',
-    excerpt: 'Profesionālā mutes higiēna visbiežāk ilgst 30–60 minūtes. Kas var pagarināt procedūru un kad vienas vizītes var nepietikt?',
-    date: '2026-07-08',
-    category: 'Mutes higiēna',
-    coverImage: 'https://images.unsplash.com/photo-1663755489920-5e09f66d011a?w=1200&q=80&fit=crop&auto=format',
-    readTime: 10,
+  'cik-ilgi-notiek-mutes-higiena': {
     sections: [
       {
         p: [
@@ -1281,14 +1232,7 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'Effectiveness and Clinical Performance of Erythritol Air-Polishing in Non-Surgical Periodontal Therapy: A Systematic Review of Randomized Clinical Trials', url: 'https://pubmed.ncbi.nlm.nih.gov/35888585/' },
     ],
   },
-  {
-    slug: 'cik-ilgi-sap-zobs-pec-kanalu-tirisanas',
-    title: 'Cik ilgi sāp zobs pēc kanālu tīrīšanas?',
-    excerpt: 'Pēc sakņu kanālu tīrīšanas zobs var būt jutīgs dažas dienas, īpaši košļājot vai sakožot. Kā atšķirt normālu dzīšanu no simptomiem, kurus nevajadzētu ignorēt?',
-    date: '2026-07-03',
-    category: 'Endodontija',
-    coverImage: '/blog/kiek-laiko-skauda-danti-po-kanalu-valymo.jpg',
-    readTime: 9,
+  'cik-ilgi-sap-zobs-pec-kanalu-tirisanas': {
     sections: [
       {
         p: [
@@ -1400,14 +1344,7 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'The Effect of Antibiotic Use on Endodontic Post-Operative Pain and Flare-Up Rate: A Systematic Review With Meta-Analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/35165442/' },
     ],
   },
-  {
-    slug: 'ko-darit-kad-bernam-sap-zobs',
-    title: 'Ko darīt, kad bērnam sāp zobs?',
-    excerpt: 'Kad bērnam sāp zobs, vecākiem var būt grūti saprast, kas noticis un cik ātri jāvēršas pēc palīdzības. Ko darīt līdz vizītei pie zobārsta un kad nepieciešama neatliekamā palīdzība?',
-    date: '2026-07-03',
-    category: 'Bērnu zobārstniecība',
-    coverImage: '/blog/vaikui-skauda-danti.jpg',
-    readTime: 9,
+  'ko-darit-kad-bernam-sap-zobs': {
     sections: [
       {
         p: [
@@ -1512,14 +1449,7 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'Ending Childhood Dental Caries: WHO Implementation Manual', url: 'https://www.who.int/publications/i/item/9789240000056' },
     ],
   },
-  {
-    slug: 'zoba-implanta-noraidisanas-pazimes',
-    title: 'Kādas ir zoba implanta noraidīšanas pazīmes?',
-    excerpt: 'Zobu implanti visbiežāk veiksmīgi ieaug, taču komplikācijas iespējamas. Kā atšķirt normālu dzīšanu no simptomiem, kas var norādīt uz implanta neieaugšanu vai iekaisumu?',
-    date: '2026-06-10',
-    category: 'Zobu implantācija',
-    coverImage: 'https://images.unsplash.com/photo-1664529845843-b4192b8246fa?w=1200&q=80&fit=crop&auto=format',
-    readTime: 7,
+  'zoba-implanta-noraidisanas-pazimes': {
     sections: [
       {
         p: [
@@ -1609,14 +1539,7 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'A Retrospective Analysis of Biological Complications of Dental Implants', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9391181/' },
     ],
   },
-  {
-    slug: 'kas-jazina-pec-zoba-implantacijas',
-    title: 'Kas jāzina pēc zoba implantācijas?',
-    excerpt: 'Zoba implantācija ir ķirurģiska procedūra, tāpēc pēc tās organismam nepieciešams laiks dzīšanai. Kā rūpēties par implantu pirmajās dienās un ilgtermiņā?',
-    date: '2026-06-03',
-    category: 'Zobu implantācija',
-    coverImage: 'https://images.unsplash.com/photo-1609918438269-9a4c5f8fe3a4?w=1200&q=80&fit=crop&auto=format',
-    readTime: 8,
+  'kas-jazina-pec-zoba-implantacijas': {
     sections: [
       {
         p: [
@@ -1711,14 +1634,7 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'Smoking and Dental Implants: A Systematic Review and Meta-Analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/35056347/' },
     ],
   },
-  {
-    slug: 'kapec-sap-zobs-pec-plombesanas',
-    title: 'Kāpēc sāp zobs pēc plombēšanas?',
-    excerpt: 'Neliels jutīgums pēc plombēšanas bieži ir īslaicīgs, taču sāpes nedrīkstētu ignorēt, ja tās pastiprinās vai netiek pārvarētas. Kad jāvēršas pie zobārsta?',
-    date: '2026-05-27',
-    category: 'Zobu ārstniecība',
-    coverImage: 'https://images.unsplash.com/photo-1592400400196-bf709e32aa88?w=1200&q=80&fit=crop&auto=format',
-    readTime: 8,
+  'kapec-sap-zobs-pec-plombesanas': {
     sections: [
       {
         p: [
@@ -1807,14 +1723,7 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'Effect of different adhesive systems on postoperative sensitivity of composite resin restorations in adults: a systematic review and network meta-analysis', url: 'https://pubmed.ncbi.nlm.nih.gov/37017757/' },
     ],
   },
-  {
-    slug: 'vai-sap-kad-izrauj-zobu',
-    title: 'Vai sāp, kad izrauj zobu?',
-    excerpt: 'Zoba izraušana daudziem pacientiem rada satraukumu. Vai procedūras laikā sāp un cik ilgi var sāpēt pēc zoba izraušanas?',
-    coverImage: '/skauda-traukia.webp',
-    date: '2026-05-20',
-    category: 'Mutes ķirurģija',
-    readTime: 9,
+  'vai-sap-kad-izrauj-zobu': {
     sections: [
       {
         p: [
@@ -1909,14 +1818,7 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'Local interventions for the management of alveolar osteitis, dry socket', url: 'https://pubmed.ncbi.nlm.nih.gov/36156769/' },
     ],
   },
-  {
-    slug: 'ko-darit-kad-sap-gudribas-zobs',
-    title: 'Ko darīt, kad sāp gudrības zobs?',
-    excerpt: 'Gudrības zobu sāpes ir viens no biežākajiem iemesliem, kāpēc pacienti steidzas pie zobārsta. Kā rīkoties un kad nepieciešama izraušana?',
-    date: '2026-05-13',
-    category: 'Zobu ārstniecība',
-    coverImage: '/protini-skauda.webp',
-    readTime: 12,
+  'ko-darit-kad-sap-gudribas-zobs': {
     sections: [
       {
         p: [
@@ -2036,14 +1938,7 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'Prediction of postoperative facial swelling, pain and trismus following third molar surgery based on preoperative variables', url: 'https://pubmed.ncbi.nlm.nih.gov/23229245/' },
     ],
   },
-  {
-    slug: 'ko-darit-kad-sap-zobs',
-    title: 'Ko darīt, kad sāp zobs?',
-    excerpt: 'Zoba sāpes bieži pārsteidz negaidīti. Kā rīkoties, kad nepieciešama neatliekamā palīdzība un ko darīt, ja sāp zobs nedēļas nogalē?',
-    date: '2026-05-06',
-    category: 'Neatliekamā palīdzība',
-    coverImage: 'https://images.unsplash.com/photo-1602932213623-cc17e9541bb4?w=1200&q=80&fit=crop&auto=format',
-    readTime: 10,
+  'ko-darit-kad-sap-zobs': {
     sections: [
       {
         p: [
@@ -2139,13 +2034,13 @@ export const BLOG_POSTS_LV: BlogPost[] = [
       { label: 'Management of odontogenic infections and sepsis: an update', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7517749/' },
     ],
   },
-]
+}
+
+export const BLOG_POSTS_LV: BlogPost[] = BLOG_CARDS_LV.map((card: BlogCard) => ({
+  ...card,
+  ...BODIES[card.slug],
+}))
 
 export function getPostLv(slug: string): BlogPost | undefined {
   return BLOG_POSTS_LV.find(p => p.slug === slug)
-}
-
-export function formatDateLv(dateStr: string): string {
-  const d = new Date(dateStr)
-  return d.toLocaleDateString('lv-LV', { year: 'numeric', month: 'long', day: 'numeric' })
 }

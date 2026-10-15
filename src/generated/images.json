@@ -683,6 +683,35 @@
       }
     ]
   },
+  "/team/Agnė_light LT.jpg": {
+    "w": 1080,
+    "h": 1350,
+    "ratio": 0.8,
+    "avif": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Agn-_light-LT-400.avif"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Agn-_light-LT-800.avif"
+      }
+    ],
+    "webp": [
+      {
+        "w": 400,
+        "h": 500,
+        "src": "/img/team__Agn-_light-LT-400.webp"
+      },
+      {
+        "w": 800,
+        "h": 1000,
+        "src": "/img/team__Agn-_light-LT-800.webp"
+      }
+    ]
+  },
   "/team/donataskubilius.jpg": {
     "w": 960,
     "h": 1200,

@@ -42,7 +42,10 @@ export default defineConfig(({ isSsrBuild }) => ({
 
   server: {
     proxy: {
-      '/api': {
+      /* Anchored regex, not the bare '/api' prefix: a plain string key is a
+         prefix match, so it also swallowed /apie (the About route) and sent it
+         to the API server instead of the app. */
+      '^/api/': {
         target: 'http://localhost:3002',
         changeOrigin: true,
         secure: false,

@@ -1,265 +1,116 @@
-import React, { useState, useMemo } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import AnimatedSection from '../components/AnimatedSection'
 import SEO from '../components/SEO'
 import RevealLines from '../components/RevealLines'
 import TideLine from '../components/TideLine'
 import WaveDivider from '../components/WaveDivider'
-import { motion, AnimatePresence, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import ServicePreview, { type PreviewItem } from '../components/ServicePreview'
+import { SERVICE_GROUPS, type ServiceEntry, type ServiceGroup } from '../data/serviceCatalog'
 
-type Svc = {
-  id: string
-  title: string
-  description?: string
-  to?: string
-  expandable?: React.ReactNode
+function Arrow({ className = 'h-3.5 w-3.5' }: { className?: string }) {
+  return (
+    <svg className={`btn-arrow ${className}`} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M5 12h14M13 6l6 6-6 6"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
 }
 
-function ServiceCard({ svc }: { svc: Svc }) {
-  const [open, setOpen] = useState(false)
+/* ─── Card ────────────────────────────────────────────────────────────────────
+   Was a title in a box. It now carries the one-line summary, and the hover
+   state is where the life is: the card lifts, a turquoise wedge wipes in from
+   the bottom-left — the same corner the wave-mask cuts elsewhere — and the
+   arrow steps right. All of it is transform/opacity, so nothing re-lays-out. */
+function ServiceCard({
+  svc,
+  onEnter,
+  onLeave,
+}: {
+  svc: ServiceEntry
+  onEnter: () => void
+  onLeave: () => void
+}) {
+  return (
+    <Link
+      to={svc.to}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+      onFocus={onEnter}
+      onBlur={onLeave}
+      className="card-flat group relative flex h-full flex-col overflow-hidden p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-tide-text"
+    >
+      {/* Decorative wedge. scale-x only, origin bottom-left, so it sweeps. */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -bottom-px -left-px h-20 w-20 origin-bottom-left scale-0 rounded-bl-card bg-tide/10 transition-transform duration-mid ease-out-soft group-hover:scale-100"
+      />
 
-  const inner = (
-    <div className="card-flat group relative flex h-full flex-col overflow-hidden">
-      <div className="relative z-10 flex flex-1 items-center justify-between gap-4 px-7 py-8 min-h-[120px]">
-        <h3 className="text-h3 font-bold leading-snug">
+      <div className="relative z-10 flex h-full flex-col">
+        <h3 className="text-body font-bold leading-snug transition-colors duration-fast group-hover:text-tide-text">
           {svc.title}
         </h3>
+        <p className="muted mb-5 mt-2 text-micro leading-relaxed">{svc.summary}</p>
 
-        {svc.expandable && (
-          <button
-            onClick={e => { e.preventDefault(); setOpen(v => !v) }}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-pill bg-shell text-ink transition-colors duration-fast hover:bg-tide"
-            aria-expanded={open}
-          >
-            <svg className={`w-4 h-4 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </button>
-        )}
+        <span className="mt-auto inline-flex items-center gap-2 text-micro font-bold text-tide-text">
+          Sužinoti daugiau
+          <Arrow className="h-3 w-3" />
+        </span>
       </div>
-
-      {svc.expandable && (
-        <AnimatePresence initial={false}>
-          {open && (
-            <motion.div
-              key="content"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1, transition: { height: { duration: 0.28 }, opacity: { duration: 0.2, delay: 0.05 } } }}
-              exit={{ height: 0, opacity: 0, transition: { height: { duration: 0.22 }, opacity: { duration: 0.15 } } }}
-              className="overflow-hidden"
-            >
-              <div className="relative z-10 px-6 pb-6 pt-0 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
-                <div className="pt-4">{svc.expandable}</div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      )}
-    </div>
+    </Link>
   )
+}
 
-  if (svc.to) {
-    return (
-      <Link to={svc.to} className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0ABBB5] rounded-2xl">
-        {inner}
-      </Link>
-    )
-  }
+/* ─── Group ───────────────────────────────────────────────────────────────── */
+function Group({
+  group,
+  onEnter,
+  onLeave,
+}: {
+  group: ServiceGroup
+  onEnter: (item: PreviewItem) => void
+  onLeave: () => void
+}) {
+  return (
+    <section className="scroll-mt-28" id={group.id}>
+      <header className="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 className="text-h3 font-extrabold">{group.title}</h2>
+          <p className="muted measure mt-1.5 text-small leading-relaxed">{group.blurb}</p>
+        </div>
+        <span className="muted shrink-0 text-micro font-semibold">
+          {group.services.length} paslaugos
+        </span>
+      </header>
 
-  return <div className="h-full">{inner}</div>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {group.services.map((s, i) => (
+          /* AnimatedSection, not a motion component: it shares the one
+             observer in src/lib/reveal.ts, where per-group useInView would
+             have added eight more, and keeps the grid off the framer-motion
+             runtime. The hidden state is CSS scoped under html.js, so it is
+             also correct without JS — not merely stripped by the prerenderer
+             the way an inline opacity:0 is. */
+          <AnimatedSection as="div" key={s.id} delay={Math.min(i, 7) * 0.05} className="h-full">
+            <ServiceCard
+              svc={s}
+              onEnter={() => onEnter({ title: s.title, summary: s.summary, image: group.image })}
+              onLeave={onLeave}
+            />
+          </AnimatedSection>
+        ))}
+      </div>
+    </section>
+  )
 }
 
 export default function Services() {
-  const sections: Svc[] = useMemo(() => [
-    {
-      id: 'dantu-implantacija',
-      title: 'Dantų implantacija',
-      to: '/paslaugos/dantu-implantacija',
-    },
-    {
-      id: 'vienmomente-implantacija',
-      title: 'Vienmomentė implantacija',
-      to: '/paslaugos/vienmomente-implantacija',
-    },
-    {
-      id: 'straumann-dantu-implantai',
-      title: 'STRAUMANN dantų implantai',
-      to: '/paslaugos/straumann-dantu-implantai',
-    },
-    {
-      id: 'visi-dantys-ant-4-implantu',
-      title: 'Visi dantys ant 4 implantų (All-on-4)',
-      to: '/paslaugos/visi-dantys-ant-4-implantu',
-    },
-    {
-      id: 'skubi-pagalba',
-      title: 'Skubi pagalba',
-      to: '/paslaugos/skubi-pagalba',
-    },
-    {
-      id: 'dantu-protezavimas',
-      title: 'Dantų protezavimas',
-      to: '/paslaugos/dantu-protezavimas',
-    },
-    {
-      id: 'dantu-karunieles',
-      title: 'Dantų karūnėlės (vainikėliai)',
-      to: '/paslaugos/dantu-karunieles',
-    },
-    {
-      id: 'cirkonio-keramikos-vainikelis',
-      title: 'Cirkonio keramikos vainikėlis',
-      to: '/paslaugos/cirkonio-keramikos-vainikelis',
-    },
-    {
-      id: 'dantu-tiltai',
-      title: 'Dantų tiltai',
-      to: '/paslaugos/dantu-tiltai',
-    },
-    {
-      id: 'dantu-mikroprotezavimas',
-      title: 'Dantų mikroprotezavimas',
-      to: '/paslaugos/dantu-mikroprotezavimas',
-    },
-    {
-      id: 'dantu-uzklotai',
-      title: 'Dantų užklotai',
-      to: '/paslaugos/dantu-uzklotai',
-    },
-    {
-      id: 'isimami-protezai',
-      title: 'Išimami protezai',
-      to: '/paslaugos/isimami-protezai',
-    },
-    {
-      id: 'kompensacija-protezavimui',
-      title: 'Kompensacija protezavimui',
-      to: '/paslaugos/kompensacija-protezavimui',
-    },
-    {
-      id: 'dantu-gydymas',
-      title: 'Dantų gydymas',
-      to: '/paslaugos/dantu-taisymas-gydymas',
-    },
-    {
-      id: 'terapinis-dantu-gydymas',
-      title: 'Terapinis dantų gydymas',
-      to: '/paslaugos/terapinis-dantu-gydymas',
-    },
-    {
-      id: 'gydymas-icon-sistema',
-      title: 'Gydymas „ICON“ sistema',
-      to: '/paslaugos/gydymas-icon-sistema',
-    },
-    {
-      id: 'dantu-tiesinimas',
-      title: 'Dantų tiesinimas',
-      to: '/paslaugos/dantu-tiesinimas',
-    },
-    {
-      id: 'burnos-higiena',
-      title: 'Burnos higiena',
-      to: '/paslaugos/burnos-higiena',
-    },
-    {
-      id: 'dantu-fluoravimas',
-      title: 'Dantų fluoravimas',
-      to: '/paslaugos/dantu-fluoravimas',
-    },
-    {
-      id: 'burnos-chirurgija',
-      title: 'Burnos chirurgija',
-      to: '/paslaugos/burnos-chirurgija',
-    },
-    {
-      id: 'sinuso-pakelimas',
-      title: 'Sinuso pakėlimas',
-      to: '/paslaugos/sinuso-pakelimas',
-    },
-    {
-      id: 'zandikaulio-kaulo-priauginimas',
-      title: 'Žandikaulio kaulo priauginimas',
-      to: '/paslaugos/zandikaulio-kaulo-priauginimas',
-    },
-    {
-      id: 'pulinio-atverimas',
-      title: 'Pūlinio atvėrimas',
-      to: '/paslaugos/pulinio-atverimas',
-    },
-    {
-      id: 'dantu-balinimas',
-      title: 'Dantų balinimas',
-      to: '/paslaugos/dantu-balinimas',
-    },
-    {
-      id: 'dantu-balinimo-kapos',
-      title: 'Dantų balinimo kapos',
-      to: '/paslaugos/dantu-balinimo-kapos',
-    },
-    {
-      id: 'dantu-balinimas-su-lempa',
-      title: 'Dantų balinimas su lempa',
-      to: '/paslaugos/dantu-balinimas-su-lempa',
-    },
-    {
-      id: 'estetinis-plombavimas',
-      title: 'Estetinis plombavimas',
-      to: '/paslaugos/estetinis-plombavimas',
-    },
-    {
-      id: 'dantu-plombavimas',
-      title: 'Dantų plombavimas',
-      to: '/paslaugos/dantu-plombavimas',
-    },
-    {
-      id: 'dantu-traukimas',
-      title: 'Dantų traukimas',
-      to: '/paslaugos/dantu-traukimas',
-    },
-    {
-      id: 'protiniu-dantu-salinimas',
-      title: 'Protinių dantų šalinimas',
-      to: '/paslaugos/protiniu-dantu-salinimas',
-    },
-    {
-      id: 'endodontinis-gydymas',
-      title: 'Endodontinis gydymas',
-      to: '/paslaugos/endodontinis-gydymas',
-    },
-    {
-      id: 'vaiku-odontologija',
-      title: 'Vaikų odontologija',
-      to: '/paslaugos/vaiku-odontologija',
-    },
-    {
-      id: 'vaiku-profilaktinis-patikrinimas',
-      title: 'Vaikų profilaktinis patikrinimas',
-      to: '/paslaugos/vaiku-profilaktinis-patikrinimas',
-    },
-    {
-      id: 'dantu-higiena-vaikams',
-      title: 'Dantų higiena vaikams',
-      to: '/paslaugos/dantu-higiena-vaikams',
-    },
-    {
-      id: 'rentgenologiniai-tyrimai',
-      title: 'Rentgenologiniai tyrimai',
-      to: '/paslaugos/rentgenologiniai-tyrimai',
-    },
-    {
-      id: 'bruksizmo-dantu-kapa',
-      title: 'Bruksizmo dantų kapa',
-      to: '/paslaugos/bruksizmo-dantu-kapa',
-    },
-    {
-      id: 'dantenu-uzdegimas-gingivitas',
-      title: 'Dantenų uždegimas (gingivitas)',
-      to: '/paslaugos/dantenu-uzdegimas-gingivitas',
-    },
-  ], [])
-
-  const gridRef = useRef<HTMLDivElement>(null)
-  const gridInView = useInView(gridRef, { once: true, margin: '-80px' })
+  const [preview, setPreview] = useState<PreviewItem | null>(null)
 
   return (
     <>
@@ -268,50 +119,62 @@ export default function Services() {
         description="Skubi pagalba, dantų protezavimas, kompensuojamas protezavimas, dantų gydymas, implantai, tiesinimas, higiena, chirurgija, balinimas, plombavimas, traukimas, endodontija, vaikų odontologija."
       />
 
-      {/* Hero */}
-      <section className="shell-bg">
-        <div className="container-wide py-section">
+      <ServicePreview item={preview} />
+
+      {/* ══ HERO ═════════════════════════════════════════════════════════════
+          The wave is the page's masthead, not an afterthought under the copy:
+          three drifting lines fill the band the heading sits on, and one
+          heavier line closes the section underneath. The text reads on top of
+          the water rather than beside a decoration. */}
+      <section className="shell-bg relative overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 top-16">
+          <TideLine className="absolute inset-x-0 top-[12%]" weight={1} opacity={0.2} />
+          <TideLine className="absolute inset-x-0 top-[46%]" weight={1.5} opacity={0.14} />
+          <TideLine className="absolute inset-x-0 top-[78%]" weight={1} opacity={0.22} />
+        </div>
+
+        <div className="container-wide relative z-10 py-section">
           <div className="max-w-3xl">
-            {/* Was an uppercase letter-spaced eyebrow; same words, now set as
-                ordinary text so it reads as a line of copy, not a template
-                label. */}
-            <p className="text-small font-semibold text-tide-text">
-              Bangų klinika
-            </p>
+            <p className="text-small font-semibold text-tide-text">Bangų klinika</p>
             <h1 className="mt-4 text-display font-black">
               <RevealLines lines={['Paslaugos']} />
             </h1>
             <p className="muted measure mt-6 text-lead leading-relaxed">
-              Visapusiška odontologo pagalba – nuo profilaktikos iki implantų. Pasirinkite dominančią paslaugą.
+              Visapusiška odontologo pagalba – nuo profilaktikos iki implantų. Pasirinkite
+              dominančią paslaugą.
             </p>
           </div>
-          <TideLine className="mt-12 max-w-xl" />
+
+          {/* Jump links: 37 services is a long page, and the groups are the
+              fastest way into it. */}
+          <nav aria-label="Paslaugų grupės" className="mt-10 flex flex-wrap gap-2">
+            {SERVICE_GROUPS.map((g) => (
+              <a
+                key={g.id}
+                href={`#${g.id}`}
+                className="rounded-pill border border-hairline bg-paper px-4 py-2 text-micro font-semibold transition-colors duration-fast hover:border-tide hover:bg-tide/10"
+              >
+                {g.title}
+              </a>
+            ))}
+          </nav>
         </div>
+
+        <TideLine className="relative z-10 -mt-2" weight={1.75} opacity={0.75} />
       </section>
 
       <WaveDivider from="var(--shell)" to="var(--paper)" />
 
-      {/* Services grid */}
-      <div className="container-wide pb-section pt-section-tight">
-        <motion.div
-          ref={gridRef}
-          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {sections.map((s, i) => (
-            <motion.div
-              key={s.id}
-              initial={{ opacity: 0, y: 28 }}
-              animate={gridInView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                duration: 0.45,
-                delay: i * 0.07,
-                ease: [0.4, 0, 0.2, 1],
-              }}
-            >
-              <ServiceCard svc={s} />
-            </motion.div>
-          ))}
-        </motion.div>
+      {/* ══ GROUPED GRID ═════════════════════════════════════════════════════ */}
+      <div className="container-wide space-y-16 pb-section pt-section-tight sm:space-y-20">
+        {SERVICE_GROUPS.map((g) => (
+          <Group
+            key={g.id}
+            group={g}
+            onEnter={setPreview}
+            onLeave={() => setPreview(null)}
+          />
+        ))}
       </div>
     </>
   )

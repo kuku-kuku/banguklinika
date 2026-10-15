@@ -8,7 +8,7 @@ import AnimatedSection from '../../components/AnimatedSection'
 import { CLINIC } from '../../data/clinic'
 import ReviewsCarousel from '../../components/ReviewsCarousel'
 import { homeLv, SITE_URL } from '../../i18n/lv'
-import { BLOG_POSTS_LV, formatDateLv } from '../../data/blogLv'
+import { BLOG_CARDS_LV, formatDateLv } from '../../data/blogLvMeta'
 
 const C = {
   teal:      '#097873',  // AA-safe for text on white (5.32:1)
@@ -548,7 +548,7 @@ export default function HomeLv() {
       <SectionDivider />
 
       {/* ══ BLOG PREVIEW ══════════════════════════════════════════════════ */}
-      {BLOG_POSTS_LV.length > 0 && (
+      {BLOG_CARDS_LV.length > 0 && (
         <>
           <section className="py-2 pb-8 md:pb-12 cv-auto">
             <div className={W}>
@@ -573,7 +573,7 @@ export default function HomeLv() {
               </AnimatedSection>
 
               <div className="grid md:grid-cols-3 gap-5">
-                {BLOG_POSTS_LV.slice(0, 3).map((post, i) => (
+                {BLOG_CARDS_LV.slice(0, 3).map((post, i) => (
                   <motion.div
                     key={post.slug}
                     initial={{ opacity: 0, y: 24 }}
