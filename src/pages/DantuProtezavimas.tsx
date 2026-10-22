@@ -212,7 +212,7 @@ export default function DantuProtezavimas() {
                     ['Metalo keramikos vainikėlis',                    '350 €'],
                     ['Keramikos vainikėlis cirkonio oksido pagrindu (ant danties)', '400 €'],
                     ['E-max presuotos bemetalės keramikos vainikėlis', '400 €'],
-                    ['Vainiko kulties šlifavimas / paruošimas',        '50 €'],
+                    ['Vainiko kulties šlifavimas / paruošimas',        '80 €'],
                     ['Vainiko atstatymas ant stiklo pluošto kaiščio (priekinis)', '70 €'],
                     ['Vainiko atstatymas ant stiklo pluošto kaiščio (krūminis)',  '100 €'],
                     ['Pilnas vainiko atstatymas ant stiklo pluošto kaiščio',      '150 €'],

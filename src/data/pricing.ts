@@ -178,7 +178,7 @@ export const PRICING: PriceGroup[] = [
       { name: "Keramikos vainikėlis cirkonio oksido pagrindu (ant implanto)", from: 480, exact: true },
       { name: "E-max presuotos bemetalės keramikos vainikėlis", from: 400, exact: true },
 
-      { name: "Vainiko kulties šlifavimas / paruošimas", from: 50, exact: true },
+      { name: "Vainiko kulties šlifavimas / paruošimas", from: 80, exact: true },
 
       { name: "Vainiko atstatymas ant stiklo pluošto kaiščio su helio plomba (priekinis dantis)", from: 70, exact: true },
       { name: "Vainiko atstatymas ant stiklo pluošto kaiščio su helio plomba (krūminis dantis)", from: 100, exact: true },
@@ -242,7 +242,7 @@ export const PRICING: PriceGroup[] = [
       { name: "Panoraminė rentgeno nuotrauka", from: 30, exact: true },
       { name: "Dentalinė rentgeno nuotrauka", from: 10, exact: true },
       { name: "Kompiuterinė tomografo nuotrauka (3D)", from: 60, to: 100 },
-      { name: "Vienkartinės priemonės", from: 10, exact: true, note: "Kiekvienam apsilankymui" },
+      { name: "Vienkartinės priemonės", from: 15, exact: true, note: "Kiekvienam apsilankymui" },
       { name: "Lūpų apsauga, optragate", from: 5, exact: true, note: "Kiekvienam apsilankymui" },
       { name: "Pooperacinis rinkinys", from: 50, exact: true },
       { name: "Darbų kainos, nenumatytos kainininke", note: "Aptariamos su gydančiu gydytoju" },

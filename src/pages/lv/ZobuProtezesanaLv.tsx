@@ -186,7 +186,7 @@ export default function ZobuProtezesanaLv() {
                     ['Metāla keramikas kronītis',                    '350 €'],
                     ['Keramikas kronītis uz cirkonija oksīda pamata (uz zoba)', '400 €'],
                     ['E-max presētas bezmetāla keramikas kronītis', '400 €'],
-                    ['Zoba slīpēšana / sagatavošana kronītim',        '50 €'],
+                    ['Zoba slīpēšana / sagatavošana kronītim',        '80 €'],
                     ['Zoba atjaunošana uz stikla šķiedras stiegras (priekšējais)', '70 €'],
                     ['Zoba atjaunošana uz stikla šķiedras stiegras (molārs)',  '100 €'],
                     ['Pilna zoba atjaunošana uz stikla šķiedras stiegras',      '150 €'],
