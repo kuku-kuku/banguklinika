@@ -207,7 +207,7 @@ export default function DantuProtezavimas() {
                 <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Protezavimas ant dantų</h3>
                 <div className="divide-y divide-slate-100">
                   {[
-                    ['Laikinas plastmasinis vainikėlis (kabinete)',    '40 €'],
+                    ['Laikinas plastmasinis vainikėlis (kabinete)',    '65 €'],
                     ['Laikinas plastmasinis vainikėlis (laboratorijoje)', '80 €'],
                     ['Metalo keramikos vainikėlis',                    '350 €'],
                     ['Keramikos vainikėlis cirkonio oksido pagrindu (ant danties)', '400 €'],
@@ -282,7 +282,7 @@ export default function DantuProtezavimas() {
                 <div className="divide-y divide-slate-100">
                   {[
                     ['Diagnostiniai modeliai',                        '20 €'],
-                    ['Danties pavaškavimas (1 vnt.)',                  '10 €'],
+                    ['Danties pavaškavimas (1 vnt.)',                  '20 €'],
                     ['Atspaudo nuėmimas naudojant alginatą (1 žandikaulis)',  '20 €'],
                     ['Atspaudo nuėmimas naudojant silikoną (1 žandikaulis)',  '50 €'],
                     ['Sąkandžio registras',                           '10 €'],

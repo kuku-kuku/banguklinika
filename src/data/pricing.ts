@@ -170,7 +170,7 @@ export const PRICING: PriceGroup[] = [
       { name: "Konsultacija", from: 30, exact: true },
       { name: "Gydymo plano sudarymas", from: 50, exact: true, note: "Išsamus, individualus gydymo planas su gydymo kainomis" },
 
-      { name: "Laikinas plastmasinis vainikėlis (pagamintas kabinete)", from: 50, exact: true },
+      { name: "Laikinas plastmasinis vainikėlis (pagamintas kabinete)", from: 65, exact: true },
       { name: "Laikinas plastmasinis vainikėlis (pagamintas laboratorijoje)", from: 90, exact: true },
 
       { name: "Metalo keramikos vainikėlis", from: 350, exact: true },
@@ -195,7 +195,7 @@ export const PRICING: PriceGroup[] = [
       { name: "Lanko atraminis protezas", from: 700, exact: true },
 
       { name: "Diagnostiniai modeliai", from: 20, exact: true },
-      { name: "Danties pavaškavimas (1 vnt.)", from: 10, exact: true },
+      { name: "Danties pavaškavimas (1 vnt.)", from: 20, exact: true },
 
       { name: "Atspaudo nuėmimas naudojant alginatą (1 žandikaulis)", from: 20, exact: true },
       { name: "Atspaudo nuėmimas naudojant silikoną (1 žandikaulis)", from: 50, exact: true },

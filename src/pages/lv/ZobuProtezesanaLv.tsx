@@ -181,7 +181,7 @@ export default function ZobuProtezesanaLv() {
                 <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Protezēšana uz zobiem</h3>
                 <div className="divide-y divide-slate-100">
                   {[
-                    ['Pagaidu plastmasas kronītis (kabinetā)',    '40 €'],
+                    ['Pagaidu plastmasas kronītis (kabinetā)',    '65 €'],
                     ['Pagaidu plastmasas kronītis (laboratorijā)', '80 €'],
                     ['Metāla keramikas kronītis',                    '350 €'],
                     ['Keramikas kronītis uz cirkonija oksīda pamata (uz zoba)', '400 €'],
@@ -253,7 +253,7 @@ export default function ZobuProtezesanaLv() {
                 <div className="divide-y divide-slate-100">
                   {[
                     ['Diagnostiskie modeļi',                        '20 €'],
-                    ['Zoba vaskošana (1 gab.)',                  '10 €'],
+                    ['Zoba vaskošana (1 gab.)',                  '20 €'],
                     ['Nospieduma noņemšana ar alginātu (1 žoklis)',  '20 €'],
                     ['Nospieduma noņemšana ar silikonu (1 žoklis)',  '50 €'],
                     ['Sakodiena reģistrs',                           '10 €'],

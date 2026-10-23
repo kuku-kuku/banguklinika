@@ -5753,7 +5753,7 @@ const PRICING = [
     items: [
       { name: "Konsultacija", from: 30, exact: true },
       { name: "Gydymo plano sudarymas", from: 50, exact: true, note: "Išsamus, individualus gydymo planas su gydymo kainomis" },
-      { name: "Laikinas plastmasinis vainikėlis (pagamintas kabinete)", from: 50, exact: true },
+      { name: "Laikinas plastmasinis vainikėlis (pagamintas kabinete)", from: 65, exact: true },
       { name: "Laikinas plastmasinis vainikėlis (pagamintas laboratorijoje)", from: 90, exact: true },
       { name: "Metalo keramikos vainikėlis", from: 350, exact: true },
       { name: "Keramikos vainikėlis cirkonio oksido pagrindu (ant danties)", from: 430, exact: true },
@@ -5771,7 +5771,7 @@ const PRICING = [
       { name: "Plokštelės perbazavimas", from: 80, exact: true },
       { name: "Lanko atraminis protezas", from: 700, exact: true },
       { name: "Diagnostiniai modeliai", from: 20, exact: true },
-      { name: "Danties pavaškavimas (1 vnt.)", from: 10, exact: true },
+      { name: "Danties pavaškavimas (1 vnt.)", from: 20, exact: true },
       { name: "Atspaudo nuėmimas naudojant alginatą (1 žandikaulis)", from: 20, exact: true },
       { name: "Atspaudo nuėmimas naudojant silikoną (1 žandikaulis)", from: 50, exact: true },
       { name: "Sąkandžio registras", from: 10, exact: true },
@@ -9518,7 +9518,7 @@ function DantuProtezavimas() {
                 /* @__PURE__ */ jsxs("div", { className: "bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all", style: { borderColor: S$_ }, children: [
                   /* @__PURE__ */ jsx("h3", { className: "text-lg font-extrabold mb-4", style: { color: P$_ }, children: "Protezavimas ant dantų" }),
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
-                    ["Laikinas plastmasinis vainikėlis (kabinete)", "40 €"],
+                    ["Laikinas plastmasinis vainikėlis (kabinete)", "65 €"],
                     ["Laikinas plastmasinis vainikėlis (laboratorijoje)", "80 €"],
                     ["Metalo keramikos vainikėlis", "350 €"],
                     ["Keramikos vainikėlis cirkonio oksido pagrindu (ant danties)", "400 €"],
@@ -9575,7 +9575,7 @@ function DantuProtezavimas() {
                   /* @__PURE__ */ jsx("h3", { className: "text-lg font-extrabold mb-4", style: { color: P$_ }, children: "Papildomos procedūros" }),
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
                     ["Diagnostiniai modeliai", "20 €"],
-                    ["Danties pavaškavimas (1 vnt.)", "10 €"],
+                    ["Danties pavaškavimas (1 vnt.)", "20 €"],
                     ["Atspaudo nuėmimas naudojant alginatą (1 žandikaulis)", "20 €"],
                     ["Atspaudo nuėmimas naudojant silikoną (1 žandikaulis)", "50 €"],
                     ["Sąkandžio registras", "10 €"],
@@ -25087,7 +25087,7 @@ function ZobuProtezesanaLv() {
                 /* @__PURE__ */ jsxs("div", { className: "bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all", style: { borderColor: S$v }, children: [
                   /* @__PURE__ */ jsx("h3", { className: "text-lg font-extrabold mb-4", style: { color: P$v }, children: "Protezēšana uz zobiem" }),
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
-                    ["Pagaidu plastmasas kronītis (kabinetā)", "40 €"],
+                    ["Pagaidu plastmasas kronītis (kabinetā)", "65 €"],
                     ["Pagaidu plastmasas kronītis (laboratorijā)", "80 €"],
                     ["Metāla keramikas kronītis", "350 €"],
                     ["Keramikas kronītis uz cirkonija oksīda pamata (uz zoba)", "400 €"],
@@ -25144,7 +25144,7 @@ function ZobuProtezesanaLv() {
                   /* @__PURE__ */ jsx("h3", { className: "text-lg font-extrabold mb-4", style: { color: P$v }, children: "Papildu procedūras" }),
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
                     ["Diagnostiskie modeļi", "20 €"],
-                    ["Zoba vaskošana (1 gab.)", "10 €"],
+                    ["Zoba vaskošana (1 gab.)", "20 €"],
                     ["Nospieduma noņemšana ar alginātu (1 žoklis)", "20 €"],
                     ["Nospieduma noņemšana ar silikonu (1 žoklis)", "50 €"],
                     ["Sakodiena reģistrs", "10 €"],
