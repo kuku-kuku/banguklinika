@@ -254,8 +254,8 @@ export default function ZobuProtezesanaLv() {
                   {[
                     ['Diagnostiskie modeļi',                        '20 €'],
                     ['Zoba vaskošana (1 gab.)',                  '20 €'],
-                    ['Nospieduma noņemšana ar alginātu (1 žoklis)',  '20 €'],
-                    ['Nospieduma noņemšana ar silikonu (1 žoklis)',  '50 €'],
+                    ['Nospieduma noņemšana ar alginātu (1 žoklis)',  '50 €'],
+                    ['Nospieduma noņemšana ar silikonu (1 žoklis)',  '100 €'],
                     ['Sakodiena reģistrs',                           '10 €'],
                     ['Individuālais karotītis (1 gab.)',                '30 €'],
                     ['Košļāšanas balsta veidošana',                                '20 €'],

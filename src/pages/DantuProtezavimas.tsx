@@ -283,8 +283,8 @@ export default function DantuProtezavimas() {
                   {[
                     ['Diagnostiniai modeliai',                        '20 €'],
                     ['Danties pavaškavimas (1 vnt.)',                  '20 €'],
-                    ['Atspaudo nuėmimas naudojant alginatą (1 žandikaulis)',  '20 €'],
-                    ['Atspaudo nuėmimas naudojant silikoną (1 žandikaulis)',  '50 €'],
+                    ['Atspaudo nuėmimas naudojant alginatą (1 žandikaulis)',  '50 €'],
+                    ['Atspaudo nuėmimas naudojant silikoną (1 žandikaulis)',  '100 €'],
                     ['Sąkandžio registras',                           '10 €'],
                     ['Individualus šaukštas (1 vnt.)',                '30 €'],
                     ['KKĮ formavimas',                                '20 €'],

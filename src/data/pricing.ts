@@ -197,8 +197,8 @@ export const PRICING: PriceGroup[] = [
       { name: "Diagnostiniai modeliai", from: 20, exact: true },
       { name: "Danties pavaškavimas (1 vnt.)", from: 20, exact: true },
 
-      { name: "Atspaudo nuėmimas naudojant alginatą (1 žandikaulis)", from: 20, exact: true },
-      { name: "Atspaudo nuėmimas naudojant silikoną (1 žandikaulis)", from: 50, exact: true },
+      { name: "Atspaudo nuėmimas naudojant alginatą (1 žandikaulis)", from: 50, exact: true },
+      { name: "Atspaudo nuėmimas naudojant silikoną (1 žandikaulis)", from: 100, exact: true },
       { name: "Sąkandžio registras", from: 10, exact: true },
 
       { name: "Individualus šaukštas (1 vnt.)", from: 30, exact: true },
