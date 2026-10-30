@@ -8760,7 +8760,7 @@ function DantuGydymas() {
     /* @__PURE__ */ jsx(
       SEO,
       {
-        title: "Dantų gydymas, taisymas (tvarkymas) Klaipėdoje nuo 40€",
+        title: "Terapinis dantų gydymas (plombavimas, karieso taisymas, tvarkymas) Klaipėdoje nuo 40€",
         description: "Dantų gydymas☑️tvarkymas☑️Klaipėdoje esant skausmui ar kitiems dantų pažeidimams. Laiku pašalinkite skausmą ir išsaugokite natūralius dantis. Registruokitės⏩Bangų klinikoje.",
         keywords: "dantu gydymas, dantu taisymas, skubi pagalba, eduonis, plombavimas, klaipeda",
         structuredData
@@ -8778,7 +8778,7 @@ function DantuGydymas() {
           /* @__PURE__ */ jsx(TableOfContents, { sections: tocSections$14, rootRef: pageRef, cta: { label: "Registruotis vizitui", to: "/kontaktai" } }),
           /* @__PURE__ */ jsxs("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxs(motion.header, { className: "mb-10 text-left", variants: item$16, children: [
-              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Dantų gydymas Klaipėdoje" }),
+              /* @__PURE__ */ jsx("h1", { className: "text-3xl sm:text-4xl font-bold tracking-tight text-darkblue-700 mb-6", children: "Terapinis dantų gydymas Klaipėdoje (plombavimas)" }),
               /* @__PURE__ */ jsx("div", { className: `mb-8`, children: /* @__PURE__ */ jsxs("div", { className: "prose prose-slate max-w-none text-slate-700 leading-relaxed", children: [
                 /* @__PURE__ */ jsx("p", { className: "mb-4", children: "Dantų skausmas, diskomfortas ar profilaktinio patikrinimo poreikis – tai dažniausios priežastys, dėl kurių pacientai kreipiasi į odontologą. Laiku atliktas dantų gydymas leidžia ne tik pašalinti nemalonius simptomus, bet ir išsaugoti natūralius dantis bei užkirsti kelią sudėtingesniems gydymo etapams ateityje." }),
                 /* @__PURE__ */ jsx("p", { children: "Bangų odontologijos klinikoje Klaipėdoje teikiama dantų taisymo paslauga apima platų spektrą procedūrų – nuo konsultacijų ir profilaktinių patikrinimų iki sudėtingų gydymo ir atkūrimo procedūrų. Klinikos specialistai operatyviai padeda tiek esant ūmiam danties skausmui, tiek planuojant ilgalaikį gydymą. Kompleksinis požiūris leidžia pacientams gauti visas reikalingas paslaugas vienoje vietoje, todėl dantų tvarkymas tampa patogus, aiškus ir užtikrintas procesas." })

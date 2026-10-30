@@ -170,7 +170,11 @@
 /* Global scroll elgsena */
 @layer base {
   html, body {
-    /* ⬇️ pašalintas globalus overflow-x:hidden, kad bangos nesikarpyti */
+    /* overflow-x:clip, o ne hidden: clip nesukuria scroll konteinerio,
+       todėl sticky navbar ir sticky TOC veikia toliau, o puslapio
+       nebeimanoma nustumti i sona (mobile horizontal scroll bugas).
+       Bangos (w-screen full-bleed) toliau tesiasi per visa ekrana. */
+    overflow-x: clip;
     overscroll-behavior-x: none;
     touch-action: pan-y;
   }

@@ -133,7 +133,7 @@ const pages = [
   },
   {
     route: "/paslaugos/dantu-taisymas-gydymas",
-    title: "Dantų gydymas, taisymas (tvarkymas) Klaipėdoje nuo 40€ | Bangų klinika",
+    title: "Terapinis dantų gydymas (plombavimas, karieso taisymas, tvarkymas) Klaipėdoje nuo 40€ | Bangų klinika",
     description: "Dantų gydymas☑️tvarkymas☑️Klaipėdoje esant skausmui ar kitiems dantų pažeidimams. Laiku pašalinkite skausmą ir išsaugokite natūralius dantis. Registruokitės⏩Bangų klinikoje.",
     schema: serviceSchema("Dantų gydymas Klaipėdoje", "Dantų gydymas", "Dantų gydymo paslauga teikiama Bangų odontologijos klinikoje Klaipėdoje. Klinikoje atliekamas dantų taisymas ir gydymas pacientams Klaipėdos mieste.", `${SITE_ORIGIN}/paslaugos/dantu-taisymas-gydymas/`),
   },
