@@ -139,8 +139,8 @@ export default function ZobuTiltiLv() {
                     <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Zobu tiltu vienību cenas</h3>
                     <div className="divide-y divide-slate-100">
                       {[
-                        ['Viena vienība uz zoba', '400 €'],
-                        ['Viena vienība uz implanta', '450 €'],
+                        ['Viena vienība uz zoba', '430 €'],
+                        ['Viena vienība uz implanta', '480 €'],
                       ].map(([name, price], i) => (
                         <div key={i} className="flex justify-between items-center py-2.5">
                           <span className="text-slate-600 text-sm">{name}</span>

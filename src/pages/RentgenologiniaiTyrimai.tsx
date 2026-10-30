@@ -134,7 +134,7 @@ export default function RentgenologiniaiTyrimai() {
                     <div className="divide-y divide-slate-100">
                       {[
                         ['Panoraminė rentgeno nuotrauka', '30 €'],
-                        ['Kompiuterinė tomografo nuotrauka (3D)', '80 €'],
+                        ['Kompiuterinė tomografo nuotrauka (3D)', '60 – 100 €'],
                       ].map(([name, price], i) => (
                         <div key={i} className="flex justify-between items-center py-2.5">
                           <span className="text-slate-600 text-sm">{name}</span>

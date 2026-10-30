@@ -280,7 +280,7 @@ export default function DantuImplantacija() {
                         ['Neodent standartinė atrama', '130 €'],
                         ['Neodent gijimo galvutė', '80 €'],
                         ['Atspaudai', '150 €'],
-                        ['Cirkonio keramikos vainikėlis', '450 €'],
+                        ['Cirkonio keramikos vainikėlis', '480 €'],
                       ],
                     },
                     {
@@ -289,7 +289,7 @@ export default function DantuImplantacija() {
                         ['Straumann standartinė atrama', '200 €'],
                         ['Straumann gijimo galvutė', '100 €'],
                         ['Atspaudai', '150 €'],
-                        ['Cirkonio keramikos vainikėlis', '450 €'],
+                        ['Cirkonio keramikos vainikėlis', '480 €'],
                       ],
                     },
                   ].map((group, i) => (

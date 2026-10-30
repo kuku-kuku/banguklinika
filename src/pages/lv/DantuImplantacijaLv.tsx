@@ -286,10 +286,10 @@ export default function DantuImplantacijaLv() {
                     {
                       brand: 'Neodent',
                       items: [
-                        ['Neodent standarta balsts', '100 €'],
+                        ['Neodent standarta balsts', '130 €'],
                         ['Neodent dzīšanas galviņa', '80 €'],
                         ['Nospiedumi', '150 €'],
-                        ['Cirkonija keramikas kronis', '450 €'],
+                        ['Cirkonija keramikas kronis', '480 €'],
                       ],
                     },
                     {
@@ -298,7 +298,7 @@ export default function DantuImplantacijaLv() {
                         ['Straumann standarta balsts', '200 €'],
                         ['Straumann dzīšanas galviņa', '100 €'],
                         ['Nospiedumi', '150 €'],
-                        ['Cirkonija keramikas kronis', '450 €'],
+                        ['Cirkonija keramikas kronis', '480 €'],
                       ],
                     },
                   ].map((group, i) => (

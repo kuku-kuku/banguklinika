@@ -166,8 +166,8 @@ export default function ZobuProtezesanaLv() {
 
             <div className="grid sm:grid-cols-2 gap-3 mb-5">
               {[
-                ['Konsultācija', '20 €'],
-                ['Ārstēšanas plāna izveide', '30 €'],
+                ['Konsultācija', '30 €'],
+                ['Ārstēšanas plāna izveide', '50 €'],
               ].map(([name, price], i) => (
                 <div key={i} className="flex justify-between items-center bg-white rounded-2xl px-5 py-3 border" style={{ borderColor: S }}>
                   <span className="text-slate-700 text-sm font-medium">{name}</span>
@@ -182,9 +182,9 @@ export default function ZobuProtezesanaLv() {
                 <div className="divide-y divide-slate-100">
                   {[
                     ['Pagaidu plastmasas kronītis (kabinetā)',    '65 €'],
-                    ['Pagaidu plastmasas kronītis (laboratorijā)', '80 €'],
+                    ['Pagaidu plastmasas kronītis (laboratorijā)', '90 €'],
                     ['Metāla keramikas kronītis',                    '350 €'],
-                    ['Keramikas kronītis uz cirkonija oksīda pamata (uz zoba)', '400 €'],
+                    ['Keramikas kronītis uz cirkonija oksīda pamata (uz zoba)', '430 €'],
                     ['E-max presētas bezmetāla keramikas kronītis', '400 €'],
                     ['Zoba slīpēšana / sagatavošana kronītim',        '80 €'],
                     ['Zoba atjaunošana uz stikla šķiedras stiegras (priekšējais)', '70 €'],
@@ -208,9 +208,9 @@ export default function ZobuProtezesanaLv() {
                   {[
                     ['Pagaidu kronītis uz implanta (ar pagaidu balsta cenu)', '200 €'],
                     ['Nospiedumi / skenēšana no implantiem',           '150 €'],
-                    ['Keramikas kronītis uz cirkonija oksīda pamata (uz implanta)', '450 €'],
+                    ['Keramikas kronītis uz cirkonija oksīda pamata (uz implanta)', '480 €'],
                     ['E-max presētas bezmetāla keramikas kronītis','450 €'],
-                    ['Neodent standarta balsts',                    '100 €'],
+                    ['Neodent standarta balsts',                    '130 €'],
                     ['Straumann standarta balsts',                  '200 €'],
                     ['Individuāls balsts',                            '200 €'],
                   ].map(([name, price], i) => (

@@ -127,7 +127,7 @@ export default function RentgenaIzmeklejumiLv() {
                     <div className="divide-y divide-slate-100">
                       {[
                         ['Panorāmas rentgena uzņēmums', '30 €'],
-                        ['Datortomogrāfijas uzņēmums (3D)', '80 €'],
+                        ['Datortomogrāfijas uzņēmums (3D)', '60 – 100 €'],
                       ].map(([name, price], i) => (
                         <div key={i} className="flex justify-between items-center py-2.5">
                           <span className="text-slate-600 text-sm">{name}</span>

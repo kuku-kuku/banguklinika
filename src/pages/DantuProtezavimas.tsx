@@ -189,8 +189,8 @@ export default function DantuProtezavimas() {
             {/* top highlight row — konsultacija */}
             <div className="grid sm:grid-cols-2 gap-3 mb-5">
               {[
-                ['Konsultacija', '20 €'],
-                ['Gydymo plano sudarymas', '30 €'],
+                ['Konsultacija', '30 €'],
+                ['Gydymo plano sudarymas', '50 €'],
               ].map(([name, price], i) => (
                 <div key={i} className="flex justify-between items-center bg-white rounded-2xl px-5 py-3 border" style={{ borderColor: S }}>
                   <span className="text-slate-700 text-sm font-medium">{name}</span>
@@ -208,9 +208,9 @@ export default function DantuProtezavimas() {
                 <div className="divide-y divide-slate-100">
                   {[
                     ['Laikinas plastmasinis vainikėlis (kabinete)',    '65 €'],
-                    ['Laikinas plastmasinis vainikėlis (laboratorijoje)', '80 €'],
+                    ['Laikinas plastmasinis vainikėlis (laboratorijoje)', '90 €'],
                     ['Metalo keramikos vainikėlis',                    '350 €'],
-                    ['Keramikos vainikėlis cirkonio oksido pagrindu (ant danties)', '400 €'],
+                    ['Keramikos vainikėlis cirkonio oksido pagrindu (ant danties)', '430 €'],
                     ['E-max presuotos bemetalės keramikos vainikėlis', '400 €'],
                     ['Vainiko kulties šlifavimas / paruošimas',        '80 €'],
                     ['Vainiko atstatymas ant stiklo pluošto kaiščio (priekinis)', '70 €'],
@@ -235,7 +235,7 @@ export default function DantuProtezavimas() {
                   {[
                     ['Laikinas vainikėlis ant implanto (su laikinos atramos kaina)', '200 €'],
                     ['Atspaudai / skenavimas nuo implantų',           '150 €'],
-                    ['Keramikos vainikėlis cirkonio oksido pagrindu (ant implanto)', '450 €'],
+                    ['Keramikos vainikėlis cirkonio oksido pagrindu (ant implanto)', '480 €'],
                     ['E-max presuotos bemetalės keramikos vainikėlis','450 €'],
                     ['Neodent standartinė atrama',                    '130 €'],
                     ['Štraumann standartinė atrama',                  '200 €'],

@@ -139,8 +139,8 @@ export default function CirkonijaKeramikasKronitisLv() {
                     <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Cirkonija keramikas kronītis</h3>
                     <div className="divide-y divide-slate-100">
                       {[
-                        ['Kronītis uz zoba', '400 €'],
-                        ['Kronītis uz implanta', '450 €'],
+                        ['Kronītis uz zoba', '430 €'],
+                        ['Kronītis uz implanta', '480 €'],
                       ].map(([name, price], i) => (
                         <div key={i} className="flex justify-between items-center py-2.5">
                           <span className="text-slate-600 text-sm">{name}</span>

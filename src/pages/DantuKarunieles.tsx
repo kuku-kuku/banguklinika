@@ -140,8 +140,8 @@ export default function DantuKarunieles() {
                     <h3 className="text-lg font-extrabold mb-4" style={{ color: P }}>Dantų karūnėlės</h3>
                     <div className="divide-y divide-slate-100">
                       {[
-                        ['Karūnėlė ant danties', '400 €'],
-                        ['Karūnėlė ant implanto', '450 €'],
+                        ['Karūnėlė ant danties', '430 €'],
+                        ['Karūnėlė ant implanto', '480 €'],
                       ].map(([name, price], i) => (
                         <div key={i} className="flex justify-between items-center py-2.5">
                           <span className="text-slate-600 text-sm">{name}</span>

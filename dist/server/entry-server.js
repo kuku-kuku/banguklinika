@@ -9508,8 +9508,8 @@ function DantuProtezavimas() {
                 /* @__PURE__ */ jsx("p", { className: "text-slate-600", children: "Dantų protezavimo kaina priklauso nuo pasirinkto sprendimo, naudojamų medžiagų, protezavimo technologijos ir individualios paciento burnos būklės. Bangų odontologijos klinikoje kiekvienam pacientui sudaromas individualus protezavimo planas, todėl galutinė kaina nustatoma tik po konsultacijos ir diagnostikos." })
               ] }) }),
               /* @__PURE__ */ jsx("div", { className: "grid sm:grid-cols-2 gap-3 mb-5", children: [
-                ["Konsultacija", "20 €"],
-                ["Gydymo plano sudarymas", "30 €"]
+                ["Konsultacija", "30 €"],
+                ["Gydymo plano sudarymas", "50 €"]
               ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center bg-white rounded-2xl px-5 py-3 border", style: { borderColor: S$_ }, children: [
                 /* @__PURE__ */ jsx("span", { className: "text-slate-700 text-sm font-medium", children: name }),
                 /* @__PURE__ */ jsx("span", { className: "font-extrabold text-sm shrink-0 ml-3", style: { color: P$_ }, children: price })
@@ -9519,9 +9519,9 @@ function DantuProtezavimas() {
                   /* @__PURE__ */ jsx("h3", { className: "text-lg font-extrabold mb-4", style: { color: P$_ }, children: "Protezavimas ant dantų" }),
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
                     ["Laikinas plastmasinis vainikėlis (kabinete)", "65 €"],
-                    ["Laikinas plastmasinis vainikėlis (laboratorijoje)", "80 €"],
+                    ["Laikinas plastmasinis vainikėlis (laboratorijoje)", "90 €"],
                     ["Metalo keramikos vainikėlis", "350 €"],
-                    ["Keramikos vainikėlis cirkonio oksido pagrindu (ant danties)", "400 €"],
+                    ["Keramikos vainikėlis cirkonio oksido pagrindu (ant danties)", "430 €"],
                     ["E-max presuotos bemetalės keramikos vainikėlis", "400 €"],
                     ["Vainiko kulties šlifavimas / paruošimas", "80 €"],
                     ["Vainiko atstatymas ant stiklo pluošto kaiščio (priekinis)", "70 €"],
@@ -9540,7 +9540,7 @@ function DantuProtezavimas() {
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
                     ["Laikinas vainikėlis ant implanto (su laikinos atramos kaina)", "200 €"],
                     ["Atspaudai / skenavimas nuo implantų", "150 €"],
-                    ["Keramikos vainikėlis cirkonio oksido pagrindu (ant implanto)", "450 €"],
+                    ["Keramikos vainikėlis cirkonio oksido pagrindu (ant implanto)", "480 €"],
                     ["E-max presuotos bemetalės keramikos vainikėlis", "450 €"],
                     ["Neodent standartinė atrama", "130 €"],
                     ["Štraumann standartinė atrama", "200 €"],
@@ -11976,7 +11976,7 @@ function DantuImplantacija() {
                           ["Neodent standartinė atrama", "130 €"],
                           ["Neodent gijimo galvutė", "80 €"],
                           ["Atspaudai", "150 €"],
-                          ["Cirkonio keramikos vainikėlis", "450 €"]
+                          ["Cirkonio keramikos vainikėlis", "480 €"]
                         ]
                       },
                       {
@@ -11985,7 +11985,7 @@ function DantuImplantacija() {
                           ["Straumann standartinė atrama", "200 €"],
                           ["Straumann gijimo galvutė", "100 €"],
                           ["Atspaudai", "150 €"],
-                          ["Cirkonio keramikos vainikėlis", "450 €"]
+                          ["Cirkonio keramikos vainikėlis", "480 €"]
                         ]
                       }
                     ].map((group, i) => /* @__PURE__ */ jsxs(
@@ -13285,7 +13285,7 @@ function RentgenologiniaiTyrimai() {
                   /* @__PURE__ */ jsx("h3", { className: "text-lg font-extrabold mb-4", style: { color: P$U }, children: "Rentgenologiniai tyrimai" }),
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
                     ["Panoraminė rentgeno nuotrauka", "30 €"],
-                    ["Kompiuterinė tomografo nuotrauka (3D)", "80 €"]
+                    ["Kompiuterinė tomografo nuotrauka (3D)", "60 – 100 €"]
                   ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
                     /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: name }),
                     /* @__PURE__ */ jsx("span", { className: "font-bold text-sm shrink-0 ml-3", style: { color: P$U }, children: price })
@@ -13798,8 +13798,8 @@ function DantuKarunieles() {
                 /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-2 gap-5", children: /* @__PURE__ */ jsxs("div", { className: "bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all", style: { borderColor: S$S }, children: [
                   /* @__PURE__ */ jsx("h3", { className: "text-lg font-extrabold mb-4", style: { color: P$S }, children: "Dantų karūnėlės" }),
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
-                    ["Karūnėlė ant danties", "400 €"],
-                    ["Karūnėlė ant implanto", "450 €"]
+                    ["Karūnėlė ant danties", "430 €"],
+                    ["Karūnėlė ant implanto", "480 €"]
                   ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
                     /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: name }),
                     /* @__PURE__ */ jsx("span", { className: "font-bold text-sm shrink-0 ml-3", style: { color: P$S }, children: price })
@@ -15015,8 +15015,8 @@ function DantuTiltai() {
                 /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-2 gap-5", children: /* @__PURE__ */ jsxs("div", { className: "bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all", style: { borderColor: S$P }, children: [
                   /* @__PURE__ */ jsx("h3", { className: "text-lg font-extrabold mb-4", style: { color: P$P }, children: "Dantų tiltų vienetų kainos" }),
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
-                    ["Vienas vienetas ant danties", "400 €"],
-                    ["Vienas vienetas ant implanto", "450 €"]
+                    ["Vienas vienetas ant danties", "430 €"],
+                    ["Vienas vienetas ant implanto", "480 €"]
                   ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
                     /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: name }),
                     /* @__PURE__ */ jsx("span", { className: "font-bold text-sm shrink-0 ml-3", style: { color: P$P }, children: price })
@@ -15593,8 +15593,8 @@ function CirkonioKeramikosVainikelis() {
                 /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-2 gap-5", children: /* @__PURE__ */ jsxs("div", { className: "bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all", style: { borderColor: S$N }, children: [
                   /* @__PURE__ */ jsx("h3", { className: "text-lg font-extrabold mb-4", style: { color: P$N }, children: "Cirkonio keramikos vainikėlis" }),
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
-                    ["Vainikėlis ant danties", "400 €"],
-                    ["Vainikėlis ant implanto", "450 €"]
+                    ["Vainikėlis ant danties", "430 €"],
+                    ["Vainikėlis ant implanto", "480 €"]
                   ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
                     /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: name }),
                     /* @__PURE__ */ jsx("span", { className: "font-bold text-sm shrink-0 ml-3", style: { color: P$N }, children: price })
@@ -23146,10 +23146,10 @@ function DantuImplantacijaLv() {
                       {
                         brand: "Neodent",
                         items: [
-                          ["Neodent standarta balsts", "100 €"],
+                          ["Neodent standarta balsts", "130 €"],
                           ["Neodent dzīšanas galviņa", "80 €"],
                           ["Nospiedumi", "150 €"],
-                          ["Cirkonija keramikas kronis", "450 €"]
+                          ["Cirkonija keramikas kronis", "480 €"]
                         ]
                       },
                       {
@@ -23158,7 +23158,7 @@ function DantuImplantacijaLv() {
                           ["Straumann standarta balsts", "200 €"],
                           ["Straumann dzīšanas galviņa", "100 €"],
                           ["Nospiedumi", "150 €"],
-                          ["Cirkonija keramikas kronis", "450 €"]
+                          ["Cirkonija keramikas kronis", "480 €"]
                         ]
                       }
                     ].map((group, i) => /* @__PURE__ */ jsxs(
@@ -25077,8 +25077,8 @@ function ZobuProtezesanaLv() {
                 /* @__PURE__ */ jsx("p", { className: "text-slate-600", children: "Zobu protezēšanas cena atkarīga no izvēlētā risinājuma, izmantotajiem materiāliem, protezēšanas tehnoloģijas un individuālā pacienta mutes stāvokļa. Bangų zobārstniecības klīnikā katram pacientam tiek izveidots individuāls protezēšanas plāns, tāpēc galīgā cena tiek noteikta tikai pēc konsultācijas un diagnostikas." })
               ] }) }),
               /* @__PURE__ */ jsx("div", { className: "grid sm:grid-cols-2 gap-3 mb-5", children: [
-                ["Konsultācija", "20 €"],
-                ["Ārstēšanas plāna izveide", "30 €"]
+                ["Konsultācija", "30 €"],
+                ["Ārstēšanas plāna izveide", "50 €"]
               ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center bg-white rounded-2xl px-5 py-3 border", style: { borderColor: S$v }, children: [
                 /* @__PURE__ */ jsx("span", { className: "text-slate-700 text-sm font-medium", children: name }),
                 /* @__PURE__ */ jsx("span", { className: "font-extrabold text-sm shrink-0 ml-3", style: { color: P$v }, children: price })
@@ -25088,9 +25088,9 @@ function ZobuProtezesanaLv() {
                   /* @__PURE__ */ jsx("h3", { className: "text-lg font-extrabold mb-4", style: { color: P$v }, children: "Protezēšana uz zobiem" }),
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
                     ["Pagaidu plastmasas kronītis (kabinetā)", "65 €"],
-                    ["Pagaidu plastmasas kronītis (laboratorijā)", "80 €"],
+                    ["Pagaidu plastmasas kronītis (laboratorijā)", "90 €"],
                     ["Metāla keramikas kronītis", "350 €"],
-                    ["Keramikas kronītis uz cirkonija oksīda pamata (uz zoba)", "400 €"],
+                    ["Keramikas kronītis uz cirkonija oksīda pamata (uz zoba)", "430 €"],
                     ["E-max presētas bezmetāla keramikas kronītis", "400 €"],
                     ["Zoba slīpēšana / sagatavošana kronītim", "80 €"],
                     ["Zoba atjaunošana uz stikla šķiedras stiegras (priekšējais)", "70 €"],
@@ -25109,9 +25109,9 @@ function ZobuProtezesanaLv() {
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
                     ["Pagaidu kronītis uz implanta (ar pagaidu balsta cenu)", "200 €"],
                     ["Nospiedumi / skenēšana no implantiem", "150 €"],
-                    ["Keramikas kronītis uz cirkonija oksīda pamata (uz implanta)", "450 €"],
+                    ["Keramikas kronītis uz cirkonija oksīda pamata (uz implanta)", "480 €"],
                     ["E-max presētas bezmetāla keramikas kronītis", "450 €"],
-                    ["Neodent standarta balsts", "100 €"],
+                    ["Neodent standarta balsts", "130 €"],
                     ["Straumann standarta balsts", "200 €"],
                     ["Individuāls balsts", "200 €"]
                   ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
@@ -30722,8 +30722,8 @@ function CirkonijaKeramikasKronitisLv() {
                 /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-2 gap-5", children: /* @__PURE__ */ jsxs("div", { className: "bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all", style: { borderColor: S$e }, children: [
                   /* @__PURE__ */ jsx("h3", { className: "text-lg font-extrabold mb-4", style: { color: P$e }, children: "Cirkonija keramikas kronītis" }),
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
-                    ["Kronītis uz zoba", "400 €"],
-                    ["Kronītis uz implanta", "450 €"]
+                    ["Kronītis uz zoba", "430 €"],
+                    ["Kronītis uz implanta", "480 €"]
                   ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
                     /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: name }),
                     /* @__PURE__ */ jsx("span", { className: "font-bold text-sm shrink-0 ml-3", style: { color: P$e }, children: price })
@@ -30980,8 +30980,8 @@ function ZobuKronitiLv() {
                 /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-2 gap-5", children: /* @__PURE__ */ jsxs("div", { className: "bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all", style: { borderColor: S$d }, children: [
                   /* @__PURE__ */ jsx("h3", { className: "text-lg font-extrabold mb-4", style: { color: P$d }, children: "Zobu kronīši" }),
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
-                    ["Kronītis uz zoba", "400 €"],
-                    ["Kronītis uz implanta", "450 €"]
+                    ["Kronītis uz zoba", "430 €"],
+                    ["Kronītis uz implanta", "480 €"]
                   ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
                     /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: name }),
                     /* @__PURE__ */ jsx("span", { className: "font-bold text-sm shrink-0 ml-3", style: { color: P$d }, children: price })
@@ -31347,8 +31347,8 @@ function ZobuTiltiLv() {
                 /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-2 gap-5", children: /* @__PURE__ */ jsxs("div", { className: "bg-white p-6 sm:p-8 rounded-3xl border-2 shadow-sm hover:shadow-xl transition-all", style: { borderColor: S$c }, children: [
                   /* @__PURE__ */ jsx("h3", { className: "text-lg font-extrabold mb-4", style: { color: P$c }, children: "Zobu tiltu vienību cenas" }),
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
-                    ["Viena vienība uz zoba", "400 €"],
-                    ["Viena vienība uz implanta", "450 €"]
+                    ["Viena vienība uz zoba", "430 €"],
+                    ["Viena vienība uz implanta", "480 €"]
                   ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
                     /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: name }),
                     /* @__PURE__ */ jsx("span", { className: "font-bold text-sm shrink-0 ml-3", style: { color: P$c }, children: price })
@@ -34745,7 +34745,7 @@ function RentgenaIzmeklejumiLv() {
                   /* @__PURE__ */ jsx("h3", { className: "text-lg font-extrabold mb-4", style: { color: P }, children: "Rentgena izmeklējumi" }),
                   /* @__PURE__ */ jsx("div", { className: "divide-y divide-slate-100", children: [
                     ["Panorāmas rentgena uzņēmums", "30 €"],
-                    ["Datortomogrāfijas uzņēmums (3D)", "80 €"]
+                    ["Datortomogrāfijas uzņēmums (3D)", "60 – 100 €"]
                   ].map(([name, price], i) => /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center py-2.5", children: [
                     /* @__PURE__ */ jsx("span", { className: "text-slate-600 text-sm", children: name }),
                     /* @__PURE__ */ jsx("span", { className: "font-bold text-sm shrink-0 ml-3", style: { color: P }, children: price })
